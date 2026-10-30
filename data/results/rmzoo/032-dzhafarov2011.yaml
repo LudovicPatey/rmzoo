@@ -1,16 +1,16 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Dzhafarov (2011) — Stable Ramsey's Theorem and Measure
 
-- {type: "implication", from: "aca", to: "sram", over: "rca0", refs: [{ref: "dzhafarov2011", loc: "Proposition 5.5"}]}
-- {type: "implication", from: "sram", to: "srt22", over: "rca0", refs: [{ref: "dzhafarov2011", loc: "Proposition 5.5"}]}
-- {type: "implication", from: "srt22", to: "asrt22", over: "rca0", refs: [{ref: "dzhafarov2011", loc: "Proposition 5.5"}]}
-- {type: "implication", from: "sram", to: "asram", over: "rca0", refs: [{ref: "dzhafarov2011", loc: "Proposition 5.5"}]}
-- {type: "implication", from: "asram", to: "asrt22", over: "rca0", refs: [{ref: "dzhafarov2011", loc: "Proposition 5.5"}]}
-- {type: "separation", from: "sram", to: "aca", over: "omega", refs: [{ref: "dzhafarov2011", loc: "Proposition 5.5"}]}
-- {type: "implication", from: "asrt22", to: "dnr", over: "rca0", refs: [{ref: "dzhafarov2011", loc: "Proposition 5.6"}]}
-- {type: "separation", from: "wkl", to: "asrt22", over: "omega", refs: [{ref: "dzhafarov2011", loc: "Proposition 5.6"}]}
-- {type: "separation", from: "asrt22", to: "wkl", over: "omega", refs: [{ref: "dzhafarov2011", loc: "Proposition 5.7"}]}
-- {type: "separation", from: "asrt22", to: "srt22", over: "omega", refs: [{ref: "dzhafarov2011", loc: "Corollary 5.8"}]}
-- {type: "separation", from: "asrt22", to: "asram", over: "omega", refs: [{ref: "dzhafarov2011", loc: "Corollary 5.8"}]}
-- {type: "separation", from: "asrt22", to: "coh", over: "omega", refs: [{ref: "dzhafarov2011", loc: "Corollary 5.8"}]}
-- {type: "separation", from: "rt22", to: "sram", over: "omega", folklore: true, note: "follows from Mileti (2004) [Corollary 5.4.6]"}
+- { type: "implication", from: "aca", to: "sram", over: "rca0", refs: [ { ref: "dzhafarov2011", loc: "Proposition 5.5" } ] }
+- { type: "implication", from: "sram", to: "srt22", over: "rca0", refs: [ { ref: "dzhafarov2011", loc: "Proposition 5.5" } ] }
+- { type: "implication", from: "srt22", to: "asrt22", over: "rca0", refs: [ { ref: "dzhafarov2011", loc: "Proposition 5.5" } ] }
+- { type: "implication", from: "sram", to: "asram", over: "rca0", refs: [ { ref: "dzhafarov2011", loc: "Proposition 5.5" } ] }
+- { type: "implication", from: "asram", to: "asrt22", over: "rca0", refs: [ { ref: "dzhafarov2011", loc: "Proposition 5.5" } ] }
+- { type: "separation", from: "sram", to: "aca", over: "omega", refs: [ { ref: "dzhafarov2011", loc: "Proposition 5.5" } ] }
+- { type: "implication", from: "asrt22", to: "dnr", over: "rca0", refs: [ { ref: "dzhafarov2011", loc: "Proposition 5.6" } ] }
+- { type: "separation", from: "wkl", to: "asrt22", over: "omega", refs: [ { ref: "dzhafarov2011", loc: "Proposition 5.6" } ] }
+- { type: "separation", from: "asrt22", to: "wkl", over: "omega", refs: [ { ref: "dzhafarov2011", loc: "Proposition 5.7" } ] }
+- { type: "separation", from: "asrt22", to: "srt22", over: "omega", refs: [ { ref: "dzhafarov2011", loc: "Corollary 5.8" } ] }
+- { type: "separation", from: "asrt22", to: "asram", over: "omega", refs: [ { ref: "dzhafarov2011", loc: "Corollary 5.8" } ] }
+- { type: "separation", from: "asrt22", to: "coh", over: "omega", refs: [ { ref: "dzhafarov2011", loc: "Corollary 5.8" } ] }
+- { type: "separation", from: "rt22", to: "sram", over: "omega", refs: [ { ref: mileti2004, loc: Corollary 5.4.6 } ] }

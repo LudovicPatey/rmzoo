@@ -1,9 +1,9 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Dzhafarov, Patey (2016) — Coloring trees in reverse mathematics
 
-- {type: "implication", from: "tt22", to: "tt12", over: "rca0", folklore: true, note: "easy to see"}
-- {type: "separation", from: "stt22", to: "aca", over: "omega", refs: [{ref: "dzhafarovpatey2017", loc: "Corollary 3.10"}]}
-- {type: "separation", from: "tt22", to: "aca", over: "omega", refs: [{ref: "dzhafarovpatey2017", loc: "Theorem 4.1"}]}
-- {type: "separation", from: "ctt22", to: "aca", over: "omega", refs: [{ref: "dzhafarovpatey2017", loc: "follows from Theorem 4.6"}]}
-- {type: "separation", from: "rt22-wkl", to: "ser22", over: "omega", refs: [{ref: "dzhafarovpatey2017", loc: "Theorem 5.5"}]}
-- {type: "implication", from: "stt22", to: "ser22", over: "rca0", refs: [{ref: "dzhafarovpatey2017", loc: "proof of Corollary 5.6"}]}
+- { type: "implication", from: "tt22", to: "tt12", over: "rca0", folklore: true, note: "easy to see", justification: { kind: reduction, text: "Color a pair σ ⊏ τ by the color of σ; a homogeneous subtree for this coloring is homogeneous for the original one, since every node of the subtree has an extension in it.", by: ai } }
+- { type: "separation", from: "stt22", to: "aca", over: "omega", refs: [ { ref: "dzhafarovpatey2017", loc: "Corollary 3.10" } ] }
+- { type: "separation", from: "tt22", to: "aca", over: "omega", refs: [ { ref: "dzhafarovpatey2017", loc: "Theorem 4.1" } ] }
+- { type: "separation", from: "ctt22", to: "aca", over: "omega", refs: [ { ref: "dzhafarovpatey2017", loc: "follows from Theorem 4.6" } ] }
+- { type: "separation", from: "rt22-wkl", to: "ser22", over: "omega", refs: [ { ref: "dzhafarovpatey2017", loc: "Theorem 5.5" } ] }
+- { type: "implication", from: "stt22", to: "ser22", over: "rca0", refs: [ { ref: "dzhafarovpatey2017", loc: "proof of Corollary 5.6" } ] }

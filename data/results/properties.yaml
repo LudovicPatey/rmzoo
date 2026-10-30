@@ -29,7 +29,7 @@
 - { type: property, statement: rrt22, property: arith-preservation, value: true, refs: [ { ref: wang2016, loc: Corollary 3.23 } ] }
 - { type: property, statement: coh, property: arith-preservation, value: true, refs: [ { ref: patey2015d, loc: Theorem 2.2 } ] }
 - { type: property, statement: em, property: arith-preservation, value: true, refs: [ { ref: patey2015d, loc: Theorem 3.2 } ] }
-- { type: property, statement: aca, property: arith-preservation, value: false, folklore: true, note: "∅′ makes a Σ⁰₂ set Σ⁰₁." }
+- { type: property, statement: aca, property: arith-preservation, value: false, folklore: true, note: "∅′ makes a Σ⁰₂ set Σ⁰₁.", justification: { kind: reduction, text: "The set ∅′ is not Δ⁰₁, but it is Δ⁰₁ relative to ∅′, the only solution of the computable instance ∅.", by: ai } }
 - { type: property, statement: cac, property: cb-immunity-preservation, value: true, refs: [ { ref: patey2018a, loc: "Theorem 13" } ] }
 - { type: property, statement: dnr, property: cb-immunity-preservation, value: false, refs: [ { ref: patey2018a, loc: "Theorem 16" } ] }
 - { type: property, statement: scac, property: dep-hyperimmunity-preservation, value: false, refs: [ { ref: patey2018a, loc: "Corollary 24" } ] }

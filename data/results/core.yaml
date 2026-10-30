@@ -36,7 +36,7 @@
 
 - { type: property, statement: wkl, property: low-basis, value: true, refs: [ { ref: jockuschsoare1972, loc: Theorem 2.1 } ] }
 - { type: property, statement: wkl, property: cone-avoidance, value: true, refs: [ { ref: jockuschsoare1972, loc: Theorem 2.5 } ] }
-- { type: property, statement: wkl, property: pa-avoidance, value: false, folklore: true }
+- { type: property, statement: wkl, property: pa-avoidance, value: false, folklore: true, justification: { kind: reduction, text: "The tree of DNC₂ functions (equivalently, of complete consistent extensions of PA) is a computable instance of WKL all of whose paths have PA degree.", by: ai } }
 - { type: property, statement: wkl, property: computably-true, value: false, refs: [ { ref: jockuschsoare1972 } ], note: Kleene tree. }
 - type: property
   statement: wkl
@@ -45,21 +45,21 @@
   refs: [ { ref: simpson2009, loc: Corollary IX.2.6 } ]
   note: Due to Harrington.
 
-- { type: property, statement: aca, property: cone-avoidance, value: false, folklore: true, note: "∅' is a solution to a computable instance." }
-- { type: property, statement: aca, property: low-basis, value: false, folklore: true }
+- { type: property, statement: aca, property: cone-avoidance, value: false, folklore: true, note: "∅' is a solution to a computable instance.", justification: { kind: reduction, text: The jump problem has the computable instance ∅ whose only solution ∅′ is not computable., by: ai } }
+- { type: property, statement: aca, property: low-basis, value: false, folklore: true, justification: { kind: reduction, text: "The only solution to the instance ∅ is ∅′, which is not low.", by: ai } }
 
-- { type: property, statement: rca0, property: computably-true, value: true, folklore: true }
-- { type: property, statement: rca0, property: pi11-conservative, value: true, folklore: true }
+- { type: property, statement: rca0, property: computably-true, value: true, folklore: true, justification: { kind: classical, text: "The identity problem: every instance is its own solution.", by: ai } }
+- { type: property, statement: rca0, property: pi11-conservative, value: true, folklore: true, justification: { kind: classical, text: "Trivial: RCA₀ is conservative over itself.", by: ai } }
 
 # ---- Randomness ------------------------------------------------------------
 
-- { type: implication, from: wkl, to: wwkl, over: [ sw, rca0star ], folklore: true }
+- { type: implication, from: wkl, to: wwkl, over: [ sw, rca0star ], folklore: true, justification: { kind: restriction, text: WWKL is WKL restricted to trees of positive measure., by: ai } }
 
 # ---- Induction and bounding ------------------------------------------------
 
 - { type: implication, from: isig2, to: bsig2, over: rca0star, refs: [ { ref: pariskirby1978, loc: Proposition 4 } ] }
 - { type: implication, from: bsig2, to: isig1, over: rca0star, refs: [ { ref: pariskirby1978, loc: Proposition 5 } ] }
-- { type: implication, from: rca0, to: isig1, over: rca0, folklore: true, note: Σ⁰₁-induction is part of RCA₀. }
+- { type: implication, from: rca0, to: isig1, over: rca0, note: Σ⁰₁-induction is part of RCA₀., refs: [ { ref: simpson2009, loc: Definition II.1.5 } ], justification: { kind: classical, text: Σ⁰₁ induction is one of the axioms of RCA₀., by: ai } }
 - { type: equivalence, from: bsig2, to: idelta2, over: rca0star, refs: [ { ref: slaman2004, loc: Theorem 2.1 (with Gandy's Theorem 1.2) } ] }
 - { type: separation, from: rca0, to: isig1, over: rca0star, refs: [ { ref: simpsonsmith1986 } ] }
 
@@ -81,19 +81,19 @@
 
 # ---- Iterated jumps ----------------------------------------------------
 
-- { type: "implication", from: "atr", to: "aca-plus", over: "rca0", folklore: true }
-- { type: "implication", from: "aca-plus", to: "aca-prime", over: "rca0", folklore: true }
-- { type: "implication", from: "aca-prime", to: "aca", over: "rca0", folklore: true }
-- { type: "separation", from: "aca-prime", to: "aca-plus", over: "omega", folklore: true, note: "The arithmetical sets form an ω-model of ACA′ in which ∅^(ω) does not exist." }
-- { type: "implication", from: "gowers", to: "ht", over: "sw", folklore: true, note: "FIN₁ is Hindman's theorem." }
-- { type: "implication", from: "gowers", to: "ht", over: "rca0", folklore: true }
+- { type: "implication", from: "atr", to: "aca-plus", over: "rca0", folklore: true, justification: { kind: reduction, text: Apply arithmetical transfinite recursion along the well-ordering ω to iterate the jump., by: ai } }
+- { type: "implication", from: "aca-plus", to: "aca-prime", over: "rca0", folklore: true, justification: { kind: reduction, text: X⁽ⁿ⁾ is computable uniformly from X^(ω)., by: ai } }
+- { type: "implication", from: "aca-prime", to: "aca", over: "rca0", folklore: true, justification: { kind: restriction, text: Take n = 1., by: ai } }
+- { type: "separation", from: "aca-prime", to: "aca-plus", over: "omega", folklore: true, note: "The arithmetical sets form an ω-model of ACA′ in which ∅^(ω) does not exist.", justification: { kind: classical, text: The arithmetical sets form an ω-model of ACA′ which does not contain ∅^(ω)., by: ai } }
+- { type: "implication", from: "gowers", to: "ht", over: "sw", folklore: true, note: "FIN₁ is Hindman's theorem.", justification: { kind: restriction, text: FIN₁ is Hindman’s theorem., by: ai } }
+- { type: "implication", from: "gowers", to: "ht", over: "rca0", folklore: true, justification: { kind: restriction, text: FIN₁ is Hindman’s theorem., by: ai } }
 
 # ---- Weihrauch landmarks seen as statements over RCA0 -----------------------
 
 - { type: equivalence, from: hb, to: wkl, over: rca0, refs: [ { ref: simpson2009, loc: Theorem IV.9.3 } ] }
 - { type: equivalence, from: lim, to: aca, over: sw, refs: [ { ref: brattkagherardipauly2021, loc: Theorem 6.7 } ], note: "lim is strongly Weihrauch equivalent to the Turing jump." }
-- { type: equivalence, from: lim, to: aca, over: rca0star, folklore: true }
+- { type: equivalence, from: lim, to: aca, over: rca0star, folklore: true, justification: { kind: classical, text: "lim is the problem form of the Turing jump; over RCA₀*, ACA is equivalent to the statement that every set has a jump.", by: ai } }
 - { type: equivalence, from: bwt, to: aca, over: rca0, refs: [ { ref: simpson2009, loc: Theorem III.2.7 } ] }
 - { type: implication, from: rca0, to: ivt, over: rca0, refs: [ { ref: simpson2009, loc: Theorem II.6.6 } ] }
-- { type: implication, from: rca0, to: lpo, over: rca0star, folklore: true, note: "Classically provable: decide whether p is the zero sequence." }
-- { type: implication, from: rca0, to: llpo, over: rca0star, folklore: true }
+- { type: implication, from: rca0, to: lpo, over: rca0star, folklore: true, note: "Classically provable: decide whether p is the zero sequence.", justification: { kind: classical, text: "Classically provable by the law of excluded middle: either p is the zero sequence or it is not.", by: ai } }
+- { type: implication, from: rca0, to: llpo, over: rca0star, folklore: true, justification: { kind: classical, text: "Classically provable: if p has a 1 at position n, the parity of n answers; otherwise any answer is correct.", by: ai } }

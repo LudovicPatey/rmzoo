@@ -3,4 +3,4 @@
 - { type: "equivalence", from: "bwt", to: "wkl-j", over: "sw", note: "BWT_R is the jump of WKL.", refs: [ { ref: brattkagherardimarcone2012, loc: Corollary 11.7 } ] }
 - { type: "implication", from: "wkl-j", to: "lim", over: "w", refs: [ { ref: brattkagherardimarcone2012 } ] }
 - { type: "separation", from: "lim", to: "wkl-j", over: "w", refs: [ { ref: brattkagherardimarcone2012 } ] }
-- { type: "implication", from: "wkl-j", to: "wkl", over: "sw", folklore: true, note: "A computable instance is its own limit.", refs: [ { ref: brattkagherardimarcone2012 } ] }
+- { type: "implication", from: "wkl-j", to: "wkl", over: "sw", note: "A computable instance is its own limit.", refs: [ { ref: brattkagherardimarcone2012 } ] }

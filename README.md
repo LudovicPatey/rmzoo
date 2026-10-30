@@ -67,6 +67,7 @@ derivable, the check fails and names the pair.
 | Hand-written seed | ~30 core statements and results | `data/statements/{core,induction,ramsey,orders}.yaml`, `data/results/*.yaml` |
 | Eric Astor's RM Zoo (`github.com/ericastor/rmzoo`, 2024) | ~470 cited results from ~60 papers up to ~2017, 169 statements | `data/results/rmzoo/`, `data/statements/rmzoo.yaml`, importer in `scripts/import/` |
 | Literature sweep 1987–2026 (arXiv and OpenAlex abstracts) | ~180 results from ~60 papers: Weihrauch landmarks, post-2017 combinatorics, theorems of ordinary mathematics equivalent to Big Five systems | `data/results/literature/`, `data/statements/{weihrauch,literature,classical}.yaml` |
+| AI-derived trivial implications | ~55 restrictions and one-line reductions, each with its argument and an "AI-derived" badge | `data/results/ai-derived.yaml` |
 | Property facts (Astor's "unsupported" notes + papers) | ~35 facts on low basis, hyperimmunity, Δ⁰₂ and arithmetic preservation, c.b.-immunity, cone avoidance | `data/results/properties.yaml` |
 | Brattka's Bibliography on Weihrauch Complexity + arXiv sweep | ~560 further papers, mostly computable analysis, proof theory or outside the zoo's statements | `data/references/bibliography-*.yaml` |
 

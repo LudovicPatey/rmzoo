@@ -1,20 +1,20 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Avigad, Dean, Rute (2012) — Algorithmic randomness, reverse mathematics, and the dominated convergence theorem
 
-- {type: "implication", from: "wwkl2", to: "wwkl", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "pos-wwkl", to: "pos2", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "remark on p. 2, end of Section 1"}]}
-- {type: "equivalence", from: "pos1", to: "ran1", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "Theorem 3.1"}]}
-- {type: "implication", from: "wwkl2", to: "bsig2", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "Proposition 3.2"}]}
-- {type: "implication", from: "pos", to: "bsig2", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "remark following Proposition 3.2"}]}
-- {type: "equivalence", from: "pos2", to: "wwkl2", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "Proposition 3.5"}]}
-- {type: "equivalence", from: "wwkl2", to: "bsig2-ran2", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "Proposition 3.6"}]}
-- {type: "separation", from: "wkl", to: "wwkl2", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "Theorem 3.8"}]}
-- {type: "separation", from: "wwkl2", to: "wkl", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "Theorem 3.8"}]}
-- {type: "equivalence", from: "wwkl2", to: "dctp", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "Theorem 4.3"}]}
-- {type: "implication", from: "aca", to: "pos2", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "Corollary 4.6"}]}
-- {type: "separation", from: "pos2", to: "aca", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "Corollary 4.6"}]}
-- {type: "implication", from: "pos2", to: "wwkl", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "Corollary 4.6"}]}
-- {type: "separation", from: "wwkl", to: "pos2", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "Corollary 4.6"}]}
-- {type: "separation", from: "pos2", to: "wkl", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "Corollary 4.6"}]}
-- {type: "separation", from: "wkl", to: "pos2", over: "rca0", refs: [{ref: "avigaddeanrute2012", loc: "Corollary 4.6"}]}
-- {type: "equivalence", from: "pos1", to: "wwkl", over: "rca0", folklore: true, note: "follows from Yu and Simpson (1990) [Theorem 1]"}
+- { type: "implication", from: "wwkl2", to: "wwkl", over: "rca0", folklore: true, justification: { kind: restriction, text: A computable tree of positive measure is a Δ⁰₂ tree of positive measure., by: ai } }
+- { type: "implication", from: "pos-wwkl", to: "pos2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "remark on p. 2, end of Section 1" } ] }
+- { type: "equivalence", from: "pos1", to: "ran1", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Theorem 3.1" } ] }
+- { type: "implication", from: "wwkl2", to: "bsig2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Proposition 3.2" } ] }
+- { type: "implication", from: "pos", to: "bsig2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "remark following Proposition 3.2" } ] }
+- { type: "equivalence", from: "pos2", to: "wwkl2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Proposition 3.5" } ] }
+- { type: "equivalence", from: "wwkl2", to: "bsig2-ran2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Proposition 3.6" } ] }
+- { type: "separation", from: "wkl", to: "wwkl2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Theorem 3.8" } ] }
+- { type: "separation", from: "wwkl2", to: "wkl", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Theorem 3.8" } ] }
+- { type: "equivalence", from: "wwkl2", to: "dctp", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Theorem 4.3" } ] }
+- { type: "implication", from: "aca", to: "pos2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Corollary 4.6" } ] }
+- { type: "separation", from: "pos2", to: "aca", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Corollary 4.6" } ] }
+- { type: "implication", from: "pos2", to: "wwkl", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Corollary 4.6" } ] }
+- { type: "separation", from: "wwkl", to: "pos2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Corollary 4.6" } ] }
+- { type: "separation", from: "pos2", to: "wkl", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Corollary 4.6" } ] }
+- { type: "separation", from: "wkl", to: "pos2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Corollary 4.6" } ] }
+- { type: "equivalence", from: "pos1", to: "wwkl", over: "rca0", refs: [ { ref: yusimpson1990, loc: Theorem 1 } ] }

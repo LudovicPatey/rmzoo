@@ -121,7 +121,15 @@ raw.results.forEach((res, i) => {
     if (!pids.has(res.property)) errors.push(`${where}: unknown property ${res.property}`);
     if (typeof res.value !== 'boolean') errors.push(`${where}: value must be true or false`);
   } else errors.push(`${where}: unknown type ${res.type}`);
-  if (!res.folklore && !(res.refs && res.refs.length)) errors.push(`${where}: needs refs or folklore: true`);
+  if (!res.folklore && res.provenance !== 'ai' && !(res.refs && res.refs.length))
+    errors.push(`${where}: needs refs, folklore: true, or provenance: ai`);
+  if (res.provenance && res.provenance !== 'ai') errors.push(`${where}: provenance must be ai`);
+  if (res.provenance === 'ai' && !res.justification) errors.push(`${where}: AI-derived results need a justification`);
+  if (res.justification) {
+    const kinds = ['restriction', 'reduction', 'classical', 'personal-communication', 'unreferenced'];
+    if (!kinds.includes(res.justification.kind)) errors.push(`${where}: justification.kind must be one of ${kinds.join(', ')}`);
+    if (!res.justification.text) errors.push(`${where}: justification needs a text`);
+  }
   checkRefs(res.refs, where);
 });
 

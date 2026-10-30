@@ -1,7 +1,7 @@
 # Results from [csimaetal2019].
 
-- { type: "implication", from: "rt22", to: "ht-eq22", over: "sw", folklore: true, refs: [ { ref: csimaetal2019 } ] }
-- { type: "implication", from: "rt22", to: "ht-eq22", over: "rca0star", folklore: true, refs: [ { ref: csimaetal2019 } ] }
+- { type: "implication", from: "rt22", to: "ht-eq22", over: "sw", folklore: true, refs: [ { ref: csimaetal2019 } ], justification: { kind: reduction, text: "Given c : ℕ → 2, color the pair {x, y} by c(x + y); an infinite homogeneous set has all sums of exactly two elements of the same color.", by: ai } }
+- { type: "implication", from: "rt22", to: "ht-eq22", over: "rca0star", folklore: true, refs: [ { ref: csimaetal2019 } ], justification: { kind: reduction, text: "Given c : ℕ → 2, color the pair {x, y} by c(x + y); an infinite homogeneous set has all sums of exactly two elements of the same color.", by: ai } }
 - { type: "implication", from: "ht-eq22", to: "dnr0", over: "c", note: "There is a computable instance all of whose solutions compute a function DNC relative to ∅′; the argument relativizes.", refs: [ { ref: csimaetal2019, loc: Theorem 3.3 } ] }
 - { type: "separation", from: "wkl", to: "ht-eq22", over: "omega", refs: [ { ref: csimaetal2019, loc: Corollary 3.4 and the low basis theorem } ] }
 - { type: separation, from: rca0, to: ht-eq22, over: omega, refs: [ { ref: csimaetal2019, loc: Theorem 3.1 } ] }

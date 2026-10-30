@@ -39,5 +39,5 @@
 - { type: "separation", from: "rca0", to: "part", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Corollary 4.7" } ] }
 - { type: "equivalence", from: "stcrt22", to: "bsig2-crt22", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 4.8" } ] }
 - { type: "equivalence", from: "bsig2-crt22", to: "stcoh", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 4.8" } ] }
-- { type: "implication", from: "coh", to: "crt22", over: "rca0", folklore: true, note: "implicit in Cholak, Jockusch, and Slaman (2001) [Lemma 7.11]; highlighted in Hirschfeldt and Shore (2007) [Proposition 1.4]" }
-- { type: "implication", from: "rt22", to: "cac", over: "rca0", folklore: true, note: "remarked in Cholak, Jockusch, and Slaman (2001) [Question 13.8], explained in Hirschfeldt and Shore (2007) [comment following definition of CAC]" }
+- { type: "implication", from: "coh", to: "crt22", over: "rca0", refs: [ { ref: cholakjockuschslaman2001, loc: Lemma 7.11 (implicit) }, { ref: hirschfeldtshore2007, loc: Proposition 1.4 } ] }
+- { type: "implication", from: "rt22", to: "cac", over: "rca0", refs: [ { ref: cholakjockuschslaman2001, loc: Question 13.8 }, { ref: hirschfeldtshore2007, loc: comment following the definition of CAC } ], justification: { kind: reduction, text: "Color the pair {x < y} by whether x and y are comparable; homogeneous sets are chains or antichains.", by: ai } }

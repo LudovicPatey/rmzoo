@@ -1,27 +1,27 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Dzhafarov, Hirst, Lakins (2010) — Ramsey’s theorem for trees: the polarized tree theorem and notions of stability
 
-- {type: "implication", from: "ptt3", to: "ptt32", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "ptt2", to: "ptt22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "iptt3", to: "iptt32", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "iptt2", to: "iptt22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "stt2", to: "stt22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "sptt2", to: "sptt22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "siptt2", to: "siptt22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "tt2", to: "stt2", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "tt22", to: "stt22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "ptt32", to: "iptt32", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Proposition 1.6"}]}
-- {type: "implication", from: "ptt22", to: "iptt22", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Proposition 1.6"}]}
-- {type: "implication", from: "tt32", to: "ptt32", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Proposition 2.1"}]}
-- {type: "implication", from: "tt22", to: "ptt22", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Proposition 2.1"}]}
-- {type: "implication", from: "ptt22", to: "sptt22", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.10"}]}
-- {type: "implication", from: "iptt22", to: "siptt22", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.10"}]}
-- {type: "implication", from: "stt22", to: "sptt22", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.10"}]}
-- {type: "implication", from: "sptt22", to: "siptt22", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.10"}]}
-- {type: "implication", from: "sptt22", to: "spt22", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.11"}]}
-- {type: "implication", from: "siptt22", to: "sipt22", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.11"}]}
-- {type: "equivalence", from: "stt22", to: "sptt22", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Theorem 3.14"}]}
-- {type: "equivalence", from: "sptt22", to: "siptt22", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Theorem 3.14"}]}
-- {type: "equivalence", from: "stt2", to: "sptt2", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Theorem 3.14"}]}
-- {type: "equivalence", from: "sptt2", to: "siptt2", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Theorem 3.14"}]}
-- {type: "equivalence", from: "tt22", to: "ctt22-stt22", over: "rca0", refs: [{ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.18"}]}
+- { type: "implication", from: "ptt3", to: "ptt32", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "ptt2", to: "ptt22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "iptt3", to: "iptt32", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "iptt2", to: "iptt22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "stt2", to: "stt22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "sptt2", to: "sptt22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "siptt2", to: "siptt22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "tt2", to: "stt2", over: "rca0", folklore: true, justification: { kind: restriction, text: "Restriction to stable instances: every stable instance is an instance, with the same solutions.", by: ai } }
+- { type: "implication", from: "tt22", to: "stt22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Restriction to stable instances: every stable instance is an instance, with the same solutions.", by: ai } }
+- { type: "implication", from: "ptt32", to: "iptt32", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Proposition 1.6" } ] }
+- { type: "implication", from: "ptt22", to: "iptt22", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Proposition 1.6" } ] }
+- { type: "implication", from: "tt32", to: "ptt32", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Proposition 2.1" } ] }
+- { type: "implication", from: "tt22", to: "ptt22", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Proposition 2.1" } ] }
+- { type: "implication", from: "ptt22", to: "sptt22", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.10" } ] }
+- { type: "implication", from: "iptt22", to: "siptt22", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.10" } ] }
+- { type: "implication", from: "stt22", to: "sptt22", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.10" } ] }
+- { type: "implication", from: "sptt22", to: "siptt22", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.10" } ] }
+- { type: "implication", from: "sptt22", to: "spt22", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.11" } ] }
+- { type: "implication", from: "siptt22", to: "sipt22", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.11" } ] }
+- { type: "equivalence", from: "stt22", to: "sptt22", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Theorem 3.14" } ] }
+- { type: "equivalence", from: "sptt22", to: "siptt22", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Theorem 3.14" } ] }
+- { type: "equivalence", from: "stt2", to: "sptt2", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Theorem 3.14" } ] }
+- { type: "equivalence", from: "sptt2", to: "siptt2", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Theorem 3.14" } ] }
+- { type: "equivalence", from: "tt22", to: "ctt22-stt22", over: "rca0", refs: [ { ref: "dzhafarovhirstlakins2010", loc: "Proposition 3.18" } ] }

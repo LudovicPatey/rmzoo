@@ -1,41 +1,41 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Dzhafarov, Hirst (2009) — The polarized Ramsey's theorem
 
-- {type: "implication", from: "pt", to: "pt2", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "pt", to: "pt3", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "pt2", to: "pt22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "pt3", to: "pt32", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "ipt", to: "ipt2", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "ipt", to: "ipt3", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "ipt2", to: "ipt22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "ipt3", to: "ipt32", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "pt", to: "ipt", over: "rca0", note: "By definition.", refs: [{ref: dzhafarovhirst2009, loc: Remark 1.4}]}
-- {type: "implication", from: "pt2", to: "ipt2", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "pt3", to: "ipt3", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "rt22", to: "pt22", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Proposition 3.1"}]}
-- {type: "implication", from: "rt32", to: "pt32", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Proposition 3.1"}]}
-- {type: "implication", from: "rt2", to: "pt2", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Proposition 3.1"}]}
-- {type: "implication", from: "rt3", to: "pt3", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Proposition 3.1"}]}
-- {type: "implication", from: "pt22", to: "ipt22", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Proposition 3.1"}]}
-- {type: "implication", from: "pt22", to: "spt22", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Proposition 3.1"}]}
-- {type: "implication", from: "ipt22", to: "sipt22", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Proposition 3.1"}]}
-- {type: "implication", from: "srt22", to: "spt22", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Proposition 3.1"}]}
-- {type: "implication", from: "spt22", to: "sipt22", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Proposition 3.1"}]}
-- {type: "implication", from: "srt2", to: "spt2", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Proposition 3.1"}]}
-- {type: "implication", from: "spt2", to: "sipt2", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Proposition 3.1"}]}
-- {type: "implication", from: "bsig2-sipt22", to: "srt22", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Theorem 3.3"}]}
-- {type: "implication", from: "sipt2", to: "rt1inf", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Theorem 3.3"}]}
-- {type: "implication", from: "sipt2", to: "d2", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Theorem 3.3"}]}
-- {type: "implication", from: "sipt22", to: "d22", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Proposition 3.5"}]}
-- {type: "implication", from: "sipt22", to: "sads", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Proposition 3.6"}]}
-- {type: "implication", from: "pt22", to: "ads", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Theorem 3.8"}]}
-- {type: "implication", from: "pt22", to: "rt22", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Theorem 3.8"}]}
-- {type: "equivalence", from: "rt2", to: "pt2", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Theorem 3.8"}]}
-- {type: "implication", from: "aca", to: "pt3", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Theorem 4.1"}]}
-- {type: "implication", from: "pt32", to: "ipt3", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Theorem 4.1"}]}
-- {type: "implication", from: "ipt32", to: "aca", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Theorem 4.1"}]}
-- {type: "equivalence", from: "pt32", to: "rt32", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Corollary 4.2"}]}
-- {type: "implication", from: "rt", to: "pt", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Remark 1.4"}]}
-- {type: "implication", from: "ipt", to: "rt", over: "rca0", refs: [{ref: "dzhafarovhirst2009", loc: "Remark 1.4"}]}
-- {type: "separation", from: "bsig2-wkl", to: "srt22", over: "omega", refs: [{ref: "dzhafarovhirst2009", loc: "proof of Proposition 3.4"}]}
-- {type: "implication", from: "d22", to: "dnr", over: "rca0", folklore: true, note: "inspection of Hirschfeldt, Jockusch, Kjos-Hanssen, Lempp, and Slaman (2006) [Theorem 2.4]"}
+- { type: "implication", from: "pt", to: "pt2", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: every exponent, at exponent 2.", by: ai } }
+- { type: "implication", from: "pt", to: "pt3", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: every exponent, at exponent 3.", by: ai } }
+- { type: "implication", from: "pt2", to: "pt22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "pt3", to: "pt32", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "ipt", to: "ipt2", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: every exponent, at exponent 2.", by: ai } }
+- { type: "implication", from: "ipt", to: "ipt3", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: every exponent, at exponent 3.", by: ai } }
+- { type: "implication", from: "ipt2", to: "ipt22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "ipt3", to: "ipt32", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "pt", to: "ipt", over: "rca0", note: "By definition.", refs: [ { ref: dzhafarovhirst2009, loc: Remark 1.4 } ] }
+- { type: "implication", from: "pt2", to: "ipt2", over: "rca0", folklore: true, justification: { kind: reduction, text: A polarized homogeneous sequence is in particular homogeneous on increasing tuples., by: ai } }
+- { type: "implication", from: "pt3", to: "ipt3", over: "rca0", folklore: true, justification: { kind: reduction, text: A polarized homogeneous sequence is in particular homogeneous on increasing tuples., by: ai } }
+- { type: "implication", from: "rt22", to: "pt22", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Proposition 3.1" } ] }
+- { type: "implication", from: "rt32", to: "pt32", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Proposition 3.1" } ] }
+- { type: "implication", from: "rt2", to: "pt2", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Proposition 3.1" } ] }
+- { type: "implication", from: "rt3", to: "pt3", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Proposition 3.1" } ] }
+- { type: "implication", from: "pt22", to: "ipt22", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Proposition 3.1" } ] }
+- { type: "implication", from: "pt22", to: "spt22", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Proposition 3.1" } ] }
+- { type: "implication", from: "ipt22", to: "sipt22", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Proposition 3.1" } ] }
+- { type: "implication", from: "srt22", to: "spt22", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Proposition 3.1" } ] }
+- { type: "implication", from: "spt22", to: "sipt22", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Proposition 3.1" } ] }
+- { type: "implication", from: "srt2", to: "spt2", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Proposition 3.1" } ] }
+- { type: "implication", from: "spt2", to: "sipt2", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Proposition 3.1" } ] }
+- { type: "implication", from: "bsig2-sipt22", to: "srt22", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Theorem 3.3" } ] }
+- { type: "implication", from: "sipt2", to: "rt1inf", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Theorem 3.3" } ] }
+- { type: "implication", from: "sipt2", to: "d2", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Theorem 3.3" } ] }
+- { type: "implication", from: "sipt22", to: "d22", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Proposition 3.5" } ] }
+- { type: "implication", from: "sipt22", to: "sads", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Proposition 3.6" } ] }
+- { type: "implication", from: "pt22", to: "ads", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Theorem 3.8" } ] }
+- { type: "implication", from: "pt22", to: "rt22", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Theorem 3.8" } ] }
+- { type: "equivalence", from: "rt2", to: "pt2", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Theorem 3.8" } ] }
+- { type: "implication", from: "aca", to: "pt3", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Theorem 4.1" } ] }
+- { type: "implication", from: "pt32", to: "ipt3", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Theorem 4.1" } ] }
+- { type: "implication", from: "ipt32", to: "aca", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Theorem 4.1" } ] }
+- { type: "equivalence", from: "pt32", to: "rt32", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Corollary 4.2" } ] }
+- { type: "implication", from: "rt", to: "pt", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Remark 1.4" } ] }
+- { type: "implication", from: "ipt", to: "rt", over: "rca0", refs: [ { ref: "dzhafarovhirst2009", loc: "Remark 1.4" } ] }
+- { type: "separation", from: "bsig2-wkl", to: "srt22", over: "omega", refs: [ { ref: "dzhafarovhirst2009", loc: "proof of Proposition 3.4" } ] }
+- { type: "implication", from: "d22", to: "dnr", over: "rca0", refs: [ { ref: hirschfeldtetal2008, loc: inspection of Theorem 2.4 } ] }

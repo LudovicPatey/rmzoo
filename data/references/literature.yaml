@@ -249,3 +249,33 @@ gherardimarcone2009:
   venue: Notre Dame Journal of Formal Logic 50(4), 393–425
   year: 2009
   doi: 10.1215/00294527-2009-018
+specker1971:
+  authors: [Ernst Specker]
+  title: Ramsey's theorem does not hold in recursive set theory
+  venue: Logic Colloquium '69, North-Holland, 439–442
+  year: 1971
+kucera1985:
+  authors: [Antonín Kučera]
+  title: Measure, Π⁰₁-classes and complete extensions of PA
+  venue: Recursion Theory Week (Oberwolfach 1984), Lecture Notes in Mathematics 1141, Springer, 245–259
+  year: 1985
+millermartin1968:
+  authors: [Webb Miller, Donald A. Martin]
+  title: The degrees of hyperimmune sets
+  venue: Zeitschrift für Mathematische Logik und Grundlagen der Mathematik 14, 159–166
+  year: 1968
+cholakmarconesolomon2004:
+  authors: [Peter Cholak, Alberto Marcone, Reed Solomon]
+  title: Reverse mathematics and the equivalence of definitions for well and better quasi-orders
+  venue: Journal of Symbolic Logic 69(3), 683–712
+  year: 2004
+hummel1994:
+  authors: [Tamara Lakins Hummel]
+  title: 'Effective versions of Ramsey''s theorem: avoiding the cone above 0′'
+  venue: Journal of Symbolic Logic 59(4), 1301–1325
+  year: 1994
+sacks1963:
+  authors: [Gerald E. Sacks]
+  title: Degrees of unsolvability
+  venue: Annals of Mathematics Studies 55, Princeton University Press
+  year: 1963

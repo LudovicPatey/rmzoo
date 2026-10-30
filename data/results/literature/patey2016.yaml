@@ -1,5 +1,5 @@
 # Results from [patey2016].
 
-- { type: "implication", from: "srt23", to: "srt22", over: "sw", folklore: true }
-- { type: "implication", from: "srt22", to: "srt23", over: "rca0", folklore: true }
+- { type: "implication", from: "srt23", to: "srt22", over: "sw", folklore: true, justification: { kind: restriction, text: A stable 2-coloring is a stable 3-coloring with the same homogeneous sets., by: ai } }
+- { type: "implication", from: "srt22", to: "srt23", over: "rca0", folklore: true, justification: { kind: reduction, text: "Merge two colors, apply SRT²₂, then apply SRT²₂ again inside the resulting homogeneous set if needed; the colorings stay stable.", by: ai } }
 - { type: "separation", from: "rt22", to: "srt23", over: "c", note: "SRT^n_k is not computably reducible to RT^n_ℓ for k > ℓ.", refs: [ { ref: patey2016, loc: Corollary 3.14 } ] }

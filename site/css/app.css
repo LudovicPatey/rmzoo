@@ -112,6 +112,8 @@ main.wide { max-width: none; }
 .grow { flex: 1; }
 .badge { font-size: .72rem; padding: 1px 7px; border-radius: 999px; font-weight: 600; }
 .badge.warn { background: var(--open-soft); color: var(--open); }
+.badge.ai { background: #f3e8ff; color: #7c3aed; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .badge.ai { background: #2e2245; color: #c4a5ff; } }
 .badge.folk { background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
 .yes { color: var(--yes); } .no { color: var(--no); } .open { color: var(--open); } .na { color: var(--na); }
 table.grid { border-collapse: collapse; width: 100%; font-size: .9rem; }

@@ -128,6 +128,23 @@ Every result has `refs: [{ref: <bibkey>, loc: "Theorem 3.1"}]` and optional
 `note`. A result with no reference must be marked `folklore: true` — so the
 database distinguishes "trivial/folklore" from "missing citation".
 
+**Provenance.** Folklore results carry a `justification`:
+
+```yaml
+justification:
+  kind: restriction | reduction | classical | personal-communication | unreferenced
+  text: "A 2-coloring is a 3-coloring with the same homogeneous sets."
+  by: ai            # present when the argument was written by an AI assistant
+```
+
+Results that were not taken from the literature at all, but derived by an AI
+assistant (typically restrictions of instances or one-line reductions that no
+paper states), are marked `provenance: ai` and must have a justification.
+They live in `data/results/ai-derived.yaml`. The viewer shows them with an
+"AI-derived" badge, and the Results page can filter by provenance, so they can
+be reviewed and either confirmed (add a reference, drop `provenance`) or
+removed.
+
 Results are grouped into files by topic, but nothing depends on the grouping;
 a natural contribution workflow is "one paper → append its theorems".
 

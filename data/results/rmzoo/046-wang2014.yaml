@@ -1,8 +1,8 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Wang (2014) — Cohesive sets and rainbows
 
-- {type: "implication", from: "rrt42", to: "rrt32", over: "rca0", folklore: true, note: "By definition."}
-- {type: "separation", from: "rt22", to: "rrt32", over: "rca0", folklore: true, note: "follows from Csima and Mileti (2009) and Cholak, Jockusch, and Slaman (2001)"}
-- {type: "implication", from: "aca", to: "rrt42", over: "rca0", folklore: true, note: "follows from Jockusch (1972)"}
-- {type: "separation", from: "rrt32", to: "wkl", over: "omega", refs: [{ref: "wang2014", loc: "Theorem 5.2"}]}
-- {type: "separation", from: "rrt32", to: "rrt42", over: "omega", refs: [{ref: "wang2014", loc: "Theorem 5.4"}]}
+- { type: "implication", from: "rrt42", to: "rrt32", over: "rca0", folklore: true, justification: { kind: unreferenced, text: 'Recorded as "by definition" in the RM Zoo database. The usual exponent-lowering argument does not preserve 2-boundedness, so this implication is not immediate and should be checked.', by: ai } }
+- { type: "separation", from: "rt22", to: "rrt32", over: "rca0", refs: [ { ref: csimamileti2009 }, { ref: cholakjockuschslaman2001 } ] }
+- { type: "implication", from: "aca", to: "rrt42", over: "rca0", refs: [ { ref: jockusch1972 } ] }
+- { type: "separation", from: "rrt32", to: "wkl", over: "omega", refs: [ { ref: "wang2014", loc: "Theorem 5.2" } ] }
+- { type: "separation", from: "rrt32", to: "rrt42", over: "omega", refs: [ { ref: "wang2014", loc: "Theorem 5.4" } ] }

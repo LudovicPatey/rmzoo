@@ -256,11 +256,22 @@ function factHtml(f) {
   const arrow = f.t === 'I' ? '<span class="yes">⇒</span>' : '<span class="no">⇏</span>';
   return `${L(f.a, f.r)} ${arrow} ${L(f.b, f.r)} <span class="muted small">over ${esc(Z.R[f.r].short)}</span>`;
 }
+const JUSTIFICATION_KINDS = {
+  restriction: 'restriction of instances',
+  reduction: 'short reduction',
+  classical: 'classical fact',
+  'personal-communication': 'personal communication',
+  unreferenced: 'no reference found',
+};
 function resultCite(ri) {
   const res = Z.raw.results[ri];
   const refs = (res.refs || []).map(refLink).join('; ');
+  const j = res.justification;
   return `<div class="cite">${refs}${res.folklore ? ' <span class="badge folk">folklore</span>' : ''}
+    ${res.provenance === 'ai' ? ' <span class="badge ai" title="Not taken from the literature: derived by an AI assistant and to be checked">AI-derived</span>' : ''}
+    ${j?.by === 'ai' && res.provenance !== 'ai' ? ' <span class="badge ai" title="The justification below was written by an AI assistant">argument by AI</span>' : ''}
     ${res.status === 'needs-check' ? ' <span class="badge warn">needs check</span>' : ''}</div>
+    ${j ? `<div class="note"><b>${esc(JUSTIFICATION_KINDS[j.kind] || j.kind)}.</b> ${rich(j.text)}</div>` : ''}
     ${res.note ? `<div class="note">${rich(res.note)}</div>` : ''}`;
 }
 function proofHtml(node) {
@@ -927,20 +938,27 @@ function viewResults(params) {
       <input class="text" id="f-q" placeholder="Statement…" value="${esc(params.get('q') || '')}" style="width:200px">
       <select id="f-type"><option value="">All types</option><option>implication</option><option>equivalence</option><option>separation</option><option>property</option><option>conservation</option></select>
       <select id="f-r"><option value="">All reductions</option>${Z.R.map((R) => `<option value="${R.id}">${esc(R.name)}</option>`).join('')}</select>
+      <select id="f-prov"><option value="">Any provenance</option><option value="lit">From the literature</option>
+        <option value="folk">Folklore</option><option value="ai">AI-derived</option><option value="aiarg">Argument by AI</option></select>
       <label class="toggle"><input type="checkbox" id="f-check"> Needs check only</label>
     </div><div id="res"></div>`;
   const draw = () => {
     const q = $('#f-q').value.trim();
     const matchIds = q ? new Set(search(q, 1000).map((i) => S(i).id)) : null;
-    const type = $('#f-type').value, rr = $('#f-r').value, chk = $('#f-check').checked;
+    const type = $('#f-type').value, rr = $('#f-r').value, chk = $('#f-check').checked, prov = $('#f-prov').value;
+    const provOk = (res) => !prov
+      || (prov === 'lit' && res.refs?.length && !res.folklore && res.provenance !== 'ai')
+      || (prov === 'folk' && res.folklore)
+      || (prov === 'ai' && res.provenance === 'ai')
+      || (prov === 'aiarg' && res.justification?.by === 'ai');
     const list = Z.raw.results.map((res, ri) => [res, ri]).filter(([res]) =>
       (!type || res.type === type) &&
       (!rr || [].concat(res.over || []).includes(rr)) &&
-      (!chk || res.status === 'needs-check') &&
+      (!chk || res.status === 'needs-check') && provOk(res) &&
       (!matchIds || [res.from, res.to, res.statement, res.base].some((x) => matchIds.has(x))));
     $('#res').innerHTML = `<p class="small muted">${list.length} result${list.length === 1 ? '' : 's'}</p>${resultsTable(list, 50)}`;
   };
-  ['#f-q', '#f-type', '#f-r', '#f-check'].forEach((s) => $(s).addEventListener('input', draw));
+  ['#f-q', '#f-type', '#f-r', '#f-check', '#f-prov'].forEach((s) => $(s).addEventListener('input', draw));
   draw();
 }
 
@@ -1002,6 +1020,8 @@ function viewAbout() {
     if (s === 'implies') nI++; else if (s === 'separated') nN++; else if (s === 'open') nO++;
   }
   const needs = Z.raw.results.filter((r) => r.status === 'needs-check').length;
+  const nAi = Z.raw.results.filter((r) => r.provenance === 'ai').length;
+  const nFolk = Z.raw.results.filter((r) => r.folklore).length;
   m.innerHTML = `<h1>About the zoo</h1>
     <div class="stats">
       <div class="card"><div class="num">${Z.S.length}</div><div class="small muted">statements</div></div>
@@ -1009,6 +1029,8 @@ function viewAbout() {
       <div class="card"><div class="num">${nI}</div><div class="small muted">derived implications</div></div>
       <div class="card"><div class="num">${nN}</div><div class="small muted">derived separations</div></div>
       <div class="card"><div class="num">${nO}</div><div class="small muted">open pairs</div></div>
+      <div class="card"><div class="num">${nFolk}</div><div class="small muted"><a href="#/results">folklore results</a></div></div>
+      <div class="card"><div class="num">${nAi}</div><div class="small muted">AI-derived results</div></div>
       <div class="card"><div class="num ${needs ? 'open' : ''}">${needs}</div><div class="small muted">results to check</div></div>
     </div>
     ${Z.contradictions.length || Z.errors.length ? `<div class="verdict separated">The database is inconsistent: ${Z.contradictions.length} contradiction(s), ${Z.errors.length} error(s). Run <code>npm run check</code>.</div>` : ''}

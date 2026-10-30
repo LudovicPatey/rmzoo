@@ -1,24 +1,24 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # General facts
 
-- {type: "implication", from: "rt", to: "rt3", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "rt3", to: "rt2", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "rrt", to: "rrt42", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "rt3", to: "rt32", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "fs3", to: "sfs3", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "fs2", to: "sfs2", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "rt2", to: "rt22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "srt2", to: "srt22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "d2", to: "d22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "rt1inf", to: "rt12", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "rt2", to: "srt2", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "rt22", to: "srt22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "em", to: "sem", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "kl", to: "wkl", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "isig3", to: "isig2", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "bsig3", to: "bsig2", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "rca0", to: "pa", over: "omega", folklore: true, note: "Full induction holds in any omega-model."}
-- {type: "implication", from: "rca0", to: "isig3", over: "omega", folklore: true, note: "Full induction holds in any omega-model."}
-- {type: "implication", from: "rca0", to: "bsig3", over: "omega", folklore: true, note: "Full induction holds in any omega-model."}
-- {type: "implication", from: "rca0", to: "isig2", over: "omega", folklore: true, note: "Full induction holds in any omega-model."}
-- {type: "implication", from: "rca0", to: "bsig2", over: "omega", folklore: true, note: "Full induction holds in any omega-model."}
+- { type: "implication", from: "rt", to: "rt3", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: Ramsey’s theorem for every exponent, at exponent 3.", by: ai } }
+- { type: "implication", from: "rt3", to: "rt2", over: "rca0", folklore: true, justification: { kind: reduction, text: "RT³_{<∞} implies RT²_{<∞} by lowering the exponent (color a triple by the color of its first two elements).", by: ai } }
+- { type: "implication", from: "rrt", to: "rrt42", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: the rainbow Ramsey theorem for every exponent and bound, at exponent 4 and bound 2.", by: ai } }
+- { type: "implication", from: "rt3", to: "rt32", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "fs3", to: "sfs3", over: "rca0", folklore: true, justification: { kind: restriction, text: "Restriction to stable instances: every stable instance is an instance, with the same solutions.", by: ai } }
+- { type: "implication", from: "fs2", to: "sfs2", over: "rca0", folklore: true, justification: { kind: restriction, text: "Restriction to stable instances: every stable instance is an instance, with the same solutions.", by: ai } }
+- { type: "implication", from: "rt2", to: "rt22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "srt2", to: "srt22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "d2", to: "d22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "rt1inf", to: "rt12", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
+- { type: "implication", from: "rt2", to: "srt2", over: "rca0", folklore: true, justification: { kind: restriction, text: "Restriction to stable instances: every stable instance is an instance, with the same solutions.", by: ai } }
+- { type: "implication", from: "rt22", to: "srt22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Restriction to stable instances: every stable instance is an instance, with the same solutions.", by: ai } }
+- { type: "implication", from: "em", to: "sem", over: "rca0", folklore: true, justification: { kind: restriction, text: "Restriction to stable instances: every stable instance is an instance, with the same solutions.", by: ai } }
+- { type: "implication", from: "kl", to: "wkl", over: "rca0", folklore: true, justification: { kind: restriction, text: A binary tree is finitely branching., by: ai } }
+- { type: "implication", from: "isig3", to: "isig2", over: "rca0", folklore: true, justification: { kind: restriction, text: Every Σ⁰₂ formula is Σ⁰₃., by: ai } }
+- { type: "implication", from: "bsig3", to: "bsig2", over: "rca0", folklore: true, justification: { kind: restriction, text: Every Σ⁰₂ formula is Σ⁰₃., by: ai } }
+- { type: "implication", from: "rca0", to: "pa", over: "omega", folklore: true, note: "Full induction holds in any omega-model.", justification: { kind: classical, text: "Every ω-model has the standard first-order part ℕ, in which full induction holds.", by: ai } }
+- { type: "implication", from: "rca0", to: "isig3", over: "omega", folklore: true, note: "Full induction holds in any omega-model.", justification: { kind: classical, text: "Every ω-model has the standard first-order part ℕ, in which full induction holds.", by: ai } }
+- { type: "implication", from: "rca0", to: "bsig3", over: "omega", folklore: true, note: "Full induction holds in any omega-model.", justification: { kind: classical, text: "Every ω-model has the standard first-order part ℕ, in which full induction holds.", by: ai } }
+- { type: "implication", from: "rca0", to: "isig2", over: "omega", folklore: true, note: "Full induction holds in any omega-model.", justification: { kind: classical, text: "Every ω-model has the standard first-order part ℕ, in which full induction holds.", by: ai } }
+- { type: "implication", from: "rca0", to: "bsig2", over: "omega", folklore: true, note: "Full induction holds in any omega-model.", justification: { kind: classical, text: "Every ω-model has the standard first-order part ℕ, in which full induction holds.", by: ai } }

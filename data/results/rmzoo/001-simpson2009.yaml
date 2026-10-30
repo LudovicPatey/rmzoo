@@ -1,6 +1,6 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Simpson (2009) — Subsystems of Second-Order Arithmetic
 
-- {type: "implication", from: "pa", to: "isig3", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "aca", to: "pa", over: "rca0", folklore: true, note: "due to Friedman and Harrington, see Simpson's 'Subsystems of Second Order Arithmetic' (2009) [Theorem IX.1.5]"}
-- {type: "conservation", statement: "wkl", base: "rca0", class: "Pi11", value: true, folklore: true, note: "due to Harrington, see Simpson's 'Subsystems of Second Order Arithmetic' (2009) [Corollary IX.2.6]"}
+- { type: "implication", from: "pa", to: "isig3", over: "rca0", folklore: true, justification: { kind: restriction, text: Σ⁰₃ induction is an instance of the full induction scheme., by: ai } }
+- { type: "implication", from: "aca", to: "pa", over: "rca0", refs: [ { ref: simpson2009, loc: Theorem IX.1.5 } ], note: Due to Friedman and Harrington. }
+- { type: "conservation", statement: "wkl", base: "rca0", class: "Pi11", value: true, refs: [ { ref: simpson2009, loc: Corollary IX.2.6 } ], note: Due to Harrington. }

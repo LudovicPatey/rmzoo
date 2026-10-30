@@ -1,8 +1,8 @@
 # Results from [dzhafarovetal2017a].
 
-- { type: "implication", from: "ht", to: "ht-le33", over: "sw", folklore: true, refs: [ { ref: dzhafarovetal2017a } ] }
+- { type: "implication", from: "ht", to: "ht-le33", over: "sw", folklore: true, refs: [ { ref: dzhafarovetal2017a } ], justification: { kind: restriction, text: "A set all of whose finite sums are monochromatic has its sums of at most 3 elements monochromatic, and a 3-coloring is a finite coloring.", by: ai } }
 - { type: "implication", from: "ht-le33", to: "aca", over: "rca0", refs: [ { ref: dzhafarovetal2017a, loc: Corollary 3.4 } ] }
-- { type: "implication", from: "ht", to: "ht-le22", over: "sw", folklore: true, refs: [ { ref: dzhafarovetal2017a } ] }
+- { type: "implication", from: "ht", to: "ht-le22", over: "sw", folklore: true, refs: [ { ref: dzhafarovetal2017a } ], justification: { kind: restriction, text: "Same solutions, restricted to 2-colorings and sums of at most 2 elements.", by: ai } }
 - { type: "implication", from: "ht-le22", to: "srt22", over: "rca0", refs: [ { ref: dzhafarovetal2017a, loc: Corollary 2.5 } ] }
-- { type: "implication", from: "ht-le22", to: "ht-eq22", over: "sw", folklore: true, refs: [ { ref: dzhafarovetal2017a } ] }
+- { type: "implication", from: "ht-le22", to: "ht-eq22", over: "sw", folklore: true, refs: [ { ref: dzhafarovetal2017a } ], justification: { kind: restriction, text: Same instances; sums of exactly 2 elements are sums of at most 2 elements., by: ai } }
 - { type: "separation", from: "rca0", to: "ht-le22", over: "omega", note: "There is a computable instance with no computable solution.", refs: [ { ref: dzhafarovetal2017a, loc: Corollary 2.2 } ] }
