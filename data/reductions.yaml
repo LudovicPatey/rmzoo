@@ -7,16 +7,12 @@
 #   omegaModels: true    -> every first-order (true arithmetical) statement holds
 #   conjunction: true    -> "P + Q" behaves as a conjunction
 #   conservation: true   -> conservation results are used to derive separations here
-#   baseLabel:   how the base statement is displayed at this reduction
-#   baseBottom: false    -> the base statement is NOT implied by everything
-#                           (strong reductions: id is not below every problem)
 #   phrase:    how "A ⇒ B" reads in prose ({a}, {b} are placeholders)
 
 - id: rca0star
   name: Provability over RCA₀*
   short: RCA₀*
   tex: '\mathsf{RCA}_0^*'
-  baseLabel: '\mathsf{RCA}_0^*'
   domain: all
   conjunction: true
   finerThan: [rca0]
@@ -54,8 +50,6 @@
   short: sW
   tex: '\le_{\mathrm{sW}}'
   domain: problems
-  baseLabel: '\mathsf{id}'
-  baseBottom: false
   finerThan: [w, sc]
   phrase: '{b} ≤_sW {a}'
   description: >
@@ -68,7 +62,6 @@
   short: W
   tex: '\le_{\mathrm{W}}'
   domain: problems
-  baseLabel: '\mathsf{id}'
   finerThan: [c, gw]
   phrase: '{b} ≤_W {a}'
   description: >
@@ -81,8 +74,6 @@
   short: sc
   tex: '\le_{\mathrm{sc}}'
   domain: problems
-  baseLabel: '\mathsf{id}'
-  baseBottom: false
   finerThan: [c]
   phrase: '{b} ≤_sc {a}'
   description: >
@@ -95,7 +86,6 @@
   short: c
   tex: '\le_{\mathrm{c}}'
   domain: problems
-  baseLabel: '\mathsf{id}'
   finerThan: [omega]
   phrase: '{b} ≤_c {a}'
   description: >
@@ -108,7 +98,6 @@
   short: gW
   tex: '\le_{\mathrm{gW}}'
   domain: problems
-  baseLabel: '\mathsf{id}'
   finerThan: [omega]
   phrase: '{b} ≤_gW {a}'
   description: >

@@ -6,6 +6,7 @@ friedman1975:
   title: Some systems of second order arithmetic and their use
   venue: Proceedings of the International Congress of Mathematicians (Vancouver, 1974), vol. 1, 235–242
   year: 1975
+  read: pdf-zotero
 simpson2009:
   authors:
     - Stephen G. Simpson
@@ -13,6 +14,7 @@ simpson2009:
   venue: Perspectives in Logic, Cambridge University Press
   year: 2009
   doi: 10.1017/CBO9780511581007
+  read: pdf-zotero
 hirschfeldt2015:
   authors:
     - Denis R. Hirschfeldt
@@ -20,6 +22,7 @@ hirschfeldt2015:
   venue: Lecture Notes Series, IMS, National University of Singapore, vol. 28, World Scientific
   year: 2015
   doi: 10.1142/9208
+  read: pdf-zotero
 dzhafarovmummert2022:
   authors:
     - Damir D. Dzhafarov
@@ -28,6 +31,7 @@ dzhafarovmummert2022:
   venue: Theory and Applications of Computability, Springer
   year: 2022
   doi: 10.1007/978-3-031-11367-3
+  read: pdf-zotero
 ramsey1930:
   authors:
     - Frank P. Ramsey
@@ -42,6 +46,7 @@ jockusch1972:
   venue: Journal of Symbolic Logic 37(2), 268–280
   year: 1972
   doi: 10.2307/2272972
+  read: pdf-zotero
 jockuschsoare1972:
   authors:
     - Carl G. Jockusch Jr.
@@ -50,6 +55,7 @@ jockuschsoare1972:
   venue: Transactions of the American Mathematical Society 173, 33–56
   year: 1972
   doi: 10.1090/S0002-9947-1972-0316227-0
+  read: pdf-zotero
 pariskirby1978:
   authors:
     - Jeff B. Paris
@@ -58,6 +64,7 @@ pariskirby1978:
   venue: Logic Colloquium '77, North-Holland, 199–209
   year: 1978
   doi: 10.1016/S0049-237X(08)72003-2
+  read: pdf-zotero
 simpsonsmith1986:
   authors:
     - Stephen G. Simpson
@@ -66,6 +73,7 @@ simpsonsmith1986:
   venue: Annals of Pure and Applied Logic 31, 289–306
   year: 1986
   doi: 10.1016/0168-0072(86)90074-1
+  read: pdf-zotero
 hirst1987:
   authors:
     - Jeffry L. Hirst
@@ -80,6 +88,7 @@ yusimpson1990:
   venue: Archive for Mathematical Logic 30, 171–180
   year: 1990
   doi: 10.1007/BF01621469
+  read: pdf-zotero
 jockuschstephan1993:
   authors:
     - Carl G. Jockusch Jr.
@@ -88,6 +97,7 @@ jockuschstephan1993:
   venue: Mathematical Logic Quarterly 39, 515–530
   year: 1993
   doi: 10.1002/malq.19930390153
+  read: pdf-zotero
 seetapunslaman1995:
   authors:
     - David Seetapun
@@ -96,6 +106,7 @@ seetapunslaman1995:
   venue: Notre Dame Journal of Formal Logic 36(4), 570–582
   year: 1995
   doi: 10.1305/ndjfl/1040136917
+  read: pdf-zotero
 giustosimpson2000:
   authors:
     - Mariagnese Giusto
@@ -113,6 +124,7 @@ cholakjockuschslaman2001:
   venue: Journal of Symbolic Logic 66(1), 1–55
   year: 2001
   doi: 10.2307/2694910
+  read: pdf-zotero
 downeyetal2001:
   authors:
     - Rod Downey
@@ -130,6 +142,7 @@ slaman2004:
   venue: Proceedings of the American Mathematical Society 132(8), 2449–2456
   year: 2004
   doi: 10.1090/S0002-9939-04-07294-6
+  read: pdf-zotero
 ambosspiesetal2004:
   authors:
     - Klaus Ambos-Spies
@@ -140,6 +153,7 @@ ambosspiesetal2004:
   venue: Journal of Symbolic Logic 69(4), 1089–1104
   year: 2004
   doi: 10.2178/jsl/1102022212
+  read: pdf-zotero
 hirschfeldtshore2007:
   authors:
     - Denis R. Hirschfeldt
@@ -148,6 +162,7 @@ hirschfeldtshore2007:
   venue: Journal of Symbolic Logic 72(1), 171–206
   year: 2007
   doi: 10.2178/jsl/1174668391
+  read: pdf-zotero
 hirschfeldtetal2008:
   authors:
     - Denis R. Hirschfeldt
@@ -159,6 +174,7 @@ hirschfeldtetal2008:
   venue: Computational Prospects of Infinity, Part II, LNS IMS NUS vol. 15, World Scientific, 143–161
   year: 2008
   doi: 10.1142/9789812796554_0008
+  read: pdf-zotero
 cjs2009:
   authors:
     - Peter A. Cholak
@@ -167,6 +183,7 @@ cjs2009:
   title: Corrigendum to "On the strength of Ramsey's theorem for pairs"
   venue: Journal of Symbolic Logic 74(4), 1438–1439
   year: 2009
+  read: pdf-zotero
 chonglemppyang2010:
   authors:
     - Chi Tat Chong
@@ -176,6 +193,7 @@ chonglemppyang2010:
   venue: Proceedings of the American Mathematical Society 138(3), 1093–1100
   year: 2010
   doi: 10.1090/S0002-9939-09-10115-6
+  read: pdf-zotero
 liu2012:
   authors:
     - Lu Liu
@@ -183,6 +201,7 @@ liu2012:
   venue: Journal of Symbolic Logic 77(2), 609–620
   year: 2012
   doi: 10.2178/jsl/1333566640
+  read: pdf-zotero
 lermansolomontowsner2013:
   authors:
     - Manuel Lerman
@@ -192,6 +211,7 @@ lermansolomontowsner2013:
   venue: Journal of Mathematical Logic 13(2), 1350007
   year: 2013
   doi: 10.1142/S0219061313500074
+  read: pdf-zotero
 chongslamanyang2014:
   authors:
     - Chi Tat Chong
@@ -201,6 +221,7 @@ chongslamanyang2014:
   venue: Journal of the American Mathematical Society 27(3), 863–892
   year: 2014
   doi: 10.1090/S0894-0347-2014-00789-X
+  read: pdf-zotero
 liu2015:
   authors:
     - Lu Liu
@@ -208,6 +229,7 @@ liu2015:
   venue: Transactions of the American Mathematical Society 367(3), 1609–1630
   year: 2015
   doi: 10.1090/S0002-9947-2014-06049-2
+  read: pdf-zotero
 ddhms2016:
   authors:
     - François G. Dorais
@@ -219,6 +241,7 @@ ddhms2016:
   venue: Transactions of the American Mathematical Society 368(2), 1321–1359
   year: 2016
   doi: 10.1090/tran/6465
+  read: pdf-zotero
 dzhafarov2016:
   authors:
     - Damir D. Dzhafarov
@@ -226,6 +249,7 @@ dzhafarov2016:
   venue: Journal of Symbolic Logic 81(4), 1405–1431
   year: 2016
   doi: 10.1017/jsl.2016.1
+  read: pdf-zotero
 hirschfeldtjockusch2016:
   authors:
     - Denis R. Hirschfeldt
@@ -234,6 +258,7 @@ hirschfeldtjockusch2016:
   venue: Journal of Mathematical Logic 16(1), 1650002
   year: 2016
   doi: 10.1142/S0219061316500021
+  read: pdf-zotero
 patey2016:
   authors:
     - Ludovic Patey
@@ -241,6 +266,7 @@ patey2016:
   venue: Israel Journal of Mathematics 216(2), 905–955
   year: 2016
   doi: 10.1007/s11856-016-1433-3
+  read: pdf-zotero
 bovykinweiermann2017:
   authors:
     - Andrey Bovykin
@@ -249,6 +275,7 @@ bovykinweiermann2017:
   venue: Annals of Pure and Applied Logic 168(9), 1700–1709
   year: 2017
   doi: 10.1016/j.apal.2017.03.002
+  read: pdf-zotero
 brattkarakotoniaina2017:
   authors:
     - Vasco Brattka
@@ -257,6 +284,7 @@ brattkarakotoniaina2017:
   venue: Journal of Symbolic Logic 82(4), 1278–1316
   year: 2017
   doi: 10.1017/jsl.2017.43
+  read: pdf-zotero
 moninpatey2021:
   authors:
     - Benoît Monin
@@ -265,6 +293,7 @@ moninpatey2021:
   venue: Advances in Mathematics 389, 107903
   year: 2021
   doi: 10.1016/j.aim.2021.107903
+  read: pdf-zotero
 erdosmoser1964:
   authors:
     - Paul Erdős

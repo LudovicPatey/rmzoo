@@ -59,7 +59,12 @@ const expected = [
   ['rca0', 'rt22', 'coh-srt22', 'implies'],  // conj-intro
   ['omega', 'bsig2', 'rca0', 'implies'],
   ['omega', 'rca0', 'bsig2', 'implies'],     // first-order in ω-models
-  ['rca0star', 'rca0', 'isig1', 'separated'],
+  ['rca0star', 'rcastar', 'isig1', 'separated'],
+  ['rca0star', 'rca0', 'isig1', 'implies'],   // over RCA0*, RCA0 is a genuine statement
+  ['rca0star', 'isig1', 'rca0', 'implies'],
+  ['rca0', 'isig1', 'rca0', 'implies'],       // over RCA0 it is the bottom
+  ['w', 'rca0', 'wkl', 'na'],                 // no base problem for Weihrauch reductions
+  ['c', 'rt22', 'rt12', 'implies'],
   ['c', 'rt22', 'rt23', 'separated'],
   ['rca0', 'rt22', 'rt23', 'implies'],
   ['sw', 'rt22', 'cac', 'implies'],

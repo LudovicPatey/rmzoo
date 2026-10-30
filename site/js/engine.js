@@ -12,7 +12,7 @@
 export const RULES = {
   direct: 'Published result',
   refl: 'Reflexivity',
-  base: 'Everything implies the base system',
+  base: 'Everything implies the base theory of the reduction',
   'omega-fo': 'First-order statements hold in every ω-model',
   'conj-elim': 'A conjunction implies its conjuncts',
   'conj-intro': 'Implying every conjunct implies the conjunction',
@@ -140,11 +140,12 @@ export function buildZoo(raw) {
     }
   });
 
-  const baseIds = S.map((s, i) => (s.base ? i : -1)).filter((i) => i >= 0);
+  // a statement is the bottom of the reductions listed in its `base` field
+  const isBaseAt = (i, r) => S[i].base === true || (Array.isArray(S[i].base) && S[i].base.includes(R[r].id));
   for (let r = 0; r < R.length; r++) {
     for (let a = 0; a < n; a++) addI(r, a, a, { rule: 'refl' });
-    if (R[r].baseBottom !== false)
-      for (const b of baseIds) for (let a = 0; a < n; a++) addI(r, a, b, { rule: 'base' });
+    for (let b = 0; b < n; b++)
+      if (isBaseAt(b, r)) for (let a = 0; a < n; a++) addI(r, a, b, { rule: 'base' });
     if (R[r].omegaModels)
       for (let b = 0; b < n; b++)
         if (S[b].firstOrder) for (let a = 0; a < n; a++) addI(r, a, b, { rule: 'omega-fo' });

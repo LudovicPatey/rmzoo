@@ -80,8 +80,11 @@ both conjuncts and is implied by anything implying both. (Over Weihrauch-style
 reductions a conjunction is not a problem; products would be a different
 operator and are left for future work.)
 
-**Flags.** `base: true` marks the base system/identity problem (implied by
-everything). `firstOrder: true` marks arithmetical statements true in ℕ, which
+**Flags.** `base: [reductions]` marks a statement as the bottom of the listed
+reductions: RCA₀* is the bottom over RCA₀*, RCA₀ and ω-models; RCA₀ is the
+bottom over RCA₀ and ω-models but is a genuine statement over RCA₀* (equivalent
+to IΣ⁰₁). Computability-theoretic reductions have no named bottom; being
+"computably true" is a property. `firstOrder: true` marks arithmetical statements true in ℕ, which
 hold in every ω-model, so every statement ω-implies them.
 
 ### 1.3 Tags
@@ -149,6 +152,13 @@ Results are grouped into files by topic, but nothing depends on the grouping;
 a natural contribution workflow is "one paper → append its theorems".
 
 ### 1.6 References
+
+Each reference may record how far it was read when the database was built:
+`read: pdf-zotero | pdf-arxiv | abstract | screened` (absent: not read). Only
+`pdf-*` entries had their full text parsed; `abstract` entries were read from
+their abstract only (so theorem numbers may be missing), and `screened` ones
+were only scanned by keywords. The Literature page can filter on this status.
+
 
 `data/references.yaml`, keyed by citation key; author list, title, venue,
 year, DOI/URL. Statements cite references with a *role*: `origin` (where it

@@ -147,6 +147,7 @@ raw.results.forEach((res, i) => {
   const byDoi = new Map(), byTitle = new Map();
   for (const [k, r] of Object.entries(raw.references)) {
     if (!r.year) errors.push(`Reference ${k} has no year`);
+    if (r.read && !['pdf-zotero', 'pdf-arxiv', 'abstract', 'screened'].includes(r.read)) errors.push(`Reference ${k}: unknown read status ${r.read}`);
     if (!r.authors || !r.authors.join('').trim()) errors.push(`Reference ${k} has no authors`);
     if (r.doi) { const d = r.doi.toLowerCase(); if (byDoi.has(d)) errors.push(`References ${byDoi.get(d)} and ${k} have the same DOI`); byDoi.set(d, k); }
     const t = norm(r.title) + '|' + r.year;

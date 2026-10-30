@@ -2,9 +2,6 @@
 
 # ---- Pigeonhole ------------------------------------------------------------
 
-- { type: implication, from: rca0, to: rt12, over: sc, folklore: true, note: Every coloring computes an infinite homogeneous set (non-uniformly)., justification: { kind: reduction, text: "Non-uniformly, one of the two color classes is infinite and computable from the instance.", by: ai } }
-- { type: implication, from: rca0, to: rt13, over: sc, folklore: true, justification: { kind: reduction, text: "Non-uniformly, one of the color classes is infinite and computable from the instance.", by: ai } }
-- { type: implication, from: rca0, to: rt1inf, over: sc, folklore: true, justification: { kind: reduction, text: "Non-uniformly, one of the color classes is infinite and computable from the instance.", by: ai } }
 - { type: implication, from: rt12, to: rt13, over: rca0, folklore: true, justification: { kind: reduction, text: "Merge two colors and apply RT¹₂, then apply RT¹₂ again inside the resulting set if needed.", by: ai } }
 - { type: implication, from: rt13, to: rt12, over: [ sw, rca0star ], folklore: true, justification: { kind: restriction, text: A 2-coloring is a 3-coloring with the same homogeneous sets., by: ai } }
 - { type: implication, from: rt1inf, to: rt13, over: [ sw, rca0star ], folklore: true, justification: { kind: restriction, text: Take k = 3., by: ai } }

@@ -276,3 +276,7 @@ path.hit { stroke: transparent; stroke-width: 12; fill: none; cursor: pointer; }
 .more-bar { display: flex; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
 .more-bar:empty { display: none; }
 .rel-cols .more-bar { margin-top: 6px; }
+
+.badge.read-pdf-zotero, .badge.read-pdf-arxiv { background: var(--yes-soft); color: var(--yes); }
+.badge.read-abstract { background: var(--open-soft); color: var(--open); }
+.badge.read-screened, .badge.read-none { background: var(--bg); color: var(--muted); border: 1px solid var(--line); }

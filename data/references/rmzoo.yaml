@@ -42,6 +42,7 @@ hajekpudlak1998:
   year: 1998
   venue: "ISBN-10: 3-540-63648-X"
   url: http://projecteuclid.org/euclid.pl/1235421926
+  read: pdf-zotero
 friedman1999:
   authors:
     - Friedman
@@ -58,12 +59,14 @@ dobrinensimpson2004:
   venue: J. Symbolic Logic 69(3)
   doi: 10.2178/jsl/1096901775
   arxiv: math/0506019
+  read: pdf-zotero
 mileti2004:
   authors:
     - Mileti
   title: Partition theorems and computability theory
   year: 2004
   venue: "Personal archive: http://www.math.grinnell.edu/~miletijo/research/thesis.pdf"
+  read: pdf-zotero
 cholaketal2005:
   authors:
     - Cholak
@@ -74,6 +77,7 @@ cholaketal2005:
   year: 2005
   venue: "Published version: http://www.aslonline.org/books-lnl_21.html"
   url: http://www.math.uiuc.edu/~jockusch/free7.pdf
+  read: pdf-zotero
 cholakgreenbergmiller2006:
   authors:
     - Cholak
@@ -84,6 +88,7 @@ cholakgreenbergmiller2006:
   venue: J. Symbolic Logic 71(3)
   doi: 10.2178/jsl/1154698592
   arxiv: math/0506019
+  read: pdf-zotero
 conidis2008:
   authors:
     - Conidis
@@ -91,6 +96,7 @@ conidis2008:
   year: 2008
   venue: J. Symbolic Logic 73(3)
   doi: 10.2178/jsl/1230396753
+  read: pdf-zotero
 chubbhirstmcnicholl2009:
   authors:
     - Chubb
@@ -100,6 +106,7 @@ chubbhirstmcnicholl2009:
   year: 2009
   venue: J. Symbolic Logic 74(1)
   doi: 10.2178/jsl/1231082309
+  read: pdf-zotero
 csimamileti2009:
   authors:
     - Csima
@@ -108,6 +115,7 @@ csimamileti2009:
   year: 2009
   venue: J. Symbolic Logic 74(4)
   doi: 10.2178/jsl/1254748693
+  read: pdf-zotero
 dzhafarovhirst2009:
   authors:
     - Dzhafarov
@@ -116,6 +124,7 @@ dzhafarovhirst2009:
   year: 2009
   venue: Arch. Math. Logic 48(2)
   doi: 10.1007/s00153-008-0108-0
+  read: pdf-zotero
 hirschfeldtshoreslaman2009:
   authors:
     - Hirschfeldt
@@ -125,6 +134,7 @@ hirschfeldtshoreslaman2009:
   year: 2009
   venue: Trans. Amer. Math. Soc. 361(11)
   doi: 10.1090/S0002-9947-09-04847-8
+  read: pdf-zotero
 dzhafarovhirstlakins2010:
   authors:
     - Dzhafarov
@@ -134,6 +144,7 @@ dzhafarovhirstlakins2010:
   year: 2010
   venue: Arch. Math. Logic 49(3)
   doi: 10.1007/s00153-010-0179-6
+  read: pdf-zotero
 dzhafarov2011:
   authors:
     - Dzhafarov
@@ -142,12 +153,14 @@ dzhafarov2011:
   venue: Notre Dame J. Formal Logic 52(1)
   doi: 10.1215/00294527-2010-039
   arxiv: "1010.2230"
+  read: pdf-zotero
 slaman2011cie:
   authors:
     - Theodore A. Slaman
   title: Σ₂-bounding and Δ₂-induction (talk slides)
   year: 2011
   venue: Computability in Europe (CiE) 2011, invited talk
+  read: pdf-zotero
 avigaddeanrute2012:
   authors:
     - Avigad
@@ -158,6 +171,7 @@ avigaddeanrute2012:
   venue: Ann. Pure Appl. Logic 163(12)
   doi: 10.1016/j.apal.2012.05.010
   arxiv: "1106.0775"
+  read: pdf-zotero
 chongslamanyang2012:
   authors:
     - Chong
@@ -167,6 +181,7 @@ chongslamanyang2012:
   year: 2012
   venue: Adv. Math. 230(3)
   doi: 10.1016/j.aim.2012.02.025
+  read: pdf-zotero
 flood2012:
   authors:
     - Flood
@@ -175,6 +190,7 @@ flood2012:
   venue: J. Symbolic Logic 77(4)
   doi: 10.2178/jsl.7704120
   arxiv: "1111.2526"
+  read: pdf-zotero
 kjoshanssenmillersolomon2012:
   authors:
     - Kjos-Hanssen
@@ -185,6 +201,7 @@ kjoshanssenmillersolomon2012:
   venue: J. London Math. Soc. 85(3)
   doi: 10.1112/jlms/jdr072
   arxiv: "1408.2898"
+  read: pdf-zotero
 kreuzer2012:
   authors:
     - Kreuzer
@@ -192,6 +209,7 @@ kreuzer2012:
   year: 2012
   venue: Notre Dame J. Formal Logic 53(2)
   doi: 10.1215/00294527-1715716
+  read: pdf-zotero
 kreuzer2012b:
   authors:
     - Kreuzer
@@ -207,6 +225,7 @@ conidisslaman2013:
   year: 2013
   venue: J. Symbolic Logic 78(1)
   doi: 10.2178/jsl.7801130
+  read: pdf-zotero
 dzhafarovmummert2013:
   authors:
     - Dzhafarov
@@ -216,6 +235,7 @@ dzhafarovmummert2013:
   venue: Israel J. Math. 196(1)
   doi: 10.1007/s11856-012-0150-9
   arxiv: "1109.3374"
+  read: pdf-zotero
 wang2013:
   authors:
     - Wang
@@ -224,6 +244,7 @@ wang2013:
   venue: J. Symbolic Logic 78(3)
   doi: 10.2178/jsl/1067620187
   arxiv: "1303.3327"
+  read: pdf-zotero
 kang2014:
   authors:
     - Kang
@@ -231,6 +252,7 @@ kang2014:
   year: 2014
   venue: Front. Math. China 9(6)
   doi: 10.1007/s11464-014-0390-6
+  read: pdf-zotero
 wang2014:
   authors:
     - Wang
@@ -239,6 +261,7 @@ wang2014:
   venue: Ann. Pure Appl. Logic 165(2)
   doi: 10.1016/j.apal.2013.06.002
   arxiv: "1303.3329"
+  read: pdf-zotero
 wang2014b:
   authors:
     - Wang
@@ -247,6 +270,7 @@ wang2014b:
   venue: Adv. Math. 261
   doi: 10.1016/j.aim.2014.05.003
   arxiv: "1303.3331"
+  read: pdf-zotero
 rice2015:
   authors:
     - Rice
@@ -254,6 +278,7 @@ rice2015:
   year: 2015
   venue: Notre Dame J. Formal Logic 56(4)
   doi: 10.1215/00294527-3153606
+  read: pdf-zotero
 diamondstoneetal2016:
   authors:
     - Diamondstone
@@ -264,6 +289,7 @@ diamondstoneetal2016:
   year: 2016
   venue: Math. Proc. Cambridge Philos. Soc. 160(2)
   doi: 10.1017/S0305004115000651
+  read: pdf-zotero
 bienvenupateyshafer2017:
   authors:
     - Bienvenu
@@ -274,6 +300,7 @@ bienvenupateyshafer2017:
   venue: Transactions of the London Mathematical Society vol. 4, iss. 1, 2017
   doi: 10.1112/tlm3.12001
   arxiv: "1411.5874"
+  read: pdf-zotero
 cholakdowneyigusa2017:
   authors:
     - Cholak
@@ -291,6 +318,7 @@ frittaionpatey2017:
   year: 2017
   venue: Computability 6(4), 319–331
   arxiv: "1508.00752"
+  read: pdf-zotero
 patey2017a:
   authors:
     - Patey
@@ -299,6 +327,7 @@ patey2017a:
   venue: Computability 6(3), 209–221
   arxiv: "1501.07709"
   url: http://www.ludovicpatey.com/media/research/iterative-forcing-extended.pdf
+  read: pdf-zotero
 patey2016b:
   authors:
     - Patey
@@ -306,6 +335,7 @@ patey2016b:
   year: 2016
   venue: Journal of Symbolic Logic 81(4), 1481–1499
   arxiv: "1505.01057"
+  read: pdf-zotero
 wang2016:
   authors:
     - Wang
@@ -314,6 +344,7 @@ wang2016:
   venue: Journal of Symbolic Logic 81(4), 1531–1554
   doi: 10.1017/jsl.2016.10
   arxiv: "1408.1465"
+  read: pdf-zotero
 floodtowsner2016:
   authors:
     - Flood
@@ -322,6 +353,7 @@ floodtowsner2016:
   year: 2016
   venue: Mathematical Logic Quarterly 62(6), 507–529
   arxiv: "1410.4068"
+  read: pdf-zotero
 chongslamanyang2017:
   authors:
     - Chong
@@ -331,6 +363,7 @@ chongslamanyang2017:
   year: 2017
   venue: Advances in Mathematics 308, 121–141
   url: http://www.math.nus.edu.sg/~chongct/ISigma2.pdf
+  read: pdf-zotero
 patey2015:
   authors:
     - Patey
@@ -338,6 +371,7 @@ patey2015:
   year: 2015
   venue: arXiv preprint
   arxiv: "1501.07424"
+  read: pdf-zotero
 pateyyokoyama2018:
   authors:
     - Patey
@@ -346,6 +380,7 @@ pateyyokoyama2018:
   year: 2018
   venue: Advances in Mathematics 330, 1034–1070
   arxiv: "1601.00050"
+  read: pdf-zotero
 patey2018a:
   authors:
     - Patey
@@ -353,6 +388,7 @@ patey2018a:
   year: 2018
   venue: Computability 7(4), 323–339
   arxiv: "1607.04506"
+  read: pdf-zotero
 dzhafarovpatey2017:
   authors:
     - Dzhafarov
@@ -361,6 +397,7 @@ dzhafarovpatey2017:
   year: 2017
   venue: Advances in Mathematics 318, 497–514
   arxiv: "1609.02627"
+  read: pdf-zotero
 towsner2020:
   authors:
     - Towsner
@@ -368,3 +405,4 @@ towsner2020:
   year: 2020
   venue: Journal of Mathematical Logic 20(3), 2050017
   arxiv: "1609.05509"
+  read: pdf-zotero

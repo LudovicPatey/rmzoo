@@ -47,7 +47,6 @@ const idx = (id) => Z.sidx.get(id);
 const rIdx = () => Z.ridx.get(state.r) ?? 0;
 function labelOf(i, r = rIdx()) {
   const s = S(i);
-  if (s.base && r != null && Z.R[r]?.baseLabel) return Z.R[r].baseLabel;
   return s.label;
 }
 const L = (i, r) => tex(labelOf(i, r));
@@ -562,13 +561,24 @@ function relations(i, r) {
   </div>`;
 }
 
+const READ = {
+  'pdf-zotero': ['full text parsed', 'The PDF (from the maintainer\'s Zotero library) was parsed when extracting results.'],
+  'pdf-arxiv': ['full text parsed', 'The arXiv PDF was parsed when extracting results.'],
+  abstract: ['abstract read', 'Only the abstract was read; theorem numbers may be missing.'],
+  screened: ['abstract screened', 'The abstract was only screened by keywords; results may be missing.'],
+};
+const readBadge = (r) => {
+  const [label, title] = READ[r.read] || ['not read', 'This paper has not been read; its results come from other sources, if any.'];
+  return `<span class="badge read-${r.read || 'none'}" title="${esc(title)}">${label}</span>`;
+};
 function refFull(key) {
   const r = Z.raw.references[key];
   if (!r) return esc(key);
   return `${esc(r.authors.join(', '))}. <a href="#/refs/${key}"><i>${rich(r.title)}</i></a>. ${esc(r.venue)}, ${r.year}.
     ${r.doi ? `<a href="https://doi.org/${esc(r.doi)}" target="_blank" rel="noopener" class="small">doi</a>` : ''}
     ${r.arxiv ? `<a href="https://arxiv.org/abs/${esc(r.arxiv)}" target="_blank" rel="noopener" class="small">arXiv</a>` : ''}
-    ${r.url && !r.doi ? `<a href="${esc(r.url)}" target="_blank" rel="noopener" class="small">link</a>` : ''}`;
+    ${r.url && !r.doi ? `<a href="${esc(r.url)}" target="_blank" rel="noopener" class="small">link</a>` : ''}
+    ${readBadge(r)}`;
 }
 
 function resultFact(res) {
@@ -990,13 +1000,16 @@ function viewRefs(key) {
     <div class="filters"><input class="text" id="rq" placeholder="Author, title, year…" style="width:280px">
       <select id="rsrc"><option value="results">With results in the zoo</option><option value="">All papers</option>
         <option value="weihrauch-bibliography">Weihrauch bibliography only</option><option value="arxiv">arXiv sweep only</option></select>
+      <select id="rread"><option value="">Any reading status</option><option value="pdf">Full text parsed</option>
+        <option value="abstract">Abstract read</option><option value="screened">Abstract screened</option><option value="none">Not read</option></select>
       <select id="rsort"><option value="desc">Newest first</option><option value="asc">Oldest first</option></select></div>
     <div id="rcount" class="small muted"></div><div id="rl"></div>`;
   const draw = () => {
     const q = $('#rq').value.toLowerCase();
-    const src = $('#rsrc').value, dir = $('#rsort').value === 'asc' ? 1 : -1;
+    const src = $('#rsrc').value, dir = $('#rsort').value === 'asc' ? 1 : -1, rd = $('#rread').value;
+    const readOk = (r) => !rd || (rd === 'pdf' ? /^pdf/.test(r.read || '') : rd === 'none' ? !r.read : r.read === rd);
     const list = refs.filter(([k, r]) => (!q || [k, r.title, r.venue, r.year, ...r.authors].join(' ').toLowerCase().includes(q)) &&
-      (src === 'results' ? nUse.has(k) || intro(k).length : !src || r.source === src))
+      (src === 'results' ? nUse.has(k) || intro(k).length : !src || r.source === src) && readOk(r))
       .sort((a, b) => dir * ((a[1].year || 0) - (b[1].year || 0)) || a[0].localeCompare(b[0]));
     $('#rcount').textContent = `${list.length} paper${list.length === 1 ? '' : 's'}`;
     $('#rl').innerHTML = lazy(list, ([k]) => {
@@ -1005,7 +1018,7 @@ function viewRefs(key) {
         <div class="small muted">${u} result${u === 1 ? '' : 's'}${s ? ` · ${s} statement${s === 1 ? '' : 's'}` : ''}</div></div>`;
     }, { size: 40, noun: 'papers', empty: '<p class="muted">No paper matches.</p>' });
   };
-  ['#rq', '#rsrc', '#rsort'].forEach((sel) => $(sel).addEventListener('input', draw));
+  ['#rq', '#rsrc', '#rsort', '#rread'].forEach((sel) => $(sel).addEventListener('input', draw));
   draw();
 }
 

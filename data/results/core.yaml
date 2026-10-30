@@ -48,7 +48,6 @@
 - { type: property, statement: aca, property: cone-avoidance, value: false, folklore: true, note: "∅' is a solution to a computable instance.", justification: { kind: reduction, text: The jump problem has the computable instance ∅ whose only solution ∅′ is not computable., by: ai } }
 - { type: property, statement: aca, property: low-basis, value: false, folklore: true, justification: { kind: reduction, text: "The only solution to the instance ∅ is ∅′, which is not low.", by: ai } }
 
-- { type: property, statement: rca0, property: computably-true, value: true, folklore: true, justification: { kind: classical, text: "The identity problem: every instance is its own solution.", by: ai } }
 - { type: property, statement: rca0, property: pi11-conservative, value: true, folklore: true, justification: { kind: classical, text: "Trivial: RCA₀ is conservative over itself.", by: ai } }
 
 # ---- Randomness ------------------------------------------------------------
@@ -61,7 +60,7 @@
 - { type: implication, from: bsig2, to: isig1, over: rca0star, refs: [ { ref: pariskirby1978, loc: Proposition 5 } ] }
 - { type: implication, from: rca0, to: isig1, over: rca0, note: Σ⁰₁-induction is part of RCA₀., refs: [ { ref: simpson2009, loc: Definition II.1.5 } ], justification: { kind: classical, text: Σ⁰₁ induction is one of the axioms of RCA₀., by: ai } }
 - { type: equivalence, from: bsig2, to: idelta2, over: rca0star, refs: [ { ref: slaman2004, loc: Theorem 2.1 (with Gandy's Theorem 1.2) } ] }
-- { type: separation, from: rca0, to: isig1, over: rca0star, refs: [ { ref: simpsonsmith1986 } ] }
+- { type: separation, from: rcastar, to: isig1, over: rca0star, refs: [ { ref: simpsonsmith1986 } ] }
 
 - type: property
   statement: bsig2
@@ -95,6 +94,21 @@
 - { type: equivalence, from: lim, to: aca, over: rca0star, folklore: true, justification: { kind: classical, text: "lim is the problem form of the Turing jump; over RCA₀*, ACA is equivalent to the statement that every set has a jump.", by: ai } }
 - { type: equivalence, from: bwt, to: aca, over: rca0, refs: [ { ref: simpson2009, loc: Theorem III.2.7 } ] }
 - { type: implication, from: rca0, to: ivt, over: rca0, refs: [ { ref: simpson2009, loc: Theorem II.6.6 } ] }
-- { type: implication, from: rca0, to: lpo, over: rca0star, folklore: true, note: "Classically provable: decide whether p is the zero sequence.", justification: { kind: classical, text: "Classically provable by the law of excluded middle: either p is the zero sequence or it is not.", by: ai } }
-- { type: implication, from: rca0, to: llpo, over: rca0star, folklore: true, justification: { kind: classical, text: "Classically provable: if p has a 1 at position n, the parity of n answers; otherwise any answer is correct.", by: ai } }
+- { type: implication, from: rcastar, to: lpo, over: rca0star, folklore: true, note: "Classically provable: decide whether p is the zero sequence.", justification: { kind: classical, text: "Classically provable by the law of excluded middle: either p is the zero sequence or it is not.", by: ai } }
+- { type: implication, from: rcastar, to: llpo, over: rca0star, folklore: true, justification: { kind: classical, text: "Classically provable: if p has a 1 at position n, the parity of n answers; otherwise any answer is correct.", by: ai } }
 - {type: separation, from: aca, to: aca-prime, over: rca0, folklore: true, justification: {kind: classical, by: ai, text: "ACA₀′ proves the consistency of PA (it proves the existence of truth sets for each Σ⁰ₙ level), while ACA₀ is conservative over PA, which does not prove its own consistency."}}
+
+# ---- Base theories ----------------------------------------------------------
+
+- {type: equivalence, from: rca0, to: isig1, over: rca0star, refs: [{ref: simpsonsmith1986}], note: "RCA₀ is RCA₀* together with Σ⁰₁ induction, which proves the totality of exponentiation."}
+
+# ---- Computably true problems -------------------------------------------------
+
+- {type: property, statement: rt12, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "Non-uniformly, one of the two color classes is infinite and computable from the instance."}}
+- {type: property, statement: rt13, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "Non-uniformly, one of the color classes is infinite and computable from the instance."}}
+- {type: property, statement: rt1inf, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "Non-uniformly, one of the color classes is infinite and computable from the instance."}}
+- {type: property, statement: lpo, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "The solution is a single bit."}}
+- {type: property, statement: llpo, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "The solution is a single bit."}}
+- {type: property, statement: cn, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "Solutions are natural numbers, hence computable."}}
+- {type: property, statement: kn, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "Solutions are natural numbers, hence computable."}}
+- {type: property, statement: ivt, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "A computable function with a sign change has a computable zero: either some rational is a zero, or the bisection method converges computably."}}
