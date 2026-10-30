@@ -1,11 +1,11 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Dzhafarov, Mummert (2013) — On the strength of the finite intersection principle
 
-- {type: "implication", from: "aca", to: "fip", over: "rca0", refs: [{ref: "dzhafarovmummert2013", loc: "Proposition 2.1"}]}
-- {type: "implication", from: "fip", to: "nd2ip", over: "rca0", refs: [{ref: "dzhafarovmummert2013", loc: "Proposition 2.2"}]}
-- {type: "equivalence", from: "d2ip", to: "aca", over: "rca0", refs: [{ref: "dzhafarovmummert2013", loc: "Proposition 2.4"}]}
-- {type: "separation", from: "fip", to: "aca", over: "omega", refs: [{ref: "dzhafarovmummert2013", loc: "Corollary 2.6"}]}
-- {type: "separation", from: "wkl", to: "nd2ip", over: "omega", refs: [{ref: "dzhafarovmummert2013", loc: "Corollary 3.2"}]}
-- {type: "implication", from: "nd2ip", to: "hyp", over: "rca0", refs: [{ref: "dzhafarovmummert2013", loc: "Corollary 4.1"}]}
-- {type: "implication", from: "pi01g", to: "fip", over: "rca0", refs: [{ref: "dzhafarovmummert2013", loc: "Proposition 4.2"}]}
-- {type: "separation", from: "fip", to: "amt", over: "omega", refs: [{ref: "dzhafarovmummert2013", loc: "Corollary 4.5"}]}
+- { type: "implication", from: "aca", to: "fip", over: "rca0", refs: [ { ref: "dzhafarovmummert2013", loc: "Proposition 2.1" } ] }
+- { type: "implication", from: "fip", to: "nd2ip", over: "rca0", refs: [ { ref: "dzhafarovmummert2013", loc: "Proposition 2.2" } ] }
+- { type: "equivalence", from: "d2ip", to: "aca", over: "rca0", refs: [ { ref: "dzhafarovmummert2013", loc: "Proposition 2.4" } ] }
+- { type: "separation", from: "fip", to: "aca", over: "omega", refs: [ { ref: "dzhafarovmummert2013", loc: "Corollary 2.6" } ] }
+- { type: "separation", from: "wkl", to: "nd2ip", over: "omega", refs: [ { ref: "dzhafarovmummert2013", loc: "Corollary 3.2" } ] }
+- { type: "implication", from: "nd2ip", to: "hyp", over: "rca0", refs: [ { ref: "dzhafarovmummert2013", loc: "Corollary 4.1" } ] }
+- { type: "implication", from: "pi01g", to: "fip", over: "rca0", refs: [ { ref: "dzhafarovmummert2013", loc: "Proposition 4.2" } ] }
+- { type: "separation", from: "fip", to: "amt", over: "omega", refs: [ { ref: dzhafarovmummert2013, loc: Corollary 4.5 }, { ref: dzhafarovmummert2022, loc: Theorem 9.10.20 (due to Dzhafarov and Mummert) } ] }

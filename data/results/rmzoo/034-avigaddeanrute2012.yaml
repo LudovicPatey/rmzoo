@@ -7,7 +7,7 @@
 - { type: "implication", from: "wwkl2", to: "bsig2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Proposition 3.2" } ] }
 - { type: "implication", from: "pos", to: "bsig2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "remark following Proposition 3.2" } ] }
 - { type: "equivalence", from: "pos2", to: "wwkl2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Proposition 3.5" } ] }
-- { type: "equivalence", from: "wwkl2", to: "bsig2-ran2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Proposition 3.6" } ] }
+- { type: "equivalence", from: "wwkl2", to: "bsig2-ran2", over: "rca0", refs: [ { ref: avigaddeanrute2012, loc: Proposition 3.6 } ] }
 - { type: "separation", from: "wkl", to: "wwkl2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Theorem 3.8" } ] }
 - { type: "separation", from: "wwkl2", to: "wkl", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Theorem 3.8" } ] }
 - { type: "equivalence", from: "wwkl2", to: "dctp", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Theorem 4.3" } ] }

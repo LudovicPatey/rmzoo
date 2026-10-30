@@ -1,0 +1,3 @@
+# Results from [kowalik2024].
+
+[ { type: separation, from: rt32, to: coh, over: rca0star, note: "RTⁿₖ (n, k ≥ 2), CAC and ADS are incomparable with COH over RCA₀*.", refs: [ { ref: kowalik2024, loc: Corollary 3.17 } ] }, { type: separation, from: rt23, to: coh, over: rca0star, refs: [ { ref: kowalik2024, loc: Corollary 3.17 } ] } ]

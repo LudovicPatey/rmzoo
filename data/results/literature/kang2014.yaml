@@ -1,0 +1,3 @@
+# Results from [kang2014].
+
+[ { type: separation, from: rrt22, to: fs2, over: rca0, refs: [ { ref: kang2014, loc: Corollary 2.7 } ] } ]

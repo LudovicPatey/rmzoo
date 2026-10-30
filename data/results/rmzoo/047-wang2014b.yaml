@@ -4,6 +4,6 @@
 - { type: "implication", from: "fs", to: "fs2", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: every exponent, at exponent 2.", by: ai } }
 - { type: "implication", from: "fs", to: "fs3", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: every exponent, at exponent 3.", by: ai } }
 - { type: "separation", from: "fs", to: "aca", over: "rca0", refs: [ { ref: "wang2014b", loc: "Theorem 4.1" } ] }
-- { type: "implication", from: "fs2", to: "rrt22", over: "rca0", refs: [ { ref: "wang2014b", loc: "Theorem 4.2" } ] }
-- { type: "implication", from: "fs3", to: "rrt32", over: "rca0", refs: [ { ref: "wang2014b", loc: "Theorem 4.2" } ] }
+- { type: "implication", from: "fs2", to: "rrt22", over: "rca0", refs: [ { ref: wang2014b, loc: Theorem 4.2 } ] }
+- { type: "implication", from: "fs3", to: "rrt32", over: "rca0", refs: [ { ref: wang2014b, loc: Theorem 4.2 } ] }
 - { type: "implication", from: "fs", to: "rrt", over: "rca0", refs: [ { ref: "wang2014b", loc: "Theorem 4.2" } ] }

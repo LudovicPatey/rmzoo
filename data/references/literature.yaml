@@ -279,3 +279,23 @@ sacks1963:
   title: Degrees of unsolvability
   venue: Annals of Mathematics Studies 55, Princeton University Press
   year: 1963
+chongliyang2014:
+  authors: [Chi Tat Chong, Wei Li, Yue Yang]
+  title: Nonstandard models in recursion theory and reverse mathematics
+  venue: Bulletin of Symbolic Logic 20(2), 170–200
+  year: 2014
+solda2021:
+  authors: [Giovanni Soldà]
+  title: 'Calibrating the complexity of combinatorics: reverse mathematics and Weihrauch degrees of some principles related to Hindman''s theorem'
+  venue: PhD thesis, University of Leeds
+  year: 2021
+jockuschetal2009:
+  authors: [Carl G. Jockusch Jr., Bart Kastermans, Steffen Lempp, Manuel Lerman, Reed Solomon]
+  title: Stability and posets
+  venue: Journal of Symbolic Logic 74(2), 693–711
+  year: 2009
+kowalik2024:
+  authors: [Katarzyna W. Kowalik]
+  title: The logical strength of Ramsey-theoretic principles over a weak base theory
+  venue: PhD thesis, University of Warsaw
+  year: 2024

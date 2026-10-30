@@ -1,13 +1,13 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Csima, Mileti (2009) — The strength of the rainbow Ramsey theorem
 
-- {type: "implication", from: "rrt22", to: "hyp", over: "rca0", refs: [{ref: "csimamileti2009", loc: "Theorem 4.1"}]}
-- {type: "implication", from: "rt22", to: "rrt22", over: "rca0", refs: [{ref: "csimamileti2009", loc: "Theorem 5.2"}]}
-- {type: "implication", from: "rt32", to: "rrt32", over: "rca0", refs: [{ref: "csimamileti2009", loc: "Theorem 5.2"}]}
-- {type: "implication", from: "rrt32", to: "rrt22", over: "rca0", refs: [{ref: "csimamileti2009", loc: "Theorem 5.3"}]}
-- {type: "separation", from: "wkl", to: "rrt22", over: "omega", refs: [{ref: "csimamileti2009", loc: "Theorem 5.4"}]}
-- {type: "separation", from: "rrt22", to: "wkl", over: "omega", refs: [{ref: "csimamileti2009", loc: "Corollary 5.6"}]}
-- {type: "separation", from: "rrt22", to: "rt22", over: "omega", refs: [{ref: "csimamileti2009", loc: "Corollary 5.9"}]}
-- {type: "separation", from: "rrt22", to: "sads", over: "omega", refs: [{ref: "csimamileti2009", loc: "Theorem 5.11"}]}
-- {type: "separation", from: "rrt22", to: "rrt32", over: "omega", refs: [{ref: "csimamileti2009", loc: "Corollary 5.12"}]}
-- {type: "separation", from: "coh", to: "rrt22", over: "rca0", refs: [{ref: "csimamileti2009", loc: "Proposition 5.14"}]}
+- { type: "implication", from: "rrt22", to: "hyp", over: "rca0", refs: [ { ref: "csimamileti2009", loc: "Theorem 4.1" } ] }
+- { type: "implication", from: "rt22", to: "rrt22", over: "rca0", refs: [ { ref: "csimamileti2009", loc: "Theorem 5.2" } ] }
+- { type: "implication", from: "rt32", to: "rrt32", over: "rca0", refs: [ { ref: "csimamileti2009", loc: "Theorem 5.2" } ] }
+- { type: "implication", from: "rrt32", to: "rrt22", over: "rca0", refs: [ { ref: "csimamileti2009", loc: "Theorem 5.3" } ] }
+- { type: "separation", from: "wkl", to: "rrt22", over: "omega", refs: [ { ref: "csimamileti2009", loc: "Theorem 5.4" } ] }
+- { type: "separation", from: "rrt22", to: "wkl", over: "omega", refs: [ { ref: "csimamileti2009", loc: "Corollary 5.6" } ] }
+- { type: "separation", from: "rrt22", to: "rt22", over: "omega", refs: [ { ref: "csimamileti2009", loc: "Corollary 5.9" } ] }
+- { type: "separation", from: "rrt22", to: "sads", over: "omega", refs: [ { ref: "csimamileti2009", loc: "Theorem 5.11" } ] }
+- { type: "separation", from: "rrt22", to: "rrt32", over: "omega", refs: [ { ref: "csimamileti2009", loc: "Corollary 5.12" } ] }
+- { type: "separation", from: "coh", to: "rrt22", over: "rca0", refs: [ { ref: csimamileti2009, loc: Proposition 5.14 } ] }

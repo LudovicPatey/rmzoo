@@ -220,3 +220,14 @@
   refs: [ { ref: sun2025, role: rm } ]
   instance: A finite sequence of sets $R_0, \dots, R_{n-1}$.
   solution: An infinite set $C$ with $C \subseteq^* R_i$ or $C \subseteq^* \overline{R_i}$ for each $i < n$.
+
+- id: tac
+  label: '\mathsf{TAC}'
+  name: CAC for trees
+  kind: problem
+  tags: [orders, ramsey]
+  aliases: [tree antichain, TCAC, CAC for trees]
+  definition: Every infinite subtree of $\mathbb{N}^{<\mathbb{N}}$ has an infinite path or an infinite antichain.
+  instance: An infinite subtree $T$ of $\mathbb{N}^{<\mathbb{N}}$.
+  solution: An infinite path of $T$ or an infinite antichain of $T$.
+  refs: [{ref: cervellegaudelierpatey2022, role: rm}]

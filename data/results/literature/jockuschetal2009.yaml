@@ -1,0 +1,3 @@
+# Results from [jockuschetal2009].
+
+[ { type: equivalence, from: wscac, to: scac, over: rca0, refs: [ { ref: jockuschetal2009, loc: Theorem 2.2 }, { ref: dzhafarovmummert2022, loc: Theorem 9.2.11 } ] } ]

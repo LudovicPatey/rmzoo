@@ -1,0 +1,3 @@
+# Results from [floodtowsner2016].
+
+[ { type: separation, from: dnr, to: rwkl, over: rca0, refs: [ { ref: floodtowsner2016, loc: Corollary 3.35 } ] }, { type: separation, from: dnr, to: wwkl, over: rca0, refs: [ { ref: floodtowsner2016, loc: Corollary 3.35 } ] } ]

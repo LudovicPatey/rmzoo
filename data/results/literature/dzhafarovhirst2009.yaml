@@ -1,0 +1,3 @@
+# Results from [dzhafarovhirst2009].
+
+[ { type: equivalence, from: pt, to: aca-prime, over: rca0, refs: [ { ref: dzhafarovhirst2009, loc: Proposition 4.4 } ] }, { type: equivalence, from: ipt, to: aca-prime, over: rca0, refs: [ { ref: dzhafarovhirst2009, loc: Proposition 4.4 } ] } ]

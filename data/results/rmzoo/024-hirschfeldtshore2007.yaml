@@ -18,8 +18,8 @@
 - { type: "implication", from: "cac", to: "ads", over: "rca0", refs: [ { ref: hirschfeldtshore2007, loc: Proposition 3.1 } ] }
 - { type: "implication", from: "srt22", to: "scac", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 3.3" } ] }
 - { type: "implication", from: "scac", to: "sads", over: "rca0", refs: [ { ref: hirschfeldtshore2007, loc: Proposition 3.3 } ] }
-- { type: "separation", from: "scac", to: "srt22", over: "omega", refs: [ { ref: "hirschfeldtshore2007", loc: "Corollary 3.6" } ] }
-- { type: "separation", from: "scac", to: "cads", over: "omega", refs: [ { ref: "hirschfeldtshore2007", loc: "Corollary 3.6" } ] }
+- { type: "separation", from: "scac", to: "srt22", over: "omega", refs: [ { ref: hirschfeldtshore2007, loc: Corollary 3.6 } ] }
+- { type: "separation", from: "scac", to: "cads", over: "omega", refs: [ { ref: hirschfeldtshore2007, loc: Corollary 3.6 } ] }
 - { type: "separation", from: "scac", to: "ads", over: "omega", refs: [ { ref: "hirschfeldtshore2007", loc: "Corollary 3.6" } ] }
 - { type: "equivalence", from: "ccac", to: "ads", over: "rca0", refs: [ { ref: hirschfeldtshore2007, loc: Proposition 3.7 } ] }
 - { type: "equivalence", from: "cac", to: "cads-scac", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 3.8" } ] }

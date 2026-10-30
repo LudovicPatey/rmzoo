@@ -97,3 +97,4 @@
 - { type: implication, from: rca0, to: ivt, over: rca0, refs: [ { ref: simpson2009, loc: Theorem II.6.6 } ] }
 - { type: implication, from: rca0, to: lpo, over: rca0star, folklore: true, note: "Classically provable: decide whether p is the zero sequence.", justification: { kind: classical, text: "Classically provable by the law of excluded middle: either p is the zero sequence or it is not.", by: ai } }
 - { type: implication, from: rca0, to: llpo, over: rca0star, folklore: true, justification: { kind: classical, text: "Classically provable: if p has a 1 at position n, the parity of n answers; otherwise any answer is correct.", by: ai } }
+- {type: separation, from: aca, to: aca-prime, over: rca0, folklore: true, justification: {kind: classical, by: ai, text: "ACA₀′ proves the consistency of PA (it proves the existence of truth sets for each Σ⁰ₙ level), while ACA₀ is conservative over PA, which does not prove its own consistency."}}
