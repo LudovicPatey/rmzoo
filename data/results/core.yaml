@@ -34,8 +34,8 @@
   over: rca0
   refs: [ { ref: simpson2009, loc: Lemma IV.4.4 } ]
 
-- { type: property, statement: wkl, property: low-basis, value: true, refs: [ { ref: jockuschsoare1972 } ] }
-- { type: property, statement: wkl, property: cone-avoidance, value: true, refs: [ { ref: jockuschsoare1972 } ] }
+- { type: property, statement: wkl, property: low-basis, value: true, refs: [ { ref: jockuschsoare1972, loc: Theorem 2.1 } ] }
+- { type: property, statement: wkl, property: cone-avoidance, value: true, refs: [ { ref: jockuschsoare1972, loc: Theorem 2.5 } ] }
 - { type: property, statement: wkl, property: pa-avoidance, value: false, folklore: true }
 - { type: property, statement: wkl, property: computably-true, value: false, refs: [ { ref: jockuschsoare1972 } ], note: Kleene tree. }
 - type: property
@@ -57,17 +57,19 @@
 
 # ---- Induction and bounding ------------------------------------------------
 
-- { type: implication, from: isig2, to: bsig2, over: rca0star, refs: [ { ref: pariskirby1978 } ] }
-- { type: implication, from: bsig2, to: isig1, over: rca0star, refs: [ { ref: pariskirby1978 } ] }
+- { type: implication, from: isig2, to: bsig2, over: rca0star, refs: [ { ref: pariskirby1978, loc: Proposition 4 } ] }
+- { type: implication, from: bsig2, to: isig1, over: rca0star, refs: [ { ref: pariskirby1978, loc: Proposition 5 } ] }
 - { type: implication, from: rca0, to: isig1, over: rca0, folklore: true, note: Σ⁰₁-induction is part of RCA₀. }
-- { type: equivalence, from: bsig2, to: idelta2, over: rca0star, refs: [ { ref: slaman2004 } ] }
+- { type: equivalence, from: bsig2, to: idelta2, over: rca0star, refs: [ { ref: slaman2004, loc: Theorem 2.1 (with Gandy's Theorem 1.2) } ] }
 - { type: separation, from: rca0, to: isig1, over: rca0star, refs: [ { ref: simpsonsmith1986 } ] }
 
 - type: property
   statement: bsig2
   property: pi11-conservative
   value: false
-  refs: [ { ref: pariskirby1978 } ]
+  refs:
+    - ref: pariskirby1978
+      loc: Proposition 7
   note: RCA₀ does not prove BΣ⁰₂.
 
 - type: separation

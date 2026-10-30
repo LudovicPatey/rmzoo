@@ -1,0 +1,3 @@
+# Results from [hirschfeldtshore2007].
+
+[ { type: implication, from: scac, to: bsig2, over: rca0, refs: [ { ref: hirschfeldtshore2007, loc: Proposition 4.1 } ] } ]

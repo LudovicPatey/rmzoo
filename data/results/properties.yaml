@@ -1,8 +1,8 @@
 # Property facts. Most come from the 'Unsupported' notes of Astor's RM Zoo file,
 # which could not express them; they are now used to derive separations.
 
-- { type: property, statement: sads, property: low-basis, value: true, refs: [ { ref: hirschfeldtshore2007 } ] }
-- { type: property, statement: scac, property: low-basis, value: true, refs: [ { ref: hirschfeldtshore2007 } ] }
+- { type: property, statement: sads, property: low-basis, value: true, refs: [ { ref: hirschfeldtshore2007, loc: Theorem 2.11 and Corollary 2.12 } ] }
+- { type: property, statement: scac, property: low-basis, value: true, refs: [ { ref: hirschfeldtshore2007, loc: Theorem 3.4 and Corollary 3.5 } ] }
 - { type: property, statement: amt, property: low-basis, value: true, refs: [ { ref: hirschfeldtshoreslaman2009 } ] }
 - { type: property, statement: pi01g, property: low-basis, value: true, refs: [ { ref: hirschfeldtshoreslaman2009 } ] }
 - { type: property, statement: em, property: low-basis, value: false, refs: [ { ref: kreuzer2012b, loc: "Proposition 5.2" } ] }

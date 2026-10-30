@@ -1,3 +1,3 @@
 # Results from [dzhafarov2015].
 
-- {type: "separation", from: "srt22", to: "coh", over: "sc", refs: [{ref: dzhafarov2015}, {ref: dzhafarov2016}]}
+- { type: "separation", from: "srt22", to: "coh", over: "sc", refs: [ { ref: dzhafarov2015, loc: Theorem 1.5 }, { ref: dzhafarov2016 } ] }
