@@ -23,6 +23,7 @@ ahmanbauer2025:
   venue: Journal of Logical and Algebraic Methods in Programming, 146, 101071
   doi: 10.1016/j.jlamp.2025.101071
   source: weihrauch-bibliography
+  read: pdf-arxiv
 dauriac2020:
   authors:
     - Paul-Elliot Anglès d'Auriac
@@ -40,7 +41,7 @@ dauriackihara2021:
   venue: The Journal of Symbolic Logic, 86(4), 1452–1485
   doi: 10.1017/jsl.2021.37
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 ackermanfreerroy2017:
   authors:
     - Nathanael L. Ackerman
@@ -51,7 +52,7 @@ ackermanfreerroy2017:
   venue: Mathematical Structures in Computer Science, 27(8), 1287–1314
   doi: 10.1017/S0960129516000098
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 amirhoyrup2022:
   authors:
     - Djamel Eddine Amir
@@ -68,6 +69,7 @@ amirhoyrup2022b:
   year: 2022
   venue: arXiv 2210.08309
   source: weihrauch-bibliography
+  read: pdf-arxiv
 amir2023:
   authors:
     - Djamel Eddine Amir
@@ -91,7 +93,7 @@ bauer2021:
   year: 2021
   venue: arXiv 2106.01734
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 brattkachirache2026:
   authors:
     - Vasco Brattka
@@ -100,6 +102,7 @@ brattkachirache2026:
   year: 2026
   venue: arXiv arXiv:2601.18663
   source: weihrauch-bibliography
+  read: pdf-arxiv
 brattkaetal2017:
   authors:
     - Vasco Brattka
@@ -123,7 +126,7 @@ brattkaetal2019b:
   venue: Schloss Dagstuhl--Leibniz-Zentrum für Informatik, 8(9), 1–28
   doi: 10.4230/DagRep.8.9.1
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-oa
 brattkaetal2020:
   authors:
     - Vasco Brattka
@@ -146,6 +149,7 @@ bazhenovetal2024:
   venue: Annals of Pure and Applied Logic, 175(1, Part A), 103354
   doi: 10.1016/j.apal.2023.103354
   source: weihrauch-bibliography
+  read: pdf-arxiv
 brattkagherardi2009:
   authors:
     - Vasco Brattka
@@ -162,7 +166,7 @@ brattkagherardi2018:
   year: 2018
   venue: arXiv 1809.00380
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 brattkagherardi2019:
   authors:
     - Vasco Brattka
@@ -171,7 +175,7 @@ brattkagherardi2019:
   year: 2019
   venue: arXiv 1910.13186
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 brattkagherardiholzl2015b:
   authors:
     - Vasco Brattka
@@ -182,7 +186,7 @@ brattkagherardiholzl2015b:
   venue: 32nd International Symposium on Theoretical Aspects of Computer Science (STACS 2015), 30, 130–142
   doi: 10.4230/LIPIcs.STACS.2015.130
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-oa
 brattkaetal2017b:
   authors:
     - Vasco Brattka
@@ -194,7 +198,7 @@ brattkaetal2017b:
   venue: "Computability and Complexity: Essays Dedicated to Rodney G. Downey on the Occasion of His 60th Birthday, 10010, 188–200"
   doi: 10.1007/978-3-319-50062-1_14
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 brattkaetal2022:
   authors:
     - Vasco Brattka
@@ -225,7 +229,7 @@ brattkaholzlkuyper2017:
   venue: 34th Symposium on Theoretical Aspects of Computer Science (STACS 2017), 66, 17:1–17:14
   doi: 10.4230/LIPIcs.STACS.2017.17
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-oa
 brattkahendtlasskreuzer2018:
   authors:
     - Vasco Brattka
@@ -236,7 +240,7 @@ brattkahendtlasskreuzer2018:
   venue: Notre Dame Journal of Formal Logic, 59(4), 605–636
   doi: 10.1215/00294527-2018-0016
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 bementhirstwallace2021:
   authors:
     - Zack BeMent
@@ -246,7 +250,7 @@ bementhirstwallace2021:
   year: 2021
   venue: arXiv 2105.01719
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 bienvenukuyper2017:
   authors:
     - Laurent Bienvenu
@@ -267,7 +271,7 @@ brattkaetal2016:
   venue: Schloss Dagstuhl--Leibniz-Zentrum für Informatik, 5(9), 77–104
   doi: 10.4230/DagRep.5.9.77
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-oa
 brattkarouxpauly2012:
   authors:
     - Vasco Brattka
@@ -313,7 +317,7 @@ brattkapauly2018:
   venue: Logical Methods in Computer Science, 14(4:4), 1–36
   doi: 10.23638/LMCS-14(4:4)2018
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 bochepohl2019:
   authors:
     - H. Boche
@@ -352,6 +356,7 @@ brattkarauzy2025b:
   year: 2025
   venue: arXiv arXiv:2509.20266
   source: weihrauch-bibliography
+  read: pdf-oa
 brattka2005:
   authors:
     - Vasco Brattka
@@ -367,6 +372,7 @@ brattka2016:
   venue: Pursuit of the Universal, 9709, 45–57
   doi: 10.1007/978-3-319-40189-8_5
   source: weihrauch-bibliography
+  read: pdf-arxiv
 brattka2020:
   authors:
     - Vasco Brattka
@@ -383,7 +389,7 @@ brattka2021:
   venue: Logical Methods in Computer Science, 17(4), 20:1-20:29
   doi: 10.46298/LMCS-17(4:20)2021
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 brattka2022:
   authors:
     - Vasco Brattka
@@ -391,6 +397,7 @@ brattka2022:
   year: 2022
   venue: 60 Jahre DVMLG, 48, 13–44
   source: weihrauch-bibliography
+  read: pdf-arxiv
 brattka2023:
   authors:
     - Vasco Brattka
@@ -406,6 +413,7 @@ brattka2023b:
   year: 2023
   venue: arXiv 2302.04213
   source: weihrauch-bibliography
+  read: pdf-arxiv
 brattka2025:
   authors:
     - Vasco Brattka
@@ -413,6 +421,7 @@ brattka2025:
   year: 2025
   venue: arXiv arXiv:2501.17734
   source: weihrauch-bibliography
+  read: pdf-arxiv
 brattka1993:
   authors:
     - Vasco Brattka
@@ -435,6 +444,7 @@ brattkasmischliaew2024:
   year: 2024
   venue: arXiv arXiv:2501.00451
   source: weihrauch-bibliography
+  read: pdf-arxiv
 carroy2013:
   authors:
     - Raphaël Carroy
@@ -458,6 +468,7 @@ carl2016:
   year: 2016
   venue: arXiv 1601.01899
   source: weihrauch-bibliography
+  read: pdf-arxiv
 carl2019:
   authors:
     - Merlin Carl
@@ -473,7 +484,7 @@ carl2021:
   venue: Computability, 10(4), 289–304
   doi: 10.3233/COM-210307
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 carluccicelli2025:
   authors:
     - Lorenzo Carlucci
@@ -502,6 +513,7 @@ cipriani2023:
   year: 2023
   venue: Universitá degli Studi di Udine
   source: weihrauch-bibliography
+  read: pdf-oa
 ciprianimarconevalenti2022:
   authors:
     - Vittorio Cipriani
@@ -511,6 +523,7 @@ ciprianimarconevalenti2022:
   year: 2022
   venue: arXiv 2210.15556
   source: weihrauch-bibliography
+  read: pdf-arxiv
 ciprianimarconevalenti2025:
   authors:
     - Vittorio Cipriani
@@ -521,7 +534,7 @@ ciprianimarconevalenti2025:
   venue: Journal of Symbolic Logic, 90(2), 752–790
   doi: 10.1017/jsl.2024.72
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 ciprianipauly2023:
   authors:
     - Vittorio Cipriani
@@ -539,6 +552,7 @@ carroypequignot2024:
   year: 2024
   venue: arXiv 2410.13150v1
   source: weihrauch-bibliography
+  read: pdf-arxiv
 ciprianipauly2025:
   authors:
     - Vittorio Cipriani
@@ -548,7 +562,7 @@ ciprianipauly2025:
   venue: Journal of Mathematical Logic, (to appear)
   doi: 10.1142/S0219061325500114
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 brecht2014:
   authors:
     - Matthew de Brecht
@@ -556,6 +570,7 @@ brecht2014:
   year: 2014
   venue: Logic, Computation, Hierarchies, 93–122
   source: weihrauch-bibliography
+  read: pdf-arxiv
 daydowneywestrick2022:
   authors:
     - Adam R. Day
@@ -566,7 +581,7 @@ daydowneywestrick2022:
   venue: Transactions of the American Mathematical Society. Series B, 9, 859–895
   doi: 10.1090/btran/115
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-arxiv
 dzhafarovetal2017:
   authors:
     - Damir Dzhafarov
@@ -617,6 +632,7 @@ downeymelnikovng2020:
   year: 2020
   venue: arXiv 2007.07401
   source: weihrauch-bibliography
+  read: pdf-arxiv
 dzhafarovpatey2021:
   authors:
     - Damir D. Dzhafarov
@@ -636,7 +652,7 @@ dzhafarovsolomonvalenti2023:
   year: 2023
   venue: arXiv 2312.10535
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 dzhafarovsolomonyokoyama2023:
   authors:
     - Damir D. Dzhafarov
@@ -646,7 +662,7 @@ dzhafarovsolomonyokoyama2023:
   year: 2023
   venue: arXiv 2301.12733
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 dzhafarov2015:
   authors:
     - Damir D. Dzhafarov
@@ -664,7 +680,7 @@ dzhafarov2019:
   venue: Mathematical Research Letters, 26(3), 749–767
   doi: 10.4310/MRL.2019.v26.n3.a5
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 fujiwarahiguchikihara2014:
   authors:
     - Makoto Fujiwara
@@ -687,7 +703,7 @@ floodetal2022:
   venue: Annals of Pure and Applied Logic, 173(8), Paper No. 103133, 26
   doi: 10.1016/j.apal.2022.103133
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 fioricaronesmarcone2021:
   authors:
     - Marta Fiori-Carones
@@ -697,7 +713,7 @@ fioricaronesmarcone2021:
   venue: Computability, 10(3), 215–233
   doi: 10.3233/com-190285
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-arxiv
 beckmannoitavemmanea2025:
   authors:
     - Arnold Beckmann
@@ -756,7 +772,7 @@ gurahirstmummert2015:
   venue: Computability, 4(2), 103–117
   doi: 10.3233/COM-150039
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 gill2023:
   authors:
     - Kenneth Gill
@@ -764,7 +780,7 @@ gill2023:
   year: 2023
   venue: arXiv 2312.03919
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 greenbergkuyperturetsky2019:
   authors:
     - Noam Greenberg
@@ -794,7 +810,7 @@ greenbergmillernies2021:
   venue: Israel Journal of Mathematics, 244, 419–465
   doi: 10.1007/s11856-021-2200-7
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 gherardimarconepauly2018:
   authors:
     - Guido Gherardi
@@ -804,7 +820,7 @@ gherardimarconepauly2018:
   year: 2018
   venue: arXiv 1805.12026
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 galeottinobrega2017:
   authors:
     - Lorenzo Galeotti
@@ -821,7 +837,7 @@ goh2019:
   year: 2019
   venue: arXiv 1905.06868
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 goh2019b:
   authors:
     - Jun Le Goh
@@ -904,6 +920,7 @@ hirst2018:
   year: 2018
   venue: arXiv 1812.09762
   source: weihrauch-bibliography
+  read: pdf-arxiv
 higuchikihara2014:
   authors:
     - Kojiro Higuchi
@@ -913,6 +930,7 @@ higuchikihara2014:
   venue: Annals of Pure and Applied Logic, 165(5), 1058–1114
   doi: 10.1016/j.apal.2014.01.003
   source: weihrauch-bibliography
+  read: pdf-arxiv
 higuchikihara2014b:
   authors:
     - Kojiro Higuchi
@@ -922,6 +940,7 @@ higuchikihara2014b:
   venue: Annals of Pure and Applied Logic, 165(6), 1201–1241
   doi: 10.1016/j.apal.2014.03.001
   source: weihrauch-bibliography
+  read: pdf-arxiv
 hirstmummert2017:
   authors:
     - Jeffry L. Hirst
@@ -931,6 +950,7 @@ hirstmummert2017:
   venue: "Computability and Complexity: Essays Dedicated to Rodney G. Downey on the Occasion of His 60th Birthday, 10010, 143–159"
   doi: 10.1007/978-3-319-50062-1_12
   source: weihrauch-bibliography
+  read: pdf-arxiv
 hirstmummert2019:
   authors:
     - Jeffry L. Hirst
@@ -940,7 +960,7 @@ hirstmummert2019:
   venue: Archive for Mathematical Logic, 58(7-8), 857–866
   doi: 10.1007/s00153-019-00664-z
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 hirstmummert2023:
   authors:
     - Jeffry L. Hirst
@@ -950,7 +970,7 @@ hirstmummert2023:
   venue: Computability, 12(3), 203–225
   doi: 10.3233/COM-230453
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-arxiv
 hoyrup2017:
   authors:
     - Mathieu Hoyrup
@@ -984,7 +1004,7 @@ higuchipauly2013:
   venue: Logical Methods in Computer Science, 9(2), 2:02, 17
   doi: 10.2168/LMCS-9(2:2)2013
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 hoyruprojasweihrauch2011:
   authors:
     - Mathieu Hoyrup
@@ -1062,7 +1082,7 @@ kihara2016:
   venue: Logical Methods in Computer Science, 12(4)
   doi: 10.2168/LMCS-12(4:4)2016
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 kihara2020:
   authors:
     - Takayuki Kihara
@@ -1070,6 +1090,7 @@ kihara2020:
   year: 2020
   venue: arXiv 2002.10712
   source: weihrauch-bibliography
+  read: pdf-arxiv
 kihara2021:
   authors:
     - Takayuki Kihara
@@ -1077,6 +1098,7 @@ kihara2021:
   year: 2021
   venue: arXiv 2106.03061
   source: weihrauch-bibliography
+  read: pdf-arxiv
 kihara2022:
   authors:
     - Takayuki Kihara
@@ -1085,6 +1107,7 @@ kihara2022:
   venue: Israel Journal of Mathematics
   doi: 10.1007/s11856-022-2367-6
   source: weihrauch-bibliography
+  read: pdf-arxiv
 kiharamarconepauly2018:
   authors:
     - Takayuki Kihara
@@ -1144,6 +1167,7 @@ kawamurapauly2014:
   venue: Language, life, limits, 8493, 245–254
   doi: 10.1007/978-3-319-08019-2_25
   source: weihrauch-bibliography
+  read: pdf-arxiv
 kiharapauly2016:
   authors:
     - Takayuki Kihara
@@ -1153,7 +1177,7 @@ kiharapauly2016:
   venue: 41st International Symposium on Mathematical Foundations of Computer Science (MFCS 2016), 58, 58:1–58:14
   doi: 10.4230/LIPIcs.MFCS.2016.58
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 kiharapauly2019:
   authors:
     - Takayuki Kihara
@@ -1171,7 +1195,7 @@ kreuzer2012c:
   venue: Computability, 1(2), 171–179
   doi: 10.3233/COM-12010
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 kreuzer2014:
   authors:
     - Alexander P. Kreuzer
@@ -1180,7 +1204,7 @@ kreuzer2014:
   venue: Mathematical Logic Quarterly, 60(3), 177–183
   doi: 10.1002/malq.201200076
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-arxiv
 kreuzer2014b:
   authors:
     - Alexander P. Kreuzer
@@ -1189,7 +1213,7 @@ kreuzer2014b:
   venue: Logical Methods in Computer Science, 10(4:16), 1–23
   doi: 10.2168/LMCS-10(4:16)2014
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 kudinovselivanovzhukov2010:
   authors:
     - Oleg V. Kudinov
@@ -1207,7 +1231,7 @@ kuyper2017:
   venue: Journal of Symbolic Logic, 82(4), 1438–1458
   doi: 10.1017/jsl.2016.61
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 li2024:
   authors:
     - Ang Li
@@ -1215,6 +1239,7 @@ li2024:
   year: 2024
   venue: arXiv 2409.19229
   source: weihrauch-bibliography
+  read: pdf-arxiv
 lemppetal2023:
   authors:
     - Steffen Lempp
@@ -1226,7 +1251,7 @@ lemppetal2023:
   year: 2023
   venue: arXiv 2311.12676
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 lemppmarconevalenti2024:
   authors:
     - Steffen Lempp
@@ -1265,6 +1290,7 @@ lutzsiskind2023:
   year: 2023
   venue: arXiv 2305.19646
   source: weihrauch-bibliography
+  read: pdf-arxiv
 lutz2021:
   authors:
     - Patrick Lutz
@@ -1287,7 +1313,7 @@ marconeosso2024:
   year: 2024
   venue: arXiv 2410.06928
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 mourad2024:
   authors:
     - Daniel Mourad
@@ -1295,7 +1321,7 @@ mourad2024:
   year: 2024
   venue: arXiv 2405.15281
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 mourad2025:
   authors:
     - Daniel S. Mourad
@@ -1304,7 +1330,7 @@ mourad2025:
   venue: Computability, 14(3--4), 172–177
   doi: 10.1177/22113568251314744
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-arxiv
 maschiotrotta2025:
   authors:
     - Samuele Maschio
@@ -1321,7 +1347,7 @@ marconevalenti2020:
   year: 2020
   venue: arXiv 2003.04245
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 marconevalenti2021:
   authors:
     - Alberto Marcone
@@ -1330,6 +1356,7 @@ marconevalenti2021:
   year: 2021
   venue: arXiv 2108.06941
   source: weihrauch-bibliography
+  read: pdf-arxiv
 mylatz2006:
   authors:
     - Uwe Mylatz
@@ -1351,6 +1378,7 @@ neumann2014:
   year: 2014
   venue: Department of Mathematics, Universität Darmstadt
   source: weihrauch-bibliography
+  read: pdf-arxiv
 nichols2017:
   authors:
     - David Nichols
@@ -1358,6 +1386,7 @@ nichols2017:
   year: 2017
   venue: arXiv 1711.06532
   source: weihrauch-bibliography
+  read: pdf-arxiv
 nobrega2018:
   authors:
     - Hugo Nobrega
@@ -1365,6 +1394,7 @@ nobrega2018:
   year: 2018
   venue: Institute for Logic, Language and Computation, Universiteit van Amsterdam
   source: weihrauch-bibliography
+  read: pdf-oa
 nobregapauly2017:
   authors:
     - Hugo Nobrega
@@ -1407,7 +1437,7 @@ pauly2009:
   venue: 6th International Conference on Computability and Complexity in Analysis (CCA'09), 11
   doi: 10.4230/OASIcs.CCA.2009.2271
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-oa
 pauly2010:
   authors:
     - Arno Pauly
@@ -1425,7 +1455,7 @@ pauly2010b:
   venue: Mathematical Logic Quarterly, 56(5), 488–502
   doi: 10.1002/malq.200910104
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-arxiv
 pauly2011:
   authors:
     - Arno Pauly
@@ -1440,6 +1470,7 @@ pauly2015:
   year: 2015
   venue: arXiv 1501.00386
   source: weihrauch-bibliography
+  read: pdf-arxiv
 pauly2017:
   authors:
     - Arno Pauly
@@ -1448,7 +1479,7 @@ pauly2017:
   venue: Mathematical Structures in Computer Science, 27(3), 376–404
   doi: 10.1017/S0960129515000262
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 paulybrecht2013:
   authors:
     - Arno Pauly
@@ -1457,6 +1488,7 @@ paulybrecht2013:
   year: 2013
   venue: arXiv 1307.1850
   source: weihrauch-bibliography
+  read: pdf-arxiv
 paulybrecht2014:
   authors:
     - Arno Pauly
@@ -1466,7 +1498,7 @@ paulybrecht2014:
   venue: Proceedings 8th International Workshop on Developments in Computational Models, DCM 2012, Cambridge, United Kingdom, 17 June 2012., 143, 87–96
   doi: 10.4204/EPTCS.143.8
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-arxiv
 paulybrecht2015:
   authors:
     - Arno Pauly
@@ -1496,7 +1528,7 @@ paulyfouche2017:
   venue: Journal of Logic \& Analysis, 9(c3), 1–44
   doi: 10.4115/jla.2017.9.c3
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-oa
 pradicprice2025:
   authors:
     - Cécilia Pradic
@@ -1515,6 +1547,7 @@ paulysteinberg2016:
   venue: Computer science---theory and applications, 9691, 367–381
   doi: 10.1007/978-3-319-34171-2_26
   source: weihrauch-bibliography
+  read: pdf-arxiv
 paulysteinberg2018:
   authors:
     - Arno Pauly
@@ -1542,6 +1575,7 @@ paulytsuiki2016:
   year: 2016
   venue: arXiv 1604.0258
   source: weihrauch-bibliography
+  read: pdf-arxiv
 rakotoniaina2015:
   authors:
     - Tahina Rakotoniaina
@@ -1557,7 +1591,7 @@ selivanov2013:
   venue: Logical Methods in Computer Science, 9, 2:5, 30
   doi: 10.2168/LMCS-9(2:5)2013
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-arxiv
 selivanov2020:
   authors:
     - Victor Selivanov
@@ -1574,6 +1608,7 @@ smischliaew2024:
   year: 2024
   venue: Fakultät für Informatik, Universität der Bundeswehr München
   source: weihrauch-bibliography
+  read: pdf-arxiv
 solomon2016:
   authors:
     - Reed Solomon
@@ -1604,7 +1639,7 @@ soldavalenti2022:
   year: 2022
   venue: arXiv 2203.16298
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 suzukiyokoyama2024:
   authors:
     - Yudai Suzuki
@@ -1614,6 +1649,7 @@ suzukiyokoyama2024:
   venue: Annals of Pure and Applied Logic, 175(10), Paper No. 103488, 31
   doi: 10.1016/j.apal.2024.103488
   source: weihrauch-bibliography
+  read: pdf-arxiv
 thies2018:
   authors:
     - Holger Thies
@@ -1640,7 +1676,7 @@ tavanaweihrauch2011:
   venue: Logical Methods in Computer Science, 7(2), 2:19, 21
   doi: 10.2168/LMCS-7(2:19)2011
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-arxiv
 uftring2018:
   authors:
     - Patrick Uftring
@@ -1655,6 +1691,7 @@ uftring2023:
   year: 2023
   venue: arXiv 2102.11832
   source: weihrauch-bibliography
+  read: pdf-arxiv
 valenti2021:
   authors:
     - Manlio Valenti
@@ -1662,6 +1699,7 @@ valenti2021:
   year: 2021
   venue: Universitá degli Studi di Udine
   source: weihrauch-bibliography
+  read: pdf-oa
 weihrauch2000:
   authors:
     - Klaus Weihrauch
@@ -1697,6 +1735,7 @@ westrick2020:
   year: 2020
   venue: arXiv 2001.09372
   source: weihrauch-bibliography
+  read: pdf-arxiv
 paulypradicsolda2024:
   authors:
     - Arno Pauly
@@ -1707,7 +1746,7 @@ paulypradicsolda2024:
   venue: Computability, 13(3--4), 459–483
   doi: 10.3233/COM-230437
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 lerouxpauly2015:
   authors:
     - Stéphane Le Roux
@@ -1717,7 +1756,7 @@ lerouxpauly2015:
   venue: Logical Mehtods in Computer Science, 11(4), 4:6, 31
   doi: 10.2168/LMCS-11(4:6)2015
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 paulyfouchedavie2018:
   authors:
     - Arno Pauly
@@ -1728,7 +1767,7 @@ paulyfouchedavie2018:
   venue: Logical Methods in Computer Science, 14(2)
   doi: 10.23638/LMCS-14(2:11)2018
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
 paulysolda2024:
   authors:
     - Arno Pauly

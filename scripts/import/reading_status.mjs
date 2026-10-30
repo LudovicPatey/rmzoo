@@ -20,6 +20,12 @@ for (const line of fs.readFileSync(S + '/zot/all.tsv', 'utf8').split('\n')) {
   if (fs.existsSync(f) && fs.statSync(f).size > 2000) zot.push({ n: nt(p[3]), w: new Set(words(p[3])) });
 }
 const axPdf = new Set(fs.readdirSync(S + '/src/pdf').filter((f) => f.endsWith('.txt')).map((f) => f.replace(/\.txt$/, '').replace('_', '/')));
+// full texts fetched for previously unread papers (named by reference key; source recorded in src_<key>)
+const fetched = new Map();
+if (fs.existsSync(S + '/full/txt')) for (const f of fs.readdirSync(S + '/full/txt')) {
+  const k = f.replace(/\.txt$/, '');
+  if (fs.statSync(S + '/full/txt/' + f).size > 2000 && fs.existsSync(S + '/full/src_' + k)) fetched.set(k, fs.readFileSync(S + '/full/src_' + k, 'utf8').trim());
+}
 const ax = JSON.parse(fs.readFileSync(S + '/src/arxiv_rel.json', 'utf8'));
 const absRead = new Set(), absTitle = new Set();
 fs.readFileSync(S + '/src/sel.txt', 'utf8').split(/\s+/).filter(Boolean).forEach((i) => absRead.add(ax[+i].arxiv));
@@ -47,6 +53,7 @@ for (const e of all) {
   let st = null;
   if (e.zot) st = 'pdf-zotero';
   else if (id && axPdf.has(id)) st = 'pdf-arxiv';
+  else if (fetched.has(e.pair.key.value)) st = fetched.get(e.pair.key.value) === 'arxiv' ? 'pdf-arxiv' : 'pdf-oa';
   else if ((id && absRead.has(id)) || absTitle.has(t)) st = 'abstract';
   else if (screened.has(t)) st = 'screened';
   if (st) e.pair.value.set('read', st); else e.pair.value.delete('read');

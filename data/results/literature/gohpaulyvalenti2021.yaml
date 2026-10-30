@@ -1,0 +1,3 @@
+# Results from [gohpaulyvalenti2021].
+
+[ { type: implication, from: cnn, to: ds, over: w, refs: [ { ref: gohpaulyvalenti2021, loc: Proposition 4.2 } ] }, { type: separation, from: ucnn, to: ds, over: w, refs: [ { ref: gohpaulyvalenti2021, loc: Proposition 4.2 } ] }, { type: implication, from: ds, to: rt1inf, over: w, refs: [ { ref: gohpaulyvalenti2021, loc: Fact 3.25 and Proposition 4.8 } ] }, { type: separation, from: sads, to: ds, over: w, note: "General-SADS |W DS, and SADS ≤sW General-SADS.", refs: [ { ref: gohpaulyvalenti2021, loc: Corollary 4.21 } ] } ]

@@ -9,7 +9,7 @@ jech1992:
   venue: arXiv preprint
   arxiv: math/9204207
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 gasarchhirst1994:
   authors:
     - William Gasarch
@@ -48,7 +48,7 @@ hummeljockusch1997:
   venue: arXiv preprint
   arxiv: math/9709204
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 bissellsiders1998:
   authors:
     - Ryan Bissell-Siders
@@ -57,7 +57,7 @@ bissellsiders1998:
   venue: arXiv preprint
   arxiv: math/9804076
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 braverman2005:
   authors:
     - Mark Braverman
@@ -66,7 +66,7 @@ braverman2005:
   venue: arXiv preprint
   arxiv: cs/0502066
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 potgieter2006:
   authors:
     - Petrus H. Potgieter
@@ -75,7 +75,7 @@ potgieter2006:
   venue: arXiv preprint
   arxiv: cs/0604003
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 ziegler2006:
   authors:
     - Martin Ziegler
@@ -85,7 +85,7 @@ ziegler2006:
   doi: 10.1016/j.entcs.2006.08.015
   arxiv: cs/0607114
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 taranovsky2006:
   authors:
     - Dmytro Taranovsky
@@ -94,7 +94,7 @@ taranovsky2006:
   venue: arXiv preprint
   arxiv: math/0605138
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 marcone2006:
   authors:
     - Alberto Marcone
@@ -104,7 +104,7 @@ marcone2006:
   doi: 10.1305/ndjfl/1187031412
   arxiv: math/0609022
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 potgieter2008:
   authors:
     - Petrus H. Potgieter
@@ -113,7 +113,7 @@ potgieter2008:
   venue: arXiv preprint
   arxiv: "0804.3199"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 hirschorn2008:
   authors:
     - James Hirschorn
@@ -122,7 +122,7 @@ hirschorn2008:
   venue: arXiv preprint
   arxiv: "0806.4220"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 andersonhirst2008:
   authors:
     - Bernard A. Anderson
@@ -141,7 +141,7 @@ meyerovitch2009:
   venue: arXiv preprint
   arxiv: "0902.0223"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 solovayarthanharrison2009:
   authors:
     - Robert M. Solovay
@@ -152,7 +152,7 @@ solovayarthanharrison2009:
   venue: arXiv preprint
   arxiv: "0904.3482"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 adamsluo2009:
   authors:
     - Robin Adams
@@ -163,7 +163,7 @@ adamsluo2009:
   doi: 10.1016/j.apal.2010.04.005
   arxiv: "0906.1726"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 towsner2009:
   authors:
     - Henry Towsner
@@ -193,7 +193,7 @@ kreuzer2010:
   doi: 10.1002/malq.201010008
   arxiv: "1005.5316"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 cholakgalvinsolomon2010:
   authors:
     - Peter Cholak
@@ -204,7 +204,7 @@ cholakgalvinsolomon2010:
   venue: arXiv preprint
   arxiv: "1008.4548"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 dzhafarovmummert2010:
   authors:
     - Damir D. Dzhafarov
@@ -225,7 +225,7 @@ gasparkohlenbach2010:
   doi: 10.2178/jsl/1264433926
   arxiv: "1009.5684"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 dzhafarov2010:
   authors:
     - Damir D. Dzhafarov
@@ -234,7 +234,7 @@ dzhafarov2010:
   venue: arXiv preprint
   arxiv: "1010.2219"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 hirstmummert2010:
   authors:
     - Jeffry L. Hirst
@@ -245,7 +245,7 @@ hirstmummert2010:
   doi: 10.1215/00294527-1306163
   arxiv: "1010.5165"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 aschieri2010:
   authors:
     - Federico Aschieri
@@ -254,7 +254,7 @@ aschieri2010:
   venue: arXiv preprint
   arxiv: "1012.4992"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 arai2011:
   authors:
     - Toshiyasu Arai
@@ -263,7 +263,7 @@ arai2011:
   venue: Annals of the Japan Association for Philosophy of Science vol. 20(2012), pp. 29-47
   arxiv: "1102.0596"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 arthan2011:
   authors:
     - Rob Arthan
@@ -272,7 +272,7 @@ arthan2011:
   venue: arXiv preprint
   arxiv: "1104.3293"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 veldman2011:
   authors:
     - Wim Veldman
@@ -281,7 +281,7 @@ veldman2011:
   venue: arXiv preprint
   arxiv: "1106.2738"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 towsner2011:
   authors:
     - Henry Towsner
@@ -290,7 +290,7 @@ towsner2011:
   venue: arXiv preprint
   arxiv: "1106.6063"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 coskeyhamkinsmiller2011:
   authors:
     - Samuel Coskey
@@ -302,7 +302,7 @@ coskeyhamkinsmiller2011:
   doi: 10.3233/COM-2012-004
   arxiv: "1109.3375"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 dzhafarovmummert2011:
   authors:
     - Damir D. Dzhafarov
@@ -312,7 +312,7 @@ dzhafarovmummert2011:
   venue: arXiv preprint
   arxiv: "1109.3378"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 towsner2011b:
   authors:
     - Henry Towsner
@@ -331,7 +331,7 @@ kreuzer2011:
   doi: 10.1142/S021906131250002X
   arxiv: "1109.4277"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 dorais2011:
   authors:
     - François G. Dorais
@@ -340,7 +340,7 @@ dorais2011:
   venue: arXiv preprint
   arxiv: "1110.6555"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 dorais2011b:
   authors:
     - François G. Dorais
@@ -361,7 +361,7 @@ corduandorais2011:
   doi: 10.1215/00294527-1716784
   arxiv: "1111.1367"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 frittaionmarcone2012:
   authors:
     - Emanuele Frittaion
@@ -372,7 +372,7 @@ frittaionmarcone2012:
   doi: 10.1002/malq.201200025
   arxiv: "1203.5207"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 mclarty2012:
   authors:
     - Colin McLarty
@@ -381,7 +381,7 @@ mclarty2012:
   venue: arXiv preprint
   arxiv: "1207.0276"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 kreuzer2012d:
   authors:
     - Alexander P. Kreuzer
@@ -391,7 +391,7 @@ kreuzer2012d:
   doi: 10.1017/jsl.2014.58
   arxiv: "1208.1424"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 doraishirstshafer2012:
   authors:
     - François G. Dorais
@@ -402,7 +402,7 @@ doraishirstshafer2012:
   venue: arXiv preprint
   arxiv: "1209.4944"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 kawamuraetal2012b:
   authors:
     - Akitoshi Kawamura
@@ -414,7 +414,7 @@ kawamuraetal2012b:
   venue: arXiv preprint
   arxiv: "1211.4974"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 dzhafarov2012:
   authors:
     - Damir D. Dzhafarov
@@ -451,7 +451,7 @@ fernandezduquejoosten2013:
   venue: arXiv preprint
   arxiv: "1302.5393"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 frittaionmarcone2013:
   authors:
     - Emanuele Frittaion
@@ -473,7 +473,7 @@ selivanovaselivanov2013:
   doi: 10.23638/LMCS-13(4:13)2017
   arxiv: "1305.2494"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 day2013:
   authors:
     - Adam R. Day
@@ -491,7 +491,7 @@ kreuzer2013:
   venue: arXiv preprint
   arxiv: "1305.6530"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 wang2013b:
   authors:
     - Wei Wang
@@ -511,7 +511,7 @@ skordev2013:
   doi: 10.2168/LMCS-9(4:15)2013
   arxiv: "1310.5656"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 schweber2013:
   authors:
     - Noah Schweber
@@ -520,7 +520,7 @@ schweber2013:
   venue: arXiv preprint
   arxiv: "1310.5792"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 mummertsaadaouisovine2014:
   authors:
     - Carl Mummert
@@ -532,7 +532,7 @@ mummertsaadaouisovine2014:
   doi: 10.1007/s00153-015-0417-z
   arxiv: "1401.0648"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 doraishirstshafer2014:
   authors:
     - François G. Dorais
@@ -552,7 +552,7 @@ kachapova2014:
   venue: arXiv preprint
   arxiv: "1403.2813"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 nies2014:
   authors:
     - André Nies
@@ -561,7 +561,7 @@ nies2014:
   venue: arXiv preprint
   arxiv: "1403.5719"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2014:
   authors:
     - Sam Sanders
@@ -571,7 +571,7 @@ sanders2014:
   doi: 10.4204/EPTCS.143.9
   arxiv: "1404.0080"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 holzlstephanyu2014:
   authors:
     - Rupert Hölzl
@@ -582,7 +582,7 @@ holzlstephanyu2014:
   venue: arXiv preprint
   arxiv: "1404.2073"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 rathjenvizcaino2014:
   authors:
     - Michael Rathjen
@@ -592,7 +592,7 @@ rathjenvizcaino2014:
   venue: arXiv preprint
   arxiv: "1405.4485"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 dzhafarovigusa2014:
   authors:
     - Damir Dzhafarov
@@ -602,7 +602,7 @@ dzhafarovigusa2014:
   venue: arXiv preprint
   arxiv: "1406.2982"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 millerng2014:
   authors:
     - Russell Miller
@@ -612,7 +612,7 @@ millerng2014:
   venue: Journal of Symbolic Logic 81 (2016) 4, 1225-1254
   arxiv: "1406.3646"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 walsh2014:
   authors:
     - Sean Walsh
@@ -622,7 +622,7 @@ walsh2014:
   doi: 10.1016/j.apal.2011.12.016
   arxiv: "1407.0436"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 weihrauchjafarikhah2014:
   authors:
     - Klaus Weihrauch
@@ -633,7 +633,7 @@ weihrauchjafarikhah2014:
   doi: 10.2168/LMCS-10(3:13)2014
   arxiv: "1407.3679"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 rouxpauly2014:
   authors:
     - Stephane Le Roux
@@ -643,7 +643,7 @@ rouxpauly2014:
   venue: arXiv preprint
   arxiv: "1407.5587"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 brodheadetal2014:
   authors:
     - Katie Brodhead
@@ -657,7 +657,7 @@ brodheadetal2014:
   venue: Archive for Mathematical Logic 55 (2016), no. 5, 687--704
   arxiv: "1408.2167"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 binnsetal2014:
   authors:
     - Stephen Binns
@@ -670,7 +670,7 @@ binnsetal2014:
   doi: 10.2178/jsl/1140641165
   arxiv: "1408.2282"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 binnsetal2014b:
   authors:
     - Stephen Binns
@@ -683,7 +683,7 @@ binnsetal2014b:
   venue: Notre Dame Journal of Formal Logic 49 (2008), no. 1, 1--37
   arxiv: "1408.2286"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 veldman2014:
   authors:
     - Wim Veldman
@@ -692,7 +692,7 @@ veldman2014:
   venue: arXiv preprint
   arxiv: "1408.2493"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 binnskjoshanssen2014:
   authors:
     - Stephen Binns
@@ -703,7 +703,7 @@ binnskjoshanssen2014:
   doi: 10.2178/jsl/1231082316
   arxiv: "1408.2857"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 bergsanders2014:
   authors:
     - Benno van den Berg
@@ -713,7 +713,7 @@ bergsanders2014:
   venue: arXiv preprint
   arxiv: "1409.6881"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 koodziejczykyokoyama2014:
   authors:
     - Leszek Aleksander Kołodziejczyk
@@ -752,7 +752,7 @@ meerenrathjenweiermann2014:
   venue: arXiv preprint
   arxiv: "1411.4481"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2014b:
   authors:
     - Sam Sanders
@@ -761,7 +761,7 @@ sanders2014b:
   venue: arXiv preprint
   arxiv: "1412.2022"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 cholakmccoy2014:
   authors:
     - Peter Cholak
@@ -771,7 +771,7 @@ cholakmccoy2014:
   venue: arXiv preprint
   arxiv: "1412.5976"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2015:
   authors:
     - Sam Sanders
@@ -780,7 +780,7 @@ sanders2015:
   venue: arXiv preprint
   arxiv: "1502.03613"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2015b:
   authors:
     - Sam Sanders
@@ -789,7 +789,7 @@ sanders2015b:
   venue: arXiv preprint
   arxiv: "1502.03615"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2015c:
   authors:
     - Sam Sanders
@@ -798,7 +798,7 @@ sanders2015c:
   venue: arXiv preprint
   arxiv: "1502.03618"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2015d:
   authors:
     - Sam Sanders
@@ -807,7 +807,7 @@ sanders2015d:
   venue: arXiv preprint
   arxiv: "1502.03621"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 raguni2015:
   authors:
     - Giuseppe Raguni
@@ -816,7 +816,7 @@ raguni2015:
   venue: arXiv preprint
   arxiv: "1503.03087"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 dzhafarov2015b:
   authors:
     - Damir D. Dzhafarov
@@ -850,7 +850,7 @@ frittaionetal2015:
   doi: 10.1007/s00153-015-0473-4
   arxiv: "1504.07452"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 kachapova2015:
   authors:
     - Farida Kachapova
@@ -859,7 +859,7 @@ kachapova2015:
   venue: arXiv preprint
   arxiv: "1504.08062"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 patey2015c:
   authors:
     - Ludovic Patey
@@ -887,7 +887,7 @@ koodziejczykmichalewski2015:
   venue: arXiv preprint
   arxiv: "1508.06780"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2015e:
   authors:
     - Sam Sanders
@@ -897,7 +897,7 @@ sanders2015e:
   doi: 10.1093/logcom/exaa019
   arxiv: "1508.07434"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 fernandezduque2015:
   authors:
     - David Fernández-Duque
@@ -906,7 +906,7 @@ fernandezduque2015:
   venue: arXiv preprint
   arxiv: "1509.04547"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 patey2015d:
   authors:
     - Ludovic Patey
@@ -924,7 +924,7 @@ lubarsky2015:
   venue: Annals of Pure and Applied Logic, 141 (2006), pp. 29-34
   arxiv: "1510.00469"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 kreuzer2015:
   authors:
     - Alexander P. Kreuzer
@@ -944,7 +944,7 @@ rinwalsh2015:
   doi: 10.1017/S1755020316000095
   arxiv: "1510.01977"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 hatzikiriakousimpson2015:
   authors:
     - Kostas Hatzikiriakou
@@ -954,7 +954,7 @@ hatzikiriakousimpson2015:
   venue: arXiv preprint
   arxiv: "1510.03106"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 antosfriedman2015:
   authors:
     - Carolin Antos
@@ -964,7 +964,7 @@ antosfriedman2015:
   venue: arXiv preprint
   arxiv: "1510.04082"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2015f:
   authors:
     - Sam Sanders
@@ -973,7 +973,7 @@ sanders2015f:
   venue: arXiv preprint
   arxiv: "1511.04679"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 omatapelupessy2015:
   authors:
     - Yasuhiko Omata
@@ -984,7 +984,7 @@ omatapelupessy2015:
   doi: 10.1007/s00153-018-0642-3
   arxiv: "1512.02954"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 dagostinomarcone2015:
   authors:
     - Giovanna D'Agostino
@@ -995,7 +995,7 @@ dagostinomarcone2015:
   doi: 10.1017/S0960129516000323
   arxiv: "1512.08035"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 steilayokoyama2015:
   authors:
     - Silvia Steila
@@ -1005,7 +1005,7 @@ steilayokoyama2015:
   venue: arXiv preprint
   arxiv: "1512.08622"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 berardisteila2016:
   authors:
     - Stefano Berardi
@@ -1015,7 +1015,7 @@ berardisteila2016:
   venue: arXiv preprint
   arxiv: "1601.01891"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 sanders2016:
   authors:
     - Sam Sanders
@@ -1025,7 +1025,7 @@ sanders2016:
   doi: 10.1215/00294527-2018-0015
   arxiv: "1602.02270"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 kjoshanssenliu2016:
   authors:
     - Bjørn Kjos-Hanssen
@@ -1071,7 +1071,7 @@ arai2016:
   venue: arXiv preprint
   arxiv: "1603.01342"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 patey2016d:
   authors:
     - Ludovic Patey
@@ -1089,7 +1089,7 @@ arai2016b:
   venue: arXiv preprint
   arxiv: "1606.04194"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2016b:
   authors:
     - Sam Sanders
@@ -1099,7 +1099,7 @@ sanders2016b:
   doi: 10.4204/EPTCS.213.3
   arxiv: "1606.06386"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 pelupessy2016b:
   authors:
     - Florian Pelupessy
@@ -1108,7 +1108,7 @@ pelupessy2016b:
   venue: arXiv preprint
   arxiv: "1608.05160"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 koodziejczyketal2016:
   authors:
     - Leszek Kołodziejczyk
@@ -1131,7 +1131,7 @@ dzhafarov2016b:
   doi: 10.1017/S1755020318000461
   arxiv: "1610.00213"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 pelupessy2016c:
   authors:
     - Florian Pelupessy
@@ -1141,7 +1141,7 @@ pelupessy2016c:
   doi: 10.1002/malq.201700040
   arxiv: "1610.00878"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 taranovsky2016:
   authors:
     - Dmytro Taranovsky
@@ -1150,7 +1150,7 @@ taranovsky2016:
   venue: arXiv preprint
   arxiv: "1610.04633"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 carlucci2016:
   authors:
     - Lorenzo Carlucci
@@ -1171,7 +1171,7 @@ neumannpapestreicher2016:
   doi: 10.23638/LMCS-14(2:14)2018
   arxiv: "1610.09209"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 frittaionsteilayokoyama2016:
   authors:
     - Emanuele Frittaion
@@ -1210,7 +1210,7 @@ sanders2017:
   venue: arXiv preprint
   arxiv: "1701.05066"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 normannsanders2017:
   authors:
     - Dag Normann
@@ -1221,7 +1221,7 @@ normannsanders2017:
   doi: 10.1017/jsl.2019.69
   arxiv: "1702.06556"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 enayat2017:
   authors:
     - Ali Enayat
@@ -1230,7 +1230,7 @@ enayat2017:
   venue: arXiv preprint
   arxiv: "1702.07093"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 nies2017:
   authors:
     - Andre Nies
@@ -1239,7 +1239,7 @@ nies2017:
   venue: arXiv preprint
   arxiv: "1703.01573"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 niestriplettyokoyama2017:
   authors:
     - André Nies
@@ -1260,7 +1260,7 @@ galeottinobrega2017b:
   venue: arXiv preprint
   arxiv: "1704.02884"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 arai2017:
   authors:
     - Toshiyasu Arai
@@ -1269,7 +1269,7 @@ arai2017:
   venue: arXiv preprint
   arxiv: "1704.08790"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 kudinovselivanov2017:
   authors:
     - Oleg Kudinov
@@ -1280,7 +1280,7 @@ kudinovselivanov2017:
   doi: 10.23638/LMCS-13(3:16)2017
   arxiv: "1705.04564"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 taranovsky2017:
   authors:
     - Dmytro Taranovsky
@@ -1289,7 +1289,7 @@ taranovsky2017:
   venue: arXiv preprint
   arxiv: "1707.05772"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 marcone2017:
   authors:
     - Alberto Marcone
@@ -1308,7 +1308,7 @@ astor2017:
   venue: arXiv preprint
   arxiv: "1708.04267"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 forssellespindola2017:
   authors:
     - Henrik Forssell
@@ -1318,7 +1318,7 @@ forssellespindola2017:
   venue: arXiv preprint
   arxiv: "1709.05817"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 frittaionetal2017:
   authors:
     - Emanuele Frittaion
@@ -1330,7 +1330,7 @@ frittaionetal2017:
   venue: arXiv preprint
   arxiv: "1709.09036"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 normannsanders2017b:
   authors:
     - Dag Normann
@@ -1341,7 +1341,7 @@ normannsanders2017b:
   doi: 10.1142/S0219061319500016
   arxiv: "1711.08939"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 normannsanders2018:
   authors:
     - Dag Normann
@@ -1351,7 +1351,7 @@ normannsanders2018:
   venue: arXiv preprint
   arxiv: "1801.08172"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 kenny2018:
   authors:
     - Robert Kenny
@@ -1360,7 +1360,7 @@ kenny2018:
   venue: arXiv preprint
   arxiv: "1801.10280"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 eastaugh2018:
   authors:
     - Benedict Eastaugh
@@ -1370,7 +1370,7 @@ eastaugh2018:
   doi: 10.1093/philmat/nky010
   arxiv: "1802.05950"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 andrewssorbi2018:
   authors:
     - Uri Andrews
@@ -1380,7 +1380,7 @@ andrewssorbi2018:
   venue: arXiv preprint
   arxiv: "1802.09249"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 carljamneshan2018:
   authors:
     - Merlin Carl
@@ -1390,7 +1390,7 @@ carljamneshan2018:
   venue: Journal of Logic and Analysis, 10(8):1-32, 2018
   arxiv: "1804.01573"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 diener2018:
   authors:
     - Hannes Diener
@@ -1399,7 +1399,7 @@ diener2018:
   venue: arXiv preprint
   arxiv: "1804.05495"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2018:
   authors:
     - Sam Sanders
@@ -1408,7 +1408,7 @@ sanders2018:
   venue: arXiv preprint
   arxiv: "1804.07952"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 davisetal2018:
   authors:
     - Caleb Davis
@@ -1420,7 +1420,7 @@ davisetal2018:
   venue: arXiv preprint
   arxiv: "1804.09638"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 sanders2018b:
   authors:
     - Sam Sanders
@@ -1430,7 +1430,7 @@ sanders2018b:
   doi: 10.1215/00294527-2019-0032
   arxiv: "1805.11342"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2018c:
   authors:
     - Sam Sanders
@@ -1439,7 +1439,7 @@ sanders2018c:
   venue: arXiv preprint
   arxiv: "1805.11705"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 fokinarosseggermauro2018:
   authors:
     - Ekaterina Fokina
@@ -1451,7 +1451,7 @@ fokinarosseggermauro2018:
   doi: 10.3233/COM-180100
   arxiv: "1806.10363"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 koodziejczykyokoyama2018:
   authors:
     - Leszek Aleksander Kołodziejczyk
@@ -1470,7 +1470,7 @@ kornell2018:
   venue: arXiv preprint
   arxiv: "1807.01494"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 towsneryokoyama2018:
   authors:
     - Henry Towsner
@@ -1480,7 +1480,7 @@ towsneryokoyama2018:
   venue: arXiv preprint
   arxiv: "1807.04452"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 eastaugh2018b:
   authors:
     - Benedict Eastaugh
@@ -1489,7 +1489,7 @@ eastaugh2018b:
   venue: arXiv preprint
   arxiv: "1807.10022"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 das2018:
   authors:
     - Anupam Das
@@ -1499,7 +1499,7 @@ das2018:
   doi: 10.23638/LMCS-16(1:1)2020
   arxiv: "1807.10248"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 friedmangitmankanovei2018:
   authors:
     - Sy-David Friedman
@@ -1510,7 +1510,7 @@ friedmangitmankanovei2018:
   venue: arXiv preprint
   arxiv: "1808.04732"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 chongetal2018:
   authors:
     - Chitat Chong
@@ -1531,7 +1531,7 @@ kawai2018:
   venue: arXiv preprint
   arxiv: "1808.08076"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2018d:
   authors:
     - Sam Sanders
@@ -1540,7 +1540,7 @@ sanders2018d:
   venue: arXiv preprint
   arxiv: "1808.08785"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 normannsanders2018b:
   authors:
     - Dag Normann
@@ -1550,7 +1550,7 @@ normannsanders2018b:
   venue: arXiv preprint
   arxiv: "1808.09783"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 dobrinen2018:
   authors:
     - Natasha Dobrinen
@@ -1559,7 +1559,7 @@ dobrinen2018:
   venue: arXiv preprint
   arxiv: "1808.10227"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 kawamuraetal2018:
   authors:
     - Akitoshi Kawamura
@@ -1571,7 +1571,7 @@ kawamuraetal2018:
   venue: arXiv preprint
   arxiv: "1809.08695"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 bazhenovetal2018:
   authors:
     - Nikolay Bazhenov
@@ -1585,7 +1585,7 @@ bazhenovetal2018:
   doi: 10.1007/s00153-020-00710-1
   arxiv: "1810.03559"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 bahrami2018:
   authors:
     - Saeideh Bahrami
@@ -1595,7 +1595,7 @@ bahrami2018:
   doi: 10.1007/s00153-020-00720-z
   arxiv: "1811.08514"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 patey2019:
   authors:
     - Ludovic Patey
@@ -1620,7 +1620,7 @@ dimitrovetal2019:
   doi: 10.1007/978-3-030-22996-2_15
   arxiv: "1901.04786"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 cholaketal2019:
   authors:
     - Peter A. Cholak
@@ -1642,7 +1642,7 @@ normannsanders2019:
   venue: arXiv preprint
   arxiv: "1902.02756"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 fernandezduqueshaferyokoyama2019:
   authors:
     - David Fernández-Duque
@@ -1675,7 +1675,7 @@ shafer2019:
   venue: arXiv preprint
   arxiv: "1904.01482"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 freundrathjen2019:
   authors:
     - Anton Freund
@@ -1686,7 +1686,7 @@ freundrathjen2019:
   doi: 10.1016/j.apal.2020.102890
   arxiv: "1904.04630"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 kiharapauly2019b:
   authors:
     - Takayuki Kihara
@@ -1696,7 +1696,7 @@ kiharapauly2019b:
   venue: arXiv preprint
   arxiv: "1905.03190"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 sanders2019:
   authors:
     - Sam Sanders
@@ -1705,7 +1705,7 @@ sanders2019:
   venue: arXiv preprint
   arxiv: "1905.04058"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 goh2019c:
   authors:
     - Jun Le Goh
@@ -1714,7 +1714,7 @@ goh2019c:
   venue: arXiv preprint
   arxiv: "1905.06868"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 moninpatey2019b:
   authors:
     - Benoit Monin
@@ -1734,7 +1734,7 @@ litakvisser2019:
   venue: arXiv preprint
   arxiv: "1905.09450"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 freund2019:
   authors:
     - Anton Freund
@@ -1744,7 +1744,7 @@ freund2019:
   doi: 10.1017/jsl.2020.24
   arxiv: "1906.00645"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 paulyseonziegler2019:
   authors:
     - Arno Pauly
@@ -1755,7 +1755,7 @@ paulyseonziegler2019:
   venue: arXiv preprint
   arxiv: "1906.12220"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 bard2019:
   authors:
     - Vittorio Bard
@@ -1764,7 +1764,7 @@ bard2019:
   venue: arXiv preprint
   arxiv: "1907.10766"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 freund2019b:
   authors:
     - Anton Freund
@@ -1774,7 +1774,7 @@ freund2019b:
   doi: 10.1002/malq.201900059
   arxiv: "1908.00280"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 sunzhongziegler2019:
   authors:
     - Shu-Ming Sun
@@ -1785,7 +1785,7 @@ sunzhongziegler2019:
   venue: arXiv preprint
   arxiv: "1908.01226"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 sanders2019b:
   authors:
     - Sam Sanders
@@ -1794,7 +1794,7 @@ sanders2019b:
   venue: arXiv preprint
   arxiv: "1908.05676"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2019c:
   authors:
     - Sam Sanders
@@ -1803,7 +1803,7 @@ sanders2019c:
   venue: arXiv preprint
   arxiv: "1908.05677"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 beklemishevpakhomov2019:
   authors:
     - Lev D. Beklemishev
@@ -1813,7 +1813,7 @@ beklemishevpakhomov2019:
   venue: arXiv preprint
   arxiv: "1908.10302"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 joosten2019:
   authors:
     - Joost J. Joosten
@@ -1823,7 +1823,7 @@ joosten2019:
   doi: 10.1017/jsl.2021.44
   arxiv: "1908.11264"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 bazhenovetal2019:
   authors:
     - Nikolay Bazhenov
@@ -1835,7 +1835,7 @@ bazhenovetal2019:
   venue: arXiv preprint
   arxiv: "1909.12247"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 normannsanders2019b:
   authors:
     - Dag Normann
@@ -1845,7 +1845,7 @@ normannsanders2019b:
   venue: arXiv preprint
   arxiv: "1910.02489"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2019d:
   authors:
     - Sam Sanders
@@ -1855,7 +1855,7 @@ sanders2019d:
   doi: 10.1215/00294527-2022-0001
   arxiv: "1910.07913"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 enayatschmerl2019:
   authors:
     - Ali Enayat
@@ -1865,7 +1865,7 @@ enayatschmerl2019:
   venue: arXiv preprint
   arxiv: "1911.05117"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 westrick2020b:
   authors:
     - Linda Westrick
@@ -1874,7 +1874,7 @@ westrick2020b:
   venue: arXiv preprint
   arxiv: "2001.01881"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 freundrathjenweiermann2020:
   authors:
     - Anton Freund
@@ -1885,7 +1885,7 @@ freundrathjenweiermann2020:
   venue: arXiv preprint
   arxiv: "2001.06380"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 limziegler2020:
   authors:
     - Donghyun Lim
@@ -1896,7 +1896,7 @@ limziegler2020:
   doi: 10.1007/978-3-030-51466-2_18
   arxiv: "2002.04005"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 kihara2020b:
   authors:
     - Takayuki Kihara
@@ -1916,7 +1916,7 @@ uftring2020:
   doi: 10.1017/jsl.2020.53
   arxiv: "2003.13331"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 spreen2020:
   authors:
     - Dieter Spreen
@@ -1926,7 +1926,7 @@ spreen2020:
   doi: 10.1017/S0960129521000116
   arxiv: "2004.05392"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 fernandezduquegjetajweiermann2020:
   authors:
     - David Fernández-Duque
@@ -1937,7 +1937,7 @@ fernandezduquegjetajweiermann2020:
   venue: arXiv preprint
   arxiv: "2004.09117"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 koodziejczykwongyokoyama2020:
   authors:
     - Leszek Aleksander Kołodziejczyk
@@ -1960,7 +1960,7 @@ clemenscoskeykrakoff2020:
   doi: 10.1017/jsl.2022.45
   arxiv: "2005.13777"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 normannsanders2020:
   authors:
     - Dag Normann
@@ -1970,7 +1970,7 @@ normannsanders2020:
   venue: arXiv preprint
   arxiv: "2006.01614"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 liu2020:
   authors:
     - Lu Liu
@@ -1990,7 +1990,7 @@ rosemaurosorbi2020:
   venue: arXiv preprint
   arxiv: "2006.07977"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 freund2020:
   authors:
     - Anton Freund
@@ -2000,7 +2000,7 @@ freund2020:
   doi: 10.1002/malq.202000042
   arxiv: "2006.08953"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 normannsanders2020b:
   authors:
     - Dag Normann
@@ -2010,7 +2010,7 @@ normannsanders2020b:
   venue: arXiv preprint
   arxiv: "2007.07560"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 mummert2020:
   authors:
     - Carl Mummert
@@ -2019,7 +2019,7 @@ mummert2020:
   venue: arXiv preprint
   arxiv: "2008.12694"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 fernandezduquereyes2020:
   authors:
     - David Fernández-Duque
@@ -2029,7 +2029,7 @@ fernandezduquereyes2020:
   venue: arXiv preprint
   arxiv: "2008.13445"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 dimitrovetal2020:
   authors:
     - Rumen Dimitrov
@@ -2043,7 +2043,7 @@ dimitrovetal2020:
   venue: arXiv preprint
   arxiv: "2009.00340"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 ngtavanayang2020:
   authors:
     - Keng Meng Ng
@@ -2054,7 +2054,7 @@ ngtavanayang2020:
   venue: arXiv preprint
   arxiv: "2010.00791"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 bochebockdeppe2020:
   authors:
     - Holger Boche
@@ -2065,7 +2065,7 @@ bochebockdeppe2020:
   venue: arXiv preprint
   arxiv: "2010.09896"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 rathjen2020:
   authors:
     - Michael Rathjen
@@ -2074,7 +2074,7 @@ rathjen2020:
   venue: arXiv preprint
   arxiv: "2010.12453"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2020:
   authors:
     - Sam Sanders
@@ -2083,7 +2083,7 @@ sanders2020:
   venue: arXiv preprint
   arxiv: "2011.01772"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 koodziejczykkowalikyokoyama2020:
   authors:
     - Leszek Aleksander Kołodziejczyk
@@ -2103,7 +2103,7 @@ sanders2020b:
   venue: arXiv preprint
   arxiv: "2011.02915"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 barrett2020:
   authors:
     - Jordan Mitchell Barrett
@@ -2112,7 +2112,7 @@ barrett2020:
   venue: arXiv preprint
   arxiv: "2011.13060"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 freund2020b:
   authors:
     - Anton Freund
@@ -2121,7 +2121,7 @@ freund2020b:
   venue: arXiv preprint
   arxiv: "2012.10292"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 berarduccieleftherioumamino2021:
   authors:
     - Alessandro Berarducci
@@ -2133,7 +2133,7 @@ berarduccieleftherioumamino2021:
   doi: 10.1017/jsl.2023.56
   arxiv: "2101.00630"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 simpsonyokoyama2021:
   authors:
     - Stephen G. Simpson
@@ -2143,7 +2143,7 @@ simpsonyokoyama2021:
   venue: arXiv preprint
   arxiv: "2101.00636"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 moschovakis2021:
   authors:
     - Joan Rand Moschovakis
@@ -2152,7 +2152,7 @@ moschovakis2021:
   venue: arXiv preprint
   arxiv: "2101.05878"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 viale2021:
   authors:
     - Matteo Viale
@@ -2161,7 +2161,7 @@ viale2021:
   venue: arXiv preprint
   arxiv: "2101.07573"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 fioricaronesmarcone2021b:
   authors:
     - Marta Fiori-Carones
@@ -2172,7 +2172,7 @@ fioricaronesmarcone2021b:
   doi: 10.1016/j.disc.2022.112935
   arxiv: "2101.09111"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 moschovakis2021b:
   authors:
     - Joan Rand Moschovakis
@@ -2181,7 +2181,7 @@ moschovakis2021b:
   venue: arXiv preprint
   arxiv: "2101.10313"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 normannsanders2021:
   authors:
     - Dag Normann
@@ -2191,7 +2191,7 @@ normannsanders2021:
   venue: arXiv preprint
   arxiv: "2102.04787"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 pakhomovwalsh2021:
   authors:
     - Fedor Pakhomov
@@ -2201,7 +2201,7 @@ pakhomovwalsh2021:
   venue: arXiv preprint
   arxiv: "2103.12147"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 barmpaliaswang2021:
   authors:
     - George Barmpalias
@@ -2211,7 +2211,7 @@ barmpaliaswang2021:
   venue: arXiv preprint
   arxiv: "2104.12066"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 barrettdowneygreenberg2021:
   authors:
     - Jordan Mitchell Barrett
@@ -2243,7 +2243,7 @@ schrittesser2021:
   doi: 10.1017/nmj.2022.46
   arxiv: "2105.11318"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 andrewsbelinmauro2021:
   authors:
     - Uri Andrews
@@ -2255,7 +2255,7 @@ andrewsbelinmauro2021:
   doi: 10.1017/jsl.2022.28
   arxiv: "2105.12534"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2021:
   authors:
     - Sam Sanders
@@ -2264,7 +2264,7 @@ sanders2021:
   venue: arXiv preprint
   arxiv: "2106.05602"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 hirschfeldtcarlgjockuschschupp2021:
   authors:
     - Denis R. Hirschfeldt
@@ -2275,7 +2275,7 @@ hirschfeldtcarlgjockuschschupp2021:
   venue: arXiv preprint
   arxiv: "2106.13118"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 crookpauly2021:
   authors:
     - Tonicha Crook
@@ -2285,7 +2285,7 @@ crookpauly2021:
   venue: arXiv preprint
   arxiv: "2109.00972"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 normannsanders2021b:
   authors:
     - Dag Normann
@@ -2295,7 +2295,7 @@ normannsanders2021b:
   venue: arXiv preprint
   arxiv: "2109.01352"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 barrett2021:
   authors:
     - Jordan Mitchell Barrett
@@ -2304,7 +2304,7 @@ barrett2021:
   venue: arXiv preprint
   arxiv: "2109.02037"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 bazhenovetal2021:
   authors:
     - Nikolay Bazhenov
@@ -2317,7 +2317,7 @@ bazhenovetal2021:
   doi: 10.3233/COM-210375
   arxiv: "2109.04055"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 walsh2021:
   authors:
     - James Walsh
@@ -2326,7 +2326,7 @@ walsh2021:
   venue: arXiv preprint
   arxiv: "2109.09678"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 carcassiaidala2021:
   authors:
     - Gabriele Carcassi
@@ -2337,7 +2337,7 @@ carcassiaidala2021:
   doi: 10.1007/s10701-022-00555-z
   arxiv: "2111.09107"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 ackermanetal2021:
   authors:
     - Nathanael Ackerman
@@ -2350,7 +2350,7 @@ ackermanetal2021:
   venue: arXiv preprint
   arxiv: "2111.14630"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 freundrathjen2021:
   authors:
     - Anton Freund
@@ -2360,7 +2360,7 @@ freundrathjen2021:
   venue: arXiv preprint
   arxiv: "2112.08005"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 freund2021:
   authors:
     - Anton Freund
@@ -2370,7 +2370,7 @@ freund2021:
   doi: 10.1017/jsl.2025.10089
   arxiv: "2112.08727"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 fioricaronesetal2021:
   authors:
     - Marta Fiori-Carones
@@ -2391,7 +2391,7 @@ kihara2022b:
   venue: arXiv preprint
   arxiv: "2201.12472"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 jagerrathjen2022:
   authors:
     - Gerhard Jäger
@@ -2401,7 +2401,7 @@ jagerrathjen2022:
   venue: arXiv preprint
   arxiv: "2202.03476"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 shafer2022:
   authors:
     - Paul Shafer
@@ -2410,7 +2410,7 @@ shafer2022:
   venue: arXiv preprint
   arxiv: "2202.04998"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 uftring2022:
   authors:
     - Patrick Uftring
@@ -2420,7 +2420,7 @@ uftring2022:
   doi: 10.1016/j.apal.2022.103232
   arxiv: "2202.05611"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2022:
   authors:
     - Sam Sanders
@@ -2429,7 +2429,7 @@ sanders2022:
   venue: arXiv preprint
   arxiv: "2203.05292"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 hirschfeldtreitzes2022:
   authors:
     - Denis R. Hirschfeldt
@@ -2439,7 +2439,7 @@ hirschfeldtreitzes2022:
   venue: arXiv preprint
   arxiv: "2203.08658"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 jeonmatthews2022:
   authors:
     - Hanul Jeon
@@ -2450,7 +2450,7 @@ jeonmatthews2022:
   doi: 10.1017/bsl.2024.8
   arxiv: "2204.05831"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 petrakis2022:
   authors:
     - Iosif Petrakis
@@ -2459,7 +2459,7 @@ petrakis2022:
   venue: arXiv preprint
   arxiv: "2204.11298"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 freund2022:
   authors:
     - Anton Freund
@@ -2468,7 +2468,7 @@ freund2022:
   venue: arXiv preprint
   arxiv: "2205.04336"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 bochepohl2022:
   authors:
     - Holger Boche
@@ -2479,7 +2479,7 @@ bochepohl2022:
   doi: 10.1109/TSP.2021.3102826
   arxiv: "2205.12626"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 cervellegaudelierpatey2022:
   authors:
     - Julien Cervelle
@@ -2510,7 +2510,7 @@ carluccimainardi2022:
   doi: 10.1007/s00153-023-00901-6
   arxiv: "2207.08554"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 frittaion2022:
   authors:
     - Emanuele Frittaion
@@ -2519,7 +2519,7 @@ frittaion2022:
   venue: arXiv preprint
   arxiv: "2207.11693"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 dauriacetal2022:
   authors:
     - Paul-Elliot Anglès d'Auriac
@@ -2541,7 +2541,7 @@ freunduftring2022:
   venue: arXiv preprint
   arxiv: "2208.00209"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 sanders2022b:
   authors:
     - Sam Sanders
@@ -2550,7 +2550,7 @@ sanders2022b:
   venue: arXiv preprint
   arxiv: "2208.03027"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 bompardliupatey2022:
   authors:
     - Tristan Bompard
@@ -2570,7 +2570,7 @@ batyrshin2022:
   venue: arXiv preprint
   arxiv: "2209.00108"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 pachecoyokoyama2022:
   authors:
     - Leonardo Pacheco
@@ -2580,7 +2580,7 @@ pachecoyokoyama2022:
   venue: arXiv preprint
   arxiv: "2209.04082"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 dayetal2022:
   authors:
     - Adam Day
@@ -2592,7 +2592,7 @@ dayetal2022:
   venue: arXiv preprint
   arxiv: "2211.07961"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 arai2022:
   authors:
     - Toshiyasu Arai
@@ -2601,7 +2601,7 @@ arai2022:
   venue: arXiv preprint
   arxiv: "2211.08619"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 normannsanders2022:
   authors:
     - Dag Normann
@@ -2611,7 +2611,7 @@ normannsanders2022:
   venue: arXiv preprint
   arxiv: "2212.00489"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 fernandezduqueetal2023:
   authors:
     - David Fernández-Duque
@@ -2634,7 +2634,7 @@ curzidas2023:
   doi: 10.46298/lmcs-21(4:18)2025
   arxiv: "2302.14825"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2023:
   authors:
     - Sam Sanders
@@ -2644,7 +2644,7 @@ sanders2023:
   doi: 10.1017/jsl.2023.65
   arxiv: "2303.00493"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 tzouvaras2023:
   authors:
     - Athanassios Tzouvaras
@@ -2654,7 +2654,7 @@ tzouvaras2023:
   doi: 10.1002/malq.202000038
   arxiv: "2303.11741"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 freundpakhomovsolda2023:
   authors:
     - Anton Freund
@@ -2665,7 +2665,7 @@ freundpakhomovsolda2023:
   venue: arXiv preprint
   arxiv: "2304.00278"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 freundmanca2023:
   authors:
     - Anton Freund
@@ -2675,7 +2675,7 @@ freundmanca2023:
   venue: arXiv preprint
   arxiv: "2304.03021"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 harizanovsrinivasan2023:
   authors:
     - Valentina Harizanov
@@ -2685,7 +2685,7 @@ harizanovsrinivasan2023:
   venue: arXiv preprint
   arxiv: "2304.03371"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 dowekthire2023:
   authors:
     - Gilles Dowek
@@ -2695,7 +2695,7 @@ dowekthire2023:
   venue: arXiv preprint
   arxiv: "2305.00064"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 freundetal2023:
   authors:
     - Anton Freund
@@ -2718,7 +2718,7 @@ rosemaurosorbi2023:
   venue: arXiv preprint
   arxiv: "2305.11563"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 harrisontrainorliulutz2023:
   authors:
     - Matthew Harrison-Trainor
@@ -2729,7 +2729,7 @@ harrisontrainorliulutz2023:
   venue: arXiv preprint
   arxiv: "2306.01226"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 eastaugh2023:
   authors:
     - Benedict Eastaugh
@@ -2749,7 +2749,7 @@ dasmelgaard2023:
   venue: arXiv preprint
   arxiv: "2306.08535"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 carney2023:
   authors:
     - Mark Carney
@@ -2758,7 +2758,7 @@ carney2023:
   venue: arXiv preprint
   arxiv: "2307.13075"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 barnesgohshore2023:
   authors:
     - James S. Barnes
@@ -2769,7 +2769,7 @@ barnesgohshore2023:
   venue: arXiv preprint
   arxiv: "2308.14287"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 bergotten2023:
   authors:
     - Benno van den Berg
@@ -2779,7 +2779,7 @@ bergotten2023:
   venue: arXiv preprint
   arxiv: "2308.15288"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 pateymimouni2023:
   authors:
     - Ludovic Levy Patey
@@ -2789,7 +2789,7 @@ pateymimouni2023:
   venue: arXiv preprint
   arxiv: "2310.17968"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 sanders2023b:
   authors:
     - Sam Sanders
@@ -2799,7 +2799,7 @@ sanders2023b:
   doi: 10.1017/jsl.2024.51
   arxiv: "2311.11036"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 rauzy2023:
   authors:
     - Emmanuel Rauzy
@@ -2809,7 +2809,7 @@ rauzy2023:
   doi: 10.46298/lmcs-21(3:29)2025
   arxiv: "2311.15861"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 uftring2023b:
   authors:
     - Patrick Uftring
@@ -2818,7 +2818,7 @@ uftring2023b:
   venue: arXiv preprint
   arxiv: "2312.06542"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 jeon2023:
   authors:
     - Hanul Jeon
@@ -2828,7 +2828,7 @@ jeon2023:
   doi: 10.1215/00294527-2025-0008
   arxiv: "2312.12854"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 koberdagonzalez2023:
   authors:
     - Thomas Koberda
@@ -2839,7 +2839,7 @@ koberdagonzalez2023:
   doi: 10.2140/pjm.2026.341.69
   arxiv: "2312.16334"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 carluccimainardizdanowski2024:
   authors:
     - Lorenzo Carlucci
@@ -2850,7 +2850,7 @@ carluccimainardizdanowski2024:
   venue: arXiv preprint
   arxiv: "2401.04451"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 benhametal2024:
   authors:
     - Heidi Benham
@@ -2874,7 +2874,7 @@ houeroupateyyokoyama2024:
   venue: arXiv preprint
   arxiv: "2402.11616"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 andrewsetal2024:
   authors:
     - Uri Andrews
@@ -2888,7 +2888,7 @@ andrewsetal2024:
   doi: 10.1177/22113568241309768
   arxiv: "2402.13163"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 normannsanders2024:
   authors:
     - Dag Normann
@@ -2898,7 +2898,7 @@ normannsanders2024:
   venue: arXiv preprint
   arxiv: "2403.13143"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 neumannpaulypradic2024:
   authors:
     - Eike Neumann
@@ -2909,7 +2909,7 @@ neumannpaulypradic2024:
   venue: arXiv preprint
   arxiv: "2403.13975"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 towsner2024:
   authors:
     - Henry Towsner
@@ -2918,7 +2918,7 @@ towsner2024:
   venue: arXiv preprint
   arxiv: "2403.17922"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 hayashi2024:
   authors:
     - Daichi Hayashi
@@ -2928,7 +2928,7 @@ hayashi2024:
   doi: 10.1016/j.apal.2024.103510
   arxiv: "2404.05899"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2024:
   authors:
     - Sam Sanders
@@ -2938,7 +2938,7 @@ sanders2024:
   doi: 10.1017/bsl.2024.30
   arxiv: "2404.06805"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 freund2024:
   authors:
     - Anton Freund
@@ -2947,7 +2947,7 @@ freund2024:
   venue: arXiv preprint
   arxiv: "2404.06872"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 holzlng2024:
   authors:
     - Rupert Hölzl
@@ -2957,7 +2957,7 @@ holzlng2024:
   venue: arXiv preprint
   arxiv: "2405.04338"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 sanders2024b:
   authors:
     - Sam Sanders
@@ -2966,7 +2966,7 @@ sanders2024b:
   venue: arXiv preprint
   arxiv: "2405.06420"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 pakhomovsolda2024:
   authors:
     - Fedor Pakhomov
@@ -2976,7 +2976,7 @@ pakhomovsolda2024:
   venue: arXiv preprint
   arxiv: "2405.13842"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 kulshreshtha2024:
   authors:
     - Dhruv Kulshreshtha
@@ -2985,7 +2985,7 @@ kulshreshtha2024:
   venue: arXiv preprint
   arxiv: "2406.01336"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 gonzalez2024:
   authors:
     - David Gonzalez
@@ -2994,7 +2994,7 @@ gonzalez2024:
   venue: arXiv preprint
   arxiv: "2406.01840"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 normannsanders2024b:
   authors:
     - Dag Normann
@@ -3004,7 +3004,7 @@ normannsanders2024b:
   venue: arXiv preprint
   arxiv: "2406.10716"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 freund2024b:
   authors:
     - Anton Freund
@@ -3013,7 +3013,7 @@ freund2024b:
   venue: arXiv preprint
   arxiv: "2406.13485"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 houeroupateymimouni2024:
   authors:
     - Quentin Le Houérou
@@ -3024,7 +3024,7 @@ houeroupateymimouni2024:
   venue: arXiv preprint
   arxiv: "2407.01236"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 cervellegaudelierpatey2024:
   authors:
     - Julien Cervelle
@@ -3035,7 +3035,7 @@ cervellegaudelierpatey2024:
   venue: arXiv preprint
   arxiv: "2407.02206"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 pauly2024:
   authors:
     - Arno Pauly
@@ -3044,7 +3044,7 @@ pauly2024:
   venue: arXiv preprint
   arxiv: "2407.03722"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 suzuki2024:
   authors:
     - Yudai Suzuki
@@ -3054,7 +3054,7 @@ suzuki2024:
   doi: 10.1017/jsl.2025.10096
   arxiv: "2407.13504"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 belangeretal2024:
   authors:
     - David Belanger
@@ -3067,7 +3067,7 @@ belangeretal2024:
   doi: 10.1017/jsl.2026.10182
   arxiv: "2408.09796"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 pradic2024:
   authors:
     - Cécilia Pradic
@@ -3076,7 +3076,7 @@ pradic2024:
   venue: arXiv preprint
   arxiv: "2408.14999"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 sanders2024c:
   authors:
     - Sam Sanders
@@ -3086,7 +3086,7 @@ sanders2024c:
   doi: 10.1017/jsl.2025.10
   arxiv: "2409.04562"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 towsnerwalsh2024:
   authors:
     - Henry Towsner
@@ -3097,7 +3097,7 @@ towsnerwalsh2024:
   doi: 10.4153/S000843952510091X
   arxiv: "2409.05973"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 andrewsmauro2024:
   authors:
     - Uri Andrews
@@ -3107,7 +3107,7 @@ andrewsmauro2024:
   venue: arXiv preprint
   arxiv: "2409.17018"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 fuchinogappoparente2024:
   authors:
     - Sakaé Fuchino
@@ -3119,7 +3119,7 @@ fuchinogappoparente2024:
   doi: 10.1017/jsl.2025.10131
   arxiv: "2410.15384"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 freunduftring2024:
   authors:
     - Anton Freund
@@ -3139,7 +3139,7 @@ genovesi2024:
   doi: 10.1017/jsl.2026.10217
   arxiv: "2410.22227"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 atseriastzameret2024:
   authors:
     - Albert Atserias
@@ -3149,7 +3149,7 @@ atseriastzameret2024:
   venue: arXiv preprint
   arxiv: "2411.07966"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 neri2024:
   authors:
     - Morenikeji Neri
@@ -3158,7 +3158,7 @@ neri2024:
   venue: arXiv preprint
   arxiv: "2411.08620"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 dzhafarovsolomonvolpi2024:
   authors:
     - Damir D. Dzhafarov
@@ -3169,7 +3169,7 @@ dzhafarovsolomonvolpi2024:
   venue: arXiv preprint
   arxiv: "2411.16950"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 carl2024:
   authors:
     - Merlin Carl
@@ -3178,7 +3178,7 @@ carl2024:
   venue: arXiv preprint
   arxiv: "2411.19386"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 carluccietal2024:
   authors:
     - Lorenzo Carlucci
@@ -3191,7 +3191,7 @@ carluccietal2024:
   doi: 10.1017/jsl.2025.10104
   arxiv: "2412.11598"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 aguilerafreundweiermann2024:
   authors:
     - Juan P. Aguilera
@@ -3202,7 +3202,7 @@ aguilerafreundweiermann2024:
   venue: arXiv preprint
   arxiv: "2412.13051"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 acevesmartinezetal2024:
   authors:
     - Bruno Fernando Aceves-Martínez
@@ -3215,7 +3215,7 @@ acevesmartinezetal2024:
   doi: 10.1007/s00153-026-01004-8
   arxiv: "2412.14558"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 hughes2025:
   authors:
     - Noah A. Hughes
@@ -3224,7 +3224,7 @@ hughes2025:
   venue: arXiv preprint
   arxiv: "2501.09566"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 uftring2025:
   authors:
     - Patrick Uftring
@@ -3244,7 +3244,7 @@ deansanders2025:
   doi: 10.1017/S1755020325000061
   arxiv: "2502.06596"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 shimomichitakedayokoyama2025:
   authors:
     - Sho Shimomichi
@@ -3255,7 +3255,7 @@ shimomichitakedayokoyama2025:
   venue: arXiv preprint
   arxiv: "2503.01191"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 neumannetal2025:
   authors:
     - Eike Neumann
@@ -3268,7 +3268,7 @@ neumannetal2025:
   doi: 10.1007/978-3-031-95908-0_25
   arxiv: "2504.07020"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 mullerwciso2025:
   authors:
     - Sandra Müller
@@ -3278,7 +3278,7 @@ mullerwciso2025:
   venue: arXiv preprint
   arxiv: "2505.16628"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 enayat2025:
   authors:
     - Ali Enayat
@@ -3287,7 +3287,7 @@ enayat2025:
   venue: arXiv preprint
   arxiv: "2505.23998"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 dooley2025:
   authors:
     - Gavin Dooley
@@ -3296,7 +3296,7 @@ dooley2025:
   venue: arXiv preprint
   arxiv: "2506.20620"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 curzimelgaard2025:
   authors:
     - Gianluca Curzi
@@ -3306,7 +3306,7 @@ curzimelgaard2025:
   venue: arXiv preprint
   arxiv: "2507.13057"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 delapogonzalez2025:
   authors:
     - Andrew DeLapo
@@ -3316,7 +3316,7 @@ delapogonzalez2025:
   venue: arXiv preprint
   arxiv: "2507.18564"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 uftring2025b:
   authors:
     - Patrick Uftring
@@ -3325,7 +3325,7 @@ uftring2025b:
   venue: arXiv preprint
   arxiv: "2507.21877"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 chenmeadows2025:
   authors:
     - Jason Chen
@@ -3335,7 +3335,7 @@ chenmeadows2025:
   venue: arXiv preprint
   arxiv: "2508.03956"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 mimounipatey2025:
   authors:
     - Ahmed Mimouni
@@ -3345,7 +3345,7 @@ mimounipatey2025:
   venue: arXiv preprint
   arxiv: "2508.15597"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 clarkedoane2025:
   authors:
     - Justin Clarke-Doane
@@ -3354,7 +3354,7 @@ clarkedoane2025:
   venue: arXiv preprint
   arxiv: "2509.02567"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 carl2025:
   authors:
     - Merlin Carl
@@ -3363,7 +3363,7 @@ carl2025:
   venue: arXiv preprint
   arxiv: "2509.02766"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 kowalik2025:
   authors:
     - Katarzyna W. Kowalik
@@ -3372,7 +3372,7 @@ kowalik2025:
   venue: arXiv preprint
   arxiv: "2510.00323"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 brattkarauzy2025c:
   authors:
     - Vasco Brattka
@@ -3382,7 +3382,7 @@ brattkarauzy2025c:
   venue: arXiv preprint
   arxiv: "2510.09850"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 chongwong2025:
   authors:
     - Chi Tat Chong
@@ -3392,7 +3392,7 @@ chongwong2025:
   venue: arXiv preprint
   arxiv: "2510.18490"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 buriolaweiermann2025:
   authors:
     - Gabriele Buriola
@@ -3402,7 +3402,7 @@ buriolaweiermann2025:
   venue: arXiv preprint
   arxiv: "2511.11297"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 pakhomovsolda2025:
   authors:
     - Fedor Pakhomov
@@ -3412,7 +3412,7 @@ pakhomovsolda2025:
   venue: arXiv preprint
   arxiv: "2512.07685"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 marconeosso2026:
   authors:
     - Alberto Marcone
@@ -3433,7 +3433,7 @@ bochepohlpoor2026:
   venue: arXiv preprint
   arxiv: "2601.06954"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 ikariyokoyama2026:
   authors:
     - Hiroyuki Ikari
@@ -3443,7 +3443,7 @@ ikariyokoyama2026:
   venue: arXiv preprint
   arxiv: "2601.07569"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 kirstzeng2026:
   authors:
     - Dominik Kirst
@@ -3453,7 +3453,7 @@ kirstzeng2026:
   venue: arXiv preprint
   arxiv: "2601.12592"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 horittermauro2026:
   authors:
     - Meng-Che "Turbo" Ho
@@ -3464,7 +3464,7 @@ horittermauro2026:
   venue: arXiv preprint
   arxiv: "2601.13005"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 pradicprice2026:
   authors:
     - Cécilia Pradic
@@ -3474,7 +3474,7 @@ pradicprice2026:
   venue: arXiv preprint
   arxiv: "2601.15420"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 normannsanders2026:
   authors:
     - Dag Normann
@@ -3484,7 +3484,7 @@ normannsanders2026:
   venue: arXiv preprint
   arxiv: "2602.05558"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2026:
   authors:
     - Sam Sanders
@@ -3493,7 +3493,7 @@ sanders2026:
   venue: arXiv preprint
   arxiv: "2602.06728"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 chenetal2026:
   authors:
     - Lijie Chen
@@ -3505,7 +3505,7 @@ chenetal2026:
   venue: arXiv preprint
   arxiv: "2602.09302"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 houeroupatey2026:
   authors:
     - Quentin Le Houérou
@@ -3515,7 +3515,7 @@ houeroupatey2026:
   venue: arXiv preprint
   arxiv: "2602.11906"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 kohlenbach2026:
   authors:
     - Ulrich Kohlenbach
@@ -3525,7 +3525,7 @@ kohlenbach2026:
   doi: 10.4204/EPTCS.441.11
   arxiv: "2603.04016"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 brattkasorg2026:
   authors:
     - Vasco Brattka
@@ -3535,7 +3535,7 @@ brattkasorg2026:
   venue: arXiv preprint
   arxiv: "2603.16802"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 marconevolpi2026:
   authors:
     - Alberto Marcone
@@ -3545,7 +3545,7 @@ marconevolpi2026:
   venue: arXiv preprint
   arxiv: "2603.18759"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 sorg2026:
   authors:
     - Christopher Sorg
@@ -3554,7 +3554,7 @@ sorg2026:
   venue: arXiv preprint
   arxiv: "2603.18955"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 fernandezduquemorreelweiermann2026:
   authors:
     - David Fernández-Duque
@@ -3565,7 +3565,7 @@ fernandezduquemorreelweiermann2026:
   venue: arXiv preprint
   arxiv: "2603.19981"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 aguilerakouptchinskyyokoyama2026:
   authors:
     - Juan P. Aguilera
@@ -3576,7 +3576,7 @@ aguilerakouptchinskyyokoyama2026:
   venue: arXiv preprint
   arxiv: "2603.22503"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 carluccivolpizdanowski2026:
   authors:
     - Lorenzo Carlucci
@@ -3596,7 +3596,7 @@ cholak2026:
   venue: arXiv preprint
   arxiv: "2603.23704"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 dimitrovetal2026:
   authors:
     - Rumen Dimitrov
@@ -3608,7 +3608,7 @@ dimitrovetal2026:
   venue: arXiv preprint
   arxiv: "2604.09965"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 carluccigjetaj2026:
   authors:
     - Lorenzo Carlucci
@@ -3618,7 +3618,7 @@ carluccigjetaj2026:
   venue: arXiv preprint
   arxiv: "2605.03523"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 bourneznunez2026:
   authors:
     - Olivier Bournez
@@ -3628,7 +3628,7 @@ bourneznunez2026:
   venue: arXiv preprint
   arxiv: "2605.07128"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 kanekoyokoyama2026:
   authors:
     - Yuzuki Kaneko
@@ -3638,7 +3638,7 @@ kanekoyokoyama2026:
   venue: arXiv preprint
   arxiv: "2605.15052"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 freundpischkeuftring2026:
   authors:
     - Anton Freund
@@ -3649,7 +3649,7 @@ freundpischkeuftring2026:
   venue: arXiv preprint
   arxiv: "2605.15151"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 kiharang2026:
   authors:
     - Takayuki Kihara
@@ -3659,7 +3659,7 @@ kiharang2026:
   venue: arXiv preprint
   arxiv: "2605.21473"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 rauzy2026:
   authors:
     - Emmanuel Rauzy
@@ -3668,7 +3668,7 @@ rauzy2026:
   venue: arXiv preprint
   arxiv: "2605.30138"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 sanderstaranovsky2026:
   authors:
     - Sam Sanders
@@ -3678,7 +3678,7 @@ sanderstaranovsky2026:
   venue: arXiv preprint
   arxiv: "2606.01420"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sorg2026b:
   authors:
     - Christopher Sorg
@@ -3687,7 +3687,7 @@ sorg2026b:
   venue: arXiv preprint
   arxiv: "2606.13250"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 suzukiyokoyama2026:
   authors:
     - Yudai Suzuki
@@ -3697,7 +3697,7 @@ suzukiyokoyama2026:
   venue: arXiv preprint
   arxiv: "2606.29802"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 cholakdobrinentowsner2026:
   authors:
     - Peter Cholak
@@ -3718,7 +3718,7 @@ takedayokoyama2026:
   venue: arXiv preprint
   arxiv: "2607.01970"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 downeylemppscott2026:
   authors:
     - Rodney G. Downey
@@ -3729,7 +3729,7 @@ downeylemppscott2026:
   venue: arXiv preprint
   arxiv: "2607.02870"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 kajikawaetal2026:
   authors:
     - Akihito Kajikawa
@@ -3741,7 +3741,7 @@ kajikawaetal2026:
   venue: arXiv preprint
   arxiv: "2608.02133"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 ichikawa2026:
   authors:
     - Koshiro Ichikawa
@@ -3750,7 +3750,7 @@ ichikawa2026:
   venue: arXiv preprint
   arxiv: "2608.03238"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 gonzalezshafer2026:
   authors:
     - David Gonzalez
@@ -3760,7 +3760,7 @@ gonzalezshafer2026:
   venue: arXiv preprint
   arxiv: "2608.04654"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 pakhomov2026:
   authors:
     - Fedor Pakhomov
@@ -3769,7 +3769,7 @@ pakhomov2026:
   venue: arXiv preprint
   arxiv: "2608.07050"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 takeda2026:
   authors:
     - Yuto Takeda
@@ -3778,7 +3778,7 @@ takeda2026:
   venue: arXiv preprint
   arxiv: "2608.22822"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 marconeosso2026b:
   authors:
     - Alberto Marcone
@@ -3788,7 +3788,7 @@ marconeosso2026b:
   venue: arXiv preprint
   arxiv: "2608.24716"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 miyatayokoyama2026:
   authors:
     - Yamato Miyata
@@ -3798,7 +3798,7 @@ miyatayokoyama2026:
   venue: arXiv preprint
   arxiv: "2608.25339"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 kolar2026:
   authors:
     - Martin Kolář
@@ -3807,7 +3807,7 @@ kolar2026:
   venue: arXiv preprint
   arxiv: "2608.28813"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 astoretal2026:
   authors:
     - Eric P. Astor
@@ -3822,7 +3822,7 @@ astoretal2026:
   venue: arXiv preprint
   arxiv: "2609.00884"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 kawai2026:
   authors:
     - Tatsuji Kawai
@@ -3831,7 +3831,7 @@ kawai2026:
   venue: arXiv preprint
   arxiv: "2609.04644"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 pshenitsyn2026:
   authors:
     - Tikhon Pshenitsyn
@@ -3840,7 +3840,7 @@ pshenitsyn2026:
   venue: arXiv preprint
   arxiv: "2609.16173"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sanders2026b:
   authors:
     - Sam Sanders
@@ -3849,7 +3849,7 @@ sanders2026b:
   venue: arXiv preprint
   arxiv: "2609.18371"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 sorg2026c:
   authors:
     - Christopher Sorg
@@ -3858,7 +3858,7 @@ sorg2026c:
   venue: arXiv preprint
   arxiv: "2609.20378"
   source: arxiv
-  read: abstract
+  read: pdf-arxiv
 eastaugh2026:
   authors:
     - Benedict Eastaugh
@@ -3867,7 +3867,7 @@ eastaugh2026:
   venue: arXiv preprint
   arxiv: "2609.25183"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 kawai2026b:
   authors:
     - Tatsuji Kawai
@@ -3876,7 +3876,7 @@ kawai2026b:
   venue: arXiv preprint
   arxiv: "2610.12964"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 buriolaetal2026:
   authors:
     - Gabriele Buriola
@@ -3888,7 +3888,7 @@ buriolaetal2026:
   venue: arXiv preprint
   arxiv: "2610.26336"
   source: arxiv
-  read: screened
+  read: pdf-arxiv
 bresolinmamino2026:
   authors:
     - Lorenzo Bresolin
@@ -3898,4 +3898,4 @@ bresolinmamino2026:
   venue: arXiv preprint
   arxiv: "2610.30433"
   source: arxiv
-  read: screened
+  read: pdf-arxiv

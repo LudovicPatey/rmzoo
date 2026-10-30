@@ -154,7 +154,7 @@ a natural contribution workflow is "one paper → append its theorems".
 ### 1.6 References
 
 Each reference may record how far it was read when the database was built:
-`read: pdf-zotero | pdf-arxiv | abstract | screened` (absent: not read). Only
+`read: pdf-zotero | pdf-arxiv | pdf-oa | abstract | screened` (absent: not read). Only
 `pdf-*` entries had their full text parsed; `abstract` entries were read from
 their abstract only (so theorem numbers may be missing), and `screened` ones
 were only scanned by keywords. The Literature page can filter on this status.

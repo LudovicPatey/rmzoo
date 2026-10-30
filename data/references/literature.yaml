@@ -168,7 +168,7 @@ gohpaulyvalenti2021:
   year: 2021
   doi: 10.1017/jsl.2021.15
   arxiv: '2010.03840'
-  read: abstract
+  read: pdf-arxiv
 gohpaulyvalenti2024:
   authors: [ Jun Le Goh, Arno Pauly, Manlio Valenti ]
   title: The weakness of finding descending sequences in ill-founded linear orders

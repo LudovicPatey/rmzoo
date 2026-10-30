@@ -1,0 +1,3 @@
+# Results from [ciprianimarconevalenti2022].
+
+[ { type: implication, from: cnn, to: ucnn, over: sw, refs: [ { ref: ciprianimarconevalenti2022, loc: Theorem 3.6 } ] } ]

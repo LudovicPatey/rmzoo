@@ -564,6 +564,7 @@ function relations(i, r) {
 const READ = {
   'pdf-zotero': ['full text parsed', 'The PDF (from the maintainer\'s Zotero library) was parsed when extracting results.'],
   'pdf-arxiv': ['full text parsed', 'The arXiv PDF was parsed when extracting results.'],
+  'pdf-oa': ['full text parsed', 'An open-access PDF (found via OpenAlex) was parsed when extracting results.'],
   abstract: ['abstract read', 'Only the abstract was read; theorem numbers may be missing.'],
   screened: ['abstract screened', 'The abstract was only screened by keywords; results may be missing.'],
 };
