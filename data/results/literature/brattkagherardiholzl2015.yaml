@@ -1,3 +1,4 @@
 # Results from [brattkagherardiholzl2015].
 
-- {type: "separation", from: "wwkl", to: "ivt", over: "w", note: "IVT is reducible to the jump of WWKL but not to WWKL.", refs: [{ref: brattkagherardiholzl2015}]}
+- { type: "separation", from: "wwkl", to: "ivt", over: "w", note: "IVT is reducible to the jump of WWKL but not to WWKL.", refs: [ { ref: brattkagherardiholzl2015 } ] }
+- { type: separation, from: wwkl, to: wkl, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 8.5 } ] }

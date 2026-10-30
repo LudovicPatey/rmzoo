@@ -1,33 +1,33 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Patey (2015) — Somewhere over the rainbow Ramsey theorem for pairs
 
-- {type: "implication", from: "rrt22", to: "wsrrt22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "wsrrt22", to: "srrt22", over: "rca0", folklore: true, note: "By definition."}
-- {type: "implication", from: "rrt32", to: "srrt32", over: "rca0", folklore: true, note: "By definition."}
-- {type: "separation", from: "srt22", to: "rrt22", over: "rca0", refs: [{ref: "patey2015", loc: "Corollary 2.12"}]}
-- {type: "implication", from: "sem", to: "dnr", over: "c", refs: [{ref: "patey2015", loc: "Corollary 3.6"}]}
-- {type: "separation", from: "cac", to: "sem", over: "omega", refs: [{ref: "patey2015", loc: "Corollary 3.7"}]}
-- {type: "implication", from: "em", to: "dnr0", over: "rca0", refs: [{ref: "patey2015", loc: "Theorem 3.10"}]}
-- {type: "implication", from: "sem", to: "dnr", over: "rca0", refs: [{ref: "patey2015", loc: "Theorem 3.13"}]}
-- {type: "implication", from: "srt22", to: "sfs2", over: "rca0", refs: [{ref: "patey2015", loc: "Lemma 4.3"}]}
-- {type: "implication", from: "rrt32", to: "ts2", over: "rca0", refs: [{ref: "patey2015", loc: "Theorem 4.5"}]}
-- {type: "implication", from: "rrt", to: "fs", over: "omega", refs: [{ref: "patey2015", loc: "Corollary 4.7"}]}
-- {type: "implication", from: "ts2", to: "dnr0", over: "rca0", refs: [{ref: "patey2015", loc: "Theorem 4.8"}]}
-- {type: "implication", from: "ipt22", to: "dnr0", over: "rca0", refs: [{ref: "patey2015", loc: "Theorem 4.12"}]}
-- {type: "separation", from: "rt22", to: "ts3", over: "omega", refs: [{ref: "patey2015", loc: "Corollary 4.15"}]}
-- {type: "implication", from: "sts2", to: "amt", over: "rca0", refs: [{ref: "patey2015", loc: "Theorem 4.19"}]}
-- {type: "implication", from: "srrt22", to: "dnr", over: "rca0", refs: [{ref: "patey2015", loc: "Theorem 5.11"}]}
-- {type: "separation", from: "srrt22", to: "sem", over: "omega", refs: [{ref: "patey2015", loc: "Corollary 5.23"}]}
-- {type: "separation", from: "srrt22", to: "sts2", over: "omega", refs: [{ref: "patey2015", loc: "Corollary 5.23"}]}
-- {type: "implication", from: "srrt22", to: "hyp", over: "rca0", refs: [{ref: "patey2015", loc: "Theorem 5.24"}]}
-- {type: "implication", from: "srrt32", to: "sts2", over: "rca0", refs: [{ref: "patey2015", loc: "Theorem 5.26"}]}
-- {type: "implication", from: "isig2-sts2", to: "srrt22", over: "rca0", refs: [{ref: "patey2015", loc: "Corollary 5.30"}]}
-- {type: "implication", from: "sem", to: "srrt22", over: "rca0", refs: [{ref: "patey2015", loc: "Corollary 5.32"}]}
-- {type: "separation", from: "wsrrt22", to: "rrt22", over: "omega", refs: [{ref: "patey2015", loc: "Corollary 6.11"}]}
-- {type: "implication", from: "bsig2-sfs2", to: "wsrrt22", over: "rca0", refs: [{ref: "patey2015", loc: "Theorem 6.14"}]}
-- {type: "equivalence", from: "rrt22", to: "dnr0", over: "rca0", folklore: true, note: "J. Miller (personal communication)"}
-- {type: "implication", from: "sfs3", to: "sfs2", over: "rca0", refs: [{ref: "cholaketal2005", loc: "follows from proof of Theorem 2.3"}]}
-- {type: "implication", from: "sfs3", to: "sts3", over: "rca0", refs: [{ref: "cholaketal2005", loc: "follows from proof of Theorem 3.2"}]}
-- {type: "implication", from: "sfs2", to: "sts2", over: "rca0", refs: [{ref: "cholaketal2005", loc: "follows from proof of Theorem 3.2"}]}
-- {type: "implication", from: "sts3", to: "ts2", over: "rca0", refs: [{ref: "cholaketal2005", loc: "follows from proof of Theorem 3.4"}]}
-- {type: "implication", from: "srt22", to: "dnr", over: "c", folklore: true, note: "Hirschfeldt, Jockusch, Kjos-Hanssen, Lempp, and Slaman (2008) [follows from proof of Theorem 2.3]"}
+- { type: "implication", from: "rrt22", to: "wsrrt22", over: "rca0", folklore: true, note: "By definition." }
+- { type: "implication", from: "wsrrt22", to: "srrt22", over: "rca0", folklore: true, note: "By definition." }
+- { type: "implication", from: "rrt32", to: "srrt32", over: "rca0", folklore: true, note: "By definition." }
+- { type: "separation", from: "srt22", to: "rrt22", over: "rca0", refs: [ { ref: patey2015, loc: Corollary 2.12 } ] }
+- { type: "implication", from: "sem", to: "dnr", over: "c", refs: [ { ref: "patey2015", loc: "Corollary 3.6" } ] }
+- { type: "separation", from: "cac", to: "sem", over: "omega", refs: [ { ref: patey2015, loc: Corollary 3.7 } ] }
+- { type: "implication", from: "em", to: "dnr0", over: "rca0", refs: [ { ref: patey2015, loc: Theorem 3.10 } ] }
+- { type: "implication", from: "sem", to: "dnr", over: "rca0", refs: [ { ref: patey2015, loc: Theorem 3.13 } ] }
+- { type: "implication", from: "srt22", to: "sfs2", over: "rca0", refs: [ { ref: "patey2015", loc: "Lemma 4.3" } ] }
+- { type: "implication", from: "rrt32", to: "ts2", over: "rca0", refs: [ { ref: "patey2015", loc: "Theorem 4.5" } ] }
+- { type: "implication", from: "rrt", to: "fs", over: "omega", refs: [ { ref: "patey2015", loc: "Corollary 4.7" } ] }
+- { type: "implication", from: "ts2", to: "dnr0", over: "rca0", refs: [ { ref: "patey2015", loc: "Theorem 4.8" } ] }
+- { type: "implication", from: "ipt22", to: "dnr0", over: "rca0", refs: [ { ref: "patey2015", loc: "Theorem 4.12" } ] }
+- { type: "separation", from: "rt22", to: "ts3", over: "omega", refs: [ { ref: patey2015, loc: Corollary 4.15 } ] }
+- { type: "implication", from: "sts2", to: "amt", over: "rca0", refs: [ { ref: patey2015, loc: Theorem 4.19 } ] }
+- { type: "implication", from: "srrt22", to: "dnr", over: "rca0", refs: [ { ref: patey2015, loc: Theorem 5.11 } ] }
+- { type: "separation", from: "srrt22", to: "sem", over: "omega", refs: [ { ref: "patey2015", loc: "Corollary 5.23" } ] }
+- { type: "separation", from: "srrt22", to: "sts2", over: "omega", refs: [ { ref: "patey2015", loc: "Corollary 5.23" } ] }
+- { type: "implication", from: "srrt22", to: "hyp", over: "rca0", refs: [ { ref: "patey2015", loc: "Theorem 5.24" } ] }
+- { type: "implication", from: "srrt32", to: "sts2", over: "rca0", refs: [ { ref: "patey2015", loc: "Theorem 5.26" } ] }
+- { type: "implication", from: "isig2-sts2", to: "srrt22", over: "rca0", refs: [ { ref: "patey2015", loc: "Corollary 5.30" } ] }
+- { type: "implication", from: "sem", to: "srrt22", over: "rca0", refs: [ { ref: "patey2015", loc: "Corollary 5.32" } ] }
+- { type: "separation", from: "wsrrt22", to: "rrt22", over: "omega", refs: [ { ref: "patey2015", loc: "Corollary 6.11" } ] }
+- { type: "implication", from: "bsig2-sfs2", to: "wsrrt22", over: "rca0", refs: [ { ref: "patey2015", loc: "Theorem 6.14" } ] }
+- { type: "equivalence", from: "rrt22", to: "dnr0", over: "rca0", folklore: true, note: "J. Miller (personal communication)" }
+- { type: "implication", from: "sfs3", to: "sfs2", over: "rca0", refs: [ { ref: "cholaketal2005", loc: "follows from proof of Theorem 2.3" } ] }
+- { type: "implication", from: "sfs3", to: "sts3", over: "rca0", refs: [ { ref: "cholaketal2005", loc: "follows from proof of Theorem 3.2" } ] }
+- { type: "implication", from: "sfs2", to: "sts2", over: "rca0", refs: [ { ref: "cholaketal2005", loc: "follows from proof of Theorem 3.2" } ] }
+- { type: "implication", from: "sts3", to: "ts2", over: "rca0", refs: [ { ref: "cholaketal2005", loc: "follows from proof of Theorem 3.4" } ] }
+- { type: "implication", from: "srt22", to: "dnr", over: "c", folklore: true, note: "Hirschfeldt, Jockusch, Kjos-Hanssen, Lempp, and Slaman (2008) [follows from proof of Theorem 2.3]" }

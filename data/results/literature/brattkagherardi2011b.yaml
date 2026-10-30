@@ -1,6 +1,6 @@
 # Results from [brattkagherardi2011b].
 
-- {type: "implication", from: "wkl", to: "ivt", over: "sw", note: "IVT ≡sW CC_[0,1] ≤sW C_{2^N} ≡sW WKL.", refs: [{ref: brattkagherardi2011b}]}
-- {type: "implication", from: "ivt", to: "llpo", over: "w", refs: [{ref: brattkagherardi2011b}]}
-- {type: "implication", from: "cn", to: "lpo", over: "w", refs: [{ref: brattkagherardi2011b}]}
-- {type: "implication", from: "lim", to: "cn", over: "w", refs: [{ref: brattkagherardi2011b}]}
+- { type: "implication", from: "wkl", to: "ivt", over: "sw", note: "IVT ≡sW CC_[0,1] ≤sW C_{2^N} ≡sW WKL.", refs: [ { ref: brattkagherardi2011b }, { ref: brattkagherardipauly2021, loc: Theorem 7.34 } ] }
+- { type: "implication", from: "ivt", to: "llpo", over: "w", refs: [ { ref: brattkagherardi2011b } ] }
+- { type: "implication", from: "cn", to: "lpo", over: "w", refs: [ { ref: brattkagherardi2011b, loc: Proposition 3.9 }, { ref: brattkagherardipauly2021, loc: Proposition 7.17 } ] }
+- { type: "implication", from: "lim", to: "cn", over: "w", refs: [ { ref: brattkagherardi2011b, loc: Theorem 3.10 } ] }

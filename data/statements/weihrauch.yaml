@@ -129,3 +129,60 @@
   solution: An infinite bad sequence.
   refs:
     - { ref: gohpaulyvalenti2021, role: origin }
+
+- id: kn
+  label: '\mathsf{K}_{\mathbb{N}}'
+  name: Compact choice on the natural numbers
+  kind: problem
+  tags: [weihrauch]
+  aliases: [K_N, 'C_2^*', finite parallelization of LLPO]
+  definition: >
+    Given a bound $b$ and an enumeration of the complement of a nonempty set
+    $A \subseteq \{0, \dots, b\}$, find an element of $A$. Strongly Weihrauch
+    equivalent to the finite parallelization $\mathsf{C}_2^*$ of LLPO.
+  instance: A bound $b$ and an enumeration of the complement of a nonempty $A \subseteq \{0, \dots, b\}$.
+  solution: An element of $A$.
+  refs:
+    - {ref: brattkagherardipauly2021, role: survey, loc: Proposition 7.20}
+
+- id: cr
+  label: '\mathsf{C}_{\mathbb{R}}'
+  name: Closed choice on the reals
+  kind: problem
+  tags: [weihrauch]
+  aliases: [C_R, locally compact choice]
+  definition: >
+    Given (negative information about) a nonempty closed set $A \subseteq \mathbb{R}$,
+    find a point of $A$. Equivalent to $\mathsf{C}_{2^{\mathbb{N}}} \times \mathsf{C}_{\mathbb{N}}$.
+  instance: An enumeration of rational open intervals whose union is the complement of a nonempty closed $A \subseteq \mathbb{R}$.
+  solution: A point of $A$.
+  refs:
+    - {ref: brattkadebrechtpauly2012, role: rm}
+
+- id: ucnn
+  label: '\mathsf{UC}_{\mathbb{N}^{\mathbb{N}}}'
+  name: Unique closed choice on Baire space
+  kind: problem
+  tags: [weihrauch]
+  aliases: [UC_Baire, unique choice]
+  definition: Given a closed subset of $\mathbb{N}^{\mathbb{N}}$ with exactly one element, find that element.
+  instance: A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$ with exactly one infinite path.
+  solution: The infinite path of $T$.
+  refs:
+    - {ref: brattkadebrechtpauly2012, role: rm}
+
+- id: cnn
+  label: '\mathsf{C}_{\mathbb{N}^{\mathbb{N}}}'
+  name: Closed choice on Baire space
+  kind: problem
+  tags: [weihrauch]
+  aliases: [C_Baire, choice on Baire space]
+  definition: >
+    Given a nonempty closed subset of $\mathbb{N}^{\mathbb{N}}$, find an element.
+    The single-valued problems below it are exactly the effectively Borel
+    measurable functions; a candidate analogue of ATR in the Weihrauch lattice.
+  instance: An ill-founded tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$.
+  solution: An infinite path through $T$.
+  refs:
+    - {ref: brattkadebrechtpauly2012, role: rm}
+    - {ref: kiharamarconepauly2020, role: rm}

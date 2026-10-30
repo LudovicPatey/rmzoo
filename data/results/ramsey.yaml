@@ -2,62 +2,65 @@
 
 # ---- Pigeonhole ------------------------------------------------------------
 
-- {type: implication, from: rca0, to: rt12, over: sc, folklore: true, note: Every coloring computes an infinite homogeneous set (non-uniformly).}
-- {type: implication, from: rca0, to: rt13, over: sc, folklore: true}
-- {type: implication, from: rca0, to: rt1inf, over: sc, folklore: true}
-- {type: implication, from: rt12, to: rt13, over: rca0, folklore: true}
-- {type: implication, from: rt13, to: rt12, over: [sw, rca0star], folklore: true}
-- {type: implication, from: rt1inf, to: rt13, over: [sw, rca0star], folklore: true}
+- { type: implication, from: rca0, to: rt12, over: sc, folklore: true, note: Every coloring computes an infinite homogeneous set (non-uniformly). }
+- { type: implication, from: rca0, to: rt13, over: sc, folklore: true }
+- { type: implication, from: rca0, to: rt1inf, over: sc, folklore: true }
+- { type: implication, from: rt12, to: rt13, over: rca0, folklore: true }
+- { type: implication, from: rt13, to: rt12, over: [ sw, rca0star ], folklore: true }
+- { type: implication, from: rt1inf, to: rt13, over: [ sw, rca0star ], folklore: true }
 
 - type: separation
   from: rt12
   to: rt13
   over: w
-  refs: [{ref: brattkarakotoniaina2017}, {ref: ddhms2016}]
+  refs:
+    - ref: brattkarakotoniaina2017
+      loc: Theorem 4.22
+    - ref: ddhms2016
   note: RT¹ₖ₊₁ is not Weihrauch reducible to RT¹ₖ.
 
-- {type: equivalence, from: rt1inf, to: bsig2, over: rca0, refs: [{ref: hirst1987}]}
+- { type: equivalence, from: rt1inf, to: bsig2, over: rca0, refs: [ { ref: hirst1987 } ] }
 
-- {type: implication, from: rt22, to: rt23, over: rca0, folklore: true, note: Merge two of the colors and apply RT²₂ twice.}
-- {type: implication, from: rt23, to: rt22, over: [sw, rca0star], folklore: true}
-- {type: implication, from: rt32, to: rt22, over: [sw, rca0star], folklore: true}
+- { type: implication, from: rt22, to: rt23, over: rca0, folklore: true, note: Merge two of the colors and apply RT²₂ twice. }
+- { type: implication, from: rt23, to: rt22, over: [ sw, rca0star ], folklore: true }
+- { type: implication, from: rt32, to: rt22, over: [ sw, rca0star ], folklore: true }
 
 - type: separation
   from: rt22
   to: rt23
   over: c
-  refs: [{ref: patey2018a}]
+  refs: [ { ref: patey2018a } ]
   note: RT²ₖ₊₁ is not computably reducible to RT²ₖ.
 
-- {type: property, statement: rt22, property: cone-avoidance, value: true, refs: [{ref: seetapunslaman1995}, {ref: cholakjockuschslaman2001}]}
-- {type: property, statement: rt22, property: pa-avoidance, value: true, refs: [{ref: liu2012}]}
-- {type: property, statement: rt22, property: computably-true, value: false, refs: [{ref: jockusch1972}]}
-- {type: property, statement: rt32, property: cone-avoidance, value: false, refs: [{ref: jockusch1972}]}
+- { type: property, statement: rt22, property: cone-avoidance, value: true, refs: [ { ref: seetapunslaman1995 }, { ref: cholakjockuschslaman2001 } ] }
+- { type: property, statement: rt22, property: pa-avoidance, value: true, refs: [ { ref: liu2012 } ] }
+- { type: property, statement: rt22, property: computably-true, value: false, refs: [ { ref: jockusch1972 } ] }
+- { type: property, statement: rt32, property: cone-avoidance, value: false, refs: [ { ref: jockusch1972 } ] }
 
 # ---- Stable / cohesive decomposition ---------------------------------------
 
-- {type: implication, from: rt22, to: srt22, over: [sw, rca0star], folklore: true}
+- { type: implication, from: rt22, to: srt22, over: [ sw, rca0star ], folklore: true }
 
-- {type: implication, from: srt22, to: d22, over: [sw, rca0star], folklore: true}
-- {type: implication, from: d22, to: rt12, over: [sw, rca0star], folklore: true, note: "Color the pair {x < y} by the color of x."}
-- {type: implication, from: d22, to: srt22, over: rca0, refs: [{ref: chonglemppyang2010}, {ref: cholakjockuschslaman2001}], note: "D²₂ implies BΣ⁰₂ [CLY10], and D²₂ + BΣ⁰₂ implies SRT²₂ [CJS01]."}
-- {type: implication, from: d22, to: srt22, over: omega, refs: [{ref: cholakjockuschslaman2001}]}
+- { type: implication, from: srt22, to: d22, over: [ sw, rca0star ], folklore: true }
+- { type: implication, from: d22, to: rt12, over: [ sw, rca0star ], folklore: true, note: "Color the pair {x < y} by the color of x." }
+- { type: implication, from: d22, to: srt22, over: rca0, refs: [ { ref: chonglemppyang2010 }, { ref: cholakjockuschslaman2001 } ], note: "D²₂ implies BΣ⁰₂ [CLY10], and D²₂ + BΣ⁰₂ implies SRT²₂ [CJS01]." }
+- { type: implication, from: d22, to: srt22, over: omega, refs: [ { ref: cholakjockuschslaman2001 } ] }
 
 - type: separation
   from: d22
   to: srt22
   over: w
-  refs: [{ref: dzhafarov2016}]
+  refs: [ { ref: dzhafarov2016 } ]
   note: SRT²₂ is not Weihrauch reducible to D²_{<∞}, hence not to D²₂.
 
-- {type: separation, from: srt22, to: rt22, over: omega, refs: [{ref: moninpatey2021}]}
-- {type: separation, from: srt22, to: rt22, over: rca0, refs: [{ref: chongslamanyang2014}], note: First separation, using non-standard models.}
+- { type: separation, from: srt22, to: rt22, over: omega, refs: [ { ref: moninpatey2021 } ] }
+- { type: separation, from: srt22, to: rt22, over: rca0, refs: [ { ref: chongslamanyang2014 } ], note: First separation, using non-standard models. }
 
-- {type: property, statement: d22, property: low-basis, value: false, refs: [{ref: downeyetal2001}]}
-- {type: property, statement: coh, property: low-basis, value: false, refs: [{ref: jockuschstephan1993}]}
+- { type: property, statement: d22, property: low-basis, value: false, refs: [ { ref: downeyetal2001 } ] }
+- { type: property, statement: coh, property: low-basis, value: false, refs: [ { ref: jockuschstephan1993 } ] }
 
 # ---- Erdős–Moser -----------------------------------------------------------
 
-- {type: implication, from: rt22, to: em, over: [sw, rca0star], folklore: true}
-- {type: implication, from: ads-em, to: rt22, over: rca0, refs: [{ref: bovykinweiermann2017}]}
-- {type: separation, from: em, to: ads, over: omega, refs: [{ref: lermansolomontowsner2013}]}
+- { type: implication, from: rt22, to: em, over: [ sw, rca0star ], folklore: true }
+- { type: implication, from: ads-em, to: rt22, over: rca0, refs: [ { ref: bovykinweiermann2017 } ] }
+- { type: separation, from: em, to: ads, over: omega, refs: [ { ref: lermansolomontowsner2013 } ] }

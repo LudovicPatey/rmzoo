@@ -1,4 +1,5 @@
 # Results from [lehoueroupatey2024].
 
-- {type: "conservation", statement: "bsig2-ovw", base: "bsig2", class: "Pi04", value: true, refs: [{ref: lehoueroupatey2024}]}
-- {type: "separation", from: "ovw", to: "aca", over: "rca0", note: "The only known separation of OVW from ACA uses non-standard models.", refs: [{ref: lehoueroupatey2024}]}
+- {type: "conservation", statement: "ovw-wkl", base: "bsig2", class: "uPi04", value: true, refs: [{ref: lehoueroupatey2024, loc: "Theorem 1.4"}]}
+- {type: "conservation", statement: "ovw-wkl", base: "rca0", class: "uPi03", value: true, refs: [{ref: lehoueroupatey2024, loc: "Corollary 5.1"}]}
+- {type: "separation", from: "ovw-wkl", to: "aca", over: "rca0", refs: [{ref: lehoueroupatey2024, loc: "Corollary 5.2"}], note: "The only known separation of OVW from ACA uses non-standard models."}

@@ -1,3 +1,4 @@
 # Results from [chongetal2019].
 
-- {type: "separation", from: "tt22", to: "wkl", over: "rca0", refs: [{ref: chongetal2019}]}
+- { type: "separation", from: "tt22", to: "wkl", over: "rca0", refs: [ { ref: chongetal2019, loc: Theorem 1.1 } ] }
+- { type: separation, from: tt22, to: wwkl, over: rca0, refs: [ { ref: chongetal2019, loc: Theorem 1.1 } ] }

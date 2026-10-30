@@ -1,7 +1,7 @@
 # Results from [day2013].
 
-- {type: "implication", from: "aca", to: "ap", over: "rca0", refs: [{ref: day2013}]}
-- {type: "implication", from: "ap", to: "wkl", over: "rca0", refs: [{ref: day2013}]}
-- {type: "separation", from: "ap", to: "aca", over: "rca0", refs: [{ref: day2013}]}
-- {type: "separation", from: "wkl", to: "ap", over: "rca0", refs: [{ref: day2013}]}
-- {type: "conservation", statement: "ap", base: "rca0", class: "Pi11", value: true, refs: [{ref: day2013}]}
+- { type: "implication", from: "aca", to: "ap", over: "rca0", refs: [ { ref: day2013, loc: Proposition 9 } ] }
+- { type: "implication", from: "ap", to: "wkl", over: "rca0", refs: [ { ref: day2013 } ] }
+- { type: "separation", from: "wkl", to: "ap", over: "rca0", refs: [ { ref: day2013, loc: Theorem 12 } ] }
+- { type: "conservation", statement: "ap", base: "rca0", class: "Pi11", value: true, refs: [ { ref: day2013, loc: Corollary 26 } ] }
+- { type: separation, from: ap, to: aca, over: omega, refs: [ { ref: day2013, loc: Theorem 19 } ] }

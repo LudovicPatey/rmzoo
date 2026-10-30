@@ -1,6 +1,6 @@
 # Results from [astoretal2017].
 
-- {type: "equivalence", from: "ads", to: "adc", over: "rca0", folklore: true, refs: [{ref: astoretal2017}]}
-- {type: "implication", from: "ads", to: "adc", over: "sw", folklore: true, refs: [{ref: astoretal2017}]}
-- {type: "implication", from: "adc", to: "ads", over: "c", refs: [{ref: astoretal2017}]}
-- {type: "separation", from: "adc", to: "sads", over: "w", note: "Even SADS is not Weihrauch reducible to ADC.", refs: [{ref: astoretal2017}]}
+- { type: "equivalence", from: "ads", to: "adc", over: "rca0", folklore: true, refs: [ { ref: astoretal2017 } ] }
+- { type: "implication", from: "ads", to: "adc", over: "sw", refs: [ { ref: astoretal2017, loc: Proposition 2.2 } ] }
+- { type: "implication", from: "adc", to: "ads", over: "c", refs: [ { ref: astoretal2017, loc: Proposition 2.2 } ] }
+- { type: "separation", from: "adc", to: "sads", over: "w", note: "Even SADS is not Weihrauch reducible to ADC.", refs: [ { ref: astoretal2017, loc: Theorem 2.5 } ] }

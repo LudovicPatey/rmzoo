@@ -1,0 +1,3 @@
+# Results from [hirschfeldt2015].
+
+[ { type: equivalence, from: rt, to: aca-prime, over: rca0, refs: [ { ref: hirschfeldt2015, loc: Theorem 6.27 (as cited by Brattka and Rakotoniaina) }, { ref: liupatey2026, loc: Theorem 7.7 } ] } ]

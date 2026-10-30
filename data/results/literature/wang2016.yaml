@@ -1,0 +1,3 @@
+# Results from [wang2016].
+
+[ { type: property, statement: fs2, property: delta02-preservation, value: false, refs: [ { ref: wang2016, loc: Corollary 4.9 } ] } ]

@@ -1,6 +1,13 @@
 # Results from [liupatey2022].
 
-- {type: "separation", from: "fs2", to: "em", over: "omega", refs: [{ref: liupatey2022}]}
-- {type: "separation", from: "fs3", to: "em", over: "omega", refs: [{ref: liupatey2022}]}
-- {type: "separation", from: "ts2", to: "em", over: "omega", refs: [{ref: liupatey2022}]}
-- {type: "separation", from: "ts3", to: "em", over: "omega", refs: [{ref: liupatey2022}]}
+- { type: "separation", from: "fs2", to: "em", over: "omega", refs: [ { ref: liupatey2022, loc: Theorem 1.6 } ] }
+- { type: "separation", from: "fs3", to: "em", over: "omega", refs: [ { ref: liupatey2022, loc: Theorem 1.6 } ] }
+- { type: "separation", from: "ts2", to: "em", over: "omega", refs: [ { ref: liupatey2022, loc: Theorem 1.6 } ] }
+- { type: "separation", from: "ts3", to: "em", over: "omega", refs: [ { ref: liupatey2022, loc: Theorem 1.6 } ] }
+- { type: property, statement: sads, property: hyperimmunity2-preservation, value: false, refs: [ { ref: liupatey2022, loc: Corollary 2.5 } ] }
+- { type: property, statement: wkl, property: hyperimmunity2-preservation, value: true, refs: [ { ref: liupatey2022, loc: Corollary 2.7 } ] }
+- { type: property, statement: coh, property: hyperimmunity2-preservation, value: true, refs: [ { ref: liupatey2022, loc: Corollary 2.9 } ] }
+- { type: property, statement: sem, property: hyperimmunity2-preservation, value: false, refs: [ { ref: liupatey2022, loc: Corollary 2.12 } ] }
+- { type: property, statement: fs2, property: hyperimmunity2-preservation, value: true, refs: [ { ref: liupatey2022, loc: Theorem 2.30 } ] }
+- { type: property, statement: fs3, property: hyperimmunity2-preservation, value: true, refs: [ { ref: liupatey2022, loc: Theorem 2.39 } ] }
+- { type: property, statement: ts2, property: hyperimmunity2-preservation, value: true, note: "Proved for TS²₄, which implies TS² (ω colors).", refs: [ { ref: liupatey2022, loc: Theorem 2.13 } ] }

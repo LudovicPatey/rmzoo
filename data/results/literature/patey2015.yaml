@@ -1,0 +1,3 @@
+# Results from [patey2015].
+
+[ { type: separation, from: sem, to: em, over: rca0, refs: [ { ref: patey2015, loc: Corollary 3.12 } ] }, { type: implication, from: srt22, to: sts2, over: rca0, refs: [ { ref: patey2015, loc: Corollary 4.4 } ] }, { type: implication, from: ts2, to: rrt22, over: rca0, refs: [ { ref: patey2015, loc: Corollary 4.9 } ] }, { type: separation, from: wwkl2, to: sts2, over: rca0, refs: [ { ref: patey2015, loc: Corollary 4.20 } ] }, { type: separation, from: rrt22, to: sts2, over: rca0, refs: [ { ref: patey2015, loc: Corollary 4.21 } ] } ]

@@ -1,40 +1,40 @@
 # Property facts. Most come from the 'Unsupported' notes of Astor's RM Zoo file,
 # which could not express them; they are now used to derive separations.
 
-- {type: property, statement: sads, property: low-basis, value: true, refs: [{ref: hirschfeldtshore2007}]}
-- {type: property, statement: scac, property: low-basis, value: true, refs: [{ref: hirschfeldtshore2007}]}
-- {type: property, statement: amt, property: low-basis, value: true, refs: [{ref: hirschfeldtshoreslaman2009}]}
-- {type: property, statement: pi01g, property: low-basis, value: true, refs: [{ref: hirschfeldtshoreslaman2009}]}
-- {type: property, statement: em, property: low-basis, value: false, refs: [{ref: kreuzer2012b, loc: "Proposition 5.2"}]}
-- {type: property, statement: srrt22, property: low-basis, value: true, refs: [{ref: patey2015}]}
-- {type: property, statement: wsrrt22, property: low-basis, value: true, refs: [{ref: patey2015}]}
-- {type: property, statement: sads-sgp22-wkl, property: low-basis, value: true, refs: [{ref: pateyyokoyama2018, loc: "Corollary 5.3"}]}
-- {type: property, statement: sads, property: hyperimmunity-preservation, value: false, refs: [{ref: patey2017a, loc: "Theorem 6"}]}
-- {type: property, statement: sts2, property: hyperimmunity-preservation, value: false, refs: [{ref: patey2017a, loc: "Theorem 9"}]}
-- {type: property, statement: amt, property: hyperimmunity-preservation, value: true, refs: [{ref: patey2017a, loc: "remark following Theorem 11"}]}
-- {type: property, statement: pi01g, property: hyperimmunity-preservation, value: true, refs: [{ref: patey2017a, loc: "remark following Theorem 11"}]}
-- {type: property, statement: rrt22, property: hyperimmunity-preservation, value: true, refs: [{ref: patey2017a, loc: "remark following Theorem 11"}]}
-- {type: property, statement: coh, property: hyperimmunity-preservation, value: true, refs: [{ref: patey2017a, loc: "Theorem 12"}]}
-- {type: property, statement: wkl, property: hyperimmunity-preservation, value: true, refs: [{ref: patey2017a, loc: "Theorem 14"}]}
-- {type: property, statement: em, property: hyperimmunity-preservation, value: true, refs: [{ref: patey2017a, loc: "Theorem 17"}]}
-- {type: property, statement: sgp22, property: hyperimmunity-preservation, value: true, refs: [{ref: pateyyokoyama2018, loc: "Theorem 5.5"}]}
-- {type: property, statement: coh, property: delta02-preservation, value: true, refs: [{ref: wang2016}]}
-- {type: property, statement: em, property: delta02-preservation, value: true, refs: [{ref: wang2016}]}
-- {type: property, statement: sads, property: delta02-preservation, value: false, refs: [{ref: wang2016, loc: "Theorem 4.1"}]}
-- {type: property, statement: ts2, property: delta02-preservation, value: false, refs: [{ref: wang2016, loc: "Theorem 4.3"}]}
-- {type: property, statement: ts3, property: delta02-preservation, value: false, refs: [{ref: wang2016, loc: "Theorem 4.3"}]}
-- {type: property, statement: rrt32, property: delta02-preservation, value: false, refs: [{ref: wang2016, loc: "Corollary 4.10"}]}
-- {type: property, statement: pi01g, property: arith-preservation, value: true, refs: [{ref: wang2016}]}
-- {type: property, statement: wkl, property: arith-preservation, value: true, refs: [{ref: wang2016}]}
-- {type: property, statement: rrt22, property: arith-preservation, value: true, refs: [{ref: wang2016}]}
-- {type: property, statement: coh, property: arith-preservation, value: true, refs: [{ref: patey2015d}]}
-- {type: property, statement: em, property: arith-preservation, value: true, refs: [{ref: patey2015d}]}
-- {type: property, statement: aca, property: arith-preservation, value: false, folklore: true, note: "∅′ makes a Σ⁰₂ set Σ⁰₁."}
-- {type: property, statement: cac, property: cb-immunity-preservation, value: true, refs: [{ref: patey2018a, loc: "Theorem 13"}]}
-- {type: property, statement: dnr, property: cb-immunity-preservation, value: false, refs: [{ref: patey2018a, loc: "Theorem 16"}]}
-- {type: property, statement: scac, property: dep-hyperimmunity-preservation, value: false, refs: [{ref: patey2018a, loc: "Corollary 24"}]}
-- {type: property, statement: wwkl, property: dep-hyperimmunity-preservation, value: true, refs: [{ref: patey2018a, loc: "Corollary 30"}]}
-- {type: property, statement: tt12, property: cone-avoidance, value: true, refs: [{ref: dzhafarovpatey2017, loc: "Theorem 3.7"}]}
-- {type: property, statement: stt22, property: cone-avoidance, value: true, refs: [{ref: dzhafarovpatey2017, loc: "Corollary 3.10"}]}
-- {type: property, statement: tt22, property: cone-avoidance, value: true, refs: [{ref: dzhafarovpatey2017, loc: "Theorem 4.1"}]}
-- {type: property, statement: ctt22, property: cone-avoidance, value: true, refs: [{ref: dzhafarovpatey2017, loc: "Theorem 4.6"}]}
+- { type: property, statement: sads, property: low-basis, value: true, refs: [ { ref: hirschfeldtshore2007 } ] }
+- { type: property, statement: scac, property: low-basis, value: true, refs: [ { ref: hirschfeldtshore2007 } ] }
+- { type: property, statement: amt, property: low-basis, value: true, refs: [ { ref: hirschfeldtshoreslaman2009 } ] }
+- { type: property, statement: pi01g, property: low-basis, value: true, refs: [ { ref: hirschfeldtshoreslaman2009 } ] }
+- { type: property, statement: em, property: low-basis, value: false, refs: [ { ref: kreuzer2012b, loc: "Proposition 5.2" } ] }
+- { type: property, statement: srrt22, property: low-basis, value: true, refs: [ { ref: patey2015 } ] }
+- { type: property, statement: wsrrt22, property: low-basis, value: true, refs: [ { ref: patey2015 } ] }
+- { type: property, statement: sads-sgp22-wkl, property: low-basis, value: true, refs: [ { ref: pateyyokoyama2018, loc: "Corollary 5.3" } ] }
+- { type: property, statement: sads, property: hyperimmunity-preservation, value: false, refs: [ { ref: patey2017a, loc: "Theorem 6" } ] }
+- { type: property, statement: sts2, property: hyperimmunity-preservation, value: false, refs: [ { ref: patey2017a, loc: "Theorem 9" } ] }
+- { type: property, statement: amt, property: hyperimmunity-preservation, value: true, refs: [ { ref: patey2017a, loc: "remark following Theorem 11" } ] }
+- { type: property, statement: pi01g, property: hyperimmunity-preservation, value: true, refs: [ { ref: patey2017a, loc: "remark following Theorem 11" } ] }
+- { type: property, statement: rrt22, property: hyperimmunity-preservation, value: true, refs: [ { ref: patey2017a, loc: "remark following Theorem 11" } ] }
+- { type: property, statement: coh, property: hyperimmunity-preservation, value: true, refs: [ { ref: patey2017a, loc: "Theorem 12" } ] }
+- { type: property, statement: wkl, property: hyperimmunity-preservation, value: true, refs: [ { ref: patey2017a, loc: "Theorem 14" } ] }
+- { type: property, statement: em, property: hyperimmunity-preservation, value: true, refs: [ { ref: patey2017a, loc: "Theorem 17" } ] }
+- { type: property, statement: sgp22, property: hyperimmunity-preservation, value: true, refs: [ { ref: pateyyokoyama2018, loc: "Theorem 5.5" } ] }
+- { type: property, statement: coh, property: delta02-preservation, value: true, refs: [ { ref: wang2016, loc: Section 3.3 } ] }
+- { type: property, statement: em, property: delta02-preservation, value: true, refs: [ { ref: wang2016, loc: Theorem 3.17 } ] }
+- { type: property, statement: sads, property: delta02-preservation, value: false, refs: [ { ref: wang2016, loc: "Theorem 4.1" } ] }
+- { type: property, statement: ts2, property: delta02-preservation, value: false, refs: [ { ref: wang2016, loc: "Theorem 4.3" } ] }
+- { type: property, statement: ts3, property: delta02-preservation, value: false, refs: [ { ref: wang2016, loc: "Theorem 4.3" } ] }
+- { type: property, statement: rrt32, property: delta02-preservation, value: false, refs: [ { ref: wang2016, loc: "Corollary 4.10" } ] }
+- { type: property, statement: pi01g, property: arith-preservation, value: true, refs: [ { ref: wang2016, loc: Corollary 3.3 } ] }
+- { type: property, statement: wkl, property: arith-preservation, value: true, refs: [ { ref: wang2016, loc: Theorem 3.6 } ] }
+- { type: property, statement: rrt22, property: arith-preservation, value: true, refs: [ { ref: wang2016, loc: Corollary 3.23 } ] }
+- { type: property, statement: coh, property: arith-preservation, value: true, refs: [ { ref: patey2015d, loc: Theorem 2.2 } ] }
+- { type: property, statement: em, property: arith-preservation, value: true, refs: [ { ref: patey2015d, loc: Theorem 3.2 } ] }
+- { type: property, statement: aca, property: arith-preservation, value: false, folklore: true, note: "∅′ makes a Σ⁰₂ set Σ⁰₁." }
+- { type: property, statement: cac, property: cb-immunity-preservation, value: true, refs: [ { ref: patey2018a, loc: "Theorem 13" } ] }
+- { type: property, statement: dnr, property: cb-immunity-preservation, value: false, refs: [ { ref: patey2018a, loc: "Theorem 16" } ] }
+- { type: property, statement: scac, property: dep-hyperimmunity-preservation, value: false, refs: [ { ref: patey2018a, loc: "Corollary 24" } ] }
+- { type: property, statement: wwkl, property: dep-hyperimmunity-preservation, value: true, refs: [ { ref: patey2018a, loc: "Corollary 30" } ] }
+- { type: property, statement: tt12, property: cone-avoidance, value: true, refs: [ { ref: dzhafarovpatey2017, loc: "Theorem 3.7" } ] }
+- { type: property, statement: stt22, property: cone-avoidance, value: true, refs: [ { ref: dzhafarovpatey2017, loc: "Corollary 3.10" } ] }
+- { type: property, statement: tt22, property: cone-avoidance, value: true, refs: [ { ref: dzhafarovpatey2017, loc: "Theorem 4.1" } ] }
+- { type: property, statement: ctt22, property: cone-avoidance, value: true, refs: [ { ref: dzhafarovpatey2017, loc: "Theorem 4.6" } ] }

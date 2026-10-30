@@ -1,4 +1,4 @@
 # Results from [koodziejczyketal2016].
 
-- {type: "equivalence", from: "art22", to: "isig2", over: "rca0", refs: [{ref: koodziejczyketal2016}]}
-- {type: "equivalence", from: "buchi", to: "isig2", over: "rca0", refs: [{ref: koodziejczyketal2016}]}
+- { type: "equivalence", from: "art22", to: "isig2", over: "rca0", refs: [ { ref: koodziejczyketal2016, loc: Theorem 1 (Propositions 4.1 and 9.1) } ] }
+- { type: "equivalence", from: "buchi", to: "isig2", over: "rca0", refs: [ { ref: koodziejczyketal2016, loc: Theorem 1 } ] }

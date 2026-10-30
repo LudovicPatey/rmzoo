@@ -1,4 +1,7 @@
 # Results from [davisetal2020].
 
-- {type: "equivalence", from: "ert", to: "isig1", over: "rca0star", refs: [{ref: davisetal2020}]}
-- {type: "equivalence", from: "ect", to: "isig2", over: "rca0star", refs: [{ref: davisetal2020}]}
+- { type: "equivalence", from: "ert", to: "isig1", over: "rca0star", refs: [ { ref: davisetal2020, loc: Theorem 6 } ] }
+- { type: "equivalence", from: "ect", to: "isig2", over: "rca0star", refs: [ { ref: davisetal2020, loc: Theorem 7 } ] }
+- { type: implication, from: ect, to: ert, over: sw, refs: [ { ref: davisetal2020, loc: Theorem 10 } ] }
+- { type: separation, from: ert, to: ect, over: sw, refs: [ { ref: davisetal2020, loc: Theorem 10 } ] }
+- { type: separation, from: ect, to: lpo, over: sw, refs: [ { ref: davisetal2020, loc: Theorem 10 } ] }

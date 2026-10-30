@@ -75,3 +75,13 @@
   direction: down
   description: >
     Preservation of dependent hyperimmunity, in the sense of Patey, "Partial orders and immunity in reverse mathematics".
+
+- id: hyperimmunity2-preservation
+  name: Preservation of 2-hyperimmunity
+  closedUnder: omega
+  direction: down
+  description: >
+    Preservation of 2-hyperimmunity in the sense of Liu and Patey, "The reverse
+    mathematics of the thin set and Erdős–Moser theorems": for every set C and
+    every C-2-hyperimmune pair, every C-computable instance has a solution G
+    relative to which the pair is still 2-hyperimmune.

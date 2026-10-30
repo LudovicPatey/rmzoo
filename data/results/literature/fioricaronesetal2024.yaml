@@ -1,6 +1,6 @@
 # Results from [fioricaronesetal2024].
 
-- {type: "equivalence", from: "rspo", to: "ads-isig2", over: "rca0", refs: [{ref: fioricaronesetal2024}]}
-- {type: "equivalence", from: "rspo3", to: "ads", over: "rca0", refs: [{ref: fioricaronesetal2024}]}
-- {type: "equivalence", from: "rspo2c", to: "sads", over: "rca0", refs: [{ref: fioricaronesetal2024}]}
-- {type: "implication", from: "rspo", to: "rspo3", over: "sw", folklore: true, refs: [{ref: fioricaronesetal2024}]}
+- { type: "equivalence", from: "rspo", to: "ads-isig2", over: "rca0", refs: [ { ref: fioricaronesetal2024, loc: Theorem 6.6 } ] }
+- { type: "equivalence", from: "rspo3", to: "ads", over: "rca0", refs: [ { ref: fioricaronesetal2024, loc: Theorem 6.6 } ] }
+- { type: "equivalence", from: "rspo2c", to: "sads", over: "rca0", refs: [ { ref: fioricaronesetal2024, loc: Theorem 6.6 } ] }
+- { type: "implication", from: "rspo", to: "rspo3", over: "sw", folklore: true, refs: [ { ref: fioricaronesetal2024 } ] }

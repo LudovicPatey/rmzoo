@@ -1,4 +1,4 @@
 # Results from [patey2026].
 
-- {type: "conservation", statement: "bsig2-ovw", base: "bsig2", class: "Pi11", value: true, refs: [{ref: patey2026}]}
-- {type: "conservation", statement: "bsig2-tt1", base: "bsig2", class: "Pi11", value: true, refs: [{ref: patey2026}]}
+- { type: "conservation", statement: "bsig2-ovw", base: "bsig2", class: "Pi11", value: true, refs: [ { ref: patey2026 } ] }
+- { type: "conservation", statement: "bsig2-tt1", base: "bsig2", class: "Pi11", value: true, refs: [ { ref: patey2026, loc: Corollary 1.4 } ] }

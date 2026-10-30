@@ -1,3 +1,3 @@
 # Results from [brattkaetal2019].
 
-- {type: "separation", from: "ivt", to: "wkl", over: "w", note: "Connected choice on [0,1] (≡ IVT) is not idempotent whereas WKL is, so WKL is not below IVT.", refs: [{ref: brattkaetal2019}]}
+- { type: "separation", from: "ivt", to: "wkl", over: "w", note: "Connected choice on [0,1] (≡ IVT) is not idempotent whereas WKL is, so WKL is not below IVT.", refs: [ { ref: brattkaetal2019, loc: Theorem 9.3 and Theorem 7.1 } ] }

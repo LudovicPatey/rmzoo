@@ -1,5 +1,7 @@
 # Results from [pateyshafer2026].
 
-- {type: "implication", from: "rt32", to: "brt32", over: "sw", folklore: true, refs: [{ref: pateyshafer2026}]}
-- {type: "implication", from: "rt32", to: "brt32", over: "rca0star", folklore: true, refs: [{ref: pateyshafer2026}]}
-- {type: "separation", from: "rt22", to: "brt32", over: "c", refs: [{ref: pateyshafer2026}]}
+- { type: "implication", from: "rt32", to: "brt32", over: "sw", folklore: true, refs: [ { ref: pateyshafer2026 } ] }
+- { type: "implication", from: "rt32", to: "brt32", over: "rca0star", folklore: true, refs: [ { ref: pateyshafer2026 } ] }
+- { type: "separation", from: "rt22", to: "brt32", over: "c", refs: [ { ref: pateyshafer2026 } ] }
+- { type: separation, from: rt2, to: brt32, over: c, note: "Proved for the restriction BRT³₂,₄, hence for BRT³₂.", refs: [ { ref: pateyshafer2026, loc: Theorem 1.8 } ] }
+- { type: property, statement: brt32, property: cone-avoidance, value: true, refs: [ { ref: pateyshafer2026, loc: Theorem 2.7 (due to Soldà) } ] }

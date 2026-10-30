@@ -10,88 +10,88 @@
 
 # ---- Big Five --------------------------------------------------------------
 
-- {type: implication, from: pi11ca, to: atr, over: rca0, refs: [{ref: simpson2009}]}
-- {type: implication, from: atr, to: aca, over: rca0, refs: [{ref: simpson2009}]}
-- {type: implication, from: aca, to: wkl, over: rca0, refs: [{ref: simpson2009, loc: Lemma IV.4.4}]}
+- { type: implication, from: pi11ca, to: atr, over: rca0, refs: [ { ref: simpson2009 } ] }
+- { type: implication, from: atr, to: aca, over: rca0, refs: [ { ref: simpson2009 } ] }
+- { type: implication, from: aca, to: wkl, over: rca0, refs: [ { ref: simpson2009, loc: Lemma IV.4.4 } ] }
 
 - type: separation
   from: atr
   to: pi11ca
   over: rca0
-  refs: [{ref: simpson2009}]
+  refs: [ { ref: simpson2009 } ]
   note: Π¹₁-CA₀ proves the existence of a countable coded ω-model of ATR₀.
 
 - type: separation
   from: aca
   to: atr
   over: omega
-  refs: [{ref: simpson2009, loc: Section VIII.1}]
+  refs: [ { ref: simpson2009, loc: Section VIII.1 } ]
   note: The arithmetical sets form an ω-model of ACA₀ which is not a model of ATR₀.
 
 - type: equivalence
   from: wkl
   to: sep
   over: rca0
-  refs: [{ref: simpson2009, loc: Lemma IV.4.4}]
+  refs: [ { ref: simpson2009, loc: Lemma IV.4.4 } ]
 
-- {type: property, statement: wkl, property: low-basis, value: true, refs: [{ref: jockuschsoare1972}]}
-- {type: property, statement: wkl, property: cone-avoidance, value: true, refs: [{ref: jockuschsoare1972}]}
-- {type: property, statement: wkl, property: pa-avoidance, value: false, folklore: true}
-- {type: property, statement: wkl, property: computably-true, value: false, refs: [{ref: jockuschsoare1972}], note: Kleene tree.}
+- { type: property, statement: wkl, property: low-basis, value: true, refs: [ { ref: jockuschsoare1972 } ] }
+- { type: property, statement: wkl, property: cone-avoidance, value: true, refs: [ { ref: jockuschsoare1972 } ] }
+- { type: property, statement: wkl, property: pa-avoidance, value: false, folklore: true }
+- { type: property, statement: wkl, property: computably-true, value: false, refs: [ { ref: jockuschsoare1972 } ], note: Kleene tree. }
 - type: property
   statement: wkl
   property: pi11-conservative
   value: true
-  refs: [{ref: simpson2009, loc: Corollary IX.2.6}]
+  refs: [ { ref: simpson2009, loc: Corollary IX.2.6 } ]
   note: Due to Harrington.
 
-- {type: property, statement: aca, property: cone-avoidance, value: false, folklore: true, note: "∅' is a solution to a computable instance."}
-- {type: property, statement: aca, property: low-basis, value: false, folklore: true}
+- { type: property, statement: aca, property: cone-avoidance, value: false, folklore: true, note: "∅' is a solution to a computable instance." }
+- { type: property, statement: aca, property: low-basis, value: false, folklore: true }
 
-- {type: property, statement: rca0, property: computably-true, value: true, folklore: true}
-- {type: property, statement: rca0, property: pi11-conservative, value: true, folklore: true}
+- { type: property, statement: rca0, property: computably-true, value: true, folklore: true }
+- { type: property, statement: rca0, property: pi11-conservative, value: true, folklore: true }
 
 # ---- Randomness ------------------------------------------------------------
 
-- {type: implication, from: wkl, to: wwkl, over: [sw, rca0star], folklore: true}
+- { type: implication, from: wkl, to: wwkl, over: [ sw, rca0star ], folklore: true }
 
 # ---- Induction and bounding ------------------------------------------------
 
-- {type: implication, from: isig2, to: bsig2, over: rca0star, refs: [{ref: pariskirby1978}]}
-- {type: implication, from: bsig2, to: isig1, over: rca0star, refs: [{ref: pariskirby1978}]}
-- {type: implication, from: rca0, to: isig1, over: rca0, folklore: true, note: Σ⁰₁-induction is part of RCA₀.}
-- {type: equivalence, from: bsig2, to: idelta2, over: rca0star, refs: [{ref: slaman2004}]}
-- {type: separation, from: rca0, to: isig1, over: rca0star, refs: [{ref: simpsonsmith1986}]}
+- { type: implication, from: isig2, to: bsig2, over: rca0star, refs: [ { ref: pariskirby1978 } ] }
+- { type: implication, from: bsig2, to: isig1, over: rca0star, refs: [ { ref: pariskirby1978 } ] }
+- { type: implication, from: rca0, to: isig1, over: rca0, folklore: true, note: Σ⁰₁-induction is part of RCA₀. }
+- { type: equivalence, from: bsig2, to: idelta2, over: rca0star, refs: [ { ref: slaman2004 } ] }
+- { type: separation, from: rca0, to: isig1, over: rca0star, refs: [ { ref: simpsonsmith1986 } ] }
 
 - type: property
   statement: bsig2
   property: pi11-conservative
   value: false
-  refs: [{ref: pariskirby1978}]
+  refs: [ { ref: pariskirby1978 } ]
   note: RCA₀ does not prove BΣ⁰₂.
 
 - type: separation
   from: wkl
   to: isig1
   over: rca0star
-  refs: [{ref: simpsonsmith1986}]
+  refs: [ { ref: simpsonsmith1986 } ]
   note: WKL₀* is Π¹₁-conservative over RCA₀*, which does not prove IΣ⁰₁.
 
 # ---- Iterated jumps ----------------------------------------------------
 
-- {type: "implication", from: "atr", to: "aca-plus", over: "rca0", folklore: true}
-- {type: "implication", from: "aca-plus", to: "aca-prime", over: "rca0", folklore: true}
-- {type: "implication", from: "aca-prime", to: "aca", over: "rca0", folklore: true}
-- {type: "separation", from: "aca-prime", to: "aca-plus", over: "omega", folklore: true, note: "The arithmetical sets form an ω-model of ACA′ in which ∅^(ω) does not exist."}
-- {type: "implication", from: "gowers", to: "ht", over: "sw", folklore: true, note: "FIN₁ is Hindman's theorem."}
-- {type: "implication", from: "gowers", to: "ht", over: "rca0", folklore: true}
+- { type: "implication", from: "atr", to: "aca-plus", over: "rca0", folklore: true }
+- { type: "implication", from: "aca-plus", to: "aca-prime", over: "rca0", folklore: true }
+- { type: "implication", from: "aca-prime", to: "aca", over: "rca0", folklore: true }
+- { type: "separation", from: "aca-prime", to: "aca-plus", over: "omega", folklore: true, note: "The arithmetical sets form an ω-model of ACA′ in which ∅^(ω) does not exist." }
+- { type: "implication", from: "gowers", to: "ht", over: "sw", folklore: true, note: "FIN₁ is Hindman's theorem." }
+- { type: "implication", from: "gowers", to: "ht", over: "rca0", folklore: true }
 
 # ---- Weihrauch landmarks seen as statements over RCA0 -----------------------
 
-- {type: equivalence, from: hb, to: wkl, over: rca0, refs: [{ref: simpson2009, loc: Theorem IV.9.3}]}
-- {type: equivalence, from: lim, to: aca, over: sw, refs: [{ref: brattkagherardipauly2021}], note: "lim is strongly Weihrauch equivalent to the Turing jump."}
-- {type: equivalence, from: lim, to: aca, over: rca0star, folklore: true}
-- {type: equivalence, from: bwt, to: aca, over: rca0, refs: [{ref: simpson2009, loc: Theorem III.2.7}]}
-- {type: implication, from: rca0, to: ivt, over: rca0, refs: [{ref: simpson2009, loc: Theorem II.6.6}]}
-- {type: implication, from: rca0, to: lpo, over: rca0star, folklore: true, note: "Classically provable: decide whether p is the zero sequence."}
-- {type: implication, from: rca0, to: llpo, over: rca0star, folklore: true}
+- { type: equivalence, from: hb, to: wkl, over: rca0, refs: [ { ref: simpson2009, loc: Theorem IV.9.3 } ] }
+- { type: equivalence, from: lim, to: aca, over: sw, refs: [ { ref: brattkagherardipauly2021, loc: Theorem 6.7 } ], note: "lim is strongly Weihrauch equivalent to the Turing jump." }
+- { type: equivalence, from: lim, to: aca, over: rca0star, folklore: true }
+- { type: equivalence, from: bwt, to: aca, over: rca0, refs: [ { ref: simpson2009, loc: Theorem III.2.7 } ] }
+- { type: implication, from: rca0, to: ivt, over: rca0, refs: [ { ref: simpson2009, loc: Theorem II.6.6 } ] }
+- { type: implication, from: rca0, to: lpo, over: rca0star, folklore: true, note: "Classically provable: decide whether p is the zero sequence." }
+- { type: implication, from: rca0, to: llpo, over: rca0star, folklore: true }
