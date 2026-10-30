@@ -1,0 +1,3 @@
+# Results from [moninpatey2019].
+
+- {type: "separation", from: "rt", to: "wwkl", over: "sc", note: "WWKL is not strongly computably reducible to Ramsey's theorem.", refs: [{ref: moninpatey2019}]}

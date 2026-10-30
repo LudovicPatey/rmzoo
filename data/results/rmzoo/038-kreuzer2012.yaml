@@ -1,0 +1,5 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Kreuzer (2012) — Primitive Recursion and the Chain Antichain Principle
+
+- {type: "separation", from: "cac-wkl", to: "isig2", over: "rca0", refs: [{ref: "kreuzer2012", loc: "Corollary 4.3"}]}
+- {type: "implication", from: "sem", to: "rt1inf", over: "rca0", refs: [{ref: "kreuzer2012", loc: "Proposition A.1"}]}

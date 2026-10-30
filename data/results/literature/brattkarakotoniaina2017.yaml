@@ -1,0 +1,5 @@
+# Results from [brattkarakotoniaina2017].
+
+- {type: "implication", from: "wkl-j", to: "rt12", over: "w", note: "The parallelization of RT¹ₖ is equivalent to WKL′.", refs: [{ref: brattkarakotoniaina2017}]}
+- {type: "implication", from: "wkl-jj", to: "rt22", over: "w", note: "The parallelization of RT²ₖ is equivalent to WKL″.", refs: [{ref: brattkarakotoniaina2017}]}
+- {type: "implication", from: "wkl-jj", to: "wkl-j", over: "sw", folklore: true, refs: [{ref: brattkarakotoniaina2017}]}

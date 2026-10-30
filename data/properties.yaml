@@ -1,0 +1,77 @@
+# Properties used to separate statements.
+#
+#   closedUnder: reduction under which the property is preserved.
+#   direction:   down -> if A has it and A ⇒ B (over closedUnder), B has it.
+#                up   -> if B has it and A ⇒ B, A has it.
+#   A separation is derived automatically: if A has a "down" property and B
+#   fails it, then A does not imply B over closedUnder (and finer reductions).
+
+- id: cone-avoidance
+  name: Cone avoidance
+  closedUnder: omega
+  direction: down
+  description: >
+    For every set Z and every C ≰_T Z, every Z-computable instance has a solution Y such that C ≰_T Z ⊕ Y.
+
+- id: pa-avoidance
+  name: PA avoidance
+  closedUnder: omega
+  direction: down
+  description: >
+    For every set Z which is not of PA degree, every Z-computable instance has a solution Y such that Z ⊕ Y is not of PA degree.
+
+- id: low-basis
+  name: Low basis
+  closedUnder: omega
+  direction: down
+  description: >
+    For every Z, every Z-computable instance has a solution Y such that (Z ⊕ Y)' ≤_T Z'.
+
+- id: computably-true
+  name: Computably true
+  closedUnder: c
+  direction: down
+  description: Every instance X has a solution computable in X.
+
+- id: pi11-conservative
+  name: Π¹₁-conservative over RCA₀
+  closedUnder: rca0
+  direction: down
+  fromConservation: {base: rca0, class: Pi11}
+  description: >
+    RCA₀ + the statement proves no Π¹₁ sentence which is not already provable in RCA₀.
+
+- id: hyperimmunity-preservation
+  name: Preservation of hyperimmunity
+  closedUnder: omega
+  direction: down
+  description: >
+    For every set Z and every Z-hyperimmune set A, every Z-computable instance has a solution Y such that A is (Z ⊕ Y)-hyperimmune.
+
+- id: delta02-preservation
+  name: Preservation of Δ⁰₂ definitions
+  closedUnder: omega
+  direction: down
+  description: >
+    For every Z and every set A which is not Δ⁰₂(Z), every Z-computable instance has a solution Y such that A is not Δ⁰₂(Z ⊕ Y) (Wang).
+
+- id: arith-preservation
+  name: Preservation of the arithmetic hierarchy
+  closedUnder: omega
+  direction: down
+  description: >
+    For every Z, every n, and every set A which is not Σ⁰ₙ(Z) (resp. Π⁰ₙ, Δ⁰ₙ), every Z-computable instance has a solution Y such that A is still not Σ⁰ₙ(Z ⊕ Y) (resp. Π⁰ₙ, Δ⁰ₙ).
+
+- id: cb-immunity-preservation
+  name: Preservation of c.b.-immunity
+  closedUnder: omega
+  direction: down
+  description: >
+    For every Z and every set A which is computably bounded immune relative to Z, every Z-computable instance has a solution Y such that A is c.b.-immune relative to Z ⊕ Y (Patey, "Partial orders and immunity").
+
+- id: dep-hyperimmunity-preservation
+  name: Preservation of dependent hyperimmunity
+  closedUnder: omega
+  direction: down
+  description: >
+    Preservation of dependent hyperimmunity, in the sense of Patey, "Partial orders and immunity in reverse mathematics".

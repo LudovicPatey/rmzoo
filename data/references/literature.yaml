@@ -1,0 +1,251 @@
+# References added from the 2015–2026 literature sweep and the Weihrauch literature.
+# Entries with only an arXiv identifier still need their journal version.
+
+brattkagherardi2011:
+  authors: [Vasco Brattka, Guido Gherardi]
+  title: Weihrauch degrees, omniscience principles and weak computability
+  venue: Journal of Symbolic Logic 76(1), 143–176
+  year: 2011
+  doi: 10.2178/jsl/1294170993
+  arxiv: '0905.4679'
+brattkagherardi2011b:
+  authors: [Vasco Brattka, Guido Gherardi]
+  title: Effective choice and boundedness principles in computable analysis
+  venue: Bulletin of Symbolic Logic 17(1), 73–117
+  year: 2011
+  doi: 10.2178/bsl/1294186663
+  arxiv: '0905.4685'
+brattkadebrechtpauly2012:
+  authors: [Vasco Brattka, Matthew de Brecht, Arno Pauly]
+  title: Closed choice and a uniform low basis theorem
+  venue: Annals of Pure and Applied Logic 163(8), 986–1008
+  year: 2012
+  doi: 10.1016/j.apal.2011.12.020
+  arxiv: '1002.2800'
+brattkagherardimarcone2012:
+  authors: [Vasco Brattka, Guido Gherardi, Alberto Marcone]
+  title: The Bolzano–Weierstrass theorem is the jump of weak König's lemma
+  venue: Annals of Pure and Applied Logic 163(6), 623–655
+  year: 2012
+  doi: 10.1016/j.apal.2011.10.006
+  arxiv: '1101.0792'
+brattkagherardiholzl2015:
+  authors: [Vasco Brattka, Guido Gherardi, Rupert Hölzl]
+  title: Probabilistic computability and choice
+  venue: Information and Computation 242, 249–286
+  year: 2015
+  doi: 10.1016/j.ic.2015.03.005
+  arxiv: '1312.7305'
+brattkahendtlasskreuzer2017:
+  authors: [Vasco Brattka, Matthew Hendtlass, Alexander P. Kreuzer]
+  title: On the uniform computational content of computability theory
+  venue: Theory of Computing Systems 61(4), 1376–1426
+  year: 2017
+  doi: 10.1007/s00224-017-9798-1
+  arxiv: '1501.00433'
+brattkaetal2019:
+  authors: [Vasco Brattka, Stéphane Le Roux, Joseph S. Miller, Arno Pauly]
+  title: Connected choice and the Brouwer fixed point theorem
+  venue: Journal of Mathematical Logic 19(1), 1950004
+  year: 2019
+  doi: 10.1142/S0219061319500041
+  arxiv: '1206.4809'
+brattkagherardipauly2021:
+  authors: [Vasco Brattka, Guido Gherardi, Arno Pauly]
+  title: Weihrauch complexity in computable analysis
+  venue: Handbook of Computability and Complexity in Analysis, Springer, 367–417
+  year: 2021
+  arxiv: '1707.03202'
+pauly2020:
+  authors: [Arno Pauly]
+  title: An update on Weihrauch complexity, and some open questions
+  venue: arXiv preprint
+  year: 2020
+  arxiv: '2008.11168'
+blasshirstsimpson1987:
+  authors: [Andreas R. Blass, Jeffry L. Hirst, Stephen G. Simpson]
+  title: Logical analysis of some theorems of combinatorics and topological dynamics
+  venue: Logic and Combinatorics, Contemporary Mathematics 65, AMS, 125–156
+  year: 1987
+patey2015b:
+  authors: [Ludovic Patey]
+  title: Ramsey-type graph coloring and diagonal non-computability
+  venue: Archive for Mathematical Logic 54(7-8), 899–914
+  year: 2015
+  arxiv: '1412.0917'
+patey2017b:
+  authors: [Ludovic Patey]
+  title: Dominating the Erdős–Moser theorem in reverse mathematics
+  venue: Annals of Pure and Applied Logic 168(6), 1172–1209
+  year: 2017
+  arxiv: '1505.03425'
+astoretal2017:
+  authors: [Eric P. Astor, Damir D. Dzhafarov, Reed Solomon, Jacob Suggs]
+  title: The uniform content of partial and linear orders
+  venue: Annals of Pure and Applied Logic 168(6), 1153–1171
+  year: 2017
+  arxiv: '1605.06164'
+dzhafarovetal2017a:
+  authors: [Damir D. Dzhafarov, Carl G. Jockusch Jr., Reed Solomon, Linda Brown Westrick]
+  title: Effectiveness of Hindman's theorem for bounded sums
+  venue: Computability and Complexity (Downey Festschrift), LNCS 10010, Springer, 134–142
+  year: 2017
+  arxiv: '1603.08249'
+dzhafarovetal2017b:
+  authors: [Damir D. Dzhafarov, Ludovic Patey, Reed Solomon, Linda Brown Westrick]
+  title: Ramsey's theorem for singletons and strong computable reducibility
+  venue: Proceedings of the American Mathematical Society 145(3), 1343–1355
+  year: 2017
+  arxiv: '1602.04481'
+moninpatey2019:
+  authors: [Benoît Monin, Ludovic Patey]
+  title: Π⁰₁-encodability and omniscient reductions
+  venue: Notre Dame Journal of Formal Logic 60(1), 1–12
+  year: 2019
+  doi: 10.1215/00294527-2018-0020
+  arxiv: '1603.01086'
+slamanyokoyama2018:
+  authors: [Theodore A. Slaman, Keita Yokoyama]
+  title: The strength of Ramsey's theorem for pairs and arbitrarily many colors
+  venue: Journal of Symbolic Logic 83(4), 1610–1617
+  year: 2018
+  arxiv: '1711.08704'
+csimaetal2019:
+  authors: [Barbara F. Csima, Damir D. Dzhafarov, Denis R. Hirschfeldt, Carl G. Jockusch Jr., Reed Solomon, Linda Brown Westrick]
+  title: The reverse mathematics of Hindman's theorem for sums of exactly two elements
+  venue: Computability 8(3-4), 253–263
+  year: 2019
+  arxiv: '1804.09809'
+niesshafer2020:
+  authors: [André Nies, Paul Shafer]
+  title: Randomness notions and reverse mathematics
+  venue: Journal of Symbolic Logic 85(1), 271–299
+  year: 2020
+  arxiv: '1808.02746'
+davisetal2020:
+  authors: [Caleb Davis, Denis R. Hirschfeldt, Jeffry L. Hirst, Jake Pardo, Arno Pauly, Keita Yokoyama]
+  title: Combinatorial principles equivalent to weak induction
+  venue: Computability 9(3-4), 219–229
+  year: 2020
+  arxiv: '1812.09943'
+chongetal2019:
+  authors: [Chi Tat Chong, Wei Li, Lu Liu, Yue Yang]
+  title: 'The strength of Ramsey''s theorem for pairs over trees: I. Weak König''s lemma'
+  venue: arXiv preprint (Transactions of the AMS)
+  year: 2019
+  arxiv: '1912.09049'
+fioricaronesshafersolda2022:
+  authors: [Marta Fiori-Carones, Paul Shafer, Giovanni Soldà]
+  title: An inside/outside Ramsey theorem and recursion theory
+  venue: Transactions of the American Mathematical Society 375(3), 1977–2024
+  year: 2022
+  arxiv: '2006.16969'
+gohpaulyvalenti2021:
+  authors: [Jun Le Goh, Arno Pauly, Manlio Valenti]
+  title: Finding descending sequences through ill-founded linear orders
+  venue: Journal of Symbolic Logic 86(2), 817–854
+  year: 2021
+  doi: 10.1017/jsl.2021.15
+  arxiv: '2010.03840'
+gohpaulyvalenti2024:
+  authors: [Jun Le Goh, Arno Pauly, Manlio Valenti]
+  title: The weakness of finding descending sequences in ill-founded linear orders
+  venue: arXiv preprint
+  year: 2024
+  arxiv: '2401.11807'
+liupatey2022:
+  authors: [Lu Liu, Ludovic Patey]
+  title: The reverse mathematics of the thin set and Erdős–Moser theorems
+  venue: Journal of Symbolic Logic 87(1), 313–346
+  year: 2022
+  arxiv: '2103.07880'
+chongwangyang2021:
+  authors: [Chi Tat Chong, Wei Wang, Yue Yang]
+  title: Conservation strength of the infinite pigeonhole principle for trees
+  venue: arXiv preprint
+  year: 2021
+  arxiv: '2110.06026'
+belanger2022:
+  authors: [David R. Belanger]
+  title: Conservation theorems for the cohesiveness principle
+  venue: arXiv preprint
+  year: 2022
+  arxiv: '2212.13011'
+fioricaronesetal2024:
+  authors: [Marta Fiori-Carones, Alberto Marcone, Paul Shafer, Giovanni Soldà]
+  title: (Extra)ordinary equivalences with the ascending/descending sequence principle
+  venue: Journal of Symbolic Logic 89(1), 262–307
+  year: 2024
+  doi: 10.1017/jsl.2022.92
+  arxiv: '2107.02531'
+liumoninpatey2017:
+  authors: [Lu Liu, Benoît Monin, Ludovic Patey]
+  title: A computable analysis of variable words theorems
+  venue: arXiv preprint
+  year: 2017
+  arxiv: '1710.11219'
+lehoueroupatey2024:
+  authors: [Quentin Le Houérou, Ludovic Levy Patey]
+  title: Π⁰₄ conservation of the Ordered Variable Word theorem
+  venue: arXiv preprint
+  year: 2024
+  arxiv: '2404.18749'
+lehoueroupateyyokoyama2024:
+  authors: [Quentin Le Houérou, Ludovic Levy Patey, Keita Yokoyama]
+  title: Π⁰₄ conservation of Ramsey's theorem for pairs
+  venue: arXiv preprint
+  year: 2024
+  arxiv: '2404.18974'
+sun2025:
+  authors: [Mengzhou Sun]
+  title: The finite cohesiveness principle
+  venue: arXiv preprint
+  year: 2025
+  arxiv: '2503.18383'
+lehoueroupatey2025:
+  authors: [Quentin Le Houérou, Ludovic Patey]
+  title: The reverse mathematics of bounded Ramsey's theorem for pairs
+  venue: arXiv preprint
+  year: 2025
+  arxiv: '2509.03688'
+pateyshafer2026:
+  authors: [Ludovic Patey, Paul Shafer]
+  title: Bounded Ramsey's theorem for triples in computability theory
+  venue: arXiv preprint
+  year: 2026
+  arxiv: '2604.02092'
+kolodziejczyksun2026:
+  authors: [Leszek Aleksander Kołodziejczyk, Mengzhou Sun]
+  title: The cohesive and stable Ramsey theorems and proof size over a weak base theory
+  venue: arXiv preprint
+  year: 2026
+  arxiv: '2604.01808'
+liupatey2026:
+  authors: [Lu Liu, Ludovic Patey]
+  title: The reverse mathematics of the Ordered Variable Word theorem
+  venue: arXiv preprint
+  year: 2026
+  arxiv: '2606.12962'
+lehoueroupatey2026:
+  authors: [Quentin Le Houérou, Ludovic Patey]
+  title: Π⁰₄ conservation of a Carlson–Simpson lemma for 1-variable words
+  venue: arXiv preprint
+  year: 2026
+  arxiv: '2607.28116'
+patey2026:
+  authors: [Ludovic Patey]
+  title: The first-order part of the Ordered Variable Word theorem
+  venue: arXiv preprint
+  year: 2026
+  arxiv: '2610.27643'
+hirst2012:
+  authors: [Jeffry L. Hirst]
+  title: Hilbert versus Hindman
+  venue: Archive for Mathematical Logic 51(1-2), 123–125
+  year: 2012
+gherardimarcone2009:
+  authors: [Guido Gherardi, Alberto Marcone]
+  title: How incomputable is the separable Hahn–Banach theorem?
+  venue: Notre Dame Journal of Formal Logic 50(4), 393–425
+  year: 2009
+  doi: 10.1215/00294527-2009-018

@@ -1,0 +1,4 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Slaman (2004) — $\Sigma_n$-bounding and $\Delta_n$-induction
+
+- {type: "equivalence", from: "bsig2", to: "idelta2", over: "rca0", refs: [{ref: "slaman2004", loc: "Theorem 2.1 and proof preceding"}]}

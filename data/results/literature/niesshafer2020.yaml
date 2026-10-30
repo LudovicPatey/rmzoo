@@ -1,0 +1,7 @@
+# Results from [niesshafer2020].
+
+- {type: "implication", from: "ran2", to: "w2ran", over: "rca0", refs: [{ref: niesshafer2020}]}
+- {type: "implication", from: "w2ran", to: "ran1", over: "rca0", refs: [{ref: niesshafer2020}]}
+- {type: "implication", from: "ran1", to: "cran", over: "rca0", refs: [{ref: niesshafer2020}]}
+- {type: "implication", from: "cran", to: "sran", over: "rca0", refs: [{ref: niesshafer2020}]}
+- {type: "implication", from: "sran", to: "cran", over: "rca0", refs: [{ref: niesshafer2020}]}

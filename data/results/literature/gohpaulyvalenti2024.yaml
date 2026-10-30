@@ -1,0 +1,6 @@
+# Results from [gohpaulyvalenti2024].
+
+- {type: "separation", from: "ds", to: "kl", over: "w", refs: [{ref: gohpaulyvalenti2024}]}
+- {type: "separation", from: "bs", to: "kl", over: "w", refs: [{ref: gohpaulyvalenti2024}]}
+- {type: "implication", from: "bs", to: "ds", over: "w", refs: [{ref: gohpaulyvalenti2024}]}
+- {type: "separation", from: "ds", to: "bs", over: "w", refs: [{ref: gohpaulyvalenti2024}]}

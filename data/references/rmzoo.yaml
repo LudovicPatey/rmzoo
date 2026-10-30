@@ -1,0 +1,370 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024), completed with publication data.
+
+paris1980:
+  authors:
+    - Paris
+  title: A hierarchy of cuts in models of arithmetic
+  year: 1980
+  venue: "in: Model Theory of Algebra and Arithmetic (ed: Pacholski, Wierzejewski, & Wilkie)"
+  url: http://link.springer.com/chapter/10.1007/BFb0090171
+simpson1985:
+  authors:
+    - Simpson
+  title: Reverse Mathematics
+  year: 1985
+  venue: "in: Recursion Theory (ed. Anil Nerode and Richard A. Shore), pp. 461-471, ISBN-10: 0-8218-1447-8"
+brownsimpson1993:
+  authors:
+    - Brown
+    - Simpson
+  title: The Baire category theorem in weak subsystems of second-order arithmetic
+  year: 1993
+  venue: J. Symbolic Logic 58(2)
+  doi: 10.2307/2275219
+hajek1993:
+  authors:
+    - Hájek
+  title: Interpretability and fragments of arithmetic
+  year: 1993
+  venue: "in: Arithmetic, Proof Theory, and Computational Complexity (ed. Clote and Krajícek)"
+mytilinaiosslaman1996:
+  authors:
+    - Mytilinaios
+    - Slaman
+  title: On a Question of Brown and Simpson
+  year: 1996
+  venue: "in: Computability, Enumerability, Unsolvability: Directions in Recursion Theory (ed. Cooper, Slaman, Wainer)"
+hajekpudlak1998:
+  authors:
+    - Hájek
+    - Pudlák
+  title: Metamathematics of first-order arithmetic
+  year: 1998
+  venue: "ISBN-10: 3-540-63648-X"
+  url: http://projecteuclid.org/euclid.pl/1235421926
+friedman1999:
+  authors:
+    - Friedman
+  title: 'FOM: 53:Free Sets/Reverse Math" and "FOM: 54:Recursion Theory/Dynamics'
+  year: 1999
+  venue: FOM mailing list, posts 53 and 54
+  url: http://www.cs.nyu.edu/pipermail/fom/1999-July/003257.html
+dobrinensimpson2004:
+  authors:
+    - Dobrinen
+    - Simpson
+  title: Almost everywhere domination
+  year: 2004
+  venue: J. Symbolic Logic 69(3)
+  doi: 10.2178/jsl/1096901775
+  arxiv: math/0506019
+mileti2004:
+  authors:
+    - Mileti
+  title: Partition theorems and computability theory
+  year: 2004
+  venue: "Personal archive: http://www.math.grinnell.edu/~miletijo/research/thesis.pdf"
+cholaketal2005:
+  authors:
+    - Cholak
+    - Giusto
+    - Hirst
+    - Jockusch
+  title: Free sets and reverse mathematics
+  year: 2005
+  venue: "Published version: http://www.aslonline.org/books-lnl_21.html"
+  url: http://www.math.uiuc.edu/~jockusch/free7.pdf
+cholakgreenbergmiller2006:
+  authors:
+    - Cholak
+    - Greenberg
+    - Miller
+  title: Uniform almost everywhere domination
+  year: 2006
+  venue: J. Symbolic Logic 71(3)
+  doi: 10.2178/jsl/1154698592
+  arxiv: math/0506019
+conidis2008:
+  authors:
+    - Conidis
+  title: Classifying model-theoretic properties
+  year: 2008
+  venue: J. Symbolic Logic 73(3)
+  doi: 10.2178/jsl/1230396753
+chubbhirstmcnicholl2009:
+  authors:
+    - Chubb
+    - Hirst
+    - McNicholl
+  title: Reverse mathematics, computability, and partitions of trees
+  year: 2009
+  venue: J. Symbolic Logic 74(1)
+  doi: 10.2178/jsl/1231082309
+csimamileti2009:
+  authors:
+    - Csima
+    - Mileti
+  title: The strength of the rainbow Ramsey theorem
+  year: 2009
+  venue: J. Symbolic Logic 74(4)
+  doi: 10.2178/jsl/1254748693
+dzhafarovhirst2009:
+  authors:
+    - Dzhafarov
+    - Hirst
+  title: The polarized Ramsey's theorem
+  year: 2009
+  venue: Arch. Math. Logic 48(2)
+  doi: 10.1007/s00153-008-0108-0
+hirschfeldtshoreslaman2009:
+  authors:
+    - Hirschfeldt
+    - Shore
+    - Slaman
+  title: The atomic model theorem and type omitting
+  year: 2009
+  venue: Trans. Amer. Math. Soc. 361(11)
+  doi: 10.1090/S0002-9947-09-04847-8
+dzhafarovhirstlakins2010:
+  authors:
+    - Dzhafarov
+    - Hirst
+    - Lakins
+  title: "Ramsey’s theorem for trees: the polarized tree theorem and notions of stability"
+  year: 2010
+  venue: Arch. Math. Logic 49(3)
+  doi: 10.1007/s00153-010-0179-6
+dzhafarov2011:
+  authors:
+    - Dzhafarov
+  title: Stable Ramsey's Theorem and Measure
+  year: 2011
+  venue: Notre Dame J. Formal Logic 52(1)
+  doi: 10.1215/00294527-2010-039
+  arxiv: "1010.2230"
+slaman2011cie:
+  authors:
+    - Theodore A. Slaman
+  title: Σ₂-bounding and Δ₂-induction (talk slides)
+  year: 2011
+  venue: Computability in Europe (CiE) 2011, invited talk
+avigaddeanrute2012:
+  authors:
+    - Avigad
+    - Dean
+    - Rute
+  title: Algorithmic randomness, reverse mathematics, and the dominated convergence theorem
+  year: 2012
+  venue: Ann. Pure Appl. Logic 163(12)
+  doi: 10.1016/j.apal.2012.05.010
+  arxiv: "1106.0775"
+chongslamanyang2012:
+  authors:
+    - Chong
+    - Slaman
+    - Yang
+  title: $\Pi^1_1-conservation of combinatorial principles weaker than Ramsey's theorem for pairs
+  year: 2012
+  venue: Adv. Math. 230(3)
+  doi: 10.1016/j.aim.2012.02.025
+flood2012:
+  authors:
+    - Flood
+  title: Reverse mathematics and a Ramsey-type König's Lemma
+  year: 2012
+  venue: J. Symbolic Logic 77(4)
+  doi: 10.2178/jsl.7704120
+  arxiv: "1111.2526"
+kjoshanssenmillersolomon2012:
+  authors:
+    - Kjos-Hanssen
+    - Miller
+    - Solomon
+  title: Lowness notions, measure, and domination
+  year: 2012
+  venue: J. London Math. Soc. 85(3)
+  doi: 10.1112/jlms/jdr072
+  arxiv: "1408.2898"
+kreuzer2012:
+  authors:
+    - Kreuzer
+  title: Primitive Recursion and the Chain Antichain Principle
+  year: 2012
+  venue: Notre Dame J. Formal Logic 53(2)
+  doi: 10.1215/00294527-1715716
+kreuzer2012b:
+  authors:
+    - Kreuzer
+  title: "Proof mining and combinatorics: Program extraction for Ramsey's theorem for pairs"
+  year: 2012
+  venue: Ph.D. thesis, Technische Universität, Darmstadt
+  url: http://tuprints.ulb.tu-darmstadt.de/2972/
+conidisslaman2013:
+  authors:
+    - Conidis
+    - Slaman
+  title: Random reals, the rainbow Ramsey theorem, and arithmetic conservation
+  year: 2013
+  venue: J. Symbolic Logic 78(1)
+  doi: 10.2178/jsl.7801130
+dzhafarovmummert2013:
+  authors:
+    - Dzhafarov
+    - Mummert
+  title: On the strength of the finite intersection principle
+  year: 2013
+  venue: Israel J. Math. 196(1)
+  doi: 10.1007/s11856-012-0150-9
+  arxiv: "1109.3374"
+wang2013:
+  authors:
+    - Wang
+  title: Rainbow Ramsey Theorem for Triples is Strictly Weaker than the Arithmetical Comprehension Axiom
+  year: 2013
+  venue: J. Symbolic Logic 78(3)
+  doi: 10.2178/jsl/1067620187
+  arxiv: "1303.3327"
+kang2014:
+  authors:
+    - Kang
+  title: Combinatorial principles between $\mathsf{RRT}^2_2$ and $\mathsf{RT}^2_2$
+  year: 2014
+  venue: Front. Math. China 9(6)
+  doi: 10.1007/s11464-014-0390-6
+wang2014:
+  authors:
+    - Wang
+  title: Cohesive sets and rainbows
+  year: 2014
+  venue: Ann. Pure Appl. Logic 165(2)
+  doi: 10.1016/j.apal.2013.06.002
+  arxiv: "1303.3329"
+wang2014b:
+  authors:
+    - Wang
+  title: Some logically weak Ramseyan theorems
+  year: 2014
+  venue: Adv. Math. 261
+  doi: 10.1016/j.aim.2014.05.003
+  arxiv: "1303.3331"
+rice2015:
+  authors:
+    - Rice
+  title: The Thin Set Theorem for Pairs Implies DNR
+  year: 2015
+  venue: Notre Dame J. Formal Logic 56(4)
+  doi: 10.1215/00294527-3153606
+diamondstoneetal2016:
+  authors:
+    - Diamondstone
+    - Downey
+    - Greenberg
+    - Turetsky
+  title: The finite intersection principle and genericity
+  year: 2016
+  venue: Math. Proc. Cambridge Philos. Soc. 160(2)
+  doi: 10.1017/S0305004115000651
+bienvenupateyshafer2017:
+  authors:
+    - Bienvenu
+    - Patey
+    - Shafer
+  title: On the logical strengths of partial solutions to mathematical problems
+  year: 2017
+  venue: Transactions of the London Mathematical Society vol. 4, iss. 1, 2017
+  doi: 10.1112/tlm3.12001
+  arxiv: "1411.5874"
+cholakdowneyigusa2017:
+  authors:
+    - Cholak
+    - Downey
+    - Igusa
+  title: Any FIP real computes a 1-generic
+  year: 2017
+  venue: Transactions of the American Mathematical Society 369(8), 5855–5869
+  arxiv: "1502.03785"
+frittaionpatey2017:
+  authors:
+    - Frittaion
+    - Patey
+  title: Coloring the rationals in reverse mathematics
+  year: 2017
+  venue: Computability 6(4), 319–331
+  arxiv: "1508.00752"
+patey2017a:
+  authors:
+    - Patey
+  title: Iterative forcing and hyperimmunity in reverse mathematics
+  year: 2017
+  venue: Computability 6(3), 209–221
+  arxiv: "1501.07709"
+  url: http://www.ludovicpatey.com/media/research/iterative-forcing-extended.pdf
+patey2016b:
+  authors:
+    - Patey
+  title: The strength of the tree theorem for pairs in reverse mathematics
+  year: 2016
+  venue: Journal of Symbolic Logic 81(4), 1481–1499
+  arxiv: "1505.01057"
+wang2016:
+  authors:
+    - Wang
+  title: The Definability Strength of Combinatorial Principles
+  year: 2016
+  venue: Journal of Symbolic Logic 81(4), 1531–1554
+  doi: 10.1017/jsl.2016.10
+  arxiv: "1408.1465"
+floodtowsner2016:
+  authors:
+    - Flood
+    - Towsner
+  title: Separating principles below $\mathsf{WKL}_0$
+  year: 2016
+  venue: Mathematical Logic Quarterly 62(6), 507–529
+  arxiv: "1410.4068"
+chongslamanyang2017:
+  authors:
+    - Chong
+    - Slaman
+    - Yang
+  title: The inductive strength of Ramsey's theorem for pairs
+  year: 2017
+  venue: Advances in Mathematics 308, 121–141
+  url: http://www.math.nus.edu.sg/~chongct/ISigma2.pdf
+patey2015:
+  authors:
+    - Patey
+  title: Somewhere over the rainbow Ramsey theorem for pairs
+  year: 2015
+  venue: arXiv preprint
+  arxiv: "1501.07424"
+pateyyokoyama2018:
+  authors:
+    - Patey
+    - Yokoyama
+  title: The proof-theoretic strength of Ramsey's theorem for pairs and two colors
+  year: 2018
+  venue: Advances in Mathematics 330, 1034–1070
+  arxiv: "1601.00050"
+patey2018a:
+  authors:
+    - Patey
+  title: Partial orders and immunity in reverse mathematics
+  year: 2018
+  venue: Computability 7(4), 323–339
+  arxiv: "1607.04506"
+dzhafarovpatey2017:
+  authors:
+    - Dzhafarov
+    - Patey
+  title: Coloring trees in reverse mathematics
+  year: 2017
+  venue: Advances in Mathematics 318, 497–514
+  arxiv: "1609.02627"
+towsner2020:
+  authors:
+    - Towsner
+  title: Constructing sequences one step at a time
+  year: 2020
+  venue: Journal of Mathematical Logic 20(3), 2050017
+  arxiv: "1609.05509"

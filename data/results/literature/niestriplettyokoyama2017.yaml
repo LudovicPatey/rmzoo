@@ -1,0 +1,5 @@
+# Results from [niestriplettyokoyama2017].
+
+- {type: "equivalence", from: "jordan-c", to: "aca", over: "rca0", refs: [{ref: niestriplettyokoyama2017}]}
+- {type: "equivalence", from: "jordan", to: "wkl", over: "rca0", refs: [{ref: niestriplettyokoyama2017}]}
+- {type: "equivalence", from: "bvdiff", to: "wwkl", over: "rca0", refs: [{ref: niestriplettyokoyama2017}]}

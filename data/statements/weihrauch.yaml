@@ -1,0 +1,131 @@
+# Landmark problems of the Weihrauch lattice.
+
+- id: llpo
+  label: '\mathsf{LLPO}'
+  name: Lesser limited principle of omniscience
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ C_2, binary choice, LLPO ]
+  definition: >
+    Given $p \in 2^{\mathbb{N}}$ with at most one $1$, find $i \in \{0, 1\}$ such that $p(2n + i) = 0$ for all $n$. Equivalently (Weihrauch), choice from a nonempty co-c.e. subset of $\{0, 1\}$ ($\mathsf{C}_2$).
+  instance: A sequence $p \in 2^{\mathbb{N}}$ with at most one $1$.
+  solution: A parity $i$ such that $p$ is zero on all positions of parity $i$.
+  refs:
+    - { ref: brattkagherardi2011, role: rm }
+    - ref: pauly2020
+      role: survey
+
+- id: lpo
+  label: '\mathsf{LPO}'
+  name: Limited principle of omniscience
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ LPO ]
+  definition: Given $p \in 2^{\mathbb{N}}$, decide whether $p$ is the constant zero sequence.
+  instance: A sequence $p \in 2^{\mathbb{N}}$.
+  solution: $1$ if $p = 0^\omega$, and $0$ otherwise.
+  refs:
+    - { ref: brattkagherardi2011, role: rm }
+    - ref: pauly2020
+      role: survey
+
+- id: cn
+  label: '\mathsf{C}_{\mathbb{N}}'
+  name: Closed choice on the natural numbers
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ C_N, choice on natural numbers, finite mind change ]
+  definition: >
+    Given an enumeration of the complement of a nonempty set $A \subseteq \mathbb{N}$, find an element of $A$. The problems Weihrauch below it are those computable with finitely many mind changes.
+  instance: An enumeration of $\mathbb{N} \setminus A$ for some nonempty $A$.
+  solution: An element of $A$.
+  refs:
+    - { ref: brattkagherardi2011b, role: rm }
+    - { ref: brattkadebrechtpauly2012, role: rm }
+    - ref: pauly2020
+      role: survey
+
+- id: lim
+  label: '\lim'
+  name: Limit operation
+  kind: problem
+  formulationOf: aca
+  tags: [ weihrauch ]
+  aliases: [ limit, lim, Turing jump problem ]
+  definition: Given a convergent sequence $(p_n)$ in $\mathbb{N}^{\mathbb{N}}$, find its limit.
+  instance: A convergent sequence $(p_n)_n$ in Baire space.
+  solution: $\lim_n p_n$.
+  refs:
+    - { ref: brattkagherardipauly2021, role: survey }
+
+- id: ivt
+  label: '\mathsf{IVT}'
+  name: Intermediate value theorem
+  kind: problem
+  tags: [ weihrauch, compactness ]
+  aliases: [ intermediate value theorem, connected choice, 'CC_[0,1]' ]
+  definition: >
+    Every continuous $f : [0, 1] \to \mathbb{R}$ with $f(0) \cdot f(1) < 0$ has a zero. Weihrauch equivalent to connected choice on $[0, 1]$.
+  instance: >
+    A continuous $f : [0,1] \to \mathbb{R}$ with $f(0) \cdot f(1) < 0$.
+  solution: A real $x \in [0,1]$ with $f(x) = 0$.
+  refs:
+    - { ref: brattkagherardi2011b, role: rm }
+
+- id: bwt
+  label: '\mathsf{BWT}_{\mathbb{R}}'
+  name: Bolzano–Weierstrass theorem
+  kind: problem
+  tags: [ weihrauch, compactness ]
+  aliases: [ Bolzano-Weierstrass, BWT ]
+  definition: Every bounded sequence of real numbers has a cluster point.
+  instance: A bounded sequence of reals.
+  solution: A cluster point of the sequence.
+  refs:
+    - { ref: brattkagherardimarcone2012, role: rm }
+
+- id: wkl-j
+  label: "\\mathsf{WKL}'"
+  name: Jump of weak König's lemma
+  kind: problem
+  tags: [ weihrauch, compactness ]
+  aliases: [ WKL jump ]
+  definition: >
+    The jump of $\mathsf{WKL}$: given a sequence converging to (a code of) an infinite binary tree, find a path through the limit tree.
+  instance: A convergent sequence of codes for an infinite binary tree $T$.
+  solution: An infinite path through $T$.
+  refs:
+    - { ref: brattkagherardimarcone2012, role: origin }
+
+- id: wkl-jj
+  label: "\\mathsf{WKL}''"
+  name: Double jump of weak König's lemma
+  kind: problem
+  tags: [ weihrauch, compactness ]
+  definition: The jump of $\mathsf{WKL}'$.
+  instance: A double limit of codes for an infinite binary tree $T$.
+  solution: An infinite path through $T$.
+  refs:
+    - { ref: brattkarakotoniaina2017, role: rm }
+
+- id: ds
+  label: '\mathsf{DS}'
+  name: Descending sequences in ill-founded orders
+  kind: problem
+  tags: [ weihrauch, orders ]
+  definition: Every ill-founded linear order has an infinite descending sequence.
+  instance: An ill-founded linear order.
+  solution: An infinite descending sequence.
+  refs:
+    - { ref: gohpaulyvalenti2021, role: origin }
+
+- id: bs
+  label: '\mathsf{BS}'
+  name: Bad sequences in non-wqos
+  kind: problem
+  tags: [ weihrauch, orders ]
+  definition: Every quasi-order which is not a well-quasi-order has an infinite bad sequence.
+  instance: A quasi-order which is not a wqo.
+  solution: An infinite bad sequence.
+  refs:
+    - { ref: gohpaulyvalenti2021, role: origin }

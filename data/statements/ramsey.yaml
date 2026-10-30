@@ -1,0 +1,153 @@
+# Ramsey's theorem and principles below RT²₂.
+
+- id: rt12
+  label: '\mathsf{RT}^1_2'
+  name: Infinite pigeonhole principle (2 colors)
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ pigeonhole, RT12 ]
+  definition: >
+    Every coloring $f : \mathbb{N} \to 2$ has an infinite homogeneous set.
+  instance: >
+    A coloring $f : \mathbb{N} \to 2$.
+  solution: An infinite set $H$ on which $f$ is constant.
+  refs:
+    - { ref: hirst1987, role: rm }
+    - { ref: brattkarakotoniaina2017, role: rm }
+
+- id: rt13
+  label: '\mathsf{RT}^1_3'
+  name: Infinite pigeonhole principle (3 colors)
+  kind: problem
+  formulationOf: rt12
+  tags: [ ramsey ]
+  aliases: [ RT13 ]
+  definition: >
+    Every coloring $f : \mathbb{N} \to 3$ has an infinite homogeneous set.
+  instance: >
+    A coloring $f : \mathbb{N} \to 3$.
+  solution: An infinite set $H$ on which $f$ is constant.
+  refs:
+    - { ref: brattkarakotoniaina2017, role: rm }
+
+- id: rt1inf
+  label: '\mathsf{RT}^1_{<\infty}'
+  name: Infinite pigeonhole principle (finitely many colors)
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ RT1, pigeonhole finitely many colors ]
+  definition: >
+    For every $k$, every coloring $f : \mathbb{N} \to k$ has an infinite homogeneous set.
+  instance: >
+    A number $k$ and a coloring $f : \mathbb{N} \to k$.
+  solution: An infinite set $H$ on which $f$ is constant.
+  refs:
+    - { ref: hirst1987, role: rm }
+
+- id: rt22
+  label: '\mathsf{RT}^2_2'
+  name: Ramsey's theorem for pairs
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ Ramsey theorem for pairs, RT22 ]
+  definition: >
+    Every coloring $f : [\mathbb{N}]^2 \to 2$ has an infinite homogeneous set.
+  instance: >
+    A coloring $f : [\mathbb{N}]^2 \to 2$.
+  solution: An infinite set $H$ such that $f$ is constant on $[H]^2$.
+  refs:
+    - { ref: ramsey1930, role: origin }
+    - { ref: jockusch1972, role: rm }
+    - { ref: cholakjockuschslaman2001, role: rm }
+    - { ref: hirschfeldt2015, role: survey }
+    - ref: dzhafarovmummert2022
+      role: survey
+
+- id: rt23
+  label: '\mathsf{RT}^2_3'
+  name: Ramsey's theorem for pairs (3 colors)
+  kind: problem
+  formulationOf: rt22
+  tags: [ ramsey ]
+  aliases: [ RT23 ]
+  definition: >
+    Every coloring $f : [\mathbb{N}]^2 \to 3$ has an infinite homogeneous set.
+  instance: >
+    A coloring $f : [\mathbb{N}]^2 \to 3$.
+  solution: An infinite set $H$ such that $f$ is constant on $[H]^2$.
+  refs:
+    - { ref: patey2018a, role: rm }
+
+- id: rt32
+  label: '\mathsf{RT}^3_2'
+  name: Ramsey's theorem for triples
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ RT32, Ramsey theorem for triples ]
+  definition: >
+    Every coloring $f : [\mathbb{N}]^3 \to 2$ has an infinite homogeneous set.
+  instance: >
+    A coloring $f : [\mathbb{N}]^3 \to 2$.
+  solution: An infinite set $H$ such that $f$ is constant on $[H]^3$.
+  refs:
+    - { ref: ramsey1930, role: origin }
+    - { ref: jockusch1972, role: rm }
+
+- id: srt22
+  label: '\mathsf{SRT}^2_2'
+  name: Stable Ramsey's theorem for pairs
+  kind: problem
+  tags: [ ramsey, stable ]
+  aliases: [ stable Ramsey, SRT22 ]
+  definition: >
+    Every stable coloring $f : [\mathbb{N}]^2 \to 2$ (i.e. $\lim_y f(x, y)$ exists for every $x$) has an infinite homogeneous set.
+  instance: >
+    A stable coloring $f : [\mathbb{N}]^2 \to 2$.
+  solution: An infinite set $H$ such that $f$ is constant on $[H]^2$.
+  refs:
+    - { ref: cholakjockuschslaman2001, role: origin }
+
+- id: d22
+  label: '\mathsf{D}^2_2'
+  name: Δ⁰₂ subset principle
+  kind: problem
+  formulationOf: srt22
+  tags: [ ramsey, stable, computability ]
+  aliases: [ D22, delta2 subset ]
+  definition: >
+    For every stable coloring $f : [\mathbb{N}]^2 \to 2$ there is an infinite set $H$ and a color $i$ such that $\lim_y f(x, y) = i$ for all $x \in H$. Equivalently, every $\Delta^0_2$ set has an infinite subset in it or its complement.
+  instance: >
+    A stable coloring $f : [\mathbb{N}]^2 \to 2$.
+  solution: An infinite set which is limit-homogeneous for $f$.
+  refs:
+    - { ref: cholakjockuschslaman2001, role: origin }
+    - { ref: chonglemppyang2010, role: rm }
+
+- id: coh
+  label: '\mathsf{COH}'
+  name: Cohesiveness principle
+  kind: problem
+  tags: [ ramsey, cohesive, computability ]
+  aliases: [ cohesive, COH ]
+  definition: >
+    For every sequence of sets $R_0, R_1, \dots$, there is an infinite set $C$ such that for every $i$, either $C \subseteq^* R_i$ or $C \subseteq^* \overline{R_i}$.
+  instance: A sequence of sets $\vec R$.
+  solution: An infinite $\vec R$-cohesive set.
+  refs:
+    - { ref: cholakjockuschslaman2001, role: rm }
+    - { ref: jockuschstephan1993, role: origin }
+
+- id: em
+  label: '\mathsf{EM}'
+  name: Erdős–Moser theorem
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ Erdos-Moser, tournament ]
+  definition: >
+    Every infinite tournament has an infinite transitive subtournament.
+  instance: An infinite tournament $T$ on $\mathbb{N}$.
+  solution: An infinite set $H$ on which $T$ is transitive.
+  refs:
+    - { ref: erdosmoser1964, role: origin }
+    - { ref: bovykinweiermann2017, role: rm }
+    - { ref: lermansolomontowsner2013, role: rm }

@@ -1,0 +1,7 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Chong, Slaman, Yang (2014) — The metamathematics of Stable Ramsey’s Theorem for Pairs
+
+- {type: "separation", from: "d22", to: "isig2", over: "rca0", refs: [{ref: "chongslamanyang2014", loc: "Theorem 2.2"}]}
+- {type: "separation", from: "d22", to: "rt22", over: "rca0", refs: [{ref: "chongslamanyang2014", loc: "Corollary 2.5"}]}
+- {type: "separation", from: "bsig2-d22-wkl", to: "rt22", over: "rca0", refs: [{ref: "chongslamanyang2014", loc: "Theorem 2.7"}]}
+- {type: "separation", from: "bsig2-d22-wkl", to: "isig2", over: "rca0", refs: [{ref: "chongslamanyang2014", loc: "Theorem 2.7 and closing remark of Section 5"}]}

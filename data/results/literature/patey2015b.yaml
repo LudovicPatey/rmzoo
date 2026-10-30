@@ -1,0 +1,3 @@
+# Results from [patey2015b].
+
+- {type: "separation", from: "dnr", to: "rcolor2", over: "omega", note: "For every computable order h there is an ω-model of DNR_h which is not a model of RCOLOR₂.", refs: [{ref: patey2015b}]}

@@ -1,0 +1,4 @@
+# Results from [flood2013].
+
+- {type: "implication", from: "pr2", to: "rt2", over: "rca0", refs: [{ref: flood2013}]}
+- {type: "separation", from: "pr2", to: "aca", over: "rca0", refs: [{ref: flood2013}]}

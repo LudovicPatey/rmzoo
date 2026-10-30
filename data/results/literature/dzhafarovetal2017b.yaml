@@ -1,0 +1,4 @@
+# Results from [dzhafarovetal2017b].
+
+- {type: "separation", from: "srt22", to: "rt13", over: "sc", note: "RT¹ₖ is not strongly computably reducible to SRT²ℓ for k > ℓ.", refs: [{ref: dzhafarovetal2017b}]}
+- {type: "separation", from: "srt2", to: "coh", over: "sc", refs: [{ref: dzhafarovetal2017b}]}

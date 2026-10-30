@@ -1,0 +1,5 @@
+# Results from [patey2016].
+
+- {type: "implication", from: "srt23", to: "srt22", over: "sw", folklore: true}
+- {type: "implication", from: "srt22", to: "srt23", over: "rca0", folklore: true}
+- {type: "separation", from: "rt22", to: "srt23", over: "c", note: "SRT^n_k is not computably reducible to RT^n_ℓ for k > ℓ.", refs: [{ref: patey2016}]}

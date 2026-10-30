@@ -1,0 +1,4 @@
+# Results from [davisetal2020].
+
+- {type: "equivalence", from: "ert", to: "isig1", over: "rca0star", refs: [{ref: davisetal2020}]}
+- {type: "equivalence", from: "ect", to: "isig2", over: "rca0star", refs: [{ref: davisetal2020}]}

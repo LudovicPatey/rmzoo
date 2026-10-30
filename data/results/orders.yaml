@@ -1,0 +1,10 @@
+# Linear and partial orders.
+
+- {type: implication, from: rt22, to: cac, over: [sw, rca0star], folklore: true, refs: [{ref: hirschfeldtshore2007}]}
+- {type: implication, from: cac, to: scac, over: [sw, rca0star], folklore: true}
+- {type: implication, from: ads, to: sads, over: [sw, rca0star], folklore: true}
+- {type: implication, from: ads, to: cads, over: rca0, folklore: true}
+- {type: implication, from: cads-sads, to: ads, over: rca0, refs: [{ref: hirschfeldtshore2007}]}
+- {type: implication, from: coh, to: cads, over: rca0, refs: [{ref: hirschfeldtshore2007}]}
+
+- {type: separation, from: ads, to: cac, over: omega, refs: [{ref: lermansolomontowsner2013}]}

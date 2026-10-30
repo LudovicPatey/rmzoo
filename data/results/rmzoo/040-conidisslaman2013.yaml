@@ -1,0 +1,9 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Conidis, Slaman (2013) — Random reals, the rainbow Ramsey theorem, and arithmetic conservation
+
+- {type: "implication", from: "csig", to: "csig2", over: "rca0", folklore: true, note: "By definition."}
+- {type: "implication", from: "ran2", to: "rrt22", over: "rca0", refs: [{ref: "conidisslaman2013", loc: "Theorem 2.1"}]}
+- {type: "separation", from: "csig", to: "bsig2", over: "rca0", refs: [{ref: "conidisslaman2013", loc: "Theorem 3.2"}]}
+- {type: "separation", from: "csig-isig2", to: "bsig3", over: "rca0", refs: [{ref: "conidisslaman2013", loc: "Theorem 3.2"}]}
+- {type: "implication", from: "rrt22", to: "csig2", over: "rca0", refs: [{ref: "conidisslaman2013", loc: "Theorem 3.3"}]}
+- {type: "conservation", statement: "bsig2-ran2", base: "bsig2", class: "Pi11", value: true, refs: [{ref: "conidisslaman2013", loc: "Corollary 4.2"}]}

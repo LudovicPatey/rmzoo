@@ -1,0 +1,5 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Wang (2013) — Rainbow Ramsey Theorem for Triples is Strictly Weaker than the Arithmetical Comprehension Axiom
+
+- {type: "separation", from: "rrt32", to: "aca", over: "omega", refs: [{ref: "wang2013", loc: "Theorem 3.1"}]}
+- {type: "separation", from: "rrt32-rt22-wkl", to: "aca", over: "omega", refs: [{ref: "wang2013", loc: "Corollary 3.4"}]}

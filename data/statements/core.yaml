@@ -1,0 +1,127 @@
+# Base system, Big Five, compactness and randomness.
+#
+# Fields:
+#   id            unique identifier (used in URLs and results)
+#   label         TeX label (math mode)
+#   name          full name
+#   kind          problem   -> has an instance/solution reading (Π¹₂ problem)
+#                 sentence  -> only compared over theories / ω-models
+#   tags          list of tag ids
+#   definition    statement, with inline TeX in $...$
+#   instance / solution   for problems
+#   formulationOf id of the main formulation of the same principle
+#   conjunction   list of ids (compound statement)
+#   base          true for the base system / identity problem
+#   firstOrder    true for arithmetical statements true in ℕ
+#   aliases       other names, used by search
+#   refs          [{ref: key, role: origin | rm | survey, loc: "..."}]
+
+- id: rca0
+  label: '\mathsf{RCA}_0'
+  name: Base system
+  kind: problem
+  base: true
+  firstOrder: true
+  tags: [ big-five ]
+  aliases: [ recursive comprehension, identity problem, RCA0, RCA0* ]
+  definition: >
+    The base system: no axiom beyond the base theory of the reduction under consideration. Over theories this is RCA₀ (recursive comprehension and $\Sigma^0_1$-induction), or RCA₀* when working over RCA₀*; as a problem it is the identity problem.
+  refs:
+    - { ref: friedman1975, role: origin }
+    - { ref: simpson2009, role: survey, loc: Chapter II }
+    - ref: simpson1985
+      role: survey
+    - ref: dzhafarovmummert2022
+      role: survey
+
+- id: wkl
+  label: '\mathsf{WKL}'
+  name: Weak König's lemma
+  kind: problem
+  tags: [ big-five, compactness ]
+  aliases: [ WKL0, weak konig lemma ]
+  definition: Every infinite subtree of $2^{<\mathbb{N}}$ has an infinite path.
+  instance: An infinite binary tree $T \subseteq 2^{<\mathbb{N}}$.
+  solution: An infinite path through $T$.
+  refs:
+    - { ref: friedman1975, role: origin }
+    - { ref: simpson2009, role: survey, loc: Chapter IV }
+
+- id: sep
+  label: '\Sigma^0_1\text{-}\mathsf{SEP}'
+  name: Σ⁰₁ separation
+  kind: problem
+  formulationOf: wkl
+  tags: [ compactness ]
+  aliases: [ separation, sigma01 separation ]
+  definition: >
+    For every pair of disjoint $\Sigma^0_1$ sets $A, B$, there is a set $S$ with $A \subseteq S$ and $S \cap B = \emptyset$.
+  instance: Two disjoint $\Sigma^0_1$ sets $A$, $B$ (given by enumerations).
+  solution: A set $S$ separating $A$ from $B$.
+  refs:
+    - { ref: simpson2009, role: rm, loc: Lemma IV.4.4 }
+
+- id: wwkl
+  label: '\mathsf{WWKL}'
+  name: Weak weak König's lemma
+  kind: problem
+  tags: [ compactness, randomness ]
+  aliases: [ WWKL0, weak weak konig lemma ]
+  definition: >
+    Every binary tree $T$ of positive measure, i.e. $\lim_s |T \cap 2^s| / 2^s > 0$, has an infinite path.
+  instance: A binary tree of positive measure.
+  solution: An infinite path through it.
+  refs:
+    - { ref: yusimpson1990, role: rm }
+    - { ref: simpson2009, role: survey, loc: Section X.1 }
+
+- id: dnr
+  label: '\mathsf{DNR}'
+  name: Diagonally non-recursive functions
+  kind: problem
+  tags: [ computability, randomness ]
+  aliases: [ DNC, diagonally non computable ]
+  definition: >
+    For every set $X$, there is a function $f$ such that $f(e) \neq \Phi^X_e(e)$ for every $e$.
+  instance: A set $X$.
+  solution: A function $f$ which is diagonally non-computable relative to $X$.
+  refs:
+    - { ref: giustosimpson2000, role: rm }
+    - { ref: ambosspiesetal2004, role: rm }
+
+- id: aca
+  label: '\mathsf{ACA}'
+  name: Arithmetical comprehension
+  kind: problem
+  tags: [ big-five ]
+  aliases: [ ACA0, arithmetic comprehension, Turing jump ]
+  definition: >
+    Every set defined by an arithmetical formula exists. Equivalently over RCA₀, every set has a Turing jump.
+  instance: A set $X$.
+  solution: The Turing jump $X'$.
+  refs:
+    - { ref: friedman1975, role: origin }
+    - { ref: simpson2009, role: survey, loc: Chapter III }
+
+- id: atr
+  label: '\mathsf{ATR}'
+  name: Arithmetical transfinite recursion
+  kind: sentence
+  tags: [ big-five ]
+  aliases: [ ATR0 ]
+  definition: >
+    Arithmetical comprehension can be iterated along any countable well-ordering.
+  refs:
+    - { ref: friedman1975, role: origin }
+    - { ref: simpson2009, role: survey, loc: Chapter V }
+
+- id: pi11ca
+  label: '\Pi^1_1\text{-}\mathsf{CA}'
+  name: Π¹₁ comprehension
+  kind: sentence
+  tags: [ big-five ]
+  aliases: [ Pi11-CA0, pi11 comprehension ]
+  definition: Every set defined by a $\Pi^1_1$ formula exists.
+  refs:
+    - { ref: friedman1975, role: origin }
+    - { ref: simpson2009, role: survey, loc: Chapter VI }

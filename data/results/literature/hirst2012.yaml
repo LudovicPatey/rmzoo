@@ -1,0 +1,3 @@
+# Results from [hirst2012].
+
+- {type: "equivalence", from: "hilbert", to: "rt1inf", over: "rca0", refs: [{ref: hirst2012}]}

@@ -1,0 +1,6 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Dobrinen, Simpson (2004) — Almost everywhere domination
+
+- {type: "implication", from: "aca", to: "gdreg", over: "rca0", refs: [{ref: "dobrinensimpson2004", loc: "remark following Conjecture 3.1"}]}
+- {type: "implication", from: "gdreg", to: "pos", over: "rca0", refs: [{ref: "dobrinensimpson2004", loc: "remark following Conjecture 3.1"}]}
+- {type: "separation", from: "gen1-ran1-wkl", to: "gdreg", over: "rca0", refs: [{ref: "dobrinensimpson2004", loc: "Remark 3.5"}]}

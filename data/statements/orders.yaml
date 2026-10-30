@@ -1,0 +1,62 @@
+# Linear and partial orders.
+
+- id: cac
+  label: '\mathsf{CAC}'
+  name: Chain–antichain principle
+  kind: problem
+  tags: [ orders, ramsey ]
+  aliases: [ chain antichain, Dilworth ]
+  definition: Every infinite partial order has an infinite chain or an infinite antichain.
+  instance: An infinite partial order $(\mathbb{N}, \preceq)$.
+  solution: An infinite chain or an infinite antichain.
+  refs:
+    - { ref: hirschfeldtshore2007, role: rm }
+
+- id: scac
+  label: '\mathsf{SCAC}'
+  name: Stable chain–antichain principle
+  kind: problem
+  tags: [ orders, ramsey, stable ]
+  definition: >
+    Every infinite stable partial order has an infinite chain or an infinite antichain.
+  instance: An infinite stable partial order.
+  solution: An infinite chain or an infinite antichain.
+  refs:
+    - { ref: hirschfeldtshore2007, role: origin }
+
+- id: ads
+  label: '\mathsf{ADS}'
+  name: Ascending or descending sequence
+  kind: problem
+  tags: [ orders, ramsey ]
+  aliases: [ ascending descending sequence ]
+  definition: >
+    Every infinite linear order has an infinite ascending or an infinite descending sequence.
+  instance: An infinite linear order $(\mathbb{N}, <_L)$.
+  solution: An infinite ascending or descending sequence.
+  refs:
+    - { ref: hirschfeldtshore2007, role: rm }
+
+- id: sads
+  label: '\mathsf{SADS}'
+  name: Stable ascending or descending sequence
+  kind: problem
+  tags: [ orders, ramsey, stable ]
+  definition: >
+    Every infinite linear order of type $\omega + \omega^*$ has an infinite ascending or descending sequence.
+  instance: An infinite linear order of type $\omega + \omega^*$.
+  solution: An infinite ascending or descending sequence.
+  refs:
+    - { ref: hirschfeldtshore2007, role: origin }
+
+- id: cads
+  label: '\mathsf{CADS}'
+  name: Cohesive ascending or descending sequence
+  kind: problem
+  tags: [ orders, ramsey, cohesive ]
+  definition: >
+    Every infinite linear order has a stable suborder, i.e. an infinite suborder of type $\omega$, $\omega^*$ or $\omega + \omega^*$.
+  instance: An infinite linear order.
+  solution: An infinite stable suborder.
+  refs:
+    - { ref: hirschfeldtshore2007, role: origin }

@@ -1,0 +1,23 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Bienvenu, Patey, Shafer (2017) — On the logical strengths of partial solutions to mathematical problems
+
+- {type: "implication", from: "wwkl", to: "rwwkl", over: "rca0", folklore: true, note: "By definition."}
+- {type: "implication", from: "rwkl", to: "rwwkl", over: "rca0", folklore: true, note: "By definition."}
+- {type: "implication", from: "rwkl2", to: "rwwkl2", over: "rca0", folklore: true, note: "By definition."}
+- {type: "implication", from: "rwwkl2", to: "rwwkl", over: "rca0", folklore: true, note: "By definition."}
+- {type: "implication", from: "rcolor3", to: "rcolor2", over: "rca0", folklore: true, note: "By definition."}
+- {type: "implication", from: "srt22", to: "sem", over: "rca0", folklore: true, note: "easy to see, remarked in Bienvenu, Patey, and Shafer (2017)"}
+- {type: "implication", from: "ran2", to: "dnr0", over: "rca0", refs: [{ref: "bienvenupateyshafer2017", loc: "Theorem 2.8"}]}
+- {type: "implication", from: "sem", to: "rwkl", over: "rca0", refs: [{ref: bienvenupateyshafer2017, loc: Theorem 2.11}, {ref: floodtowsner2016, loc: Theorem 5.2}]}
+- {type: "equivalence", from: "dnr", to: "rwwkl", over: "rca0", refs: [{ref: "bienvenupateyshafer2017", loc: "Theorem 3.4"}]}
+- {type: "implication", from: "bsig2-rwwkl2", to: "dnr0", over: "rca0", refs: [{ref: "bienvenupateyshafer2017", loc: "Lemma 3.6"}]}
+- {type: "implication", from: "dnr0-isig2", to: "rwwkl2", over: "rca0", refs: [{ref: "bienvenupateyshafer2017", loc: "Lemma 3.7"}]}
+- {type: "separation", from: "srt22", to: "rwkl2", over: "rca0", refs: [{ref: "bienvenupateyshafer2017", loc: "Theorem 3.10"}]}
+- {type: "separation", from: "bsig2-srt22", to: "dnr0", over: "rca0", refs: [{ref: "bienvenupateyshafer2017", loc: "proof of Theorem 3.10"}]}
+- {type: "equivalence", from: "rsat", to: "rwkl", over: "rca0", refs: [{ref: "bienvenupateyshafer2017", loc: "Theorem 4.7"}]}
+- {type: "implication", from: "rwkl", to: "rcolor3", over: "rca0", refs: [{ref: "bienvenupateyshafer2017", loc: "Lemma 5.3"}]}
+- {type: "implication", from: "rcolor3", to: "rwkl", over: "rca0", refs: [{ref: "bienvenupateyshafer2017", loc: "Theorem 5.13"}]}
+- {type: "implication", from: "rcolor2", to: "ast", over: "rca0", refs: [{ref: "bienvenupateyshafer2017", loc: "Proposition 6.3"}]}
+- {type: "separation", from: "cac", to: "rcolor2", over: "omega", refs: [{ref: "bienvenupateyshafer2017", loc: "Theorem 6.9"}]}
+- {type: "separation", from: "wwkl", to: "rcolor2", over: "omega", refs: [{ref: "bienvenupateyshafer2017", loc: "Theorem 6.11"}]}
+- {type: "implication", from: "ran1", to: "dnr", over: "rca0", folklore: true, note: "relativization and formalization of Kučera (1985)"}

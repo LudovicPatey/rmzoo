@@ -1,0 +1,7 @@
+# Results from [brattkahendtlasskreuzer2017].
+
+- {type: "separation", from: "coh", to: "llpo", over: "w", note: "These problems are indiscriminative: LLPO is not Weihrauch reducible to them.", refs: [{ref: brattkahendtlasskreuzer2017}]}
+- {type: "separation", from: "dnr", to: "llpo", over: "w", note: "These problems are indiscriminative: LLPO is not Weihrauch reducible to them.", refs: [{ref: brattkahendtlasskreuzer2017}]}
+- {type: "separation", from: "ran1", to: "llpo", over: "w", note: "These problems are indiscriminative: LLPO is not Weihrauch reducible to them.", refs: [{ref: brattkahendtlasskreuzer2017}]}
+- {type: "separation", from: "gen1", to: "llpo", over: "w", note: "These problems are indiscriminative: LLPO is not Weihrauch reducible to them.", refs: [{ref: brattkahendtlasskreuzer2017}]}
+- {type: "separation", from: "hyp", to: "llpo", over: "w", note: "These problems are indiscriminative: LLPO is not Weihrauch reducible to them.", refs: [{ref: brattkahendtlasskreuzer2017}]}

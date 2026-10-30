@@ -1,0 +1,8 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Towsner (2016) — Constructing sequences one step at a time
+
+- {type: "implication", from: "prodwqo", to: "ads", over: "rca0", refs: [{ref: "towsner2020", loc: "Lemma 1.15"}]}
+- {type: "separation", from: "cac-wkl", to: "sts2", over: "omega", refs: [{ref: "towsner2020", loc: "Theorem 2.1"}]}
+- {type: "separation", from: "ads-wkl", to: "prodwqo", over: "omega", refs: [{ref: "towsner2020", loc: "Theorem 3.7"}]}
+- {type: "separation", from: "prodwqo-wkl", to: "scac", over: "omega", refs: [{ref: "towsner2020", loc: "Theorem 4.6"}]}
+- {type: "implication", from: "cac", to: "prodwqo", over: "rca0", folklore: true, note: "Cholak, Marcone, and Solomon (2004) [follows from Corollaries 3.4 and 4.6]"}

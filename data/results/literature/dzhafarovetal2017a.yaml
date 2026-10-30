@@ -1,0 +1,8 @@
+# Results from [dzhafarovetal2017a].
+
+- {type: "implication", from: "ht", to: "ht-le33", over: "sw", folklore: true, refs: [{ref: dzhafarovetal2017a}]}
+- {type: "implication", from: "ht-le33", to: "aca", over: "rca0", refs: [{ref: dzhafarovetal2017a}]}
+- {type: "implication", from: "ht", to: "ht-le22", over: "sw", folklore: true, refs: [{ref: dzhafarovetal2017a}]}
+- {type: "implication", from: "ht-le22", to: "srt22", over: "rca0", refs: [{ref: dzhafarovetal2017a}]}
+- {type: "implication", from: "ht-le22", to: "ht-eq22", over: "sw", folklore: true, refs: [{ref: dzhafarovetal2017a}]}
+- {type: "separation", from: "rca0", to: "ht-le22", over: "omega", note: "There is a computable instance with no computable solution.", refs: [{ref: dzhafarovetal2017a}]}

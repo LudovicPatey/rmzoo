@@ -1,0 +1,43 @@
+# Human classification of statements. Never used for inference.
+- id: big-five
+  name: Big Five
+  description: The five main subsystems of second-order arithmetic.
+- id: ramsey
+  name: Ramsey theory
+  description: Ramsey's theorem and its consequences.
+- id: orders
+  name: Orders
+  description: Statements about linear and partial orders.
+- id: induction
+  name: Induction & bounding
+  description: First-order schemes of induction and collection.
+- id: first-order
+  name: First-order
+  description: Statements with no second-order content.
+- id: compactness
+  name: Compactness
+  description: König's lemma and its variants.
+- id: randomness
+  name: Randomness
+  description: Statements about algorithmic randomness and measure.
+- id: computability
+  name: Computability theory
+  description: Statements whose natural reading is about degrees of unsolvability.
+- id: stable
+  name: Stable versions
+  description: Restrictions of a principle to stable instances.
+- id: cohesive
+  name: Cohesive versions
+  description: Cohesiveness principles and their order-theoretic analogues.
+- id: weihrauch
+  name: Weihrauch landmarks
+  description: Benchmark problems of the Weihrauch lattice (choice principles, omniscience principles, jumps).
+- id: analysis
+  name: Analysis & topology
+  description: Theorems of real analysis, functional analysis and topology.
+- id: graphs
+  name: Graph theory
+  description: Theorems about countable graphs.
+- id: well-orders
+  name: Well-orders & wqos
+  description: Well-ordering principles, wqo and bqo theory.

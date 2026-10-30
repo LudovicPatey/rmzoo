@@ -1,0 +1,18 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Patey, Yokoyama (2016) — The proof-theoretic strength of Ramsey's theorem for pairs and two colors
+
+- {type: "implication", from: "gp22", to: "sgp22", over: "rca0", folklore: true, note: "By definition."}
+- {type: "implication", from: "rt22", to: "gp22", over: "rca0", folklore: true, note: "Infinite sets contain infinite families of large finite sets"}
+- {type: "implication", from: "srt22", to: "sgp22", over: "rca0", folklore: true, note: "Infinite sets contain infinite families of large finite sets"}
+- {type: "conservation", statement: "bsig2", base: "rca0", class: "uPi03", value: true, refs: [{ref: "pateyyokoyama2018", loc: "Theorem 1.5"}], note: "; noted to be a parameterized version of the Parsons/Paris/Friedman conservation theorem"}
+- {type: "implication", from: "coh-sgp22", to: "gp22", over: "rca0", refs: [{ref: "pateyyokoyama2018", loc: "remark preceding Definition 5.3"}]}
+- {type: "separation", from: "sads-sgp22-wkl", to: "srt22", over: "omega", refs: [{ref: "pateyyokoyama2018", loc: "Corollary 5.4"}]}
+- {type: "separation", from: "sads-sgp22-wkl", to: "sem", over: "omega", refs: [{ref: "pateyyokoyama2018", loc: "Corollary 5.4"}]}
+- {type: "separation", from: "coh-em-gp22-wkl", to: "ads", over: "rca0", refs: [{ref: "pateyyokoyama2018", loc: "Corollary 5.6"}]}
+- {type: "separation", from: "srt22", to: "gp22", over: "rca0", refs: [{ref: "pateyyokoyama2018", loc: "remark following proof of Theorem 5.7"}]}
+- {type: "implication", from: "gp22", to: "dnr0", over: "rca0", refs: [{ref: "pateyyokoyama2018", loc: "Theorem 5.7"}]}
+- {type: "conservation", statement: "sgp22", base: "rca0", class: "uPi03", value: true, refs: [{ref: "pateyyokoyama2018", loc: "Theorem 6.4"}]}
+- {type: "conservation", statement: "ads-gp22-wkl", base: "rca0", class: "uPi03", value: true, refs: [{ref: "pateyyokoyama2018", loc: "Theorem 6.5"}]}
+- {type: "conservation", statement: "em-wkl", base: "rca0", class: "uPi03", value: true, refs: [{ref: "pateyyokoyama2018", loc: "Theorem 7.3 and reasoning similar to Theorem 8.2"}]}
+- {type: "conservation", statement: "rt22-wkl", base: "rca0", class: "uPi03", value: true, refs: [{ref: "pateyyokoyama2018", loc: "Theorems 7.4 and 8.2"}]}
+- {type: "implication", from: "sgp22", to: "bsig2", over: "rca0", refs: [{ref: "pateyyokoyama2018", loc: "Theorem 9.1, due to Kreuzer"}]}

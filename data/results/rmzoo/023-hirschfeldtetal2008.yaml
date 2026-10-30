@@ -1,0 +1,6 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Hirschfeldt, Jockusch, Kjos-Hanssen, Lempp, Slaman (2006) — The strength of some combinatorial principles related to Ramsey's theorem for pairs
+
+- {type: "implication", from: "srt22", to: "dnr", over: "rca0", refs: [{ref: hirschfeldtetal2008, loc: Theorem 2.4}]}
+- {type: "separation", from: "coh", to: "dnr", over: "omega", refs: [{ref: hirschfeldtetal2008, loc: Theorem 3.7}]}
+- {type: "separation", from: "wkl", to: "rt22", over: "rca0", folklore: true, note: "follows from Jockusch (1972) [Theorem 3.1]"}

@@ -1,0 +1,3 @@
+# Results from [marconemontalban2009].
+
+- {type: "equivalence", from: "wop-eps", to: "aca-plus", over: "rca0", refs: [{ref: marconemontalban2009}]}

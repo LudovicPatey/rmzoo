@@ -1,0 +1,10 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Cholak, Giusto, Hirst, Jockusch (2005) — Free sets and reverse mathematics
+
+- {type: "implication", from: "fs3", to: "fs2", over: "rca0", refs: [{ref: "cholaketal2005", loc: "Theorem 2.3"}]}
+- {type: "implication", from: "fs3", to: "ts3", over: "rca0", refs: [{ref: "cholaketal2005", loc: "Theorem 3.2"}]}
+- {type: "implication", from: "fs2", to: "ts2", over: "rca0", refs: [{ref: "cholaketal2005", loc: "Theorem 3.2"}]}
+- {type: "implication", from: "ts3", to: "ts2", over: "rca0", refs: [{ref: "cholaketal2005", loc: "Theorem 3.4"}]}
+- {type: "implication", from: "rt22", to: "fs2", over: "rca0", refs: [{ref: "cholaketal2005", loc: "Theorem 5.2"}]}
+- {type: "implication", from: "rt32", to: "fs3", over: "rca0", refs: [{ref: "cholaketal2005", loc: "Theorem 5.5 and remark"}]}
+- {type: "implication", from: "rt", to: "fs", over: "rca0", refs: [{ref: "cholaketal2005", loc: "Theorem 5.5 and remark"}]}

@@ -1,0 +1,6 @@
+# Results from [liupatey2022].
+
+- {type: "separation", from: "fs2", to: "em", over: "omega", refs: [{ref: liupatey2022}]}
+- {type: "separation", from: "fs3", to: "em", over: "omega", refs: [{ref: liupatey2022}]}
+- {type: "separation", from: "ts2", to: "em", over: "omega", refs: [{ref: liupatey2022}]}
+- {type: "separation", from: "ts3", to: "em", over: "omega", refs: [{ref: liupatey2022}]}

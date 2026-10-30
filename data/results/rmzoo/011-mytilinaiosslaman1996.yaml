@@ -1,0 +1,4 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Mytilinaios, Slaman (1996) — On a Question of Brown and Simpson
+
+- {type: "implication", from: "rt2", to: "isig2", over: "rca0", refs: [{ref: "mytilinaiosslaman1996", loc: "Proposition 5.2"}]}

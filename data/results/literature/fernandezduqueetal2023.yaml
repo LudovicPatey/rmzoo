@@ -1,0 +1,6 @@
+# Results from [fernandezduqueetal2023].
+
+- {type: "implication", from: "pi11ca", to: "tlpp", over: "rca0", refs: [{ref: fernandezduqueetal2023}]}
+- {type: "implication", from: "tlpp", to: "atr", over: "rca0", refs: [{ref: fernandezduqueetal2023}]}
+- {type: "separation", from: "atr", to: "tlpp", over: "rca0", refs: [{ref: fernandezduqueetal2023}]}
+- {type: "separation", from: "tlpp", to: "pi11ca", over: "rca0", refs: [{ref: fernandezduqueetal2023}]}

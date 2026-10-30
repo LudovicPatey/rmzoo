@@ -1,0 +1,5 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Kjos-Hanssen, Miller, Solomon (2012) — Lowness notions, measure, and domination
+
+- {type: "separation", from: "pos", to: "gdreg", over: "omega", refs: [{ref: "kjoshanssenmillersolomon2012", loc: "Corollary 5.5"}]}
+- {type: "implication", from: "pos-wwkl", to: "gdreg", over: "rca0", refs: [{ref: "kjoshanssenmillersolomon2012", loc: "Section 7"}]}

@@ -1,0 +1,8 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Chong, Lempp, Yang (2010) — On the role of the collection principle for $\Sigma^0_2$-formulas in second-order reverse mathematics
+
+- {type: "implication", from: "part", to: "bsig2", over: "rca0", refs: [{ref: "chonglemppyang2010", loc: "Theorem 1.2"}]}
+- {type: "implication", from: "d22", to: "bsig2", over: "rca0", refs: [{ref: chonglemppyang2010, loc: Theorem 1.4}]}
+- {type: "equivalence", from: "srt22", to: "spt22", over: "rca0", refs: [{ref: "chonglemppyang2010", loc: "Theorem 1.7"}]}
+- {type: "equivalence", from: "srt22", to: "sipt22", over: "rca0", refs: [{ref: "chonglemppyang2010", loc: "Theorem 1.7"}]}
+- {type: "implication", from: "ipt22", to: "spt22", over: "rca0", refs: [{ref: "chonglemppyang2010", loc: "Theorem 1.7"}]}

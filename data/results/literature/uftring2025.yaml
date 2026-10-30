@@ -1,0 +1,3 @@
+# Results from [uftring2025].
+
+- {type: "equivalence", from: "ukt", to: "pi11ca", over: "rca0", refs: [{ref: uftring2025}]}

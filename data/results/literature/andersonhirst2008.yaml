@@ -1,0 +1,3 @@
+# Results from [andersonhirst2008].
+
+- {type: "equivalence", from: "ttall", to: "aca-prime", over: "rca0", refs: [{ref: andersonhirst2008}]}

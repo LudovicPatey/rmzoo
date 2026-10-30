@@ -1,0 +1,5 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Flood, Towsner (2014) — Separating principles below $\mathsf{WKL}_0$
+
+- {type: "separation", from: "dnr", to: "rwkl", over: "omega", refs: [{ref: "floodtowsner2016", loc: "Theorem 4.18"}]}
+- {type: "implication", from: "dnr", to: "rwwkl", over: "rca0", refs: [{ref: "floodtowsner2016", loc: "Theorem 5.3"}]}

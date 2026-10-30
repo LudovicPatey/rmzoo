@@ -1,0 +1,46 @@
+# First-order induction and collection schemes.
+
+- id: isig1
+  label: '\mathsf{I}\Sigma^0_1'
+  name: Σ⁰₁ induction
+  kind: sentence
+  firstOrder: true
+  tags: [ induction, first-order ]
+  aliases: [ ISigma1, sigma1 induction ]
+  definition: The induction scheme restricted to $\Sigma^0_1$ formulas.
+  refs:
+    - { ref: simpsonsmith1986, role: rm }
+
+- id: bsig2
+  label: '\mathsf{B}\Sigma^0_2'
+  name: Σ⁰₂ collection
+  kind: sentence
+  firstOrder: true
+  tags: [ induction, first-order ]
+  aliases: [ BSigma2, sigma2 bounding, sigma2 collection ]
+  definition: >
+    For every $\Sigma^0_2$ formula $\varphi$ and every $n$: if $\forall i < n\, \exists y\, \varphi(i, y)$ then there is a bound $b$ with $\forall i < n\, \exists y < b\, \varphi(i, y)$.
+  refs:
+    - { ref: pariskirby1978, role: origin }
+
+- id: idelta2
+  label: '\mathsf{I}\Delta^0_2'
+  name: Δ⁰₂ induction
+  kind: sentence
+  firstOrder: true
+  tags: [ induction, first-order ]
+  aliases: [ IDelta2, delta2 induction ]
+  definition: The induction scheme restricted to $\Delta^0_2$ formulas.
+  refs:
+    - { ref: slaman2004, role: rm }
+
+- id: isig2
+  label: '\mathsf{I}\Sigma^0_2'
+  name: Σ⁰₂ induction
+  kind: sentence
+  firstOrder: true
+  tags: [ induction, first-order ]
+  aliases: [ ISigma2, sigma2 induction ]
+  definition: The induction scheme restricted to $\Sigma^0_2$ formulas.
+  refs:
+    - { ref: pariskirby1978, role: rm }

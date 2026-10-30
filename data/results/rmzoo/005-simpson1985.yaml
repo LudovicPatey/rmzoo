@@ -1,0 +1,4 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Simpson (1985) — Reverse Mathematics
+
+- {type: "equivalence", from: "rt32", to: "aca", over: "rca0", note: "follows from Jockusch (1972) [Theorem 5.7]", refs: [{ref: jockusch1972}, {ref: simpson2009, loc: Theorem III.7.6}]}

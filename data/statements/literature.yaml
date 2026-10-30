@@ -1,0 +1,222 @@
+# Statements introduced by papers after the RM Zoo import (2015–2026).
+
+- id: srt23
+  label: '\mathsf{SRT}^2_3'
+  name: Stable Ramsey's theorem for pairs (3 colors)
+  kind: problem
+  formulationOf: srt22
+  tags: [ ramsey, stable ]
+  definition: >
+    Every stable coloring $f : [\mathbb{N}]^2 \to 3$ has an infinite homogeneous set.
+  instance: >
+    A stable coloring $f : [\mathbb{N}]^2 \to 3$.
+  solution: An infinite homogeneous set.
+  refs: [ { ref: patey2016, role: rm } ]
+
+- id: adc
+  label: '\mathsf{ADC}'
+  name: Ascending or descending chain
+  kind: problem
+  formulationOf: ads
+  tags: [ orders ]
+  definition: >
+    Every infinite linear order has an infinite ascending chain or an infinite descending chain (as sets, without the order of enumeration).
+  instance: An infinite linear order.
+  solution: An infinite set which is an ascending chain or a descending chain.
+  refs: [ { ref: astoretal2017, role: origin } ]
+
+- id: ht
+  label: '\mathsf{HT}'
+  name: Hindman's theorem
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ Hindman, finite sums ]
+  definition: >
+    For every finite coloring of $\mathbb{N}$ there is an infinite set $H$ such that all nonempty finite sums of distinct elements of $H$ have the same color.
+  instance: >
+    A coloring $c : \mathbb{N} \to k$.
+  solution: An infinite set all of whose finite sums have the same color.
+  refs: [ { ref: blasshirstsimpson1987, role: rm } ]
+
+- id: ht-le33
+  label: '\mathsf{HT}^{\le 3}_3'
+  name: Hindman's theorem for sums of at most 3 elements (3 colors)
+  kind: problem
+  tags: [ ramsey ]
+  definition: >
+    For every coloring $c : \mathbb{N} \to 3$ there is an infinite set $H$ such that all sums of at most 3 distinct elements of $H$ have the same color.
+  instance: >
+    A coloring $c : \mathbb{N} \to 3$.
+  solution: An infinite set as above.
+  refs: [ { ref: dzhafarovetal2017a, role: origin } ]
+
+- id: ht-le22
+  label: '\mathsf{HT}^{\le 2}_2'
+  name: Hindman's theorem for sums of at most 2 elements
+  kind: problem
+  tags: [ ramsey ]
+  definition: >
+    For every coloring $c : \mathbb{N} \to 2$ there is an infinite set $H$ such that all sums of at most 2 distinct elements of $H$ have the same color.
+  instance: >
+    A coloring $c : \mathbb{N} \to 2$.
+  solution: An infinite set as above.
+  refs: [ { ref: dzhafarovetal2017a, role: origin } ]
+
+- id: ht-eq22
+  label: '\mathsf{HT}^{=2}_2'
+  name: Hindman's theorem for sums of exactly 2 elements
+  kind: problem
+  tags: [ ramsey ]
+  definition: >
+    For every coloring $c : \mathbb{N} \to 2$ there is an infinite set $H$ such that all sums of exactly 2 distinct elements of $H$ have the same color.
+  instance: >
+    A coloring $c : \mathbb{N} \to 2$.
+  solution: An infinite set as above.
+  refs: [ { ref: csimaetal2019, role: rm } ]
+
+- id: rsg
+  label: '\mathsf{RSg}'
+  name: Rival–Sands theorem for graphs
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ inside/outside Ramsey theorem, Rival-Sands ]
+  definition: >
+    Every infinite graph $G$ contains an infinite subset $H$ such that every vertex of $G$ is adjacent to none, exactly one, or infinitely many vertices of $H$.
+  instance: An infinite graph $G$.
+  solution: An infinite set $H$ as above.
+  refs: [ { ref: fioricaronesshafersolda2022, role: rm } ]
+
+- id: rspo
+  label: '\mathsf{RSpo}'
+  name: Rival–Sands theorem for partial orders of finite width
+  kind: problem
+  tags: [ orders ]
+  definition: >
+    Every infinite partial order $P$ of finite width contains an infinite chain $C$ such that every element of $P$ is comparable with no element or with infinitely many elements of $C$.
+  instance: An infinite partial order of finite width.
+  solution: An infinite chain $C$ as above.
+  refs: [ { ref: fioricaronesetal2024, role: rm } ]
+
+- id: rspo3
+  label: '\mathsf{RSpo}_3'
+  name: Rival–Sands theorem for partial orders of width at most 3
+  kind: problem
+  formulationOf: rspo
+  tags: [ orders ]
+  definition: The Rival–Sands theorem restricted to partial orders of width at most 3.
+  refs: [ { ref: fioricaronesetal2024, role: rm } ]
+  instance: An infinite partial order of width at most 3.
+  solution: An infinite chain $C$ such that every element is comparable with no element or with infinitely many elements of $C$.
+
+- id: rspo2c
+  label: '\mathsf{RSpo}_{\mathrm{CD}}'
+  name: Rival–Sands theorem for unions of two chains
+  kind: problem
+  tags: [ orders ]
+  definition: The Rival–Sands theorem restricted to partial orders decomposable into two chains.
+  refs: [ { ref: fioricaronesetal2024, role: rm } ]
+  instance: An infinite partial order which is a union of two chains.
+  solution: An infinite chain $C$ such that every element is comparable with no element or with infinitely many elements of $C$.
+
+- id: ert
+  label: '\mathsf{ERT}'
+  name: Eventually constant Ramsey-type principle
+  kind: problem
+  tags: [ induction ]
+  definition: >
+    Combinatorial principle of Davis, Hirschfeldt, Hirst, Pardo, Pauly and Yokoyama, equivalent to $\mathsf{I}\Sigma^0_1$ over RCA₀*; see the source.
+  todo: true
+  refs: [ { ref: davisetal2020, role: origin } ]
+
+- id: ect
+  label: '\mathsf{ECT}'
+  name: Eventually constant tail principle
+  kind: problem
+  tags: [ induction ]
+  definition: >
+    For every coloring $c : \mathbb{N} \to k$ there is $n$ such that every color occurring after $n$ occurs infinitely often. Equivalent to $\mathsf{I}\Sigma^0_2$ over RCA₀*.
+  todo: true
+  refs: [ { ref: davisetal2020, role: origin } ]
+
+- id: w2ran
+  label: '\mathsf{W}2\text{-}\mathsf{RAN}'
+  name: Existence of weakly 2-randoms
+  kind: problem
+  tags: [ randomness ]
+  definition: For every $Z$ there is a set which is weakly 2-random relative to $Z$.
+  instance: A set $Z$.
+  solution: A set weakly 2-random relative to $Z$.
+  refs: [ { ref: niesshafer2020, role: rm } ]
+  aliases:
+    - W2R
+    - weakly 2-random
+
+- id: cran
+  label: '\mathsf{CR}\text{-}\mathsf{RAN}'
+  name: Existence of computable randoms
+  kind: problem
+  tags: [ randomness ]
+  definition: For every $Z$ there is a set which is computably random relative to $Z$.
+  instance: A set $Z$.
+  solution: A set computably random relative to $Z$.
+  refs: [ { ref: niesshafer2020, role: rm } ]
+  aliases:
+    - CR
+    - computably random
+
+- id: sran
+  label: '\mathsf{SR}\text{-}\mathsf{RAN}'
+  name: Existence of Schnorr randoms
+  kind: problem
+  tags: [ randomness ]
+  definition: For every $Z$ there is a set which is Schnorr random relative to $Z$.
+  instance: A set $Z$.
+  solution: A set Schnorr random relative to $Z$.
+  refs: [ { ref: niesshafer2020, role: rm } ]
+  aliases:
+    - SR
+    - Schnorr random
+
+- id: brt22
+  label: '\mathsf{BRT}^2_2'
+  name: Bounded Ramsey's theorem for pairs
+  kind: problem
+  tags: [ ramsey ]
+  definition: >
+    For every coloring $f : [\mathbb{N}]^2 \to 2$ whose 1-homogeneous sets have bounded size, there is an infinite 0-homogeneous set.
+  instance: A coloring whose 1-homogeneous sets are of bounded size.
+  solution: An infinite 0-homogeneous set.
+  refs: [ { ref: lehoueroupatey2025, role: origin } ]
+
+- id: brt32
+  label: '\mathsf{BRT}^3_2'
+  name: Bounded Ramsey's theorem for triples
+  kind: problem
+  tags: [ ramsey ]
+  definition: >
+    For every coloring $f : [\mathbb{N}]^3 \to 2$ whose 1-homogeneous sets have bounded size, there is an infinite 0-homogeneous set.
+  instance: A coloring of triples whose 1-homogeneous sets are of bounded size.
+  solution: An infinite 0-homogeneous set.
+  refs: [ { ref: pateyshafer2026, role: origin } ]
+
+- id: ovw
+  label: '\mathsf{OVW}'
+  name: Ordered variable word theorem
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ Carlson-Simpson theorem, ordered variable word ]
+  definition: >
+    For every finite alphabet $A$ and finite coloring of the words over $A$, there is a word $c_0$ and an infinite sequence of left-variable words $w_1, w_2, \dots$ such that all words $c_0 \cdot w_1[a_1] \cdots w_k[a_k]$ have the same color.
+  refs: [ { ref: liumoninpatey2017, role: origin }, { ref: lehoueroupatey2024, role: rm } ]
+  instance: A finite alphabet $A$ and a finite coloring of $A^{<\mathbb{N}}$.
+  solution: A word $c_0$ and an infinite sequence of left-variable words as in the statement.
+
+- id: fincoh
+  label: '\mathsf{fin}\text{-}\mathsf{COH}'
+  name: Finite cohesiveness principle
+  kind: problem
+  tags: [ cohesive ]
+  definition: COH restricted to finite sequences of sets.
+  refs: [ { ref: sun2025, role: rm } ]
+  instance: A finite sequence of sets $R_0, \dots, R_{n-1}$.
+  solution: An infinite set $C$ with $C \subseteq^* R_i$ or $C \subseteq^* \overline{R_i}$ for each $i < n$.

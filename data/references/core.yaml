@@ -1,0 +1,274 @@
+# Bibliography (hand-written entries).
+
+friedman1975:
+  authors:
+    - Harvey Friedman
+  title: Some systems of second order arithmetic and their use
+  venue: Proceedings of the International Congress of Mathematicians (Vancouver, 1974), vol. 1, 235–242
+  year: 1975
+simpson2009:
+  authors:
+    - Stephen G. Simpson
+  title: Subsystems of Second Order Arithmetic (2nd edition)
+  venue: Perspectives in Logic, Cambridge University Press
+  year: 2009
+  doi: 10.1017/CBO9780511581007
+hirschfeldt2015:
+  authors:
+    - Denis R. Hirschfeldt
+  title: "Slicing the Truth: On the Computable and Reverse Mathematics of Combinatorial Principles"
+  venue: Lecture Notes Series, IMS, National University of Singapore, vol. 28, World Scientific
+  year: 2015
+  doi: 10.1142/9208
+dzhafarovmummert2022:
+  authors:
+    - Damir D. Dzhafarov
+    - Carl Mummert
+  title: "Reverse Mathematics: Problems, Reductions, and Proofs"
+  venue: Theory and Applications of Computability, Springer
+  year: 2022
+  doi: 10.1007/978-3-031-11367-3
+ramsey1930:
+  authors:
+    - Frank P. Ramsey
+  title: On a problem of formal logic
+  venue: Proceedings of the London Mathematical Society s2-30(1), 264–286
+  year: 1930
+  doi: 10.1112/plms/s2-30.1.264
+jockusch1972:
+  authors:
+    - Carl G. Jockusch Jr.
+  title: Ramsey's theorem and recursion theory
+  venue: Journal of Symbolic Logic 37(2), 268–280
+  year: 1972
+  doi: 10.2307/2272972
+jockuschsoare1972:
+  authors:
+    - Carl G. Jockusch Jr.
+    - Robert I. Soare
+  title: Π⁰₁ classes and degrees of theories
+  venue: Transactions of the American Mathematical Society 173, 33–56
+  year: 1972
+  doi: 10.1090/S0002-9947-1972-0316227-0
+pariskirby1978:
+  authors:
+    - Jeff B. Paris
+    - Laurence A. S. Kirby
+  title: Σn-collection schemas in arithmetic
+  venue: Logic Colloquium '77, North-Holland, 199–209
+  year: 1978
+  doi: 10.1016/S0049-237X(08)72003-2
+simpsonsmith1986:
+  authors:
+    - Stephen G. Simpson
+    - Rick L. Smith
+  title: Factorization of polynomials and Σ⁰₁ induction
+  venue: Annals of Pure and Applied Logic 31, 289–306
+  year: 1986
+  doi: 10.1016/0168-0072(86)90074-1
+hirst1987:
+  authors:
+    - Jeffry L. Hirst
+  title: Combinatorics in subsystems of second order arithmetic
+  venue: PhD thesis, The Pennsylvania State University
+  year: 1987
+yusimpson1990:
+  authors:
+    - Xiaokang Yu
+    - Stephen G. Simpson
+  title: Measure theory and weak König's lemma
+  venue: Archive for Mathematical Logic 30, 171–180
+  year: 1990
+  doi: 10.1007/BF01621469
+jockuschstephan1993:
+  authors:
+    - Carl G. Jockusch Jr.
+    - Frank Stephan
+  title: A cohesive set which is not high
+  venue: Mathematical Logic Quarterly 39, 515–530
+  year: 1993
+  doi: 10.1002/malq.19930390153
+seetapunslaman1995:
+  authors:
+    - David Seetapun
+    - Theodore A. Slaman
+  title: On the strength of Ramsey's theorem
+  venue: Notre Dame Journal of Formal Logic 36(4), 570–582
+  year: 1995
+  doi: 10.1305/ndjfl/1040136917
+giustosimpson2000:
+  authors:
+    - Mariagnese Giusto
+    - Stephen G. Simpson
+  title: Located sets and reverse mathematics
+  venue: Journal of Symbolic Logic 65(3), 1451–1480
+  year: 2000
+  doi: 10.2307/2586708
+cholakjockuschslaman2001:
+  authors:
+    - Peter A. Cholak
+    - Carl G. Jockusch Jr.
+    - Theodore A. Slaman
+  title: On the strength of Ramsey's theorem for pairs
+  venue: Journal of Symbolic Logic 66(1), 1–55
+  year: 2001
+  doi: 10.2307/2694910
+downeyetal2001:
+  authors:
+    - Rod Downey
+    - Denis R. Hirschfeldt
+    - Steffen Lempp
+    - Reed Solomon
+  title: A Δ⁰₂ set with no infinite low subset in either it or its complement
+  venue: Journal of Symbolic Logic 66(3), 1371–1381
+  year: 2001
+  doi: 10.2307/2695113
+slaman2004:
+  authors:
+    - Theodore A. Slaman
+  title: Σn-bounding and Δn-induction
+  venue: Proceedings of the American Mathematical Society 132(8), 2449–2456
+  year: 2004
+  doi: 10.1090/S0002-9939-04-07294-6
+ambosspiesetal2004:
+  authors:
+    - Klaus Ambos-Spies
+    - Bjørn Kjos-Hanssen
+    - Steffen Lempp
+    - Theodore A. Slaman
+  title: Comparing DNR and WWKL
+  venue: Journal of Symbolic Logic 69(4), 1089–1104
+  year: 2004
+  doi: 10.2178/jsl/1102022212
+hirschfeldtshore2007:
+  authors:
+    - Denis R. Hirschfeldt
+    - Richard A. Shore
+  title: Combinatorial principles weaker than Ramsey's theorem for pairs
+  venue: Journal of Symbolic Logic 72(1), 171–206
+  year: 2007
+  doi: 10.2178/jsl/1174668391
+hirschfeldtetal2008:
+  authors:
+    - Denis R. Hirschfeldt
+    - Carl G. Jockusch Jr.
+    - Bjørn Kjos-Hanssen
+    - Steffen Lempp
+    - Theodore A. Slaman
+  title: The strength of some combinatorial principles related to Ramsey's theorem for pairs
+  venue: Computational Prospects of Infinity, Part II, LNS IMS NUS vol. 15, World Scientific, 143–161
+  year: 2008
+  doi: 10.1142/9789812796554_0008
+cjs2009:
+  authors:
+    - Peter A. Cholak
+    - Carl G. Jockusch Jr.
+    - Theodore A. Slaman
+  title: Corrigendum to "On the strength of Ramsey's theorem for pairs"
+  venue: Journal of Symbolic Logic 74(4), 1438–1439
+  year: 2009
+chonglemppyang2010:
+  authors:
+    - Chi Tat Chong
+    - Steffen Lempp
+    - Yue Yang
+  title: On the role of the collection principle for Σ⁰₂-formulas in second-order reverse mathematics
+  venue: Proceedings of the American Mathematical Society 138(3), 1093–1100
+  year: 2010
+  doi: 10.1090/S0002-9939-09-10115-6
+liu2012:
+  authors:
+    - Lu Liu
+  title: RT²₂ does not imply WKL₀
+  venue: Journal of Symbolic Logic 77(2), 609–620
+  year: 2012
+  doi: 10.2178/jsl/1333566640
+lermansolomontowsner2013:
+  authors:
+    - Manuel Lerman
+    - Reed Solomon
+    - Henry Towsner
+  title: Separating principles below Ramsey's theorem for pairs
+  venue: Journal of Mathematical Logic 13(2), 1350007
+  year: 2013
+  doi: 10.1142/S0219061313500074
+chongslamanyang2014:
+  authors:
+    - Chi Tat Chong
+    - Theodore A. Slaman
+    - Yue Yang
+  title: The metamathematics of stable Ramsey's theorem for pairs
+  venue: Journal of the American Mathematical Society 27(3), 863–892
+  year: 2014
+  doi: 10.1090/S0894-0347-2014-00789-X
+liu2015:
+  authors:
+    - Lu Liu
+  title: Cone avoiding closed sets
+  venue: Transactions of the American Mathematical Society 367(3), 1609–1630
+  year: 2015
+  doi: 10.1090/S0002-9947-2014-06049-2
+ddhms2016:
+  authors:
+    - François G. Dorais
+    - Damir D. Dzhafarov
+    - Jeffry L. Hirst
+    - Joseph R. Mileti
+    - Paul Shafer
+  title: On uniform relationships between combinatorial problems
+  venue: Transactions of the American Mathematical Society 368(2), 1321–1359
+  year: 2016
+  doi: 10.1090/tran/6465
+dzhafarov2016:
+  authors:
+    - Damir D. Dzhafarov
+  title: Strong reductions between combinatorial principles
+  venue: Journal of Symbolic Logic 81(4), 1405–1431
+  year: 2016
+  doi: 10.1017/jsl.2016.1
+hirschfeldtjockusch2016:
+  authors:
+    - Denis R. Hirschfeldt
+    - Carl G. Jockusch Jr.
+  title: On notions of computability-theoretic reduction between Π¹₂ principles
+  venue: Journal of Mathematical Logic 16(1), 1650002
+  year: 2016
+  doi: 10.1142/S0219061316500021
+patey2016:
+  authors:
+    - Ludovic Patey
+  title: The weakness of being cohesive, thin or free in reverse mathematics
+  venue: Israel Journal of Mathematics 216(2), 905–955
+  year: 2016
+  doi: 10.1007/s11856-016-1433-3
+bovykinweiermann2017:
+  authors:
+    - Andrey Bovykin
+    - Andreas Weiermann
+  title: The strength of infinitary Ramseyan principles can be accessed by their densities
+  venue: Annals of Pure and Applied Logic 168(9), 1700–1709
+  year: 2017
+  doi: 10.1016/j.apal.2017.03.002
+brattkarakotoniaina2017:
+  authors:
+    - Vasco Brattka
+    - Tahina Rakotoniaina
+  title: On the uniform computational content of Ramsey's theorem
+  venue: Journal of Symbolic Logic 82(4), 1278–1316
+  year: 2017
+  doi: 10.1017/jsl.2017.43
+moninpatey2021:
+  authors:
+    - Benoît Monin
+    - Ludovic Patey
+  title: SRT²₂ does not imply RT²₂ in ω-models
+  venue: Advances in Mathematics 389, 107903
+  year: 2021
+  doi: 10.1016/j.aim.2021.107903
+erdosmoser1964:
+  authors:
+    - Paul Erdős
+    - Leo Moser
+  title: On the representation of directed graphs as unions of orderings
+  venue: Publ. Math. Inst. Hungar. Acad. Sci. 9, 125–132
+  year: 1964

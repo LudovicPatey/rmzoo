@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RM Zoo</title>
+  <meta name="description" content="A database of reverse mathematics principles, implications and separations, with interactive diagrams.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/app.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/">RM<span>Zoo</span></a>
+    <nav id="nav">
+      <a href="#/" data-route="catalogue">Catalogue</a>
+      <a href="#/diagram" data-route="diagram">Diagram</a>
+      <a href="#/compare" data-route="compare">Compare</a>
+      <a href="#/results" data-route="results">Results</a>
+      <a href="#/refs" data-route="refs">Literature</a>
+      <a href="#/about" data-route="about">About</a>
+    </nav>
+    <div class="search">
+      <input id="global-search" type="search" placeholder="Search statements…  ( / )" autocomplete="off">
+      <div id="search-pop" class="popover" hidden></div>
+    </div>
+  </header>
+  <main id="main"><p class="loading">Loading the zoo…</p></main>
+  <aside id="tray" class="tray" hidden></aside>
+  <div id="drawer" class="drawer" hidden></div>
+</body>
+</html>

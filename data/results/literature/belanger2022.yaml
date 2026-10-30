@@ -1,0 +1,6 @@
+# Results from [belanger2022].
+
+- {type: "conservation", statement: "coh-isig2", base: "isig2", class: "Pi11", value: true, refs: [{ref: belanger2022}]}
+- {type: "conservation", statement: "bsig2-coh", base: "bsig2", class: "Pi11", value: true, refs: [{ref: belanger2022}, {ref: chongslamanyang2012, loc: Corollary 3.1}]}
+- {type: "conservation", statement: "coh-isig3", base: "isig3", class: "Pi11", value: true, refs: [{ref: belanger2022}]}
+- {type: "conservation", statement: "bsig3-coh", base: "bsig3", class: "Pi11", value: true, refs: [{ref: belanger2022}]}

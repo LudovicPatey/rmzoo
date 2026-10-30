@@ -1,0 +1,8 @@
+# Results from [brattkagherardi2011].
+
+- {type: "implication", from: "lpo", to: "llpo", over: "sw", note: "LLPO ≤sW LPO.", refs: [{ref: brattkagherardi2011}]}
+- {type: "separation", from: "llpo", to: "lpo", over: "w", refs: [{ref: brattkagherardi2011}]}
+- {type: "implication", from: "wkl", to: "llpo", over: "sw", note: "The parallelization of LLPO is strongly Weihrauch equivalent to WKL.", refs: [{ref: brattkagherardi2011}]}
+- {type: "separation", from: "llpo", to: "wkl", over: "w", refs: [{ref: brattkagherardi2011}]}
+- {type: "implication", from: "lim", to: "lpo", over: "sw", note: "lim is strongly Weihrauch equivalent to the parallelization of LPO.", refs: [{ref: brattkagherardi2011}]}
+- {type: "separation", from: "lpo", to: "lim", over: "w", refs: [{ref: brattkagherardi2011}]}

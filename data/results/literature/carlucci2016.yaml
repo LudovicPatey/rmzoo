@@ -1,0 +1,5 @@
+# Results from [carlucci2016].
+
+- {type: "implication", from: "rt22", to: "aht", over: "rca0", refs: [{ref: carlucci2016}]}
+- {type: "implication", from: "aht", to: "ipt22", over: "rca0", refs: [{ref: carlucci2016}]}
+- {type: "separation", from: "hilbert", to: "aht", over: "rca0", note: "The Adjacent Hindman theorem is strictly stronger than Hilbert's theorem.", refs: [{ref: carlucci2016}]}

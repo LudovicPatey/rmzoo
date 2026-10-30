@@ -1,0 +1,4 @@
+# Results from [fioricaronesshafersolda2022].
+
+- {type: "equivalence", from: "rsg", to: "aca", over: "rca0", refs: [{ref: fioricaronesshafersolda2022}]}
+- {type: "equivalence", from: "rsg", to: "wkl-jj", over: "w", refs: [{ref: fioricaronesshafersolda2022}]}

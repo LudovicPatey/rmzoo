@@ -1,0 +1,10 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Frittaion, Patey (2015) — Coloring the rationals in reverse mathematics
+
+- {type: "implication", from: "er22", to: "rt22", over: "rca0", refs: [{ref: "frittaionpatey2017", loc: "Lemma 2.1"}]}
+- {type: "implication", from: "aca", to: "er22", over: "rca0", refs: [{ref: "frittaionpatey2017", loc: "Theorem 2.4"}]}
+- {type: "implication", from: "er22", to: "er1", over: "rca0", refs: [{ref: "frittaionpatey2017", loc: "Lemma 3.1"}]}
+- {type: "implication", from: "isig2", to: "er1", over: "rca0", refs: [{ref: "frittaionpatey2017", loc: "Lemma 3.1"}]}
+- {type: "implication", from: "er1", to: "rt1inf", over: "rca0", refs: [{ref: "frittaionpatey2017", loc: "Lemma 3.1"}]}
+- {type: "separation", from: "bsig2", to: "er1", over: "rca0", refs: [{ref: "frittaionpatey2017", loc: "Theorem 3.5"}]}
+- {type: "separation", from: "rt2", to: "er22", over: "c", refs: [{ref: "frittaionpatey2017", loc: "Theorem 4.2"}]}

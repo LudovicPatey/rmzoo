@@ -1,0 +1,18 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Flood (2012) — Reverse mathematics and a Ramsey-type König's Lemma
+
+- {type: "implication", from: "rwkl2", to: "rwkl", over: "rca0", folklore: true, note: "By definition."}
+- {type: "implication", from: "p22", to: "d22", over: "rca0", folklore: true, note: "By definition."}
+- {type: "implication", from: "wkl", to: "rwkl", over: "rca0", refs: [{ref: flood2012, loc: Theorem 3}], note: By definition.}
+- {type: "implication", from: "srt22", to: "rwkl", over: "rca0", refs: [{ref: "flood2012", loc: "Theorem 5"}]}
+- {type: "separation", from: "rwkl", to: "srt22", over: "rca0", refs: [{ref: "flood2012", loc: "Corollary 6"}]}
+- {type: "separation", from: "rca0", to: "rwkl", over: "omega", refs: [{ref: "flood2012", loc: "remark following Lemma 7"}]}
+- {type: "implication", from: "rwkl", to: "dnr", over: "rca0", refs: [{ref: "flood2012", loc: "Theorem 8"}]}
+- {type: "implication", from: "rt22", to: "rwkl2", over: "rca0", refs: [{ref: "flood2012", loc: "Theorem 13"}]}
+- {type: "implication", from: "rwkl2", to: "p22", over: "rca0", refs: [{ref: "flood2012", loc: "Theorem 18, citing Yokoyama (personal communication)"}]}
+- {type: "implication", from: "aca", to: "rwklw", over: "rca0", refs: [{ref: "flood2012", loc: "Theorem 24"}]}
+- {type: "implication", from: "rwklw", to: "rwkl2", over: "rca0", refs: [{ref: "flood2012", loc: "Theorem 24"}]}
+- {type: "separation", from: "rwklw", to: "wkl", over: "omega", refs: [{ref: "flood2012", loc: "Corollary 26"}]}
+- {type: "separation", from: "rt22", to: "rwklw", over: "omega", refs: [{ref: "flood2012", loc: "Proposition 29"}]}
+- {type: "implication", from: "rwklw", to: "dw2", over: "rca0", refs: [{ref: "flood2012", loc: "Proposition 32"}]}
+- {type: "implication", from: "dw2", to: "rwklw", over: "omega", refs: [{ref: "flood2012", loc: "Remark 33"}]}

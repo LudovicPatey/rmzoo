@@ -1,0 +1,5 @@
+# Results from [brattkadebrechtpauly2012].
+
+- {type: "separation", from: "wkl", to: "cn", over: "w", note: "Problems below C_N are computable with finitely many mind changes.", refs: [{ref: brattkadebrechtpauly2012}]}
+- {type: "separation", from: "cn", to: "wkl", over: "w", note: "Single-valued problems below WKL are computable.", refs: [{ref: brattkadebrechtpauly2012}]}
+- {type: "separation", from: "cn", to: "lim", over: "w", refs: [{ref: brattkadebrechtpauly2012}]}

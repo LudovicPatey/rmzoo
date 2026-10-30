@@ -1,0 +1,6 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Cholak, Downey, Igusa (0) — Any FIP real computes a 1-generic
+
+- {type: "equivalence", from: "fip", to: "gen1", over: "rca0", refs: [{ref: "cholakdowneyigusa2017", loc: "Propositions 5.4 and 5.5"}]}
+- {type: "implication", from: "isig2-nd2ip", to: "gen1", over: "rca0", refs: [{ref: "cholakdowneyigusa2017", loc: "Proposition 5.7"}]}
+- {type: "separation", from: "hyp", to: "gen1", over: "omega", folklore: true, note: "W. Miller and Martin (1968) [Every non-trivial $\\Delta^0_2$ degree is hyperimmune], Sacks (1963) [There is a $\\Delta^0_2$ minimal degree], and sets that join to a 1-generic are Turing-incomparable."}

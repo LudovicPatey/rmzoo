@@ -1,0 +1,4 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Bovykin, Weiermann (2005) — The strength of infinitary ramseyan principles can be accessed by their densities.
+
+- {type: "equivalence", from: "ads-em", to: "rt22", over: "rca0", refs: [{ref: "bovykinweiermann2017", loc: "adaptation of Theorem 8"}]}

@@ -1,0 +1,4 @@
+# Results from [barrettdowneygreenberg2021].
+
+- {type: "equivalence", from: "cousin-c", to: "wkl", over: "rca0", refs: [{ref: barrettdowneygreenberg2021}]}
+- {type: "equivalence", from: "cousin-b1", to: "aca", over: "rca0", refs: [{ref: barrettdowneygreenberg2021}]}

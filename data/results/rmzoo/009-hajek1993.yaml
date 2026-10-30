@@ -1,0 +1,7 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Hájek (1993) — Interpretability and fragments of arithmetic
+
+- {type: "conservation", statement: "bsig2-wkl", base: "bsig2", class: "Pi11", value: true, refs: [{ref: "hajek1993", loc: "Corollary 3.14"}]}
+- {type: "conservation", statement: "bsig3-wkl", base: "bsig3", class: "Pi11", value: true, refs: [{ref: "hajek1993", loc: "Corollary 3.14"}]}
+- {type: "conservation", statement: "isig2-wkl", base: "isig2", class: "Pi11", value: true, refs: [{ref: "hajek1993", loc: "Corollary 3.14"}]}
+- {type: "conservation", statement: "isig3-wkl", base: "isig3", class: "Pi11", value: true, refs: [{ref: "hajek1993", loc: "Corollary 3.14"}]}

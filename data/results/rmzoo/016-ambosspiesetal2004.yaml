@@ -1,0 +1,4 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Ambos-Spies, Kjos-Hanssen, Lempp, Slaman (2004) — Comparing DNR and WWKL
+
+- {type: "separation", from: "dnr", to: "wwkl", over: "omega", refs: [{ref: ambosspiesetal2004, loc: Theorem 1.7}, {ref: floodtowsner2016, loc: Corollary 3.35}]}

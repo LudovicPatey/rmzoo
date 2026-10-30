@@ -1,0 +1,6 @@
+# Results from [csimaetal2019].
+
+- {type: "implication", from: "rt22", to: "ht-eq22", over: "sw", folklore: true, refs: [{ref: csimaetal2019}]}
+- {type: "implication", from: "rt22", to: "ht-eq22", over: "rca0star", folklore: true, refs: [{ref: csimaetal2019}]}
+- {type: "implication", from: "ht-eq22", to: "dnr0", over: "c", note: "There is a computable instance all of whose solutions compute a function DNC relative to ∅′; the argument relativizes.", refs: [{ref: csimaetal2019}]}
+- {type: "separation", from: "wkl", to: "ht-eq22", over: "omega", refs: [{ref: csimaetal2019}]}

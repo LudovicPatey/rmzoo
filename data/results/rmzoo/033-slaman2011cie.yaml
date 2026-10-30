@@ -1,0 +1,7 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Theodore A. Slaman (2011) — Σ₂-bounding and Δ₂-induction (talk slides)
+
+- {type: "implication", from: "ran2", to: "phpm", over: "rca0", refs: [{ref: "slaman2011cie", loc: "Theorem (69/75)"}]}
+- {type: "separation", from: "rca0", to: "phpm", over: "rca0", refs: [{ref: "slaman2011cie", loc: "Theorem (69/75)"}]}
+- {type: "separation", from: "phpm", to: "bsig2", over: "rca0", refs: [{ref: "slaman2011cie", loc: "Theorem (73/75)"}]}
+- {type: "separation", from: "ran2", to: "bsig2", over: "rca0", refs: [{ref: "slaman2011cie", loc: "Theorem (69/75) and Theorem (73/75)"}]}

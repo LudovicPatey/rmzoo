@@ -1,0 +1,3 @@
+# Results from [giustomarcone1996].
+
+- {type: "equivalence", from: "lebesgue", to: "wkl", over: "rca0", refs: [{ref: giustomarcone1996}]}

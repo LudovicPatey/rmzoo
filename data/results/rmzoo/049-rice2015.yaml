@@ -1,0 +1,6 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Rice (2015) — The Thin Set Theorem for Pairs Implies DNR
+
+- {type: "implication", from: "ts3", to: "sts3", over: "rca0", folklore: true, note: "By definition."}
+- {type: "implication", from: "ts2", to: "sts2", over: "rca0", folklore: true, note: "By definition."}
+- {type: "implication", from: "sts2", to: "dnr", over: "rca0", refs: [{ref: "rice2015", loc: "Main Theorem"}]}

@@ -1,0 +1,6 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Wang (2014) — The Definability Strength of Combinatorial Principles
+
+- {type: "separation", from: "coh-em-pi01g-rrt22-wkl", to: "sads", over: "omega", refs: [{ref: "wang2016", loc: "Theorem 5.1"}]}
+- {type: "separation", from: "coh-em-pi01g-rrt22-wkl", to: "ts2", over: "omega", refs: [{ref: "wang2016", loc: "Theorem 5.1"}]}
+- {type: "separation", from: "rrt32", to: "ts3", over: "omega", refs: [{ref: "wang2016", loc: "Theorem 5.2"}]}

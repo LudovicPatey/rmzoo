@@ -1,0 +1,5 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Patey (2015) — The strength of the tree theorem for pairs in reverse mathematics
+
+- {type: "separation", from: "rt12", to: "tt12", over: "sc", refs: [{ref: "patey2016b", loc: "consequence of Theorem 2.2"}]}
+- {type: "separation", from: "rt22-wkl", to: "tt22", over: "omega", refs: [{ref: "patey2016b", loc: "Corollary 4.12"}]}

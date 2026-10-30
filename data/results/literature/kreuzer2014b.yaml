@@ -1,0 +1,3 @@
+# Results from [kreuzer2014b].
+
+- {type: "equivalence", from: "hst", to: "aca", over: "rca0", refs: [{ref: kreuzer2014b}]}

@@ -1,0 +1,3 @@
+# Results from [patey2017b].
+
+- {type: "separation", from: "coh-em-wkl", to: "amt", over: "omega", refs: [{ref: patey2017b}]}

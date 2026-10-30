@@ -1,0 +1,5 @@
+# Results from [sun2025].
+
+- {type: "implication", from: "coh", to: "fincoh", over: "rca0star", folklore: true, refs: [{ref: sun2025}]}
+- {type: "implication", from: "fincoh", to: "isig1", over: "rca0star", refs: [{ref: sun2025}]}
+- {type: "separation", from: "wkl", to: "fincoh", over: "rca0", refs: [{ref: sun2025}]}

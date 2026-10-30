@@ -1,0 +1,6 @@
+# Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
+# Seetapun, Slaman (1995) — On the Strength of Ramsey's Theorem
+
+- {type: "separation", from: "rt22-wkl", to: "aca", over: "omega", refs: [{ref: "seetapunslaman1995", loc: "Theorem 3.1"}]}
+- {type: "conservation", statement: "rt22", base: "rca0", class: "Pi04", value: false, refs: [{ref: "seetapunslaman1995", loc: "Theorem 3.6"}]}
+- {type: "implication", from: "aca", to: "rt22", over: "rca0", folklore: true, note: "follows from Specker (1971) [Remark 6, RT22 has $\\Delta^0_3$ solutions]"}

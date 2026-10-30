@@ -1,0 +1,4 @@
+# Results from [lehoueroupatey2025].
+
+- {type: "implication", from: "em", to: "brt22", over: "rca0", refs: [{ref: lehoueroupatey2025}]}
+- {type: "separation", from: "ads", to: "brt22", over: "rca0", refs: [{ref: lehoueroupatey2025}]}
