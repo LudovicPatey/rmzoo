@@ -1,2 +1,4 @@
 node_modules/
 .DS_Store
+# local full-text cache of the papers (see scripts/fulltext.mjs)
+cache/

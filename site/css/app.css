@@ -280,3 +280,11 @@ path.hit { stroke: transparent; stroke-width: 12; fill: none; cursor: pointer; }
 .badge.read-pdf-zotero, .badge.read-pdf-arxiv, .badge.read-pdf-oa { background: var(--yes-soft); color: var(--yes); }
 .badge.read-abstract { background: var(--open-soft); color: var(--open); }
 .badge.read-screened, .badge.read-none { background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
+
+/* BibTeX */
+.h2row { align-items: baseline; }
+.h2row h2 { margin-bottom: 8px; }
+details.bib { margin: 6px 0 14px; }
+details.bib summary { cursor: pointer; color: var(--accent); font-size: .9rem; }
+details.bib pre { background: var(--panel, rgba(127,127,127,.08)); border: 1px solid var(--line, rgba(127,127,127,.25)); border-radius: 6px;
+  padding: 10px 12px; overflow-x: auto; font-size: .78rem; line-height: 1.45; margin: 8px 0; white-space: pre; }

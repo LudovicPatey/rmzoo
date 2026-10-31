@@ -23,7 +23,7 @@ Then open http://localhost:8080.
 
 * `npm run check` — validate the data and look for contradictions
 * `npm run build` — regenerate `site/data/zoo.json` from `data/`
-* `npm test` — engine tests (including known facts that must be derived)
+* `npm test` — engine and BibTeX tests (including known facts that must be derived)
 
 The viewer is a static site (`site/`): after `npm run build` it can be served
 by GitHub Pages or any static host.
@@ -42,6 +42,8 @@ scripts/             build (YAML → JSON + validation) and dev server
 site/                the viewer (vanilla JS, KaTeX, no build step)
   js/engine.js       inference engine (shared with the build script)
   js/layout.js       layered layout for Hasse diagrams
+  js/bibtex.js       BibTeX export
+cache/fulltext/      local full texts of the papers (git-ignored)
 docs/DESIGN.md       data model and design rationale
 ```
 
@@ -59,6 +61,31 @@ Append to a file in `data/results/`:
 
 then run `npm run check`. If the new fact contradicts something already
 derivable, the check fails and names the pair.
+
+## Full texts of the papers
+
+`scripts/fulltext.mjs` keeps a local, git-ignored cache of the papers in
+`cache/fulltext/` (`<key>.txt` for the text and `<key>.pdf` for a downloaded
+PDF, plus `index.json`, which records each paper's source, and `failed.json`), so papers never need
+to be fetched twice when they are mined again:
+
+```bash
+node scripts/fulltext.mjs --zotero --download
+```
+
+`--zotero` extracts the matching PDFs of your Zotero library, `--download`
+fetches the missing ones (arXiv, else an open-access copy found through
+OpenAlex), `--retry` retries previous failures and `--only k1,k2` restricts to
+some references. It then records the reading status (`read: pdf-zotero |
+pdf-arxiv | pdf-oa`) in `data/references/`. It needs `pdftotext` and `sqlite3`.
+
+## BibTeX
+
+The viewer exports references as BibTeX: the Literature page (the filtered
+list), the Results page (papers cited by the filtered results), each statement
+page (its literature and the papers cited by its results) and each paper's page.
+Entry keys are the zoo's citation keys; journal, volume, number and pages are
+recovered from the free-text venue (`site/js/bibtex.js`).
 
 ## Where the data comes from
 

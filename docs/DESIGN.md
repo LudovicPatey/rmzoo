@@ -157,7 +157,10 @@ Each reference may record how far it was read when the database was built:
 `read: pdf-zotero | pdf-arxiv | pdf-oa | abstract | screened` (absent: not read). Only
 `pdf-*` entries had their full text parsed; `abstract` entries were read from
 their abstract only (so theorem numbers may be missing), and `screened` ones
-were only scanned by keywords. The Literature page can filter on this status.
+were only scanned by keywords. The Literature page can filter on this status. The texts
+themselves are kept in a git-ignored local cache (`cache/fulltext/`, filled by
+`scripts/fulltext.mjs`), so that papers can be mined again without being
+downloaded again.
 
 
 `data/references.yaml`, keyed by citation key; author list, title, venue,

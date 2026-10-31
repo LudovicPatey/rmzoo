@@ -846,6 +846,7 @@ goh2019b:
   venue: Cornell University
   doi: 10.7298/0h3c-x173
   source: weihrauch-bibliography
+  read: pdf-oa
 goh2020:
   authors:
     - Jun Le Goh
@@ -994,7 +995,7 @@ hoyrup2023b:
   venue: Computability, 12(4), 351–369
   doi: 10.3233/COM-230458
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-oa
 higuchipauly2013:
   authors:
     - Kojiro Higuchi
@@ -1557,7 +1558,7 @@ paulysteinberg2018:
   venue: Theory of Computing Systems, 62, 557–582
   doi: 10.1007/s00224-016-9745-6
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-oa
 pradicsolda2022:
   authors:
     - Pierre Pradic
@@ -1667,6 +1668,7 @@ trottavalentipaiva2022:
   venue: arXiv 2208.08656
   doi: 10.48550/arxiv.2208.08656
   source: weihrauch-bibliography
+  read: pdf-oa
 tavanaweihrauch2011:
   authors:
     - Nazanin R.\ Tavana

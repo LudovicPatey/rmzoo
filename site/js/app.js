@@ -1,5 +1,6 @@
 import { buildZoo, orderView, RULES, CLASS_NAMES } from './engine.js';
 import { layered, verticalSpline } from './layout.js';
+import { bibtex } from './bibtex.js';
 
 // ============================================================================
 // helpers
@@ -497,7 +498,7 @@ function viewStatement(id) {
       return `<tr data-prop="${pi}" style="cursor:pointer"><td>${esc(p.name)}</td><td class="c">${st}</td><td class="small muted">${esc(Z.R[Z.ridx.get(p.closedUnder)].short)}</td></tr>`;
     }).join('')}</table>
 
-    <h2>Literature</h2>
+    <div class="row h2row"><h2 class="grow">Literature</h2>${refsOf.length || directResults.length ? bibButton('bib-stmt', 'BibTeX (literature + cited in results)') : ''}</div>
     ${refsOf.length ? `<ul class="reflist">${refsOf.map((rf) => `<li><span class="role">${esc(rf.role || '')}</span>${refFull(rf.ref)}${rf.loc ? ` — ${esc(rf.loc)}` : ''}</li>`).join('')}</ul>`
       : '<p class="muted">No reference recorded.</p>'}
 
@@ -510,6 +511,7 @@ function viewStatement(id) {
     $('#rels').innerHTML = relations(i, rIdx());
   };
   drawRels();
+  $('#bib-stmt')?.addEventListener('click', () => downloadBib(sortKeys([...refsOf.map((x) => x.ref), ...citedKeys(directResults)]), s.id));
   m.onclick = (e) => {
     const b = e.target.closest('[data-sel]');
     if (b) { toggleSel(b.dataset.sel); b.classList.toggle('on'); b.textContent = isSel(b.dataset.sel) ? '✓ Selected' : '+ Select'; return; }
@@ -572,6 +574,19 @@ const readBadge = (r) => {
   const [label, title] = READ[r.read] || ['not read', 'This paper has not been read; its results come from other sources, if any.'];
   return `<span class="badge read-${r.read || 'none'}" title="${esc(title)}">${label}</span>`;
 };
+// ---- BibTeX export -----------------------------------------------------------
+function downloadBib(keys, name) {
+  const blob = new Blob([bibtex(Z.raw.references, [...new Set(keys)])], { type: 'application/x-bibtex' });
+  const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: name + '.bib' });
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+const bibButton = (id, label = 'BibTeX') =>
+  `<button class="btn small" id="${id}" title="Download the references in BibTeX format">⤓ ${label}</button>`;
+const citedKeys = (results) => results.flatMap(([res]) => (res.refs || []).map((r) => r.ref));
+const sortKeys = (keys) => [...new Set(keys)].filter((k) => Z.raw.references[k])
+  .sort((a, b) => (Z.raw.references[a].year || 0) - (Z.raw.references[b].year || 0) || a.localeCompare(b));
+
 function refFull(key) {
   const r = Z.raw.references[key];
   if (!r) return esc(key);
@@ -952,7 +967,9 @@ function viewResults(params) {
       <select id="f-prov"><option value="">Any provenance</option><option value="lit">From the literature</option>
         <option value="folk">Folklore</option><option value="ai">AI-derived</option><option value="aiarg">Argument by AI</option></select>
       <label class="toggle"><input type="checkbox" id="f-check"> Needs check only</label>
+      ${bibButton('bib-res', 'BibTeX of cited papers')}
     </div><div id="res"></div>`;
+  let shown = [];
   const draw = () => {
     const q = $('#f-q').value.trim();
     const matchIds = q ? new Set(search(q, 1000).map((i) => S(i).id)) : null;
@@ -967,8 +984,10 @@ function viewResults(params) {
       (!rr || [].concat(res.over || []).includes(rr)) &&
       (!chk || res.status === 'needs-check') && provOk(res) &&
       (!matchIds || [res.from, res.to, res.statement, res.base].some((x) => matchIds.has(x))));
-    $('#res').innerHTML = `<p class="small muted">${list.length} result${list.length === 1 ? '' : 's'}</p>${resultsTable(list, 50)}`;
+    shown = list;
+    $('#res').innerHTML = `<p class="small muted">${list.length} result${list.length === 1 ? '' : 's'} citing ${sortKeys(citedKeys(list)).length} papers</p>${resultsTable(list, 50)}`;
   };
+  $('#bib-res').addEventListener('click', () => downloadBib(sortKeys(citedKeys(shown)), 'rmzoo-results'));
   ['#f-q', '#f-type', '#f-r', '#f-check', '#f-prov'].forEach((s) => $(s).addEventListener('input', draw));
   draw();
 }
@@ -986,12 +1005,18 @@ function viewRefs(key) {
     const st = intro(key);
     m.innerHTML = `<p><a href="#/refs">← Literature</a></p>
       <h1>${rich(r.title)}</h1><p>${esc(r.authors.join(', '))} — ${esc(r.venue)}, ${r.year}
-      ${r.doi ? ` · <a href="https://doi.org/${esc(r.doi)}" target="_blank" rel="noopener">doi:${esc(r.doi)}</a>` : ''}</p>
+      ${r.doi ? ` · <a href="https://doi.org/${esc(r.doi)}" target="_blank" rel="noopener">doi:${esc(r.doi)}</a>` : ''}
+      ${r.arxiv ? ` · <a href="https://arxiv.org/abs/${esc(r.arxiv)}" target="_blank" rel="noopener">arXiv:${esc(r.arxiv)}</a>` : ''}
+      · ${readBadge(r)}</p>
+      <details class="bib"><summary>BibTeX</summary><pre id="bib-one">${esc(bibtex(Z.raw.references, [key]))}</pre>
+        <div class="row">${bibButton('bib-ref', 'Download')}<button class="btn small" id="bib-copy">Copy</button></div></details>
       ${st.length ? `<h2>Statements</h2><div class="rel-list">${st.map(([s, i]) => {
         const role = s.refs.find((x) => x.ref === key).role;
         return `<a class="chip" href="#/s/${s.id}" style="color:var(--ink)">${L(i)} <span class="muted">${esc(role || '')}</span></a>`;
       }).join('')}</div>` : ''}
       <h2>Results</h2>${resultsTable(uses(key))}`;
+    $('#bib-ref').addEventListener('click', () => downloadBib([key], key));
+    $('#bib-copy').addEventListener('click', (e) => navigator.clipboard?.writeText($('#bib-one').textContent).then(() => { e.target.textContent = 'Copied'; }));
     return;
   }
   const nUse = new Map();
@@ -1003,7 +1028,8 @@ function viewRefs(key) {
         <option value="weihrauch-bibliography">Weihrauch bibliography only</option><option value="arxiv">arXiv sweep only</option></select>
       <select id="rread"><option value="">Any reading status</option><option value="pdf">Full text parsed</option>
         <option value="abstract">Abstract read</option><option value="screened">Abstract screened</option><option value="none">Not read</option></select>
-      <select id="rsort"><option value="desc">Newest first</option><option value="asc">Oldest first</option></select></div>
+      <select id="rsort"><option value="desc">Newest first</option><option value="asc">Oldest first</option></select>
+      ${bibButton('bib-lit', 'BibTeX of this list')}</div>
     <div id="rcount" class="small muted"></div><div id="rl"></div>`;
   const draw = () => {
     const q = $('#rq').value.toLowerCase();
@@ -1012,6 +1038,7 @@ function viewRefs(key) {
     const list = refs.filter(([k, r]) => (!q || [k, r.title, r.venue, r.year, ...r.authors].join(' ').toLowerCase().includes(q)) &&
       (src === 'results' ? nUse.has(k) || intro(k).length : !src || r.source === src) && readOk(r))
       .sort((a, b) => dir * ((a[1].year || 0) - (b[1].year || 0)) || a[0].localeCompare(b[0]));
+    shown = list.map(([k]) => k);
     $('#rcount').textContent = `${list.length} paper${list.length === 1 ? '' : 's'}`;
     $('#rl').innerHTML = lazy(list, ([k]) => {
       const u = nUse.get(k) || 0, s = intro(k).length;
@@ -1019,6 +1046,8 @@ function viewRefs(key) {
         <div class="small muted">${u} result${u === 1 ? '' : 's'}${s ? ` · ${s} statement${s === 1 ? '' : 's'}` : ''}</div></div>`;
     }, { size: 40, noun: 'papers', empty: '<p class="muted">No paper matches.</p>' });
   };
+  let shown = [];
+  $('#bib-lit').addEventListener('click', () => downloadBib(shown, 'rmzoo-literature'));
   ['#rq', '#rsrc', '#rsort', '#rread'].forEach((sel) => $(sel).addEventListener('input', draw));
   draw();
 }
