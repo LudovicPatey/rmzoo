@@ -381,10 +381,28 @@ function viewCatalogue(params) {
           ${Object.keys(Z.raw.references).length} papers</div>
       </aside>
       <section><div class="row" style="margin-bottom:12px"><h1 style="margin:0" class="grow">Catalogue</h1>
-        <span class="small muted" id="cat-count"></span></div>
+        <span class="small muted" id="cat-count"></span>
+        <button class="btn small" id="cat-selall" title="Add every statement of the list to the selection">+ Select all</button>
+        <button class="btn small" id="cat-unselall" title="Remove the statements of the list from the selection" hidden>− Deselect all</button></div>
         <div class="cat-list" id="cat-list"></div></section>
     </div>`;
   const cur = { q, tags };
+  let listed = [];
+  const syncSelButtons = () => {
+    const n = listed.filter((id) => !isSel(id)).length;
+    $('#cat-selall').hidden = !n;
+    $('#cat-selall').textContent = `+ Select all${n === listed.length ? '' : ' remaining'} (${n})`;
+    $('#cat-unselall').hidden = !listed.some(isSel);
+  };
+  $('#cat-selall').addEventListener('click', () => {
+    const add = listed.filter((id) => !isSel(id));
+    if (add.length > 80 && !confirm(`Add ${add.length} statements to the selection? Diagrams of that size are slow to read.`)) return;
+    state.sel = [...state.sel, ...add]; saveState(); renderTray(); draw(cur);
+  });
+  $('#cat-unselall').addEventListener('click', () => {
+    const drop = new Set(listed);
+    state.sel = state.sel.filter((id) => !drop.has(id)); saveState(); renderTray(); draw(cur);
+  });
   $('#cat-q').addEventListener('input', (e) => setParams({ ...cur, q: (cur.q = e.target.value) }));
   $('#cat-conj').addEventListener('change', (e) => { showConj = e.target.checked; draw(cur); });
   function draw(c) {
@@ -412,12 +430,14 @@ function viewCatalogue(params) {
     }
     mains.sort((x, y) => (!!S(x).conjunction - !!S(y).conjunction) || (c.q ? 0 : 0));
     $('#cat-count').textContent = `${ids.length} statement${ids.length === 1 ? '' : 's'}`;
+    listed = ids.map((i) => S(i).id);
+    syncSelButtons();
     $('#cat-list').innerHTML = lazy(mains, (i) => card(i, shown, showForms),
       { size: 30, noun: 'principles', empty: '<p class="muted">No statement matches.</p>' });
   }
   $('#cat-list').addEventListener('click', (e) => {
     const b = e.target.closest('[data-sel]');
-    if (b) { toggleSel(b.dataset.sel); b.classList.toggle('on', isSel(b.dataset.sel)); b.textContent = isSel(b.dataset.sel) ? '✓ Selected' : '+ Select'; }
+    if (b) { toggleSel(b.dataset.sel); b.classList.toggle('on', isSel(b.dataset.sel)); b.textContent = isSel(b.dataset.sel) ? '✓ Selected' : '+ Select'; syncSelButtons(); }
   });
   draw(cur);
 }
@@ -608,7 +628,9 @@ function resultFact(res) {
   }
   if (res.type === 'conservation') {
     const cls = CLASS_NAMES[res.class] || res.class;
-    return `RCA₀ + ${sLink(idx(res.statement), Z.ridx.get('rca0'))} is ${res.value === false ? '<b class="no">not</b> ' : ''}<b>${esc(cls)}</b>-conservative over RCA₀ + ${sLink(idx(res.base), Z.ridx.get('rca0'))}`;
+    // "RCA₀ + X", or just "RCA₀" when X is RCA₀ itself (or another base statement over RCA₀)
+    const sys = (id) => (S(idx(id)).base || []).includes('rca0') ? sLink(idx(id), Z.ridx.get('rca0')) : `RCA₀ + ${sLink(idx(id), Z.ridx.get('rca0'))}`;
+    return `${sys(res.statement)} is ${res.value === false ? '<b class="no">not</b> ' : ''}<b>${esc(cls)}</b>-conservative over ${sys(res.base)}`;
   }
   const arrow = { implication: '<span class="yes">⇒</span>', equivalence: '<span class="yes">⇔</span>', separation: '<span class="no">⇏</span>' }[res.type];
   return `<span class="res-stmt">${sLink(idx(res.from), r0)} ${arrow} ${sLink(idx(res.to), r0)}</span> <span class="muted small">over ${over}</span>`;
