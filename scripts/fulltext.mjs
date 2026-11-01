@@ -71,11 +71,12 @@ if (flag('--zotero')) {
     .map(([key, p, title]) => ({ key, file: path.join(Z, 'storage', key, p.slice(8)), n: nt(title), w: new Set(words(title)) }))
     .filter((z) => fs.existsSync(z.file));
   fs.rmSync(tmp, { recursive: true });
-  // pass 1: identical titles; pass 2: a common prefix of 35+ characters (subtitles
-  // differ); pass 3: ≥80% word overlap. Each Zotero item serves one reference:
+  // pass 1: identical titles; pass 2: one title extends the other (a subtitle);
+  // pass 3: ≥80% word overlap. Each Zotero item serves one reference:
   // "On the strength of Ramsey's theorem" must not take the PDF of
   // "On the strength of Ramsey's theorem for pairs".
-  const prefix = (t, z) => t.length >= 35 && z.n.length >= 35 && z.n.slice(0, 35) === t.slice(0, 35);
+  // one title is the other followed by a subtitle (both long enough to be specific)
+  const prefix = (t, z) => Math.min(t.length, z.n.length) >= 30 && (z.n.startsWith(t) || t.startsWith(z.n));
   const sim = (a, b) => { let i = 0; for (const x of a) if (b.has(x)) i++; return i / Math.max(a.size, b.size); };
   const match = new Map(), used = new Set();
   for (const e of refs) { const t = nt(e.r.title); const z = t.length > 12 && items.find((z) => !used.has(z) && z.n === t); if (z) { match.set(e.key, z); used.add(z); } }

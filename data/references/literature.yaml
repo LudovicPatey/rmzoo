@@ -125,7 +125,6 @@ slamanyokoyama2018:
   venue: Journal of Symbolic Logic 83(4), 1610–1617
   year: 2018
   arxiv: '1711.08704'
-  read: pdf-zotero
 csimaetal2019:
   authors: [ Barbara F. Csima, Damir D. Dzhafarov, Denis R. Hirschfeldt, Carl G. Jockusch Jr., Reed Solomon, Linda Brown Westrick ]
   title: The reverse mathematics of Hindman's theorem for sums of exactly two elements
@@ -344,3 +343,42 @@ kowalik2024:
   venue: PhD thesis, University of Warsaw
   year: 2024
   read: pdf-zotero
+montalban2011:
+  authors: [ Antonio Montalbán ]
+  title: Open questions in reverse mathematics
+  venue: Bulletin of Symbolic Logic 17(3), 431–454
+  year: 2011
+  doi: 10.2178/bsl/1309952320
+  read: pdf-zotero
+simpson1999open:
+  authors: [ Stephen G. Simpson ]
+  title: Open problems in reverse mathematics
+  venue: Handout for the AMS-IMS-SIAM conference Computability Theory and Applications, Boulder, 1999
+  year: 1999
+  read: pdf-zotero
+birs2008:
+  authors: [ Peter A. Cholak, Barbara F. Csima, Steffen Lempp, Manuel Lerman, Richard A. Shore, Theodore A. Slaman ]
+  title: "Computability, Reverse Mathematics and Combinatorics: Open Problems"
+  venue: Banff International Research Station workshop 08w5019, December 2008 (problem list collected by the organizers)
+  year: 2008
+  read: pdf-zotero
+montalban2017:
+  authors: [ Antonio Montalbán ]
+  title: Fraïssé's conjecture in Π¹₁-comprehension
+  venue: Journal of Mathematical Logic 17(2), 1750006
+  year: 2017
+  doi: 10.1142/S0219061317500064
+  read: pdf-zotero
+shore1993:
+  authors: [ Richard A. Shore ]
+  title: On the strength of Fraïssé's conjecture
+  venue: Logical Methods (Crossley, Remmel, Shore, Sweedler eds.), Birkhäuser, 782–813
+  year: 1993
+  read: pdf-zotero
+schmerl2000:
+  authors: [James H. Schmerl]
+  title: Graph coloring and reverse mathematics
+  venue: Mathematical Logic Quarterly 46(4), 543–548
+  year: 2000
+  doi: 10.1002/1521-3870(200010)46:4<543::AID-MALQ543>3.0.CO;2-E
+  read: abstract

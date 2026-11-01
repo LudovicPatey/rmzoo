@@ -1134,13 +1134,10 @@ kihara2022:
 kihara2022b:
   source: arxiv
   text: Kechris and Martin showed that the Wadge rank of the $ω$-th level of the decreasing difference hierarchy of coanalytic sets is $ω_2$ under the axiom of determinacy. In this article, we give an alternative proof of the Kechris-Martin theorem, by understanding the $ω$-th level of the decreasing difference hierarchy of coanalytic sets as the (relative) hyperarithmetical processes with finite mind-changes. Based on this viewpiont, we also examine the gap between the increasing and decreasing difference hierarchies of coanalytic sets by relating them to the $Π^1_1$- and $Σ^1_1$-least number principles, respectively. We also analyze Weihrauch degrees of related principles.
-kiharamarconepauly2018:
+kiharamarconepauly2020:
   source: arxiv
   arxiv: "1812.01549"
   text: There are close similarities between the Weihrauch lattice and the zoo of axiom systems in reverse mathematics. Following these similarities has often allowed researchers to translate results from one setting to the other. However, amongst the big five axiom systems from reverse mathematics, so far ATR_0 has no identified counterpart in the Weihrauch degrees. We explore and evaluate several candidates, and conclude that the situation is complicated.
-kiharamarconepauly2020:
-  source: openalex
-  text: There are close similarities between the Weihrauch lattice and the zoo of axiom systems in reverse mathematics. Following these similarities has often allowed researchers to translate results from one setting to the other. However, amongst the big five axiom systems from reverse mathematics, so far $\mathrm {ATR}_0$ has no identified counterpart in the Weihrauch degrees. We explore and evaluate several candidates, and conclude that the situation is complicated.
 kiharang2026:
   source: arxiv
   text: Recently, the authors introduced the Gamified Katětov order on filters over $ω$. This was shown to be strictly coarser than the classical Katětov order, and in fact collapses all MAD families to a single equivalence class. In the opposite direction, the present paper shows that the Gamified Katětov order also embeds $\mathcal{P}(ω)/\mathrm{Fin}$, and thus contains an antichain of size continuum. The analysis brings into focus some interesting connections with Ramsey theory. As part of a broader programme investigating the interplay between combinatorial and computable complexity, we then apply our construction to produce a large new family of non-modest degrees in the extended Weihrauch hierarchy, which arise from associated effective subtoposes.

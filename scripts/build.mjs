@@ -258,7 +258,7 @@ raw.results.forEach((res, i) => {
     if (r.read && !['pdf-zotero', 'pdf-arxiv', 'pdf-oa', 'abstract', 'screened'].includes(r.read)) errors.push(`Reference ${k}: unknown read status ${r.read}`);
     if (!r.authors || !r.authors.join('').trim()) errors.push(`Reference ${k} has no authors`);
     if (r.doi) { const d = r.doi.toLowerCase(); if (byDoi.has(d)) errors.push(`References ${byDoi.get(d)} and ${k} have the same DOI`); byDoi.set(d, k); }
-    const t = norm(r.title);
+    const t = norm(r.title).replace(/0$/, ''); // "…ATR" = "…ATR₀"
     if (t.length > 15 && byTitle.has(t) && !related(byTitle.get(t), k)) errors.push(`References ${byTitle.get(t)} and ${k} have the same title (merge them, or mark one as \`version\` of the other)`);
     byTitle.set(t, k);
     if (r.arxiv) {

@@ -1173,17 +1173,6 @@ kihara2022:
   doi: 10.1007/s11856-022-2367-6
   source: weihrauch-bibliography
   read: pdf-arxiv
-kiharamarconepauly2018:
-  authors:
-    - Takayuki Kihara
-    - Alberto Marcone
-    - Arno Pauly
-  title: Searching for an analogue of ATR in the Weihrauch lattice
-  year: 2018
-  venue: arXiv 1812.01549
-  source: weihrauch-bibliography
-  read: pdf-arxiv
-  arxiv: "1812.01549"
 kiharamarconepauly2020:
   authors:
     - Takayuki Kihara
@@ -1194,7 +1183,8 @@ kiharamarconepauly2020:
   venue: Journal of Symbolic Logic, 85(3), 1006–1043
   doi: 10.1017/jsl.2020.12
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
+  arxiv: "1812.01549"
 kawamuraota2014:
   authors:
     - Akitoshi Kawamura
@@ -1428,8 +1418,8 @@ marconevalenti2020:
   year: 2020
   venue: arXiv 2003.04245
   source: weihrauch-bibliography
-  read: pdf-arxiv
   arxiv: "2003.04245"
+  read: pdf-arxiv
 marconevalenti2021:
   authors:
     - Alberto Marcone
@@ -1469,8 +1459,8 @@ nichols2017:
   year: 2017
   venue: arXiv 1711.06532
   source: weihrauch-bibliography
-  read: pdf-arxiv
   arxiv: "1711.06532"
+  read: pdf-arxiv
 nobrega2018:
   authors:
     - Hugo Nobrega
@@ -1478,7 +1468,6 @@ nobrega2018:
   year: 2018
   venue: Institute for Logic, Language and Computation, Universiteit van Amsterdam
   source: weihrauch-bibliography
-  read: pdf-oa
 nobregapauly2017:
   authors:
     - Hugo Nobrega
@@ -1705,7 +1694,6 @@ smischliaew2024:
   year: 2024
   venue: Fakultät für Informatik, Universität der Bundeswehr München
   source: weihrauch-bibliography
-  read: pdf-arxiv
 solomon2016:
   authors:
     - Reed Solomon
