@@ -16,6 +16,8 @@
 // data/references/sweep-<year>.yaml; the others are only listed for review.
 import fs from 'node:fs';
 import YAML from 'yaml';
+import { acquireLock } from './lib/lock.mjs';
+acquireLock('sweep.mjs');
 
 const args = process.argv.slice(2);
 const arg = (k, d) => (args.includes(k) ? args[args.indexOf(k) + 1] : d);

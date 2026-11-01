@@ -11,6 +11,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import YAML from 'yaml';
+import { acquireLock } from './lib/lock.mjs';
+acquireLock('add-results.mjs');
 
 const spec = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 const walk = (d) => fs.readdirSync(d, { withFileTypes: true })

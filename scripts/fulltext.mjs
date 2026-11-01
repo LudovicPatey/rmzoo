@@ -23,6 +23,8 @@ import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
+import { acquireLock } from './lib/lock.mjs';
+acquireLock('fulltext.mjs');
 
 const args = process.argv.slice(2);
 const flag = (f) => args.includes(f);

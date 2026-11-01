@@ -12,6 +12,8 @@
 // preprint year in `preprintYear`. Keys never change.
 import fs from 'node:fs';
 import YAML from 'yaml';
+import { acquireLock } from './lib/lock.mjs';
+acquireLock('pubstatus.mjs');
 
 const args = process.argv.slice(2);
 const only = args.includes('--only') ? new Set(args[args.indexOf('--only') + 1].split(',')) : null;

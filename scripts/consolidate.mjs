@@ -27,6 +27,8 @@
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
+import { acquireLock } from './lib/lock.mjs';
+acquireLock('consolidate.mjs');
 
 const args = process.argv.slice(2);
 const arg = (k, d) => (args.includes(k) ? args[args.indexOf(k) + 1] : d);
