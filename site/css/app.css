@@ -288,3 +288,31 @@ details.bib { margin: 6px 0 14px; }
 details.bib summary { cursor: pointer; color: var(--accent); font-size: .9rem; }
 details.bib pre { background: var(--panel, rgba(127,127,127,.08)); border: 1px solid var(--line, rgba(127,127,127,.25)); border-radius: 6px;
   padding: 10px 12px; overflow-x: auto; font-size: .78rem; line-height: 1.45; margin: 8px 0; white-space: pre; }
+
+/* front page */
+.hero { text-align: center; padding: 28px 0 8px; }
+.hero h1 { font-size: 2.1rem; margin: 0 0 6px; }
+.hero > p { max-width: 640px; margin: 0 auto 18px; }
+.search.big { max-width: 640px; margin: 0 auto; position: relative; width: 100%; }
+.search.big input { width: 100%; font-size: 1.1rem; padding: 13px 18px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--panel); color: var(--ink); box-shadow: var(--shadow); }
+.search.big input:focus { outline: none; border-color: var(--accent); }
+.search.big .popover { text-align: left; }
+.hero-tags { justify-content: center; margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+.hero-tags .chip { color: var(--ink); }
+a.card.stat { color: var(--ink); text-decoration: none; transition: border-color .15s; }
+a.card.stat:hover { border-color: var(--accent); }
+.presets { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+a.card.preset { color: var(--ink); text-decoration: none; display: flex; flex-direction: column; gap: 4px; }
+a.card.preset:hover { border-color: var(--accent); }
+.preset h3 { margin: 0; font-size: 1.05rem; }
+.preset p { margin: 2px 0 6px; }
+.preset-labels { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: .85rem; color: var(--muted); margin-top: auto; }
+.recent { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.recent h3 { margin: 0 0 8px; }
+.recent ul { list-style: none; margin: 0; padding: 0; }
+.recent li { padding: 7px 0; border-top: 1px solid var(--line); }
+.recent li:first-child { border-top: 0; }
+@media (max-width: 600px) { .hero h1 { font-size: 1.6rem; } }
+.home .stats { grid-template-columns: repeat(auto-fit, minmax(104px, 1fr)); }
+.home .stats .num { font-size: 1.4rem; }

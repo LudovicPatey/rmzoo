@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import YAML from 'yaml';
+import { execFileSync } from 'node:child_process';
 import { buildZoo } from '../site/js/engine.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -36,7 +37,54 @@ const raw = {
     .map((f) => readYaml(path.join(dataDir, 'references', f)) || {})),
   statements: readDir('statements'),
   results: readDir('results'),
+  zoos: readYaml(path.join(dataDir, 'zoos.yaml')),
 };
+
+// ---- entry dates (for "recently added" on the front page) -------------------
+// From git blame: a reference dates from its key line, a statement from its
+// first line, a result from its most recently changed line (so a result counts
+// as updated when a citation or theorem number is added). Uncommitted lines
+// count as today. Without git, entries simply have no date.
+{
+  const blame = (rel) => {
+    try {
+      const out = execFileSync('git', ['blame', '--line-porcelain', '--', rel], { cwd: root, encoding: 'utf8', maxBuffer: 1 << 28, stdio: ['ignore', 'pipe', 'ignore'] });
+      const t = [];
+      let cur = 0;
+      for (const l of out.split('\n')) {
+        if (l.startsWith('author-time ')) cur = +l.slice(12);
+        else if (l.startsWith('\t')) t.push(cur);
+      }
+      return t;
+    } catch { return null; }
+  };
+  const lineOf = (src) => { const starts = [0]; for (let i = 0; i < src.length; i++) if (src[i] === '\n') starts.push(i + 1);
+    return (off) => { let lo = 0, hi = starts.length - 1; while (lo < hi) { const m = (lo + hi + 1) >> 1; if (starts[m] <= off) lo = m; else hi = m - 1; } return lo; }; };
+  const iso = (t) => (t ? new Date(t * 1000).toISOString().slice(0, 10) : undefined);
+  const dated = (rel, items, mode) => {
+    const times = blame('data/' + rel);
+    if (!times) return;
+    const src = fs.readFileSync(path.join(dataDir, rel), 'utf8');
+    const line = lineOf(src);
+    const doc = YAML.parseDocument(src);
+    const nodes = doc.contents?.items || [];
+    nodes.forEach((n, k) => {
+      const node = mode === 'key' ? n.key : n;
+      if (!node?.range) return;
+      const a = line(node.range[0]), b = mode === 'max' ? line(Math.max(node.range[0], node.range[1] - 1)) : a;
+      const t = Math.max(...times.slice(a, b + 1));
+      const target = mode === 'key' ? items[n.key.value] : items[k];
+      if (target && t) { target._date = iso(t); target._t = t; target._pos = k; }
+    });
+  };
+  for (const f of fs.readdirSync(path.join(dataDir, 'references')).filter((f) => f.endsWith('.yaml')))
+    dated('references/' + f, raw.references, 'key');
+  for (const [dir, mode] of [['statements', 'first'], ['results', 'max']]) {
+    const byFile = new Map();
+    for (const x of raw[dir]) { if (!byFile.has(x._file)) byFile.set(x._file, []); byFile.get(x._file).push(x); }
+    for (const [f, items] of byFile) dated(f, items, mode);
+  }
+}
 
 // ---- derived fields ----------------------------------------------------------
 {
@@ -78,6 +126,14 @@ const uniq = (list, what) => {
 };
 const rids = uniq(raw.reductions, 'reduction');
 const tids = uniq(raw.tags, 'tag');
+{
+  uniq(raw.zoos, 'preset zoo');
+  const sids = new Set(raw.statements.map((x) => x.id));
+  for (const z of raw.zoos) {
+    if (!rids.has(z.reduction)) errors.push(`Preset zoo ${z.id}: unknown reduction ${z.reduction}`);
+    for (const id of z.statements || []) if (!sids.has(id)) errors.push(`Preset zoo ${z.id}: unknown statement ${id}`);
+  }
+}
 const pids = uniq(raw.properties, 'property');
 const sids = uniq(raw.statements, 'statement');
 const refIds = new Set(Object.keys(raw.references));

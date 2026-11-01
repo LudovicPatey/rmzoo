@@ -137,6 +137,13 @@ function buildHaystack() {
     };
   });
 }
+// number of results mentioning each statement (search tie-breaker)
+function usage() {
+  if (usage.u) return usage.u;
+  const u = new Array(Z.n).fill(0);
+  for (const r of Z.raw.results) for (const id of [r.from, r.to, r.statement, r.base]) { const i = id && idx(id); if (i !== undefined && i !== '') u[i]++; }
+  return (usage.u = u);
+}
 function search(q, limit = 50) {
   q = q.trim().toLowerCase();
   if (!q) return [];
@@ -151,6 +158,8 @@ function search(q, limit = 50) {
     else if (h.ascii.startsWith(qs)) score += 50;
     if (s.name.toLowerCase().includes(q)) score += 10;
     if (s.conjunction) score -= 5;
+    if (s.formulationOf) score -= 2;
+    score += Math.min(8, Math.log2(1 + usage()[i])); // well-studied statements first among similar matches
     res.push([score, i]);
   });
   return res.sort((a, b) => b[0] - a[0]).slice(0, limit).map((x) => x[1]);
@@ -354,6 +363,86 @@ function renderTray() {
 // ============================================================================
 const main = () => $('#main');
 
+// ---- front page -------------------------------------------------------------
+function zooCounts() { // derived facts over all (statement, statement, reduction) triples
+  if (zooCounts.c) return zooCounts.c;
+  let nI = 0, nN = 0, nO = 0;
+  for (let r = 0; r < Z.R.length; r++) for (let a = 0; a < Z.n; a++) for (let b = 0; b < Z.n; b++) {
+    if (a === b) continue;
+    const st = Z.status(r, a, b);
+    if (st === 'implies') nI++; else if (st === 'separated') nN++; else if (st === 'open') nO++;
+  }
+  return (zooCounts.c = { nI, nN, nO });
+}
+const fmt = (n) => n.toLocaleString('en-US');
+const newest = (list) => list.filter((x) => x[1]._t).sort((a, b) => b[1]._t - a[1]._t || b[1]._pos - a[1]._pos);
+const presetHref = (z) => `#/diagram?s=${z.statements.join(',')}&r=${z.reduction}&sep=1&open=0`;
+
+function viewHome() {
+  const m = main();
+  m.className = 'home';
+  const mains = Z.S.filter((s) => !s.conjunction && !s.formulationOf).length;
+  const refs = Object.values(Z.raw.references);
+  const parsed = refs.filter((r) => /^pdf/.test(r.read || '')).length;
+  const cited = new Set(Z.raw.results.flatMap((r) => (r.refs || []).map((x) => x.ref))).size;
+  const lastDate = Z.raw.results.concat(Z.raw.statements).reduce((d, x) => (x._date > d ? x._date : d), '');
+  const N = 6;
+  const recentRefs = newest(Object.entries(Z.raw.references)).slice(0, N);
+  const recentStmts = newest(Z.S.map((s, i) => [i, Z.raw.statements.find((x) => x.id === s.id) || s])).filter(([i]) => !S(i).conjunction).slice(0, N);
+  const recentRes = newest(Z.raw.results.map((res, ri) => [ri, res])).slice(0, N);
+  const stat = (num, label, href, title = '') => `<a class="card stat" href="${href}" title="${esc(title)}"><div class="num">${num}</div><div class="small muted">${label}</div></a>`;
+  m.innerHTML = `
+    <section class="hero">
+      <h1>The Reverse Mathematics Zoo</h1>
+      <p class="muted">Principles of reverse mathematics and the Weihrauch lattice, how they compare under ${Z.R.length} notions of reduction, and where each fact was proved.</p>
+      <div class="search big"><input id="home-q" type="search" placeholder="Search a statement — RT22, WKL, Ramsey, induction, LPO…" autocomplete="off" autofocus>
+        <div id="home-pop" class="popover" hidden></div></div>
+      <div class="chips hero-tags">${Z.raw.tags.map((t) => `<a class="chip" href="#/catalogue?tags=${t.id}">${esc(t.name)}</a>`).join('')}</div>
+    </section>
+
+    <div class="stats">
+      ${stat(fmt(mains), 'principles', '#/catalogue', `${Z.S.length} statements counting all formulations and combinations`)}
+      ${stat(fmt(Z.raw.results.length), 'cited results', '#/results')}
+      ${stat(fmt(cited), 'papers cited', '#/refs', `${refs.length} papers in the bibliography`)}
+      ${stat(fmt(parsed), 'papers read in full', '#/refs', 'Papers whose full text was parsed when building the database')}
+      <span id="derived-stats" style="display:contents"></span>
+    </div>
+
+    <h2>Predefined zoos</h2>
+    <p class="small muted">Each opens the diagram of a classical selection of statements (it replaces your current selection).</p>
+    <div class="presets">${(Z.raw.zoos || []).map((z) => {
+      const R = Z.R[Z.ridx.get(z.reduction)];
+      return `<a class="card preset" href="${presetHref(z)}">
+        <div class="row"><h3 class="grow">${esc(z.name)}</h3><span class="badge" title="${esc(R.name)}">${esc(R.short)}</span></div>
+        <p class="small muted">${rich(z.description)}</p>
+        <div class="preset-labels">${z.statements.map((id) => `<span>${L(idx(id))}</span>`).join('')}</div></a>`;
+    }).join('')}</div>
+
+    <h2>Recently added${lastDate ? ` <span class="small muted">· last update ${esc(lastDate)}</span>` : ''}</h2>
+    <div class="recent">
+      <div class="card"><h3><a href="#/results">Results</a></h3><ul>${recentRes.map(([ri, res]) =>
+        `<li>${resultFact(res)}<div class="small muted">${(res.refs || []).slice(0, 2).map(refLink).join('; ') || (res.provenance === 'ai' ? 'AI-derived' : 'folklore')} · ${esc(res._date)}</div></li>`).join('')}</ul></div>
+      <div class="card"><h3><a href="#/catalogue">Statements</a></h3><ul>${recentStmts.map(([i, s]) =>
+        `<li>${sLink(i)} <span class="muted">${esc(S(i).name)}</span><div class="small muted">${esc(s._date)}</div></li>`).join('')}</ul></div>
+      <div class="card"><h3><a href="#/refs">Papers</a></h3><ul>${recentRefs.map(([k, r]) =>
+        `<li><a href="#/refs/${k}"><i>${rich(r.title)}</i></a><div class="small muted">${esc(refShort(k))} · ${esc(r._date)}</div></li>`).join('')}</ul></div>
+    </div>`;
+  const q = $('#home-q');
+  attachSearch(q, $('#home-pop'), (i) => { location.hash = '#/s/' + S(i).id; });
+  q.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && $('#home-pop').hidden && q.value.trim()) location.hash = '#/catalogue?q=' + encodeURIComponent(q.value.trim());
+  });
+  // the derived counts take a moment: fill them after the first paint
+  setTimeout(() => {
+    const el = $('#derived-stats');
+    if (!el) return;
+    const { nI, nN, nO } = zooCounts();
+    el.innerHTML = stat(fmt(nI), 'derived implications', '#/about', 'Over all pairs of statements and all notions of reduction')
+      + stat(fmt(nN), 'derived separations', '#/about', 'Over all pairs of statements and all notions of reduction')
+      + stat(fmt(nO), 'open questions', '#/about', 'Pairs (A, B) and reductions for which neither A ⇒ B nor A ⇏ B is known');
+  }, 30);
+}
+
 // ---- catalogue ------------------------------------------------------------
 function viewCatalogue(params) {
   const q = params.get('q') || '';
@@ -366,7 +455,7 @@ function viewCatalogue(params) {
     const p = new URLSearchParams();
     if (next.q) p.set('q', next.q);
     if (next.tags.size) p.set('tags', [...next.tags].join(','));
-    history.replaceState(null, '', '#/?' + p.toString());
+    history.replaceState(null, '', '#/catalogue?' + p.toString());
     draw(next);
   };
   m.innerHTML = `
@@ -455,7 +544,7 @@ function card(i, shown) {
       <div class="def">${def}</div>
       ${forms.length ? `<div class="forms">Other formulations: ${forms.map(([t, j]) =>
         `<a href="#/s/${t.id}" style="${shown.has(j) ? '' : 'opacity:.5'}">${L(j)}</a>`).join('')}</div>` : ''}
-      <div class="tags">${(s.tags || []).map((t) => `<a class="chip" href="#/?tags=${t}">${esc(tagName(t))}</a>`).join('')}</div>
+      <div class="tags">${(s.tags || []).map((t) => `<a class="chip" href="#/catalogue?tags=${t}">${esc(tagName(t))}</a>`).join('')}</div>
     </div>
     <button class="btn small sel-toggle ${isSel(s.id) ? 'on' : ''}" data-sel="${s.id}">${isSel(s.id) ? '✓ Selected' : '+ Select'}</button>
   </article>`;
@@ -466,7 +555,7 @@ function viewStatement(id) {
   const i = idx(id);
   const m = main();
   m.className = '';
-  if (i === undefined) { m.innerHTML = `<h1>Unknown statement</h1><p><a href="#/">Back to the catalogue</a></p>`; return; }
+  if (i === undefined) { m.innerHTML = `<h1>Unknown statement</h1><p><a href="#/catalogue">Back to the catalogue</a></p>`; return; }
   const s = S(i);
   const r = rIdx();
   const mainId = s.formulationOf || s.id;
@@ -483,7 +572,7 @@ function viewStatement(id) {
       <button class="btn sel-toggle ${isSel(s.id) ? 'on' : ''}" data-sel="${s.id}">${isSel(s.id) ? '✓ Selected' : '+ Select'}</button>
     </div>
     <div class="row" style="margin:6px 0 14px">
-      ${(s.tags || []).map((t) => `<a class="chip" href="#/?tags=${t}">${esc(tagName(t))}</a>`).join('')}
+      ${(s.tags || []).map((t) => `<a class="chip" href="#/catalogue?tags=${t}">${esc(tagName(t))}</a>`).join('')}
       ${s.aliases ? `<span class="small muted">Also: ${s.aliases.map(esc).join(', ')}</span>` : ''}
     </div>
     ${s.formulationOf ? `<p>A formulation of ${sLink(mainI)} (the main formulation of this principle).</p>` : ''}
@@ -930,7 +1019,7 @@ function viewCompare(params) {
   const m = main();
   m.className = 'wide';
   const ids = state.sel.map(idx).filter((i) => i !== undefined);
-  if (!ids.length) { m.innerHTML = `<h1>Compare</h1><p class="muted">Select statements in the <a href="#/">catalogue</a> first.</p>`; return; }
+  if (!ids.length) { m.innerHTML = `<h1>Compare</h1><p class="muted">Select statements in the <a href="#/catalogue">catalogue</a> or open a <a href="#/">predefined zoo</a> first.</p>`; return; }
   const r = rIdx();
   const g = latticeLayout();
   m.innerHTML = `
@@ -1078,12 +1167,7 @@ function viewRefs(key) {
 function viewAbout() {
   const m = main();
   m.className = '';
-  let nI = 0, nN = 0, nO = 0;
-  for (let r = 0; r < Z.R.length; r++) for (let a = 0; a < Z.n; a++) for (let b = 0; b < Z.n; b++) {
-    if (a === b) continue;
-    const s = Z.status(r, a, b);
-    if (s === 'implies') nI++; else if (s === 'separated') nN++; else if (s === 'open') nO++;
-  }
+  const { nI, nN, nO } = zooCounts();
   const needs = Z.raw.results.filter((r) => r.status === 'needs-check').length;
   const nAi = Z.raw.results.filter((r) => r.provenance === 'ai').length;
   const nFolk = Z.raw.results.filter((r) => r.folklore).length;
@@ -1121,8 +1205,9 @@ function viewAbout() {
 function currentRoute() {
   const path = (location.hash.slice(1) || '/').split('?')[0];
   const p = path.split('/').filter(Boolean);
-  if (!p.length) return 'catalogue';
-  return { s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', refs: 'refs', about: 'about' }[p[0]] || 'catalogue';
+  // old links "#/?q=…" and "#/?tags=…" pointed to the catalogue
+  if (!p.length) return /[?&](q|tags)=/.test(location.hash) ? 'catalogue' : 'home';
+  return { catalogue: 'catalogue', s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', refs: 'refs', about: 'about' }[p[0]] || 'catalogue';
 }
 function route() {
   const [path, qs] = (location.hash.slice(1) || '/').split('?');
@@ -1138,9 +1223,11 @@ function route() {
   else if (name === 'results') viewResults(params);
   else if (name === 'refs') viewRefs(p[1]);
   else if (name === 'about') viewAbout();
+  else if (name === 'home') viewHome();
   else viewCatalogue(params);
   renderTray();
-  if (name !== 'diagram') window.scrollTo(0, 0);
+  if (name !== 'diagram' || route.last !== 'diagram') window.scrollTo(0, 0);
+  route.last = name;
 }
 let rerenderPending = false;
 function rerender() { // re-run the current view without scrolling (after selection changes)

@@ -35,6 +35,7 @@ data/
   reductions.yaml    notions of reduction and how they compare
   tags.yaml          categories (Big Five, Ramsey theory, …)
   properties.yaml    separating properties (cone avoidance, low basis, …)
+  zoos.yaml          predefined selections shown on the front page
   references.yaml    bibliography
   statements/*.yaml  the catalogue (definitions, formulations, literature)
   results/*.yaml     implications, separations, properties — each cited
@@ -61,6 +62,14 @@ Append to a file in `data/results/`:
 
 then run `npm run check`. If the new fact contradicts something already
 derivable, the check fails and names the pair.
+
+## Front page
+
+The front page (`#/`) shows database statistics, a search bar, the predefined
+zoos of `data/zoos.yaml` (each a list of statements and a notion of reduction,
+opened as a diagram) and the most recently added results, statements and
+papers. Entry dates come from `git blame` at build time: a result counts as
+updated when a citation or theorem number is added to it.
 
 ## Full texts of the papers
 

@@ -1,0 +1,31 @@
+# Predefined selections shown on the front page. Each opens the diagram of
+# `statements` at the notion of reduction `reduction`.
+- id: reverse-mathematics
+  name: Reverse mathematics
+  reduction: rca0
+  description: The Big Five and the main principles below ACA₀ — Ramsey's theorem for pairs and its consequences, compactness and randomness — compared by provability over RCA₀.
+  statements: [aca, wkl, wwkl, rt22, srt22, coh, em, ads, cac, sads, dnr, amt, bsig2, isig2, rrt22, pi01g]
+
+- id: weak-reverse-mathematics
+  name: Weak reverse mathematics
+  reduction: rca0star
+  description: Over RCA₀*, where only Δ⁰₁-induction is available, RCA₀ (that is, IΣ⁰₁) becomes a statement like the others, next to induction and bounding schemes and combinatorial principles.
+  statements: [rca0, bsig2, isig2, wkl, wwkl, rt22, srt22, coh, rt1inf, aca, em, cac, ads]
+
+- id: weihrauch
+  name: Weihrauch degrees
+  reduction: w
+  description: The landmark problems of the Weihrauch lattice (LPO, LLPO, choice principles, lim) next to Ramsey-type and compactness problems, compared by Weihrauch reducibility.
+  statements: [llpo, lpo, cn, kn, lim, wkl, wwkl, dnr, rt12, rt22, srt22, coh, ds, bs, ucnn, cnn]
+
+- id: big-five
+  name: The Big Five
+  reduction: rca0
+  description: The five subsystems of second-order arithmetic that most theorems of ordinary mathematics are equivalent to.
+  statements: [rca0, wwkl, wkl, aca, atr, pi11ca]
+
+- id: ramsey-omega
+  name: Ramsey-type principles in ω-models
+  reduction: omega
+  description: Consequences of Ramsey's theorem for pairs, compared over ω-models (Turing ideals).
+  statements: [rt22, srt22, coh, em, ads, cac, sads, ts2, fs2, rrt22, dnr, wkl, wwkl]
