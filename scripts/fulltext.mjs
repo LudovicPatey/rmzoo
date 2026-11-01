@@ -14,7 +14,7 @@
 //
 // Layout of cache/fulltext/:
 //   <key>.txt     text (pdftotext -layout), what the extraction scripts read
-//   <key>.pdf     downloaded PDF (Zotero PDFs stay in Zotero)
+//   <key>.pdf     the PDF (downloaded, or copied from Zotero)
 //   index.json    { key: { source: zotero|arxiv|oa, url?, zotero?, date } }
 //   failed.json   { key: { reason, date } }   — skipped unless --retry
 // Needs `pdftotext` (poppler) and, for --zotero, `sqlite3`.
@@ -99,9 +99,13 @@ if (flag('--zotero')) {
   }
   let n = 0;
   for (const [key, z] of match) {
-    if (index[key]?.source === 'zotero' && index[key].zotero === z.key && okText(`${DIR}/${key}.txt`)) continue;
+    if (index[key]?.source === 'zotero' && index[key].zotero === z.key && okText(`${DIR}/${key}.txt`)) {
+      // the PDF is copied into the cache, so that nothing depends on Zotero afterwards
+      if (!fs.existsSync(`${DIR}/${key}.pdf`)) fs.copyFileSync(z.file, `${DIR}/${key}.pdf`);
+      continue;
+    }
     if (toText(z.file, `${DIR}/${key}.txt`)) {
-      if (fs.existsSync(`${DIR}/${key}.pdf`)) fs.rmSync(`${DIR}/${key}.pdf`); // the Zotero copy supersedes a download
+      fs.copyFileSync(z.file, `${DIR}/${key}.pdf`); // the Zotero copy supersedes a download
       index[key] = { source: 'zotero', zotero: z.key, date: today }; delete failed[key]; n++;
     }
   }

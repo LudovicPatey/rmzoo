@@ -151,3 +151,69 @@
     - { ref: erdosmoser1964, role: origin }
     - { ref: bovykinweiermann2017, role: rm }
     - { ref: lermansolomontowsner2013, role: rm }
+
+- id: rt14
+  label: '\mathsf{RT}^1_4'
+  name: Infinite pigeonhole principle (4 colors)
+  kind: problem
+  formulationOf: rt12
+  tags: [ ramsey ]
+  aliases: [ RT14 ]
+  definition: >
+    Every coloring $f : \mathbb{N} \to 4$ has an infinite homogeneous set.
+  instance: >
+    A coloring $f : \mathbb{N} \to 4$.
+  solution: An infinite set on which $f$ is constant.
+
+- id: rt15
+  label: '\mathsf{RT}^1_5'
+  name: Infinite pigeonhole principle (5 colors)
+  kind: problem
+  formulationOf: rt12
+  tags: [ ramsey ]
+  aliases: [ RT15 ]
+  definition: >
+    Every coloring $f : \mathbb{N} \to 5$ has an infinite homogeneous set.
+  instance: >
+    A coloring $f : \mathbb{N} \to 5$.
+  solution: An infinite set on which $f$ is constant.
+
+- id: rt42
+  label: '\mathsf{RT}^4_2'
+  name: Ramsey's theorem for quadruples
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ RT42 ]
+  definition: >
+    Every coloring $f : [\mathbb{N}]^4 \to 2$ has an infinite homogeneous set.
+  instance: >
+    A coloring $f : [\mathbb{N}]^4 \to 2$.
+  solution: An infinite set $H$ such that $f$ is constant on $[H]^4$.
+
+- id: ts23
+  label: '\mathsf{TS}^2_3'
+  name: Thin set theorem for pairs (3 colors)
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ TS23, thin set theorem for 3 colors ]
+  definition: >
+    Every coloring $f : [\mathbb{N}]^2 \to 3$ has an infinite set $H$ that is thin
+    for $f$, i.e. $f$ avoids at least one color on $[H]^2$.
+  instance: >
+    A coloring $f : [\mathbb{N}]^2 \to 3$.
+  solution: An infinite set $H$ with $f[[H]^2] \neq 3$.
+  refs: [ { ref: liupatey2022, role: rm } ]
+
+- id: ts24
+  label: '\mathsf{TS}^2_4'
+  name: Thin set theorem for pairs (4 colors)
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ TS24 ]
+  definition: >
+    Every coloring $f : [\mathbb{N}]^2 \to 4$ has an infinite set $H$ such that $f$
+    avoids at least one color on $[H]^2$.
+  instance: >
+    A coloring $f : [\mathbb{N}]^2 \to 4$.
+  solution: An infinite set $H$ with $f[[H]^2] \neq 4$.
+  refs: [ { ref: liupatey2022, role: rm } ]

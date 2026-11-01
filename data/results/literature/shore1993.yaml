@@ -1,0 +1,3 @@
+# Results from [shore1993].
+
+[ { type: implication, from: fra, to: atr, over: rca0, note: Even the restriction of Fraïssé's conjecture to well-orders implies ATR₀; a small gap (Σ⁰₂-induction) was filled by Freund and Manca., refs: [ { ref: shore1993 }, { ref: freundmanca2023 } ] } ]

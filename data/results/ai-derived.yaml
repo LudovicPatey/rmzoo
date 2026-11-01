@@ -59,3 +59,29 @@
 - {type: implication, from: dnr0, to: dnr, over: ["sw","rca0star"], provenance: ai, justification: {kind: reduction, by: ai, text: "By the s-m-n theorem there is a computable g with Φ^{X′}_{g(e)}(g(e)) = Φ^X_e(e) for all e; if f is DNC relative to X′ then f ∘ g is DNC relative to X."}}
 - {type: implication, from: cac, to: tac, over: ["sw", "rca0star"], provenance: ai, justification: {kind: reduction, by: ai, text: "A tree ordered by the prefix relation is a partial order; an infinite chain determines (computably) an infinite path, and antichains are the same."}}
 - {type: implication, from: aca, to: rca0, over: "rca0star", provenance: ai, justification: {kind: reduction, by: ai, text: "Over RCA₀*, arithmetical comprehension turns a Σ⁰₁ formula into a set, and the Δ⁰₀ induction axiom applied to that set yields Σ⁰₁ induction; hence ACA proves IΣ⁰₁, i.e. RCA₀."}}
+
+# thin set theorems with finitely many colors (added with ts23, ts24)
+- type: implication
+  from: rt22
+  to: ts23
+  over: [sw, rca0star]
+  provenance: ai
+  justification: {kind: reduction, by: ai, text: "Given f : [ℕ]² → 3, merge colors 1 and 2 into one. A set homogeneous for the merged 2-coloring avoids either color 0 or colors 1 and 2 for f, so it is thin for f."}
+- type: implication
+  from: ts23
+  to: ts24
+  over: [sw, rca0star]
+  provenance: ai
+  justification: {kind: reduction, by: ai, text: "Given f : [ℕ]² → 4, merge colors 2 and 3. A set avoiding one color of the merged 3-coloring avoids color 0, color 1, or both colors 2 and 3 for f."}
+- type: implication
+  from: ts24
+  to: ts2
+  over: [sw, rca0star]
+  provenance: ai
+  justification: {kind: reduction, by: ai, text: "Given f : [ℕ]² → ℕ, let g = min(f, 3). A set on which g avoids a color c < 3 is one on which f avoids c; if g avoids 3, then f takes only the values 0, 1, 2."}
+- type: implication
+  from: rt42
+  to: rt32
+  over: [sw, rca0star]
+  provenance: ai
+  justification: {kind: restriction, by: ai, text: "Given f : [ℕ]³ → 2, color a quadruple by the color of its first three elements; a homogeneous set for this coloring of quadruples is homogeneous for f."}

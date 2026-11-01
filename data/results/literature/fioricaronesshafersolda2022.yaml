@@ -5,3 +5,9 @@
 - { type: equivalence, from: rsg, to: wkl-jj, over: sw, refs: [ { ref: fioricaronesshafersolda2022, loc: Corollary 6.12 } ] }
 - { type: equivalence, from: cads, to: coh, over: w, note: CADS ≡sW id × COH., refs: [ { ref: fioricaronesshafersolda2022, loc: Proposition 4.20 } ] }
 - { type: separation, from: ads, to: rt1inf, over: w, note: Even RT¹₅ is not Weihrauch reducible to ADS., refs: [ { ref: fioricaronesshafersolda2022, loc: Theorem 5.2 } ] }
+- { type: separation, from: ads, to: rt15, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Theorem 5.2 } ] }
+- { type: implication, from: rt15, to: rt14, over: sw, refs: [ { ref: fioricaronesshafersolda2022, loc: Section 5 (RT¹ₖ ≤sW RT¹ₗ for k ≤ ℓ) } ] }
+- { type: implication, from: rt14, to: rt13, over: sw, refs: [ { ref: fioricaronesshafersolda2022, loc: Section 5 (RT¹ₖ ≤sW RT¹ₗ for k ≤ ℓ) } ] }
+- { type: implication, from: rt1inf, to: rt15, over: sw, refs: [ { ref: fioricaronesshafersolda2022, loc: "Section 5 (RT¹ₖ ≤sW RT¹_{<∞})" } ] }
+- { type: implication, from: rca0, to: rt14, over: rca0, refs: [ { ref: fioricaronesshafersolda2022, loc: Section 2 (RCA₀ proves RT¹ₖ for each standard k) } ] }
+- { type: implication, from: rca0, to: rt15, over: rca0, refs: [ { ref: fioricaronesshafersolda2022, loc: Section 2 (RCA₀ proves RT¹ₖ for each standard k) } ] }

@@ -1,4 +1,5 @@
 # Results from [blasshirstsimpson1987].
 
-- {type: "implication", from: "ht", to: "aca", over: "rca0", refs: [{ref: blasshirstsimpson1987}]}
-- {type: "implication", from: "aca-plus", to: "ht", over: "rca0", refs: [{ref: blasshirstsimpson1987}]}
+- { type: "implication", from: "ht", to: "aca", over: "rca0", refs: [ { ref: blasshirstsimpson1987 } ] }
+- { type: "implication", from: "aca-plus", to: "ht", over: "rca0", refs: [ { ref: blasshirstsimpson1987 } ] }
+- { type: implication, from: aca-plus, to: aet, over: rca0, refs: [ { ref: blasshirstsimpson1987 } ] }

@@ -1,3 +1,3 @@
 # Results from [solda2021].
 
-[ { type: implication, from: adc, to: rt13, over: sw, refs: [ { ref: solda2021, loc: Theorem 2.2.11 } ] } ]
+[ { type: implication, from: adc, to: rt13, over: sw, refs: [ { ref: solda2021, loc: Theorem 2.2.11 }, { ref: fioricaronesshafersolda2022, loc: Theorem 5.1 } ] } ]

@@ -18,12 +18,6 @@
   description: The landmark problems of the Weihrauch lattice (LPO, LLPO, choice principles, lim) next to Ramsey-type and compactness problems, compared by Weihrauch reducibility.
   statements: [llpo, lpo, cn, kn, lim, wkl, wwkl, dnr, rt12, rt22, srt22, coh, ds, bs, ucnn, cnn]
 
-- id: big-five
-  name: The Big Five
-  reduction: rca0
-  description: The five subsystems of second-order arithmetic that most theorems of ordinary mathematics are equivalent to.
-  statements: [rca0, wwkl, wkl, aca, atr, pi11ca]
-
 - id: ramsey-omega
   name: Ramsey-type principles in ω-models
   reduction: omega

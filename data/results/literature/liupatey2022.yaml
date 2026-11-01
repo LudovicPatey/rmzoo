@@ -11,3 +11,4 @@
 - { type: property, statement: fs2, property: hyperimmunity2-preservation, value: true, refs: [ { ref: liupatey2022, loc: Theorem 2.30 } ] }
 - { type: property, statement: fs3, property: hyperimmunity2-preservation, value: true, refs: [ { ref: liupatey2022, loc: Theorem 2.39 } ] }
 - { type: property, statement: ts2, property: hyperimmunity2-preservation, value: true, note: "Proved for TS²₄, which implies TS² (ω colors).", refs: [ { ref: liupatey2022, loc: Theorem 2.13 } ] }
+- { type: separation, from: ts24, to: sem, over: omega, refs: [ { ref: liupatey2022, loc: Theorem 1.6 } ] }

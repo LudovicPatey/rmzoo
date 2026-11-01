@@ -91,8 +91,8 @@ updated when a citation or theorem number is added to it.
 ## Full texts of the papers
 
 `scripts/fulltext.mjs` keeps a local, git-ignored cache of the papers in
-`cache/fulltext/` (`<key>.txt` for the text and `<key>.pdf` for a downloaded
-PDF, plus `index.json`, which records each paper's source, and `failed.json`), so papers never need
+`cache/fulltext/` (`<key>.txt` for the text and `<key>.pdf` for the PDF, downloaded
+or copied from Zotero, plus `index.json`, which records each paper's source, and `failed.json`), so papers never need
 to be fetched twice when they are mined again:
 
 ```bash

@@ -510,7 +510,6 @@ function viewHome() {
       ${stat(fmt(parsed), 'papers read in full', '#/refs', 'Papers whose full text was parsed when building the database')}
       ${(() => { const c = questionCounts(); return stat(fmt(c.open), 'open questions', '#/questions?status=open',
         `Questions stated explicitly in the literature and still unanswered (${c.partial} more are partially answered, ${c.resolved} resolved)`); })()}
-      <span id="derived-stats" style="display:contents"></span>
     </div>
 
     <h2>Predefined zoos</h2>
@@ -537,15 +536,6 @@ function viewHome() {
   q.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && $('#home-pop').hidden && q.value.trim()) location.hash = '#/catalogue?q=' + encodeURIComponent(q.value.trim());
   });
-  // the derived counts take a moment: fill them after the first paint
-  setTimeout(() => {
-    const el = $('#derived-stats');
-    if (!el) return;
-    const { nI, nN, nO } = zooCounts();
-    el.innerHTML = stat(fmt(nI), 'derived implications', '#/about', 'Over all pairs of statements and all notions of reduction')
-      + stat(fmt(nN), 'derived separations', '#/about', 'Over all pairs of statements and all notions of reduction')
-      + stat(fmt(nO), 'undetermined comparisons', '#/about', 'Pairs (A, B) and reductions for which neither A ⇒ B nor A ⇏ B is known');
-  }, 30);
 }
 
 // ---- catalogue ------------------------------------------------------------

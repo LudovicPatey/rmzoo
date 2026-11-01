@@ -376,7 +376,7 @@ shore1993:
   year: 1993
   read: pdf-zotero
 schmerl2000:
-  authors: [James H. Schmerl]
+  authors: [ James H. Schmerl ]
   title: Graph coloring and reverse mathematics
   venue: Mathematical Logic Quarterly 46(4), 543–548
   year: 2000

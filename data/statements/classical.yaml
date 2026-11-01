@@ -29,3 +29,59 @@
 - { id: "ttall", label: "\\mathsf{TT}", name: "Tree theorem for all exponents", kind: "problem", tags: [ "ramsey" ], definition: "For every $n$ and $k$, the tree theorem $\\mathsf{TT}^n_k$ holds.", instance: "Numbers $n, k$ and a coloring of the $n$-element chains of $2^{<\\mathbb{N}}$ with $k$ colors.", solution: "A homogeneous subtree isomorphic to $2^{<\\mathbb{N}}$." }
 - { id: "pr2", label: "\\mathsf{PR}^2", name: "Packed Ramsey theorem for pairs", kind: "problem", tags: [ "ramsey" ], definition: "Erdős–Galvin packed Ramsey theorem for pairs: every coloring admits an infinite \"packed\" set using few colors; see the source.", todo: true }
 - { id: "hb", label: "\\mathsf{HB}", name: "Hahn–Banach theorem (separable)", kind: "problem", tags: [ "analysis", "compactness", "weihrauch" ], definition: "Every bounded linear functional on a closed subspace of a separable Banach space extends to the whole space with the same norm.", instance: "A separable Banach space, a closed subspace and a bounded functional on it.", solution: "A norm-preserving extension of the functional.", refs: [ { ref: gherardimarcone2009, role: rm }, { ref: simpson2009, role: rm, loc: "Section IV.9" } ] }
+
+- id: fra
+  label: '\mathsf{FRA}'
+  name: Fraïssé's conjecture (Laver's theorem)
+  kind: sentence
+  tags: [ well-orders, orders ]
+  aliases: [ Laver's theorem, LAV, Fraisse conjecture ]
+  definition: >
+    The countable linear orders are well-quasi-ordered under embeddability: for every
+    sequence $(L_n)$ of countable linear orders there are $i < j$ such that $L_i$
+    embeds into $L_j$.
+  refs: [ { ref: shore1993, role: rm }, { ref: montalban2017, role: rm } ]
+
+- id: nwt
+  label: '\mathsf{NWT}'
+  name: Nash-Williams' theorem on transfinite sequences
+  kind: sentence
+  tags: [ well-orders ]
+  aliases: [ Nash-Williams theorem ]
+  definition: >
+    If $Q$ is a better quasi-order and $\alpha$ is a countable well-order, then the
+    set $S_\alpha(Q)$ of $\alpha$-sequences of elements of $Q$, ordered by
+    embeddability, is a better quasi-order.
+  refs: [ { ref: marcone1994, role: rm } ]
+
+- id: nwt-fin
+  label: '\mathsf{NWT}_{\mathrm{fin}}'
+  name: Nash-Williams' theorem for sequences with finite range
+  kind: sentence
+  tags: [ well-orders ]
+  definition: >
+    If $Q$ is a well-quasi-order and $\alpha$ is a countable well-order, then the set
+    of $\alpha$-sequences of elements of $Q$ with finite range, ordered by
+    embeddability, is a well-quasi-order.
+  refs: [ { ref: pakhomovsolda2024, role: rm } ]
+
+- id: ght
+  label: '\mathsf{GHT}'
+  name: Generalized Higman theorem
+  kind: sentence
+  tags: [ well-orders ]
+  definition: >
+    If $Q$ is a better quasi-order, then so is the set $Q^{<\omega}$ of finite
+    sequences of elements of $Q$ under embeddability.
+  refs: [ { ref: marcone1994, role: rm } ]
+
+- id: aet
+  label: '\mathsf{AET}'
+  name: Auslander–Ellis theorem
+  kind: sentence
+  tags: [ analysis ]
+  aliases: [ Auslander-Ellis ]
+  definition: >
+    For every point $x$ of a compact dynamical system $(X, T)$ there is a uniformly
+    recurrent point $y$ which is proximal to $x$.
+  refs: [ { ref: blasshirstsimpson1987, role: rm }, { ref: kreuzer2013, role: rm } ]

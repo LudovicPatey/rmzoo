@@ -977,8 +977,10 @@
   question: How strong is the statement that if $\alpha$ is well-ordered and $Q$ is a wqo, then the $\alpha$-sequences over $Q$ with finite range form a wqo?
   asked:
     - {ref: montalban2011, loc: Question 23}
-  statements: []
-  status: resolved
+  statements: [nwt-fin, atr]
+  formal:
+    - {from: atr, to: nwt-fin, over: rca0}
+    - {from: nwt-fin, to: atr, over: rca0}
   answer: It is equivalent to ATR₀ over RCA₀.
   resolvedBy:
     - {ref: pakhomovsolda2024}
@@ -997,8 +999,9 @@
     - {ref: simpson1999open}
     - {ref: montalban2011, loc: Question 24}
     - {ref: marcone2017, loc: Question 6.24}
-  statements: [atr]
-  status: open
+  statements: [nwt, atr]
+  formal:
+    - {from: atr, to: nwt, over: rca0}
   context: >-
     Marcone [@marcone1994] showed that the theorem is provable in Π¹₁-CA₀ but not
     equivalent to it, and Shore's work [@shore1993] shows that it implies ATR₀.
@@ -1015,8 +1018,10 @@
     - {ref: simpson1999open}
     - {ref: birs2008, loc: Problem 11.1}
     - {ref: montalban2011, loc: Question 21}
-  statements: [atr, pi11ca]
-  status: partial
+  statements: [fra, atr, pi11ca]
+  formal:
+    - {from: atr, to: fra, over: rca0}
+    - {from: pi11ca, to: fra, over: rca0}
   answer: It is provable in Π¹₁-CA₀, even in a weaker pseudo-Π¹₁-comprehension principle; whether it is equivalent to ATR₀ is open.
   resolvedBy:
     - {ref: montalban2017}
@@ -1048,8 +1053,9 @@
     - {ref: simpson1999open}
     - {ref: montalban2011, loc: Question 18}
     - {ref: dzhafarovmummert2022, loc: Question 10.6.17}
-  statements: [aca, aca-plus]
-  status: open
+  statements: [aet, aca, aca-plus]
+  formal:
+    - {from: aca, to: aet, over: rca0}
   context: >-
     Blass, Hirst and Simpson [@blasshirstsimpson1987] proved the theorem in ACA₀⁺,
     in the same paper as Hindman's theorem, and Simpson conjectured both to be
@@ -1112,8 +1118,9 @@
   asked:
     - {ref: koodziejczykkowalikyokoyama2020, loc: Question 1}
     - {ref: kowalik2024, loc: Question 2.14}
-  statements: [rt32]
-  status: open
+  statements: [rt32, rt42]
+  formal:
+    - {from: rt32, to: rt42, over: rca0star}
   context: >-
     Over RCA₀, RTⁿ₂ is equivalent to ACA₀ for every n ≥ 3 [@jockusch1972]. Over
     RCA₀*, where Σ⁰₁-induction may fail, Kołodziejczyk, Kowalik and Yokoyama
@@ -1162,3 +1169,48 @@
     Hindman's theorem). Le Houérou and Patey [@lehoueroupatey2026] suggest a
     weaker, first-order version of the question that the largeness techniques used
     for Ramsey's theorem might reach.
+
+- id: ts23-em
+  question: Does the thin set theorem for pairs and three colors $\mathsf{TS}^2_3$ imply $\mathsf{EM}$? Does it imply $\mathsf{FS}^2$?
+  asked:
+    - {ref: patey2016, loc: Question 5.2}
+    - {ref: liupatey2022, loc: Question 2.18}
+    - {ref: dzhafarovmummert2022, loc: Question 9.8.20}
+  statements: [ts23, ts24, em, fs2]
+  formal:
+    - {from: ts23, to: em, over: rca0}
+    - {from: ts23, to: fs2, over: rca0}
+  context: >-
+    TS²₂ is RT²₂, which implies EM, while Liu and Patey [@liupatey2022] showed that
+    TS²₄ does not even imply the stable Erdős–Moser theorem, by preservation of
+    2-hyperimmunity. Three colors is the only case left. More generally, Cholak and
+    Patey determined for which numbers of colors the thin set theorems admit cone
+    avoidance [@dzhafarovmummert2022].
+
+- id: rt14-ads-w
+  question: Is $\mathsf{RT}^1_4$ Weihrauch reducible to $\mathsf{ADS}$?
+  asked:
+    - {ref: solda2021, loc: Question 2.2.12}
+    - {ref: fioricaronesshafersolda2022, loc: Question 5.3}
+  statements: [rt14, rt13, rt15, ads]
+  formal:
+    - {from: ads, to: rt14, over: w}
+  context: >-
+    Over RCA₀, ADS implies RT¹_{<∞} since it implies BΣ⁰₂. In the Weihrauch
+    degrees, Fiori-Carones, Shafer and Soldà [@fioricaronesshafersolda2022] showed
+    that RT¹₃ is strongly Weihrauch reducible to ADC (and so to ADS) but RT¹₅ is not
+    Weihrauch reducible to ADS: four colors is the remaining case.
+
+- id: ght-atr
+  kind: conjecture
+  question: The generalized Higman theorem (if $Q$ is a bqo then so is $Q^{<\omega}$) is provable in $\mathsf{ATR}_0$.
+  asked:
+    - {ref: marcone1994, loc: Conjecture 5.6}
+  statements: [ght, atr, nwt]
+  formal:
+    - {from: atr, to: ght, over: rca0}
+  context: >-
+    Marcone [@marcone1994] proved GHT in Π¹₁-CA₀ and conjectured that ATR₀ suffices,
+    as a step towards his conjecture that Nash-Williams' theorem is provable in
+    ATR₀: over ATR₀, the two statements are closely tied. Montalbán
+    [@montalban2011] recalls that they are equivalent over ATR₀.
