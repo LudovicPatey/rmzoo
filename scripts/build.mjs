@@ -39,6 +39,8 @@ const raw = {
   results: readDir('results'),
   zoos: readYaml(path.join(dataDir, 'zoos.yaml')),
 };
+const contexts = readYaml(path.join(dataDir, 'context.yaml')) || {};
+const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml(path.join(dataDir, 'abstracts.yaml')) || {} : {};
 
 // ---- entry dates (for "recently added" on the front page) -------------------
 // From git blame: a reference dates from its key line, a statement from its
@@ -126,6 +128,15 @@ const uniq = (list, what) => {
 };
 const rids = uniq(raw.reductions, 'reduction');
 const tids = uniq(raw.tags, 'tag');
+{
+  const byId = new Map(raw.statements.map((x) => [x.id, x]));
+  for (const [id, text] of Object.entries(contexts)) {
+    if (!byId.has(id)) { errors.push(`context.yaml: unknown statement ${id}`); continue; }
+    for (const [, k] of String(text).matchAll(/\[@([^\]]+)\]/g)) if (!raw.references[k]) errors.push(`context.yaml (${id}): unknown reference ${k}`);
+    byId.get(id).context = String(text).trim();
+  }
+  for (const k of Object.keys(abstracts)) if (!raw.references[k]) warnings.push(`abstracts.yaml: unknown reference ${k}`);
+}
 {
   uniq(raw.zoos, 'preset zoo');
   const sids = new Set(raw.statements.map((x) => x.id));
@@ -231,6 +242,37 @@ if (errors.length) {
 
 // ---- inference ---------------------------------------------------------------
 const t0 = Date.now();
+// ---- "studied over" labels --------------------------------------------------
+// A statement is labelled with a framework (RCA₀, RCA₀*, Weihrauch) when at
+// least one paper states a result about it — or about a combination containing
+// it — in that framework. Folklore and AI-derived results do not count.
+// studied: { rca0: [refs], rca0star: [refs], weihrauch: [refs] }
+{
+  const FRAME = { rca0: 'rca0', rca0star: 'rca0star', w: 'weihrauch', sw: 'weihrauch' };
+  const byId = new Map(raw.statements.map((s) => [s.id, s]));
+  const acc = new Map();
+  for (const r of raw.results) {
+    const refs = (r.refs || []).map((x) => x.ref);
+    if (!refs.length || r.provenance === 'ai') continue;
+    const frames = [...new Set([].concat(r.over || (r.type === 'conservation' ? 'rca0' : [])).map((o) => FRAME[o]).filter(Boolean))];
+    if (!frames.length) continue;
+    for (const id of [r.from, r.to, r.statement, r.base].filter(Boolean)) {
+      for (const sid of [id, ...(byId.get(id)?.conjunction || [])]) {
+        if (!acc.has(sid)) acc.set(sid, {});
+        const o = acc.get(sid);
+        for (const f of frames) { o[f] ||= new Set(); refs.forEach((x) => o[f].add(x)); }
+      }
+    }
+  }
+  for (const [sid, o] of acc) {
+    const s = byId.get(sid);
+    if (!s) continue;
+    // the bottom of a framework is not "studied" in it (RCA₀ over RCA₀)
+    const st = Object.entries(o).filter(([f]) => !(s.base || []).includes(f));
+    if (st.length) s.studied = Object.fromEntries(st.map(([f, set]) => [f, [...set].sort()]));
+  }
+}
+
 const zoo = buildZoo(raw);
 const ms = Date.now() - t0;
 zoo.errors.forEach((e) => errors.push(e));
@@ -267,6 +309,15 @@ if (!checkOnly) {
   const outDir = path.join(root, 'site', 'data');
   fs.mkdirSync(outDir, { recursive: true });
   const clean = { ...raw, statements: raw.statements, results: raw.results, builtAt: new Date().toISOString() };
+  fs.writeFileSync(path.join(outDir, 'zoo.json'), JSON.stringify(clean));
+  // abstracts are loaded on demand by the paper pages; light TeX clean-up for display
+  const detex = (t) => String(t).replace(/<\/?(jats:)?[a-z]+[^>]*>/g, '')
+    .replace(/\{\\(em|it|bf|sl|sc|rm|tt)\s+([^{}]*)\}/g, '$2').replace(/\\(emph|textit|textbf|textsc|textrm|texttt|mathrm)\{([^{}]*)\}/g, '$2')
+    .replace(/\\cite[pt]?\{[^}]*\}/g, '').replace(/``|''/g, '"').replace(/\\(?=[%&#_])/g, '').replace(/~/g, ' ').replace(/\s+/g, ' ').trim();
+  const abs = Object.fromEntries(Object.entries(abstracts).filter(([k]) => raw.references[k])
+    .map(([k, a]) => [k, { source: a.source, ...(a.arxiv ? { arxiv: a.arxiv } : {}), text: detex(a.text) }]));
+  fs.writeFileSync(path.join(outDir, 'abstracts.json'), JSON.stringify(abs));
+  for (const [k] of Object.entries(abs)) clean.references[k].hasAbstract = true;
   fs.writeFileSync(path.join(outDir, 'zoo.json'), JSON.stringify(clean));
   console.log(`✓ wrote site/data/zoo.json`);
 }

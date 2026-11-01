@@ -36,6 +36,8 @@ data/
   tags.yaml          categories (Big Five, Ramsey theory, …)
   properties.yaml    separating properties (cone avoidance, low basis, …)
   zoos.yaml          predefined selections shown on the front page
+  context.yaml       short historical context for the main statements ([@key] cites a paper)
+  abstracts.yaml     abstracts of the papers (scripts/abstracts.mjs)
   references.yaml    bibliography
   statements/*.yaml  the catalogue (definitions, formulations, literature)
   results/*.yaml     implications, separations, properties — each cited
@@ -87,6 +89,21 @@ fetches the missing ones (arXiv, else an open-access copy found through
 OpenAlex), `--retry` retries previous failures and `--only k1,k2` restricts to
 some references. It then records the reading status (`read: pdf-zotero |
 pdf-arxiv | pdf-oa`) in `data/references/`. It needs `pdftotext` and `sqlite3`.
+
+## Abstracts
+
+`node scripts/abstracts.mjs` fills `data/abstracts.yaml` from the arXiv API
+(papers with an arXiv id) and OpenAlex (by DOI, or by exact title match);
+existing entries are kept unless `--refresh`. Paper pages load them on demand
+from `site/data/abstracts.json`. OpenAlex abstracts sometimes lack their
+inline formulas, and the page says so.
+
+## Labels "Over RCA₀", "Over RCA₀*", "Weihrauch"
+
+The build labels a statement with a framework when at least one paper states a
+result about it (or about a combination containing it) over RCA₀, over RCA₀*,
+or for Weihrauch or strong Weihrauch reducibility. Folklore and AI-derived
+results do not count. The catalogue can filter on these labels.
 
 ## BibTeX
 

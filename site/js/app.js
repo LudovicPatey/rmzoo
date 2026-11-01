@@ -447,6 +447,7 @@ function viewHome() {
 function viewCatalogue(params) {
   const q = params.get('q') || '';
   const tags = new Set((params.get('tags') || '').split(',').filter(Boolean));
+  const over = new Set((params.get('over') || '').split(',').filter(Boolean));
   const showForms = params.get('forms') !== '0';
   let showConj = params.get('conj') === '1';
   const m = main();
@@ -455,6 +456,7 @@ function viewCatalogue(params) {
     const p = new URLSearchParams();
     if (next.q) p.set('q', next.q);
     if (next.tags.size) p.set('tags', [...next.tags].join(','));
+    if (next.over.size) p.set('over', [...next.over].join(','));
     history.replaceState(null, '', '#/catalogue?' + p.toString());
     draw(next);
   };
@@ -462,6 +464,7 @@ function viewCatalogue(params) {
     <div class="cat-layout">
       <aside class="facets">
         <input class="text" id="cat-q" type="search" placeholder="Filter…" value="${esc(q)}">
+        <h3>Studied over</h3><div class="chips" id="over-chips"></div>
         <h3>Categories</h3><div class="chips" id="tag-chips"></div>
         <h3>Show</h3>
         <label class="toggle"><input type="checkbox" id="cat-conj" ${showConj ? 'checked' : ''}> Combinations (A + B)</label>
@@ -475,7 +478,7 @@ function viewCatalogue(params) {
         <button class="btn small" id="cat-unselall" title="Remove the statements of the list from the selection" hidden>− Deselect all</button></div>
         <div class="cat-list" id="cat-list"></div></section>
     </div>`;
-  const cur = { q, tags };
+  const cur = { q, tags, over };
   let listed = [];
   const syncSelButtons = () => {
     const n = listed.filter((id) => !isSel(id)).length;
@@ -500,7 +503,17 @@ function viewCatalogue(params) {
     const matchesTags = (i) => [...c.tags].every((t) => (S(i).tags || []).includes(t));
     const tagCounts = new Map();
     ids.forEach((i) => (S(i).tags || []).forEach((t) => tagCounts.set(t, (tagCounts.get(t) || 0) + 1)));
-    ids = ids.filter(matchesTags).filter((i) => showConj || !S(i).conjunction);
+    const overCounts = new Map();
+    ids.filter(matchesTags).forEach((i) => FRAMES.forEach(([f]) => S(i).studied?.[f] && overCounts.set(f, (overCounts.get(f) || 0) + 1)));
+    ids = ids.filter(matchesTags).filter((i) => [...c.over].every((f) => S(i).studied?.[f])).filter((i) => showConj || !S(i).conjunction);
+    $('#over-chips').innerHTML = FRAMES.map(([f, label, what]) => `<span class="chip ${c.over.has(f) ? 'on' : ''}" data-over="${f}"
+      title="Statements studied with ${what} in at least one paper">${label} <span class="count">${overCounts.get(f) || 0}</span></span>`).join('');
+    $('#over-chips').onclick = (e) => {
+      const t = e.target.closest('[data-over]');
+      if (!t) return;
+      c.over.has(t.dataset.over) ? c.over.delete(t.dataset.over) : c.over.add(t.dataset.over);
+      setParams(c);
+    };
     $('#tag-chips').innerHTML = Z.raw.tags.map((t) => `<span class="chip ${c.tags.has(t.id) ? 'on' : ''}" data-tag="${t.id}" title="${esc(t.description)}">
       ${esc(t.name)} <span class="count">${tagCounts.get(t.id) || 0}</span></span>`).join('');
     $('#tag-chips').onclick = (e) => {
@@ -531,6 +544,15 @@ function viewCatalogue(params) {
   draw(cur);
 }
 
+// frameworks in which a statement has been studied in the literature (computed by the build)
+const FRAMES = [['rca0', 'Over RCA₀', 'provability over RCA₀'], ['rca0star', 'Over RCA₀*', 'provability over RCA₀*'],
+  ['weihrauch', 'Weihrauch', '(strong) Weihrauch reducibility']];
+const frameBadges = (s, link = true) => FRAMES.filter(([f]) => s.studied?.[f]).map(([f, label, what]) => {
+  const n = s.studied[f].length;
+  const t = `Studied with ${what} in ${n} paper${n === 1 ? '' : 's'}`;
+  return link ? `<a class="badge frame frame-${f}" href="#/catalogue?over=${f}" title="${t}">${label}</a>` : `<span class="badge frame frame-${f}" title="${t}">${label}</span>`;
+}).join('');
+
 function card(i, shown) {
   const s = S(i);
   const forms = Z.S.map((t, j) => [t, j]).filter(([t]) => t.formulationOf === s.id);
@@ -540,7 +562,8 @@ function card(i, shown) {
     <div>
       <div class="name"><a href="#/s/${s.id}" style="color:inherit">${esc(s.name)}</a>
         ${s.kind === 'sentence' && !s.conjunction ? '<span class="badge folk" title="Not a problem: only compared over theories and ω-models">sentence</span>' : ''}
-        ${s.todo ? '<span class="badge warn" title="The precise definition should be checked against the source">to check</span>' : ''}</div>
+        ${s.todo ? '<span class="badge warn" title="The precise definition should be checked against the source">to check</span>' : ''}
+        ${frameBadges(s)}</div>
       <div class="def">${def}</div>
       ${forms.length ? `<div class="forms">Other formulations: ${forms.map(([t, j]) =>
         `<a href="#/s/${t.id}" style="${shown.has(j) ? '' : 'opacity:.5'}">${L(j)}</a>`).join('')}</div>` : ''}
@@ -573,6 +596,7 @@ function viewStatement(id) {
     </div>
     <div class="row" style="margin:6px 0 14px">
       ${(s.tags || []).map((t) => `<a class="chip" href="#/catalogue?tags=${t}">${esc(tagName(t))}</a>`).join('')}
+      ${frameBadges(s)}
       ${s.aliases ? `<span class="small muted">Also: ${s.aliases.map(esc).join(', ')}</span>` : ''}
     </div>
     ${s.formulationOf ? `<p>A formulation of ${sLink(mainI)} (the main formulation of this principle).</p>` : ''}
@@ -583,6 +607,10 @@ function viewStatement(id) {
       <div class="card"><h3>Instances</h3>${rich(s.instance)}</div>
       <div class="card"><h3>Solutions</h3>${rich(s.solution)}</div></div>`
       : s.kind === 'sentence' && !s.conjunction ? `<p class="small muted">Not a problem: compared only over theories and ω-models.</p>` : ''}
+
+    ${!s.conjunction ? `<h2>Context</h2>
+      ${s.context ? `<div class="context">${richCite(s.context)}</div>` : ''}
+      ${glance(i, directResults)}` : ''}
 
     ${family.length > 1 ? `<h2>Formulations</h2>
       <p class="small muted">How each formulation compares with the main one, ${L(mainI)}, at each notion of reduction.
@@ -629,6 +657,68 @@ function viewStatement(id) {
     const pr = e.target.closest('[data-prop]');
     if (pr) propertyPanel(+pr.dataset.prop, i);
   };
+}
+
+// ---- statement context ----------------------------------------------------------
+// Prose with $math$ and [@key] citations.
+const richCite = (text) => String(text ?? '').split(/(\[@[^\]]+\])/g).map((p) => {
+  const m = p.match(/^\[@([^\]]+)\]$/);
+  return m ? `<a class="cite" href="#/refs/${m[1]}" title="${esc(Z.raw.references[m[1]]?.title || '')}">[${esc(refShort(m[1]))}]</a>` : rich(p);
+}).join('');
+const BIG5 = ['rca0', 'wwkl', 'wkl', 'aca', 'atr', 'pi11ca'];
+const listL = (js, r) => js.map((j) => sLink(j, r)).join(', ');
+// A computed summary: literature, position among the Big Five, and counts at RCA₀ and W.
+function glance(i, directResults) {
+  const s = S(i), out = [];
+  const byRole = (role) => (s.refs || []).filter((x) => x.role === role).map((x) => `<a href="#/refs/${x.ref}">${esc(refShort(x.ref))}</a>`);
+  const origin = byRole('origin'), rm = byRole('rm');
+  if (origin.length) out.push(`<b>Introduced</b> in ${origin.join(', ')}${rm.length ? `; first analysed in reverse mathematics or computability theory in ${rm.join(', ')}` : ''}.`);
+  else if (rm.length) out.push(`<b>Analysed</b> in ${rm.join(', ')}.`);
+  const papers = [...new Set(directResults.flatMap(([res]) => (res.refs || []).map((x) => x.ref)))].filter((k) => Z.raw.references[k]);
+  if (papers.length) {
+    const ys = papers.map((k) => Z.raw.references[k].year).filter(Boolean).sort();
+    out.push(`<b>Literature:</b> ${directResults.length} result${directResults.length === 1 ? '' : 's'} of the database mention it, from ${papers.length} paper${papers.length === 1 ? '' : 's'}${ys.length ? ` (${ys[0]}${ys.at(-1) !== ys[0] ? `–${ys.at(-1)}` : ''})` : ''}.`);
+  }
+  // the framework lines are shown where the statement has been studied (all of them if nowhere yet)
+  const studiedAny = !!s.studied && Object.keys(s.studied).length > 0;
+  const shown = (f) => !studiedAny || !!s.studied[f];
+  const r0 = Z.ridx.get('rca0');
+  if (r0 !== undefined && shown('rca0') && Z.inDomain(r0, i) && !(s.base || []).includes('rca0')) {
+    const b5 = BIG5.map(idx).filter((j) => j !== undefined && j !== i);
+    const eq = b5.filter((j) => Z.status(r0, i, j) === 'implies' && Z.status(r0, j, i) === 'implies');
+    if (BIG5.includes(s.id)) out.push('<b>Big Five:</b> it is one of them.');
+    else if (eq.length) out.push(`<b>Big Five:</b> equivalent to ${listL(eq, r0)} over RCA₀.`);
+    else {
+      const above = b5.find((j) => Z.status(r0, j, i) === 'implies');
+      const below = [...b5].reverse().find((j) => Z.status(r0, i, j) === 'implies' && !(S(j).base || []).includes('rca0'));
+      const notAbove = above !== undefined && Z.status(r0, i, above) === 'separated';
+      const parts = [];
+      if (above !== undefined) parts.push(notAbove ? `implied by ${sLink(above, r0)}, but does not imply it` : `the weakest of them known to imply it is ${sLink(above, r0)}`);
+      if (below !== undefined) parts.push(`it implies ${sLink(below, r0)}`);
+      else if (Z.status(r0, idx('rca0'), i) === 'separated') parts.push('it is not provable in RCA₀');
+      if (parts.length) out.push(`<b>Big Five:</b> ${parts.join('; ')}.`);
+    }
+  }
+  const counts = (r) => {
+    let imp = 0, by = 0, open = 0;
+    const eq = [];
+    for (let j = 0; j < Z.n; j++) {
+      if (j === i || S(j).conjunction || !Z.inDomain(r, j)) continue;
+      const ab = Z.status(r, i, j), ba = Z.status(r, j, i);
+      if (ab === 'implies' && ba === 'implies') { eq.push(j); continue; }
+      if (ab === 'implies') imp++;
+      if (ba === 'implies') by++;
+      if (ab === 'open' || ba === 'open') open++;
+    }
+    const R = Z.R[r];
+    return `<b>Over ${esc(R.short)}:</b> ${eq.length ? `equivalent to ${listL(eq.slice(0, 6), r)}${eq.length > 6 ? ` and ${eq.length - 6} more` : ''}; ` : ''}implies ${imp} and is implied by ${by} of the zoo's statements; ${open} comparison${open === 1 ? '' : 's'} open.`;
+  };
+  for (const [rid, f] of [['rca0', 'rca0'], ['rca0star', 'rca0star'], ['w', 'weihrauch']]) {
+    const r = Z.ridx.get(rid);
+    if (r === undefined || !Z.inDomain(r, i) || (s.base || []).includes(rid)) continue;
+    if (rid === 'rca0star' ? s.studied?.rca0star : shown(f)) out.push(counts(r));
+  }
+  return out.length ? `<ul class="glance">${out.map((x) => `<li>${x}</li>`).join('')}</ul>` : '';
 }
 
 function compareSym(ab, ba) {
@@ -683,6 +773,9 @@ const readBadge = (r) => {
   const [label, title] = READ[r.read] || ['not read', 'This paper has not been read; its results come from other sources, if any.'];
   return `<span class="badge read-${r.read || 'none'}" title="${esc(title)}">${label}</span>`;
 };
+let abstractsP;
+const loadAbstracts = () => (abstractsP ||= fetch('data/abstracts.json').then((r) => r.json()));
+
 // ---- BibTeX export -----------------------------------------------------------
 function downloadBib(keys, name) {
   const blob = new Blob([bibtex(Z.raw.references, [...new Set(keys)])], { type: 'application/x-bibtex' });
@@ -1119,6 +1212,7 @@ function viewRefs(key) {
       ${r.doi ? ` · <a href="https://doi.org/${esc(r.doi)}" target="_blank" rel="noopener">doi:${esc(r.doi)}</a>` : ''}
       ${r.arxiv ? ` · <a href="https://arxiv.org/abs/${esc(r.arxiv)}" target="_blank" rel="noopener">arXiv:${esc(r.arxiv)}</a>` : ''}
       · ${readBadge(r)}</p>
+      ${r.hasAbstract ? '<h2>Abstract</h2><div class="abstract" id="abstract"><span class="muted small">Loading…</span></div>' : ''}
       <details class="bib"><summary>BibTeX</summary><pre id="bib-one">${esc(bibtex(Z.raw.references, [key]))}</pre>
         <div class="row">${bibButton('bib-ref', 'Download')}<button class="btn small" id="bib-copy">Copy</button></div></details>
       ${st.length ? `<h2>Statements</h2><div class="rel-list">${st.map(([s, i]) => {
@@ -1127,6 +1221,13 @@ function viewRefs(key) {
       }).join('')}</div>` : ''}
       <h2>Results</h2>${resultsTable(uses(key))}`;
     $('#bib-ref').addEventListener('click', () => downloadBib([key], key));
+    if (r.hasAbstract) loadAbstracts().then((a) => {
+      const el = $('#abstract');
+      if (!el) return;
+      const x = a[key];
+      el.innerHTML = x ? `${rich(x.text)}<div class="small muted" style="margin-top:6px">Source: ${x.source === 'arxiv'
+        ? `<a href="https://arxiv.org/abs/${esc(x.arxiv || r.arxiv)}" target="_blank" rel="noopener">arXiv</a>` : 'OpenAlex — inline formulas are sometimes missing from abstracts taken from there'}</div>` : '<span class="muted small">Not available.</span>';
+    }).catch(() => { const el = $('#abstract'); if (el) el.innerHTML = '<span class="muted small">Could not load the abstract.</span>'; });
     $('#bib-copy').addEventListener('click', (e) => navigator.clipboard?.writeText($('#bib-one').textContent).then(() => { e.target.textContent = 'Copied'; }));
     return;
   }

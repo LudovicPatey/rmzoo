@@ -1,0 +1,177 @@
+# Short historical and mathematical context shown on statement pages.
+# `[@key]` cites a reference of data/references (checked by the build).
+# Keep each entry to a few sentences, and only state facts that are recorded
+# as cited results in the database or that are textbook material.
+
+rcastar: >-
+  RCA₀* was introduced by Simpson and Smith [@simpsonsmith1986] to study
+  theorems of algebra under weak induction. It replaces Σ⁰₁-induction by
+  Δ⁰₁-induction together with the totality of exponentiation. Over RCA₀*,
+  RCA₀ itself becomes a statement like the others (it is equivalent to IΣ⁰₁),
+  and principles that are equivalent over RCA₀ may split according to how much
+  induction they need.
+
+rca0: >-
+  RCA₀ is the usual base theory of reverse mathematics [@friedman1975]
+  [@simpson2009]: Δ⁰₁-comprehension with Σ⁰₁-induction. Its ω-models are
+  exactly the Turing ideals, so a statement holds in all ω-models of RCA₀ when
+  every instance computed by a set has a solution computable from it. A good
+  part of computable mathematics — the intermediate value theorem, the
+  algebraic closure of a countable field, … — is provable in RCA₀. Over the
+  weaker RCA₀* it is equivalent to IΣ⁰₁.
+
+wkl: >-
+  Weak König's lemma is the second of the Big Five [@simpson2009]. Over RCA₀ it
+  is equivalent to many compactness arguments of ordinary mathematics: the
+  Heine–Borel covering lemma for [0,1], Gödel's completeness theorem, the
+  Brouwer fixed point theorem, the Hahn–Banach theorem for separable spaces, the
+  existence of prime ideals in countable commutative rings. Its solutions are
+  paths through binary trees, i.e. members of Π⁰₁ classes; by the low basis
+  theorem [@jockuschsoare1972] every computable instance has a low solution. It
+  is Π¹₁-conservative over RCA₀. In the Weihrauch lattice it is the
+  parallelization of LLPO [@brattkagherardi2011].
+
+wwkl: >-
+  Weak weak König's lemma restricts WKL to binary trees of positive measure.
+  Yu and Simpson [@yusimpson1990] introduced it and showed that it is strictly
+  weaker than WKL; it is the natural setting for measure theory in reverse
+  mathematics. Over RCA₀ it amounts to the existence, relative to every set, of
+  a Martin-Löf random set, and it implies DNR [@giustosimpson2000].
+
+aca: >-
+  ACA₀, the third of the Big Five, adds comprehension for arithmetical formulas;
+  over RCA₀ it is equivalent to the existence of the Turing jump of every set.
+  It is equivalent to König's lemma [@friedman1975], the Bolzano–Weierstrass
+  theorem, the existence of bases of countable vector spaces and of maximal
+  ideals of countable commutative rings, and to Ramsey's theorem RTⁿ₂ for every
+  fixed n ≥ 3 [@jockusch1972] [@simpson2009]. Its first-order part is Peano
+  arithmetic.
+
+atr: >-
+  ATR₀, the fourth of the Big Five, asserts that arithmetical operators can be
+  iterated along any countable well-ordering. Over RCA₀ it is equivalent to the
+  comparability of countable well-orderings, the perfect set theorem for closed
+  sets, Lusin's separation theorem and Ulm's theorem [@simpson2009]. It is the
+  natural home of predicative mathematics beyond ACA₀.
+
+pi11ca: >-
+  Π¹₁-CA₀ is the strongest of the Big Five: every Π¹₁ formula defines a set,
+  equivalently every set has a hyperjump. Over RCA₀ it is equivalent to the
+  Cantor–Bendixson theorem and to the decomposition of every countable abelian
+  group as the direct sum of a divisible group and a reduced group
+  [@simpson2009].
+
+bsig2: >-
+  Σ⁰₂-collection sits strictly between IΣ⁰₂ and IΣ⁰₁ in the hierarchy of Paris
+  and Kirby [@pariskirby1978], and is Π⁰₃-conservative over RCA₀
+  [@paris1980]. It is equivalent over RCA₀ to the infinite pigeonhole principle
+  RT¹_{<∞} [@hirst1987] and to Δ⁰₂-induction [@slaman2004]. Many Ramsey-type
+  principles imply it, which makes it the usual yardstick for their
+  first-order strength.
+
+rt1inf: >-
+  The infinite pigeonhole principle: every finite coloring of ℕ has an infinite
+  monochromatic set. Over RCA₀ it is equivalent to BΣ⁰₂ [@hirst1987]. Under
+  Weihrauch reducibility, where the number of colors is part of the instance,
+  it is a genuinely non-trivial problem studied together with its fixed-color
+  versions RT¹ₖ.
+
+rt22: >-
+  Ramsey's theorem for pairs and two colors [@ramsey1930] is the most studied
+  principle of the zoo. Jockusch [@jockusch1972] showed that computable
+  colorings have Π⁰₂ but not necessarily Σ⁰₂ (in particular not necessarily
+  computable) solutions; Seetapun [@seetapunslaman1995] showed that RT²₂ admits
+  cone avoidance and therefore does not imply ACA₀. Cholak, Jockusch and Slaman
+  [@cholakjockuschslaman2001] decomposed it into SRT²₂ + COH and showed it is
+  Π¹₁-conservative over RCA₀ + IΣ⁰₂. Liu [@liu2012] proved that it does not
+  imply WKL. Whether SRT²₂ implies it remained open for a long time: Chong,
+  Slaman and Yang [@chongslamanyang2014] separated them with a non-standard
+  model, and Monin and Patey [@moninpatey2021] in ω-models. Over RCA₀ it is
+  also equivalent to EM + ADS [@bovykinweiermann2017].
+
+srt22: >-
+  Stable Ramsey's theorem for pairs restricts RT²₂ to colorings in which every
+  element eventually has a fixed color with all larger elements. By the limit
+  lemma it is equivalent over RCA₀ to D²₂, the statement that every Δ⁰₂ set
+  has an infinite subset contained in it or in its complement
+  [@cholakjockuschslaman2001] [@chonglemppyang2010]; the two formulations come
+  apart under finer reductions [@dzhafarov2016]. It is strictly weaker than
+  RT²₂ [@chongslamanyang2014] [@moninpatey2021], and does not imply IΣ⁰₂
+  [@chongslamanyang2014].
+
+coh: >-
+  Cohesiveness asks, for a sequence of sets R₀, R₁, …, for an infinite set C
+  that is, for each i, almost contained in Rᵢ or in its complement. Cholak,
+  Jockusch and Slaman [@cholakjockuschslaman2001] isolated it as the
+  "unstable" half of RT²₂ (RT²₂ ⇔ SRT²₂ + COH) and showed it Π¹₁-conservative
+  over RCA₀. A set computes solutions to all computable instances exactly when
+  its jump is PA relative to ∅′ [@jockuschstephan1993]; in particular COH
+  admits no low basis. In ω-models it is independent of SRT²₂ in both
+  directions: COH does not even imply DNR [@hirschfeldtetal2008], and SRT²₂
+  does not imply COH [@moninpatey2021].
+
+em: >-
+  The Erdős–Moser theorem: every tournament on ℕ has an infinite transitive
+  subtournament. It follows from RT²₂, and together with ADS it is equivalent to
+  RT²₂ over RCA₀ [@bovykinweiermann2017]. Lerman, Solomon and Towsner
+  [@lermansolomontowsner2013] showed that it implies neither SRT²₂ nor ADS, even
+  over ω-models.
+
+ads: >-
+  The ascending/descending sequence principle: every infinite linear order has
+  an infinite ascending or descending sequence. Hirschfeldt and Shore
+  [@hirschfeldtshore2007] studied it with CAC as consequences of RT²₂ that are
+  neither computably true nor strong enough to imply DNR; ADS implies COH and is
+  strictly weaker than CAC [@lermansolomontowsner2013]. It is Π¹₁-conservative
+  over RCA₀ + BΣ⁰₂ [@chongslamanyang2012].
+
+cac: >-
+  The chain/antichain principle: every infinite partial order has an infinite
+  chain or antichain. It follows from RT²₂ and implies ADS
+  [@hirschfeldtshore2007]; Hirschfeldt and Shore showed that it does not imply
+  DNR, so it is far from RT²₂ computationally. It is Π¹₁-conservative over
+  RCA₀ + BΣ⁰₂ [@chongslamanyang2012].
+
+dnr: >-
+  DNR asserts that relative to every set there is a diagonally non-recursive
+  function. It is implied by WWKL [@giustosimpson2000] — every Martin-Löf random
+  set computes a DNR function [@kucera1985] — and strictly weaker than it
+  [@ambosspiesetal2004]. It is also a consequence of SRT²₂
+  [@hirschfeldtetal2008], and is the computability-theoretic core of many
+  Ramsey-type principles: over RCA₀ it is equivalent to the Ramsey-type weak
+  weak König's lemma [@bienvenupateyshafer2017].
+
+rrt22: >-
+  The rainbow Ramsey theorem: every coloring of pairs in which each color is
+  used at most twice has an infinite set on which the coloring is injective. It
+  follows from RT²₂; Csima and Mileti [@csimamileti2009] showed that it is
+  strictly weaker and not implied by COH. It follows from the Erdős–Moser
+  theorem [@kang2014].
+
+llpo: >-
+  The lesser limited principle of omniscience comes from constructive
+  mathematics. As a problem, it asks, given two binary sequences at most one of
+  which contains a 1, for one of them which contains only zeros; it is
+  Weihrauch-equivalent to choice on {0, 1}. Its parallelization is WKL
+  [@brattkagherardi2011], and it lies below the intermediate value theorem.
+
+lpo: >-
+  The limited principle of omniscience asks whether a given binary sequence
+  contains a 1. It is the prototype of a discontinuous problem in the Weihrauch
+  lattice [@weihrauch1992b] [@brattkagherardi2011]; its parallelization is
+  equivalent to lim.
+
+cn: >-
+  Closed choice on ℕ: given an enumeration of the complement of a non-empty set
+  of natural numbers, find an element of it. Problems Weihrauch-reducible to C_ℕ
+  are exactly those computable with finitely many mind changes
+  [@brattkadebrechtpauly2012]. It lies above LPO and below lim
+  [@brattkagherardi2011b].
+
+lim: >-
+  The limit operation on Baire space is Weihrauch-equivalent to the Turing jump
+  and to the parallelization of LPO [@brattkagherardi2011]; problems reducible
+  to it are the limit computable ones. Its compositional products give the
+  analogues of the arithmetical hierarchy in the Weihrauch lattice; for
+  instance, the Bolzano–Weierstrass theorem is the jump of WKL
+  [@brattkagherardimarcone2012].
