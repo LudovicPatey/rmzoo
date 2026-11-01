@@ -35,6 +35,7 @@ data/
   reductions.yaml    notions of reduction and how they compare
   tags.yaml          categories (Big Five, Ramsey theory, …)
   properties.yaml    separating properties (cone avoidance, low basis, …)
+  questions.yaml     open questions stated in the literature, with their status
   zoos.yaml          predefined selections shown on the front page
   classes.yaml       formula classes for conservation results (Π⁰ₙ, ∀Π⁰ₙ, Π¹₁, rΠ¹₂…)
   context.yaml       short historical context for the main statements ([@key] cites a paper)
@@ -65,6 +66,19 @@ Append to a file in `data/results/`:
 
 then run `npm run check`. If the new fact contradicts something already
 derivable, the check fails and names the pair.
+
+## Open questions
+
+`data/questions.yaml` lists questions and conjectures stated explicitly in the
+papers, written in our own words, with where they were asked (every paper that
+asked them), the statements involved and some context. A question that can be
+phrased as comparisons of the zoo carries a `formal` list ("does A imply B over
+R?"); its status is then derived from the database: resolved when every part
+is settled, partially answered when some are, and the answering papers are
+those cited by the proofs (or given in `resolvedBy`). So entering the result
+that answers a question resolves it, and the build fails if a hand-written
+status disagrees with the database. Other questions carry their status by hand.
+The front page counts the questions that are still open.
 
 ## Front page
 

@@ -9,7 +9,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import YAML from 'yaml';
 import { execFileSync } from 'node:child_process';
-import { buildZoo } from '../site/js/engine.js';
+import { buildZoo, questionStatus } from '../site/js/engine.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dataDir = path.join(root, 'data');
@@ -39,6 +39,7 @@ const raw = {
   results: readDir('results'),
   zoos: readYaml(path.join(dataDir, 'zoos.yaml')),
   classes: readYaml(path.join(dataDir, 'classes.yaml')),
+  questions: readYaml(path.join(dataDir, 'questions.yaml')),
 };
 const contexts = readYaml(path.join(dataDir, 'context.yaml')) || {};
 const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml(path.join(dataDir, 'abstracts.yaml')) || {} : {};
@@ -94,7 +95,8 @@ const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml
   const byId = new Map(raw.statements.map((s) => [s.id, s]));
   // A result may mention a conjunction "a-b-c" (conjuncts sorted, joined by "-")
   // without defining it: create it.
-  const mentioned = raw.results.flatMap((r) => [r.from, r.to, r.statement, r.base]).filter(Boolean);
+  const mentioned = [...raw.results.flatMap((r) => [r.from, r.to, r.statement, r.base]),
+    ...raw.questions.flatMap((q) => (q.formal || []).flatMap((f) => [f.from, f.to]))].filter(Boolean);
   for (const id of new Set(mentioned)) {
     if (byId.has(id)) continue;
     const parts = id.split('-');
@@ -129,6 +131,28 @@ const uniq = (list, what) => {
 };
 const rids = uniq(raw.reductions, 'reduction');
 const tids = uniq(raw.tags, 'tag');
+// open questions: references, statements and formal parts must exist
+{
+  uniq(raw.questions, 'question');
+  const sids = new Set(raw.statements.map((x) => x.id));
+  for (const q of raw.questions) {
+    const w = `Question ${q.id}`;
+    if (!q.question) errors.push(`${w}: missing question`);
+    if (!q.asked?.length) errors.push(`${w}: missing asked (where it was stated)`);
+    for (const a of q.asked || []) if (!raw.references[a.ref]) errors.push(`${w}: unknown reference ${a.ref}`);
+    for (const a of q.resolvedBy || []) if (!raw.references[a.ref]) errors.push(`${w}: unknown reference ${a.ref}`);
+    for (const id of q.statements || []) if (!sids.has(id)) errors.push(`${w}: unknown statement ${id}`);
+    for (const f of q.formal || []) {
+      if (!rids.has(f.over)) errors.push(`${w}: unknown reduction ${f.over}`);
+      for (const id of [f.from, f.to]) if (!sids.has(id)) errors.push(`${w}: unknown statement ${id}`);
+    }
+    if (q.kind && !['question', 'conjecture'].includes(q.kind)) errors.push(`${w}: kind must be question or conjecture`);
+    if (q.status && !['open', 'partial', 'resolved'].includes(q.status)) errors.push(`${w}: status must be open, partial or resolved`);
+    if (!q.formal?.length && !q.status) errors.push(`${w}: a question without formal parts needs a status`);
+    if (!q.formal?.length && q.status !== 'open' && !q.resolvedBy?.length) errors.push(`${w}: a (partially) resolved question needs resolvedBy`);
+    for (const [, k] of String(q.context || '').matchAll(/\[@([^\]]+)\]/g)) if (!raw.references[k]) errors.push(`${w}: context cites unknown reference ${k}`);
+  }
+}
 {
   const cids = uniq(raw.classes, 'formula class');
   for (const c of raw.classes) {
@@ -298,6 +322,14 @@ const zoo = buildZoo(raw);
 const ms = Date.now() - t0;
 zoo.errors.forEach((e) => errors.push(e));
 const name = (i) => raw.statements[i].id;
+// formal questions: a manual status must agree with the database
+for (const q of raw.questions) {
+  if (!q.formal?.length) continue;
+  const st = questionStatus(zoo, q);
+  if (q.status && q.status !== st.status)
+    errors.push(`Question ${q.id} is marked ${q.status} but the database makes it ${st.status} (${st.parts.map((p) => `${p.from}→${p.to}/${p.over}: ${p.status}`).join(', ')})`);
+  for (const p of st.parts) if (p.status === 'na') errors.push(`Question ${q.id}: ${p.from}→${p.to} is not comparable over ${p.over}`);
+}
 for (const c of zoo.contradictions) {
   if (c.kind === 'implication')
     errors.push(`Contradiction over ${raw.reductions[c.r].id}: ${name(c.a)} both implies and does not imply ${name(c.b)}`);

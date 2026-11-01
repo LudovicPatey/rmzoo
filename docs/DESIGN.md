@@ -160,6 +160,17 @@ and the classes it `includes`. The engine closes `includes` transitively, so a
 Π¹₁-conservation result also applies to ∀Π⁰₄, Π⁰₃, … sentences. The About page
 lists the classes with their definitions.
 
+### 1.5c Open questions
+
+`data/questions.yaml` records the questions stated in the literature. A
+question is either free text with a hand-written status, or *formal*: a list of
+comparisons `{from, to, over}`. For a formal question the status is computed
+(`questionStatus` in the engine): resolved if the engine settles every
+comparison, partial if it settles some. Its answering papers are the citations
+of the proofs, restricted to papers that appeared after the question was first
+asked, unless `resolvedBy` names them. This keeps the list of open problems in
+sync with the results: nobody has to remember to close a question.
+
 ### 1.6 References
 
 Each reference may record how far it was read when the database was built:

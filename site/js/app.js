@@ -1,4 +1,4 @@
-import { buildZoo, orderView, RULES, CLASS_NAMES } from './engine.js';
+import { buildZoo, orderView, RULES, CLASS_NAMES, questionStatus } from './engine.js';
 // formula classes (data/classes.yaml): KaTeX notation, linked to their definition on the About page
 const classOf = (id) => (Z.raw.classes || []).find((c) => c.id === id);
 const classHtml = (id) => {
@@ -370,6 +370,102 @@ function renderTray() {
 // ============================================================================
 const main = () => $('#main');
 
+// ---- open questions -------------------------------------------------------------
+const QSTATUS = { open: ['open', 'warn'], partial: ['partially answered', 'partial'], resolved: ['resolved', 'ok'] };
+const qInfo = (q) => (q._st ||= questionStatus(Z, q));
+const questionCounts = () => {
+  const c = { open: 0, partial: 0, resolved: 0 };
+  for (const q of Z.raw.questions || []) c[qInfo(q).status]++;
+  return c;
+};
+const firstAsked = (q) => Math.min(...q.asked.map((a) => Z.raw.references[a.ref]?.year || 9999));
+// statements a question is about: listed ones and those of its formal parts
+const qStatements = (q) => [...new Set([...(q.statements || []), ...(q.formal || []).flatMap((f) => [f.from, f.to])])].filter((id) => idx(id) !== undefined);
+// the papers that answered it: given by hand, or the papers cited by the database's proofs that appeared after it was asked
+function qSolvers(q) {
+  if (q.resolvedBy?.length) return q.resolvedBy;
+  const y = firstAsked(q);
+  const refs = new Map();
+  for (const ri of qInfo(q).results) {
+    const res = Z.raw.results[ri];
+    if (res.provenance === 'ai') continue;
+    for (const r of res.refs || []) if ((Z.raw.references[r.ref]?.year || 0) >= y && !refs.has(r.ref)) refs.set(r.ref, r);
+  }
+  return [...refs.values()].sort((a, b) => (Z.raw.references[a.ref]?.year || 0) - (Z.raw.references[b.ref]?.year || 0));
+}
+const qBadge = (q) => { const [label, cls] = QSTATUS[qInfo(q).status]; return `<span class="badge q-${cls}">${label}</span>`; };
+const qAskedShort = (q) => q.asked.map((a) => `<a href="#/refs/${a.ref}">${esc(refShort(a.ref))}</a>`).join(', ');
+function questionRow(q) {
+  return `<div class="card q-row">
+    <div class="row" style="align-items:baseline;gap:8px">${qBadge(q)}${q.kind === 'conjecture' ? '<span class="badge folk">conjecture</span>' : ''}
+      <a class="q-text grow" href="#/questions/${q.id}">${rich(q.question)}</a></div>
+    <div class="small muted" style="margin-top:4px">Asked in ${qAskedShort(q)}
+      ${qInfo(q).status !== 'open' ? ` · answered in ${qSolvers(q).map((r) => `<a href="#/refs/${r.ref}">${esc(refShort(r.ref))}</a>`).join(', ') || 'the database'}` : ''}</div>
+  </div>`;
+}
+
+function viewQuestions(params, id) {
+  const m = main();
+  m.className = '';
+  const all = (Z.raw.questions || []).slice().sort((a, b) => firstAsked(a) - firstAsked(b) || a.id.localeCompare(b.id));
+  if (id) {
+    const q = all.find((x) => x.id === id);
+    if (!q) { m.innerHTML = '<h1>Unknown question</h1><p><a href="#/questions">All questions</a></p>'; return; }
+    const st = qInfo(q);
+    const solvers = st.status !== 'open' ? qSolvers(q) : [];
+    const stm = qStatements(q);
+    const over = q.formal?.[0]?.over || 'rca0';
+    m.innerHTML = `<p><a href="#/questions">← Open questions</a></p>
+      <div class="row" style="gap:8px;align-items:center">${qBadge(q)}${q.kind === 'conjecture' ? '<span class="badge folk">conjecture</span>' : ''}</div>
+      <h1 class="q-title">${rich(q.question)}</h1>
+      <p><b>${q.asked.length > 1 ? 'Asked in' : 'Asked in'}</b> ${q.asked.map((a) => `<a href="#/refs/${a.ref}">${esc(refShort(a.ref))}</a>${a.loc ? `, ${esc(a.loc)}` : ''}`).join('; ')}.</p>
+      ${st.status !== 'open' ? `<div class="verdict ${st.status === 'resolved' ? 'implies' : 'open'}">
+        <b>${st.status === 'resolved' ? 'Resolved' : 'Partially answered'}</b>${q.answer ? ` — ${esc(q.answer)}` : ''}
+        ${solvers.length ? `<div class="small" style="margin-top:4px">Answered in ${solvers.map((r) => `<a href="#/refs/${r.ref}">${esc(refShort(r.ref))}</a>${r.loc ? `, ${esc(r.loc)}` : ''}`).join('; ')}.</div>` : ''}</div>`
+        : `<div class="verdict open"><b>Open.</b> ${q.formal ? 'None of its parts is settled by the results of the database.' : 'No answer is recorded.'}</div>`}
+      ${q.context ? `<h2>Context</h2><div class="context">${richCite(q.context)}</div>` : ''}
+      ${st.parts.length ? `<h2>In the database</h2>
+        <p class="small muted">The question as comparisons of the zoo. Click a row for the proof or the current state of knowledge.</p>
+        <table class="grid q-parts">${st.parts.map((p) => {
+          const R = Z.R[p.r];
+          const v = { implies: ['yes', 'yes'], separated: ['no', 'no'], open: ['open', 'open'] }[p.status] || [p.status, 'na'];
+          return `<tr data-pair="${p.a},${p.b},${p.r}" style="cursor:pointer"><td>Does ${sLink(p.a, p.r)} imply ${sLink(p.b, p.r)} over ${esc(R.short)}?</td>
+            <td class="c ${v[1]}"><b>${v[0]}</b></td></tr>`;
+        }).join('')}</table>` : ''}
+      ${stm.length ? `<h2>Statements</h2><div class="rel-list">${stm.map((s) => `<a class="chip" href="#/s/${s}" style="color:var(--ink)">${L(idx(s))}</a>`).join('')}</div>
+        <p><a class="btn small" href="#/diagram?s=${stm.join(',')}&r=${over}&sep=1&open=1">Diagram of these statements</a></p>` : ''}`;
+    m.onclick = (e) => {
+      const t = e.target.closest('[data-pair]');
+      if (t && !e.target.closest('a')) { const [a, b, r] = t.dataset.pair.split(',').map(Number); pairPanel(a, b, r); }
+    };
+    return;
+  }
+  const c = questionCounts();
+  m.innerHTML = `<h1>Open questions</h1>
+    <p class="muted">Questions and conjectures stated explicitly in the literature, with their status. When a question can be phrased as comparisons of the zoo,
+      its status is derived from the database, so it becomes resolved as soon as the answering result is entered.</p>
+    <div class="filters">
+      <input class="text" id="q-q" placeholder="Search…" value="${esc(params.get('q') || '')}" style="width:220px">
+      <select id="q-status"><option value="">All (${all.length})</option><option value="open">Open (${c.open})</option>
+        <option value="partial">Partially answered (${c.partial})</option><option value="resolved">Resolved (${c.resolved})</option></select>
+      <select id="q-sort"><option value="asc">Oldest first</option><option value="desc">Newest first</option></select>
+    </div>
+    <div id="q-count" class="small muted"></div><div id="q-list"></div>`;
+  if (params.get('status')) $('#q-status').value = params.get('status');
+  const sid = params.get('s');
+  const draw = () => {
+    const text = $('#q-q').value.trim().toLowerCase(), stv = $('#q-status').value, dir = $('#q-sort').value === 'desc' ? -1 : 1;
+    const hit = (q) => !text || [q.question, q.context, q.id, ...q.asked.map((a) => refShort(a.ref)), ...qStatements(q).map((s) => S(idx(s)).name + ' ' + hay[idx(s)].ascii)]
+      .join(' ').toLowerCase().includes(text);
+    const list = all.filter((q) => (!stv || qInfo(q).status === stv) && (!sid || qStatements(q).includes(sid)) && hit(q))
+      .sort((a, b) => dir * (firstAsked(a) - firstAsked(b)));
+    $('#q-count').textContent = `${list.length} question${list.length === 1 ? '' : 's'}${sid ? ` about ${S(idx(sid))?.name || sid}` : ''}`;
+    $('#q-list').innerHTML = lazy(list, questionRow, { size: 30, noun: 'questions', empty: '<p class="muted">No question matches.</p>' });
+  };
+  ['#q-q', '#q-status', '#q-sort'].forEach((x) => $(x).addEventListener('input', draw));
+  draw();
+}
+
 // ---- front page -------------------------------------------------------------
 function zooCounts() { // derived facts over all (statement, statement, reduction) triples
   if (zooCounts.c) return zooCounts.c;
@@ -412,6 +508,8 @@ function viewHome() {
       ${stat(fmt(Z.raw.results.length), 'cited results', '#/results')}
       ${stat(fmt(cited), 'papers cited', '#/refs', `${refs.length} papers in the bibliography`)}
       ${stat(fmt(parsed), 'papers read in full', '#/refs', 'Papers whose full text was parsed when building the database')}
+      ${(() => { const c = questionCounts(); return stat(fmt(c.open), 'open questions', '#/questions?status=open',
+        `Questions stated explicitly in the literature and still unanswered (${c.partial} more are partially answered, ${c.resolved} resolved)`); })()}
       <span id="derived-stats" style="display:contents"></span>
     </div>
 
@@ -446,7 +544,7 @@ function viewHome() {
     const { nI, nN, nO } = zooCounts();
     el.innerHTML = stat(fmt(nI), 'derived implications', '#/about', 'Over all pairs of statements and all notions of reduction')
       + stat(fmt(nN), 'derived separations', '#/about', 'Over all pairs of statements and all notions of reduction')
-      + stat(fmt(nO), 'open questions', '#/about', 'Pairs (A, B) and reductions for which neither A ⇒ B nor A ⇏ B is known');
+      + stat(fmt(nO), 'undetermined comparisons', '#/about', 'Pairs (A, B) and reductions for which neither A ⇒ B nor A ⇏ B is known');
   }, 30);
 }
 
@@ -645,6 +743,9 @@ function viewStatement(id) {
     <div class="row h2row"><h2 class="grow">Literature</h2>${refsOf.length || directResults.length ? bibButton('bib-stmt', 'BibTeX (literature + cited in results)') : ''}</div>
     ${refsOf.length ? `<ul class="reflist">${refsOf.map((rf) => `<li><span class="role">${esc(rf.role || '')}</span>${refFull(rf.ref)}${rf.loc ? ` — ${esc(rf.loc)}` : ''}</li>`).join('')}</ul>`
       : '<p class="muted">No reference recorded.</p>'}
+
+    ${(() => { const qs = (Z.raw.questions || []).filter((q) => qStatements(q).includes(s.id));
+      return qs.length ? `<h2>Questions about ${L(i)}</h2>${qs.map(questionRow).join('')}` : ''; })()}
 
     <h2>Results mentioning ${L(i)}</h2>
     ${resultsTable(directResults)}
@@ -1226,6 +1327,12 @@ function viewRefs(key) {
         const role = s.refs.find((x) => x.ref === key).role;
         return `<a class="chip" href="#/s/${s.id}" style="color:var(--ink)">${L(i)} <span class="muted">${esc(role || '')}</span></a>`;
       }).join('')}</div>` : ''}
+      ${(() => {
+        const asked = (Z.raw.questions || []).filter((q) => q.asked.some((a) => a.ref === key));
+        const answered = (Z.raw.questions || []).filter((q) => qInfo(q).status !== 'open' && qSolvers(q).some((a) => a.ref === key));
+        return (asked.length ? `<h2>Questions asked</h2>${asked.map(questionRow).join('')}` : '')
+          + (answered.length ? `<h2>Questions answered</h2>${answered.map(questionRow).join('')}` : '');
+      })()}
       <h2>Results</h2>${resultsTable(uses(key))}`;
     $('#bib-ref').addEventListener('click', () => downloadBib([key], key));
     if (r.hasAbstract) loadAbstracts().then((a) => {
@@ -1326,7 +1433,7 @@ function currentRoute() {
   const p = path.split('/').filter(Boolean);
   // old links "#/?q=…" and "#/?tags=…" pointed to the catalogue
   if (!p.length) return /[?&](q|tags)=/.test(location.hash) ? 'catalogue' : 'home';
-  return { catalogue: 'catalogue', s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', refs: 'refs', about: 'about' }[p[0]] || 'catalogue';
+  return { catalogue: 'catalogue', questions: 'questions', s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', refs: 'refs', about: 'about' }[p[0]] || 'catalogue';
 }
 function route() {
   const [path, qs] = (location.hash.slice(1) || '/').split('?');
@@ -1343,6 +1450,7 @@ function route() {
   else if (name === 'refs') viewRefs(p[1]);
   else if (name === 'about') { viewAbout(params); const c = params.get('class'); if (c) setTimeout(() => { const el = document.getElementById('class-' + c); if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); } }, 50); }
   else if (name === 'home') viewHome();
+  else if (name === 'questions') viewQuestions(params, p[1]);
   else viewCatalogue(params);
   renderTray();
   if (name !== 'diagram' || route.last !== 'diagram') window.scrollTo(0, 0);

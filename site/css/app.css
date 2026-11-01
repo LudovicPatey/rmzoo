@@ -336,3 +336,16 @@ ul.glance li { margin: 3px 0; }
 a.cls { color: inherit; text-decoration: underline dotted; }
 tr.flash { animation: flash 2s ease-out; }
 @keyframes flash { from { background: var(--accent-soft); } to { background: transparent; } }
+
+/* open questions */
+.q-row { padding: 10px 14px; margin-bottom: 8px; }
+.q-row .q-text { color: var(--ink); text-decoration: none; }
+.q-row .q-text:hover { color: var(--accent); }
+.q-title { font-size: 1.35rem; line-height: 1.45; font-weight: 600; }
+.badge.q-warn { background: var(--open-soft); color: var(--open); white-space: nowrap; }
+.badge.q-partial { background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.badge.q-ok { background: var(--yes-soft); color: var(--yes); white-space: nowrap; }
+table.q-parts td.c { width: 90px; text-align: center; }
+@media (max-width: 960px) { nav a { padding: 6px 7px; } nav { gap: 0; } }
+@media (max-width: 1120px) and (min-width: 701px) { header .search:not(.big) { width: 180px; } nav a { padding: 6px 7px; } }
+@media (min-width: 701px) { nav { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; } nav a { white-space: nowrap; } }

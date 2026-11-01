@@ -1,0 +1,855 @@
+# Open questions explicitly stated in the literature.
+#
+# Each entry is one question (possibly with several parts), in our own words:
+#   id         short slug
+#   question   the question ($…$ for math)
+#   asked      where it was stated: [{ref, loc}] — every paper that asked it
+#   statements statements of the zoo it is about
+#   formal     optional: the question as comparisons of the zoo, a list of
+#              {from, to, over} meaning "does `from` imply `to` over `over`?"
+#              (over: a reduction id). The status of a formal question is
+#              derived from the database: resolved when every part is settled,
+#              partially resolved when some are; the solving papers are the
+#              citations of the proofs. The build fails if a manual `status`
+#              disagrees with the database.
+#   status     open | partial | resolved — required when there is no `formal`
+#   answer     short answer, when resolved
+#   resolvedBy [{ref, loc}] — the papers that answered it; required for a
+#              resolved non-formal question. For a formal question it is
+#              optional: without it, the viewer lists the papers cited by the
+#              database's proofs that appeared after the question was asked.
+#   kind       question (default) | conjecture
+#   context    a few sentences of background; [@key] cites a reference
+
+- id: rt22-wkl
+  question: Does $\mathsf{RT}^2_2$ imply $\mathsf{WKL}_0$ over $\mathsf{RCA}_0$? Does $\mathsf{RT}^2_{<\infty}$?
+  asked:
+    - {ref: seetapunslaman1995, loc: Question 4.2}
+    - {ref: cholakjockuschslaman2001, loc: Question 13.5}
+    - {ref: mileti2004, loc: Question 7.2.1}
+  statements: [rt22, rt2, wkl]
+  formal:
+    - {from: rt22, to: wkl, over: rca0}
+    - {from: rt2, to: wkl, over: rca0}
+  resolvedBy:
+    - {ref: liu2012}
+  context: >-
+    Seetapun [@seetapunslaman1995] showed that RT²₂ admits cone avoidance, so
+    RT²₂ does not imply ACA₀. Whether it implies the much weaker WKL₀ — equivalently, whether every
+    instance can be solved without computing a PA degree — remained open until Liu
+    [@liu2012] proved PA avoidance for RT²₂. Since ω-models of RT²₂ are models of
+    RT²_{<∞}, the second part follows.
+
+- id: srt22-rt22
+  question: Does $\mathsf{SRT}^2_2$ imply $\mathsf{RT}^2_2$ (equivalently, $\mathsf{COH}$)? Does $\mathsf{SRT}^2_{<\infty}$ imply $\mathsf{RT}^2_{<\infty}$ (equivalently, $\mathsf{COH}$)?
+  asked:
+    - {ref: cholakjockuschslaman2001, loc: Question 13.6}
+    - {ref: mileti2004, loc: Question 7.2.3}
+    - {ref: chongliyang2014, loc: Question 4.16}
+    - {ref: patey2015c, loc: Question 2.3}
+    - {ref: hirschfeldtjockusch2016, loc: Questions 5.1 and 5.2}
+    - {ref: patey2016c, loc: Question 18.1}
+    - {ref: chongslamanyang2017, loc: Question 5.3}
+  statements: [srt22, rt22, coh, srt2, rt2, isig2]
+  formal:
+    - {from: srt22, to: rt22, over: rca0}
+    - {from: srt22, to: coh, over: rca0}
+    - {from: srt22, to: rt22, over: omega}
+    - {from: srt22, to: rt22, over: gw}
+    - {from: isig2-srt22, to: rt22, over: rca0}
+    - {from: srt2, to: rt2, over: rca0}
+  resolvedBy:
+    - {ref: chongslamanyang2014}
+    - {ref: moninpatey2021}
+  context: >-
+    Cholak, Jockusch and Slaman [@cholakjockuschslaman2001] decomposed RT²₂ into
+    its stable part SRT²₂ and its cohesive part COH, and asked whether the stable
+    part alone suffices. This became one of the central questions of the field.
+    Chong, Slaman and Yang [@chongslamanyang2014] gave a negative answer using a
+    non-standard model in which every set is low; the question for ω-models — that
+    is, for computability theory proper — was answered negatively by Monin and
+    Patey [@moninpatey2021].
+
+- id: rt22-isig2
+  question: Does $\mathsf{RT}^2_2$ imply $\mathsf{I}\Sigma^0_2$? Does $\mathsf{RT}^2_{<\infty}$ imply $\mathsf{I}\Sigma^0_3$?
+  asked:
+    - {ref: cholakjockuschslaman2001, loc: Question 13.7}
+  statements: [rt22, isig2, rt2, isig3]
+  formal:
+    - {from: rt22, to: isig2, over: rca0}
+    - {from: rt2, to: isig3, over: rca0}
+  resolvedBy:
+    - {ref: chongslamanyang2017}
+    - {ref: slamanyokoyama2018}
+  context: >-
+    RT²₂ implies BΣ⁰₂ [@hirst1987] and is Π¹₁-conservative over RCA₀ + IΣ⁰₂
+    [@cholakjockuschslaman2001], so its first-order part lies between BΣ⁰₂ and
+    IΣ⁰₂. Chong, Slaman and Yang [@chongslamanyang2017] showed that it does not
+    reach IΣ⁰₂; Slaman and Yokoyama [@slamanyokoyama2018] answered the question for
+    arbitrarily many colors.
+
+- id: rt22-pi02-conservation
+  question: Is $\mathsf{RCA}_0 + \mathsf{RT}^2_2$ $\Pi^0_2$-conservative over $\mathsf{RCA}_0$? In particular, does it prove the totality of the Ackermann function, or the consistency of $\mathsf{I}\Sigma_1$?
+  asked:
+    - {ref: cholakjockuschslaman2001, loc: Question 13.2}
+  statements: [rt22]
+  status: resolved
+  answer: Yes. RT²₂ (even with WKL₀) is ∀Π⁰₃-conservative over RCA₀, so it proves no new Π⁰₂ sentence.
+  resolvedBy:
+    - {ref: pateyyokoyama2018}
+  context: >-
+    This asks whether RT²₂ is "finitistically reducible": whether the Π⁰₂
+    consequences of RT²₂, which correspond to provably total functions, are already
+    those of IΣ⁰₁ (primitive recursive functions). Patey and Yokoyama
+    [@pateyyokoyama2018] answered positively by a model-theoretic argument based on
+    a new notion of largeness of finite sets.
+
+- id: delta02-low-subset
+  question: Does every $\Delta^0_2$ set have an infinite low subset in it or in its complement? Equivalently, does every computable stable coloring of pairs have an infinite low homogeneous set?
+  asked:
+    - {ref: cholakjockuschslaman2001, loc: Question 13.9}
+  statements: [srt22, d22]
+  status: resolved
+  answer: No — there is a Δ⁰₂ set with no infinite low subset in either it or its complement.
+  resolvedBy:
+    - {ref: downeyetal2001}
+  context: >-
+    A relativizable positive answer would have separated SRT²₂ from RT²₂, since RT²₂
+    has computable instances without low₂ solutions [@jockusch1972]. The answer is
+    negative [@downeyetal2001], which is why the separation of SRT²₂ from RT²₂
+    needed other ideas: Chong, Slaman and Yang [@chongslamanyang2014] built a
+    non-standard model in which every set is low.
+
+- id: rt22-pa-avoidance
+  question: For every 2-coloring $C$ of $[\mathbb{N}]^2$ which is not of PA degree, is there an infinite homogeneous set $H$ such that $C \oplus H$ is not of PA degree?
+  asked:
+    - {ref: cholakjockuschslaman2001, loc: Question 13.12}
+  statements: [rt22, wkl]
+  status: resolved
+  answer: Yes — RT²₂ admits PA avoidance.
+  resolvedBy:
+    - {ref: liu2012}
+  context: >-
+    A relativizable positive answer gives an ω-model of RT²₂ with no PA degree, hence
+    separates RT²₂ from WKL₀ (see the question on RT²₂ and WKL₀). Liu
+    [@liu2012] proved it with a new forcing notion whose conditions are Mathias
+    conditions with a Π⁰₁ class of reservoirs.
+
+- id: cac-rt22
+  question: Does the chain/antichain principle $\mathsf{CAC}$ imply $\mathsf{RT}^2_2$?
+  asked:
+    - {ref: cholakjockuschslaman2001, loc: Question 13.8}
+    - {ref: mileti2004, loc: Question 7.2.4}
+  statements: [cac, rt22]
+  formal:
+    - {from: cac, to: rt22, over: rca0}
+  resolvedBy:
+    - {ref: hirschfeldtshore2007}
+  context: >-
+    CAC follows easily from RT²₂ by coloring pairs according to comparability.
+    Hirschfeldt and Shore [@hirschfeldtshore2007] showed that CAC is much weaker:
+    it has an ω-model with no DNR function, while RT²₂ implies DNR.
+
+- id: fs2-rt22
+  question: Does the free set theorem $\mathsf{FS}^2$ imply $\mathsf{RT}^2_2$? Does $\mathsf{FS}^2 + \mathsf{WKL}_0$? Does $\mathsf{FS}^2$ imply $\mathsf{B}\Sigma^0_2$?
+  asked:
+    - {ref: cholaketal2005, loc: Question 7.1}
+  statements: [fs2, rt22, wkl, bsig2]
+  formal:
+    - {from: fs2, to: rt22, over: rca0}
+    - {from: fs2-wkl, to: rt22, over: rca0}
+    - {from: fs2, to: bsig2, over: rca0}
+  context: >-
+    The free set and thin set theorems [@cholaketal2005] are consequences of
+    Ramsey's theorem in which the homogeneity requirement is weakened. They are
+    natural candidates for principles strictly between RCA₀ and RT²₂.
+
+- id: fs2-cac-rt22
+  question: Does $\mathsf{FS}^2 + \mathsf{CAC}$ imply $\mathsf{RT}^2_2$? Does $\mathsf{FS}^2 + \mathsf{COH}$?
+  asked:
+    - {ref: cholaketal2005, loc: Question 7.4}
+  statements: [fs2, cac, coh, rt22]
+  formal:
+    - {from: cac-fs2, to: rt22, over: rca0}
+    - {from: coh-fs2, to: rt22, over: rca0}
+  context: >-
+    Combining a free set principle with a principle handling the "unstable" part
+    of colorings is a natural attempt to recover RT²₂, by analogy with
+    RT²₂ ⇔ SRT²₂ + COH [@cholakjockuschslaman2001].
+
+- id: fs-aca
+  question: Do the free set or thin set theorems for exponent $k \ge 3$, or for all exponents, imply $\mathsf{ACA}_0$?
+  asked:
+    - {ref: cholaketal2005, loc: Question 7.6}
+  statements: [fs3, ts3, fs, aca]
+  formal:
+    - {from: fs3, to: aca, over: rca0}
+    - {from: ts3, to: aca, over: rca0}
+    - {from: fs, to: aca, over: rca0}
+  resolvedBy:
+    - {ref: wang2014b}
+  context: >-
+    Ramsey's theorem for triples implies ACA₀ [@jockusch1972], unlike RT²₂.
+    Whether the weaker free set and thin set theorems behave like Ramsey's theorem
+    for pairs at every exponent was settled by Wang [@wang2014b], who showed that
+    they admit strong cone avoidance at every exponent.
+
+- id: sads-scac
+  question: Does $\mathsf{SADS}$ imply $\mathsf{SCAC}$?
+  asked:
+    - {ref: hirschfeldtshore2007, loc: Question 6.2}
+  statements: [sads, scac]
+  formal:
+    - {from: sads, to: scac, over: rca0}
+  context: >-
+    Hirschfeldt and Shore [@hirschfeldtshore2007] introduced the stable versions
+    of ADS and CAC and showed that SCAC implies SADS.
+
+- id: cads-coh
+  question: Does $\mathsf{CRT}^2_2$, or even $\mathsf{CADS}$, imply $\mathsf{COH}$?
+  asked:
+    - {ref: hirschfeldtshore2007, loc: Question 6.4}
+    - {ref: lermansolomontowsner2013, loc: Question 5.1}
+    - {ref: dzhafarovmummert2022, loc: Question 9.2.26}
+  statements: [crt22, cads, coh]
+  formal:
+    - {from: crt22, to: coh, over: rca0}
+    - {from: cads, to: coh, over: rca0}
+    - {from: cads, to: coh, over: omega}
+  context: >-
+    COH implies both CADS and the cohesive Ramsey theorem CRT²₂
+    [@hirschfeldtshore2007]. Over ω-models, and even for Weihrauch reducibility,
+    CADS is equivalent to COH [@fioricaronesshafersolda2022], and CADS implies
+    COH over RCA₀ + BΣ⁰₂ [@dzhafarovmummert2022]; so a negative answer over RCA₀
+    would have to use non-standard models.
+
+- id: cads-crt22
+  question: Does $\mathsf{CADS}$ imply $\mathsf{CRT}^2_2$?
+  asked:
+    - {ref: lermansolomontowsner2013, loc: Question 5.1}
+  statements: [cads, crt22]
+  formal:
+    - {from: cads, to: crt22, over: rca0}
+  context: >-
+    A companion of the question whether CADS implies COH: CRT²₂ lies between COH
+    and CADS [@hirschfeldtshore2007].
+
+- id: sads-bsig2
+  question: Does $\mathsf{SADS}$, or even $\mathsf{PART}$, imply $\mathsf{B}\Sigma^0_2$?
+  asked:
+    - {ref: hirschfeldtshore2007, loc: Question 6.5}
+  statements: [sads, part, bsig2]
+  formal:
+    - {from: sads, to: bsig2, over: rca0}
+    - {from: part, to: bsig2, over: rca0}
+  resolvedBy:
+    - {ref: chonglemppyang2010}
+  context: >-
+    SCAC implies BΣ⁰₂ [@hirschfeldtshore2007], and the question asks how far down
+    this goes. Chong, Lempp and Yang [@chonglemppyang2010] showed that PART, and
+    hence SADS, implies BΣ⁰₂.
+
+- id: weak-principles-conservation
+  question: Are the principles weaker than $\mathsf{ACA}_0$ studied by Hirschfeldt and Shore (other than those following from $\mathsf{WKL}_0$ or $\mathsf{COH}$) $\Pi^1_1$-conservative, or at least arithmetically conservative, over $\mathsf{B}\Sigma^0_2$?
+  asked:
+    - {ref: hirschfeldtshore2007, loc: Question 6.7}
+  statements: [ads, cac, sads, scac, bsig2]
+  status: partial
+  answer: COH, ADS, CAC and their stable versions are Π¹₁-conservative over RCA₀ + BΣ⁰₂.
+  resolvedBy:
+    - {ref: chongslamanyang2012}
+  context: >-
+    Proving conservation over BΣ⁰₂ is harder than over IΣ⁰₂, since the usual forcing
+    arguments use Σ⁰₂-induction. Chong, Slaman and Yang [@chongslamanyang2012]
+    developed techniques for models of BΣ⁰₂ and showed conservation for the main
+    principles weaker than RT²₂.
+
+- id: rrt-aca
+  question: Is there an exponent $n$ such that the rainbow Ramsey theorem $\mathsf{RRT}^n_2$ implies $\mathsf{ACA}_0$?
+  asked:
+    - {ref: csimamileti2009, loc: Question 5.15}
+    - {ref: wang2013, loc: Conjecture 5.1}
+  statements: [rrt, aca]
+  formal:
+    - {from: rrt, to: aca, over: rca0}
+  resolvedBy:
+    - {ref: wang2014b}
+  context: >-
+    Ramsey's theorem RTⁿ₂ implies ACA₀ for every n ≥ 3, but the rainbow Ramsey
+    theorem is much weaker: Csima and Mileti [@csimamileti2009] showed RRT²₂
+    follows from 2-randomness. Wang [@wang2013] showed that RRT³₂ does not imply
+    ACA₀, and later that no exponent does [@wang2014b].
+
+- id: ipt22-rt22
+  question: Does $\mathsf{IPT}^2_2$ (or $\mathsf{IPT}^2_2 + \mathsf{B}\Sigma^0_2$) imply $\mathsf{RT}^2_2$? Does $\mathsf{IPT}^2_2$ imply $\mathsf{B}\Sigma^0_2$? Is $\mathsf{IPT}^2_2$ implied by $\mathsf{SRT}^2_2$ over ω-models?
+  asked:
+    - {ref: dzhafarovhirst2009, loc: Question 5.1}
+    - {ref: dzhafarovmummert2022, loc: Questions 9.3.6 and 9.3.12}
+  statements: [ipt22, bsig2, rt22, srt22]
+  formal:
+    - {from: ipt22, to: rt22, over: rca0}
+    - {from: srt22, to: ipt22, over: omega}
+    - {from: bsig2-ipt22, to: rt22, over: rca0}
+    - {from: ipt22, to: bsig2, over: rca0}
+  context: >-
+    The increasing polarized Ramsey theorem IPT²₂ [@dzhafarovhirst2009] lies
+    between SRT²₂ and RT²₂. An equivalence between IPT²₂ + BΣ⁰₂ and RT²₂ would
+    follow from SRT²₂ ⇒ RT²₂, so separating them is at least as hard as the
+    SRT²₂ vs. RT²₂ question.
+
+- id: sipt22-srt22
+  question: Does $\mathsf{SIPT}^2_2$ or $\mathsf{SPT}^2_2$ imply $\mathsf{SRT}^2_2$ (equivalently, $\mathsf{B}\Sigma^0_2$)?
+  asked:
+    - {ref: dzhafarovhirst2009, loc: Question 5.2}
+  statements: [sipt22, spt22, srt22, bsig2]
+  formal:
+    - {from: sipt22, to: srt22, over: rca0}
+    - {from: spt22, to: srt22, over: rca0}
+  resolvedBy:
+    - {ref: chonglemppyang2010}
+  context: >-
+    Dzhafarov and Hirst [@dzhafarovhirst2009] showed that the stable polarized
+    principles together with BΣ⁰₂ imply SRT²₂. Chong, Lempp and Yang
+    [@chonglemppyang2010] showed that they imply BΣ⁰₂ themselves.
+
+- id: coh-amt
+  question: Does $\mathsf{COH}$ (or $\mathsf{CADS}$) imply the atomic model theorem $\mathsf{AMT}$? Does $\mathsf{CADS}$ imply $\mathsf{OPT}$?
+  asked:
+    - {ref: hirschfeldtshoreslaman2009, loc: Questions 7.1 and 7.2}
+    - {ref: patey2017b, loc: Question 1.5}
+  statements: [coh, cads, amt, opt]
+  formal:
+    - {from: coh, to: amt, over: rca0}
+    - {from: cads, to: amt, over: rca0}
+    - {from: cads, to: opt, over: rca0}
+  context: >-
+    Hirschfeldt, Shore and Slaman [@hirschfeldtshoreslaman2009] placed AMT below
+    SADS and OPT (omitting partial types) below AMT. COH and CADS are the natural
+    "unstable" principles to compare with them.
+
+- id: amt-d2ip
+  question: Does $\mathsf{AMT}$ imply $\overline{\mathsf{D}}_2\mathsf{IP}$? Does $\mathsf{OPT}$? Does $\overline{\mathsf{D}}_2\mathsf{IP}$ imply $\mathsf{FIP}$?
+  asked:
+    - {ref: dzhafarovmummert2010, loc: Questions 5.1 and 5.2}
+    - {ref: dzhafarovmummert2013, loc: Question 4.6}
+    - {ref: cholakdowneyigusa2017, loc: Question 1}
+  statements: [amt, opt, nd2ip, fip]
+  formal:
+    - {from: amt, to: nd2ip, over: rca0}
+    - {from: opt, to: nd2ip, over: rca0}
+    - {from: nd2ip, to: fip, over: rca0}
+  context: >-
+    Dzhafarov and Mummert [@dzhafarovmummert2013] studied intersection principles
+    for families of sets. The principles D_nIP asking for a maximal subfamily with
+    the D_n intersection property are equivalent to ACA₀; their weak versions
+    D̄_nIP (written D_nIP in [@dzhafarovmummert2010] and nIP in
+    [@cholakdowneyigusa2017]) form a hierarchy below the finite intersection
+    principle FIP, close to the atomic model theorem. AMT implies D̄₂IP over
+    RCA₀ + IΣ⁰₂.
+
+- id: asram-sram
+  question: Does $\mathsf{ASRAM}$ imply $\mathsf{SRAM}$? Does $\mathsf{SRT}^2_2$ imply $\mathsf{ASRAM}$, or conversely? Does $\mathsf{ASRT}^2_2$ imply $\mathsf{WWKL}_0$?
+  asked:
+    - {ref: dzhafarov2011, loc: Question 5.9}
+  statements: [asram, sram, srt22, asrt22, wwkl]
+  formal:
+    - {from: asram, to: sram, over: rca0}
+    - {from: srt22, to: asram, over: rca0}
+    - {from: asram, to: srt22, over: rca0}
+    - {from: asrt22, to: wwkl, over: rca0}
+  context: >-
+    Dzhafarov [@dzhafarov2011] introduced the "almost" versions of stable Ramsey
+    principles, inspired by the reverse mathematics of the sorites paradox.
+
+- id: ucnn-cnn
+  kind: conjecture
+  question: Unique choice on Baire space is Weihrauch-equivalent to closed choice on Baire space, $\mathsf{UC}_{\mathbb{N}^\mathbb{N}} \equiv_W \mathsf{C}_{\mathbb{N}^\mathbb{N}}$.
+  asked:
+    - {ref: brattkadebrechtpauly2012, loc: Conjecture 6.3}
+  statements: [ucnn, cnn]
+  formal:
+    - {from: ucnn, to: cnn, over: w}
+  context: >-
+    C_ℕ^ℕ and UC_ℕ^ℕ are the Weihrauch counterparts of ATR₀-like principles
+    [@brattkadebrechtpauly2012]. The conjecture was refuted: unique choice is
+    strictly weaker than closed choice on Baire space.
+
+- id: dnr-rwkl
+  question: Does $\mathsf{DNR}$ imply the Ramsey-type weak König's lemma $\mathsf{RWKL}$?
+  asked:
+    - {ref: flood2012, loc: Question 9}
+  statements: [dnr, rwkl]
+  formal:
+    - {from: dnr, to: rwkl, over: rca0}
+  resolvedBy:
+    - {ref: floodtowsner2016}
+  context: >-
+    Flood [@flood2012] introduced RWKL, which asks for an infinite set homogeneous
+    for a path of a binary tree, and showed that it is implied by SRT²₂ and implies
+    DNR.
+
+- id: d22-p22
+  question: Does $\mathsf{D}^2_2$ imply $\mathsf{P}^2_2$?
+  asked:
+    - {ref: flood2012, loc: Question 19}
+  statements: [d22, p22]
+  formal:
+    - {from: d22, to: p22, over: rca0}
+  context: >-
+    A question from Flood's study of Ramsey-type versions of König's lemma
+    [@flood2012].
+
+- id: tt1-isig2
+  question: Does $\mathsf{RCA}_0 + \mathsf{TT}^1$ prove $\mathsf{I}\Sigma^0_2$?
+  asked:
+    - {ref: chongliyang2014, loc: Question 4.19}
+  statements: [tt1, isig2]
+  formal:
+    - {from: tt1, to: isig2, over: rca0}
+  context: >-
+    The tree theorem for singletons TT¹ (every finite coloring of the full binary
+    tree has a monochromatic subtree isomorphic to it) is a tree analogue of the
+    infinite pigeonhole principle, which is equivalent to BΣ⁰₂ [@hirst1987]. Its
+    first-order strength was a natural question since the obvious proofs use more
+    induction.
+
+- id: rt22-bsig2-conservation
+  question: Is $\mathsf{SRT}^2_2$ or $\mathsf{RT}^2_2$ $\Pi^1_1$-conservative over $\mathsf{RCA}_0 + \mathsf{B}\Sigma^0_2$?
+  asked:
+    - {ref: chongliyang2014, loc: Question 4.20}
+    - {ref: chongslamanyang2017, loc: Question 5.1}
+    - {ref: pateyyokoyama2018, loc: Question 9.1}
+    - {ref: houeroupateyyokoyama2024, loc: Questions 1.3 and 5.1}
+    - {ref: lehoueroupateyyokoyama2024, loc: Question 1.1}
+  statements: [srt22, rt22, bsig2]
+  status: partial
+  answer: RT²₂ + WKL₀ is ∀Π⁰₄-conservative over RCA₀ + BΣ⁰₂; full Π¹₁-conservation is open.
+  resolvedBy:
+    - {ref: lehoueroupateyyokoyama2024}
+  context: >-
+    RT²₂ implies BΣ⁰₂ and is Π¹₁-conservative over RCA₀ + IΣ⁰₂
+    [@cholakjockuschslaman2001], so the question is whether BΣ⁰₂ is exactly its
+    first-order part. Le Houérou, Levy Patey and Yokoyama
+    [@lehoueroupateyyokoyama2024] proved conservation for ∀Π⁰₄ sentences, which
+    covers BΣ⁰₂ itself and the consistency statements usually considered.
+
+- id: ts2-rrt22
+  question: Does the thin set theorem $\mathsf{TS}^2$ imply $\mathsf{RRT}^2_2$?
+  asked:
+    - {ref: kang2014, loc: Question 2.8}
+  statements: [ts2, rrt22]
+  formal:
+    - {from: ts2, to: rrt22, over: rca0}
+  context: >-
+    Both are consequences of RT²₂ obtained by weakening homogeneity
+    [@cholaketal2005] [@csimamileti2009].
+
+- id: rcolor2-dnr
+  question: Does the Ramsey-type 2-coloring principle $\mathsf{RCOLOR}_2$ imply $\mathsf{DNR}$? Does it imply $\mathsf{RWKL}$?
+  asked:
+    - {ref: patey2014, loc: Question 5.2}
+    - {ref: patey2015c, loc: Question 3.6}
+    - {ref: patey2016c, loc: Question 18.11}
+    - {ref: bienvenupateyshafer2017, loc: Questions 5.15 and 5.16}
+  statements: [rcolor2, dnr, rwkl]
+  formal:
+    - {from: rcolor2, to: rwkl, over: rca0}
+    - {from: rcolor2, to: dnr, over: rca0}
+  context: >-
+    Ramsey-type versions of graph coloring ask for an infinite set of vertices
+    that can be monochromatic in some coloring. For k ≥ 3 colors they are all
+    equivalent to RWKL [@bienvenupateyshafer2017], which implies DNR; the case of
+    two colors behaves differently.
+
+- id: delta02-pa-jump
+  question: Is there a $\Delta^0_2$ set such that every infinite subset of it or of its complement has a jump of PA degree relative to $\emptyset'$?
+  asked:
+    - {ref: patey2015c, loc: Question 2.6}
+    - {ref: patey2016c, loc: Question 18.4}
+  statements: [d22, coh]
+  status: resolved
+  answer: No — every Δ⁰₂ set has an infinite subset in it or its complement whose jump is not PA over ∅′.
+  resolvedBy:
+    - {ref: moninpatey2021}
+  context: >-
+    A set computes solutions to all computable instances of COH exactly when its
+    jump is PA over ∅′ [@jockuschstephan1993]. A positive answer would therefore
+    have shown that SRT²₂ implies COH in ω-models; the negative answer of Monin and
+    Patey [@moninpatey2021] is the core of their separation of SRT²₂ from RT²₂ in
+    ω-models.
+
+- id: em-coh
+  question: Does the Erdős–Moser theorem $\mathsf{EM}$ imply $\mathsf{COH}$? Does it imply $\mathsf{1}\text{-}\mathsf{GEN}$?
+  asked:
+    - {ref: patey2015c, loc: Questions 4.3 and 4.5}
+    - {ref: patey2016c, loc: Question 18.14}
+  statements: [em, coh, gen1]
+  formal:
+    - {from: em, to: coh, over: rca0}
+    - {from: em, to: coh, over: omega}
+    - {from: em, to: gen1, over: rca0}
+  context: >-
+    EM and ADS together are equivalent to RT²₂ [@bovykinweiermann2017], and ADS
+    implies COH. Since COH is the "unstable" part of RT²₂, whether EM alone
+    already captures it is a natural question.
+
+- id: coh-srt2-strong
+  question: Is $\mathsf{COH}$ generalized uniformly reducible to $\mathsf{SRT}^2_{<\infty}$? Is $\mathsf{COH}$ strongly computably reducible to $\mathsf{SRT}^2_k$ for $k > 2$, or to $\mathsf{SRT}^2_{<\infty}$?
+  asked:
+    - {ref: dzhafarov2016, loc: Questions 6.1 and 6.3}
+  statements: [coh, srt2, srt23]
+  formal:
+    - {from: srt2, to: coh, over: gw}
+    - {from: srt23, to: coh, over: sc}
+    - {from: srt2, to: coh, over: sc}
+  context: >-
+    Dzhafarov [@dzhafarov2016] showed that COH is not strongly computably
+    reducible to SRT²₂, a first step toward separating the two principles; these
+    questions ask how far that separation extends.
+
+- id: wwkl-rt-sc
+  question: Is $\mathsf{WWKL}$ strongly computably reducible to $\mathsf{RT}^n_k$ for $n \ge 3$, or to $\mathsf{RT}$?
+  asked:
+    - {ref: hirschfeldtjockusch2016, loc: Question 5.7}
+  statements: [wwkl, rt, rt32]
+  formal:
+    - {from: rt32, to: wwkl, over: sc}
+    - {from: rt, to: wwkl, over: sc}
+  context: >-
+    Over ω-models, RTⁿₖ for n ≥ 3 is equivalent to ACA₀ and so implies WWKL. Strong
+    computable reducibility forbids using the instance itself, and Hirschfeldt and
+    Jockusch [@hirschfeldtjockusch2016] asked whether this matters.
+
+- id: ts2-fs2
+  question: Does $\mathsf{TS}^2$ imply $\mathsf{FS}^2$? Do $\mathsf{FS}^2$ or $\mathsf{TS}^2$ imply $\mathsf{EM}$?
+  asked:
+    - {ref: patey2016, loc: Questions 5.1 and 5.3}
+  statements: [ts2, fs2, em]
+  formal:
+    - {from: ts2, to: fs2, over: rca0}
+    - {from: fs2, to: em, over: rca0}
+    - {from: ts2, to: em, over: rca0}
+  context: >-
+    FS² implies TS² [@cholaketal2005]. Since RT²₂ ⇔ EM + ADS
+    [@bovykinweiermann2017], comparing the free and thin set theorems with EM is a
+    way to understand which part of RT²₂ they capture.
+
+- id: tt22-aca
+  question: Does the tree theorem for pairs $\mathsf{TT}^2_2$ imply $\mathsf{ACA}_0$? Does it admit cone avoidance?
+  asked:
+    - {ref: patey2016b, loc: Questions 5.1 and 5.2}
+    - {ref: patey2016c, loc: Question 14.2}
+  statements: [tt22, aca]
+  formal:
+    - {from: tt22, to: aca, over: rca0}
+  resolvedBy:
+    - {ref: dzhafarovpatey2017}
+  context: >-
+    TT²₂ strengthens RT²₂ by coloring pairs of comparable nodes of the binary tree.
+    Seetapun's cone avoidance argument for RT²₂ [@seetapunslaman1995] does not
+    adapt directly because of the disjoint extension commitments of the tree
+    structure.
+
+- id: srrt22-coh
+  question: Does $\mathsf{SRRT}^2_2 + \mathsf{COH}$ imply $\mathsf{RRT}^2_2$?
+  asked:
+    - {ref: patey2016c, loc: Question 9.1}
+  statements: [srrt22, coh, rrt22]
+  formal:
+    - {from: coh-srrt22, to: rrt22, over: rca0}
+  context: >-
+    The analogue for the rainbow Ramsey theorem of the decomposition
+    RT²₂ ⇔ SRT²₂ + COH [@cholakjockuschslaman2001].
+
+- id: coh-em-arith
+  kind: conjecture
+  question: Both $\mathsf{COH}$ and $\mathsf{EM}$ admit preservation of the arithmetic hierarchy.
+  asked:
+    - {ref: wang2016, loc: Conjecture 5.3}
+  statements: [coh, em]
+  status: resolved
+  answer: Proved.
+  resolvedBy:
+    - {ref: patey2015d, loc: Theorems 2.2 and 3.2}
+  context: >-
+    Wang [@wang2016] introduced preservation of the arithmetic hierarchy to
+    separate principles by their definability strength, and showed that WKL and
+    RRT²₂ have it. Patey [@patey2015d] proved the conjecture for COH
+    and EM.
+
+- id: rwwkl2-bsig2
+  question: Does $\mathsf{2}\text{-}\mathsf{RWWKL}$ imply $\mathsf{B}\Sigma^0_2$?
+  asked:
+    - {ref: bienvenupateyshafer2017, loc: Question 3.9}
+  statements: [rwwkl2, bsig2]
+  formal:
+    - {from: rwwkl2, to: bsig2, over: rca0}
+  context: >-
+    The Ramsey-type weak weak König's lemma relative to ∅′ is a consequence of
+    2-WWKL, which implies BΣ⁰₂ [@avigaddeanrute2012].
+
+- id: ivt-rt22
+  question: Is the intermediate value theorem Weihrauch reducible to $\mathsf{RT}^2_2$?
+  asked:
+    - {ref: brattkarakotoniaina2017, loc: Question 5.21}
+  statements: [ivt, rt22]
+  formal:
+    - {from: rt22, to: ivt, over: w}
+  context: >-
+    In the Weihrauch lattice, Ramsey's theorem for pairs cannot be reduced to
+    PA, MLR or COH for reasons of Borel measurability
+    [@brattkarakotoniaina2017], but which problems of analysis lie below it is less
+    clear. IVT is a natural candidate: it is below WKL and computably true.
+
+- id: tt22-er22
+  question: How do the tree theorem $\mathsf{TT}^2_2$ and the Erdős–Rado theorem for the rationals $\mathsf{ER}^2_2$ compare? Does $\mathsf{ER}^2_2$ imply $\mathsf{ACA}_0$? Does $\mathsf{RT}^2_2$ imply $\mathsf{ER}^2_2$?
+  asked:
+    - {ref: dzhafarovpatey2017, loc: Questions 6.1 and 6.2}
+    - {ref: frittaionpatey2017, loc: Questions 5.2, 5.3 and 5.4}
+    - {ref: patey2016c, loc: Questions 14.1–14.3}
+  statements: [tt22, er22, aca, rt22]
+  formal:
+    - {from: tt22, to: er22, over: rca0}
+    - {from: er22, to: tt22, over: rca0}
+    - {from: er22, to: aca, over: rca0}
+    - {from: rt22, to: er22, over: rca0}
+  context: >-
+    Both strengthen RT²₂ by adding structure to the homogeneous set: a copy of the
+    full binary tree for TT²₂, a dense subset of the rationals for
+    ER²₂ (written η → (ℵ₀, η)² in some papers). Seetapun's argument fails for both
+    because of "disjoint extension commitments" [@frittaionpatey2017]; Dzhafarov and
+    Patey [@dzhafarovpatey2017] overcame it for TT²₂, while ER²₂ only has half of
+    this difficulty yet remains unsettled.
+
+- id: er1-isig2
+  question: Does the Erdős–Rado theorem for singletons $\mathsf{ER}^1$ imply $\mathsf{I}\Sigma^0_2$?
+  asked:
+    - {ref: frittaionpatey2017, loc: Question 5.5}
+  statements: [er1, isig2]
+  formal:
+    - {from: er1, to: isig2, over: rca0}
+  context: >-
+    ER¹ (every finite coloring of the rationals has a dense monochromatic subset on
+    some interval) and the tree theorem TT¹ have the same state of the art: both
+    are provable in RCA₀ + IΣ⁰₂ and strictly stronger than BΣ⁰₂
+    [@frittaionpatey2017].
+
+- id: tt22-wkl
+  question: Does $\mathsf{TT}^2_2$ imply $\mathsf{WKL}_0$? Does the stable tree theorem $\mathsf{STT}^2_2$ imply the cohesive one $\mathsf{CTT}^2_2$, or $\mathsf{COH}$, at least over ω-models? Does $\mathsf{SRT}^2_2$ imply $\mathsf{CTT}^2_2$ in ω-models?
+  asked:
+    - {ref: dzhafarovpatey2017, loc: Questions 6.3 and 6.4}
+    - {ref: chongetal2019, loc: Questions 5.2 and 5.3}
+  statements: [tt22, wkl, stt22, ctt22, coh, srt22]
+  formal:
+    - {from: tt22, to: wkl, over: rca0}
+    - {from: stt22, to: ctt22, over: omega}
+    - {from: stt22, to: coh, over: omega}
+    - {from: srt22, to: ctt22, over: omega}
+  context: >-
+    The tree theorem decomposes, like RT²₂, into stable and cohesive parts. These
+    are tree analogues of the SRT²₂ vs. COH question; since SRT²₂ does not imply
+    COH in ω-models [@moninpatey2021], the analogous question for trees is
+    expected to have the same answer.
+
+- id: vw-aca
+  question: Does the variable word theorem $\mathsf{VW}(2,2)$, or its ordered version $\mathsf{OVW}(2,2)$, imply $\mathsf{ACA}_0$?
+  asked:
+    - {ref: liumoninpatey2017, loc: Question 4.9}
+  statements: [ovw, aca]
+  formal:
+    - {from: ovw, to: aca, over: rca0}
+  context: >-
+    Variable word theorems come from the Hales–Jewett theorem. Their upper bound
+    in the reverse mathematics hierarchy was unknown: the usual proofs go through
+    Hindman-type arguments.
+
+- id: gp22-bsig2-conservation
+  question: Is the grouping principle $\mathsf{GP}^2_2$ $\Pi^1_1$-conservative over $\mathsf{RCA}_0 + \mathsf{B}\Sigma^0_2$? Does $\mathsf{EM}$ imply $\mathsf{GP}^2_2$?
+  asked:
+    - {ref: pateyyokoyama2018, loc: Questions 9.3 and 9.4}
+  statements: [gp22, bsig2, em]
+  formal:
+    - {from: em, to: gp22, over: rca0}
+  context: >-
+    Patey and Yokoyama [@pateyyokoyama2018] introduced the grouping principle to
+    obtain density bounds for the Erdős–Moser theorem in their conservation proof
+    for RT²₂. Le Houérou, Levy Patey and Yokoyama [@lehoueroupateyyokoyama2024]
+    later showed GP²₂ + WKL₀ Π¹₁-conservative over RCA₀ + BΣ⁰₂.
+
+- id: rrt22-ht-eq22
+  question: Does $\mathsf{RRT}^2_2$ imply Hindman's theorem for sums of exactly two elements $\mathsf{HT}^{=2}_2$?
+  asked:
+    - {ref: csimaetal2019, loc: Question 5.2}
+  statements: [rrt22, ht-eq22]
+  formal:
+    - {from: rrt22, to: ht-eq22, over: rca0}
+  context: >-
+    Csima, Dzhafarov, Hirschfeldt, Jockusch, Solomon and Westrick
+    [@csimaetal2019] showed that HT^{=2}_2 is computably much weaker than full
+    Hindman's theorem but still not computably true; the rainbow Ramsey theorem is
+    a natural comparison point.
+
+- id: cousin-baire1
+  question: Where does Cousin's lemma for Baire class 1 functions fall in the reverse mathematics hierarchy?
+  asked:
+    - {ref: barrett2020, loc: Question 8.2}
+  statements: [cousin-b1]
+  status: resolved
+  answer: It is equivalent to ACA₀ over RCA₀.
+  resolvedBy:
+    - {ref: barrettdowneygreenberg2021, loc: Theorem 5.5}
+  context: >-
+    Cousin's lemma (every gauge on [0,1] has a fine tagged partition) is
+    equivalent to Π¹₁-CA₀ for arbitrary functions coded suitably, and Barrett
+    [@barrett2020] gave a heuristic suggesting the same for Baire class 1 gauges.
+    The answer turned out to be much lower: ACA₀ [@barrettdowneygreenberg2021].
+
+- id: rt22-isig1-rcastar
+  question: Over $\mathsf{RCA}_0^*$, does $\mathsf{RT}^2_2 + \mathsf{I}\Sigma^0_1$ imply $\mathsf{B}\Sigma^0_2$?
+  asked:
+    - {ref: koodziejczykkowalikyokoyama2020, loc: Question 4}
+  statements: [rt22, isig1, bsig2]
+  formal:
+    - {from: isig1-rt22, to: bsig2, over: rca0star}
+  context: >-
+    Over RCA₀, RT²₂ implies BΣ⁰₂ [@hirst1987]. Kołodziejczyk, Kowalik and
+    Yokoyama [@koodziejczykkowalikyokoyama2020] studied Ramsey's theorem when only
+    Δ⁰₁-induction is assumed, where RT²₂ alone does not even imply IΣ⁰₁; adding
+    IΣ⁰₁ back is the natural intermediate case.
+
+- id: rt22-pt22-c
+  question: Is $\mathsf{RT}^2_2$ computably reducible to the polarized Ramsey theorem $\mathsf{PT}^2_2$?
+  asked:
+    - {ref: dzhafarovmummert2022, loc: Question 9.3.5}
+  statements: [rt22, pt22]
+  formal:
+    - {from: pt22, to: rt22, over: c}
+  context: >-
+    PT²₂ is equivalent to RT²₂ over RCA₀ [@dzhafarovhirst2009], but the proof of
+    RT²₂ from PT²₂ uses the principle more than once, so the question is whether
+    a single application suffices.
+
+- id: hindman-aca
+  question: Is Hindman's theorem $\mathsf{HT}$ provable in $\mathsf{ACA}_0$? Does it imply $\mathsf{ACA}_0^+$? Is there a computable instance of $\mathsf{HT}$ all of whose solutions compute $\emptyset''$?
+  asked:
+    - {ref: blasshirstsimpson1987}
+    - {ref: dzhafarovmummert2022, loc: Questions 9.9.16–9.9.18}
+  statements: [ht, aca, aca-plus]
+  formal:
+    - {from: aca, to: ht, over: rca0}
+    - {from: ht, to: aca-plus, over: rca0}
+  context: >-
+    Blass, Hirst and Simpson [@blasshirstsimpson1987] showed that Hindman's
+    theorem is provable in ACA₀⁺ and implies ACA₀, and this gap has remained one
+    of the most famous open problems of reverse mathematics. Every computable
+    instance has a Δ⁰₄ solution, while some computable instance has no Δ⁰₂
+    solution; closing the gap would need either a new proof of Hindman's theorem
+    or a coding of the double jump.
+
+- id: rrt22-tac
+  question: Does $\mathsf{RRT}^2_2$ imply $\mathsf{TAC}$?
+  asked:
+    - {ref: dzhafarovmummert2022, loc: Question 11.6.12}
+  statements: [rrt22, tac]
+  formal:
+    - {from: rrt22, to: tac, over: rca0}
+  context: >-
+    TAC, the chain/antichain principle for trees (every infinite subtree of
+    ℕ^{<ℕ} has an infinite path or an infinite antichain)
+    [@cervellegaudelierpatey2022], and RRT²₂ are both principles strictly below
+    ACA₀ that do not follow from WKL₀.
+
+- id: gen1-fip-w
+  question: Is $\mathsf{1}\text{-}\mathsf{GEN}$ Weihrauch reducible to the finite intersection principle $\mathsf{FIP}$?
+  asked:
+    - {ref: dzhafarovmummert2022, loc: Question 9.10.25}
+  statements: [gen1, fip]
+  formal:
+    - {from: fip, to: gen1, over: w}
+  context: >-
+    FIP is equivalent to 1-GEN over RCA₀ [@dzhafarovmummert2022]; the question asks
+    whether the equivalence is uniform.
+
+- id: coh-isig1-rcastar
+  question: Over $\mathsf{RCA}_0^*$, does $\mathsf{COH}$ imply $\mathsf{I}\Sigma^0_1$?
+  asked:
+    - {ref: fioricaroneskoodziejczykkowalik2021, loc: Question 5.8}
+  statements: [coh, isig1]
+  formal:
+    - {from: coh, to: isig1, over: rca0star}
+  resolvedBy:
+    - {ref: sun2025}
+  context: >-
+    Over RCA₀*, several consequences of RT²₂ such as RT²₂ itself, CAC and ADS do not
+    imply IΣ⁰₁ [@fioricaroneskoodziejczykkowalik2021]. COH is the natural next
+    candidate, since its usual proof iterates a construction along ℕ.
+
+- id: ads-crt22-rcastar
+  question: Over $\mathsf{RCA}_0^*$, does $\mathsf{ADS}$ or $\mathsf{CAC}$ imply $\mathsf{CRT}^2_2$?
+  asked:
+    - {ref: kowalik2024, loc: Question 2.15}
+  statements: [ads, cac, crt22]
+  formal:
+    - {from: ads, to: crt22, over: rca0star}
+    - {from: cac, to: crt22, over: rca0star}
+  resolvedBy:
+    - {ref: kolodziejczyksun2026}
+  context: >-
+    Over RCA₀, ADS and CAC imply COH, hence CRT²₂, and BΣ⁰₂. Over RCA₀*, where only
+    Δ⁰₁-induction is available, the usual proofs break down, and Kowalik
+    [@kowalik2024] asked whether the implications survive.
+
+- id: ovw-bsig2-conservation
+  question: Is $\mathsf{RCA}_0 + \mathsf{OVW}$ $\Pi^1_1$-conservative over $\mathsf{RCA}_0 + \mathsf{B}\Sigma^0_2$?
+  asked:
+    - {ref: lehoueroupatey2024, loc: Question 5.3}
+  statements: [ovw, bsig2]
+  status: resolved
+  answer: Yes.
+  resolvedBy:
+    - {ref: patey2026}
+  context: >-
+    Le Houérou and Patey [@lehoueroupatey2024] proved that the ordered variable
+    word theorem, together with WKL₀, is ∀Π⁰₄-conservative over RCA₀ + BΣ⁰₂, by
+    the largeness techniques developed for RT²₂. Patey [@patey2026] obtained full
+    Π¹₁-conservation by formalizing a weakly low basis theorem for OVW.
+
+- id: brt22-wkl-cac
+  question: Does $\mathsf{WKL}_0 + \mathsf{B}\Sigma^0_2$ prove the bounded Ramsey theorem $\mathsf{BRT}^2_2$? Does $\mathsf{CAC}$?
+  asked:
+    - {ref: lehoueroupatey2025, loc: Questions 5.2 and 5.3}
+  statements: [brt22, wkl, bsig2, cac]
+  formal:
+    - {from: bsig2-wkl, to: brt22, over: rca0}
+    - {from: cac, to: brt22, over: rca0}
+  context: >-
+    BRT²₂ follows from RT²₂, from EM [@lehoueroupatey2025] and from IΣ⁰₂, but not
+    from BΣ⁰₂ alone nor from ADS. These questions ask whether compactness, or the
+    chain/antichain principle, suffices.
+
+- id: tt22-bsig2-conservation
+  question: Is $\mathsf{RCA}_0 + \mathsf{TT}^2_2$ $\Pi^1_1$-conservative over $\mathsf{RCA}_0 + \mathsf{B}\Sigma^0_2$?
+  asked:
+    - {ref: patey2026, loc: Question 4.2}
+  statements: [tt22, bsig2]
+  status: partial
+  answer: TT²₂ + WKL₀ is ∀Π⁰₄-conservative over RCA₀ + BΣ⁰₂; full Π¹₁-conservation is open.
+  resolvedBy:
+    - {ref: lehoueroupatey2026, loc: Corollary 6.14}
+  context: >-
+    The analogue for the tree theorem of the long-standing question whether RT²₂
+    is Π¹₁-conservative over RCA₀ + BΣ⁰₂.
+
+- id: rrt22-fip
+  question: Does $\mathsf{RRT}^2_2$ imply the finite intersection principle $\mathsf{FIP}$? Does $\mathsf{COH}$? Over ω-models?
+  asked:
+    - {ref: dooley2025, loc: Question 3.3}
+  statements: [rrt22, coh, fip]
+  formal:
+    - {from: rrt22, to: fip, over: rca0}
+    - {from: coh, to: fip, over: rca0}
+    - {from: rrt22, to: fip, over: omega}
+    - {from: coh, to: fip, over: omega}
+  context: >-
+    FIP is equivalent to 1-GEN over RCA₀ [@dzhafarovmummert2022], so the question
+    asks whether these principles produce sets that are generic enough.

@@ -411,3 +411,22 @@ export function orderView(zoo, ids, r, { selectionOrder } = {}) {
   });
   return { classes, reps, hasse, separations, open, excluded, classOf };
 }
+
+// Status of an open question of data/questions.yaml. A formal question (a list
+// of "does `from` imply `to` over `over`?") is resolved when the database
+// settles every part, partially resolved when it settles some; its solving
+// results are the published results the settling proofs rest on. Other
+// questions carry a manual status.
+export function questionStatus(zoo, q) {
+  if (!q.formal?.length) return { status: q.status || 'open', parts: [], results: [] };
+  const parts = q.formal.map((f) => {
+    const r = zoo.ridx.get(f.over), a = zoo.sidx.get(f.from), b = zoo.sidx.get(f.to);
+    if (r === undefined || a === undefined || b === undefined) return { ...f, status: 'unknown' };
+    return { ...f, r, a, b, status: zoo.status(r, a, b) };
+  });
+  const settled = parts.filter((p) => p.status === 'implies' || p.status === 'separated');
+  const results = new Set();
+  for (const p of settled) for (const ri of zoo.sources({ t: p.status === 'implies' ? 'I' : 'N', r: p.r, a: p.a, b: p.b })) results.add(ri);
+  const status = settled.length === parts.length ? 'resolved' : settled.length ? 'partial' : 'open';
+  return { status, parts, results: [...results] };
+}
