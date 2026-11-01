@@ -1,0 +1,3528 @@
+# Papers found by the 2026-11 sweep of zbMATH Open (MSC 03B30, 03F35 and keyword searches)
+# and arXiv, screened for reverse mathematics and Weihrauch reducibility. Not yet mined for results.
+friedmanmcaloonsimpson1982:
+  authors:
+    - Harvey M. Friedman
+    - Kenneth McAloon
+    - Stephen G. Simpson
+  title: A finite combinatorial principle which is equivalent to the 1-consistency of predicative analysis
+  venue: Patras Logic Symposion, Proc., Patras/Greece 1980, Stud. Logic Found. Math. 109, 197-230 (1982)
+  year: 1982
+  url: https://zbmath.org/?q=an:0522.03044
+  source: zbmath
+simpson1982:
+  authors:
+    - Stephen G. Simpson
+  title: $\Sigma^1_1$ and $\Pi^1_1$ transfinite induction
+  venue: Logic colloquium '80, Eur. Summer Meet., Prague 1980, Stud. Logic Found. Math. 108, 239-253 (1982)
+  year: 1982
+  url: https://zbmath.org/?q=an:0497.03045
+  source: zbmath
+simpson1982b:
+  authors:
+    - Stephen G. Simpson
+  title: Set theoretic aspects of $ATR_ 0$
+  venue: Logic colloquium '80, Eur. Summer. Meet., Prague 1980, Stud. Logic Found. Math. 108, 255-271 (1982)
+  year: 1982
+  url: https://zbmath.org/?q=an:0497.03046
+  source: zbmath
+friedmansimpsonsmith1983:
+  authors:
+    - Harvey M. Friedman
+    - Stephen G. Simpson
+    - Rick L. Smith
+  title: Countable algebra and set existence axioms
+  venue: Annals of Pure and Applied Logic 25, 141-181
+  year: 1983
+  doi: 10.1016/0168-0072(83)90012-X
+  source: zbmath
+jager1984:
+  authors:
+    - Gerhard Jäger
+  title: The strength of admissibility without foundation
+  venue: The Journal of Symbolic Logic 49, 867-879
+  year: 1984
+  doi: 10.2307/2274140
+  source: zbmath
+clote1984:
+  authors:
+    - Peter Clote
+  title: Théorème de Cantor-Bendixson
+  venue: Sémin. gén. de logique 1983/1984, Publ. Math. Univ. Paris VII 27, 73-87 (1984)
+  year: 1984
+  url: https://zbmath.org/?q=an:0631.03043
+  source: zbmath
+spreenyoung1984:
+  authors:
+    - Dieter Spreen
+    - Paul Young
+  title: Effective operators in a topological setting
+  venue: Computation and proof theory, Proc. Logic Colloq., Aachen 1983, Part II, Lect. Notes Math. 1104, 437-451 (1984)
+  year: 1984
+  doi: 10.1007/bfb0099496
+  source: zbmath
+friedmansimpsonsmith1985:
+  authors:
+    - Harvey M. Friedman
+    - Stephen G. Simpson
+    - Rick L. Smith
+  title: Addendum to ``Countable algebra and set existence axioms''
+  venue: Annals of Pure and Applied Logic 28, 319-320
+  year: 1985
+  doi: 10.1016/0168-0072(85)90020-X
+  source: zbmath
+lopezescobar1985:
+  authors:
+    - E. G. K. López-Escobar
+  title: König's lemma, the $\omega$-rule and primitive recursive arithmetic
+  venue: Archiv für Mathematische Logik und Grundlagenforschung 25, 67-74
+  year: 1985
+  doi: 10.1007/BF02007557
+  source: zbmath
+sieg1985:
+  authors:
+    - Wilfried Sieg
+  title: Reductions of theories for analysis
+  venue: Foundations of logic and linguistics, Sel. Pap. 7th Int. Congr. Logic, Methodol. Philos. Sci., Salzburg/Austria 1983, 199-231 (1985)
+  year: 1985
+  url: https://zbmath.org/?q=an:0631.03044
+  source: zbmath
+anon1985:
+  authors:
+    - (unknown)
+  title: Harvey Friedman's research on the foundations of mathematics
+  venue: Studies in Logic and the Foundations of Mathematics 117
+  year: 1985
+  url: https://zbmath.org/?q=an:0588.03001
+  source: zbmath
+harnik1985:
+  authors:
+    - Victor Harnik
+  title: Stability theory and set existence axioms
+  venue: The Journal of Symbolic Logic 50, 123-137
+  year: 1985
+  doi: 10.2307/2273795
+  source: zbmath
+cantini1985:
+  authors:
+    - Andrea Cantini
+  title: On weak theories of sets and classes which are based on strict $\Pi ^ 1_ 1$-reflection
+  venue: Zeitschrift für Mathematische Logik und Grundlagen der Mathematik 31, 321-332
+  year: 1985
+  doi: 10.1002/malq.19850312102
+  source: zbmath
+brownsimpson1986:
+  authors:
+    - Douglas K. Brown
+    - Stephen G. Simpson
+  title: Which set existence axioms are needed to prove the separable Hahn-Banach theorem?
+  venue: Annals of Pure and Applied Logic 31, 123-144
+  year: 1986
+  doi: 10.1016/0168-0072(86)90066-7
+  source: zbmath
+theobald1986:
+  authors:
+    - K. R. Theobald
+  title: The importance of good effective isomorphism relations
+  venue: Algebra, combinatorics and logic in computer science, Colloq. Györ/Hung. 1983, Vol. 2, Colloq. Math. Soc. János Bolyai 42, 823-834 (1986)
+  year: 1986
+  url: https://zbmath.org/?q=an:0614.03046
+  source: zbmath
+jager1987:
+  authors:
+    - Gerhard Jäger
+  title: Some proof-theoretic contributions to theories of sets
+  venue: Logic colloq. '85, Proc. Colloq., Orsay/France 1985, Stud. Logic Found. Math. 122, 171-191 (1987)
+  year: 1987
+  url: https://zbmath.org/?q=an:0656.03040
+  source: zbmath
+brackin1987:
+  authors:
+    - Stephen H. Brackin
+  title: A summary of ``On Ramsey-type theorems and their provability in weak formal systems''
+  venue: Logic and combinatorics, Proc. AMS-IMS-SIAM Conf., Arcata/Calif. 1985, Contemp. Math. 65, 169-178 (1987)
+  year: 1987
+  url: https://zbmath.org/?q=an:0633.03059
+  source: zbmath
+buchholz1987:
+  authors:
+    - Wilfried Buchholz
+  title: An independence result for $(\Pi^ 1_ 1-CA)+BI$
+  venue: Annals of Pure and Applied Logic 33, 131-155
+  year: 1987
+  doi: 10.1016/0168-0072(87)90078-9
+  source: zbmath
+marcone1988:
+  authors:
+    - Alberto Marcone
+  title: Theory of sets and classes and systems used in reverse mathematics
+  venue: Rendiconti del Seminario Matematico 46(2), 189-215
+  year: 1988
+  url: https://zbmath.org/?q=an:0721.03040
+  source: zbmath
+simpson1988:
+  authors:
+    - Stephen G. Simpson
+  title: Ordinal numbers and the Hilbert basis theorem
+  venue: The Journal of Symbolic Logic 53(3), 961-974
+  year: 1988
+  doi: 10.2307/2274585
+  source: zbmath
+simpson1988b:
+  authors:
+    - Stephen G. Simpson
+  title: Partial realizations of Hilbert's program
+  venue: The Journal of Symbolic Logic 53(2), 349-363
+  year: 1988
+  doi: 10.2307/2274508
+  source: zbmath
+drake1989:
+  authors:
+    - Frank R. Drake
+  title: On the Foundations of Mathematics in 1987
+  venue: Logic colloq. '87, Proc. Colloq., Granada/Spain 1987, Stud. Logic Found. Math. 129, 11-25 (1989)
+  year: 1989
+  url: https://zbmath.org/?q=an:0688.03002
+  source: zbmath
+gordeev1989:
+  authors:
+    - L. Gordeev
+  title: Generalizations of the one-dimensional version on the Kruskal-Friedman theorems
+  venue: The Journal of Symbolic Logic 54(1), 100-121
+  year: 1989
+  doi: 10.2307/2275019
+  source: zbmath
+hatzikiriakou1989:
+  authors:
+    - Kostas Hatzikiriakou
+  title: Algebraic disguises of $\Sigma ^ 0_ 1$ induction
+  venue: Archive for Mathematical Logic 29(1), 47-51
+  year: 1989
+  doi: 10.1007/BF01630810
+  source: zbmath
+tanaka1989:
+  authors:
+    - Kazuyuki Tanaka
+  title: The Galvin-Prikry theorem and set existence axioms
+  venue: Annals of Pure and Applied Logic 42(1), 81-104
+  year: 1989
+  doi: 10.1016/0168-0072(89)90066-3
+  source: zbmath
+chong1989:
+  authors:
+    - C. T. Chong
+  title: Hyperhypersimple sets and $\Delta _ 2$ systems
+  venue: Annals of Pure and Applied Logic 44(1-2), 25-38
+  year: 1989
+  doi: 10.1016/0168-0072(89)90043-2
+  source: zbmath
+pourelrichards1989:
+  authors:
+    - Marian B. Pour-El
+    - J. Ian Richards
+  title: Computability in analysis and physics
+  venue: Perspectives in Mathematical Logic, x, 206 p
+  year: 1989
+  url: https://zbmath.org/?q=an:0678.03027
+  source: zbmath
+tanaka1990:
+  authors:
+    - Kazuyuki Tanaka
+  title: "Weak axioms of determinacy and subsystems of analysis. I: $\\Delta ^ 0_ 2$ games"
+  venue: Zeitschrift für Mathematische Logik und Grundlagen der Mathematik 36(6), 481-491
+  year: 1990
+  doi: 10.1002/malq.19900360602
+  source: zbmath
+tanaka1990b:
+  authors:
+    - Kazuyuki Tanaka
+  title: "``Reverse mathematics'' and proof theory in second order arithmetic"
+  venue: Sūgaku 42(3), 244-260
+  year: 1990
+  url: https://zbmath.org/?q=an:0726.03039
+  source: zbmath
+friedmanhirst1990:
+  authors:
+    - Harvey M. Friedman
+    - Jeffry L. Hirst
+  title: Weak comparability of well orderings and reverse mathematics
+  venue: Annals of Pure and Applied Logic 47(1), 11-29
+  year: 1990
+  doi: 10.1016/0168-0072(90)90014-S
+  source: zbmath
+clotehajekparis1990:
+  authors:
+    - P. Clote
+    - P. Hájek
+    - J. Paris
+  title: On some formalized conservation results in arithmetic
+  venue: Archive for Mathematical Logic 30(4), 201-218
+  year: 1990
+  doi: 10.1007/BF01792983
+  source: zbmath
+tanaka1990c:
+  authors:
+    - Kazuyuki Tanaka
+  title: Reverse mathematics and subsystems of second-order arithmetic
+  venue: Sugaku Expositions 5(2), 1
+  year: 1990
+  url: https://zbmath.org/?q=an:0797.03057
+  source: zbmath
+hatzikiriakousimpson1990:
+  authors:
+    - Kostas Hatzikiriakou
+    - Stephen G. Simpson
+  title: WKL$_ 0$ and orderings of countable Abelian groups
+  venue: Logic and computation, Proc. Workshop, Pittsburgh/PA (USA) 1987, Contemp. Math. 106, 177-180 (1990)
+  year: 1990
+  url: https://zbmath.org/?q=an:0705.03030
+  source: arxiv
+hirst1990:
+  authors:
+    - Jeffry L. Hirst
+  title: Marriage theorems and reverse mathematics
+  venue: Logic and computation, Proc. Workshop, Pittsburgh/PA (USA) 1987, Contemp. Math. 106, 181-196 (1990)
+  year: 1990
+  url: https://zbmath.org/?q=an:0701.03032
+  source: zbmath
+yu1990:
+  authors:
+    - Xiaokang Yu
+  title: Radon-Nikodym theorem is equivalent to arithmetical comprehension
+  venue: Logic and computation, Proc. Workshop, Pittsburgh/PA (USA) 1987, Contemp. Math. 106, 289-297 (1990)
+  year: 1990
+  url: https://zbmath.org/?q=an:0693.03040
+  source: zbmath
+clote1990:
+  authors:
+    - P. Clote
+  title: The metamathematics of Fraïssé's order type conjecture
+  venue: Recursion theory week, Proc. Conf., Oberwolfach/FRG 1989, Lect. Notes Math. 1432, 41-56 (1990)
+  year: 1990
+  doi: 10.1007/bfb0086113
+  source: zbmath
+gordeev1990:
+  authors:
+    - L. Gordeev
+  title: Generalizations of the Kruskal-Friedman theorems
+  venue: The Journal of Symbolic Logic 55(1), 157-181
+  year: 1990
+  doi: 10.2307/2274960
+  source: zbmath
+shiojitanaka1990:
+  authors:
+    - Naoki Shioji
+    - Kazuyuki Tanaka
+  title: Fixed point theory in weak second-order arithmetic
+  venue: Annals of Pure and Applied Logic 47(2), 167-188
+  year: 1990
+  doi: 10.1016/0168-0072(90)90068-D
+  source: zbmath
+brown1990:
+  authors:
+    - Douglas K. Brown
+  title: Notions of closed subsets of a complete separable metric space in weak subsystems of second order arithmetic
+  venue: Logic and computation, Proc. Workshop, Pittsburgh/PA (USA) 1987, Contemp. Math. 106, 39-50 (1990)
+  year: 1990
+  url: https://zbmath.org/?q=an:0693.03041
+  source: zbmath
+hirst1991:
+  authors:
+    - Jeffry L. Hirst
+  title: Connected components of graphs and reverse mathematics
+  venue: Archive for Mathematical Logic 31(3), 183-192
+  year: 1991
+  doi: 10.1007/BF01269946
+  source: zbmath
+friedmanhirst1991:
+  authors:
+    - Harvey M. Friedman
+    - Jeffry L. Hirst
+  title: Reverse mathematics and homeomorphic embeddings
+  venue: Annals of Pure and Applied Logic 54(3), 229-253
+  year: 1991
+  doi: 10.1016/0168-0072(91)90048-Q
+  source: zbmath
+hatzikiriakou1991:
+  authors:
+    - Kostas Hatzikiriakou
+  title: Minimal prime ideals and arithmetic comprehension
+  venue: The Journal of Symbolic Logic 56(1), 67-70
+  year: 1991
+  doi: 10.2307/2274904
+  source: zbmath
+tanaka1991:
+  authors:
+    - Kazuyuki Tanaka
+  title: Weak axioms of determinacy and subsystems of analysis. II $(\Sigma ^ 0_ 2$ games)
+  venue: Annals of Pure and Applied Logic 52(1-2), 181-193
+  year: 1991
+  doi: 10.1016/0168-0072(91)90045-N
+  source: zbmath
+marcone1991:
+  authors:
+    - Alberto Marcone
+  title: Borel quasi-orderings in subsystems of second-order arithmetic
+  venue: Annals of Pure and Applied Logic 54(3), 265-291
+  year: 1991
+  doi: 10.1016/0168-0072(91)90050-V
+  source: zbmath
+rathjen1991:
+  authors:
+    - Michael Rathjen
+  title: The role of parameters in bar rule and bar induction
+  venue: The Journal of Symbolic Logic 56(2), 715-730
+  year: 1991
+  doi: 10.2307/2274713
+  source: zbmath
+behmke1992:
+  authors:
+    - Helga Behmke
+  title: Grundlagen der Typ-2-berechenbaren Analysis unter besonderer Berücksichtigung der komplexen Zahlen
+  venue: "Hagen: Fernuniv. -GHS- Hagen, Fachber. Informatik, 135 S. (1992)"
+  year: 1992
+  url: https://zbmath.org/?q=an:0787.03056
+  source: zbmath
+troelstra1992:
+  authors:
+    - A. S. Troelstra
+  title: Comparing the theory of representations and constructive mathematics
+  venue: "Börger, Egon (ed.) et al., Computer science logic. 5th workshop, CSL '91, Berne, Switzerland, October 7-11, 1991. Proceedings. Berlin etc.: Springer-Verlag. Lect. Notes Comput. Sci. 626, 382-395 (1992)"
+  year: 1992
+  doi: 10.1007/bfb0023783
+  source: zbmath
+murawski1993:
+  authors:
+    - Roman Murawski
+  title: On the philosophical meaning of reverse mathematics
+  venue: "Czermak, Johannes (ed.), Philosophy of mathematics. Proceedings of the 15th international Wittgenstein-Symposium, August 16-23, 1992, Kirchberg am Wechsel, Austria. Part I. Wien: Hölder-Pichler-Tempsky. Schriftenreihe der Wittgenstein-Gesellschaft. 20/I, 173-184 (1993)"
+  year: 1993
+  url: https://zbmath.org/?q=an:0878.00006
+  source: zbmath
+yu1993:
+  authors:
+    - Xiaokang Yu
+  title: Riesz representation theorem, Borel measures and subsystems of second- order arithmetic
+  venue: Annals of Pure and Applied Logic 59(1), 65-78
+  year: 1993
+  doi: 10.1016/0168-0072(93)90232-3
+  source: zbmath
+hirst1993:
+  authors:
+    - Jeffry L. Hirst
+  title: Derived sequences and reverse mathematics
+  venue: Mathematical Logic Quarterly (MLQ) 39(4), 447-453
+  year: 1993
+  doi: 10.1002/malq.19930390148
+  source: zbmath
+rathjenweiermann1993:
+  authors:
+    - Michael Rathjen
+    - Andreas Weiermann
+  title: Proof-theoretic investigations on Kruskal's theorem
+  venue: Annals of Pure and Applied Logic 60(1), 49-88
+  year: 1993
+  doi: 10.1016/0168-0072(93)90192-G
+  source: zbmath
+friedmansimpsonyu1993:
+  authors:
+    - Harvey Friedman
+    - Stephen G. Simpson
+    - Xiaokang Yu
+  title: Periodic points and subsystems of second-order arithmetic
+  venue: Annals of Pure and Applied Logic 62(1), 51-64
+  year: 1993
+  doi: 10.1016/0168-0072(93)90187-I
+  source: zbmath
+hirst1993b:
+  authors:
+    - Jeffry L. Hirst
+  title: Embeddings of countable closed sets and reverse mathematics
+  venue: Archive for Mathematical Logic 32(6), 443-449
+  year: 1993
+  doi: 10.1007/BF01270467
+  source: zbmath
+murawski1993b:
+  authors:
+    - Roman Murawski
+  title: Reverse mathematics and its meaning
+  venue: Mathematische Semesterberichte 40(2), 105-113
+  year: 1993
+  doi: 10.1007/BF03186483
+  source: zbmath
+tupailo1993:
+  authors:
+    - Sergei Tupailo
+  title: Normalization for arithmetical comprehension with restricted occurrences of Hilbert's epsilon-symbol
+  venue: Eesti Teaduste Akadeemia Toimetised. Füüsika. Matemaatika 42(4), 289-299
+  year: 1993
+  url: https://zbmath.org/?q=an:0799.03069
+  source: zbmath
+yu1994:
+  authors:
+    - Xiaokang Yu
+  title: Lebesgue convergence theorems and reverse mathematics
+  venue: Mathematical Logic Quarterly (MLQ) 40(1), 1-13
+  year: 1994
+  doi: 10.1002/malq.19940400102
+  source: zbmath
+simpson1994:
+  authors:
+    - Stephen G. Simpson
+  title: On the strength of König's duality theorem for countable bipartite graphs
+  venue: The Journal of Symbolic Logic 59(1), 113-123
+  year: 1994
+  doi: 10.2307/2275254
+  source: zbmath
+hirst1994:
+  authors:
+    - Jeffry L. Hirst
+  title: Reverse mathematics and ordinal exponentiation
+  venue: Annals of Pure and Applied Logic 66(1), 1-18
+  year: 1994
+  doi: 10.1016/0168-0072(94)90076-0
+  source: zbmath
+ferreira1994:
+  authors:
+    - Fernando Ferreira
+  title: A feasible theory for analysis
+  venue: The Journal of Symbolic Logic 59(3), 1001-1011
+  year: 1994
+  doi: 10.2307/2275924
+  source: zbmath
+hatzikiriakou1994:
+  authors:
+    - Kostas Hatzikiriakou
+  title: A note on ordinal numbers and rings of formal power series
+  venue: Archive for Mathematical Logic 33(4), 261-263
+  year: 1994
+  doi: 10.1007/BF01270625
+  source: zbmath
+ignjatovic1994:
+  authors:
+    - Aleksandar Ignjatović
+  title: Hilbert's program and the omega-rule
+  venue: The Journal of Symbolic Logic 59(1), 322-343
+  year: 1994
+  doi: 10.2307/2275269
+  source: zbmath
+marcone1995:
+  authors:
+    - Alberto Marcone
+  title: The set of better quasi orderings is $\Pi_ 2^ 1$
+  venue: Mathematical Logic Quarterly (MLQ) 41(3), 373-383
+  year: 1995
+  doi: 10.1002/malq.19950410309
+  source: zbmath
+yang1995:
+  authors:
+    - Yue Yang
+  title: Iterated trees and fragments of arithmetic
+  venue: Archive for Mathematical Logic 34(2), 97-112
+  year: 1995
+  doi: 10.1007/BF01270390
+  source: zbmath
+haldar1995:
+  authors:
+    - Chandan Haldar
+  title: Dynamical and type 2 characterizations of ideal basis reduction in symbolic algebraic computation
+  venue: Journal of the Indian Institute of Science 75(1), 129-132
+  year: 1995
+  url: https://zbmath.org/?q=an:0849.68060
+  source: zbmath
+yu1996:
+  authors:
+    - Xiaokang Yu
+  title: A study of singular points and supports of measures in reverse mathematics
+  venue: Annals of Pure and Applied Logic 79(2), 211-219
+  year: 1996
+  doi: 10.1016/0168-0072(95)00042-9
+  source: zbmath
+humphreyssimpson1996:
+  authors:
+    - A. James Humphreys
+    - Stephen G. Simpson
+  title: Separable Banach space theory needs strong set existence axioms
+  venue: Transactions of the American Mathematical Society 348(10), 4231-4255
+  year: 1996
+  doi: 10.1090/S0002-9947-96-01725-4
+  source: zbmath
+murawski1996:
+  authors:
+    - Roman Murawski
+  title: Impredicative definitions and reverse mathematics
+  venue: "Greffe, Jean-Louis (ed.) et al., Henri Poincaré. Science et philosophie: congrès international, mai 14-18, 1994, Nancy, France. Berlin: Akademie Verlag. 551-557 (1996)"
+  year: 1996
+  url: https://zbmath.org/?q=an:0888.00003
+  source: zbmath
+hatzikiriakou1996:
+  authors:
+    - Kostas Hatzikiriakou
+  title: $\text{WKL}_ 0$ and Stone's separation theorem for convex sets
+  venue: Annals of Pure and Applied Logic 77(3), 245-249
+  year: 1996
+  doi: 10.1016/0168-0072(95)00038-0
+  source: zbmath
+avigad1996:
+  authors:
+    - Jeremy Avigad
+  title: Formalizing forcing arguments in subsystems of second-order arithmetic
+  venue: Annals of Pure and Applied Logic 82(2), 165-191
+  year: 1996
+  doi: 10.1016/0168-0072(96)00003-6
+  source: zbmath
+avigad1996b:
+  authors:
+    - Jeremy Avigad
+  title: On the relationship between $ATR_ 0$ and $\widehat {ID}_{<\omega}$
+  venue: The Journal of Symbolic Logic 61(3), 768-779
+  year: 1996
+  doi: 10.2307/2275783
+  source: zbmath
+tanaka1997:
+  authors:
+    - Kazuyuki Tanaka
+  title: The self-embedding theorem of $\text{WKL}_ 0$ and a non-standard method
+  venue: Annals of Pure and Applied Logic 84(1), 41-49
+  year: 1997
+  doi: 10.1016/S0168-0072(95)00058-5
+  source: zbmath
+groszekslaman1997:
+  authors:
+    - Marcia J. Groszek
+    - Theodore A. Slaman
+  title: $\Pi_1^0$ classes and minimal degrees
+  venue: Annals of Pure and Applied Logic 87(2), 117-144
+  year: 1997
+  doi: 10.1016/S0168-0072(96)00029-2
+  source: zbmath
+murawski1997:
+  authors:
+    - Roman Murawski
+  title: Some remarks on Hilbert's program
+  venue: "Wiȩsław, Witold (ed.), Hilbert's problems. On the occasion of the fiftieth anniversary of the death of their creator. Proceedings of the 7th All-Polish School on the history of mathematics, Miȩdzyzdroje, Poland, May 10-14, 1993. Warsaw: Instytut Historii Nauki PAN. 255-262 (1997)"
+  year: 1997
+  url: https://zbmath.org/?q=an:0999.01018
+  source: zbmath
+tanaka1997b:
+  authors:
+    - Kazuyuki Tanaka
+  title: Non-standard analysis in $\text{WKL}_ 0$
+  venue: Mathematical Logic Quarterly (MLQ) 43(3), 396-400
+  year: 1997
+  doi: 10.1002/malq.19970430312
+  source: zbmath
+clotehirst1998:
+  authors:
+    - Peter G. Clote
+    - Jeffry L. Hirst
+  title: Reverse mathematics of some topics from algorithmic graph theory
+  venue: Fundamenta Mathematicae 157(1), 1-13
+  year: 1998
+  url: https://zbmath.org/?q=an:0908.03054
+  source: zbmath
+hirst1998:
+  authors:
+    - Jeffry L. Hirst
+  title: Reverse mathematics and ordinal multiplication
+  venue: Mathematical Logic Quarterly (MLQ) 44(4), 459-464
+  year: 1998
+  doi: 10.1002/malq.19980440404
+  source: zbmath
+solomon1998:
+  authors:
+    - Reed Solomon
+  title: Reverse mathematics and fully ordered groups
+  venue: Notre Dame Journal of Formal Logic 39(2), 157-189
+  year: 1998
+  doi: 10.1305/ndjfl/1039293061
+  source: zbmath
+simpsonrao1998:
+  authors:
+    - S. G. Simpson
+    - J. Rao
+  title: Reverse algebra
+  venue: "Ershov, Yu. L. (ed.) et al., Handbook of recursive mathematics. Vol. 2: Recursive algebra, analysis and combinatorics. Amsterdam: Elsevier. Stud. Logic Found. Math. 139, 1355-1372 (1998)"
+  year: 1998
+  url: https://zbmath.org/?q=an:0928.03064
+  source: zbmath
+pohlers1998:
+  authors:
+    - Wolfram Pohlers
+  title: Subsystems of set theory and second order number theory
+  venue: "Buss, Samuel R. (ed.), Handbook of proof theory. Amsterdam: Elsevier. Stud. Logic Found. Math. 137, 209-335 (1998)"
+  year: 1998
+  url: https://zbmath.org/?q=an:0940.03066
+  source: zbmath
+avigad1998:
+  authors:
+    - Jeremy Avigad
+  title: An effective proof that open sets are Ramsey
+  venue: Archive for Mathematical Logic 37(4), 235-240
+  year: 1998
+  doi: 10.1007/s001530050095
+  source: zbmath
+kohlenbach1998:
+  authors:
+    - Ulrich Kohlenbach
+  title: On the arithmetical content of restricted forms of comprehension, choice and general uniform boundedness
+  venue: Annals of Pure and Applied Logic 95(1-3), 257-285
+  year: 1998
+  doi: 10.1016/S0168-0072(98)00018-9
+  source: zbmath
+kohlenbach1998b:
+  authors:
+    - Ulrich Kohlenbach
+  title: Arithmetizing proofs in analysis
+  venue: "Larrazabal, J. M. (ed.) et al., Logic colloquium '96. Proceedings of the colloquium, San Sebastián, Spain, July 9--15, 1996. Berlin: Springer. Lect. Notes Log. 12, 115-158 (1998)"
+  year: 1998
+  url: https://zbmath.org/?q=an:0919.03046
+  source: zbmath
+kalantari1998:
+  authors:
+    - I. Kalantari
+  title: A bibliography of recursive algebra and recursive model theory
+  venue: "Ershov, Yu. L. (ed.) et al., Handbook of recursive mathematics. Vol. 1: Recursive model theory. Amsterdam: Elsevier. Stud. Logic Found. Math. 138, 515-581 (1998)"
+  year: 1998
+  url: https://zbmath.org/?q=an:0927.03070
+  source: zbmath
+hirst1999:
+  authors:
+    - Jeffry L. Hirst
+  title: Reverse mathematics of prime factorization of ordinals
+  venue: Archive for Mathematical Logic 38(3), 195-201
+  year: 1999
+  doi: 10.1007/s001530050123
+  source: zbmath
+simpson1999:
+  authors:
+    - Stephen G. Simpson
+  title: Subsystems of second order arithmetic
+  venue: Perspectives in Logic, xvi, 444 p
+  year: 1999
+  url: https://zbmath.org/?q=an:0909.03048
+  source: arxiv
+humphreyssimpson1999:
+  authors:
+    - A. James Humphreys
+    - Stephen G. Simpson
+  title: Separation and weak König's lemma
+  venue: The Journal of Symbolic Logic 64(1), 268-278
+  year: 1999
+  doi: 10.2307/2586763
+  source: zbmath
+solomon1999:
+  authors:
+    - Reed Solomon
+  title: "Ordered groups: A case study in reverse mathematics"
+  venue: The Bulletin of Symbolic Logic 5(1), 45-58
+  year: 1999
+  doi: 10.2307/421140
+  source: zbmath
+hirst1999b:
+  authors:
+    - Jeffry L. Hirst
+  title: Ordinal inequalities, transfinite induction, and reverse mathematics
+  venue: The Journal of Symbolic Logic 64(2), 769-774
+  year: 1999
+  doi: 10.2307/2586499
+  source: zbmath
+downeylempp1999:
+  authors:
+    - Rodney G. Downey
+    - Steffen Lempp
+  title: The proof-theoretic strength of the Dushnik-Miller theorem for countable linear orders
+  venue: "Arslanov, Marat M. (ed.) et al., Recursion theory and complexity. Proceedings of the Kazan '97 workshop, Kazan, Russia, July 14--19, 1997. Berlin: Walter de Gruyter (ISBN 3-11-016587-2/hbk). de Gruyter Series in Logic and Its Applications 2, 55-57 (1999)"
+  year: 1999
+  url: https://zbmath.org/?q=an:0951.03053
+  source: zbmath
+yamazaki1999:
+  authors:
+    - Takeshi Yamazaki
+  title: Reverse mathematics and weak second-order systems of 0-1 strings
+  venue: RIMS Kokyuroku 1096, 25-34
+  year: 1999
+  url: https://zbmath.org/?q=an:0951.03521
+  source: zbmath
+hertling1999:
+  authors:
+    - Peter Hertling
+  title: A real number structure that is effectively categorical
+  venue: Mathematical Logic Quarterly (MLQ) 45(2), 147-182
+  year: 1999
+  doi: 10.1002/malq.19990450202
+  source: zbmath
+friedmansimpson2000:
+  authors:
+    - Harvey Friedman
+    - Stephen G. Simpson
+  title: Issues and problems in reverse mathematics
+  venue: "Cholak, Peter A. (ed.) et al., Computability theory and its applications. Current trends and open problems. Proceedings of a 1999 AMS-IMS-SIAM joint summer research conference, Boulder, CO, USA, June 13-17, 1999. Providence, RI: American Mathematical Society (AMS). Contemp. Math. 257, 127-144 (2000)"
+  year: 2000
+  url: https://zbmath.org/?q=an:0967.03050
+  source: zbmath
+tanakayamazaki2000:
+  authors:
+    - Kazuyuki Tanaka
+    - Takeshi Yamazaki
+  title: A nonstandard construction of Haar measure and weak König's lemma
+  venue: The Journal of Symbolic Logic 65(1), 173-186
+  year: 2000
+  doi: 10.2307/2586530
+  source: zbmath
+yamazaki2000:
+  authors:
+    - Takeshi Yamazaki
+  title: Model-theoretic studies on subsystems of second order arithmetic
+  venue: Tohoku Mathematical Publications 17, iii, 63 p
+  year: 2000
+  url: https://zbmath.org/?q=an:0964.03059
+  source: zbmath
+hirst2000:
+  authors:
+    - Jeffry L. Hirst
+  title: Reverse mathematics and rank functions for directed graphs
+  venue: Archive for Mathematical Logic 39(8), 569-579
+  year: 2000
+  doi: 10.1007/s001530050165
+  source: zbmath
+jagerstrahm2000:
+  authors:
+    - Gerhard Jäger
+    - Thomas Strahm
+  title: Fixed point theories and dependent choice
+  venue: Archive for Mathematical Logic 39(7), 493-508
+  year: 2000
+  doi: 10.1007/s001530050161
+  source: zbmath
+cenzerjockusch2000:
+  authors:
+    - Douglas Cenzer
+    - Carl G. jun. Jockusch
+  title: $\Pi_1^0$ classes -- structure and applications
+  venue: "Cholak, Peter A. (ed.) et al., Computability theory and its applications. Current trends and open problems. Proceedings of a 1999 AMS-IMS-SIAM joint summer research conference, Boulder, CO, USA, June 13-17, 1999. Providence, RI: American Mathematical Society (AMS). Contemp. Math. 257, 39-59 (2000)"
+  year: 2000
+  url: https://zbmath.org/?q=an:0962.03040
+  source: zbmath
+chongyang2000:
+  authors:
+    - C. T. Chong
+    - Yue Yang
+  title: "Computability theory in arithmetic: Provability, structure and techniques"
+  venue: "Cholak, Peter A. (ed.) et al., Computability theory and its applications. Current trends and open problems. Proceedings of a 1999 AMS-IMS-SIAM joint summer research conference, Boulder, CO, USA, June 13-17, 1999. Providence, RI: American Mathematical Society (AMS). Contemp. Math. 257, 73-81 (2000)"
+  year: 2000
+  url: https://zbmath.org/?q=an:0962.03031
+  source: zbmath
+yamazaki2000b:
+  authors:
+    - Takeshi Yamazaki
+  title: Some more conservation results on the Baire category theorem
+  venue: Mathematical Logic Quarterly (MLQ) 46(1), 105-110
+  year: 2000
+  doi: 10.1002/(SICI)1521-3870(200001)46:1<105::AID-MALQ105>3.0.CO;2-2
+  source: zbmath
+kohlenbach2000:
+  authors:
+    - Ulrich Kohlenbach
+  title: Things that can and things that cannot be done in PRA
+  venue: Annals of Pure and Applied Logic 102(3), 223-245
+  year: 2000
+  doi: 10.1016/S0168-0072(99)00036-6
+  source: zbmath
+schulz2000:
+  authors:
+    - Holger Schulz
+  title: Type two theory of effectivity and real PCF
+  venue: "Spreen, Dieter (ed.), Domains IV. Workshop, Haus Humboldtstein, Remagen-Rolandseck, Germany, October 2-4, 1998. Amsterdam: Elsevier, Electronic Notes in Theoretical Computer Science. 35, 13 p., electronic only (2000)"
+  year: 2000
+  url: https://zbmath.org/?q=an:0962.68103
+  source: zbmath
+yamazaki2001:
+  authors:
+    - Takeshi Yamazaki
+  title: Reverse mathematics and completeness theorems for intuitionistic logic
+  venue: Notre Dame Journal of Formal Logic 42(3), 143-148
+  year: 2001
+  doi: 10.1305/ndjfl/1063372197
+  source: zbmath
+solomon2001:
+  authors:
+    - Reed Solomon
+  title: $\Pi_1^1$-CA$_0$ and order types of countable ordered groups
+  venue: The Journal of Symbolic Logic 66(1), 192-206
+  year: 2001
+  doi: 10.2307/2694917
+  source: zbmath
+hardinvelleman2001:
+  authors:
+    - Christopher S. Hardin
+    - Daniel J. Velleman
+  title: The mean value theorem in second order arithmetic
+  venue: The Journal of Symbolic Logic 66(3), 1353-1358
+  year: 2001
+  doi: 10.2307/2695111
+  source: zbmath
+chagrov2001:
+  authors:
+    - A. V. Chagrov
+  title: The question of reverse mathematics of modal logics
+  venue: "Karpenko, A. S. (ed.), Logical investigations. 8. Papers from the 3rd international conference ``Smirnov's Readings'', Moscow, Russia, May 2001. Moskva: Nauka. 224-243 (2001)"
+  year: 2001
+  url: https://zbmath.org/?q=an:1031.03029
+  source: zbmath
+kohlenbach2002:
+  authors:
+    - Ulrich Kohlenbach
+  title: Foundational and mathematical uses of higher types
+  venue: "Sieg, Wilfried (ed.) et al., Reflections on the foundations of mathematics. Essays in honor of Solomon Feferman. Natick, MA: A K Peters. Lect. Notes Log. 15, 92-116 (2002)"
+  year: 2002
+  url: https://zbmath.org/?q=an:1022.03044
+  source: zbmath
+browngiustosimpson2002:
+  authors:
+    - Douglas K. Brown
+    - Mariagnese Giusto
+    - Stephen G. Simpson
+  title: Vitali's theorem and WWKL
+  venue: Archive for Mathematical Logic 41(2), 191-206
+  year: 2002
+  doi: 10.1007/s001530100100
+  source: zbmath
+simpson2002:
+  authors:
+    - Stephen G. Simpson
+  title: "Predicativity: The outer limits"
+  venue: "Sieg, Wilfried (ed.) et al., Reflections on the foundations of mathematics. Essays in honor of Solomon Feferman. Natick, MA: A K Peters. Lect. Notes Log. 15, 130-136 (2002)"
+  year: 2002
+  url: https://zbmath.org/?q=an:1019.03038
+  source: zbmath
+simpsontanakayamazaki2002:
+  authors:
+    - Stephen G. Simpson
+    - Kazuyuki Tanaka
+    - Takeshi Yamazaki
+  title: Some conservation results on weak König's lemma
+  venue: Annals of Pure and Applied Logic 118(1-2), 87-114
+  year: 2002
+  doi: 10.1016/S0168-0072(01)00121-X
+  source: zbmath
+lemppetal2002:
+  authors:
+    - Steffen Lempp
+    - Charles McCoy
+    - Andrei Morozov
+    - Reed Solomon
+  title: Group theoretic properties of the group of computable automorphisms of a countable dense linear order
+  venue: Order 19(4), 343-364
+  year: 2002
+  doi: 10.1023/A:1022878003199
+  source: zbmath
+fernandes2002:
+  authors:
+    - António Marques Fernandes
+  title: A new conservation result of $\text{WKL}_0$ over $\text{RCA}_0$
+  venue: Archive for Mathematical Logic 41(1), 55-63
+  year: 2002
+  doi: 10.1007/s001530200004
+  source: zbmath
+kohlenbach2002b:
+  authors:
+    - Ulrich Kohlenbach
+  title: On uniform weak König's lemma
+  venue: Annals of Pure and Applied Logic 114(1-3), 103-116
+  year: 2002
+  doi: 10.1016/S0168-0072(01)00077-X
+  source: zbmath
+escardostreicher2002:
+  authors:
+    - Martín Escardó
+    - Thomas Streicher
+  title: In domain realizability, not all functionals on $C[-1,1]$ are continuous
+  venue: Mathematical Logic Quarterly (MLQ) 48, 41-44
+  year: 2002
+  doi: 10.1002/1521-3870(200210)48:1+<41::AID-MALQ41>3.0.CO;2-V
+  source: zbmath
+giusto2003:
+  authors:
+    - Mariagnese Giusto
+  title: Topics in reverse mathematics
+  venue: "Löwe, Benedikt (ed.) et al., Foundation of the formal sciences II. Applications of mathematical logic in philosophy and linguistics. Papers of a conference, Bonn, Germany, November 10--13, 2000. Dordrecht: Kluwer Academic Publishers (ISBN 1-4020-1154-7/hbk). Trends Log. Stud. Log. Libr. 17, 63-87 (2003)"
+  year: 2003
+  url: https://zbmath.org/?q=an:1036.03043
+  source: zbmath
+downeyetal2003:
+  authors:
+    - Rodney G. Downey
+    - Denis R. Hirschfeldt
+    - Steffen Lempp
+    - Reed Solomon
+  title: Computability-theoretic and proof-theoretic aspects of partial and linear orderings
+  venue: Israel Journal of Mathematics 138, 271-289
+  year: 2003
+  doi: 10.1007/BF02783429
+  source: zbmath
+avigad2003:
+  authors:
+    - Jeremy Avigad
+  title: Number theory and elementary arithmetic
+  venue: Philosophia Mathematica. Series III 11(3), 257-284
+  year: 2003
+  doi: 10.1093/philmat/11.3.257
+  source: zbmath
+hemmerling2003:
+  authors:
+    - Armin Hemmerling
+  title: Approximate decidability in Euclidean spaces
+  venue: Mathematical Logic Quarterly (MLQ) 49(1), 34-56
+  year: 2003
+  doi: 10.1002/malq.200310003
+  source: zbmath
+barmpalias2003:
+  authors:
+    - George Barmpalias
+  title: A transfinite hierarchy of reals
+  venue: Mathematical Logic Quarterly (MLQ) 49(2), 163-172
+  year: 2003
+  doi: 10.1002/malq.200310015
+  source: zbmath
+sakamotoyamazaki2004:
+  authors:
+    - Nobuyuki Sakamoto
+    - Takeshi Yamazaki
+  title: Uniform versions of some axioms of second order arithmetic
+  venue: Mathematical Logic Quarterly (MLQ) 50(6), 587-593
+  year: 2004
+  doi: 10.1002/malq.200310122
+  source: zbmath
+hirst2004:
+  authors:
+    - Jeffry L. Hirst
+  title: Hindman's theorem, ultrafilters, and reverse mathematics
+  venue: The Journal of Symbolic Logic 69(1), 65-72
+  year: 2004
+  doi: 10.2178/jsl/1080938825
+  source: zbmath
+millersolomon2004:
+  authors:
+    - Joseph S. Miller
+    - Reed Solomon
+  title: Effectiveness for infinite variable words and the dual Ramsey theorem
+  venue: Archive for Mathematical Logic 43(4), 543-555
+  year: 2004
+  url: https://zbmath.org/?q=an:1059.03068
+  source: zbmath
+sakamototanaka2004:
+  authors:
+    - Nobuyuki Sakamoto
+    - Kazuyuki Tanaka
+  title: The strong soundness theorem for real closed fields and Hilbert's Nullstellensatz in second order arithmetic
+  venue: Archive for Mathematical Logic 43(3), 337-349
+  year: 2004
+  doi: 10.1007/s00153-003-0206-y
+  source: zbmath
+hirst2004b:
+  authors:
+    - Jeffry L. Hirst
+  title: Minima of initial segments of infinite sequences of reals
+  venue: Mathematical Logic Quarterly (MLQ) 50(1), 47-50
+  year: 2004
+  doi: 10.1002/malq.200310075
+  source: zbmath
+schmerl2004:
+  authors:
+    - James H. Schmerl
+  title: Minimal spanning trees
+  venue: Proceedings of the American Mathematical Society 132(2), 333-340
+  year: 2004
+  doi: 10.1090/S0002-9939-03-07182-X
+  source: zbmath
+lietz2004:
+  authors:
+    - Peter Lietz
+  title: From constructive mathematics to computable analysis via the realizability interpretation
+  venue: "Darmstadt: TU Darmstadt, Fachbereich Mathematik (Dissertation). 96 p. (2004)"
+  year: 2004
+  url: https://zbmath.org/?q=an:1131.03303
+  source: zbmath
+schmerl2005:
+  authors:
+    - James H. Schmerl
+  title: Undecidable theories and reverse mathematics
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 349-351 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1083.03054
+  source: zbmath
+anon2005:
+  authors:
+    - (unknown)
+  title: Reverse mathematics 2001
+  venue: Lecture Notes in Logic 21, x, 401 p
+  year: 2005
+  url: https://zbmath.org/?q=an:1075.03002
+  source: zbmath
+kohlenbach2005:
+  authors:
+    - Ulrich Kohlenbach
+  title: Higher order reverse mathematics
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 281-295 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1097.03053
+  source: zbmath
+schmerl2005b:
+  authors:
+    - James H. Schmerl
+  title: "Reverse mathematics and graph coloring: eliminating diagonalization"
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 331-348 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1083.03053
+  source: zbmath
+mummertsimpson2005:
+  authors:
+    - Carl Mummert
+    - Stephen G. Simpson
+  title: Reverse mathematics and $\Pi_2^1$ comprehension
+  venue: The Bulletin of Symbolic Logic 11(4), 526-533
+  year: 2005
+  doi: 10.2178/bsl/1130335208
+  source: zbmath
+loeb2005:
+  authors:
+    - Iris Loeb
+  title: Equivalents of the (weak) fan theorem
+  venue: Annals of Pure and Applied Logic 132(1), 51-66
+  year: 2005
+  doi: 10.1016/j.apal.2004.07.002
+  source: zbmath
+hirst2005:
+  authors:
+    - Jeffry L. Hirst
+  title: A survey of the reverse mathematics of ordinal arithmetic
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 222-234 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1088.03047
+  source: zbmath
+hirst2005b:
+  authors:
+    - Jeffry L. Hirst
+  title: Reverse mathematics and ordinal suprema
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 235-243 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1089.03053
+  source: zbmath
+ishihara2005:
+  authors:
+    - Hajime Ishihara
+  title: "Constructive reverse mathematics: compactness properties"
+  venue: "Crosilla, Laura (ed.) et al., From sets and types to topology and analysis. Towards practicable foundations for constructive mathematics. Based on the workshop, Venice, Italy, May 12--16, 2003. Oxford: Oxford University Press (ISBN 0-19-856651-4/hbk). Oxford Logic Guides 48, 245-267 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1095.03075
+  source: zbmath
+marcone2005:
+  authors:
+    - Alberto Marcone
+  title: Wqo and bqo theory in subsystems of second order arithmetic
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 303-330 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1083.03052
+  source: zbmath
+downeysolomon2005:
+  authors:
+    - Rodney G. Downey
+    - Reed Solomon
+  title: Reverse mathematics, Archimedean classes, and Hahn's theorem
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 147-163 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1083.03050
+  source: zbmath
+hirst2005c:
+  authors:
+    - Jeffry L. Hirst
+  title: A note on compactness of countable sets
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 219-221 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1089.03052
+  source: zbmath
+fernandesferreira2005:
+  authors:
+    - António M. Fernandes
+    - Fernando Ferreira
+  title: Basic applications of Weak König's Lemma in feasible analysis
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 175-188 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1098.03068
+  source: zbmath
+yamazaki2005:
+  authors:
+    - Takeshi Yamazaki
+  title: Reverse mathematics and weak systems of 0-1 strings for feasible analysis
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 394-401 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1098.03069
+  source: zbmath
+humphreys2005:
+  authors:
+    - A. James Humphreys
+  title: Did Cantor need set theory?
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 244-270 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1097.03052
+  source: zbmath
+bergerishihara2005:
+  authors:
+    - Josef Berger
+    - Hajime Ishihara
+  title: Brouwer's fan theorem and unique existence in constructive analysis
+  venue: Mathematical Logic Quarterly (MLQ) 51(4), 360-364
+  year: 2005
+  doi: 10.1002/malq.200410038
+  source: zbmath
+cenzerremmel2005:
+  authors:
+    - Douglas Cenzer
+    - Jeffrey B. Remmel
+  title: Proof-theoretic strength of the stable marriage theorem and other problems
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 67-103 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1087.03040
+  source: zbmath
+brown2005:
+  authors:
+    - Douglas K. Brown
+  title: Notions of compactness in weak subsystems of second order arithmetic
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 47-66 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1087.03039
+  source: zbmath
+simpson2005:
+  authors:
+    - Stephen G. Simpson
+  title: $\Pi_1^0$ sets and models of $\text{WKL}_0$
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 352-378 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1106.03051
+  source: zbmath
+bridges2005:
+  authors:
+    - Douglas Bridges
+  title: A weak constructive sequential compactness property and the fan theorem
+  venue: Logic Journal of the IGPL 13(2), 151-158
+  year: 2005
+  doi: 10.1093/jigpal/jzi011
+  source: zbmath
+berger2005:
+  authors:
+    - J. Berger
+  title: Constructive equivalents of the uniform continuity theorem
+  venue: Journal of Universal Computer Science 11(12), 1878-1883
+  year: 2005
+  url: https://zbmath.org/?q=an:1120.03047
+  source: zbmath
+friedman2005:
+  authors:
+    - Harvey M. Friedman
+  title: Metamathematics of comparability
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 201-218 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1083.03051
+  source: zbmath
+tanakayamazaki2005:
+  authors:
+    - Kazuyuki Tanaka
+    - Takeshi Yamazaki
+  title: Manipulating the reals in $\text{RCA}_0$
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 379-393 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1087.03043
+  source: zbmath
+fernandes2005:
+  authors:
+    - António M. Fernandes
+  title: The Baire category theorem over a feasible base theory
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 164-174 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1087.03041
+  source: zbmath
+hertling2005:
+  authors:
+    - P. Hertling
+  title: Nonrandom sequences between random sequences
+  venue: Journal of Universal Computer Science 11(12), 1970-1985
+  year: 2005
+  url: https://zbmath.org/?q=an:1120.68061
+  source: zbmath
+kossak2005:
+  authors:
+    - Roman Kossak
+  title: Arithmetic saturation
+  venue: "Simpson, Stephen G. (ed.), Reverse mathematics 2001. Wellesley, MA: A K Peters; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 1-56881-263-9/hbk; 1-56881-264-7/pbk). Lecture Notes in Logic 21, 296-302 (2005)"
+  year: 2005
+  url: https://zbmath.org/?q=an:1092.03030
+  source: zbmath
+keisler2006:
+  authors:
+    - H. Jerome Keisler
+  title: Nonstandard arithmetic and reverse mathematics
+  venue: The Bulletin of Symbolic Logic 12(1), 100-125
+  year: 2006
+  doi: 10.2178/bsl/1140640945
+  source: zbmath
+hirst2006:
+  authors:
+    - Jeffry L. Hirst
+  title: Reverse mathematics of separably closed sets
+  venue: Archive for Mathematical Logic 45(1), 1-2
+  year: 2006
+  doi: 10.1007/s00153-005-0298-7
+  source: zbmath
+shore2006:
+  authors:
+    - Richard A. Shore
+  title: Invariants, Boolean algebras and ACA$_{0}^{+}$
+  venue: Transactions of the American Mathematical Society 358(3), 989-1014
+  year: 2006
+  doi: 10.1090/S0002-9947-05-03802-X
+  source: zbmath
+lemppmummert2006:
+  authors:
+    - Steffen Lempp
+    - Carl Mummert
+  title: Filters on computable posets
+  venue: Notre Dame Journal of Formal Logic 47(4), 479-485
+  year: 2006
+  doi: 10.1305/ndjfl/1168352662
+  source: zbmath
+mummert2006:
+  authors:
+    - Carl Mummert
+  title: Reverse mathematics of MF spaces
+  venue: Journal of Mathematical Logic 6(2), 203-232
+  year: 2006
+  doi: 10.1142/S0219061306000578
+  source: zbmath
+avigadsimic2006:
+  authors:
+    - Jeremy Avigad
+    - Ksenija Simic
+  title: Fundamental notions of analysis in subsystems of second-order arithmetic
+  venue: Annals of Pure and Applied Logic 139(1-3), 138-184
+  year: 2006
+  doi: 10.1016/j.apal.2005.03.004
+  source: zbmath
+montalban2006:
+  authors:
+    - Antonio Montalbán
+  title: Indecomposable linear orderings and hyperarithmetic analysis
+  venue: Journal of Mathematical Logic 6(1), 89-120
+  year: 2006
+  doi: 10.1142/S0219061306000517
+  source: zbmath
+enayat2006:
+  authors:
+    - Ali Enayat
+  title: From bounded arithmetic to second order arithmetic via automorphisms
+  venue: "Enayat, Ali (ed.) et al., Logic in Tehran. Proceedings of the workshop and conference on logic, algebra and arithmetic, Tehran, Iran, October 18--22, 2003. Wellesley, MA: AK Peters (ISBN 1-56881-296-5/pbk; 1-56881-295-7/hbk). Lecture Notes in Logic 26, 87-113 (2006)"
+  year: 2006
+  url: https://zbmath.org/?q=an:1107.03038
+  source: zbmath
+montalban2006b:
+  authors:
+    - Antonio Montalbán
+  title: Equivalence between Fraïssé's conjecture and Jullien's theorem
+  venue: Annals of Pure and Applied Logic 139(1-3), 1-42
+  year: 2006
+  doi: 10.1016/j.apal.2005.03.001
+  source: zbmath
+ferreiraferreira2006:
+  authors:
+    - Fernando Ferreira
+    - Gilda Ferreira
+  title: Counting as integration in feasible analysis
+  venue: Mathematical Logic Quarterly (MLQ) 52(3), 315-320
+  year: 2006
+  doi: 10.1002/malq.200510035
+  source: zbmath
+steinerstrahm2006:
+  authors:
+    - David Steiner
+    - Thomas Strahm
+  title: On the proof theory of type two functionals based on primitive recursive operations
+  venue: Mathematical Logic Quarterly (MLQ) 52(3), 237-252
+  year: 2006
+  doi: 10.1002/malq.200510029
+  source: zbmath
+bergerbridgesschuster2006:
+  authors:
+    - Josef Berger
+    - Douglas Bridges
+    - Peter Schuster
+  title: The fan theorem and unique existence of maxima
+  venue: The Journal of Symbolic Logic 71(2), 713-720
+  year: 2006
+  doi: 10.2178/jsl/1146620167
+  source: zbmath
+ishihara2006:
+  authors:
+    - Hajime Ishihara
+  title: "Weak König's lemma implies Brouwer's fan theorem: a direct proof"
+  venue: Notre Dame Journal of Formal Logic 47(2), 249-252
+  year: 2006
+  doi: 10.1305/ndjfl/1153858649
+  source: zbmath
+berger2006:
+  authors:
+    - Josef Berger
+  title: The logical strength of the uniform continuity theorem
+  venue: "Beckmann, Arnold (ed.) et al., Logical approaches to computational barriers. Second conference on computability in Europe, CiE 2006, Swansea, UK, June 30--July 5, 2006. Proceedings. Berlin: Springer (ISBN 3-540-35466-2/pbk). Lecture Notes in Computer Science 3988, 35-39 (2006)"
+  year: 2006
+  doi: 10.1007/11780342
+  source: zbmath
+bergerbridges2006:
+  authors:
+    - Josef Berger
+    - Douglas S. Bridges
+  title: A bizarre property equivalent to the $\Pi_1^0$-fan theorem
+  venue: Logic Journal of the IGPL 14(6), 867-871
+  year: 2006
+  doi: 10.1093/jigpal/jzl026
+  source: zbmath
+berardi2006:
+  authors:
+    - Stefano Berardi
+  title: Some intuitionistic equivalents of classical principles for degree 2 formulas
+  venue: Annals of Pure and Applied Logic 139(1-3), 185-200
+  year: 2006
+  doi: 10.1016/j.apal.2005.04.006
+  source: zbmath
+bergerschuster2006:
+  authors:
+    - Josef Berger
+    - Peter Schuster
+  title: Classifying Dini's theorem
+  venue: Notre Dame Journal of Formal Logic 47(2), 253-262
+  year: 2006
+  doi: 10.1305/ndjfl/1153858650
+  source: zbmath
+jaegerescardosantini2006:
+  authors:
+    - Frédéric De Jaeger
+    - Martín Escardó
+    - Gabriele Santini
+  title: On the computational content of the Lawson topology
+  venue: Theoretical Computer Science 357(1-3), 230-240
+  year: 2006
+  doi: 10.1016/j.tcs.2006.03.021
+  source: zbmath
+ghasemimoniri2006:
+  authors:
+    - Mehdi Ghasemi
+    - Mojtaba Moniri
+  title: Beatty sequences and the arithmetical hierarchy
+  venue: "Enayat, Ali (ed.) et al., Logic in Tehran. Proceedings of the workshop and conference on logic, algebra and arithmetic, Tehran, Iran, October 18--22, 2003. Wellesley, MA: AK Peters (ISBN 1-56881-296-5/pbk; 1-56881-295-7/hbk). Lecture Notes in Logic 26, 126-133 (2006)"
+  year: 2006
+  url: https://zbmath.org/?q=an:1107.03053
+  source: zbmath
+schuster2006:
+  authors:
+    - Peter Schuster
+  title: Unique solutions
+  venue: Mathematical Logic Quarterly (MLQ) 52(6), 534-539
+  year: 2006
+  doi: 10.1002/malq.200610012
+  source: zbmath
+ishihara2007:
+  authors:
+    - Hajime Ishihara
+  title: Unique existence and computability in constructive reverse mathematics
+  venue: "Cooper, S. Barry (ed.) et al., Computation and logic in the real world. Third conference on computability in Europe, CiE 2007, Siena, Italy, June 18--23, 2007. Proceedings. Berlin: Springer (ISBN 978-3-540-73000-2/pbk). Lecture Notes in Computer Science 4497, 368-377 (2007)"
+  year: 2007
+  doi: 10.1007/978-3-540-73001-9_38
+  source: zbmath
+downeyetal2007:
+  authors:
+    - Rodney G. Downey
+    - Denis R. Hirschfeldt
+    - Asher M. Kach
+    - Steffen Lempp
+    - Joseph R. Mileti
+    - Antonio Montalbán
+  title: Subspaces of computable vector spaces
+  venue: Journal of Algebra 314(2), 888-894
+  year: 2007
+  doi: 10.1016/j.jalgebra.2006.08.040
+  source: zbmath
+hirst2007:
+  authors:
+    - Jeffry L. Hirst
+  title: Representations of reals in reverse mathematics
+  venue: Bulletin of the Polish Academy of Sciences, Mathematics 55(4), 303-316
+  year: 2007
+  doi: 10.4064/ba55-4-2
+  source: zbmath
+heinatsch2007:
+  authors:
+    - Christoph Heinatsch
+  title: ${\Pi^1_2}$-comprehension and the property of Ramsey
+  venue: "Münster: Univ. Münster, Fachbereich Mathematik und Informatik (Dissertation). iv, 88 p. (2007)"
+  year: 2007
+  doi: 10.1007/s00153-009-0124-8
+  source: arxiv
+heinatschmollerfeld2007:
+  authors:
+    - Christoph Heinatsch
+    - Michael Möllerfeld
+  title: Determinacy in second order arithmetic
+  venue: "Bold, Stefan (ed.) et al., Foundations of the formal sciences V. Infinite games. Papers of the 5th conference, FotFS V, Bonn, Germany, November 26--29, 2004. London: King's College Publications (ISBN 978-1-904987-75-8/pbk). Studies in Logic (London) 11, 143-155 (2007)"
+  year: 2007
+  url: https://zbmath.org/?q=an:1151.03030
+  source: zbmath
+medsalemtanaka2007:
+  authors:
+    - MedYahya Ould MedSalem
+    - Kazuyuki Tanaka
+  title: $\Delta^0_3$-determinacy, comprehension and induction
+  venue: The Journal of Symbolic Logic 72(2), 452-462
+  year: 2007
+  doi: 10.2178/jsl/1185803618
+  source: zbmath
+nemotomedsalemtanaka2007:
+  authors:
+    - Takako Nemoto
+    - MedYahya Ould MedSalem
+    - Kazuyuki Tanaka
+  title: Infinite games in the Cantor space and subsystems of second order arithmetic
+  venue: Mathematical Logic Quarterly (MLQ) 53(3), 226-236
+  year: 2007
+  doi: 10.1002/malq.200610041
+  source: zbmath
+sakamotoyokoyama2007:
+  authors:
+    - Nobuyuki Sakamoto
+    - Keita Yokoyama
+  title: The Jordan curve theorem and the Schönflies theorem in weak second-order arithmetic
+  venue: Archive for Mathematical Logic 46(5-6), 465-480
+  year: 2007
+  doi: 10.1007/s00153-007-0050-6
+  source: zbmath
+yokoyama2007:
+  authors:
+    - Keita Yokoyama
+  title: Complex analysis in subsystems of second order arithmetic
+  venue: Archive for Mathematical Logic 46(1), 15-35
+  year: 2007
+  doi: 10.1007/s00153-006-0017-z
+  source: zbmath
+yokoyama2007b:
+  authors:
+    - Keita Yokoyama
+  title: Non-standard analysis in $\mathrm{ACA}_{0}$ and Riemann mapping theorem
+  venue: Mathematical Logic Quarterly (MLQ) 53(2), 132-146
+  year: 2007
+  doi: 10.1002/malq.200610033
+  source: zbmath
+ferreiraoliva2007:
+  authors:
+    - Fernando Ferreira
+    - Paulo Oliva
+  title: Bounded functional interpretation and feasible analysis
+  venue: Annals of Pure and Applied Logic 145(2), 115-129
+  year: 2007
+  doi: 10.1016/j.apal.2006.07.002
+  source: zbmath
+downeylemppmileti2007:
+  authors:
+    - Rodney G. Downey
+    - Steffen Lempp
+    - Joseph R. Mileti
+  title: Ideals in computable rings
+  venue: Journal of Algebra 314(2), 872-887
+  year: 2007
+  doi: 10.1016/j.jalgebra.2007.02.058
+  source: zbmath
+montalban2007:
+  authors:
+    - Antonio Montalbán
+  title: On the equimorphism types of linear orderings
+  venue: The Bulletin of Symbolic Logic 13(1), 71-99
+  year: 2007
+  doi: 10.2178/bsl/1174668219
+  source: zbmath
+weihrauchzhong2007:
+  authors:
+    - Klaus Weihrauch
+    - Ning Zhong
+  title: Computable analysis of the abstract Cauchy problem in a Banach space and its applications. I
+  venue: Mathematical Logic Quarterly (MLQ) 53(4-5), 511-531
+  year: 2007
+  doi: 10.1002/malq.200710015
+  source: arxiv
+simic2007:
+  authors:
+    - Ksenija Simic
+  title: The pointwise ergodic theorem in subsystems of second-order arithmetic
+  venue: The Journal of Symbolic Logic 72(1), 45-66
+  year: 2007
+  doi: 10.2178/jsl/1174668383
+  source: zbmath
+grubbaschroderweihrauch2007:
+  authors:
+    - Tanja Grubba
+    - Matthias Schröder
+    - Klaus Weihrauch
+  title: Computable metrization
+  venue: Mathematical Logic Quarterly (MLQ) 53(4-5), 381-395
+  year: 2007
+  doi: 10.1002/malq.200710009
+  source: zbmath
+simpson2007:
+  authors:
+    - Stephen G. Simpson
+  title: Almost everywhere domination and superhighness
+  venue: Mathematical Logic Quarterly (MLQ) 53(4-5), 462-482
+  year: 2007
+  doi: 10.1002/malq.200710012
+  source: zbmath
+schuster2007:
+  authors:
+    - Peter Schuster
+  title: Corrigendum to ``Unique solutions''
+  venue: Mathematical Logic Quarterly (MLQ) 53(2), 214
+  year: 2007
+  doi: 10.1002/malq.200710001
+  source: zbmath
+chong2008:
+  authors:
+    - C. T. Chong
+  title: Nonstandard methods in Ramsey's theorem for pairs
+  venue: "Chong, Chitat (ed.) et al., Computational prospects of infinity. Part II: Presented talks. Selected papers of the workshop, June 20--August 15, 2005. Hackensack, NJ: World Scientific (ISBN 978-981-279-654-7/hbk). Lecture Notes Series. Institute for Mathematical Sciences. National University of Singapore 15, 47-57 (2008)"
+  year: 2008
+  url: https://zbmath.org/?q=an:1157.03043
+  source: zbmath
+ferreiraferreira2008:
+  authors:
+    - Fernando Ferreira
+    - Gilda Ferreira
+  title: Harrington's conservation theorem redone
+  venue: Archive for Mathematical Logic 47(2), 91-100
+  year: 2008
+  doi: 10.1007/s00153-008-0080-8
+  source: zbmath
+berger2008:
+  authors:
+    - Josef Berger
+  title: The weak König lemma and uniform continuity
+  venue: The Journal of Symbolic Logic 73(3), 933-939
+  year: 2008
+  doi: 10.2178/jsl/1230396756
+  source: zbmath
+neeman2008:
+  authors:
+    - Itay Neeman
+  title: The strength of Jullien's indecomposability theorem
+  venue: Journal of Mathematical Logic 8(1), 93-119
+  year: 2008
+  doi: 10.1142/S0219061308000725
+  source: zbmath
+loeb2008:
+  authors:
+    - Iris Loeb
+  title: Indecomposability of $\mathbb R$ and $\mathbb R \backslash \{0\}$ in constructive reverse mathematics
+  venue: Logic Journal of the IGPL 16(3), 269-273
+  year: 2008
+  doi: 10.1093/jigpal/jzn006
+  source: zbmath
+mummert2008:
+  authors:
+    - Carl Mummert
+  title: Subsystems of second-order arithmetic between $\text{RCA}_{0}$ and $\text{WKL}_{0}$
+  venue: Archive for Mathematical Logic 47(3), 205-210
+  year: 2008
+  doi: 10.1007/s00153-008-0074-6
+  source: zbmath
+nemoto2008:
+  authors:
+    - Takako Nemoto
+  title: Complete determinacy and subsystems of second order arithmetic
+  venue: "Beckmann, Arnold (ed.) et al., Logic and theory of algorithms. 4th conference on computability in Europe, CiE 2008, Athens, Greece, June 15--20, 2008. Proceedings. Berlin: Springer (ISBN 978-3-540-69405-2/pbk). Lecture Notes in Computer Science 5028, 457-466 (2008)"
+  year: 2008
+  doi: 10.1007/978-3-540-69407-6_49
+  source: zbmath
+mileti2008:
+  authors:
+    - Joseph R. Mileti
+  title: The canonical Ramsey theorem and computability theory
+  venue: Transactions of the American Mathematical Society 360(3), 1309-1340
+  year: 2008
+  doi: 10.1090/S0002-9947-07-04390-5
+  source: zbmath
+blanck2008:
+  authors:
+    - Jens Blanck
+  title: Reducibility of domain representations and Cantor-Weihrauch domain representations
+  venue: Mathematical Structures in Computer Science 18(6), 1031-1056
+  year: 2008
+  doi: 10.1017/S0960129508007093
+  source: zbmath
+bosserhoff2008:
+  authors:
+    - Volker Bosserhoff
+  title: Notions of probabilistic computability on represented spaces
+  venue: Journal of Universal Computer Science 14(6), 956-995
+  year: 2008
+  doi: 10.1016/j.entcs.2008.03.013
+  source: arxiv
+bergerbridges2008:
+  authors:
+    - Josef Berger
+    - Douglas Bridges
+  title: The anti-Specker property, a Heine-Borel property, and uniform continuity
+  venue: Archive for Mathematical Logic 46(7-8), 583-592
+  year: 2008
+  doi: 10.1007/s00153-007-0063-1
+  source: zbmath
+ishiharaschuster2008:
+  authors:
+    - Hajime Ishihara
+    - Peter Schuster
+  title: A continuity principle, a version of Baire's theorem and a boundedness principle
+  venue: The Journal of Symbolic Logic 73(4), 1354-1360
+  year: 2008
+  doi: 10.2178/jsl/1230396924
+  source: zbmath
+greenbergmontalban2008:
+  authors:
+    - Noam Greenberg
+    - Antonio Montalbán
+  title: Ranked structures and arithmetic transfinite recursion
+  venue: Transactions of the American Mathematical Society 360(3), 1265-1307
+  year: 2008
+  doi: 10.1090/S0002-9947-07-04285-7
+  source: zbmath
+montalban2008:
+  authors:
+    - Antonio Montalbán
+  title: On the $\Pi _1^1$-separation principle
+  venue: Mathematical Logic Quarterly (MLQ) 54(6), 563-578
+  year: 2008
+  doi: 10.1002/malq.200710049
+  source: zbmath
+loeb2008b:
+  authors:
+    - Iris Loeb
+  title: "Factoring out intuitionistic theorems: Continuity principles and the uniform continuity theorem"
+  venue: "Beckmann, Arnold (ed.) et al., Logic and theory of algorithms. 4th conference on computability in Europe, CiE 2008, Athens, Greece, June 15--20, 2008. Proceedings. Berlin: Springer (ISBN 978-3-540-69405-2/pbk). Lecture Notes in Computer Science 5028, 379-388 (2008)"
+  year: 2008
+  doi: 10.1007/978-3-540-69407-6_41
+  source: zbmath
+medsalemtanaka2008:
+  authors:
+    - MedYahya Ould MedSalem
+    - Kazuyuki Tanaka
+  title: Weak determinacy and iterations of inductive definitions
+  venue: "Chong, Chitat (ed.) et al., Computational prospects of infinity. Part II: Presented talks. Selected papers of the workshop, June 20--August 15, 2005. Hackensack, NJ: World Scientific (ISBN 978-981-279-654-7/hbk). Lecture Notes Series. Institute for Mathematical Sciences. National University of Singapore 15, 333-353 (2008)"
+  year: 2008
+  url: https://zbmath.org/?q=an:1157.03035
+  source: zbmath
+brattka2008:
+  authors:
+    - Vasco Brattka
+  title: Plottable real number functions and the computable graph theorem
+  venue: SIAM Journal on Computing 38(1), 303-328
+  year: 2008
+  doi: 10.1137/060658023
+  source: zbmath
+zheng2008:
+  authors:
+    - Xizhong Zheng
+  title: Classification of computably approximable real numbers
+  venue: Theory of Computing Systems 43(3-4), 603-624
+  year: 2008
+  doi: 10.1007/s00224-007-9026-5
+  source: zbmath
+bergerschuster2009:
+  authors:
+    - Josef Berger
+    - Peter Schuster
+  title: Dini's theorem in the light of reverse mathematics
+  venue: "Lindström, Sten (ed.) et al., Logicism, intuitionism, and formalism. What has become of them? Originated from the conference and the symposium on constructive mathematics, Uppsala, Sweden, August 2004. Dordrecht: Springer (ISBN 978-1-4020-8925-1/hbk; 978-1-4020-8926-8/e-book). Synthese Library 341, 153-166 (2009)"
+  year: 2009
+  doi: 10.1007/978-1-4020-8926-8_7
+  source: zbmath
+yokoyama2009:
+  authors:
+    - Keita Yokoyama
+  title: Standard and non-standard analysis in second order arithmetic
+  venue: Tohoku Mathematical Publications 34, iv, 130 p
+  year: 2009
+  url: https://zbmath.org/?q=an:1178.03076
+  source: zbmath
+simpson2009b:
+  authors:
+    - Stephen G. Simpson
+  title: Mass problems and measure-theoretic regularity
+  venue: The Bulletin of Symbolic Logic 15(4), 385-409
+  year: 2009
+  doi: 10.2178/bsl/1255526079
+  source: zbmath
+friedman2009:
+  authors:
+    - Harvey M. Friedman
+  title: "The inevitability of logical strength: strict reverse mathematics"
+  venue: "Cooper, S. Barry (ed.) et al., Logic colloquium 2006. Proceedings of the annual European summer meeting of the Association for Symbolic Logic (ASL), Nijmegen, Netherlands, July 27--August 2, 2006. Cambridge: Cambridge University Press; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 978-0-521-11081-5/hbk). Lecture Notes in Logic 32, 135-183 (2009)"
+  year: 2009
+  url: https://zbmath.org/?q=an:1190.03017
+  source: zbmath
+afsharirathjen2009:
+  authors:
+    - Bahareh Afshari
+    - Michael Rathjen
+  title: "Reverse mathematics and well-ordering principles: a pilot study"
+  venue: Annals of Pure and Applied Logic 160(3), 231-237
+  year: 2009
+  doi: 10.1016/j.apal.2009.01.001
+  source: zbmath
+kjoshanssen2009:
+  authors:
+    - Bjørn Kjos-Hanssen
+  title: Infinite subsets of random sets of integers
+  venue: Mathematical Research Letters 16(1), 103-110
+  year: 2009
+  doi: 10.4310/MRL.2009.v16.n1.a10
+  arxiv: "1408.2881"
+  source: zbmath
+dienerloeb2009:
+  authors:
+    - Hannes Diener
+    - Iris Loeb
+  title: Sequences of real functions on [0,1] in constructive reverse mathematics
+  venue: Annals of Pure and Applied Logic 157(1), 50-61
+  year: 2009
+  doi: 10.1016/j.apal.2008.09.018
+  source: zbmath
+nemoto2009:
+  authors:
+    - Takako Nemoto
+  title: Determinacy of Wadge classes and subsystems of second order arithmetic
+  venue: Mathematical Logic Quarterly (MLQ) 55(2), 154-176
+  year: 2009
+  doi: 10.1002/malq.200710081
+  source: zbmath
+berger2009:
+  authors:
+    - Josef Berger
+  title: A decomposition of Brouwer's fan theorem
+  venue: Journal of Logic and Analysis 1, Paper No. 6, 8 p
+  year: 2009
+  doi: 10.4115/jla.2009.1.6
+  source: zbmath
+loeb2009:
+  authors:
+    - Iris Loeb
+  title: Indecomposability of negative dense subsets of $\mathbb R$ in constructive reverse mathematics
+  venue: Logic Journal of the IGPL 17(2), 173-177
+  year: 2009
+  doi: 10.1093/jigpal/jzp002
+  source: zbmath
+marcone2009:
+  authors:
+    - Alberto Marcone
+  title: "Equivalence between theorems: the research program of reverse mathematics"
+  venue: La Matematica nella Società e nella Cultura. Serie I 2(1), 101-126
+  year: 2009
+  url: https://zbmath.org/?q=an:1186.03020
+  source: zbmath
+marconemontalban2009b:
+  authors:
+    - Alberto Marcone
+    - Antonio Montalbán
+  title: On Fraïssé's conjecture for linear orders of finite Hausdorff rank
+  venue: Annals of Pure and Applied Logic 160(3), 355-367
+  year: 2009
+  doi: 10.1016/j.apal.2009.01.007
+  source: zbmath
+kreuzerkohlenbach2009:
+  authors:
+    - Alexander Kreuzer
+    - Ulrich Kohlenbach
+  title: Ramsey's theorem for pairs and provably recursive functions
+  venue: Notre Dame Journal of Formal Logic 50(4), 427-444
+  year: 2009
+  doi: 10.1215/00294527-2009-019
+  source: zbmath
+bridges2009:
+  authors:
+    - Douglas S. Bridges
+  title: Constructive notions of equicontinuity
+  venue: Archive for Mathematical Logic 48(5), 437-448
+  year: 2009
+  doi: 10.1007/s00153-009-0131-9
+  source: zbmath
+weihrauch2009:
+  authors:
+    - Klaus Weihrauch
+  title: Computable separation in topology, from $T_0$ to $T_3$
+  venue: "Bauer, Andrej (ed.) et al., 6th international conference on computability and complexity in analysis (CCA'09). Proceedings of the international conference, August 18--22, 2009, Ljubljana, Slovenia. Wadern: Schloss Dagstuhl -- Leibniz Zentrum für Informatik (ISBN 978-3-939897-12-5). OASIcs -- OpenAccess Series in Informatics 11, 11 p., electronic only (2009)"
+  year: 2009
+  doi: 10.4230/OASIcs.CCA.2009.2276
+  source: zbmath
+xugrubba2009:
+  authors:
+    - Yatao Xu
+    - Tanja Grubba
+  title: On computably locally compact Hausdorff spaces
+  venue: Mathematical Structures in Computer Science 19(1), 101-117
+  year: 2009
+  doi: 10.1017/S0960129508007366
+  source: zbmath
+fennergasarchpostow2009:
+  authors:
+    - Stephen Fenner
+    - William Gasarch
+    - Brian Postow
+  title: The complexity of finding SUBSEQ$(A)$
+  venue: Theory of Computing Systems 45(3), 577-612
+  year: 2009
+  doi: 10.1007/s00224-008-9111-4
+  source: zbmath
+ardeshirramezanian2009:
+  authors:
+    - Mohammad Ardeshir
+    - Rasoul Ramezanian
+  title: Decidability and Specker sequences in intuitionistic mathematics
+  venue: Mathematical Logic Quarterly (MLQ) 55(6), 637-648
+  year: 2009
+  doi: 10.1002/malq.200710094
+  source: zbmath
+marconeshore2010:
+  authors:
+    - Alberto Marcone
+    - Richard A. Shore
+  title: The maximal linear extension theorem in second order arithmetic
+  venue: Archive for Mathematical Logic 50(5-6), 543-564
+  year: 2010
+  doi: 10.1007/s00153-011-0231-1
+  arxiv: "1009.1528"
+  source: arxiv
+schmerl2010:
+  authors:
+    - James H. Schmerl
+  title: Reverse mathematics and Grundy colorings of graphs
+  venue: Mathematical Logic Quarterly (MLQ) 56(5), 541-548
+  year: 2010
+  doi: 10.1002/malq.200910108
+  source: zbmath
+nemoto2010:
+  authors:
+    - Takako Nemoto
+  title: Weak weak König's lemma in constructive reverse mathematics
+  venue: "Arai, T. (ed.) et al., Proceedings of the 10th Asian logic conference, Kobe, Japan, September 1--6, 2008. Hackensack, NJ: World Scientific (ISBN 978-981-4293-01-3/hbk; 978-981-4293-02-0/ebook). 263-270 (2010)"
+  year: 2010
+  url: https://zbmath.org/?q=an:1200.03045
+  source: zbmath
+shore2010:
+  authors:
+    - Richard A. Shore
+  title: "Reverse mathematics: the playground of logic"
+  venue: The Bulletin of Symbolic Logic 16(3), 378-402
+  year: 2010
+  doi: 10.2178/bsl/1286284559
+  source: zbmath
+yokoyama2010:
+  authors:
+    - Keita Yokoyama
+  title: On $\Pi^1_1$ conservativity for $\Pi^1_2$ theories in second order arithmetic
+  venue: "Arai, T. (ed.) et al., Proceedings of the 10th Asian logic conference, Kobe, Japan, September 1--6, 2008. Hackensack, NJ: World Scientific (ISBN 978-981-4293-01-3/hbk; 978-981-4293-02-0/ebook). 375-386 (2010)"
+  year: 2010
+  url: https://zbmath.org/?q=an:1195.03017
+  source: zbmath
+corduangroszekmileti2010:
+  authors:
+    - Jared Corduan
+    - Marcia J. Groszek
+    - Joseph R. Mileti
+  title: Reverse mathematics and Ramsey's property for trees
+  venue: The Journal of Symbolic Logic 75(3), 945-954
+  year: 2010
+  doi: 10.2178/jsl/1278682209
+  source: zbmath
+conidis2010:
+  authors:
+    - Chris J. Conidis
+  title: A measure-theoretic proof of Turing incomparability
+  venue: Annals of Pure and Applied Logic 162(1), 83-88
+  year: 2010
+  doi: 10.1016/j.apal.2010.07.004
+  source: zbmath
+keisler2010:
+  authors:
+    - H. Jerome Keisler
+  title: Nonstandard arithmetic and recursive comprehension
+  venue: Annals of Pure and Applied Logic 161(8), 1047-1062
+  year: 2010
+  doi: 10.1016/j.apal.2010.01.001
+  source: zbmath
+simpson2010:
+  authors:
+    - Stephen G. Simpson
+  title: The Gödel hierarchy and reverse mathematics
+  venue: "Feferman, Solomon (ed.) et al., Kurt Gödel. Essays for his centennial. Cambridge: Cambridge University Press; Ithaca, NY: Association for Symbolic Logic (ASL) (ISBN 978-0-521-11514-8/hbk). Lecture Notes in Logic 33, 109-127 (2010)"
+  year: 2010
+  url: https://zbmath.org/?q=an:1223.03006
+  source: zbmath
+yokoyama2010b:
+  authors:
+    - Keita Yokoyama
+  title: Formalizing non-standard arguments in second-order arithmetic
+  venue: The Journal of Symbolic Logic 75(4), 1199-1210
+  year: 2010
+  doi: 10.2178/jsl/1286198143
+  source: zbmath
+ishiharaschuster2010:
+  authors:
+    - Hajime Ishihara
+    - Peter Schuster
+  title: Kronecker's density theorem and irrational numbers in constructive reverse mathematics
+  venue: Mathematische Semesterberichte 57(1), 57-72
+  year: 2010
+  doi: 10.1007/s00591-009-0062-x
+  source: zbmath
+heinatschmollerfeld2010:
+  authors:
+    - Christoph Heinatsch
+    - Michael Möllerfeld
+  title: The determinacy strength of $\Pi_2^1$-comprehension
+  venue: Annals of Pure and Applied Logic 161(12), 1462-1470
+  year: 2010
+  doi: 10.1016/j.apal.2010.04.012
+  source: zbmath
+berger2010:
+  authors:
+    - J. Berger
+  title: A separation result for varieties of Brouwer's fan theorem
+  venue: "Arai, T. (ed.) et al., Proceedings of the 10th Asian logic conference, Kobe, Japan, September 1--6, 2008. Hackensack, NJ: World Scientific (ISBN 978-981-4293-01-3/hbk; 978-981-4293-02-0/ebook). 85-92 (2010)"
+  year: 2010
+  url: https://zbmath.org/?q=an:1198.03081
+  source: zbmath
+ferreira2010:
+  authors:
+    - Fernando Ferreira
+  title: Proof interpretations and majorizability
+  venue: "Delon, Françoise (ed.) et al., Logic colloquium 2007. Proceedings of the European summer meeting of the Association for Symbolic Logic, Wrocław, Poland, July 14--19, 2007. Cambridge: Cambridge University Press; Urbana, IL: Association for Symbolic Logic (ASL) (ISBN 978-0-521-76065-2/hbk). Lecture Notes in Logic 35, 32-81 (2010)"
+  year: 2010
+  url: https://zbmath.org/?q=an:1231.03051
+  source: zbmath
+gordeevweiermann2010:
+  authors:
+    - Lev Gordeev
+    - Andreas Weiermann
+  title: Phase transitions in proof theory
+  venue: "Drmota, Michael (ed.) et al., Proceeding of the 21st international meeting on probabilistic, combinatorial, and asymptotic methods in the analysis of algorithms (AofA'10), Vienna, Austria, June 28 -- July 2, 2010. Nancy: The Association. Discrete Mathematics \\& Theoretical Computer Science (DMTCS). Discrete Mathematics and Theoretical Computer Science. Proceedings, 343-358 (2010)"
+  year: 2010
+  url: https://zbmath.org/?q=an:1355.03046
+  source: zbmath
+conidis2010b:
+  authors:
+    - Chris J. Conidis
+  title: Chain conditions in computable rings
+  venue: Transactions of the American Mathematical Society 362(12), 6523-6550
+  year: 2010
+  doi: 10.1090/S0002-9947-2010-05013-5
+  source: zbmath
+cookfontes2010:
+  authors:
+    - Stephen Cook
+    - Lila Fontes
+  title: Formal theories for linear algebra
+  venue: Logical Methods in Computer Science 8(1), Paper No. 25, 31 p
+  year: 2010
+  doi: 10.2168/LMCS-8(1:25)2012
+  arxiv: "1101.1449"
+  source: arxiv
+bridgesdiener2010:
+  authors:
+    - Douglas Bridges
+    - Hannes Diener
+  title: The anti-Specker property, positivity, and total boundedness
+  venue: Mathematical Logic Quarterly (MLQ) 56(4), 434-441
+  year: 2010
+  doi: 10.1002/malq.200910017
+  source: zbmath
+rathjen2010:
+  authors:
+    - Michael Rathjen
+  title: Investigations of subsystems of second order arithmetic and set theory in strength between $\Pi^1_1$-CA and $\Delta^1_2$-$\text{CA}+\text{BI}$. I
+  venue: "Schindler, Ralf (ed.), Ways of proof theory. Collected papers by speakers of the colloquium and workshop held on the occasion of the retirement of Wolfram Pohlers, July 17--19, 2008, Münster, Germany. Frankfurt am Main: Ontos Verlag (ISBN 978-3-86838-087-3/hbk). Ontos Mathematical Logic 2, 363-439 (2010)"
+  year: 2010
+  url: https://zbmath.org/?q=an:1227.03077
+  source: zbmath
+weihrauch2010:
+  authors:
+    - Klaus Weihrauch
+  title: Computable separation in topology, from $T_{0}$ to $T_{2}$
+  venue: Journal of Universal Computer Science 16(18), 2733-2753
+  year: 2010
+  url: https://zbmath.org/?q=an:1219.03043
+  source: zbmath
+bridgesloeb2010:
+  authors:
+    - Douglas S. Bridges
+    - Iris Loeb
+  title: Glueing continuous functions constructively
+  venue: Archive for Mathematical Logic 49(5), 603-616
+  year: 2010
+  doi: 10.1007/s00153-010-0189-4
+  source: zbmath
+simpsonyokoyama2011:
+  authors:
+    - Stephen G. Simpson
+    - Keita Yokoyama
+  title: A nonstandard counterpart of WWKL
+  venue: Notre Dame Journal of Formal Logic 52(3), 229-243
+  year: 2011
+  doi: 10.1215/00294527-1435429
+  source: zbmath
+rathjenweiermann2011:
+  authors:
+    - Michael Rathjen
+    - Andreas Weiermann
+  title: Reverse mathematics and well-ordering principles
+  venue: "Cooper, S. Barry (ed.) et al., Computability in context. Computation and logic in the real world. London: Imperial College Press (ISBN 978-1-84816-245-7/hbk; 978-1-84816-277-8/ebook). 351-370 (2011)"
+  year: 2011
+  url: https://zbmath.org/?q=an:1260.03018
+  source: zbmath
+sanders2011:
+  authors:
+    - Sam Sanders
+  title: ERNA and Friedman's reverse mathematics
+  venue: The Journal of Symbolic Logic 76(2), 637-664
+  year: 2011
+  doi: 10.2178/jsl/1305810768
+  source: zbmath
+downeykach2011:
+  authors:
+    - Rodney G. Downey
+    - Asher M. Kach
+  title: Euclidean functions of computable Euclidean domains
+  venue: Notre Dame Journal of Formal Logic 52(2), 163-172
+  year: 2011
+  doi: 10.1215/00294527-1306172
+  source: zbmath
+neeman2011:
+  authors:
+    - Itay Neeman
+  title: Necessary use of $\Sigma ^1_{1}$ induction in a reversal
+  venue: The Journal of Symbolic Logic 76(2), 561-574
+  year: 2011
+  doi: 10.2178/jsl/1305810764
+  source: zbmath
+dienerloeb2011:
+  authors:
+    - Hannes Diener
+    - Iris Loeb
+  title: Constructive reverse investigations into differential equations
+  venue: Journal of Logic and Analysis 3, Paper No. 8, 26 p
+  year: 2011
+  doi: 10.4115/jla.2011.3.8
+  source: zbmath
+welch2011:
+  authors:
+    - P. D. Welch
+  title: Weak systems of determinacy and arithmetical quasi-inductive definitions
+  venue: The Journal of Symbolic Logic 76(2), 418-436
+  year: 2011
+  doi: 10.2178/jsl/1305810756
+  arxiv: "0905.4412"
+  source: zbmath
+calvert2011:
+  authors:
+    - Wesley Calvert
+  title: Metric structures and probabilistic computation
+  venue: Theoretical Computer Science 412(25), 2766-2775
+  year: 2011
+  doi: 10.1016/j.tcs.2011.02.005
+  arxiv: "0806.0398"
+  source: zbmath
+sandersyokoyama2012:
+  authors:
+    - Sam Sanders
+    - Keita Yokoyama
+  title: The Dirac delta function in two settings of reverse mathematics
+  venue: Archive for Mathematical Logic 51(1-2), 99-121
+  year: 2012
+  doi: 10.1007/s00153-011-0256-5
+  source: zbmath
+montalbanshore2012:
+  authors:
+    - Antonio Montalbán
+    - Richard A. Shore
+  title: The limits of determinacy in second-order arithmetic
+  venue: Proceedings of the London Mathematical Society. Third Series 104(2), 223-252
+  year: 2012
+  doi: 10.1112/plms/pdr022
+  source: zbmath
+kachlermansolomon2012:
+  authors:
+    - Asher M. Kach
+    - Manuel Lerman
+    - Reed Solomon
+  title: Cappable CEA sets and Ramsey's theorem
+  venue: "Arai, Toshiyasu (ed.) et al., Proceedings of the 11th Asian logic conference in honor of Professor Chong Chitat on his 60th birthday, National University of Singapore, Singapore, June 22--27, 2009. Hackensack, NJ: World Scientific (ISBN 978-981-4360-53-1/hbk; 978-981-4360-54-8/ebook). 114-127 (2012)"
+  year: 2012
+  doi: 10.1142/9789814360548_0007
+  source: zbmath
+moschovakis2012:
+  authors:
+    - Joan Rand Moschovakis
+  title: Another unique weak König's lemma WKL!!
+  venue: "Berger, Ulrich (ed.) et al., Logic, construction, computation. Dedicated to the 70th birthday of Helmut Schwichtenberg. Frankfurt am Main: Ontos Verlag; Berlin: De Gruyter (ISBN 978-3-11-032453-2/hbk; 978-3-86838-158-0/hbk; 978-3-11-032492-1/ebook). Ontos Mathematical Logic 3, 343-352 (2012)"
+  year: 2012
+  url: https://zbmath.org/?q=an:1306.03027
+  source: zbmath
+doraishirstshafer2012b:
+  authors:
+    - François G. Dorais
+    - Jeffry L. Hirst
+    - Paul Shafer
+  title: Reverse mathematics, trichotomy and dichotomy
+  venue: Journal of Logic and Analysis 4, Paper No. 13, 14 p
+  year: 2012
+  doi: 10.4115/jla.2012.4.13
+  source: zbmath
+shafer2012:
+  authors:
+    - Paul Shafer
+  title: Menger's theorem in $\Pi^1_1 \mathrm {-CA}_0$
+  venue: Archive for Mathematical Logic 51(3-4), 407-423
+  year: 2012
+  doi: 10.1007/s00153-012-0269-8
+  source: zbmath
+hirstmiller2012:
+  authors:
+    - Jeffry L. Hirst
+    - Jessica Miller
+  title: More reverse mathematics of the Heine-Borel theorem
+  venue: Journal of Logic and Analysis 4, Paper No. 6, 10 p
+  year: 2012
+  doi: 10.4115/jla.2012.4.6
+  source: zbmath
+towsner2012:
+  authors:
+    - Henry Towsner
+  title: A simple proof and some difficult examples for Hindman's theorem
+  venue: Notre Dame Journal of Formal Logic 53(1), 53-65
+  year: 2012
+  doi: 10.1215/00294527-1626518
+  arxiv: "0906.3885"
+  source: zbmath
+kreuzer2012e:
+  authors:
+    - Alexander P. Kreuzer
+  title: A logical analysis of the generalized Banach contractions principle
+  venue: Journal of Logic and Analysis 4, Paper No. 17, 16 p
+  year: 2012
+  doi: 10.4115/jla.2012.4.17
+  source: zbmath
+xu2012:
+  authors:
+    - Daoyun Xu
+  title: Computability in analysis
+  venue: Journal of Ningxia University. Natural Science Edition 33(1), 6-13
+  year: 2012
+  url: https://zbmath.org/?q=an:1265.68073
+  source: zbmath
+nguyencook2012:
+  authors:
+    - Phuong Nguyen
+    - Stephen Cook
+  title: The complexity of proving the discrete Jordan curve theorem
+  venue: ACM Transactions on Computational Logic 13(1), Article No. 9, 24 p
+  year: 2012
+  doi: 10.1145/2071368.2071377
+  arxiv: "1002.2954"
+  source: zbmath
+lubarskyrichmanschuster2012:
+  authors:
+    - Robert Lubarsky
+    - Fred Richman
+    - Peter Schuster
+  title: The Kripke schema in metric topology
+  venue: Mathematical Logic Quarterly (MLQ) 58(6), 498-501
+  year: 2012
+  doi: 10.1002/malq.201200018
+  source: zbmath
+bergerishiharaschuster2012:
+  authors:
+    - Josef Berger
+    - Hajime Ishihara
+    - Peter Schuster
+  title: The weak König lemma, Brouwer's fan theorem, De Morgan's law, and dependent choice
+  venue: Reports on Mathematical Logic 47, 63-86
+  year: 2012
+  doi: 10.4467/20842589RM.12.003.0684
+  source: zbmath
+berger2012:
+  authors:
+    - Josef Berger
+  title: Aligning the weak König lemma, the uniform continuity theorem, and Brouwer's fan theorem
+  venue: Annals of Pure and Applied Logic 163(8), 981-985
+  year: 2012
+  doi: 10.1016/j.apal.2011.12.021
+  source: zbmath
+diener2012:
+  authors:
+    - Hannes Diener
+  title: Reclassifying the antithesis of Specker's theorem
+  venue: Archive for Mathematical Logic 51(7-8), 687-693
+  year: 2012
+  doi: 10.1007/s00153-012-0292-9
+  source: zbmath
+ardeshirramezanian2012:
+  authors:
+    - Mohammad Ardeshir
+    - Rasoul Ramezanian
+  title: On the constructive notion of closure maps
+  venue: Mathematical Logic Quarterly (MLQ) 58(4-5), 348-355
+  year: 2012
+  doi: 10.1002/malq.201110040
+  source: zbmath
+conidis2012:
+  authors:
+    - Chris J. Conidis
+  title: Comparing theorems of hyperarithmetic analysis with the arithmetic Bolzano-Weierstrass theorem
+  venue: Transactions of the American Mathematical Society 364(9), 4465-4494
+  year: 2012
+  doi: 10.1090/S0002-9947-2012-05416-X
+  source: zbmath
+dienerhedin2012:
+  authors:
+    - Hannes Diener
+    - Anton Hedin
+  title: The Vitali covering theorem in constructive mathematics
+  venue: Journal of Logic and Analysis 4, Paper No. 7, 22 p
+  year: 2012
+  doi: 10.4115/jla.2012.4.7
+  source: zbmath
+moschovakisvafeiadou2012:
+  authors:
+    - Joan Rand Moschovakis
+    - Garyfallia Vafeiadou
+  title: Some axioms for constructive analysis
+  venue: Archive for Mathematical Logic 51(5-6), 443-459
+  year: 2012
+  doi: 10.1007/s00153-012-0273-z
+  source: zbmath
+pauly2012:
+  authors:
+    - Arno Pauly
+  title: Multi-valued functions in computability theory
+  venue: "Cooper, S. Barry (ed.) et al., How the world computes. Turing centenary conference and 8th conference on computability in Europe, CiE 2012, Cambridge, UK, June 18--23, 2012. Proceedings. Berlin: Springer (ISBN 978-3-642-30869-7/pbk). Lecture Notes in Computer Science 7318, 571-580 (2012)"
+  year: 2012
+  doi: 10.1007/978-3-642-30870-3_57
+  source: zbmath
+ishihara2012:
+  authors:
+    - Hajime Ishihara
+  title: The uniform boundedness theorem and a boundedness principle
+  venue: Annals of Pure and Applied Logic 163(8), 1057-1061
+  year: 2012
+  doi: 10.1016/j.apal.2011.12.027
+  source: zbmath
+simpsonyokoyama2013:
+  authors:
+    - Stephen G. Simpson
+    - Keita Yokoyama
+  title: Reverse mathematics and Peano categoricity
+  venue: Annals of Pure and Applied Logic 164(3), 284-293
+  year: 2013
+  doi: 10.1016/j.apal.2012.10.014
+  source: zbmath
+shore2013:
+  authors:
+    - Richard A. Shore
+  title: Reverse mathematics, countable and uncountable
+  venue: "Greenberg, Noam (ed.) et al., Effective mathematics of the uncountable. Cambridge: Cambridge University Press; Ithaca, NY: Association for Symbolic Logic (ASL) (ISBN 978-1-107-01451-0/hbk; 978-1-139-02859-2/ebook). Lecture Notes in Logic 41, 150-163 (2013)"
+  year: 2013
+  url: https://zbmath.org/?q=an:1329.03046
+  source: zbmath
+kreuzer2013b:
+  authors:
+    - Alexander P. Kreuzer
+  title: Program extraction for 2-random reals
+  venue: Archive for Mathematical Logic 52(5-6), 659-666
+  year: 2013
+  doi: 10.1007/s00153-013-0336-9
+  source: zbmath
+conidisgreenbergturetsky2013:
+  authors:
+    - Chris Conidis
+    - Noam Greenberg
+    - Daniel Turetsky
+  title: Galvin's ``racing pawns'' game, internal hyperarithmetic comprehension, and the law of excluded middle
+  venue: Notre Dame Journal of Formal Logic 54(2), 233-252
+  year: 2013
+  doi: 10.1215/00294527-1960488
+  source: zbmath
+yokoyama2013:
+  authors:
+    - Keita Yokoyama
+  title: On the strength of Ramsey's theorem without $\Sigma _{1}$-induction
+  venue: Mathematical Logic Quarterly (MLQ) 59(1-2), 108-111
+  year: 2013
+  doi: 10.1002/malq.201200047
+  source: zbmath
+sanders2013:
+  authors:
+    - Sam Sanders
+  title: Reverse-engineering reverse mathematics
+  venue: Annals of Pure and Applied Logic 164(5), 528-541
+  year: 2013
+  doi: 10.1016/j.apal.2012.11.006
+  source: zbmath
+loeb2013:
+  authors:
+    - Iris Loeb
+  title: Lipschitz functions in constructive reverse mathematics
+  venue: Logic Journal of the IGPL 21(1), 28-43
+  year: 2013
+  doi: 10.1093/jigpal/jzs020
+  source: zbmath
+diener2013:
+  authors:
+    - Hannes Diener
+  title: Weak König's lemma implies the uniform continuity theorem
+  venue: Computability 2(1), 9-13
+  year: 2013
+  doi: 10.3233/COM-13009
+  source: zbmath
+simpson2014:
+  authors:
+    - Stephen G. Simpson
+  title: Baire categoricity and $\Sigma_1^0$-induction
+  venue: Notre Dame Journal of Formal Logic 55(1), 75-78
+  year: 2014
+  doi: 10.1215/00294527-2377887
+  source: zbmath
+montalbanshore2014:
+  authors:
+    - Antonio Montalbán
+    - Richard A. Shore
+  title: "The limits of determinacy in second order arithmetic: consistency and complexity strength"
+  venue: Israel Journal of Mathematics 204, 477-508
+  year: 2014
+  doi: 10.1007/s11856-014-1117-9
+  source: zbmath
+dorais2014:
+  authors:
+    - François G. Dorais
+  title: Classical consequences of continuous choice principles from intuitionistic analysis
+  venue: Notre Dame Journal of Formal Logic 55(1), 25-39
+  year: 2014
+  doi: 10.1215/00294527-2377860
+  arxiv: "1207.6434"
+  source: zbmath
+carluccizdanowski2014:
+  authors:
+    - Lorenzo Carlucci
+    - Konrad Zdanowski
+  title: The strength of Ramsey's theorem for coloring relatively large sets
+  venue: The Journal of Symbolic Logic 79(1), 89-102
+  year: 2014
+  doi: 10.1017/jsl.2013.27
+  arxiv: "1204.1134"
+  source: zbmath
+belanger2014:
+  authors:
+    - David R. Belanger
+  title: Reverse mathematics of first-order theories with finitely many models
+  venue: The Journal of Symbolic Logic 79(3), 955-984
+  year: 2014
+  doi: 10.1017/jsl.2014.32
+  source: zbmath
+solomon2014:
+  authors:
+    - Reed Solomon
+  title: Ordering free products in reverse mathematics
+  venue: "Tennant, Neil (ed.), Foundational adventures. Essays in honour of Harvey M. Friedman. London: College Publications (ISBN 978-1-84890-117-9/pbk). Tributes 22, 213-242 (2014)"
+  year: 2014
+  url: https://zbmath.org/?q=an:1358.03024
+  source: zbmath
+horihatayokoyama2014:
+  authors:
+    - Yoshihiro Horihata
+    - Keita Yokoyama
+  title: Nonstandard second-order arithmetic and Riemann's mapping theorem
+  venue: Annals of Pure and Applied Logic 165(2), 520-551
+  year: 2014
+  doi: 10.1016/j.apal.2013.06.022
+  source: zbmath
+sato2014:
+  authors:
+    - Takashi Sato
+  title: Reverse mathematics and Isbell's zig-zag theorem
+  venue: Mathematical Logic Quarterly (MLQ) 60(4-5), 348-353
+  year: 2014
+  doi: 10.1002/malq.201300071
+  source: zbmath
+conidis2014:
+  authors:
+    - Chris J. Conidis
+  title: Infinite dimensional proper subspaces of computable vector spaces
+  venue: Journal of Algebra 406, 346-375
+  year: 2014
+  doi: 10.1016/j.jalgebra.2014.02.027
+  source: zbmath
+juralevinmarkkanen2014:
+  authors:
+    - Matthew Jura
+    - Oscar Levin
+    - Tyler Markkanen
+  title: Domatic partitions of computable graphs
+  venue: Archive for Mathematical Logic 53(1-2), 137-155
+  year: 2014
+  doi: 10.1007/s00153-013-0359-2
+  source: zbmath
+hirst2014:
+  authors:
+    - Jeffry L. Hirst
+  title: "Disguising induction: proofs of the pigeonhole principle for trees"
+  venue: "Tennant, Neil (ed.), Foundational adventures. Essays in honour of Harvey M. Friedman. London: College Publications (ISBN 978-1-84890-117-9/pbk). Tributes 22, 113-123 (2014)"
+  year: 2014
+  url: https://zbmath.org/?q=an:1358.03020
+  source: zbmath
+bridgesdentmckubrejordens2014:
+  authors:
+    - Douglas Bridges
+    - James Dent
+    - Maarten McKubre-Jordens
+  title: Constructive connections between anti-Specker, positivity, and fan-theoretic properties
+  venue: New Zealand Journal of Mathematics 44, 21-33
+  year: 2014
+  url: https://zbmath.org/?q=an:1322.03043
+  source: zbmath
+holzljainstephan2015:
+  authors:
+    - Rupert Hölzl
+    - Sanjay Jain
+    - Frank Stephan
+  title: Inductive inference and reverse mathematics
+  venue: Annals of Pure and Applied Logic 167(12), 1242-1266
+  year: 2015
+  doi: 10.1016/j.apal.2016.06.002
+  source: arxiv
+hirsthughes2015:
+  authors:
+    - Jeffry L. Hirst
+    - Noah A. Hughes
+  title: Reverse mathematics and marriage problems with unique solutions
+  venue: Archive for Mathematical Logic 54(1-2), 49-57
+  year: 2015
+  doi: 10.1007/s00153-014-0401-z
+  source: zbmath
+fujiwara2015:
+  authors:
+    - Makoto Fujiwara
+  title: Intuitionistic provability versus uniform provability in $\mathsf{RCA}$
+  venue: "Beckmann, Arnold (ed.) et al., Evolving computability. 11th conference on computability in Europe, CiE 2015, Bucharest, Romania, June 29 -- July 3, 2015. Proceedings. Cham: Springer. Lect. Notes Comput. Sci. 9136, 186-195 (2015)"
+  year: 2015
+  doi: 10.1007/978-3-319-20028-6_19
+  source: zbmath
+belanger2015:
+  authors:
+    - David R. Belanger
+  title: $\mathsf{WKL}_0$ and induction principles in model theory
+  venue: Annals of Pure and Applied Logic 166(7-8), 767-799
+  year: 2015
+  doi: 10.1016/j.apal.2015.04.001
+  source: zbmath
+kreuzer2015b:
+  authors:
+    - Alexander P. Kreuzer
+  title: Measure theory and higher order arithmetic
+  venue: Proceedings of the American Mathematical Society 143(12), 5411-5425
+  year: 2015
+  doi: 10.1090/proc/12671
+  arxiv: "1312.1531"
+  source: zbmath
+diener2015:
+  authors:
+    - Hannes Diener
+  title: Variations on a theme by Ishihara
+  venue: Mathematical Structures in Computer Science 25(7), 1569-1577
+  year: 2015
+  doi: 10.1017/S0960129513000261
+  source: zbmath
+corduangroszek2016:
+  authors:
+    - Jared Corduan
+    - Marcia Groszek
+  title: Reverse mathematics and Ramsey properties of partial orderings
+  venue: Notre Dame Journal of Formal Logic 57(1), 1-25
+  year: 2016
+  doi: 10.1215/00294527-3314771
+  source: zbmath
+jura2016:
+  authors:
+    - Matthew Jura
+  title: Reverse mathematics and the coloring number of graphs
+  venue: Notre Dame Journal of Formal Logic 57(1), 27-44
+  year: 2016
+  doi: 10.1215/00294527-3321905
+  source: zbmath
+montalbanshore2016:
+  authors:
+    - Antonio Montalbán
+    - Richard A. Shore
+  title: The strength of Turing determinacy within second order arithmetic
+  venue: Fundamenta Mathematicae 232(3), 249-268
+  year: 2016
+  doi: 10.4064/fm27-12-2015
+  source: zbmath
+hirsthughes2016:
+  authors:
+    - Jeffry L. Hirst
+    - Noah A. Hughes
+  title: Reverse mathematics and marriage problems with finitely many solutions
+  venue: Archive for Mathematical Logic 55(7-8), 1015-1024
+  year: 2016
+  doi: 10.1007/s00153-016-0509-4
+  source: zbmath
+kachapova2016:
+  authors:
+    - Farida Kachapova
+  title: A multi-sorted version of second order arithmetic
+  venue: The Australasian Journal of Logic 13(5), 123-135
+  year: 2016
+  url: https://zbmath.org/?q=an:1396.03111
+  source: zbmath
+espindola2016:
+  authors:
+    - Christian Espíndola
+  title: Semantic completeness of first-order theories in constructive reverse mathematics
+  venue: Notre Dame Journal of Formal Logic 57(2), 281-286
+  year: 2016
+  doi: 10.1215/00294527-3470433
+  source: zbmath
+bergersvindland2016:
+  authors:
+    - Josef Berger
+    - Gregor Svindland
+  title: A separating hyperplane theorem, the fundamental theorem of asset pricing, and Markov's principle
+  venue: Annals of Pure and Applied Logic 167(11), 1161-1170
+  year: 2016
+  doi: 10.1016/j.apal.2016.05.003
+  source: zbmath
+kreuzeryokoyama2016:
+  authors:
+    - Alexander P. Kreuzer
+    - Keita Yokoyama
+  title: On principles between $\Sigma_1$- and $\Sigma_2$-induction, and monotone enumerations
+  venue: Journal of Mathematical Logic 16(1), Article ID 1650004, 21 p
+  year: 2016
+  doi: 10.1142/S0219061316500045
+  arxiv: "1306.1936"
+  source: zbmath
+wong2016:
+  authors:
+    - Tin Lok Wong
+  title: Interpreting weak König's lemma using the arithmetized completeness theorem
+  venue: Proceedings of the American Mathematical Society 144(9), 4021-4024
+  year: 2016
+  doi: 10.1090/proc/13125
+  source: zbmath
+kawamurasteinbergziegler2016:
+  authors:
+    - Akitoshi Kawamura
+    - Florian Steinberg
+    - Martin Ziegler
+  title: Complexity theory of (functions on) compact metric spaces
+  venue: "Proceedings of the 2016 31st annual ACM/IEEE symposium on logic in computer science, LICS 2016, New York City, NY, USA, July 5--8, 2016. New York, NY: Association for Computing Machinery (ACM) (ISBN 978-1-4503-4391-6). 837-846 (2016)"
+  year: 2016
+  doi: 10.1145/2933575.2935311
+  source: zbmath
+tachtsis2016:
+  authors:
+    - Eleftherios Tachtsis
+  title: On Ramsey's theorem and the existence of infinite chains or infinite anti-chains in infinite posets
+  venue: The Journal of Symbolic Logic 81(1), 384-394
+  year: 2016
+  doi: 10.1017/jsl.2015.47
+  source: zbmath
+cholakdzhafarovsoskova2016:
+  authors:
+    - Peter A. Cholak
+    - Damir D. Dzhafarov
+    - Mariya I. Soskova
+  title: Genericity for Mathias forcing over general Turing ideals
+  venue: Israel Journal of Mathematics 216(2), 583-604
+  year: 2016
+  doi: 10.1007/s11856-016-1420-8
+  arxiv: "1505.02226"
+  source: zbmath
+litanaka2017:
+  authors:
+    - Wenjuan Li
+    - Kazuyuki Tanaka
+  title: The determinacy strength of pushdown $\omega$-languages
+  venue: RAIRO. Theoretical Informatics and Applications 51(1), 29-50
+  year: 2017
+  doi: 10.1051/ita/2017006
+  source: zbmath
+satoyamazaki2017:
+  authors:
+    - Takashi Sato
+    - Takeshi Yamazaki
+  title: Reverse mathematics and order theoretic fixed point theorems
+  venue: Archive for Mathematical Logic 56(3-4), 385-396
+  year: 2017
+  doi: 10.1007/s00153-017-0526-y
+  source: zbmath
+hirschfeldtlangeshore2017:
+  authors:
+    - Denis R. Hirschfeldt
+    - Karen Lange
+    - Richard A. Shore
+  title: Induction, bounding, weak combinatorial principles, and the homogeneous model theorem
+  venue: Memoirs of the American Mathematical Society 1187, vi, 106 p
+  year: 2017
+  doi: 10.1090/memo/1187
+  source: zbmath
+liruwu2017:
+  authors:
+    - Gaolin Li
+    - Junren Ru
+    - Guohua Wu
+  title: Rudin's lemma and reverse mathematics
+  venue: Annals of the Japan Association for Philosophy of Science 25, 57-66
+  year: 2017
+  doi: 10.4288/jafpos.25.0_57
+  source: zbmath
+holzletal2017:
+  authors:
+    - Rupert Hölzl
+    - Dilip Raghavan
+    - Frank Stephan
+    - Jing Zhang
+  title: Weakly represented families in reverse mathematics
+  venue: "Day, Adam (ed.) et al., Computability and complexity. Essays dedicated to Rodney G. Downey on the occasion of his 60th birthday. Cham: Springer. Lect. Notes Comput. Sci. 10010, 160-187 (2017)"
+  year: 2017
+  doi: 10.1007/978-3-319-50062-1_13
+  source: zbmath
+frittaion2017:
+  authors:
+    - Emanuele Frittaion
+  title: Brown's lemma in second-order arithmetic
+  venue: Fundamenta Mathematicae 238(3), 269-283
+  year: 2017
+  doi: 10.4064/fm221-9-2016
+  arxiv: "1512.04195"
+  source: zbmath
+pengyamazaki2017:
+  authors:
+    - Weiguang Peng
+    - Takeshi Yamazaki
+  title: Two kinds of fixed point theorems and reverse mathematics
+  venue: Mathematical Logic Quarterly (MLQ) 63(5), 454-461
+  year: 2017
+  doi: 10.1002/malq.201600096
+  source: zbmath
+espindola2017:
+  authors:
+    - Christian Espíndola
+  title: "Erratum to: ``Semantic completeness of first-order theories in constructive reverse mathematics''"
+  venue: Notre Dame Journal of Formal Logic 58(1), 157
+  year: 2017
+  doi: 10.1215/00294527-3784830
+  source: zbmath
+korovinakudinov2017:
+  authors:
+    - Margarita Korovina
+    - Oleg Kudinov
+  title: Computable elements and functions in effectively enumerable topological spaces
+  venue: Mathematical Structures in Computer Science 27(8), 1466-1494
+  year: 2017
+  doi: 10.1017/S0960129516000141
+  source: zbmath
+greenbergmelnikov2017:
+  authors:
+    - Noam Greenberg
+    - Alexander Melnikov
+  title: Proper divisibility in computable rings
+  venue: Journal of Algebra 474, 180-212
+  year: 2017
+  doi: 10.1016/j.jalgebra.2016.11.010
+  source: zbmath
+wong2017:
+  authors:
+    - Tin Lok Wong
+  title: Models of the weak König lemma
+  venue: Annals of the Japan Association for Philosophy of Science 25, 25-34
+  year: 2017
+  doi: 10.4288/jafpos.25.0_25
+  source: zbmath
+hachtman2017:
+  authors:
+    - Sherwood Hachtman
+  title: Determinacy in third order arithmetic
+  venue: Annals of Pure and Applied Logic 168(11), 2008-2021
+  year: 2017
+  doi: 10.1016/j.apal.2017.05.004
+  source: zbmath
+fernandesferreiraferreira2017:
+  authors:
+    - António M. Fernandes
+    - Fernando Ferreira
+    - Gilda Ferreira
+  title: Analysis in weak systems
+  venue: "Caleiro, Carlos (ed.) et al., Logic and computation. Essays in honour of Amílcar Sernadas. London: College Publications. Tributes 33, 231-261 (2017)"
+  year: 2017
+  url: https://zbmath.org/?q=an:1418.03174
+  source: zbmath
+koutsoukouargyraki2017:
+  authors:
+    - Angeliki Koutsoukou-Argyraki
+  title: Proof mining for nonlinear operator theory. Four case studies on accretive operators, the Cauchy problem and nonexpansive semigroups
+  venue: "Darmstadt: TU Darmstadt, Fachbereich Mathematik (Diss.). xi, 129 p. (2017)"
+  year: 2017
+  url: https://zbmath.org/?q=an:1368.47001
+  source: zbmath
+freund2018:
+  authors:
+    - Anton Freund
+  title: Computable Aspects of the Bachmann-Howard Principle
+  venue: Journal of Mathematical Logic 20(2), Article ID 2050006, 26 p
+  year: 2018
+  doi: 10.1142/S0219061320500063
+  arxiv: "1809.06774"
+  source: arxiv
+stillwell2018:
+  authors:
+    - John Stillwell
+  title: Reverse mathematics. Proofs from the inside out
+  venue: "Princeton, NJ: Princeton University Press (ISBN 978-0-691-17717-5/hbk; 978-1-4008-8903-7/ebook). xiii, 182 p. (2018)"
+  year: 2018
+  url: https://zbmath.org/?q=an:1386.00059
+  source: zbmath
+montalbanshore2018:
+  authors:
+    - Antonio Montalbán
+    - Richard A. Shore
+  title: Conservativity of ultrafilters over subsystems of second order arithmetic
+  venue: The Journal of Symbolic Logic 83(2), 740-765
+  year: 2018
+  doi: 10.1017/jsl.2017.76
+  source: zbmath
+sen2018:
+  authors:
+    - Yang Sen
+  title: Whitehead's problem and reverse mathematics
+  venue: Israel Journal of Mathematics 228(1), 455-512
+  year: 2018
+  doi: 10.1007/s11856-018-1770-5
+  source: zbmath
+rosnickneugebauer2018:
+  authors:
+    - Carsten Rösnick-Neugebauer
+  title: "Closed sets and operators thereon: representations, computability and complexity"
+  venue: Logical Methods in Computer Science 14(2), Paper No. 1, 41 p
+  year: 2018
+  doi: 10.23638/LMCS-14(2:1)2018
+  arxiv: "1701.00227"
+  source: zbmath
+bergeretal2019:
+  authors:
+    - Josef Berger
+    - Hajime Ishihara
+    - Takayuki Kihara
+    - Takako Nemoto
+  title: The binary expansion and the intermediate value theorem in constructive reverse mathematics
+  venue: Archive for Mathematical Logic 58(1-2), 203-217
+  year: 2019
+  doi: 10.1007/s00153-018-0627-2
+  source: zbmath
+sanders2019e:
+  authors:
+    - Sam Sanders
+  title: Reverse mathematics and computability theory of domain theory
+  venue: "Iemhoff, Rosalie (ed.) et al., Logic, language, information, and computation. 26th international workshop, WoLLIC 2019, Utrecht, The Netherlands, July 2--5, 2019. Proceedings. Berlin: Springer. Lect. Notes Comput. Sci. 11541, 550-568 (2019)"
+  year: 2019
+  doi: 10.1007/978-3-662-59533-6_33
+  source: zbmath
+ishiharanemoto2019:
+  authors:
+    - Hajime Ishihara
+    - Takako Nemoto
+  title: The monotone completeness theorem in constructive reverse mathematics
+  venue: "Centrone, Stefania (ed.) et al., Mathesis universalis, computability and proof. Based on the Humboldt-Kolleg ``Proof theory as mathesis universalis'', held at the German-Italian Centre for European Excellence, Villa Vigoni, Loveno di Menaggio, Como, Italy, July 24--28, 2017. Cham: Springer. Synth. Libr. 412, 101-112 (2019)"
+  year: 2019
+  doi: 10.1007/978-3-030-20447-1_8
+  source: zbmath
+sanders2019f:
+  authors:
+    - Sam Sanders
+  title: Nets and reverse mathematics. Some initial results
+  venue: "Manea, Florin (ed.) et al., Computing with foresight and industry. 15th conference on computability in Europe, CiE 2019, Durham, UK, July 15--19, 2019. Proceedings. Cham: Springer. Lect. Notes Comput. Sci. 11558, 253-264 (2019)"
+  year: 2019
+  doi: 10.1007/978-3-030-22996-2_22
+  source: zbmath
+moninpatey2019b:
+  authors:
+    - Benoit Monin
+    - Ludovic Patey
+  title: Pigeons do not jump high
+  venue: Advances in Mathematics 352, 1066-1095
+  year: 2019
+  doi: 10.1016/j.aim.2019.06.026
+  arxiv: "1803.09771"
+  source: zbmath
+conidis2019:
+  authors:
+    - Chris J. Conidis
+  title: The computability, definability, and proof theory of Artinian rings
+  venue: Advances in Mathematics 341, 1-39
+  year: 2019
+  doi: 10.1016/j.aim.2018.10.036
+  source: zbmath
+freund2019c:
+  authors:
+    - Anton Freund
+  title: $\Pi_1^1$-comprehension as a well-ordering principle
+  venue: Advances in Mathematics 355, Article ID 106767, 65 p
+  year: 2019
+  doi: 10.1016/j.aim.2019.106767
+  arxiv: "1809.06759"
+  source: zbmath
+doraisetal2019:
+  authors:
+    - François Dorais
+    - Zachary Evans
+    - Marcia Groszek
+    - Seth Harris
+    - Theodore Slaman
+  title: Schmerl decompositions in first order arithmetic
+  venue: Annals of Pure and Applied Logic 170(12), Article ID 102717, 16 p
+  year: 2019
+  doi: 10.1016/j.apal.2019.102717
+  source: zbmath
+fujiwarakawai2019:
+  authors:
+    - Makoto Fujiwara
+    - Tatsuji Kawai
+  title: Equivalence of bar induction and bar recursion for continuous functions with continuous moduli
+  venue: Annals of Pure and Applied Logic 170(8), 867-890
+  year: 2019
+  doi: 10.1016/j.apal.2019.04.001
+  source: zbmath
+bazhenovmustafayamaleev2019:
+  authors:
+    - Nikolay Bazhenov
+    - Manat Mustafa
+    - Mars Yamaleev
+  title: Computable isomorphisms of distributive lattices
+  venue: "Gopal, T. V. (ed.) et al., Theory and applications of models of computation. 15th annual conference, TAMC 2019, Kitakyushu, Japan, April 13--16, 2019. Proceedings. Cham: Springer. Lect. Notes Comput. Sci. 11436, 28-41 (2019)"
+  year: 2019
+  doi: 10.1007/978-3-030-14812-6_3
+  source: zbmath
+freund2020c:
+  authors:
+    - Anton Freund
+  title: Predicative collapsing principles
+  venue: The Journal of Symbolic Logic 85(1), 511-530
+  year: 2020
+  doi: 10.1017/jsl.2019.83
+  arxiv: "1906.07448"
+  source: zbmath
+chong2020:
+  authors:
+    - Chi Tat Chong
+  title: The reverse mathematics of Ramsey's theorem for pairs
+  venue: "Rezuş, Adrian (ed.), Contemporary logic and computing. London: College Publications. Landsc. Log. 1, 415-443 (2020)"
+  year: 2020
+  url: https://zbmath.org/?q=an:1505.03026
+  source: zbmath
+ferreira2020:
+  authors:
+    - Fernando Ferreira
+  title: The FAN principle and weak König's lemma in Herbrandized second-order arithmetic
+  venue: Annals of Pure and Applied Logic 171(9), Article ID 102843, 20 p
+  year: 2020
+  doi: 10.1016/j.apal.2020.102843
+  source: zbmath
+cholakpatey2020:
+  authors:
+    - Peter Cholak
+    - Ludovic Patey
+  title: Thin set theorems and cone avoidance
+  venue: Transactions of the American Mathematical Society 373(4), 2743-2773
+  year: 2020
+  doi: 10.1090/tran/7987
+  arxiv: "1812.00188"
+  source: zbmath
+ferreira2020b:
+  authors:
+    - Fernando Ferreira
+  title: Weak König's lemma in Herbrandized classical second-order arithmetic
+  venue: Portugaliae Mathematica. Nova Série 77(3-4), 399-408
+  year: 2020
+  doi: 10.4171/PM/2056
+  source: zbmath
+wu2020:
+  authors:
+    - Huishan Wu
+  title: Reverse mathematics, projective modules and invertible modules
+  venue: "Chen, Jianer (ed.) et al., Theory and applications of models of computation. 16th international conference, TAMC 2020, Changsha, China, October 18--20, 2020. Proceedings. Cham: Springer. Lect. Notes Comput. Sci. 12337, 132-143 (2020)"
+  year: 2020
+  doi: 10.1007/978-3-030-59267-7_12
+  source: zbmath
+chongetal2020:
+  authors:
+    - C. T. Chong
+    - Wei Li
+    - Wei Wang
+    - Yue Yang
+  title: On the strength of Ramsey's theorem for trees
+  venue: Advances in Mathematics 369, Article ID 107180, 38 p
+  year: 2020
+  doi: 10.1016/j.aim.2020.107180
+  source: zbmath
+astoretal2020:
+  authors:
+    - Eric P. Astor
+    - Damir Dzhafarov
+    - Antonio Montalbán
+    - Reed Solomon
+    - Linda Brown Westrick
+  title: The determined property of Baire in reverse math
+  venue: The Journal of Symbolic Logic 85(1), 166-198
+  year: 2020
+  doi: 10.1017/jsl.2019.64
+  arxiv: "1809.03940"
+  source: zbmath
+wu2020b:
+  authors:
+    - Huishan Wu
+  title: The complexity of radicals and socles of modules
+  venue: Notre Dame Journal of Formal Logic 61(1), 141-153
+  year: 2020
+  doi: 10.1215/00294527-2019-0036
+  source: zbmath
+fujiwarakawai2020:
+  authors:
+    - Makoto Fujiwara
+    - Tatsuji Kawai
+  title: A logical characterization of the continuous bar induction
+  venue: "Liu, Fenrong (ed.) et al., Knowledge, proof and dynamics. The fourth Asian workshop on philosophical logic. Selected papers based on the presentations at the workshop, Beijing, China, October 20--21, 2018. Singapore: Springer. Log. Asia: Stud. Log. Libr., 25-33 (2020)"
+  year: 2020
+  doi: 10.1007/978-981-15-2221-5_2
+  source: zbmath
+powell2020:
+  authors:
+    - Thomas Powell
+  title: Dependent choice as a termination principle
+  venue: Archive for Mathematical Logic 59(3-4), 503-516
+  year: 2020
+  doi: 10.1007/s00153-019-00706-6
+  arxiv: "1902.09539"
+  source: zbmath
+dienerhendtlass2020:
+  authors:
+    - Hannes Diener
+    - Matthew Hendtlass
+  title: Differentiating convex functions constructively
+  venue: Journal of Logic and Analysis 12, Paper No. 8, 11 p
+  year: 2020
+  doi: 10.4115/jla.2020.12.8
+  source: zbmath
+nemoto2020:
+  authors:
+    - Takako Nemoto
+  title: A constructive proof of the dense existence of nowhere-differentiable functions in $C[0,1]$
+  venue: Computability 9(3-4), 315-326
+  year: 2020
+  doi: 10.3233/COM-190247
+  source: zbmath
+dienerishihara2021:
+  authors:
+    - Hannes Diener
+    - Hajime Ishihara
+  title: Bishop-style constructive reverse mathematics
+  venue: "Brattka, Vasco (ed.) et al., Handbook of computability and complexity in analysis. Cham: Springer. Theory Appl. Comput., 347-365 (2021)"
+  year: 2021
+  doi: 10.1007/978-3-030-59234-9_10
+  source: zbmath
+moninpatey2021b:
+  authors:
+    - Benoit Monin
+    - Ludovic Patey
+  title: The weakness of the pigeonhole principle under hyperarithmetical reductions
+  venue: Journal of Mathematical Logic 21(3), Article ID 2150013, 41 p
+  year: 2021
+  doi: 10.1142/S0219061321500136
+  arxiv: "1905.08425"
+  source: zbmath
+wu2021:
+  authors:
+    - Huishan Wu
+  title: Characterizing von Neumann regular rings in reverse mathematics
+  venue: Notre Dame Journal of Formal Logic 62(4), 683-700
+  year: 2021
+  doi: 10.1215/00294527-2021-0036
+  source: zbmath
+jager2021:
+  authors:
+    - Gerhard Jäger
+  title: "Short note: least fixed points versus least closed points"
+  venue: Archive for Mathematical Logic 60(7-8), 831-835
+  year: 2021
+  doi: 10.1007/s00153-021-00761-y
+  source: zbmath
+koodziejczykyokoyama2021:
+  authors:
+    - Leszek Aleksander Kołodziejczyk
+    - Keita Yokoyama
+  title: In search of the first-order part of Ramsey's theorem for pairs
+  venue: "De Mol, Liesbeth (ed.) et al., Connecting with computability. 17th conference on computability in Europe, CiE 2021, virtual event, Ghent, Belgium, July 5--9, 2021. Proceedings. Cham: Springer. Lect. Notes Comput. Sci. 12813, 297-307 (2021)"
+  year: 2021
+  doi: 10.1007/978-3-030-80049-9_27
+  source: zbmath
+freund2021b:
+  authors:
+    - Anton Freund
+  title: "Well ordering principles and $\\Pi^1_4$-statements: a pilot study"
+  venue: The Journal of Symbolic Logic 86(2), 709-745
+  year: 2021
+  doi: 10.1017/jsl.2021.22
+  arxiv: "2006.12111"
+  source: zbmath
+wu2021b:
+  authors:
+    - Huishan Wu
+  title: Ring structure theorems and arithmetic comprehension
+  venue: Archive for Mathematical Logic 60(1-2), 145-160
+  year: 2021
+  doi: 10.1007/s00153-020-00738-3
+  source: zbmath
+ganerpaulysteinberg2021:
+  authors:
+    - Christine Gaßner
+    - Arno Pauly
+    - Florian Steinberg
+  title: Computing measure as a primitive operation in real number computation
+  venue: "Baier, Christel (ed.) et al., 29th EACSL annual conference on computer science logic, CSL 2021, Ljubljana, Slovenia, virtual conference, January 25--28, 2021. Wadern: Schloss Dagstuhl -- Leibniz Zentrum für Informatik. LIPIcs -- Leibniz Int. Proc. Inform. 183, Article 22, 22 p. (2021)"
+  year: 2021
+  doi: 10.4230/LIPIcs.CSL.2021.22
+  source: zbmath
+fujiwara2021b:
+  authors:
+    - Makoto Fujiwara
+  title: König's lemma, weak König's lemma, and the decidable fan theorem
+  venue: Mathematical Logic Quarterly (MLQ) 67(2), 241-257
+  year: 2021
+  doi: 10.1002/malq.202000020
+  source: zbmath
+moninpatey2022:
+  authors:
+    - Benoît Monin
+    - Ludovic Patey
+  title: Computability. Randomness, reverse mathematics and hypercomputability
+  venue: Tableau Noir 107, xxii, 828 p
+  year: 2022
+  url: https://zbmath.org/?q=an:1516.03001
+  source: zbmath
+yang2022:
+  authors:
+    - Yue Yang
+  title: Chi-Tat Chong's work on reverse mathematics
+  venue: "Peng, NingNing (ed.) et al., Computability theory and foundations of mathematics. Proceedings of the 9th international conference, Wuhan, China, March 21--27, 2019. Singapore: World Scientific. 1-15 (2022)"
+  year: 2022
+  doi: 10.1142/9789811259296_0001
+  source: zbmath
+tanakayoshii2022:
+  authors:
+    - Kazuyuki Tanaka
+    - Keisuke Yoshii
+  title: Infinite games, inductive definitions and transfinite recursion
+  venue: "Peng, NingNing (ed.) et al., Computability theory and foundations of mathematics. Proceedings of the 9th international conference, Wuhan, China, March 21--27, 2019. Singapore: World Scientific. 47-78 (2022)"
+  year: 2022
+  doi: 10.1142/9789811259296_0003
+  source: zbmath
+wu2022:
+  authors:
+    - Huishan Wu
+  title: Reverse mathematics and semisimple rings
+  venue: Archive for Mathematical Logic 61(5-6), 769-793
+  year: 2022
+  doi: 10.1007/s00153-021-00812-4
+  source: zbmath
+ruwu2022:
+  authors:
+    - Junren Ru
+    - Guohua Wu
+  title: Reverse mathematics of separation theorems in lattice theory
+  venue: "Peng, NingNing (ed.) et al., Computability theory and foundations of mathematics. Proceedings of the 9th international conference, Wuhan, China, March 21--27, 2019. Singapore: World Scientific. 167-177 (2022)"
+  year: 2022
+  doi: 10.1142/9789811259296_0008
+  source: zbmath
+fujiwara2022:
+  authors:
+    - Makoto Fujiwara
+  title: An extension of the equivalence between Brouwer's fan theorem and weak König's lemma with a uniqueness hypothesis
+  venue: "Berger, Ulrich (ed.) et al., Revolutions and revelations in computability. 18th conference on computability in Europe, CiE 2022, Swansea, UK, July 11--15, 2022. Proceedings. Cham: Springer. Lect. Notes Comput. Sci. 13359, 115-124 (2022)"
+  year: 2022
+  doi: 10.1007/978-3-031-08740-0_10
+  source: zbmath
+barnesgohshore2022:
+  authors:
+    - James S. Barnes
+    - Jun Le Goh
+    - Richard A. Shore
+  title: Theorems of hyperarithmetic analysis and almost theorems of hyperarithmetic analysis
+  venue: The Bulletin of Symbolic Logic 28(1), 133-149
+  year: 2022
+  doi: 10.1017/bsl.2021.70
+  source: zbmath
+sanders2022c:
+  authors:
+    - Sam Sanders
+  title: Lifting proofs from countable to uncountable mathematics
+  venue: Information and Computation 287, Article ID 104762, 20 p
+  year: 2022
+  doi: 10.1016/j.ic.2021.104762
+  source: zbmath
+carluccitavernelli2022:
+  authors:
+    - Lorenzo Carlucci
+    - Daniele Tavernelli
+  title: Hindman's theorem for sums along the full binary tree, $\Sigma^0_2$-induction and the pigeonhole principle for trees
+  venue: Archive for Mathematical Logic 61(5-6), 827-839
+  year: 2022
+  doi: 10.1007/s00153-021-00814-2
+  source: zbmath
+sato2022:
+  authors:
+    - Kentaro Sato
+  title: "Bounded inductive dichotomy: separation of open and clopen determinacies with finite alternatives in constructive contexts"
+  venue: Archive for Mathematical Logic 61(3-4), 399-435
+  year: 2022
+  doi: 10.1007/s00153-021-00795-2
+  source: zbmath
+ishihara2023:
+  authors:
+    - Hajime Ishihara
+  title: An introduction to constructive reverse mathematics
+  venue: "Bridges, Douglas (ed.) et al., Handbook of constructive mathematics. Cambridge: Cambridge University Press. Encycl. Math. Appl. 185, 636-660 (2023)"
+  year: 2023
+  doi: 10.1017/9781009039888.024
+  source: zbmath
+chan2023:
+  authors:
+    - William Chan
+  title: A Lipschitz determinacy principle equivalent to weak König lemma
+  venue: Annals of Pure and Applied Logic 174(3), Article ID 103213, 14 p
+  year: 2023
+  doi: 10.1016/j.apal.2022.103213
+  source: zbmath
+yokoyama2023:
+  authors:
+    - Keita Yokoyama
+  title: The Paris-Harrington principle and second-order arithmetic -- bridging the finite and infinite Ramsey theorem
+  venue: "Beliaev, Dmitry (ed.) et al., International congress of mathematicians 2022, ICM 2022, Helsinki, Finland, virtual, July 6--14, 2022. Volume 3. Sections 1--4. Berlin: European Mathematical Society (EMS). 1504-1528 (2023)"
+  year: 2023
+  doi: 10.4171/ICM2022/106
+  source: zbmath
+andrewsetal2023:
+  authors:
+    - Uri Andrews
+    - Mingzhong Cai
+    - David Diamondstone
+    - Noah Schweber
+  title: Limit computability and ultrafilters
+  venue: Computability 12(2), 101-115
+  year: 2023
+  doi: 10.3233/COM-170176
+  source: zbmath
+cordonfrancolaramartinloureiro2023:
+  authors:
+    - Andrés Cordón-Franco
+    - F. Félix Lara-Martín
+    - Manuel J. S. Loureiro
+  title: Lipschitz and Wadge binary games in second order arithmetic
+  venue: Annals of Pure and Applied Logic 174(9), Article ID 103301, 28 p
+  year: 2023
+  doi: 10.1016/j.apal.2023.103301
+  source: zbmath
+nemoto2023:
+  authors:
+    - Takako Nemoto
+  title: Systems for constructive reverse mathematics
+  venue: "Bridges, Douglas (ed.) et al., Handbook of constructive mathematics. Cambridge: Cambridge University Press. Encycl. Math. Appl. 185, 661-699 (2023)"
+  year: 2023
+  doi: 10.1017/9781009039888.025
+  source: zbmath
+enesferreira2023:
+  authors:
+    - Jõao Enes
+    - Fernando Ferreira
+  title: A Herbrandised interpretation of semi-intuitionistic second-order arithmetic with function variables
+  venue: "Benini, Marco (ed.) et al., Mathematics for computation (M4C). Singapore: World Scientific. 251-271 (2023)"
+  year: 2023
+  doi: 10.1142/9789811245220_0010
+  source: zbmath
+fujimoto2023:
+  authors:
+    - Kentaro Fujimoto
+  title: A few more dissimilarities between second-order arithmetic and set theory
+  venue: Archive for Mathematical Logic 62(1-2), 147-206
+  year: 2023
+  doi: 10.1007/s00153-022-00829-3
+  source: zbmath
+rathjen2023:
+  authors:
+    - Michael Rathjen
+  title: The art of measuring the strength of theories
+  venue: Notices of the American Mathematical Society 70(7), 1071-1079
+  year: 2023
+  doi: 10.1090/noti2733
+  source: zbmath
+towsnerweisshaarwestrick2023:
+  authors:
+    - Henry Towsner
+    - Rose Weisshaar
+    - Linda Westrick
+  title: Borel combinatorics fail in $\mathrm{HYP}$
+  venue: Journal of Mathematical Logic 23(2), Article ID 2250023, 19 p
+  year: 2023
+  doi: 10.1142/S0219061322500234
+  arxiv: "2106.13330"
+  source: zbmath
+wu2023:
+  authors:
+    - Huishan Wu
+  title: Structure of semisimple rings in reverse and computable mathematics
+  venue: Archive for Mathematical Logic 62(7-8), 1083-1100
+  year: 2023
+  doi: 10.1007/s00153-023-00885-3
+  source: zbmath
+goh2023:
+  authors:
+    - Jun Le Goh
+  title: The strength of an axiom of finite choice for branches in trees
+  venue: The Journal of Symbolic Logic 88(4), 1367-1386
+  year: 2023
+  doi: 10.1017/jsl.2023.39
+  source: zbmath
+bazhenovfioricaronesmustafa2024:
+  authors:
+    - Nikolay Bazhenov
+    - Marta Fiori-Carones
+    - Manat Mustafa
+  title: On arithmetical numberings in reverse mathematics
+  venue: "Levy Patey, Ludovic (ed.) et al., Twenty years of theoretical and practical synergies. 20th conference on computability in Europe, CiE 2024, Amsterdam, the Netherlands, July 8--12, 2024. Proceedings. Cham: Springer. Lect. Notes Comput. Sci. 14773, 126-138 (2024)"
+  year: 2024
+  doi: 10.1007/978-3-031-64309-5_11
+  source: zbmath
+wu2024:
+  authors:
+    - Huishan Wu
+  title: Reverse mathematics and local rings
+  venue: Science China. Mathematics 67(12), 2671-2680
+  year: 2024
+  doi: 10.1007/s11425-023-2225-4
+  source: zbmath
+chenlioliveira2024:
+  authors:
+    - Lijie Chen
+    - Jiatu Li
+    - Igor C. Oliveira
+  title: Reverse mathematics of complexity lower bounds
+  venue: "Proceedings of the 65th annual IEEE symposium on foundations of computer science, FOCS 2024, Chicago, IL, USA, October 27--30, 2024. Los Alamitos, CA: IEEE Computer Society. Proceedings of the annual IEEE symposium on foundations of computer science, FOCS 65, 505-527 (2024)"
+  year: 2024
+  doi: 10.1109/FOCS61266.2024.00040
+  source: zbmath
+sanders2024d:
+  authors:
+    - Sam Sanders
+  title: Connecting real and hyperarithmetical analysis
+  venue: Documenta Mathematica 29(6), 1469-1498
+  year: 2024
+  doi: 10.4171/DM/981
+  arxiv: "2408.13760"
+  source: zbmath
+cordonfrancolaramartinloureiro2024:
+  authors:
+    - Andrés Cordón-Franco
+    - F. Félix Lara-Martín
+    - Manuel J. S. Loureiro
+  title: Lipschitz determinacy and arithmetic transfinite recursion
+  venue: "Levy Patey, Ludovic (ed.) et al., Twenty years of theoretical and practical synergies. 20th conference on computability in Europe, CiE 2024, Amsterdam, the Netherlands, July 8--12, 2024. Proceedings. Cham: Springer. Lect. Notes Comput. Sci. 14773, 285-297 (2024)"
+  year: 2024
+  doi: 10.1007/978-3-031-64309-5_23
+  source: zbmath
+wu2024b:
+  authors:
+    - Huishan Wu
+  title: Effective aspects of semiperfect rings
+  venue: Reports on Mathematical Logic 59, 3-26
+  year: 2024
+  doi: 10.4467/20842589RM.24.001.20696
+  source: zbmath
+dauriacetal2024:
+  authors:
+    - Paul-Elliot Anglès d'Auriac
+    - Peter A. Cholak
+    - Damir D. Dzhafarov
+    - Benoît Monin
+    - Ludovic Patey
+  title: "Milliken's tree theorem and its applications: a computability-theoretic perspective"
+  venue: Memoirs of the American Mathematical Society 1457, vi, 118 p
+  year: 2024
+  doi: 10.1090/memo/1457
+  arxiv: "2007.09739"
+  source: zbmath
+herbelinkoleilat2024:
+  authors:
+    - Hugo Herbelin
+    - Jad Koleilat
+  title: On the logical structure of some maximality and well-foundedness principles equivalent to choice principles
+  venue: "Rehof, Jakob (ed.), 9th international conference on formal structures for computation and deduction, FSCD 2024, Tallinn, Estonia, July 10--13, 2024. Wadern: Schloss Dagstuhl -- Leibniz Zentrum für Informatik. LIPIcs -- Leibniz Int. Proc. Inform. 299, Article 26, 15 p. (2024)"
+  year: 2024
+  doi: 10.4230/LIPIcs.FSCD.2024.26
+  arxiv: "2405.09946"
+  source: zbmath
+bazhenovfioricaronesmarchuk2025:
+  authors:
+    - N. A. Bazhenov
+    - M. Fiori-Carones
+    - M. I. Marchuk
+  title: Weihrauch degrees of elementary embeddings for prime and saturated models
+  venue: Lobachevskii Journal of Mathematics 46(12), 6079-6091
+  year: 2025
+  doi: 10.1134/S1995080225613839
+  source: zbmath
+ingall2025:
+  authors:
+    - Corrie Ingall
+  title: Properties of range sets of continuous functions in reverse mathematics
+  venue: "Beckmann, Arnold (ed.) et al., Crossroads of computability and logic: insights, inspirations, and innovations. 21st conference on computability in Europe, CiE 2025, Lisbon, Portugal, July 14--18, 2025. Proceedings. Cham: Springer. Lect. Notes Comput. Sci. 15764, 268-282 (2025)"
+  year: 2025
+  doi: 10.1007/978-3-031-95908-0_19
+  source: zbmath
+provenzano2025:
+  authors:
+    - Philipp Provenzano
+  title: On the reverse mathematics of cut-elimination and determinacy
+  venue: "Beckmann, Arnold (ed.) et al., Crossroads of computability and logic: insights, inspirations, and innovations. 21st conference on computability in Europe, CiE 2025, Lisbon, Portugal, July 14--18, 2025. Proceedings. Cham: Springer. Lect. Notes Comput. Sci. 15764, 410-424 (2025)"
+  year: 2025
+  doi: 10.1007/978-3-031-95908-0_29
+  source: zbmath
+wu2025:
+  authors:
+    - Huishan Wu
+  title: Categories and functors in reverse and computable mathematics
+  venue: Archive for Mathematical Logic 64(5-6), 637-667
+  year: 2025
+  doi: 10.1007/s00153-024-00962-1
+  source: zbmath
+veldman2025:
+  authors:
+    - Wim Veldman
+  title: The Fan Theorem, its strong negation, and the determinacy of games
+  venue: Archive for Mathematical Logic 64(1-2), 1-66
+  year: 2025
+  doi: 10.1007/s00153-024-00930-9
+  arxiv: "1311.6988"
+  source: zbmath
+benamramkristiansen2025:
+  authors:
+    - Amir M. Ben-Amram
+    - Lars Kristiansen
+  title: A degree structure on representations of irrational numbers
+  venue: Journal of Logic and Analysis 17, Paper No. FDS2, 22 p
+  year: 2025
+  doi: 10.4115/jla.2025.17.FDS2
+  source: zbmath
+bergeretal2025:
+  authors:
+    - J. Berger
+    - Douglas Bridges
+    - Hannes Diener
+    - Helmet Schwichtenberg
+  title: Constructive aspects of Riemann's permutation theorem for series
+  venue: Logic Journal of the IGPL 33(1), 49-61
+  year: 2025
+  doi: 10.1093/jigpal/jzad024
+  arxiv: "1303.7051"
+  source: zbmath
+aguilerakouptchinsky2026:
+  authors:
+    - J. P. Aguilera
+    - T. Kouptchinsky
+  title: Binary choice games and arithmetical comprehension
+  venue: Archive for Mathematical Logic 65(5), 665-674
+  year: 2026
+  doi: 10.1007/s00153-026-01016-4
+  arxiv: "2510.12612"
+  source: zbmath
+shore2026:
+  authors:
+    - Richard A. Shore
+  title: Zorn's lemma, reverse mathematics, and applications in combinatorics
+  venue: Notre Dame Journal of Formal Logic 67(1), 49-68
+  year: 2026
+  doi: 10.1215/00294527-2025-0020
+  source: zbmath
+aguilerasuzukiyokoyama2026:
+  authors:
+    - Juan P. Aguilera
+    - Yudai Suzuki
+    - Keita Yokoyama
+  title: On some subtheories of strong dependent choice
+  venue: Archive for Mathematical Logic 65(6), 809-822
+  year: 2026
+  doi: 10.1007/s00153-026-01023-5
+  arxiv: "2411.17415"
+  source: zbmath
+ardeshirtahmasbizadeh2026:
+  authors:
+    - Mohammad Ardeshir
+    - Mohammad Tahmasbizadeh
+  title: Decomposability of $\mathbb{R}$ and dense negative subsets of $\mathbb{R}$ in constructive reverse mathematics
+  venue: Logic Journal of the IGPL 34(1), Article ID jzaf092, 8 p
+  year: 2026
+  doi: 10.1093/jigpal/jzaf092
+  source: zbmath
+bazhenovmarchuk2026:
+  authors:
+    - N. A. Bazhenov
+    - M. I. Marchuk
+  title: Weihrauch complexity for elementary embeddings into countable saturated models
+  venue: Siberian Mathematical Journal 67(3), 701-715
+  year: 2026
+  doi: 10.1134/S0037446626030134
+  source: zbmath
+liao2026:
+  authors:
+    - Yuke Liao
+  title: A recursive coloring function without $\Pi_3^0$ solutions for Hindman's theorem
+  venue: The Journal of Symbolic Logic 91(2), 840-863
+  year: 2026
+  doi: 10.1017/jsl.2024.49
+  arxiv: "2206.06859"
+  source: zbmath
+bawanehetal2026:
+  authors:
+    - Sameer Bawaneh
+    - Muath Awadalla
+    - M. Manigandan
+    - Salma Trabelsi
+  title: Proof mining and the logical strength of a class of implicit fractional boundary value problems
+  venue: Mathematical Logic Quarterly (MLQ) 72(2), Article ID e70023, 29 p
+  year: 2026
+  doi: 10.1002/malq.70023
+  source: zbmath
+sanders2027:
+  authors:
+    - Sam Sanders
+  title: On the reverse mathematics of Darboux's supremum principle
+  venue: "Brattka, Vasco (ed.) et al., Timeless machines: computability across eras. 22nd conference on computability in Europe, CiE 2026, Trier, Germany, July 27--31, 2026. Proceedings. Cham: Springer. Lect. Notes Comput. Sci. 16674, 498-513 (2027)"
+  year: 2027
+  doi: 10.1007/978-3-032-31348-5_33
+  source: zbmath

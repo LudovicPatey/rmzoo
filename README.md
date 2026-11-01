@@ -24,6 +24,8 @@ Then open http://localhost:8080.
 * `npm run check` — validate the data and look for contradictions
 * `npm run build` — regenerate `site/data/zoo.json` from `data/`
 * `npm test` — engine and BibTeX tests (including known facts that must be derived)
+* `npm run consolidate` — search for new papers, publication updates, texts, candidate
+  results and questions, and write a report to work through (see `docs/CONSOLIDATION.md`)
 
 The viewer is a static site (`site/`): after `npm run build` it can be served
 by GitHub Pages or any static host.

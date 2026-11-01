@@ -3,14 +3,14 @@
 - { id: "cousin-c", label: "\\mathsf{CL}_{\\mathrm{c}}", name: "Cousin's lemma for continuous gauges", kind: "sentence", tags: [ "analysis" ], definition: "For every continuous gauge $\\delta : [0,1] \\to \\mathbb{R}^+$ there is a $\\delta$-fine tagged partition of $[0,1]$." }
 - { id: "cousin-b1", label: "\\mathsf{CL}_{\\mathrm{B1}}", name: "Cousin's lemma for Baire class 1 gauges", kind: "sentence", tags: [ "analysis" ], definition: "Cousin's lemma restricted to gauges of Baire class 1." }
 - { id: "ukt", label: "\\mathsf{UKT}", name: "Uniform Kruskal theorem", kind: "sentence", tags: [ "well-orders" ], definition: "The uniform Kruskal theorem of Freund, Rathjen and Weiermann: a uniform version of Kruskal's theorem for recursive data types given by normal transformations of well partial orders." }
-- { id: "tlpp", label: "\\mathsf{TLPP}", name: "Transfinite leftmost path principle", kind: "sentence", tags: [ "well-orders" ], definition: "Towsner's transfinite leftmost path principle; see the source.", todo: true }
+- { id: "tlpp", label: "\\mathsf{TLPP}", name: "Transfinite leftmost path principle", kind: "sentence", tags: [ "well-orders" ], definition: "Towsner's transfinite leftmost path principle: an axiom asserting the existence of leftmost paths through ill-founded trees, relative to hyperarithmetic hierarchies along well-orders. The theory $\\mathsf{TLPP}_0$ ($\\mathsf{RCA}_0$ + TLPP) lies between $\\mathsf{ATR}_0$ and $\\Pi^1_1\\text{-}\\mathsf{CA}_0$.", refs: [ { ref: fernandezduqueetal2023, role: rm, loc: §2 (Definition 2.3 and following) } ] }
 - { id: "jordan", label: "\\mathsf{JD}", name: "Jordan decomposition theorem", kind: "sentence", tags: [ "analysis" ], definition: "Every function $f : [0,1] \\to \\mathbb{R}$ of bounded variation is the difference of two non-decreasing functions." }
 - { id: "jordan-c", label: "\\mathsf{JD}_{\\mathrm{c}}", name: "Jordan decomposition theorem (continuous)", kind: "sentence", tags: [ "analysis" ], definition: "Every continuous function of bounded variation on $[0,1]$ is the difference of two continuous non-decreasing functions." }
 - { id: "bvdiff", label: "\\mathsf{BV}\\text{-}\\mathsf{DIFF}", name: "Differentiability of BV functions", kind: "sentence", tags: [ "analysis", "randomness" ], definition: "Every function of bounded variation on $[0,1]$ is differentiable almost everywhere." }
 - { id: "art22", label: "\\mathsf{ART}^2_2", name: "Ramsey theorem for additive colourings", kind: "problem", tags: [ "ramsey" ], definition: "Ramsey's theorem for pairs restricted to additive colourings (colourings into a finite semigroup with $c(i,k) = c(i,j) \\cdot c(j,k)$), asserting an infinite homogeneous set.", instance: "A coloring $c : [\\mathbb{N}]^2 \\to S$ into a finite semigroup with $c(i,k) = c(i,j) \\cdot c(j,k)$.", solution: An infinite homogeneous set. }
 - { id: "buchi", label: "\\mathsf{BC}", name: "Büchi's complementation theorem", kind: "sentence", tags: [ "induction" ], definition: "Every language recognized by a nondeterministic Büchi automaton has a complement recognized by a nondeterministic Büchi automaton." }
 - { id: "fishburn", label: "\\mathsf{FPT}", name: "Fishburn's possibility theorem", kind: "sentence", tags: [ "first-order" ], definition: "Fishburn's possibility theorem for countable societies: there is a social welfare function satisfying Arrow's conditions." }
-- { id: "aht", label: "\\mathsf{AHT}", name: "Adjacent Hindman's theorem", kind: "problem", tags: [ "ramsey" ], definition: "Hindman's theorem where homogeneity is only required for finite sums of adjacent elements.", todo: true, instance: "A finite coloring of $\\mathbb{N}$.", solution: An infinite set whose finite sums of adjacent elements are monochromatic. }
+- { id: "aht", label: "\\mathsf{AHT}", name: "Adjacent Hindman's theorem", kind: "problem", tags: [ "ramsey" ], definition: "For every coloring $c : \\mathbb{N} \\to k$ there is an infinite set $H = \\{h_1 < h_2 < \\dots\\}$ such that all sums of finitely many consecutive elements $h_i + h_{i+1} + \\dots + h_j$ have the same color (with the apartness condition on the binary expansions of the $h_i$).", instance: "A finite coloring of $\\mathbb{N}$.", solution: An infinite set whose finite sums of adjacent elements are monochromatic., refs: [ { ref: carlucci2016, role: origin, loc: Definition 1 } ] }
 - { id: "hilbert", label: "\\mathsf{HIL}", name: "Hilbert's theorem", kind: "sentence", tags: [ "ramsey" ], definition: "Variant of Hindman's theorem studied by Hirst, equivalent to the infinite pigeonhole principle; see the source.", todo: true }
 - { id: "gowers", label: "\\mathsf{FIN}_k", name: "Gowers' FIN_k theorem", kind: "problem", tags: [ "ramsey" ], definition: "Gowers' pigeonhole principle for $\\mathrm{FIN}_k$, a generalization of Hindman's theorem.", instance: "A number $k$ and a finite coloring of $\\mathrm{FIN}_k$.", solution: An infinite block sequence whose generated combinatorial subspace is monochromatic. }
 - { id: "ap", label: "\\mathsf{AP}", name: "Existence of almost periodic points", kind: "sentence", tags: [ "analysis" ], definition: "Every continuous map on a compact metric space has an almost periodic point." }
@@ -27,7 +27,7 @@
 - { id: "tietze", label: "\\mathsf{TET}", name: "Tietze extension theorem", kind: "sentence", tags: [ "analysis" ], definition: "Versions of the Tietze extension theorem for functions with moduli of uniform continuity." }
 - { id: "hst", label: "\\mathsf{HST}", name: "Helly's selection theorem", kind: "sentence", tags: [ "analysis" ], definition: "Every bounded sequence of functions of bounded variation has a subsequence converging in the weak* topology." }
 - { id: "ttall", label: "\\mathsf{TT}", name: "Tree theorem for all exponents", kind: "problem", tags: [ "ramsey" ], definition: "For every $n$ and $k$, the tree theorem $\\mathsf{TT}^n_k$ holds.", instance: "Numbers $n, k$ and a coloring of the $n$-element chains of $2^{<\\mathbb{N}}$ with $k$ colors.", solution: "A homogeneous subtree isomorphic to $2^{<\\mathbb{N}}$." }
-- { id: "pr2", label: "\\mathsf{PR}^2", name: "Packed Ramsey theorem for pairs", kind: "problem", tags: [ "ramsey" ], definition: "Erdős–Galvin packed Ramsey theorem for pairs: every coloring admits an infinite \"packed\" set using few colors; see the source.", todo: true }
+- { id: "pr2", label: "\\mathsf{PR}^2", name: "Packed Ramsey theorem for pairs", kind: "problem", tags: [ "ramsey" ], definition: "$\\mathsf{PRT}^2_k$: for every $\\varphi : \\mathbb{N} \\to \\mathbb{N}$ with $w \\to (\\varphi(w))^2_{k+1}$ for all $w$, and every $f : [\\mathbb{N}]^2 \\to \\{1, \\dots, k\\}$, there is a set $H$ which is packed for $\\varphi$ and semi-homogeneous for $f$ (Erdős–Galvin).", refs: [ { ref: flood2013, role: rm, loc: Statement 1.5 } ] }
 - { id: "hb", label: "\\mathsf{HB}", name: "Hahn–Banach theorem (separable)", kind: "problem", tags: [ "analysis", "compactness", "weihrauch" ], definition: "Every bounded linear functional on a closed subspace of a separable Banach space extends to the whole space with the same norm.", instance: "A separable Banach space, a closed subspace and a bounded functional on it.", solution: "A norm-preserving extension of the functional.", refs: [ { ref: gherardimarcone2009, role: rm }, { ref: simpson2009, role: rm, loc: "Section IV.9" } ] }
 
 - id: fra
@@ -37,9 +37,7 @@
   tags: [ well-orders, orders ]
   aliases: [ Laver's theorem, LAV, Fraisse conjecture ]
   definition: >
-    The countable linear orders are well-quasi-ordered under embeddability: for every
-    sequence $(L_n)$ of countable linear orders there are $i < j$ such that $L_i$
-    embeds into $L_j$.
+    The countable linear orders are well-quasi-ordered under embeddability: for every sequence $(L_n)$ of countable linear orders there are $i < j$ such that $L_i$ embeds into $L_j$.
   refs: [ { ref: shore1993, role: rm }, { ref: montalban2017, role: rm } ]
 
 - id: nwt
@@ -49,9 +47,7 @@
   tags: [ well-orders ]
   aliases: [ Nash-Williams theorem ]
   definition: >
-    If $Q$ is a better quasi-order and $\alpha$ is a countable well-order, then the
-    set $S_\alpha(Q)$ of $\alpha$-sequences of elements of $Q$, ordered by
-    embeddability, is a better quasi-order.
+    If $Q$ is a better quasi-order and $\alpha$ is a countable well-order, then the set $S_\alpha(Q)$ of $\alpha$-sequences of elements of $Q$, ordered by embeddability, is a better quasi-order.
   refs: [ { ref: marcone1994, role: rm } ]
 
 - id: nwt-fin
@@ -60,9 +56,7 @@
   kind: sentence
   tags: [ well-orders ]
   definition: >
-    If $Q$ is a well-quasi-order and $\alpha$ is a countable well-order, then the set
-    of $\alpha$-sequences of elements of $Q$ with finite range, ordered by
-    embeddability, is a well-quasi-order.
+    If $Q$ is a well-quasi-order and $\alpha$ is a countable well-order, then the set of $\alpha$-sequences of elements of $Q$ with finite range, ordered by embeddability, is a well-quasi-order.
   refs: [ { ref: pakhomovsolda2024, role: rm } ]
 
 - id: ght
@@ -71,8 +65,7 @@
   kind: sentence
   tags: [ well-orders ]
   definition: >
-    If $Q$ is a better quasi-order, then so is the set $Q^{<\omega}$ of finite
-    sequences of elements of $Q$ under embeddability.
+    If $Q$ is a better quasi-order, then so is the set $Q^{<\omega}$ of finite sequences of elements of $Q$ under embeddability.
   refs: [ { ref: marcone1994, role: rm } ]
 
 - id: aet
@@ -82,6 +75,5 @@
   tags: [ analysis ]
   aliases: [ Auslander-Ellis ]
   definition: >
-    For every point $x$ of a compact dynamical system $(X, T)$ there is a uniformly
-    recurrent point $y$ which is proximal to $x$.
+    For every point $x$ of a compact dynamical system $(X, T)$ there is a uniformly recurrent point $y$ which is proximal to $x$.
   refs: [ { ref: blasshirstsimpson1987, role: rm }, { ref: kreuzer2013, role: rm } ]

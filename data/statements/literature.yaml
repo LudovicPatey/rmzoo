@@ -123,20 +123,24 @@
   name: Eventually constant Ramsey-type principle
   kind: problem
   tags: [ induction ]
-  definition: >
-    Combinatorial principle of Davis, Hirschfeldt, Hirst, Pardo, Pauly and Yokoyama, equivalent to $\mathsf{I}\Sigma^0_1$ over RCA₀*; see the source.
-  todo: true
-  refs: [ { ref: davisetal2020, role: origin } ]
+  definition: >-
+    For every coloring $f : \mathbb{N} \to k$ there is $b$ such that every color appearing after $b$ appears at least twice after $b$: for all $x \ge b$ there is $y \ge b$ with $y \ne x$ and $f(x) = f(y)$.
+  refs:
+    - ref: davisetal2020
+      role: origin
+      loc: Introduction (ERT)
 
 - id: ect
   label: '\mathsf{ECT}'
   name: Eventually constant tail principle
   kind: problem
   tags: [ induction ]
-  definition: >
-    For every coloring $c : \mathbb{N} \to k$ there is $n$ such that every color occurring after $n$ occurs infinitely often. Equivalent to $\mathsf{I}\Sigma^0_2$ over RCA₀*.
-  todo: true
-  refs: [ { ref: davisetal2020, role: origin } ]
+  definition: >-
+    For every coloring $f : \mathbb{N} \to k$ there is $b$ such that every color appearing after $b$ appears infinitely often (eventually constant palette tail).
+  refs:
+    - ref: davisetal2020
+      role: rm
+      loc: Introduction (ECT, due to Hirst)
 
 - id: w2ran
   label: '\mathsf{W}2\text{-}\mathsf{RAN}'
@@ -225,9 +229,9 @@
   label: '\mathsf{TAC}'
   name: CAC for trees
   kind: problem
-  tags: [orders, ramsey]
-  aliases: [tree antichain, TCAC, CAC for trees]
+  tags: [ orders, ramsey ]
+  aliases: [ tree antichain, TCAC, CAC for trees ]
   definition: Every infinite subtree of $\mathbb{N}^{<\mathbb{N}}$ has an infinite path or an infinite antichain.
   instance: An infinite subtree $T$ of $\mathbb{N}^{<\mathbb{N}}$.
   solution: An infinite path of $T$ or an infinite antichain of $T$.
-  refs: [{ref: cervellegaudelierpatey2022, role: rm}]
+  refs: [ { ref: cervellegaudelierpatey2022, role: rm } ]

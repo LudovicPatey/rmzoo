@@ -1340,10 +1340,10 @@ function viewRefs(key) {
   const nUse = new Map();
   Z.raw.results.forEach((res) => (res.refs || []).forEach((r) => nUse.set(r.ref, (nUse.get(r.ref) || 0) + 1)));
   m.innerHTML = `<h1>Literature</h1>
-    <p class="muted">${refs.length} papers. Papers with extracted results feed the zoo; the others come from Brattka's Bibliography on Weihrauch Complexity and an arXiv sweep, and are waiting for their results to be entered.</p>
+    <p class="muted">${refs.length} papers. Papers with extracted results feed the zoo; the others come from Brattka's Bibliography on Weihrauch Complexity and sweeps of zbMATH Open and arXiv, and are waiting for their results to be entered.</p>
     <div class="filters"><input class="text" id="rq" placeholder="Author, title, year…" style="width:280px">
       <select id="rsrc"><option value="results">With results in the zoo</option><option value="">All papers</option>
-        <option value="weihrauch-bibliography">Weihrauch bibliography only</option><option value="arxiv">arXiv sweep only</option></select>
+        <option value="weihrauch-bibliography">Weihrauch bibliography only</option><option value="arxiv">arXiv sweep only</option><option value="zbmath">zbMATH sweep only</option></select>
       <select id="rread"><option value="">Any reading status</option><option value="pdf">Full text parsed</option>
         <option value="abstract">Abstract read</option><option value="screened">Abstract screened</option><option value="none">Not read</option></select>
       <select id="rsort"><option value="desc">Newest first</option><option value="asc">Oldest first</option></select>
