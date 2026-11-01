@@ -36,6 +36,7 @@ data/
   tags.yaml          categories (Big Five, Ramsey theory, …)
   properties.yaml    separating properties (cone avoidance, low basis, …)
   zoos.yaml          predefined selections shown on the front page
+  classes.yaml       formula classes for conservation results (Π⁰ₙ, ∀Π⁰ₙ, Π¹₁, rΠ¹₂…)
   context.yaml       short historical context for the main statements ([@key] cites a paper)
   abstracts.yaml     abstracts of the papers (scripts/abstracts.mjs)
   references.yaml    bibliography
@@ -92,11 +93,21 @@ pdf-arxiv | pdf-oa`) in `data/references/`. It needs `pdftotext` and `sqlite3`.
 
 ## Abstracts
 
-`node scripts/abstracts.mjs` fills `data/abstracts.yaml` from the arXiv API
-(papers with an arXiv id) and OpenAlex (by DOI, or by exact title match);
-existing entries are kept unless `--refresh`. Paper pages load them on demand
-from `site/data/abstracts.json`. OpenAlex abstracts sometimes lack their
-inline formulas, and the page says so.
+Abstracts live in `data/abstracts.yaml`, each with its source:
+
+1. `node scripts/abstracts.mjs` takes them from the arXiv API (the authors' TeX,
+   formulas included), searching arXiv by title for papers without an arXiv
+   id (ids found this way are added to the references), and otherwise from
+   OpenAlex, whose abstracts often lose their inline formulas.
+2. `node scripts/pdf-abstracts.mjs` replaces OpenAlex abstracts, and fills
+   missing ones, with the abstract read from the paper's PDF (downloaded or
+   in Zotero). Formulas are rebuilt from the typesetting: text in a smaller
+   font that is raised or lowered becomes a superscript or subscript, and text
+   in math fonts becomes math. An extraction must contain the same words as
+   the OpenAlex abstract to replace it; scanned PDFs are skipped.
+
+Paper pages load them on demand from `site/data/abstracts.json` and name the
+source.
 
 ## Labels "Over RCA₀", "Over RCA₀*", "Weihrauch"
 

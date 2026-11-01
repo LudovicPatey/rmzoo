@@ -38,6 +38,7 @@ const raw = {
   statements: readDir('statements'),
   results: readDir('results'),
   zoos: readYaml(path.join(dataDir, 'zoos.yaml')),
+  classes: readYaml(path.join(dataDir, 'classes.yaml')),
 };
 const contexts = readYaml(path.join(dataDir, 'context.yaml')) || {};
 const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml(path.join(dataDir, 'abstracts.yaml')) || {} : {};
@@ -129,6 +130,15 @@ const uniq = (list, what) => {
 const rids = uniq(raw.reductions, 'reduction');
 const tids = uniq(raw.tags, 'tag');
 {
+  const cids = uniq(raw.classes, 'formula class');
+  for (const c of raw.classes) {
+    if (!c.notation || !c.definition) errors.push(`Formula class ${c.id}: notation and definition are required`);
+    for (const d of c.includes || []) if (!cids.has(d)) errors.push(`Formula class ${c.id}: unknown included class ${d}`);
+  }
+  for (const s of raw.statements) if (s.form && !cids.has(s.form)) errors.push(`Statement ${s.id}: unknown form ${s.form}`);
+  for (const r of raw.results) if (r.type === 'conservation' && !cids.has(r.class)) errors.push(`Conservation result on ${r.statement}: unknown class ${r.class}`);
+}
+{
   const byId = new Map(raw.statements.map((x) => [x.id, x]));
   for (const [id, text] of Object.entries(contexts)) {
     if (!byId.has(id)) { errors.push(`context.yaml: unknown statement ${id}`); continue; }
@@ -210,16 +220,27 @@ raw.results.forEach((res, i) => {
     else seen.set(k, i);
   });
   // a paper must have a single key
-  const norm = (t) => String(t || '').toLowerCase().normalize('NFKD').replace(/\$[^$]*\$/g, '').replace(/[^a-z0-9]/g, '');
-  const byDoi = new Map(), byTitle = new Map();
+  // titles compared up to notation: "SRT²₂ … ω-models" = "$\mathsf{SRT}^2_2$ … $\omega$-models" = "SRT22 … omega-models"
+  const SYM = { '²': '2', '³': '3', '¹': '1', '⁰': '0', '⁴': '4', '₀': '0', '₁': '1', '₂': '2', '₃': '3', '₄': '4', 'ω': 'omega', 'Σ': 'sigma', 'Π': 'pi', 'Δ': 'delta', 'α': 'alpha' };
+  const norm = (t) => String(t || '').replace(/[²³¹⁰⁴₀₁₂₃₄ωΣΠΔα]/g, (c) => SYM[c])
+    .replace(/\\(omega|alpha|sigma|pi|delta)\b/gi, (m, x) => x.toLowerCase()).replace(/\\[a-zA-Z]+/g, '')
+    .toLowerCase().normalize('NFKD').replace(/[^a-z0-9]/g, '');
+  // `version: key` marks another version of the same work (e.g. conference and journal papers)
+  const related = (a, b) => raw.references[a]?.version === b || raw.references[b]?.version === a;
+  for (const [k, r] of Object.entries(raw.references)) if (r.version && !raw.references[r.version]) errors.push(`Reference ${k}: unknown version ${r.version}`);
+  const byDoi = new Map(), byTitle = new Map(), byArxiv = new Map();
   for (const [k, r] of Object.entries(raw.references)) {
     if (!r.year) errors.push(`Reference ${k} has no year`);
     if (r.read && !['pdf-zotero', 'pdf-arxiv', 'pdf-oa', 'abstract', 'screened'].includes(r.read)) errors.push(`Reference ${k}: unknown read status ${r.read}`);
     if (!r.authors || !r.authors.join('').trim()) errors.push(`Reference ${k} has no authors`);
     if (r.doi) { const d = r.doi.toLowerCase(); if (byDoi.has(d)) errors.push(`References ${byDoi.get(d)} and ${k} have the same DOI`); byDoi.set(d, k); }
-    const t = norm(r.title) + '|' + r.year;
-    if (byTitle.has(t)) warnings.push(`References ${byTitle.get(t)} and ${k} look like the same paper`);
+    const t = norm(r.title);
+    if (t.length > 15 && byTitle.has(t) && !related(byTitle.get(t), k)) errors.push(`References ${byTitle.get(t)} and ${k} have the same title (merge them, or mark one as \`version\` of the other)`);
     byTitle.set(t, k);
+    if (r.arxiv) {
+      if (byArxiv.has(r.arxiv) && !related(byArxiv.get(r.arxiv), k)) errors.push(`References ${byArxiv.get(r.arxiv)} and ${k} have the same arXiv id`);
+      byArxiv.set(r.arxiv, k);
+    }
   }
   // formulations point to a main formulation, never to another formulation
   const byId = new Map(raw.statements.map((s) => [s.id, s]));

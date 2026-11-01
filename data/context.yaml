@@ -165,8 +165,8 @@ cn: >-
   Closed choice on ℕ: given an enumeration of the complement of a non-empty set
   of natural numbers, find an element of it. Problems Weihrauch-reducible to C_ℕ
   are exactly those computable with finitely many mind changes
-  [@brattkadebrechtpauly2012]. It lies above LPO and below lim
-  [@brattkagherardi2011b].
+  [@brattkadebrechtpauly2012]. It lies strictly between LPO and lim
+  [@brattkagherardi2011b] [@neumannpauly2018].
 
 lim: >-
   The limit operation on Baire space is Weihrauch-equivalent to the Turing jump

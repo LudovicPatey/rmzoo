@@ -1,0 +1,73 @@
+# Syntactic classes of sentences used by conservation results ("T is
+# Γ-conservative over S": every Γ sentence provable in T is provable in S) and
+# by the `form` of statements.
+#
+# `includes` lists the classes contained in this one (up to provable
+# equivalence in the base theory); the engine closes it transitively, so a
+# conservation result for a class applies to every sentence of a subclass.
+# `aliases` records other notations found in the literature.
+
+- id: Pi02
+  notation: '\Pi^0_2'
+  definition: 'Arithmetical sentences $\forall x\, \exists y\, \theta(x, y)$ with $\theta$ bounded ($\Delta^0_0$), without set parameters.'
+  includes: []
+
+- id: Sig02
+  notation: '\Sigma^0_2'
+  definition: 'Arithmetical sentences $\exists x\, \forall y\, \theta(x, y)$ with $\theta$ bounded, without set parameters.'
+  includes: []
+
+- id: Pi03
+  notation: '\Pi^0_3'
+  definition: 'Arithmetical sentences $\forall x\, \psi(x)$ with $\psi$ a $\Sigma^0_2$ formula, without set parameters.'
+  includes: [Pi02, Sig02]
+
+- id: Sig03
+  notation: '\Sigma^0_3'
+  definition: 'Arithmetical sentences $\exists x\, \psi(x)$ with $\psi$ a $\Pi^0_2$ formula, without set parameters.'
+  includes: [Pi02, Sig02]
+
+- id: Pi04
+  notation: '\Pi^0_4'
+  definition: 'Arithmetical sentences $\forall x\, \psi(x)$ with $\psi$ a $\Sigma^0_3$ formula, without set parameters.'
+  includes: [Pi03, Sig03]
+
+- id: Sig04
+  notation: '\Sigma^0_4'
+  definition: 'Arithmetical sentences $\exists x\, \psi(x)$ with $\psi$ a $\Pi^0_3$ formula, without set parameters.'
+  includes: [Pi03, Sig03]
+
+- id: uPi03
+  notation: '\forall\Pi^0_3'
+  aliases: ['\tilde\Pi^0_3']
+  definition: 'Sentences $\forall X\, \varphi(X)$ where $\varphi$ is a $\Pi^0_3$ formula whose only free variable is the set variable $X$. A $\Pi^0_3$ sentence is the case where $X$ does not occur. Written $\tilde\Pi^0_3$ in older papers.'
+  includes: [Pi03]
+
+- id: uPi04
+  notation: '\forall\Pi^0_4'
+  aliases: ['\tilde\Pi^0_4']
+  definition: 'Sentences $\forall X\, \varphi(X)$ where $\varphi$ is a $\Pi^0_4$ formula whose only free variable is the set variable $X$. Written $\tilde\Pi^0_4$ in older papers.'
+  includes: [uPi03, Pi04]
+
+- id: Pi0k
+  notation: '\Pi^0_n'
+  name: 'arithmetical (any n)'
+  definition: 'All arithmetical sentences, i.e. $\Pi^0_n$ sentences for every $n$, without set parameters (same class as "arithmetical").'
+  includes: [arith]
+
+- id: arith
+  notation: '\mathrm{arith}'
+  name: 'arithmetical'
+  definition: 'All arithmetical sentences (first-order sentences of arithmetic, without set parameters). The default form of a statement marked first-order.'
+  includes: [Pi04, Sig04, Pi0k]
+
+- id: Pi11
+  notation: '\Pi^1_1'
+  definition: 'Sentences $\forall X\, \varphi(X)$ with $\varphi$ arithmetical.'
+  includes: [arith, uPi04]
+
+- id: rPi12
+  notation: '\mathrm{r}\Pi^1_2'
+  name: 'restricted Π¹₂'
+  definition: 'Sentences $\forall X\, [\theta(X) \to \exists Y\, \psi(X, Y)]$ with $\theta$ arithmetical and $\psi$ a $\Sigma^0_3$ formula (Hirschfeldt, Shore and Slaman). Many Ramsey-type problems have this form.'
+  includes: [Pi11]

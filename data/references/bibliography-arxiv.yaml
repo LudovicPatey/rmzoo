@@ -1036,15 +1036,6 @@ kjoshanssenliu2016:
   arxiv: "1602.03690"
   source: arxiv
   read: pdf-zotero
-liu2016:
-  authors:
-    - Lu Liu
-  title: $\mathsf{RT}_2^2$ does not imply $\mathsf{WKL}_0$
-  year: 2016
-  venue: "Journal of Symbolic Logic, 2012, 77(2): 609"
-  arxiv: "1602.03784"
-  source: arxiv
-  read: pdf-zotero
 shafer2016:
   authors:
     - Paul Shafer
@@ -1480,7 +1471,7 @@ towsneryokoyama2018:
   venue: arXiv preprint
   arxiv: "1807.04452"
   source: arxiv
-  read: pdf-arxiv
+  read: pdf-zotero
 eastaugh2018b:
   authors:
     - Benedict Eastaugh
@@ -1621,18 +1612,6 @@ dimitrovetal2019:
   arxiv: "1901.04786"
   source: arxiv
   read: pdf-arxiv
-cholaketal2019:
-  authors:
-    - Peter A. Cholak
-    - Damir D. Dzhafarov
-    - Denis R. Hirschfeldt
-    - Ludovic Patey
-  title: Some results concerning the $\mathsf{SRT}^2_2$ vs. $\mathsf{COH}$ problem
-  year: 2019
-  venue: arXiv preprint
-  arxiv: "1901.10326"
-  source: arxiv
-  read: pdf-zotero
 normannsanders2019:
   authors:
     - Dag Normann
@@ -1706,25 +1685,6 @@ sanders2019:
   arxiv: "1905.04058"
   source: arxiv
   read: pdf-arxiv
-goh2019c:
-  authors:
-    - Jun Le Goh
-  title: Some computability-theoretic reductions between principles around $\mathsf{ATR}_0$
-  year: 2019
-  venue: arXiv preprint
-  arxiv: "1905.06868"
-  source: arxiv
-  read: pdf-arxiv
-moninpatey2019b:
-  authors:
-    - Benoit Monin
-    - Ludovic Patey
-  title: SRT22 does not imply RT22 in omega-models
-  year: 2019
-  venue: arXiv preprint
-  arxiv: "1905.08427"
-  source: arxiv
-  read: pdf-zotero
 litakvisser2019:
   authors:
     - Tadeusz Litak
@@ -3587,7 +3547,7 @@ carluccivolpizdanowski2026:
   venue: arXiv preprint
   arxiv: "2603.22579"
   source: arxiv
-  read: pdf-zotero
+  read: pdf-arxiv
 cholak2026:
   authors:
     - Peter Cholak

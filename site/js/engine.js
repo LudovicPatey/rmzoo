@@ -44,14 +44,28 @@ export const CLASS_MEMBERS = {
   Pi11: [...ARITH, 'uPi03', 'uPi04', 'Pi11'],
   rPi12: [...ARITH, 'uPi03', 'uPi04', 'Pi11', 'rPi12'],
 };
+// Classes given as data (data/classes.yaml: { id, notation, includes }) take
+// precedence: members = reflexive-transitive closure of `includes`.
+export function classMembers(classes) {
+  if (!classes?.length) return CLASS_MEMBERS;
+  const inc = new Map(classes.map((c) => [c.id, c.includes || []]));
+  const out = {};
+  for (const c of classes) {
+    const seen = new Set([c.id]), todo = [c.id];
+    while (todo.length) for (const d of inc.get(todo.pop()) || []) if (!seen.has(d)) { seen.add(d); todo.push(d); }
+    out[c.id] = [...seen];
+  }
+  return out;
+}
 export const CLASS_NAMES = {
-  Pi02: 'Π⁰₂', Pi03: 'Π⁰₃', uPi04: '∀Π⁰₄', Sig03: 'Σ⁰₃', uPi03: 'Π̃⁰₃', Pi04: 'Π⁰₄', Sig04: 'Σ⁰₄', Pi0k: 'arithmetical',
+  Pi02: 'Π⁰₂', Pi03: 'Π⁰₃', uPi04: '∀Π⁰₄', Sig03: 'Σ⁰₃', uPi03: '∀Π⁰₃', Pi04: 'Π⁰₄', Sig04: 'Σ⁰₄', Pi0k: 'arithmetical',
   arith: 'arithmetical', Pi11: 'Π¹₁', rPi12: 'restricted Π¹₂',
 };
 
 export function buildZoo(raw) {
   const S = raw.statements;
   const R = raw.reductions;
+  const CLASS_MEMBERS = classMembers(raw.classes);
   const n = S.length;
   const sidx = new Map(S.map((s, i) => [s.id, i]));
   const ridx = new Map(R.map((r, i) => [r.id, i]));
@@ -331,6 +345,7 @@ export function buildZoo(raw) {
     I, N, P, out, inn, errors, contradictions,
     inDomain, status, just, proof, sources,
     prop: (p, s) => P[p].get(s), // {v, just} | undefined
+    classMembers: CLASS_MEMBERS,
   };
 }
 

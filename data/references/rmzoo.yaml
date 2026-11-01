@@ -58,7 +58,6 @@ dobrinensimpson2004:
   year: 2004
   venue: J. Symbolic Logic 69(3)
   doi: 10.2178/jsl/1096901775
-  arxiv: math/0506019
   read: pdf-zotero
 mileti2004:
   authors:
@@ -160,7 +159,6 @@ slaman2011cie:
   title: Σ₂-bounding and Δ₂-induction (talk slides)
   year: 2011
   venue: Computability in Europe (CiE) 2011, invited talk
-  read: pdf-zotero
 avigaddeanrute2012:
   authors:
     - Avigad

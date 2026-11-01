@@ -24,6 +24,7 @@ ahmanbauer2025:
   doi: 10.1016/j.jlamp.2025.101071
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2409.17664"
 dauriac2020:
   authors:
     - Paul-Elliot Anglès d'Auriac
@@ -42,6 +43,7 @@ dauriackihara2021:
   doi: 10.1017/jsl.2021.37
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1907.02769"
 ackermanfreerroy2017:
   authors:
     - Nathanael L. Ackerman
@@ -53,6 +55,7 @@ ackermanfreerroy2017:
   doi: 10.1017/S0960129516000098
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1509.02992"
 amirhoyrup2022:
   authors:
     - Djamel Eddine Amir
@@ -61,6 +64,7 @@ amirhoyrup2022:
   year: 2022
   venue: hal-03702999
   source: weihrauch-bibliography
+  read: pdf-oa
 amirhoyrup2022b:
   authors:
     - Djamel Eddine Amir
@@ -70,6 +74,7 @@ amirhoyrup2022b:
   venue: arXiv 2210.08309
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2210.08309"
 amir2023:
   authors:
     - Djamel Eddine Amir
@@ -94,6 +99,7 @@ bauer2021:
   venue: arXiv 2106.01734
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2106.01734"
 brattkachirache2026:
   authors:
     - Vasco Brattka
@@ -103,6 +109,7 @@ brattkachirache2026:
   venue: arXiv arXiv:2601.18663
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2601.18663"
 brattkaetal2017:
   authors:
     - Vasco Brattka
@@ -150,6 +157,7 @@ bazhenovetal2024:
   doi: 10.1016/j.apal.2023.103354
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2210.13080"
 brattkagherardi2009:
   authors:
     - Vasco Brattka
@@ -167,6 +175,7 @@ brattkagherardi2018:
   venue: arXiv 1809.00380
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1809.00380"
 brattkagherardi2019:
   authors:
     - Vasco Brattka
@@ -176,6 +185,7 @@ brattkagherardi2019:
   venue: arXiv 1910.13186
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1910.13186"
 brattkagherardiholzl2015b:
   authors:
     - Vasco Brattka
@@ -199,6 +209,7 @@ brattkaetal2017b:
   doi: 10.1007/978-3-319-50062-1_14
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1605.03354"
 brattkaetal2022:
   authors:
     - Vasco Brattka
@@ -241,6 +252,7 @@ brattkahendtlasskreuzer2018:
   doi: 10.1215/00294527-2018-0016
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1510.01913"
 bementhirstwallace2021:
   authors:
     - Zack BeMent
@@ -251,6 +263,7 @@ bementhirstwallace2021:
   venue: arXiv 2105.01719
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2105.01719"
 bienvenukuyper2017:
   authors:
     - Laurent Bienvenu
@@ -318,6 +331,7 @@ brattkapauly2018:
   doi: 10.23638/LMCS-14(4:4)2018
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1604.08348"
 bochepohl2019:
   authors:
     - H. Boche
@@ -338,7 +352,8 @@ brechtpaulyschroder2020:
   venue: Computability, 9(3-4), 169–191
   doi: 10.3233/com-190253
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
+  arxiv: "1902.05926"
 brattkarauzy2025:
   authors:
     - Vasco Brattka
@@ -357,6 +372,7 @@ brattkarauzy2025b:
   venue: arXiv arXiv:2509.20266
   source: weihrauch-bibliography
   read: pdf-oa
+  arxiv: "2509.20266"
 brattka2005:
   authors:
     - Vasco Brattka
@@ -373,6 +389,7 @@ brattka2016:
   doi: 10.1007/978-3-319-40189-8_5
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1602.07509"
 brattka2020:
   authors:
     - Vasco Brattka
@@ -380,7 +397,8 @@ brattka2020:
   year: 2020
   venue: arXiv 2012.02143
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
+  arxiv: "2012.02143"
 brattka2021:
   authors:
     - Vasco Brattka
@@ -398,6 +416,7 @@ brattka2022:
   venue: 60 Jahre DVMLG, 48, 13–44
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2203.06166"
 brattka2023:
   authors:
     - Vasco Brattka
@@ -414,6 +433,7 @@ brattka2023b:
   venue: arXiv 2302.04213
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2302.04213"
 brattka2025:
   authors:
     - Vasco Brattka
@@ -422,6 +442,7 @@ brattka2025:
   venue: arXiv arXiv:2501.17734
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2501.17734"
 brattka1993:
   authors:
     - Vasco Brattka
@@ -445,6 +466,7 @@ brattkasmischliaew2024:
   venue: arXiv arXiv:2501.00451
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2501.00451"
 carroy2013:
   authors:
     - Raphaël Carroy
@@ -452,6 +474,7 @@ carroy2013:
   year: 2013
   venue: University of Lausanne and University Paris 7
   source: weihrauch-bibliography
+  read: pdf-oa
 carroy2013b:
   authors:
     - Raphaël Carroy
@@ -469,6 +492,7 @@ carl2016:
   venue: arXiv 1601.01899
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1601.01899"
 carl2019:
   authors:
     - Merlin Carl
@@ -505,6 +529,7 @@ cholaketal2020:
   venue: Computability, 9(3-4), 193–217
   doi: 10.3233/COM-190251
   source: weihrauch-bibliography
+  arxiv: "1901.10326"
   read: pdf-zotero
 cipriani2023:
   authors:
@@ -524,6 +549,7 @@ ciprianimarconevalenti2022:
   venue: arXiv 2210.15556
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2210.15556"
 ciprianimarconevalenti2025:
   authors:
     - Vittorio Cipriani
@@ -553,6 +579,7 @@ carroypequignot2024:
   venue: arXiv 2410.13150v1
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2410.13150"
 ciprianipauly2025:
   authors:
     - Vittorio Cipriani
@@ -563,6 +590,7 @@ ciprianipauly2025:
   doi: 10.1142/S0219061325500114
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2305.00935"
 brecht2014:
   authors:
     - Matthew de Brecht
@@ -571,6 +599,7 @@ brecht2014:
   venue: Logic, Computation, Hierarchies, 93–122
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1312.0697"
 daydowneywestrick2022:
   authors:
     - Adam R. Day
@@ -582,6 +611,7 @@ daydowneywestrick2022:
   doi: 10.1090/btran/115
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1906.07600"
 dzhafarovetal2017:
   authors:
     - Damir Dzhafarov
@@ -593,6 +623,7 @@ dzhafarovetal2017:
   venue: arXiv 1710.00070
   source: weihrauch-bibliography
   read: pdf-zotero
+  arxiv: "1710.00070"
 dzhafarovetal2018:
   authors:
     - Damir D. Dzhafarov
@@ -623,6 +654,7 @@ dzhafarovhirschfeldtreitzes2020:
   venue: arXiv 2008.00907
   source: weihrauch-bibliography
   read: pdf-zotero
+  arxiv: "2008.00907"
 downeymelnikovng2020:
   authors:
     - Rod Downey
@@ -633,6 +665,7 @@ downeymelnikovng2020:
   venue: arXiv 2007.07401
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2007.07401"
 dzhafarovpatey2021:
   authors:
     - Damir D. Dzhafarov
@@ -643,6 +676,7 @@ dzhafarovpatey2021:
   doi: 10.3233/COM-190261
   source: weihrauch-bibliography
   read: pdf-zotero
+  arxiv: "1905.00321"
 dzhafarovsolomonvalenti2023:
   authors:
     - Damir Dzhafarov
@@ -653,6 +687,7 @@ dzhafarovsolomonvalenti2023:
   venue: arXiv 2312.10535
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2312.10535"
 dzhafarovsolomonyokoyama2023:
   authors:
     - Damir D. Dzhafarov
@@ -663,6 +698,7 @@ dzhafarovsolomonyokoyama2023:
   venue: arXiv 2301.12733
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2301.12733"
 dzhafarov2015:
   authors:
     - Damir D. Dzhafarov
@@ -681,6 +717,7 @@ dzhafarov2019:
   doi: 10.4310/MRL.2019.v26.n3.a5
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1704.01494"
 fujiwarahiguchikihara2014:
   authors:
     - Makoto Fujiwara
@@ -704,6 +741,7 @@ floodetal2022:
   doi: 10.1016/j.apal.2022.103133
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2006.11334"
 fioricaronesmarcone2021:
   authors:
     - Marta Fiori-Carones
@@ -714,6 +752,7 @@ fioricaronesmarcone2021:
   doi: 10.3233/com-190285
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1910.01879"
 beckmannoitavemmanea2025:
   authors:
     - Arnold Beckmann
@@ -773,6 +812,7 @@ gurahirstmummert2015:
   doi: 10.3233/COM-150039
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1406.4786"
 gill2023:
   authors:
     - Kenneth Gill
@@ -781,6 +821,7 @@ gill2023:
   venue: arXiv 2312.03919
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2312.03919"
 greenbergkuyperturetsky2019:
   authors:
     - Noam Greenberg
@@ -800,6 +841,9 @@ gherardimarcone2008:
   year: 2008
   venue: CCA 2008, Fifth International Conference on Computability and Complexity in Analysis, 221, 85–102
   source: weihrauch-bibliography
+  arxiv: "0808.1663"
+  version: gherardimarcone2009
+  read: pdf-arxiv
 greenbergmillernies2021:
   authors:
     - Noam Greenberg
@@ -811,6 +855,7 @@ greenbergmillernies2021:
   doi: 10.1007/s11856-021-2200-7
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1912.03016"
 gherardimarconepauly2018:
   authors:
     - Guido Gherardi
@@ -821,6 +866,7 @@ gherardimarconepauly2018:
   venue: arXiv 1805.12026
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1805.12026"
 galeottinobrega2017:
   authors:
     - Lorenzo Galeotti
@@ -830,6 +876,7 @@ galeottinobrega2017:
   venue: Unveiling Dynamics and Complexity, 10307, 246–257
   doi: 10.1007/978-3-319-58741-7_24
   source: weihrauch-bibliography
+  read: pdf-oa
 goh2019:
   authors:
     - Jun Le Goh
@@ -838,6 +885,7 @@ goh2019:
   venue: arXiv 1905.06868
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1905.06868"
 goh2019b:
   authors:
     - Jun Le Goh
@@ -922,6 +970,7 @@ hirst2018:
   venue: arXiv 1812.09762
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1812.09762"
 higuchikihara2014:
   authors:
     - Kojiro Higuchi
@@ -932,6 +981,7 @@ higuchikihara2014:
   doi: 10.1016/j.apal.2014.01.003
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1210.0697"
 higuchikihara2014b:
   authors:
     - Kojiro Higuchi
@@ -942,6 +992,7 @@ higuchikihara2014b:
   doi: 10.1016/j.apal.2014.03.001
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1309.1937"
 hirstmummert2017:
   authors:
     - Jeffry L. Hirst
@@ -952,6 +1003,7 @@ hirstmummert2017:
   doi: 10.1007/978-3-319-50062-1_12
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1604.04912"
 hirstmummert2019:
   authors:
     - Jeffry L. Hirst
@@ -962,6 +1014,7 @@ hirstmummert2019:
   doi: 10.1007/s00153-019-00664-z
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1611.03134"
 hirstmummert2023:
   authors:
     - Jeffry L. Hirst
@@ -972,6 +1025,7 @@ hirstmummert2023:
   doi: 10.3233/COM-230453
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2303.05355"
 hoyrup2017:
   authors:
     - Mathieu Hoyrup
@@ -1006,6 +1060,7 @@ higuchipauly2013:
   doi: 10.2168/LMCS-9(2:2)2013
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1101.0112"
 hoyruprojasweihrauch2011:
   authors:
     - Mathieu Hoyrup
@@ -1016,6 +1071,8 @@ hoyruprojasweihrauch2011:
   venue: Models of Computation in Context, 6735, 132–141
   doi: 10.1007/978-3-642-21875-0_14
   source: weihrauch-bibliography
+  arxiv: "1112.2838"
+  read: pdf-arxiv
 hertlingselivanov2011:
   authors:
     - Peter Hertling
@@ -1034,6 +1091,8 @@ holzlshafer2015:
   venue: Annals of Pure and Applied Logic, 166(10), 1049–1069
   doi: j.apal.2015.05.006
   source: weihrauch-bibliography
+  arxiv: "1409.8589"
+  read: pdf-arxiv
 hughes2021:
   authors:
     - Noah A. Hughes
@@ -1064,7 +1123,8 @@ kawamura2009:
   venue: 24th Annual IEEE Conference on Computational Complexity, 149–160
   doi: 10.1109/CCC.2009.34
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-arxiv
+  arxiv: "1004.4622"
 kawamuracook2010:
   authors:
     - Akitoshi Kawamura
@@ -1074,7 +1134,8 @@ kawamuracook2010:
   venue: Proceedings of the 42nd ACM Symposium on Theory of Computing, 495–502
   doi: 10.1145/1806689.1806758
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-arxiv
+  arxiv: "1305.0453"
 kihara2016:
   authors:
     - Takayuki Kihara
@@ -1084,6 +1145,7 @@ kihara2016:
   doi: 10.2168/LMCS-12(4:4)2016
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1608.03269"
 kihara2020:
   authors:
     - Takayuki Kihara
@@ -1092,6 +1154,7 @@ kihara2020:
   venue: arXiv 2002.10712
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2002.10712"
 kihara2021:
   authors:
     - Takayuki Kihara
@@ -1100,6 +1163,7 @@ kihara2021:
   venue: arXiv 2106.03061
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2106.03061"
 kihara2022:
   authors:
     - Takayuki Kihara
@@ -1118,7 +1182,8 @@ kiharamarconepauly2018:
   year: 2018
   venue: arXiv 1812.01549
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
+  arxiv: "1812.01549"
 kiharamarconepauly2020:
   authors:
     - Takayuki Kihara
@@ -1159,6 +1224,8 @@ kawamuraetal2012:
   venue: Mathematical foundations of computer science 2012, 7464, 578–589
   doi: 10.1007/978-3-642-32589-2_51
   source: weihrauch-bibliography
+  arxiv: "1311.5414"
+  read: pdf-arxiv
 kawamurapauly2014:
   authors:
     - Akitoshi Kawamura
@@ -1169,6 +1236,7 @@ kawamurapauly2014:
   doi: 10.1007/978-3-319-08019-2_25
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1401.2861"
 kiharapauly2016:
   authors:
     - Takayuki Kihara
@@ -1179,6 +1247,7 @@ kiharapauly2016:
   doi: 10.4230/LIPIcs.MFCS.2016.58
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1606.04126"
 kiharapauly2019:
   authors:
     - Takayuki Kihara
@@ -1197,6 +1266,7 @@ kreuzer2012c:
   doi: 10.3233/COM-12010
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1106.5124"
 kreuzer2014:
   authors:
     - Alexander P. Kreuzer
@@ -1215,6 +1285,7 @@ kreuzer2014b:
   doi: 10.2168/LMCS-10(4:16)2014
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1308.3881"
 kudinovselivanovzhukov2010:
   authors:
     - Oleg V. Kudinov
@@ -1233,6 +1304,7 @@ kuyper2017:
   doi: 10.1017/jsl.2016.61
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1511.05189"
 li2024:
   authors:
     - Ang Li
@@ -1241,6 +1313,7 @@ li2024:
   venue: arXiv 2409.19229
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2409.19229"
 lemppetal2023:
   authors:
     - Steffen Lempp
@@ -1253,6 +1326,7 @@ lemppetal2023:
   venue: arXiv 2311.12676
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2311.12676"
 lemppmarconevalenti2024:
   authors:
     - Steffen Lempp
@@ -1263,7 +1337,8 @@ lemppmarconevalenti2024:
   venue: arXiv 2411.07792
   doi: arXiv.2411.07792
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
+  arxiv: "2411.07792"
 rouxpauly2013:
   authors:
     - Stéphane Le Roux
@@ -1292,6 +1367,7 @@ lutzsiskind2023:
   venue: arXiv 2305.19646
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2305.19646"
 lutz2021:
   authors:
     - Patrick Lutz
@@ -1299,6 +1375,7 @@ lutz2021:
   year: 2021
   venue: University of California, Berkeley
   source: weihrauch-bibliography
+  read: pdf-oa
 lutz2023:
   authors:
     - Patrick Lutz
@@ -1315,6 +1392,7 @@ marconeosso2024:
   venue: arXiv 2410.06928
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2410.06928"
 mourad2024:
   authors:
     - Daniel Mourad
@@ -1340,6 +1418,8 @@ maschiotrotta2025:
   year: 2025
   venue: arXiv 2505.08697
   source: weihrauch-bibliography
+  arxiv: "2505.08697"
+  read: pdf-arxiv
 marconevalenti2020:
   authors:
     - Alberto Marcone
@@ -1349,6 +1429,7 @@ marconevalenti2020:
   venue: arXiv 2003.04245
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2003.04245"
 marconevalenti2021:
   authors:
     - Alberto Marcone
@@ -1358,6 +1439,7 @@ marconevalenti2021:
   venue: arXiv 2108.06941
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2108.06941"
 mylatz2006:
   authors:
     - Uwe Mylatz
@@ -1388,6 +1470,7 @@ nichols2017:
   venue: arXiv 1711.06532
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1711.06532"
 nobrega2018:
   authors:
     - Hugo Nobrega
@@ -1405,7 +1488,8 @@ nobregapauly2017:
   venue: Unveiling Dynamics and Complexity, 10307, 327–337
   doi: 10.1007/978-3-319-58741-7_31
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
+  arxiv: "1511.03693"
 neumannpauly2018:
   authors:
     - Eike Neumann
@@ -1415,6 +1499,8 @@ neumannpauly2018:
   venue: Journal of Complexity, 44(Supplement C), 1–22
   doi: 10.1016/j.jco.2017.08.003
   source: weihrauch-bibliography
+  arxiv: "1602.08004"
+  read: pdf-arxiv
 patey2016c:
   authors:
     - Ludovic Patey
@@ -1423,6 +1509,7 @@ patey2016c:
   venue: Université Paris Diderot
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1601.04428"
 pauly2007:
   authors:
     - Arno Pauly
@@ -1457,6 +1544,7 @@ pauly2010b:
   doi: 10.1002/malq.200910104
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "0903.2177"
 pauly2011:
   authors:
     - Arno Pauly
@@ -1472,6 +1560,7 @@ pauly2015:
   venue: arXiv 1501.00386
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1501.00386"
 pauly2017:
   authors:
     - Arno Pauly
@@ -1481,6 +1570,7 @@ pauly2017:
   doi: 10.1017/S0960129515000262
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1102.3151"
 paulybrecht2013:
   authors:
     - Arno Pauly
@@ -1500,6 +1590,7 @@ paulybrecht2014:
   doi: 10.4204/EPTCS.143.8
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1404.0079"
 paulybrecht2015:
   authors:
     - Arno Pauly
@@ -1530,6 +1621,7 @@ paulyfouche2017:
   doi: 10.4115/jla.2017.9.c3
   source: weihrauch-bibliography
   read: pdf-oa
+  arxiv: "1409.3428"
 pradicprice2025:
   authors:
     - Cécilia Pradic
@@ -1539,6 +1631,8 @@ pradicprice2025:
   venue: arXiv 2501.17250
   doi: arXiv.2501.17250
   source: weihrauch-bibliography
+  arxiv: "2501.17250"
+  read: pdf-arxiv
 paulysteinberg2016:
   authors:
     - Arno Pauly
@@ -1559,6 +1653,7 @@ paulysteinberg2018:
   doi: 10.1007/s00224-016-9745-6
   source: weihrauch-bibliography
   read: pdf-oa
+  arxiv: "1512.03024"
 pradicsolda2022:
   authors:
     - Pierre Pradic
@@ -1593,6 +1688,7 @@ selivanov2013:
   doi: 10.2168/LMCS-9(2:5)2013
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1304.1239"
 selivanov2020:
   authors:
     - Victor Selivanov
@@ -1641,6 +1737,7 @@ soldavalenti2022:
   venue: arXiv 2203.16298
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2203.16298"
 suzukiyokoyama2024:
   authors:
     - Yudai Suzuki
@@ -1651,6 +1748,7 @@ suzukiyokoyama2024:
   doi: 10.1016/j.apal.2024.103488
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2305.07321"
 thies2018:
   authors:
     - Holger Thies
@@ -1669,6 +1767,7 @@ trottavalentipaiva2022:
   doi: 10.48550/arxiv.2208.08656
   source: weihrauch-bibliography
   read: pdf-oa
+  arxiv: "2208.08656"
 tavanaweihrauch2011:
   authors:
     - Nazanin R.\ Tavana
@@ -1679,6 +1778,7 @@ tavanaweihrauch2011:
   doi: 10.2168/LMCS-7(2:19)2011
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1105.3335"
 uftring2018:
   authors:
     - Patrick Uftring
@@ -1694,6 +1794,7 @@ uftring2023:
   venue: arXiv 2102.11832
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2308.01422"
 valenti2021:
   authors:
     - Manlio Valenti
@@ -1738,6 +1839,7 @@ westrick2020:
   venue: arXiv 2001.09372
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2001.09372"
 paulypradicsolda2024:
   authors:
     - Arno Pauly
@@ -1749,6 +1851,7 @@ paulypradicsolda2024:
   doi: 10.3233/COM-230437
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "2301.02833"
 lerouxpauly2015:
   authors:
     - Stéphane Le Roux
@@ -1759,6 +1862,7 @@ lerouxpauly2015:
   doi: 10.2168/LMCS-11(4:6)2015
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1302.0380"
 paulyfouchedavie2018:
   authors:
     - Arno Pauly
@@ -1770,6 +1874,7 @@ paulyfouchedavie2018:
   doi: 10.23638/LMCS-14(2:11)2018
   source: weihrauch-bibliography
   read: pdf-arxiv
+  arxiv: "1505.02091"
 paulysolda2024:
   authors:
     - Arno Pauly
@@ -1779,4 +1884,5 @@ paulysolda2024:
   venue: arXiv 2401.12641
   doi: arXiv.2401.12641
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-arxiv
+  arxiv: "2401.12641"

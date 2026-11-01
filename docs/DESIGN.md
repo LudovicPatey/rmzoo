@@ -151,6 +151,15 @@ removed.
 Results are grouped into files by topic, but nothing depends on the grouping;
 a natural contribution workflow is "one paper → append its theorems".
 
+### 1.5b Formula classes
+
+Conservation results ("T is Γ-conservative over S") and the `form` of a
+statement refer to syntactic classes defined in `data/classes.yaml`: each class
+has a notation, a definition, older notations (`aliases`, e.g. Π̃⁰₃ for ∀Π⁰₃)
+and the classes it `includes`. The engine closes `includes` transitively, so a
+Π¹₁-conservation result also applies to ∀Π⁰₄, Π⁰₃, … sentences. The About page
+lists the classes with their definitions.
+
 ### 1.6 References
 
 Each reference may record how far it was read when the database was built:

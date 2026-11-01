@@ -85,11 +85,17 @@ for (const [k, r] of todo) {
   if (!out[k]) counts.missing++;
   await sleep(150);
 }
-// 3. arXiv by title, for what is still missing
+// 3. arXiv by title, for papers without an abstract or with an OpenAlex one
+// (arXiv abstracts keep their TeX formulas). Searched titles are remembered in
+// cache/arxiv-title-search.json so that they are not searched again.
+const SEARCHED = 'cache/arxiv-title-search.json';
+const searched = fs.existsSync(SEARCHED) ? JSON.parse(fs.readFileSync(SEARCHED, 'utf8')) : {};
+const found = {};
 const words = (t) => String(t).replace(/[²³¹⁰₀₁₂₃]/g, ' ').replace(/\$[^$]*\$|\\[a-zA-Z]+|[^A-Za-z0-9ωΣΠΔ -]/g, ' ').split(/[\s-]+/).filter((w) => w.length > 3 && /^[A-Za-z0-9]+$/.test(w));
 counts.arxivTitle = 0;
-for (const [k, r] of todo) {
-  if (out[k] || !r.title || r.arxiv) continue;
+for (const [k, r] of Object.entries(refs)) {
+  if ((only && !only.has(k)) || !r.title || r.arxiv || searched[k]) continue;
+  if (out[k] && out[k].source !== 'openalex') continue;
   const q = words(r.title).slice(0, 8).map((w) => `ti:${encodeURIComponent(w)}`).join('+AND+');
   if (!q) continue;
   try {
@@ -99,13 +105,30 @@ for (const [k, r] of todo) {
       const sum = (e.match(/<summary>([\s\S]*?)<\/summary>/) || [])[1];
       const id = (e.match(/<id>https?:\/\/arxiv\.org\/abs\/([^<]+?)(v\d+)?<\/id>/) || [])[1];
       if (t && sum && norm(t) === norm(r.title)) {
+        if (!out[k]) counts.missing--;
         out[k] = { source: 'arxiv', arxiv: id, text: clean(sum.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&')) };
-        counts.arxivTitle++; counts.missing--;
+        counts.arxivTitle++; found[k] = id;
         break;
       }
     }
-  } catch { /* skip */ }
+    searched[k] = new Date().toISOString().slice(0, 10);
+  } catch { /* retried next time */ }
   await sleep(3000);
+}
+fs.mkdirSync('cache', { recursive: true });
+fs.writeFileSync(SEARCHED, JSON.stringify(searched, null, 1));
+// record the arXiv ids found by title in the references
+for (const [k, a] of Object.entries(out)) if (a.arxiv && refs[k] && !refs[k].arxiv) found[k] = a.arxiv;
+if (Object.keys(found).length) {
+  for (const f of fs.readdirSync('data/references').filter((f) => f.endsWith('.yaml'))) {
+    const doc = YAML.parseDocument(fs.readFileSync('data/references/' + f, 'utf8'));
+    let touched = false;
+    for (const pair of doc.contents.items) {
+      const id = found[pair.key.value];
+      if (id && !pair.value.get('arxiv')) { pair.value.set('arxiv', id); touched = true; }
+    }
+    if (touched) fs.writeFileSync('data/references/' + f, doc.toString({ lineWidth: 0 }));
+  }
 }
 save();
 console.log(counts, `| ${Object.keys(out).length} abstracts for ${Object.keys(refs).length} papers`);

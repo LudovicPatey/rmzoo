@@ -6,6 +6,7 @@
 //               whose title matches a reference
 //   --download  fetch missing papers: the arXiv PDF when the reference has an
 //               arXiv id, otherwise an open-access PDF found via OpenAlex (DOI)
+//               or Semantic Scholar (DOI or exact title)
 //   --retry     also retry papers whose download failed before
 //   --only      restrict to these reference keys
 //   --status    (always done) record in data/references/*.yaml how each cached
@@ -53,7 +54,9 @@ const STOP = new Set(['the', 'of', 'in', 'and', 'for', 'an', 'on']);
 const words = (t) => String(t || '').replace(/[²³⁰¹₀₁₂₃₄ωΣ∑ΠΔ]/g, (c) => sub[c]).replace(/\\(mathsf|mathrm|mathbf|text|mathit)/g, ' ')
   .replace(/\\(Sigma|Pi|Delta|omega)/g, (m, x) => ' ' + x.toLowerCase() + ' ').toLowerCase().normalize('NFKD')
   .replace(/\\[a-z]+/g, ' ').replace(/[^a-z0-9]+/g, ' ').trim().split(' ').filter((w) => w.length > 1 && !STOP.has(w));
-const nt = (t) => words(t).join('');
+// exact-comparison key: all letters and digits, keeping one-character tokens ("SRT 2 2" = "$\mathsf{SRT}^2_2$")
+const nt = (t) => String(t || '').replace(/\s*\((\w+ )?edition\)\s*$/i, '').replace(/[²³⁰¹₀₁₂₃₄ωΣ∑ΠΔ]/g, (c) => sub[c]).replace(/\\(Sigma|Pi|Delta|omega)/g, (m, x) => ' ' + x.toLowerCase() + ' ')
+  .replace(/\\[a-zA-Z]+/g, ' ').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '');
 
 // ---- Zotero ----
 if (flag('--zotero')) {
@@ -68,17 +71,30 @@ if (flag('--zotero')) {
     .map(([key, p, title]) => ({ key, file: path.join(Z, 'storage', key, p.slice(8)), n: nt(title), w: new Set(words(title)) }))
     .filter((z) => fs.existsSync(z.file));
   fs.rmSync(tmp, { recursive: true });
-  // pass 1: exact (or long common prefix) titles, which reserve the Zotero item;
-  // pass 2: ≥80% word overlap with a not yet reserved item
-  const exact = (t, z) => z.n.length > 12 && (z.n === t || (t.length > 20 && z.n.length > 20 && (z.n.startsWith(t.slice(0, 35)) || t.startsWith(z.n.slice(0, 35)))));
+  // pass 1: identical titles; pass 2: a common prefix of 35+ characters (subtitles
+  // differ); pass 3: ≥80% word overlap. Each Zotero item serves one reference:
+  // "On the strength of Ramsey's theorem" must not take the PDF of
+  // "On the strength of Ramsey's theorem for pairs".
+  const prefix = (t, z) => t.length >= 35 && z.n.length >= 35 && z.n.slice(0, 35) === t.slice(0, 35);
   const sim = (a, b) => { let i = 0; for (const x of a) if (b.has(x)) i++; return i / Math.max(a.size, b.size); };
   const match = new Map(), used = new Set();
-  for (const e of refs) { const t = nt(e.r.title); const z = items.find((z) => exact(t, z)); if (z) { match.set(e.key, z); used.add(z); } }
+  for (const e of refs) { const t = nt(e.r.title); const z = t.length > 12 && items.find((z) => !used.has(z) && z.n === t); if (z) { match.set(e.key, z); used.add(z); } }
+  for (const e of refs) { if (match.has(e.key)) continue; const t = nt(e.r.title); const z = items.find((z) => !used.has(z) && prefix(t, z)); if (z) { match.set(e.key, z); used.add(z); } }
   for (const e of refs) {
     if (match.has(e.key)) continue;
     const w = new Set(words(e.r.title));
     const z = w.size >= 4 && items.find((z) => !used.has(z) && sim(w, z.w) >= 0.8);
     if (z) { match.set(e.key, z); used.add(z); }
+  }
+  // texts taken from Zotero items that no longer match are dropped
+  let dropped = 0;
+  for (const [key, c] of Object.entries(index)) {
+    if (c.source !== 'zotero' || (only && !only.has(key)) || match.get(key)?.key === c.zotero) continue;
+    fs.rmSync(`${DIR}/${key}.txt`, { force: true });
+    delete index[key]; dropped++;
+    const e = refs.find((x) => x.key === key);
+    if (e && e.pair.value.get('read') === 'pdf-zotero') e.pair.value.delete('read');
+    console.log(`dropped ${key} (Zotero item ${c.zotero} no longer matches)`);
   }
   let n = 0;
   for (const [key, z] of match) {
@@ -89,7 +105,7 @@ if (flag('--zotero')) {
     }
   }
   save();
-  console.log(`Zotero: ${match.size} references matched, ${n} texts extracted`);
+  console.log(`Zotero: ${match.size} references matched, ${n} texts extracted, ${dropped} dropped`);
 }
 
 // ---- downloads ----
@@ -103,10 +119,27 @@ if (flag('--download')) {
     let url = null, source = null;
     try {
       if (e.r.arxiv) { url = `https://arxiv.org/pdf/${e.r.arxiv}`; source = 'arxiv'; }
-      else if (e.r.doi) {
-        const w = await (await fetch(`https://api.openalex.org/works/doi:${encodeURIComponent(e.r.doi)}`, { headers: UA })).json();
+      if (!url && e.r.doi) {
+        const r = await fetch(`https://api.openalex.org/works/doi:${encodeURIComponent(e.r.doi)}`, { headers: UA });
+        const w = r.ok ? await r.json() : {};
         const loc = [w.best_oa_location, ...(w.locations || [])].find((l) => l?.pdf_url);
         if (loc) { url = loc.pdf_url; source = 'oa'; }
+      }
+      if (!url) { // Semantic Scholar: by DOI, else by title
+        const q = e.r.doi ? `paper/DOI:${encodeURIComponent(e.r.doi)}?fields=title,openAccessPdf`
+          : `paper/search/match?query=${encodeURIComponent(String(e.r.title).replace(/\$[^$]*\$/g, ' '))}&fields=title,openAccessPdf`;
+        for (let i = 0; i < 3; i++) {
+          const r = await fetch('https://api.semanticscholar.org/graph/v1/' + q, { headers: UA });
+          if (r.status === 429) { await sleep(5000 * (i + 1)); continue; }
+          if (r.ok) {
+            const j = await r.json();
+            const p = j.data ? j.data[0] : j;
+            const same = (a, b) => String(a).toLowerCase().replace(/[^a-z]/g, '') === String(b).toLowerCase().replace(/[^a-z]/g, '');
+            if (p?.openAccessPdf?.url && (e.r.doi || same(p.title, e.r.title))) { url = p.openAccessPdf.url; source = 'oa'; }
+          }
+          break;
+        }
+        await sleep(1100);
       }
       if (!url) { failed[e.key] = { reason: e.r.doi ? 'no open-access PDF' : 'no arXiv id or DOI', date: today }; ko++; continue; }
       const res = await fetch(url, { headers: UA, redirect: 'follow', signal: AbortSignal.timeout(90000) });

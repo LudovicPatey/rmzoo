@@ -1,4 +1,11 @@
 import { buildZoo, orderView, RULES, CLASS_NAMES } from './engine.js';
+// formula classes (data/classes.yaml): KaTeX notation, linked to their definition on the About page
+const classOf = (id) => (Z.raw.classes || []).find((c) => c.id === id);
+const classHtml = (id) => {
+  const c = classOf(id);
+  if (!c) return esc(CLASS_NAMES[id] || id);
+  return `<a class="cls" href="#/about?class=${id}" title="${esc(c.name || '')}${c.aliases ? ` (also written ${esc(c.aliases.join(', '))})` : ''}">${tex(c.notation)}</a>`;
+};
 import { layered, verticalSpline } from './layout.js';
 import { bibtex } from './bibtex.js';
 
@@ -601,7 +608,7 @@ function viewStatement(id) {
     </div>
     ${s.formulationOf ? `<p>A formulation of ${sLink(mainI)} (the main formulation of this principle).</p>` : ''}
     ${s.todo ? `<p><span class="badge warn">definition to be checked</span> <span class="small muted">The precise statement should be checked against the source paper.</span></p>` : ''}
-    ${s.form || s.firstOrder ? `<p class="small muted">Syntactic form: ${esc(CLASS_NAMES[s.form] || (s.firstOrder ? 'arithmetical' : s.form))} (used by conservation results).</p>` : ''}
+    ${s.form || s.firstOrder ? `<p class="small muted">Syntactic form: ${classHtml(s.form || 'arith')} (used by conservation results).</p>` : ''}
     <div class="card def-box">${s.conjunction ? `Conjunction of ${s.conjunction.map((c) => sLink(idx(c))).join(' and ')}.` : rich(s.definition)}</div>
     ${s.kind === 'problem' && s.instance ? `<div class="io">
       <div class="card"><h3>Instances</h3>${rich(s.instance)}</div>
@@ -809,10 +816,10 @@ function resultFact(res) {
     return `${sLink(idx(res.statement))} ${res.value ? '<span class="yes">has</span>' : '<span class="no">fails</span>'} ${esc(p.name)}`;
   }
   if (res.type === 'conservation') {
-    const cls = CLASS_NAMES[res.class] || res.class;
+    const cls = classHtml(res.class);
     // "RCA₀ + X", or just "RCA₀" when X is RCA₀ itself (or another base statement over RCA₀)
     const sys = (id) => (S(idx(id)).base || []).includes('rca0') ? sLink(idx(id), Z.ridx.get('rca0')) : `RCA₀ + ${sLink(idx(id), Z.ridx.get('rca0'))}`;
-    return `${sys(res.statement)} is ${res.value === false ? '<b class="no">not</b> ' : ''}<b>${esc(cls)}</b>-conservative over ${sys(res.base)}`;
+    return `${sys(res.statement)} is ${res.value === false ? '<b class="no">not</b> ' : ''}<b>${cls}</b>-conservative over ${sys(res.base)}`;
   }
   const arrow = { implication: '<span class="yes">⇒</span>', equivalence: '<span class="yes">⇔</span>', separation: '<span class="no">⇏</span>' }[res.type];
   return `<span class="res-stmt">${sLink(idx(res.from), r0)} ${arrow} ${sLink(idx(res.to), r0)}</span> <span class="muted small">over ${over}</span>`;
@@ -1225,8 +1232,10 @@ function viewRefs(key) {
       const el = $('#abstract');
       if (!el) return;
       const x = a[key];
-      el.innerHTML = x ? `${rich(x.text)}<div class="small muted" style="margin-top:6px">Source: ${x.source === 'arxiv'
-        ? `<a href="https://arxiv.org/abs/${esc(x.arxiv || r.arxiv)}" target="_blank" rel="noopener">arXiv</a>` : 'OpenAlex — inline formulas are sometimes missing from abstracts taken from there'}</div>` : '<span class="muted small">Not available.</span>';
+      const src = x?.source === 'arxiv' ? `<a href="https://arxiv.org/abs/${esc(x.arxiv || r.arxiv)}" target="_blank" rel="noopener">arXiv</a>`
+        : x?.source === 'pdf' ? 'the paper itself (extracted from the PDF; formulas were reconstructed automatically from the typesetting)'
+        : 'OpenAlex — inline formulas are sometimes missing from abstracts taken from there';
+      el.innerHTML = x ? `${rich(x.text)}<div class="small muted" style="margin-top:6px">Source: ${src}</div>` : '<span class="muted small">Not available.</span>';
     }).catch(() => { const el = $('#abstract'); if (el) el.innerHTML = '<span class="muted small">Could not load the abstract.</span>'; });
     $('#bib-copy').addEventListener('click', (e) => navigator.clipboard?.writeText($('#bib-one').textContent).then(() => { e.target.textContent = 'Copied'; }));
     return;
@@ -1265,7 +1274,7 @@ function viewRefs(key) {
 }
 
 // ---- about ---------------------------------------------------------------------
-function viewAbout() {
+function viewAbout(params) {
   const m = main();
   m.className = '';
   const { nI, nN, nO } = zooCounts();
@@ -1293,6 +1302,15 @@ function viewAbout() {
       <table class="grid">${Z.R.map((R) => `<tr><td><b>${esc(R.short)}</b></td><td>${esc(R.name)}<div class="small muted">${esc(R.description || '')}${R.refs ? ` (${R.refs.map(refLink).join('; ')})` : ''}</div></td></tr>`).join('')}</table></div></div>
     <h2>Properties</h2>
     <table class="grid">${Z.raw.properties.map((p) => `<tr><td><b>${esc(p.name)}</b></td><td>${rich(p.description)}<div class="small muted">Preserved under ${esc(Z.R[Z.ridx.get(p.closedUnder)].name)}.</div></td></tr>`).join('')}</table>
+    <h2 id="classes">Formula classes</h2>
+    <p class="small muted">Used by conservation results: <i>T</i> is Γ-conservative over <i>S</i> when every Γ sentence provable in <i>T</i> is provable in <i>S</i>.
+      A conservation result for a class also applies to the classes it contains.</p>
+    <table class="grid">${(Z.raw.classes || []).map((c) => {
+      const members = (Z.classMembers?.[c.id] || []).filter((d) => d !== c.id);
+      return `<tr id="class-${c.id}"><td style="white-space:nowrap"><b>${tex(c.notation)}</b>${c.aliases ? `<div class="small muted">formerly ${c.aliases.map(tex).join(', ')}</div>` : ''}</td>
+        <td>${c.name ? `<b>${esc(c.name)}.</b> ` : ''}${rich(c.definition)}
+        ${members.length ? `<div class="small muted">Contains: ${members.map((d) => tex(classOf(d)?.notation || d)).join(', ')}</div>` : ''}</td></tr>`;
+    }).join('')}</table>
     <h2>Inference rules</h2>
     <table class="grid">${Object.entries(RULES).map(([k, v]) => `<tr><td><code>${k}</code></td><td>${esc(v)}</td></tr>`).join('')}</table>
     <h2>Contributing</h2>
@@ -1323,7 +1341,7 @@ function route() {
   else if (name === 'compare') viewCompare(params);
   else if (name === 'results') viewResults(params);
   else if (name === 'refs') viewRefs(p[1]);
-  else if (name === 'about') viewAbout();
+  else if (name === 'about') { viewAbout(params); const c = params.get('class'); if (c) setTimeout(() => { const el = document.getElementById('class-' + c); if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); } }, 50); }
   else if (name === 'home') viewHome();
   else viewCatalogue(params);
   renderTray();

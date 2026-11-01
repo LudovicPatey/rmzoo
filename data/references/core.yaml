@@ -154,6 +154,7 @@ ambosspiesetal2004:
   year: 2004
   doi: 10.2178/jsl/1102022212
   read: pdf-zotero
+  arxiv: "1408.2281"
 hirschfeldtshore2007:
   authors:
     - Denis R. Hirschfeldt
@@ -175,6 +176,7 @@ hirschfeldtetal2008:
   year: 2008
   doi: 10.1142/9789812796554_0008
   read: pdf-zotero
+  arxiv: "1408.2897"
 cjs2009:
   authors:
     - Peter A. Cholak
@@ -201,6 +203,7 @@ liu2012:
   venue: Journal of Symbolic Logic 77(2), 609–620
   year: 2012
   doi: 10.2178/jsl/1333566640
+  arxiv: "1602.03784"
   read: pdf-zotero
 lermansolomontowsner2013:
   authors:
@@ -212,6 +215,7 @@ lermansolomontowsner2013:
   year: 2013
   doi: 10.1142/S0219061313500074
   read: pdf-zotero
+  arxiv: "1302.0828"
 chongslamanyang2014:
   authors:
     - Chi Tat Chong
@@ -230,6 +234,7 @@ liu2015:
   year: 2015
   doi: 10.1090/S0002-9947-2014-06049-2
   read: pdf-zotero
+  arxiv: "1602.03777"
 ddhms2016:
   authors:
     - François G. Dorais
@@ -242,6 +247,7 @@ ddhms2016:
   year: 2016
   doi: 10.1090/tran/6465
   read: pdf-zotero
+  arxiv: "1212.0157"
 dzhafarov2016:
   authors:
     - Damir D. Dzhafarov
@@ -267,6 +273,7 @@ patey2016:
   year: 2016
   doi: 10.1007/s11856-016-1433-3
   read: pdf-zotero
+  arxiv: "1502.03709"
 bovykinweiermann2017:
   authors:
     - Andrey Bovykin
@@ -285,6 +292,7 @@ brattkarakotoniaina2017:
   year: 2017
   doi: 10.1017/jsl.2017.43
   read: pdf-zotero
+  arxiv: "1508.00471"
 moninpatey2021:
   authors:
     - Benoît Monin
@@ -293,6 +301,7 @@ moninpatey2021:
   venue: Advances in Mathematics 389, 107903
   year: 2021
   doi: 10.1016/j.aim.2021.107903
+  arxiv: "1905.08427"
   read: pdf-zotero
 erdosmoser1964:
   authors:

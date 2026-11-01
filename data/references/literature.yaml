@@ -286,6 +286,8 @@ gherardimarcone2009:
   venue: Notre Dame Journal of Formal Logic 50(4), 393–425
   year: 2009
   doi: 10.1215/00294527-2009-018
+  arxiv: "0808.1663"
+  read: pdf-arxiv
 specker1971:
   authors: [ Ernst Specker ]
   title: Ramsey's theorem does not hold in recursive set theory
