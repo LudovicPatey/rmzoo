@@ -1,0 +1,3 @@
+# Results from [hirschfeldtshoreslaman2009].
+
+[ { type: equivalence, from: ast, to: non, over: rca0, refs: [ { ref: hirschfeldtshoreslaman2009, loc: Theorem 6.3 } ] } ]

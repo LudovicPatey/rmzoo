@@ -2,3 +2,4 @@
 - { type: implication, from: tcn, to: cn, over: w, refs: [ { ref: brattkagherardi2019, loc: Corollary 8.3 } ] }
 - { type: separation, from: cn, to: tcn, over: w, refs: [ { ref: brattkagherardi2019, loc: Corollary 8.3 } ] }
 - { type: separation, from: lim, to: lpo.jump, over: w, refs: [ { ref: brattkagherardi2019, loc: Lemma 4.24 } ] }
+- { type: separation, from: tcn, to: lpo.jump, over: w, refs: [ { ref: brattkagherardi2019, loc: Corollary 8.11(1) } ] }

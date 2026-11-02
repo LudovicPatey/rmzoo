@@ -12,15 +12,36 @@ export function selectPapers(args) {
 }
 
 // acronym dictionary: normalized token -> statement id
-const plain = (l) => l.replace(/\\text\{([^}]*)\}/g, '$1').replace(/\\(mathsf|mathrm|mathbf)\{([^}]*)\}/g, '$2')
-  .replace(/\\(lim)\b/g, 'lim').replace(/\\Sigma/g, 'Σ').replace(/\\Pi/g, 'Π').replace(/\\Delta/g, 'Δ')
+// label → the acronym as it appears in extracted text (TeX stripped). Overlines and
+// hats are kept as marks that text never contains, so D̄₂IP never reads as D₂IP.
+const plain = (l) => l.replace(/\\overline\{([^}]*)\}/g, '$1̄').replace(/\\widehat\{([^}]*)\}/g, '$1̂')
+  .replace(/\\text\{([^}]*)\}/g, '$1').replace(/\\(mathsf|mathrm|mathbf)\{([^}]*)\}/g, '$2')
+  .replace(/\\(lim)\b/g, 'lim').replace(/\\Sigma/g, 'Σ').replace(/\\Pi/g, 'Π').replace(/\\Delta/g, 'Δ').replace(/\\omega/g, 'ω')
   .replace(/<\\infty/g, '<∞').replace(/\\[a-zA-Z]+/g, '').replace(/[{}^_\s]/g, '');
 export const dict = new Map();
+const put = (t, id) => { if (t && t.length >= 2 && !dict.has(t)) dict.set(t, id); };
+// plain statements first (a key never overwrites an existing one)
 for (const s of z.S) {
-  if (s.conjunction) continue;
-  let t = plain(s.label).replace(/Σ0|Π0|Δ0/g, (m) => m[0]).replace(/'/g, "'");
-  if (t.length < 2) continue;
-  dict.set(t, s.id);
+  if (s.conjunction || s.op) continue;
+  put(plain(s.label).replace(/Σ0|Π0|Δ0/g, (m) => m[0]), s.id);
+}
+// operator statements, in the notation of the papers: P′ P∗ P⋄, P ⋆ Q / P ∗ Q, P × Q
+// (parallelizations are not recognized: their hat is lost in extracted text)
+{
+  const forms = new Map(); // id → textual forms
+  for (const [t, id] of dict) { if (!forms.has(id)) forms.set(id, []); forms.get(id).push(t); }
+  const extraForms = { lpo: ['LPO'], llpo: ['LLPO'], cn: ['CN'], kn: ['KN'], wkl: ['WKL'], lim: ['lim'], tcn: ['TCN'], ucn: ['UCN'], cnn: ['CNN'], ucnn: ['UCNN'] };
+  for (const [id, f] of Object.entries(extraForms)) forms.set(id, [...new Set([...(forms.get(id) || []), ...f])]);
+  const ops = z.S.filter((s) => s.op);
+  for (let round = 0; round < 4; round++) for (const s of ops) {
+    const a = (s.args || []).map((x) => forms.get(x) || []);
+    if (a.some((x) => !x.length)) continue;
+    const f = { jump: () => a[0].flatMap((x) => [x + '′', x + "'"]), fin: () => a[0].flatMap((x) => [x + '∗', x + '*']), diamond: () => a[0].map((x) => x + '⋄'),
+      compose: () => a[0].flatMap((x) => a[1].flatMap((y) => [`${x} ∗ ${y}`, `${x} ⋆ ${y}`, `${x}∗${y}`, `${x}⋆${y}`, `${x} ∗${y}`])),
+      product: () => a[0].flatMap((x) => a[1].flatMap((y) => [`${x} × ${y}`, `${x}×${y}`])), par: () => [] }[s.op]?.() || [];
+    forms.set(s.id, [...new Set([...(forms.get(s.id) || []), ...f])]);
+  }
+  for (const s of ops) for (const t of forms.get(s.id) || []) put(t, s.id);
 }
 // common spellings
 const extra = { WKL0: 'wkl', ACA0: 'aca', ATR0: 'atr', RCA0: 'rca0', WWKL0: 'wwkl', 'Π11-CA0': 'pi11ca', 'Π11-CA': 'pi11ca',
@@ -33,7 +54,17 @@ const keys = [...dict.keys()].sort((a, b) => b.length - a.length);
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 export const tokRe = new RegExp('(?<![A-Za-z0-9])(' + keys.map(esc).join('|') + ')(?![A-Za-z0-9])', 'g');
 
+// principles often stated in words rather than by name: ∀X ∃Y (Y has property P relative to X)
+const PHRASES = [
+  [/∀X ?∃Y ?\(?Y ?(6≤T|≰T|≱T|T|is not (computable|recursive) in) ?X\)?|for (every|each|all) (sets? )?X,? there (is|exists) a (set )?Y (which|that) is not (computable|recursive) (in|from) X|existence of relatively non-?(computable|recursive) sets/gi, ' NON '],
+  [/∀X ?∃Y ?\(?Y is (hyperimmune) (over|relative to) X\)?|for (every|each) X,? there (is|exists) a set (which|that) is hyperimmune relative to X/gi, ' HYP '],
+  [/∀X ?∃Y ?\(?Y is (1-random|Martin-Löf random|ML-random) (over|relative to) X\)?/gi, ' 1-RAN '],
+  [/∀X ?∃Y ?\(?Y is (1-generic|weakly 1-generic) (over|relative to) X\)?/gi, ' 1-GEN '],
+  [/∀X ?∃Y ?\(?Y is (DNC|DNR|diagonally non-?(computable|recursive)) (over|relative to) X ?′\)?/gi, ' 2-DNR '],
+  [/∀X ?∃Y ?\(?Y is (DNC|DNR|diagonally non-?(computable|recursive)) (over|relative to) X\)?/gi, ' DNR '],
+];
 export function normalize(t) {
+  for (const [re, tok] of PHRASES) t = t.replace(re, tok);
   return t.replace(/\s+/g, ' ')
     .replace(/([A-Z]{1,6}) ?(\d) (\d)\b/g, '$1$2$3')          // RT2 2 -> RT22
     .replace(/([A-Z]{1,6}) (\d{1,2})\b/g, '$1$2')             // RT 22 -> RT22

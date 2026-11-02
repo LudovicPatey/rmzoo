@@ -1,0 +1,3 @@
+# Results from [pauly2020].
+
+[ { type: implication, from: ds, to: lim, over: w, refs: [ { ref: pauly2020, loc: Theorem 5(1) } ] }, { type: separation, from: lim, to: ds, over: w, refs: [ { ref: pauly2020, loc: Theorem 5(1) } ] }, { type: separation, from: ds, to: cnn, over: w, refs: [ { ref: pauly2020, loc: Theorem 5(1) } ] }, { type: separation, from: ds, to: ucnn, over: w, refs: [ { ref: pauly2020, loc: Theorem 5(2) } ] } ]

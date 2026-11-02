@@ -21,6 +21,22 @@ sources with stable identifiers and an open API. OpenAlex and Semantic Scholar a
 only used to find abstracts and open-access PDFs (OpenAlex has a daily quota per
 network). Google Scholar is not used: it forbids automated queries.
 
+## What the miners recognize
+
+`scripts/mine/` links theorems to statements of the zoo through their names as
+they appear in extracted text (TeX stripped), including:
+
+* operator statements in the papers' notation: `LPO′`, `LPO∗`, `LPO⋄`,
+  `lim ∗ COH` / `lim ⋆ COH`, `C_N × WKL`;
+* principles stated in words, e.g. "∀X ∃Y (Y ≰T X)" or "the existence of relatively
+  nonrecursive sets" (NON), "hyperimmune relative to X" (HYP), "1-random over X"
+  (1-RAN), "1-generic over X" (1-GEN), "DNC over X′" (2-DNR).
+
+They do not see parallelizations (the hat is lost in extracted text), completions
+(overlines are lost: check the rendered PDF), primes placed before subscripts
+(`C′N`), or Brattka–Rakotoniaina's `RTn,k`. Add phrases and spellings to
+`scripts/mine/common.mjs` when a paper uses a new one.
+
 ## Working through the report
 
 * **Results** are entered with `node scripts/add-results.mjs spec.json` (one
