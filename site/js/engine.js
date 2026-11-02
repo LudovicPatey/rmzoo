@@ -23,7 +23,8 @@ export const RULES = {
   'prop-sep': 'Separation by a property',
   refine: 'Separation at a coarser reduction',
   'op-base': 'Algebra of Weihrauch degrees: a problem is below its jump, its parallelization and its finite parallelization (strongly), and below products and compositional products in which it occurs',
-  'op-monotone': 'Algebra of Weihrauch degrees: jumps, parallelizations, finite parallelizations, products and compositional products are monotone',
+  'op-monotone': 'Algebra of Weihrauch degrees: jumps, parallelizations, finite parallelizations, products, compositional products and the diamond operator are monotone',
+  'op-diamond': 'Algebra of Weihrauch degrees: P⋄ is closed under products and compositional products (if Q, R ≤W P⋄ then Q × R ≤W P⋄ and Q ⋆ R ≤W P⋄)',
   'weaken-left': 'Weakening the hypothesis',
   'strengthen-right': 'Strengthening the conclusion',
   conservation: 'Conservation: the conclusion has the right syntactic form and is not provable from the base',
@@ -173,14 +174,15 @@ export function buildZoo(raw) {
   // Operator statements (op: jump | par | fin | product | compose, args: [ids]).
   // Laws, for reductions marked `algebra` (strong / weak Weihrauch):
   //   P ≤sW P', P ≤sW P̂, P ≤sW P*, P* ≤sW P̂;   P, Q ≤W P × Q ≤W P ⋆ Q, P, Q ≤W P ⋆ Q;
+  //   P ≤W P⋄, and P⋄ is closed under × and ⋆ (diamond: weak only);
   //   all operations are monotone (jump, par, fin also for ≤sW; ×, ⋆ for ≤W).
   // "X implies Y" means Y ≤ X, so P ≤ op(P) is the implication op(P) → P.
   const ops = [];
   S.forEach((s, i) => { if (s.op) ops.push({ i, op: s.op, args: (s.args || []).map((id) => sidx.get(id)) }); });
-  const unary = new Set(['jump', 'par', 'fin']);
+  const unary = new Set(['jump', 'par', 'fin', 'diamond']);
   const opsByArg = new Map();
   ops.forEach((o) => o.args.forEach((x) => { if (!opsByArg.has(x)) opsByArg.set(x, []); opsByArg.get(x).push(o); }));
-  const strongOK = (o) => unary.has(o.op);
+  const strongOK = (o) => unary.has(o.op) && o.op !== 'diamond';
   const algebraAt = (r, o) => R[r].algebra === 'weak' || (R[r].algebra === 'strong' && strongOK(o));
   const seedOps = () => {
     for (let r = 0; r < R.length; r++) {
@@ -199,9 +201,20 @@ export function buildZoo(raw) {
       }
     }
   };
+  // P^⋄ is closed under products and compositional products:
+  // if Q, R ≤W P^⋄ then Q × R ≤W P^⋄ and Q ⋆ R ≤W P^⋄
+  const diamondClosure = (r, d, x) => {
+    if (S[d].op !== 'diamond' || R[r].algebra !== 'weak') return;
+    for (const c of opsByArg.get(x) || []) {
+      if (c.op !== 'compose' && c.op !== 'product') continue;
+      if (c.args.every((y) => I[r].has(key(d, y))))
+        addI(r, d, c.i, { rule: 'op-diamond', prem: c.args.map((y) => fI(r, d, y)) });
+    }
+  };
   // monotonicity, applied when an implication between arguments is derived
   const monotone = (r, a, b) => {
     if (!R[r].algebra) return;
+    diamondClosure(r, a, b);
     for (const o of opsByArg.get(b) || []) { // o = op(..., b, ...); look for o2 = op(..., a, ...)
       if (!algebraAt(r, o)) continue;
       for (const o2 of opsByArg.get(a) || []) {

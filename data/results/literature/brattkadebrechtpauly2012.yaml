@@ -4,3 +4,4 @@
 - { type: "separation", from: "cn", to: "wkl", over: "w", note: "Single-valued problems below WKL are computable.", refs: [ { ref: brattkadebrechtpauly2012 } ] }
 - { type: "separation", from: "cn", to: "lim", over: "w", refs: [ { ref: brattkadebrechtpauly2012 } ] }
 - { type: equivalence, from: ucn, to: cn, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: Proposition 6.2 } ] }
+- { type: equivalence, from: cr, to: cn.x.wkl, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: Corollary 4.9 } ] }

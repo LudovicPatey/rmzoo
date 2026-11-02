@@ -107,38 +107,65 @@ const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml
     }
   }
   // Operator statements of the Weihrauch algebra, named by dotted ids:
-  //   a.jump  a.par  a.fin  (postfix)   a.x.b  a.star.b  (binary, left to right)
+  //   a.jump  a.par  a.fin  a.diamond  (postfix)   a.x.b  a.star.b  (binary)
+  // applied left to right; parentheses group: cn.star.(lpo.jump) = C_N ⋆ LPO'.
   // e.g. lpo.jump = LPO', llpo.par = LLPO-hat, tcn.star.tcn = TC_N ⋆ TC_N.
   // They are created on the fly when results, questions or zoos mention them.
-  const OPS = { jump: 1, par: 1, fin: 1, x: 2, star: 2 };
-  const OPNAME = { jump: 'jump', par: 'par', fin: 'fin', x: 'product', star: 'compose' };
+  const OPS = { jump: 1, par: 1, fin: 1, diamond: 1, x: 2, star: 2 };
+  const OPNAME = { jump: 'jump', par: 'par', fin: 'fin', diamond: 'diamond', x: 'product', star: 'compose' };
+  const ensure = (id, op, args) => {
+    if (!byId.has(id)) { const s = { id, op, args, kind: 'problem', tags: [], _file: 'auto' }; raw.statements.push(s); byId.set(id, s); }
+    return id;
+  };
+  // tokens: names (letters, digits, dashes), '.', '(' and ')'
+  function parseOp(src) {
+    const toks = src.match(/[A-Za-z0-9-]+|[().]/g) || [];
+    let k = 0;
+    const term = () => {
+      if (toks[k] === '(') { k++; const e = expr(); if (toks[k++] !== ')') throw new Error('missing )'); return e; }
+      const t = toks[k++];
+      if (!t || !byId.has(t)) throw new Error(`unknown statement ${t}`);
+      return t;
+    };
+    // canonical ids: a postfix operation wraps a binary expression in parentheses,
+    // the right operand of a binary operation is wrapped when it is compound
+    const isBinary = (id) => ['product', 'compose'].includes(byId.get(id)?.op);
+    function expr() {
+      let cur = term();
+      while (toks[k] === '.') {
+        k++;
+        const op = toks[k++];
+        if (OPS[op] === 1) cur = ensure(`${isBinary(cur) ? `(${cur})` : cur}.${op}`, OPNAME[op], [cur]);
+        else if (OPS[op] === 2) { if (toks[k++] !== '.') throw new Error('missing operand'); const rhs = term(); cur = ensure(`${cur}.${op}.${rhs.includes('.') ? `(${rhs})` : rhs}`, OPNAME[op], [cur, rhs]); }
+        else throw new Error(`unknown operation ${op}`);
+      }
+      return cur;
+    }
+    const e = expr();
+    if (k !== toks.length) throw new Error('trailing tokens');
+    return e;
+  }
+  const canon = new Map(); // id as written → canonical id
   const makeOp = (id) => {
     if (byId.has(id) || !id.includes('.')) return byId.get(id);
-    const t = id.split('.');
-    let cur = t[0];
-    if (!byId.has(cur)) return undefined;
-    for (let k = 1; k < t.length; k++) {
-      const op = t[k];
-      if (OPS[op] === 1) {
-        const nid = `${cur}.${op}`;
-        if (!byId.has(nid)) { const s = { id: nid, op: OPNAME[op], args: [cur], kind: 'problem', tags: [], _file: 'auto' }; raw.statements.push(s); byId.set(nid, s); }
-        cur = nid;
-      } else if (OPS[op] === 2 && t[k + 1] && byId.has(t[k + 1])) {
-        const nid = `${cur}.${op}.${t[k + 1]}`;
-        if (!byId.has(nid)) { const s = { id: nid, op: OPNAME[op], args: [cur, t[k + 1]], kind: 'problem', tags: [], _file: 'auto' }; raw.statements.push(s); byId.set(nid, s); }
-        cur = nid; k++;
-      } else return undefined;
-    }
-    return byId.get(cur);
+    try { const e = parseOp(id); if (e !== id) canon.set(id, e); return byId.get(e); } catch { return undefined; }
   };
   for (const id of new Set([...mentioned, ...(raw.zoos || []).flatMap((z) => z.statements || [])])) makeOp(id);
+  // refer to operator statements by their canonical ids everywhere
+  const C = (id) => canon.get(id) || id;
+  for (const r of raw.results) for (const f of ['from', 'to', 'statement', 'base']) if (r[f]) r[f] = C(r[f]);
+  for (const q of raw.questions) { q.statements = (q.statements || []).map(C); for (const f of q.formal || []) { f.from = C(f.from); f.to = C(f.to); } }
+  for (const z of raw.zoos || []) z.statements = (z.statements || []).map(C);
   // labels, names and definitions of operator statements (unless given)
-  const wrap = (s) => (s.op === 'product' || s.op === 'compose' ? `(${s.label})` : s.label);
+  // binary expressions get parentheses; a base that already has sub/superscripts is
+  // grouped with braces so that a postfix ', * or ⋄ does not create a double superscript
+  const wrap = (s) => (s.op === 'product' || s.op === 'compose' ? `(${s.label})`
+    : /[\^_]/.test(s.label) && !/'$/.test(s.label) ? `{${s.label}}` : s.label);
   const opTex = (s) => {
     const a = s.args.map((x) => byId.get(x));
     if (a.some((x) => !x)) return null;
     for (const x of a) if (x.op && !x.label) fillOp(x);
-    return { jump: () => `${wrap(a[0])}'`, par: () => `\\widehat{${a[0].label}}`, fin: () => `${wrap(a[0])}^{*}`,
+    return { jump: () => `${wrap(a[0])}'`, par: () => `\\widehat{${a[0].label}}`, fin: () => `${wrap(a[0])}^{*}`, diamond: () => `${wrap(a[0])}^{\\diamond}`,
       product: () => `${wrap(a[0])} \\times ${wrap(a[1])}`, compose: () => `${wrap(a[0])} \\star ${wrap(a[1])}` }[s.op]?.();
   };
   // "Lesser limited principle…" → "lesser limited principle…" inside a name (acronyms unchanged)
@@ -148,13 +175,14 @@ const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml
     if (a.some((x) => !x)) return;
     a.forEach((x) => { if (x.op && !x.label) fillOp(x); });
     s.label ||= opTex(s);
-    s.name ||= { jump: () => `Jump of ${plainName(a[0])}`, par: () => `Parallelization of ${plainName(a[0])}`, fin: () => `Finite parallelization of ${plainName(a[0])}`,
+    s.name ||= { jump: () => `Jump of ${plainName(a[0])}`, par: () => `Parallelization of ${plainName(a[0])}`, fin: () => `Finite parallelization of ${plainName(a[0])}`, diamond: () => `Diamond of ${plainName(a[0])}`,
       product: () => `Product of ${plainName(a[0])} and ${plainName(a[1])}`, compose: () => `Compositional product of ${plainName(a[0])} and ${plainName(a[1])}` }[s.op]();
     const L = (x) => `$${x.label}$`;
     s.definition ||= {
       jump: () => `The jump of ${L(a[0])}: an instance is a sequence converging to an instance of ${L(a[0])} (in Baire space), with the same solutions.`,
       par: () => `The parallelization of ${L(a[0])}: given a sequence of instances of ${L(a[0])}, find a solution to each of them.`,
       fin: () => `The finite parallelization of ${L(a[0])}: given finitely many instances of ${L(a[0])}, find a solution to each of them.`,
+      diamond: () => `The diamond of ${L(a[0])}: the closure of ${L(a[0])} under compositional product, i.e. using ${L(a[0])} any finite number of times, adaptively, the number of uses being decided during the computation (Neumann and Pauly).`,
       product: () => `Given an instance of ${L(a[0])} and an instance of ${L(a[1])}, find a solution to each.`,
       compose: () => `The compositional product of ${L(a[0])} and ${L(a[1])}: the strongest problem obtained by first solving an instance of ${L(a[1])} and then, computably in the result, an instance of ${L(a[0])} (Brattka, Gherardi and Marcone).`,
     }[s.op]();
@@ -189,7 +217,7 @@ const tids = uniq(raw.tags, 'tag');
 // operator statements of the Weihrauch algebra
 {
   const byId = new Map(raw.statements.map((x) => [x.id, x]));
-  const arity = { jump: 1, par: 1, fin: 1, product: 2, compose: 2 };
+  const arity = { jump: 1, par: 1, fin: 1, diamond: 1, product: 2, compose: 2 };
   for (const s of raw.statements.filter((x) => x.op)) {
     if (!arity[s.op]) { errors.push(`Statement ${s.id}: unknown operation ${s.op}`); continue; }
     if ((s.args || []).length !== arity[s.op]) errors.push(`Statement ${s.id}: ${s.op} takes ${arity[s.op]} argument(s)`);

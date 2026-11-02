@@ -698,7 +698,7 @@ function viewStatement(id) {
       ${s.aliases ? `<span class="small muted">Also: ${s.aliases.map(esc).join(', ')}</span>` : ''}
     </div>
     ${s.formulationOf ? `<p>A formulation of ${sLink(mainI)} (the main formulation of this principle).</p>` : ''}
-    ${s.op ? `<p class="small">Weihrauch operation — ${{ jump: 'jump', par: 'parallelization', fin: 'finite parallelization', product: 'product', compose: 'compositional product' }[s.op]} of
+    ${s.op ? `<p class="small">Weihrauch operation — ${{ jump: 'jump', par: 'parallelization', fin: 'finite parallelization', diamond: 'diamond (closure under compositional product)', product: 'product', compose: 'compositional product' }[s.op]} of
       ${(s.args || []).map((x) => (idx(x) !== undefined ? sLink(idx(x)) : esc(x))).join(' and ')}. Such statements are hidden in the catalogue unless "Weihrauch operations" is checked.</p>` : ''}
     ${s.todo ? `<p><span class="badge warn">definition to be checked</span> <span class="small muted">The precise statement should be checked against the source paper.</span></p>` : ''}
     ${s.form || s.firstOrder ? `<p class="small muted">Syntactic form: ${classHtml(s.form || 'arith')} (used by conservation results).</p>` : ''}

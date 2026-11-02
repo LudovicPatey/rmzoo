@@ -13,3 +13,17 @@
 - { type: separation, from: rt22, to: llpo, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.15 } ] }
 - { type: implication, from: cnn, to: rt, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 4.17 } ] }
 - { type: separation, from: rt, to: cnn, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 4.17 } ] }
+- { type: equivalence, from: wkl-j, to: lim.star.coh, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Fact 4.13 }, { ref: brattkahendtlasskreuzer2017, loc: Corollary 14.15 } ] }
+- { type: implication, from: srt22.star.coh, to: rt22, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.5 } ] }
+- { type: implication, from: wkl-jj, to: srt22.star.coh, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.5 } ] }
+- { type: equivalence, from: d22, to: rt12.jump, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: "Corollary 5.23 (RT′₁,₂ = D₂,₂)" } ] }
+- { type: implication, from: d22, to: dnr, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.23 } ] }
+- { type: implication, from: rt22.jump, to: lim, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 4.6 } ] }
+- { type: implication, from: rt12.star.lim, to: srt22, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: "Corollary 4.10 (n = 1, k = 2)" } ] }
+- { type: implication, from: rt12.star.wkl-j, to: rt22, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: "Corollary 4.14 (n = 1, k = 2)" } ] }
+- { type: implication, from: rt22.star.wkl-j, to: rt32, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: "Corollary 4.14 (n = 2, k = 2)" } ] }
+- { type: separation, from: rt12.jump.x.lim, to: rt22, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.2 } ] }
+- { type: separation, from: rt22, to: rt12.jump.x.lim, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.2 } ] }
+- { type: implication, from: srt22.star.srt22, to: kn.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 7.5 } ] }
+- { type: separation, from: rt12.jump, to: llpo.jump.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Theorem 6.8 and Corollary 6.10 (BWT′₂ = LLPO″) } ] }
+- { type: separation, from: llpo.jump.jump, to: rt12.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 6.10 } ] }

@@ -119,3 +119,26 @@ test('operator statements: P below its jump, parallelization; monotonicity', () 
   assert.equal(st('w', 'a.star.b', 'a.x.b'), 'implies'); // a × b ≤W a ⋆ b
   assert.equal(st('w', 'b.jump', 'a.jump'), 'open');
 });
+
+test('diamond: P ≤W P⋄, closed under ⋆ and ×, monotone; not for ≤sW', () => {
+  const zoo = buildZoo({
+    reductions: [
+      { id: 'sw', domain: 'problems', algebra: 'strong', finerThan: ['w'] },
+      { id: 'w', domain: 'problems', algebra: 'weak', finerThan: [] },
+    ],
+    properties: [],
+    statements: [
+      { id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' },
+      { id: 'a.diamond', kind: 'problem', op: 'diamond', args: ['a'] },
+      { id: 'b.diamond', kind: 'problem', op: 'diamond', args: ['b'] },
+      { id: 'b.star.b', kind: 'problem', op: 'compose', args: ['b', 'b'] },
+    ],
+    results: [{ type: 'implication', from: 'a', to: 'b', over: 'w', refs: [{ ref: 'x' }] }],
+  });
+  const st = (r, x, y) => zoo.status(zoo.ridx.get(r), zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('w', 'a.diamond', 'a'), 'implies');
+  assert.equal(st('sw', 'a.diamond', 'a'), 'open');
+  assert.equal(st('w', 'b.diamond', 'b.star.b'), 'implies');     // b ⋆ b ≤W b⋄
+  assert.equal(st('w', 'a.diamond', 'b.star.b'), 'implies');     // b ≤W a ≤W a⋄, closure under ⋆
+  assert.equal(st('w', 'a.diamond', 'b.diamond'), 'implies');    // monotone
+});

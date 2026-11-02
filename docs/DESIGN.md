@@ -89,14 +89,18 @@ hold in every ω-model, so every statement ω-implies them.
 
 **Weihrauch operations.** Problems obtained from others by the operations of
 the Weihrauch algebra are statements with `op` (`jump`, `par` for the
-parallelization P̂, `fin` for the finite parallelization P*, `product` P × Q,
-`compose` for the compositional product P ⋆ Q) and `args`. Results may name them
-with dotted ids, created on the fly with their label, name and definition:
-`lpo.jump` (LPO′), `llpo.par` (LLPÔ), `lpo.fin` (LPO*), `cn.x.lpo` (C_ℕ × LPO),
-`tcn.star.tcn` (TC_ℕ ⋆ TC_ℕ); operators apply left to right. The engine knows the
-laws of the algebra for the reductions marked `algebra` in `data/reductions.yaml`:
-P ≤sW P′, P̂, P*; P* ≤sW P̂; P, Q ≤W P × Q ≤W P ⋆ Q; and all operations are
-monotone (jump and parallelizations also for ≤sW). These statements are hidden in
+parallelization P̂, `fin` for the finite parallelization P*, `diamond` for P⋄,
+the closure under compositional product, `product` P × Q, `compose` for the
+compositional product P ⋆ Q) and `args`. Results may name them with dotted ids,
+created on the fly with their label, name and definition: `lpo.jump` (LPO′),
+`llpo.par` (LLPÔ), `lpo.fin` (LPO*), `lpo.diamond` (LPO⋄), `cn.x.lpo` (C_ℕ × LPO),
+`tcn.star.tcn` (TC_ℕ ⋆ TC_ℕ); operators apply left to right and parentheses
+group: `cn.star.(lpo.jump)` is C_ℕ ⋆ LPO′. The engine knows the laws of the
+algebra for the reductions marked `algebra` in `data/reductions.yaml`:
+P ≤sW P′, P̂, P*; P* ≤sW P̂; P, Q ≤W P × Q ≤W P ⋆ Q; P ≤W P⋄, and P⋄ is closed
+under × and ⋆; all operations are monotone (jump and parallelizations also for
+≤sW). Papers on completions (C̄_ℕ, …) write them with overlines that text
+extraction loses: check the rendered PDF before entering such results. These statements are hidden in
 the catalogue unless "Weihrauch operations" is checked.
 
 ### 1.3 Tags
