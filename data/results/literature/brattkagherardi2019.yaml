@@ -1,0 +1,3 @@
+# Results from [brattkagherardi2019].
+- { type: implication, from: tcn, to: cn, over: w, refs: [ { ref: brattkagherardi2019, loc: Corollary 8.3 } ] }
+- { type: separation, from: cn, to: tcn, over: w, refs: [ { ref: brattkagherardi2019, loc: Corollary 8.3 } ] }

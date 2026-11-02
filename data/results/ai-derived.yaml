@@ -99,3 +99,11 @@
   over: rca0
   provenance: ai
   justification: {kind: restriction, by: ai, text: "Given a coloring of the strong subtrees of height 2, color each strong subtree of height 3 by the color of its restriction to its first two levels; a strong subtree of height ω homogeneous for this coloring is homogeneous for the original one."}
+
+# NON (added with non)
+- type: implication
+  from: dnr
+  to: non
+  over: [sw, rca0star]
+  provenance: ai
+  justification: {kind: reduction, by: ai, text: "A function which is diagonally non-recursive relative to p is not computable from p, so every solution to the DNR instance p is a solution to the NON instance p."}

@@ -186,3 +186,60 @@
   refs:
     - {ref: brattkadebrechtpauly2012, role: rm}
     - {ref: kiharamarconepauly2020, role: rm}
+
+- id: ucn
+  label: '\mathsf{UC}_{\mathbb{N}}'
+  name: Unique choice on the natural numbers
+  kind: problem
+  formulationOf: cn
+  tags: [ weihrauch ]
+  aliases: [ UCN, unique choice ]
+  definition: >
+    Given an enumeration of the complement of a singleton $\{n\} \subseteq \mathbb{N}$,
+    find $n$.
+  instance: An enumeration of $\mathbb{N} \setminus \{n\}$.
+  solution: The number $n$.
+  refs: [ { ref: brattkadebrechtpauly2012, role: rm, loc: Proposition 6.2 } ]
+
+- id: tcn
+  label: '\mathsf{TC}_{\mathbb{N}}'
+  name: Total continuation of choice on the natural numbers
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ TCN, totalization of closed choice ]
+  definition: >
+    Given an enumeration of a set $B \subseteq \mathbb{N}$, find an element of
+    $\mathbb{N} \setminus B$ if this set is nonempty, and any natural number
+    otherwise.
+  instance: An enumeration of a set $B \subseteq \mathbb{N}$.
+  solution: An element of $\mathbb{N} \setminus B$ if there is one, any number otherwise.
+  refs: [ { ref: brattkagherardi2019, role: rm, loc: Corollary 8.3 } ]
+
+- id: accn
+  label: '\mathsf{ACC}_{\mathbb{N}}'
+  name: All-or-co-unique choice on the natural numbers
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ ACCN ]
+  definition: >
+    Choice on $\mathbb{N}$ restricted to sets $A$ which are either $\mathbb{N}$ or
+    $\mathbb{N} \setminus \{i\}$ for some $i$: given an enumeration of the
+    complement of such an $A$, find an element of $A$.
+  instance: >
+    An enumeration of the complement of a set
+    $A \in \{\mathbb{N}\} \cup \{\mathbb{N} \setminus \{i\} : i \in \mathbb{N}\}$.
+  solution: An element of $A$.
+  refs: [ { ref: brattka2021, role: rm, loc: Fact 5.8 } ]
+
+- id: non
+  label: '\mathsf{NON}'
+  name: Non-computability problem
+  kind: problem
+  tags: [ weihrauch, computability ]
+  aliases: [ NON, non-computability ]
+  definition: >
+    Given $p \in \mathbb{N}^\mathbb{N}$, find $q \in \mathbb{N}^\mathbb{N}$ which is not
+    computable from $p$.
+  instance: A sequence $p \in \mathbb{N}^\mathbb{N}$.
+  solution: A sequence $q$ with $q \not\le_T p$.
+  refs: [ { ref: brattka2021, role: rm, loc: Section 1, (12) } ]

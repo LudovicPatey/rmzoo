@@ -1,0 +1,6 @@
+# Results from [brattka2021].
+- { type: implication, from: llpo, to: accn, over: w, refs: [ { ref: brattka2021, loc: Fact 5.8 } ] }
+- { type: implication, from: wkl, to: non, over: w, refs: [ { ref: brattka2021, loc: Section 8 (DIS <W NON <W WKL) } ] }
+- { type: separation, from: non, to: wkl, over: w, refs: [ { ref: brattka2021, loc: Section 8 (DIS <W NON <W WKL) } ] }
+- { type: implication, from: hyp, to: non, over: w, refs: [ { ref: brattka2021, loc: Section 6 (NON <W HYPD ≤W HYP) } ] }
+- { type: separation, from: non, to: hyp, over: w, refs: [ { ref: brattka2021, loc: Section 6 (NON <W HYPD ≤W HYP) } ] }

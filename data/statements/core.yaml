@@ -20,37 +20,31 @@
   label: '\mathsf{RCA}_0^*'
   name: Weak recursive comprehension
   kind: sentence
-  base: [rca0star, rca0, omega]
+  base: [ rca0star, rca0, omega ]
   priority: 5
   firstOrder: true
-  tags: [big-five, induction]
-  aliases: [RCA0*, RCA0 star, weak base theory]
+  tags: [ big-five, induction ]
+  aliases: [ RCA0*, RCA0 star, weak base theory ]
   definition: >
-    Δ⁰₁ comprehension together with Δ⁰₀ induction and the totality of
-    exponentiation (Simpson–Smith 1986). It is the base theory of the reduction
-    "provability over RCA₀*", and is implied by every statement over RCA₀* , RCA₀
-    and ω-models.
+    Δ⁰₁ comprehension together with Δ⁰₀ induction and the totality of exponentiation (Simpson–Smith 1986). It is the base theory of the reduction "provability over RCA₀*", and is implied by every statement over RCA₀* , RCA₀ and ω-models.
   refs:
-    - {ref: simpsonsmith1986, role: origin}
+    - { ref: simpsonsmith1986, role: origin }
 
 - id: rca0
   label: '\mathsf{RCA}_0'
   name: Recursive comprehension
   kind: sentence
-  base: [rca0, omega]
+  base: [ rca0, omega ]
   firstOrder: true
-  tags: [big-five, induction]
-  aliases: [recursive comprehension, RCA0, base system]
+  tags: [ big-five, induction ]
+  aliases: [ recursive comprehension, RCA0, base system ]
   definition: >
-    Δ⁰₁ comprehension together with Σ⁰₁ induction. It is the usual base system
-    of reverse mathematics, and hence implied by every statement over RCA₀ and
-    over ω-models. Over the weaker base theory RCA₀* it is a genuine statement,
-    equivalent to Σ⁰₁ induction.
+    Δ⁰₁ comprehension together with Σ⁰₁ induction. It is the usual base system of reverse mathematics, and hence implied by every statement over RCA₀ and over ω-models. Over the weaker base theory RCA₀* it is a genuine statement, equivalent to Σ⁰₁ induction.
   refs:
-    - {ref: friedman1975, role: origin}
-    - {ref: simpson2009, role: survey, loc: Chapter II}
-    - {ref: simpson1985, role: survey}
-    - {ref: dzhafarovmummert2022, role: survey}
+    - { ref: friedman1975, role: origin }
+    - { ref: simpson2009, role: survey, loc: Chapter II }
+    - { ref: simpson1985, role: survey }
+    - { ref: dzhafarovmummert2022, role: survey }
 
 - id: wkl
   label: '\mathsf{WKL}'
@@ -98,7 +92,11 @@
   name: Diagonally non-recursive functions
   kind: problem
   tags: [ computability, randomness ]
-  aliases: [ DNC, diagonally non computable ]
+  aliases:
+    - DNC
+    - diagonally non computable
+    - DNC_N
+    - DNCN
   definition: >
     For every set $X$, there is a function $f$ such that $f(e) \neq \Phi^X_e(e)$ for every $e$.
   instance: A set $X$.
