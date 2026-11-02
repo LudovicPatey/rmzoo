@@ -85,6 +85,8 @@
     - { ref: brattkagherardimarcone2012, role: rm }
 
 - id: wkl-j
+  op: jump
+  args: [ wkl ]
   label: "\\mathsf{WKL}'"
   name: Jump of weak König's lemma
   kind: problem
@@ -98,6 +100,8 @@
     - { ref: brattkagherardimarcone2012, role: origin }
 
 - id: wkl-jj
+  op: jump
+  args: [ wkl-j ]
   label: "\\mathsf{WKL}''"
   name: Double jump of weak König's lemma
   kind: problem
@@ -243,3 +247,10 @@
   instance: A sequence $p \in \mathbb{N}^\mathbb{N}$.
   solution: A sequence $q$ with $q \not\le_T p$.
   refs: [ { ref: brattka2021, role: rm, loc: Section 1, (12) } ]
+
+- id: llpo.jump
+  op: jump
+  args: [ llpo ]
+  tags: [ weihrauch ]
+  aliases: [ BWT_2, BWT2, 'Bolzano-Weierstrass on {0,1}' ]
+  refs: [ { ref: brattkagherardimarcone2012, role: rm, loc: Corollary 11.11 } ]

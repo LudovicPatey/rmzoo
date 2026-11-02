@@ -4,3 +4,11 @@
 - { type: "implication", from: "wkl-j", to: "lim", over: "w", refs: [ { ref: brattkagherardimarcone2012 } ] }
 - { type: "separation", from: "lim", to: "wkl-j", over: "w", refs: [ { ref: brattkagherardimarcone2012 } ] }
 - { type: "implication", from: "wkl-j", to: "wkl", over: "sw", note: "A computable instance is its own limit.", refs: [ { ref: brattkagherardimarcone2012 } ] }
+- { type: equivalence, from: llpo.par, to: wkl, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: Fact 3.4 } ] }
+- { type: equivalence, from: lpo.par, to: lim, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: Fact 3.5 } ] }
+- { type: equivalence, from: llpo.fin, to: kn, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: Proposition 10.9 }, { ref: brattkagherardipauly2021, loc: Proposition 7.20 } ] }
+- { type: separation, from: bwt, to: lpo.jump, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: Corollary 12.3 } ] }
+- { type: implication, from: bwt, to: lim, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 12.7 } ] }
+- { type: separation, from: lim, to: bwt, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 12.7 } ] }
+- { type: implication, from: lim.jump, to: bwt, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 12.7 } ] }
+- { type: separation, from: bwt, to: lim.jump, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 12.7 } ] }

@@ -87,6 +87,18 @@ to IΣ⁰₁). Computability-theoretic reductions have no named bottom; being
 "computably true" is a property. `firstOrder: true` marks arithmetical statements true in ℕ, which
 hold in every ω-model, so every statement ω-implies them.
 
+**Weihrauch operations.** Problems obtained from others by the operations of
+the Weihrauch algebra are statements with `op` (`jump`, `par` for the
+parallelization P̂, `fin` for the finite parallelization P*, `product` P × Q,
+`compose` for the compositional product P ⋆ Q) and `args`. Results may name them
+with dotted ids, created on the fly with their label, name and definition:
+`lpo.jump` (LPO′), `llpo.par` (LLPÔ), `lpo.fin` (LPO*), `cn.x.lpo` (C_ℕ × LPO),
+`tcn.star.tcn` (TC_ℕ ⋆ TC_ℕ); operators apply left to right. The engine knows the
+laws of the algebra for the reductions marked `algebra` in `data/reductions.yaml`:
+P ≤sW P′, P̂, P*; P* ≤sW P̂; P, Q ≤W P × Q ≤W P ⋆ Q; and all operations are
+monotone (jump and parallelizations also for ≤sW). These statements are hidden in
+the catalogue unless "Weihrauch operations" is checked.
+
 ### 1.3 Tags
 
 Free classification ("Ramsey theory", "Big Five", "induction & bounding", …),

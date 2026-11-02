@@ -545,6 +545,7 @@ function viewCatalogue(params) {
   const over = new Set((params.get('over') || '').split(',').filter(Boolean));
   const showForms = params.get('forms') !== '0';
   let showConj = params.get('conj') === '1';
+  let showOps = params.get('ops') === '1';
   const m = main();
   m.className = '';
   const setParams = (next) => {
@@ -563,6 +564,7 @@ function viewCatalogue(params) {
         <h3>Categories</h3><div class="chips" id="tag-chips"></div>
         <h3>Show</h3>
         <label class="toggle"><input type="checkbox" id="cat-conj" ${showConj ? 'checked' : ''}> Combinations (A + B)</label>
+        <label class="toggle" title="Jumps, parallelizations, products and compositional products of problems (Weihrauch algebra)"><input type="checkbox" id="cat-ops" ${showOps ? 'checked' : ''}> Weihrauch operations (P′, P̂, P*, P × Q, P ⋆ Q)</label>
         <h3>Database</h3>
         <div class="small muted">${Z.S.length} statements · ${Z.raw.results.length} results ·
           ${Object.keys(Z.raw.references).length} papers</div>
@@ -592,6 +594,7 @@ function viewCatalogue(params) {
   });
   $('#cat-q').addEventListener('input', (e) => setParams({ ...cur, q: (cur.q = e.target.value) }));
   $('#cat-conj').addEventListener('change', (e) => { showConj = e.target.checked; draw(cur); });
+  $('#cat-ops').addEventListener('change', (e) => { showOps = e.target.checked; draw(cur); });
   function draw(c) {
     let ids = c.q ? search(c.q, 1000)
       : Z.S.map((_, i) => i).sort((x, y) => (S(y).base ? 1 : 0) - (S(x).base ? 1 : 0) || hay[x].ascii.localeCompare(hay[y].ascii, 'en', { numeric: true }));
@@ -600,7 +603,7 @@ function viewCatalogue(params) {
     ids.forEach((i) => (S(i).tags || []).forEach((t) => tagCounts.set(t, (tagCounts.get(t) || 0) + 1)));
     const overCounts = new Map();
     ids.filter(matchesTags).forEach((i) => FRAMES.forEach(([f]) => S(i).studied?.[f] && overCounts.set(f, (overCounts.get(f) || 0) + 1)));
-    ids = ids.filter(matchesTags).filter((i) => [...c.over].every((f) => S(i).studied?.[f])).filter((i) => showConj || !S(i).conjunction);
+    ids = ids.filter(matchesTags).filter((i) => [...c.over].every((f) => S(i).studied?.[f])).filter((i) => (showConj || !S(i).conjunction) && (showOps || !S(i).op));
     $('#over-chips').innerHTML = FRAMES.map(([f, label, what]) => `<span class="chip ${c.over.has(f) ? 'on' : ''}" data-over="${f}"
       title="Statements studied with ${what} in at least one paper">${label} <span class="count">${overCounts.get(f) || 0}</span></span>`).join('');
     $('#over-chips').onclick = (e) => {
@@ -625,7 +628,7 @@ function viewCatalogue(params) {
       const mainI = s.formulationOf ? idx(s.formulationOf) : i;
       if (!mains.includes(mainI)) mains.push(mainI);
     }
-    mains.sort((x, y) => (!!S(x).conjunction - !!S(y).conjunction) || (c.q ? 0 : 0));
+    mains.sort((x, y) => (!!S(x).conjunction - !!S(y).conjunction) || (!!S(x).op - !!S(y).op));
     $('#cat-count').textContent = `${ids.length} statement${ids.length === 1 ? '' : 's'}`;
     listed = ids.map((i) => S(i).id);
     syncSelButtons();
@@ -695,6 +698,8 @@ function viewStatement(id) {
       ${s.aliases ? `<span class="small muted">Also: ${s.aliases.map(esc).join(', ')}</span>` : ''}
     </div>
     ${s.formulationOf ? `<p>A formulation of ${sLink(mainI)} (the main formulation of this principle).</p>` : ''}
+    ${s.op ? `<p class="small">Weihrauch operation — ${{ jump: 'jump', par: 'parallelization', fin: 'finite parallelization', product: 'product', compose: 'compositional product' }[s.op]} of
+      ${(s.args || []).map((x) => (idx(x) !== undefined ? sLink(idx(x)) : esc(x))).join(' and ')}. Such statements are hidden in the catalogue unless "Weihrauch operations" is checked.</p>` : ''}
     ${s.todo ? `<p><span class="badge warn">definition to be checked</span> <span class="small muted">The precise statement should be checked against the source paper.</span></p>` : ''}
     ${s.form || s.firstOrder ? `<p class="small muted">Syntactic form: ${classHtml(s.form || 'arith')} (used by conservation results).</p>` : ''}
     <div class="card def-box">${s.conjunction ? `Conjunction of ${s.conjunction.map((c) => sLink(idx(c))).join(' and ')}.` : rich(s.definition)}</div>

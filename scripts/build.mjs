@@ -106,6 +106,61 @@ const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml
       byId.set(id, s);
     }
   }
+  // Operator statements of the Weihrauch algebra, named by dotted ids:
+  //   a.jump  a.par  a.fin  (postfix)   a.x.b  a.star.b  (binary, left to right)
+  // e.g. lpo.jump = LPO', llpo.par = LLPO-hat, tcn.star.tcn = TC_N ⋆ TC_N.
+  // They are created on the fly when results, questions or zoos mention them.
+  const OPS = { jump: 1, par: 1, fin: 1, x: 2, star: 2 };
+  const OPNAME = { jump: 'jump', par: 'par', fin: 'fin', x: 'product', star: 'compose' };
+  const makeOp = (id) => {
+    if (byId.has(id) || !id.includes('.')) return byId.get(id);
+    const t = id.split('.');
+    let cur = t[0];
+    if (!byId.has(cur)) return undefined;
+    for (let k = 1; k < t.length; k++) {
+      const op = t[k];
+      if (OPS[op] === 1) {
+        const nid = `${cur}.${op}`;
+        if (!byId.has(nid)) { const s = { id: nid, op: OPNAME[op], args: [cur], kind: 'problem', tags: [], _file: 'auto' }; raw.statements.push(s); byId.set(nid, s); }
+        cur = nid;
+      } else if (OPS[op] === 2 && t[k + 1] && byId.has(t[k + 1])) {
+        const nid = `${cur}.${op}.${t[k + 1]}`;
+        if (!byId.has(nid)) { const s = { id: nid, op: OPNAME[op], args: [cur, t[k + 1]], kind: 'problem', tags: [], _file: 'auto' }; raw.statements.push(s); byId.set(nid, s); }
+        cur = nid; k++;
+      } else return undefined;
+    }
+    return byId.get(cur);
+  };
+  for (const id of new Set([...mentioned, ...(raw.zoos || []).flatMap((z) => z.statements || [])])) makeOp(id);
+  // labels, names and definitions of operator statements (unless given)
+  const wrap = (s) => (s.op === 'product' || s.op === 'compose' ? `(${s.label})` : s.label);
+  const opTex = (s) => {
+    const a = s.args.map((x) => byId.get(x));
+    if (a.some((x) => !x)) return null;
+    for (const x of a) if (x.op && !x.label) fillOp(x);
+    return { jump: () => `${wrap(a[0])}'`, par: () => `\\widehat{${a[0].label}}`, fin: () => `${wrap(a[0])}^{*}`,
+      product: () => `${wrap(a[0])} \\times ${wrap(a[1])}`, compose: () => `${wrap(a[0])} \\star ${wrap(a[1])}` }[s.op]?.();
+  };
+  // "Lesser limited principle…" → "lesser limited principle…" inside a name (acronyms unchanged)
+  const plainName = (x) => { const n = x.name || x.id; return /^[A-Z][a-z]/.test(n) ? n[0].toLowerCase() + n.slice(1) : n; };
+  function fillOp(s) {
+    const a = (s.args || []).map((x) => byId.get(x));
+    if (a.some((x) => !x)) return;
+    a.forEach((x) => { if (x.op && !x.label) fillOp(x); });
+    s.label ||= opTex(s);
+    s.name ||= { jump: () => `Jump of ${plainName(a[0])}`, par: () => `Parallelization of ${plainName(a[0])}`, fin: () => `Finite parallelization of ${plainName(a[0])}`,
+      product: () => `Product of ${plainName(a[0])} and ${plainName(a[1])}`, compose: () => `Compositional product of ${plainName(a[0])} and ${plainName(a[1])}` }[s.op]();
+    const L = (x) => `$${x.label}$`;
+    s.definition ||= {
+      jump: () => `The jump of ${L(a[0])}: an instance is a sequence converging to an instance of ${L(a[0])} (in Baire space), with the same solutions.`,
+      par: () => `The parallelization of ${L(a[0])}: given a sequence of instances of ${L(a[0])}, find a solution to each of them.`,
+      fin: () => `The finite parallelization of ${L(a[0])}: given finitely many instances of ${L(a[0])}, find a solution to each of them.`,
+      product: () => `Given an instance of ${L(a[0])} and an instance of ${L(a[1])}, find a solution to each.`,
+      compose: () => `The compositional product of ${L(a[0])} and ${L(a[1])}: the strongest problem obtained by first solving an instance of ${L(a[1])} and then, computably in the result, an instance of ${L(a[0])} (Brattka, Gherardi and Marcone).`,
+    }[s.op]();
+    s.kind ||= 'problem';
+  }
+  for (const s of raw.statements) if (s.op) fillOp(s);
   for (const s of raw.statements) {
     if (!s.conjunction) continue;
     const parts = s.conjunction.map((id) => byId.get(id));
@@ -131,6 +186,19 @@ const uniq = (list, what) => {
 };
 const rids = uniq(raw.reductions, 'reduction');
 const tids = uniq(raw.tags, 'tag');
+// operator statements of the Weihrauch algebra
+{
+  const byId = new Map(raw.statements.map((x) => [x.id, x]));
+  const arity = { jump: 1, par: 1, fin: 1, product: 2, compose: 2 };
+  for (const s of raw.statements.filter((x) => x.op)) {
+    if (!arity[s.op]) { errors.push(`Statement ${s.id}: unknown operation ${s.op}`); continue; }
+    if ((s.args || []).length !== arity[s.op]) errors.push(`Statement ${s.id}: ${s.op} takes ${arity[s.op]} argument(s)`);
+    for (const a of s.args || []) {
+      if (!byId.has(a)) errors.push(`Statement ${s.id}: unknown argument ${a}`);
+      else if (byId.get(a).kind !== 'problem') errors.push(`Statement ${s.id}: argument ${a} is not a problem`);
+    }
+  }
+}
 // open questions: references, statements and formal parts must exist
 {
   uniq(raw.questions, 'question');

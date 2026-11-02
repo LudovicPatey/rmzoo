@@ -22,6 +22,8 @@ export const RULES = {
   'prop-up': 'Failure of a property inherited along an implication',
   'prop-sep': 'Separation by a property',
   refine: 'Separation at a coarser reduction',
+  'op-base': 'Algebra of Weihrauch degrees: a problem is below its jump, its parallelization and its finite parallelization (strongly), and below products and compositional products in which it occurs',
+  'op-monotone': 'Algebra of Weihrauch degrees: jumps, parallelizations, finite parallelizations, products and compositional products are monotone',
   'weaken-left': 'Weakening the hypothesis',
   'strengthen-right': 'Strengthening the conclusion',
   conservation: 'Conservation: the conclusion has the right syntactic form and is not provable from the base',
@@ -167,8 +169,54 @@ export function buildZoo(raw) {
       conjParts.forEach((parts, k) => parts.forEach((p) => addI(r, k, p, { rule: 'conj-elim' })));
   }
 
+  // --- algebra of Weihrauch degrees --------------------------------------------
+  // Operator statements (op: jump | par | fin | product | compose, args: [ids]).
+  // Laws, for reductions marked `algebra` (strong / weak Weihrauch):
+  //   P ≤sW P', P ≤sW P̂, P ≤sW P*, P* ≤sW P̂;   P, Q ≤W P × Q ≤W P ⋆ Q, P, Q ≤W P ⋆ Q;
+  //   all operations are monotone (jump, par, fin also for ≤sW; ×, ⋆ for ≤W).
+  // "X implies Y" means Y ≤ X, so P ≤ op(P) is the implication op(P) → P.
+  const ops = [];
+  S.forEach((s, i) => { if (s.op) ops.push({ i, op: s.op, args: (s.args || []).map((id) => sidx.get(id)) }); });
+  const unary = new Set(['jump', 'par', 'fin']);
+  const opsByArg = new Map();
+  ops.forEach((o) => o.args.forEach((x) => { if (!opsByArg.has(x)) opsByArg.set(x, []); opsByArg.get(x).push(o); }));
+  const strongOK = (o) => unary.has(o.op);
+  const algebraAt = (r, o) => R[r].algebra === 'weak' || (R[r].algebra === 'strong' && strongOK(o));
+  const seedOps = () => {
+    for (let r = 0; r < R.length; r++) {
+      if (!R[r].algebra) continue;
+      for (const o of ops) {
+        if (!algebraAt(r, o) || o.args.some((x) => x === undefined)) continue;
+        for (const x of o.args) addI(r, o.i, x, { rule: 'op-base' });
+        if (o.op === 'compose') { // P × Q ≤W P ⋆ Q
+          const pr = ops.find((q) => q.op === 'product' && q.args[0] === o.args[0] && q.args[1] === o.args[1]);
+          if (pr) addI(r, o.i, pr.i, { rule: 'op-base' });
+        }
+        if (o.op === 'par') { // P* ≤sW P̂
+          const fin = ops.find((q) => q.op === 'fin' && q.args[0] === o.args[0]);
+          if (fin) addI(r, o.i, fin.i, { rule: 'op-base' });
+        }
+      }
+    }
+  };
+  // monotonicity, applied when an implication between arguments is derived
+  const monotone = (r, a, b) => {
+    if (!R[r].algebra) return;
+    for (const o of opsByArg.get(b) || []) { // o = op(..., b, ...); look for o2 = op(..., a, ...)
+      if (!algebraAt(r, o)) continue;
+      for (const o2 of opsByArg.get(a) || []) {
+        if (o2.op !== o.op || o2.args.length !== o.args.length) continue;
+        // o2 implies o when every argument of o2 implies the corresponding argument of o
+        if (o2.args.every((x, k) => I[r].has(key(x, o.args[k]))))
+          addI(r, o2.i, o.i, { rule: 'op-monotone', prem: o2.args.map((x, k) => fI(r, x, o.args[k])) });
+      }
+    }
+  };
+  seedOps();
+
   while (qh < queue.length) {
     const r = queue[qh++], a = queue[qh++], b = queue[qh++];
+    if (ops.length) monotone(r, a, b);
     const ob = out[r][b];
     for (let i = 0, len = ob.length; i < len; i++) {
       const c = ob[i];

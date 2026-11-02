@@ -90,3 +90,32 @@ test('diagram view collapses SRT22 and D22 over RCA0 but not over W', () => {
   const v2 = orderView(z, ['srt22', 'd22', 'rt22'], z.ridx.get('w'));
   assert.equal(v2.classes.length, 3);
 });
+
+// ---- Weihrauch algebra -----------------------------------------------------------
+test('operator statements: P below its jump, parallelization; monotonicity', () => {
+  const zoo = buildZoo({
+    reductions: [
+      { id: 'sw', domain: 'problems', algebra: 'strong', finerThan: ['w'] },
+      { id: 'w', domain: 'problems', algebra: 'weak', finerThan: [] },
+    ],
+    properties: [],
+    statements: [
+      { id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' },
+      { id: 'a.jump', kind: 'problem', op: 'jump', args: ['a'] },
+      { id: 'b.jump', kind: 'problem', op: 'jump', args: ['b'] },
+      { id: 'a.fin', kind: 'problem', op: 'fin', args: ['a'] },
+      { id: 'a.par', kind: 'problem', op: 'par', args: ['a'] },
+      { id: 'a.x.b', kind: 'problem', op: 'product', args: ['a', 'b'] },
+      { id: 'a.star.b', kind: 'problem', op: 'compose', args: ['a', 'b'] },
+    ],
+    results: [{ type: 'implication', from: 'a', to: 'b', over: 'sw', refs: [{ ref: 'x' }] }],
+  });
+  const st = (r, x, y) => zoo.status(zoo.ridx.get(r), zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('sw', 'a.jump', 'a'), 'implies');      // a ≤sW a'
+  assert.equal(st('sw', 'a.jump', 'b.jump'), 'implies'); // b ≤sW a ⇒ b' ≤sW a'
+  assert.equal(st('sw', 'a.par', 'a.fin'), 'implies');   // a* ≤sW â
+  assert.equal(st('w', 'a.x.b', 'b'), 'implies');        // b ≤W a × b
+  assert.equal(st('sw', 'a.x.b', 'b'), 'open');          // products only for ≤W
+  assert.equal(st('w', 'a.star.b', 'a.x.b'), 'implies'); // a × b ≤W a ⋆ b
+  assert.equal(st('w', 'b.jump', 'a.jump'), 'open');
+});

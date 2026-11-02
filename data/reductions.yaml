@@ -47,6 +47,7 @@
 
 - id: sw
   name: Strong Weihrauch reduction
+  algebra: strong   # laws of the Weihrauch algebra that hold strongly (jump, parallelizations)
   short: sW
   tex: '\le_{\mathrm{sW}}'
   domain: problems
@@ -59,6 +60,7 @@
 
 - id: w
   name: Weihrauch reduction
+  algebra: weak     # all laws of the Weihrauch algebra (also products, compositional products)
   short: W
   tex: '\le_{\mathrm{W}}'
   domain: problems
