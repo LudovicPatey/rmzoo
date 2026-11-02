@@ -5,21 +5,25 @@ jech1992:
   authors:
     - Thomas Jech
   title: On Gödel's second incompleteness theorem
-  year: 1992
-  venue: arXiv preprint
+  year: 1994
+  venue: Proceedings of the American Mathematical Society, 121(1), 311
   arxiv: math/9204207
   source: arxiv
   read: pdf-arxiv
+  doi: 10.2307/2160398
+  preprintYear: 1992
 gasarchhirst1994:
   authors:
     - William Gasarch
     - Jeffry Hirst
   title: Reverse Mathematics and Recursive Graph Theory
-  year: 1994
-  venue: arXiv preprint
+  year: 1998
+  venue: Mathematical Logic Quarterly, 44(4), 465-473
   arxiv: math/9404206
   source: arxiv
   read: pdf-zotero
+  doi: 10.1002/malq.19980440405
+  preprintYear: 1994
 marcone1994:
   authors:
     - Alberto Marcone
@@ -44,11 +48,13 @@ hummeljockusch1997:
     - Tamara Hummel
     - Carl Jockusch
   title: Generalized cohesiveness
-  year: 1997
-  venue: arXiv preprint
+  year: 1999
+  venue: Journal of Symbolic Logic, 64(2), 489-516
   arxiv: math/9709204
   source: arxiv
   read: pdf-arxiv
+  doi: 10.2307/2586482
+  preprintYear: 1997
 bissellsiders1998:
   authors:
     - Ryan Bissell-Siders
@@ -118,11 +124,13 @@ hirschorn2008:
   authors:
     - James Hirschorn
   title: A strong antidiamond principle compatible with CH
-  year: 2008
-  venue: arXiv preprint
+  year: 2009
+  venue: Annals of Pure and Applied Logic, 157(2-3), 161-193
   arxiv: "0806.4220"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2008.09.021
+  preprintYear: 2008
 andersonhirst2008:
   authors:
     - Bernard A. Anderson
@@ -148,11 +156,13 @@ solovayarthanharrison2009:
     - R. D. Arthan
     - John Harrison
   title: Some new results on decidability for elementary algebra and geometry
-  year: 2009
-  venue: arXiv preprint
+  year: 2012
+  venue: Annals of Pure and Applied Logic, 163(12), 1765-1802
   arxiv: "0904.3482"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2012.04.003
+  preprintYear: 2009
 adamsluo2009:
   authors:
     - Robin Adams
@@ -168,11 +178,13 @@ towsner2009:
   authors:
     - Henry Towsner
   title: "Hindman's Theorem: An Ultrafilter Argument in Second Order Arithmetic"
-  year: 2009
-  venue: arXiv preprint
+  year: 2011
+  venue: The Journal of Symbolic Logic, 76(1), 353-360
   arxiv: "0906.3882"
   source: arxiv
   read: pdf-zotero
+  doi: 10.2178/jsl/1294171005
+  preprintYear: 2009
 marconemontalban2009:
   authors:
     - Alberto Marcone
@@ -200,11 +212,13 @@ cholakgalvinsolomon2010:
     - David Galvin
     - Reed Solomon
   title: Reverse mathematics and infinite traceable graphs
-  year: 2010
-  venue: arXiv preprint
+  year: 2011
+  venue: Mathematical Logic Quarterly, n/a-n/a
   arxiv: "1008.4548"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1002/malq.201190019
+  preprintYear: 2010
 dzhafarovmummert2010:
   authors:
     - Damir D. Dzhafarov
@@ -231,10 +245,11 @@ dzhafarov2010:
     - Damir D. Dzhafarov
   title: Infinite saturated orders
   year: 2010
-  venue: arXiv preprint
+  venue: Order, 28(2), 163-172
   arxiv: "1010.2219"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s11083-010-9160-6
 hirstmummert2010:
   authors:
     - Jeffry L. Hirst
@@ -277,20 +292,24 @@ veldman2011:
   authors:
     - Wim Veldman
   title: Brouwer's Fan Theorem as an axiom and as a contrast to Kleene's Alternative
-  year: 2011
-  venue: arXiv preprint
+  year: 2014
+  venue: Archive for Mathematical Logic, 53(5-6), 621-693
   arxiv: "1106.2738"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s00153-014-0384-9
+  preprintYear: 2011
 towsner2011:
   authors:
     - Henry Towsner
   title: Partial Impredicativity in Reverse Mathematics
-  year: 2011
-  venue: arXiv preprint
+  year: 2013
+  venue: The Journal of Symbolic Logic, 78(2), 459-488
   arxiv: "1106.6063"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.2178/jsl.7802070
+  preprintYear: 2011
 coskeyhamkinsmiller2011:
   authors:
     - Samuel Coskey
@@ -308,20 +327,24 @@ dzhafarovmummert2011:
     - Damir D. Dzhafarov
     - Carl Mummert
   title: Reverse mathematics and properties of finite character
-  year: 2011
-  venue: arXiv preprint
+  year: 2012
+  venue: Annals of Pure and Applied Logic, 163(9), 1243-1251
   arxiv: "1109.3378"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2012.01.007
+  preprintYear: 2011
 towsner2011b:
   authors:
     - Henry Towsner
   title: Ultrafilters in Reverse Mathematics
-  year: 2011
-  venue: arXiv preprint
+  year: 2014
+  venue: Journal of Mathematical Logic, 14(01), 1450001
   arxiv: "1109.3902"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1142/s0219061314500019
+  preprintYear: 2011
 kreuzer2011:
   authors:
     - Alexander P. Kreuzer
@@ -398,11 +421,13 @@ doraishirstshafer2012:
     - Jeffry Hirst
     - Paul Shafer
   title: Reverse Mathematics and Algebraic Field Extensions
-  year: 2012
-  venue: arXiv preprint
+  year: 2013
+  venue: Computability, 2(2), 75-92
   arxiv: "1209.4944"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.3233/com-13021
+  preprintYear: 2012
 kawamuraetal2012b:
   authors:
     - Akitoshi Kawamura
@@ -428,30 +453,36 @@ towsner2013:
   authors:
     - Henry Towsner
   title: On Maximum Conservative Extensions
-  year: 2013
-  venue: arXiv preprint
+  year: 2015
+  venue: Computability, 4(1), 57-68
   arxiv: "1302.1488"
   source: arxiv
   read: pdf-zotero
+  doi: 10.3233/com-150033
+  preprintYear: 2013
 flood2013:
   authors:
     - Stephen Flood
   title: A packed Ramsey's theorem and computability theory
-  year: 2013
-  venue: arXiv preprint
+  year: 2015
+  venue: Transactions of the American Mathematical Society, 367(7), 4957-4982
   arxiv: "1302.2256"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1090/s0002-9947-2015-06164-9
+  preprintYear: 2013
 fernandezduquejoosten2013:
   authors:
     - David Fernández-Duque
     - Joost J. Joosten
   title: The omega-rule interpretation of transfinite provability logic
-  year: 2013
-  venue: arXiv preprint
+  year: 2018
+  venue: Annals of Pure and Applied Logic, 169(4), 333-371
   arxiv: "1302.5393"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2017.12.006
+  preprintYear: 2013
 frittaionmarcone2013:
   authors:
     - Emanuele Frittaion
@@ -478,11 +509,13 @@ day2013:
   authors:
     - Adam R. Day
   title: On The Strength of Two Recurrence Theorems
-  year: 2013
-  venue: arXiv preprint
+  year: 2016
+  venue: The Journal of Symbolic Logic, 81(4), 1357-1374
   arxiv: "1305.5858"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/jsl.2016.9
+  preprintYear: 2013
 kreuzer2013:
   authors:
     - Alexander P. Kreuzer
@@ -516,11 +549,13 @@ schweber2013:
   authors:
     - Noah Schweber
   title: Transfinite Recursion in Higher Reverse Mathematics
-  year: 2013
-  venue: arXiv preprint
+  year: 2015
+  venue: The Journal of Symbolic Logic, 80(3), 940-969
   arxiv: "1310.5792"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/jsl.2015.2
+  preprintYear: 2013
 mummertsaadaouisovine2014:
   authors:
     - Carl Mummert
@@ -598,11 +633,13 @@ dzhafarovigusa2014:
     - Damir Dzhafarov
     - Gregory Igusa
   title: Notions of robust information coding
-  year: 2014
-  venue: arXiv preprint
+  year: 2017
+  venue: Computability, 6(2), 105-124
   arxiv: "1406.2982"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.3233/com-160059
+  preprintYear: 2014
 millerng2014:
   authors:
     - Russell Miller
@@ -709,50 +746,60 @@ bergsanders2014:
     - Benno van den Berg
     - Sam Sanders
   title: Reverse Mathematics and parameter-free Transfer
-  year: 2014
-  venue: arXiv preprint
+  year: 2019
+  venue: Annals of Pure and Applied Logic, 170(3), 273-296
   arxiv: "1409.6881"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2018.10.003
+  preprintYear: 2014
 koodziejczykyokoyama2014:
   authors:
     - Leszek Aleksander Kołodziejczyk
     - Keita Yokoyama
   title: Categorical characterizations of the natural numbers require primitive recursion
-  year: 2014
-  venue: arXiv preprint
+  year: 2015
+  venue: Annals of Pure and Applied Logic, 166(2), 219-231
   arxiv: "1410.3649"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1016/j.apal.2014.10.003
+  preprintYear: 2014
 patey2014:
   authors:
     - Ludovic Patey
   title: The complexity of satisfaction problems in reverse mathematics
-  year: 2014
-  venue: arXiv preprint
+  year: 2015
+  venue: Computability, 4(1), 69-84
   arxiv: "1411.1592"
   source: arxiv
   read: pdf-zotero
+  doi: 10.3233/com-150034
+  preprintYear: 2014
 patey2014b:
   authors:
     - Ludovic Patey
   title: Degrees bounding principles and universal instances in reverse mathematics
-  year: 2014
-  venue: arXiv preprint
+  year: 2015
+  venue: Annals of Pure and Applied Logic, 166(11), 1165-1185
   arxiv: "1411.1599"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1016/j.apal.2015.07.003
+  preprintYear: 2014
 meerenrathjenweiermann2014:
   authors:
     - Jeroen Van der Meeren
     - Michael Rathjen
     - Andreas Weiermann
   title: An order-theoretic characterization of the Howard-Bachmann-hierarchy
-  year: 2014
-  venue: arXiv preprint
+  year: 2016
+  venue: Archive for Mathematical Logic, 56(1-2), 79-118
   arxiv: "1411.4481"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s00153-016-0515-6
+  preprintYear: 2014
 sanders2014b:
   authors:
     - Sam Sanders
@@ -767,11 +814,13 @@ cholakmccoy2014:
     - Peter Cholak
     - Charlie McCoy
   title: Effective Prime Uniqueness
-  year: 2014
-  venue: arXiv preprint
+  year: 2017
+  venue: Proceedings of the American Mathematical Society, 145(12), 5363-5379
   arxiv: "1412.5976"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1090/proc/13675
+  preprintYear: 2014
 sanders2015:
   authors:
     - Sam Sanders
@@ -833,11 +882,13 @@ caigreenbergmcinerney2015:
     - Noam Greenberg
     - Michael McInerney
   title: DNR and incomparable Turing degrees
-  year: 2015
-  venue: arXiv preprint
+  year: 2016
+  venue: Forum of Mathematics, Sigma, 4
   arxiv: "1504.02805"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1017/fms.2016.3
+  preprintYear: 2015
 frittaionetal2015:
   authors:
     - Emanuele Frittaion
@@ -865,11 +916,13 @@ patey2015c:
   authors:
     - Ludovic Patey
   title: Open questions about Ramsey-type statements in reverse mathematics
-  year: 2015
-  venue: arXiv preprint
+  year: 2016
+  venue: The Bulletin of Symbolic Logic, 22(2), 151-169
   arxiv: "1506.04780"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1017/bsl.2015.40
+  preprintYear: 2015
 simpson2015:
   authors:
     - Stephen G. Simpson
@@ -912,11 +965,13 @@ patey2015d:
   authors:
     - Ludovic Patey
   title: Controlling iterated jumps of solutions to combinatorial problems
-  year: 2015
-  venue: arXiv preprint
+  year: 2016
+  venue: Computability, 6(1), 47-78
   arxiv: "1509.05340"
   source: arxiv
   read: pdf-zotero
+  doi: 10.3233/com-160056
+  preprintYear: 2015
 lubarsky2015:
   authors:
     - Robert Lubarsky
@@ -951,21 +1006,25 @@ hatzikiriakousimpson2015:
     - Kostas Hatzikiriakou
     - Stephen G. Simpson
   title: Reverse mathematics, Young diagrams, and the ascending chain condition
-  year: 2015
-  venue: arXiv preprint
+  year: 2017
+  venue: The Journal of Symbolic Logic, 82(2), 576-589
   arxiv: "1510.03106"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/jsl.2016.17
+  preprintYear: 2015
 antosfriedman2015:
   authors:
     - Carolin Antos
     - Sy-David Friedman
   title: Hyperclass Forcing in Morse-Kelley Class Theory
-  year: 2015
-  venue: arXiv preprint
+  year: 2017
+  venue: The Journal of Symbolic Logic, 82(2), 549-575
   arxiv: "1510.04082"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/jsl.2016.74
+  preprintYear: 2015
 sanders2015f:
   authors:
     - Sam Sanders
@@ -1002,21 +1061,25 @@ steilayokoyama2015:
     - Silvia Steila
     - Keita Yokoyama
   title: Reverse Mathematical Bounds for the Termination Theorem
-  year: 2015
-  venue: arXiv preprint
+  year: 2016
+  venue: Annals of Pure and Applied Logic, 167(12), 1213-1241
   arxiv: "1512.08622"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2016.06.001
+  preprintYear: 2015
 berardisteila2016:
   authors:
     - Stefano Berardi
     - Silvia Steila
   title: Ramsey's Theorem for Pairs and $k$ Colors as a Sub-Classical Principle of Arithmetic
-  year: 2016
-  venue: arXiv preprint
+  year: 2017
+  venue: The Journal of Symbolic Logic, 82(2), 737-753
   arxiv: "1601.01891"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/jsl.2016.41
+  preprintYear: 2016
 sanders2016:
   authors:
     - Sam Sanders
@@ -1042,10 +1105,11 @@ shafer2016:
     - Paul Shafer
   title: The reverse mathematics of the Tietze extension theorem
   year: 2016
-  venue: arXiv preprint
+  venue: Proceedings of the American Mathematical Society, 144(12), 5359-5370
   arxiv: "1602.05398"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1090/proc/13217
 pelupessy2016:
   authors:
     - Florian Pelupessy
@@ -1059,20 +1123,24 @@ arai2016:
   authors:
     - Toshiyasu Arai
   title: Proof-theoretic strengths of weak theories for positive inductive definitions
-  year: 2016
-  venue: arXiv preprint
+  year: 2018
+  venue: The Journal of Symbolic Logic, 83(3), 1091-1111
   arxiv: "1603.01342"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/jsl.2018.36
+  preprintYear: 2016
 patey2016d:
   authors:
     - Ludovic Patey
   title: The reverse mathematics of non-decreasing subsequences
-  year: 2016
-  venue: arXiv preprint
+  year: 2017
+  venue: Archive for Mathematical Logic, 56(5-6), 491-506
   arxiv: "1603.08833"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1007/s00153-017-0536-9
+  preprintYear: 2016
 arai2016b:
   authors:
     - Toshiyasu Arai
@@ -1147,11 +1215,13 @@ carlucci2016:
   authors:
     - Lorenzo Carlucci
   title: A weak variant of Hindman's Theorem stronger than Hilbert's Theorem
-  year: 2016
-  venue: arXiv preprint
+  year: 2017
+  venue: Archive for Mathematical Logic, 57(3-4), 381-389
   arxiv: "1610.05445"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1007/s00153-017-0576-1
+  preprintYear: 2016
 neumannpapestreicher2016:
   authors:
     - Eike Neumann
@@ -1189,20 +1259,23 @@ deanwalsh2016:
     - Walter Dean
     - Sean Walsh
   title: The Prehistory of the Subsystems of Second-Order Arithmetic
-  year: 2016
-  venue: arXiv preprint
+  year: 2017
+  venue: The Review of Symbolic Logic, 10(2), 357-396
   arxiv: "1612.06219"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1017/s1755020316000411
+  preprintYear: 2016
 sanders2017:
   authors:
     - Sam Sanders
   title: Reverse Formalism 16
   year: 2017
-  venue: arXiv preprint
+  venue: Synthese, 197(2), 497-544
   arxiv: "1701.05066"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s11229-017-1322-2
 normannsanders2017:
   authors:
     - Dag Normann
@@ -1238,11 +1311,13 @@ niestriplettyokoyama2017:
     - Marcus A. Triplett
     - Keita Yokoyama
   title: The reverse mathematics of theorems of Jordan and Lebesgue
-  year: 2017
-  venue: arXiv preprint
+  year: 2021
+  venue: The Journal of Symbolic Logic, 86(4), 1657-1675
   arxiv: "1704.00931"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/jsl.2021.16
+  preprintYear: 2017
 galeottinobrega2017b:
   authors:
     - Lorenzo Galeotti
@@ -1296,11 +1371,13 @@ astor2017:
   authors:
     - Eric P. Astor
   title: The computational content of intrinsic density
-  year: 2017
-  venue: arXiv preprint
+  year: 2018
+  venue: The Journal of Symbolic Logic, 83(2), 817-828
   arxiv: "1708.04267"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/jsl.2018.4
+  preprintYear: 2017
 forssellespindola2017:
   authors:
     - Henrik Forssell
@@ -1318,11 +1395,13 @@ frittaionetal2017:
     - Silvia Steila
     - Keita Yokoyama
   title: The strength of SCT soundness
-  year: 2017
-  venue: arXiv preprint
+  year: 2018
+  venue: Journal of Logic and Computation, 28(6), 1217-1242
   arxiv: "1709.09036"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1093/logcom/exy003
+  preprintYear: 2017
 normannsanders2017b:
   authors:
     - Dag Normann
@@ -1339,11 +1418,13 @@ normannsanders2018:
     - Dag Normann
     - Sam Sanders
   title: The strength of compactness in Computability Theory and Nonstandard Analysis
-  year: 2018
-  venue: arXiv preprint
+  year: 2019
+  venue: Annals of Pure and Applied Logic, 170(11), 102710
   arxiv: "1801.08172"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2019.05.007
+  preprintYear: 2018
 kenny2018:
   authors:
     - Robert Kenny
@@ -1368,11 +1449,13 @@ andrewssorbi2018:
     - Uri Andrews
     - Andrea Sorbi
   title: Joins and meets in the structure of Ceers
-  year: 2018
-  venue: arXiv preprint
+  year: 2019
+  venue: Computability, 8(3-4), 193-241
   arxiv: "1802.09249"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.3233/com-180098
+  preprintYear: 2018
 carljamneshan2018:
   authors:
     - Merlin Carl
@@ -1409,10 +1492,11 @@ davisetal2018:
     - Timothy Ransom
   title: Reverse mathematics and colorings of hypergraphs
   year: 2018
-  venue: arXiv preprint
+  venue: Archive for Mathematical Logic, 58(5-6), 575-585
   arxiv: "1804.09638"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s00153-018-0654-z
 sanders2018b:
   authors:
     - Sam Sanders
@@ -1427,11 +1511,13 @@ sanders2018c:
   authors:
     - Sam Sanders
   title: A note on non-classical Nonstandard Arithmetic
-  year: 2018
-  venue: arXiv preprint
+  year: 2019
+  venue: Annals of Pure and Applied Logic, 170(4), 427-445
   arxiv: "1805.11705"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2018.11.001
+  preprintYear: 2018
 fokinarosseggermauro2018:
   authors:
     - Ekaterina Fokina
@@ -1449,11 +1535,13 @@ koodziejczykyokoyama2018:
     - Leszek Aleksander Kołodziejczyk
     - Keita Yokoyama
   title: Some upper bounds on ordinal-valued Ramsey numbers for colourings of pairs
-  year: 2018
-  venue: arXiv preprint
+  year: 2020
+  venue: Selecta Mathematica, 26(4)
   arxiv: "1807.00616"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1007/s00029-020-00577-3
+  preprintYear: 2018
 kornell2018:
   authors:
     - Andre Kornell
@@ -1468,11 +1556,13 @@ towsneryokoyama2018:
     - Henry Towsner
     - Keita Yokoyama
   title: Erdos-Moser and ISigma_2
-  year: 2018
-  venue: arXiv preprint
+  year: 2024
+  venue: Israel Journal of Mathematics, 263(2), 843-870
   arxiv: "1807.04452"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1007/s11856-024-2643-8
+  preprintYear: 2018
 eastaugh2018b:
   authors:
     - Benedict Eastaugh
@@ -1498,11 +1588,13 @@ friedmangitmankanovei2018:
     - Victoria Gitman
     - Vladimir Kanovei
   title: A model of second-order arithmetic satisfying AC but not DC
-  year: 2018
-  venue: arXiv preprint
+  year: 2019
+  venue: Journal of Mathematical Logic, 19(01), 1850013
   arxiv: "1808.04732"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1142/s0219061318500137
+  preprintYear: 2018
 chongetal2018:
   authors:
     - Chitat Chong
@@ -1510,11 +1602,13 @@ chongetal2018:
     - Wei Wang
     - Yue Yang
   title: On The Computability of Perfect Subsets of Sets with Positive Measure
-  year: 2018
-  venue: arXiv preprint
+  year: 2019
+  venue: Proceedings of the American Mathematical Society, 147(9), 4021-4028
   arxiv: "1808.06082"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1090/proc/14413
+  preprintYear: 2018
 kawai2018:
   authors:
     - Tatsuji Kawai
@@ -1528,21 +1622,25 @@ sanders2018d:
   authors:
     - Sam Sanders
   title: "Reverse Mathematics of topology: dimension, paracompactness, and splittings"
-  year: 2018
-  venue: arXiv preprint
+  year: 2020
+  venue: Notre Dame Journal of Formal Logic, 61(4), 537-559
   arxiv: "1808.08785"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1215/00294527-2020-0021
+  preprintYear: 2018
 normannsanders2018b:
   authors:
     - Dag Normann
     - Sam Sanders
   title: Pincherle's theorem in Reverse Mathematics and computability theory
-  year: 2018
-  venue: arXiv preprint
+  year: 2020
+  venue: Annals of Pure and Applied Logic, 171(5), 102788
   arxiv: "1808.09783"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2020.102788
+  preprintYear: 2018
 dobrinen2018:
   authors:
     - Natasha Dobrinen
@@ -1618,22 +1716,26 @@ normannsanders2019:
     - Dag Normann
     - Sam Sanders
   title: On the logical and computational properties of the Vitali covering theorem
-  year: 2019
-  venue: arXiv preprint
+  year: 2025
+  venue: Annals of Pure and Applied Logic, 176(1), 103505
   arxiv: "1902.02756"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2024.103505
+  preprintYear: 2019
 fernandezduqueshaferyokoyama2019:
   authors:
     - David Fernández-Duque
     - Paul Shafer
     - Keita Yokoyama
   title: Ekeland's variational principle in weak and strong systems of arithmetic
-  year: 2019
-  venue: arXiv preprint
+  year: 2020
+  venue: Selecta Mathematica, 26(5)
   arxiv: "1902.03915"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s00029-020-00597-z
+  preprintYear: 2019
 downeyetal2019:
   authors:
     - Rod Downey
@@ -1642,20 +1744,23 @@ downeyetal2019:
     - Ludovic Patey
     - Dan Turetsky
   title: Relationships between computability-theoretic properties of problems
-  year: 2019
-  venue: arXiv preprint
+  year: 2020
+  venue: The Journal of Symbolic Logic, 87(1), 47-71
   arxiv: "1903.04273"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1017/jsl.2020.38
+  preprintYear: 2019
 shafer2019:
   authors:
     - Paul Shafer
   title: The strength of compactness for countable complete linear orders
   year: 2019
-  venue: arXiv preprint
+  venue: Computability, 9(1), 25-36
   arxiv: "1904.01482"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.3233/com-190262
 freundrathjen2019:
   authors:
     - Anton Freund
@@ -1721,11 +1826,13 @@ bard2019:
   authors:
     - Vittorio Bard
   title: Uniform Martin's conjecture, locally
-  year: 2019
-  venue: arXiv preprint
+  year: 2020
+  venue: Proceedings of the American Mathematical Society, 148(12), 5369-5380
   arxiv: "1907.10766"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1090/proc/15159
+  preprintYear: 2019
 freund2019b:
   authors:
     - Anton Freund
@@ -1770,11 +1877,13 @@ beklemishevpakhomov2019:
     - Lev D. Beklemishev
     - Fedor N. Pakhomov
   title: Reflection algebras and conservation results for theories of iterated truth
-  year: 2019
-  venue: arXiv preprint
+  year: 2022
+  venue: Annals of Pure and Applied Logic, 173(5), 103093
   arxiv: "1908.10302"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2022.103093
+  preprintYear: 2019
 joosten2019:
   authors:
     - Joost J. Joosten
@@ -1792,21 +1901,25 @@ bazhenovetal2019:
     - Luca San Mauro
     - Mars Yamaleev
   title: Minimal Equivalence Relations in Hyperarithmetical and Analytical Hierarchies
-  year: 2019
-  venue: arXiv preprint
+  year: 2020
+  venue: Lobachevskii Journal of Mathematics, 41(2), 145-150
   arxiv: "1909.12247"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1134/s199508022002002x
+  preprintYear: 2019
 normannsanders2019b:
   authors:
     - Dag Normann
     - Sam Sanders
   title: Open sets in computability theory and Reverse Mathematics
-  year: 2019
-  venue: arXiv preprint
+  year: 2020
+  venue: Journal of Logic and Computation, 30(8), 1639-1679
   arxiv: "1910.02489"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1093/logcom/exaa049
+  preprintYear: 2019
 sanders2019d:
   authors:
     - Sam Sanders
@@ -1822,11 +1935,13 @@ enayatschmerl2019:
     - Ali Enayat
     - James H. Schmerl
   title: The Barwise-Schlipf Theorem
-  year: 2019
-  venue: arXiv preprint
+  year: 2020
+  venue: Proceedings of the American Mathematical Society, 149(1), 413-416
   arxiv: "1911.05117"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1090/proc/15216
+  preprintYear: 2019
 westrick2020b:
   authors:
     - Linda Westrick
@@ -1842,11 +1957,13 @@ freundrathjenweiermann2020:
     - Michael Rathjen
     - Andreas Weiermann
   title: Minimal bad sequences are necessary for a uniform Kruskal theorem
-  year: 2020
-  venue: arXiv preprint
+  year: 2022
+  venue: Advances in Mathematics, 400, 108265
   arxiv: "2001.06380"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.aim.2022.108265
+  preprintYear: 2020
 limziegler2020:
   authors:
     - Donghyun Lim
@@ -1905,11 +2022,13 @@ koodziejczykwongyokoyama2020:
     - Tin Lok Wong
     - Keita Yokoyama
   title: Ramsey's theorem for pairs, collection, and proof size
-  year: 2020
-  venue: arXiv preprint
+  year: 2023
+  venue: Journal of Mathematical Logic, 24(02)
   arxiv: "2005.06854"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1142/s0219061323500071
+  preprintYear: 2020
 clemenscoskeykrakoff2020:
   authors:
     - John D. Clemens
@@ -1927,11 +2046,13 @@ normannsanders2020:
     - Dag Normann
     - Sam Sanders
   title: The Axiom of Choice in Computability Theory and Reverse Mathematics, with a cameo for the Continuum Hypothesis
-  year: 2020
-  venue: arXiv preprint
+  year: 2021
+  venue: Journal of Logic and Computation, 31(1), 297-325
   arxiv: "2006.01614"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1093/logcom/exaa080
+  preprintYear: 2020
 liu2020:
   authors:
     - Lu Liu
@@ -1948,10 +2069,11 @@ rosemaurosorbi2020:
     - Andrea Sorbi
   title: Word problems and ceers
   year: 2020
-  venue: arXiv preprint
+  venue: Mathematical Logic Quarterly, 66(3), 341-354
   arxiv: "2006.07977"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1002/malq.202000021
 freund2020:
   authors:
     - Anton Freund
@@ -1986,11 +2108,13 @@ fernandezduquereyes2020:
     - David Fernández-Duque
     - Eduardo Hermo Reyes
   title: Deducibility and Independence in Beklemishev's Autonomous Provability Calculus
-  year: 2020
-  venue: arXiv preprint
+  year: 2022
+  venue: Information and Computation, 287, 104758
   arxiv: "2008.13445"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.ic.2021.104758
+  preprintYear: 2020
 dimitrovetal2020:
   authors:
     - Rumen Dimitrov
@@ -2000,22 +2124,26 @@ dimitrovetal2020:
     - Alexandra A. Soskova
     - Stefan V. Vatev
   title: On cohesive powers of linear orders
-  year: 2020
-  venue: arXiv preprint
+  year: 2023
+  venue: The Journal of Symbolic Logic, 88(3), 947-1004
   arxiv: "2009.00340"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/jsl.2023.14
+  preprintYear: 2020
 ngtavanayang2020:
   authors:
     - Keng Meng Ng
     - Nazanin R. Tavana
     - Yue Yang
   title: A recursion theoretic foundation of computation over real numbers
-  year: 2020
-  venue: arXiv preprint
+  year: 2021
+  venue: Journal of Logic and Computation, 31(7), 1660-1689
   arxiv: "2010.00791"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1093/logcom/exab042
+  preprintYear: 2020
 bochebockdeppe2020:
   authors:
     - Holger Boche
@@ -2040,22 +2168,26 @@ sanders2020:
   authors:
     - Sam Sanders
   title: Countable sets versus sets that are countable in Reverse Mathematics
-  year: 2020
-  venue: arXiv preprint
+  year: 2021
+  venue: Computability, 11(1), 9-39
   arxiv: "2011.01772"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.3233/com-210313
+  preprintYear: 2020
 koodziejczykkowalikyokoyama2020:
   authors:
     - Leszek Aleksander Kołodziejczyk
     - Katarzyna W. Kowalik
     - Keita Yokoyama
   title: How strong is Ramsey's theorem if infinity can be weak?
-  year: 2020
-  venue: arXiv preprint
+  year: 2022
+  venue: The Journal of Symbolic Logic, 88(2), 620-639
   arxiv: "2011.02550"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1017/jsl.2022.46
+  preprintYear: 2020
 sanders2020b:
   authors:
     - Sam Sanders
@@ -2078,11 +2210,13 @@ freund2020b:
   authors:
     - Anton Freund
   title: Patterns of resemblance and Bachmann-Howard fixed points
-  year: 2020
-  venue: arXiv preprint
+  year: 2021
+  venue: Selecta Mathematica, 28(1)
   arxiv: "2012.10292"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s00029-021-00748-w
+  preprintYear: 2020
 berarduccieleftherioumamino2021:
   authors:
     - Alessandro Berarducci
@@ -2110,10 +2244,11 @@ moschovakis2021:
     - Joan Rand Moschovakis
   title: Solovay's Relative Consistency Proof for FIM and BI
   year: 2021
-  venue: arXiv preprint
+  venue: Notre Dame Journal of Formal Logic, 62(4), 661-667
   arxiv: "2101.05878"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1215/00294527-2021-0034
 viale2021:
   authors:
     - Matteo Viale
@@ -2159,10 +2294,11 @@ pakhomovwalsh2021:
     - James Walsh
   title: Reducing $ω$-model reflection to iterated syntactic reflection
   year: 2021
-  venue: arXiv preprint
+  venue: Journal of Mathematical Logic, 23(02)
   arxiv: "2103.12147"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1142/s0219061322500015
 barmpaliaswang2021:
   authors:
     - George Barmpalias
@@ -2179,11 +2315,13 @@ barrettdowneygreenberg2021:
     - Rodney G. Downey
     - Noam Greenberg
   title: Cousin's lemma in second-order arithmetic
-  year: 2021
-  venue: arXiv preprint
+  year: 2022
+  venue: Proceedings of the American Mathematical Society, Series B, 9(12), 111-124
   arxiv: "2105.02975"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1090/bproc/111
+  preprintYear: 2021
 fioricaroneskoodziejczykkowalik2021:
   authors:
     - Marta Fiori-Carones
@@ -2191,10 +2329,11 @@ fioricaroneskoodziejczykkowalik2021:
     - Katarzyna W. Kowalik
   title: Weaker cousins of Ramsey's theorem over a weak base theory
   year: 2021
-  venue: arXiv preprint
+  venue: Annals of Pure and Applied Logic, 172(10), 103028
   arxiv: "2105.11190"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1016/j.apal.2021.103028
 schrittesser2021:
   authors:
     - David Schrittesser
@@ -2232,11 +2371,13 @@ hirschfeldtcarlgjockuschschupp2021:
     - Carl G. Jockusch,
     - Paul E. Schupp
   title: Coarse computability, the density metric, Hausdorff distances between Turing degrees, perfect trees, and reverse mathematics
-  year: 2021
-  venue: arXiv preprint
+  year: 2023
+  venue: Journal of Mathematical Logic, 24(02)
   arxiv: "2106.13118"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1142/s0219061323500058
+  preprintYear: 2021
 crookpauly2021:
   authors:
     - Tonicha Crook
@@ -2283,11 +2424,13 @@ walsh2021:
   authors:
     - James Walsh
   title: An incompleteness theorem via ordinal analysis
-  year: 2021
-  venue: arXiv preprint
+  year: 2022
+  venue: The Journal of Symbolic Logic, 89(1), 80-96
   arxiv: "2109.09678"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/jsl.2022.64
+  preprintYear: 2021
 carcassiaidala2021:
   authors:
     - Gabriele Carcassi
@@ -2317,11 +2460,13 @@ freundrathjen2021:
     - Anton Freund
     - Michael Rathjen
   title: Well ordering principles for iterated $Π^1_1$-comprehension
-  year: 2021
-  venue: arXiv preprint
+  year: 2023
+  venue: Selecta Mathematica, 29(5)
   arxiv: "2112.08005"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s00029-023-00879-2
+  preprintYear: 2021
 freund2021:
   authors:
     - Anton Freund
@@ -2339,11 +2484,13 @@ fioricaronesetal2021:
     - Tin Lok Wong
     - Keita Yokoyama
   title: An isomorphism theorem for models of Weak König's Lemma without primitive recursion
-  year: 2021
-  venue: arXiv preprint
+  year: 2024
+  venue: Journal of the European Mathematical Society, 28(7), 3203-3233
   arxiv: "2112.10876"
   source: arxiv
   read: pdf-zotero
+  doi: 10.4171/jems/1522
+  preprintYear: 2021
 kihara2022b:
   authors:
     - Takayuki Kihara
@@ -2397,10 +2544,11 @@ hirschfeldtreitzes2022:
     - Sarah C. Reitzes
   title: Thin Set Versions of Hindman's Theorem
   year: 2022
-  venue: arXiv preprint
+  venue: Notre Dame Journal of Formal Logic, 63(4), 481-491
   arxiv: "2203.08658"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1215/00294527-2022-0027
 jeonmatthews2022:
   authors:
     - Hanul Jeon
@@ -2425,11 +2573,13 @@ freund2022:
   authors:
     - Anton Freund
   title: Higman's lemma is stronger for better quasi orders
-  year: 2022
-  venue: arXiv preprint
+  year: 2024
+  venue: Order, 41(3), 753-759
   arxiv: "2205.04336"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s11083-024-09658-w
+  preprintYear: 2022
 bochepohl2022:
   authors:
     - Holger Boche
@@ -2447,20 +2597,24 @@ cervellegaudelierpatey2022:
     - William Gaudelier
     - Ludovic Patey
   title: The Reverse Mathematics of CAC for trees
-  year: 2022
-  venue: arXiv preprint
+  year: 2023
+  venue: The Journal of Symbolic Logic, 89(3), 1189-1211
   arxiv: "2206.00571"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1017/jsl.2023.27
+  preprintYear: 2022
 freund2022b:
   authors:
     - Anton Freund
   title: On the logical strength of the better quasi order with three elements
-  year: 2022
-  venue: arXiv preprint
+  year: 2023
+  venue: Transactions of the American Mathematical Society, 376(9), 6709-6727
   arxiv: "2206.11132"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1090/tran/8966
+  preprintYear: 2022
 carluccimainardi2022:
   authors:
     - Lorenzo Carlucci
@@ -2477,10 +2631,11 @@ frittaion2022:
     - Emanuele Frittaion
   title: A note on fragments of uniform reflection in second order arithmetic
   year: 2022
-  venue: arXiv preprint
+  venue: The Bulletin of Symbolic Logic, 28(3), 451-465
   arxiv: "2207.11693"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/bsl.2022.23
 dauriacetal2022:
   authors:
     - Paul-Elliot Anglès d'Auriac
@@ -2498,11 +2653,13 @@ freunduftring2022:
     - Anton Freund
     - Patrick Uftring
   title: "The uniform Kruskal theorem: between finite combinatorics and strong set existence"
-  year: 2022
-  venue: arXiv preprint
+  year: 2023
+  venue: "Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences, 381(2248)"
   arxiv: "2208.00209"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1098/rsta.2022.0016
+  preprintYear: 2022
 sanders2022b:
   authors:
     - Sam Sanders
@@ -2549,30 +2706,35 @@ dayetal2022:
     - Matthew Harrison-Trainor
     - Dan Turetsky
   title: An Effective Classification of Borel Wadge Classes
-  year: 2022
-  venue: arXiv preprint
+  year: 2025
+  venue: Journal of the European Mathematical Society
   arxiv: "2211.07961"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.4171/jems/1655
+  preprintYear: 2022
 arai2022:
   authors:
     - Toshiyasu Arai
   title: Wellfoundedness proof with the maximal distinguished set
   year: 2022
-  venue: arXiv preprint
+  venue: Archive for Mathematical Logic, 62(3-4), 333-357
   arxiv: "2211.08619"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s00153-022-00840-8
 normannsanders2022:
   authors:
     - Dag Normann
     - Sam Sanders
   title: The Biggest Five of Reverse Mathematics
-  year: 2022
-  venue: arXiv preprint
+  year: 2023
+  venue: Journal of Mathematical Logic, 25(01)
   arxiv: "2212.00489"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1142/s0219061324500077
+  preprintYear: 2022
 fernandezduqueetal2023:
   authors:
     - David Fernández-Duque
@@ -2581,10 +2743,11 @@ fernandezduqueetal2023:
     - Keita Yokoyama
   title: Metric fixed point theory and partial impredicativity
   year: 2023
-  venue: arXiv preprint
+  venue: "Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences, 381(2248)"
   arxiv: "2302.08874"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1098/rsta.2022.0012
 curzidas2023:
   authors:
     - Gianluca Curzi
@@ -2622,31 +2785,36 @@ freundpakhomovsolda2023:
     - Fedor Pakhomov
     - Giovanni Soldà
   title: The logical strength of minimal bad arrays
-  year: 2023
-  venue: arXiv preprint
+  year: 2024
+  venue: Proceedings of the American Mathematical Society, 152(12), 4993-5005
   arxiv: "2304.00278"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1090/proc/17038
+  preprintYear: 2023
 freundmanca2023:
   authors:
     - Anton Freund
     - Davide Manca
   title: Weak well orders and Fraïssé's conjecture
   year: 2023
-  venue: arXiv preprint
+  venue: The Journal of Symbolic Logic, 90(4), 1522-1537
   arxiv: "2304.03021"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/jsl.2023.70
 harizanovsrinivasan2023:
   authors:
     - Valentina Harizanov
     - Keshav Srinivasan
   title: Cohesive Powers of Structures
-  year: 2023
-  venue: arXiv preprint
+  year: 2024
+  venue: Archive for Mathematical Logic, 63(5-6), 679-702
   arxiv: "2304.03371"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s00153-024-00916-7
+  preprintYear: 2023
 dowekthire2023:
   authors:
     - Gilles Dowek
@@ -2664,11 +2832,13 @@ freundetal2023:
     - Fedor Pakhomov
     - Giovanni Soldà
   title: Provable better quasi orders
-  year: 2023
-  venue: arXiv preprint
+  year: 2025
+  venue: Notre Dame Journal of Formal Logic, 66(2), 175-188
   arxiv: "2305.01066"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1215/00294527-2024-0036
+  preprintYear: 2023
 rosemaurosorbi2023:
   authors:
     - Valentino Delle Rose
@@ -2676,21 +2846,24 @@ rosemaurosorbi2023:
     - Andrea Sorbi
   title: Classifying word problems of finitely generated algebras via computable reducibility
   year: 2023
-  venue: arXiv preprint
+  venue: International Journal of Algebra and Computation, 33(04), 751-768
   arxiv: "2305.11563"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1142/s0218196723500339
 harrisontrainorliulutz2023:
   authors:
     - Matthew Harrison-Trainor
     - Lu Liu
     - Patrick Lutz
   title: Coding information into all infinite subsets of a dense set
-  year: 2023
-  venue: arXiv preprint
+  year: 2026
+  venue: Israel Journal of Mathematics
   arxiv: "2306.01226"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s11856-026-2923-6
+  preprintYear: 2023
 eastaugh2023:
   authors:
     - Benedict Eastaugh
@@ -2700,7 +2873,6 @@ eastaugh2023:
   doi: 10.1017/S1755020324000054
   arxiv: "2306.06471"
   source: arxiv
-  read: pdf-zotero
 dasmelgaard2023:
   authors:
     - Anupam Das
@@ -2746,11 +2918,13 @@ pateymimouni2023:
     - Ludovic Levy Patey
     - Ahmed Mimouni
   title: The weakness of the Erdős-Moser theorem under arithmetic reductions
-  year: 2023
-  venue: arXiv preprint
+  year: 2025
+  venue: Journal of Mathematical Logic, 26(02)
   arxiv: "2310.17968"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1142/s0219061325500011
+  preprintYear: 2023
 sanders2023b:
   authors:
     - Sam Sanders
@@ -2775,11 +2949,13 @@ uftring2023b:
   authors:
     - Patrick Uftring
   title: On inverse Goodstein sequences
-  year: 2023
-  venue: arXiv preprint
+  year: 2025
+  venue: Selecta Mathematica, 31(4)
   arxiv: "2312.06542"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s00029-025-01071-4
+  preprintYear: 2023
 jeon2023:
   authors:
     - Hanul Jeon
@@ -2807,11 +2983,13 @@ carluccimainardizdanowski2024:
     - Leonardo Mainardi
     - Konrad Zdanowski
   title: Reductions of well-ordering principles to combinatorial theorems
-  year: 2024
-  venue: arXiv preprint
+  year: 2026
+  venue: Notre Dame Journal of Formal Logic, 67(2), 199-218
   arxiv: "2401.04451"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1215/00294527-2025-0028
+  preprintYear: 2024
 benhametal2024:
   authors:
     - Heidi Benham
@@ -2821,10 +2999,11 @@ benhametal2024:
     - Java Darleen Villano
   title: The Ginsburg--Sands theorem and computability theory
   year: 2024
-  venue: arXiv preprint
+  venue: Advances in Mathematics, 444, 109618
   arxiv: "2402.05990"
   source: arxiv
   read: pdf-zotero
+  doi: 10.1016/j.aim.2024.109618
 houeroupateyyokoyama2024:
   authors:
     - Quentin Le Houérou
@@ -2855,11 +3034,13 @@ normannsanders2024:
     - Dag Normann
     - Sam Sanders
   title: On sequential theorems in Reverse Mathematics
-  year: 2024
-  venue: arXiv preprint
+  year: 2025
+  venue: Archive for Mathematical Logic, 65(2), 275-295
   arxiv: "2403.13143"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1007/s00153-025-00991-4
+  preprintYear: 2024
 neumannpaulypradic2024:
   authors:
     - Eike Neumann
@@ -2904,11 +3085,13 @@ freund2024:
   authors:
     - Anton Freund
   title: Dilators and the reverse mathematics zoo
-  year: 2024
-  venue: arXiv preprint
+  year: 2025
+  venue: Journal of Mathematical Logic
   arxiv: "2404.06872"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1142/s0219061325500102
+  preprintYear: 2024
 holzlng2024:
   authors:
     - Rupert Hölzl
@@ -2923,21 +3106,25 @@ sanders2024b:
   authors:
     - Sam Sanders
   title: "Sometimes tame, sometimes wild: weak continuity"
-  year: 2024
-  venue: arXiv preprint
+  year: 2025
+  venue: Bulletin of the London Mathematical Society, 57(4), 1324-1346
   arxiv: "2405.06420"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1112/blms.70019
+  preprintYear: 2024
 pakhomovsolda2024:
   authors:
     - Fedor Pakhomov
     - Giovanni Soldà
   title: On Nash-Williams' Theorem regarding sequences with finite range
-  year: 2024
-  venue: arXiv preprint
+  year: 2026
+  venue: Transactions of the American Mathematical Society, 379(8), 5353-5390
   arxiv: "2405.13842"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1090/tran/9669
+  preprintYear: 2024
 kulshreshtha2024:
   authors:
     - Dhruv Kulshreshtha
@@ -2970,11 +3157,13 @@ freund2024b:
   authors:
     - Anton Freund
   title: Fraïssé's conjecture, partial impredicativity and well-ordering principles, part I
-  year: 2024
-  venue: arXiv preprint
+  year: 2025
+  venue: Proceedings of the American Mathematical Society, 153(3), 937-946
   arxiv: "2406.13485"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1090/proc/17149
+  preprintYear: 2024
 houeroupateymimouni2024:
   authors:
     - Quentin Le Houérou
@@ -2992,11 +3181,13 @@ cervellegaudelierpatey2024:
     - William Gaudelier
     - Ludovic Levy Patey
   title: Cross-constraint basis theorems and products of partitions
-  year: 2024
-  venue: arXiv preprint
+  year: 2026
+  venue: Computability, 15(1-2), 60-84
   arxiv: "2407.02206"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1177/22113568251406826
+  preprintYear: 2024
 pauly2024:
   authors:
     - Arno Pauly
@@ -3064,11 +3255,13 @@ andrewsmauro2024:
     - Uri Andrews
     - Luca San Mauro
   title: Analogues of the countable Borel equivalence relations in the setting of computable reducibility
-  year: 2024
-  venue: arXiv preprint
+  year: 2025
+  venue: Proceedings of the American Mathematical Society, 153(8), 3577-3593
   arxiv: "2409.17018"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1090/proc/17190
+  preprintYear: 2024
 fuchinogappoparente2024:
   authors:
     - Sakaé Fuchino
@@ -3086,11 +3279,13 @@ freunduftring2024:
     - Anton Freund
     - Patrick Uftring
   title: More conservativity for weak Kőnig's lemma
-  year: 2024
-  venue: arXiv preprint
+  year: 2025
+  venue: Documenta Mathematica
   arxiv: "2410.20591"
   source: arxiv
   read: pdf-zotero
+  doi: 10.4171/dm/1049
+  preprintYear: 2024
 genovesi2024:
   authors:
     - Giorgio G. Genovesi
@@ -3115,11 +3310,13 @@ neri2024:
   authors:
     - Morenikeji Neri
   title: A finitary Kronecker's lemma and large deviations in the Strong Law of Large numbers on Banach spaces
-  year: 2024
-  venue: arXiv preprint
+  year: 2025
+  venue: Annals of Pure and Applied Logic, 176(6), 103569
   arxiv: "2411.08620"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2025.103569
+  preprintYear: 2024
 dzhafarovsolomonvolpi2024:
   authors:
     - Damir D. Dzhafarov
@@ -3159,11 +3356,13 @@ aguilerafreundweiermann2024:
     - Anton Freund
     - Andreas Weiermann
   title: Induction on Dilators and Bachmann-Howard Fixed Points
-  year: 2024
-  venue: arXiv preprint
+  year: 2026
+  venue: Annals of Pure and Applied Logic, 177(7), 103740
   arxiv: "2412.13051"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2026.103740
+  preprintYear: 2024
 acevesmartinezetal2024:
   authors:
     - Bruno Fernando Aceves-Martínez
@@ -3190,11 +3389,13 @@ uftring2025:
   authors:
     - Patrick Uftring
   title: The uniform Kruskal theorem over RCA$_0$
-  year: 2025
-  venue: arXiv preprint
+  year: 2026
+  venue: Journal of Mathematical Logic
   arxiv: "2502.03978"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1142/s0219061326500078
+  preprintYear: 2025
 deansanders2025:
   authors:
     - Walter Dean
@@ -3329,21 +3530,25 @@ kowalik2025:
   authors:
     - Katarzyna W. Kowalik
   title: A non-speedup result for the chain-antichain principle over a weak base theory
-  year: 2025
-  venue: arXiv preprint
+  year: 2026
+  venue: Transactions of the American Mathematical Society
   arxiv: "2510.00323"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1090/tran/9827
+  preprintYear: 2025
 brattkarauzy2025c:
   authors:
     - Vasco Brattka
     - Emmanuel Rauzy
   title: Computable Bases
-  year: 2025
-  venue: arXiv preprint
+  year: 2027
+  venue: Annals of Pure and Applied Logic, 178(2), 103839
   arxiv: "2510.09850"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2026.103839
+  preprintYear: 2025
 chongwong2025:
   authors:
     - Chi Tat Chong
@@ -3359,11 +3564,13 @@ buriolaweiermann2025:
     - Gabriele Buriola
     - Andreas Weiermann
   title: Proof-Theoretic Relations between Higman's and Kruskal's theorem, and Independence Results for Tree-like Structures
-  year: 2025
-  venue: arXiv preprint
+  year: 2026
+  venue: The Bulletin of Symbolic Logic, 1-34
   arxiv: "2511.11297"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/bsl.2026.10175
+  preprintYear: 2025
 pakhomovsolda2025:
   authors:
     - Fedor Pakhomov
@@ -3390,11 +3597,13 @@ bochepohlpoor2026:
     - Volker Pohl
     - H. Vincent Poor
   title: Arithmetic Complexity of Solutions of the Dirichlet Problem
-  year: 2026
-  venue: arXiv preprint
+  year: 2027
+  venue: Applied and Computational Harmonic Analysis, 87, 101939
   arxiv: "2601.06954"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1016/j.acha.2026.101939
+  preprintYear: 2026
 ikariyokoyama2026:
   authors:
     - Hiroyuki Ikari
@@ -3503,10 +3712,11 @@ marconevolpi2026:
     - Andrea Volpi
   title: Reverse mathematics and dimension of posets
   year: 2026
-  venue: arXiv preprint
+  venue: The Journal of Symbolic Logic, 1-27
   arxiv: "2603.18759"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/jsl.2026.10213
 sorg2026:
   authors:
     - Christopher Sorg
@@ -3554,10 +3764,11 @@ cholak2026:
     - Peter Cholak
   title: Ramsey Theory and Bounding in Arithmetic
   year: 2026
-  venue: arXiv preprint
+  venue: The Bulletin of Symbolic Logic, 1-15
   arxiv: "2603.23704"
   source: arxiv
   read: pdf-arxiv
+  doi: 10.1017/bsl.2026.10166
 dimitrovetal2026:
   authors:
     - Rumen Dimitrov

@@ -85,3 +85,17 @@
   over: [sw, rca0star]
   provenance: ai
   justification: {kind: restriction, by: ai, text: "Given f : [ℕ]³ → 2, color a quadruple by the color of its first three elements; a homogeneous set for this coloring of quadruples is homogeneous for f."}
+
+# Milliken's tree theorem (added with mtt, mtt2, mtt3)
+- type: implication
+  from: mtt
+  to: mtt3
+  over: rca0
+  provenance: ai
+  justification: {kind: restriction, by: ai, text: "MTT is stated for all heights n; MTT³ is the case n = 3."}
+- type: implication
+  from: mtt3
+  to: mtt2
+  over: rca0
+  provenance: ai
+  justification: {kind: restriction, by: ai, text: "Given a coloring of the strong subtrees of height 2, color each strong subtree of height 3 by the color of its restriction to its first two levels; a strong subtree of height ω homogeneous for this coloring is homogeneous for the original one."}

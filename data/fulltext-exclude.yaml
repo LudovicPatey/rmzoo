@@ -1,0 +1,5 @@
+# Sources of full texts known to be wrong, never to be used again by
+# scripts/fulltext.mjs. key: { zotero: <item key> | url: <url>, reason }
+brattkagherardi2011b:
+  zotero: K5J36TMP
+  reason: In the maintainer's Zotero library this item has the PDF of Ambos-Spies, "Problems which cannot be reduced to any proper subproblems", attached.

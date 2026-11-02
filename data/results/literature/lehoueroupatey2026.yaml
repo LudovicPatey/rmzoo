@@ -2,3 +2,4 @@
 
 - { type: "separation", from: "tt22", to: "isig2", over: "rca0", note: "Consequence of the ∀Π⁰₄-conservation of CSL¹₂ over RCA₀ + BΣ⁰₂.", refs: [ { ref: lehoueroupatey2026, loc: Corollary 6.14 } ] }
 - { type: conservation, statement: tt22-wkl, base: bsig2, class: uPi04, value: true, refs: [ { ref: lehoueroupatey2026, loc: Corollary 6.14 } ] }
+- { type: separation, from: henson-indiv, to: isig2, over: rca0, refs: [ { ref: lehoueroupatey2026, loc: abstract (consequence of the ∀Π⁰₄-conservation of CSL¹₂ over RCA₀ + BΣ⁰₂) } ] }

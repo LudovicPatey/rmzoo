@@ -70,11 +70,13 @@ amirhoyrup2022b:
     - Djamel Eddine Amir
     - Mathieu Hoyrup
   title: Strong computable type
-  year: 2022
-  venue: arXiv 2210.08309
+  year: 2023
+  venue: Computability, 12(3), 227-269
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2210.08309"
+  doi: 10.3233/com-220430
+  preprintYear: 2022
 amir2023:
   authors:
     - Djamel Eddine Amir
@@ -95,11 +97,13 @@ bauer2021:
   authors:
     - Andrej Bauer
   title: Instance Reducibility and Weihrauch Degrees
-  year: 2021
-  venue: arXiv 2106.01734
+  year: 2022
+  venue: Logical Methods in Computer Science, Volume 18, Issue 3 (August 9, 2022) lmcs:7548
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2106.01734"
+  doi: 10.46298/lmcs-18(3:20)2022
+  preprintYear: 2021
 brattkachirache2026:
   authors:
     - Vasco Brattka
@@ -171,21 +175,25 @@ brattkagherardi2018:
     - Vasco Brattka
     - Guido Gherardi
   title: Weihrauch Goes Brouwerian
-  year: 2018
-  venue: arXiv 1809.00380
+  year: 2020
+  venue: J. symb. log. 85 (2020) 1614-1653
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1809.00380"
+  doi: 10.1017/jsl.2020.76
+  preprintYear: 2018
 brattkagherardi2019:
   authors:
     - Vasco Brattka
     - Guido Gherardi
   title: Completion of Choice
-  year: 2019
-  venue: arXiv 1910.13186
+  year: 2021
+  venue: Annals of Pure and Applied Logic 172:3 (2021) 102914
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1910.13186"
+  doi: 10.1016/j.apal.2020.102914
+  preprintYear: 2019
 brattkagherardiholzl2015b:
   authors:
     - Vasco Brattka
@@ -260,10 +268,11 @@ bementhirstwallace2021:
     - Asuka Wallace
   title: Reverse mathematics and Weihrauch analysis motivated by finite complexity theory
   year: 2021
-  venue: arXiv 2105.01719
+  venue: Computability, 10(4), 343-354
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2105.01719"
+  doi: 10.3233/com-210310
 bienvenukuyper2017:
   authors:
     - Laurent Bienvenu
@@ -368,11 +377,13 @@ brattkarauzy2025b:
     - Vasco Brattka
     - Emmanuel Rauzy
   title: Effective bases and notions of effective second countability in computable analysis
-  year: 2025
-  venue: arXiv arXiv:2509.20266
+  year: 2026
+  venue: Journal of Logic and Analysis, Vol. 18, Paper 1, 1-32 (2026)
   source: weihrauch-bibliography
   read: pdf-oa
   arxiv: "2509.20266"
+  doi: 10.4115/jla.2026.18.1
+  preprintYear: 2025
 brattka2005:
   authors:
     - Vasco Brattka
@@ -394,11 +405,13 @@ brattka2020:
   authors:
     - Vasco Brattka
   title: The Discontinuity Problem
-  year: 2020
-  venue: arXiv 2012.02143
+  year: 2023
+  venue: Journal of Symbolic Logic 88:3 (2023) 1191-1212
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2012.02143"
+  doi: 10.1017/jsl.2021.106
+  preprintYear: 2020
 brattka2021:
   authors:
     - Vasco Brattka
@@ -438,11 +451,13 @@ brattka2025:
   authors:
     - Vasco Brattka
   title: Loops, Inverse Limits and Non-Determinism
-  year: 2025
-  venue: arXiv arXiv:2501.17734
+  year: 2026
+  venue: Logical Methods in Computer Science, Volume 22, Issue 4 (October 8, 2026) lmcs:17531
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2501.17734"
+  doi: 10.46298/lmcs-22(4:3)2026
+  preprintYear: 2025
 brattka1993:
   authors:
     - Vasco Brattka
@@ -462,11 +477,13 @@ brattkasmischliaew2024:
     - Vasco Brattka
     - Hendrik Smischliaew
   title: Computability of Initial Value Problems
-  year: 2024
-  venue: arXiv arXiv:2501.00451
+  year: 2025
+  venue: "In: Beckmann, Arnold and Oitavem, Isabel and Manea, Florin (eds.), Crossroads of Computability and Logic: Insights, Inspirations, and Innovations, vol. 15764 of Lecture Notes in Computer Science, Springer, Cham, 2025, pages 191-206"
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2501.00451"
+  doi: 10.1007/978-3-031-95908-0_14
+  preprintYear: 2024
 carroy2013:
   authors:
     - Raphaël Carroy
@@ -493,6 +510,7 @@ carl2016:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1601.01899"
+  doi: 10.1007/978-3-319-40189-8_23
 carl2019:
   authors:
     - Merlin Carl
@@ -544,23 +562,14 @@ ciprianimarconevalenti2022:
     - Vittorio Cipriani
     - Alberto Marcone
     - Manlio Valenti
-  title: "The Weihrauch lattice at the level of $^1_1$-CA$_0$: the Cantor-Bendixson theorem"
-  year: 2022
-  venue: arXiv 2210.15556
+  title: "The Weihrauch lattice at the level of $\\Pi^1_1\\text{-}\\mathsf{CA}_0$: the Cantor-Bendixson theorem"
+  year: 2025
+  venue: Journal of Symbolic Logic 90(2), 752–790
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2210.15556"
-ciprianimarconevalenti2025:
-  authors:
-    - Vittorio Cipriani
-    - Alberto Marcone
-    - Manlio Valenti
-  title: "The Weihrauch lattice at the level of $^1_1-_0$: the Cantor-Bendixon theorem"
-  year: 2025
-  venue: Journal of Symbolic Logic, 90(2), 752–790
   doi: 10.1017/jsl.2024.72
-  source: weihrauch-bibliography
-  read: pdf-arxiv
+  preprintYear: 2022
 ciprianipauly2023:
   authors:
     - Vittorio Cipriani
@@ -619,11 +628,13 @@ dzhafarovetal2017:
     - Reed Solomon
     - Linda Brown Westrick
   title: Effectiveness for the Dual Ramsey Theorem
-  year: 2017
-  venue: arXiv 1710.00070
+  year: 2021
+  venue: Notre Dame Journal of Formal Logic, 62(3), 455-490
   source: weihrauch-bibliography
   read: pdf-zotero
   arxiv: "1710.00070"
+  doi: 10.1215/00294527-2021-0024
+  preprintYear: 2017
 dzhafarovetal2018:
   authors:
     - Damir D. Dzhafarov
@@ -650,22 +661,26 @@ dzhafarovhirschfeldtreitzes2020:
     - Denis R. Hirschfeldt
     - Sarah C. Reitzes
   title: Reduction Games, Provability, and Compactness
-  year: 2020
-  venue: arXiv 2008.00907
+  year: 2022
+  venue: Journal of Mathematical Logic, 22(03)
   source: weihrauch-bibliography
   read: pdf-zotero
   arxiv: "2008.00907"
+  doi: 10.1142/s021906132250009x
+  preprintYear: 2020
 downeymelnikovng2020:
   authors:
     - Rod Downey
     - Alexander Melnikov
     - Keng Meng Ng
   title: "Foundations of Online Structure Theory II: The Operator Approach"
-  year: 2020
-  venue: arXiv 2007.07401
+  year: 2021
+  venue: Logical Methods in Computer Science, Volume 17, Issue 3 (July 21, 2021) lmcs:6641
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2007.07401"
+  doi: 10.46298/lmcs-17(3:6)2021
+  preprintYear: 2020
 dzhafarovpatey2021:
   authors:
     - Damir D. Dzhafarov
@@ -688,17 +703,20 @@ dzhafarovsolomonvalenti2023:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2312.10535"
+  doi: 10.1017/jsl.2025.11
 dzhafarovsolomonyokoyama2023:
   authors:
     - Damir D. Dzhafarov
     - Reed Solomon
     - Keita Yokoyama
   title: On the first-order parts of problems in the Weihrauch degrees
-  year: 2023
-  venue: arXiv 2301.12733
+  year: 2024
+  venue: Computability, 1-13
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2301.12733"
+  doi: 10.3233/com-230446
+  preprintYear: 2023
 dzhafarov2015:
   authors:
     - Damir D. Dzhafarov
@@ -817,11 +835,13 @@ gill2023:
   authors:
     - Kenneth Gill
   title: Indivisibility and uniform computational strength
-  year: 2023
-  venue: arXiv 2312.03919
+  year: 2025
+  venue: Logical Methods in Computer Science, Volume 21, Issue 2 (June 10, 2025) lmcs:13563
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2312.03919"
+  doi: 10.46298/lmcs-21(2:22)2025
+  preprintYear: 2023
 greenbergkuyperturetsky2019:
   authors:
     - Noam Greenberg
@@ -862,11 +882,13 @@ gherardimarconepauly2018:
     - Alberto Marcone
     - Arno Pauly
   title: Projection operators in the Weihrauch lattice
-  year: 2018
-  venue: arXiv 1805.12026
+  year: 2019
+  venue: Computability, vol. 8, no. 3-4, pp. 281-304, 2019
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1805.12026"
+  doi: 10.3233/COM-180207
+  preprintYear: 2018
 galeottinobrega2017:
   authors:
     - Lorenzo Galeotti
@@ -966,11 +988,13 @@ hirst2018:
   authors:
     - Jeffry L. Hirst
   title: Leaf management
-  year: 2018
-  venue: arXiv 1812.09762
+  year: 2020
+  venue: Computability, 9(3-4), 309-314
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1812.09762"
+  doi: 10.3233/com-180243
+  preprintYear: 2018
 higuchikihara2014:
   authors:
     - Kojiro Higuchi
@@ -1159,11 +1183,13 @@ kihara2021:
   authors:
     - Takayuki Kihara
   title: Lawvere-Tierney Topologies for Computability Theorists
-  year: 2021
-  venue: arXiv 2106.03061
+  year: 2023
+  venue: Transactions of the American Mathematical Society, Series B, 10(2), 48-85
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2106.03061"
+  doi: 10.1090/btran/134
+  preprintYear: 2021
 kihara2022:
   authors:
     - Takayuki Kihara
@@ -1299,11 +1325,13 @@ li2024:
   authors:
     - Ang Li
   title: Countable Ordered Groups and Weihrauch Reducibility
-  year: 2024
-  venue: arXiv 2409.19229
+  year: 2026
+  venue: Annals of Pure and Applied Logic, 177(1), 103644
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2409.19229"
+  doi: 10.1016/j.apal.2025.103644
+  preprintYear: 2024
 lemppetal2023:
   authors:
     - Steffen Lempp
@@ -1312,11 +1340,13 @@ lemppetal2023:
     - Mariya I. Soskova
     - Manlio Valenti
   title: Minimal covers in the Weihrauch degrees
-  year: 2023
-  venue: arXiv 2311.12676
+  year: 2024
+  venue: Proceedings of the American Mathematical Society 152 (2024), no. 11, 4893--4901
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2311.12676"
+  doi: 10.1090/proc/16952
+  preprintYear: 2023
 lemppmarconevalenti2024:
   authors:
     - Steffen Lempp
@@ -1353,11 +1383,13 @@ lutzsiskind2023:
     - Patrick Lutz
     - Benjamin Siskind
   title: Part 1 of Martin's Conjecture for order-preserving and measure-preserving functions
-  year: 2023
-  venue: arXiv 2305.19646
+  year: 2024
+  venue: Journal of the American Mathematical Society, 38(2), 319-367
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2305.19646"
+  doi: 10.1090/jams/1046
+  preprintYear: 2023
 lutz2021:
   authors:
     - Patrick Lutz
@@ -1405,31 +1437,37 @@ maschiotrotta2025:
     - Samuele Maschio
     - Davide Trotta
   title: A topos for extended Weihrauch degrees
-  year: 2025
-  venue: arXiv 2505.08697
+  year: 2026
+  venue: Annals of Pure and Applied Logic, 177(9), 103781
   source: weihrauch-bibliography
   arxiv: "2505.08697"
   read: pdf-arxiv
+  doi: 10.1016/j.apal.2026.103781
+  preprintYear: 2025
 marconevalenti2020:
   authors:
     - Alberto Marcone
     - Manlio Valenti
   title: The open and clopen Ramsey theorems in the Weihrauch lattice
-  year: 2020
-  venue: arXiv 2003.04245
+  year: 2021
+  venue: J. symb. log. 86 (2021) 316-351
   source: weihrauch-bibliography
   arxiv: "2003.04245"
   read: pdf-arxiv
+  doi: 10.1017/jsl.2021.10
+  preprintYear: 2020
 marconevalenti2021:
   authors:
     - Alberto Marcone
     - Manlio Valenti
   title: Effective aspects of Hausdorff and Fourier dimension
-  year: 2021
-  venue: arXiv 2108.06941
+  year: 2022
+  venue: Computability 11 (2022), 299-333
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2108.06941"
+  doi: 10.3233/COM-210372
+  preprintYear: 2021
 mylatz2006:
   authors:
     - Uwe Mylatz
@@ -1721,11 +1759,13 @@ soldavalenti2022:
     - Giovanni Soldà
     - Manlio Valenti
   title: Algebraic properties of the first-order part of a problem
-  year: 2022
-  venue: arXiv 2203.16298
+  year: 2023
+  venue: Annals of Pure and Applied Logic Volume 174, Issue 7, July 2023, 103270
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2203.16298"
+  doi: 10.1016/j.apal.2023.103270
+  preprintYear: 2022
 suzukiyokoyama2024:
   authors:
     - Yudai Suzuki
@@ -1778,11 +1818,13 @@ uftring2023:
   authors:
     - Patrick Uftring
   title: Weihrauch degrees without roots
-  year: 2023
-  venue: arXiv 2102.11832
+  year: 2024
+  venue: Computability, 14(1), 17-29
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2308.01422"
+  doi: 10.3233/com-230471
+  preprintYear: 2023
 valenti2021:
   authors:
     - Manlio Valenti
@@ -1824,10 +1866,11 @@ westrick2020:
     - Linda Westrick
   title: A note on the diamond operator
   year: 2020
-  venue: arXiv 2001.09372
+  venue: Computability, 10(2), 107-110
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2001.09372"
+  doi: 10.3233/com-200295
 paulypradicsolda2024:
   authors:
     - Arno Pauly

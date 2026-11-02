@@ -98,6 +98,7 @@
   asked:
     - {ref: cholakjockuschslaman2001, loc: Question 13.2}
     - {ref: montalban2011, loc: Question 2}
+    - {ref: seetapunslaman1995, loc: Questions 4.3 and 4.4}
   statements: [rt22]
   status: resolved
   answer: Yes. RT²₂ (even with WKL₀) is ∀Π⁰₃-conservative over RCA₀, so it proves no new Π⁰₂ sentence; nor does it prove that ω^ω is well-ordered.
@@ -673,16 +674,19 @@
     expected to have the same answer.
 
 - id: vw-aca
-  question: Does the variable word theorem $\mathsf{VW}(2,2)$, or its ordered version $\mathsf{OVW}(2,2)$, imply $\mathsf{ACA}_0$?
+  question: Does the variable word theorem $\mathsf{VW}(2,2)$, or its ordered version $\mathsf{OVW}(2,2)$, imply $\mathsf{ACA}_0$? Are these principles provable in $\mathsf{ACA}_0$?
   asked:
     - {ref: liumoninpatey2017, loc: Question 4.9}
+    - {ref: millersolomon2004, loc: Problems 1 and 2}
   statements: [ovw, aca]
   formal:
+    - {from: aca, to: ovw, over: rca0}
     - {from: ovw, to: aca, over: rca0}
   context: >-
-    Variable word theorems come from the Hales–Jewett theorem. Their upper bound
-    in the reverse mathematics hierarchy was unknown: the usual proofs go through
-    Hindman-type arguments.
+    Variable word theorems come from the Hales–Jewett theorem. Miller and Solomon
+    [@millersolomon2004] showed that they are not provable in WKL₀, and noted that
+    the classical proof of Carlson and Simpson goes beyond ACA₀. Liu and Patey
+    [@liupatey2026] proved OVW in ACA₀ and showed that it does not imply ACA₀.
 
 - id: gp22-bsig2-conservation
   question: Is the grouping principle $\mathsf{GP}^2_2$ $\Pi^1_1$-conservative over $\mathsf{RCA}_0 + \mathsf{B}\Sigma^0_2$? Does $\mathsf{EM}$ imply $\mathsf{GP}^2_2$?
@@ -729,6 +733,7 @@
   question: Over $\mathsf{RCA}_0^*$, does $\mathsf{RT}^2_2 + \mathsf{I}\Sigma^0_1$ imply $\mathsf{B}\Sigma^0_2$?
   asked:
     - {ref: koodziejczykkowalikyokoyama2020, loc: Question 4}
+    - {ref: koodziejczykyokoyama2021, loc: Question 2}
   statements: [rt22, isig1, bsig2]
   formal:
     - {from: isig1-rt22, to: bsig2, over: rca0star}
@@ -767,9 +772,10 @@
     Blass, Hirst and Simpson [@blasshirstsimpson1987] showed that Hindman's
     theorem is provable in ACA₀⁺ and implies ACA₀, and this gap has remained one
     of the most famous open problems of reverse mathematics. Every computable
-    instance has a Δ⁰₄ solution, while some computable instance has no Δ⁰₂
-    solution; closing the gap would need either a new proof of Hindman's theorem
-    or a coding of the double jump.
+    instance has a solution computable from ∅^{(ω+1)}, while some computable
+    instance has no Δ⁰₂ solution [@blasshirstsimpson1987], improved to no Π⁰₃
+    solution by Liao [@liao2026]. A proof in ACA₀ would require solutions of bounded
+    arithmetical complexity [@dzhafarovmummert2022].
 
 - id: rrt22-tac
   question: Does $\mathsf{RRT}^2_2$ imply $\mathsf{TAC}$?
@@ -932,6 +938,7 @@
   question: Does $\mathsf{SRT}^2_2$ imply $\mathsf{WKL}_0$, or at least $\mathsf{WWKL}_0$?
   asked:
     - {ref: birs2008, loc: Problem 7.13}
+    - {ref: birs2008, loc: Problem 5.6}
   statements: [srt22, wkl, wwkl]
   formal:
     - {from: srt22, to: wkl, over: rca0}
@@ -999,6 +1006,7 @@
     - {ref: simpson1999open}
     - {ref: montalban2011, loc: Question 24}
     - {ref: marcone2017, loc: Question 6.24}
+    - {ref: marcone2005, loc: Conjecture 2.25}
   statements: [nwt, atr]
   formal:
     - {from: atr, to: nwt, over: rca0}
@@ -1018,6 +1026,7 @@
     - {ref: simpson1999open}
     - {ref: birs2008, loc: Problem 11.1}
     - {ref: montalban2011, loc: Question 21}
+    - {ref: marcone2005, loc: Conjecture 2.31}
   statements: [fra, atr, pi11ca]
   formal:
     - {from: atr, to: fra, over: rca0}
@@ -1038,6 +1047,7 @@
   asked:
     - {ref: birs2008, loc: Problem 10.8}
     - {ref: montalban2011, loc: Question 25}
+    - {ref: marcone2005, loc: Problem 3.3}
   statements: [bqo3, aca-plus, atr]
   formal:
     - {from: bqo3, to: atr, over: rca0}
@@ -1214,3 +1224,86 @@
     as a step towards his conjecture that Nash-Williams' theorem is provable in
     ATR₀: over ATR₀, the two statements are closely tied. Montalbán
     [@montalban2011] recalls that they are equivalent over ATR₀.
+
+- id: mtt2-wkl
+  question: Over $\mathsf{RCA}_0$, does Milliken's tree theorem for height 2, $\mathsf{MTT}^2$, imply $\mathsf{WKL}_0$?
+  asked:
+    - {ref: dzhafarovmummert2022, loc: Question 9.7.11}
+  statements: [mtt2, wkl, mtt]
+  formal:
+    - {from: mtt2, to: wkl, over: rca0}
+  context: >-
+    For heights n ≥ 3, Milliken's tree theorem is equivalent to ACA₀, and the full
+    theorem to ACA₀′ [@dauriacetal2024]. Height 2 is the analogue of Ramsey's
+    theorem for pairs, which does not imply WKL₀ [@liu2012]; the tree structure
+    makes the usual separation techniques harder to apply.
+
+- id: hindman-delta04
+  question: Is there a computable coloring of $\mathbb{N}$ with no $\Delta^0_4$ solution for Hindman's theorem?
+  asked:
+    - {ref: liao2026, loc: Question 1}
+  statements: [ht]
+  status: open
+  context: >-
+    Blass, Hirst and Simpson [@blasshirstsimpson1987] built a computable coloring with
+    no Δ⁰₂ solution, and Liao [@liao2026] one with no Π⁰₃ solution. A negative answer
+    for some level n — every computable instance having a Δ⁰ₙ solution — is what a
+    proof of Hindman's theorem in ACA₀ would require; a positive answer for every
+    level would bring Hindman's theorem closer to ACA₀⁺.
+
+- id: mle-atr
+  question: Does the maximal linear extension theorem for well partial orders imply $\mathsf{ATR}_0$ over $\mathsf{RCA}_0$?
+  asked:
+    - {ref: birs2008, loc: Problem 10.3}
+  statements: [mle, atr]
+  formal:
+    - {from: mle, to: atr, over: rca0}
+  resolvedBy:
+    - {ref: marconeshore2010}
+  context: >-
+    De Jongh and Parikh showed that every well partial order has a linear extension
+    of maximal order type; the proof goes through in ATR₀. Montalbán studied the
+    computability of such extensions. Marcone and Shore [@marconeshore2010] proved
+    that the theorem is equivalent to ATR₀, as is the maximal chain theorem for well
+    partial orders.
+
+- id: tt1-bsig2-conservation
+  question: Is $\mathsf{TT}^1$ $\Pi^1_1$-conservative over $\mathsf{RCA}_0 + \mathsf{B}\Sigma^0_2$? Is $\mathsf{RCA}_0 + \mathsf{TT}^1$ a $\Pi^0_3$-conservative extension of $\mathsf{I}\Sigma^0_1$?
+  asked:
+    - {ref: chongetal2020, loc: §5, problem 1}
+  statements: [tt1, bsig2]
+  status: resolved
+  answer: Yes, TT¹ is Π¹₁-conservative over RCA₀ + BΣ⁰₂ (hence Π⁰₃-conservative over IΣ⁰₁, like BΣ⁰₂ itself).
+  resolvedBy:
+    - {ref: patey2026, loc: Corollary 1.4}
+  context: >-
+    TT¹ is strictly stronger than BΣ⁰₂ (Corduan, Groszek and Mileti) and provable from
+    IΣ⁰₂, and Chong, Li, Wang and Yang [@chongetal2020] showed that it does not imply
+    IΣ⁰₂ in some models; the question was what its exact first-order part is.
+
+- id: rt22-tt1
+  question: Does $\mathsf{RT}^2_2$ imply the tree theorem for singletons $\mathsf{TT}^1$ over $\mathsf{RCA}_0$?
+  asked:
+    - {ref: chongetal2020, loc: §5, problem 3}
+  statements: [rt22, tt1]
+  formal:
+    - {from: rt22, to: tt1, over: rca0}
+  context: >-
+    In models of IΣ⁰₂ every instance of TT¹ has a solution computable from it, so the
+    question only concerns models where Σ⁰₂-induction fails. Chong, Li, Wang and Yang
+    [@chongetal2020] conjectured a negative answer.
+
+- id: tt22-isig2
+  question: Does the tree theorem for pairs $\mathsf{TT}^2_2$ imply $\mathsf{I}\Sigma^0_2$?
+  asked:
+    - {ref: chongetal2020, loc: §5, problem 4}
+  statements: [tt22, isig2]
+  formal:
+    - {from: tt22, to: isig2, over: rca0}
+  resolvedBy:
+    - {ref: lehoueroupatey2026}
+  context: >-
+    The analogue for trees of the result of Chong, Slaman and Yang that RT²₂ does not
+    imply IΣ⁰₂ [@chongslamanyang2017]. Le Houérou and Patey [@lehoueroupatey2026]
+    answered it by proving that a Carlson–Simpson lemma implying TT²₂ is
+    ∀Π⁰₄-conservative over RCA₀ + BΣ⁰₂.

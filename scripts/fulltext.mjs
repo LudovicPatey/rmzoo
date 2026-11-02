@@ -39,6 +39,7 @@ const save = () => {
   fs.writeFileSync(DIR + '/failed.json', JSON.stringify(failed, null, 1));
 };
 const today = new Date().toISOString().slice(0, 10);
+const EXCLUDE = fs.existsSync('data/fulltext-exclude.yaml') ? YAML.parse(fs.readFileSync('data/fulltext-exclude.yaml', 'utf8')) || {} : {};
 const okText = (f) => fs.existsSync(f) && fs.statSync(f).size > 2000;
 const toText = (pdf, txt) => {
   try { execFileSync('pdftotext', ['-layout', pdf, txt], { stdio: 'ignore', timeout: 120000 }); } catch { /* checked below */ }
@@ -99,6 +100,11 @@ if (flag('--zotero')) {
     if (e && e.pair.value.get('read') === 'pdf-zotero') e.pair.value.delete('read');
     console.log(`dropped ${key} (Zotero item ${c.zotero} no longer matches)`);
   }
+  // known wrong sources (data/fulltext-exclude.yaml)
+  for (const [key, x] of Object.entries(EXCLUDE)) if (x.zotero && match.get(key)?.key === x.zotero) {
+    match.delete(key);
+    if (index[key]?.zotero === x.zotero) { fs.rmSync(`${DIR}/${key}.txt`, { force: true }); fs.rmSync(`${DIR}/${key}.pdf`, { force: true }); delete index[key]; dropped++; }
+  }
   let n = 0;
   for (const [key, z] of match) {
     if (index[key]?.source === 'zotero' && index[key].zotero === z.key && okText(`${DIR}/${key}.txt`)) {
@@ -148,6 +154,7 @@ if (flag('--download')) {
         }
         await sleep(1100);
       }
+      if (url && EXCLUDE[e.key]?.url === url) url = null;
       if (!url) { failed[e.key] = { reason: e.r.doi ? 'no open-access PDF' : 'no arXiv id or DOI', date: today }; ko++; continue; }
       const res = await fetch(url, { headers: UA, redirect: 'follow', signal: AbortSignal.timeout(90000) });
       const buf = Buffer.from(await res.arrayBuffer());

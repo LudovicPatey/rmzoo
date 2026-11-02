@@ -168,6 +168,7 @@ simpson1988:
   year: 1988
   doi: 10.2307/2274585
   source: zbmath
+  read: pdf-zotero
 simpson1988b:
   authors:
     - Stephen G. Simpson
@@ -176,6 +177,7 @@ simpson1988b:
   year: 1988
   doi: 10.2307/2274508
   source: zbmath
+  read: pdf-zotero
 drake1989:
   authors:
     - Frank R. Drake
@@ -475,6 +477,7 @@ simpson1994:
   year: 1994
   doi: 10.2307/2275254
   source: zbmath
+  read: pdf-zotero
 hirst1994:
   authors:
     - Jeffry L. Hirst
@@ -483,6 +486,7 @@ hirst1994:
   year: 1994
   doi: 10.1016/0168-0072(94)90076-0
   source: zbmath
+  read: pdf-zotero
 ferreira1994:
   authors:
     - Fernando Ferreira
@@ -572,6 +576,7 @@ avigad1996:
   year: 1996
   doi: 10.1016/0168-0072(96)00003-6
   source: zbmath
+  read: pdf-zotero
 avigad1996b:
   authors:
     - Jeremy Avigad
@@ -713,6 +718,7 @@ humphreyssimpson1999:
   year: 1999
   doi: 10.2307/2586763
   source: zbmath
+  read: pdf-zotero
 solomon1999:
   authors:
     - Reed Solomon
@@ -763,6 +769,7 @@ friedmansimpson2000:
   year: 2000
   url: https://zbmath.org/?q=an:0967.03050
   source: zbmath
+  read: pdf-zotero
 tanakayamazaki2000:
   authors:
     - Kazuyuki Tanaka
@@ -909,6 +916,7 @@ simpsontanakayamazaki2002:
   year: 2002
   doi: 10.1016/S0168-0072(01)00121-X
   source: zbmath
+  read: pdf-zotero
 lemppetal2002:
   authors:
     - Steffen Lempp
@@ -936,6 +944,7 @@ kohlenbach2002b:
   year: 2002
   doi: 10.1016/S0168-0072(01)00077-X
   source: zbmath
+  read: pdf-zotero
 escardostreicher2002:
   authors:
     - Martín Escardó
@@ -1005,6 +1014,7 @@ hirst2004:
   year: 2004
   doi: 10.2178/jsl/1080938825
   source: zbmath
+  read: pdf-zotero
 millersolomon2004:
   authors:
     - Joseph S. Miller
@@ -1014,6 +1024,7 @@ millersolomon2004:
   year: 2004
   url: https://zbmath.org/?q=an:1059.03068
   source: zbmath
+  read: pdf-zotero
 sakamototanaka2004:
   authors:
     - Nobuyuki Sakamoto
@@ -1128,6 +1139,7 @@ marcone2005:
   year: 2005
   url: https://zbmath.org/?q=an:1083.03052
   source: zbmath
+  read: pdf-zotero
 downeysolomon2005:
   authors:
     - Rodney G. Downey
@@ -1796,7 +1808,7 @@ kjoshanssen2009:
   doi: 10.4310/MRL.2009.v16.n1.a10
   arxiv: "1408.2881"
   source: zbmath
-  read: pdf-arxiv
+  read: pdf-zotero
 dienerloeb2009:
   authors:
     - Hannes Diener
@@ -1937,6 +1949,7 @@ shore2010:
   year: 2010
   doi: 10.2178/bsl/1286284559
   source: zbmath
+  read: pdf-zotero
 yokoyama2010:
   authors:
     - Keita Yokoyama
@@ -1945,6 +1958,7 @@ yokoyama2010:
   year: 2010
   url: https://zbmath.org/?q=an:1195.03017
   source: zbmath
+  read: pdf-zotero
 corduangroszekmileti2010:
   authors:
     - Jared Corduan
@@ -1955,6 +1969,7 @@ corduangroszekmileti2010:
   year: 2010
   doi: 10.2178/jsl/1278682209
   source: zbmath
+  read: pdf-zotero
 conidis2010:
   authors:
     - Chris J. Conidis
@@ -2215,6 +2230,7 @@ shafer2012:
   year: 2012
   doi: 10.1007/s00153-012-0269-8
   source: zbmath
+  read: pdf-zotero
 hirstmiller2012:
   authors:
     - Jeffry L. Hirst
@@ -2234,7 +2250,7 @@ towsner2012:
   doi: 10.1215/00294527-1626518
   arxiv: "0906.3885"
   source: zbmath
-  read: pdf-arxiv
+  read: pdf-zotero
 kreuzer2012e:
   authors:
     - Alexander P. Kreuzer
@@ -2457,7 +2473,7 @@ carluccizdanowski2014:
   doi: 10.1017/jsl.2013.27
   arxiv: "1204.1134"
   source: zbmath
-  read: pdf-arxiv
+  read: pdf-zotero
 belanger2014:
   authors:
     - David R. Belanger
@@ -2546,6 +2562,7 @@ hirsthughes2015:
   year: 2015
   doi: 10.1007/s00153-014-0401-z
   source: zbmath
+  read: pdf-zotero
 fujiwara2015:
   authors:
     - Makoto Fujiwara
@@ -2597,6 +2614,7 @@ jura2016:
   year: 2016
   doi: 10.1215/00294527-3321905
   source: zbmath
+  read: pdf-zotero
 montalbanshore2016:
   authors:
     - Antonio Montalbán
@@ -2651,7 +2669,7 @@ kreuzeryokoyama2016:
   doi: 10.1142/S0219061316500045
   arxiv: "1306.1936"
   source: zbmath
-  read: pdf-arxiv
+  read: pdf-zotero
 wong2016:
   authors:
     - Tin Lok Wong
@@ -2689,7 +2707,7 @@ cholakdzhafarovsoskova2016:
   doi: 10.1007/s11856-016-1420-8
   arxiv: "1505.02226"
   source: zbmath
-  read: pdf-arxiv
+  read: pdf-zotero
 litanaka2017:
   authors:
     - Wenjuan Li
@@ -2911,7 +2929,7 @@ moninpatey2019b:
   doi: 10.1016/j.aim.2019.06.026
   arxiv: "1803.09771"
   source: zbmath
-  read: pdf-arxiv
+  read: pdf-zotero
 conidis2019:
   authors:
     - Chris J. Conidis
@@ -2997,7 +3015,7 @@ cholakpatey2020:
   doi: 10.1090/tran/7987
   arxiv: "1812.00188"
   source: zbmath
-  read: pdf-arxiv
+  read: pdf-zotero
 ferreira2020b:
   authors:
     - Fernando Ferreira
@@ -3025,6 +3043,7 @@ chongetal2020:
   year: 2020
   doi: 10.1016/j.aim.2020.107180
   source: zbmath
+  read: pdf-zotero
 astoretal2020:
   authors:
     - Eric P. Astor
@@ -3103,7 +3122,7 @@ moninpatey2021b:
   doi: 10.1142/S0219061321500136
   arxiv: "1905.08425"
   source: zbmath
-  read: pdf-arxiv
+  read: pdf-zotero
 wu2021:
   authors:
     - Huishan Wu
@@ -3130,6 +3149,7 @@ koodziejczykyokoyama2021:
   year: 2021
   doi: 10.1007/978-3-030-80049-9_27
   source: zbmath
+  read: pdf-zotero
 freund2021b:
   authors:
     - Anton Freund
@@ -3278,7 +3298,7 @@ yokoyama2023:
   year: 2023
   doi: 10.4171/ICM2022/106
   source: zbmath
-  read: pdf-oa
+  read: pdf-zotero
 andrewsetal2023:
   authors:
     - Uri Andrews
@@ -3432,7 +3452,7 @@ dauriacetal2024:
   doi: 10.1090/memo/1457
   arxiv: "2007.09739"
   source: zbmath
-  read: pdf-arxiv
+  read: pdf-zotero
 herbelinkoleilat2024:
   authors:
     - Hugo Herbelin

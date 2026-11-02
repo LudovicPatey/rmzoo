@@ -1,0 +1,3 @@
+# Results from [frittaion2017].
+- { type: equivalence, from: vdw, to: bsig2, over: rca0star, refs: [ { ref: frittaion2017, loc: Theorem 4.1 } ] }
+- { type: equivalence, from: brown, to: isig2, over: rca0star, refs: [ { ref: frittaion2017, loc: Theorem 5.5 } ] }

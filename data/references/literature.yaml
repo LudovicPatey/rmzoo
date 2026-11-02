@@ -149,10 +149,12 @@ davisetal2020:
 chongetal2019:
   authors: [ Chi Tat Chong, Wei Li, Lu Liu, Yue Yang ]
   title: 'The strength of Ramsey''s theorem for pairs over trees: I. Weak König''s lemma'
-  venue: arXiv preprint (Transactions of the AMS)
-  year: 2019
+  venue: Transactions of the American Mathematical Society, 374(8), 5545-5581
+  year: 2021
   arxiv: '1912.09049'
   read: pdf-zotero
+  doi: 10.1090/tran/8339
+  preprintYear: 2019
 fioricaronesshafersolda2022:
   authors: [ Marta Fiori-Carones, Paul Shafer, Giovanni Soldà ]
   title: An inside/outside Ramsey theorem and recursion theory
@@ -171,10 +173,12 @@ gohpaulyvalenti2021:
 gohpaulyvalenti2024:
   authors: [ Jun Le Goh, Arno Pauly, Manlio Valenti ]
   title: The weakness of finding descending sequences in ill-founded linear orders
-  venue: arXiv preprint
-  year: 2024
+  venue: The Journal of Symbolic Logic, 1-35
+  year: 2025
   arxiv: '2401.11807'
   read: pdf-arxiv
+  doi: 10.1017/jsl.2025.10160
+  preprintYear: 2024
 liupatey2022:
   authors: [ Lu Liu, Ludovic Patey ]
   title: The reverse mathematics of the thin set and Erdős–Moser theorems
@@ -185,10 +189,12 @@ liupatey2022:
 chongwangyang2021:
   authors: [ Chi Tat Chong, Wei Wang, Yue Yang ]
   title: Conservation strength of the infinite pigeonhole principle for trees
-  venue: arXiv preprint
-  year: 2021
+  venue: Israel Journal of Mathematics, 260(1), 341-364
+  year: 2023
   arxiv: '2110.06026'
   read: pdf-zotero
+  doi: 10.1007/s11856-023-2567-8
+  preprintYear: 2021
 belanger2022:
   authors: [ David R. Belanger ]
   title: Conservation theorems for the cohesiveness principle
@@ -207,10 +213,12 @@ fioricaronesetal2024:
 liumoninpatey2017:
   authors: [ Lu Liu, Benoît Monin, Ludovic Patey ]
   title: A computable analysis of variable words theorems
-  venue: arXiv preprint
-  year: 2017
+  venue: Proceedings of the American Mathematical Society, 147(2), 823-834
+  year: 2018
   arxiv: '1710.11219'
   read: pdf-zotero
+  doi: 10.1090/proc/14269
+  preprintYear: 2017
 lehoueroupatey2024:
   authors: [ Quentin Le Houérou, Ludovic Levy Patey ]
   title: Π⁰₄ conservation of the Ordered Variable Word theorem

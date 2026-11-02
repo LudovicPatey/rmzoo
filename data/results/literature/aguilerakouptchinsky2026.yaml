@@ -1,0 +1,2 @@
+# Results from [aguilerakouptchinsky2026].
+- { type: equivalence, from: bcg, to: aca, over: rca0, refs: [ { ref: aguilerakouptchinsky2026, loc: Theorem 3.1 } ] }

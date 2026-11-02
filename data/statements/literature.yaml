@@ -235,3 +235,17 @@
   instance: An infinite subtree $T$ of $\mathbb{N}^{<\mathbb{N}}$.
   solution: An infinite path of $T$ or an infinite antichain of $T$.
   refs: [ { ref: cervellegaudelierpatey2022, role: rm } ]
+
+- id: henson-indiv
+  label: '\mathsf{IND}_{\mathcal{H}_3}'
+  name: Indivisibility of the triangle-free Henson graph
+  kind: problem
+  tags: [ ramsey, graphs ]
+  aliases: [ triangle-free Henson graph, Henson indivisibility ]
+  definition: >
+    For every 2-coloring of the vertices of the universal countable triangle-free
+    (Henson) graph, there is a monochromatic set of vertices inducing a copy of the
+    whole graph.
+  instance: A 2-coloring of the vertices of the triangle-free Henson graph.
+  solution: A monochromatic set of vertices inducing a copy of the graph.
+  refs: [ { ref: liupatey2026, role: rm, loc: Main Theorem 1.6 } ]

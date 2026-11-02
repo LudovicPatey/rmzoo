@@ -77,3 +77,91 @@
   definition: >
     For every point $x$ of a compact dynamical system $(X, T)$ there is a uniformly recurrent point $y$ which is proximal to $x$.
   refs: [ { ref: blasshirstsimpson1987, role: rm }, { ref: kreuzer2013, role: rm } ]
+
+- id: vdw
+  label: '\mathsf{VDW}'
+  name: Van der Waerden's theorem
+  kind: sentence
+  tags: [ ramsey, induction ]
+  aliases: [ van der Waerden ]
+  definition: >
+    For every finite coloring of $\mathbb{N}$, some color class contains arbitrarily
+    long finite arithmetic progressions.
+  refs: [ { ref: frittaion2017, role: rm, loc: Theorem 4.1 } ]
+
+- id: brown
+  label: '\mathsf{BL}'
+  name: Brown's lemma
+  kind: sentence
+  tags: [ ramsey, induction ]
+  aliases: [ Brown's lemma ]
+  definition: >
+    Every finite coloring $C : \mathbb{N} \to r$ has a homogeneous piecewise syndetic
+    set, i.e. a homogeneous set that, for some $d$, contains arbitrarily large finite
+    sets whose consecutive elements differ by at most $d$.
+  refs: [ { ref: frittaion2017, role: rm, loc: Theorem 1.2 } ]
+
+- id: rudin
+  label: '\mathsf{RL}'
+  name: Rudin's lemma
+  kind: sentence
+  tags: [ orders ]
+  aliases: [ Rudin's lemma ]
+  definition: >
+    Given a countable poset $(X, \preceq)$ and a $\preceq$-directed family
+    $(F_i)_{i \in \mathbb{N}}$ of nonempty finite subsets of $X$, there is a
+    $\preceq$-directed subset $D \subseteq \bigcup_i F_i$ that meets every $F_i$.
+  refs: [ { ref: liruwu2017, role: rm, loc: Theorem 1 } ]
+
+- id: mtt
+  label: '\mathsf{MTT}'
+  name: Milliken's tree theorem
+  kind: sentence
+  tags: [ ramsey ]
+  aliases: [ Milliken ]
+  definition: >
+    Let $T$ be an infinite tree with no leaves. For all $n, k \ge 1$ and every
+    coloring $f : S_n(T) \to k$ of the strong subtrees of $T$ of height $n$, there is
+    a strong subtree $S$ of $T$ of height $\omega$ such that $f$ is constant on
+    $S_n(S)$.
+  refs: [ { ref: dauriacetal2024, role: rm, loc: Theorem 2.26 } ]
+
+- id: mtt2
+  label: '\mathsf{MTT}^2'
+  name: Milliken's tree theorem for height 2
+  kind: sentence
+  tags: [ ramsey ]
+  definition: >
+    Milliken's tree theorem restricted to colorings of the strong subtrees of
+    height 2.
+  refs: [ { ref: dauriacetal2024, role: rm, loc: Statement 2.27 } ]
+
+- id: mtt3
+  label: '\mathsf{MTT}^3'
+  name: Milliken's tree theorem for height 3
+  kind: sentence
+  tags: [ ramsey ]
+  definition: >
+    Milliken's tree theorem restricted to colorings of the strong subtrees of
+    height 3.
+  refs: [ { ref: dauriacetal2024, role: rm, loc: Statement 2.27 } ]
+
+- id: bcg
+  label: '\mathsf{BCG}\text{-}\mathsf{Det}'
+  name: Determinacy of binary choice games
+  kind: sentence
+  tags: [ well-orders ]
+  definition: >
+    Every clopen game on integers in which each player has at most two possible moves
+    at each turn (a well-founded binary choice game tree) is determined.
+  refs: [ { ref: aguilerakouptchinsky2026, role: rm, loc: Theorem 1.1 } ]
+
+- id: mle
+  label: '\mathsf{MLE}'
+  name: Maximal linear extension theorem
+  kind: sentence
+  tags: [ well-orders, orders ]
+  definition: >
+    Every well partial order has a linear extension of maximal order type (de Jongh
+    and Parikh).
+  refs: [ { ref: marconeshore2010, role: rm } ]

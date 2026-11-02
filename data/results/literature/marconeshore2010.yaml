@@ -1,0 +1,2 @@
+# Results from [marconeshore2010].
+- { type: equivalence, from: mle, to: atr, over: rca0, refs: [ { ref: marconeshore2010, loc: main theorem } ] }
