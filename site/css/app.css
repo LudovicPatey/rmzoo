@@ -398,3 +398,9 @@ table.related td { vertical-align: middle; }
 .rv-actions .muted { min-width: 12em; }
 .rv-form { margin-top: 10px; }
 .linkish { background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer; }
+
+/* hover cards on statement and paper links */
+.peek { position: absolute; z-index: 60; background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: var(--shadow); padding: 10px 12px; font-size: .9rem; line-height: 1.45; max-height: 50vh; overflow: auto; }
+.peek-head { font-weight: 600; margin-bottom: 4px; }
+.peek-io { margin-top: 6px; color: var(--muted); }

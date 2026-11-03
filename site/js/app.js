@@ -1849,6 +1849,71 @@ document.addEventListener('click', async (e) => {
 });
 
 // ============================================================================
+// hover cards: a statement link shows its definition, a paper link the full reference
+// ============================================================================
+// Only with a mouse (devices that can hover); the card stays open while the pointer
+// is on it, so that its links can be clicked.
+function peekHtml(a) {
+  const h = a.getAttribute('href') || '';
+  let m = h.match(/^#\/s\/([^?/]+)/);
+  if (m) {
+    const i = idx(decodeURIComponent(m[1]));
+    if (i === undefined) return '';
+    const s = S(i);
+    const def = s.conjunction ? `Conjunction of ${s.conjunction.map((c) => L(idx(c))).join(' and ')}.` : rich(s.definition || '');
+    return `<div class="peek-head">${L(i)}${s.name ? ` <span class="muted">${esc(s.name)}</span>` : ''}</div>
+      <div class="peek-body">${def || '<span class="muted">No definition recorded.</span>'}</div>
+      ${s.kind === 'problem' && s.instance ? `<div class="peek-io small"><b>Instances.</b> ${rich(s.instance)}<br><b>Solutions.</b> ${rich(s.solution)}</div>` : ''}`;
+  }
+  m = h.match(/^#\/refs\/([^?/]+)/);
+  if (m) {
+    const key = decodeURIComponent(m[1]);
+    return Z.raw.references[key] ? `<div class="peek-body">${refFull(key)}</div>` : '';
+  }
+  return '';
+}
+{
+  let el = null, showT = 0, hideT = 0, cur = null;
+  const hide = () => { clearTimeout(showT); el?.remove(); el = null; cur = null; };
+  const place = (a) => {
+    const r = a.getBoundingClientRect(), w = Math.min(440, window.innerWidth - 24);
+    el.style.width = `${w}px`;
+    el.style.left = `${Math.max(12, Math.min(r.left, window.innerWidth - w - 12)) + window.scrollX}px`;
+    const below = r.bottom + 8, h = el.offsetHeight;
+    el.style.top = `${(below + h > window.innerHeight && r.top - h - 8 > 0 ? r.top - h - 8 : below) + window.scrollY}px`;
+  };
+  if (matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mouseover', (e) => {
+      if (el && el.contains(e.target)) { clearTimeout(hideT); return; }
+      const a = e.target.closest('a[href^="#/s/"], a[href^="#/refs/"]');
+      if (!a || a.closest('nav') || a === cur) return;
+      clearTimeout(showT);
+      showT = setTimeout(() => {
+        const html = peekHtml(a);
+        if (!html || !a.isConnected) return;
+        hide();
+        cur = a;
+        el = document.createElement('div');
+        el.className = 'peek';
+        el.innerHTML = html;
+        document.body.appendChild(el);
+        place(a);
+      }, 350);
+    });
+    document.addEventListener('mouseout', (e) => {
+      const a = e.target.closest('a[href^="#/s/"], a[href^="#/refs/"]');
+      if (a && !a.contains(e.relatedTarget)) clearTimeout(showT);
+      if (el && (a === cur || el.contains(e.target)) && !(el.contains(e.relatedTarget) || cur?.contains(e.relatedTarget))) {
+        clearTimeout(hideT);
+        hideT = setTimeout(hide, 200);
+      }
+    });
+    window.addEventListener('hashchange', hide);
+    window.addEventListener('scroll', () => { if (el && !el.matches(':hover')) hide(); }, { passive: true });
+  }
+}
+
+// ============================================================================
 // router
 // ============================================================================
 function currentRoute() {
