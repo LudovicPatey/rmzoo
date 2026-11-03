@@ -65,7 +65,9 @@ paper.
   do not use it or work around its blocking.**
 * Zotero (`~/Zotero`) is read-only. Papers are copied into `cache/fulltext/`,
   which is git-ignored (copyrighted texts are never committed).
-* Commit only when the maintainer asks; they push. End commit messages with the
+* Commit only when the maintainer asks; they push. Deploying to the live
+  instance (`node scripts/deploy.mjs`) is also theirs to run; a new file the
+  site needs must be added to the list in `scripts/lib/deploy.mjs`. End commit messages with the
   co-author line requested in your session, if any.
 * Write YAML by hand with care: in a flow map `{ … }`, quote any value
   containing `, ` or `: ` (`loc: "Section 1, (5)"`); unquoted, YAML splits it and
@@ -92,6 +94,7 @@ paper.
 | human decisions on AI proposals | `scripts/ai-review.mjs` | `data/ai-review.yaml` |
 | adding results | `scripts/add-results.mjs` → `scripts/lib/results.mjs` | results |
 | endorsements and comments: server (PHP), viewer, download | `site/api/*.php`, `site/js/community.js`, `scripts/endorsements-sync.mjs` | `zoo.json` (results' `_key`), `data/endorsements.yaml` |
+| upload to the live instance (explicit file list, never deletes) | `scripts/deploy.mjs` → `scripts/lib/deploy.mjs` | `site/`, `cache/deploy.json` |
 | one-off imports (kept for provenance, not maintained) | `scripts/import/` | — |
 | tests | `tests/*.test.mjs` | engine, data, schema |
 

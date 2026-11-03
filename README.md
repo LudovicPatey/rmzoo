@@ -24,6 +24,10 @@ Then open http://localhost:8080.
 * `npm run check` — validate the data and look for contradictions
 * `npm run build` — regenerate `site/data/zoo.json` from `data/`
 * `npm test` — engine and BibTeX tests (including known facts that must be derived)
+* `node scripts/deploy.mjs` — upload the viewer and the endorsement server to
+  rmzoo.ludovicpatey.com (an explicit list of files from `site/`, over SFTP;
+  never deletes anything; `--dry-run` lists them; settings in
+  `cache/deploy.json`, see `docs/ENDORSEMENTS.md`)
 * `npm run consolidate` — search for new papers, publication updates, texts, candidate
   results and questions, and write a report to work through (see `docs/CONSOLIDATION.md`)
 

@@ -58,8 +58,8 @@ committed in `data/endorsements.yaml` and offers no sign-in.
    `https://rmzoo.ludovicpatey.com/api/callback.php`. Note the client id and
    secret. (To try first, ORCID's sandbox, sandbox.orcid.org, works the same
    way: set `orcid_base` in the configuration.)
-3. **Deploy** `site/` as usual (it now contains `site/api/`, with its
-   `.htaccess`).
+3. **Deploy** with `node scripts/deploy.mjs` (below), which uploads the
+   viewer and `api/` (with its `.htaccess`).
 4. **Configure** on the server: copy `api/config.example.php` to
    `api/config.php` and fill in the client id and secret and an admin token
    (`php -r 'echo bin2hex(random_bytes(24)), "\n";'`). Keep `data_dir` outside
@@ -67,6 +67,39 @@ committed in `data/endorsements.yaml` and offers no sign-in.
    Never upload a `config.php` with `dev_login`.
 5. **Check**: `https://rmzoo.ludovicpatey.com/api/index.php?a=state` returns
    JSON; the header of the site shows “Sign in”.
+
+## Deploying
+
+```bash
+npm run check && npm run build && npm test
+node scripts/deploy.mjs --dry-run     # the list of files and where they go
+node scripts/deploy.mjs               # asks the FTP password (sftp)
+```
+
+The script uploads an explicit list of files from `site/` (`scripts/lib/deploy.mjs`):
+`index.html`, `htaccess.txt` as `.htaccess` (http → https), `css/`, `js/`,
+`data/zoo.json`, `data/abstracts.json`, and `api/` (`index.php`, `callback.php`,
+`lib.php`, `.htaccess`, `config.example.php`). It never uploads a `config.php`
+(a local one may have `dev_login`) or anything else from the repository
+(`cache/` holds copyrighted texts and the admin token, `feedback/` private
+messages), and it never deletes a file on the server: the server's
+`api/config.php` and `rmzoo-data/` (endorsements, comments, sessions) are left
+alone. It refuses to run when `data/` changed after the last build, and warns
+about uncommitted changes (the live site would then differ from GitHub).
+
+Settings in `cache/deploy.json` (git-ignored), from the OVH control panel
+(Web hosting → FTP-SSH):
+
+```json
+{ "protocol": "sftp", "host": "ftp.cluster015.hosting.ovh.net", "user": "LOGIN", "dir": "www" }
+```
+
+`dir` is the folder of the site on the hosting (`www`, or the folder of the
+multisite entry). `sftp` (the default) uses OpenSSH: OVH web hosting accepts it
+with the FTP password, which ssh asks in the terminal (an SSH key works too).
+`ftp` uses curl with TLS required, for hosts that support it: OVH's FTP server
+does not, and plain FTP (`--no-tls`) would send the password in clear. Upload
+by hand only the same files.
 
 ## Routine: committing endorsements, treating comments
 
