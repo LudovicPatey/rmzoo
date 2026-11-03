@@ -291,6 +291,14 @@ Everything not derivable is **open**. The viewer distinguishes "open" from
   list), papers about many statements counting less and very common statements
   (ACA₀, WKL₀) slightly less, then the same tags; base systems, operator
   statements and formulations of the same principle are left out.
+* **Endorsements** (live instance, `docs/ENDORSEMENTS.md`) — researchers signed in
+  with ORCID endorse results (“I have read the proof of this result and believe
+  it is correct”): a bronze ✓ for one endorser, a gold ✓ with the count for
+  several, on every citation of the result; profiles `#/u/<ORCID iD>` list them.
+  Endorsements refer to the result's identity (`resultKey`), are committed in
+  `data/endorsements.yaml`, and are independent of the inference: an endorsed
+  result is not treated differently by the engine. Signed-in readers can also
+  report errors and comment (private messages to the maintainer).
 * **Diagram** — for the selection and a chosen reduction: the Hasse diagram
   of the induced order (on equivalence classes), with optional separation and
   open-question arrows reduced to their non-redundant core (strongest

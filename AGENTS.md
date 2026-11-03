@@ -91,6 +91,7 @@ paper.
 | AI reading of full texts (once per paper), triage, verification | `scripts/ai-analyze.mjs`, `scripts/lib/ai-facts.mjs`, prompts in `scripts/ai/` | `zoo.json` (catalogue in the prompt), cached texts, `data/ai-analyzed.yaml` |
 | human decisions on AI proposals | `scripts/ai-review.mjs` | `data/ai-review.yaml` |
 | adding results | `scripts/add-results.mjs` → `scripts/lib/results.mjs` | results |
+| endorsements and comments: server (PHP), viewer, download | `site/api/*.php`, `site/js/community.js`, `scripts/endorsements-sync.mjs` | `zoo.json` (results' `_key`), `data/endorsements.yaml` |
 | one-off imports (kept for provenance, not maintained) | `scripts/import/` | — |
 | tests | `tests/*.test.mjs` | engine, data, schema |
 
@@ -117,6 +118,7 @@ Then go through:
 | **AI reader** (`scripts/ai-analyze.mjs`, `scripts/ai/*.md`, `scripts/lib/ai-facts.mjs`) | the catalogue given to the model (statement fields, reductions, properties, classes, operations), the answer schema (`FACT_SCHEMA`: result types and their fields), `entry()` and `validity()`, the reading rules in `scripts/ai/extract.md` and `verify.md` (notation for reductions, dotted ids), `tests/ai-facts.test.mjs`. Saved answers can be re-checked with `--replay` |
 | **sweep / pubstatus / fulltext / abstracts** | reference fields they read or write (`doi`, `arxiv`, `venue`, `year`, `read`, `preprintYear`) |
 | **add-results** | result identity (`resultKey` in the schema module) |
+| **endorsements** (`docs/ENDORSEMENTS.md`) | endorsements refer to `resultKey`: changing the key (its fields) orphans existing endorsements; the server (`site/api/`) reads `zoo.json` (results' `_key`, statements, references); new targets of comments need the `feedback` action and `feedbackPanel` |
 | **"studied over" labels** | `FRAME` in `scripts/build.mjs` maps reductions to labels: a new reduction needs an entry or a decision |
 | **tests** | add a test for the new behaviour (engine rules on a toy zoo; schema/handler coverage in `tests/schema.test.mjs`) |
 | **docs** | `docs/DESIGN.md` (concepts), `README.md` (usage), `docs/CONSOLIDATION.md` (procedure), this file |
@@ -178,6 +180,16 @@ file if needed, then `accept <id>` (a `cited` fact needs `--ref` of the original
 work), or `reject <id> --note "why"`. For a missing statement: add it (below) if
 it belongs to the zoo, then `done <id> --note …`, and enter the facts the item lists
 about it (or re-read the paper: `node scripts/ai-analyze.mjs --redo --only <key>`). Never delete items.
+
+### Endorsements and comments from the live instance
+
+`RMZOO_ADMIN_TOKEN=… node scripts/endorsements-sync.mjs` (see
+`docs/ENDORSEMENTS.md`) rewrites `data/endorsements.yaml` (the server is
+authoritative: never edit it by hand) and saves new messages in
+`feedback/inbox/`. A report of an error is a lead like any other: read the
+theorem in the paper (section 1) before changing data, then move the file to
+`feedback/done/`. Never put messages, `site/api/config.php` or the admin token
+in git.
 
 ### Adding a statement
 

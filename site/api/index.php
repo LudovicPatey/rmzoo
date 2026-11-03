@@ -1,0 +1,133 @@
+<?php
+// Endorsement server of the RM Zoo (see docs/ENDORSEMENTS.md).
+//   GET  ?a=state      who is signed in, CSRF token, all endorsements
+//   GET  ?a=login      redirect to ORCID (back: the page to return to, a #/… route)
+//   GET  ?a=logout     sign out, back to the site
+//   POST ?a=endorse    {result: <resultKey>, endorse: true|false}
+//   POST ?a=feedback   {kind: error|comment, target: {type, id}, text, page}
+//   GET  ?a=export     (admin token) endorsements and all feedback, for scripts/endorsements-sync.mjs
+//   GET  ?a=devlogin   (local development only, config dev_login) sign in as any ORCID iD
+
+declare(strict_types=1);
+require __DIR__ . '/lib.php';
+
+$a = $_GET['a'] ?? '';
+$safeBack = function (?string $b): string {
+  return ($b !== null && preg_match('~^/[A-Za-z0-9/_.,?=&%:+-]*$~', $b)) ? $b : '/';
+};
+
+switch ($a) {
+  case 'state': {
+    start_session();
+    $s = read_state();
+    json_out(['user' => user(), 'csrf' => $_SESSION['csrf'], 'people' => (object) ($s['people'] ?? []), 'endorsements' => $s['endorsements'] ?? []]);
+  }
+
+  case 'login': {
+    $c = cfg();
+    start_session();
+    $_SESSION['back'] = $safeBack($_GET['back'] ?? null);
+    $_SESSION['oauth_state'] = bin2hex(random_bytes(16));
+    redirect($c['orcid_base'] . '/oauth/authorize?' . http_build_query([
+      'client_id' => $c['orcid_client_id'], 'response_type' => 'code', 'scope' => '/authenticate',
+      'redirect_uri' => callback_url(), 'state' => $_SESSION['oauth_state'],
+    ]));
+  }
+
+  case 'logout': {
+    start_session();
+    $back = $safeBack($_GET['back'] ?? null);
+    $_SESSION = [];
+    session_destroy();
+    redirect(site_url() . '/#' . $back);
+  }
+
+  case 'devlogin': {
+    // never on a public server: needs the config flag AND a request from this machine
+    $local = in_array($_SERVER['REMOTE_ADDR'] ?? '', ['127.0.0.1', '::1'], true);
+    if (!cfg()['dev_login'] || !$local) fail(404, 'Not found.');
+    $id = (string) ($_GET['orcid'] ?? '');
+    if (!orcid_valid($id)) fail(400, 'Invalid ORCID iD.');
+    start_session();
+    session_regenerate_id(true);
+    $_SESSION['user'] = ['orcid' => $id, 'name' => (string) ($_GET['name'] ?? $id)];
+    record_person($_SESSION['user']);
+    redirect(site_url() . '/#' . $safeBack($_GET['back'] ?? null));
+  }
+
+  case 'endorse': {
+    start_session();
+    $u = require_user();
+    $b = body();
+    $key = (string) ($b['result'] ?? '');
+    if (!result_by_key($key)) fail(404, 'Unknown result (the database may have changed: reload the page).');
+    $on = !empty($b['endorse']);
+    $s = with_state(function (array $s) use ($u, $key, $on) {
+      $list = array_values(array_filter($s['endorsements'] ?? [], fn ($e) => !($e['result'] === $key && $e['orcid'] === $u['orcid'])));
+      if ($on) $list[] = ['result' => $key, 'orcid' => $u['orcid'], 'date' => gmdate('Y-m-d')];
+      $s['endorsements'] = $list;
+      $s['people'] = (array) ($s['people'] ?? []);
+      $s['people'][$u['orcid']] = ['name' => $u['name']];
+      $active = array_flip(array_column($list, 'orcid'));
+      $s['people'] = array_intersect_key($s['people'], $active); // people with no endorsement left are forgotten
+      return $s;
+    });
+    json_out(['people' => (object) $s['people'], 'endorsements' => $s['endorsements']]);
+  }
+
+  case 'feedback': {
+    start_session();
+    $u = require_user();
+    $b = body();
+    $kind = $b['kind'] ?? '';
+    if (!in_array($kind, ['error', 'comment'], true)) fail(400, 'kind: error or comment.');
+    $text = trim((string) ($b['text'] ?? ''));
+    if ($text === '' || mb_strlen($text) > 10000) fail(400, 'The text must have between 1 and 10000 characters.');
+    $t = $b['target'] ?? [];
+    $type = $t['type'] ?? 'general';
+    if (!in_array($type, ['result', 'statement', 'reference', 'question', 'general'], true)) fail(400, 'Unknown target type.');
+    $tid = (string) ($t['id'] ?? '');
+    $target = ['type' => $type, 'id' => $tid];
+    // make each file self-contained for later processing: the object it is about
+    $z = zoo();
+    if ($type === 'result') {
+      $r = result_by_key($tid);
+      if (!$r) fail(404, 'Unknown result.');
+      $target['result'] = array_filter($r, fn ($k) => $k[0] !== '_', ARRAY_FILTER_USE_KEY);
+    } elseif ($type === 'statement') {
+      $st = null;
+      foreach ($z['statements'] as $x) if ($x['id'] === $tid) $st = $x;
+      if (!$st) fail(404, 'Unknown statement.');
+      $target['statement'] = array_intersect_key($st, array_flip(['id', 'label', 'name', 'definition', 'instance', 'solution']));
+    } elseif ($type === 'reference') {
+      if (!isset($z['references'][$tid])) fail(404, 'Unknown reference.');
+      $target['reference'] = array_intersect_key($z['references'][$tid], array_flip(['title', 'authors', 'year', 'venue', 'doi', 'arxiv']));
+    }
+    $dir = data_dir() . '/feedback';
+    if (!is_dir($dir)) mkdir($dir, 0700, true);
+    // a simple limit per person and day
+    $today = gmdate('Y-m-d');
+    $mine = glob("$dir/{$today}T*-{$u['orcid']}-*.json") ?: [];
+    if (count($mine) >= cfg()['feedback_per_day']) fail(429, 'Too many messages today; please try again tomorrow.');
+    $id = gmdate('Y-m-d\THis\Z') . '-' . $u['orcid'] . '-' . bin2hex(random_bytes(3));
+    $rec = [
+      'id' => $id, 'date' => gmdate('c'), 'kind' => $kind, 'target' => $target, 'text' => $text,
+      'author' => $u, 'page' => mb_substr((string) ($b['page'] ?? ''), 0, 300), 'zooBuiltAt' => $z['builtAt'] ?? null,
+    ];
+    file_put_contents("$dir/$id.json", json_encode($rec, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+    json_out(['ok' => true, 'id' => $id]);
+  }
+
+  case 'export': {
+    $tok = cfg()['admin_token'] ?? '';
+    $auth = $_SERVER['HTTP_AUTHORIZATION'] ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? '';
+    if (strlen($tok) < 20 || !hash_equals('Bearer ' . $tok, $auth)) fail(403, 'Forbidden.');
+    $s = read_state();
+    $fb = [];
+    foreach (glob(data_dir() . '/feedback/*.json') ?: [] as $f) $fb[] = json_decode((string) file_get_contents($f), true);
+    json_out(['people' => (object) ($s['people'] ?? []), 'endorsements' => $s['endorsements'] ?? [], 'feedback' => $fb]);
+  }
+
+  default:
+    fail(404, 'Unknown action.');
+}

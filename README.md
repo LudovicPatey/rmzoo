@@ -66,8 +66,12 @@ site/                the viewer (vanilla JS, KaTeX, no build step)
   js/layout.js       layered layout for Hasse diagrams
   js/bibtex.js       BibTeX export
   js/related.js      related statements (statement page)
+  js/community.js    endorsements and comments (live instance)
+  api/               endorsement server (PHP, ORCID sign-in): docs/ENDORSEMENTS.md
 cache/fulltext/      local full texts of the papers (git-ignored)
 docs/DESIGN.md       data model and design rationale
+docs/ENDORSEMENTS.md endorsements and comments: server set-up, sync, privacy
+feedback/            comments and error reports downloaded from the server (git-ignored)
 docs/CONSOLIDATION.md  keeping the database up to date
 AGENTS.md            instructions for AI assistants and contributors (read first)
 ```

@@ -11,7 +11,7 @@ import YAML from 'yaml';
 import { execFileSync } from 'node:child_process';
 import { buildZoo, questionStatus } from '../site/js/engine.js';
 import { cli } from './lib/cli.mjs';
-import { unknownFields, OPERATIONS, resultKey } from './lib/schema.mjs';
+import { unknownFields, OPERATIONS, resultKey, orcidValid } from './lib/schema.mjs';
 cli('node scripts/build.mjs [--check] [--verbose]', { '--check': 0, '--verbose': 0 });
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -46,6 +46,9 @@ const raw = {
 };
 const contexts = readYaml(path.join(dataDir, 'context.yaml')) || {};
 const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml(path.join(dataDir, 'abstracts.yaml')) || {} : {};
+// endorsements by researchers (live instance, docs/ENDORSEMENTS.md)
+const endorsed = fs.existsSync(path.join(dataDir, 'endorsements.yaml')) ? readYaml(path.join(dataDir, 'endorsements.yaml')) || {} : {};
+raw.endorsements = { people: endorsed.people || {}, endorsements: endorsed.endorsements || [] };
 
 // ---- fields: only those of the data model (scripts/lib/schema.mjs) -----------
 {
@@ -62,6 +65,8 @@ const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml
   if (fs.existsSync(review)) (readYaml(review) || []).forEach((x, i) => errs.push(...unknownFields(x, 'aiReview', `ai-review.yaml #${i}`)));
   const analyzed = path.join(dataDir, 'ai-analyzed.yaml');
   if (fs.existsSync(analyzed)) for (const [k, x] of Object.entries(readYaml(analyzed) || {})) errs.push(...unknownFields(x, 'aiAnalyzed', `ai-analyzed.yaml ${k}`));
+  for (const [k, x] of Object.entries(raw.endorsements.people)) errs.push(...unknownFields(x, 'person', `endorsements.yaml person ${k}`));
+  raw.endorsements.endorsements.forEach((x, i) => errs.push(...unknownFields(x, 'endorsement', `endorsements.yaml #${i}`)));
   if (errs.length) { errs.forEach((e) => console.error('✗ ' + e)); process.exit(1); }
 }
 
@@ -410,6 +415,23 @@ raw.results.forEach((res, i) => {
     if (s.formulationOf && byId.get(s.formulationOf)?.formulationOf)
       errors.push(`Statement ${s.id}: formulationOf ${s.formulationOf}, which is itself a formulation of ${byId.get(s.formulationOf).formulationOf}`);
   }
+  // endorsements: valid ORCID iDs, known people, no duplicates; an endorsement of a
+  // result that no longer exists (edited since) is only a warning: decide whether
+  // it carries over to the new form of the result
+  {
+    const keys = new Set(raw.results.map(resultKey));
+    const seen = new Set();
+    for (const [k, p] of Object.entries(raw.endorsements.people)) {
+      if (!orcidValid(k)) errors.push(`endorsements.yaml: invalid ORCID iD ${k}`);
+      if (!p?.name) errors.push(`endorsements.yaml: person ${k} has no name`);
+    }
+    for (const e of raw.endorsements.endorsements) {
+      if (!raw.endorsements.people[e.orcid]) errors.push(`endorsements.yaml: endorsement by unknown person ${e.orcid}`);
+      if (seen.has(`${e.result}#${e.orcid}`)) errors.push(`endorsements.yaml: ${e.orcid} endorses ${e.result} twice`);
+      seen.add(`${e.result}#${e.orcid}`);
+      if (!keys.has(e.result)) warnings.push(`endorsements.yaml: endorsed result ${e.result} is no longer in the database`);
+    }
+  }
   const names = new Map();
   for (const s of raw.statements) if (s.name) { if (names.has(s.name)) warnings.push(`Statements ${names.get(s.name)} and ${s.id} have the same name`); names.set(s.name, s.id); }
   // every statement takes part in at least one result
@@ -499,7 +521,8 @@ console.log(
 if (!checkOnly) {
   const outDir = path.join(root, 'site', 'data');
   fs.mkdirSync(outDir, { recursive: true });
-  const clean = { ...raw, statements: raw.statements, results: raw.results, builtAt: new Date().toISOString() };
+  // _key: identity of each result (endorsements refer to it)
+  const clean = { ...raw, statements: raw.statements, results: raw.results.map((r) => ({ ...r, _key: resultKey(r) })), builtAt: new Date().toISOString() };
   fs.writeFileSync(path.join(outDir, 'zoo.json'), JSON.stringify(clean));
   // abstracts are loaded on demand by the paper pages; light TeX clean-up for display
   const detex = (t) => String(t).replace(/<\/?(jats:)?[a-z]+[^>]*>/g, '')

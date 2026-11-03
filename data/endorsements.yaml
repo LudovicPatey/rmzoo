@@ -1,0 +1,8 @@
+# Endorsements of results by researchers signed in with ORCID on the live
+# instance: "I have read the proof of this result and believe it is correct".
+# Written by scripts/endorsements-sync.mjs from the server, which is
+# authoritative: do not edit by hand (the next sync overwrites this file).
+#   people:       ORCID iD → {name} (the name public on the ORCID record)
+#   endorsements: {result: resultKey (scripts/lib/schema.mjs), orcid, date}
+people: {}
+endorsements: []

@@ -1,0 +1,9 @@
+# Only index.php and callback.php are entry points.
+Options -Indexes
+<FilesMatch "^(lib|config|config\.example)\.php$">
+  Require all denied
+</FilesMatch>
+# pass the Authorization header to PHP (admin export) on Apache with CGI/FastCGI
+RewriteEngine On
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

@@ -1,0 +1,89 @@
+// The endorsement server (site/api/, PHP) run with PHP's built-in server and a
+// temporary configuration and data directory. Skipped when php is not installed.
+import { test, before, after } from 'node:test';
+import assert from 'node:assert/strict';
+import { spawn, execFileSync } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+
+let php = true;
+try { execFileSync('php', ['-v'], { stdio: 'ignore' }); } catch { php = false; }
+const skip = php ? false : 'php is not installed';
+const zoo = JSON.parse(fs.readFileSync('site/data/zoo.json', 'utf8'));
+const KEY = zoo.results[0]._key;
+const TOKEN = 'test-admin-token-0123456789abcdef';
+const port = 18000 + Math.floor(Math.random() * 1000);
+const B = `http://127.0.0.1:${port}/api/index.php`;
+let server, dir;
+
+const start = (devLogin) => {
+  fs.writeFileSync(path.join(dir, 'config.php'), `<?php return ['orcid_client_id' => 'APP-T', 'orcid_client_secret' => 'x',
+    'admin_token' => '${TOKEN}', 'data_dir' => ${JSON.stringify(path.join(dir, 'data'))}, 'dev_login' => ${devLogin}];`);
+};
+before(async () => {
+  if (!php) return;
+  dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rmzoo-api-'));
+  start(true);
+  server = spawn('php', ['-S', `127.0.0.1:${port}`, '-t', 'site'], { env: { ...process.env, RMZOO_CONFIG: path.join(dir, 'config.php') }, stdio: 'ignore' });
+  for (let i = 0; i < 50; i++) {
+    try { await fetch(`${B}?a=state`); return; } catch { await new Promise((r) => setTimeout(r, 100)); }
+  }
+});
+after(() => { server?.kill(); if (dir) fs.rmSync(dir, { recursive: true, force: true }); });
+
+// a tiny cookie jar
+const session = () => {
+  let cookie = '';
+  const req = async (url, opt = {}) => {
+    const r = await fetch(url, { redirect: 'manual', ...opt, headers: { ...(opt.headers || {}), cookie } });
+    const set = r.headers.get('set-cookie');
+    if (set) cookie = set.split(';')[0];
+    return r;
+  };
+  return { req };
+};
+const post = (s, action, body, csrf) => s.req(`${B}?a=${action}`, { method: 'POST', headers: { 'Content-Type': 'application/json', ...(csrf ? { 'X-CSRF-Token': csrf } : {}) }, body: JSON.stringify(body) });
+
+test('endorsing needs a signed-in user and the session token', { skip }, async () => {
+  const s = session();
+  const st = await (await s.req(`${B}?a=state`)).json();
+  assert.equal(st.user, null);
+  assert.equal((await post(s, 'endorse', { result: KEY, endorse: true }, st.csrf)).status, 401);
+  assert.equal((await s.req(`${B}?a=devlogin&orcid=0000-0002-1825-0098`)).status, 400); // bad check digit
+  assert.equal((await s.req(`${B}?a=devlogin&orcid=0000-0002-1825-0097&name=Josiah%20Carberry`)).status, 302);
+  const st2 = await (await s.req(`${B}?a=state`)).json();
+  assert.equal(st2.user.orcid, '0000-0002-1825-0097');
+  assert.equal((await post(s, 'endorse', { result: KEY, endorse: true })).status, 403); // no CSRF token
+  assert.equal((await post(s, 'endorse', { result: 'no|such|result', endorse: true }, st2.csrf)).status, 404);
+  const r = await (await post(s, 'endorse', { result: KEY, endorse: true }, st2.csrf)).json();
+  assert.deepEqual(r.endorsements.map((e) => [e.result, e.orcid]), [[KEY, '0000-0002-1825-0097']]);
+  assert.equal(r.people['0000-0002-1825-0097'].name, 'Josiah Carberry');
+  // endorsing twice keeps one endorsement; withdrawing forgets the person
+  await post(s, 'endorse', { result: KEY, endorse: true }, st2.csrf);
+  assert.equal((await (await s.req(`${B}?a=state`)).json()).endorsements.length, 1);
+  const w = await (await post(s, 'endorse', { result: KEY, endorse: false }, st2.csrf)).json();
+  assert.deepEqual([w.endorsements.length, Object.keys(w.people).length], [0, 0]);
+});
+
+test('comments are stored with the object they are about, and exported with the admin token', { skip }, async () => {
+  const s = session();
+  await s.req(`${B}?a=devlogin&orcid=0000-0001-2345-6789&name=Ada`);
+  const { csrf } = await (await s.req(`${B}?a=state`)).json();
+  assert.equal((await post(s, 'feedback', { kind: 'error', target: { type: 'result', id: KEY }, text: '' }, csrf)).status, 400);
+  assert.equal((await post(s, 'feedback', { kind: 'spam', target: { type: 'result', id: KEY }, text: 'x' }, csrf)).status, 400);
+  assert.equal((await post(s, 'feedback', { kind: 'error', target: { type: 'result', id: KEY }, text: 'Wrong direction.' }, csrf)).status, 200);
+  assert.equal((await post(s, 'feedback', { kind: 'comment', target: { type: 'statement', id: 'coh' }, text: 'Nice.' }, csrf)).status, 200);
+  assert.equal((await s.req(`${B}?a=export`)).status, 403);
+  const ex = await (await fetch(`${B}?a=export`, { headers: { Authorization: `Bearer ${TOKEN}` } })).json();
+  const err = ex.feedback.find((f) => f.kind === 'error');
+  assert.equal(err.target.result.type, zoo.results[0].type);
+  assert.equal(err.author.orcid, '0000-0001-2345-6789');
+  assert.equal(ex.feedback.find((f) => f.kind === 'comment').target.statement.id, 'coh');
+});
+
+test('the development sign-in is off unless configured', { skip }, async () => {
+  start(false);
+  assert.equal((await fetch(`${B}?a=devlogin&orcid=0000-0002-1825-0097`, { redirect: 'manual' })).status, 404);
+  start(true);
+});

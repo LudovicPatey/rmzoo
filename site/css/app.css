@@ -360,3 +360,20 @@ table.q-parts td.c { width: 90px; text-align: center; }
 .tab-panel > h2:first-child, .tab-panel > .h2row:first-child h2 { margin-top: 0; }
 table.related td { vertical-align: middle; }
 @media (max-width: 640px) { .tabs button { padding: 8px 10px; } table.related td:nth-child(2) { display: none; } }
+
+/* endorsements (community.js) */
+.endorse { display: inline-flex; align-items: center; gap: 2px; height: 20px; min-width: 20px; padding: 0 5px; margin-right: 6px;
+  border-radius: 999px; font: 700 12px/1 inherit; cursor: pointer; vertical-align: middle; border: 1px solid transparent; }
+.endorse span { font-size: 10px; font-weight: 700; }
+.endorse.e-none { background: transparent; color: var(--muted); border: 1px dashed var(--line); opacity: .7; }
+.endorse.e-none:hover { opacity: 1; border-color: var(--muted); }
+.endorse.e-bronze { background: linear-gradient(135deg, #e0a872, #a8642e); color: #fff; border-color: #94551f; }
+.endorse.e-gold { background: linear-gradient(135deg, #ffe17a, #d4a017); color: #5a3d00; border-color: #b8860b; box-shadow: 0 0 0 2px rgba(212, 160, 23, .18); }
+.endorse.static { cursor: default; }
+.endorsers { padding-left: 18px; }
+.endorse-box { margin-top: 8px; }
+.fb-form textarea { width: 100%; box-sizing: border-box; font: inherit; padding: 8px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--panel); color: var(--ink); margin: 8px 0; }
+#account { flex: none; }
+#account .btn { white-space: nowrap; max-width: 200px; overflow: hidden; text-overflow: ellipsis; }
+.orcid-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #a6ce39; margin-right: 6px; vertical-align: -1px; }

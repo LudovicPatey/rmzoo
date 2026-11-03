@@ -9,6 +9,7 @@ const classHtml = (id) => {
 import { layered, verticalSpline } from './layout.js';
 import { bibtex } from './bibtex.js';
 import { relatedIndex, relatedStatements } from './related.js';
+import { createCommunity } from './community.js';
 
 // ============================================================================
 // helpers
@@ -40,6 +41,8 @@ const plain = (label) => label
 // state
 // ============================================================================
 let Z; // the zoo (engine output)
+let C; // endorsements and comments (community.js)
+const resultIdx = new Map(); // result key → index in Z.raw.results
 const state = {
   sel: store.get('rmzoo.sel', ['rca0', 'wkl', 'aca', 'rt22', 'srt22', 'coh']),
   r: store.get('rmzoo.r', 'rca0'),
@@ -284,7 +287,7 @@ function resultCite(ri) {
   const res = Z.raw.results[ri];
   const refs = (res.refs || []).map(refLink).join('; ');
   const j = res.justification;
-  return `<div class="cite">${refs}${res.folklore ? ' <span class="badge folk">folklore</span>' : ''}
+  return `<div class="cite">${endorseMark(ri)}${refs}${res.folklore ? ' <span class="badge folk">folklore</span>' : ''}
     ${res.provenance === 'ai' ? ' <span class="badge ai" title="Not taken from the literature: derived by an AI assistant and to be checked">AI-derived</span>' : ''}
     ${j?.by === 'ai' && res.provenance !== 'ai' ? ' <span class="badge ai" title="The justification below was written by an AI assistant">argument by AI</span>' : ''}
     ${res.status === 'needs-check' ? ' <span class="badge warn">needs check</span>' : ''}</div>
@@ -715,6 +718,7 @@ function viewStatement(id, params = new URLSearchParams()) {
     <div class="stmt-head">
       <span class="label">${L(i)}</span>
       <h1 style="margin:0" class="grow">${esc(s.name)}</h1>
+      ${C.live ? `<button class="btn" data-feedback="comment|statement|${s.id}" title="Comment or report an error (signed in with ORCID)">Comment</button>` : ''}
       <button class="btn sel-toggle ${isSel(s.id) ? 'on' : ''}" data-sel="${s.id}">${isSel(s.id) ? '✓ Selected' : '+ Select'}</button>
     </div>
     <div class="row" style="margin:6px 0 14px">
@@ -1343,7 +1347,8 @@ function viewResults(params) {
       <select id="f-type"><option value="">All types</option><option>implication</option><option>equivalence</option><option>separation</option><option>property</option><option>conservation</option></select>
       <select id="f-r"><option value="">All reductions</option>${Z.R.map((R) => `<option value="${R.id}">${esc(R.name)}</option>`).join('')}</select>
       <select id="f-prov"><option value="">Any provenance</option><option value="lit">From the literature</option>
-        <option value="folk">Folklore</option><option value="ai">AI-derived</option><option value="aiarg">Argument by AI</option></select>
+        <option value="folk">Folklore</option><option value="ai">AI-derived</option><option value="aiarg">Argument by AI</option>
+        <option value="endorsed">Endorsed by a reader</option><option value="endorsed2">Endorsed by several readers</option></select>
       <label class="toggle"><input type="checkbox" id="f-check"> Needs check only</label>
       ${bibButton('bib-res', 'BibTeX of cited papers')}
     </div><div id="res"></div>`;
@@ -1356,7 +1361,9 @@ function viewResults(params) {
       || (prov === 'lit' && res.refs?.length && !res.folklore && res.provenance !== 'ai')
       || (prov === 'folk' && res.folklore)
       || (prov === 'ai' && res.provenance === 'ai')
-      || (prov === 'aiarg' && res.justification?.by === 'ai');
+      || (prov === 'aiarg' && res.justification?.by === 'ai')
+      || (prov === 'endorsed' && C.endorsers(res._key).length >= 1)
+      || (prov === 'endorsed2' && C.endorsers(res._key).length >= 2);
     const list = Z.raw.results.map((res, ri) => [res, ri]).filter(([res]) =>
       (!type || res.type === type) &&
       (!rr || [].concat(res.over || []).includes(rr)) &&
@@ -1385,7 +1392,7 @@ function viewRefs(key) {
       <h1>${rich(r.title)}</h1><p>${esc(r.authors.join(', '))} — ${esc(r.venue)}, ${r.year}
       ${r.doi ? ` · <a href="https://doi.org/${esc(r.doi)}" target="_blank" rel="noopener">doi:${esc(r.doi)}</a>` : ''}
       ${r.arxiv ? ` · <a href="https://arxiv.org/abs/${esc(r.arxiv)}" target="_blank" rel="noopener">arXiv:${esc(r.arxiv)}</a>` : ''}
-      · ${readBadge(r)}</p>
+      · ${readBadge(r)}${C.live ? ` · <a href="#" data-feedback="comment|reference|${key}">Comment or report an error</a>` : ''}</p>
       ${r.hasAbstract ? '<h2>Abstract</h2><div class="abstract" id="abstract"><span class="muted small">Loading…</span></div>' : ''}
       <details class="bib"><summary>BibTeX</summary><pre id="bib-one">${esc(bibtex(Z.raw.references, [key]))}</pre>
         <div class="row">${bibButton('bib-ref', 'Download')}<button class="btn small" id="bib-copy">Copy</button></div></details>
@@ -1486,9 +1493,148 @@ function viewAbout(params) {
     }).join('')}</table>
     <h2>Inference rules</h2>
     <table class="grid">${Object.entries(RULES).map(([k, v]) => `<tr><td><code>${k}</code></td><td>${esc(v)}</td></tr>`).join('')}</table>
+    <h2 id="endorsements">Endorsements</h2>
+    <p>Researchers signed in with <a href="https://orcid.org" target="_blank" rel="noopener">ORCID</a> on the live instance can
+      <b>endorse</b> a result, stating: “${ENDORSE_TEXT}” A result endorsed by one person carries a
+      <span class="endorse e-bronze static">✓</span> bronze check, by several a <span class="endorse e-gold static">✓<span>2</span></span> gold one;
+      click a check to see who endorsed it. Endorsers are listed on their profile page with their name and ORCID iD, and can withdraw an
+      endorsement at any time. Signed-in readers can also report an error or comment on a result, a statement or a paper: messages go to the
+      maintainer and are not published. Endorsements are periodically committed to the database
+      (<code>data/endorsements.yaml</code>) with the rest of the data.</p>
+    ${C.live ? '' : liveNote()}
     <h2>Contributing</h2>
     <p>Data lives in <code>data/*.yaml</code> (statements, results, references, properties, reductions, tags). Run <code>npm run check</code> to validate and detect contradictions, and <code>npm run build</code> to regenerate the viewer data. See <code>docs/DESIGN.md</code>.</p>
     <p class="small muted">Built ${esc(Z.raw.builtAt || '')}.</p>`;
+}
+
+
+// ============================================================================
+// endorsements and comments (community.js, docs/ENDORSEMENTS.md)
+// ============================================================================
+// The mark of a result: bronze check when one person endorsed it, gold with the
+// count when several did; on the live instance an empty outline invites to
+// endorse or report. Clicking opens the result panel.
+function endorseMark(ri) {
+  const key = Z.raw.results[ri]._key;
+  const ends = C.endorsers(key);
+  if (!ends.length && !C.live) return '';
+  const who = ends.map((e) => C.name(e.orcid)).join(', ');
+  const title = ends.length
+    ? `Endorsed by ${who}: read the proof and believe it is correct. Click for details.`
+    : 'Not endorsed yet. Click to endorse, report an error or comment.';
+  const cls = ends.length >= 2 ? 'e-gold' : ends.length ? 'e-bronze' : 'e-none';
+  return `<button class="endorse ${cls}" data-result="${ri}" title="${esc(title)}" aria-label="${esc(title)}">✓${ends.length >= 2 ? `<span>${ends.length}</span>` : ''}</button>`;
+}
+const personLink = (orcid) => `<a href="#/u/${orcid}">${esc(C.name(orcid))}</a>`;
+const ENDORSE_TEXT = 'I have read the proof of this result and believe it is correct.';
+const liveNote = () => `<p class="small muted">Endorsements and comments are collected on the live instance,
+  <a href="https://rmzoo.ludovicpatey.com/" target="_blank" rel="noopener">rmzoo.ludovicpatey.com</a>, by researchers signed in with ORCID.</p>`;
+const signInPrompt = (what) => `<p><a class="btn primary" href="${C.loginUrl()}">Sign in with ORCID</a> <span class="small muted">to ${what}.</span></p>`;
+
+function resultPanel(ri) {
+  const res = Z.raw.results[ri];
+  const key = res._key;
+  const ends = C.endorsers(key);
+  const mine = C.endorsedByMe(key);
+  openDrawer(`<h2 style="margin-top:0">Result</h2>
+    <p>${resultFact(res)}</p>
+    ${resultCite(ri)}
+    <h3>Endorsements</h3>
+    ${ends.length ? `<ul class="endorsers">${ends.map((e) => `<li>${personLink(e.orcid)} <span class="small muted">${esc(e.date)}</span></li>`).join('')}</ul>`
+      : '<p class="muted small">No one has endorsed this result yet.</p>'}
+    ${!C.live ? liveNote()
+      : !C.user ? signInPrompt('endorse this result, report an error or comment')
+      : `<div class="endorse-box">${mine
+          ? `<p class="small">You endorsed this result.</p><button class="btn" data-endorse="${ri}" data-on="0">Withdraw my endorsement</button>`
+          : `<button class="btn primary" data-endorse="${ri}" data-on="1">Endorse</button>
+             <p class="small muted">By endorsing, you state: “${ENDORSE_TEXT}” Your name and ORCID iD are shown with the result and on your profile.</p>`}
+        </div>
+        <div class="row" style="margin-top:12px"><button class="btn" data-feedback="error|result|${esc(key)}">Report an error</button>
+          <button class="btn" data-feedback="comment|result|${esc(key)}">Comment</button></div>`}
+    <div id="endorse-msg" class="small"></div>`);
+}
+
+const TARGET_NAME = { result: 'this result', statement: 'this statement', reference: 'this paper', question: 'this question', general: 'the zoo' };
+function feedbackPanel(kind, type, id) {
+  if (!C.user) { openDrawer(`<h2 style="margin-top:0">${kind === 'error' ? 'Report an error' : 'Comment'}</h2>${signInPrompt('send a message')}`); return; }
+  const about = type === 'result' ? `<p>${resultFact(Z.raw.results[resultIdx.get(id)])}</p>`
+    : type === 'statement' ? `<p>${L(idx(id))} — ${esc(S(idx(id)).name)}</p>`
+    : type === 'reference' ? `<p>${refFull(id)}</p>` : '';
+  openDrawer(`<h2 style="margin-top:0">${kind === 'error' ? 'Report an error' : 'Comment'} on ${TARGET_NAME[type]}</h2>
+    ${about}
+    <form id="fb-form" class="fb-form">
+      <div class="row"><label class="toggle"><input type="radio" name="kind" value="error" ${kind === 'error' ? 'checked' : ''}> Error</label>
+        <label class="toggle"><input type="radio" name="kind" value="comment" ${kind !== 'error' ? 'checked' : ''}> Comment</label></div>
+      <textarea id="fb-text" rows="8" maxlength="10000" required placeholder="${kind === 'error'
+        ? 'What is wrong (statement, direction, reduction, citation, theorem number…), and the correct version with its source if you know it.'
+        : 'Your comment.'}"></textarea>
+      <p class="small muted">Sent to the maintainer of the zoo with your name and ORCID iD (${esc(C.user.name)}); not published.</p>
+      <div class="row"><button class="btn primary" type="submit">Send</button><span id="fb-msg" class="small"></span></div>
+    </form>`);
+  $('#fb-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    btn.disabled = true;
+    try {
+      await C.sendFeedback(new FormData(e.target).get('kind'), { type, id }, $('#fb-text').value);
+      e.target.outerHTML = '<div class="verdict yes">Thank you: your message was recorded.</div>';
+    } catch (err) {
+      $('#fb-msg').textContent = err.message;
+      btn.disabled = false;
+    }
+  });
+}
+document.addEventListener('click', async (e) => {
+  const r = e.target.closest('[data-result]');
+  if (r) { e.preventDefault(); e.stopPropagation(); resultPanel(+r.dataset.result); return; }
+  const f = e.target.closest('[data-feedback]');
+  if (f) { e.preventDefault(); const [kind, type, ...id] = f.dataset.feedback.split('|'); feedbackPanel(kind, type, id.join('|')); return; }
+  const en = e.target.closest('[data-endorse]');
+  if (en) {
+    const ri = +en.dataset.endorse;
+    en.disabled = true;
+    try {
+      await C.setEndorsement(Z.raw.results[ri]._key, en.dataset.on === '1');
+      resultPanel(ri);
+      refreshMarks();
+    } catch (err) { $('#endorse-msg').textContent = err.message; en.disabled = false; }
+  }
+}, true);
+// update the marks on the page after an endorsement (without re-rendering it)
+function refreshMarks() {
+  $$('#main .endorse[data-result]').forEach((b) => { b.outerHTML = endorseMark(+b.dataset.result); });
+}
+function renderAccount() {
+  const a = $('#account');
+  if (!C.live) { a.innerHTML = ''; return; }
+  a.innerHTML = C.user
+    ? `<a class="btn small" href="#/u/${C.user.orcid}" title="Your profile and endorsements"><span class="orcid-dot"></span>${esc(C.user.name)}</a>`
+    : `<a class="btn small" id="signin" href="${C.loginUrl()}"><span class="orcid-dot"></span>Sign in</a>`;
+}
+// the sign-in link returns to the page being viewed
+window.addEventListener('hashchange', () => { const s = $('#signin'); if (s) s.href = C.loginUrl(); });
+
+function viewProfile(orcid) {
+  const m = main();
+  m.className = '';
+  if (orcid === 'me') {
+    if (C.user) { location.replace(`#/u/${C.user.orcid}`); return; }
+    m.innerHTML = `<h1>Your profile</h1>${C.live ? signInPrompt('see your endorsements') : liveNote()}`;
+    return;
+  }
+  const own = C.user?.orcid === orcid;
+  const mine = (C.byPerson.get(orcid) || []).slice().sort((a, b) => b.date.localeCompare(a.date));
+  const list = mine.map((e) => [Z.raw.results[resultIdx.get(e.result)], resultIdx.get(e.result), e.date]).filter(([res]) => res);
+  const gone = mine.length - list.length;
+  m.innerHTML = `<h1>${esc(own ? C.user.name : C.name(orcid))}</h1>
+    <p><a href="https://orcid.org/${esc(orcid)}" target="_blank" rel="noopener"><span class="orcid-dot"></span>orcid.org/${esc(orcid)}</a>
+      ${own ? ` · <a href="${C.logoutUrl()}">Sign out</a>` : ''}</p>
+    <h2>Endorsed results <span class="muted small">${list.length}</span></h2>
+    <p class="small muted">Results whose proof ${own ? 'you have' : 'this researcher has'} read and believe${own ? '' : 's'} correct.${own ? ' Open a result to withdraw your endorsement.' : ''}</p>
+    ${lazy(list, ([res, ri, date]) => `<tr><td>${resultFact(res)}</td><td>${resultCite(ri)}</td><td class="small muted">${esc(date)}</td></tr>`,
+      { size: 50, wrap: 'table', head: '<thead><tr><th>Result</th><th>Source</th><th>Endorsed</th></tr></thead>', noun: 'results',
+        empty: `<p class="muted">${own ? 'You have not endorsed any result yet: open a result (its ✓ mark) to endorse it.' : 'No endorsement.'}</p>` })}
+    ${gone ? `<p class="small muted">${gone} endorsed result${gone === 1 ? ' has' : 's have'} since been changed in the database.</p>` : ''}`;
 }
 
 // ============================================================================
@@ -1499,7 +1645,7 @@ function currentRoute() {
   const p = path.split('/').filter(Boolean);
   // old links "#/?q=…" and "#/?tags=…" pointed to the catalogue
   if (!p.length) return /[?&](q|tags)=/.test(location.hash) ? 'catalogue' : 'home';
-  return { catalogue: 'catalogue', questions: 'questions', s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', refs: 'refs', about: 'about' }[p[0]] || 'catalogue';
+  return { catalogue: 'catalogue', questions: 'questions', s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', refs: 'refs', about: 'about', u: 'profile' }[p[0]] || 'catalogue';
 }
 function route() {
   const [path, qs] = (location.hash.slice(1) || '/').split('?');
@@ -1517,6 +1663,7 @@ function route() {
   else if (name === 'about') { viewAbout(params); const c = params.get('class'); if (c) setTimeout(() => { const el = document.getElementById('class-' + c); if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); } }, 50); }
   else if (name === 'home') viewHome();
   else if (name === 'questions') viewQuestions(params, p[1]);
+  else if (name === 'profile') viewProfile(p[1] || 'me');
   else viewCatalogue(params);
   renderTray();
   if (name !== 'diagram' || route.last !== 'diagram') window.scrollTo(0, 0);
@@ -1543,6 +1690,10 @@ async function boot() {
   while (!window.katex) await new Promise((r) => setTimeout(r, 20));
   const raw = await (await fetch('data/zoo.json', { cache: 'no-store' })).json();
   Z = buildZoo(raw);
+  Z.raw.results.forEach((r, ri) => resultIdx.set(r._key, ri));
+  C = createCommunity(Z);
+  // the live state (server) may differ from the committed endorsements: redraw once known
+  C.ready.then(() => { renderAccount(); if (C.live) { const y = window.scrollY; route(); window.scrollTo(0, y); } });
   if (!Z.ridx.has(state.r)) state.r = 'rca0';
   state.sel = state.sel.filter((id) => idx(id) !== undefined);
   buildHaystack();

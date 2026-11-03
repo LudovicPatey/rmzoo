@@ -31,6 +31,9 @@ export const FILES = {
   aiAnalyze: 'scripts/ai-analyze.mjs',  // AI reading of the full texts
   aiReview: 'scripts/ai-review.mjs',    // human decisions on its proposals
   results: 'scripts/lib/results.mjs',   // writing results without duplicates
+  community: 'site/js/community.js',    // endorsements and comments in the viewer
+  api: 'site/api/index.php',            // endorsement server (PHP, live instance)
+  endorseSync: 'scripts/endorsements-sync.mjs', // server → data/endorsements.yaml, feedback/
 };
 
 const cite = (extra = {}) => ({
@@ -204,6 +207,16 @@ export const SCHEMA = {
     reasons: { req: true, doc: 'why a human must decide (unknown id, quote not found, low confidence, verifier not confirming…)', usedBy: ['aiAnalyze', 'aiReview'] },
     decision: { doc: '{date, by, note} once treated', usedBy: ['aiReview'] },
   },
+  // data/endorsements.yaml — {people: {orcid: person}, endorsements: [endorsement]},
+  // written by scripts/endorsements-sync.mjs from the live server (docs/ENDORSEMENTS.md)
+  endorsement: {
+    result: { req: true, doc: 'the resultKey of the endorsed result (see resultKey below)', usedBy: ['build', 'community', 'api'] },
+    orcid: { req: true, doc: 'ORCID iD of the person (checksum validated)', usedBy: ['build', 'community', 'api', 'endorseSync'] },
+    date: { req: true, doc: 'date of the endorsement (YYYY-MM-DD)', usedBy: ['api', 'community'] },
+  },
+  person: {
+    name: { req: true, doc: 'name public on the ORCID record at sign-in (the iD when private)', usedBy: ['community', 'api'] },
+  },
   // data/ai-analyzed.yaml — a map refkey → record: papers already read by ai-analyze.mjs
   aiAnalyzed: {
     date: { req: true, doc: 'date of the analysis', usedBy: ['aiAnalyze'] },
@@ -237,6 +250,17 @@ export const OPERATIONS = {
 //   data/screened.yaml         {facts, questions, resolutions}: leads already examined
 //   data/acronyms-ignored.yaml acronym → reason: not proposed as missing statements
 //   data/ai-review.yaml        entity aiReview above; data/ai-analyzed.yaml: aiAnalyzed
+//   data/endorsements.yaml     {people: orcid → person, endorsements: [endorsement]} (entities above)
+
+// ORCID iD with a valid check digit (ISO 7064 11,2). Used by the build and the sync.
+export function orcidValid(id) {
+  if (!/^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$/.test(id)) return false;
+  const d = id.replace(/-/g, '');
+  let t = 0;
+  for (let i = 0; i < 15; i++) t = (t + +d[i]) * 2;
+  const r = (12 - (t % 11)) % 11;
+  return d[15] === (r === 10 ? 'X' : String(r));
+}
 
 // Unknown fields of `obj` (and of its nested citations), as error messages.
 export function unknownFields(obj, entity, where) {
