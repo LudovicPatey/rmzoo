@@ -1,0 +1,17 @@
+# Papers already analyzed by scripts/ai-analyze.mjs (one costly AI reading per
+# paper): date, model, hash of the text read, number of facts found, added,
+# sent to data/ai-review.yaml and dropped as already known, the database
+# changes made, and the cost in dollars. Delete an entry (or use --redo) to
+# analyze a paper again. Fields: scripts/lib/schema.mjs (aiAnalyzed).
+dauriacetal2024:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 83788c2ba46eaa9e
+  facts: 15
+  added: 2
+  review: 12
+  dropped: 11
+  changes:
+    - "merged: equivalence|mtt|aca-prime|rca0|"
+    - "added: property|er22|cone-avoidance||true"
+  cost: 1.32

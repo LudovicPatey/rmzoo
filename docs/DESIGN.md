@@ -139,6 +139,31 @@ every Turing ideal). The engine then derives the property from that comparison
 (RCA₀ ⇏ NON over ω gives "NON is not computably true") and conversely (a
 published "computably true" gives RCA₀ ⇒ P over ω).
 
+Most properties are defined through instances and solutions ("every Z-computable
+instance has a solution Y such that…"): they carry `domain: problems` and only
+apply to statements that can be formulated as problems — problems, and sentences
+that are not first-order (Π¹₂ principles entered as sentences, such as MTT² or
+ATR₀). A sentence that cannot be read as a problem is marked `problemForm: false`.
+The viewer says so instead of showing a column of "?".
+
+Properties are related: `implies` lists the properties every statement with this
+one also has (computably true ⇒ cone avoidance, low basis, …; low basis ⇒ weakly
+low basis), and the engine propagates values both ways (failing the low₂ basis
+means failing the low basis). The **lowness hierarchy**
+low → weakly low → low₂ → weakly low₂ → … is infinite: its members are marked
+`optional` and listed on a statement page only where their value is known, and a
+new level is added to `data/properties.yaml` when a paper proves something about
+it (ACA₀'s failure, true at every level, is recorded at the highest level present).
+
+**Arithmetical bases** (every computable instance has a Δ⁰ₙ, Σ⁰ₙ or Π⁰ₙ
+solution) are not preservation notions: they cannot be iterated to build
+ω-models. A Δ⁰ₙ basis passes along computable reductions (`closedUnder: c`), so it
+still yields separations over c and finer reductions; Σ⁰ₙ and Π⁰ₙ bases pass along
+no reduction (a set computable from a Σ⁰ₙ set need not be Σ⁰ₙ), so they have no
+`closedUnder` and are only related to the other properties (Δ⁰ₙ ⇒ Σ⁰ₙ, Π⁰ₙ ⇒
+Δ⁰ₙ₊₁; low ⇒ Δ⁰₂, low₂ ⇒ Δ⁰₃). A consequence: a Π⁰₂ basis for RT²<∞ says nothing
+about RT²₂ to the engine; each statement needs its own citation.
+
 ### 1.5 Results (the atomic facts)
 
 `data/results/*.yaml`. Four kinds:

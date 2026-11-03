@@ -88,7 +88,9 @@ paper.
 | full texts, `read` status | `scripts/fulltext.mjs` | references, `data/fulltext-exclude.yaml`, Zotero |
 | abstracts | `scripts/abstracts.mjs`, `scripts/pdf-abstracts.mjs` | references, cached texts |
 | mining (candidate results / questions) | `scripts/mine/{common,facts,questions}.mjs` | `zoo.json`, cached texts, `data/screened.yaml` |
-| adding results | `scripts/add-results.mjs` | results |
+| AI reading of full texts (once per paper), triage, verification | `scripts/ai-analyze.mjs`, `scripts/lib/ai-facts.mjs`, prompts in `scripts/ai/` | `zoo.json` (catalogue in the prompt), cached texts, `data/ai-analyzed.yaml` |
+| human decisions on AI proposals | `scripts/ai-review.mjs` | `data/ai-review.yaml` |
+| adding results | `scripts/add-results.mjs` → `scripts/lib/results.mjs` | results |
 | one-off imports (kept for provenance, not maintained) | `scripts/import/` | — |
 | tests | `tests/*.test.mjs` | engine, data, schema |
 
@@ -112,6 +114,7 @@ Then go through:
 | **viewer** | catalogue (filters, checkboxes, "over" chips, select all), statement page (definition, context, glance, frames, operator line, questions), paper page (abstract, BibTeX, questions asked/answered), results, questions, about page, home page stats and recent items |
 | **miners** (`scripts/mine/common.mjs`) | the acronym dictionary (labels in extracted-text form, `extra` spellings, operator forms, `PHRASES`), `relation()` (which reduction a theorem speaks of: one branch per reduction), `normalize()` |
 | **consolidate** steps | 1 sweep (relevance and auto-add rules, rejected list), 2 pubstatus, 3 texts, 4 mining (screened list), 5 statements (`known` labels/aliases, `acronyms-ignored.yaml`, `STOP`), 6 questions (status changes, resolution leads), 7 checks |
+| **AI reader** (`scripts/ai-analyze.mjs`, `scripts/ai/*.md`, `scripts/lib/ai-facts.mjs`) | the catalogue given to the model (statement fields, reductions, properties, classes, operations), the answer schema (`FACT_SCHEMA`: result types and their fields), `entry()` and `validity()`, the reading rules in `scripts/ai/extract.md` and `verify.md` (notation for reductions, dotted ids), `tests/ai-facts.test.mjs`. Saved answers can be re-checked with `--replay` |
 | **sweep / pubstatus / fulltext / abstracts** | reference fields they read or write (`doi`, `arxiv`, `venue`, `year`, `read`, `preprintYear`) |
 | **add-results** | result identity (`resultKey` in the schema module) |
 | **"studied over" labels** | `FRAME` in `scripts/build.mjs` maps reductions to labels: a new reduction needs an entry or a decision |
@@ -123,11 +126,23 @@ Specific cases:
 * **New operation of the Weihrauch algebra**: add it to `OPERATIONS` in the
   schema; then build `fillOp` (label, name, definition), engine laws (which hold
   for strong vs weak reductions: `algebra` in `data/reductions.yaml`), viewer op
-  line, miner textual forms. `tests/schema.test.mjs` fails until all are done.
+  line, miner textual forms, the dotted-id paragraph of `scripts/ai/extract.md`. `tests/schema.test.mjs` fails until all are done.
 * **New reduction**: `data/reductions.yaml` (`finerThan`, `domain`, `algebra`…),
-  `FRAME` for labels, `relation()` in the miners, the catalogue chips, preset zoos.
+  `FRAME` for labels, `relation()` in the miners, the catalogue chips, preset zoos,
+  the reduction paragraphs of `scripts/ai/extract.md` and `verify.md`.
 * **New kind of result or statement field**: schema, build validation, engine,
-  viewer, `resultKey` if it changes the identity of a result, `add-results`.
+  viewer, `resultKey` if it changes the identity of a result, `scripts/lib/results.mjs`,
+  the AI reader (answer schema, `entry()`, `validity()`, `standing()`, prompts).
+* **New property**: give its `closedUnder` only if some reduction really preserves
+  it (none for Σ⁰ₙ/Π⁰ₙ bases; c, not omega, for Δ⁰ₙ bases, which cannot be
+  iterated), its `domain` (problems, if defined through instances and
+  solutions) and its `implies` relations with the existing ones (and theirs with
+  it: `computably-true` implies every preservation property). A new level of the
+  lowness hierarchy is `optional`, implied by the level below and implying the one
+  above; move ACA₀'s folklore failure (in `data/results/core.yaml`) to the new
+  top level. Nothing to change in the AI reader (the catalogue lists properties),
+  but run `node scripts/ai-analyze.mjs --replay` to re-check saved answers that
+  named it before it existed.
 * **New data file**: document it in the schema module (bottom list), README layout,
   and whichever script reads it.
 
@@ -153,6 +168,16 @@ Specific cases:
    `status`/`resolvedBy`; record `question-id|refkey` in `data/screened.yaml`.
 6. `npm run check`, `npm run build`, `npm test`; summarize for the maintainer what
    was added, what was skipped and why.
+
+### Treating AI proposals (`data/ai-review.yaml`)
+
+`node scripts/ai-review.mjs list` shows each pending item with the reasons it was
+not published. For a result: read the theorem at `loc` in the paper (section 1
+rules; `quote` is the passage the model relied on), correct `result`/`loc` in the
+file if needed, then `accept <id>` (a `cited` fact needs `--ref` of the original
+work), or `reject <id> --note "why"`. For a missing statement: add it (below) if
+it belongs to the zoo, then `done <id> --note …`, and enter the facts the item lists
+about it (or re-read the paper: `node scripts/ai-analyze.mjs --redo --only <key>`). Never delete items.
 
 ### Adding a statement
 

@@ -1,0 +1,7 @@
+# Facts proposed by scripts/ai-analyze.mjs that need a human decision before they
+# are published (the reasons are listed with each item). Treat them with
+#   node scripts/ai-review.mjs list | show <id> | accept <id> | reject <id> --note "why"
+# (or by hand: set status and decision). Never delete an item: a rejected item
+# stays here so that it is not proposed again. Fields: scripts/lib/schema.mjs
+# (aiReview).
+[]

@@ -12,6 +12,7 @@
     "consolidate": "node scripts/consolidate.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.4.0",
     "yaml": "^2.5.0"
   }
 }

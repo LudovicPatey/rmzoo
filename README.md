@@ -49,11 +49,18 @@ data/
   sweep-rejected.yaml    papers found by the sweep and judged out of scope
   screened.yaml          consolidation leads already examined (not proposed again)
   acronyms-ignored.yaml  acronyms examined and deliberately not added as statements
+  ai-analyzed.yaml       papers already read by the AI reader (scripts/ai-analyze.mjs)
+  ai-review.yaml         AI proposals awaiting a human decision (scripts/ai-review.mjs)
 scripts/             build (YAML → JSON + validation), consolidation, dev server
   lib/schema.mjs     the data model: every allowed field, its meaning, its readers
   lib/lock.mjs       one writer at a time on data/
   lib/cli.mjs        --help and option checking for every script
-  mine/              candidate results and questions from the full texts
+  lib/results.mjs    writing results without duplicates (add-results, AI reader)
+  lib/ai-facts.mjs   checks deciding which AI-proposed facts are published
+  mine/              candidate results and questions from the full texts (regexes)
+  ai-analyze.mjs     AI reading of each full text, once (Claude API)
+  ai-review.mjs      accept / reject the AI proposals
+  ai/                instructions given to the model (extract.md, verify.md)
 site/                the viewer (vanilla JS, KaTeX, no build step)
   js/engine.js       inference engine (shared with the build script)
   js/layout.js       layered layout for Hasse diagrams
@@ -78,6 +85,40 @@ Append to a file in `data/results/`:
 
 then run `npm run check`. If the new fact contradicts something already
 derivable, the check fails and names the pair.
+
+## AI reading of the full texts
+
+The miners only see results written in the usual notation. `scripts/ai-analyze.mjs`
+has Claude (Opus 5.5) read each cached paper once, in full, with the catalogue,
+and list every fact it states about catalogue statements however it is worded
+("every computable instance has a solution not computing C" is cone avoidance),
+plus immediate special cases of stated theorems (MTT² is the case d = 1 of the
+product version PMTT²).
+
+```bash
+node scripts/ai-analyze.mjs --dry-run              # papers not yet read, cost estimate
+node scripts/ai-analyze.mjs --only dauriacetal2024  # one paper
+node scripts/ai-analyze.mjs                        # every paper not yet read
+node scripts/ai-review.mjs list                    # proposals awaiting a decision
+```
+
+It needs `ANTHROPIC_API_KEY` (or an `ant auth login` profile). A paper costs
+about $0.10–$2 depending on its length; the whole cache (≈ 700 texts, 20 M
+tokens) about $300 at once. Each paper is read only once (`data/ai-analyzed.yaml`);
+`--replay` re-applies the rules to the saved answers (`cache/ai/`) for free.
+
+The model proposes; code decides. A fact is published only if its statements,
+property and reduction are in the catalogue, the quoted passage is found verbatim
+in the text, it has a theorem number, the model is confident and says the paper
+states it (or that it is a special case of one stated theorem), it does not
+contradict the database, a second independent call shown the passages confirms
+it, and `npm run check` still passes. Stated facts cite the paper; special cases go
+to `data/results/ai-derived.yaml` (shown as "AI-derived"). Facts the database
+already derives are dropped. Everything else — and principles missing from the
+catalogue — goes to `data/ai-review.yaml` with the reasons, for
+`node scripts/ai-review.mjs accept|reject|done <id>` (a web backend may replace it).
+Every change made is listed per paper in `data/ai-analyzed.yaml`, so it can be
+audited or undone.
 
 ## Open questions
 

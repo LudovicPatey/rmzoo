@@ -47,6 +47,7 @@
 
 - { type: property, statement: aca, property: cone-avoidance, value: false, folklore: true, note: "∅' is a solution to a computable instance.", justification: { kind: reduction, text: The jump problem has the computable instance ∅ whose only solution ∅′ is not computable., by: ai } }
 - { type: property, statement: aca, property: low-basis, value: false, folklore: true, justification: { kind: reduction, text: "The only solution to the instance ∅ is ∅′, which is not low.", by: ai } }
+- { type: property, statement: aca, property: weakly-low2-basis, value: false, folklore: true, justification: { kind: reduction, text: "The only solution to the instance ∅ is ∅′. If ∅‴ = (∅′)″ were computable in a set P of PA degree over ∅″, then, choosing P with P′ ≤_T ∅‴ (low basis theorem relative to ∅″), ∅⁗ ≤_T P′ ≤_T ∅‴, a contradiction. The same argument shows that ACA₀ fails every level of the lowness hierarchy; this fact is recorded at the highest level present in data/properties.yaml.", by: ai } }
 
 - { type: property, statement: rca0, property: pi11-conservative, value: true, folklore: true, justification: { kind: classical, text: "Trivial: RCA₀ is conservative over itself.", by: ai } }
 

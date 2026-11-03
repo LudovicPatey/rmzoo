@@ -208,7 +208,7 @@
   name: Ordered variable word theorem
   kind: problem
   tags: [ ramsey ]
-  aliases: [ Carlson-Simpson theorem, ordered variable word ]
+  aliases: [ OVW0, Carlson-Simpson theorem, ordered variable word ]
   definition: >
     For every finite alphabet $A$ and finite coloring of the words over $A$, there is a word $c_0$ and an infinite sequence of left-variable words $w_1, w_2, \dots$ such that all words $c_0 \cdot w_1[a_1] \cdots w_k[a_k]$ have the same color.
   refs: [ { ref: liumoninpatey2017, role: origin }, { ref: lehoueroupatey2024, role: rm } ]

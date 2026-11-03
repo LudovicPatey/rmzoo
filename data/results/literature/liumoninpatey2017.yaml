@@ -1,0 +1,3 @@
+# Results from [liumoninpatey2017].
+
+[ { type: property, statement: ovw, property: delta2-basis, value: false, note: "A computable instance of OVW(2, 2) all of whose solutions are of DNC degree relative to $\\emptyset'$, hence not $\\Delta^0_2$ (Miller and Solomon had first given one with no $\\Delta^0_2$ solution).", refs: [ { ref: liumoninpatey2017, loc: Corollary 4.5 } ] } ]

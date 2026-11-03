@@ -6,6 +6,14 @@
 #   baseImplication: r -> a problem has the property exactly when the bottom of
 #                reduction r (e.g. RCA₀ for omega) implies it over r; the engine
 #                derives the property from that comparison and conversely.
+#   domain: problems -> defined through instances and solutions: it only applies
+#                to statements that can be formulated as problems (problems, and
+#                sentences that are not first-order and not marked problemForm: false).
+#   implies:     properties that every statement having this one also has (and a
+#                statement failing one of them fails this one).
+#   optional:    one of an infinite family (low_n, weakly low_n): a statement page
+#                lists it only where its value is known. Add the next member of a
+#                family only when a result is about it.
 #   A separation is derived automatically: if A has a "down" property and B
 #   fails it, then A does not imply B over closedUnder (and finer reductions).
 
@@ -13,6 +21,7 @@
   name: Cone avoidance
   closedUnder: omega
   direction: down
+  domain: problems
   description: >
     For every set Z and every C ≰_T Z, every Z-computable instance has a solution Y such that C ≰_T Z ⊕ Y.
 
@@ -20,6 +29,7 @@
   name: PA avoidance
   closedUnder: omega
   direction: down
+  domain: problems
   description: >
     For every set Z which is not of PA degree, every Z-computable instance has a solution Y such that Z ⊕ Y is not of PA degree.
 
@@ -27,14 +37,120 @@
   name: Low basis
   closedUnder: omega
   direction: down
+  domain: problems
+  implies: [ weakly-low-basis, delta2-basis ]
   description: >
     For every Z, every Z-computable instance has a solution Y such that (Z ⊕ Y)' ≤_T Z'.
+
+# The lowness hierarchy (Le Houérou, Levy Patey and Mimouni 2024, after Definition 1.5):
+# low basis → weakly low basis → low₂ basis → weakly low₂ basis → … Members are
+# added as results about them appear (ACA₀ fails all of them, see core.yaml).
+- id: weakly-low-basis
+  name: Weakly low basis
+  closedUnder: omega
+  direction: down
+  domain: problems
+  optional: true
+  implies: [ low2-basis ]
+  description: >
+    For every Z, every set P of PA degree over Z′ and every Z-computable instance, there is a solution Y
+    such that (Y ⊕ Z)′ ≤_T P (Liu–Patey 2026 and Patey–Shafer 2026, Definition 3.2). It implies the low₂
+    basis by the low basis theorem relative to Z′.
+
+- id: low2-basis
+  name: Low₂ basis
+  closedUnder: omega
+  direction: down
+  domain: problems
+  optional: true
+  implies: [ weakly-low2-basis, delta3-basis ]
+  description: >
+    For every Z, every Z-computable instance has a solution Y such that (Y ⊕ Z)″ ≤_T Z″.
+
+- id: weakly-low2-basis
+  name: Weakly low₂ basis
+  closedUnder: omega
+  direction: down
+  domain: problems
+  optional: true
+  description: >
+    For every Z, every set P of PA degree over Z″ and every Z-computable instance, there is a solution Y
+    such that (Y ⊕ Z)″ ≤_T P. It implies the low₃ basis.
+
+# Arithmetical bases: every computable instance has a Δ⁰ₙ (Σ⁰ₙ, Π⁰ₙ) solution.
+# They are not preservation notions: they cannot be iterated to build ω-models.
+# A Δ⁰ₙ basis passes along computable reductions (a solution computable from a
+# Δ⁰ₙ set is Δ⁰ₙ), but Σ⁰ₙ and Π⁰ₙ bases pass along no reduction (a set computable
+# from a Σ⁰ₙ set need not be Σ⁰ₙ): they have no closedUnder and are only related
+# to the other properties. Δ⁰ₙ ⊆ Σ⁰ₙ ∩ Π⁰ₙ and Σ⁰ₙ ∪ Π⁰ₙ ⊆ Δ⁰ₙ₊₁; a lowₙ set is
+# Δ⁰ₙ₊₁. Members are added as results about them appear.
+- id: delta2-basis
+  name: Δ⁰₂ basis
+  closedUnder: c
+  direction: down
+  domain: problems
+  optional: true
+  implies: [ sigma2-basis, pi2-basis ]
+  description: >
+    Every computable instance has a Δ⁰₂ solution.
+
+- id: sigma2-basis
+  name: Σ⁰₂ basis
+  domain: problems
+  optional: true
+  implies: [ delta3-basis, sigma3-basis ]
+  description: >
+    Every computable instance has a Σ⁰₂ solution.
+
+- id: pi2-basis
+  name: Π⁰₂ basis
+  domain: problems
+  optional: true
+  implies: [ delta3-basis, pi3-basis ]
+  description: >
+    Every computable instance has a Π⁰₂ solution.
+
+- id: delta3-basis
+  name: Δ⁰₃ basis
+  closedUnder: c
+  direction: down
+  domain: problems
+  optional: true
+  implies: [ sigma3-basis, pi3-basis ]
+  description: >
+    Every computable instance has a Δ⁰₃ solution.
+
+- id: sigma3-basis
+  name: Σ⁰₃ basis
+  domain: problems
+  optional: true
+  implies: [ sigma4-basis ]
+  description: >
+    Every computable instance has a Σ⁰₃ solution.
+
+- id: pi3-basis
+  name: Π⁰₃ basis
+  domain: problems
+  optional: true
+  description: >
+    Every computable instance has a Π⁰₃ solution.
+
+- id: sigma4-basis
+  name: Σ⁰₄ basis
+  domain: problems
+  optional: true
+  description: >
+    Every computable instance has a Σ⁰₄ solution.
 
 - id: computably-true
   name: Computably true
   closedUnder: c
   direction: down
   baseImplication: omega
+  domain: problems
+  # a solution computable in Z leaves Z ⊕ Y ≡_T Z, so every property defined by
+  # "every Z-computable instance has a solution Y such that Z ⊕ Y …" holds
+  implies: [ cone-avoidance, pa-avoidance, low-basis, hyperimmunity-preservation, delta02-preservation, arith-preservation, cb-immunity-preservation, dep-hyperimmunity-preservation, hyperimmunity2-preservation ]
   description: >
     Every instance X has a solution computable in X. Equivalently, the problem holds
     in every ω-model (Turing ideal), i.e. RCA₀ implies it over ω-models: so NON, DNR,
@@ -52,6 +168,7 @@
   name: Preservation of hyperimmunity
   closedUnder: omega
   direction: down
+  domain: problems
   description: >
     For every set Z and every Z-hyperimmune set A, every Z-computable instance has a solution Y such that A is (Z ⊕ Y)-hyperimmune.
 
@@ -59,6 +176,7 @@
   name: Preservation of Δ⁰₂ definitions
   closedUnder: omega
   direction: down
+  domain: problems
   description: >
     For every Z and every set A which is not Δ⁰₂(Z), every Z-computable instance has a solution Y such that A is not Δ⁰₂(Z ⊕ Y) (Wang).
 
@@ -66,6 +184,7 @@
   name: Preservation of the arithmetic hierarchy
   closedUnder: omega
   direction: down
+  domain: problems
   description: >
     For every Z, every n, and every set A which is not Σ⁰ₙ(Z) (resp. Π⁰ₙ, Δ⁰ₙ), every Z-computable instance has a solution Y such that A is still not Σ⁰ₙ(Z ⊕ Y) (resp. Π⁰ₙ, Δ⁰ₙ).
 
@@ -73,6 +192,7 @@
   name: Preservation of c.b.-immunity
   closedUnder: omega
   direction: down
+  domain: problems
   description: >
     For every Z and every set A which is computably bounded immune relative to Z, every Z-computable instance has a solution Y such that A is c.b.-immune relative to Z ⊕ Y (Patey, "Partial orders and immunity").
 
@@ -80,6 +200,7 @@
   name: Preservation of dependent hyperimmunity
   closedUnder: omega
   direction: down
+  domain: problems
   description: >
     Preservation of dependent hyperimmunity, in the sense of Patey, "Partial orders and immunity in reverse mathematics".
 
@@ -87,6 +208,7 @@
   name: Preservation of 2-hyperimmunity
   closedUnder: omega
   direction: down
+  domain: problems
   description: >
     Preservation of 2-hyperimmunity in the sense of Liu and Patey, "The reverse
     mathematics of the thin set and Erdős–Moser theorems": for every set C and

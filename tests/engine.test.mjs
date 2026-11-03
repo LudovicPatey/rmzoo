@@ -165,3 +165,56 @@ test('toy: computably true ⟺ the base implies it over ω-models', () => {
   assert.equal(z.status(z.ridx.get('c'), s('lpo'), s('non')), 'separated');
   assert.equal(z.prop(ct, s('base')), undefined);                    // sentences are outside the domain
 });
+
+// ---- properties of problems; implications between properties ---------------------
+test('properties of problems skip first-order sentences; implications between properties', () => {
+  const zoo = buildZoo({
+    reductions: [{ id: 'rca0', finerThan: ['omega'] }, { id: 'omega', finerThan: [] }],
+    properties: [
+      { id: 'low', closedUnder: 'omega', direction: 'down', domain: 'problems', implies: ['wlow'] },
+      { id: 'wlow', closedUnder: 'omega', direction: 'down', domain: 'problems', implies: ['low2'] },
+      { id: 'low2', closedUnder: 'omega', direction: 'down', domain: 'problems' },
+    ],
+    classes: [],
+    statements: [
+      { id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' }, { id: 'c', kind: 'sentence' },
+      { id: 'fo', kind: 'sentence', firstOrder: true }, { id: 'x', kind: 'problem' },
+    ],
+    results: [
+      { type: 'property', statement: 'a', property: 'low', value: true, refs: [{ ref: 'r' }] },
+      { type: 'implication', from: 'a', to: 'b', over: 'rca0', refs: [{ ref: 'r' }] },
+      { type: 'implication', from: 'a', to: 'fo', over: 'rca0', refs: [{ ref: 'r' }] },
+      { type: 'property', statement: 'x', property: 'low2', value: false, refs: [{ ref: 'r' }] },
+      { type: 'property', statement: 'c', property: 'wlow', value: true, refs: [{ ref: 'r' }] },
+    ],
+  });
+  const v = (p, s) => zoo.prop(zoo.pidx.get(p), zoo.sidx.get(s))?.v;
+  assert.equal(v('low2', 'a'), true);   // low ⇒ weakly low ⇒ low₂
+  assert.equal(v('low2', 'b'), true);   // and down along a ⇒ b
+  assert.equal(v('low', 'fo'), undefined); // first-order: not a problem
+  assert.equal(v('low', 'x'), false);   // fails low₂ ⇒ fails low
+  assert.equal(v('low2', 'c'), true);   // a Π¹₂ sentence can carry them
+  assert.equal(zoo.status(zoo.ridx.get('omega'), zoo.sidx.get('a'), zoo.sidx.get('x')), 'separated');
+  assert.equal(zoo.contradictions.length, 0);
+});
+
+test('a property preserved by no reduction is only related to the others', () => {
+  const zoo = buildZoo({
+    reductions: [{ id: 'c', domain: 'problems', finerThan: [] }],
+    properties: [
+      { id: 'd2', closedUnder: 'c', direction: 'down', domain: 'problems', implies: ['s2'] },
+      { id: 's2', domain: 'problems' },
+    ],
+    classes: [],
+    statements: [{ id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' }, { id: 'x', kind: 'problem' }],
+    results: [
+      { type: 'property', statement: 'a', property: 's2', value: true, refs: [{ ref: 'r' }] },
+      { type: 'implication', from: 'a', to: 'b', over: 'c', refs: [{ ref: 'r' }] },
+      { type: 'property', statement: 'x', property: 's2', value: false, refs: [{ ref: 'r' }] },
+    ],
+  });
+  const v = (p, s) => zoo.prop(zoo.pidx.get(p), zoo.sidx.get(s))?.v;
+  assert.equal(v('s2', 'b'), undefined); // not passed along a ⇒ b
+  assert.equal(v('d2', 'x'), false);     // fails Σ⁰₂ ⇒ fails Δ⁰₂
+  assert.equal(zoo.status(zoo.ridx.get('c'), zoo.sidx.get('a'), zoo.sidx.get('x')), 'open'); // no separation from s2 alone
+});

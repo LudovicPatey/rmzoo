@@ -287,7 +287,7 @@ function resultCite(ri) {
     ${res.provenance === 'ai' ? ' <span class="badge ai" title="Not taken from the literature: derived by an AI assistant and to be checked">AI-derived</span>' : ''}
     ${j?.by === 'ai' && res.provenance !== 'ai' ? ' <span class="badge ai" title="The justification below was written by an AI assistant">argument by AI</span>' : ''}
     ${res.status === 'needs-check' ? ' <span class="badge warn">needs check</span>' : ''}</div>
-    ${j ? `<div class="note"><b>${esc(JUSTIFICATION_KINDS[j.kind] || j.kind)}.</b> ${rich(j.text)}</div>` : ''}
+    ${j ? `<div class="note"><b>${esc(JUSTIFICATION_KINDS[j.kind] || j.kind)}.</b> ${richCite(j.text)}</div>` : ''}
     ${res.note ? `<div class="note">${rich(res.note)}</div>` : ''}`;
 }
 function proofHtml(node) {
@@ -338,8 +338,9 @@ function propertyPanel(p, s) {
   const e = Z.prop(p, s);
   openDrawer(`<h2 style="margin-top:0">${esc(prop.name)}</h2>
     <p>${rich(prop.description)}</p>
-    <p class="small muted">Preserved downwards under ${esc(Z.R[Z.ridx.get(prop.closedUnder)].name)}:
-      if a statement has it, so does every statement it implies; if A has it and B does not, A does not imply B.</p>
+    <p class="small muted">${prop.closedUnder ? `Preserved downwards under ${esc(Z.R[Z.ridx.get(prop.closedUnder)].name)}:
+      if a statement has it, so does every statement it implies; if A has it and B does not, A does not imply B.`
+      : 'Preserved by no reduction (it cannot be iterated to build models): it is only related to the other properties.'}</p>
     ${e ? `<ul class="proof">${proofHtml(Z.proof({ t: 'P', p, s, v: e.v }))}</ul>`
       : `<div class="verdict open">Not known whether ${L(s)} has this property.</div>`}`);
 }
@@ -728,12 +729,19 @@ function viewStatement(id) {
     </div>
 
     <h2>Properties</h2>
-    <table class="grid" id="props"><tr><th>Property</th><th class="c">Status</th><th>Preserved under</th></tr>
-    ${Z.raw.properties.map((p, pi) => {
-      const e = Z.prop(pi, i);
-      const st = e ? (e.v ? '<span class="yes">✓ has</span>' : '<span class="no">✗ fails</span>') : '<span class="open">?</span>';
-      return `<tr data-prop="${pi}" style="cursor:pointer"><td>${esc(p.name)}</td><td class="c">${st}</td><td class="small muted">${esc(Z.R[Z.ridx.get(p.closedUnder)].short)}</td></tr>`;
-    }).join('')}</table>
+    ${(() => {
+      // properties of problems do not apply to sentences not formulated as problems;
+      // members of infinite families (low₂, weakly low…) are listed only where known
+      const shown = Z.raw.properties.map((p, pi) => [p, pi]).filter(([p, pi]) => Z.propIn(pi, i) && (!p.optional || Z.prop(pi, i)));
+      const note = Z.raw.properties.some((p, pi) => !Z.propIn(pi, i))
+        ? `<p class="muted small">${L(i)} is not formulated as a problem (instances and solutions), so the computability-theoretic properties do not apply to it.</p>` : '';
+      return note + (shown.length ? `<table class="grid" id="props"><tr><th>Property</th><th class="c">Status</th><th>Preserved under</th></tr>
+      ${shown.map(([p, pi]) => {
+        const e = Z.prop(pi, i);
+        const st = e ? (e.v ? '<span class="yes">✓ has</span>' : '<span class="no">✗ fails</span>') : '<span class="open">?</span>';
+        return `<tr data-prop="${pi}" style="cursor:pointer"><td>${esc(p.name)}</td><td class="c">${st}</td><td class="small muted">${(p.closedUnder ? esc(Z.R[Z.ridx.get(p.closedUnder)].short) : '—')}</td></tr>`;
+      }).join('')}</table>` : '');
+    })()}
 
     <div class="row h2row"><h2 class="grow">Literature</h2>${refsOf.length || directResults.length ? bibButton('bib-stmt', 'BibTeX (literature + cited in results)') : ''}</div>
     ${refsOf.length ? `<ul class="reflist">${refsOf.map((rf) => `<li><span class="role">${esc(rf.role || '')}</span>${refFull(rf.ref)}${rf.loc ? ` — ${esc(rf.loc)}` : ''}</li>`).join('')}</ul>`
@@ -1218,6 +1226,10 @@ function viewCompare(params) {
   if (!ids.length) { m.innerHTML = `<h1>Compare</h1><p class="muted">Select statements in the <a href="#/catalogue">catalogue</a> or open a <a href="#/">predefined zoo</a> first.</p>`; return; }
   const r = rIdx();
   const g = latticeLayout();
+  // property columns: those applying to some selected statement; members of
+  // infinite families (low₂, weakly low…) only when known for one of them
+  const pcols = Z.raw.properties.map((p, pi) => [p, pi])
+    .filter(([p, pi]) => ids.some((i) => Z.propIn(pi, i) && (!p.optional || Z.prop(pi, i))));
   m.innerHTML = `
     <h1>Compare</h1>
     <p class="muted">Row <i>A</i>, column <i>B</i>: does <i>A</i> imply <i>B</i>? Each cell is the lattice of reductions below,
@@ -1233,12 +1245,13 @@ function viewCompare(params) {
 
     <h2>Properties</h2>
     <p class="muted small">✓ has · ✗ fails · ? unknown. Columns where every selected statement agrees are highlighted. Click a cell for the proof.</p>
-    <div style="overflow-x:auto"><table class="grid pmatrix"><tr><th></th>${Z.raw.properties.map((p) => {
-      const vals = ids.map((i) => Z.prop(Z.pidx.get(p.id), i)?.v);
-      const common = vals.every((x) => x === true) ? 'yes' : vals.every((x) => x === false) ? 'no' : '';
+    <div style="overflow-x:auto"><table class="grid pmatrix"><tr><th></th>${pcols.map(([p, pi]) => {
+      const vals = ids.filter((i) => Z.propIn(pi, i)).map((i) => Z.prop(pi, i)?.v);
+      const common = vals.length && vals.every((x) => x === true) ? 'yes' : vals.length && vals.every((x) => x === false) ? 'no' : '';
       return `<th class="c" title="${esc(p.description)}">${esc(p.name)}${common ? ` <span class="${common}">●</span>` : ''}</th>`;
     }).join('')}</tr>
-    ${ids.map((i) => `<tr><td>${sLink(i)}</td>${Z.raw.properties.map((p, pi) => {
+    ${ids.map((i) => `<tr><td>${sLink(i)}</td>${pcols.map(([p, pi]) => {
+      if (!Z.propIn(pi, i)) return '<td class="c muted" title="Not formulated as a problem">–</td>';
       const e = Z.prop(pi, i);
       return `<td class="c ${e ? (e.v ? 'yes' : 'no') : 'open'}" data-prop="${pi},${i}">${e ? (e.v ? '✓' : '✗') : '?'}</td>`;
     }).join('')}</tr>`).join('')}</table></div>
@@ -1403,7 +1416,7 @@ function viewAbout(params) {
       <div class="grow"><p class="small muted">An implication at a reduction holds at every reduction below it; a separation at a reduction holds at every reduction above it.</p>
       <table class="grid">${Z.R.map((R) => `<tr><td><b>${esc(R.short)}</b></td><td>${esc(R.name)}<div class="small muted">${esc(R.description || '')}${R.refs ? ` (${R.refs.map(refLink).join('; ')})` : ''}</div></td></tr>`).join('')}</table></div></div>
     <h2>Properties</h2>
-    <table class="grid">${Z.raw.properties.map((p) => `<tr><td><b>${esc(p.name)}</b></td><td>${rich(p.description)}<div class="small muted">Preserved under ${esc(Z.R[Z.ridx.get(p.closedUnder)].name)}.</div></td></tr>`).join('')}</table>
+    <table class="grid">${Z.raw.properties.map((p) => `<tr><td><b>${esc(p.name)}</b></td><td>${rich(p.description)}<div class="small muted">${p.closedUnder ? `Preserved under ${esc(Z.R[Z.ridx.get(p.closedUnder)].name)}` : 'Preserved by no reduction'}${p.domain === 'problems' ? '; applies to statements formulated as problems' : ''}.</div></td></tr>`).join('')}</table>
     <h2 id="classes">Formula classes</h2>
     <p class="small muted">Used by conservation results: <i>T</i> is Γ-conservative over <i>S</i> when every Γ sentence provable in <i>T</i> is provable in <i>S</i>.
       A conservation result for a class also applies to the classes it contains.</p>

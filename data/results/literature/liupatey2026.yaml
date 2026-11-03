@@ -3,3 +3,4 @@
 - { type: "separation", from: "ovw", to: "rt22", over: "omega", refs: [ { ref: liupatey2026, loc: Theorem 4.5 and Corollary 4.7 } ] }
 - { type: "implication", from: "aca", to: "ovw", over: "rca0", refs: [ { ref: liupatey2026, loc: Theorem 2.11 } ] }
 - { type: separation, from: henson-indiv, to: aca, over: rca0, refs: [ { ref: liupatey2026, loc: Main Theorem 1.6 } ] }
+- { type: property, statement: ovw, property: weakly-low-basis, value: true, note: "Stated for $\\mathsf{OVW}_0$, the same statement.", refs: [ { ref: liupatey2026, loc: Theorem 3.3 } ] }

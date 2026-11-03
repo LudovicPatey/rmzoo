@@ -12,6 +12,9 @@
 //                 cached texts checked against their titles.
 //  4. mine        candidate results and open questions in the texts cached since
 //                 the last run, for reading.
+//  4b. ai         only with --ai (costs API tokens): scripts/ai-analyze.mjs reads every
+//                 cached text not yet analyzed; reliable facts are added, the others
+//                 queued in data/ai-review.yaml.
 //  5. statements  definitions still flagged "to check" (with the cached texts that
 //                 should settle them) and acronyms frequent in the literature but
 //                 absent from the catalogue (candidate missing statements).
@@ -21,15 +24,16 @@
 //                 "question", "answer", "solve", "conjecture".
 //  7. check       build validation and tests.
 // Automatic changes are limited to bibliographic data (new references,
-// publication status, abstracts, texts). Results, questions and definitions are
-// only proposed: the report lists them with the passages to read, and they are
+// publication status, abstracts, texts), and, with --ai, to the results that pass
+// every check of scripts/ai-analyze.mjs. Other results, questions and definitions
+// are only proposed: the report lists them with the passages to read, and they are
 // entered by hand (or by an AI assistant, marked as such) after reading.
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
 import { cli } from './lib/cli.mjs';
-cli('npm run consolidate [-- --since YYYY-MM-DD] [--skip sweep,pubstatus,texts,mine,statements,questions]', { '--since': 1, '--skip': 1 });
+cli('npm run consolidate [-- --since YYYY-MM-DD] [--skip sweep,pubstatus,texts,mine,statements,questions] [--ai]', { '--since': 1, '--skip': 1, '--ai': 0 });
 acquireLock('consolidate.mjs');
 
 const args = process.argv.slice(2);
@@ -111,6 +115,16 @@ if (!skip.has('mine')) {
   say('', `**To read** — ${qs.length} numbered questions or conjectures not yet in data/questions.yaml:`);
   for (const c of qs.slice(0, 150)) say(`- ${short(c.ref, refsNow)}, ${c.where}${c.statements.length ? ` [${c.statements.join(', ')}]` : ''}: ${c.body.slice(0, 220).replace(/\n/g, ' ')}`);
   say();
+}
+// 4b. AI reading of the texts not yet analyzed (opt-in: it costs API tokens)
+if (args.includes('--ai')) {
+  say('## 4b. AI reading of the full texts');
+  const out = run('node', ['scripts/ai-analyze.mjs']);
+  const lines = out.split('\n').filter((l) => /facts →|failed|Authentication|Rate limited|Done\./.test(l));
+  lines.forEach((l) => say(`- ${l}`));
+  const review = fs.existsSync('data/ai-review.yaml') ? YAML.parse(fs.readFileSync('data/ai-review.yaml', 'utf8')) || [] : [];
+  const pending = review.filter((x) => x.status === 'pending').length;
+  say('', `**To decide** — ${pending} AI proposals pending in data/ai-review.yaml (\`node scripts/ai-review.mjs list\`).`, '');
 }
 // 5. statements
 if (!skip.has('statements')) {

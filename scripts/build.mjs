@@ -58,6 +58,10 @@ const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml
   for (const [k, x] of Object.entries(abstracts)) errs.push(...unknownFields(x, 'abstract', `abstracts.yaml ${k}`));
   const rej = path.join(dataDir, 'sweep-rejected.yaml');
   if (fs.existsSync(rej)) (readYaml(rej) || []).forEach((x, i) => errs.push(...unknownFields(x, 'sweepRejected', `sweep-rejected.yaml #${i}`)));
+  const review = path.join(dataDir, 'ai-review.yaml');
+  if (fs.existsSync(review)) (readYaml(review) || []).forEach((x, i) => errs.push(...unknownFields(x, 'aiReview', `ai-review.yaml #${i}`)));
+  const analyzed = path.join(dataDir, 'ai-analyzed.yaml');
+  if (fs.existsSync(analyzed)) for (const [k, x] of Object.entries(readYaml(analyzed) || {})) errs.push(...unknownFields(x, 'aiAnalyzed', `ai-analyzed.yaml ${k}`));
   if (errs.length) { errs.forEach((e) => console.error('✗ ' + e)); process.exit(1); }
 }
 
@@ -300,9 +304,14 @@ const refIds = new Set(Object.keys(raw.references));
 for (const r of raw.reductions)
   for (const c of r.finerThan || []) if (!rids.has(c)) errors.push(`Reduction ${r.id}: unknown finerThan ${c}`);
 for (const p of raw.properties) {
-  if (!rids.has(p.closedUnder)) errors.push(`Property ${p.id}: unknown reduction ${p.closedUnder}`);
+  if (p.closedUnder !== undefined && !rids.has(p.closedUnder)) errors.push(`Property ${p.id}: unknown reduction ${p.closedUnder}`);
+  if ((p.closedUnder === undefined) !== (p.direction === undefined)) errors.push(`Property ${p.id}: closedUnder and direction go together`);
   if (p.baseImplication && !rids.has(p.baseImplication)) errors.push(`Property ${p.id}: unknown baseImplication ${p.baseImplication}`);
+  if (p.domain !== undefined && p.domain !== 'problems') errors.push(`Property ${p.id}: domain must be problems`);
+  for (const q of p.implies || []) if (!pids.has(q) || q === p.id) errors.push(`Property ${p.id}: implies unknown property ${q}`);
 }
+for (const s of raw.statements)
+  if (s.problemForm !== undefined && (s.problemForm !== false || s.kind === 'problem')) errors.push(`Statement ${s.id}: problemForm is only "false", on sentences`);
 
 const checkRefs = (refs, where) => {
   for (const r of refs || []) {
@@ -346,6 +355,7 @@ raw.results.forEach((res, i) => {
     const kinds = ['restriction', 'reduction', 'classical', 'personal-communication', 'unreferenced'];
     if (!kinds.includes(res.justification.kind)) errors.push(`${where}: justification.kind must be one of ${kinds.join(', ')}`);
     if (!res.justification.text) errors.push(`${where}: justification needs a text`);
+    for (const [, k] of String(res.justification.text || '').matchAll(/\[@([^\]]+)\]/g)) if (!raw.references[k]) errors.push(`${where}: justification cites unknown reference ${k}`);
   }
   checkRefs(res.refs, where);
 });

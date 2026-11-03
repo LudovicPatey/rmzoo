@@ -28,11 +28,14 @@ export const FILES = {
   mineCommon: 'scripts/mine/common.mjs',
   mineFacts: 'scripts/mine/facts.mjs',
   mineQuestions: 'scripts/mine/questions.mjs',
+  aiAnalyze: 'scripts/ai-analyze.mjs',  // AI reading of the full texts
+  aiReview: 'scripts/ai-review.mjs',    // human decisions on its proposals
+  results: 'scripts/lib/results.mjs',   // writing results without duplicates
 };
 
 const cite = (extra = {}) => ({
-  ref: { req: true, doc: 'reference key (data/references/*.yaml)', usedBy: ['build', 'viewer', 'addResults'] },
-  loc: { doc: 'where in the paper: theorem number, section… (quote it if it contains ", " or ": ")', usedBy: ['viewer', 'addResults'] },
+  ref: { req: true, doc: 'reference key (data/references/*.yaml)', usedBy: ['build', 'viewer', 'results'] },
+  loc: { doc: 'where in the paper: theorem number, section… (quote it if it contains ", " or ": ")', usedBy: ['viewer', 'results'] },
   ...extra,
 });
 
@@ -58,6 +61,7 @@ export const SCHEMA = {
     form: { doc: 'syntactic class of the sentence (data/classes.yaml), used for conservation results', usedBy: ['build', 'engine', 'viewer'] },
     op: { doc: 'Weihrauch operation: jump | par | fin | diamond | product | compose (normally created by the build from dotted ids)', usedBy: ['build', 'engine', 'viewer', 'mineCommon'] },
     args: { doc: 'arguments of op (ids of problems)', usedBy: ['build', 'engine', 'viewer', 'mineCommon'] },
+    problemForm: { doc: 'false for a sentence that cannot be formulated as a problem (instances and solutions): properties with domain problems do not apply. First-order sentences are excluded without it', usedBy: ['build', 'engine'] },
   },
   statementRef: cite({ role: { doc: 'rm (studied) | def (defined) | … ; shown in the viewer', usedBy: ['viewer'] } }),
 
@@ -72,17 +76,17 @@ export const SCHEMA = {
     class: { doc: 'conservation: formula class (data/classes.yaml)', usedBy: ['build', 'engine', 'viewer'] },
     property: { doc: 'property: property id (data/properties.yaml)', usedBy: ['build', 'engine', 'viewer'] },
     value: { doc: 'property: true or false', usedBy: ['build', 'engine', 'viewer'] },
-    refs: { doc: 'citations [{ref, loc}]; required unless folklore or provenance: ai', usedBy: ['build', 'viewer', 'addResults'], items: 'resultRef' },
-    folklore: { doc: 'true when the fact is folklore (then a justification explains it)', usedBy: ['build', 'viewer', 'addResults'] },
+    refs: { doc: 'citations [{ref, loc}]; required unless folklore or provenance: ai', usedBy: ['build', 'viewer', 'results'], items: 'resultRef' },
+    folklore: { doc: 'true when the fact is folklore (then a justification explains it)', usedBy: ['build', 'viewer', 'results'] },
     provenance: { doc: 'ai: derived by an AI, with a justification; never for facts read in a paper', usedBy: ['build', 'viewer'] },
     justification: { doc: 'argument for folklore / AI-derived facts', usedBy: ['build', 'viewer'], fields: 'justification' },
-    note: { doc: 'short remark shown with the result (quote it if it contains ", " or ": ")', usedBy: ['viewer', 'addResults'] },
+    note: { doc: 'short remark shown with the result (quote it if it contains ", " or ": ")', usedBy: ['viewer', 'results'] },
   },
   resultRef: cite(),
   justification: {
     kind: { req: true, doc: 'restriction | reduction | classical | personal-communication | unreferenced', usedBy: ['build', 'viewer'] },
     by: { doc: 'who wrote it (e.g. ai, or a person)', usedBy: ['viewer'] },
-    text: { req: true, doc: 'the argument', usedBy: ['build', 'viewer'] },
+    text: { req: true, doc: 'the argument ($…$ for TeX, [@key] cites a paper)', usedBy: ['build', 'viewer'] },
   },
 
   // data/references/*.yaml — a map key → reference
@@ -124,11 +128,14 @@ export const SCHEMA = {
   property: {
     id: { req: true, doc: 'property id (cone-avoidance, …)', usedBy: ['build', 'engine', 'viewer'] },
     name: { req: true, doc: 'name', usedBy: ['viewer'] },
-    closedUnder: { req: true, doc: 'reduction under which it is preserved', usedBy: ['build', 'engine', 'viewer'] },
-    direction: { req: true, doc: 'down | up', usedBy: ['engine'] },
+    closedUnder: { doc: 'reduction under which it is preserved; absent when no reduction preserves it (Σ⁰ₙ and Π⁰ₙ bases: a set computable from a Σ⁰ₙ set need not be Σ⁰ₙ)', usedBy: ['build', 'engine', 'viewer'] },
+    direction: { doc: 'down | up (with closedUnder)', usedBy: ['build', 'engine'] },
     description: { doc: 'definition', usedBy: ['viewer'] },
     fromConservation: { doc: 'the property follows from a conservation result over this class', usedBy: ['engine'] },
     baseImplication: { doc: 'reduction r such that a problem has the property exactly when the bottom of r implies it over r (computably true: omega)', usedBy: ['build', 'engine'] },
+    domain: { doc: 'problems: defined through instances and solutions, so it only applies to statements formulated as problems (see statement.problemForm)', usedBy: ['build', 'engine', 'aiAnalyze'] },
+    implies: { doc: 'properties every statement having this one also has (low basis ⇒ weakly low basis); failing one of them means failing this one', usedBy: ['build', 'engine'] },
+    optional: { doc: 'member of an infinite family (low_n, weakly low_n): listed on a statement page only where its value is known', usedBy: ['viewer'] },
   },
   zoo: {
     id: { req: true, doc: 'preset id', usedBy: ['build', 'viewer'] },
@@ -175,6 +182,40 @@ export const SCHEMA = {
     doi: { doc: 'its DOI', usedBy: ['sweep'] },
     reason: { req: true, doc: 'why it is out of scope', usedBy: [] },
   },
+  // data/ai-review.yaml — a list: facts proposed by ai-analyze.mjs awaiting a human
+  // decision (scripts/ai-review.mjs, later a web backend). Never delete items.
+  aiReview: {
+    id: { req: true, doc: '<refkey>-<n> (result n of the extraction) or <refkey>-s<n> (missing statement n)', usedBy: ['aiAnalyze', 'aiReview'] },
+    ref: { req: true, doc: 'the analyzed paper', usedBy: ['aiAnalyze', 'aiReview'] },
+    date: { req: true, doc: 'date of the analysis', usedBy: ['aiAnalyze', 'aiReview'] },
+    status: { req: true, doc: 'pending | accepted | rejected | done (treated by hand)', usedBy: ['aiAnalyze', 'aiReview'] },
+    kind: { req: true, doc: 'result (a proposed fact) | statement (a principle missing from the catalogue)', usedBy: ['aiAnalyze', 'aiReview'] },
+    result: { doc: 'result: the proposed entry, as in data/results/ without refs; edit it before accepting if needed', usedBy: ['aiAnalyze', 'aiReview'] },
+    loc: { doc: 'result: theorem number in the paper', usedBy: ['aiAnalyze', 'aiReview'] },
+    origin: { doc: 'result: stated (the paper states it) | cited (the paper attributes it to citedFrom) | special-case (instance of one stated result) | deduced', usedBy: ['aiAnalyze', 'aiReview'] },
+    quote: { doc: 'result: verbatim passage of the extracted text', usedBy: ['aiAnalyze'] },
+    paperNotation: { doc: "result: the paper's notation, when it differs from the catalogue", usedBy: ['aiAnalyze'] },
+    argument: { doc: 'result: for special cases and deductions, the argument', usedBy: ['aiAnalyze', 'aiReview'] },
+    citedFrom: { doc: 'result: the work the paper attributes the fact to', usedBy: ['aiAnalyze', 'aiReview'] },
+    confidence: { doc: "result: the extractor's confidence (high | medium | low)", usedBy: ['aiAnalyze', 'aiReview'] },
+    concerns: { doc: 'result: what the extractor thinks a human should check', usedBy: ['aiAnalyze'] },
+    verifier: { doc: 'result: {verdict: confirmed | rejected | unsure, reason} of the independent verification call', usedBy: ['aiAnalyze'] },
+    statement: { doc: 'statement: {notation, name, loc, definition, facts} as read in the paper', usedBy: ['aiAnalyze', 'aiReview'] },
+    reasons: { req: true, doc: 'why a human must decide (unknown id, quote not found, low confidence, verifier not confirming…)', usedBy: ['aiAnalyze', 'aiReview'] },
+    decision: { doc: '{date, by, note} once treated', usedBy: ['aiReview'] },
+  },
+  // data/ai-analyzed.yaml — a map refkey → record: papers already read by ai-analyze.mjs
+  aiAnalyzed: {
+    date: { req: true, doc: 'date of the analysis', usedBy: ['aiAnalyze'] },
+    model: { req: true, doc: 'model that read the paper', usedBy: ['aiAnalyze'] },
+    textHash: { req: true, doc: 'sha256 prefix of the text read (a new version of the text can be analyzed with --redo)', usedBy: ['aiAnalyze'] },
+    facts: { req: true, doc: 'number of facts proposed', usedBy: ['aiAnalyze'] },
+    added: { req: true, doc: 'number of results added or citations merged (all runs)', usedBy: ['aiAnalyze'] },
+    review: { req: true, doc: 'number of items sent to data/ai-review.yaml', usedBy: ['aiAnalyze'] },
+    dropped: { req: true, doc: 'number of cited/deduced facts dropped because the database already has them', usedBy: ['aiAnalyze'] },
+    changes: { doc: 'the database changes ("added: <resultKey>", "merged: …"), to audit or undo them', usedBy: ['aiAnalyze'] },
+    cost: { doc: 'cost of the two calls in dollars (estimate)', usedBy: ['aiAnalyze'] },
+  },
 };
 
 // Operations of the Weihrauch algebra (statement field `op`). `dotted` is the
@@ -195,6 +236,7 @@ export const OPERATIONS = {
 //   data/fulltext-exclude.yaml reference key → {zotero, reason}: Zotero items not to use
 //   data/screened.yaml         {facts, questions, resolutions}: leads already examined
 //   data/acronyms-ignored.yaml acronym → reason: not proposed as missing statements
+//   data/ai-review.yaml        entity aiReview above; data/ai-analyzed.yaml: aiAnalyzed
 
 // Unknown fields of `obj` (and of its nested citations), as error messages.
 export function unknownFields(obj, entity, where) {

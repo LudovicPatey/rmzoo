@@ -107,3 +107,7 @@
   over: [sw, rca0star]
   provenance: ai
   justification: {kind: reduction, by: ai, text: "A function which is diagonally non-recursive relative to p is not computable from p, so every solution to the DNR instance p is a solution to the NON instance p."}
+- { type: property, statement: mtt2, property: cone-avoidance, value: true, provenance: ai, justification: { kind: restriction, by: ai, text: "$\\mathsf{MTT}^2$ is the case $d = 1$ (a single tree) of the product version $\\mathsf{PMTT}^2$, which admits cone avoidance by Theorem 4.15 of [@dauriacetal2024] (the authors also note in Section 3.3 that the non-product version for height 2 admits cone avoidance)." } }
+- { type: implication, from: rt3, to: rt32, over: [ sw, rca0star ], provenance: ai, justification: { kind: restriction, by: ai, text: "Specialization: finitely many colors, at 2 colors." } }
+- { type: implication, from: rt, to: rt3, over: [ sw, rca0star ], provenance: ai, justification: { kind: restriction, by: ai, text: "Specialization: every exponent, at exponent 3." } }
+- { type: implication, from: rt, to: rt42, over: [ sw, rca0star ], provenance: ai, justification: { kind: restriction, by: ai, text: "Specialization: every exponent and number of colors, at exponent 4 and 2 colors." } }

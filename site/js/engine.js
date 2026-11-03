@@ -21,6 +21,7 @@ export const RULES = {
   'prop-down': 'Property inherited along an implication',
   'prop-up': 'Failure of a property inherited along an implication',
   'prop-sep': 'Separation by a property',
+  'prop-implies': 'Relation between properties (a low basis is a weakly low basis, a computably true problem has every preservation property…)',
   'prop-base': 'A problem has this property exactly when the base system implies it over this reduction (e.g. computably true = holds in every ω-model)',
   refine: 'Separation at a coarser reduction',
   'op-base': 'Algebra of Weihrauch degrees: a problem is below its jump, its parallelization and its finite parallelization (strongly), and below products and compositional products in which it occurs',
@@ -264,20 +265,61 @@ export function buildZoo(raw) {
   }
 
   // --- properties ----------------------------------------------------------
+  // A property with `domain: problems` (defined through instances and solutions)
+  // only applies to statements that can be formulated as problems: problems, and
+  // sentences that are neither first-order nor marked `problemForm: false`; a
+  // conjunction is excluded if one of its conjuncts is.
+  const problemLike = S.map((s) => s.kind === 'problem'
+    || (!s.firstOrder && s.problemForm !== false && !(s.conjunction || []).some((c) => S[sidx.get(c)]?.problemForm === false)));
+  const propIn = (p, s) => s !== undefined && (raw.properties[p].domain !== 'problems' || problemLike[s]);
+  // `implies`: having p implies having each q (low basis ⇒ weakly low basis);
+  // failing q then implies failing p.
+  const impliesP = raw.properties.map((prop) => (prop.implies || []).map((id) => pidx.get(id)).filter((q) => q !== undefined));
+  const impliedByP = raw.properties.map(() => []);
+  impliesP.forEach((qs, p) => qs.forEach((q) => impliedByP[q].push(p)));
+
   const P = raw.properties.map(() => new Map()); // s -> {v, just}
   const contradictions = [];
   const fP = (p, s, v) => ({ t: 'P', p, s, v });
+  const pqueue = [];
   function setP(p, s, v, just) {
+    if (!propIn(p, s)) return;
     const cur = P[p].get(s);
     if (cur) {
       if (cur.v !== v) contradictions.push({ kind: 'property', p, s, facts: [fP(p, s, cur.v), fP(p, s, v)], other: just });
       return;
     }
     P[p].set(s, { v, just });
+    pqueue.push(p, s);
+  }
+  // Propagate every new value: along the reduction of the property (down: has ⇒
+  // what it implies has; fails ⇒ what implies it fails; up: dual), and along the
+  // implications between properties. Implications are transitively closed, so
+  // one step along the reduction suffices.
+  function drainP() {
+    for (let h = 0; h < pqueue.length;) {
+      const p = pqueue[h++], s = pqueue[h++];
+      const { v } = P[p].get(s);
+      const prop = raw.properties[p];
+      const r = ridx.get(prop.closedUnder); // undefined: preserved by no reduction (Σ⁰ₙ basis)
+      const down = prop.direction !== 'up';
+      const toSucc = down ? v : !v;
+      for (const t of r === undefined ? [] : toSucc ? out[r][s] : inn[r][s]) {
+        if (t === s) continue;
+        const prem = toSucc ? [fP(p, s, v), fI(r, s, t)] : [fP(p, s, v), fI(r, t, s)];
+        setP(p, t, v, { rule: v === down ? 'prop-down' : 'prop-up', prem });
+      }
+      for (const q of v ? impliesP[p] : impliedByP[p]) setP(q, s, v, { rule: 'prop-implies', prem: [fP(p, s, v)] });
+    }
   }
   directResults.forEach((res, ri) => {
     if (res.type !== 'property') return;
-    setP(pidx.get(res.property), sidx.get(res.statement), !!res.value, { rule: 'direct', result: ri });
+    const p = pidx.get(res.property), s = sidx.get(res.statement);
+    if (!propIn(p, s)) {
+      errors.push(`Result #${ri} (${res.statement} ${res.property}): the property only applies to statements formulated as problems`);
+      return;
+    }
+    setP(p, s, !!res.value, { rule: 'direct', result: ri });
   });
   // properties defined as conservation over the base system
   raw.properties.forEach((prop, p) => {
@@ -289,21 +331,7 @@ export function buildZoo(raw) {
       setP(p, sidx.get(res.statement), true, { rule: 'direct', result: ri });
     });
   });
-  raw.properties.forEach((prop, p) => {
-    const r = ridx.get(prop.closedUnder);
-    const down = prop.direction !== 'up';
-    const direct = [...P[p].entries()];
-    for (const [s, { v }] of direct) {
-      // down: has ⇒ successors have; lacks ⇒ predecessors lack.  up: dual.
-      const toSucc = down ? v : !v;
-      const targets = toSucc ? out[r][s] : inn[r][s];
-      for (const t of targets) {
-        if (t === s) continue;
-        const prem = toSucc ? [fP(p, s, v), fI(r, s, t)] : [fP(p, s, v), fI(r, t, s)];
-        setP(p, t, v, { rule: v === down ? 'prop-down' : 'prop-up', prem });
-      }
-    }
-  });
+  drainP();
 
   // --- non-implications ----------------------------------------------------
   const N = R.map(() => new Map());
@@ -328,6 +356,13 @@ export function buildZoo(raw) {
       addN(a, b, { rule: 'direct', result: ri });
     });
     for (const x of charSeeds(false)) if (x.r === r) addN(x.b, x.s, { rule: 'prop-base', result: x.ri });
+    // derived failures of a characterized property (failing cone avoidance ⇒ not
+    // computably true) give the separation from the base too
+    for (const { p, r: cr, dom } of charProps) {
+      if (cr !== r) continue;
+      for (const [x, { v, just: j }] of P[p])
+        if (!v && j.rule !== 'direct' && inDomain(dom, x)) for (const b of basesAt(r)) addN(b, x, { rule: 'prop-base', prem: [fP(p, x, false)] });
+    }
     raw.properties.forEach((prop, p) => {
       if (ridx.get(prop.closedUnder) !== r) return;
       const down = prop.direction !== 'up';
@@ -373,6 +408,9 @@ export function buildZoo(raw) {
         if (I[r].has(key(b, s))) setP(p, s, true, { rule: 'prop-base', prem: [fI(r, b, s)] });
         else if (N[r].has(key(b, s))) setP(p, s, false, { rule: 'prop-base', prem: [fN(r, b, s)] });
       }
+  // values of the properties they imply (computably true ⇒ cone avoidance…); the
+  // separations these could give already follow from the base comparison
+  drainP();
 
   // --- queries -------------------------------------------------------------
   function just(f) {
@@ -431,6 +469,8 @@ export function buildZoo(raw) {
     I, N, P, out, inn, errors, contradictions,
     inDomain, status, just, proof, sources,
     prop: (p, s) => P[p].get(s), // {v, just} | undefined
+    propIn, // (p, s): does property p apply to statement s
+    problemLike,
     classMembers: CLASS_MEMBERS,
   };
 }

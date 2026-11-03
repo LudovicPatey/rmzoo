@@ -1,0 +1,6 @@
+# Papers already analyzed by scripts/ai-analyze.mjs (one costly AI reading per
+# paper): date, model, hash of the text read, number of facts found, added,
+# sent to data/ai-review.yaml and dropped as already known, the database
+# changes made, and the cost in dollars. Delete an entry (or use --redo) to
+# analyze a paper again. Fields: scripts/lib/schema.mjs (aiAnalyzed).
+{}
