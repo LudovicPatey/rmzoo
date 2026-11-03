@@ -3,6 +3,9 @@
 #   closedUnder: reduction under which the property is preserved.
 #   direction:   down -> if A has it and A ⇒ B (over closedUnder), B has it.
 #                up   -> if B has it and A ⇒ B, A has it.
+#   baseImplication: r -> a problem has the property exactly when the bottom of
+#                reduction r (e.g. RCA₀ for omega) implies it over r; the engine
+#                derives the property from that comparison and conversely.
 #   A separation is derived automatically: if A has a "down" property and B
 #   fails it, then A does not imply B over closedUnder (and finer reductions).
 
@@ -31,7 +34,11 @@
   name: Computably true
   closedUnder: c
   direction: down
-  description: Every instance X has a solution computable in X.
+  baseImplication: omega
+  description: >
+    Every instance X has a solution computable in X. Equivalently, the problem holds
+    in every ω-model (Turing ideal), i.e. RCA₀ implies it over ω-models: so NON, DNR,
+    WKL… fail it, and the engine reads it off the ω-model comparison with RCA₀.
 
 - id: pi11-conservative
   name: Π¹₁-conservative over RCA₀

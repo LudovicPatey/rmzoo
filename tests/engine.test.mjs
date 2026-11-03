@@ -142,3 +142,26 @@ test('diamond: P ≤W P⋄, closed under ⋆ and ×, monotone; not for ≤sW', (
   assert.equal(st('w', 'a.diamond', 'b.star.b'), 'implies');     // b ≤W a ≤W a⋄, closure under ⋆
   assert.equal(st('w', 'a.diamond', 'b.diamond'), 'implies');    // monotone
 });
+
+// ---- properties characterized by the base (baseImplication) ----------------
+test('toy: computably true ⟺ the base implies it over ω-models', () => {
+  const z = buildZoo({
+    reductions: [{ id: 'c', domain: 'problems', finerThan: ['omega'] }, { id: 'omega', domain: 'all', finerThan: [] }],
+    properties: [{ id: 'ct', closedUnder: 'c', direction: 'down', baseImplication: 'omega' }],
+    statements: [
+      { id: 'base', kind: 'sentence', base: ['omega'] },
+      { id: 'non', kind: 'problem' }, { id: 'lpo', kind: 'problem' }, { id: 'easy', kind: 'problem' },
+    ],
+    results: [
+      { type: 'separation', from: 'base', to: 'non', over: 'omega' },   // RCA₀ ⇏ NON over ω
+      { type: 'property', statement: 'lpo', property: 'ct', value: true },
+      { type: 'implication', from: 'lpo', to: 'easy', over: 'c' },
+    ],
+  });
+  const ct = z.pidx.get('ct'), s = (id) => z.sidx.get(id);
+  assert.equal(z.prop(ct, s('non')).v, false);                       // from the separation
+  assert.equal(z.status(z.ridx.get('omega'), s('base'), s('lpo')), 'implies'); // from the property
+  assert.equal(z.prop(ct, s('easy')).v, true);
+  assert.equal(z.status(z.ridx.get('c'), s('lpo'), s('non')), 'separated');
+  assert.equal(z.prop(ct, s('base')), undefined);                    // sentences are outside the domain
+});

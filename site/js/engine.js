@@ -21,6 +21,7 @@ export const RULES = {
   'prop-down': 'Property inherited along an implication',
   'prop-up': 'Failure of a property inherited along an implication',
   'prop-sep': 'Separation by a property',
+  'prop-base': 'A problem has this property exactly when the base system implies it over this reduction (e.g. computably true = holds in every ω-model)',
   refine: 'Separation at a coarser reduction',
   'op-base': 'Algebra of Weihrauch degrees: a problem is below its jump, its parallelization and its finite parallelization (strongly), and below products and compositional products in which it occurs',
   'op-monotone': 'Algebra of Weihrauch degrees: jumps, parallelizations, finite parallelizations, products, compositional products and the diamond operator are monotone',
@@ -159,6 +160,18 @@ export function buildZoo(raw) {
 
   // a statement is the bottom of the reductions listed in its `base` field
   const isBaseAt = (i, r) => S[i].base === true || (Array.isArray(S[i].base) && S[i].base.includes(R[r].id));
+  // properties characterized by an implication from the base (`baseImplication: r`):
+  // s has p  ⟺  the bottom of r implies s over r (for statements in the domain of p)
+  const charProps = raw.properties.map((prop, p) => ({ p, r: ridx.get(prop.baseImplication), dom: ridx.get(prop.closedUnder) }))
+    .filter((c) => c.r !== undefined);
+  // bottoms of r, most specific first (RCA₀ = [rca0, omega] before RCA₀* = [rca0star, rca0, omega])
+  const basesAt = (r) => S.map((_, i) => i).filter((i) => isBaseAt(i, r))
+    .sort((a, b) => (Array.isArray(S[a].base) ? S[a].base.length : 99) - (Array.isArray(S[b].base) ? S[b].base.length : 99));
+  // a published property value gives the implication (true) or separation (false) from the base
+  const charSeeds = (v) => charProps.flatMap(({ p, r, dom }) => directResults.flatMap((res, ri) =>
+    res.type === 'property' && pidx.get(res.property) === p && !!res.value === v && inDomain(dom, sidx.get(res.statement))
+      ? basesAt(r).map((b) => ({ r, b, s: sidx.get(res.statement), ri })) : []));
+  for (const { r, b, s, ri } of charSeeds(true)) addI(r, b, s, { rule: 'prop-base', result: ri });
   for (let r = 0; r < R.length; r++) {
     for (let a = 0; a < n; a++) addI(r, a, a, { rule: 'refl' });
     for (let b = 0; b < n; b++)
@@ -314,6 +327,7 @@ export function buildZoo(raw) {
       }
       addN(a, b, { rule: 'direct', result: ri });
     });
+    for (const x of charSeeds(false)) if (x.r === r) addN(x.b, x.s, { rule: 'prop-base', result: x.ri });
     raw.properties.forEach((prop, p) => {
       if (ridx.get(prop.closedUnder) !== r) return;
       const down = prop.direction !== 'up';
@@ -348,6 +362,17 @@ export function buildZoo(raw) {
       }
     }
   }
+
+  // characterized properties, read back from the implications and separations
+  // from the base (no further propagation is needed: the reduction of the property
+  // is finer than r, so the inherited values already follow through r)
+  for (const { p, r, dom } of charProps)
+    for (const b of basesAt(r).slice(0, 1))
+      for (let s = 0; s < n; s++) {
+        if (!inDomain(dom, s) || P[p].has(s)) continue;
+        if (I[r].has(key(b, s))) setP(p, s, true, { rule: 'prop-base', prem: [fI(r, b, s)] });
+        else if (N[r].has(key(b, s))) setP(p, s, false, { rule: 'prop-base', prem: [fN(r, b, s)] });
+      }
 
   // --- queries -------------------------------------------------------------
   function just(f) {

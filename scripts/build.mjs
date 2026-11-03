@@ -299,8 +299,10 @@ const refIds = new Set(Object.keys(raw.references));
 
 for (const r of raw.reductions)
   for (const c of r.finerThan || []) if (!rids.has(c)) errors.push(`Reduction ${r.id}: unknown finerThan ${c}`);
-for (const p of raw.properties)
+for (const p of raw.properties) {
   if (!rids.has(p.closedUnder)) errors.push(`Property ${p.id}: unknown reduction ${p.closedUnder}`);
+  if (p.baseImplication && !rids.has(p.baseImplication)) errors.push(`Property ${p.id}: unknown baseImplication ${p.baseImplication}`);
+}
 
 const checkRefs = (refs, where) => {
   for (const r of refs || []) {

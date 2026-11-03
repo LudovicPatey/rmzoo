@@ -128,6 +128,7 @@ export const SCHEMA = {
     direction: { req: true, doc: 'down | up', usedBy: ['engine'] },
     description: { doc: 'definition', usedBy: ['viewer'] },
     fromConservation: { doc: 'the property follows from a conservation result over this class', usedBy: ['engine'] },
+    baseImplication: { doc: 'reduction r such that a problem has the property exactly when the bottom of r implies it over r (computably true: omega)', usedBy: ['build', 'engine'] },
   },
   zoo: {
     id: { req: true, doc: 'preset id', usedBy: ['build', 'viewer'] },

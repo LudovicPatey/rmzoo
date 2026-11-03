@@ -132,6 +132,13 @@ So adding a single property fact can yield dozens of separations, each one
 justified by a proof tree showing which property was used. It also gives the
 "common properties" view for free: the property matrix of a selection.
 
+A property may be **characterized by the base system**
+(`baseImplication: omega` on *computably true*): a problem has it exactly when
+the bottom of that reduction implies it (RCA₀ ⇒ P over ω-models, i.e. P holds in
+every Turing ideal). The engine then derives the property from that comparison
+(RCA₀ ⇏ NON over ω gives "NON is not computably true") and conversely (a
+published "computably true" gives RCA₀ ⇒ P over ω).
+
 ### 1.5 Results (the atomic facts)
 
 `data/results/*.yaml`. Four kinds:
