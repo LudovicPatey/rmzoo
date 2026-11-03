@@ -1,0 +1,6 @@
+# Acronyms that scripts/consolidate.mjs (step 5, "To consider") should no longer
+# propose as missing statements, with the reason. Add an entry whenever a proposed
+# acronym is examined and deliberately not added to the catalogue.
+HBT: ambiguous — Hahn–Banach theorem (Gherardi–Marcone, Brattka–Sorg; ≡W WKL) in some papers, third-order Heine–Borel theorem (Normann–Sanders) in others
+BCT: ambiguous — Brattka–Gherardi's Baire category theorem variants BCT0–BCT3 versus Sanders' third-order BCT[0,1]
+PC: generic notation PC_X for probabilistic choice on X; PC_{2^N} is WWKL and PC_R is the statement pcr

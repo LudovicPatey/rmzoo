@@ -39,6 +39,18 @@ They do not see parallelizations (the hat is lost in extracted text), completion
 
 ## Working through the report
 
+The full procedure, with the rules for reading papers, is in
+[AGENTS.md](../AGENTS.md#working-through-a-consolidation-report-reportsconsolidation-datemd).
+Decisions are recorded so that they are not proposed again:
+
+* papers judged out of scope → `data/sweep-rejected.yaml` (title, DOI, reason);
+* leads examined (theorems, questions, passages that may answer a question) →
+  `data/screened.yaml`, with the key shown in the report;
+* acronyms examined and not added → `data/acronyms-ignored.yaml` (with the reason).
+
+`npm run consolidate -- --since 1975-01-01` re-mines the whole cache; leads in
+`data/screened.yaml` are still skipped.
+
 * **Results** are entered with `node scripts/add-results.mjs spec.json` (one
   entry per theorem, with its number). Read the theorem in the paper: the miner
   only points at it.

@@ -4,3 +4,6 @@
 - { type: separation, from: non, to: wkl, over: w, refs: [ { ref: brattka2021, loc: Section 8 (DIS <W NON <W WKL) } ] }
 - { type: implication, from: hyp, to: non, over: w, refs: [ { ref: brattka2021, loc: Section 6 (NON <W HYPD ≤W HYP) } ] }
 - { type: separation, from: non, to: hyp, over: w, refs: [ { ref: brattka2021, loc: Section 6 (NON <W HYPD ≤W HYP) } ] }
+- { type: equivalence, from: non, to: dis.par, over: sw, refs: [ { ref: brattka2021, loc: Theorem 1.11 } ] }
+- { type: implication, from: non, to: dis, over: w, refs: [ { ref: brattka2021, loc: Section 8 (DIS <W NON <W WKL) } ] }
+- { type: separation, from: dis, to: non, over: w, refs: [ { ref: brattka2021, loc: Section 8 (DIS <W NON <W WKL) } ] }

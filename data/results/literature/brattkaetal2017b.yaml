@@ -1,0 +1,3 @@
+# Results from [brattkaetal2017b].
+
+[ { type: equivalence, from: pcr, to: wwkl.x.cn, over: sw, refs: [ { ref: brattkaetal2017b, loc: Fact 3 } ] } ]

@@ -1,0 +1,3 @@
+# Results from [andrewsetal2024].
+
+[ { type: implication, from: lpo, to: dis, over: w, refs: [ { ref: andrewsetal2024, loc: before Corollary 4.8 } ] } ]

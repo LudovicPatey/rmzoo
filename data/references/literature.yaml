@@ -16,7 +16,7 @@ brattkagherardi2011b:
   year: 2011
   doi: 10.2178/bsl/1294186663
   arxiv: '0905.4685'
-  read: pdf-zotero
+  read: pdf-arxiv
 brattkadebrechtpauly2012:
   authors: [ Vasco Brattka, Matthew de Brecht, Arno Pauly ]
   title: Closed choice and a uniform low basis theorem
@@ -125,6 +125,7 @@ slamanyokoyama2018:
   venue: Journal of Symbolic Logic 83(4), 1610–1617
   year: 2018
   arxiv: '1711.08704'
+  read: pdf-arxiv
 csimaetal2019:
   authors: [ Barbara F. Csima, Damir D. Dzhafarov, Denis R. Hirschfeldt, Carl G. Jockusch Jr., Reed Solomon, Linda Brown Westrick ]
   title: The reverse mathematics of Hindman's theorem for sums of exactly two elements

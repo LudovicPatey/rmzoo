@@ -42,16 +42,26 @@ data/
   classes.yaml       formula classes for conservation results (Π⁰ₙ, ∀Π⁰ₙ, Π¹₁, rΠ¹₂…)
   context.yaml       short historical context for the main statements ([@key] cites a paper)
   abstracts.yaml     abstracts of the papers (scripts/abstracts.mjs)
-  references.yaml    bibliography
+  references/*.yaml  bibliography
   statements/*.yaml  the catalogue (definitions, formulations, literature)
-  results/*.yaml     implications, separations, properties — each cited
-scripts/             build (YAML → JSON + validation) and dev server
+  results/**/*.yaml  implications, separations, properties — each cited
+  fulltext-exclude.yaml  Zotero items not to use (wrong attachment)
+  sweep-rejected.yaml    papers found by the sweep and judged out of scope
+  screened.yaml          consolidation leads already examined (not proposed again)
+  acronyms-ignored.yaml  acronyms examined and deliberately not added as statements
+scripts/             build (YAML → JSON + validation), consolidation, dev server
+  lib/schema.mjs     the data model: every allowed field, its meaning, its readers
+  lib/lock.mjs       one writer at a time on data/
+  lib/cli.mjs        --help and option checking for every script
+  mine/              candidate results and questions from the full texts
 site/                the viewer (vanilla JS, KaTeX, no build step)
   js/engine.js       inference engine (shared with the build script)
   js/layout.js       layered layout for Hasse diagrams
   js/bibtex.js       BibTeX export
 cache/fulltext/      local full texts of the papers (git-ignored)
 docs/DESIGN.md       data model and design rationale
+docs/CONSOLIDATION.md  keeping the database up to date
+AGENTS.md            instructions for AI assistants and contributors (read first)
 ```
 
 ## Adding a result

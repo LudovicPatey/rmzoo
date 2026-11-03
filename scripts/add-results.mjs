@@ -12,13 +12,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
+import { cli } from './lib/cli.mjs';
+import { resultKey } from './lib/schema.mjs';
+cli('node scripts/add-results.mjs spec.json', {});
 acquireLock('add-results.mjs');
 
 const spec = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 const walk = (d) => fs.readdirSync(d, { withFileTypes: true })
   .flatMap((e) => e.isDirectory() ? walk(path.join(d, e.name)) : e.name.endsWith('.yaml') ? [path.join(d, e.name)] : []);
 const docs = new Map(walk('data/results').map((f) => [f, YAML.parseDocument(fs.readFileSync(f, 'utf8'))]));
-const key = (j) => [j.type, j.from ?? j.statement, j.to ?? j.property ?? j.base, [].concat(j.over ?? j.class ?? '').join(','), j.value ?? ''].join('|');
+const key = resultKey; // scripts/lib/schema.mjs
 const index = new Map();
 for (const [f, d] of docs) for (const n of d.contents?.items || []) index.set(key(n.toJSON()), { f, n });
 

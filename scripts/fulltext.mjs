@@ -24,6 +24,8 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
+import { cli } from './lib/cli.mjs';
+cli('node scripts/fulltext.mjs [--zotero] [--download] [--retry] [--only k1,k2] [--status]', { '--zotero': 0, '--download': 0, '--retry': 0, '--only': 1, '--status': 0 });
 acquireLock('fulltext.mjs');
 
 const args = process.argv.slice(2);

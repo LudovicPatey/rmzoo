@@ -10,6 +10,9 @@ import { fileURLToPath } from 'node:url';
 import YAML from 'yaml';
 import { execFileSync } from 'node:child_process';
 import { buildZoo, questionStatus } from '../site/js/engine.js';
+import { cli } from './lib/cli.mjs';
+import { unknownFields, OPERATIONS, resultKey } from './lib/schema.mjs';
+cli('node scripts/build.mjs [--check] [--verbose]', { '--check': 0, '--verbose': 0 });
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dataDir = path.join(root, 'data');
@@ -43,6 +46,20 @@ const raw = {
 };
 const contexts = readYaml(path.join(dataDir, 'context.yaml')) || {};
 const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml(path.join(dataDir, 'abstracts.yaml')) || {} : {};
+
+// ---- fields: only those of the data model (scripts/lib/schema.mjs) -----------
+{
+  const errs = [];
+  for (const x of raw.statements) errs.push(...unknownFields(x, 'statement', `Statement ${x.id} (${x._file})`));
+  raw.results.forEach((x, i) => errs.push(...unknownFields(x, 'result', `Result #${i} (${x._file}: ${x.from ?? x.statement} ${x.type} ${x.to ?? x.property ?? x.base ?? ''})`)));
+  for (const [k, x] of Object.entries(raw.references)) errs.push(...unknownFields(x, 'reference', `Reference ${k}`));
+  for (const [list, entity] of [['reductions', 'reduction'], ['tags', 'tag'], ['properties', 'property'], ['zoos', 'zoo'], ['classes', 'class'], ['questions', 'question']])
+    for (const x of raw[list] || []) errs.push(...unknownFields(x, entity, `${entity} ${x.id} (data/${list}.yaml)`));
+  for (const [k, x] of Object.entries(abstracts)) errs.push(...unknownFields(x, 'abstract', `abstracts.yaml ${k}`));
+  const rej = path.join(dataDir, 'sweep-rejected.yaml');
+  if (fs.existsSync(rej)) (readYaml(rej) || []).forEach((x, i) => errs.push(...unknownFields(x, 'sweepRejected', `sweep-rejected.yaml #${i}`)));
+  if (errs.length) { errs.forEach((e) => console.error('✗ ' + e)); process.exit(1); }
+}
 
 // ---- entry dates (for "recently added" on the front page) -------------------
 // From git blame: a reference dates from its key line, a statement from its
@@ -111,8 +128,9 @@ const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml
   // applied left to right; parentheses group: cn.star.(lpo.jump) = C_N ⋆ LPO'.
   // e.g. lpo.jump = LPO', llpo.par = LLPO-hat, tcn.star.tcn = TC_N ⋆ TC_N.
   // They are created on the fly when results, questions or zoos mention them.
-  const OPS = { jump: 1, par: 1, fin: 1, diamond: 1, x: 2, star: 2 };
-  const OPNAME = { jump: 'jump', par: 'par', fin: 'fin', diamond: 'diamond', x: 'product', star: 'compose' };
+  // dotted name → arity / operation (scripts/lib/schema.mjs)
+  const OPS = Object.fromEntries(Object.values(OPERATIONS).map((o) => [o.dotted, o.arity]));
+  const OPNAME = Object.fromEntries(Object.entries(OPERATIONS).map(([op, o]) => [o.dotted, op]));
   const ensure = (id, op, args) => {
     if (!byId.has(id)) { const s = { id, op, args, kind: 'problem', tags: [], _file: 'auto' }; raw.statements.push(s); byId.set(id, s); }
     return id;
@@ -217,7 +235,7 @@ const tids = uniq(raw.tags, 'tag');
 // operator statements of the Weihrauch algebra
 {
   const byId = new Map(raw.statements.map((x) => [x.id, x]));
-  const arity = { jump: 1, par: 1, fin: 1, diamond: 1, product: 2, compose: 2 };
+  const arity = Object.fromEntries(Object.entries(OPERATIONS).map(([op, o]) => [op, o.arity]));
   for (const s of raw.statements.filter((x) => x.op)) {
     if (!arity[s.op]) { errors.push(`Statement ${s.id}: unknown operation ${s.op}`); continue; }
     if ((s.args || []).length !== arity[s.op]) errors.push(`Statement ${s.id}: ${s.op} takes ${arity[s.op]} argument(s)`);
@@ -335,7 +353,7 @@ raw.results.forEach((res, i) => {
   // the same fact must be recorded once, with all its references
   const seen = new Map();
   raw.results.forEach((r, i) => {
-    const k = [r.type, r.from ?? r.statement, r.to ?? r.property ?? r.base, [].concat(r.over ?? r.class ?? '').join(','), r.value ?? ''].join('|');
+    const k = resultKey(r);
     if (seen.has(k)) errors.push(`Result #${i} (${r._file}) duplicates result #${seen.get(k)}: merge their references instead`);
     else seen.set(k, i);
   });

@@ -28,11 +28,15 @@ import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
+import { cli } from './lib/cli.mjs';
+cli('npm run consolidate [-- --since YYYY-MM-DD] [--skip sweep,pubstatus,texts,mine,statements,questions]', { '--since': 1, '--skip': 1 });
 acquireLock('consolidate.mjs');
 
 const args = process.argv.slice(2);
 const arg = (k, d) => (args.includes(k) ? args[args.indexOf(k) + 1] : d);
 const skip = new Set(arg('--skip', '').split(',').filter(Boolean));
+const STEPS = ['sweep', 'pubstatus', 'texts', 'mine', 'statements', 'questions'];
+for (const k of skip) if (!STEPS.includes(k)) { console.error(`unknown step "${k}" in --skip (steps: ${STEPS.join(', ')})`); process.exit(1); }
 const STATE = 'cache/consolidation-state.json';
 const state = fs.existsSync(STATE) ? JSON.parse(fs.readFileSync(STATE, 'utf8')) : {};
 const today = new Date().toISOString().slice(0, 10);
@@ -96,6 +100,7 @@ if (!skip.has('texts')) {
 // 4. mining
 if (!skip.has('mine')) {
   say('## 4. Candidate results and questions');
+  say('_Leads already examined are listed in data/screened.yaml and not shown; add the key (`refkey|Theorem 2.6`, `refkey|Question 9.1`) of each lead you examine._', '');
   run('node', ['scripts/build.mjs']);
   run('node', ['scripts/mine/facts.mjs', '--since', since, '--out', 'cache/mine-facts.json']);
   run('node', ['scripts/mine/questions.mjs', '--since', since, '--out', 'cache/mine-questions.json']);
@@ -123,10 +128,13 @@ if (!skip.has('statements')) {
   } else say('No definition is flagged "to check".');
   // acronyms common in the literature but unknown to the catalogue
   const known = new Set(zoo.statements.flatMap((s) => [s.label, ...(s.aliases || []), s.id].map((l) => String(l)
-    .replace(/\\(mathsf|mathrm|text|mathbf)\{([^}]*)\}/g, '$2').replace(/\\mathbb\{?N\}?/g, 'N').replace(/<\\?infty/g, '').replace(/[\\{}^_$\s-]/g, '').toUpperCase())));
+    .replace(/\\(mathsf|mathrm|text|mathbf)\{([^}]*)\}/g, '$2').replace(/\\mathbb\{?([A-Z])\}?/g, '$1').replace(/<\\?infty/g, '').replace(/[\\{}^_$\s-]/g, '').toUpperCase())));
   // notation and theory names that are not principles of the zoo
   const STOP = new Set(('PDF ARXIV LNCS THE AND FOR WITH THIS THAT ZFC ZF PA HA AMS MSC JSL APAL MLQ BSL CIE CCA DOI ISBN URL II III IV VI PRA HYP KP ID IΣ BΣ IFF '
     + 'RCA ACA ATR WKL WWKL CA CA0 AC AC0 NN IND QF TI TR TR0 BI DC LEM MP RFN FX CK TC EA EFA HA0 PA0 KB WO WF').split(' '));
+  // acronyms already examined and deliberately left out (data/acronyms-ignored.yaml)
+  const ignored = fs.existsSync('data/acronyms-ignored.yaml') ? YAML.parse(fs.readFileSync('data/acronyms-ignored.yaml', 'utf8')) || {} : {};
+  for (const a of Object.keys(ignored)) STOP.add(a.toUpperCase());
   const freq = new Map();
   for (const k of Object.keys(idx)) {
     if (!fs.existsSync(`cache/fulltext/${k}.txt`)) continue;
@@ -141,7 +149,7 @@ if (!skip.has('statements')) {
   }
   const top = [...freq.entries()].filter(([, s]) => s.size >= 3).sort((a, b) => b[1].size - a[1].size).slice(0, 40);
   if (top.length) {
-    say('', `**To consider** — principles used in at least three papers but not in the catalogue (by acronym; many are false positives):`);
+    say('', `**To consider** — principles used in at least three papers but not in the catalogue (by acronym; many are false positives). Add each one you decide not to add, with the reason, to data/acronyms-ignored.yaml:`);
     for (const [a, s] of top) say(`- ${a}: ${s.size} papers, e.g. ${[...s].slice(0, 3).join(', ')}`);
   }
   say();
@@ -160,6 +168,7 @@ if (!skip.has('questions')) {
   // leads: recent texts citing the asking paper next to question/answer words
   const idx = JSON.parse(fs.readFileSync('cache/fulltext/index.json', 'utf8'));
   const recent = Object.keys(idx).filter((k) => (idx[k].date || '') >= since && fs.existsSync(`cache/fulltext/${k}.txt`));
+  const screenedRes = new Set((fs.existsSync('data/screened.yaml') ? YAML.parse(fs.readFileSync('data/screened.yaml', 'utf8')) || {} : {}).resolutions || []);
   const leads = [];
   for (const q of raw.questions || []) {
     if (now[q.id] === 'resolved') continue;
@@ -169,6 +178,7 @@ if (!skip.has('questions')) {
       const num = String(a.loc || '').match(/\d+(?:\.\d+)*/)?.[0];
       for (const k of recent) {
         if (k === a.ref || (raw.references[k]?.year || 0) < (r.year || 0)) continue;
+        if (screenedRes.has(`${q.id}|${k}`)) continue;
         const t = fs.readFileSync(`cache/fulltext/${k}.txt`, 'utf8').replace(/\s+/g, ' ');
         const re = new RegExp(`${author}[^.]{0,120}(question|problem|conjecture)${num ? `[^.]{0,40}${num.replace(/\./g, '\\.')}` : ''}|(answer|solv|settl|refut|confirm)[a-z]*[^.]{0,80}(question|problem|conjecture)[^.]{0,80}${author}`, 'i');
         const m = t.match(re);
@@ -176,7 +186,7 @@ if (!skip.has('questions')) {
       }
     }
   }
-  if (leads.length) { say('', `**To read** — ${leads.length} passages of recent papers that may answer open questions:`); leads.slice(0, 100).forEach((l) => say(l)); }
+  if (leads.length) { say('', `**To read** — ${leads.length} passages of recent papers that may answer open questions (once examined, add \`question-id|refkey\` to data/screened.yaml):`); leads.slice(0, 100).forEach((l) => say(l)); }
   state.questions = now;
   say();
 }

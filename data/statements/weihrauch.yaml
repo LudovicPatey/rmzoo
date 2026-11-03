@@ -168,7 +168,7 @@
   name: Unique closed choice on Baire space
   kind: problem
   tags: [weihrauch]
-  aliases: [UC_Baire, unique choice]
+  aliases: [UC, UCNN, UC_Baire, unique choice]
   definition: Given a closed subset of $\mathbb{N}^{\mathbb{N}}$ with exactly one element, find that element.
   instance: A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$ with exactly one infinite path.
   solution: The infinite path of $T$.
@@ -246,7 +246,7 @@
     computable from $p$.
   instance: A sequence $p \in \mathbb{N}^\mathbb{N}$.
   solution: A sequence $q$ with $q \not\le_T p$.
-  refs: [ { ref: brattka2021, role: rm, loc: Section 1, (12) } ]
+  refs: [ { ref: brattka2021, role: rm, loc: "Section 1, (12)" } ]
 
 - id: llpo.jump
   op: jump
@@ -254,3 +254,68 @@
   tags: [ weihrauch ]
   aliases: [ BWT_2, BWT2, 'Bolzano-Weierstrass on {0,1}' ]
   refs: [ { ref: brattkagherardimarcone2012, role: rm, loc: Corollary 11.11 } ]
+
+- id: dis
+  label: '\mathsf{DIS}'
+  name: Discontinuity problem
+  kind: problem
+  tags: [ weihrauch, computability ]
+  aliases: [ DIS, discontinuity problem ]
+  definition: >
+    Given $p \in \mathbb{N}^\mathbb{N}$, find $q \in \mathbb{N}^\mathbb{N}$ different from
+    $U(p)$, where $U$ is a fixed universal computable function.
+  instance: A sequence $p \in \mathbb{N}^\mathbb{N}$.
+  solution: A sequence $q \neq U(p)$.
+  refs: [ { ref: brattka2021, role: rm, loc: "Section 1, (13)" } ]
+
+- id: sort
+  label: '\mathsf{SORT}'
+  name: Binary sorting problem
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ SORT, sorting ]
+  definition: >
+    Given $p \in 2^\mathbb{N}$, output $0^k1^\omega$ if $p$ contains exactly $k$ zeros,
+    and $0^\omega$ if $p$ contains infinitely many zeros.
+  instance: A sequence $p \in 2^\mathbb{N}$.
+  solution: The sorted sequence ($0^k1^\omega$ or $0^\omega$).
+  refs: [ { ref: neumannpauly2018, role: rm }, { ref: brattkagherardi2018, role: rm, loc: Proposition 5.8 (5) } ]
+
+- id: ec
+  label: '\mathsf{EC}'
+  name: Enumeration to characteristic function
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ EC ]
+  definition: >
+    Given an enumeration of a set $A \subseteq \mathbb{N}$, compute its characteristic
+    function.
+  instance: An enumeration $p$ of a set $A \subseteq \mathbb{N}$ ($A = \mathrm{range}(p-1)$).
+  solution: The characteristic function of $A$.
+  refs: [ { ref: brattka2021, role: rm, loc: "Section 1, (5)" }, { ref: brattkapauly2018, role: rm, loc: Section 6 } ]
+
+- id: pcr
+  label: '\mathsf{PC}_{\mathbb{R}}'
+  name: Probabilistic choice on the reals
+  kind: problem
+  tags: [ weihrauch, randomness ]
+  aliases: [ PCR, PC_R, probabilistic choice ]
+  definition: >
+    Given a closed set $A \subseteq \mathbb{R}$ of positive Lebesgue measure (by negative
+    information), find a point of $A$.
+  instance: A closed set $A \subseteq \mathbb{R}$ with $\mu(A) > 0$.
+  solution: An element of $A$.
+  refs: [ { ref: brattkagherardiholzl2015, role: rm, loc: Section 2 } ]
+
+- id: tcnn
+  label: '\mathsf{TC}_{\mathbb{N}^\mathbb{N}}'
+  name: Total continuation of choice on Baire space
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ TCNN, TC_Baire ]
+  definition: >
+    Given a closed set $A \subseteq \mathbb{N}^\mathbb{N}$ (by negative information), find a
+    point of $A$ if $A$ is nonempty, and any point otherwise.
+  instance: A closed set $A \subseteq \mathbb{N}^\mathbb{N}$.
+  solution: An element of $A$ if $A \neq \emptyset$, any point of $\mathbb{N}^\mathbb{N}$ otherwise.
+  refs: [ { ref: brattkagherardi2019, role: rm } ]

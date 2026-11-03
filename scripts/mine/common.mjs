@@ -1,9 +1,13 @@
 // Shared helpers for mining the cached full texts (scripts/mine/*.mjs).
 import fs from 'node:fs';
+import YAML from 'yaml';
 import { buildZoo } from '../../site/js/engine.js';
 export const raw = JSON.parse(fs.readFileSync('site/data/zoo.json', 'utf8'));
 export const z = buildZoo(raw);
 export const index = fs.existsSync('cache/fulltext/index.json') ? JSON.parse(fs.readFileSync('cache/fulltext/index.json', 'utf8')) : {};
+// leads already examined (data/screened.yaml): never proposed again
+const scr = fs.existsSync('data/screened.yaml') ? YAML.parse(fs.readFileSync('data/screened.yaml', 'utf8')) || {} : {};
+export const screened = { facts: new Set(scr.facts || []), questions: new Set(scr.questions || []), resolutions: new Set(scr.resolutions || []) };
 // which papers to mine: --only k1,k2 | --since YYYY-MM-DD (date the text was cached) | all
 export function selectPapers(args) {
   const only = args.includes('--only') ? new Set(args[args.indexOf('--only') + 1].split(',')) : null;
@@ -76,7 +80,9 @@ export function relation(t) {
   const neg = /(does not imply|not imply|doesn't imply|not provable|do not imply|0 |6⊢|⊬|6≤|≰|not .{0,15}reducib|does not prove|strictly weaker|is not a model|not a model of|incomparable|\|W|\|c)/i.test(t);
   let over = 'rca0';
   if (/ω-model|omega-model|Turing ideal|ω-models/i.test(t)) over = 'omega';
-  if (/≤ ?sW|<sW|≡sW|strongly Weihrauch/.test(t)) over = 'sw';
+  // one branch per reduction of data/reductions.yaml (finest notation first)
+  if (/≤ ?gW|<gW|≡gW|generali[sz]ed Weihrauch/.test(t)) over = 'gw';
+  else if (/≤ ?sW|<sW|≡sW|strongly Weihrauch/.test(t)) over = 'sw';
   else if (/≤ ?W|<W|≡W|Weihrauch/.test(t)) over = 'w';
   else if (/≤ ?sc|strongly computabl/.test(t)) over = 'sc';
   else if (/≤ ?c\b|<c\b|≡c|computably reducib/.test(t)) over = 'c';

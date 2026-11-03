@@ -4,7 +4,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { raw, z, selectPapers, dict, tokRe, normalize } from './common.mjs';
+import { cli } from '../lib/cli.mjs';
+import { raw, z, selectPapers, dict, tokRe, normalize, screened } from './common.mjs';
 
 const recorded = new Set((raw.questions || []).flatMap((q) => q.asked.flatMap((a) =>
   String(a.loc || '').match(/\d+(?:\.\d+)*/g)?.map((n) => `${a.ref}|${n}`) || [])));
@@ -21,6 +22,7 @@ export function mineQuestions(keys) {
       if (seen.has(where) || body.length < 20 || /^(asks|is|was|has|of|in|and|above|below|remains|from|,)/.test(body)) continue;
       seen.add(where);
       if (recorded.has(`${key}|${m[2]}`)) continue;
+      if (screened.questions.has(`${key}|${where}`)) continue;
       const ids = [...new Set([...body.matchAll(tokRe)].map((x) => dict.get(x[1])))].filter((x) => x && x !== 'rca0' && x !== 'rca0star');
       out.push({ ref: key, year: raw.references[key]?.year, where, statements: ids, body });
     }
@@ -29,6 +31,7 @@ export function mineQuestions(keys) {
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
+  cli('node scripts/mine/questions.mjs [--only k1,k2 | --since YYYY-MM-DD] [--out file.json]', { '--only': 1, '--since': 1, '--out': 1 });
   const args = process.argv.slice(2);
   const res = mineQuestions(selectPapers(args));
   if (args.includes('--out')) fs.writeFileSync(args[args.indexOf('--out') + 1], JSON.stringify(res, null, 1));

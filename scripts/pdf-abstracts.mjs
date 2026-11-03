@@ -21,6 +21,8 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
+import { cli } from './lib/cli.mjs';
+cli('node scripts/pdf-abstracts.mjs [--only k1,k2] [--all] [--dry]', { '--only': 1, '--all': 0, '--dry': 0 });
 acquireLock('pdf-abstracts.mjs');
 
 const args = process.argv.slice(2);

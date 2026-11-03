@@ -627,7 +627,7 @@
   question: How do the tree theorem $\mathsf{TT}^2_2$ and the Erdős–Rado theorem for the rationals $\mathsf{ER}^2_2$ compare? Does $\mathsf{ER}^2_2$ imply $\mathsf{ACA}_0$? Does $\mathsf{RT}^2_2$ imply $\mathsf{ER}^2_2$?
   asked:
     - {ref: dzhafarovpatey2017, loc: Questions 6.1 and 6.2}
-    - {ref: frittaionpatey2017, loc: Questions 5.2, 5.3 and 5.4}
+    - {ref: frittaionpatey2017, loc: "Questions 5.2, 5.3 and 5.4"}
     - {ref: patey2016c, loc: Questions 14.1–14.3}
   statements: [tt22, er22, aca, rt22]
   formal:
@@ -1270,7 +1270,7 @@
 - id: tt1-bsig2-conservation
   question: Is $\mathsf{TT}^1$ $\Pi^1_1$-conservative over $\mathsf{RCA}_0 + \mathsf{B}\Sigma^0_2$? Is $\mathsf{RCA}_0 + \mathsf{TT}^1$ a $\Pi^0_3$-conservative extension of $\mathsf{I}\Sigma^0_1$?
   asked:
-    - {ref: chongetal2020, loc: §5, problem 1}
+    - {ref: chongetal2020, loc: "§5, problem 1"}
   statements: [tt1, bsig2]
   status: resolved
   answer: Yes, TT¹ is Π¹₁-conservative over RCA₀ + BΣ⁰₂ (hence Π⁰₃-conservative over IΣ⁰₁, like BΣ⁰₂ itself).
@@ -1284,7 +1284,7 @@
 - id: rt22-tt1
   question: Does $\mathsf{RT}^2_2$ imply the tree theorem for singletons $\mathsf{TT}^1$ over $\mathsf{RCA}_0$?
   asked:
-    - {ref: chongetal2020, loc: §5, problem 3}
+    - {ref: chongetal2020, loc: "§5, problem 3"}
   statements: [rt22, tt1]
   formal:
     - {from: rt22, to: tt1, over: rca0}
@@ -1296,7 +1296,7 @@
 - id: tt22-isig2
   question: Does the tree theorem for pairs $\mathsf{TT}^2_2$ imply $\mathsf{I}\Sigma^0_2$?
   asked:
-    - {ref: chongetal2020, loc: §5, problem 4}
+    - {ref: chongetal2020, loc: "§5, problem 4"}
   statements: [tt22, isig2]
   formal:
     - {from: tt22, to: isig2, over: rca0}

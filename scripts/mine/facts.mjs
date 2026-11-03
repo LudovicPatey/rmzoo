@@ -5,7 +5,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { raw, z, selectPapers, dict, tokRe, normalize, relation } from './common.mjs';
+import { cli } from '../lib/cli.mjs';
+import { raw, z, selectPapers, dict, tokRe, normalize, relation, screened } from './common.mjs';
 
 export function mineFacts(keys) {
   const out = [];
@@ -14,6 +15,7 @@ export function mineFacts(keys) {
     const re = /\n\s*(Theorem|Proposition|Corollary|Lemma|Claim|Fact)\s+(\d+(?:\.\d+)*)\.?\s*(\([^)]{0,90}\))?\.?([\s\S]{0,700}?)(?=\n\s*(?:Proof|Theorem|Proposition|Corollary|Lemma|Definition|Example|Remark|Question|Claim)\b|$)/g;
     let m; const seen = new Set();
     while ((m = re.exec(text))) {
+      if (screened.facts.has(`${key}|${m[1]} ${m[2]}`)) continue;
       const body = normalize(m[4]).slice(0, 500);
       if (body.length < 15) continue;
       const ids = [...new Set([...body.matchAll(tokRe)].map((x) => dict.get(x[1])))].filter((x) => x && x !== 'rca0' && x !== 'rca0star');
@@ -31,6 +33,7 @@ export function mineFacts(keys) {
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
+  cli('node scripts/mine/facts.mjs [--only k1,k2 | --since YYYY-MM-DD] [--out file.json]', { '--only': 1, '--since': 1, '--out': 1 });
   const args = process.argv.slice(2);
   const res = mineFacts(selectPapers(args));
   if (args.includes('--out')) fs.writeFileSync(args[args.indexOf('--out') + 1], JSON.stringify(res, null, 1));

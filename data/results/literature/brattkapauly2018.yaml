@@ -1,0 +1,3 @@
+# Results from [brattkapauly2018].
+
+[ { type: equivalence, from: ec, to: lim, over: w, refs: [ { ref: brattkapauly2018, loc: "Section 6, before Proposition 6.2" } ] } ]

@@ -1,0 +1,287 @@
+# Papers proposed by scripts/sweep.mjs and judged out of scope; never proposed again.
+# Matched by DOI, else by title. Keep the reason, so that a decision can be revisited.
+- title: "Special issue: Computability and complexity in analysis -- in honor of Klaus Weihrauch's 65th birthday. Selected papers presented at the 5th international conference, CCA 2008, Hagen, Germany, August 21--24, 2008"
+  reason: collection (special issue), not a paper
+- title: Computable reducibility for computable linear orders of type $\omega $
+  doi: 10.1007/s10958-022-06148-5
+  reason: computable reducibility of structures/metrics (equivalence-relation sense), not the zoo notion
+- title: On the maximality of degrees of metrics under computable reducibility
+  reason: computable reducibility of structures/metrics (equivalence-relation sense), not the zoo notion
+- title: Computable reducibility of metrics on the reals
+  doi: 10.1007/s10469-022-09676-w
+  reason: computable reducibility of structures/metrics (equivalence-relation sense), not the zoo notion
+- title: From mathesis universalis to provability, computability, and constructivity
+  doi: 10.1007/978-3-030-20447-1_12
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: The incompleteness phenomena
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Conservative theories of classical truth
+  doi: 10.1023/A:1005148426909
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Continuity properties of preference relations
+  doi: 10.1002/malq.200710059
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Expressive power of digraph solvability
+  doi: 10.1016/j.apal.2011.08.004
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: A note on multiple inductive definitions
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: A problem in Pythagorean arithmetic
+  doi: 10.1215/00294527-2017-0028
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: A categorical construction of Bachmann-Howard fixed points
+  doi: 10.1112/blms.12285
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Ackermann and Goodstein go functorial
+  doi: 10.2140/pjm.2021.313.251
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Completeness theorems for first-order logic analysed in constructive type theory. Extended version
+  doi: 10.1093/logcom/exaa073
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: How can a line segment with extension be composed of extensionless points? From Aristotle to Borel, and beyond
+  doi: 10.1007/s11229-022-03538-9
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Connecting decidability and complexity for MSO logic
+  doi: 10.1007/978-3-319-62809-7_4
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Bar induction and restricted classical logic
+  doi: 10.1007/978-3-662-59533-6_15
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: "The strength of extensionality. II: Weak weak set theories without infinity"
+  doi: 10.1016/j.apal.2010.11.001
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Characterising Brouwer's continuity by bar recursion on moduli of continuity
+  doi: 10.1007/s00153-020-00740-9
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: A note on fixed points in Łukasiewicz logic
+  doi: 10.1007/s11787-025-00395-1
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: On existence in arithmetic
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Proof theory. 2nd ed
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Gödel's functional (``Dialectica'') interpretation
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Ultimate truth vis-à-vis stable truth
+  doi: 10.1017/S1755020308080118
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Bounded functional interpretation
+  doi: 10.1016/j.apal.2004.11.001
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Maximal nonfinitely generated subalgebras
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Epsilon substitution for first- and second-order predicate logic
+  doi: 10.1016/j.apal.2012.05.004
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: New developments in proofs and computations
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Ordinal analysis of non-monotone \(\Pi_1^0\)-definable inductive definitions
+  doi: 10.1016/j.apal.2008.06.014
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Bounded modified realizability
+  doi: 10.2178/jsl/1140641178
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: An ordinal analysis for theories of self-referential truth
+  doi: 10.1007/s00153-009-0170-2
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: The art of ordinal analysis
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Theories and ordinals in proof theory
+  doi: 10.1007/s11229-004-6297-0
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Extending constructive operational set theory by impredicative principles
+  doi: 10.1002/malq.201010009
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: A model-theoretic approach to ordinal analysis
+  doi: 10.2307/421195
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Explicit mathematics with the monotone fixed point principle
+  doi: 10.2307/2586846
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: The constructive Hilbert program and the limits of Martin-Löf type theory
+  doi: 10.1007/978-1-4020-8926-8_17
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Librationist closures of the paradoxes
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: On mathematical intrumentalism
+  doi: 10.2178/jsl/1122038914
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Theories of proof-theoretic strength \(\psi(\Gamma_{\Omega+1})\)
+  doi: 10.1515/9781501502620-007
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Full and hat inductive definitions are equivalent in NBG
+  doi: 10.1007/s00153-014-0403-x
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: On formalization of model-theoretic proofs of Gödel's theorems
+  doi: 10.1305/ndjfl/1040511346
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Predicativity through transfinite reflection
+  doi: 10.1017/jsl.2017.30
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: MacNeille completion and Buchholz' Omega rule for parameter-free second order logics
+  doi: 10.4230/LIPIcs.CSL.2018.37
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Minimal truth and interpretability
+  doi: 10.1017/S1755020309990232
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: A flexible type system for the small Veblen ordinal
+  doi: 10.1007/s00153-019-00658-x
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Equivalences for truth predicates
+  doi: 10.1017/S1755020316000435
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Some new progress in proof theory
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: A proof-theoretical analysis of ptykes
+  doi: 10.1007/BF01275470
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Thinning operators and \(\Pi_4\)-reflection
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Standard structures for systems of explicit mathematics (a proof-theoretic study)
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Intersection points of planar curves can be computed
+  doi: 10.3233/COM-210311
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: A hierarchy of unary primitive recursive string-functions
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Computable calculus. With 1 CD-ROM (Windows 95, 98, 2000, Windows NT)
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: The more Gödels, the better
+  doi: 10.1007/978-3-032-31348-5_36
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Computing links and accessing arcs
+  doi: 10.1002/malq.201200026
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: A generalized Grzegorczyk hierarchy and low complexity classes
+  doi: 10.1016/0890-5401(87)90044-7
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Foundations of computer science. Potential -- theory -- cognition
+  doi: 10.1007/BFb0052071
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Computing conformal maps of finitely connected domains onto canonical slit domains
+  doi: 10.1007/s00224-010-9305-4
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Computability and complexity in analysis. 4th international workshop, CCA 2000. Swansea, GB, September 17--19, 2000. Selected papers
+  doi: 10.1007/3-540-45335-0
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Experiments on an internal approach to typed algorithms in analysis
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Formal balls of \(\mathsf{Q}\)-categories
+  doi: 10.52547/cgasa.2022.102914
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: "Hierarchies of primitive recursive wordsequence functions: Comparisons and decision problems"
+  doi: 10.1016/0304-3975(84)90018-5
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Computability of sets in Euclidean space
+  doi: 10.2478/puma-2022-0025
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Computational complexity theory for advanced function spaces in analysis
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Eine allgemeine Theorie der Stetigkeit und Berechenbarkeit für natürliche Halbordnungen
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Combining the bisection method and Newton's method to compute eigenvalues of a real symmetric tridiagonal matrix.
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Logical foundations of proof complexity
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Mind change complexity of inferring unbounded unions of restricted pattern languages from positive data
+  doi: 10.1016/j.tcs.2009.11.004
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Philosophy of mathematics in the twentieth century
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: A zoo of continuity properties in constructive type theory
+  doi: 10.4230/LIPIcs.FSCD.2025.9
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Finite methods in mathematical practice
+  doi: 10.1515/9781614518471.351
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: On the logical strength of confluence and normalisation for cyclic proofs
+  doi: 10.4230/LIPIcs.FSCD.2021.29
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Continuum and objectivity. The objective bimodality of the continuum and transcendental Platonism
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: I fondamenti della matematica dopo Gödel
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: "Mathematical logic: What has it done for the philosophy of mathematics?"
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Finite sets and infinite sets in weak intuitionistic arithmetic
+  doi: 10.1007/s00153-019-00704-8
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Church's thesis and related axioms in Coq's type theory
+  doi: 10.4230/LIPIcs.CSL.2021.21
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Proof theory in philosophy of mathematics
+  doi: 10.1111/j.1747-9991.2010.00282.x
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Numbers and the world. Essays on math and beyond
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Hilbert's programs and beyond
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Classifying material implications over minimal logic
+  doi: 10.1007/s00153-020-00722-x
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Recursive functions and metamathematics. Problems of completeness and decidability, Gödel's theorems
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: One hundred years of intuitionism (1907--2007). The Cerisy conference, Cerisy, France, June 5--12, 2007
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Automorphism groups of arithmetically saturated models
+  doi: 10.2178/jsl/1140641169
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: The logic of number
+  doi: 10.1093/oso/9780192846679.001.0001
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Systems of iterated projective ordinal notations and combinatorial statements about binary labeled trees
+  doi: 10.1007/BF01630809
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: The Kleene-Post and Post's theorem in the calculus of inductive constructions
+  doi: 10.4230/LIPIcs.CSL.2024.29
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Normal functions and maximal order types
+  doi: 10.1093/logcom/exad002
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: The strength of nonstandard analysis. Based on the meeting on nonstandard mathematics, Aveiro, Portugal, July 2004. With a Foreword by Wilhelmus A. J. Luxemburg.
+  doi: 10.1007/978-3-211-49905-4
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: An introduction to \(\gamma\)-recursion theory (or what to do in KP- foundation)
+  doi: 10.2307/2274962
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: A modified sentence unprovable in \(\text{PA}\)
+  doi: 10.2307/2275697
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: From sets and types to topology and analysis. Towards practicable foundations for constructive mathematics. Based on the workshop, Venice, Italy, May 12--16, 2003
+  doi: 10.1093/acprof:oso/9780198566519.001.0001
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: From foundations to philosophy of mathematics. An historical account of their development in the XX century and beyond.
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: "Foundations of the formal sciences. II: Applications of mathematical logic in philosophy and linguistics. Papers of a conference, Bonn, Germany, November 10--13, 2000"
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Ordinal notations based on a weakly Mahlo cardinal
+  doi: 10.1007/BF01651328
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Constructing the space of valuations of a quasi-Polish space as a space of ideals
+  doi: 10.4230/LIPIcs.CSL.2022.9
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: A termination proof for epsilon substitution using partial derivations
+  doi: 10.1016/S0304-3975(02)00451-6
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: An accessibility proof of ordinal diagrams in intuitionistic theories for iterated inductive definitions
+  doi: 10.21099/tkbjm/1496160038
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Beweistheorie. (Proof theory)
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: "Realization of constructive set theory into explicit mathematics: A lower bound for impredicative Mahlo universe"
+  doi: 10.1016/S0168-0072(02)00065-9
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: First steps into metapredicativity in explicit mathematics
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Models of true arithmetic are integer parts of models of real exponentation
+  doi: 10.4115/jla.2021.13.3
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Phase transitions in axiomatic thought
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: On universal positive graphs
+  doi: 10.1134/S003744662301010X
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: Axiomatic Foundations of Fractal Analysis and Fractal Number Theory
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)
+- title: On a strengthening of Kotlarski's theorem
+  reason: not about reverse mathematics or Weihrauch reducibility (proof theory, philosophy, type theory or computable analysis)

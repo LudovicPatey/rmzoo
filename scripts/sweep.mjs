@@ -12,11 +12,15 @@
 // reducibility (not of equivalence relations) or subsystems of second-order
 // arithmetic. Duplicates of existing references (same DOI, arXiv id, title up to
 // notation, or same authors/year with ≥80% of the title words) are dropped.
-// With --add, papers whose *title* is clearly on topic are added to
-// data/references/sweep-<year>.yaml; the others are only listed for review.
+// With --add, papers whose *title* is clearly on topic (and whose authors are
+// known) are added to data/references/sweep-<year>.yaml; the others are only
+// listed for review. Papers judged out of scope are recorded in
+// data/sweep-rejected.yaml and never proposed again.
 import fs from 'node:fs';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
+import { cli } from './lib/cli.mjs';
+cli('node scripts/sweep.mjs [--since YYYY-MM-DD] [--add] [--out candidates.json]', { '--since': 1, '--add': 0, '--out': 1 });
 acquireLock('sweep.mjs');
 
 const args = process.argv.slice(2);
@@ -84,11 +88,18 @@ const dup = (x) => have.some((h) => (x.doi && h.doi === x.doi.toLowerCase()) || 
   (Math.abs((h.y || 0) - (x.year || 0)) <= 2 && (x.authors || []).some((a) => h.a.has(last(a))) && (() => { const W = words(x.title); let i = 0; for (const w of W) if (h.w.has(w)) i++; return i / Math.max(1, W.size, h.w.size) >= 0.8; })()));
 const RM = [/reverse mathematic/i, /weihrauch/i, /\bRCA[_\\({$ ]*0|\bRCA0/, /\bWKL[_\\({$ ]*0|WKL0|weak k(ö|o|\\"o)nig/i, /\bACA[_\\({$ ]*0|ACA0|arithmetical comprehension/i,
   /\bATR[_\\({$ ]*0|ATR0|arithmetical transfinite recursion/i, /Pi\^?.?1.?_?.?1.?-?CA|Π.?1.?1.?-?CA/, /computabl[ey] reduc/i, /subsystems? of (second|2nd)[- ]order arithmetic/i];
-const OFF = /equivalence relation|ceers?\b|preorder|book review|abstracts from the|proceedings/i;
+// not the zoo's subject: other notions of computable reducibility, collections and reviews
+const OFF = /equivalence relation|ceers?\b|preorder|computable (linear orders|metrics|structures)|degrees of metrics|book review|abstracts from the|proceedings|special issue|selected papers|in hono(u)?r of|festschrift/i;
+// earlier decisions (data/sweep-rejected.yaml): never proposed again
+const rejected = fs.existsSync('data/sweep-rejected.yaml') ? YAML.parse(fs.readFileSync('data/sweep-rejected.yaml', 'utf8')) || [] : [];
+const rejDoi = new Set(rejected.map((x) => x.doi?.toLowerCase()).filter(Boolean)), rejTitle = new Set(rejected.map((x) => norm(x.title)));
+const isRejected = (x) => (x.doi && rejDoi.has(x.doi.toLowerCase())) || rejTitle.has(norm(x.title));
 const byKey = new Map();
 for (const x of found) { if (!x.title) continue; const k = norm(x.title); byKey.set(k, { ...byKey.get(k), ...Object.fromEntries(Object.entries(x).filter(([, v]) => v)) }); }
-const relevant = [...byKey.values()].filter((x) => RM.some((re) => re.test(`${x.title} ${x.text || ''}`)) && !OFF.test(`${x.title} ${x.text || ''}`) && !dup(x));
-const strong = (x) => /reverse mathematic|weihrauch|second[- ]order arithmetic|\bRCA|\bWKL|\bACA|\bATR|Π.?1.?1.?-?CA|computabl[ey] reduc/i.test(x.title);
+const relevant = [...byKey.values()].filter((x) => RM.some((re) => re.test(`${x.title} ${x.text || ''}`)) && !OFF.test(`${x.title} ${x.text || ''}`) && !dup(x) && !isRejected(x));
+// added automatically only when the title is unambiguous and the authors are known;
+// "computable reducibility" alone is ambiguous (also used for equivalence relations)
+const strong = (x) => (x.authors || []).length > 0 && /reverse mathematic|weihrauch|second[- ]order arithmetic|\bRCA|\bWKL|\bACA|\bATR|Π.?1.?1.?-?CA/i.test(x.title);
 const sure = relevant.filter(strong), review = relevant.filter((x) => !strong(x));
 
 if (args.includes('--add') && sure.length) {

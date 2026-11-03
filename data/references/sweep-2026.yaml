@@ -3609,3 +3609,24 @@ sanders2027:
   year: 2027
   doi: 10.1007/978-3-032-31348-5_33
   source: zbmath
+rathjenthomson2020:
+  authors:
+    - Michael Rathjen
+    - Ian Alexander Thomson
+  title: Well-ordering principles, $\omega$-models and $\Pi^1_1$-comprehension
+  venue: "Kahle, Reinhard (ed.) et al., The legacy of Kurt Schütte. Cham: Springer. 171-215 (2020)."
+  year: 2020
+  source: zbmath
+  doi: 10.1007/978-3-030-49424-7_12
+carluccietal2020:
+  authors:
+    - Lorenzo Carlucci
+    - Leszek Aleksander Kołodziejczyk
+    - Francesco Lepore
+    - Konrad Zdanowski
+  title: New bounds on the strength of some restrictions of Hindman's theorem
+  venue: Computability 9(2), 139-153
+  year: 2020
+  source: zbmath
+  doi: 10.3233/COM-190264
+  arxiv: "1701.06095"

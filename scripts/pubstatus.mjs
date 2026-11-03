@@ -13,6 +13,8 @@
 import fs from 'node:fs';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
+import { cli } from './lib/cli.mjs';
+cli('node scripts/pubstatus.mjs [--apply] [--only k1,k2]', { '--apply': 0, '--only': 1 });
 acquireLock('pubstatus.mjs');
 
 const args = process.argv.slice(2);

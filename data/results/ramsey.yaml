@@ -51,7 +51,7 @@
   note: SRT²₂ is not Weihrauch reducible to D²_{<∞}, hence not to D²₂.
 
 - { type: separation, from: srt22, to: rt22, over: omega, refs: [ { ref: moninpatey2021, loc: Theorem 1.4 } ] }
-- { type: separation, from: srt22, to: rt22, over: rca0, refs: [ { ref: chongslamanyang2014, loc: Corollary 2.5 } ], note: First separation, using non-standard models. }
+- { type: separation, from: srt22, to: rt22, over: rca0, refs: [ { ref: chongslamanyang2014, loc: Corollary 2.5 } ], note: "First separation, using non-standard models." }
 
 - { type: property, statement: d22, property: low-basis, value: false, refs: [ { ref: downeyetal2001 } ] }
 - { type: property, statement: coh, property: low-basis, value: false, refs: [ { ref: jockuschstephan1993 } ] }

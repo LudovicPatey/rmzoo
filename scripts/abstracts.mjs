@@ -10,6 +10,8 @@
 import fs from 'node:fs';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
+import { cli } from './lib/cli.mjs';
+cli('node scripts/abstracts.mjs [--refresh] [--only k1,k2]', { '--refresh': 0, '--only': 1 });
 acquireLock('abstracts.mjs');
 
 const args = process.argv.slice(2);
