@@ -12,8 +12,9 @@
 //                 cached texts checked against their titles.
 //  4. mine        candidate results and open questions in the texts cached since
 //                 the last run, for reading.
-//  4b. ai         only with --ai (costs API tokens): scripts/ai-analyze.mjs reads every
-//                 cached text not yet analyzed; reliable facts are added, the others
+//  4b. ai         only with --ai (costs API tokens): scripts/ai-analyze.mjs reads the
+//                 cached texts not yet analyzed, most important first (all of them, or
+//                 up to --ai-budget dollars); reliable facts are added, the others
 //                 queued in data/ai-review.yaml.
 //  5. statements  definitions still flagged "to check" (with the cached texts that
 //                 should settle them) and acronyms frequent in the literature but
@@ -33,7 +34,7 @@ import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
 import { cli } from './lib/cli.mjs';
-cli('npm run consolidate [-- --since YYYY-MM-DD] [--skip sweep,pubstatus,texts,mine,statements,questions] [--ai]', { '--since': 1, '--skip': 1, '--ai': 0 });
+const opts = cli('npm run consolidate [-- --since YYYY-MM-DD] [--skip sweep,pubstatus,texts,mine,statements,questions] [--ai [--ai-budget DOLLARS]]', { '--since': 1, '--skip': 1, '--ai': 0, '--ai-budget': 1 });
 acquireLock('consolidate.mjs');
 
 const args = process.argv.slice(2);
@@ -119,7 +120,7 @@ if (!skip.has('mine')) {
 // 4b. AI reading of the texts not yet analyzed (opt-in: it costs API tokens)
 if (args.includes('--ai')) {
   say('## 4b. AI reading of the full texts');
-  const out = run('node', ['scripts/ai-analyze.mjs']);
+  const out = run('node', ['scripts/ai-analyze.mjs', ...(opts.has('--ai-budget') ? ['--budget', opts.get('--ai-budget')] : [])]);
   const lines = out.split('\n').filter((l) => /facts →|failed|Authentication|Rate limited|Done\./.test(l));
   lines.forEach((l) => say(`- ${l}`));
   const review = fs.existsSync('data/ai-review.yaml') ? YAML.parse(fs.readFileSync('data/ai-review.yaml', 'utf8')) || [] : [];

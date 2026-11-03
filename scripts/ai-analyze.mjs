@@ -5,18 +5,27 @@
 // the regex miners of scripts/mine/, which only see results phrased in the usual
 // notation.
 //
-//   node scripts/ai-analyze.mjs [--only key1,key2] [--since YYYY-MM-DD] [--limit N]
+//   node scripts/ai-analyze.mjs [--only key1,key2] [--since YYYY-MM-DD] [--limit N] [--budget DOLLARS]
 //                               [--redo] [--replay] [--dry-run] [--concurrency N] [--effort level]
+//
+// Papers are read in decreasing order of importance (scripts/lib/paper-rank.mjs:
+// open leads, theorems about catalogue statements, papers defining them, minus
+// what the database already cites), so that a limited budget goes to the papers
+// most likely to bring new facts. Texts too short to be usable (failed
+// extraction, scanned PDF) are skipped.
 //
 //   --only      analyze these references only
 //   --since     only texts cached since this date (cache/fulltext/index.json)
 //   --limit     at most N papers in this run
+//   --budget    stop before the estimated cost of the run exceeds this many dollars
 //   --redo      analyze again papers already in data/ai-analyzed.yaml
 //   --replay    no new reading: process again the saved answers (cache/ai/<key>.json),
 //               e.g. after the catalogue or these rules changed; only facts never
 //               verified cost a (small) verification call
-//   --dry-run   no API call, no data change: list the papers, estimate the cost,
-//               and write the prompt of the first one to cache/ai/<key>.prompt.txt
+//   --dry-run   no API call, no data change: list the papers in order with their
+//               score and estimated cost, write the full ranking to
+//               reports/ai-priority.md and the prompt of the first paper to
+//               cache/ai/<key>.prompt.txt
 //   --concurrency  papers analyzed in parallel (default 2)
 //   --effort    effort of the extraction call (default high)
 //
@@ -50,10 +59,11 @@ import { acquireLock } from './lib/lock.mjs';
 import { addResults } from './lib/results.mjs';
 import { OPERATIONS } from './lib/schema.mjs';
 import { factChecker, locator } from './lib/ai-facts.mjs';
+import { rankPapers } from './lib/paper-rank.mjs';
 import { buildZoo } from '../site/js/engine.js';
 
-const USAGE = 'node scripts/ai-analyze.mjs [--only key1,key2] [--since YYYY-MM-DD] [--limit N] [--redo] [--replay] [--dry-run] [--concurrency N] [--effort low|medium|high|xhigh|max]';
-const args = cli(USAGE, { '--only': 1, '--since': 1, '--limit': 1, '--redo': 0, '--replay': 0, '--dry-run': 0, '--concurrency': 1, '--effort': 1 });
+const USAGE = 'node scripts/ai-analyze.mjs [--only key1,key2] [--since YYYY-MM-DD] [--limit N] [--budget DOLLARS] [--redo] [--replay] [--dry-run] [--concurrency N] [--effort low|medium|high|xhigh|max]';
+const args = cli(USAGE, { '--only': 1, '--since': 1, '--limit': 1, '--budget': 1, '--redo': 0, '--replay': 0, '--dry-run': 0, '--concurrency': 1, '--effort': 1 });
 const DRY = args.has('--dry-run');
 const REPLAY = args.has('--replay');
 const MODEL = 'claude-opus-5-5';
@@ -154,29 +164,74 @@ let papers = Object.keys(raw.references).sort()
   .filter((k) => !since || (index[k]?.date || '') >= since)
   .filter((k) => (REPLAY ? fs.existsSync(`${RAW_DIR}/${k}.json`) : args.has('--redo') || !ledger[k]));
 if (only) for (const k of only) if (!raw.references[k]) console.error(`unknown reference ${k}`);
-if (args.has('--limit')) papers = papers.slice(0, Number(args.get('--limit')));
+// usable texts only, most important first
+const MIN_CHARS = 3000;
+const unusable = papers.filter((k) => fs.statSync(`cache/fulltext/${k}.txt`).size < MIN_CHARS);
+if (unusable.length) console.warn(`! skipped, text too short to be usable (failed extraction or scanned PDF): ${unusable.join(', ')}`);
+const ranking = rankPapers(papers.filter((k) => !unusable.includes(k)));
+papers = ranking.map((x) => x.key);
 
 const userPrompt = (key, text) => {
   const r = raw.references[key];
   return `Paper [${key}]: ${(r.authors || []).join(', ')}, "${r.title}", ${r.year}.\n\n<paper>\n${text}\n</paper>\n\nExtract the facts of this paper as instructed.`;
 };
 const estTokens = (s) => Math.round(s.length / 3.3);
+// estimated cost of one paper: its text, the cached catalogue, ~15k output and
+// thinking tokens (the verification call is small)
+const catTokens = estTokens(INSTRUCTIONS + catalogue);
+const estCost = (x) => (estTokens({ length: x.chars }) * PRICE.input + catTokens * PRICE.cacheRead + 15000 * PRICE.output) / 1e6;
+{
+  let sum = 0;
+  for (const x of ranking) { x.cost = estCost(x); sum += x.cost; x.cumulative = sum; }
+}
+if (!REPLAY && args.has('--budget')) {
+  const budget = Number(args.get('--budget'));
+  papers = ranking.filter((x) => x.cumulative <= budget).map((x) => x.key);
+}
+if (args.has('--limit')) papers = papers.slice(0, Number(args.get('--limit')));
 
 if (DRY) {
-  const catTokens = estTokens(INSTRUCTIONS + catalogue);
-  let total = 0;
-  for (const k of papers) total += estTokens(fs.readFileSync(`cache/fulltext/${k}.txt`, 'utf8'));
-  const cost = (total * PRICE.input + papers.length * catTokens * PRICE.cacheRead + papers.length * 15000 * PRICE.output) / 1e6;
-  console.log(`${papers.length} papers to analyze (${total.toLocaleString()} text tokens, about ${catTokens.toLocaleString()} prompt tokens each, cached).`);
-  console.log(`Estimated cost: about $${cost.toFixed(0)} (assuming ~15k output and thinking tokens per paper; verification calls are small).`);
+  const total = ranking.filter((x) => papers.includes(x.key)).reduce((s, x) => s + x.cost, 0);
+  const all = ranking.at(-1)?.cumulative || 0;
+  console.log(`${papers.length} papers in this run, estimated $${total.toFixed(0)} (all ${ranking.length} papers to analyze: about $${all.toFixed(0)}; ~15k output and thinking tokens assumed per paper).`);
+  // the full ranking, to choose a budget
+  const yr = (k) => raw.references[k]?.year || '';
+  const row = (x, i) => `| ${i + 1} | ${x.key} | ${yr(x.key)} | ${x.score} | ${x.leads} | ${x.property} | ${x.theorems} | ${x.defines} | ${x.covered} | $${x.cost.toFixed(2)} | $${x.cumulative.toFixed(0)} |`;
+  fs.mkdirSync('reports', { recursive: true });
+  fs.writeFileSync('reports/ai-priority.md', `# Papers for the AI reader, most important first
+
+`
+    + `Generated by \`node scripts/ai-analyze.mjs --dry-run\` on ${new Date().toISOString().slice(0, 10)}: ${ranking.length} papers not yet analyzed.
+`
+    + `Score (scripts/lib/paper-rank.mjs) = (4·leads + 2·property + theorems + 3·defines + 2·log2(1 + breadth)) / (1 + covered/10).
+`
+    + `leads: theorems naming two catalogue statements whose relation is open; property: theorems naming a statement with a
+`
+    + `computability or reduction phrase; theorems: numbered statements naming a catalogue statement; defines: catalogue
+`
+    + `statements this paper introduced or analysed; covered: results already citing it. Run the first N with
+`
+    + `\`--limit N\`, or up to a budget with \`--budget DOLLARS\` (the last column).
+
+`
+    + (unusable.length ? `Skipped (text too short to be usable): ${unusable.join(', ')}.
+
+` : '')
+    + `| # | paper | year | score | leads | property | theorems | defines | covered | cost | cumulative |
+|---|---|---|---|---|---|---|---|---|---|---|
+`
+    + ranking.map(row).join('\n') + '\n');
+  console.log('Full ranking with costs: reports/ai-priority.md');
+  console.log('   #  paper                               year  score   cost   cumulative');
+  for (const [i, x] of ranking.slice(0, 30).entries())
+    console.log(`${String(i + 1).padStart(4)}  ${x.key.padEnd(36)}${String(yr(x.key)).padEnd(6)}${String(x.score).padStart(6)}  $${x.cost.toFixed(2).padStart(5)}  $${x.cumulative.toFixed(0).padStart(4)}${papers.includes(x.key) ? '' : '  (not in this run)'}`);
+  if (ranking.length > 30) console.log(`  … ${ranking.length - 30} more in reports/ai-priority.md`);
   if (papers.length) {
     const k = papers[0];
     const file = `${RAW_DIR}/${k}.prompt.txt`;
     fs.writeFileSync(file, `${INSTRUCTIONS}\n\n${catalogue}\n\n---- user ----\n${userPrompt(k, fs.readFileSync(`cache/fulltext/${k}.txt`, 'utf8'))}`);
     console.log(`Prompt of ${k} written to ${file}.`);
   }
-  for (const k of papers.slice(0, 50)) console.log(`  ${k}`);
-  if (papers.length > 50) console.log(`  … and ${papers.length - 50} more`);
   process.exit(0);
 }
 

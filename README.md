@@ -105,7 +105,8 @@ plus immediate special cases of stated theorems (MTT² is the case d = 1 of the
 product version PMTT²).
 
 ```bash
-node scripts/ai-analyze.mjs --dry-run              # papers not yet read, cost estimate
+node scripts/ai-analyze.mjs --dry-run              # ranking of the papers not yet read, costs (reports/ai-priority.md)
+node scripts/ai-analyze.mjs --budget 25            # the most important papers, up to about $25
 node scripts/ai-analyze.mjs --only dauriacetal2024  # one paper
 node scripts/ai-analyze.mjs                        # every paper not yet read
 node scripts/ai-review.mjs list                    # proposals awaiting a decision
@@ -113,8 +114,16 @@ node scripts/ai-review.mjs list                    # proposals awaiting a decisi
 
 It needs `ANTHROPIC_API_KEY` (or an `ant auth login` profile). A paper costs
 about $0.10–$2 depending on its length; the whole cache (≈ 700 texts, 20 M
-tokens) about $300 at once. Each paper is read only once (`data/ai-analyzed.yaml`);
-`--replay` re-applies the rules to the saved answers (`cache/ai/`) for free.
+tokens) about $300 at once. Papers are read **most important first**
+(`scripts/lib/paper-rank.mjs`): open leads of the miner, theorems naming catalogue
+statements with a computability or reduction phrase, papers that define catalogue
+statements, discounted by the results already citing them; texts too short to be
+usable (failed extraction) are skipped. `--budget` or `--limit` stops along this
+order; `--dry-run` writes the whole ranking with costs and cumulative costs to
+`reports/ai-priority.md` (for instance $25 covers the top 45 papers, about a third
+of the total score). Each paper is read only once (`data/ai-analyzed.yaml`), so
+later runs continue down the list; `--replay` re-applies the rules to the saved
+answers (`cache/ai/`) for free.
 
 The model proposes; code decides. A fact is published only if its statements,
 property and reduction are in the catalogue, the quoted passage is found verbatim
