@@ -11,7 +11,13 @@ let php = true;
 try { execFileSync('php', ['-v'], { stdio: 'ignore' }); } catch { php = false; }
 const skip = php ? false : 'php is not installed';
 const zoo = JSON.parse(fs.readFileSync('site/data/zoo.json', 'utf8'));
-const KEY = zoo.results[0]._key;
+// the server starts from the endorsements committed in data/endorsements.yaml (via
+// zoo.json): the tests endorse a result that test person has not endorsed and check
+// that the committed endorsements are kept
+const seeded = zoo.endorsements?.endorsements || [];
+const ME = '0000-0002-1825-0097';
+const KEY = zoo.results.map((r) => r._key).find((k) => !seeded.some((e) => e.result === k && e.orcid === ME));
+const mine = (list) => list.filter((e) => e.orcid === ME).map((e) => e.result);
 const TOKEN = 'test-admin-token-0123456789abcdef';
 const port = 18000 + Math.floor(Math.random() * 1000);
 const B = `http://127.0.0.1:${port}/api/index.php`;
@@ -57,13 +63,16 @@ test('endorsing needs a signed-in user and the session token', { skip }, async (
   assert.equal((await post(s, 'endorse', { result: KEY, endorse: true })).status, 403); // no CSRF token
   assert.equal((await post(s, 'endorse', { result: 'no|such|result', endorse: true }, st2.csrf)).status, 404);
   const r = await (await post(s, 'endorse', { result: KEY, endorse: true }, st2.csrf)).json();
-  assert.deepEqual(r.endorsements.map((e) => [e.result, e.orcid]), [[KEY, '0000-0002-1825-0097']]);
-  assert.equal(r.people['0000-0002-1825-0097'].name, 'Josiah Carberry');
+  assert.deepEqual(mine(r.endorsements), [KEY]);
+  assert.equal(r.endorsements.length, seeded.length + 1); // the committed ones are kept
+  assert.equal(r.people[ME].name, 'Josiah Carberry');
   // endorsing twice keeps one endorsement; withdrawing forgets the person
   await post(s, 'endorse', { result: KEY, endorse: true }, st2.csrf);
-  assert.equal((await (await s.req(`${B}?a=state`)).json()).endorsements.length, 1);
+  assert.equal((await (await s.req(`${B}?a=state`)).json()).endorsements.length, seeded.length + 1);
   const w = await (await post(s, 'endorse', { result: KEY, endorse: false }, st2.csrf)).json();
-  assert.deepEqual([w.endorsements.length, Object.keys(w.people).length], [0, 0]);
+  assert.deepEqual(mine(w.endorsements), []);
+  assert.equal(w.endorsements.length, seeded.length);
+  assert.ok(!w.people[ME]);
 });
 
 test('comments are stored with the object they are about, and exported with the admin token', { skip }, async () => {

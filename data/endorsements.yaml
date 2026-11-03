@@ -4,5 +4,8 @@
 # authoritative: do not edit by hand (the next sync overwrites this file).
 #   people:       ORCID iD → {name} (the name public on the ORCID record)
 #   endorsements: {result: resultKey (scripts/lib/schema.mjs), orcid, date}
-people: {}
-endorsements: []
+people:
+  0000-0002-0304-7926: { name: Ludovic Patey }
+endorsements:
+  - { result: "implication|rt22|pt22|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: "implication|tt22|rt22|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
