@@ -4,7 +4,7 @@ Researchers sign in on the live instance (rmzoo.ludovicpatey.com) with their
 ORCID iD. Once signed in they can:
 
 * **endorse** a result: “I have read the proof of this result and believe it is
-  correct”. A result endorsed by one person shows a bronze ✓, by several a gold
+  correct”. A result endorsed by one person shows a green ✓, by several a bronze
   ✓ with the count; clicking it lists the endorsers. Endorsements can be
   withdrawn at any time;
 * **report an error** or **comment** on a result, a statement or a paper. Each

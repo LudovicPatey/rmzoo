@@ -293,7 +293,7 @@ Everything not derivable is **open**. The viewer distinguishes "open" from
   statements and formulations of the same principle are left out.
 * **Endorsements** (live instance, `docs/ENDORSEMENTS.md`) — researchers signed in
   with ORCID endorse results (“I have read the proof of this result and believe
-  it is correct”): a bronze ✓ for one endorser, a gold ✓ with the count for
+  it is correct”): a green ✓ for one endorser, a bronze ✓ with the count for
   several, on every citation of the result; profiles `#/u/<ORCID iD>` list them.
   Endorsements refer to the result's identity (`resultKey`), are committed in
   `data/endorsements.yaml`, and are independent of the inference: an endorsed

@@ -1496,7 +1496,7 @@ function viewAbout(params) {
     <h2 id="endorsements">Endorsements</h2>
     <p>Researchers signed in with <a href="https://orcid.org" target="_blank" rel="noopener">ORCID</a> on the live instance can
       <b>endorse</b> a result, stating: “${ENDORSE_TEXT}” A result endorsed by one person carries a
-      <span class="endorse e-bronze static">✓</span> bronze check, by several a <span class="endorse e-gold static">✓<span>2</span></span> gold one;
+      <span class="endorse e-one static">✓</span> green check, by several a <span class="endorse e-several static">✓<span>2</span></span> bronze one with their number;
       click a check to see who endorsed it. Endorsers are listed on their profile page with their name and ORCID iD, and can withdraw an
       endorsement at any time. Signed-in readers can also report an error or comment on a result, a statement or a paper: messages go to the
       maintainer and are not published. Endorsements are periodically committed to the database
@@ -1511,7 +1511,7 @@ function viewAbout(params) {
 // ============================================================================
 // endorsements and comments (community.js, docs/ENDORSEMENTS.md)
 // ============================================================================
-// The mark of a result: bronze check when one person endorsed it, gold with the
+// The mark of a result: green check when one person endorsed it, bronze with the
 // count when several did; on the live instance an empty outline invites to
 // endorse or report. Clicking opens the result panel.
 function endorseMark(ri) {
@@ -1522,7 +1522,7 @@ function endorseMark(ri) {
   const title = ends.length
     ? `Endorsed by ${who}: read the proof and believe it is correct. Click for details.`
     : 'Not endorsed yet. Click to endorse, report an error or comment.';
-  const cls = ends.length >= 2 ? 'e-gold' : ends.length ? 'e-bronze' : 'e-none';
+  const cls = ends.length >= 2 ? 'e-several' : ends.length ? 'e-one' : 'e-none';
   return `<button class="endorse ${cls}" data-result="${ri}" title="${esc(title)}" aria-label="${esc(title)}">✓${ends.length >= 2 ? `<span>${ends.length}</span>` : ''}</button>`;
 }
 const personLink = (orcid) => `<a href="#/u/${orcid}">${esc(C.name(orcid))}</a>`;
