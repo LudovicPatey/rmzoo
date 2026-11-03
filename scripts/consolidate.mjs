@@ -15,7 +15,7 @@
 //  4b. ai         only with --ai (costs API tokens): scripts/ai-analyze.mjs reads the
 //                 cached texts not yet analyzed, most important first (all of them, or
 //                 up to --ai-budget dollars); reliable facts are added, the others
-//                 queued in data/ai-review.yaml.
+//                 queued for review (data/review.yaml).
 //  5. statements  definitions still flagged "to check" (with the cached texts that
 //                 should settle them) and acronyms frequent in the literature but
 //                 absent from the catalogue (candidate missing statements).
@@ -27,13 +27,16 @@
 // Automatic changes are limited to bibliographic data (new references,
 // publication status, abstracts, texts), and, with --ai, to the results that pass
 // every check of scripts/ai-analyze.mjs. Other results, questions and definitions
-// are only proposed: the report lists them with the passages to read, and they are
-// entered by hand (or by an AI assistant, marked as such) after reading.
+// are only proposed: the report lists them with the passages to read, they are
+// queued on the review page of the viewer (data/review.yaml, docs/REVIEW.md), and
+// they are entered by hand (or by an AI assistant, marked as such) after reading.
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
 import { cli } from './lib/cli.mjs';
+import { addToQueue } from './lib/review-queue.mjs';
+import crypto from 'node:crypto';
 const opts = cli('npm run consolidate [-- --since YYYY-MM-DD] [--skip sweep,pubstatus,texts,mine,statements,questions] [--ai [--ai-budget DOLLARS]]', { '--since': 1, '--skip': 1, '--ai': 0, '--ai-budget': 1 });
 acquireLock('consolidate.mjs');
 
@@ -58,6 +61,10 @@ const node = (script, a = []) => run('node', [script, ...a]);
 const loadRefs = () => Object.assign({}, ...fs.readdirSync('data/references').filter((f) => f.endsWith('.yaml')).map((f) => YAML.parse(fs.readFileSync('data/references/' + f, 'utf8'))));
 const short = (k, refs) => { const r = refs[k]; if (!r) return k; const a = (r.authors || []).map((x) => String(x).split(' ').pop()); return `${a.length > 3 ? a[0] + ' et al.' : a.join(', ')} ${r.year} (\`${k}\`)`; };
 const keysBefore = new Set(Object.keys(loadRefs()));
+// candidates for a reader also go to the review queue (data/review.yaml, the review
+// page of the viewer; docs/REVIEW.md); an item already queued or decided is not added again
+const queued = [];
+const qid = (kind, ...parts) => `${kind}-${crypto.createHash('sha256').update(parts.join('|')).digest('hex').slice(0, 8)}`;
 
 // 1. sweep
 if (!skip.has('sweep')) {
@@ -70,6 +77,9 @@ if (!skip.has('sweep')) {
   if (s.review.length) {
     say('', `**To read** — ${s.review.length} relevant but borderline papers (add them to a references file if they belong to the zoo):`);
     for (const x of s.review.slice(0, 80)) say(`- ${x.year} ${x.title} — ${(x.authors || []).join(', ')}${x.doi ? ` doi:${x.doi}` : ''}${x.arxiv ? ` arXiv:${x.arxiv}` : ''}`);
+    for (const x of s.review) queued.push({ id: qid('paper', x.doi || x.arxiv || x.title), kind: 'paper', status: 'pending', date: today,
+      paper: { title: x.title, authors: x.authors || [], year: x.year, ...(x.venue ? { venue: x.venue } : {}), ...(x.doi ? { doi: x.doi } : {}), ...(x.arxiv ? { arxiv: String(x.arxiv) } : {}) },
+      reasons: ['sweep: on topic by its abstract, not clearly by its title'] });
   }
   say();
 }
@@ -113,6 +123,10 @@ if (!skip.has('mine')) {
   const qs = JSON.parse(fs.readFileSync('cache/mine-questions.json', 'utf8'));
   say(`**To read** — ${facts.length} theorems in recently cached texts mention statements whose relation is open in the database:`);
   for (const c of facts.slice(0, 150)) say(`- ${short(c.ref, refsNow)}, ${c.where} [${c.over}; open: ${c.open.join(' ')}]: ${c.body.slice(0, 220).replace(/\n/g, ' ')}`);
+  for (const c of facts) queued.push({ id: qid('lead', c.ref, c.where), kind: 'lead', status: 'pending', date: today, ref: c.ref, loc: c.where,
+    over: c.over, open: c.open, text: c.body.slice(0, 1500), reasons: ['regex miner: the theorem names statements whose relation is open'] });
+  for (const c of qs) queued.push({ id: qid('question', c.ref, c.where), kind: 'question', status: 'pending', date: today, ref: c.ref, loc: c.where,
+    ...(c.statements.length ? { statements: c.statements } : {}), text: c.body.slice(0, 1500), reasons: ['regex miner: a numbered question not in data/questions.yaml'] });
   say('', `**To read** — ${qs.length} numbered questions or conjectures not yet in data/questions.yaml:`);
   for (const c of qs.slice(0, 150)) say(`- ${short(c.ref, refsNow)}, ${c.where}${c.statements.length ? ` [${c.statements.join(', ')}]` : ''}: ${c.body.slice(0, 220).replace(/\n/g, ' ')}`);
   say();
@@ -123,9 +137,9 @@ if (args.includes('--ai')) {
   const out = run('node', ['scripts/ai-analyze.mjs', ...(opts.has('--ai-budget') ? ['--budget', opts.get('--ai-budget')] : [])]);
   const lines = out.split('\n').filter((l) => /facts →|failed|Authentication|Rate limited|Done\./.test(l));
   lines.forEach((l) => say(`- ${l}`));
-  const review = fs.existsSync('data/ai-review.yaml') ? YAML.parse(fs.readFileSync('data/ai-review.yaml', 'utf8')) || [] : [];
-  const pending = review.filter((x) => x.status === 'pending').length;
-  say('', `**To decide** — ${pending} AI proposals pending in data/ai-review.yaml (\`node scripts/ai-review.mjs list\`).`, '');
+  const review = fs.existsSync('data/review.yaml') ? YAML.parse(fs.readFileSync('data/review.yaml', 'utf8')) || [] : [];
+  const pending = review.filter((x) => x.status === 'pending' && ['result', 'statement'].includes(x.kind)).length;
+  say('', `**To decide** — ${pending} AI proposals pending on the review page (data/review.yaml, \`node scripts/review.mjs list\`).`, '');
 }
 // 5. statements
 if (!skip.has('statements')) {
@@ -197,13 +211,23 @@ if (!skip.has('questions')) {
         const t = fs.readFileSync(`cache/fulltext/${k}.txt`, 'utf8').replace(/\s+/g, ' ');
         const re = new RegExp(`${author}[^.]{0,120}(question|problem|conjecture)${num ? `[^.]{0,40}${num.replace(/\./g, '\\.')}` : ''}|(answer|solv|settl|refut|confirm)[a-z]*[^.]{0,80}(question|problem|conjecture)[^.]{0,80}${author}`, 'i');
         const m = t.match(re);
-        if (m) leads.push(`- \`${q.id}\` (asked in ${short(a.ref, raw.references)}${a.loc ? ', ' + a.loc : ''}): ${short(k, raw.references)} — "…${t.slice(Math.max(0, m.index - 60), m.index + 200)}…"`);
+        if (m) {
+          leads.push(`- \`${q.id}\` (asked in ${short(a.ref, raw.references)}${a.loc ? ', ' + a.loc : ''}): ${short(k, raw.references)} — "…${t.slice(Math.max(0, m.index - 60), m.index + 200)}…"`);
+          queued.push({ id: qid('answer', q.id, k), kind: 'answer', status: 'pending', date: today, question: q.id, ref: k,
+            text: `…${t.slice(Math.max(0, m.index - 300), m.index + 500)}…`, reasons: [`the passage names ${author} next to a question word`] });
+        }
       }
     }
   }
   if (leads.length) { say('', `**To read** — ${leads.length} passages of recent papers that may answer open questions (once examined, add \`question-id|refkey\` to data/screened.yaml):`); leads.slice(0, 100).forEach((l) => say(l)); }
   state.questions = now;
   say();
+}
+// the review queue (needs the lock, taken above)
+if (queued.length) {
+  const n = addToQueue(queued);
+  say('## Review page', `${n} new item${n === 1 ? '' : 's'} added to the review queue (data/review.yaml; ${queued.length - n} were already there or decided).`,
+    'They are shown on the review page of the viewer after `npm run build` and the deployment; `node scripts/review.mjs list`.', '');
 }
 // 7. checks
 say('## 7. Checks');

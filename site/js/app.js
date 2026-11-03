@@ -10,6 +10,7 @@ import { layered, verticalSpline } from './layout.js';
 import { bibtex } from './bibtex.js';
 import { relatedIndex, relatedStatements } from './related.js';
 import { createCommunity } from './community.js';
+import { KINDS, STATUS_NAMES, reviewStatus, itemResult, resultKey } from './review.js';
 
 // ============================================================================
 // helpers
@@ -290,7 +291,8 @@ function resultCite(ri) {
   return `<div class="cite">${endorseMark(ri)}${refs}${res.folklore ? ' <span class="badge folk">folklore</span>' : ''}
     ${res.provenance === 'ai' ? ' <span class="badge ai" title="Not taken from the literature: derived by an AI assistant and to be checked">AI-derived</span>' : ''}
     ${j?.by === 'ai' && res.provenance !== 'ai' ? ' <span class="badge ai" title="The justification below was written by an AI assistant">argument by AI</span>' : ''}
-    ${res.status === 'needs-check' ? ' <span class="badge warn">needs check</span>' : ''}</div>
+    ${res.status === 'needs-check' ? ' <span class="badge warn">needs check</span>' : ''}
+    ${res._review ? ` <a class="badge yes" href="#/review/${esc(res._review)}" title="Proposed by the AI reader and validated on the review page; not yet committed to the database">validated on the review page</a>` : ''}</div>
     ${j ? `<div class="note"><b>${esc(JUSTIFICATION_KINDS[j.kind] || j.kind)}.</b> ${richCite(j.text)}</div>` : ''}
     ${res.note ? `<div class="note">${rich(res.note)}</div>` : ''}`;
 }
@@ -515,6 +517,7 @@ function viewHome() {
       ${stat(fmt(parsed), 'papers read in full', '#/refs', 'Papers whose full text was parsed when building the database')}
       ${(() => { const c = questionCounts(); return stat(fmt(c.open), 'open questions', '#/questions?status=open',
         `Questions stated explicitly in the literature and still unanswered (${c.partial} more are partially answered, ${c.resolved} resolved)`); })()}
+      ${Z.raw.review?.open ? stat(fmt(Z.raw.review.open), 'proposals to review', '#/review', 'Results, statements and leads proposed by the AI reader and the consolidation, not yet in the database') : ''}
     </div>
 
     <h2>Predefined zoos</h2>
@@ -1502,6 +1505,13 @@ function viewAbout(params) {
       maintainer and are not published. Endorsements are periodically committed to the database
       (<code>data/endorsements.yaml</code>) with the rest of the data.</p>
     ${C.live ? '' : liveNote()}
+    <h2>Review</h2>
+    <p>The <a href="#/review">review page</a> lists proposals that are not part of the database: results and missing statements found
+      by an AI reader of the full texts that did not pass its automatic checks, and candidates of the regular consolidation (theorems
+      that may settle open relations, numbered questions, passages that may answer a recorded question, papers to add). Signed-in
+      researchers validate or invalidate each one and comment; votes and comments are public. A proposed result validated by someone
+      (and invalidated by no one) is shown in the database at once, marked “validated on the review page”, until the maintainer commits
+      it; disputes and the other kinds are settled by the maintainer.</p>
     <h2>Contributing</h2>
     <p>Data lives in <code>data/*.yaml</code> (statements, results, references, properties, reductions, tags). Run <code>npm run check</code> to validate and detect contradictions, and <code>npm run build</code> to regenerate the viewer data. See <code>docs/DESIGN.md</code>.</p>
     <p class="small muted">Built ${esc(Z.raw.builtAt || '')}.</p>`;
@@ -1515,6 +1525,7 @@ function viewAbout(params) {
 // count when several did; on the live instance an empty outline invites to
 // endorse or report. Clicking opens the result panel.
 function endorseMark(ri) {
+  if (Z.raw.results[ri]._review) return '';
   const key = Z.raw.results[ri]._key;
   const ends = C.endorsers(key);
   if (!ends.length && !C.live) return '';
@@ -1638,6 +1649,206 @@ function viewProfile(orcid) {
 }
 
 // ============================================================================
+// review page (docs/REVIEW.md, site/js/review.js): proposals not in the database
+// ============================================================================
+// The queue (site/data/review.json) is loaded on demand: by the review page, and
+// at boot to add the validated results to the database shown (live, before the
+// maintainer commits them).
+let Q = null;
+const loadQueue = () => (Q ||= fetch('data/review.json', { cache: 'no-store' }).then((r) => (r.ok ? r.json() : { items: [] }))
+  .then((j) => { j.byId = new Map(j.items.map((it) => [it.id, it])); return j; }).catch(() => ({ items: [], byId: new Map() })));
+
+// The validated `result` items joined to the database: the zoo is rebuilt with them,
+// leaving out any that would contradict it (the maintainer settles those).
+let RAW0 = null, merged = [];
+async function mergeValidated() {
+  // nothing to load when no vote can validate a result (live: the server's votes;
+  // static: the count of committed validations, from the build)
+  const any = C.byItem ? [...C.byItem.values()].some((x) => x.votes.some((v) => v.verdict === 'valid')) : Z.raw.review?.validated > 0;
+  if (!any && !merged.length) return false;
+  const q = await loadQueue();
+  const known = (r) => [r.from, r.to, r.statement, r.base].filter(Boolean).every((id) => idx(id) !== undefined)
+    && (!r.property || Z.pidx.has(r.property)) && [].concat(r.over || []).every((o) => Z.ridx.has(o));
+  const want = q.items.filter((it) => it.kind === 'result' && reviewStatus(C.votes(it)) === 'validated')
+    .map((it) => ({ ...itemResult(it), _review: it.id, _date: it.date, _key: `review|${it.id}` }))
+    .filter((r) => known(r) && !(RAW0 || Z.raw).results.some((x) => x._key === resultKey(r))); // already in the database
+  const ids = want.map((r) => r._review).join(',');
+  if (ids === merged.map((r) => r._review).join(',')) return false;
+  RAW0 ||= Z.raw;
+  const build = (extra) => buildZoo({ ...RAW0, results: [...RAW0.results, ...extra] });
+  const base = RAW0.contradictions ?? (RAW0.contradictions = Z.contradictions.length);
+  let z = build(want), keep = want;
+  if (z.contradictions.length > base) { // add them one by one
+    keep = [];
+    for (const r of want) { const t = build([...keep, r]); if (t.contradictions.length <= base) { keep.push(r); z = t; } }
+    z = build(keep);
+  }
+  Z = z;
+  merged = keep;
+  resultIdx.clear();
+  Z.raw.results.forEach((r, ri) => resultIdx.set(r._key, ri));
+  return true;
+}
+
+const ORIGINS = { stated: 'stated in the paper', cited: 'attributed by the paper to another work', 'special-case': 'special case of a result of the paper', deduced: 'deduced from the paper (not stated)' };
+const STATUS_CLS = { open: '', validated: 'yes', invalidated: 'no', disputed: 'warn' };
+// a proposed result: rendered like a result of the database when its ids are known
+function reviewFact(r) {
+  const ok = [r.from, r.to, r.statement, r.base].filter(Boolean).every((id) => idx(id) !== undefined)
+    && (!r.property || Z.pidx.has(r.property)) && [].concat(r.over || []).every((o) => Z.ridx.has(o)) && (r.type !== 'conservation' || classOf(r.class));
+  if (ok) return resultFact(r);
+  const id = (x) => `<code>${esc(x)}</code>`;
+  const arrow = { implication: '⇒', equivalence: '⇔', separation: '⇏' }[r.type];
+  return r.type === 'property' ? `${id(r.statement)} ${r.value ? 'has' : 'fails'} ${id(r.property)}`
+    : r.type === 'conservation' ? `${id(r.statement)} is ${r.value === false ? 'not ' : ''}${id(r.class)}-conservative over ${id(r.base)}`
+    : `${id(r.from)} ${arrow} ${id(r.to)} <span class="muted small">over ${esc([].concat(r.over).join(', '))}</span>`;
+}
+const passage = (t) => `<blockquote class="rv-quote">${esc(t)}</blockquote>`;
+function reviewBody(it) {
+  const S0 = it.statement;
+  switch (it.kind) {
+    case 'result': return `<p class="rv-fact">${reviewFact(it.result)}</p>
+      <p class="small">${it.ref ? refLink({ ref: it.ref, loc: it.loc }) : ''} · ${esc(ORIGINS[it.origin] || it.origin)}${it.citedFrom ? ` (${esc(it.citedFrom)})` : ''}
+        ${it.paperNotation ? ` · paper's notation: ${esc(it.paperNotation)}` : ''}${it.part ? ` · part ${esc(it.part)} of the text` : ''}</p>
+      ${it.quote ? passage(it.quote) : ''}
+      ${it.argument ? `<p class="small"><b>Argument.</b> ${esc(it.argument)}</p>` : ''}
+      ${it.concerns ? `<p class="small"><b>To check.</b> ${esc(it.concerns)}</p>` : ''}
+      <p class="small muted">AI reader: confidence ${esc(it.confidence)}${it.verifier ? `; verifier: ${esc(it.verifier.verdict)} (${esc(it.verifier.reason)})` : ''}.
+        Not published because: ${esc((it.reasons || []).join('; '))}.</p>`;
+    case 'statement': return `<p class="rv-fact"><b>${esc(S0.notation)}</b> — ${esc(S0.name)}</p>
+      <p class="small">${it.ref ? refLink({ ref: it.ref, loc: S0.loc }) : ''}</p>
+      <p><b>Definition.</b> ${esc(S0.definition)}</p>
+      ${S0.facts ? `<p class="small"><b>Facts in the paper.</b> ${esc(S0.facts)}</p>` : ''}`;
+    case 'lead': return `<p class="small">${refLink({ ref: it.ref, loc: it.loc })}${it.over ? ` · about ${esc(it.over)}` : ''}</p>
+      ${passage(it.text)}
+      <p class="small muted">Open in the database between the statements it names: ${esc((it.open || []).join(', '))}.</p>`;
+    case 'question': return `<p class="small">${refLink({ ref: it.ref, loc: it.loc })}${it.statements?.length ? ` · names ${esc(it.statements.join(', '))}` : ''}</p>${passage(it.text)}`;
+    case 'answer': {
+      const q = (Z.raw.questions || []).find((x) => x.id === it.question);
+      return `<p>Does ${refLink({ ref: it.ref })} answer <a href="#/questions/${esc(it.question)}">${q ? rich(q.title || q.text || it.question) : esc(it.question)}</a>?</p>${passage(it.text)}`;
+    }
+    case 'paper': {
+      const p = it.paper;
+      return `<p class="rv-fact"><i>${esc(p.title)}</i></p><p class="small">${esc((p.authors || []).join(', '))}. ${esc(p.venue || '')}, ${esc(p.year)}.
+        ${p.doi ? `<a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">doi</a>` : ''}
+        ${p.arxiv ? `<a href="https://arxiv.org/abs/${esc(p.arxiv)}" target="_blank" rel="noopener">arXiv</a>` : ''}</p>`;
+    }
+  }
+  return '';
+}
+function reviewCard(it) {
+  const votes = C.votes(it), comments = C.comments(it);
+  const st = reviewStatus(votes);
+  const mine = C.myVote(it);
+  const K = KINDS[it.kind];
+  const who = (v) => `<span class="${v.verdict === 'valid' ? 'yes' : 'no'}">${v.verdict === 'valid' ? '✓' : '✗'}</span> ${personLink(v.orcid)}`;
+  const actions = !C.live ? '' : !C.user ? `<p class="small"><a href="${C.loginUrl()}">Sign in with ORCID</a> to vote or comment.</p>`
+    : `<div class="row rv-actions">
+        <button class="btn small ${mine === 'valid' ? 'on' : ''}" data-vote="${esc(it.id)}|${mine === 'valid' ? '' : 'valid'}" title="${esc(K.valid)}">${mine === 'valid' ? '✓ Validated · withdraw' : '✓ Validate'}</button>
+        <button class="btn small ${mine === 'invalid' ? 'on' : ''}" data-vote="${esc(it.id)}|${mine === 'invalid' ? '' : 'invalid'}" title="${esc(K.invalid)}">${mine === 'invalid' ? '✗ Invalidated · withdraw' : '✗ Invalidate'}</button>
+        <button class="btn small" data-rcomment="${esc(it.id)}">Comment</button>
+        <span class="small muted grow">Validate: “${esc(K.valid)}”</span></div>
+      <div class="rv-msg small"></div>`;
+  return `<article class="card rv-card" id="rv-${esc(it.id)}">
+    <div class="row small"><span class="badge">${esc(K.one)}</span><span class="badge ${STATUS_CLS[st]}">${esc(STATUS_NAMES[st])}</span>
+      <span class="grow"></span><a class="muted" href="#/review/${esc(it.id)}" title="Link to this item">${esc(it.date || '')}</a></div>
+    ${reviewBody(it)}
+    ${votes.length ? `<p class="small rv-votes">${votes.map(who).join(' · ')}</p>` : ''}
+    ${comments.length ? `<ul class="rv-comments">${comments.map((c) => `<li><span class="small">${personLink(c.orcid)} <span class="muted">${esc(c.date)}</span>
+      ${C.user?.orcid === c.orcid && C.live ? ` <button class="linkish small" data-delc="${esc(c.id)}|${esc(it.id)}">delete</button>` : ''}</span><div>${esc(c.text)}</div></li>`).join('')}</ul>` : ''}
+    ${actions}
+  </article>`;
+}
+
+async function viewReview(params, id) {
+  const m = main();
+  m.className = '';
+  m.innerHTML = '<h1>Review</h1><p class="muted">Loading…</p>';
+  const q = await loadQueue();
+  if (currentRoute() !== 'review') return;
+  const intro = `<h1>Review</h1>
+    <p class="muted">Proposals that are <b>not part of the database</b>: results and missing statements found by the AI reader of the
+    full texts, and candidates of the regular consolidation (theorems that may settle open relations, questions to record, passages
+    that may answer a recorded question, papers to add). Each stays on this page until it is validated.
+    One validation and no invalidation publishes a result at once; the maintainer then commits it to the database, settles disputes,
+    and enters the other kinds by hand. Votes and comments are public, with your name and ORCID iD.</p>
+    ${C.live ? '' : liveNote()}`;
+  if (id) {
+    const it = q.byId.get(id);
+    m.innerHTML = `${intro}<p><a href="#/review">← all items</a></p>${it ? reviewCard(it)
+      : '<p class="muted">This item is no longer open for review: it was accepted into the database, rejected, or treated by hand.</p>'}`;
+    return;
+  }
+  const kind = params.get('kind') || '', status = params.get('status') || 'open', paper = params.get('ref') || '';
+  const mineOnly = params.get('mine') === '1';
+  const withStatus = q.items.map((it) => [it, reviewStatus(C.votes(it))]);
+  const count = (k) => withStatus.filter(([it, st]) => (!k || it.kind === k) && (status === 'all' || st === status)).length;
+  const list = withStatus.filter(([it, st]) => (!kind || it.kind === kind) && (status === 'all' || st === status) && (!paper || it.ref === paper)
+    && (!mineOnly || !C.myVote(it))).map(([it]) => it)
+    .sort((a, b) => (C.votes(b).length + C.comments(b).length > 0) - (C.votes(a).length + C.comments(a).length > 0) || (b.date || '').localeCompare(a.date || '') || a.id.localeCompare(b.id));
+  const link = (p) => { const u = new URLSearchParams({ ...(kind ? { kind } : {}), ...(status !== 'open' ? { status } : {}), ...(paper ? { ref: paper } : {}), ...(mineOnly ? { mine: '1' } : {}), ...p }); [...u].forEach(([k, v]) => { if (!v) u.delete(k); }); return `#/review${[...u].length ? `?${u}` : ''}`; };
+  const papers = [...new Set(q.items.filter((it) => !kind || it.kind === kind).map((it) => it.ref).filter(Boolean))].sort((a, b) => refShort(a).localeCompare(refShort(b)));
+  m.innerHTML = `${intro}
+    <div class="chips rv-kinds"><a class="chip ${!kind ? 'on' : ''}" href="${link({ kind: '' })}">All <span class="count">${count('')}</span></a>
+      ${Object.entries(KINDS).filter(([k]) => q.items.some((it) => it.kind === k)).map(([k, K]) =>
+        `<a class="chip ${kind === k ? 'on' : ''}" href="${link({ kind: k })}">${esc(K.name)} <span class="count">${count(k)}</span></a>`).join('')}</div>
+    <div class="row rv-filters">
+      <label class="small">Status <select id="rv-status">${['open', 'validated', 'invalidated', 'disputed', 'all'].map((s) =>
+        `<option value="${s}" ${s === status ? 'selected' : ''}>${s === 'all' ? 'all' : esc(STATUS_NAMES[s])}</option>`).join('')}</select></label>
+      <label class="small">Paper <select id="rv-ref"><option value="">all papers</option>${papers.map((k) =>
+        `<option value="${esc(k)}" ${k === paper ? 'selected' : ''}>${esc(refShort(k))}</option>`).join('')}</select></label>
+      ${C.user ? `<label class="toggle small"><input type="checkbox" id="rv-mine" ${mineOnly ? 'checked' : ''}> not voted by me</label>` : ''}
+      <span class="grow"></span><span class="small muted">${list.length} item${list.length === 1 ? '' : 's'}</span></div>
+    ${lazy(list, reviewCard, { size: 20, noun: 'items', empty: '<p class="muted">Nothing to review here.</p>' })}`;
+  $('#rv-status').addEventListener('change', (e) => { location.hash = link({ status: e.target.value === 'open' ? '' : e.target.value }); });
+  $('#rv-ref').addEventListener('change', (e) => { location.hash = link({ ref: e.target.value }); });
+  $('#rv-mine')?.addEventListener('change', (e) => { location.hash = link({ mine: e.target.checked ? '1' : '' }); });
+}
+// votes and comments: the card is redrawn in place; a validated result joins the database
+async function afterVote(it) {
+  const card = document.getElementById(`rv-${it.id}`);
+  if (card) card.outerHTML = reviewCard(it);
+  if (it.kind === 'result' && await mergeValidated()) refreshMarks();
+}
+document.addEventListener('click', async (e) => {
+  const v = e.target.closest('[data-vote]');
+  const cm = e.target.closest('[data-rcomment]');
+  const del = e.target.closest('[data-delc]');
+  if (!v && !cm && !del) return;
+  e.preventDefault();
+  const q = await loadQueue();
+  const card = e.target.closest('.rv-card');
+  const msg = (t) => { const el = card?.querySelector('.rv-msg'); if (el) el.textContent = t; };
+  try {
+    if (v) {
+      const [id, verdict] = v.dataset.vote.split('|');
+      v.disabled = true;
+      await C.setVote(id, verdict || null);
+      await afterVote(q.byId.get(id));
+    } else if (del) {
+      const [cid, id] = del.dataset.delc.split('|');
+      await C.deleteComment(cid);
+      await afterVote(q.byId.get(id));
+    } else {
+      const id = cm.dataset.rcomment;
+      if (card.querySelector('.rv-form')) return;
+      card.insertAdjacentHTML('beforeend', `<form class="rv-form fb-form"><textarea rows="4" maxlength="5000" required
+        placeholder="Your comment (public, with your name): what is right or wrong, where the paper says it, which result to enter…"></textarea>
+        <div class="row"><button class="btn primary small" type="submit">Post</button><button class="btn small" type="button" data-cancel>Cancel</button></div></form>`);
+      const f = card.querySelector('.rv-form');
+      f.querySelector('textarea').focus();
+      f.querySelector('[data-cancel]').addEventListener('click', () => f.remove());
+      f.addEventListener('submit', async (ev) => {
+        ev.preventDefault();
+        f.querySelector('button[type=submit]').disabled = true;
+        try { await C.addComment(id, f.querySelector('textarea').value); await afterVote(q.byId.get(id)); }
+        catch (err) { msg(err.message); f.querySelector('button[type=submit]').disabled = false; }
+      });
+    }
+  } catch (err) { msg(err.message); if (v) v.disabled = false; }
+});
+
+// ============================================================================
 // router
 // ============================================================================
 function currentRoute() {
@@ -1645,7 +1856,7 @@ function currentRoute() {
   const p = path.split('/').filter(Boolean);
   // old links "#/?q=…" and "#/?tags=…" pointed to the catalogue
   if (!p.length) return /[?&](q|tags)=/.test(location.hash) ? 'catalogue' : 'home';
-  return { catalogue: 'catalogue', questions: 'questions', s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', refs: 'refs', about: 'about', u: 'profile' }[p[0]] || 'catalogue';
+  return { catalogue: 'catalogue', questions: 'questions', s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', refs: 'refs', about: 'about', u: 'profile', review: 'review' }[p[0]] || 'catalogue';
 }
 function route() {
   const [path, qs] = (location.hash.slice(1) || '/').split('?');
@@ -1664,6 +1875,7 @@ function route() {
   else if (name === 'home') viewHome();
   else if (name === 'questions') viewQuestions(params, p[1]);
   else if (name === 'profile') viewProfile(p[1] || 'me');
+  else if (name === 'review') viewReview(params, p[1] && decodeURIComponent(p[1]));
   else viewCatalogue(params);
   renderTray();
   if (name !== 'diagram' || route.last !== 'diagram') window.scrollTo(0, 0);
@@ -1692,8 +1904,13 @@ async function boot() {
   Z = buildZoo(raw);
   Z.raw.results.forEach((r, ri) => resultIdx.set(r._key, ri));
   C = createCommunity(Z);
-  // the live state (server) may differ from the committed endorsements: redraw once known
-  C.ready.then(() => { renderAccount(); if (C.live) { const y = window.scrollY; route(); window.scrollTo(0, y); } });
+  // the live state (server) may differ from the committed endorsements and votes: redraw
+  // once known, with the validated proposals of the review page joined to the database
+  C.ready.then(async () => {
+    renderAccount();
+    const added = await mergeValidated();
+    if (C.live || added) { const y = window.scrollY; route(); window.scrollTo(0, y); }
+  });
   if (!Z.ridx.has(state.r)) state.r = 'rca0';
   state.sel = state.sel.filter((id) => idx(id) !== undefined);
   buildHaystack();

@@ -97,19 +97,19 @@
 - { type: implication, from: rca0, to: ivt, over: rca0, refs: [ { ref: simpson2009, loc: Theorem II.6.6 } ] }
 - { type: implication, from: rcastar, to: lpo, over: rca0star, folklore: true, note: "Classically provable: decide whether p is the zero sequence.", justification: { kind: classical, text: "Classically provable by the law of excluded middle: either p is the zero sequence or it is not.", by: ai } }
 - { type: implication, from: rcastar, to: llpo, over: rca0star, folklore: true, justification: { kind: classical, text: "Classically provable: if p has a 1 at position n, the parity of n answers; otherwise any answer is correct.", by: ai } }
-- {type: separation, from: aca, to: aca-prime, over: rca0, folklore: true, justification: {kind: classical, by: ai, text: "ACA₀′ proves the consistency of PA (it proves the existence of truth sets for each Σ⁰ₙ level), while ACA₀ is conservative over PA, which does not prove its own consistency."}}
+- { type: separation, from: aca, to: aca-prime, over: rca0, folklore: true, justification: { kind: classical, by: ai, text: "ACA₀′ proves the consistency of PA (it proves the existence of truth sets for each Σ⁰ₙ level), while ACA₀ is conservative over PA, which does not prove its own consistency." } }
 
 # ---- Base theories ----------------------------------------------------------
 
-- {type: equivalence, from: rca0, to: isig1, over: rca0star, refs: [{ref: simpsonsmith1986}], note: "RCA₀ is RCA₀* together with Σ⁰₁ induction, which proves the totality of exponentiation."}
+- { type: equivalence, from: rca0, to: isig1, over: rca0star, refs: [ { ref: simpsonsmith1986 } ], note: "RCA₀ is RCA₀* together with Σ⁰₁ induction, which proves the totality of exponentiation." }
 
 # ---- Computably true problems -------------------------------------------------
 
-- {type: property, statement: rt12, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "Non-uniformly, one of the two color classes is infinite and computable from the instance."}}
-- {type: property, statement: rt13, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "Non-uniformly, one of the color classes is infinite and computable from the instance."}}
-- {type: property, statement: rt1inf, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "Non-uniformly, one of the color classes is infinite and computable from the instance."}}
-- {type: property, statement: lpo, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "The solution is a single bit."}}
-- {type: property, statement: llpo, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "The solution is a single bit."}}
-- {type: property, statement: cn, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "Solutions are natural numbers, hence computable."}}
-- {type: property, statement: kn, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "Solutions are natural numbers, hence computable."}}
-- {type: property, statement: ivt, property: computably-true, value: true, folklore: true, justification: {kind: reduction, by: ai, text: "A computable function with a sign change has a computable zero: either some rational is a zero, or the bisection method converges computably."}}
+- { type: property, statement: rt12, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the two color classes is infinite and computable from the instance." } }
+- { type: property, statement: rt13, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the color classes is infinite and computable from the instance." } }
+- { type: property, statement: rt1inf, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the color classes is infinite and computable from the instance." }, refs: [ { ref: hirschfeldt2015, loc: Section 6.2 } ] }
+- { type: property, statement: lpo, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "The solution is a single bit." } }
+- { type: property, statement: llpo, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "The solution is a single bit." } }
+- { type: property, statement: cn, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Solutions are natural numbers, hence computable." } }
+- { type: property, statement: kn, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Solutions are natural numbers, hence computable." } }
+- { type: property, statement: ivt, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "A computable function with a sign change has a computable zero: either some rational is a zero, or the bisection method converges computably." } }

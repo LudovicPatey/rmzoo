@@ -1,7 +1,7 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Lerman, Solomon, Towsner (2013) — Separating principles below Ramsey's theorem for pairs
 
-- { type: "separation", from: "ads", to: "scac", over: "omega", refs: [ { ref: lermansolomontowsner2013, loc: Theorem 1.7 } ] }
+- { type: "separation", from: "ads", to: "scac", over: "omega", refs: [ { ref: lermansolomontowsner2013, loc: Theorem 1.7 }, { ref: patey2016c, loc: Corollary A.2.10 } ] }
 - { type: "implication", from: "rt22", to: "em", over: "rca0", refs: [ { ref: lermansolomontowsner2013, loc: remark before Theorem 1.9 } ], note: "easy to see, remarked in Bienvenu, Patey, and Shafer (2017)" }
 - { type: "implication", from: "bsig2-em", to: "hyp", over: "rca0", refs: [ { ref: "lermansolomontowsner2013", loc: "Theorem 1.10 and following remark" } ] }
 - { type: "separation", from: "cac", to: "em", over: "rca0", refs: [ { ref: lermansolomontowsner2013, loc: Corollary 1.12 } ] }

@@ -14,6 +14,7 @@ function cfg(): array {
     'orcid_base' => 'https://orcid.org',
     'data_dir' => dirname(__DIR__, 2) . '/rmzoo-data',
     'zoo_json' => dirname(__DIR__) . '/data/zoo.json',
+    'review_json' => dirname(__DIR__) . '/data/review.json',
     'dev_login' => false,
     'feedback_per_day' => 30,
   ];
@@ -81,7 +82,9 @@ function site_url(): string {
 function callback_url(): string { return site_url() . '/api/callback.php'; }
 
 // ---- storage --------------------------------------------------------------------
-// data_dir/endorsements.json  {people: {orcid: {name}}, endorsements: [{result, orcid, date}]}
+// data_dir/endorsements.json  {people: {orcid: {name}}, endorsements: [{result, orcid, date}],
+//                              reviews: [{item, orcid, verdict, date}], comments: [{id, item, orcid, date, text}]}
+//   (reviews and comments: the review page, docs/REVIEW.md; comments there are public)
 // data_dir/feedback/<id>.json one file per comment or error report
 function data_dir(): string {
   $d = cfg()['data_dir'];
@@ -97,6 +100,7 @@ function with_state(callable $fn) {
     $file = "$dir/endorsements.json";
     $state = is_file($file) ? json_decode((string) file_get_contents($file), true) : seed_state();
     if (!is_array($state)) fail(500, 'Corrupted endorsements file.');
+    $state = with_reviews($state);
     $out = $fn($state);
     if (is_array($out)) {
       $tmp = "$file.tmp";
@@ -114,12 +118,40 @@ function read_state(): array {
   $file = data_dir() . '/endorsements.json';
   if (!is_file($file)) return seed_state();
   $s = json_decode((string) file_get_contents($file), true);
-  return is_array($s) ? $s : seed_state();
+  return is_array($s) ? with_reviews($s) : seed_state();
 }
 // First start: the endorsements committed in the repository (via zoo.json).
 function seed_state(): array {
   $e = zoo()['endorsements'] ?? [];
-  return ['people' => (object) ($e['people'] ?? []), 'endorsements' => $e['endorsements'] ?? []];
+  return with_reviews(['people' => (object) ($e['people'] ?? []), 'endorsements' => $e['endorsements'] ?? []]);
+}
+// The votes and comments committed in data/review.yaml (via review.json), the first
+// time the server sees the review page (a state saved before it existed has none).
+function with_reviews(array $s): array {
+  if (isset($s['reviews'])) return $s;
+  $s['reviews'] = [];
+  $s['comments'] = [];
+  foreach (review_items() as $id => $it) {
+    foreach ($it['votes'] ?? [] as $v) $s['reviews'][] = ['item' => $id, 'orcid' => $v['orcid'], 'verdict' => $v['verdict'], 'date' => $v['date']];
+    foreach ($it['comments'] ?? [] as $i => $c) $s['comments'][] = ['id' => "$id-c$i", 'item' => $id, 'orcid' => $c['orcid'], 'date' => $c['date'], 'text' => $c['text']];
+  }
+  return $s;
+}
+// The items open for review (site/data/review.json, written by the build), by id.
+function review_items(): array {
+  static $items = null;
+  if ($items === null) {
+    $items = [];
+    $j = json_decode((string) @file_get_contents(cfg()['review_json']), true);
+    foreach ($j['items'] ?? [] as $it) $items[$it['id']] = $it;
+  }
+  return $items;
+}
+// People are recorded while they have an endorsement, a vote or a comment.
+function prune_people(array $s): array {
+  $active = array_flip(array_merge(array_column($s['endorsements'] ?? [], 'orcid'), array_column($s['reviews'] ?? [], 'orcid'), array_column($s['comments'] ?? [], 'orcid')));
+  $s['people'] = array_intersect_key((array) ($s['people'] ?? []), $active);
+  return $s;
 }
 function zoo(): array {
   static $z = null;

@@ -1,7 +1,58 @@
+brattkachirache2026:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: d07c3a8b705dd58b
+  facts: 10
+  added: 0
+  review: 17
+  dropped: 2
+  cost: 0.41
+brattkagherardiholzl2015:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 326e6095d779245f
+  facts: 37
+  added: 12
+  review: 23
+  dropped: 12
+  changes:
+    - "merged: separation|wwkl|ivt|w|"
+    - "added: implication|wwkl.jump|ivt|w|"
+    - "added: equivalence|pcr|wwkl.star.cn|w|"
+    - "merged: implication|cn|lpo|w|"
+    - "added: implication|wwkl.jump|pcr|sw|"
+    - "added: equivalence|wwkl.fin|wwkl|w|"
+    - "added: separation|wwkl.jump|wkl|w|"
+    - "added: implication|wkl.jump|wwkl.jump|sw|"
+    - "added: implication|wwkl|llpo|sw|"
+    - "added: implication|wwkl.jump|wwkl|w|"
+    - "added: separation|wwkl|wwkl.jump|w|"
+    - "added: equivalence|wwkl.x.wwkl|wwkl|sw|"
+  cost: 0.92
+brattkahendtlasskreuzer2017:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: cf412e050a5a8c31
+  facts: 54
+  added: 9
+  review: 43
+  dropped: 14
+  changes:
+    - "added: implication|llpo|accn|sw|"
+    - "added: separation|ran1|accn|w|"
+    - "added: implication|wwkl|ran1|w|"
+    - "merged: implication|cn|lpo|w|"
+    - "added: equivalence|coh|coh.par|w|"
+    - "added: implication|wkl|sep|sw|"
+    - "added: implication|wkl.jump|sep.jump|sw|"
+    - "added: equivalence|dnr|accn.par|sw|"
+    - "added: separation|wwkl|wwkl.par|w|"
+  cost: 1.06
 # Papers already analyzed by scripts/ai-analyze.mjs (one costly AI reading per
 # paper): date, model, hash of the text read, number of facts found, added,
-# sent to data/ai-review.yaml and dropped as already known, the database
-# changes made, and the cost in dollars. Delete an entry (or use --redo) to
+# sent to the review queue (data/review.yaml) and dropped as already known, the
+# database changes made, and the cost in dollars. Long texts are read in parts:
+# one entry per part, "<key>#<n>". Delete an entry (or use --redo) to
 # analyze a paper again. Fields: scripts/lib/schema.mjs (aiAnalyzed).
 dauriacetal2024:
   date: 2026-11-03
@@ -15,3 +66,170 @@ dauriacetal2024:
     - "merged: equivalence|mtt|aca-prime|rca0|"
     - "added: property|er22|cone-avoidance||true"
   cost: 1.32
+diener2018:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 5b950bad3238babb
+  facts: 0
+  added: 0
+  review: 9
+  dropped: 0
+  cost: 0.67
+gohpaulyvalenti2021:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 84192cafb8c32e00
+  facts: 39
+  added: 13
+  review: 16
+  dropped: 15
+  changes:
+    - "merged: separation|lim|ds|w|"
+    - "added: equivalence|cnn|lim.star.ds|w|"
+    - "merged: separation|ds|cnn|w|"
+    - "merged: implication|ds|lim|w|"
+    - "added: separation|ds|lpo.jump|w|"
+    - "added: implication|ds.x.ds|lpo.jump|w|"
+    - "added: separation|ds|ds.x.ds|w|"
+    - "added: separation|ds|ads|w|"
+    - "added: separation|ds|scac|w|"
+    - "added: separation|ds|wscac|w|"
+    - "added: separation|ds|rt22|w|"
+    - "added: equivalence|ds.star.ds|cnn|w|"
+    - "added: implication|cnn|bs|w|"
+  cost: 0.83
+hirschfeldt2015:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 23ee956de6a9b8d3
+  facts: 194
+  added: 21
+  review: 54
+  dropped: 130
+  changes:
+    - "merged: implication|wkl|wwkl|rca0|"
+    - "merged: property|rt1inf|computably-true||true"
+    - "added: equivalence|rt3|aca|rca0|"
+    - "merged: implication|rt32|kl|w|"
+    - "merged: separation|kl|rt32|c|"
+    - "merged: implication|kl|rt22|c|"
+    - "merged: separation|rt22|kl|c|"
+    - "merged: property|srt22|delta2-basis||true"
+    - "merged: implication|rt22|srt22|rca0|"
+    - "merged: implication|rt22|cac|rca0|"
+    - "merged: implication|ads|cads|rca0|"
+    - "merged: implication|coh|crt22|rca0|"
+    - "merged: implication|rt|fs|rca0|"
+    - "merged: separation|wkl|ts2|omega|"
+    - "merged: separation|wkl|amt|omega|"
+    - "merged: separation|amt|pi01g|rca0|"
+    - "added: separation|rt22|pi01g|rca0|"
+    - "merged: implication|opt|ast|rca0|"
+    - "added: equivalence|srt22|srt23|rca0|"
+    - "added: property|ts2|sigma2-basis||false"
+    - "added: property|ts3|sigma3-basis||false"
+  cost: 2.54
+kiharamarconepauly2020:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: cbdec1dc0af47752
+  facts: 20
+  added: 3
+  review: 24
+  dropped: 4
+  changes:
+    - "merged: implication|cnn|ucnn|w|"
+    - "merged: separation|ucnn|cnn|w|"
+    - "added: equivalence|ucnn.par|ucnn|w|"
+  cost: 0.54
+kowalik2024:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 425dd6ff2f700715
+  facts: 50
+  added: 4
+  review: 34
+  dropped: 21
+  changes:
+    - "added: equivalence|rt22|rt23|rca0star|"
+    - "added: separation|rt42|coh|rca0star|"
+    - "added: implication|coh|crt22|rca0star|"
+    - "merged: implication|coh|crt22|rca0|"
+  cost: 1.01
+marconevalenti2020:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 3b7de63466f9e1cb
+  facts: 10
+  added: 1
+  review: 13
+  dropped: 7
+  changes:
+    - "added: equivalence|tcnn.star.lim|tcnn.x.lim|w|"
+  cost: 0.39
+patey2016c:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 7e47858b1e74a118
+  facts: 125
+  added: 30
+  review: 33
+  dropped: 62
+  changes:
+    - "merged: implication|coh|crt22|rca0|"
+    - "merged: property|coh|hyperimmunity-preservation||true"
+    - "merged: property|em|hyperimmunity-preservation||true"
+    - "merged: property|rrt22|hyperimmunity-preservation||true"
+    - "added: property|sts2|low-basis||false"
+    - "merged: implication|sts2|amt|rca0|"
+    - "merged: implication|ts2|dnr0|rca0|"
+    - "merged: property|wsrrt22|low-basis||true"
+    - "merged: separation|wsrrt22|rrt22|omega|"
+    - "merged: implication|sem|dnr|c|"
+    - "merged: implication|sem|dnr|rca0|"
+    - "merged: implication|em|dnr0|rca0|"
+    - "merged: separation|em|sads|omega|"
+    - "merged: implication|sem|rwkl|rca0|"
+    - "merged: equivalence|dnr|rwwkl|rca0|"
+    - "merged: separation|cac|rcolor2|omega|"
+    - "merged: separation|rt12|tt12|sc|"
+    - "merged: implication|er22|rt22|rca0|"
+    - "merged: implication|aca|er22|rca0|"
+    - "merged: property|coh|arith-preservation||true"
+    - "merged: property|em|arith-preservation||true"
+    - "merged: equivalence|psrt22|ads|rca0|"
+    - "merged: separation|ads|scac|omega|"
+    - "added: property|ran2|hyperimmunity-preservation||true"
+    - "added: separation|ts23|srt22|omega|"
+    - "added: separation|ts23|srt22|c|"
+    - "added: implication|rrt32|ts2|sw|"
+    - "added: implication|rrt42|ts3|sw|"
+    - "added: separation|rrt32|sts3|c|"
+    - "added: separation|wwkl2|coh|omega|"
+  cost: 3.39
+solda2021:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 5e712f11c620409d
+  facts: 75
+  added: 16
+  review: 32
+  dropped: 39
+  changes:
+    - "merged: equivalence|rsg|aca|rca0|"
+    - "added: equivalence|rsg|rt22.par|w|"
+    - "added: equivalence|ads|adc|sc|"
+    - "merged: equivalence|ads|adc|rca0|"
+    - "merged: equivalence|cads|coh|w|"
+    - "merged: separation|ads|rt15|w|"
+    - "merged: separation|ads|rt1inf|w|"
+    - "merged: property|srt22|delta2-basis||true"
+    - "added: implication|lim|dnr|sw|"
+    - "merged: implication|srt22.star.coh|rt22|w|"
+    - "added: implication|rt12|lpo|w|"
+    - "added: implication|rt14|rt12.x.rt12|w|"
+    - "merged: equivalence|rspo2c|sads|rca0|"
+    - "merged: implication|em|brt22|rca0|"
+    - "added: implication|brt32|rt22|rca0|"
+    - "merged: property|brt32|cone-avoidance||true"
+  cost: 2.14

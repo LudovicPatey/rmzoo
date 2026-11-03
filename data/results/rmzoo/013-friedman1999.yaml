@@ -3,4 +3,4 @@
 
 - { type: "implication", from: "aca", to: "fs3", over: "rca0", refs: [ { ref: friedman1999, loc: Theorem 2 } ] }
 - { type: "separation", from: "wkl", to: "fs2", over: "omega", refs: [ { ref: friedman1999, loc: Theorem 4 } ] }
-- { type: "separation", from: "wkl", to: "ts2", over: "omega", note: "Friedman (FOM 53), proven in private communication", refs: [ { ref: cholaketal2005, loc: Theorem 4.6 } ] }
+- { type: "separation", from: "wkl", to: "ts2", over: "omega", note: "Friedman (FOM 53), proven in private communication", refs: [ { ref: cholaketal2005, loc: Theorem 4.6 }, { ref: hirschfeldt2015, loc: "Section 9.2.3, after Exercise 9.36" } ] }

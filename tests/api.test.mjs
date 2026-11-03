@@ -96,3 +96,39 @@ test('the development sign-in is off unless configured', { skip }, async () => {
   assert.equal((await fetch(`${B}?a=devlogin&orcid=0000-0002-1825-0097`, { redirect: 'manual' })).status, 404);
   start(true);
 });
+
+// the review page (docs/REVIEW.md): votes and public comments on the open items of site/data/review.json
+const queue = fs.existsSync('site/data/review.json') ? JSON.parse(fs.readFileSync('site/data/review.json', 'utf8')).items : [];
+const ITEM = queue.find((it) => !it.votes?.length && !it.comments?.length)?.id;
+test('votes and comments on review items', { skip: skip || (!ITEM && 'no open review item') }, async () => {
+  const s = session();
+  let st = await (await s.req(`${B}?a=state`)).json();
+  assert.equal((await post(s, 'review', { item: ITEM, verdict: 'valid' }, st.csrf)).status, 401);
+  await s.req(`${B}?a=devlogin&orcid=${ME}&name=Josiah%20Carberry`);
+  st = await (await s.req(`${B}?a=state`)).json();
+  assert.equal((await post(s, 'review', { item: 'no-such-item', verdict: 'valid' }, st.csrf)).status, 404);
+  assert.equal((await post(s, 'review', { item: ITEM, verdict: 'maybe' }, st.csrf)).status, 400);
+  const mineOn = (r) => r.reviews.filter((v) => v.item === ITEM && v.orcid === ME).map((v) => v.verdict);
+  assert.deepEqual(mineOn(await (await post(s, 'review', { item: ITEM, verdict: 'valid' }, st.csrf)).json()), ['valid']);
+  let r = await (await post(s, 'review', { item: ITEM, verdict: 'invalid' }, st.csrf)).json(); // a new vote replaces the old one
+  assert.deepEqual(mineOn(r), ['invalid']);
+  assert.equal(r.people[ME].name, 'Josiah Carberry');
+  // comments are public; only their author deletes them
+  assert.equal((await post(s, 'rcomment', { item: ITEM, text: ' ' }, st.csrf)).status, 400);
+  r = await (await post(s, 'rcomment', { item: ITEM, text: 'Theorem 3 says the converse.' }, st.csrf)).json();
+  const c = r.comments.find((x) => x.item === ITEM && x.orcid === ME);
+  assert.equal(c.text, 'Theorem 3 says the converse.');
+  const other = session();
+  await other.req(`${B}?a=devlogin&orcid=0000-0001-2345-6789&name=Ada`);
+  const ost = await (await other.req(`${B}?a=state`)).json();
+  assert.ok(ost.comments.some((x) => x.id === c.id)); // everyone sees it
+  await post(other, 'rcomment', { delete: c.id }, ost.csrf);
+  assert.ok((await (await s.req(`${B}?a=state`)).json()).comments.some((x) => x.id === c.id));
+  const ex = await (await fetch(`${B}?a=export`, { headers: { Authorization: `Bearer ${TOKEN}` } })).json();
+  assert.ok(ex.reviews.some((v) => v.item === ITEM && v.orcid === ME) && ex.comments.some((x) => x.id === c.id));
+  // withdrawing the vote and deleting the comment: the person is forgotten (no endorsement either)
+  await post(s, 'rcomment', { delete: c.id }, st.csrf);
+  r = await (await post(s, 'review', { item: ITEM, verdict: null }, st.csrf)).json();
+  assert.deepEqual(mineOn(r), []);
+  assert.ok(!r.people[ME]);
+});

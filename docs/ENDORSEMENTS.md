@@ -10,7 +10,9 @@ ORCID iD. Once signed in they can:
 * **report an error** or **comment** on a result, a statement or a paper. Each
   message becomes one JSON file for the maintainer (not published);
 * see their **profile** page `#/u/<ORCID iD>`, which lists the results they
-  endorsed (every profile is public; `#/u/me` goes to one's own).
+  endorsed (every profile is public; `#/u/me` goes to one's own);
+* **validate, invalidate and comment** the proposals of the review page (public
+  votes and comments, docs/REVIEW.md).
 
 The static copy of the zoo (GitHub, `scripts/serve.mjs`) shows the endorsements
 committed in `data/endorsements.yaml` and offers no sign-in.
@@ -38,8 +40,8 @@ committed in `data/endorsements.yaml` and offers no sign-in.
   in `<data_dir>/endorsements.json`. `endorsements-sync.mjs` replaces
   `data/endorsements.yaml` by that state.
 * **Privacy**: the server records a person (ORCID iD and the name public on
-  their ORCID record) only when they endorse a result, and forgets them when
-  they withdraw their last endorsement. Comments are stored with the author's
+  their ORCID record) only when they endorse a result, vote or comment on the
+  review page, and forgets them when they withdraw the last of these. Comments are stored with the author's
   iD and name and never published.
 * **Security**: sign-in uses ORCID's OAuth (`/authenticate` scope: only the iD
   and name). The session cookie is HttpOnly and SameSite=Lax; every write also
@@ -78,7 +80,7 @@ node scripts/deploy.mjs               # asks the FTP password (sftp)
 
 The script uploads an explicit list of files from `site/` (`scripts/lib/deploy.mjs`):
 `index.html`, `htaccess.txt` as `.htaccess` (http → https), `css/`, `js/`,
-`data/zoo.json`, `data/abstracts.json`, and `api/` (`index.php`, `callback.php`,
+`data/zoo.json`, `data/abstracts.json`, `data/review.json`, and `api/` (`index.php`, `callback.php`,
 `lib.php`, `.htaccess`, `config.example.php`). It never uploads a `config.php`
 (a local one may have `dev_login`) or anything else from the repository
 (`cache/` holds copyrighted texts and the admin token, `feedback/` private
@@ -109,7 +111,9 @@ npm run check && npm run build && npm test
 git add data/endorsements.yaml && git commit -m "Endorsements"
 ```
 
-The sync takes the data lock, rewrites `data/endorsements.yaml` and saves each
+The sync takes the data lock, rewrites `data/endorsements.yaml`, copies the votes
+and comments of the review page into `data/review.yaml` (then run
+`node scripts/review.mjs apply`, docs/REVIEW.md) and saves each
 new comment or error report as `feedback/inbox/<id>.json` (git-ignored). Each
 file is self-contained for processing with an AI assistant: `kind` (error |
 comment), `target` (type, id and a copy of the result, statement or paper it is

@@ -1,6 +1,6 @@
 # Results from [lehoueroupatey2025].
 
-- { type: "implication", from: "em", to: "brt22", over: "rca0", refs: [ { ref: lehoueroupatey2025, loc: Corollary 2.6 (due to Soldà) } ] }
+- { type: "implication", from: "em", to: "brt22", over: "rca0", refs: [ { ref: lehoueroupatey2025, loc: Corollary 2.6 (due to Soldà) }, { ref: solda2021, loc: Theorem 4.1.10 } ] }
 - { type: "separation", from: "ads", to: "brt22", over: "rca0", refs: [ { ref: lehoueroupatey2025, loc: Corollary 4.24 } ] }
 - { type: implication, from: isig2, to: brt22, over: rca0, refs: [ { ref: lehoueroupatey2025, loc: Proposition 2.1 (due to Belanger and Yokoyama) } ] }
 - { type: separation, from: bsig2, to: brt22, over: rca0, refs: [ { ref: lehoueroupatey2025, loc: Corollary 3.5 } ] }

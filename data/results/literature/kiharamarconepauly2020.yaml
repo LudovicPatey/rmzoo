@@ -1,0 +1,3 @@
+# Results from [kiharamarconepauly2020].
+
+[ { type: equivalence, from: ucnn.par, to: ucnn, over: w, refs: [ { ref: kiharamarconepauly2020, loc: Proof of Theorem 8.5 (also proof of Theorem 3.11) } ] } ]

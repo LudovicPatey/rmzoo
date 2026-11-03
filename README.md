@@ -54,7 +54,7 @@ data/
   screened.yaml          consolidation leads already examined (not proposed again)
   acronyms-ignored.yaml  acronyms examined and deliberately not added as statements
   ai-analyzed.yaml       papers already read by the AI reader (scripts/ai-analyze.mjs)
-  ai-review.yaml         AI proposals awaiting a human decision (scripts/ai-review.mjs)
+  review.yaml            the review queue: AI proposals and consolidation candidates awaiting a decision (docs/REVIEW.md)
 scripts/             build (YAML → JSON + validation), consolidation, dev server
   lib/schema.mjs     the data model: every allowed field, its meaning, its readers
   lib/lock.mjs       one writer at a time on data/
@@ -63,7 +63,7 @@ scripts/             build (YAML → JSON + validation), consolidation, dev serv
   lib/ai-facts.mjs   checks deciding which AI-proposed facts are published
   mine/              candidate results and questions from the full texts (regexes)
   ai-analyze.mjs     AI reading of each full text, once (Claude API)
-  ai-review.mjs      accept / reject the AI proposals
+  review.mjs         the review queue: list, accept / reject, apply the votes of the review page
   ai/                instructions given to the model (extract.md, verify.md)
 site/                the viewer (vanilla JS, KaTeX, no build step)
   js/engine.js       inference engine (shared with the build script)
@@ -75,6 +75,7 @@ site/                the viewer (vanilla JS, KaTeX, no build step)
 cache/fulltext/      local full texts of the papers (git-ignored)
 docs/DESIGN.md       data model and design rationale
 docs/ENDORSEMENTS.md endorsements and comments: server set-up, sync, privacy
+docs/REVIEW.md      the review queue and the review page (votes, apply)
 feedback/            comments and error reports downloaded from the server (git-ignored)
 docs/CONSOLIDATION.md  keeping the database up to date
 AGENTS.md            instructions for AI assistants and contributors (read first)
@@ -108,8 +109,9 @@ product version PMTT²).
 node scripts/ai-analyze.mjs --dry-run              # ranking of the papers not yet read, costs (reports/ai-priority.md)
 node scripts/ai-analyze.mjs --budget 25            # the most important papers, up to about $25
 node scripts/ai-analyze.mjs --only dauriacetal2024  # one paper
+node scripts/ai-analyze.mjs --only simpson2009 --part 3  # one part of a book
 node scripts/ai-analyze.mjs                        # every paper not yet read
-node scripts/ai-review.mjs list                    # proposals awaiting a decision
+node scripts/review.mjs list                       # proposals awaiting a decision
 ```
 
 It needs `ANTHROPIC_API_KEY` (or an `ant auth login` profile). A paper costs
@@ -125,6 +127,14 @@ of the total score). Each paper is read only once (`data/ai-analyzed.yaml`), so
 later runs continue down the list; `--replay` re-applies the rules to the saved
 answers (`cache/ai/`) for free.
 
+Books and theses (texts over 400,000 characters) are read **in parts** of at
+most 250,000 characters (about 80 pages), made of whole chapters when the text
+has chapter headings (`scripts/lib/split-text.mjs`): a whole book does not fit in
+one call, or leaves too little room for the answer. Each part is a unit of its
+own in the ranking, the budget and the ledger (`dzhafarovmummert2022#3`), and the
+model is told which part it reads and that notation may come from other parts.
+Dzhafarov–Mummert is read in 9 parts (about $4.60), Simpson's book in 8.
+
 The model proposes; code decides. A fact is published only if its statements,
 property and reduction are in the catalogue, the quoted passage is found verbatim
 in the text, it has a theorem number, the model is confident and says the paper
@@ -133,8 +143,10 @@ contradict the database, a second independent call shown the passages confirms
 it, and `npm run check` still passes. Stated facts cite the paper; special cases go
 to `data/results/ai-derived.yaml` (shown as "AI-derived"). Facts the database
 already derives are dropped. Everything else — and principles missing from the
-catalogue — goes to `data/ai-review.yaml` with the reasons, for
-`node scripts/ai-review.mjs accept|reject|done <id>` (a web backend may replace it).
+catalogue — goes to the review queue, `data/review.yaml`, with the reasons: it is
+shown on the review page of the viewer, where signed-in researchers validate,
+invalidate and comment (docs/REVIEW.md), and the maintainer decides with
+`node scripts/review.mjs apply|accept|reject|done`.
 Every change made is listed per paper in `data/ai-analyzed.yaml`, so it can be
 audited or undone.
 
@@ -175,6 +187,12 @@ fetches the missing ones (arXiv, else an open-access copy found through
 OpenAlex), `--retry` retries previous failures and `--only k1,k2` restricts to
 some references. It then records the reading status (`read: pdf-zotero |
 pdf-arxiv | pdf-oa`) in `data/references/`. It needs `pdftotext` and `sqlite3`.
+Scanned PDFs (no text layer) are read by OCR with Tesseract (`brew install
+tesseract`; about 5 s per page) and marked `ocr: true` in
+`cache/fulltext/index.json`. OCR keeps the prose but merges sub- and
+superscripts (RT²₂ may come out as "RT3", RCA₀ as "RCAg"): the AI reader is
+warned for these papers and must identify principles from their definitions,
+and the regex miners' leads from them deserve extra care.
 
 ## Abstracts
 

@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import YAML from 'yaml';
 import { execFileSync } from 'node:child_process';
 import { buildZoo, questionStatus } from '../site/js/engine.js';
+import { KINDS, screenKey, reviewStatus } from '../site/js/review.js';
 import { cli } from './lib/cli.mjs';
 import { unknownFields, OPERATIONS, resultKey, orcidValid } from './lib/schema.mjs';
 cli('node scripts/build.mjs [--check] [--verbose]', { '--check': 0, '--verbose': 0 });
@@ -49,6 +50,10 @@ const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml
 // endorsements by researchers (live instance, docs/ENDORSEMENTS.md)
 const endorsed = fs.existsSync(path.join(dataDir, 'endorsements.yaml')) ? readYaml(path.join(dataDir, 'endorsements.yaml')) || {} : {};
 raw.endorsements = { people: endorsed.people || {}, endorsements: endorsed.endorsements || [] };
+// the review queue (docs/REVIEW.md): not part of the database; the open items go to
+// site/data/review.json for the review page and the server
+const queue = fs.existsSync(path.join(dataDir, 'review.yaml')) ? readYaml(path.join(dataDir, 'review.yaml')) || [] : [];
+const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(path.join(dataDir, 'screened.yaml')) || {} : {};
 
 // ---- fields: only those of the data model (scripts/lib/schema.mjs) -----------
 {
@@ -61,8 +66,7 @@ raw.endorsements = { people: endorsed.people || {}, endorsements: endorsed.endor
   for (const [k, x] of Object.entries(abstracts)) errs.push(...unknownFields(x, 'abstract', `abstracts.yaml ${k}`));
   const rej = path.join(dataDir, 'sweep-rejected.yaml');
   if (fs.existsSync(rej)) (readYaml(rej) || []).forEach((x, i) => errs.push(...unknownFields(x, 'sweepRejected', `sweep-rejected.yaml #${i}`)));
-  const review = path.join(dataDir, 'ai-review.yaml');
-  if (fs.existsSync(review)) (readYaml(review) || []).forEach((x, i) => errs.push(...unknownFields(x, 'aiReview', `ai-review.yaml #${i}`)));
+  queue.forEach((x, i) => errs.push(...unknownFields(x, 'review', `review.yaml #${i} (${x.id})`)));
   const analyzed = path.join(dataDir, 'ai-analyzed.yaml');
   if (fs.existsSync(analyzed)) for (const [k, x] of Object.entries(readYaml(analyzed) || {})) errs.push(...unknownFields(x, 'aiAnalyzed', `ai-analyzed.yaml ${k}`));
   for (const [k, x] of Object.entries(raw.endorsements.people)) errs.push(...unknownFields(x, 'person', `endorsements.yaml person ${k}`));
@@ -432,6 +436,26 @@ raw.results.forEach((res, i) => {
       if (!keys.has(e.result)) warnings.push(`endorsements.yaml: endorsed result ${e.result} is no longer in the database`);
     }
   }
+  // review queue: unique ids, known kinds and statuses, votes and comments by known people
+  {
+    const ids = new Set();
+    for (const it of queue) {
+      const at = `review.yaml ${it.id}`;
+      if (ids.has(it.id)) errors.push(`${at}: duplicate id`);
+      ids.add(it.id);
+      if (!KINDS[it.kind]) errors.push(`${at}: unknown kind ${it.kind}`);
+      if (!['pending', 'accepted', 'rejected', 'done'].includes(it.status)) errors.push(`${at}: unknown status ${it.status}`);
+      if (it.ref && !raw.references[it.ref]) errors.push(`${at}: unknown reference ${it.ref}`);
+      const voted = new Set();
+      for (const v of it.votes || []) {
+        if (!raw.endorsements.people[v.orcid]) errors.push(`${at}: vote by unknown person ${v.orcid} (people are in endorsements.yaml)`);
+        if (!['valid', 'invalid'].includes(v.verdict)) errors.push(`${at}: vote ${v.verdict} (valid or invalid)`);
+        if (voted.has(v.orcid)) errors.push(`${at}: two votes by ${v.orcid}`);
+        voted.add(v.orcid);
+      }
+      for (const c of it.comments || []) if (!raw.endorsements.people[c.orcid]) errors.push(`${at}: comment by unknown person ${c.orcid}`);
+    }
+  }
   const names = new Map();
   for (const s of raw.statements) if (s.name) { if (names.has(s.name)) warnings.push(`Statements ${names.get(s.name)} and ${s.id} have the same name`); names.set(s.name, s.id); }
   // every statement takes part in at least one result
@@ -533,5 +557,12 @@ if (!checkOnly) {
   fs.writeFileSync(path.join(outDir, 'abstracts.json'), JSON.stringify(abs));
   for (const [k] of Object.entries(abs)) clean.references[k].hasAbstract = true;
   fs.writeFileSync(path.join(outDir, 'zoo.json'), JSON.stringify(clean));
-  console.log(`✓ wrote site/data/zoo.json`);
+  // the open items of the review queue (not those already examined through the report)
+  const done = new Set(Object.entries(screened).flatMap(([list, keys]) => (keys || []).map((k) => `${list}#${k}`)));
+  const open = queue.filter((it) => it.status === 'pending' && !(screenKey(it) && done.has(screenKey(it).join('#'))))
+    .map(({ decision, ...it }) => it);
+  fs.writeFileSync(path.join(outDir, 'review.json'), JSON.stringify({ builtAt: clean.builtAt, items: open }));
+  clean.review = { open: open.length, validated: open.filter((it) => reviewStatus(it.votes) === 'validated').length };
+  fs.writeFileSync(path.join(outDir, 'zoo.json'), JSON.stringify(clean));
+  console.log(`✓ wrote site/data/zoo.json, site/data/review.json (${open.length} items to review)`);
 }

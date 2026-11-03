@@ -1,0 +1,10 @@
+# The review queue (docs/REVIEW.md): proposals that are not part of the database
+# until someone validates them. They come from the AI reader (kind result or
+# statement, scripts/ai-analyze.mjs) and from the consolidation (kind lead,
+# question, answer or paper, scripts/consolidate.mjs). They are shown on the
+# review page of the viewer, where signed-in researchers vote and comment (votes
+# and comments are copied here by scripts/endorsements-sync.mjs). Treat them with
+#   node scripts/review.mjs list | show <id> | apply | accept <id> | reject <id> --note "why" | done <id> --note "what"
+# (or by hand: set status and decision). Never delete an item: a rejected item
+# stays here so that it is not proposed again. Fields: scripts/lib/schema.mjs
+# (review).

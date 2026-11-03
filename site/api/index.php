@@ -1,11 +1,13 @@
 <?php
-// Endorsement server of the RM Zoo (see docs/ENDORSEMENTS.md).
+// Endorsement and review server of the RM Zoo (see docs/ENDORSEMENTS.md and docs/REVIEW.md).
 //   GET  ?a=state      who is signed in, CSRF token, all endorsements
 //   GET  ?a=login      redirect to ORCID (back: the page to return to, a #/… route)
 //   GET  ?a=logout     sign out, back to the site
 //   POST ?a=endorse    {result: <resultKey>, endorse: true|false}
 //   POST ?a=feedback   {kind: error|comment, target: {type, id}, text, page}
-//   GET  ?a=export     (admin token) endorsements and all feedback, for scripts/endorsements-sync.mjs
+//   POST ?a=review     {item: <review item id>, verdict: valid|invalid|null}   (the review page, docs/REVIEW.md)
+//   POST ?a=rcomment   {item, text} a public comment on a review item; {delete: <comment id>} removes one's own
+//   GET  ?a=export     (admin token) endorsements, votes, comments and all feedback, for scripts/endorsements-sync.mjs
 //   GET  ?a=devlogin   (local development only, config dev_login) sign in as any ORCID iD
 
 declare(strict_types=1);
@@ -20,7 +22,8 @@ switch ($a) {
   case 'state': {
     start_session();
     $s = read_state();
-    json_out(['user' => user(), 'csrf' => $_SESSION['csrf'], 'people' => (object) ($s['people'] ?? []), 'endorsements' => $s['endorsements'] ?? []]);
+    json_out(['user' => user(), 'csrf' => $_SESSION['csrf'], 'people' => (object) ($s['people'] ?? []), 'endorsements' => $s['endorsements'] ?? [],
+      'reviews' => $s['reviews'], 'comments' => $s['comments']]);
   }
 
   case 'login': {
@@ -68,11 +71,55 @@ switch ($a) {
       $s['endorsements'] = $list;
       $s['people'] = (array) ($s['people'] ?? []);
       $s['people'][$u['orcid']] = ['name' => $u['name']];
-      $active = array_flip(array_column($list, 'orcid'));
-      $s['people'] = array_intersect_key($s['people'], $active); // people with no endorsement left are forgotten
-      return $s;
+      return prune_people($s); // people with nothing left are forgotten
     });
     json_out(['people' => (object) $s['people'], 'endorsements' => $s['endorsements']]);
+  }
+
+  case 'review': {
+    start_session();
+    $u = require_user();
+    $b = body();
+    $item = (string) ($b['item'] ?? '');
+    if (!isset(review_items()[$item])) fail(404, 'Unknown or closed review item (reload the page).');
+    $verdict = $b['verdict'] ?? null;
+    if ($verdict !== null && !in_array($verdict, ['valid', 'invalid'], true)) fail(400, 'verdict: valid, invalid or null.');
+    $s = with_state(function (array $s) use ($u, $item, $verdict) {
+      $s['reviews'] = array_values(array_filter($s['reviews'], fn ($v) => !($v['item'] === $item && $v['orcid'] === $u['orcid'])));
+      if ($verdict !== null) $s['reviews'][] = ['item' => $item, 'orcid' => $u['orcid'], 'verdict' => $verdict, 'date' => gmdate('Y-m-d')];
+      $s['people'] = (array) ($s['people'] ?? []);
+      $s['people'][$u['orcid']] = ['name' => $u['name']];
+      return prune_people($s);
+    });
+    json_out(['people' => (object) $s['people'], 'reviews' => $s['reviews'], 'comments' => $s['comments']]);
+  }
+
+  case 'rcomment': {
+    start_session();
+    $u = require_user();
+    $b = body();
+    if (isset($b['delete'])) {
+      $cid = (string) $b['delete'];
+      $s = with_state(function (array $s) use ($u, $cid) {
+        $s['comments'] = array_values(array_filter($s['comments'], fn ($c) => !($c['id'] === $cid && $c['orcid'] === $u['orcid'])));
+        return prune_people($s);
+      });
+      json_out(['people' => (object) $s['people'], 'reviews' => $s['reviews'], 'comments' => $s['comments']]);
+    }
+    $item = (string) ($b['item'] ?? '');
+    if (!isset(review_items()[$item])) fail(404, 'Unknown or closed review item (reload the page).');
+    $text = trim((string) ($b['text'] ?? ''));
+    if ($text === '' || mb_strlen($text) > 5000) fail(400, 'The comment must have between 1 and 5000 characters.');
+    $today = gmdate('Y-m-d');
+    $mine = array_filter(read_state()['comments'], fn ($c) => $c['orcid'] === $u['orcid'] && $c['date'] === $today);
+    if (count($mine) >= cfg()['feedback_per_day']) fail(429, 'Too many comments today; please try again tomorrow.');
+    $s = with_state(function (array $s) use ($u, $item, $text, $today) {
+      $s['comments'][] = ['id' => gmdate('Ymd\THis') . '-' . bin2hex(random_bytes(3)), 'item' => $item, 'orcid' => $u['orcid'], 'date' => $today, 'text' => $text];
+      $s['people'] = (array) ($s['people'] ?? []);
+      $s['people'][$u['orcid']] = ['name' => $u['name']];
+      return prune_people($s);
+    });
+    json_out(['people' => (object) $s['people'], 'reviews' => $s['reviews'], 'comments' => $s['comments']]);
   }
 
   case 'feedback': {
@@ -125,7 +172,7 @@ switch ($a) {
     $s = read_state();
     $fb = [];
     foreach (glob(data_dir() . '/feedback/*.json') ?: [] as $f) $fb[] = json_decode((string) file_get_contents($f), true);
-    json_out(['people' => (object) ($s['people'] ?? []), 'endorsements' => $s['endorsements'] ?? [], 'feedback' => $fb]);
+    json_out(['people' => (object) ($s['people'] ?? []), 'endorsements' => $s['endorsements'] ?? [], 'reviews' => $s['reviews'], 'comments' => $s['comments'], 'feedback' => $fb]);
   }
 
   default:

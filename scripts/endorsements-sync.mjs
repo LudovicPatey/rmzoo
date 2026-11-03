@@ -1,7 +1,11 @@
-// Download the endorsements and the comments written on the live instance
-// (the PHP server in site/api/, docs/ENDORSEMENTS.md) into the repository:
+// Download the endorsements, review votes and comments written on the live
+// instance (the PHP server in site/api/, docs/ENDORSEMENTS.md, docs/REVIEW.md)
+// into the repository:
 //   - data/endorsements.yaml is replaced by the server's state (the server is
-//     authoritative for endorsements); review `git diff` and commit;
+//     authoritative for endorsements and for the people who took part);
+//   - the votes and public comments on the review page are copied into the open
+//     items of data/review.yaml (`votes`, `comments`); then
+//     `node scripts/review.mjs apply` carries them out; review `git diff` and commit;
 //   - each new comment or error report becomes feedback/inbox/<id>.json
 //     (feedback/ is git-ignored: messages are private). Move a file to
 //     feedback/done/ once treated; it is never downloaded again.
@@ -16,6 +20,7 @@ import YAML from 'yaml';
 import { cli } from './lib/cli.mjs';
 import { acquireLock } from './lib/lock.mjs';
 import { orcidValid } from './lib/schema.mjs';
+import { readQueue, writeQueue } from './lib/review-queue.mjs';
 
 const args = cli('RMZOO_ADMIN_TOKEN=… node scripts/endorsements-sync.mjs [--url https://rmzoo.ludovicpatey.com] [--dry-run]',
   { '--url': 1, '--dry-run': 0 });
@@ -34,7 +39,8 @@ const people = Object.fromEntries(Object.entries(data.people || {}).sort(([a], [
   .map(([k, p]) => [k, { name: p.name }]));
 const endorsements = (data.endorsements || []).map((e) => ({ result: e.result, orcid: e.orcid, date: e.date }))
   .sort((a, b) => a.date.localeCompare(b.date) || a.result.localeCompare(b.result) || a.orcid.localeCompare(b.orcid));
-const bad = [...Object.keys(people), ...endorsements.map((e) => e.orcid)].filter((id) => !orcidValid(id));
+const reviews = data.reviews || [], comments = data.comments || [];
+const bad = [...Object.keys(people), ...endorsements.map((e) => e.orcid), ...reviews.map((v) => v.orcid), ...comments.map((c) => c.orcid)].filter((id) => !orcidValid(id));
 if (bad.length) { console.error(`Invalid ORCID iDs from the server: ${[...new Set(bad)].join(', ')}`); process.exit(1); }
 
 const file = 'data/endorsements.yaml';
@@ -47,6 +53,30 @@ const n0 = (before.endorsements || []).length;
 console.log(`endorsements: ${n0} → ${endorsements.length} (${Object.keys(people).length} people)`);
 if (!dry) fs.writeFileSync(file, header + doc.toString({ lineWidth: 0 }));
 
+// ---- review votes and comments ---------------------------------------------------
+// the open items take the server's votes and comments (the server is authoritative
+// while an item is open); decided items keep theirs
+{
+  const q = readQueue();
+  let changed = 0;
+  for (const node of q.contents.items) {
+    if (node.get('status') !== 'pending') continue;
+    const id = node.get('id');
+    const before = JSON.stringify([node.get('votes')?.toJSON?.() || [], node.get('comments')?.toJSON?.() || []]);
+    const votes = reviews.filter((v) => v.item === id).map((v) => ({ orcid: v.orcid, verdict: v.verdict, date: v.date }))
+      .sort((a, b) => a.date.localeCompare(b.date) || a.orcid.localeCompare(b.orcid));
+    const cs = comments.filter((c) => c.item === id).map((c) => ({ orcid: c.orcid, date: c.date, text: c.text }));
+    if (JSON.stringify([votes, cs]) === before) continue;
+    changed++;
+    for (const [k, v] of [['votes', votes], ['comments', cs]]) {
+      if (v.length) node.set(k, q.createNode(v)); else node.delete(k);
+      if (k === 'votes' && v.length) for (const x of node.get(k).items) x.flow = true;
+    }
+  }
+  console.log(`review: ${reviews.length} votes and ${comments.length} comments on the server; ${changed} item${changed === 1 ? '' : 's'} of data/review.yaml updated`);
+  if (!dry && changed) writeQueue(q);
+}
+
 // ---- comments and error reports --------------------------------------------------
 const known = new Set(['inbox', 'done'].flatMap((d) => (fs.existsSync(`feedback/${d}`) ? fs.readdirSync(`feedback/${d}`) : [])));
 const fresh = (data.feedback || []).filter((f) => f?.id && /^[\w.:-]+$/.test(f.id) && !known.has(`${f.id}.json`));
@@ -58,4 +88,4 @@ for (const f of fresh) {
   }
 }
 console.log(`feedback: ${fresh.length} new item${fresh.length === 1 ? '' : 's'}${fresh.length ? ' in feedback/inbox/' : ''}${dry ? ' (dry run: nothing written)' : ''}`);
-if (!dry) console.log('Next: npm run check (endorsements of edited results are reported), npm run build, then commit data/endorsements.yaml.');
+if (!dry) console.log('Next: node scripts/review.mjs apply [--dry-run] (carries out the votes), npm run check (endorsements of edited results are reported), npm run build, then commit data/endorsements.yaml and data/review.yaml.');

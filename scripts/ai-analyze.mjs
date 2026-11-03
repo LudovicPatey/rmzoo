@@ -5,18 +5,22 @@
 // the regex miners of scripts/mine/, which only see results phrased in the usual
 // notation.
 //
-//   node scripts/ai-analyze.mjs [--only key1,key2] [--since YYYY-MM-DD] [--limit N] [--budget DOLLARS]
+//   node scripts/ai-analyze.mjs [--only key1,key2] [--part 1,2] [--since YYYY-MM-DD] [--limit N] [--budget DOLLARS]
 //                               [--redo] [--replay] [--dry-run] [--concurrency N] [--effort level]
 //
 // Papers are read in decreasing order of importance (scripts/lib/paper-rank.mjs:
 // open leads, theorems about catalogue statements, papers defining them, minus
 // what the database already cites), so that a limited budget goes to the papers
 // most likely to bring new facts. Texts too short to be usable (failed
-// extraction, scanned PDF) are skipped.
+// extraction, scanned PDF) are skipped. Texts longer than 400,000 characters
+// (books, theses) are read in parts of at most 250,000 characters, whole chapters
+// when the text has chapter headings (scripts/lib/split-text.mjs): a whole book
+// does not fit in one call, or leaves too little room for the answer.
 //
 //   --only      analyze these references only
+//   --part      only these parts of long texts (with --only: e.g. one chapter of a book)
 //   --since     only texts cached since this date (cache/fulltext/index.json)
-//   --limit     at most N papers in this run
+//   --limit     at most N papers (or parts of long texts) in this run
 //   --budget    stop before the estimated cost of the run exceeds this many dollars
 //   --redo      analyze again papers already in data/ai-analyzed.yaml
 //   --replay    no new reading: process again the saved answers (cache/ai/<key>.json),
@@ -45,8 +49,8 @@
 //    provenance: ai and the argument as justification.
 //  * dropped when the database already has it or derives it (a stated fact
 //    identical to an existing entry is not dropped: its citation is merged);
-//  * otherwise written to data/ai-review.yaml for a human decision, with the
-//    reasons (scripts/ai-review.mjs lists, accepts and rejects them).
+//  * otherwise written to the review queue, data/review.yaml, with the reasons:
+//    shown on the review page of the viewer, treated with scripts/review.mjs.
 // Every analyzed paper is recorded in data/ai-analyzed.yaml (date, model, what
 // was added), so it is not analyzed again; the raw answers are kept in cache/ai/.
 import fs from 'node:fs';
@@ -60,10 +64,12 @@ import { addResults } from './lib/results.mjs';
 import { OPERATIONS } from './lib/schema.mjs';
 import { factChecker, locator } from './lib/ai-facts.mjs';
 import { rankPapers } from './lib/paper-rank.mjs';
+import { splitText } from './lib/split-text.mjs';
+import { addToQueue, QUEUE } from './lib/review-queue.mjs';
 import { buildZoo } from '../site/js/engine.js';
 
-const USAGE = 'node scripts/ai-analyze.mjs [--only key1,key2] [--since YYYY-MM-DD] [--limit N] [--budget DOLLARS] [--redo] [--replay] [--dry-run] [--concurrency N] [--effort low|medium|high|xhigh|max]';
-const args = cli(USAGE, { '--only': 1, '--since': 1, '--limit': 1, '--budget': 1, '--redo': 0, '--replay': 0, '--dry-run': 0, '--concurrency': 1, '--effort': 1 });
+const USAGE = 'node scripts/ai-analyze.mjs [--only key1,key2] [--part 1,2] [--since YYYY-MM-DD] [--limit N] [--budget DOLLARS] [--redo] [--replay] [--dry-run] [--concurrency N] [--effort low|medium|high|xhigh|max]';
+const args = cli(USAGE, { '--only': 1, '--part': 1, '--since': 1, '--limit': 1, '--budget': 1, '--redo': 0, '--replay': 0, '--dry-run': 0, '--concurrency': 1, '--effort': 1 });
 const DRY = args.has('--dry-run');
 const REPLAY = args.has('--replay');
 const MODEL = 'claude-opus-5-5';
@@ -71,7 +77,7 @@ const PRICE = { input: 4, output: 20, cacheRead: 0.2, cacheWrite: 8 }; // $ per 
 const EFFORT = args.get('--effort', 'high');
 const CONCURRENCY = Number(args.get('--concurrency', 2));
 const LEDGER = 'data/ai-analyzed.yaml';
-const REVIEW = 'data/ai-review.yaml';
+const REVIEW = QUEUE;
 const RAW_DIR = 'cache/ai';
 
 if (!DRY) acquireLock('ai-analyze.mjs');
@@ -158,22 +164,47 @@ const VERIFY_SCHEMA = {
 const index = fs.existsSync('cache/fulltext/index.json') ? JSON.parse(fs.readFileSync('cache/fulltext/index.json', 'utf8')) : {};
 const only = args.has('--only') ? new Set(args.get('--only').split(',')) : null;
 const since = args.get('--since', '');
+// Long texts (books, theses) are read in parts (scripts/lib/split-text.mjs): each
+// part is a unit of work with its own ledger entry "<key>#<n>" and saved answer
+// cache/ai/<key>.part<n>.json. A paper analyzed whole earlier is not read again in parts.
+const partsOf = new Map();
+const partsOfPaper = (k) => partsOf.get(k) || partsOf.set(k, splitText(fs.readFileSync(`cache/fulltext/${k}.txt`, 'utf8'))).get(k);
+const unitId = (k, p) => (p.of > 1 ? `${k}#${p.n}` : k);
+const unitFile = (k, p) => `${RAW_DIR}/${p.of > 1 ? `${k}.part${p.n}` : k}.json`;
+const onlyParts = args.has('--part') ? new Set(args.get('--part').split(',').map(Number)) : null;
+const todo = (k) => (!REPLAY && !args.has('--redo') && ledger[k] ? [] : partsOfPaper(k).filter((p) => (!onlyParts || onlyParts.has(p.n))
+  && (REPLAY ? fs.existsSync(unitFile(k, p)) : args.has('--redo') || !ledger[unitId(k, p)])));
 let papers = Object.keys(raw.references).sort()
   .filter((k) => fs.existsSync(`cache/fulltext/${k}.txt`))
   .filter((k) => !only || only.has(k))
   .filter((k) => !since || (index[k]?.date || '') >= since)
-  .filter((k) => (REPLAY ? fs.existsSync(`${RAW_DIR}/${k}.json`) : args.has('--redo') || !ledger[k]));
+  .filter((k) => todo(k).length);
 if (only) for (const k of only) if (!raw.references[k]) console.error(`unknown reference ${k}`);
 // usable texts only, most important first
 const MIN_CHARS = 3000;
 const unusable = papers.filter((k) => fs.statSync(`cache/fulltext/${k}.txt`).size < MIN_CHARS);
 if (unusable.length) console.warn(`! skipped, text too short to be usable (failed extraction or scanned PDF): ${unusable.join(', ')}`);
-const ranking = rankPapers(papers.filter((k) => !unusable.includes(k)));
-papers = ranking.map((x) => x.key);
+// units of work: the papers most important first, each in its parts
+const ranking = rankPapers(papers.filter((k) => !unusable.includes(k)))
+  .flatMap((x) => todo(x.key).map((part) => ({ ...x, part, uid: unitId(x.key, part), file: unitFile(x.key, part), chars: part.text.length })));
+papers = ranking.map((x) => x.uid);
 
-const userPrompt = (key, text) => {
+// Texts read by OCR from a scan (scripts/fulltext.mjs) lose most sub- and
+// superscripts: the model is told so for those papers.
+const OCR_NOTE = `\n\nThis text was obtained by OCR of a scanned paper: formulas are approximate. Sub- and superscripts are merged or misread
+("RT3", "RTS", "RTZ" or "RT?" may all be RT²₂; "SRT3" may be SRT²₂; "RCAg", "RCAp" or "RCAo" is RCA₀; "IX2", "I%2" or "IE2" is IΣ₂;
+"w-model" is ω-model; "AS" or "A9" may be Δ⁰₂; "II}" may be Π¹₁). Identify each principle from its definition in the text, never
+from the OCR'd name alone, and give confidence "high" only when the definition settles it. Quotes must still be copied from the
+text as given (with its OCR errors).`;
+// a part of a long text: the model is told what it reads, and that notation may
+// have been introduced in other parts
+const partNote = (p) => (p.of > 1 ? `\n\nThis long text is read in ${p.of} parts, separately; this is part ${p.n} (${p.title}). Extract the facts
+proved or stated in this part only. Notation and principles may have been defined in other parts: identify them from the
+catalogue and from what this part says, and lower your confidence when the definition is not in this part. Give theorem
+numbers as printed. List as missing statements only principles defined in this part.` : '');
+const userPrompt = (key, text, part = { of: 1 }) => {
   const r = raw.references[key];
-  return `Paper [${key}]: ${(r.authors || []).join(', ')}, "${r.title}", ${r.year}.\n\n<paper>\n${text}\n</paper>\n\nExtract the facts of this paper as instructed.`;
+  return `Paper [${key}]: ${(r.authors || []).join(', ')}, "${r.title}", ${r.year}.${index[key]?.ocr ? OCR_NOTE : ''}${partNote(part)}\n\n<paper>\n${text}\n</paper>\n\nExtract the facts of this ${part.of > 1 ? 'part' : 'paper'} as instructed.`;
 };
 const estTokens = (s) => Math.round(s.length / 3.3);
 // estimated cost of one paper: its text, the cached catalogue, ~15k output and
@@ -186,22 +217,23 @@ const estCost = (x) => (estTokens({ length: x.chars }) * PRICE.input + catTokens
 }
 if (!REPLAY && args.has('--budget')) {
   const budget = Number(args.get('--budget'));
-  papers = ranking.filter((x) => x.cumulative <= budget).map((x) => x.key);
+  papers = ranking.filter((x) => x.cumulative <= budget).map((x) => x.uid);
 }
 if (args.has('--limit')) papers = papers.slice(0, Number(args.get('--limit')));
 
 if (DRY) {
-  const total = ranking.filter((x) => papers.includes(x.key)).reduce((s, x) => s + x.cost, 0);
+  const total = ranking.filter((x) => papers.includes(x.uid)).reduce((s, x) => s + x.cost, 0);
   const all = ranking.at(-1)?.cumulative || 0;
-  console.log(`${papers.length} papers in this run, estimated $${total.toFixed(0)} (all ${ranking.length} papers to analyze: about $${all.toFixed(0)}; ~15k output and thinking tokens assumed per paper).`);
+  const nPapers = (list) => new Set(list.map((u) => u.split('#')[0])).size;
+  console.log(`${nPapers(papers)} papers (${papers.length} units: long texts are read in parts) in this run, estimated $${total.toFixed(0)} (all ${nPapers(ranking.map((x) => x.uid))} papers to analyze: about $${all.toFixed(0)}; ~15k output and thinking tokens assumed per unit).`);
   // the full ranking, to choose a budget
   const yr = (k) => raw.references[k]?.year || '';
-  const row = (x, i) => `| ${i + 1} | ${x.key} | ${yr(x.key)} | ${x.score} | ${x.leads} | ${x.property} | ${x.theorems} | ${x.defines} | ${x.covered} | $${x.cost.toFixed(2)} | $${x.cumulative.toFixed(0)} |`;
+  const row = (x, i) => `| ${i + 1} | ${x.uid}${x.part.of > 1 ? ` (${x.part.title})` : ''} | ${yr(x.key)} | ${x.score} | ${x.leads} | ${x.property} | ${x.theorems} | ${x.defines} | ${x.covered} | $${x.cost.toFixed(2)} | $${x.cumulative.toFixed(0)} |`;
   fs.mkdirSync('reports', { recursive: true });
   fs.writeFileSync('reports/ai-priority.md', `# Papers for the AI reader, most important first
 
 `
-    + `Generated by \`node scripts/ai-analyze.mjs --dry-run\` on ${new Date().toISOString().slice(0, 10)}: ${ranking.length} papers not yet analyzed.
+    + `Generated by \`node scripts/ai-analyze.mjs --dry-run\` on ${new Date().toISOString().slice(0, 10)}: ${ranking.length} papers or parts of long texts not yet analyzed.
 `
     + `Score (scripts/lib/paper-rank.mjs) = (4·leads + 2·property + theorems + 3·defines + 2·log2(1 + breadth)) / (1 + covered/10).
 `
@@ -224,13 +256,13 @@ if (DRY) {
   console.log('Full ranking with costs: reports/ai-priority.md');
   console.log('   #  paper                               year  score   cost   cumulative');
   for (const [i, x] of ranking.slice(0, 30).entries())
-    console.log(`${String(i + 1).padStart(4)}  ${x.key.padEnd(36)}${String(yr(x.key)).padEnd(6)}${String(x.score).padStart(6)}  $${x.cost.toFixed(2).padStart(5)}  $${x.cumulative.toFixed(0).padStart(4)}${papers.includes(x.key) ? '' : '  (not in this run)'}`);
+    console.log(`${String(i + 1).padStart(4)}  ${x.uid.padEnd(36)}${String(yr(x.key)).padEnd(6)}${String(x.score).padStart(6)}  $${x.cost.toFixed(2).padStart(5)}  $${x.cumulative.toFixed(0).padStart(4)}${papers.includes(x.uid) ? '' : '  (not in this run)'}`);
   if (ranking.length > 30) console.log(`  … ${ranking.length - 30} more in reports/ai-priority.md`);
   if (papers.length) {
-    const k = papers[0];
-    const file = `${RAW_DIR}/${k}.prompt.txt`;
-    fs.writeFileSync(file, `${INSTRUCTIONS}\n\n${catalogue}\n\n---- user ----\n${userPrompt(k, fs.readFileSync(`cache/fulltext/${k}.txt`, 'utf8'))}`);
-    console.log(`Prompt of ${k} written to ${file}.`);
+    const u = ranking.find((x) => x.uid === papers[0]);
+    const file = u.file.replace(/\.json$/, '.prompt.txt');
+    fs.writeFileSync(file, `${INSTRUCTIONS}\n\n${catalogue}\n\n---- user ----\n${userPrompt(u.key, u.part.text, u.part)}`);
+    console.log(`Prompt of ${u.uid} written to ${file}.`);
   }
   process.exit(0);
 }
@@ -291,19 +323,6 @@ async function call({ system, user, schema, effort, maxTokens }) {
 let writing = Promise.resolve();
 const serial = (fn) => (writing = writing.then(fn, fn));
 
-// The paper's pending items are replaced by the new ones; decided items stay, and a
-// fact already decided (same id: hash of the entry) is not proposed again.
-function appendReview(key, items) {
-  const doc = fs.existsSync(REVIEW)
-    ? YAML.parseDocument(fs.readFileSync(REVIEW, 'utf8'))
-    : YAML.parseDocument(fs.readFileSync('scripts/ai/review-header.yaml', 'utf8'));
-  if (!YAML.isSeq(doc.contents)) doc.contents = doc.createNode([]);
-  doc.contents.flow = false;
-  doc.contents.items = doc.contents.items.filter((n) => !(n.get('ref') === key && n.get('status') === 'pending'));
-  const ids = new Set(doc.contents.items.map((n) => n.get('id')));
-  for (const it of items) if (!ids.has(it.id)) doc.contents.items.push(doc.createNode(it));
-  fs.writeFileSync(REVIEW, doc.toString({ lineWidth: 0 }));
-}
 function writeLedger(key, rec) {
   const doc = fs.existsSync(LEDGER)
     ? YAML.parseDocument(fs.readFileSync(LEDGER, 'utf8'))
@@ -318,18 +337,20 @@ function writeLedger(key, rec) {
 // ---- one paper -----------------------------------------------------------------
 const today = new Date().toISOString().slice(0, 10);
 const factId = (key, x) => `${key}-${crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex').slice(0, 8)}`;
-async function analyze(key) {
-  const text = fs.readFileSync(`cache/fulltext/${key}.txt`, 'utf8');
+async function analyze(unit) {
+  const { key, part, uid } = unit;
+  const text = part.text;
+  const partLabel = part.of > 1 ? `${part.n}/${part.of} (${part.title})` : null;
   const locate = locator(text);
   const hash = crypto.createHash('sha256').update(text).digest('hex').slice(0, 16);
-  const saved = REPLAY ? JSON.parse(fs.readFileSync(`${RAW_DIR}/${key}.json`, 'utf8')) : null;
+  const saved = REPLAY ? JSON.parse(fs.readFileSync(unit.file, 'utf8')) : null;
   const none = { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 };
   const ex = saved ? { json: saved.extraction, usage: none, model: saved.model } : await call({
     system: [
       { type: 'text', text: INSTRUCTIONS },
       { type: 'text', text: catalogue, cache_control: { type: 'ephemeral', ttl: '1h' } },
     ],
-    user: userPrompt(key, text),
+    user: userPrompt(key, text, part),
     schema: EXTRACT_SCHEMA,
     effort: EFFORT,
     maxTokens: 64000,
@@ -386,7 +407,7 @@ async function analyze(key) {
       review.push(...auto.splice(j, 1));
     }
   }
-  fs.writeFileSync(`${RAW_DIR}/${key}.json`, JSON.stringify({ key, date: saved?.date ?? today, model: ex.model, hash, extraction: out, verdicts }, null, 1));
+  fs.writeFileSync(unit.file, JSON.stringify({ key, ...(partLabel ? { part: partLabel } : {}), date: saved?.date ?? today, model: ex.model, hash, extraction: out, verdicts }, null, 1));
 
   return serial(() => {
     // publish the confirmed facts, then check that the database is still consistent
@@ -414,7 +435,7 @@ async function analyze(key) {
       }
     }
     const items = review.map(({ id, f, e, reasons, verifier }) => ({
-      id, ref: key, date: today, status: 'pending', kind: 'result',
+      id, ref: key, ...(partLabel ? { part: partLabel } : {}), date: today, status: 'pending', kind: 'result',
       result: e, loc: f.loc, origin: f.origin, quote: f.quote,
       ...(f.paperNotation ? { paperNotation: f.paperNotation } : {}),
       ...(f.argument ? { argument: f.argument } : {}),
@@ -425,31 +446,33 @@ async function analyze(key) {
       reasons,
     }));
     out.missingStatements.forEach((m) => items.push({
-      id: factId(key, m.notation), ref: key, date: today, status: 'pending', kind: 'statement',
+      id: factId(key, m.notation), ref: key, ...(partLabel ? { part: partLabel } : {}), date: today, status: 'pending', kind: 'statement',
       statement: m, reasons: ['principle not in the catalogue'],
     }));
-    appendReview(key, items);
+    // the pending proposals of this paper (or of this part) are replaced
+    addToQueue(items, { replace: (n) => n.get('ref') === key && ['result', 'statement'].includes(n.get('kind'))
+      && (partLabel ? String(n.get('part') || '').startsWith(`${part.n}/`) : !n.get('part')) });
     const u = { input: ex.usage.input + (verify?.usage.input || 0), output: ex.usage.output + (verify?.usage.output || 0), cacheRead: ex.usage.cacheRead + (verify?.usage.cacheRead || 0), cacheWrite: ex.usage.cacheWrite + (verify?.usage.cacheWrite || 0) };
-    const changes = [...new Set([...(ledger[key]?.changes || []), ...added])]; // keep earlier changes (--redo, --replay)
-    writeLedger(key, {
-      date: today, model: ex.model, textHash: hash,
+    const changes = [...new Set([...(ledger[uid]?.changes || []), ...added])]; // keep earlier changes (--redo, --replay)
+    writeLedger(uid, {
+      date: today, model: ex.model, textHash: hash, ...(partLabel ? { part: partLabel } : {}),
       facts: out.facts.length, added: changes.length, review: items.length, dropped: nDropped,
       ...(changes.length ? { changes } : {}),
-      cost: REPLAY ? ledger[key]?.cost ?? 0 : Number(cost(u).toFixed(2)),
+      cost: REPLAY ? ledger[uid]?.cost ?? 0 : Number(cost(u).toFixed(2)),
     });
-    console.log(`${key}: ${out.facts.length} facts → ${added.length} added, ${items.length} to review, ${nDropped} already known ($${cost(u).toFixed(2)})`);
+    console.log(`${uid}: ${out.facts.length} facts → ${added.length} added, ${items.length} to review, ${nDropped} already known ($${cost(u).toFixed(2)})`);
   });
 }
 
 // ---- run -------------------------------------------------------------------------
-console.log(`${papers.length} papers to analyze with ${MODEL} (effort ${EFFORT}, ${CONCURRENCY} at a time).`);
+console.log(`${papers.length} papers or parts to analyze with ${MODEL} (effort ${EFFORT}, ${CONCURRENCY} at a time).`);
 const failures = [];
 let next = 0, stop = false;
 async function worker() {
   while (!stop && next < papers.length) {
-    const key = papers[next++];
+    const uid = papers[next++];
     try {
-      await analyze(key);
+      await analyze(ranking.find((x) => x.uid === uid));
     } catch (err) {
       if (err instanceof Anthropic.AuthenticationError || err instanceof Anthropic.PermissionDeniedError) {
         console.error(`Authentication failed: set ANTHROPIC_API_KEY (or run \`ant auth login\`). ${err.message}`);
@@ -459,9 +482,9 @@ async function worker() {
         stop = true;
       } else {
         const why = err instanceof Anthropic.APIError ? `API error ${err.status}: ${err.message}` : err.message;
-        console.error(`${key}: failed (${why})`);
+        console.error(`${uid}: failed (${why})`);
       }
-      failures.push(key);
+      failures.push(uid);
     }
   }
 }
@@ -469,4 +492,4 @@ await Promise.all(Array.from({ length: Math.max(1, CONCURRENCY) }, worker));
 await writing;
 console.log(`Done. Tokens: ${usage.input} input, ${usage.cacheRead} cache read, ${usage.cacheWrite} cache write, ${usage.output} output (≈ $${cost(usage).toFixed(2)}).`);
 if (failures.length) console.log(`Not analyzed (run again to retry): ${failures.join(', ')}`);
-console.log(`Pending human review: ${REVIEW} (node scripts/ai-review.mjs).`);
+console.log(`Pending human review: ${REVIEW} (review page of the viewer, node scripts/review.mjs).`);

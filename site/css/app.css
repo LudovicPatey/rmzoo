@@ -379,3 +379,22 @@ table.related td { vertical-align: middle; }
 #account { flex: none; }
 #account .btn { white-space: nowrap; max-width: 200px; overflow: hidden; text-overflow: ellipsis; }
 .orcid-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #a6ce39; margin-right: 6px; vertical-align: -1px; }
+
+/* review page (docs/REVIEW.md) */
+.rv-card .badge { background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
+.badge.yes { background: var(--yes-soft); color: var(--yes); border-color: transparent; }
+.badge.no { background: var(--no-soft, var(--bg)); color: var(--no); border-color: transparent; }
+.badge.warn, .badge.ai { border-color: transparent; }
+.rv-kinds { margin: 14px 0 8px; }
+.rv-filters { margin: 8px 0 14px; flex-wrap: wrap; gap: 12px; }
+.rv-card { margin: 0 0 14px; padding: 14px 16px; }
+.rv-card .row.small { gap: 6px; align-items: center; }
+.rv-fact { font-size: 1.05rem; margin: 10px 0 6px; }
+.rv-quote { margin: 8px 0; padding: 6px 12px; border-left: 3px solid var(--line); color: var(--muted); font-size: .9rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+.rv-votes { margin: 8px 0 0; }
+.rv-comments { list-style: none; padding: 0; margin: 10px 0 0; border-top: 1px solid var(--line); }
+.rv-comments li { padding: 8px 0; border-bottom: 1px solid var(--line); white-space: pre-wrap; overflow-wrap: anywhere; }
+.rv-actions { margin-top: 12px; flex-wrap: wrap; gap: 8px; align-items: center; }
+.rv-actions .muted { min-width: 12em; }
+.rv-form { margin-top: 10px; }
+.linkish { background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer; }

@@ -1,6 +1,6 @@
 // Writing results into data/results/ without creating duplicates. Used by
 // add-results.mjs (by hand), ai-analyze.mjs (automatic extraction) and
-// ai-review.mjs (accepting a reviewed fact).
+// review.mjs (accepting a reviewed fact).
 //
 // spec: { "<refkey>": [ result, ... ], ... } where each result is as in
 // data/results/*.yaml but without `refs`; an optional `loc` gives the theorem

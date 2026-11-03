@@ -4,7 +4,7 @@
 - { type: "implication", from: "rt32", to: "brt32", over: "rca0star", folklore: true, refs: [ { ref: pateyshafer2026 } ], justification: { kind: restriction, text: BRT³₂ is RT³₂ restricted to colorings whose 1-homogeneous sets are bounded; such colorings only have infinite 0-homogeneous sets., by: ai } }
 - { type: "separation", from: "rt22", to: "brt32", over: "c", refs: [ { ref: pateyshafer2026 } ] }
 - { type: separation, from: rt2, to: brt32, over: c, note: "Proved for the restriction BRT³₂,₄, hence for BRT³₂.", refs: [ { ref: pateyshafer2026, loc: Theorem 1.8 } ] }
-- { type: property, statement: brt32, property: cone-avoidance, value: true, refs: [ { ref: pateyshafer2026, loc: Theorem 2.7 (due to Soldà) } ] }
+- { type: property, statement: brt32, property: cone-avoidance, value: true, refs: [ { ref: pateyshafer2026, loc: Theorem 2.7 (due to Soldà) }, { ref: solda2021, loc: Corollary 4.1.23 } ] }
 - { type: property, statement: brt32, property: weakly-low-basis, value: true, refs: [ { ref: pateyshafer2026, loc: Theorem 1.6 } ] }
 - { type: property, statement: brt32, property: pi2-basis, value: true, refs: [ { ref: pateyshafer2026, loc: "Section 3, introduction" } ] }
 - { type: property, statement: brt32, property: sigma2-basis, value: false, refs: [ { ref: pateyshafer2026, loc: "Section 3, introduction" } ] }

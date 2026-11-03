@@ -19,6 +19,7 @@ export function deployFiles(siteDir = 'site') {
     ...list('js', '.js'),
     ['data/zoo.json', 'data/zoo.json'],
     ['data/abstracts.json', 'data/abstracts.json'],
+    ['data/review.json', 'data/review.json'], // the review queue (open items)
     ['api/index.php', 'api/index.php'],
     ['api/callback.php', 'api/callback.php'],
     ['api/lib.php', 'api/lib.php'],

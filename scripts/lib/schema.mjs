@@ -29,10 +29,12 @@ export const FILES = {
   mineFacts: 'scripts/mine/facts.mjs',
   mineQuestions: 'scripts/mine/questions.mjs',
   aiAnalyze: 'scripts/ai-analyze.mjs',  // AI reading of the full texts
-  aiReview: 'scripts/ai-review.mjs',    // human decisions on its proposals
+  review: 'scripts/review.mjs',         // the review queue: listing, decisions, applying votes
+  reviewLib: 'site/js/review.js',       // review statuses and kinds (viewer, build, scripts)
   results: 'scripts/lib/results.mjs',   // writing results without duplicates
   community: 'site/js/community.js',    // endorsements and comments in the viewer
-  api: 'site/api/index.php',            // endorsement server (PHP, live instance)
+  api: 'site/api/index.php',            // endorsement and review server (PHP, live instance)
+  apiLib: 'site/api/lib.php',           // its storage
   endorseSync: 'scripts/endorsements-sync.mjs', // server → data/endorsements.yaml, feedback/
 };
 
@@ -101,7 +103,7 @@ export const SCHEMA = {
     doi: { doc: 'DOI (unique across references)', usedBy: ['build', 'viewer', 'bibtex', 'sweep', 'pubstatus', 'fulltext', 'abstracts', 'consolidate'] },
     arxiv: { doc: 'arXiv id (unique unless `version` links the two)', usedBy: ['build', 'viewer', 'bibtex', 'sweep', 'pubstatus', 'fulltext', 'abstracts', 'consolidate'] },
     url: { doc: 'link when there is no DOI', usedBy: ['viewer', 'bibtex', 'fulltext'] },
-    source: { doc: 'where the entry came from (zbmath, arxiv, rmzoo, …)', usedBy: ['viewer', 'sweep'] },
+    source: { doc: 'where the entry came from (zbmath, arxiv, rmzoo, review: added from the review page, …)', usedBy: ['viewer', 'sweep'] },
     read: { doc: 'how its content was checked: pdf-zotero | pdf-arxiv | pdf-oa | abstract | screened (written by fulltext.mjs)', usedBy: ['build', 'viewer', 'fulltext'] },
     preprintYear: { doc: 'year of the preprint, when `year` became the publication year (written by pubstatus.mjs)', usedBy: ['pubstatus'] },
     version: { doc: 'key of another version of the same work (conference vs journal)', usedBy: ['build'] },
@@ -185,27 +187,37 @@ export const SCHEMA = {
     doi: { doc: 'its DOI', usedBy: ['sweep'] },
     reason: { req: true, doc: 'why it is out of scope', usedBy: [] },
   },
-  // data/ai-review.yaml — a list: facts proposed by ai-analyze.mjs awaiting a human
-  // decision (scripts/ai-review.mjs, later a web backend). Never delete items.
-  aiReview: {
-    id: { req: true, doc: '<refkey>-<n> (result n of the extraction) or <refkey>-s<n> (missing statement n)', usedBy: ['aiAnalyze', 'aiReview'] },
-    ref: { req: true, doc: 'the analyzed paper', usedBy: ['aiAnalyze', 'aiReview'] },
-    date: { req: true, doc: 'date of the analysis', usedBy: ['aiAnalyze', 'aiReview'] },
-    status: { req: true, doc: 'pending | accepted | rejected | done (treated by hand)', usedBy: ['aiAnalyze', 'aiReview'] },
-    kind: { req: true, doc: 'result (a proposed fact) | statement (a principle missing from the catalogue)', usedBy: ['aiAnalyze', 'aiReview'] },
-    result: { doc: 'result: the proposed entry, as in data/results/ without refs; edit it before accepting if needed', usedBy: ['aiAnalyze', 'aiReview'] },
-    loc: { doc: 'result: theorem number in the paper', usedBy: ['aiAnalyze', 'aiReview'] },
-    origin: { doc: 'result: stated (the paper states it) | cited (the paper attributes it to citedFrom) | special-case (instance of one stated result) | deduced', usedBy: ['aiAnalyze', 'aiReview'] },
-    quote: { doc: 'result: verbatim passage of the extracted text', usedBy: ['aiAnalyze'] },
-    paperNotation: { doc: "result: the paper's notation, when it differs from the catalogue", usedBy: ['aiAnalyze'] },
-    argument: { doc: 'result: for special cases and deductions, the argument', usedBy: ['aiAnalyze', 'aiReview'] },
-    citedFrom: { doc: 'result: the work the paper attributes the fact to', usedBy: ['aiAnalyze', 'aiReview'] },
-    confidence: { doc: "result: the extractor's confidence (high | medium | low)", usedBy: ['aiAnalyze', 'aiReview'] },
-    concerns: { doc: 'result: what the extractor thinks a human should check', usedBy: ['aiAnalyze'] },
-    verifier: { doc: 'result: {verdict: confirmed | rejected | unsure, reason} of the independent verification call', usedBy: ['aiAnalyze'] },
-    statement: { doc: 'statement: {notation, name, loc, definition, facts} as read in the paper', usedBy: ['aiAnalyze', 'aiReview'] },
-    reasons: { req: true, doc: 'why a human must decide (unknown id, quote not found, low confidence, verifier not confirming…)', usedBy: ['aiAnalyze', 'aiReview'] },
-    decision: { doc: '{date, by, note} once treated', usedBy: ['aiReview'] },
+  // data/review.yaml — the review queue (docs/REVIEW.md), a list: proposals of the
+  // AI reader and candidates of the consolidation, shown on the review page until
+  // a decision. Never delete items.
+  review: {
+    id: { req: true, doc: '<refkey>-<hash> (AI proposals), lead-|question-|answer-|paper-<hash> (consolidation)', usedBy: ['aiAnalyze', 'review', 'build', 'viewer', 'api'] },
+    kind: { req: true, doc: 'result | statement (AI reader) | lead | question | answer | paper (consolidation): see KINDS in site/js/review.js', usedBy: ['aiAnalyze', 'review', 'build', 'viewer', 'reviewLib', 'consolidate'] },
+    status: { req: true, doc: 'pending (on the review page) | accepted | rejected | done (treated by hand)', usedBy: ['aiAnalyze', 'review', 'build'] },
+    date: { req: true, doc: 'date it was proposed', usedBy: ['aiAnalyze', 'consolidate', 'viewer'] },
+    ref: { doc: 'the paper (the analyzed paper; for lead, question, answer: the paper of the passage); not for kind paper', usedBy: ['aiAnalyze', 'review', 'viewer', 'reviewLib', 'consolidate'] },
+    part: { doc: 'AI proposals from a long text read in parts: the part (scripts/lib/split-text.mjs)', usedBy: ['aiAnalyze', 'viewer'] },
+    reasons: { doc: 'why a human must decide (AI: unknown id, quote not found, low confidence, verifier not confirming…; consolidation: what the miner saw)', usedBy: ['aiAnalyze', 'review', 'viewer', 'consolidate'] },
+    result: { doc: 'result: the proposed entry, as in data/results/ without refs; edit it before accepting if needed', usedBy: ['aiAnalyze', 'review', 'viewer', 'reviewLib'] },
+    loc: { doc: 'result, lead, question: the theorem or question number in the paper', usedBy: ['aiAnalyze', 'review', 'viewer', 'reviewLib', 'consolidate'] },
+    origin: { doc: 'result: stated (the paper states it) | cited (the paper attributes it to citedFrom) | special-case (instance of one stated result) | deduced', usedBy: ['aiAnalyze', 'review', 'viewer', 'reviewLib'] },
+    quote: { doc: 'result: verbatim passage of the extracted text', usedBy: ['aiAnalyze', 'viewer'] },
+    paperNotation: { doc: "result: the paper's notation, when it differs from the catalogue", usedBy: ['aiAnalyze', 'viewer'] },
+    argument: { doc: 'result: for special cases and deductions, the argument', usedBy: ['aiAnalyze', 'viewer', 'reviewLib'] },
+    citedFrom: { doc: 'result: the work the paper attributes the fact to', usedBy: ['aiAnalyze', 'review', 'viewer', 'reviewLib'] },
+    confidence: { doc: "result: the extractor's confidence (high | medium | low)", usedBy: ['aiAnalyze', 'review', 'viewer'] },
+    concerns: { doc: 'result: what the extractor thinks a human should check', usedBy: ['aiAnalyze', 'viewer'] },
+    verifier: { doc: 'result: {verdict: confirmed | rejected | unsure, reason} of the independent verification call', usedBy: ['aiAnalyze', 'viewer'] },
+    statement: { doc: 'statement: {notation, name, loc, definition, facts} as read in the paper', usedBy: ['aiAnalyze', 'review', 'viewer'] },
+    text: { doc: 'lead, question, answer: the passage of the paper (extracted text)', usedBy: ['consolidate', 'viewer'] },
+    open: { doc: 'lead: the relations still open in the database between the statements it names (e.g. "rt22⇏coh"), and over: the reduction', usedBy: ['consolidate', 'viewer'] },
+    over: { doc: 'lead: the reduction or base system the theorem speaks of (miner guess)', usedBy: ['consolidate', 'viewer'] },
+    statements: { doc: 'question: catalogue statements it names', usedBy: ['consolidate', 'viewer'] },
+    question: { doc: 'answer: id of the recorded question (data/questions.yaml)', usedBy: ['consolidate', 'viewer', 'reviewLib'] },
+    paper: { doc: 'paper: {title, authors, year, venue, doi, arxiv} of a borderline paper found by the sweep', usedBy: ['consolidate', 'review', 'viewer'] },
+    votes: { doc: '[{orcid, verdict: valid | invalid, date}] from the live instance (scripts/endorsements-sync.mjs)', usedBy: ['build', 'review', 'viewer', 'apiLib', 'endorseSync'] },
+    comments: { doc: '[{orcid, date, text}] public comments from the live instance (scripts/endorsements-sync.mjs)', usedBy: ['build', 'review', 'viewer', 'api', 'apiLib', 'endorseSync'] },
+    decision: { doc: '{date, by, note} once treated', usedBy: ['review'] },
   },
   // data/endorsements.yaml — {people: {orcid: person}, endorsements: [endorsement]},
   // written by scripts/endorsements-sync.mjs from the live server (docs/ENDORSEMENTS.md)
@@ -218,13 +230,15 @@ export const SCHEMA = {
     name: { req: true, doc: 'name public on the ORCID record at sign-in (the iD when private)', usedBy: ['community', 'api'] },
   },
   // data/ai-analyzed.yaml — a map refkey → record: papers already read by ai-analyze.mjs
+  // (long texts read in parts: one record per part, "<refkey>#<n>")
   aiAnalyzed: {
+    part: { doc: 'for a part of a long text: "<n>/<of> (chapters…, pages…)" (scripts/lib/split-text.mjs)', usedBy: ['aiAnalyze'] },
     date: { req: true, doc: 'date of the analysis', usedBy: ['aiAnalyze'] },
     model: { req: true, doc: 'model that read the paper', usedBy: ['aiAnalyze'] },
     textHash: { req: true, doc: 'sha256 prefix of the text read (a new version of the text can be analyzed with --redo)', usedBy: ['aiAnalyze'] },
     facts: { req: true, doc: 'number of facts proposed', usedBy: ['aiAnalyze'] },
     added: { req: true, doc: 'number of results added or citations merged (all runs)', usedBy: ['aiAnalyze'] },
-    review: { req: true, doc: 'number of items sent to data/ai-review.yaml', usedBy: ['aiAnalyze'] },
+    review: { req: true, doc: 'number of items sent to the review queue, data/review.yaml', usedBy: ['aiAnalyze'] },
     dropped: { req: true, doc: 'number of cited/deduced facts dropped because the database already has them', usedBy: ['aiAnalyze'] },
     changes: { doc: 'the database changes ("added: <resultKey>", "merged: …"), to audit or undo them', usedBy: ['aiAnalyze'] },
     cost: { doc: 'cost of the two calls in dollars (estimate)', usedBy: ['aiAnalyze'] },
@@ -249,7 +263,7 @@ export const OPERATIONS = {
 //   data/fulltext-exclude.yaml reference key → {zotero, reason}: Zotero items not to use
 //   data/screened.yaml         {facts, questions, resolutions}: leads already examined
 //   data/acronyms-ignored.yaml acronym → reason: not proposed as missing statements
-//   data/ai-review.yaml        entity aiReview above; data/ai-analyzed.yaml: aiAnalyzed
+//   data/review.yaml           entity review above; data/ai-analyzed.yaml: aiAnalyzed
 //   data/endorsements.yaml     {people: orcid → person, endorsements: [endorsement]} (entities above)
 
 // ORCID iD with a valid check digit (ISO 7064 11,2). Used by the build and the sync.

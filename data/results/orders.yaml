@@ -3,7 +3,7 @@
 - { type: implication, from: rt22, to: cac, over: [ sw, rca0star ], refs: [ { ref: hirschfeldtshore2007 }, { ref: cholakjockuschslaman2001, loc: Question 13.8 } ], justification: { kind: reduction, text: "Color the pair {x < y} by whether x and y are comparable; homogeneous sets are chains or antichains.", by: ai } }
 - { type: implication, from: cac, to: scac, over: [ sw, rca0star ], folklore: true, justification: { kind: restriction, text: SCAC is CAC restricted to stable partial orders., by: ai } }
 - { type: implication, from: ads, to: sads, over: [ sw, rca0star ], folklore: true, justification: { kind: restriction, text: SADS is ADS restricted to linear orders of type ω + ω*., by: ai } }
-- { type: implication, from: ads, to: cads, over: rca0, folklore: true, justification: { kind: reduction, text: "An infinite ascending or descending sequence is a suborder of type ω or ω*, hence stable.", by: ai } }
+- { type: implication, from: ads, to: cads, over: rca0, justification: { kind: reduction, text: "An infinite ascending or descending sequence is a suborder of type ω or ω*, hence stable.", by: ai }, refs: [ { ref: hirschfeldt2015, loc: "Section 9.1, after Definition 9.16" } ] }
 - { type: implication, from: cads-sads, to: ads, over: rca0, refs: [ { ref: hirschfeldtshore2007, loc: Proposition 2.7 } ] }
 - { type: implication, from: coh, to: cads, over: rca0, refs: [ { ref: hirschfeldtshore2007, loc: Proposition 2.9 } ] }
 

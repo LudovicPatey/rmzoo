@@ -291,6 +291,12 @@ Everything not derivable is **open**. The viewer distinguishes "open" from
   list), papers about many statements counting less and very common statements
   (ACA₀, WKL₀) slightly less, then the same tags; base systems, operator
   statements and formulations of the same principle are left out.
+* **Review page** (`#/review`, `docs/REVIEW.md`) — proposals that are not part of
+  the database (AI proposals that failed an automatic check, consolidation
+  candidates) are shown there only. Signed-in researchers validate, invalidate
+  and comment; a proposed result validated by someone and invalidated by no one
+  is joined to the database in the viewer at once (marked “validated on the
+  review page”) until the maintainer commits it with `scripts/review.mjs apply`.
 * **Endorsements** (live instance, `docs/ENDORSEMENTS.md`) — researchers signed in
   with ORCID endorse results (“I have read the proof of this result and believe
   it is correct”): a green ✓ for one endorser, a bronze ✓ with the count for

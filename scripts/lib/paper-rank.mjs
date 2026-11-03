@@ -9,7 +9,8 @@
 //              computability-theoretic or reduction phrase ("cone avoidance",
 //              "low solution", "computable instance", "Weihrauch", "ω-model"…):
 //              results the regex miner cannot read (MTT² has cone avoidance)
-//   theorems   numbered statements naming at least one catalogue statement
+//   theorems   numbered statements naming at least one catalogue statement (2.6, or
+//              II.3.4 as in books numbered by chapter)
 //   breadth    distinct catalogue statements named anywhere in the text
 //   defines    catalogue statements whose literature lists this paper (it
 //              introduced or first analysed them)
@@ -22,7 +23,7 @@ import fs from 'node:fs';
 import { raw, dict, tokRe, normalize } from '../mine/common.mjs';
 import { mineFacts } from '../mine/facts.mjs';
 
-const THEOREM = /\n\s*(Theorem|Proposition|Corollary|Lemma|Claim|Fact|THEOREM|PROPOSITION|COROLLARY|LEMMA)\s+(\d+(?:\.\d+)*)\.?\s*(\([^)]{0,90}\))?\.?([\s\S]{0,600}?)(?=\n\s*(?:Proof|Theorem|Proposition|Corollary|Lemma|Definition|Example|Remark|Question|Claim|PROOF|THEOREM|PROPOSITION|COROLLARY|LEMMA|DEFINITION)\b|$)/g;
+const THEOREM = /\n\s*(Theorem|Proposition|Corollary|Lemma|Claim|Fact|THEOREM|PROPOSITION|COROLLARY|LEMMA)\s+((?:[IVX]{1,5}\.)?\d+(?:\.\d+)*)\.?\s*(\([^)]{0,90}\))?\.?([\s\S]{0,600}?)(?=\n\s*(?:Proof|Theorem|Proposition|Corollary|Lemma|Definition|Example|Remark|Question|Claim|PROOF|THEOREM|PROPOSITION|COROLLARY|LEMMA|DEFINITION)\b|$)/g;
 const PROPERTY = /cone[- ]avoid|avoids? cones|low ?2?[- ](basis|solution|set|degree)|low solutions?|computable instance|computable solution|computably true|hyperimmun|PA[- ](degree|over|avoid)|DNC|preserv|ω-model|omega-model|Turing ideal|Weihrauch|≤ ?s?W|≡ ?s?W|<s?W|computabl[ey] reduc|conservative|Δ ?0 ?2|Σ ?0 ?2|Π ?0 ?[12]|arithmetical|admits|strictly weaker|does not imply|implies|equivalent/i;
 const BASE = new Set(['rca0', 'rca0star']);
 

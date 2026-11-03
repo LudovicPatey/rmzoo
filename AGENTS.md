@@ -31,7 +31,10 @@ paper.
    * `≰` often comes out as `6≤`, or disappears entirely ("LPO × NON W RT22").
      Read the proof ("Assume otherwise…") to know which way it goes;
    * primes before subscripts (`C′N`), and superscripts and subscripts run together
-     (`RT22` for RT²₂, `SRT23` for SRT²₃).
+     (`RT22` for RT²₂, `SRT23` for SRT²₃);
+   * texts read by OCR from scans (`ocr: true` in `cache/fulltext/index.json`)
+     are worse: "RT3" may be RT²₂, "RCAg" is RCA₀, "w-model" is ω-model. Always
+     check the rendered PDF before entering a fact from one.
 3. **Facts you derive yourself** (no paper states them) get
    `provenance: ai` and a `justification` with the argument. Never cite a paper
    for something it does not state. Folklore gets `folklore: true` and a
@@ -91,7 +94,8 @@ paper.
 | abstracts | `scripts/abstracts.mjs`, `scripts/pdf-abstracts.mjs` | references, cached texts |
 | mining (candidate results / questions) | `scripts/mine/{common,facts,questions}.mjs` | `zoo.json`, cached texts, `data/screened.yaml` |
 | AI reading of full texts (once per paper, most important first), triage, verification | `scripts/ai-analyze.mjs`, `scripts/lib/ai-facts.mjs`, `scripts/lib/paper-rank.mjs` (order), prompts in `scripts/ai/` | `zoo.json` (catalogue in the prompt), cached texts, `data/ai-analyzed.yaml` |
-| human decisions on AI proposals | `scripts/ai-review.mjs` | `data/ai-review.yaml` |
+| review queue: AI proposals and consolidation candidates, votes of the review page (`docs/REVIEW.md`) | `scripts/review.mjs`, `scripts/lib/review-queue.mjs`, `site/js/review.js` | `data/review.yaml`, `site/data/review.json` |
+| long texts read in parts by the AI reader | `scripts/lib/split-text.mjs` | cached texts |
 | adding results | `scripts/add-results.mjs` → `scripts/lib/results.mjs` | results |
 | endorsements and comments: server (PHP), viewer, download | `site/api/*.php`, `site/js/community.js`, `scripts/endorsements-sync.mjs` | `zoo.json` (results' `_key`), `data/endorsements.yaml` |
 | upload to the live instance (explicit file list, never deletes) | `scripts/deploy.mjs` → `scripts/lib/deploy.mjs` | `site/`, `cache/deploy.json` |
@@ -122,6 +126,7 @@ Then go through:
 | **sweep / pubstatus / fulltext / abstracts** | reference fields they read or write (`doi`, `arxiv`, `venue`, `year`, `read`, `preprintYear`) |
 | **add-results** | result identity (`resultKey` in the schema module) |
 | **endorsements** (`docs/ENDORSEMENTS.md`) | endorsements refer to `resultKey`: changing the key (its fields) orphans existing endorsements; the server (`site/api/`) reads `zoo.json` (results' `_key`, statements, references); new targets of comments need the `feedback` action and `feedbackPanel` |
+| **review queue** (`docs/REVIEW.md`) | a validated `result` item becomes an entry (`itemResult` in `site/js/review.js`, the same as `scripts/review.mjs accept`): a new result field or type needs it there, in `reviewFact` (viewer) and in the AI answer schema; a new kind of proposal needs `KINDS`, the schema doc, `reviewBody` in the viewer and `scripts/review.mjs` (what accepting it does); `resultKey` is duplicated in `site/js/review.js` (a test checks they agree) |
 | **"studied over" labels** | `FRAME` in `scripts/build.mjs` maps reductions to labels: a new reduction needs an entry or a decision |
 | **tests** | add a test for the new behaviour (engine rules on a toy zoo; schema/handler coverage in `tests/schema.test.mjs`) |
 | **docs** | `docs/DESIGN.md` (concepts), `README.md` (usage), `docs/CONSOLIDATION.md` (procedure), this file |
@@ -174,15 +179,23 @@ Specific cases:
 6. `npm run check`, `npm run build`, `npm test`; summarize for the maintainer what
    was added, what was skipped and why.
 
-### Treating AI proposals (`data/ai-review.yaml`)
+### Treating the review queue (`data/review.yaml`, docs/REVIEW.md)
 
-`node scripts/ai-review.mjs list` shows each pending item with the reasons it was
+It holds the AI proposals (kinds `result`, `statement`) and the candidates of
+the consolidation (`lead`, `question`, `answer`, `paper`), shown on the review
+page. After `endorsements-sync.mjs`, `node scripts/review.mjs apply --dry-run`
+shows what the votes of the review page would do; `apply` does it. A validated
+result is a lead like any other: read the theorem (section 1) before committing.
+`node scripts/review.mjs list` shows each pending item with the reasons it was
 not published. For a result: read the theorem at `loc` in the paper (section 1
 rules; `quote` is the passage the model relied on), correct `result`/`loc` in the
 file if needed, then `accept <id>` (a `cited` fact needs `--ref` of the original
 work), or `reject <id> --note "why"`. For a missing statement: add it (below) if
 it belongs to the zoo, then `done <id> --note …`, and enter the facts the item lists
-about it (or re-read the paper: `node scripts/ai-analyze.mjs --redo --only <key>`). Never delete items.
+about it (or re-read the paper: `node scripts/ai-analyze.mjs --redo --only <key>`). For a
+lead, question or answer: treat it as in the consolidation workflow above, then
+`done <id> --note …` (or `reject`): this also records it in `data/screened.yaml`.
+Never delete items.
 
 ### Endorsements and comments from the live instance
 

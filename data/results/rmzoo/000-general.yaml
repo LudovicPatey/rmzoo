@@ -12,7 +12,7 @@
 - { type: "implication", from: "d2", to: "d22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
 - { type: "implication", from: "rt1inf", to: "rt12", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: finitely many colors, at 2 colors.", by: ai } }
 - { type: "implication", from: "rt2", to: "srt2", over: "rca0", folklore: true, justification: { kind: restriction, text: "Restriction to stable instances: every stable instance is an instance, with the same solutions.", by: ai } }
-- { type: "implication", from: "rt22", to: "srt22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Restriction to stable instances: every stable instance is an instance, with the same solutions.", by: ai } }
+- { type: "implication", from: "rt22", to: "srt22", over: "rca0", justification: { kind: restriction, text: "Restriction to stable instances: every stable instance is an instance, with the same solutions.", by: ai }, refs: [ { ref: hirschfeldt2015, loc: Section 6.4 } ] }
 - { type: "implication", from: "em", to: "sem", over: "rca0", folklore: true, justification: { kind: restriction, text: "Restriction to stable instances: every stable instance is an instance, with the same solutions.", by: ai } }
 - { type: "implication", from: "kl", to: "wkl", over: "rca0", folklore: true, justification: { kind: restriction, text: A binary tree is finitely branching., by: ai } }
 - { type: "implication", from: "isig3", to: "isig2", over: "rca0", folklore: true, justification: { kind: restriction, text: Every Σ⁰₂ formula is Σ⁰₃., by: ai } }

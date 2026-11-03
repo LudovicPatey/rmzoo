@@ -2,5 +2,5 @@
 
 - { type: "equivalence", from: "rspo", to: "ads-isig2", over: "rca0", refs: [ { ref: fioricaronesetal2024, loc: Theorem 6.6 } ] }
 - { type: "equivalence", from: "rspo3", to: "ads", over: "rca0", refs: [ { ref: fioricaronesetal2024, loc: Theorem 6.6 } ] }
-- { type: "equivalence", from: "rspo2c", to: "sads", over: "rca0", refs: [ { ref: fioricaronesetal2024, loc: Theorem 6.6 } ] }
+- { type: "equivalence", from: "rspo2c", to: "sads", over: "rca0", refs: [ { ref: fioricaronesetal2024, loc: Theorem 6.6 }, { ref: solda2021, loc: Theorem 3.5.4 } ] }
 - { type: "implication", from: "rspo", to: "rspo3", over: "sw", folklore: true, refs: [ { ref: fioricaronesetal2024 } ], justification: { kind: restriction, text: Partial orders of width at most 3 have finite width., by: ai } }

@@ -1,5 +1,9 @@
 # Results from [brattkagherardiholzl2015].
 
-- { type: "separation", from: "wwkl", to: "ivt", over: "w", note: "IVT is reducible to the jump of WWKL but not to WWKL.", refs: [ { ref: brattkagherardiholzl2015 } ] }
+- { type: "separation", from: "wwkl", to: "ivt", over: "w", note: "IVT is reducible to the jump of WWKL but not to WWKL.", refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 15.9 (also Proposition 15.1) } ] }
 - { type: separation, from: wwkl, to: wkl, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 8.5 } ] }
 - { type: equivalence, from: wwkl.star.wwkl, to: wwkl, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 8.3 } ] }
+- { type: implication, from: wwkl.jump, to: ivt, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 15.9 (Proposition 15.7) } ] }
+- { type: equivalence, from: pcr, to: wwkl.star.cn, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: "Proof of Theorem 15.6 (Corollaries 6.4, 9.5, Theorem 9.3)" } ] }
+- { type: implication, from: wwkl.jump, to: pcr, over: sw, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 9.7 } ] }
+- { type: equivalence, from: wwkl.fin, to: wwkl, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Introduction (Section 1) } ] }

@@ -3,6 +3,6 @@
 
 - { type: "implication", from: "cac", to: "wscac", over: "rca0", folklore: true, justification: { kind: restriction, text: WSCAC is CAC restricted to weakly stable partial orders., by: ai } }
 - { type: "implication", from: "wscac", to: "scac", over: "rca0", folklore: true, justification: { kind: restriction, text: Stable partial orders are weakly stable., by: ai } }
-- { type: "equivalence", from: "psrt22", to: "ads", over: "rca0", refs: [ { ref: "patey2018a", loc: "Theorem 20" } ] }
+- { type: "equivalence", from: "psrt22", to: "ads", over: "rca0", refs: [ { ref: patey2018a, loc: Theorem 20 }, { ref: patey2016c, loc: Theorem A.1.1 } ] }
 - { type: "separation", from: "ads-wwkl", to: "scac", over: "omega", refs: [ { ref: "patey2018a", loc: "Corollary 32" } ] }
 - { type: "separation", from: "scac", to: "wscac", over: "c", refs: [ { ref: patey2018a, loc: Corollary 40 }, { ref: astoretal2017, loc: Theorem 2.9 } ] }

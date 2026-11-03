@@ -15,9 +15,13 @@
 // Layout of cache/fulltext/:
 //   <key>.txt     text (pdftotext -layout), what the extraction scripts read
 //   <key>.pdf     the PDF (downloaded, or copied from Zotero)
-//   index.json    { key: { source: zotero|arxiv|oa, url?, zotero?, date } }
+//   index.json    { key: { source: zotero|arxiv|oa, url?, zotero?, ocr?, date } }
 //   failed.json   { key: { reason, date } }   — skipped unless --retry
-// Needs `pdftotext` (poppler) and, for --zotero, `sqlite3`.
+// Scanned PDFs (no text layer) are read by OCR: each page rendered at 300 dpi
+// (pdftoppm) and read by Tesseract; the index marks them `ocr: true` (formulas
+// and sub/superscripts are approximate, the AI reader is told so).
+// Needs `pdftotext` and `pdftoppm` (poppler), `tesseract` for scans, and, for
+// --zotero, `sqlite3`.
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -43,10 +47,31 @@ const save = () => {
 const today = new Date().toISOString().slice(0, 10);
 const EXCLUDE = fs.existsSync('data/fulltext-exclude.yaml') ? YAML.parse(fs.readFileSync('data/fulltext-exclude.yaml', 'utf8')) || {} : {};
 const okText = (f) => fs.existsSync(f) && fs.statSync(f).size > 2000;
+// Text of a PDF: its text layer, else OCR. Returns false (and leaves no text) when
+// neither gives a usable text, 'ocr' when the text comes from OCR, true otherwise.
+let tesseract;
 const toText = (pdf, txt) => {
   try { execFileSync('pdftotext', ['-layout', pdf, txt], { stdio: 'ignore', timeout: 120000 }); } catch { /* checked below */ }
-  return okText(txt);
+  if (okText(txt)) return true;
+  tesseract ??= (() => { try { execFileSync('tesseract', ['--version'], { stdio: 'ignore' }); return true; } catch { return false; } })();
+  if (tesseract && ocr(pdf, txt)) return 'ocr';
+  fs.rmSync(txt, { force: true }); // no empty text left behind
+  if (!tesseract) console.warn(`${path.basename(pdf)}: no text layer (scanned?); install tesseract to read it by OCR`);
+  return false;
 };
+function ocr(pdf, txt) {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'rmzoo-ocr-'));
+  try {
+    console.log(`${path.basename(pdf)}: no text layer, reading by OCR…`);
+    execFileSync('pdftoppm', ['-r', '300', '-gray', '-png', pdf, path.join(tmp, 'p')], { stdio: 'ignore', timeout: 900000 });
+    const pages = fs.readdirSync(tmp).filter((f) => f.endsWith('.png')).sort();
+    const text = pages.map((p) => {
+      try { return execFileSync('tesseract', [path.join(tmp, p), '-', '-l', 'eng', '--psm', '1'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], timeout: 180000 }); } catch { return ''; }
+    });
+    fs.writeFileSync(txt, text.join('\f'));
+    return okText(txt);
+  } catch { return false; } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
+}
 
 const refDocs = fs.readdirSync('data/references').filter((f) => f.endsWith('.yaml'))
   .map((f) => ['data/references/' + f, YAML.parseDocument(fs.readFileSync('data/references/' + f, 'utf8'))]);
@@ -114,9 +139,10 @@ if (flag('--zotero')) {
       if (!fs.existsSync(`${DIR}/${key}.pdf`)) fs.copyFileSync(z.file, `${DIR}/${key}.pdf`);
       continue;
     }
-    if (toText(z.file, `${DIR}/${key}.txt`)) {
+    const got = toText(z.file, `${DIR}/${key}.txt`);
+    if (got) {
       fs.copyFileSync(z.file, `${DIR}/${key}.pdf`); // the Zotero copy supersedes a download
-      index[key] = { source: 'zotero', zotero: z.key, date: today }; delete failed[key]; n++;
+      index[key] = { source: 'zotero', zotero: z.key, ...(got === 'ocr' ? { ocr: true } : {}), date: today }; delete failed[key]; n++;
     }
   }
   save();
@@ -162,8 +188,9 @@ if (flag('--download')) {
       const buf = Buffer.from(await res.arrayBuffer());
       if (!buf.subarray(0, 5).toString().startsWith('%PDF')) throw new Error(`not a PDF (HTTP ${res.status})`);
       fs.writeFileSync(`${DIR}/${e.key}.pdf`, buf);
-      if (!toText(`${DIR}/${e.key}.pdf`, `${DIR}/${e.key}.txt`)) throw new Error('no text layer');
-      index[e.key] = { source, url, date: today }; delete failed[e.key]; ok++;
+      const got = toText(`${DIR}/${e.key}.pdf`, `${DIR}/${e.key}.txt`);
+      if (!got) throw new Error('no text layer');
+      index[e.key] = { source, url, ...(got === 'ocr' ? { ocr: true } : {}), date: today }; delete failed[e.key]; ok++;
     } catch (err) {
       failed[e.key] = { reason: String(err.message || err).slice(0, 120), url, date: today }; ko++;
     }

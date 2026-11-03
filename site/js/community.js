@@ -7,7 +7,10 @@
 // signing in is not offered.
 //
 // Endorsements refer to results by their key (`_key` in zoo.json, resultKey in
-// scripts/lib/schema.mjs).
+// scripts/lib/schema.mjs). Votes and comments on the review page (docs/REVIEW.md)
+// refer to review items by id; on a static copy they are those committed in
+// data/review.yaml (copied into site/data/review.json, the items' `votes` and
+// `comments`).
 
 const API = 'api/index.php';
 
@@ -16,6 +19,14 @@ export function createCommunity(zoo) {
     live: false, user: null, csrf: '', people: {}, list: [],
     byResult: new Map(), // result key → [{orcid, date}]
     byPerson: new Map(), // orcid → [{result, date}]
+    byItem: null, // review item id → {votes: [{orcid, verdict, date}], comments: [{id, orcid, date, text}]} (live only)
+  };
+  const indexReviews = (s) => {
+    c.byItem = new Map();
+    const at = (id) => { if (!c.byItem.has(id)) c.byItem.set(id, { votes: [], comments: [] }); return c.byItem.get(id); };
+    for (const v of s.reviews || []) at(v.item).votes.push({ orcid: v.orcid, verdict: v.verdict, date: v.date });
+    for (const x of s.comments || []) at(x.item).comments.push({ id: x.id, orcid: x.orcid, date: x.date, text: x.text });
+    if (s.people) c.people = s.people;
   };
   const index = (people, list) => {
     c.people = people || {};
@@ -40,6 +51,7 @@ export function createCommunity(zoo) {
       c.user = s.user;
       c.csrf = s.csrf;
       index(s.people, s.endorsements);
+      indexReviews(s);
     })
     .catch(() => {});
 
@@ -63,6 +75,13 @@ export function createCommunity(zoo) {
   };
   // kind: error | comment; target: {type: result|statement|reference|question|general, id}
   c.sendFeedback = (kind, target, text) => post('feedback', { kind, target, text, page: location.hash });
+  // the review page: votes and comments of an item (live: the server's; static: committed)
+  c.votes = (it) => (c.byItem ? c.byItem.get(it.id)?.votes || [] : it.votes || []);
+  c.comments = (it) => (c.byItem ? c.byItem.get(it.id)?.comments || [] : (it.comments || []).map((x, i) => ({ id: `${it.id}-c${i}`, ...x })));
+  c.myVote = (it) => (c.user ? c.votes(it).find((v) => v.orcid === c.user.orcid)?.verdict || null : null);
+  c.setVote = async (id, verdict) => indexReviews(await post('review', { item: id, verdict }));
+  c.addComment = async (id, text) => indexReviews(await post('rcomment', { item: id, text }));
+  c.deleteComment = async (cid) => indexReviews(await post('rcomment', { delete: cid }));
   c.loginUrl = () => `${API}?a=login&back=${encodeURIComponent(location.hash.slice(1) || '/')}`;
   c.logoutUrl = () => `${API}?a=logout&back=${encodeURIComponent('/')}`;
   return c;

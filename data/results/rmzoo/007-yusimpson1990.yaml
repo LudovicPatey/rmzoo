@@ -1,6 +1,6 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Yu, Simpson (1990) — Measure theory and weak König's lemma
 
-- { type: "implication", from: "wkl", to: "wwkl", over: "rca0", folklore: true, justification: { kind: restriction, text: WWKL is WKL restricted to trees of positive measure., by: ai } }
+- { type: "implication", from: "wkl", to: "wwkl", over: "rca0", justification: { kind: restriction, text: WWKL is WKL restricted to trees of positive measure., by: ai }, refs: [ { ref: hirschfeldt2015, loc: "Section 4.5, before Exercise 4.29" } ] }
 - { type: "separation", from: "rca0", to: "wwkl", over: "omega", refs: [ { ref: "yusimpson1990", loc: "Section 2, paragraph 2" } ] }
 - { type: "separation", from: "wwkl", to: "wkl", over: "omega", refs: [ { ref: yusimpson1990, loc: "Section 2, theorems" } ] }
