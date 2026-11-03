@@ -8,6 +8,7 @@ const classHtml = (id) => {
 };
 import { layered, verticalSpline } from './layout.js';
 import { bibtex } from './bibtex.js';
+import { relatedIndex, relatedStatements } from './related.js';
 
 // ============================================================================
 // helpers
@@ -673,7 +674,25 @@ function card(i, shown) {
 }
 
 // ---- statement page ---------------------------------------------------------
-function viewStatement(id) {
+// tabs of the statement page: [id, label]; the tab is kept in the URL (?tab=…)
+const STMT_TABS = [['overview', 'Overview'], ['position', 'Position'], ['properties', 'Properties'],
+  ['literature', 'Literature'], ['questions', 'Questions'], ['results', 'Results']];
+let relIndex; // computed once per zoo
+function relatedHtml(i) {
+  const rel = relatedStatements(Z, i, { index: (relIndex ||= relatedIndex(Z)) });
+  if (!rel.length) return '';
+  const why = (x) => x.papers.length
+    ? `<span title="${esc(x.papers.map(refShort).join('; '))}">${x.papers.length} paper${x.papers.length === 1 ? '' : 's'} in common</span>`
+    : `same area: ${x.tags.map((t) => esc(tagName(t))).join(', ')}`;
+  const top = [S(i).id, ...rel.slice(0, 5).map((x) => S(x.j).id)];
+  return `<div class="row h2row"><h2 class="grow">Related statements</h2>
+      <a class="btn small" href="#/compare?s=${top.join(',')}" title="Replaces the current selection">Compare with the first five</a></div>
+    <p class="small muted">Statements studied in the same papers (papers about many statements count less), then in the same area.</p>
+    <table class="grid related">${rel.map((x) => `<tr><td>${sLink(x.j)}</td><td>${esc(S(x.j).name)}</td><td class="small muted">${why(x)}</td>
+      <td class="c"><button class="btn small sel-toggle ${isSel(S(x.j).id) ? 'on' : ''}" data-sel="${S(x.j).id}">${isSel(S(x.j).id) ? '✓ Selected' : '+ Select'}</button></td></tr>`).join('')}</table>`;
+}
+
+function viewStatement(id, params = new URLSearchParams()) {
   const i = idx(id);
   const m = main();
   m.className = '';
@@ -686,6 +705,11 @@ function viewStatement(id) {
   const refsOf = (s.refs || []);
   const directResults = Z.raw.results.map((res, ri) => [res, ri]).filter(([res]) =>
     [res.from, res.to, res.statement, res.base].includes(s.id));
+  const qs = (Z.raw.questions || []).filter((q) => qStatements(q).includes(s.id));
+  const count = { literature: refsOf.length, questions: qs.length, results: directResults.length };
+  const tabs = STMT_TABS.filter(([t]) => t !== 'questions' || qs.length);
+  const tab = tabs.some(([t]) => t === params.get('tab')) ? params.get('tab') : 'overview';
+  const panel = (t) => `<section class="tab-panel" data-panel="${t}"${t === tab ? '' : ' hidden'}>`;
 
   m.innerHTML = `
     <div class="stmt-head">
@@ -698,6 +722,9 @@ function viewStatement(id) {
       ${frameBadges(s)}
       ${s.aliases ? `<span class="small muted">Also: ${s.aliases.map(esc).join(', ')}</span>` : ''}
     </div>
+    <nav class="tabs" role="tablist">${tabs.map(([t, label]) => `<button role="tab" data-tab="${t}" aria-selected="${t === tab}">${label}${count[t] ? ` <span class="count">${count[t]}</span>` : ''}</button>`).join('')}</nav>
+
+    ${panel('overview')}
     ${s.formulationOf ? `<p>A formulation of ${sLink(mainI)} (the main formulation of this principle).</p>` : ''}
     ${s.op ? `<p class="small">Weihrauch operation — ${{ jump: 'jump', par: 'parallelization', fin: 'finite parallelization', diamond: 'diamond (closure under compositional product)', product: 'product', compose: 'compositional product' }[s.op]} of
       ${(s.args || []).map((x) => (idx(x) !== undefined ? sLink(idx(x)) : esc(x))).join(' and ')}. Such statements are hidden in the catalogue unless "Weihrauch operations" is checked.</p>` : ''}
@@ -712,7 +739,10 @@ function viewStatement(id) {
     ${!s.conjunction ? `<h2>Context</h2>
       ${s.context ? `<div class="context">${richCite(s.context)}</div>` : ''}
       ${glance(i, directResults)}` : ''}
+    ${relatedHtml(i)}
+    </section>
 
+    ${panel('position')}
     ${family.length > 1 ? `<h2>Formulations</h2>
       <p class="small muted">How each formulation compares with the main one, ${L(mainI)}, at each notion of reduction.
       ≡ equivalent · &gt; main is strictly stronger · &lt; strictly weaker · | incomparable · ? unknown · – not applicable. Click a cell for proofs.</p>
@@ -727,31 +757,44 @@ function viewStatement(id) {
       <div id="rpick"></div>
       <div class="grow" id="rels"></div>
     </div>
+    </section>
 
-    <h2>Properties</h2>
+    ${panel('properties')}
     ${(() => {
-      // properties of problems do not apply to sentences not formulated as problems;
-      // members of infinite families (low₂, weakly low…) are listed only where known
-      const shown = Z.raw.properties.map((p, pi) => [p, pi]).filter(([p, pi]) => Z.propIn(pi, i) && (!p.optional || Z.prop(pi, i)));
+      // properties of problems do not apply to sentences not formulated as problems.
+      // Listed: the extremal known ones and the open ones (Z.salientProps); the
+      // others follow through the implications between properties and are hidden
+      // behind a toggle. Members of infinite families (low₂, Σ⁰₂…) appear only
+      // where something is known about them or around them.
+      const salient = new Set(Z.salientProps(i));
+      const rest = Z.raw.properties.map((p, pi) => pi).filter((pi) => !salient.has(pi) && Z.prop(pi, i));
+      const shown = Z.raw.properties.map((p, pi) => [p, pi]).filter(([, pi]) => salient.has(pi) || rest.includes(pi));
       const note = Z.raw.properties.some((p, pi) => !Z.propIn(pi, i))
         ? `<p class="muted small">${L(i)} is not formulated as a problem (instances and solutions), so the computability-theoretic properties do not apply to it.</p>` : '';
-      return note + (shown.length ? `<table class="grid" id="props"><tr><th>Property</th><th class="c">Status</th><th>Preserved under</th></tr>
+      const toggle = rest.length ? `<p class="small muted">Only the strongest properties ${L(i)} has, the weakest it fails and the open ones are listed; the rest follows from the
+        implications between properties. <button class="btn small" id="props-all">Show ${rest.length} more</button></p>` : '';
+      return note + (shown.length ? `${toggle}<table class="grid" id="props"><tr><th>Property</th><th class="c">Status</th><th>Preserved under</th></tr>
       ${shown.map(([p, pi]) => {
         const e = Z.prop(pi, i);
         const st = e ? (e.v ? '<span class="yes">✓ has</span>' : '<span class="no">✗ fails</span>') : '<span class="open">?</span>';
-        return `<tr data-prop="${pi}" style="cursor:pointer"><td>${esc(p.name)}</td><td class="c">${st}</td><td class="small muted">${(p.closedUnder ? esc(Z.R[Z.ridx.get(p.closedUnder)].short) : '—')}</td></tr>`;
-      }).join('')}</table>` : '');
+        const hid = !salient.has(pi);
+        return `<tr data-prop="${pi}" style="cursor:pointer${hid ? ';display:none' : ''}"${hid ? ' class="implied"' : ''}><td>${esc(p.name)}${hid ? ' <span class="small muted">(follows)</span>' : ''}</td><td class="c">${st}</td><td class="small muted">${(p.closedUnder ? esc(Z.R[Z.ridx.get(p.closedUnder)].short) : '—')}</td></tr>`;
+      }).join('')}</table>` : '<p class="muted">No property recorded.</p>');
     })()}
+    </section>
 
+    ${panel('literature')}
     <div class="row h2row"><h2 class="grow">Literature</h2>${refsOf.length || directResults.length ? bibButton('bib-stmt', 'BibTeX (literature + cited in results)') : ''}</div>
     ${refsOf.length ? `<ul class="reflist">${refsOf.map((rf) => `<li><span class="role">${esc(rf.role || '')}</span>${refFull(rf.ref)}${rf.loc ? ` — ${esc(rf.loc)}` : ''}</li>`).join('')}</ul>`
       : '<p class="muted">No reference recorded.</p>'}
+    </section>
 
-    ${(() => { const qs = (Z.raw.questions || []).filter((q) => qStatements(q).includes(s.id));
-      return qs.length ? `<h2>Questions about ${L(i)}</h2>${qs.map(questionRow).join('')}` : ''; })()}
+    ${qs.length ? `${panel('questions')}<p class="small muted">Open questions from the literature that mention ${L(i)}.</p>${qs.map(questionRow).join('')}</section>` : ''}
 
-    <h2>Results mentioning ${L(i)}</h2>
+    ${panel('results')}
+    <p class="small muted">Results of the database that mention ${L(i)} (the others are derived from them).</p>
     ${resultsTable(directResults)}
+    </section>
   `;
   // reduction picker + relations
   const drawRels = () => {
@@ -761,10 +804,25 @@ function viewStatement(id) {
   drawRels();
   $('#bib-stmt')?.addEventListener('click', () => downloadBib(sortKeys([...refsOf.map((x) => x.ref), ...citedKeys(directResults)]), s.id));
   m.onclick = (e) => {
+    const tb = e.target.closest('[data-tab]');
+    if (tb) { // switch tab without re-rendering; the URL keeps it for links and reloads
+      const t = tb.dataset.tab;
+      m.querySelectorAll('[data-tab]').forEach((x) => x.setAttribute('aria-selected', x === tb));
+      m.querySelectorAll('[data-panel]').forEach((x) => { x.hidden = x.dataset.panel !== t; });
+      history.replaceState(null, '', `#/s/${s.id}${t === 'overview' ? '' : `?tab=${t}`}`);
+      return;
+    }
     const b = e.target.closest('[data-sel]');
     if (b) { toggleSel(b.dataset.sel); b.classList.toggle('on'); b.textContent = isSel(b.dataset.sel) ? '✓ Selected' : '+ Select'; return; }
     const pc = e.target.closest('[data-pair]');
     if (pc) { const [a, b2, rr] = pc.dataset.pair.split(',').map(Number); pairPanel(a, b2, rr); return; }
+    if (e.target.id === 'props-all') {
+      const on = e.target.dataset.on !== '1';
+      e.target.dataset.on = on ? '1' : '';
+      m.querySelectorAll('#props tr.implied').forEach((tr) => { tr.style.display = on ? '' : 'none'; });
+      e.target.textContent = on ? 'Show fewer' : `Show ${m.querySelectorAll('#props tr.implied').length} more`;
+      return;
+    }
     const pr = e.target.closest('[data-prop]');
     if (pr) propertyPanel(+pr.dataset.prop, i);
   };
@@ -1226,10 +1284,10 @@ function viewCompare(params) {
   if (!ids.length) { m.innerHTML = `<h1>Compare</h1><p class="muted">Select statements in the <a href="#/catalogue">catalogue</a> or open a <a href="#/">predefined zoo</a> first.</p>`; return; }
   const r = rIdx();
   const g = latticeLayout();
-  // property columns: those applying to some selected statement; members of
-  // infinite families (low₂, weakly low…) only when known for one of them
-  const pcols = Z.raw.properties.map((p, pi) => [p, pi])
-    .filter(([p, pi]) => ids.some((i) => Z.propIn(pi, i) && (!p.optional || Z.prop(pi, i))));
+  // property columns: those listed on the page of some selected statement (its
+  // extremal known properties and open ones, Z.salientProps)
+  const salient = new Set(ids.flatMap((i) => Z.salientProps(i)));
+  const pcols = Z.raw.properties.map((p, pi) => [p, pi]).filter(([, pi]) => salient.has(pi));
   m.innerHTML = `
     <h1>Compare</h1>
     <p class="muted">Row <i>A</i>, column <i>B</i>: does <i>A</i> imply <i>B</i>? Each cell is the lattice of reductions below,
@@ -1451,7 +1509,7 @@ function route() {
   $$('#nav a').forEach((a) => a.classList.toggle('active', a.dataset.route === name || (name === 'statement' && a.dataset.route === 'catalogue')));
   main().style.padding = '';
   closeDrawer();
-  if (name === 'statement') viewStatement(p[1]);
+  if (name === 'statement') viewStatement(p[1], params);
   else if (name === 'diagram') viewDiagram(params);
   else if (name === 'compare') viewCompare(params);
   else if (name === 'results') viewResults(params);

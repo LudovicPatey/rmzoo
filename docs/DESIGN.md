@@ -151,7 +151,7 @@ one also has (computably true ⇒ cone avoidance, low basis, …; low basis ⇒ 
 low basis), and the engine propagates values both ways (failing the low₂ basis
 means failing the low basis). The **lowness hierarchy**
 low → weakly low → low₂ → weakly low₂ → … is infinite: its members are marked
-`optional` and listed on a statement page only where their value is known, and a
+`optional`, and a
 new level is added to `data/properties.yaml` when a paper proves something about
 it (ACA₀'s failure, true at every level, is recorded at the highest level present).
 
@@ -163,6 +163,16 @@ no reduction (a set computable from a Σ⁰ₙ set need not be Σ⁰ₙ), so the
 `closedUnder` and are only related to the other properties (Δ⁰ₙ ⇒ Σ⁰ₙ, Π⁰ₙ ⇒
 Δ⁰ₙ₊₁; low ⇒ Δ⁰₂, low₂ ⇒ Δ⁰₃). A consequence: a Π⁰₂ basis for RT²<∞ says nothing
 about RT²₂ to the engine; each statement needs its own citation.
+
+**What a statement page lists.** The implications between properties form a
+diagram (no cycles: the build checks it). A statement page and the compare
+matrix list only its extremal properties (`salientProps` in the engine): the
+strongest properties it has and the weakest it fails (the others follow; a
+toggle shows them), and the open ones. An open main property is always listed;
+an open `optional` one only when it lies in a gap (it implies a property the
+statement has and is implied by one it fails) and is the strongest or weakest
+open property of that gap. For COH (weakly low basis ✓, low basis ✗) the gap
+shows Δ⁰₂, Σ⁰₂ and Π⁰₂ bases as open.
 
 ### 1.5 Results (the atomic facts)
 
@@ -271,9 +281,16 @@ Everything not derivable is **open**. The viewer distinguishes "open" from
 * **Catalogue** — searchable (acronym, name, aliases, definition, tags),
   faceted by tag, grouped by principle with formulations nested under the
   main one. Each card can be added to the *selection*.
-* **Statement page** — definition, instance/solution reading, formulations
-  with their equivalence profile, literature, properties with proofs, and the
-  statement's position (what it implies / is implied by / fails to imply).
+* **Statement page** — in tabs (kept in the URL, `#/s/coh?tab=position`):
+  *Overview* (definition, instance/solution reading, context, related
+  statements), *Position* (formulations with their equivalence profile; what
+  it implies / is implied by / fails to imply), *Properties* (with proofs),
+  *Literature*, *Questions* (when there are some) and *Results*. **Related
+  statements** (`site/js/related.js`) are those worth comparing it with: the
+  ones studied in the same papers (results citing the paper, or its literature
+  list), papers about many statements counting less and very common statements
+  (ACA₀, WKL₀) slightly less, then the same tags; base systems, operator
+  statements and formulations of the same principle are left out.
 * **Diagram** — for the selection and a chosen reduction: the Hasse diagram
   of the induced order (on equivalence classes), with optional separation and
   open-question arrows reduced to their non-redundant core (strongest

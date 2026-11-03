@@ -310,6 +310,18 @@ for (const p of raw.properties) {
   if (p.domain !== undefined && p.domain !== 'problems') errors.push(`Property ${p.id}: domain must be problems`);
   for (const q of p.implies || []) if (!pids.has(q) || q === p.id) errors.push(`Property ${p.id}: implies unknown property ${q}`);
 }
+{ // implications between properties form no cycle (the viewer lists the extremal ones)
+  const imp = new Map(raw.properties.map((p) => [p.id, p.implies || []]));
+  const state = new Map();
+  const visit = (id, path) => {
+    if (state.get(id) === 'done') return;
+    if (state.get(id) === 'open') { errors.push(`Properties: cycle of implications ${[...path, id].join(' ⇒ ')}`); return; }
+    state.set(id, 'open');
+    for (const q of imp.get(id) || []) visit(q, [...path, id]);
+    state.set(id, 'done');
+  };
+  for (const id of imp.keys()) visit(id, []);
+}
 for (const s of raw.statements)
   if (s.problemForm !== undefined && (s.problemForm !== false || s.kind === 'problem')) errors.push(`Statement ${s.id}: problemForm is only "false", on sentences`);
 

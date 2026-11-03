@@ -218,3 +218,32 @@ test('a property preserved by no reduction is only related to the others', () =>
   assert.equal(v('d2', 'x'), false);     // fails Σ⁰₂ ⇒ fails Δ⁰₂
   assert.equal(zoo.status(zoo.ridx.get('c'), zoo.sidx.get('a'), zoo.sidx.get('x')), 'open'); // no separation from s2 alone
 });
+
+test('salient properties: strongest held, weakest failed, open ones in a gap', () => {
+  // ct ⇒ low ⇒ wlow ⇒ low2, low ⇒ d2 ⇒ s2; ca main property implied by ct
+  const opt = { domain: 'problems', optional: true };
+  const zoo = buildZoo({
+    reductions: [{ id: 'omega', finerThan: [] }],
+    properties: [
+      { id: 'ct', domain: 'problems', implies: ['low', 'ca'] },
+      { id: 'ca', domain: 'problems' },
+      { id: 'low', domain: 'problems', implies: ['wlow', 'd2'] },
+      { id: 'wlow', ...opt, implies: ['low2'] },
+      { id: 'low2', ...opt },
+      { id: 'd2', ...opt, implies: ['s2'] },
+      { id: 's2', ...opt },
+    ],
+    classes: [],
+    statements: [{ id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' }, { id: 'c', kind: 'problem' }],
+    results: [
+      { type: 'property', statement: 'a', property: 'ct', value: true, refs: [{ ref: 'r' }] },
+      { type: 'property', statement: 'b', property: 'wlow', value: true, refs: [{ ref: 'r' }] },
+      { type: 'property', statement: 'b', property: 'ct', value: false, refs: [{ ref: 'r' }] },
+      { type: 'property', statement: 'c', property: 'low2', value: false, refs: [{ ref: 'r' }] },
+    ],
+  });
+  const names = (s) => zoo.salientProps(zoo.sidx.get(s)).map((p) => zoo.raw.properties[p].id).sort();
+  assert.deepEqual(names('a'), ['ct']);                     // everything else follows
+  assert.deepEqual(names('b'), ['ca', 'ct', 'low', 'wlow']); // low: open between wlow ✓ and ct ✗; ca: main, open
+  assert.deepEqual(names('c'), ['ca', 'low2']);              // fails low2: wlow, low, ct fail too
+});

@@ -65,6 +65,7 @@ site/                the viewer (vanilla JS, KaTeX, no build step)
   js/engine.js       inference engine (shared with the build script)
   js/layout.js       layered layout for Hasse diagrams
   js/bibtex.js       BibTeX export
+  js/related.js      related statements (statement page)
 cache/fulltext/      local full texts of the papers (git-ignored)
 docs/DESIGN.md       data model and design rationale
 docs/CONSOLIDATION.md  keeping the database up to date

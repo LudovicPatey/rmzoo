@@ -277,6 +277,13 @@ export function buildZoo(raw) {
   const impliesP = raw.properties.map((prop) => (prop.implies || []).map((id) => pidx.get(id)).filter((q) => q !== undefined));
   const impliedByP = raw.properties.map(() => []);
   impliesP.forEach((qs, p) => qs.forEach((q) => impliedByP[q].push(p)));
+  // reachP[p]: the properties q ≠ p that p implies, directly or through others
+  const reachP = impliesP.map((_, p) => {
+    const seen = new Set(), stack = [...impliesP[p]];
+    while (stack.length) { const q = stack.pop(); if (!seen.has(q)) { seen.add(q); stack.push(...impliesP[q]); } }
+    seen.delete(p);
+    return seen;
+  });
 
   const P = raw.properties.map(() => new Map()); // s -> {v, just}
   const contradictions = [];
@@ -464,12 +471,35 @@ export function buildZoo(raw) {
     return [...acc];
   }
 
+  // The properties worth listing for statement s, given the implications between
+  // properties: the strongest ones it has, the weakest ones it fails (the others
+  // follow), and the open ones. An unknown property is listed when it is a main
+  // one (not `optional`), or when it lies in a gap of the diagram (it implies a
+  // property s has and is implied by one s fails) and is the strongest or the
+  // weakest unknown property of that gap.
+  const above = (a, b) => reachP[a].has(b) && !reachP[b].has(a); // a strictly implies b
+  function salientProps(s) {
+    const ps = raw.properties.map((_, p) => p).filter((p) => propIn(p, s));
+    const v = (p) => P[p].get(s)?.v;
+    const gap = (p) => v(p) === undefined
+      && ps.some((f) => v(f) === false && above(f, p)) && ps.some((t) => v(t) === true && above(p, t));
+    return ps.filter((p) => {
+      const x = v(p);
+      if (x === true) return !ps.some((q) => v(q) === true && above(q, p));
+      if (x === false) return !ps.some((q) => v(q) === false && above(p, q));
+      if (!raw.properties[p].optional) return true;
+      return gap(p) && (!ps.some((q) => gap(q) && above(q, p)) || !ps.some((q) => gap(q) && above(p, q)));
+    });
+  }
+
   return {
     raw, S, R, n, sidx, ridx, pidx, order, coarserAll, coarserDirect,
     I, N, P, out, inn, errors, contradictions,
     inDomain, status, just, proof, sources,
     prop: (p, s) => P[p].get(s), // {v, just} | undefined
     propIn, // (p, s): does property p apply to statement s
+    propImplies: (a, b) => reachP[a].has(b), // does having property a imply having b
+    salientProps, // (s): the properties worth listing for s (see above)
     problemLike,
     classMembers: CLASS_MEMBERS,
   };

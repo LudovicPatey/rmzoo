@@ -81,7 +81,7 @@ paper.
 | validation, derived fields (operator statements, conjunctions, labels "studied over"), `site/data/zoo.json` | `scripts/build.mjs` | all of `data/` |
 | data model: allowed fields, operations, result identity | `scripts/lib/schema.mjs` | — |
 | inference engine (rules, operator laws, question status) | `site/js/engine.js` | `zoo.json` |
-| viewer (home, catalogue, statement, paper, results, questions pages) | `site/js/app.js`, `layout.js`, `bibtex.js` | `zoo.json`, `abstracts.json` |
+| viewer (home, catalogue, statement, paper, results, questions pages) | `site/js/app.js`, `layout.js`, `bibtex.js`, `related.js` | `zoo.json`, `abstracts.json` |
 | consolidation (steps 1–7, report in `reports/`) | `scripts/consolidate.mjs` | everything below |
 | new papers | `scripts/sweep.mjs` | references, `data/sweep-rejected.yaml` |
 | publication status | `scripts/pubstatus.mjs` | references |
@@ -111,7 +111,7 @@ Then go through:
 | **schema** (`scripts/lib/schema.mjs`) | new/renamed field documented, `usedBy` updated; `npm test` checks `usedBy` |
 | **build** validation | the new field/value is validated (unknown references, allowed values); derived fields (labels, `studied`, operator statements, conjunctions) handle it |
 | **engine** | inference rules, `questionStatus`, `classMembers`, search ranking |
-| **viewer** | catalogue (filters, checkboxes, "over" chips, select all), statement page (definition, context, glance, frames, operator line, questions), paper page (abstract, BibTeX, questions asked/answered), results, questions, about page, home page stats and recent items |
+| **viewer** | catalogue (filters, checkboxes, "over" chips, select all), statement page (its tabs: definition, context, glance, related statements, frames, operator line, position, properties, questions), paper page (abstract, BibTeX, questions asked/answered), results, questions, about page, home page stats and recent items |
 | **miners** (`scripts/mine/common.mjs`) | the acronym dictionary (labels in extracted-text form, `extra` spellings, operator forms, `PHRASES`), `relation()` (which reduction a theorem speaks of: one branch per reduction), `normalize()` |
 | **consolidate** steps | 1 sweep (relevance and auto-add rules, rejected list), 2 pubstatus, 3 texts, 4 mining (screened list), 5 statements (`known` labels/aliases, `acronyms-ignored.yaml`, `STOP`), 6 questions (status changes, resolution leads), 7 checks |
 | **AI reader** (`scripts/ai-analyze.mjs`, `scripts/ai/*.md`, `scripts/lib/ai-facts.mjs`) | the catalogue given to the model (statement fields, reductions, properties, classes, operations), the answer schema (`FACT_SCHEMA`: result types and their fields), `entry()` and `validity()`, the reading rules in `scripts/ai/extract.md` and `verify.md` (notation for reductions, dotted ids), `tests/ai-facts.test.mjs`. Saved answers can be re-checked with `--replay` |

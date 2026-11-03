@@ -134,8 +134,8 @@ export const SCHEMA = {
     fromConservation: { doc: 'the property follows from a conservation result over this class', usedBy: ['engine'] },
     baseImplication: { doc: 'reduction r such that a problem has the property exactly when the bottom of r implies it over r (computably true: omega)', usedBy: ['build', 'engine'] },
     domain: { doc: 'problems: defined through instances and solutions, so it only applies to statements formulated as problems (see statement.problemForm)', usedBy: ['build', 'engine', 'aiAnalyze'] },
-    implies: { doc: 'properties every statement having this one also has (low basis ⇒ weakly low basis); failing one of them means failing this one', usedBy: ['build', 'engine'] },
-    optional: { doc: 'member of an infinite family (low_n, weakly low_n): listed on a statement page only where its value is known', usedBy: ['viewer'] },
+    implies: { doc: 'properties every statement having this one also has (low basis ⇒ weakly low basis); failing one of them means failing this one; no cycles. Statement pages list only the extremal properties (engine salientProps)', usedBy: ['build', 'engine'] },
+    optional: { doc: 'member of an infinite family (low_n, Σ⁰_n basis…): listed for a statement only when it is an extremal known property, or an extremal open one between a property it has and one it fails (engine salientProps)', usedBy: ['engine'] },
   },
   zoo: {
     id: { req: true, doc: 'preset id', usedBy: ['build', 'viewer'] },
