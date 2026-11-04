@@ -28,3 +28,7 @@
 - { type: separation, from: wwkl-star, to: auc, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Theorem 16.6 } ] }
 - { type: separation, from: wwkl-half, to: llpo, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 10.3 } ] }
 - { type: property, statement: pcc, property: join-irreducible, value: true, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 10.8 } ] }
+- { type: property, statement: auc, property: join-irreducible, value: true, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 16.5 } ] }
+- { type: property, statement: nash, property: cylinder, value: true, refs: [ { ref: brattkagherardiholzl2015, loc: Lemma 17.1 } ] }
+- { type: property, statement: auc, property: idempotent, value: false, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 17.7 } ] }
+- { type: property, statement: pcc, property: idempotent, value: false, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 17.7 } ] }

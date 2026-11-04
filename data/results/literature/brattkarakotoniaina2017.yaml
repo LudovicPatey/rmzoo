@@ -27,3 +27,23 @@
 - { type: implication, from: srt22.star.srt22, to: kn.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 7.5 } ] }
 - { type: separation, from: rt12.jump, to: llpo.jump.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Theorem 6.8 and Corollary 6.10 (BWT′₂ = LLPO″) } ] }
 - { type: separation, from: llpo.jump.jump, to: rt12.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 6.10 } ] }
+- { type: property, statement: rt12, property: parallelizable, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.10 } ] }
+- { type: property, statement: rt13, property: parallelizable, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.10 } ] }
+- { type: property, statement: rt14, property: parallelizable, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.10 } ] }
+- { type: property, statement: rt15, property: parallelizable, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.10 } ] }
+- { type: property, statement: rt22, property: parallelizable, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.10 } ] }
+- { type: property, statement: rt23, property: parallelizable, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.10 } ] }
+- { type: property, statement: rt32, property: parallelizable, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.10 } ] }
+- { type: property, statement: rt42, property: parallelizable, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.10 } ] }
+- { type: property, statement: rt1n, property: parallelizable, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.10 } ] }
+- { type: property, statement: srt22, property: parallelizable, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.10 } ] }
+- { type: property, statement: srt23, property: parallelizable, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.10 } ] }
+- { type: property, statement: rt12, property: idempotent, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.11 } ] }
+- { type: property, statement: rt13, property: idempotent, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.11 } ] }
+- { type: property, statement: rt14, property: idempotent, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.11 } ] }
+- { type: property, statement: rt15, property: idempotent, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.11 } ] }
+- { type: property, statement: rt22, property: idempotent, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.11 } ] }
+- { type: property, statement: rt23, property: idempotent, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.11 } ] }
+- { type: property, statement: rt32, property: idempotent, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.11 } ] }
+- { type: property, statement: rt42, property: idempotent, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.11 } ] }
+- { type: property, statement: rt1n, property: idempotent, value: true, refs: [ { ref: brattkarakotoniaina2017, loc: "Corollary 3.20 (RT_{1,ℕ}, colors not given)" } ] }
