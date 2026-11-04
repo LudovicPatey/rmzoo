@@ -319,3 +319,55 @@
   instance: A closed set $A \subseteq \mathbb{N}^\mathbb{N}$.
   solution: An element of $A$ if $A \neq \emptyset$, any point of $\mathbb{N}^\mathbb{N}$ otherwise.
   refs: [ { ref: brattkagherardi2019, role: rm } ]
+
+# Probabilistic choice and related problems (Brattka, Gherardi and Hölzl 2015), 2026-11-04.
+- id: auc
+  label: '\mathsf{AUC}_{[0,1]}'
+  name: All-or-unique choice on [0,1]
+  kind: problem
+  tags: [ weihrauch, analysis ]
+  aliases: [ RDIV, robust division ]
+  definition: >
+    Closed choice on $[0,1]$ restricted to the whole interval and singletons. Strongly Weihrauch
+    equivalent to robust division $\mathsf{RDIV}$, $(x, y) \mapsto x / \max(x, y)$ if $y \neq 0$, any point of $[0,1]$ otherwise (Pauly).
+  instance: A closed set $A \subseteq [0,1]$ (by negative information) which is $[0,1]$ or a singleton.
+  solution: A point of $A$.
+  refs:
+    - { ref: brattkagherardiholzl2015, role: rm, loc: "Definition 16.1, Proposition 16.2" }
+
+- id: pcc
+  label: '\mathsf{PCC}_{[0,1]}'
+  name: Positive connected choice on [0,1]
+  kind: problem
+  tags: [ weihrauch, analysis, randomness ]
+  definition: >
+    Closed choice on $[0,1]$ restricted to connected sets of positive measure, that is, to proper closed intervals.
+  instance: A proper closed interval $I \subseteq [0,1]$ (by negative information).
+  solution: A point of $I$.
+  refs:
+    - { ref: brattkagherardiholzl2015, role: rm, loc: "Section 10, before Lemma 10.7" }
+
+- id: nash
+  label: '\mathsf{NASH}'
+  name: Nash equilibria of bimatrix games
+  kind: problem
+  tags: [ weihrauch, analysis ]
+  definition: Given a finite bimatrix game with real payoffs, find a Nash equilibrium.
+  instance: Two real $m \times n$ payoff matrices $A, B$.
+  solution: A Nash equilibrium $(x, y)$ of the game $(A, B)$.
+  refs:
+    - { ref: brattkagherardiholzl2015, role: rm, loc: Section 17 }
+
+- id: ldl
+  label: '\textsf{Lebesgue density lemma}'
+  name: Lebesgue density lemma
+  kind: problem
+  minor: true
+  tags: [ weihrauch, randomness ]
+  definition: >
+    Given a closed $A \subseteq 2^\mathbb{N}$ of positive measure and $k$, find a word $w$ with
+    $\mu(A \cap w2^\mathbb{N}) / 2^{-|w|} \geq 1 - 2^{-k}$.
+  instance: A closed set $A \subseteq 2^\mathbb{N}$ of positive measure and a number $k$.
+  solution: A word $w$ with $\mu(A \cap w2^\mathbb{N}) \geq (1 - 2^{-k}) 2^{-|w|}$.
+  refs:
+    - { ref: brattkagherardiholzl2015, role: rm, loc: "Lemma 11.1, Theorem 11.2" }

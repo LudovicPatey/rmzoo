@@ -50,3 +50,13 @@ test('every operation is handled by the build, the engine, the viewer and the mi
     assert.ok(o.arity === 1 || o.arity === 2);
   }
 });
+
+test('a dotted id never duplicates an explicit operator statement (wkl.jump is wkl-j)', () => {
+  const zoo = JSON.parse(fs.readFileSync('site/data/zoo.json', 'utf8'));
+  const seen = new Map();
+  for (const s of zoo.statements.filter((x) => x.op)) {
+    const k = `${s.op}|${(s.args || []).join('|')}`;
+    assert.ok(!seen.has(k), `${s.id} and ${seen.get(k)} are the same operator statement`);
+    seen.set(k, s.id);
+  }
+});

@@ -224,7 +224,9 @@ and is listed on the pages of the statements equivalent to it (docs/DESIGN.md).
 Do not invent an acronym for it: label it by its name in `\textsf{…}`. Then at least one result (the
 build warns about statements in no result), and `data/context.yaml` if
 background helps. Operator statements (`lpo.jump`, `cn.x.wkl`, `tcn.star.tcn`,
-`(cn.x.lpo).jump`) need no entry: the build creates them from their dotted ids.
+`(cn.x.lpo).jump`) need no entry: the build creates them from their dotted ids. When an
+explicit statement has the same operation and arguments (`wkl-j`, `op: jump, args:
+[wkl]`), the build maps the dotted id (`wkl.jump`) onto it.
 
 ### Adding a paper
 

@@ -14,12 +14,11 @@
 - { type: implication, from: wwkl, to: ran1, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: "Section 9, before Corollary 9.9" } ] }
 - { type: equivalence, from: coh, to: coh.par, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proof of Proposition 14.10 } ] }
 - { type: implication, from: wkl, to: sep, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proof of Lemma 14.20 } ] }
-- { type: implication, from: wkl.jump, to: sep.jump, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proof of Lemma 14.20 } ] }
+- { type: implication, from: wkl-j, to: sep.jump, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proof of Lemma 14.20 } ] }
 - { type: separation, from: ran1, to: dnr, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 7.3 } ] }
 - { type: separation, from: dnr, to: ran1, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 7.3 } ] }
 - { type: separation, from: coh, to: dnr, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 12.8 } ] }
 - { type: separation, from: coh, to: ran1, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 12.9 } ] }
-- { type: equivalence, from: wkl.jump, to: lim.star.coh, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 14.15 } ] }
 - { type: separation, from: non, to: accn, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Example 4.10 } ] }
 - { type: equivalence, from: cr, to: cn.x.wkl, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proof of Theorem 8.3 } ] }
 - { type: implication, from: coh, to: hyp, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Theorem 12.6 } ] }

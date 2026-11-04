@@ -27,7 +27,7 @@
 - { id: "tietze", label: "\\mathsf{TET}", name: "Tietze extension theorem", kind: "sentence", tags: [ "analysis" ], definition: "Versions of the Tietze extension theorem for functions with moduli of uniform continuity." }
 - { id: "hst", label: "\\mathsf{HST}", name: "Helly's selection theorem", kind: "sentence", tags: [ "analysis" ], definition: "Every bounded sequence of functions of bounded variation has a subsequence converging in the weak* topology." }
 - { id: "ttall", label: "\\mathsf{TT}", name: "Tree theorem for all exponents", kind: "problem", tags: [ "ramsey" ], definition: "For every $n$ and $k$, the tree theorem $\\mathsf{TT}^n_k$ holds.", instance: "Numbers $n, k$ and a coloring of the $n$-element chains of $2^{<\\mathbb{N}}$ with $k$ colors.", solution: "A homogeneous subtree isomorphic to $2^{<\\mathbb{N}}$." }
-- { id: "pr2", label: "\\mathsf{PR}^2", name: "Packed Ramsey theorem for pairs", kind: "problem", tags: [ "ramsey" ], definition: "$\\mathsf{PRT}^2_k$: for every $\\varphi : \\mathbb{N} \\to \\mathbb{N}$ with $w \\to (\\varphi(w))^2_{k+1}$ for all $w$, and every $f : [\\mathbb{N}]^2 \\to \\{1, \\dots, k\\}$, there is a set $H$ which is packed for $\\varphi$ and semi-homogeneous for $f$ (Erdős–Galvin).", refs: [ { ref: flood2013, role: rm, loc: Statement 1.5 } ] }
+- { id: "pr2", label: "\\mathsf{PR}^2", name: "Packed Ramsey theorem for pairs", kind: "problem", tags: [ "ramsey" ], definition: "$\\mathsf{PRT}^2_k$: for every $\\varphi : \\mathbb{N} \\to \\mathbb{N}$ with $w \\to (\\varphi(w))^2_{k+1}$ for all $w$, and every $f : [\\mathbb{N}]^2 \\to \\{1, \\dots, k\\}$, there is a set $H$ which is packed for $\\varphi$ and semi-homogeneous for $f$ (Erdős–Galvin).", refs: [ { ref: flood2013, role: rm, loc: Statement 1.5 } ], instance: "A function $\\varphi : \\mathbb{N} \\to \\mathbb{N}$ with $w \\to (\\varphi(w))^2_{k+1}$ for all $w$, and a coloring $f : [\\mathbb{N}]^2 \\to \\{1, \\dots, k\\}$.", solution: An infinite set packed for $\varphi$ and semi-homogeneous for $f$. }
 - { id: "hb", label: "\\mathsf{HB}", name: "Hahn–Banach theorem (separable)", kind: "problem", tags: [ "analysis", "compactness", "weihrauch" ], definition: "Every bounded linear functional on a closed subspace of a separable Banach space extends to the whole space with the same norm.", instance: "A separable Banach space, a closed subspace and a bounded functional on it.", solution: "A norm-preserving extension of the functional.", refs: [ { ref: gherardimarcone2009, role: rm }, { ref: simpson2009, role: rm, loc: "Section IV.9" } ] }
 
 - id: fra
@@ -85,8 +85,7 @@
   tags: [ ramsey, induction ]
   aliases: [ van der Waerden ]
   definition: >
-    For every finite coloring of $\mathbb{N}$, some color class contains arbitrarily
-    long finite arithmetic progressions.
+    For every finite coloring of $\mathbb{N}$, some color class contains arbitrarily long finite arithmetic progressions.
   refs: [ { ref: frittaion2017, role: rm, loc: Theorem 4.1 } ]
 
 - id: brown
@@ -96,9 +95,7 @@
   tags: [ ramsey, induction ]
   aliases: [ Brown's lemma ]
   definition: >
-    Every finite coloring $C : \mathbb{N} \to r$ has a homogeneous piecewise syndetic
-    set, i.e. a homogeneous set that, for some $d$, contains arbitrarily large finite
-    sets whose consecutive elements differ by at most $d$.
+    Every finite coloring $C : \mathbb{N} \to r$ has a homogeneous piecewise syndetic set, i.e. a homogeneous set that, for some $d$, contains arbitrarily large finite sets whose consecutive elements differ by at most $d$.
   refs: [ { ref: frittaion2017, role: rm, loc: Theorem 1.2 } ]
 
 - id: rudin
@@ -108,9 +105,7 @@
   tags: [ orders ]
   aliases: [ Rudin's lemma ]
   definition: >
-    Given a countable poset $(X, \preceq)$ and a $\preceq$-directed family
-    $(F_i)_{i \in \mathbb{N}}$ of nonempty finite subsets of $X$, there is a
-    $\preceq$-directed subset $D \subseteq \bigcup_i F_i$ that meets every $F_i$.
+    Given a countable poset $(X, \preceq)$ and a $\preceq$-directed family $(F_i)_{i \in \mathbb{N}}$ of nonempty finite subsets of $X$, there is a $\preceq$-directed subset $D \subseteq \bigcup_i F_i$ that meets every $F_i$.
   refs: [ { ref: liruwu2017, role: rm, loc: Theorem 1 } ]
 
 - id: mtt
@@ -120,10 +115,7 @@
   tags: [ ramsey ]
   aliases: [ Milliken ]
   definition: >
-    Let $T$ be an infinite tree with no leaves. For all $n, k \ge 1$ and every
-    coloring $f : S_n(T) \to k$ of the strong subtrees of $T$ of height $n$, there is
-    a strong subtree $S$ of $T$ of height $\omega$ such that $f$ is constant on
-    $S_n(S)$.
+    Let $T$ be an infinite tree with no leaves. For all $n, k \ge 1$ and every coloring $f : S_n(T) \to k$ of the strong subtrees of $T$ of height $n$, there is a strong subtree $S$ of $T$ of height $\omega$ such that $f$ is constant on $S_n(S)$.
   refs: [ { ref: dauriacetal2024, role: rm, loc: Theorem 2.26 } ]
 
 - id: mtt2
@@ -132,8 +124,7 @@
   kind: sentence
   tags: [ ramsey ]
   definition: >
-    Milliken's tree theorem restricted to colorings of the strong subtrees of
-    height 2.
+    Milliken's tree theorem restricted to colorings of the strong subtrees of height 2.
   refs: [ { ref: dauriacetal2024, role: rm, loc: Statement 2.27 } ]
 
 - id: mtt3
@@ -142,8 +133,7 @@
   kind: sentence
   tags: [ ramsey ]
   definition: >
-    Milliken's tree theorem restricted to colorings of the strong subtrees of
-    height 3.
+    Milliken's tree theorem restricted to colorings of the strong subtrees of height 3.
   refs: [ { ref: dauriacetal2024, role: rm, loc: Statement 2.27 } ]
 
 - id: bcg
@@ -152,8 +142,7 @@
   kind: sentence
   tags: [ well-orders ]
   definition: >
-    Every clopen game on integers in which each player has at most two possible moves
-    at each turn (a well-founded binary choice game tree) is determined.
+    Every clopen game on integers in which each player has at most two possible moves at each turn (a well-founded binary choice game tree) is determined.
   refs: [ { ref: aguilerakouptchinsky2026, role: rm, loc: Theorem 1.1 } ]
 
 - id: mle
@@ -162,6 +151,5 @@
   kind: sentence
   tags: [ well-orders, orders ]
   definition: >
-    Every well partial order has a linear extension of maximal order type (de Jongh
-    and Parikh).
+    Every well partial order has a linear extension of maximal order type (de Jongh and Parikh).
   refs: [ { ref: marconeshore2010, role: rm } ]

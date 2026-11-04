@@ -7,3 +7,14 @@
 - { type: equivalence, from: pcr, to: wwkl.star.cn, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: "Proof of Theorem 15.6 (Corollaries 6.4, 9.5, Theorem 9.3)" } ] }
 - { type: implication, from: wwkl.jump, to: pcr, over: sw, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 9.7 } ] }
 - { type: equivalence, from: wwkl.fin, to: wwkl, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Introduction (Section 1) } ] }
+- { type: implication, from: pcc, to: auc, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Theorem 16.3 } ] }
+- { type: separation, from: auc, to: pcc, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Theorem 16.3 } ] }
+- { type: implication, from: wwkl, to: pcc, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: "Section 10, before Corollary 10.10" } ] }
+- { type: implication, from: cn, to: pcc, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: "Section 10, before Lemma 10.7 (Brattka–Gherardi, Proposition 3.8)" } ] }
+- { type: equivalence, from: nash, to: auc.fin, over: sw, refs: [ { ref: brattkagherardiholzl2015, loc: Theorem 17.2 (Pauly) } ] }
+- { type: implication, from: wwkl, to: nash, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 17.3 } ] }
+- { type: separation, from: ivt, to: nash, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 17.6 } ] }
+- { type: separation, from: nash, to: ivt, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 17.9 } ] }
+- { type: separation, from: auc.fin, to: pcc, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 17.8 } ] }
+- { type: separation, from: pcc, to: auc.fin, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: "Section 17, before Corollary 17.8 (from Corollary 17.5)" } ] }
+- { type: equivalence, from: ldl, to: cn, over: sw, refs: [ { ref: brattkagherardiholzl2015, loc: Theorem 11.2 } ] }

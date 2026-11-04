@@ -2975,7 +2975,7 @@
 - id: brattkagherardiholzl2015-9fc426d7
   ref: brattkagherardiholzl2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: PCC_[0,1]
@@ -2985,10 +2985,14 @@
     facts: Join-irreducible. C_2^* ≤W PCC_[0,1] ≤W CN [10] and PCC_[0,1] ≤W WWKL. AUC_[0,1] <W PCC_[0,1]. PCC_[0,1] |W AUC_[0,1]^*. Not idempotent.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as pcc (2026-11-04).
 - id: brattkagherardiholzl2015-d22bac5d
   ref: brattkagherardiholzl2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: AUC_[0,1]
@@ -2998,10 +3002,14 @@
     facts: ≡sW RDIV. AUC_[0,1] <W PCC_[0,1] and hence <W WWKL. Not below ∗-WWKL, not sW below PC_[0,1]^(n). C_2 × AUC_[0,1] ≰W CC_[0,1] (so ≰W IVT). Not idempotent.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as auc (2026-11-04), with Theorem 16.3, Corollaries 17.3–17.9.
 - id: brattkagherardiholzl2015-aece3b60
   ref: brattkagherardiholzl2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: RDIV
@@ -3011,10 +3019,14 @@
     facts: RDIV ≡sW AUC_[0,1]; RDIV <W WWKL (Corollary 16.4).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "RDIV ≡sW AUC[0,1] (Proposition 16.2): added as an alias of auc."
 - id: brattkagherardiholzl2015-9200656c
   ref: brattkagherardiholzl2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: NASH
@@ -3024,10 +3036,14 @@
     facts: NASH is a cylinder; NASH ≡sW AUC_[0,1]^* (Pauly). NASH ≤W WWKL (Corollary 17.3), NASH ≰W IVT (Corollary 17.6), IVT |W NASH (Corollary 17.9).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as nash (2026-11-04), with Theorem 17.2 (Pauly) and Corollaries 17.3, 17.6, 17.9.
 - id: brattkagherardiholzl2015-da2ac71f
   ref: brattkagherardiholzl2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: LDL
@@ -3037,6 +3053,10 @@
     facts: LDL ≡sW C_N (Theorem 11.2).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Added as ldl (minor: LDL ≡sW C_N, Theorem 11.2)."
 - id: brattkagherardiholzl2015-e59ff1f3
   ref: brattkagherardiholzl2015
   date: 2026-11-03

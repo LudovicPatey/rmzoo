@@ -144,8 +144,16 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
   // dotted name → arity / operation (scripts/lib/schema.mjs)
   const OPS = Object.fromEntries(Object.values(OPERATIONS).map((o) => [o.dotted, o.arity]));
   const OPNAME = Object.fromEntries(Object.entries(OPERATIONS).map(([op, o]) => [o.dotted, op]));
+  // an explicit statement with the same operation and arguments (wkl-j for wkl.jump)
+  // is used instead of creating a duplicate
+  const sameOp = (op, args) => raw.statements.find((s) => s.op === op && s._file !== 'auto' && (s.args || []).join('|') === args.join('|'));
   const ensure = (id, op, args) => {
-    if (!byId.has(id)) { const s = { id, op, args, kind: 'problem', tags: [], _file: 'auto' }; raw.statements.push(s); byId.set(id, s); }
+    if (byId.has(id)) return id;
+    const same = sameOp(op, args);
+    if (same) return same.id;
+    const s = { id, op, args, kind: 'problem', tags: [], _file: 'auto' };
+    raw.statements.push(s);
+    byId.set(id, s);
     return id;
   };
   // tokens: names (letters, digits, dashes), '.', '(' and ')'
@@ -218,6 +226,14 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
       compose: () => `The compositional product of ${L(a[0])} and ${L(a[1])}: the strongest problem obtained by first solving an instance of ${L(a[1])} and then, computably in the result, an instance of ${L(a[0])} (Brattka, Gherardi and Marcone).`,
     }[s.op]();
     s.kind ||= 'problem';
+    // instances and solutions, where the operation has a direct reading
+    const io = {
+      jump: () => [`A sequence converging (in Baire space) to an instance of ${L(a[0])}.`, `A solution of ${L(a[0])} to the limit instance.`],
+      par: () => [`A sequence $(x_n)_n$ of instances of ${L(a[0])}.`, `A sequence $(y_n)_n$ with each $y_n$ a solution to $x_n$.`],
+      fin: () => [`A finite sequence of instances of ${L(a[0])}.`, `A solution to each of them.`],
+      product: () => [`A pair of an instance of ${L(a[0])} and an instance of ${L(a[1])}.`, `A solution to each of them.`],
+    }[s.op]?.();
+    if (io) { s.instance ||= io[0]; s.solution ||= io[1]; }
   }
   for (const s of raw.statements) if (s.op) fillOp(s);
   for (const s of raw.statements) {
