@@ -300,3 +300,26 @@
   refs:
     - { ref: fioricaroneskoodziejczykkowalik2021, role: origin, loc: Section 2.1 }
     - { ref: kowalik2024, role: rm, loc: Section 3.1 }
+
+- id: lcoh
+  label: '\ell\text{-}\mathsf{COH}'
+  name: Long cohesiveness principle
+  kind: sentence
+  tags: [ cohesive, induction ]
+  aliases: [ ℓ-COH, long COH ]
+  definition: >
+    For every sequence $(R_n)_{n \in \mathbb{N}}$ of subsets of $\mathbb{N}$ there is a set $C$ of cardinality
+    $\mathbb{N}$ which is cohesive for $(R_n)_n$.
+  refs:
+    - { ref: fioricaroneskoodziejczykkowalik2021, role: origin, loc: Section 5 }
+
+- id: lem
+  label: '\ell\text{-}\mathsf{EM}'
+  name: Long Erdős–Moser theorem
+  kind: sentence
+  tags: [ ramsey, induction ]
+  aliases: [ ℓ-EM, long EM ]
+  definition: >
+    For every coloring $c : [\mathbb{N}]^2 \to 2$ there is a set of cardinality $\mathbb{N}$ on which $c$ is transitive.
+  refs:
+    - { ref: fioricaroneskoodziejczykkowalik2021, role: origin, loc: "Section 2.1 and Section 4, after Question 4.12" }

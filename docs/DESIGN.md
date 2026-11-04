@@ -279,6 +279,7 @@ over R), and `Has(p,s)` / `Lacks(p,s)`. Rules:
 | conj-elim / conj-intro | conjunctions | `I(R,a+b,a)`, `I(R,x,a)∧I(R,x,b) ⇒ I(R,x,a+b)` |
 | trans | `I(R,a,b)`, `I(R,b,c)` | `I(R,a,c)` |
 | coarsen | `I(R',a,b)`, R' finer than R | `I(R,a,b)` |
+| base-lift | `I(R',a,B)`, `I(R,a,b)`, R' finer than R, B the base system of R (RCA₀ over RCA₀*) | `I(R',a,b)` |
 | prop-down / prop-up | `Has(p,a)`, `I(Rp,a,b)` | `Has(p,b)` (and dually for `Lacks`) |
 | prop-sep | `Has(p,a)`, `Lacks(p,b)` | `N(Rp,a,b)` |
 | refine | `N(R,a,b)`, R' finer than R | `N(R',a,b)` |

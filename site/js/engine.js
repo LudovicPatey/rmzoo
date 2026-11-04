@@ -24,6 +24,7 @@ export const RULES = {
   'prop-implies': 'Relation between properties (a low basis is a weakly low basis, a computably true problem has every preservation property…)',
   'prop-base': 'A problem has this property exactly when the base system implies it over this reduction (e.g. computably true = holds in every ω-model)',
   refine: 'Separation at a coarser reduction',
+  'base-lift': 'Over a weaker base theory, a statement implying the stronger base theory has all its consequences over that theory (over RCA₀*, a statement implying IΣ⁰₁ implies everything it implies over RCA₀)',
   'op-base': 'Algebra of Weihrauch degrees: a problem is below its jump, its parallelization and its finite parallelization (strongly), and below products and compositional products in which it occurs',
   'op-monotone': 'Algebra of Weihrauch degrees: parallelizations, finite parallelizations, products, compositional products and the diamond operator are monotone; jumps are monotone for strong Weihrauch reducibility',
   'op-diamond': 'Algebra of Weihrauch degrees: P⋄ is closed under products and compositional products (if Q, R ≤W P⋄ then Q × R ≤W P⋄ and Q ⋆ R ≤W P⋄)',
@@ -246,9 +247,22 @@ export function buildZoo(raw) {
   };
   seedOps();
 
+  // base lifts: when r2 is coarser than r and its base system B is an ordinary
+  // statement at r (RCA₀ over RCA₀*), a statement implying B over r implies over r
+  // everything it implies over r2: RCA₀* + A ⊢ IΣ⁰₁, so RCA₀* + A ⊇ RCA₀ + A.
+  const lifts = [];
+  for (let r = 0; r < R.length; r++) for (const r2 of coarserDirect[r])
+    for (let B = 0; B < n; B++) if (isBaseAt(B, r2) && !isBaseAt(B, r) && inDomain(r, B)) lifts.push({ fine: r, coarse: r2, B });
+  const liftsCoarse = R.map((_, r) => lifts.filter((l) => l.coarse === r));
+  const liftsFine = R.map((_, r) => lifts.filter((l) => l.fine === r));
+
   while (qh < queue.length) {
     const r = queue[qh++], a = queue[qh++], b = queue[qh++];
     if (ops.length) monotone(r, a, b);
+    for (const { fine, B } of liftsCoarse[r]) // a → b over the coarse frame
+      if (I[fine].has(key(a, B))) addI(fine, a, b, { rule: 'base-lift', prem: [fI(fine, a, B), fI(r, a, b)] });
+    for (const { coarse, B } of liftsFine[r]) // a → B over the fine frame
+      if (b === B) for (const c of [...out[coarse][a]]) addI(r, a, c, { rule: 'base-lift', prem: [fI(r, a, B), fI(coarse, a, c)] });
     const ob = out[r][b];
     for (let i = 0, len = ob.length; i < len; i++) {
       const c = ob[i];

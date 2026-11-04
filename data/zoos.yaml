@@ -9,8 +9,8 @@
 - id: weak-reverse-mathematics
   name: Weak reverse mathematics
   reduction: rca0star
-  description: Over RCA₀*, where only Δ⁰₁-induction is available, RCA₀ (that is, IΣ⁰₁) becomes a statement like the others, next to induction and bounding schemes and combinatorial principles.
-  statements: [rca0, bsig2, isig2, wkl, wwkl, rt22, srt22, coh, rt1inf, aca, em, cac, ads]
+  description: Over RCA₀*, where only Δ⁰₁-induction is available, RCA₀ (that is, IΣ⁰₁) becomes a statement like the others. Ramseyan principles split into a normal version (an unbounded solution) and a long one (a solution of cardinality ℕ); some long versions imply IΣ⁰₁, others are ∀Π⁰₃-conservative.
+  statements: [rca0, bsig2, isig2, wkl, aca, rt22, lrt22, srt22, cac, lcac, ads, ladsset, ladsseq, em, lem, coh, lcoh, fincoh, crt22, lcrt22]
 
 - id: weihrauch
   name: Weihrauch degrees

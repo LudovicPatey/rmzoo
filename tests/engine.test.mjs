@@ -120,6 +120,28 @@ test('operator statements: P below its jump, parallelization; monotonicity', () 
   assert.equal(st('w', 'b.jump', 'a.jump'), 'open');
 });
 
+test('base lift: over RCA₀*, a statement implying RCA₀ has its RCA₀ consequences', () => {
+  const zoo = buildZoo({
+    reductions: [
+      { id: 'rca0star', finerThan: ['rca0'] },
+      { id: 'rca0', finerThan: [] },
+    ],
+    properties: [],
+    statements: [
+      { id: 'rcastar', kind: 'sentence', base: ['rca0star', 'rca0'] }, { id: 'rca0', kind: 'sentence', base: ['rca0'] },
+      { id: 'a', kind: 'sentence' }, { id: 'b', kind: 'sentence' }, { id: 'c', kind: 'sentence' },
+    ],
+    results: [
+      { type: 'implication', from: 'a', to: 'rca0', over: 'rca0star', refs: [{ ref: 'x' }] },
+      { type: 'implication', from: 'a', to: 'b', over: 'rca0', refs: [{ ref: 'x' }] },
+      { type: 'implication', from: 'c', to: 'b', over: 'rca0', refs: [{ ref: 'x' }] },
+    ],
+  });
+  const st = (r, x, y) => zoo.status(zoo.ridx.get(r), zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('rca0star', 'a', 'b'), 'implies');  // RCA₀* + a ⊢ IΣ⁰₁, so RCA₀* + a ⊇ RCA₀ + a ⊢ b
+  assert.equal(st('rca0star', 'c', 'b'), 'open');     // c does not imply RCA₀
+});
+
 test('the jump is monotone for ≤sW only: b ≤W a does not give b′ ≤W a′', () => {
   const zoo = buildZoo({
     reductions: [

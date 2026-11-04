@@ -4,3 +4,4 @@
 - { type: "implication", from: "fincoh", to: "isig1", over: "rca0star", refs: [ { ref: sun2025, loc: Theorem 3 } ] }
 - { type: "separation", from: "wkl", to: "fincoh", over: "rca0", refs: [ { ref: sun2025, loc: Corollary 6 } ] }
 - { type: implication, from: bsig2, to: fincoh, over: rca0, refs: [ { ref: sun2025, loc: Proposition 7 } ] }
+- { type: implication, from: fincoh, to: rca0, over: rca0star, refs: [ { ref: sun2025, loc: Theorem 3 } ] }
