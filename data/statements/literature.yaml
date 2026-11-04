@@ -207,6 +207,20 @@
   solution: An infinite 0-homogeneous set.
   refs: [ { ref: pateyshafer2026, role: origin } ]
 
+- id: brt42
+  label: '\mathsf{BRT}^4_2'
+  name: Bounded Ramsey's theorem for quadruples
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ bRT4 ]
+  definition: >
+    For every coloring $f : [\mathbb{N}]^4 \to 2$ whose 1-homogeneous sets have bounded size, there is an
+    infinite 0-homogeneous set. Unlike $\mathsf{BRT}^2_2$ and $\mathsf{BRT}^3_2$, it is equivalent to $\mathsf{ACA}_0$.
+  instance: A coloring of quadruples whose 1-homogeneous sets are of bounded size.
+  solution: An infinite 0-homogeneous set.
+  refs: [ { ref: solda2021, role: origin, loc: Definition 4.1.1 (bRT⁴) } ]
+
 - id: ovw
   label: '\mathsf{OVW}'
   name: Ordered variable word theorem
@@ -366,3 +380,113 @@
   solution: An infinite chain or antichain of $P$.
   refs:
     - { ref: dzhafarovmummert2022, role: rm, loc: "Definition 9.2.30(3) (Hughes; Towsner)" }
+
+- id: sdnr2
+  label: '2\text{-}\mathsf{SDNR}'
+  name: Stable diagonal non-computability
+  kind: problem
+  minor: true
+  tags: [ ramsey, stable ]
+  aliases: [ 2-SDNR ]
+  definition: >
+    Every $\Delta^0_2$ function $f : \mathbb{N} \to \mathbb{N}$ has an $f$-diagonalizing function,
+    i.e. a function $g$ with $g(x) \neq f(x)$ for every $x$. A characterization of $\mathsf{SRRT}^2_2$.
+  instance: 'A $\Delta^0_2$ function $f : \mathbb{N} \to \mathbb{N}$, given by an approximation $h$ with $f(x) = \lim_s h(x, s)$.'
+  solution: 'A function $g$ with $g(x) \neq f(x)$ for every $x$.'
+  refs: [ { ref: patey2016c, role: origin, loc: "Definition 12.4.1, Theorem 9.2.11(iii)" } ]
+
+- id: rsat2b
+  label: '\mathsf{RSAT}_{\text{2-branching}}'
+  name: Ramsey-type satisfiability for 2-branching clauses
+  kind: problem
+  minor: true
+  tags: [ ramsey, compactness ]
+  definition: >
+    $\mathsf{RSAT}$ restricted to 2-branching sets of clauses over atoms $\{a_i : i \in \mathbb{N}\}$:
+    in every clause $\ell_0 \vee \dots \vee \ell_{n-1}$, each literal $\ell_i$ is $a_i$ or $\neg a_i$.
+  instance: A finitely satisfiable 2-branching set $C$ of clauses.
+  solution: An infinite set of atoms homogeneous for $C$.
+  refs: [ { ref: patey2016c, role: origin, loc: Definition 11.2.4 } ]
+
+- id: sigma02sep
+  label: '\Sigma^0_2\textsf{-separation}'
+  name: Σ⁰₂ separation principle
+  kind: sentence
+  minor: true
+  tags: [ induction ]
+  aliases: [ Σ02-separation, Σ02 separation principle ]
+  definition: >
+    For every two disjoint $\Sigma^0_2$ sets $A_0, A_1$ (with set parameters) there is a $\Delta^0_2$ set $D$
+    with $A_0 \subseteq D$ and $D \cap A_1 = \emptyset$. Equivalent to $\mathsf{COH}$ over $\mathsf{RCA}_0 + \mathrm{B}\Sigma^0_2$.
+  refs:
+    - { ref: belanger2022, role: origin, loc: "Theorem 3(ii)" }
+    - { ref: kowalik2024, role: rm, loc: Section 3.2 }
+
+- id: ph
+  label: '\mathsf{PH}'
+  name: Paris–Harrington principle
+  kind: sentence
+  tags: [ ramsey, first-order ]
+  aliases: [ Paris-Harrington theorem, Paris–Harrington theorem ]
+  definition: >
+    For all $n, k, l$ there is $u$ such that for every finite set $X$ of size at least $u$, every
+    $k$-coloring of $[X]^n$ has a homogeneous set $H$ of size at least $l$ with $\min H \geq |H|$.
+    An arithmetic sentence, true but not provable in Peano arithmetic.
+  refs:
+    - { ref: hirschfeldt2015, role: rm, loc: Section 6.3 }
+
+- id: extomega
+  label: '\mathsf{EXT}(\omega^*)'
+  name: Well-ordered linear extensions
+  kind: sentence
+  tags: [ orders ]
+  aliases: [ EXT(ω*) ]
+  definition: >
+    Every countable well-founded partial order has a well-ordered linear extension (the order type
+    $\omega^*$ is weakly extendible).
+  refs:
+    - { ref: hirschfeldt2015, role: rm, loc: "Section 10.2, before Theorem 10.8" }
+    - { ref: hirschfeldt2017, role: rm, loc: Definition 2.2 }
+
+- id: extzeta
+  label: '\mathsf{EXT}(\zeta)'
+  name: Weak extendibility of ζ
+  kind: sentence
+  minor: true
+  tags: [ orders ]
+  aliases: [ EXT(ζ) ]
+  definition: >
+    Every countable partial order with no linear suborder of type $\zeta$ (the integers) has a linear
+    extension with no suborder of type $\zeta$.
+  refs:
+    - { ref: hirschfeldt2015, role: rm, loc: "Definition 10.12, Theorem 10.18" }
+
+- id: dm
+  label: '\textsf{Dushnik–Miller}'
+  name: Dushnik–Miller theorem (countable linear orders)
+  kind: problem
+  minor: true
+  tags: [ orders ]
+  aliases: [ Dushnik-Miller theorem ]
+  definition: >
+    Every countable infinite linear order has a nontrivial self-embedding (an order-preserving map
+    into itself that is not the identity).
+  instance: A countable infinite linear order $L$.
+  solution: A nontrivial self-embedding of $L$.
+  refs:
+    - { ref: hirschfeldt2015, role: rm, loc: Section 10.1 }
+    - { ref: downeylempp1999, role: rm }
+    - { ref: simpson2009, role: rm, loc: Remark X.3.32 }
+
+- id: atomic-trees
+  label: '\textsf{Strongly atomic trees}'
+  name: Atomic trees are strongly atomic
+  kind: sentence
+  minor: true
+  tags: [ induction ]
+  definition: >
+    Every atomic binary tree with no dead ends is strongly atomic. A node $\sigma$ is an atom if it has exactly
+    one extension of each length; the tree is atomic if every node extends to an atom, and strongly atomic if for
+    all $\sigma_0, \dots, \sigma_n$ in the tree, each $\sigma_i$ extends to an atom.
+  refs:
+    - { ref: hirschfeldt2015, role: rm, loc: "Section 4.6, Exercise 4.35" }

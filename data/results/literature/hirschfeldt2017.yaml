@@ -1,0 +1,3 @@
+# Results from [hirschfeldt2017].
+
+[ { type: separation, from: wkl, to: extomega, over: rca0, refs: [ { ref: hirschfeldt2017, loc: Theorem 2.4 }, { ref: montalban2011, loc: "Section 4.1, before Question 20" } ] } ]

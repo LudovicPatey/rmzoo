@@ -354,3 +354,75 @@
   tags: ["analysis", "randomness"]
   definition: "The monotone convergence theorem for Borel measures on compact metric spaces (already for Lebesgue measure on $[0,1]$)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem X.1.14" } ]
+
+# Combinatorics and well quasiorders (Section X.3), entered from the review queue.
+- id: wo-omega-omega
+  label: '\mathsf{WO}(\omega^\omega)'
+  name: Well-orderedness of ω^ω
+  kind: sentence
+  tags: ["well-orders"]
+  definition: "The ordinal $\\omega^\\omega$ (in its standard notation) is well ordered. Not provable in $\\mathsf{WKL}_0$: $\\omega^\\omega$ is the proof-theoretic ordinal of $\\mathsf{RCA}_0$ and $\\mathsf{WKL}_0$."
+  refs: [ { ref: simpson2009, role: rm, loc: "Theorem IX.5.4, Theorem X.3.20" } ]
+
+- id: dickson
+  label: "\\textsf{Dickson's lemma}"
+  name: "Dickson's lemma"
+  kind: sentence
+  minor: true
+  tags: ["orders"]
+  definition: "For each $m \\in \\mathbb{N}$, the $m$-fold Cartesian power $\\mathbb{N}^m$ is well quasiordered."
+  refs: [ { ref: simpson2009, role: rm, loc: "Theorem X.3.20(2)" } ]
+
+- id: hilbert-basis
+  label: "\\textsf{Hilbert basis theorem}"
+  name: "Hilbert basis theorem"
+  kind: sentence
+  minor: true
+  tags: ["algebra"]
+  definition: "For every countable field $K$ and every $m \\in \\mathbb{N}$, every ideal of the polynomial ring $K[x_1, \\dots, x_m]$ is finitely generated (already for $K = \\mathbb{Q}$)."
+  refs: [ { ref: simpson2009, role: rm, loc: "Remark X.3.21" } ]
+
+- id: higman
+  label: "\\textsf{Higman's theorem}"
+  name: "Higman's theorem"
+  kind: sentence
+  minor: true
+  tags: ["orders"]
+  definition: "If $Q$ is a well quasiordering, then so is $Q^{<\\mathbb{N}}$, the finite sequences of elements of $Q$ quasiordered by embedding: $\\langle a_i : i < m \\rangle \\leq \\langle b_j : j < n \\rangle$ if there are $j_0 < \\dots < j_{m-1} < n$ with $a_i \\leq b_{j_i}$."
+  refs: [ { ref: simpson2009, role: rm, loc: "Remark X.3.19, Theorem X.3.22" } ]
+
+- id: hall-lf
+  label: "\\textsf{Hall's theorem}_{\\mathrm{lf}}"
+  name: "Hall's theorem for countable locally finite bipartite graphs"
+  kind: sentence
+  minor: true
+  tags: ["graphs"]
+  definition: "A countable locally finite bipartite graph has a perfect matching if and only if it satisfies the Hall condition."
+  refs: [ { ref: simpson2009, role: rm, loc: "Theorem X.3.15(2)" } ]
+
+- id: marriage
+  label: "\\textsf{Marriage theorem}"
+  name: "Marriage theorem for countable regular bipartite graphs"
+  kind: sentence
+  minor: true
+  tags: ["graphs"]
+  definition: "Every countable bipartite graph which is $n$-regular for some $n \\geq 1$ has a perfect matching (equivalently, already for $n = 2$)."
+  refs: [ { ref: simpson2009, role: rm, loc: "Theorem X.3.16" } ]
+
+- id: konig-cover
+  label: "\\textsf{Podewski–Steffens}"
+  name: "Podewski–Steffens theorem (König coverings)"
+  kind: sentence
+  minor: true
+  tags: ["graphs"]
+  definition: "Every countable bipartite graph has a König covering: a pair $(C, M)$ where $C$ is a vertex covering, $M$ a matching, and $C$ consists of exactly one vertex from each edge of $M$."
+  refs: [ { ref: simpson2009, role: rm, loc: "Definition X.3.10, Theorem X.3.12" } ]
+
+- id: weak-star-closure
+  label: "\\textsf{Weak-* closure}"
+  name: "Smallest weak-*-closed set containing a countable set"
+  kind: sentence
+  minor: true
+  tags: ["analysis"]
+  definition: "For every separable Banach space $X$ and countable set $Y \\subseteq X^*$, there is a smallest weak-*-closed set in $X^*$ containing $Y$ (equivalently, a smallest weak-*-closed convex set, or linear subspace)."
+  refs: [ { ref: simpson2009, role: rm, loc: "Theorem X.2.9" } ]

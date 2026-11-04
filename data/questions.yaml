@@ -1324,3 +1324,20 @@
     imply IΣ⁰₂ [@chongslamanyang2017]. Le Houérou and Patey [@lehoueroupatey2026]
     answered it by proving that a Carlson–Simpson lemma implying TT²₂ is
     ∀Π⁰₄-conservative over RCA₀ + BΣ⁰₂.
+
+- id: extomega-aca
+  question: Does $\mathsf{EXT}(\omega^*)$ (every countable well-founded partial order has a well-ordered linear extension) imply $\mathsf{ACA}_0$ over $\mathsf{RCA}_0$? What is its relationship with $\mathsf{RT}^2_2$?
+  asked:
+    - {ref: hirschfeldt2015, loc: Open Question 10.11}
+    - {ref: montalban2011, loc: Question 20}
+    - {ref: hirschfeldt2017, loc: Open Question 2.5}
+  statements: [extomega, aca, rt22]
+  formal:
+    - {from: extomega, to: aca, over: rca0}
+    - {from: extomega, to: rt22, over: rca0}
+    - {from: rt22, to: extomega, over: rca0}
+  context: >-
+    Downey, Hirschfeldt, Lempp and Solomon showed that EXT(ω*) is provable in ACA₀ and strictly
+    stronger than WKL₀. Kierstead and Rosenstein showed that every well-founded computable partial
+    order has a well-ordered computable linear extension, but Rosenstein and Statman built a computably
+    well-founded one with no computably well-founded computable linear extension.

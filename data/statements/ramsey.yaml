@@ -218,6 +218,47 @@
   solution: An infinite set $H$ with $f[[H]^2] \neq 4$.
   refs: [ { ref: liupatey2022, role: rm } ]
 
+- id: sts23
+  label: '\mathsf{STS}^2_3'
+  name: Stable thin set theorem for pairs (3 colors)
+  kind: problem
+  tags: [ ramsey, stable ]
+  aliases: [ STS23 ]
+  definition: >
+    Every stable coloring $f : [\mathbb{N}]^2 \to 3$ (for every $x$, $\lim_s f(x, s)$ exists) has an
+    infinite set $H$ such that $f$ avoids at least one color on $[H]^2$.
+  instance: 'A stable coloring $f : [\mathbb{N}]^2 \to 3$.'
+  solution: An infinite set $H$ with $f[[H]^2] \neq 3$.
+  refs: [ { ref: patey2016c, role: rm, loc: Definition 8.0.2 } ]
+
+- id: sts24
+  label: '\mathsf{STS}^2_4'
+  name: Stable thin set theorem for pairs (4 colors)
+  kind: problem
+  tags: [ ramsey, stable ]
+  aliases: [ STS24 ]
+  definition: >
+    Every stable coloring $f : [\mathbb{N}]^2 \to 4$ has an infinite set $H$ such that $f$ avoids at
+    least one color on $[H]^2$.
+  instance: 'A stable coloring $f : [\mathbb{N}]^2 \to 4$.'
+  solution: An infinite set $H$ with $f[[H]^2] \neq 4$.
+  refs: [ { ref: patey2016c, role: rm, loc: Definition 8.0.2 } ]
+
+- id: ts13
+  label: '\mathsf{TS}^1_3'
+  name: Thin set theorem for singletons (3 colors)
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ TS13 ]
+  definition: >
+    Every coloring $f : \mathbb{N} \to 3$ has an infinite set $H$ such that $f$ avoids at least one
+    color on $H$. Every computable instance has a computable solution; the principle is studied
+    for strong computable reducibility, where it lies strictly below $\mathsf{RT}^1_2$.
+  instance: 'A coloring $f : \mathbb{N} \to 3$.'
+  solution: An infinite set $H$ with $f[H] \neq 3$.
+  refs: [ { ref: patey2016c, role: rm, loc: Definition 8.0.2 } ]
+
 # "Long" versions over RCA₀* (Fiori-Carones, Kołodziejczyk, Kowalik 2021, Section 2.1):
 # the solution must have cardinality N (be enumerated in increasing order by a map
 # with domain N), not merely be unbounded. Over RCA₀ they coincide with the normal

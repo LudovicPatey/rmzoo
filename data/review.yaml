@@ -696,7 +696,7 @@
 - id: solda2021-ca8329d4
   ref: solda2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: sRSpoW_k, sRSpoCD_k, sRSpoN
@@ -706,6 +706,10 @@
     facts: RCA0 ⊢ sRSpoCD_2 → ADS; ADS + IΣ02 ⊢ sRSpoCD_2; Π11-CA0 ⊢ sRSpoN; sRSpoN implies CAC and all RSpo principles.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: strong variants of RSpo studied only in this thesis."
 - id: solda2021-b1790f19
   ref: solda2021
   date: 2026-11-03
@@ -760,7 +764,7 @@
 - id: solda2021-02bcaeb8
   ref: solda2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: bRT^n_k, bRT^n (n ≥ 4)
@@ -770,10 +774,14 @@
     facts: RCA0 + BΣ02 ⊢ bRT^2_k for standard k (computably true); bRT^{n+1}_{n+2} → RT^n_2; for n > 3 bRT^n_k ↔ ACA0; bRT^3_k admits cone avoidance; RT^n_k ≤sW bRT^{n+1}_{R(n,n+1,k)}.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added brt42 (BRT^4_2, minor) with Corollary 4.1.13, Lemmas 4.1.2, 4.1.27, 4.1.29; bRT^n_k for fixed k is not added (equivalent to bRT^n by Lemma 4.1.2 except n=2).
 - id: solda2021-ba38879f
   ref: solda2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: uRT^n
@@ -783,10 +791,14 @@
     facts: bRT^n ≤sW uRT^n; every uRT^2 instance has a solution computable in it; for n ≥ 3 every instance f has a solution computable in any degree PA over f^(n-2), hence Δ0n solutions.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: uRT^n is studied only in this thesis as a problem above bRT^n."
 - id: solda2021-16ac2234
   ref: solda2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: SPL_k, SSPL_k
@@ -796,6 +808,10 @@
     facts: SSPL_k → SPL_k → bRT^2_k; RCA0 + ∀k SPL_k ⊢ BΣ02; RCA0 + BΣ02 ⊢ SSPL_3 → SRT22; RT^4_64 → SSPL_3, so ACA0 ⊢ SSPL_3; SSPL_3 ≤W uRT^4, computable instances have Δ04 solutions.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: SPL_k, SSPL_k are technical principles studied only in Section 4.2."
 - id: solda2021-b74ee517
   ref: solda2021
   date: 2026-11-03
@@ -1917,7 +1933,7 @@
 - id: kowalik2024-fc23b8ad
   ref: kowalik2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: GGP22
@@ -1927,10 +1943,14 @@
     facts: WKL0* + ¬IΣ01 proves GGP22; RCA0* + ¬IΣ01 proves it for transitive colourings (Lemma 3.4). It is not arithmetically conservative over RCA0; RCA0 + GGP22 proves 2-DNC (Remark 3.5, Yokoyama).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: GGP22 is a technical tool of the proofs of Section 3.1, studied only there."
 - id: kowalik2024-057a69fc
   ref: kowalik2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Σ02-separation
@@ -1940,6 +1960,10 @@
     facts: RCA0* ⊢ COH → Σ02-separation (Lemma 3.13). Σ02-separation fails in every model of the form (M, Δ1-Def(M)) (Lemma 3.14), hence COH is never 'computably true' over RCA0* (Theorem 3.15).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added sigma02sep (minor) with Lemma 3.13, Corollaries 3.16-3.17 and Belanger's Theorem 3 / Lemma 4.2.
 - id: kowalik2024-b5e434e5
   ref: kowalik2024
   date: 2026-11-03
@@ -1960,7 +1984,7 @@
 - id: kowalik2024-06ff94a7
   ref: kowalik2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Δ02-RT22
@@ -1970,6 +1994,10 @@
     facts: RCA0 + BΣ02 + Δ02-RT22 is Π4- but not Π5-conservative over RCA0 + BΣ02 (Remark 2.26).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: Δ02-RT22 appears only in a remark on conservation, as a first-order scheme."
 - id: patey2016c-db05d505
   ref: patey2016c
   date: 2026-11-03
@@ -2553,7 +2581,7 @@
 - id: patey2016c-1417af22
   ref: patey2016c
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: TS^1_k
@@ -2563,10 +2591,14 @@
     facts: TS^1_{k+1} admits strong preservation of k hyperimmunities (Theorem 8.2.5); TS^1_k ≰sc TS^1_ℓ for ℓ>k≥2 (Corollary 8.2.6).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added ts13 (TS^1_3, minor) with Cor 8.2.6 and computable truth; the other k follow the same pattern and are not added.
 - id: patey2016c-1f163b7d
   ref: patey2016c
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: STS^2_k
@@ -2576,10 +2608,14 @@
     facts: STS^2_k ≰c STS^2_ℓ for ℓ>k≥2 (Corollary 8.2.7); STS^2_k does not admit preservation of k hyperimmunities (Corollary 8.2.4); STS^n_k ≰c TS^n_{k+1} (Corollary 8.3.4); not implied by COH+WKL+TS^2_{k+1}+FS+TS.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added sts23, sts24 with Cor 8.2.7 and Cor 8.3.4.
 - id: patey2016c-df43ced5
   ref: patey2016c
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: 2-SDNR
@@ -2589,10 +2625,14 @@
     facts: Equivalent to SRRT^2_2 over RCA0+IΣ02 (Theorem 9.2.11); only Δ02 degree bounding it is 0' (Theorem 12.4.1).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added sdnr2 (2-SDNR, minor) with Lemma 9.2.7, Theorem 9.2.11 and SRRT22 =c 2-SDNR.
 - id: patey2016c-dcdb046f
   ref: patey2016c
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: RRT^n_2[0']
@@ -2602,10 +2642,14 @@
     facts: wSRRT^{n+1}_2 ↔ RRT^n_2[0'] over RCA0+BΣ02 and computably equivalent (Theorem 9.3.1).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: RRT^n_2[0'] is a relativized variant; wSRRT^3_2 and RRT^1_2 are not in the zoo."
 - id: patey2016c-1e1a898d
   ref: patey2016c
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: RSAT_{2-branching}
@@ -2615,10 +2659,14 @@
     facts: Implies RWKL over RCA0 (Proposition 11.2.1); implied by RCOLOR3 (proof of Theorem 11.3.12).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added rsat2b (minor) with Prop 11.2.1 and the proof of Theorem 11.3.12.
 - id: patey2016c-8c6fdf30
   ref: patey2016c
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Π01(TS^n_k)
@@ -2628,10 +2676,14 @@
     facts: Π01(TS^1_2) is RWKL; admits c.b-enum avoidance under induction hypotheses (Theorem 13.5.9); RWKL admits simultaneous c.b-enum avoidance (Theorem 13.5.1).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: technical scheme used in the proofs of Chapter 13."
 - id: patey2016c-123c0baf
   ref: patey2016c
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: FS^1, TS^1, FS^n (n≥4)
@@ -2641,6 +2693,10 @@
     facts: RCA0 ⊢ RRT^{2n+1}_2 → FS^n (Theorem 9.0.11); FS admits strong preservation of k hyperimmunities (Theorem 8.5.1) and strong m c.b-enum avoidance (Corollary 13.6.2).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: FS^1 and TS^1 are computably trivial; FS^n for n>=4 only appear in Theorem 9.0.11 with RRT^{2n+1}_2."
 - id: brattkagherardiholzl2015-757ef322
   ref: brattkagherardiholzl2015
   date: 2026-11-03
@@ -5039,7 +5095,7 @@
 - id: hirschfeldt2015-cea34b16
   ref: hirschfeldt2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: PH
@@ -5049,10 +5105,14 @@
     facts: RCA0 + RT ⊢ PH; not provable in PA, so not in ACA0; hence RT strictly stronger than ACA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added ph with Exercise 6.25 and ACA0 ⊬ PH.
 - id: hirschfeldt2015-4f6b8e59
   ref: hirschfeldt2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: EXT(ω*)
@@ -5062,10 +5122,14 @@
     facts: Implies WKL0 over RCA0; provable in ACA0; computably well-founded computable partial order with no computably well-founded computable linear extension; open whether it implies ACA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added extomega with Theorem 10.9, Exercise 10.10, WKL0 ⊬ (Hirschfeldt 2017 Thm 2.4) and question extomega-aca (OQ 10.11).
 - id: hirschfeldt2015-9ea4164c
   ref: hirschfeldt2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: EXT(ζ), EXT(η), EXT(τ)
@@ -5075,10 +5139,14 @@
     facts: "EXT(ζ) equivalent to ATR0 over RCA0; EXT(η) provable in Π11-CA0 and in ATR0 + IΣ11; Miller: EXT(η) implies WKL0 over a stronger base."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added extzeta (minor) ≡ ATR0 (Theorem 10.18); EXT(η) not added (only upper bounds).
 - id: hirschfeldt2015-08364ff9
   ref: hirschfeldt2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: DM
@@ -5088,10 +5156,14 @@
     facts: Not computably true; equivalent to ACA0 over RCA0; every computable infinite linear order has a ∅″-computable nontrivial self-embedding, but not necessarily a ∅′-computable one.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added dm (minor) ≡ ACA0, no Δ02 basis, Δ03 basis (Section 10.1).
 - id: hirschfeldt2015-5f7f3619
   ref: hirschfeldt2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: JUL
@@ -5101,10 +5173,14 @@
     facts: RCA0 + JUL ⊢ FRA; RCA0 + IΣ11 + FRA ⊢ JUL (Montalbán).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: JUL's statement (classification of weakly extendible types) is only sketched here."
 - id: hirschfeldt2015-ace535eb
   ref: hirschfeldt2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Kruskal
@@ -5114,10 +5190,14 @@
     facts: Not provable in ATR0 (Friedman); exact strength by Rathjen and Weiermann.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: Kruskal's theorem is beyond ATR0; no result in the zoo's systems besides non-provability in ATR0."
 - id: hirschfeldt2015-44e743ad
   ref: hirschfeldt2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Π01GA
@@ -5127,10 +5207,14 @@
     facts: Provable in RCA0 + IΣ02, not in RCA0, implies no new first-order statements.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: variant of Π01G mentioned only in passing."
 - id: hirschfeldt2015-5e5ea2cd
   ref: hirschfeldt2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: atomic tree principle
@@ -5140,6 +5224,10 @@
     facts: Equivalent to BΣ02 over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added atomic-trees (minor) ≡ BΣ02 (Exercise 4.35).
 - id: hirschfeldt2015-deb72617
   ref: hirschfeldt2015
   date: 2026-11-03
@@ -5160,7 +5248,7 @@
 - id: hirschfeldt2015-6a4f5fe1
   ref: hirschfeldt2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: prime model statements
@@ -5170,6 +5258,10 @@
     facts: Each is equivalent to ACA0 over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: three model-theoretic equivalents of ACA0 from an exercise."
 - id: brattkahendtlasskreuzer2017-37c225d9
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
@@ -13355,7 +13447,7 @@
   ref: simpson2009
   part: 8/8 (chapter X, pages 409–463)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: weak-* closed span
@@ -13365,11 +13457,15 @@
     facts: Each version, including those with X = c0, is equivalent to Π11-CA0 over RCA0 (cited from Humphreys/Simpson).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added weak-star-closure (minor) ≡ Π11-CA0 (Theorem X.2.9).
 - id: simpson2009-56d816c2
   ref: simpson2009
   part: 8/8 (chapter X, pages 409–463)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Podewski/Steffens theorem
@@ -13379,11 +13475,15 @@
     facts: Equivalent to ATR0 over RCA0 (cited from Aharoni/Magidor/Shore and Simpson).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added konig-cover (minor) ≡ ATR0 (Theorem X.3.12).
 - id: simpson2009-735fb38b
   ref: simpson2009
   part: 8/8 (chapter X, pages 409–463)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Hall/marriage theorems for countable graphs
@@ -13393,11 +13493,15 @@
     facts: The Hall-type statements are equivalent to ACA0 over RCA0. The n-regular and 2-regular marriage theorems are equivalent to WKL0 over RCA0 (cited from Hirst).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added hall-lf (≡ ACA0, Theorem X.3.15) and marriage (≡ WKL0, Theorem X.3.16), minor.
 - id: simpson2009-adce751d
   ref: simpson2009
   part: 8/8 (chapter X, pages 409–463)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Dickson's lemma
@@ -13407,11 +13511,15 @@
     facts: Equivalent over RCA0 to the well-orderedness of ω^ω. The Hilbert basis theorem is also equivalent to it (Remark X.3.21).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added wo-omega-omega, dickson and hilbert-basis (Theorem X.3.20, Remark X.3.21, Theorem IX.5.4).
 - id: simpson2009-10c8108c
   ref: simpson2009
   part: 8/8 (chapter X, pages 409–463)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Higman's theorem
@@ -13421,11 +13529,15 @@
     facts: Equivalent to ACA0 over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added higman (minor) ≡ ACA0 (Theorem X.3.22).
 - id: simpson2009-fb4292b6
   ref: simpson2009
   part: 8/8 (chapter X, pages 409–463)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Minimal bad sequence lemma
@@ -13435,11 +13547,15 @@
     facts: Equivalent to Π11-CA0 over RCA0 (Marcone and Simpson).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: the lemma is not stated in SOSOA (only named); Marcone's paper is not in the cache."
 - id: simpson2009-ef9a9f44
   ref: simpson2009
   part: 8/8 (chapter X, pages 409–463)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Dushnik–Miller theorem
@@ -13449,6 +13565,10 @@
     facts: Equivalent to ACA0 over RCA0 (Downey/Lempp).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: dm already added from Slicing the Truth; Remark X.3.32 cited.
 - id: goh2019b-0aa17f86
   ref: goh2019b
   date: 2026-11-03

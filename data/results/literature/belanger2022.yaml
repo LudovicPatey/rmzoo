@@ -4,3 +4,5 @@
 - {type: "conservation", statement: "bsig2-coh", base: "bsig2", class: "Pi11", value: true, refs: [{ref: belanger2022}, {ref: chongslamanyang2012, loc: Corollary 3.1}]}
 - {type: "conservation", statement: "coh-isig3", base: "isig3", class: "Pi11", value: true, refs: [{ref: belanger2022}]}
 - {type: "conservation", statement: "bsig3-coh", base: "bsig3", class: "Pi11", value: true, refs: [{ref: belanger2022}]}
+- { type: implication, from: coh, to: sigma02sep, over: rca0, refs: [ { ref: belanger2022, loc: Lemma 4.2 } ] }
+- { type: implication, from: bsig2-sigma02sep, to: coh, over: rca0, refs: [ { ref: belanger2022, loc: Theorem 3 } ] }
