@@ -45,6 +45,7 @@ const raw = {
   modes: fs.existsSync(path.join(dataDir, 'modes.yaml')) ? readYaml(path.join(dataDir, 'modes.yaml')) || [] : [],
   classes: readYaml(path.join(dataDir, 'classes.yaml')),
   questions: readYaml(path.join(dataDir, 'questions.yaml')),
+  concepts: fs.existsSync(path.join(dataDir, 'concepts.yaml')) ? readYaml(path.join(dataDir, 'concepts.yaml')) || [] : [],
 };
 const contexts = readYaml(path.join(dataDir, 'context.yaml')) || {};
 const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml(path.join(dataDir, 'abstracts.yaml')) || {} : {};
@@ -62,7 +63,7 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
   for (const x of raw.statements) errs.push(...unknownFields(x, 'statement', `Statement ${x.id} (${x._file})`));
   raw.results.forEach((x, i) => errs.push(...unknownFields(x, 'result', `Result #${i} (${x._file}: ${x.from ?? x.statement} ${x.type} ${x.to ?? x.property ?? x.base ?? ''})`)));
   for (const [k, x] of Object.entries(raw.references)) errs.push(...unknownFields(x, 'reference', `Reference ${k}`));
-  for (const [list, entity] of [['reductions', 'reduction'], ['tags', 'tag'], ['properties', 'property'], ['zoos', 'zoo'], ['modes', 'mode'], ['classes', 'class'], ['questions', 'question']])
+  for (const [list, entity] of [['reductions', 'reduction'], ['tags', 'tag'], ['properties', 'property'], ['zoos', 'zoo'], ['modes', 'mode'], ['classes', 'class'], ['questions', 'question'], ['concepts', 'concept']])
     for (const x of raw[list] || []) errs.push(...unknownFields(x, entity, `${entity} ${x.id} (data/${list}.yaml)`));
   for (const [k, x] of Object.entries(abstracts)) errs.push(...unknownFields(x, 'abstract', `abstracts.yaml ${k}`));
   const rej = path.join(dataDir, 'sweep-rejected.yaml');
@@ -314,6 +315,24 @@ const tids = uniq(raw.tags, 'tag');
     byId.get(id).context = String(text).trim();
   }
   for (const k of Object.keys(abstracts)) if (!raw.references[k]) warnings.push(`abstracts.yaml: unknown reference ${k}`);
+  // concepts (data/concepts.yaml): sourced definitions of the words used in statement
+  // definitions, attached to the statements that mention them (`_concepts`)
+  uniq(raw.concepts, 'concept');
+  const matchers = [];
+  for (const c of raw.concepts) {
+    if (!c.definition || !(c.refs || []).length) errors.push(`concepts.yaml ${c.id}: needs a definition and a source (refs)`);
+    for (const r of c.refs || []) if (!raw.references[r.ref]) errors.push(`concepts.yaml ${c.id}: unknown reference ${r.ref}`);
+    for (const s of c.skip || []) if (!byId.has(s)) errors.push(`concepts.yaml ${c.id}: skip lists unknown statement ${s}`);
+    try { matchers.push([c, new RegExp(`(?<![\\p{L}\\p{N}])(?:${(c.match || []).join('|')})(?![\\p{L}\\p{N}])`, 'iu')]); }
+    catch (e) { errors.push(`concepts.yaml ${c.id}: bad match pattern (${e.message})`); }
+    if (!(c.match || []).length) errors.push(`concepts.yaml ${c.id}: needs match patterns`);
+  }
+  for (const s of raw.statements) {
+    if (s.conjunction) continue;
+    const text = [s.definition, s.instance, s.solution].filter(Boolean).join(' ');
+    const hit = matchers.filter(([c, rx]) => !(c.skip || []).includes(s.id) && rx.test(text)).map(([c]) => c.id);
+    if (hit.length) s._concepts = hit;
+  }
 }
 {
   uniq(raw.zoos, 'preset zoo');
@@ -335,6 +354,13 @@ for (const p of raw.properties) {
   if (p.baseImplication && !rids.has(p.baseImplication)) errors.push(`Property ${p.id}: unknown baseImplication ${p.baseImplication}`);
   if (p.domain !== undefined && p.domain !== 'problems') errors.push(`Property ${p.id}: domain must be problems`);
   for (const q of p.implies || []) if (!pids.has(q) || q === p.id) errors.push(`Property ${p.id}: implies unknown property ${q}`);
+  if (!['computability', 'proof', 'weihrauch'].includes(p.group)) errors.push(`Property ${p.id}: group must be computability, proof or weihrauch`);
+  if (p.direction !== undefined && !['down', 'up', 'equiv'].includes(p.direction)) errors.push(`Property ${p.id}: direction must be down, up or equiv`);
+  for (const o of [p.selfOp, ...(p.opHas || []), ...(p.opKeeps || [])].filter(Boolean))
+    if (!OPERATIONS[o]) errors.push(`Property ${p.id}: unknown operation ${o}`);
+  if ((p.selfOp || p.opHas || p.opKeeps || p.lift) && p.direction !== 'equiv') errors.push(`Property ${p.id}: operation laws and lifts are for equiv (Weihrauch) properties`);
+  if (p.lift && (!rids.has(p.lift.from) || !rids.has(p.lift.to))) errors.push(`Property ${p.id}: lift needs known reductions from and to`);
+  for (const q of p.implies || []) { const qq = raw.properties.find((x) => x.id === q); if (qq && (qq.group === 'weihrauch') !== (p.group === 'weihrauch')) errors.push(`Property ${p.id}: implies ${q} of another group`); }
 }
 { // implications between properties form no cycle (the viewer lists the extremal ones)
   const imp = new Map(raw.properties.map((p) => [p.id, p.implies || []]));
@@ -553,7 +579,9 @@ const t0 = Date.now();
   }
   uniq(raw.modes, 'mode');
   const byId = new Map(raw.statements.map((s) => [s.id, s]));
-  const inMode = (m, r) => r.type === 'property' ? !!m.properties : r.type === 'conservation' ? !!m.conservation
+  const groupOf = new Map(raw.properties.map((p) => [p.id, p.group]));
+  for (const m of raw.modes) if (Array.isArray(m.properties)) for (const g of m.properties) if (!['computability', 'proof', 'weihrauch'].includes(g)) errors.push(`modes.yaml ${m.id}: unknown property group ${g}`);
+  const inMode = (m, r) => r.type === 'property' ? (m.properties === true || (m.properties || []).includes(groupOf.get(r.property))) : r.type === 'conservation' ? !!m.conservation
     : [].concat(r.over || []).some((o) => m.reductions.includes(o));
   const add = (s, m) => { if (s && !(s._modes ||= []).includes(m.id)) s._modes.push(m.id); };
   for (const r of raw.results) {

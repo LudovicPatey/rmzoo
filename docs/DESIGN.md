@@ -208,6 +208,38 @@ low → weakly low → low₂ → weakly low₂ → … is infinite: its members
 new level is added to `data/properties.yaml` when a paper proves something about
 it (ACA₀'s failure, true at every level, is recorded at the highest level present).
 
+**Groups of properties** (`group`): computability-theoretic (cone avoidance, basis
+theorems, preservation properties), proof-theoretic (Π¹₁-conservation) and Weihrauch.
+The statement page lists them in separate tables; a mode shows the groups listed in
+its `properties` field (the Weihrauch mode shows only the Weihrauch ones).
+
+**Weihrauch properties** are properties of a Weihrauch degree (Brattka, Gherardi and
+Pauly, *Weihrauch complexity in computable analysis*): cylinder, idempotent,
+(strongly) parallelizable, closed under compositional product, finitely tolerant,
+fractal, countably irreducible, join-irreducible. They are not preserved downwards
+but invariant under equivalence (`direction: equiv` over ≡W, or ≡sW for the strong
+ones), so they separate nothing by themselves. The engine also reads them from the
+algebra of the Weihrauch lattice:
+* `selfOp`: the statement has the property exactly when it implies the operation
+  applied to itself (idempotent: P × P ≤W P; parallelizable: P̂ ≤W P; closed under
+  compositional product: P ⋆ P ≤W P), so an equivalence with P̂ gives
+  parallelizability and a separation from P × P a failure of idempotency; a cited
+  value gives the implication back.
+* `opHas`, `opKeeps`: operations always produce the property (P̂ is parallelizable, P*
+  idempotent, P⋄ closed under ⋆, P ⋆ Q a cylinder, P′ finitely tolerant and a fractal),
+  or keep it (the jump of a cylinder is a cylinder).
+* `lift`: for a cylinder P, every Q ≤W P satisfies Q ≤sW P (Proposition 3.5), so the
+  engine lifts the Weihrauch implications of P to strong ones. This uses the cited
+  cylinders and the laws on operations only.
+
+**Concepts** (`data/concepts.yaml`) define the words statement definitions use
+(coloring, homogeneous set, stable coloring, tree and path, cohesive set, DNC
+function, rainbow…), each following a source with its number (mostly Dzhafarov and
+Mummert's textbook). The build attaches a concept to every statement whose
+definition, instance or solution matches one of its patterns (`_concepts`), except
+those listed in `skip` where the word means something else (RSAT's homogeneous sets
+of atoms); the overview of the statement page lists them under **Concepts**.
+
 **Arithmetical bases** (every computable instance has a Δ⁰ₙ, Σ⁰ₙ or Π⁰ₙ
 solution) are not preservation notions: they cannot be iterated to build
 ω-models. A Δ⁰ₙ basis passes along computable reductions (`closedUnder: c`), so it
@@ -316,6 +348,10 @@ over R), and `Has(p,s)` / `Lacks(p,s)`. Rules:
 | base-lift | `I(R',a,B)`, `I(R,a,b)`, R' finer than R, B the base system of R (RCA₀ over RCA₀*) | `I(R',a,b)` |
 | prop-down / prop-up | `Has(p,a)`, `I(Rp,a,b)` | `Has(p,b)` (and dually for `Lacks`) |
 | prop-sep | `Has(p,a)`, `Lacks(p,b)` | `N(Rp,a,b)` |
+| prop-equiv | `Has(p,a)`, a ≡ b over Rp, p a Weihrauch property | `Has(p,b)` (and for `Lacks`) |
+| prop-self | `I(Rp,a,op(a))` / `N(Rp,a,op(a))`, p with `selfOp` op | `Has(p,a)` / `Lacks(p,a)`; a cited value gives the `I` or `N` |
+| prop-op | o = op(a…), op in `opHas` (or in `opKeeps` and the arguments have p) | `Has(p,o)` |
+| prop-lift | `I(R,a,b)`, a has p with `lift: {from: R, to: R'}` (cylinder) | `I(R',a,b)` |
 | refine | `N(R,a,b)`, R' finer than R | `N(R',a,b)` |
 | weaken-left | `N(R,a,c)`, `I(R,a,b)` | `N(R,b,c)` |
 | strengthen-right | `N(R,a,c)`, `I(R,d,c)` | `N(R,a,d)` |

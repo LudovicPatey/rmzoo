@@ -1,0 +1,174 @@
+# Concepts used in the definitions of statements (docs/DESIGN.md, "Concepts"). The
+# build attaches a concept to every statement whose definition, instance or solution
+# mentions one of its `match` patterns (case-insensitive regular expressions, matched
+# on word boundaries), except the statements listed in `skip` (where the word has
+# another meaning). Each definition follows its source, cited with its number.
+# Fields: scripts/lib/schema.mjs (concept).
+
+- id: coloring
+  term: Coloring
+  match: [ 'colou?rings?' ]
+  definition: >
+    For a set $X$ and $n, k \geq 1$, $[X]^n$ is the set of subsets of $X$ with exactly $n$ elements, and a
+    $k$-coloring of $[X]^n$ is a map $c : [X]^n \to k$ (a finite coloring when $k$ is left unspecified).
+  refs: [ { ref: dzhafarovmummert2022, loc: "Definition 3.2.4(1-2)" } ]
+
+- id: homogeneous
+  term: Homogeneous set
+  match: [ 'homogeneous' ]
+  skip: [ rsat, rsat2b, ht ]
+  definition: >
+    A set $Y \subseteq X$ is homogeneous for $c : [X]^n \to k$ if $c$ is constant on $[Y]^n$; if this constant
+    value is $i$, $Y$ is homogeneous with color $i$.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 3.2.4(3) } ]
+
+- id: stable-coloring
+  term: Stable coloring
+  match: [ 'stable colou?rings?', 'stable functions?', 'stable \$f' ]
+  definition: >
+    A coloring $c : [X]^2 \to k$ is stable if for every $x$ there is a color $i$, the limit color of $x$, such that
+    $c(x, y) = i$ for all but finitely many $y$.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 8.4.1(3) } ]
+
+- id: limit-homogeneous
+  term: Limit homogeneous set
+  match: [ 'limit homogeneous', 'limit-homogeneous' ]
+  definition: >
+    A set $L$ is limit homogeneous for $c : [X]^2 \to k$ if there is a color $i$ such that for every $x \in L$,
+    $c(x, y) = i$ for all but finitely many $y \in L$.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 8.4.1(2) } ]
+
+- id: p-homogeneous
+  term: p-homogeneous tuple
+  match: [ 'p-homogeneous', 'polarized' ]
+  definition: >
+    A tuple $(H_0, \dots, H_{n-1})$ of sets is p-homogeneous for $c : [\omega]^n \to k$ if $c$ is constant on all
+    $n$-element sets $\{x_0, \dots, x_{n-1}\}$ with $x_i \in H_i$, and increasing p-homogeneous if this holds when
+    moreover $x_0 < \dots < x_{n-1}$.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 9.3.1 } ]
+
+- id: tree
+  term: Tree and path
+  match: [ 'trees?', 'paths?', 'well-founded', 'ill-founded' ]
+  definition: >
+    A tree is a set $T \subseteq X^{<\omega}$ of finite sequences closed under initial segments. An (infinite) path
+    through $T$ is a function $f : \omega \to X$ all of whose initial segments are in $T$; $[T]$ is the set of paths,
+    and $T$ is well founded if it has no path. $T$ is finitely branching if every node has finitely many immediate
+    extensions, and $b$-bounded if $\alpha(i) < b(i)$ for all $\alpha \in T$ and $i < |\alpha|$.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 2.8.1 } ]
+
+- id: positive-measure
+  term: Tree of positive measure
+  match: [ 'positive measure' ]
+  definition: >
+    A binary tree $T$ has positive measure if $\lim_n |\{\sigma \in 2^n : \sigma \in T\}| / 2^n > 0$, that is, if the
+    set of its paths has positive Lebesgue measure.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 9.11.1 } ]
+
+- id: cohesive
+  term: Cohesive set
+  match: [ 'cohesive', 'cohesiveness' ]
+  definition: >
+    For a sequence of sets $R_0, R_1, \dots$, an infinite set $S$ is cohesive (for the sequence) if for every $i$,
+    $S \subseteq^* R_i$ or $S \subseteq^* \overline{R_i}$, where $\subseteq^*$ is inclusion up to finitely many elements.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 4.1.6 } ]
+
+- id: dnc
+  term: Diagonally noncomputable function
+  match: [ 'DNC', 'DNR', 'diagonally non-?computable' ]
+  definition: >
+    A function $f : \omega \to \omega$ is diagonally noncomputable (DNC) if $f(e) \neq \Phi_e(e)$ whenever $\Phi_e(e)$
+    is defined; relative to $X$, with $\Phi^X_e$ in place of $\Phi_e$.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 2.8.13 } ]
+
+- id: pa-degree
+  term: PA degree
+  match: [ 'PA degrees?', 'of PA degree' ]
+  definition: >
+    A set $f$ has PA degree relative to $g$, written $f \gg g$, if every nonempty $\Pi^{0,g}_1$ class has an
+    $f$-computable member (equivalently, every infinite $g$-computable binary tree has an $f$-computable path).
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 2.8.24 } ]
+
+- id: hyperimmune
+  term: Hyperimmune set
+  match: [ 'hyperimmune', 'hyperimmunity' ]
+  definition: >
+    A set $S$ is hyperimmune if no computable function dominates its principal function $p_S$ (the function listing
+    its elements in increasing order).
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 2.8.19 } ]
+
+- id: chain-antichain
+  term: Chain and antichain
+  match: [ 'antichains?' ]
+  definition: >
+    In a partial order $(P, \leq_P)$, a set $S$ is a chain if any two of its elements are comparable, and an antichain
+    if any two distinct elements are incomparable.
+  refs: [ { ref: dzhafarovmummert2022, loc: "Section 9.2, before Definition 9.2.1" } ]
+
+- id: ascending-descending
+  term: Ascending and descending sequences
+  match: [ 'ascending', 'descending sequences?' ]
+  definition: >
+    In a linear order $(L, \leq_L)$, a set $S$ is an ascending sequence if $x \leq y$ implies $x \leq_L y$ for $x, y \in S$,
+    and a descending sequence if $x \leq y$ implies $y \leq_L x$: a suborder of type $\omega$, resp. $\omega^*$.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 9.2.2 } ]
+
+- id: transitive
+  term: Transitive coloring
+  match: [ 'transitive', 'tournaments?' ]
+  definition: >
+    A coloring $c : [\omega]^2 \to k$ is transitive if for every color $i$, $c(x, y) = c(y, z) = i$ implies
+    $c(x, z) = i$. A 2-coloring of pairs is a tournament (who beats whom), and a transitive set
+    is one on which the tournament is a linear order.
+  refs: [ { ref: dzhafarovmummert2022, loc: "Definition 9.2.6(2), Section 9.5" } ]
+
+- id: thin-free
+  term: Thin and free sets
+  match: [ 'thin', 'free sets?', 'free for' ]
+  definition: >
+    For a coloring $c : [X]^n \to Y$, a set $Z$ is thin for $c$ if $c$ restricted to $[Z]^n$ is not surjective, and free
+    for $c$ if whenever $\vec{x} \in [Z]^n$ and $c(\vec{x}) \in Z$, then $c(\vec{x}) \in \vec{x}$.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 9.8.1 } ]
+
+- id: rainbow
+  term: Rainbow
+  match: [ 'rainbows?', '2-bounded', 'k-bounded' ]
+  definition: >
+    A coloring $c : [\omega]^n \to \omega$ is $k$-bounded if each color is used at most $k$ times. A rainbow for $c$ is a
+    set $R$ such that $c$ is injective on $[R]^n$.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 9.4.1 } ]
+
+- id: random
+  term: Martin-Löf randomness
+  match: [ 'Martin-Löf', '1-random', '2-random', 'randoms?' ]
+  definition: >
+    A Martin-Löf test is a uniformly $\Sigma^0_1$ sequence of classes $U_n \subseteq 2^\omega$ with $\mu(U_n) \leq 2^{-n}$;
+    a set is 1-random (Martin-Löf random) if it is not in $\bigcap_n U_n$ for any test, and $n$-random if it is
+    1-random relative to $\emptyset^{(n-1)}$.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 9.4.5 } ]
+
+
+- id: jump
+  term: Turing jump
+  match: [ 'jumps?', "X'", "X′" ]
+  definition: >
+    The Turing jump of $g$ is the halting problem relative to $g$: $g' = \{e : \Phi^g_e(e)\downarrow\}$.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 2.5.3 } ]
+
+- id: delta02
+  term: Δ⁰₂ and limits
+  match: [ 'Δ⁰₂', '\\Delta\^0_2', '\\lim_s', 'limit' ]
+  skip: [ lim ]
+  definition: >
+    $\lim_y f(x, y) = z$ means that $f(x, y) = z$ for all sufficiently large $y$. By Shoenfield's limit lemma, a set is
+    $\Delta^0_2$ exactly when it is $\lim_y f(x, y)$ for a computable $f : \omega^2 \to 2$ whose limits all exist.
+  refs: [ { ref: dzhafarovmummert2022, loc: "Definition 2.6.4, Theorem 2.6.5" } ]
+
+- id: omega-model
+  term: ω-model and Turing ideal
+  match: [ 'ω-models?', '\\omega\\text\{-models?\}', 'Turing ideals?' ]
+  definition: >
+    A Turing ideal is a nonempty collection of sets closed downward under $\leq_T$ and under $\oplus$ (the
+    ω-models of computability theory). As structures of second-order arithmetic, ω-models are those whose
+    first-order part is the standard natural numbers and whose sets form a Turing ideal.
+  refs: [ { ref: dzhafarovmummert2022, loc: "Definitions 4.6.1 and 5.1.6" } ]

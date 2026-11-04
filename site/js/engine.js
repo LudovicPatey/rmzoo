@@ -31,6 +31,10 @@ export const RULES = {
   'weaken-left': 'Weakening the hypothesis',
   'strengthen-right': 'Strengthening the conclusion',
   conservation: 'Conservation: the conclusion has the right syntactic form and is not provable from the base',
+  'prop-equiv': 'A Weihrauch property is invariant under equivalence (the same Weihrauch degree, or strong degree for strong properties)',
+  'prop-self': 'A problem has this property exactly when it is above the corresponding operation applied to itself (idempotent: P × P ≤W P; parallelizable: P̂ ≤W P; closed under compositional product: P ⋆ P ≤W P)',
+  'prop-op': 'Weihrauch operations produce problems with this property (P̂ is parallelizable, P* idempotent, P⋄ closed under compositional product, P ⋆ Q a cylinder; a jump P′ is finitely tolerant and a fractal, and the jump of a cylinder is a cylinder)',
+  'prop-lift': 'For a cylinder, Weihrauch reductions to it are strong Weihrauch reductions (Brattka, Gherardi and Pauly, Proposition 3.5)',
 };
 
 // Syntactic classes for conservation results. A sentence of form F is in
@@ -247,6 +251,34 @@ export function buildZoo(raw) {
   };
   seedOps();
 
+  // properties with a law on operations (`opHas`: the operation always has it;
+  // `opKeeps`: the operation has it when its arguments do) and lifting properties
+  // (`lift: {from, to}`: if s has it, s implies over `to` what it implies over
+  // `from`; a cylinder's Weihrauch reductions are strong). The lift needs the
+  // property during the implication loop: it uses the cited values and the laws on
+  // operations only.
+  const opLaw = raw.properties.map((prop) => ({ has: new Set(prop.opHas || []), keeps: new Set(prop.opKeeps || []) }));
+  const lifting = [];
+  raw.properties.forEach((prop, p) => {
+    if (!prop.lift) return;
+    const has = new Set();
+    directResults.forEach((res) => { if (res.type === 'property' && res.value && pidx.get(res.property) === p) has.add(sidx.get(res.statement)); });
+    for (let grew = true; grew;) {
+      grew = false;
+      for (const o of ops) if (!has.has(o.i) && (opLaw[p].has.has(o.op) || (opLaw[p].keeps.has(o.op) && o.args.length && o.args.every((x) => has.has(x))))) { has.add(o.i); grew = true; }
+    }
+    lifting.push({ p, from: ridx.get(prop.lift.from), to: ridx.get(prop.lift.to), has });
+  });
+  // a cited value of a property defined by an operation (`selfOp`) gives the
+  // implication to the operation applied to the statement itself (idempotent: P → P × P)
+  const selfOpOf = (p, s) => ops.find((o) => o.op === raw.properties[p].selfOp && o.args.length && o.args.every((x) => x === s));
+  directResults.forEach((res, ri) => {
+    if (res.type !== 'property' || !res.value) return;
+    const p = pidx.get(res.property), s = sidx.get(res.statement);
+    const o = p !== undefined && raw.properties[p].selfOp && selfOpOf(p, s);
+    if (o) addI(ridx.get(raw.properties[p].closedUnder), s, o.i, { rule: 'prop-self', result: ri });
+  });
+
   // base lifts: when r2 is coarser than r and its base system B is an ordinary
   // statement at r (RCA₀ over RCA₀*), a statement implying B over r implies over r
   // everything it implies over r2: RCA₀* + A ⊢ IΣ⁰₁, so RCA₀* + A ⊇ RCA₀ + A.
@@ -259,6 +291,7 @@ export function buildZoo(raw) {
   while (qh < queue.length) {
     const r = queue[qh++], a = queue[qh++], b = queue[qh++];
     if (ops.length) monotone(r, a, b);
+    for (const l of lifting) if (l.from === r && l.has.has(a)) addI(l.to, a, b, { rule: 'prop-lift', prem: [fI(r, a, b)] });
     for (const { fine, B } of liftsCoarse[r]) // a → b over the coarse frame
       if (I[fine].has(key(a, B))) addI(fine, a, b, { rule: 'base-lift', prem: [fI(fine, a, B), fI(r, a, b)] });
     for (const { coarse, B } of liftsFine[r]) // a → B over the fine frame
@@ -290,7 +323,9 @@ export function buildZoo(raw) {
   // conjunction is excluded if one of its conjuncts is.
   const problemLike = S.map((s) => s.kind === 'problem'
     || (!s.firstOrder && s.problemForm !== false && !(s.conjunction || []).some((c) => S[sidx.get(c)]?.problemForm === false)));
-  const propIn = (p, s) => s !== undefined && (raw.properties[p].domain !== 'problems' || problemLike[s]);
+  // a Weihrauch property (direction equiv) applies within the domain of its reduction
+  const propIn = (p, s) => s !== undefined && (raw.properties[p].domain !== 'problems' || problemLike[s])
+    && (raw.properties[p].direction !== 'equiv' || inDomain(ridx.get(raw.properties[p].closedUnder), s));
   // `implies`: having p implies having each q (low basis ⇒ weakly low basis);
   // failing q then implies failing p.
   const impliesP = raw.properties.map((prop) => (prop.implies || []).map((id) => pidx.get(id)).filter((q) => q !== undefined));
@@ -328,6 +363,14 @@ export function buildZoo(raw) {
       const { v } = P[p].get(s);
       const prop = raw.properties[p];
       const r = ridx.get(prop.closedUnder); // undefined: preserved by no reduction (Σ⁰ₙ basis)
+      if (prop.direction === 'equiv') { // invariant under equivalence over r (Weihrauch properties)
+        for (const t of out[r][s]) if (t !== s && I[r].has(key(t, s)))
+          setP(p, t, v, { rule: 'prop-equiv', prem: [fP(p, s, v), fI(r, s, t), fI(r, t, s)] });
+        if (v) for (const o of opsByArg.get(s) || []) if (opLaw[p].keeps.has(o.op) && o.args.every((x) => P[p].get(x)?.v))
+          setP(p, o.i, true, { rule: 'prop-op', prem: o.args.map((x) => fP(p, x, true)) });
+        for (const q of v ? impliesP[p] : impliedByP[p]) setP(q, s, v, { rule: 'prop-implies', prem: [fP(p, s, v)] });
+        continue;
+      }
       const down = prop.direction !== 'up';
       const toSucc = down ? v : !v;
       for (const t of r === undefined ? [] : toSucc ? out[r][s] : inn[r][s]) {
@@ -346,6 +389,14 @@ export function buildZoo(raw) {
       return;
     }
     setP(p, s, !!res.value, { rule: 'direct', result: ri });
+  });
+  // laws on operations, and properties defined by an operation, read off the implications
+  raw.properties.forEach((prop, p) => {
+    for (const o of ops) if (opLaw[p].has.has(o.op)) setP(p, o.i, true, { rule: 'prop-op' });
+    if (!prop.selfOp) return;
+    const r = ridx.get(prop.closedUnder);
+    for (const o of ops) if (o.op === prop.selfOp && o.args.length && o.args.every((x) => x === o.args[0]) && I[r].has(key(o.args[0], o.i)))
+      setP(p, o.args[0], true, { rule: 'prop-self', prem: [fI(r, o.args[0], o.i)] });
   });
   // properties defined as conservation over the base system
   raw.properties.forEach((prop, p) => {
@@ -381,6 +432,14 @@ export function buildZoo(raw) {
       }
       addN(a, b, { rule: 'direct', result: ri });
     });
+    // a cited failure of a property defined by an operation: P does not imply op(P)
+    directResults.forEach((res, ri) => {
+      if (res.type !== 'property' || res.value) return;
+      const p = pidx.get(res.property), s = sidx.get(res.statement);
+      if (p === undefined || !raw.properties[p].selfOp || ridx.get(raw.properties[p].closedUnder) !== r) return;
+      const o = selfOpOf(p, s);
+      if (o) addN(s, o.i, { rule: 'prop-self', result: ri });
+    });
     for (const x of charSeeds(false)) if (x.r === r) addN(x.b, x.s, { rule: 'prop-base', result: x.ri });
     // derived failures of a characterized property (failing cone avoidance ⇒ not
     // computably true) give the separation from the base too
@@ -390,7 +449,7 @@ export function buildZoo(raw) {
         if (!v && j.rule !== 'direct' && inDomain(dom, x)) for (const b of basesAt(r)) addN(b, x, { rule: 'prop-base', prem: [fP(p, x, false)] });
     }
     raw.properties.forEach((prop, p) => {
-      if (ridx.get(prop.closedUnder) !== r) return;
+      if (ridx.get(prop.closedUnder) !== r || prop.direction === 'equiv') return;
       const down = prop.direction !== 'up';
       const pos = [], neg = [];
       for (const [s, { v }] of P[p]) (v ? pos : neg).push(s);
@@ -434,6 +493,14 @@ export function buildZoo(raw) {
         if (I[r].has(key(b, s))) setP(p, s, true, { rule: 'prop-base', prem: [fI(r, b, s)] });
         else if (N[r].has(key(b, s))) setP(p, s, false, { rule: 'prop-base', prem: [fN(r, b, s)] });
       }
+  // properties defined by an operation fail when the statement does not imply the
+  // operation applied to itself (Det_Σ × Det_Σ ≰W Det_Σ: Det_Σ is not idempotent)
+  raw.properties.forEach((prop, p) => {
+    if (!prop.selfOp) return;
+    const r = ridx.get(prop.closedUnder);
+    for (const o of ops) if (o.op === prop.selfOp && o.args.length && o.args.every((x) => x === o.args[0]) && N[r].has(key(o.args[0], o.i)))
+      setP(p, o.args[0], false, { rule: 'prop-self', prem: [fN(r, o.args[0], o.i)] });
+  });
   // values of the properties they imply (computably true ⇒ cone avoidance…); the
   // separations these could give already follow from the base comparison
   drainP();

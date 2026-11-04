@@ -290,3 +290,49 @@ test('salient properties: strongest held, weakest failed, open ones in a gap', (
   assert.deepEqual(names('b'), ['ca', 'ct', 'low', 'wlow']); // low: open between wlow ✓ and ct ✗; ca: main, open
   assert.deepEqual(names('c'), ['ca', 'low2']);              // fails low2: wlow, low, ct fail too
 });
+
+// ---- Weihrauch properties (direction equiv, selfOp, opHas, opKeeps, lift) -----
+test('Weihrauch properties: invariance, operations, cited values, cylinder lift', () => {
+  const props = [
+    { id: 'cyl', group: 'weihrauch', closedUnder: 'sw', direction: 'equiv', domain: 'problems', opHas: ['compose'], opKeeps: ['jump'], lift: { from: 'w', to: 'sw' } },
+    { id: 'par', group: 'weihrauch', closedUnder: 'w', direction: 'equiv', domain: 'problems', selfOp: 'par', opHas: ['par'], implies: ['idem'] },
+    { id: 'idem', group: 'weihrauch', closedUnder: 'w', direction: 'equiv', domain: 'problems', selfOp: 'product' },
+  ];
+  const zoo = buildZoo({
+    reductions: [
+      { id: 'sw', domain: 'problems', algebra: 'strong', finerThan: ['w'] },
+      { id: 'w', domain: 'problems', algebra: 'weak', finerThan: [] },
+    ],
+    properties: props,
+    statements: [
+      { id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' }, { id: 'c', kind: 'problem' }, { id: 'd', kind: 'problem' },
+      { id: 's', kind: 'sentence' },
+      { id: 'a.par', kind: 'problem', op: 'par', args: ['a'] },
+      { id: 'b.x.b', kind: 'problem', op: 'product', args: ['b', 'b'] },
+      { id: 'c.x.c', kind: 'problem', op: 'product', args: ['c', 'c'] },
+      { id: 'a.star.b', kind: 'problem', op: 'compose', args: ['a', 'b'] },
+      { id: 'c.jump', kind: 'problem', op: 'jump', args: ['c'] },
+    ],
+    results: [
+      { type: 'equivalence', from: 'a', to: 'a.par', over: 'w', refs: [{ ref: 'x' }] },    // a is parallelizable
+      { type: 'separation', from: 'b', to: 'b.x.b', over: 'w', refs: [{ ref: 'x' }] },     // b is not idempotent
+      { type: 'property', statement: 'c', property: 'idem', value: true, refs: [{ ref: 'x' }] },
+      { type: 'property', statement: 'c', property: 'cyl', value: true, refs: [{ ref: 'x' }] },
+      { type: 'implication', from: 'c', to: 'd', over: 'w', refs: [{ ref: 'x' }] },       // d ≤W c, c a cylinder
+    ],
+  });
+  const P = (p, s) => zoo.prop(zoo.pidx.get(p), zoo.sidx.get(s))?.v;
+  const st = (r, x, y) => zoo.status(zoo.ridx.get(r), zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(P('par', 'a.par'), true);       // opHas: P̂ is parallelizable
+  assert.equal(P('par', 'a'), true);           // invariant under ≡W (and selfOp from a → a.par)
+  assert.equal(P('idem', 'a'), true);          // parallelizable ⇒ idempotent
+  assert.equal(P('idem', 'b'), false);         // selfOp: b ⇏ b × b
+  assert.equal(P('par', 'b'), false);          // failing idempotency ⇒ not parallelizable
+  assert.equal(st('w', 'c', 'c.x.c'), 'implies'); // a cited value gives c → c × c
+  assert.equal(P('cyl', 'a.star.b'), true);    // compositional products are cylinders
+  assert.equal(P('cyl', 'c.jump'), true);      // the jump of a cylinder is a cylinder
+  assert.equal(st('sw', 'c', 'd'), 'implies'); // lift: W-reductions to a cylinder are strong
+  assert.equal(P('idem', 's'), undefined);     // sentences are outside the domain
+  assert.equal(st('w', 'a', 'b'), 'open');     // Weihrauch properties separate nothing
+  assert.equal(zoo.contradictions.length, 0);
+});

@@ -121,7 +121,7 @@ Then go through:
 | **schema** (`scripts/lib/schema.mjs`) | new/renamed field documented, `usedBy` updated; `npm test` checks `usedBy` |
 | **build** validation | the new field/value is validated (unknown references, allowed values); derived fields (labels, `studied`, operator statements, conjunctions) handle it |
 | **engine** | inference rules, `questionStatus`, `classMembers`, search ranking |
-| **viewer** | modes (`data/modes.yaml`: what each framework shows; every page filters through `inMode`, `rInMode`, `resInMode`, `qInMode`), catalogue (filters, checkboxes, "over" chips, select all), statement page (its tabs: definition, context, glance, related statements, frames, operator line, position, properties, questions), paper page (abstract, BibTeX, questions asked/answered), results, questions, about page, home page stats and recent items |
+| **viewer** | modes (`data/modes.yaml`: what each framework shows; every page filters through `inMode`, `rInMode`, `resInMode`, `qInMode`), catalogue (filters, checkboxes, "over" chips, select all), statement page (its tabs: definition, concepts, context, glance, related statements, frames, operator line, position, properties by group, questions), paper page (abstract, BibTeX, questions asked/answered), results, questions, about page, home page stats and recent items |
 | **miners** (`scripts/mine/common.mjs`) | the acronym dictionary (labels in extracted-text form, `extra` spellings, operator forms, `PHRASES`), `relation()` (which reduction a theorem speaks of: one branch per reduction), `normalize()` |
 | **consolidate** steps | 1 sweep (relevance and auto-add rules, rejected list), 2 pubstatus, 3 texts, 4 mining (screened list), 5 statements (`known` labels/aliases, `acronyms-ignored.yaml`, `STOP`), 6 questions (status changes, resolution leads), 7 checks |
 | **AI reader** (`scripts/ai-analyze.mjs`, `scripts/ai/*.md`, `scripts/lib/ai-facts.mjs`) | the catalogue given to the model (statement fields, reductions, properties, classes, operations), the answer schema (`FACT_SCHEMA`: result types and their fields), `entry()` and `validity()`, the reading rules in `scripts/ai/extract.md` and `verify.md` (notation for reductions, dotted ids), `tests/ai-facts.test.mjs`; the paper order (`scripts/lib/paper-rank.mjs`) uses the miner's dictionary and its `PROPERTY` phrases, which a new property or reduction may need. Saved answers can be re-checked with `--replay` |
@@ -152,9 +152,17 @@ Specific cases:
   it: `computably-true` implies every preservation property). A new level of the
   lowness hierarchy is `optional`, implied by the level below and implying the one
   above; move ACA₀'s folklore failure (in `data/results/core.yaml`) to the new
-  top level. Nothing to change in the AI reader (the catalogue lists properties),
-  but run `node scripts/ai-analyze.mjs --replay` to re-check saved answers that
-  named it before it existed.
+  top level. Give it a `group` (computability, proof, weihrauch) and add the group
+  to the modes that should show it (`data/modes.yaml`). A property of Weihrauch
+  degrees is `direction: equiv` over w or sw, with its laws on operations
+  (`selfOp`, `opHas`, `opKeeps`) and `lift` when they hold (docs/DESIGN.md). Nothing
+  to change in the AI reader (the catalogue lists properties), but run
+  `node scripts/ai-analyze.mjs --replay` to re-check saved answers that named it
+  before it existed.
+* **New concept** (`data/concepts.yaml`): a definition from a source with its
+  number, `match` patterns precise enough not to catch other meanings (`skip` the
+  statements where the word means something else); the tests check that every
+  concept is used by some statement.
 * **New data file**: document it in the schema module (bottom list), README layout,
   and whichever script reads it.
 

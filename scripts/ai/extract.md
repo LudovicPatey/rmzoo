@@ -10,7 +10,11 @@ more than coverage. A missing fact is acceptable; a wrong fact is not.
 * `separation` A does not imply B over r (A ⇏ B).
 * `equivalence` A ↔ B over r.
 * `property` statement S has (value true) or fails (value false) a
-  computability-theoretic property (cone avoidance, low basis, …).
+  computability-theoretic property (cone avoidance, low basis, …) or a property
+  of its Weihrauch degree (cylinder, idempotent, parallelizable, closed under
+  compositional product, fractal, finitely tolerant, (countably) join-irreducible).
+  "P × P ≡W P" is `idempotent`, "P̂ ≡W P" `parallelizable` (`strongly-parallelizable`
+  for ≡sW), "P ⋆ P ≤W P" `compose-closed`, "id × P ≤sW P" `cylinder`.
 * `conservation` statement S is (value true) or is not (value false)
   Γ-conservative over a base system B, for a formula class Γ.
 

@@ -27,3 +27,4 @@
 - { type: separation, from: wwkl-star, to: pcc, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Proposition 10.9 } ] }
 - { type: separation, from: wwkl-star, to: auc, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Theorem 16.6 } ] }
 - { type: separation, from: wwkl-half, to: llpo, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 10.3 } ] }
+- { type: property, statement: pcc, property: join-irreducible, value: true, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 10.8 } ] }

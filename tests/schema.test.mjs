@@ -73,3 +73,15 @@ test('modes: valid reductions, and membership follows the cited results', () => 
   assert.ok(!(st('atr')._modes || []).includes('weihrauch'), 'a sentence has no Weihrauch results');
   assert.ok(st('lrt22')._modes.includes('wrm'));
 });
+
+test('concepts (data/concepts.yaml) have a source and are used by some statement', () => {
+  const zoo = JSON.parse(fs.readFileSync('site/data/zoo.json', 'utf8'));
+  const used = new Set(zoo.statements.flatMap((s) => s._concepts || []));
+  for (const c of zoo.concepts || []) {
+    assert.ok((c.refs || []).length, `concept ${c.id} has no source`);
+    assert.ok(used.has(c.id), `concept ${c.id} matches no statement (check its match patterns)`);
+  }
+  // a word with another meaning is skipped: RSAT's homogeneous sets of atoms are not Ramsey's
+  assert.ok(!(zoo.statements.find((s) => s.id === 'rsat')?._concepts || []).includes('homogeneous'));
+  assert.ok((zoo.statements.find((s) => s.id === 'rt22')?._concepts || []).includes('homogeneous'));
+});

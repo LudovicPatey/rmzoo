@@ -24,7 +24,7 @@ import { raw, dict, tokRe, normalize } from '../mine/common.mjs';
 import { mineFacts } from '../mine/facts.mjs';
 
 const THEOREM = /\n\s*(Theorem|Proposition|Corollary|Lemma|Claim|Fact|THEOREM|PROPOSITION|COROLLARY|LEMMA)\s+((?:[IVX]{1,5}\.)?\d+(?:\.\d+)*)\.?\s*(\([^)]{0,90}\))?\.?([\s\S]{0,600}?)(?=\n\s*(?:Proof|Theorem|Proposition|Corollary|Lemma|Definition|Example|Remark|Question|Claim|PROOF|THEOREM|PROPOSITION|COROLLARY|LEMMA|DEFINITION)\b|$)/g;
-const PROPERTY = /cone[- ]avoid|avoids? cones|low ?2?[- ](basis|solution|set|degree)|low solutions?|computable instance|computable solution|computably true|hyperimmun|PA[- ](degree|over|avoid)|DNC|preserv|ω-model|omega-model|Turing ideal|Weihrauch|≤ ?s?W|≡ ?s?W|<s?W|computabl[ey] reduc|conservative|Δ ?0 ?2|Σ ?0 ?2|Π ?0 ?[12]|arithmetical|admits|strictly weaker|does not imply|implies|equivalent/i;
+const PROPERTY = /cone[- ]avoid|avoids? cones|low ?2?[- ](basis|solution|set|degree)|low solutions?|computable instance|computable solution|computably true|hyperimmun|PA[- ](degree|over|avoid)|DNC|preserv|ω-model|omega-model|Turing ideal|Weihrauch|cylinder|idempotent|parallelizable|fractal|join-irreducible|≤ ?s?W|≡ ?s?W|<s?W|computabl[ey] reduc|conservative|Δ ?0 ?2|Σ ?0 ?2|Π ?0 ?[12]|arithmetical|admits|strictly weaker|does not imply|implies|equivalent/i;
 const BASE = new Set(['rca0', 'rca0star']);
 
 export function paperSignals(key, leadCount = 0, text = fs.readFileSync(`cache/fulltext/${key}.txt`, 'utf8')) {

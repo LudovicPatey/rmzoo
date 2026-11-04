@@ -11,7 +11,7 @@
   description: Provability over RCA₀ and implication over ω-models, with conservation results and the computability-theoretic properties that separate statements over ω-models.
   reductions: [ rca0, omega ]
   default: rca0
-  properties: true
+  properties: [ computability, proof ]
   conservation: true
 
 - id: wrm
@@ -27,11 +27,12 @@
   description: Computable, strongly computable and ω-model reducibility between problems, with the computability-theoretic properties (cone avoidance, basis theorems, preservation properties).
   reductions: [ c, sc, omega ]
   default: c
-  properties: true
+  properties: [ computability ]
 
 - id: weihrauch
   name: Weihrauch complexity
   short: Weihrauch
-  description: Strong, plain and generalized Weihrauch reducibility between problems, and the operations of the Weihrauch lattice.
+  description: Strong, plain and generalized Weihrauch reducibility between problems, the operations of the Weihrauch lattice and the properties of Weihrauch degrees (cylinders, idempotency, parallelizability…).
   reductions: [ sw, w, gw ]
   default: w
+  properties: [ weihrauch ]

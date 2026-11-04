@@ -435,3 +435,9 @@ svg.mini circle.off { opacity: .15; }
 .hero-modes { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; justify-content: center; }
 .mode-bar b { white-space: nowrap; }
 @media (max-width: 600px) { .mode-bar { padding: 6px 16px; } .mode-bar > .muted { display: none; } }
+
+/* concepts used in a definition (data/concepts.yaml) */
+.concepts { margin: 0 0 14px; display: grid; grid-template-columns: minmax(9em, max-content) 1fr; gap: 6px 16px; }
+.concepts dt { font-weight: 600; }
+.concepts dd { margin: 0; }
+@media (max-width: 640px) { .concepts { grid-template-columns: 1fr; } .concepts dd { margin-bottom: 8px; } }

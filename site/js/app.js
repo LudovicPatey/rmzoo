@@ -63,10 +63,14 @@ const saveState = () => {
 const MODE = () => (state.mode && Z.raw.modes?.find((m) => m.id === state.mode)) || null;
 const inMode = (i) => !MODE() || (S(i)._modes || []).includes(MODE().id);
 const rInMode = (r) => !MODE() || MODE().reductions.includes(Z.R[r].id);
+// property groups (data/properties.yaml `group`), in the order of the properties tab
+const PGROUPS = [['computability', 'Computability-theoretic properties'], ['proof', 'Proof-theoretic properties'], ['weihrauch', 'Weihrauch properties']];
+const groupShown = (g) => { const m = MODE(); return !m || m.properties === true || (Array.isArray(m.properties) && m.properties.includes(g)); };
+const propShown = (pi) => groupShown(Z.raw.properties[pi].group);
 const resInMode = (res) => {
   const m = MODE();
   if (!m) return true;
-  if (res.type === 'property') return !!m.properties;
+  if (res.type === 'property') return groupShown(Z.raw.properties[Z.pidx.get(res.property)]?.group);
   if (res.type === 'conservation') return !!m.conservation;
   return [].concat(res.over || []).some((o) => m.reductions.includes(o));
 };
@@ -403,7 +407,9 @@ function propertyPanel(p, s) {
   const e = Z.prop(p, s);
   openDrawer(`<h2 style="margin-top:0">${esc(prop.name)}</h2>
     <p>${rich(prop.description)}</p>
-    <p class="small muted">${prop.closedUnder ? `Preserved downwards under ${esc(Z.R[Z.ridx.get(prop.closedUnder)].name)}:
+    <p class="small muted">${prop.direction === 'equiv' ? `A property of the ${prop.closedUnder === 'sw' ? 'strong ' : ''}Weihrauch degree: it is shared by all problems
+      equivalent under ${esc(Z.R[Z.ridx.get(prop.closedUnder)].name)}, but not preserved downwards, so it separates nothing by itself.`
+      : prop.closedUnder ? `Preserved downwards under ${esc(Z.R[Z.ridx.get(prop.closedUnder)].name)}:
       if a statement has it, so does every statement it implies; if A has it and B does not, A does not imply B.`
       : 'Preserved by no reduction (it cannot be iterated to build models): it is only related to the other properties.'}</p>
     ${e ? `<ul class="proof">${proofHtml(Z.proof({ t: 'P', p, s, v: e.v }))}</ul>`
@@ -784,7 +790,7 @@ function viewStatement(id, params = new URLSearchParams()) {
   const hiddenResults = allResults.length - directResults.length;
   const qs = (Z.raw.questions || []).filter((q) => qStatements(q).includes(s.id) && qInMode(q));
   const count = { literature: refsOf.length, questions: qs.length, results: directResults.length };
-  const tabs = STMT_TABS.filter(([t]) => (t !== 'questions' || qs.length) && (t !== 'properties' || !MODE() || MODE().properties));
+  const tabs = STMT_TABS.filter(([t]) => (t !== 'questions' || qs.length) && (t !== 'properties' || PGROUPS.some(([g]) => groupShown(g))));
   const tab = tabs.some(([t]) => t === params.get('tab')) ? params.get('tab') : 'overview';
   const panel = (t) => `<section class="tab-panel" data-panel="${t}"${t === tab ? '' : ' hidden'}>`;
 
@@ -821,6 +827,7 @@ function viewStatement(id, params = new URLSearchParams()) {
       <div class="card"><h3>Instances</h3>${rich(s.instance)}</div>
       <div class="card"><h3>Solutions</h3>${rich(s.solution)}</div></div>`
       : s.kind === 'sentence' && !s.conjunction ? `<p class="small muted">A second-order sentence, not a problem: compared only over theories and ω-models.</p>` : ''}
+    ${conceptsHtml(s)}
 
     ${!s.conjunction ? `<h2>Context</h2>
       ${s.context ? `<div class="context">${richCite(s.context)}</div>` : ''}
@@ -852,20 +859,30 @@ function viewStatement(id, params = new URLSearchParams()) {
       // others follow through the implications between properties and are hidden
       // behind a toggle. Members of infinite families (low₂, Σ⁰₂…) appear only
       // where something is known about them or around them.
+      // the groups (computability-theoretic, proof-theoretic, Weihrauch) are listed
+      // separately; a mode shows only its groups
       const salient = new Set(Z.salientProps(i));
-      const rest = Z.raw.properties.map((p, pi) => pi).filter((pi) => !salient.has(pi) && Z.prop(pi, i));
-      const shown = Z.raw.properties.map((p, pi) => [p, pi]).filter(([, pi]) => salient.has(pi) || rest.includes(pi));
-      const note = Z.raw.properties.some((p, pi) => !Z.propIn(pi, i))
-        ? `<p class="muted small">${L(i)} is not formulated as a problem (instances and solutions), so the computability-theoretic properties do not apply to it.</p>` : '';
+      const visible = (pi) => propShown(pi) && Z.propIn(pi, i);
+      const rest = Z.raw.properties.map((p, pi) => pi).filter((pi) => visible(pi) && !salient.has(pi) && Z.prop(pi, i));
+      const shown = Z.raw.properties.map((p, pi) => [p, pi]).filter(([, pi]) => visible(pi) && (salient.has(pi) || rest.includes(pi)));
+      const notApplicable = PGROUPS.filter(([g]) => groupShown(g) && Z.raw.properties.some((p, pi) => p.group === g && !Z.propIn(pi, i)) && !Z.raw.properties.some((p, pi) => p.group === g && Z.propIn(pi, i)));
+      const note = notApplicable.length
+        ? `<p class="muted small">${L(i)} is not formulated as a problem (instances and solutions), so the ${notApplicable.map(([, t]) => t.toLowerCase()).join(' and the ')} do not apply to it.</p>` : '';
       const toggle = rest.length ? `<p class="small muted">Only the strongest properties ${L(i)} has, the weakest it fails and the open ones are listed; the rest follows from the
         implications between properties. <button class="btn small" id="props-all">Show ${rest.length} more</button></p>` : '';
-      return note + (shown.length ? `${toggle}<table class="grid" id="props"><tr><th>Property</th><th class="c">Status</th><th>Preserved under</th></tr>
-      ${shown.map(([p, pi]) => {
-        const e = Z.prop(pi, i);
-        const st = e ? (e.v ? '<span class="yes">✓ has</span>' : '<span class="no">✗ fails</span>') : '<span class="open">?</span>';
-        const hid = !salient.has(pi);
-        return `<tr data-prop="${pi}" style="cursor:pointer${hid ? ';display:none' : ''}"${hid ? ' class="implied"' : ''}><td>${esc(p.name)}${hid ? ' <span class="small muted">(follows)</span>' : ''}</td><td class="c">${st}</td><td class="small muted">${(p.closedUnder ? esc(Z.R[Z.ridx.get(p.closedUnder)].short) : '—')}</td></tr>`;
-      }).join('')}</table>` : '<p class="muted">No property recorded.</p>');
+      const where = (p) => (p.closedUnder ? (p.direction === 'equiv' ? `≡ for ${esc(Z.R[Z.ridx.get(p.closedUnder)].short)}` : esc(Z.R[Z.ridx.get(p.closedUnder)].short)) : '—');
+      const tables = PGROUPS.map(([g, title]) => {
+        const rows = shown.filter(([p]) => p.group === g);
+        if (!rows.length) return '';
+        return `<h3 class="res-group">${title}</h3><table class="grid props"><tr><th>Property</th><th class="c">Status</th><th>${g === 'weihrauch' ? 'Invariant under' : 'Preserved under'}</th></tr>
+        ${rows.map(([p, pi]) => {
+          const e = Z.prop(pi, i);
+          const st = e ? (e.v ? '<span class="yes">✓ has</span>' : '<span class="no">✗ fails</span>') : '<span class="open">?</span>';
+          const hid = !salient.has(pi);
+          return `<tr data-prop="${pi}" style="cursor:pointer${hid ? ';display:none' : ''}"${hid ? ' class="implied"' : ''}><td>${esc(p.name)}${hid ? ' <span class="small muted">(follows)</span>' : ''}</td><td class="c">${st}</td><td class="small muted">${where(p)}</td></tr>`;
+        }).join('')}</table>`;
+      }).join('');
+      return note + (shown.length ? `${toggle}<div id="props">${tables}</div>` : '<p class="muted">No property recorded.</p>');
     })()}
     </section>
 
@@ -921,6 +938,13 @@ const richCite = (text) => String(text ?? '').split(/(\[@[^\]]+\])/g).map((p) =>
   const m = p.match(/^\[@([^\]]+)\]$/);
   return m ? `<a class="cite" href="#/refs/${m[1]}" title="${esc(Z.raw.references[m[1]]?.title || '')}">[${esc(refShort(m[1]))}]</a>` : rich(p);
 }).join('');
+// the concepts its definition uses (data/concepts.yaml, attached by the build)
+function conceptsHtml(s) {
+  const cs = (s._concepts || []).map((id) => (Z.raw.concepts || []).find((c) => c.id === id)).filter(Boolean);
+  if (!cs.length) return '';
+  return `<h2>Concepts</h2><dl class="concepts">${cs.map((c) => `<dt>${esc(c.term)}</dt><dd>${rich(c.definition)}
+    <span class="small muted">(${(c.refs || []).map(refLink).join('; ')})</span></dd>`).join('')}</dl>`;
+}
 // text of a caution: [@ref] citations and [[id]] links to statements
 const richLinks = (text) => String(text ?? '').split(/(\[\[[^\]]+\]\])/g).map((p) => {
   const m = p.match(/^\[\[([^\]]+)\]\]$/);
@@ -1090,7 +1114,7 @@ function resultFact(res) {
 const RESULT_GROUPS = [
   ['Implications and equivalences', (r) => r.type === 'implication' || r.type === 'equivalence'],
   ['Separations', (r) => r.type === 'separation'],
-  ['Computability-theoretic properties', (r) => r.type === 'property'],
+  ...PGROUPS.map(([g, title]) => [title, (r) => r.type === 'property' && Z.raw.properties[Z.pidx.get(r.property)]?.group === g]),
   ['Conservation', (r) => r.type === 'conservation'],
 ];
 function resultGroups(list) {
@@ -1401,7 +1425,8 @@ function viewCompare(params) {
   // property columns: those listed on the page of some selected statement (its
   // extremal known properties and open ones, Z.salientProps)
   const salient = new Set(ids.flatMap((i) => Z.salientProps(i)));
-  const pcols = Z.raw.properties.map((p, pi) => [p, pi]).filter(([, pi]) => salient.has(pi));
+  const pcols = Z.raw.properties.map((p, pi) => [p, pi]).filter(([, pi]) => salient.has(pi) && propShown(pi))
+    .sort(([a], [b]) => PGROUPS.findIndex(([g]) => g === a.group) - PGROUPS.findIndex(([g]) => g === b.group));
   m.innerHTML = `
     <h1>Compare</h1>
     <p class="muted">Row <i>A</i>, column <i>B</i>: does <i>A</i> imply <i>B</i>? Each cell is the lattice of reductions below,
@@ -1415,7 +1440,7 @@ function viewCompare(params) {
       <div class="card"><h3>Key</h3>${latticeSvg({ pick: false })}<p class="small muted" style="max-width:${g.width + 10}px">Finer reductions are higher.</p></div>
     </div>
 
-    ${MODE() && !MODE().properties ? '' : `<h2>Properties</h2>
+    ${!pcols.length ? '' : `<h2>Properties</h2>
     <p class="muted small">✓ has · ✗ fails · ? unknown. Columns where every selected statement agrees are highlighted. Click a cell for the proof.</p>
     <div style="overflow-x:auto"><table class="grid pmatrix"><tr><th></th>${pcols.map(([p, pi]) => {
       const vals = ids.filter((i) => Z.propIn(pi, i)).map((i) => Z.prop(pi, i)?.v);
@@ -1594,7 +1619,11 @@ function viewAbout(params) {
       <div class="grow"><p class="small muted">An implication at a reduction holds at every reduction below it; a separation at a reduction holds at every reduction above it.</p>
       <table class="grid">${Z.R.map((R) => `<tr><td><b>${esc(R.short)}</b></td><td>${esc(R.name)}<div class="small muted">${esc(R.description || '')}${R.refs ? ` (${R.refs.map(refLink).join('; ')})` : ''}</div></td></tr>`).join('')}</table></div></div>
     <h2>Properties</h2>
-    <table class="grid">${Z.raw.properties.map((p) => `<tr><td><b>${esc(p.name)}</b></td><td>${rich(p.description)}<div class="small muted">${p.closedUnder ? `Preserved under ${esc(Z.R[Z.ridx.get(p.closedUnder)].name)}` : 'Preserved by no reduction'}${p.domain === 'problems' ? '; applies to statements formulated as problems' : ''}.</div></td></tr>`).join('')}</table>
+    <p class="small muted">Computability-theoretic and proof-theoretic properties are preserved downwards along a reduction, so a statement
+      having one and a statement failing it are separated. Weihrauch properties (cylinders, idempotency, parallelizability…) are
+      properties of Weihrauch degrees: shared by equivalent problems, they separate nothing by themselves, but the engine reads several of
+      them from the operations of the Weihrauch lattice (a problem is idempotent when P × P ≤W P), and a cylinder's Weihrauch reductions are strong.</p>
+    ${PGROUPS.map(([g, title]) => `<h3>${title}</h3><table class="grid">${Z.raw.properties.filter((p) => p.group === g).map((p) => `<tr><td><b>${esc(p.name)}</b></td><td>${rich(p.description)}<div class="small muted">${p.direction === 'equiv' ? `Invariant under equivalence for ${esc(Z.R[Z.ridx.get(p.closedUnder)].name)}` : p.closedUnder ? `Preserved under ${esc(Z.R[Z.ridx.get(p.closedUnder)].name)}` : 'Preserved by no reduction'}${p.domain === 'problems' ? '; applies to statements formulated as problems' : ''}.</div></td></tr>`).join('')}</table>`).join('')}
     <h2 id="classes">Formula classes</h2>
     <p class="small muted">Used by conservation results: <i>T</i> is Γ-conservative over <i>S</i> when every Γ sentence provable in <i>T</i> is provable in <i>S</i>.
       A conservation result for a class also applies to the classes it contains.</p>
@@ -1622,7 +1651,7 @@ function viewAbout(params) {
       opens the viewer in a framework.</p>
     <table class="grid"><tr><th>Framework</th><th>Reductions</th><th>Also shown</th></tr>${(Z.raw.modes || []).map((x) => `<tr><td><a href="#/?mode=${x.id}">${esc(x.name)}</a><div class="small muted">${esc(x.description || '')}</div></td>
       <td>${x.reductions.map((r) => esc(Z.R[Z.ridx.get(r)].name)).join(', ')}</td>
-      <td class="small">${[x.properties && 'computability-theoretic properties', x.conservation && 'conservation results'].filter(Boolean).join(', ') || '—'}</td></tr>`).join('')}</table>
+      <td class="small">${[...PGROUPS.filter(([g]) => x.properties === true || (x.properties || []).includes(g)).map(([, t]) => t.toLowerCase()), x.conservation && 'conservation results'].filter(Boolean).join(', ') || '—'}</td></tr>`).join('')}</table>
     <p class="small muted">A statement belongs to a framework when a cited result about it is stated there, or when it is the base system of one of its reductions.</p>
     <h2>Review</h2>
     <p>The <a href="#/review">review page</a> lists proposals that are not part of the database: results and missing statements found

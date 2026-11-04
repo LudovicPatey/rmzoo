@@ -98,7 +98,7 @@ const catalogue = [
   ...raw.reductions.map((r) => `- ${r.id}: ${r.name}. ${squash(r.description, 300)}${r.domain === 'problems' ? ' (between problems only)' : ''}`),
   '',
   '## Properties (id: meaning)',
-  ...raw.properties.map((p) => `- ${p.id}: ${p.name}. ${squash(p.description, 400)}${p.domain === 'problems' ? ' (only for statements formulated as problems)' : ''}`),
+  ...raw.properties.map((p) => `- ${p.id}: ${p.name}${p.group === 'weihrauch' ? ' [property of Weihrauch degrees; only for problems]' : ''}. ${squash(p.description, 400)}${p.domain === 'problems' && p.group !== 'weihrauch' ? ' (only for statements formulated as problems)' : ''}`),
   '',
   '## Formula classes for conservation (id: notation)',
   ...raw.classes.map((c) => `- ${c.id}: ${c.notation}`),

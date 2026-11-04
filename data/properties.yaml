@@ -14,11 +14,24 @@
 #   optional:    one of an infinite family (low_n, weakly low_n): a statement page
 #                lists it only where its value is known. Add the next member of a
 #                family only when a result is about it.
+#   group:       computability | proof | weihrauch (the viewer lists the groups
+#                separately; data/modes.yaml chooses which groups a mode shows).
+#   direction: equiv -> a Weihrauch property: invariant under equivalence over
+#                closedUnder (≡W, or ≡sW for strong properties), with no
+#                separation derived from it.
+#   selfOp:      the property says that the statement is above an operation applied to
+#                itself (idempotent: product, P × P ≤W P); the engine reads it from that
+#                implication or separation, and a cited value gives it.
+#   opHas:       operations whose results always have it (P̂ is parallelizable).
+#   opKeeps:     operations whose results have it when their arguments do.
+#   lift: {from, to}: a statement with the property implies over `to` everything it
+#                implies over `from` (a cylinder: W-reductions to it are sW-reductions).
 #   A separation is derived automatically: if A has a "down" property and B
 #   fails it, then A does not imply B over closedUnder (and finer reductions).
 
 - id: cone-avoidance
   name: Cone avoidance
+  group: computability
   closedUnder: omega
   direction: down
   domain: problems
@@ -27,6 +40,7 @@
 
 - id: pa-avoidance
   name: PA avoidance
+  group: computability
   closedUnder: omega
   direction: down
   domain: problems
@@ -35,6 +49,7 @@
 
 - id: low-basis
   name: Low basis
+  group: computability
   closedUnder: omega
   direction: down
   domain: problems
@@ -47,6 +62,7 @@
 # added as results about them appear (ACA₀ fails all of them, see core.yaml).
 - id: weakly-low-basis
   name: Weakly low basis
+  group: computability
   closedUnder: omega
   direction: down
   domain: problems
@@ -59,6 +75,7 @@
 
 - id: low2-basis
   name: Low₂ basis
+  group: computability
   closedUnder: omega
   direction: down
   domain: problems
@@ -69,6 +86,7 @@
 
 - id: weakly-low2-basis
   name: Weakly low₂ basis
+  group: computability
   closedUnder: omega
   direction: down
   domain: problems
@@ -86,6 +104,7 @@
 # Δ⁰ₙ₊₁. Members are added as results about them appear.
 - id: delta2-basis
   name: Δ⁰₂ basis
+  group: computability
   closedUnder: c
   direction: down
   domain: problems
@@ -96,6 +115,7 @@
 
 - id: sigma2-basis
   name: Σ⁰₂ basis
+  group: computability
   domain: problems
   optional: true
   implies: [ delta3-basis, sigma3-basis ]
@@ -104,6 +124,7 @@
 
 - id: pi2-basis
   name: Π⁰₂ basis
+  group: computability
   domain: problems
   optional: true
   implies: [ delta3-basis, pi3-basis ]
@@ -112,6 +133,7 @@
 
 - id: delta3-basis
   name: Δ⁰₃ basis
+  group: computability
   closedUnder: c
   direction: down
   domain: problems
@@ -122,6 +144,7 @@
 
 - id: sigma3-basis
   name: Σ⁰₃ basis
+  group: computability
   domain: problems
   optional: true
   implies: [ sigma4-basis ]
@@ -130,6 +153,7 @@
 
 - id: pi3-basis
   name: Π⁰₃ basis
+  group: computability
   domain: problems
   optional: true
   description: >
@@ -137,6 +161,7 @@
 
 - id: sigma4-basis
   name: Σ⁰₄ basis
+  group: computability
   domain: problems
   optional: true
   description: >
@@ -144,6 +169,7 @@
 
 - id: computably-true
   name: Computably true
+  group: computability
   closedUnder: c
   direction: down
   baseImplication: omega
@@ -158,6 +184,7 @@
 
 - id: pi11-conservative
   name: Π¹₁-conservative over RCA₀
+  group: proof
   closedUnder: rca0
   direction: down
   fromConservation: {base: rca0, class: Pi11}
@@ -166,6 +193,7 @@
 
 - id: hyperimmunity-preservation
   name: Preservation of hyperimmunity
+  group: computability
   closedUnder: omega
   direction: down
   domain: problems
@@ -174,6 +202,7 @@
 
 - id: delta02-preservation
   name: Preservation of Δ⁰₂ definitions
+  group: computability
   closedUnder: omega
   direction: down
   domain: problems
@@ -182,6 +211,7 @@
 
 - id: arith-preservation
   name: Preservation of the arithmetic hierarchy
+  group: computability
   closedUnder: omega
   direction: down
   domain: problems
@@ -190,6 +220,7 @@
 
 - id: cb-immunity-preservation
   name: Preservation of c.b.-immunity
+  group: computability
   closedUnder: omega
   direction: down
   domain: problems
@@ -198,6 +229,7 @@
 
 - id: dep-hyperimmunity-preservation
   name: Preservation of dependent hyperimmunity
+  group: computability
   closedUnder: omega
   direction: down
   domain: problems
@@ -206,6 +238,7 @@
 
 - id: hyperimmunity2-preservation
   name: Preservation of 2-hyperimmunity
+  group: computability
   closedUnder: omega
   direction: down
   domain: problems
@@ -214,3 +247,116 @@
     mathematics of the thin set and Erdős–Moser theorems": for every set C and
     every C-2-hyperimmune pair, every C-computable instance has a solution G
     relative to which the pair is still 2-hyperimmune.
+
+# ---- Weihrauch properties ---------------------------------------------------------
+# Properties of Weihrauch degrees (Brattka, Gherardi and Pauly, "Weihrauch complexity
+# in computable analysis", Sections 3, 4 and 6). They are invariant under equivalence
+# and not preserved downwards, so they separate nothing by themselves.
+- id: cylinder
+  name: Cylinder
+  group: weihrauch
+  closedUnder: sw
+  direction: equiv
+  domain: problems
+  opHas: [ compose ]
+  opKeeps: [ jump ]
+  lift: { from: w, to: sw }
+  description: >
+    id × P ≤sW P (Definition 3.4 of Brattka, Gherardi and Pauly). Equivalently, every problem Weihrauch
+    reducible to P is strongly Weihrauch reducible to it (Proposition 3.5); compositional products are
+    cylinders (Proposition 5.4), and so are jumps of cylinders (Proposition 6.14).
+
+- id: strongly-parallelizable
+  name: Strongly parallelizable
+  group: weihrauch
+  closedUnder: sw
+  direction: equiv
+  domain: problems
+  selfOp: par
+  opHas: [ par ]
+  implies: [ parallelizable ]
+  description: >
+    P̂ ≡sW P (Definition 4.2 of Brattka, Gherardi and Pauly).
+
+- id: parallelizable
+  name: Parallelizable
+  group: weihrauch
+  closedUnder: w
+  direction: equiv
+  domain: problems
+  selfOp: par
+  opHas: [ par ]
+  implies: [ idempotent ]
+  description: >
+    P̂ ≡W P (Definition 4.2 of Brattka, Gherardi and Pauly). A parallelizable problem is idempotent
+    (Proposition 4.4).
+
+- id: compose-closed
+  name: Closed under compositional product
+  group: weihrauch
+  closedUnder: w
+  direction: equiv
+  domain: problems
+  selfOp: compose
+  opHas: [ diamond ]
+  implies: [ idempotent ]
+  description: >
+    P ⋆ P ≤W P. Then P × P ≤W P ⋆ P ≤W P, so P is idempotent; P⋄ is the least problem above P closed
+    under compositional product.
+
+- id: idempotent
+  name: Idempotent
+  group: weihrauch
+  closedUnder: w
+  direction: equiv
+  domain: problems
+  selfOp: product
+  opHas: [ fin ]
+  description: >
+    P × P ≡W P (Definition 4.2 of Brattka, Gherardi and Pauly).
+
+- id: finitely-tolerant
+  name: Finitely tolerant
+  group: weihrauch
+  closedUnder: w
+  direction: equiv
+  domain: problems
+  opHas: [ jump ]
+  description: >
+    Weihrauch equivalent to some P :⊆ ℕ^ℕ ⇒ ℕ^ℕ with a computable T such that for inputs p, q that agree
+    from position k on, every solution r of q gives a solution T⟨r, k⟩ of p (Definition 4.5 of Brattka,
+    Gherardi and Pauly, after Dorais, Dzhafarov, Hirst, Mileti and Shafer). Every jump is finitely
+    tolerant (Proposition 6.13).
+
+- id: fractal
+  name: Fractal
+  group: weihrauch
+  closedUnder: w
+  direction: equiv
+  domain: problems
+  opHas: [ jump ]
+  implies: [ countably-irreducible ]
+  description: >
+    Weihrauch equivalent to some F :⊆ ℕ^ℕ ⇒ ℕ^ℕ with F restricted to A ≡W F for every clopen A meeting the
+    domain of F (Definition 4.10 of Brattka, Gherardi and Pauly). Fractals are countably irreducible
+    (Proposition 4.11); every jump is a strong fractal (Proposition 6.13).
+
+- id: countably-irreducible
+  name: Countably irreducible
+  group: weihrauch
+  closedUnder: w
+  direction: equiv
+  domain: problems
+  implies: [ join-irreducible ]
+  description: >
+    P ≤W ⊔ᵢ Qᵢ implies P ≤W Qᵢ for some i, for every sequence of problems (Definition 4.9 of Brattka,
+    Gherardi and Pauly). It implies join-irreducibility.
+
+- id: join-irreducible
+  name: Join-irreducible
+  group: weihrauch
+  closedUnder: w
+  direction: equiv
+  domain: problems
+  description: >
+    P ≤W Q ⊔ R implies P ≤W Q or P ≤W R (Brattka, Gherardi and Pauly, Section 4).

@@ -65,6 +65,7 @@ export const SCHEMA = {
     firstOrder: { doc: 'true for first-order (arithmetical) sentences: they hold in every ω-model', usedBy: ['build', 'engine', 'viewer'] },
     formulationOf: { doc: 'id of the main formulation this statement is a variant of', usedBy: ['build', 'engine', 'viewer'] },
     _modes: { doc: '(build) the modes the statement belongs to (data/modes.yaml)', usedBy: ['build', 'viewer'] },
+    _concepts: { doc: '(build) ids of the concepts (data/concepts.yaml) its definition, instance or solution mentions', usedBy: ['build', 'viewer'] },
     minor: { doc: 'true for a statement studied in few papers or of secondary interest (a classical theorem equivalent to a Big Five system, a technical variant): hidden from the catalogue by default, not counted on the home page or in the implication counts, left out of related statements, listed as an equivalent statement on the pages of the statements equivalent to it', usedBy: ['build', 'viewer', 'related'] },
     conjunction: { doc: 'ids of the conjuncts (kind must be sentence)', usedBy: ['build', 'engine', 'viewer', 'mineCommon'] },
     form: { doc: 'syntactic class of the sentence (data/classes.yaml), used for conservation results', usedBy: ['build', 'engine', 'viewer'] },
@@ -138,13 +139,27 @@ export const SCHEMA = {
     id: { req: true, doc: 'property id (cone-avoidance, …)', usedBy: ['build', 'engine', 'viewer'] },
     name: { req: true, doc: 'name', usedBy: ['viewer'] },
     closedUnder: { doc: 'reduction under which it is preserved; absent when no reduction preserves it (Σ⁰ₙ and Π⁰ₙ bases: a set computable from a Σ⁰ₙ set need not be Σ⁰ₙ)', usedBy: ['build', 'engine', 'viewer'] },
-    direction: { doc: 'down | up (with closedUnder)', usedBy: ['build', 'engine'] },
+    direction: { doc: 'down | up | equiv (with closedUnder). equiv: a Weihrauch property, invariant under equivalence over closedUnder and not preserved downwards (it separates nothing)', usedBy: ['build', 'engine'] },
+    group: { req: true, doc: 'computability | proof | weihrauch: the viewer lists the groups separately, and a mode shows the groups listed in its properties field', usedBy: ['build', 'viewer'] },
+    selfOp: { doc: 'operation such that the statement has the property exactly when it implies that operation applied to itself over closedUnder (idempotent: product, parallelizable: par, closed under compositional product: compose)', usedBy: ['build', 'engine'] },
+    opHas: { doc: 'operations whose results always have the property (par: parallelizable)', usedBy: ['build', 'engine'] },
+    opKeeps: { doc: 'operations whose results have the property when all their arguments do (jump: cylinder)', usedBy: ['build', 'engine'] },
+    lift: { doc: '{from, to}: a statement with the property implies over `to` what it implies over `from` (cylinder: from w to sw)', usedBy: ['build', 'engine'] },
     description: { doc: 'definition', usedBy: ['viewer'] },
     fromConservation: { doc: 'the property follows from a conservation result over this class', usedBy: ['engine'] },
     baseImplication: { doc: 'reduction r such that a problem has the property exactly when the bottom of r implies it over r (computably true: omega)', usedBy: ['build', 'engine'] },
     domain: { doc: 'problems: defined through instances and solutions, so it only applies to statements formulated as problems (see statement.problemForm)', usedBy: ['build', 'engine', 'aiAnalyze'] },
     implies: { doc: 'properties every statement having this one also has (low basis ⇒ weakly low basis); failing one of them means failing this one; no cycles. Statement pages list only the extremal properties (engine salientProps)', usedBy: ['build', 'engine'] },
     optional: { doc: 'member of an infinite family (low_n, Σ⁰_n basis…): listed for a statement only when it is an extremal known property, or an extremal open one between a property it has and one it fails (engine salientProps)', usedBy: ['engine'] },
+  },
+  // data/concepts.yaml — sourced definitions of the words used in statement definitions
+  concept: {
+    id: { req: true, doc: 'concept id', usedBy: ['build', 'viewer'] },
+    term: { req: true, doc: 'the term as displayed (Homogeneous set)', usedBy: ['viewer'] },
+    match: { req: true, doc: 'case-insensitive regular expressions, matched on word boundaries in the definition, instance and solution of each statement', usedBy: ['build'] },
+    skip: { doc: 'statements where a matching word has another meaning (homogeneous for RSAT)', usedBy: ['build'] },
+    definition: { req: true, doc: 'the definition, following its source ($…$ for TeX)', usedBy: ['build', 'viewer'] },
+    refs: { req: true, doc: 'sources of the definition: [{ref, loc}]', usedBy: ['build', 'viewer'], items: 'resultRef' },
   },
   // data/modes.yaml — lenses of the viewer: what a reader of one framework sees
   mode: {
@@ -154,7 +169,7 @@ export const SCHEMA = {
     description: { doc: 'one sentence for the mode bar and the about page', usedBy: ['viewer'] },
     reductions: { req: true, doc: 'reduction ids shown in this mode', usedBy: ['build', 'viewer'] },
     default: { req: true, doc: 'the reduction selected when the mode is switched on', usedBy: ['build', 'viewer'] },
-    properties: { doc: 'true to show the computability-theoretic properties', usedBy: ['build', 'viewer'] },
+    properties: { doc: 'the property groups shown (computability, proof, weihrauch; data/properties.yaml), or true for all', usedBy: ['build', 'viewer'] },
     conservation: { doc: 'true to show conservation results', usedBy: ['build', 'viewer'] },
   },
   zoo: {
@@ -280,6 +295,7 @@ export const OPERATIONS = {
 //   data/acronyms-ignored.yaml acronym → reason: not proposed as missing statements
 //   data/review.yaml           entity review above; data/ai-analyzed.yaml: aiAnalyzed
 //   data/modes.yaml            entity mode above: the frameworks of the viewer's mode switch
+//   data/concepts.yaml         entity concept above: definitions of the words used in statements
 //   data/endorsements.yaml     {people: orcid → person, endorsements: [endorsement]} (entities above)
 
 // ORCID iD with a valid check digit (ISO 7064 11,2). Used by the build and the sync.
