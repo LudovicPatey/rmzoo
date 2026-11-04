@@ -19,17 +19,21 @@ const ME = '0000-0002-1825-0097';
 const KEY = zoo.results.map((r) => r._key).find((k) => !seeded.some((e) => e.result === k && e.orcid === ME));
 const mine = (list) => list.filter((e) => e.orcid === ME).map((e) => e.result);
 const TOKEN = 'test-admin-token-0123456789abcdef';
+const ITEM = 'test-item-0000';
 const port = 18000 + Math.floor(Math.random() * 1000);
 const B = `http://127.0.0.1:${port}/api/index.php`;
 let server, dir;
 
 const start = (devLogin) => {
   fs.writeFileSync(path.join(dir, 'config.php'), `<?php return ['orcid_client_id' => 'APP-T', 'orcid_client_secret' => 'x',
-    'admin_token' => '${TOKEN}', 'data_dir' => ${JSON.stringify(path.join(dir, 'data'))}, 'dev_login' => ${devLogin}];`);
+    'admin_token' => '${TOKEN}', 'data_dir' => ${JSON.stringify(path.join(dir, 'data'))}, 'dev_login' => ${devLogin},
+    'review_json' => ${JSON.stringify(path.join(dir, 'review.json'))}];`);
 };
 before(async () => {
   if (!php) return;
   dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rmzoo-api-'));
+  // the review queue the server sees: one open item, so the test does not depend on the live queue
+  fs.writeFileSync(path.join(dir, 'review.json'), JSON.stringify({ items: [{ id: ITEM, ref: 'test', kind: 'result', status: 'pending' }] }));
   start(true);
   server = spawn('php', ['-S', `127.0.0.1:${port}`, '-t', 'site'], { env: { ...process.env, RMZOO_CONFIG: path.join(dir, 'config.php') }, stdio: 'ignore' });
   for (let i = 0; i < 50; i++) {
@@ -97,10 +101,9 @@ test('the development sign-in is off unless configured', { skip }, async () => {
   start(true);
 });
 
-// the review page (docs/REVIEW.md): votes and public comments on the open items of site/data/review.json
-const queue = fs.existsSync('site/data/review.json') ? JSON.parse(fs.readFileSync('site/data/review.json', 'utf8')).items : [];
-const ITEM = queue.find((it) => !it.votes?.length && !it.comments?.length)?.id;
-test('votes and comments on review items', { skip: skip || (!ITEM && 'no open review item') }, async () => {
+// the review page (docs/REVIEW.md): votes and public comments on the open items of the
+// review queue (a temporary review.json with one item, written in before())
+test('votes and comments on review items', { skip }, async () => {
   const s = session();
   let st = await (await s.req(`${B}?a=state`)).json();
   assert.equal((await post(s, 'review', { item: ITEM, verdict: 'valid' }, st.csrf)).status, 401);

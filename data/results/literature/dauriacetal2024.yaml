@@ -3,3 +3,10 @@
 - { type: equivalence, from: mtt, to: aca-prime, over: rca0, refs: [ { ref: dauriacetal2024, loc: Corollary 4.9 } ] }
 - { type: implication, from: mtt2, to: rt2, over: rca0, justification: { kind: restriction, by: ai, text: "Stated without proof in the introduction of Chapter 4. A coloring $f : [\\mathbb{N}]^2 \\to k$ is a coloring of the strong subtrees of height 2 of the linear tree $\\{0^n : n \\in \\mathbb{N}\\}$ (which are its pairs of levels); a homogeneous strong subtree of height $\\omega$ is an infinite $f$-homogeneous set of levels." }, refs: [ { ref: dauriacetal2024, loc: "Chapter 4, introduction" } ] }
 - { type: property, statement: er22, property: cone-avoidance, value: true, refs: [ { ref: dauriacetal2024, loc: Theorem 5.50 } ] }
+- { type: property, statement: hl, property: computably-true, value: true, refs: [ { ref: dauriacetal2024, loc: Theorem 3.4 } ] }
+- { type: equivalence, from: pmtt, to: aca-prime, over: rca0, refs: [ { ref: dauriacetal2024, loc: Corollary 4.9 } ] }
+- { type: property, statement: pmtt2, property: cone-avoidance, value: true, refs: [ { ref: dauriacetal2024, loc: Theorem 4.15 } ] }
+- { type: separation, from: pmtt2, to: aca, over: rca0, refs: [ { ref: dauriacetal2024, loc: Corollary 4.16 } ] }
+- { type: property, statement: rg2, property: cone-avoidance, value: true, refs: [ { ref: dauriacetal2024, loc: Theorem 6.32 } ] }
+- { type: separation, from: rg2, to: aca, over: rca0, refs: [ { ref: dauriacetal2024, loc: Corollary 6.40 } ] }
+- { type: separation, from: rt22, to: rg2, over: rca0, refs: [ { ref: dauriacetal2024, loc: Theorem 6.63 } ] }

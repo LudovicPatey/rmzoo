@@ -27,3 +27,37 @@
 - { type: equivalence, from: gen1.star.gen1, to: gen1, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 10.7 } ] }
 - { type: implication, from: coh.jump, to: coh, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 12.3 } ] }
 - { type: separation, from: wwkl, to: padeg, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.11 (k = 0) } ] }
+- { type: implication, from: lbt, to: wkl, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 8.2 } ] }
+- { type: separation, from: wkl, to: lbt, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 8.5 } ] }
+- { type: separation, from: lbt, to: cr, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 8.5 } ] }
+- { type: separation, from: cr, to: lbt, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 8.5 } ] }
+- { type: separation, from: lbt, to: lpo, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 8.4 } ] }
+- { type: property, statement: lbt, property: low-basis, value: true, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Definition 8.1 } ] }
+- { type: implication, from: wgen1, to: hyp, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 9.3 } ] }
+- { type: equivalence, from: wgen1, to: hyp, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 9.5 } ] }
+- { type: implication, from: ran1, to: kpt, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 10.4 } ] }
+- { type: implication, from: gen1, to: kpt, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 10.6 } ] }
+- { type: separation, from: kpt, to: ran1, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: after Corollary 10.6 } ] }
+- { type: separation, from: kpt, to: gen1, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: after Corollary 10.6 } ] }
+- { type: implication, from: wkl, to: dnc3, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 5.8 } ] }
+- { type: separation, from: dnc3, to: wkl, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 5.8 } ] }
+- { type: implication, from: dnc3, to: dnr, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 5.8 } ] }
+- { type: separation, from: dnr, to: dnc3, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 5.8 } ] }
+- { type: separation, from: ran1, to: dnc3, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.15 } ] }
+- { type: separation, from: dnc3, to: ran1, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.15 } ] }
+- { type: implication, from: coh-plus, to: coh, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 12.3 } ] }
+- { type: implication, from: coh.jump, to: coh-plus, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 12.3 } ] }
+- { type: separation, from: coh, to: coh-plus, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 12.5 } ] }
+- { type: separation, from: coh-plus, to: gen1, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 12.7 } ] }
+- { type: implication, from: lim.jump, to: coh-plus, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 12.11 } ] }
+- { type: equivalence, from: sbwt, to: coh, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Theorem 14.8 } ] }
+- { type: equivalence, from: wbwt, to: sbwt, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 14.6 } ] }
+- { type: equivalence, from: lim.star.wbwt, to: bwt, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Theorem 14.14 } ] }
+- { type: implication, from: wwkl-lstar, to: ran1, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Lemma 7.4 } ] }
+- { type: separation, from: ran1, to: wwkl-lstar, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Lemma 7.4 } ] }
+- { type: implication, from: wwkl-lstar, to: accn, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Lemma 7.5 } ] }
+- { type: separation, from: accn, to: wwkl-lstar, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Lemma 7.5 } ] }
+- { type: equivalence, from: wwkl-lstar.par, to: wwkl-lstar, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 7.6 } ] }
+- { type: implication, from: wwkl-lstar, to: dnr, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.7 } ] }
+- { type: separation, from: dnr, to: wwkl-lstar, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.7 } ] }
+- { type: separation, from: wwkl-half, to: wwkl-half.par, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.13 } ] }

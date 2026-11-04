@@ -795,3 +795,130 @@
   instance: A countable bipartite graph $G$.
   solution: A König cover of $G$.
   refs: [ { ref: goh2019b, role: origin, loc: Definition 3.16 } ]
+
+# Uniform content of computability theory (Brattka, Hendtlass, Kreuzer 2017).
+- id: lbt
+  label: '\mathsf{LBT}'
+  name: Low basis theorem (Weihrauch problem)
+  kind: problem
+  tags: [ weihrauch, compactness ]
+  definition: >
+    Given an infinite binary tree $T$, find a path $p \in [T]$ with $p' \leq_T T'$. Strictly above $\mathsf{WKL}$ and
+    Weihrauch incomparable with $\mathsf{C}_\mathbb{R}$.
+  instance: An infinite binary tree $T$.
+  solution: 'A path $p \in [T]$ with $p'' \leq_T T''$.'
+  refs: [ { ref: brattkahendtlasskreuzer2017, role: origin, loc: Definition 8.1 } ]
+
+- id: wgen1
+  label: '1\text{-}\mathsf{WGEN}'
+  name: Weak 1-genericity problem
+  kind: problem
+  minor: true
+  tags: [ weihrauch, computability ]
+  aliases: [ 1-WGEN ]
+  definition: Given $q \in 2^\mathbb{N}$, find some $p$ weakly 1-generic relative to $q$.
+  instance: 'A point $q \in 2^\mathbb{N}$.'
+  solution: 'A point $p$ weakly 1-generic in $q$.'
+  refs: [ { ref: brattkahendtlasskreuzer2017, role: origin, loc: Definition 9.2 } ]
+
+- id: kpt
+  label: '\mathsf{KPT}'
+  name: Kleene–Post theorem (Weihrauch problem)
+  kind: problem
+  tags: [ weihrauch, computability ]
+  definition: Given $r$, find a pair $\langle p, q \rangle \geq_T r$ with $p$ and $q$ Turing incomparable.
+  instance: 'A point $r \in \mathbb{N}^\mathbb{N}$.'
+  solution: 'A pair $\langle p, q \rangle$ with $r \leq_T \langle p, q \rangle$ and $p \mid_T q$.'
+  refs: [ { ref: brattkahendtlasskreuzer2017, role: origin, loc: Definition 10.2 } ]
+
+- id: dnc3
+  label: '\mathsf{DNC}_3'
+  name: Diagonally non-computable functions with 3 values
+  kind: problem
+  minor: true
+  tags: [ weihrauch, computability ]
+  aliases: [ DNC3 ]
+  definition: >
+    Given $p$, find $q \in 3^\mathbb{N}$ with $q(n) \neq \varphi^p_n(n)$ for every $n$. Strongly Weihrauch equivalent to the
+    parallelization of $\mathsf{ACC}_3$; strictly between $\mathsf{DNC}_\mathbb{N}$ and $\mathsf{DNC}_2 \equiv_{\mathrm{sW}} \mathsf{WKL}$.
+  instance: 'A point $p \in \mathbb{N}^\mathbb{N}$.'
+  solution: 'A function $q \in 3^\mathbb{N}$ with $q(n) \neq \varphi^p_n(n)$ for all $n$.'
+  refs: [ { ref: brattkahendtlasskreuzer2017, role: origin, loc: "Definition 5.1, Theorem 5.2" } ]
+
+- id: coh-plus
+  label: '\mathsf{COH}^+'
+  name: Cohesiveness for enumerated sequences
+  kind: problem
+  minor: true
+  tags: [ weihrauch, cohesive ]
+  aliases: [ COH+ ]
+  definition: $\mathsf{COH}$ with the sets $R_i$ given by enumerations (positive information) instead of characteristic functions.
+  instance: A sequence of enumerations of sets $R_0, R_1, \dots \subseteq \mathbb{N}$.
+  solution: A set cohesive for $(R_i)_i$.
+  refs: [ { ref: brattkahendtlasskreuzer2017, role: origin, loc: Definition 12.2 } ]
+
+- id: wbwt
+  label: '\mathsf{WBWT}_\mathbb{R}'
+  name: Weak Bolzano–Weierstrass theorem
+  kind: problem
+  minor: true
+  tags: [ weihrauch, analysis ]
+  aliases: [ WBWT ]
+  definition: >
+    Given a bounded sequence of reals, find a sequence converging to a Cauchy name of one of its cluster points
+    ($\mathsf{BWT}_\mathbb{R}$ with the jump of the Cauchy representation on the output).
+  instance: A bounded sequence $(x_n)_n$ of reals.
+  solution: A sequence converging to a name of a cluster point of $(x_n)_n$.
+  refs: [ { ref: brattkahendtlasskreuzer2017, role: origin, loc: Definition 14.3 } ]
+
+- id: sbwt
+  label: '\mathsf{SBWT}_\mathbb{R}'
+  name: Subsequential Bolzano–Weierstrass theorem
+  kind: problem
+  minor: true
+  tags: [ weihrauch, analysis ]
+  aliases: [ SBWT ]
+  definition: Given a bounded sequence $(x_i)_i$ of reals, find a strictly increasing $s$ such that $(x_{s(n)})_n$ converges.
+  instance: A bounded sequence $(x_i)_i$ of reals.
+  solution: 'A strictly increasing $s \in \mathbb{N}^\mathbb{N}$ with $(x_{s(n)})_n$ convergent.'
+  refs: [ { ref: brattkahendtlasskreuzer2017, role: origin, loc: Definition 14.5 } ]
+
+# PAC learning (Brattka, Chirache 2026).
+- id: dnc-star
+  label: '\mathsf{DNC}^*'
+  name: Finitary DNC problem
+  kind: problem
+  tags: [ weihrauch, computability ]
+  aliases: [ DNC* ]
+  definition: >
+    Given, for every $k \geq 2$, an instance of $\widehat{\mathsf{ACC}_k}$ (that is, of $\mathsf{DNC}_k$), find some $k$ and a solution of
+    the $k$-th instance. Strictly above both $\mathsf{PA}$ and $\mathsf{DNC}_\mathbb{N}$.
+  instance: 'Sequences $(A_{n,k})_{n}$ for $k \geq 2$, with $A_{n,k} \subseteq k$ and $|k \setminus A_{n,k}| \leq 1$, given by negative information.'
+  solution: 'A pair $\langle k, p \rangle$ with $p(n) \in A_{n,k}$ for every $n$.'
+  refs: [ { ref: brattkachirache2026, role: origin, loc: Definition 21 } ]
+
+- id: ipac-plus
+  label: '\mathsf{IPAC}^+'
+  name: Improper PAC learning from positive information
+  kind: problem
+  tags: [ weihrauch ]
+  definition: >
+    Given a nonempty closed concept class $C \subseteq 2^\mathbb{N}$ by positive information and a bound $d$ on its VC dimension,
+    find a learner (with arbitrary hypotheses) and a sample complexity with which it PAC learns $C$. Strongly Weihrauch
+    equivalent to finding a witness function for $C$.
+  instance: 'A closed class $C \subseteq 2^\mathbb{N}$, $C \neq \emptyset$, given by positive information, and $d \geq \mathrm{VCdim}(C)$.'
+  solution: A learner $A$ and a sample complexity $m$ with which $A$ improperly PAC learns $C$.
+  refs: [ { ref: brattkachirache2026, role: origin, loc: "Definition 4(3), Corollary 57" } ]
+
+- id: rpac
+  label: '\mathsf{RPAC}'
+  name: Relative PAC learning
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: >
+    Given closed classes $C \subseteq H \subseteq 2^\mathbb{N}$ ($C$ by positive, $H$ by negative information) and $d \geq \mathrm{VCdim}(C)$,
+    find a learner into $H$ and a sample complexity with which it PAC learns $C$ relative to $H$.
+  instance: 'Closed classes $\emptyset \neq C \subseteq H \subseteq 2^\mathbb{N}$ and $d \geq \mathrm{VCdim}(C)$.'
+  solution: 'A learner $A : S \to H$ and a sample complexity $m$ with which $A$ PAC learns $C$ relative to $H$.'
+  refs: [ { ref: brattkachirache2026, role: origin, loc: "Definition 4(1)" } ]

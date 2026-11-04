@@ -58,7 +58,7 @@
 - id: dauriacetal2024-6f2783c5
   ref: dauriacetal2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: HL (= PMTT^1)
@@ -68,10 +68,14 @@
     facts: It is computably true (Theorem 3.4), its forest version is computably true (Theorem 3.6), and it admits strong cone avoidance (Theorem 3.21).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added hl, computably true (Theorem 3.4).
 - id: dauriacetal2024-7cfb6453
   ref: dauriacetal2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: MTT^1
@@ -81,10 +85,14 @@
     facts: It admits strong cone avoidance (Theorem 3.13).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: MTT^1 is a technical step (Theorem 3.13)."
 - id: dauriacetal2024-f2ce6306
   ref: dauriacetal2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: PMTT^n
@@ -94,10 +102,14 @@
     facts: Every X-computable instance has a Δ^{0,X}_{2n-1} solution (Theorem 4.6). It is provable in ACA0, and (∀n)PMTT^n is provable in ACA'_0 (Corollary 4.7). PMTT^n is equivalent to ACA0 for n≥3 and (∀n)PMTT^n is equivalent to ACA'_0 (Corollary 4.9). PMTT^2 admits cone avoidance and does not imply ACA0 (Theorem 4.15, Corollary 4.16).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added pmtt2 (Theorem 4.15, Corollary 4.16) and pmtt (minor, ≡ ACA'0, Corollary 4.9); PMTT^n for n ≥ 3 ≡ ACA0 not added separately.
 - id: dauriacetal2024-92e2507c
   ref: dauriacetal2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: PMTT^n_{k,ℓ}
@@ -107,10 +119,14 @@
     facts: PMTT^2_{k,2} admits strong cone avoidance (Theorem 4.27). (∀k)PMTT^3_{k,2} admits cone avoidance and does not imply ACA0 (Theorem 4.28, Corollary 4.29). It implies (∀k)JDT^2_{k,4} (Theorem 5.43).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: PMTT^n_{k,ℓ} variants are technical intermediate principles."
 - id: dauriacetal2024-00c7b0fb
   ref: dauriacetal2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: RT^n_{k,ℓ}
@@ -120,10 +136,14 @@
     facts: Strong cone avoidance of RT^2_{k,2} is cited from Wang and Cholak–Patey. RT^2_{k,ℓ} ≤_c DT^2_{2k,2ℓ+1} (Theorem 5.32). JRG^2_{4k,4n+3} implies RT^2_{k,n} (Theorem 6.41).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: RT^n_{k,ℓ} for ℓ < k is a thin-set variant; ts23 and ts24 cover the studied cases."
 - id: dauriacetal2024-b250ab32
   ref: dauriacetal2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: DT^n_{k,ℓ}
@@ -133,10 +153,14 @@
     facts: There is a computable instance of DT^2_{4,3} all of whose solutions compute ∅' (Theorem 5.28), so DT^2_{4,3} implies ACA0 (Corollary 5.31). RT^2_{k,ℓ} ≤_c DT^2_{2k,2ℓ+1} (Theorem 5.32). (∀k)DT^2_{k,ℓ} has a computable instance whose solutions are all DNC relative to ∅'' and none of which is Σ^0_3 (Corollaries 5.39, 5.41). DT^2_{4,2} implies ER^2 (Theorem 5.48). DT^2_{<∞,4} (via JDT) admits cone avoidance and does not imply ACA0 (Corollaries 5.44, 5.45). Tight bounds are the odd tangent numbers (Corollary 5.26).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added dt2 = (∀k)DT^2_{k,2}, implying ACA0 via Corollary 5.31; other bounds not added.
 - id: dauriacetal2024-70d643b4
   ref: dauriacetal2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: JDT^n_{k,ℓ}
@@ -146,10 +170,14 @@
     facts: It is equivalent to DT for the same parameters (Corollary 5.25, Corollary 5.8). (∀k)PMTT^3_{k,2} implies (∀k)JDT^2_{k,4} (Theorem 5.43). (∀k)JDT^2_{k,4} admits cone avoidance (Corollary 5.44).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: JDT is a technical reformulation of DT (Corollaries 5.8, 5.25)."
 - id: dauriacetal2024-c3126906
   ref: dauriacetal2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: RG^n_{k,ℓ}, RG^G_{k,ℓ}
@@ -159,10 +187,14 @@
     facts: (∀k)RG^2_{k,4} admits cone avoidance and does not imply ACA0 (Theorem 6.32, Corollary 6.40). For F of size 3 with b the number of Joyce types of F, (∀k)RG^F_{k,b} implies ACA0 (Corollary 6.48, Theorem 6.45, PA over ∅'). (∀k)RG^{K_3}_{k,16} and (∀k)RG^3_{k,112} imply ACA0 (Corollaries 6.49, 6.51). RG^2_{8,4} implies SRT^2_2 over RCA0 (Theorem 6.55). RT^2_2 does not imply (∀k)RG^2_{k,ℓ} for any ℓ (Theorem 6.63, via an ω-model).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added rg2 = (∀k)RG^2_{k,4} with Theorems 6.32, 6.55, 6.63 and Corollary 6.40; other graphs and exponents not added.
 - id: dauriacetal2024-24c2a019
   ref: dauriacetal2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: JRG^n_{k,ℓ}
@@ -172,10 +204,14 @@
     facts: Tight bound is the number of Joyce graphs (Corollary 6.27, ACA0). JRG^2_{4k,4n+3} implies RT^2_{k,n} and JRG^2_{8,7} implies RT^2_2 (Theorem 6.41). JRG^2_{2k,2n+1} implies DT^2_{k,n}, hence JRG^2_{8,7} implies ACA0 (Theorem 6.43). RG implies JRG over ACA0 (Corollary 6.29).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: JRG is a technical reformulation of RG."
 - id: dauriacetal2024-5c91638b
   ref: dauriacetal2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: CHMTT^n_{k,ℓ}, SCHMTT^n_{k,ℓ}
@@ -185,6 +221,10 @@
     facts: (∀k)SCHMTT^n_{k,tsTT(n)} is provable in ACA0 and the bound is tight (Theorem 7.9). CHMTT^n_{k,tTT(n)} is provable in ACA0 and the bound is tight (Theorem 7.20).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: generalized Chubb–Hirst–McNicholl theorems with tight bounds, studied only in Chapter 7."
 - id: solda2021-ad9acd3d
   ref: solda2021
   date: 2026-11-03
@@ -3626,7 +3666,7 @@
 - id: brattkachirache2026-959b47f6
   ref: brattkachirache2026
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: PPAC, PPAC^+, PPAC^-, PPAC_{<d}
@@ -3636,10 +3676,14 @@
     facts: PPAC ≡sW PPAC_{<d} ≡sW ERM ≡sW id (computable). PPAC_{<∞} ≡W C_N and ≡sW id × C_N ≡sW lim_Δ. PPAC^± ≡sW PPAC^±_{<d} ≡sW lim. PPAC^+_{<∞} ≡sW lim. PPAC^-_{<∞} ≡sW lim × C_N'.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: the PPAC variants are equivalent to id, C_N, lim_Δ, lim or lim × C_N' (Section 5)."
 - id: brattkachirache2026-1a1e69a6
   ref: brattkachirache2026
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: IPAC, IPAC^+, IPAC^-, IPAC_{<d}
@@ -3649,10 +3693,14 @@
     facts: IPAC and IPAC^- are computable. IPAC_{<∞} ≡W C_N. IPAC^+ ≡sW WIT^+. DNC* ≤sW IPAC^+_{<2} ≤sW IPAC^+ <W WKL. PA <W IPAC^+_{<2}, and IPAC^+_{<2} ≰W WWKL^(n). IPAC^+ is not Las Vegas computable. WKL ≤sW C_N' ∗ IPAC^+. DNC* × C_N ≤W IPAC^+_{<∞} ≤W C_R.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added ipac-plus with Corollaries 57, 64, 67; the other IPAC variants are computable or ≡ C_N (Corollary 59) and are not added.
 - id: brattkachirache2026-4db5662c
   ref: brattkachirache2026
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: RPAC, RPAC_{<d}, RPAC_fix
@@ -3662,10 +3710,14 @@
     facts: RPAC ≡sW RPAC_{<d} ≡sW RPAC_fix ≡sW WKL. RPAC_{<∞} ≡sW C_R.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added rpac (minor) ≡sW WKL (Theorem 38); RPAC_{<∞} ≡sW C_R not added.
 - id: brattkachirache2026-05a55854
   ref: brattkachirache2026
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: VCdim, VCdim^+, VCdim^-, VCdim_{<∞}, BVCdim
@@ -3675,10 +3727,14 @@
     facts: VCdim ≡sW VCdim^+ ≡sW SORT. VCdim^- ≡sW SORT'. VCdim_{<∞} ≡sW C_N. VCdim^-_{<∞} ≡sW C_N'. BVCdim ≡sW B.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: VC dimension problems are equivalent to SORT, SORT', C_N, C_N' or B (Section 3)."
 - id: brattkachirache2026-0edaae1f
   ref: brattkachirache2026
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: WIT, WIT^+, WIT^-
@@ -3688,10 +3744,14 @@
     facts: WIT^- is computable. ACC_n ≰*_W WIT^+ for every n ≥ 2. DNC* ≤sW WIT^+ ≤sW WKL.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: WIT^+ ≡sW IPAC^+ (Corollary 57)."
 - id: brattkachirache2026-a27692bf
   ref: brattkachirache2026
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: DNC*
@@ -3701,6 +3761,10 @@
     facts: PA <W DNC*. DNC_N <W DNC*. DNC* ≰W WWKL^(n) for every n.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added dnc-star with Proposition 22.
 - id: brattkachirache2026-a50ff099
   ref: brattkachirache2026
   date: 2026-11-03
@@ -3721,7 +3785,7 @@
 - id: brattkachirache2026-3938d741
   ref: brattkachirache2026
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: sup, max, B, lim_Δ
@@ -3731,10 +3795,14 @@
     facts: SORT ≡sW sup. SORT_{<∞} ≡sW max ≡sW C_N. B ≡W C_N ≡W lim_Δ ≡sW id × C_N. B <sW C_N <sW lim_Δ.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: sup, max, B, lim_Δ are benchmark problems equivalent to SORT or C_N."
 - id: brattkachirache2026-bdbde9ba
   ref: brattkachirache2026
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: χ_PL
@@ -3744,6 +3812,10 @@
     facts: χ_PL ≡sW χ_PL^+ ≡sW LPO'. χ_PL^- ≡sW LPO''.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: χ_PL ≡sW LPO' (Corollary 33)."
 - id: gohpaulyvalenti2021-436973b4
   ref: gohpaulyvalenti2021
   date: 2026-11-03
@@ -6102,7 +6174,7 @@
 - id: brattkahendtlasskreuzer2017-4e0a7c1a
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: 1-WGEN
@@ -6112,10 +6184,14 @@
     facts: HYP ≤sW 1-WGEN and 1-WGEN ≤W HYP, so HYP ≡W 1-WGEN (strong equivalence open, Question 9.6); 1-WGEN ≤W COH.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added wgen1 (minor) with Proposition 9.3, Corollary 9.5; question hyp-wgen-strong (Question 9.6).
 - id: brattkahendtlasskreuzer2017-6b1ac87d
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: LBT
@@ -6125,10 +6201,14 @@
     facts: WKL <W LBT <W L; LPO ≰W LBT; LBT |W C_R; LBT is discriminative.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added lbt with Proposition 8.2, Proposition 8.4, Corollary 8.5.
 - id: brattkahendtlasskreuzer2017-86bc5299
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: KPT
@@ -6138,10 +6218,14 @@
     facts: KPT ≤sW MLR and KPT ≤sW 1-GEN, both strict.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added kpt with Corollaries 10.4, 10.6 and their strictness.
 - id: brattkahendtlasskreuzer2017-8451208b
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: JIT, J_D^{-1}
@@ -6151,10 +6235,14 @@
     facts: J_D^{-1} <sW JIT <sW c_∅′ × id; JIT ≤sW lim_J (strict); J_D^{-1} is not computable; JIT is continuous and limit computable but not computable; J_D^{-1} ∗s J_D^{-1} ≡sW 0; JIT ∗ JIT ≤W c_∅′ ≤W lim.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: JIT and J_D^{-1} are problems on Turing degrees studied only here."
 - id: brattkahendtlasskreuzer2017-24e8bdff
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: DNC_k, WKL_k, ACC_n (LLPO_n)
@@ -6164,10 +6252,14 @@
     facts: DNC_k ≡sW WKL_k ≡sW \hat{ACC_k}; ACC_n ≰W DNC_{n+1}; DNC_N <W DNC_{n+1} <W DNC_n; DNC_n is indiscriminative for n ≥ 3; DNC_2 ≤W C_N′ ∗ DNC_k; DNC_n is not probabilistic; MLR |W DNC_3; WKL_n |W (k−1)/k-WWKL for n ≥ 3, k ≥ 2.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added dnc3 (minor) with Corollaries 5.8, 7.15; WKL_k and ACC_n for finite n not added.
 - id: brattkahendtlasskreuzer2017-6ec357b6
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (1−∗)-WWKL, ε-WWKL
@@ -6177,10 +6269,14 @@
     facts: MLR <sW (1−∗)-WWKL; ACC_N <sW (1−∗)-WWKL; (1−∗)-WWKL is strongly parallelizable; DNC_N <sW (1−∗)-WWKL; ACC_{n+1} ≤sW (n−1)/n-WWKL and ACC_n ≰W (n−1)/n-WWKL; ε-WWKL is not parallelizable for ε ∈ [0,1).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Results entered on wwkl-lstar and wwkl-half (Lemmas 7.4-7.5, Proposition 7.6, Corollaries 7.7, 7.13).
 - id: brattkahendtlasskreuzer2017-e72b31ed
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: lim_J, L, L_2, J_D, c_∅′ × id
@@ -6190,10 +6286,14 @@
     facts: DNC_N ≰W lim_J; MLR ≰W lim_J; C_N ≤W lim_J; LBT ≤sW L; COH ≤sW L_2 and COH ≰sW L; WBWT_R ≤sW L_2 and WBWT_R ≰sW L; lim ∗s lim^{-1} ≡sW c_∅′ × id.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: lim_J, L, L_2 are auxiliary maps; the zoo has no reductions of that kind."
 - id: brattkahendtlasskreuzer2017-611d9da8
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: COH+
@@ -6203,10 +6303,14 @@
     facts: COH ≤sW COH+ ≤sW COH′; COH+ ≰W COH; 1-GEN ≰W COH+; ACC_N ≰W COH+; COH+ ≤sW lim′.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added coh-plus (minor) with Propositions 12.3, 12.5, 12.7, Corollary 12.11.
 - id: brattkahendtlasskreuzer2017-ae403258
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: "[COH], [f]"
@@ -6216,10 +6320,14 @@
     facts: "[COH] ≡sW J_D^{-1} ∘ PA ∘ J_D; [COH] ≤sW PA′; [COH] ≡W (lim → PA′) ≡W (JD → PA′) ≡W (lim → [WKL]′)."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: degree versions [f] are an operation the zoo does not model."
 - id: brattkahendtlasskreuzer2017-8638c830
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: WBWT_X, SBWT_X
@@ -6229,6 +6337,10 @@
     facts: WBWT_R is densely realized (ω-indiscriminative); WBWT_X ≡W (lim → BWT_X); WBWT_X ≡W SBWT_X; SBWT_{2^N} ≡sW SBWT_R ≡sW SBWT_[0,1] ≡sW SBWT_{[0,1]^N}; SBWT_R ≡sW COH; COH ≡W \hat{WBWT_2}; BWT_R ≡W lim ∗ WBWT_R; WBWT_R is low2 but not low.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added wbwt and sbwt (minor) with Proposition 14.6, Theorems 14.8, 14.14.
 - id: brattkahendtlasskreuzer2017-ebc47b7e
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03

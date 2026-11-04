@@ -136,6 +136,61 @@
     Milliken's tree theorem restricted to colorings of the strong subtrees of height 3.
   refs: [ { ref: dauriacetal2024, role: rm, loc: Statement 2.27 } ]
 
+- id: hl
+  label: '\mathsf{HL}'
+  name: Halpern–Läuchli theorem
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ Halpern-Läuchli theorem, PMTT1 ]
+  definition: >
+    For infinite trees $T_0, \dots, T_{d-1}$ with no leaves and every $k$-coloring of $\bigcup_n T_0(n) \times \dots \times T_{d-1}(n)$,
+    there are strong subtrees $S_0, \dots, S_{d-1}$ with a common level function such that the coloring is constant on
+    $\bigcup_n S_0(n) \times \dots \times S_{d-1}(n)$. It is the product Milliken tree theorem for height 1.
+  instance: 'Infinite bounded trees $T_0, \dots, T_{d-1}$ with no leaves and a coloring $f : \bigcup_n T_0(n) \times \dots \times T_{d-1}(n) \to k$.'
+  solution: 'Strong subtrees $(S_0, \dots, S_{d-1}) \in S_\omega(T_0, \dots, T_{d-1})$ on whose level product $f$ is constant.'
+  refs: [ { ref: dauriacetal2024, role: rm, loc: Theorem 2.28 } ]
+
+- id: pmtt
+  label: '\mathsf{PMTT}'
+  name: Product Milliken tree theorem
+  kind: sentence
+  minor: true
+  tags: [ ramsey ]
+  definition: >
+    For infinite trees $T_0, \dots, T_{d-1}$ with no leaves, all $n, k$ and every $f : S_n(T_0, \dots, T_{d-1}) \to k$, there is
+    $(S_0, \dots, S_{d-1}) \in S_\omega(T_0, \dots, T_{d-1})$ such that $f$ is constant on $S_n(S_0, \dots, S_{d-1})$.
+  refs: [ { ref: dauriacetal2024, role: rm, loc: Theorem 2.29 } ]
+
+- id: pmtt2
+  label: '\mathsf{PMTT}^2'
+  name: Product Milliken tree theorem for height 2
+  kind: sentence
+  tags: [ ramsey ]
+  definition: The product version of Milliken's tree theorem restricted to colorings of strong subtree products of height 2.
+  refs: [ { ref: dauriacetal2024, role: rm, loc: Statement 2.30 } ]
+
+- id: dt2
+  label: '\mathsf{DT}^2'
+  name: Devlin's theorem for pairs
+  kind: sentence
+  tags: [ ramsey, orders ]
+  aliases: [ Devlin's theorem ]
+  definition: >
+    For every $k$ and every $f : [\mathbb{Q}]^2 \to k$ there is a dense suborder $S \subseteq \mathbb{Q}$ without endpoints with
+    $|f([S]^2)| \leq 2$ (that is, $(\forall k)\,\mathsf{DT}^2_{k,2}$; the bound 2 is optimal, as observed by Galvin).
+  refs: [ { ref: dauriacetal2024, role: rm, loc: "Statement 2.32, Theorem 2.31" } ]
+
+- id: rg2
+  label: '\mathsf{RG}^2'
+  name: Rado graph theorem for pairs
+  kind: sentence
+  tags: [ ramsey, graphs ]
+  aliases: [ Rado graph theorem ]
+  definition: >
+    For every $k$ and every coloring $f : [R]^2 \to k$ of the pairs of the Rado graph $R$, there is a subgraph $R' \subseteq R$
+    isomorphic to $R$ with $|f''[R']^2| \leq 4$ (that is, $(\forall k)\,\mathsf{RG}^2_{k,4}$).
+  refs: [ { ref: dauriacetal2024, role: rm, loc: "Statement 2.35, Theorem 6.32" } ]
+
 - id: bcg
   label: '\mathsf{BCG}\text{-}\mathsf{Det}'
   name: Determinacy of binary choice games

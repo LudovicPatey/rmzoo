@@ -1368,3 +1368,14 @@
   context: >-
     $\mathsf{ACA}_0$ proves WIRT (Theorem 7.5) and $\mathsf{RCA}_0$ does not, even for highly recursive graphs
     (Proposition 7.8), while the nonuniform version of WIRT is equivalent to $\mathsf{ACA}_0$ (Proposition 7.13).
+
+- id: hyp-wgen-strong
+  question: Is the hyperimmunity problem $\mathsf{HYP}$ strongly Weihrauch equivalent to the weak 1-genericity problem $1\text{-}\mathsf{WGEN}$?
+  asked:
+    - {ref: brattkahendtlasskreuzer2017, loc: Question 9.6}
+  statements: [hyp, wgen1]
+  formal:
+    - {from: hyp, to: wgen1, over: sw}
+  context: >-
+    Brattka, Hendtlass and Kreuzer proved $\mathsf{HYP} \leq_{\mathrm{sW}} 1\text{-}\mathsf{WGEN}$ (Proposition 9.3)
+    and $1\text{-}\mathsf{WGEN} \leq_{\mathrm{W}} \mathsf{HYP}$ (Proposition 9.4), so the two are Weihrauch equivalent.
