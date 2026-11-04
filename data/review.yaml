@@ -1123,7 +1123,7 @@
 - id: kiharamarconepauly2020-654ca052
   ref: kiharamarconepauly2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Σ11-UC_NN, Σ11-Sep, Δ11-CA, Δ11-CA−, Σ11-CA−
@@ -1133,6 +1133,10 @@
     facts: All are strongly Weihrauch equivalent to UC_NN (Theorem 3.11).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: Σ11-UC_NN, Σ11-Sep, Δ11-CA and variants are all ≡sW UC_NN (Theorem 3.11)."
 - id: kiharamarconepauly2020-73a96e83
   ref: kiharamarconepauly2020
   date: 2026-11-03
@@ -1153,7 +1157,7 @@
 - id: kiharamarconepauly2020-cf102585
   ref: kiharamarconepauly2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Π11-Sep, Σ11-WKL, \hat{Σ11-C2}, \hat{Σ11-CN}, Π11-DNC2
@@ -1163,10 +1167,14 @@
     facts: UC_NN <W \hat{Σ11-C2} ≡W Π11-Sep ≡W Σ11-WKL ≡W Π11-DNC2 <W \hat{Σ11-CN} ≤W C_NN (Theorem 4.3, Proposition 4.5). Σ11-WKL is closed under composition.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added sigma11-wkl, pi11-sep-w (minor), sigma11-cn with Theorem 4.3, Proposition 4.8; question 4.10 recorded as resolved.
 - id: kiharamarconepauly2020-2d50a4a0
   ref: kiharamarconepauly2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Σ11-WWKL
@@ -1176,10 +1184,14 @@
     facts: UC_NN <W UC_NN ⋆ Σ11-WWKL <W Σ11-WKL (Theorem 4.9). WKL ≰W Σ11-WWKL.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added sigma11-wwkl (minor) with Theorem 4.9.
 - id: kiharamarconepauly2020-cb489d6c
   ref: kiharamarconepauly2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: NHA
@@ -1189,10 +1201,14 @@
     facts: NHA ≰W UC_NN and NHA ≤W C_NN.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added nha (minor) with Corollary 3.6.
 - id: kiharamarconepauly2020-016685a4
   ref: kiharamarconepauly2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: CWO, WCWO
@@ -1202,10 +1218,14 @@
     facts: CWO ≡sW UC_NN (Theorem 5.5). Whether WCWO ≡W UC_NN is left open (Question 5.8), later answered positively by Goh.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: CWO ≡sW UC_NN; question 5.8 on WCWO already recorded."
 - id: kiharamarconepauly2020-b47ad97c
   ref: kiharamarconepauly2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: PTT1, wList, List
@@ -1215,10 +1235,14 @@
     facts: PTT1 ≡W C_NN (Proposition 6.3); wList ≡W List ≡W UC_NN (Theorem 6.4).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added perfect1 (PTT1, minor) ≡W C_NN and list-baire (minor) ≡W UC_NN.
 - id: kiharamarconepauly2020-98fd67db
   ref: kiharamarconepauly2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: List_{2^N,<ω}, wList_{2^N,≤ω}, Π02-C_N
@@ -1228,10 +1252,14 @@
     facts: List_{2^N,<ω} ≡W Π02-CN. lim ≤W wList_{2^N,≤ω} ≤W UC_NN. For single-valued functions, being below wList_{2^N,≤ω} is the same as being below lim. The two list problems are Weihrauch incomparable. The threefold compositional power of wList_{2^N,≤ω} is ≡W UC_NN.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: listing problems for Cantor space studied only in Section 6.1."
 - id: kiharamarconepauly2020-e57e06b6
   ref: kiharamarconepauly2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: FindWS_Σ, FindWS_Π, FindWS_Δ, Det_Δ, Det_Σ
@@ -1241,10 +1269,14 @@
     facts: FindWS_Π ≡W C_NN; FindWS_Δ ≡W Det_Δ ≡W FindWS_Σ ≡W UC_NN. C_NN <W Det_Σ. Det_Σ × C_NN ≰W Det_Σ. UC_NN × Det_Σ ≡W Det_Σ. TC_NN <W Det_Σ.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added findws-sigma, findws-pi (minor) and det-sigma with Section 6-8 results; FindWS_Δ, Det_Δ not added (≡W UC_NN).
 - id: kiharamarconepauly2020-e8c22cab
   ref: kiharamarconepauly2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: wPTT2, PTT2
@@ -1254,10 +1286,14 @@
     facts: "C_NN <W wPTT2 <W PTT2. LPO × wPTT2 ≰W wPTT2. NON × wPTT2 ≤W wPTT2. UC_NN × PTT2 ≡W PTT2. TC_NN <W wPTT2. Finite parallelizations: PTT2* ≡W Det_Σ* ≡W TC_NN*."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added perfect2 (PTT2; id ptt2 is the polarized tree theorem) and wperfect2 (minor) with Corollaries 7.5-7.19, Propositions 7.15-7.20, 8.2.
 - id: kiharamarconepauly2020-46c4d668
   ref: kiharamarconepauly2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: "[if S_{Σ11} then C_NN else UC_NN], χ_{Π11}, TUC_NN"
@@ -1267,6 +1303,10 @@
     facts: PTT2 and Det_Σ are reducible to it, and it is strictly below TC_NN × C_NN. χ_{Π11} is not reducible to the parallelization of TC_NN (Corollary 8.6). A single-valued f is below the parallelization of TC_NN iff it is below UC_NN (Theorem 8.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added chipi11; the if-then-else problem and TUC_NN not added.
 - id: kowalik2024-4c71b220
   ref: kowalik2024
   date: 2026-11-03
@@ -2996,7 +3036,7 @@
 - id: brattkagherardiholzl2015-d042bea6
   ref: brattkagherardiholzl2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: ε-WWKL
@@ -3006,10 +3046,14 @@
     facts: ε-WWKL ≤W δ-WWKL iff ε ≥ δ (Theorem 10.1/Corollary 10.2). C_n ≰W 1/n-WWKL. WWKL ≤W ε-WWKL ∗ C_N, and WWKL^Δ ≡W ε-WWKL ∗ C_N for ε ∈ [0,1). Single-valued functions below (1/2-WWKL)^(n) are computable (Corollary 13.3). LPO ≤W ε-WWKL′ for ε < 1/2. 1/2-WWKL^Δ <W WWKL^Δ, and WWKL^Δ ≰W 1/2-WWKL^(n).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added wwkl-half (½-WWKL, minor) as representative of the ε-WWKL family, with Corollaries 10.3 and 10.6.
 - id: brattkagherardiholzl2015-54858908
   ref: brattkagherardiholzl2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: ∗-WWKL
@@ -3019,10 +3063,14 @@
     facts: (1−∗)-WWKL <W ε-WWKL <W ∗-WWKL <W WWKL (Corollaries 10.6, 10.10). PCC_[0,1] ≰W ∗-WWKL and AUC_[0,1] ≰W ∗-WWKL.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added wwkl-star with Corollaries 10.6, 10.10, Proposition 10.9, Theorem 16.6.
 - id: brattkagherardiholzl2015-92896b67
   ref: brattkagherardiholzl2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (1−∗)-WWKL
@@ -3032,6 +3080,10 @@
     facts: (1−∗)-WWKL <W ε-WWKL for every ε ∈ (0,1).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added wwkl-lstar (minor) with Corollary 10.6.
 - id: brattkagherardiholzl2015-9fc426d7
   ref: brattkagherardiholzl2015
   date: 2026-11-03
@@ -3120,7 +3172,7 @@
 - id: brattkagherardiholzl2015-e59ff1f3
   ref: brattkagherardiholzl2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: PC_{N^N}
@@ -3130,10 +3182,14 @@
     facts: PC_N ≤sW PC_{N×2^N} ≤sW PC_{N^N}. Everything below PC_{N^N}^(n) is probabilistic, so WKL ≰W PC_{N^N}^(n). It is open whether WWKL′ ≤W PC_{N^N}.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: PC on Baire space appears only in the outlook of Section 14."
 - id: brattkagherardiholzl2015-5f3523b4
   ref: brattkagherardiholzl2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: PCL_X
@@ -3143,6 +3199,10 @@
     facts: (P_I C_X)′ ≡sW P_I CL_X; WWKL′ ≡sW PCL_{2^N} ≡sW PCL_[0,1].
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: PCL_{2^N} ≡sW WWKL′ (Corollary 9.10), already in the zoo as wwkl.jump."
 - id: marconevalenti2020-260c9710
   ref: marconevalenti2020
   date: 2026-11-03
@@ -3191,7 +3251,7 @@
 - id: marconevalenti2020-017e87e7
   ref: marconevalenti2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Σ01−RT
@@ -3201,10 +3261,14 @@
     facts: Not ≤_W C_{N^N} (Cor. 4.15); wFindHSΠ01 <_W Σ01-RT (Cor. 4.16); TC_{N^N} ≤_W C_{2^N} ∗ Σ01-RT and χ_{Π11} <_W LPO ∗ Σ01-RT (Prop. 4.14); Σ01-RT ≰_W sTC_{N^N} × lim^{(n)} for all n (Thm. 4.20); Σ01-RT <_W NHA × Σ01-RT (Cor. 4.22); TC_{N^N} × C_{N^N} ≰_W f × Σ01-RT for hyperarithmetic f ≤_W C_{N^N} (Prop. 4.23); TC_{N^N} <_aW Σ01-RT (Cor. 5.13); Σ01-RT <_aW FindHSΣ01 (Thm. 5.14); (Σ01-RT)* ≡_aW TC_{N^N}*; id_2 not strongly Weihrauch reducible to it (Prop. 4.29); every computable instance has a solution <_T Kleene's O (Cor. 6.7).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added sigma01-rt with Proposition 4.14, Corollaries 4.15-4.16; arithmetic-Weihrauch results (Section 5) not entered (reduction not in the zoo).
 - id: marconevalenti2020-ebb735d6
   ref: marconevalenti2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: FindHSΣ01
@@ -3214,10 +3278,14 @@
     facts: Closed under parallel product, a cylinder (Prop. 4.24, Cor. 4.25); sTC_{N^N} ≤_W FindHSΣ01, χ_{Π11} <_W FindHSΣ01 (Prop. 4.26); TC*_{N^N} <_W FindHSΣ01 (Cor. 4.27); C_{N^N} ∗ Σ01-RT ≤_W FindHSΣ01 (Thm. 4.28).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added findhs-sigma01 with Proposition 4.26, Corollary 4.27, Theorem 4.28.
 - id: marconevalenti2020-311b9d45
   ref: marconevalenti2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: FindHSΠ01
@@ -3227,10 +3295,14 @@
     facts: C_{N^N} ≡_sW FindHSΔ01 ≡_sW FindHSΠ01 (Thm. 4.7).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added findhs-pi01 (minor) ≡sW C_NN (Theorem 4.7).
 - id: marconevalenti2020-d58eadc2
   ref: marconevalenti2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: wFindHSΣ01
@@ -3240,10 +3312,14 @@
     facts: UC_{N^N} ≡_W wFindHSΣ01 ≡_W wFindHSΔ01 (Thm. 4.5); not strongly above id_2 (Prop. 4.29); its total continuation is ≤_W ATR_2 (Prop. 4.13).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added wfindhs-sigma01 (minor) ≡W UC_NN (Theorem 4.5).
 - id: marconevalenti2020-8e05d53d
   ref: marconevalenti2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: wFindHSΠ01
@@ -3253,10 +3329,14 @@
     facts: UC_{N^N} <_W wFindHSΠ01 ≤_W C_{N^N} ≡_W C_{2^N} ∗ wFindHSΠ01 (Prop. 4.8, 4.9); closed under product (Prop. 4.10); \hat{Σ11-C^cof_N} ≤_sW wFindHSΠ01 (Thm. 4.11); not ≤_W ATR_2 (Cor. 4.12); ≡_aW C_{N^N} (Cor. 5.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added wfindhs-pi01 with Propositions 4.8, 4.9, Corollary 4.16; ATR_2 not in the zoo.
 - id: marconevalenti2020-a9ae5f32
   ref: marconevalenti2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Δ01−RT
@@ -3266,10 +3346,14 @@
     facts: UC_{N^N} ≡_W Δ01-RT (Thm. 4.6); not strongly above id_2.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added delta01-rt (minor) ≡W UC_NN (Theorem 4.6).
 - id: marconevalenti2020-90737b0c
   ref: marconevalenti2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: FindHSΔ01
@@ -3279,10 +3363,14 @@
     facts: ≡_sW C_{N^N} (Thm. 4.7).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added findhs-delta01 (minor) ≡sW C_NN (Theorem 4.7).
 - id: marconevalenti2020-3dc8f046
   ref: marconevalenti2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: wFindHSΔ01
@@ -3292,10 +3380,14 @@
     facts: ≡_W UC_{N^N} (Thm. 4.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added wfindhs-delta01 (minor) ≡W UC_NN (Theorem 4.5).
 - id: marconevalenti2020-d7dff10d
   ref: marconevalenti2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: sTC_{N^N}
@@ -3305,10 +3397,14 @@
     facts: TC_{N^N} <_W sTC_{N^N}; \hat{TC_{N^N}} |_W sTC_{N^N} (Prop. 4.19); TC_{N^N} ≡_aW sTC_{N^N} (Thm. 5.8); f ≤_aW TC_{N^N} iff f ≤_W sTC_{N^N} × lim^{(n)} for some n (Thm. 5.12).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added stcnn (minor) with the remarks after Definition 4.17 and Proposition 4.19.
 - id: marconevalenti2020-59a70bc4
   ref: marconevalenti2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: χ_{Π11}
@@ -3318,10 +3414,14 @@
     facts: Not ≤_W C_{N^N}, not ≤_W TC*_{N^N} (cited from [18]).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added chipi11 with KMP Section 7 and Corollary 8.6.
 - id: marconevalenti2020-cb489d6c
   ref: marconevalenti2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: NHA
@@ -3331,6 +3431,10 @@
     facts: NHA ≤_W C_{N^N} (cited [18, Cor. 3.6]).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added nha (minor) with KMP Corollary 3.6.
 - id: brattkachirache2026-ece91e96
   ref: brattkachirache2026
   date: 2026-11-03
@@ -3826,7 +3930,7 @@
 - id: gohpaulyvalenti2021-feb4e35a
   ref: gohpaulyvalenti2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Π11−Bound
@@ -3836,10 +3940,14 @@
     facts: Π11-Bound <_W DS; first-order part of DS is ≡_W Π11-Bound (Thm 4.10); Det_N(Π11-Bound) ≡_W C_N; RT^1_N <_W Π11-Bound; Π11-Bound not ≤_W C_N; UC_{N^N} <_W parallelization of Π11-Bound.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added pi11bound with Propositions 4.8, 4.24 and Theorem 4.10.
 - id: gohpaulyvalenti2021-3327072a
   ref: gohpaulyvalenti2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: RT1N
@@ -3849,10 +3957,14 @@
     facts: RT^1_N <_W DS; a pointwise-finite problem is ≤_W DS iff it is ≤_W RT^1_N; problems with codomain k are ≤_W DS iff ≤_W RT^1_k.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added rt1n with Proposition 4.24.
 - id: gohpaulyvalenti2021-42b96074
   ref: gohpaulyvalenti2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Γ-DS, Γ-BS
@@ -3862,10 +3974,14 @@
     facts: Γ^0_{k+1}-DS ≡_W Γ^0_1-DS ∗ lim^[k]; Δ^0_k-DS <_W Δ^0_{k+1}-DS; Π^0_k-DS ≡ Δ^0_{k+1}-DS ≡ Σ^0_{k+1}-DS; Σ^0_k-DS ≡ Δ^0_k-DS; Det(Δ^0_k-DS) ≡ lim^[k]; LPO^(k) ≤_W Σ^0_k-BS, so Σ^0_k-BS ≰_W Σ^0_k-DS; Δ^1_1-DS ≡ DS ∗ UC_{N^N}; Δ^1_1-DS <_W Σ^1_1-DS <_W C_{N^N}; ATR_2 |_W Σ^1_1-DS; Π^1_1-CA ≤_W Σ^1_1-BS and Π^1_1-CA ≤_W Π^1_1-DS; Σ^1_1-DS <_W Σ^1_1-BS.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added sigma11-ds and sigma11-bs (minor) with Proposition 5.19, Theorems 5.22-5.23, Corollary 5.24; arithmetic levels Γ-DS not added.
 - id: gohpaulyvalenti2021-a6cc1219
   ref: gohpaulyvalenti2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: General-SADS
@@ -3875,10 +3991,14 @@
     facts: LPO′ ≤_W FindS^{ω,n+ω*} (a restriction of General-SADS); General-SADS |_W DS.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: General-SADS and its restrictions are studied only in Section 4.2."
 - id: gohpaulyvalenti2021-22c856e5
   ref: gohpaulyvalenti2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: FindS^X, FindC^X_Y
@@ -3888,10 +4008,14 @@
     facts: LPO′ ≤_W FindS^{ω,n+ω*}; FindS^{ω,n+ω*} |_W DS; FindC^{ω,n+ω*} ≤_W DS.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: FindS/FindC families studied only in Section 4.2."
 - id: gohpaulyvalenti2021-ced105f0
   ref: gohpaulyvalenti2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Π11-CA (problem)
@@ -3901,10 +4025,14 @@
     facts: C_{N^N} <_W Π^1_1-CA ≤_W Σ^1_1-BS; Π^1_1-CA ≤_W Π^1_1-DS.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Entered as chipi11.par (Section 2: Π11-CA ≡W parallelization of χ_Π11), with the proof of Corollary 5.24 and Theorem 5.23."
 - id: gohpaulyvalenti2021-0318fb9c
   ref: gohpaulyvalenti2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Σ11-CN
@@ -3914,10 +4042,14 @@
     facts: First-order part of C_{N^N} ≡_W Σ^1_1-C_N ≡_W first-order part of Σ^1_1-DS; parallelization of Σ^1_1-C_N ≤_W Σ^1_1-DS.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added sigma11-cn (Proposition 2.4).
 - id: gohpaulyvalenti2021-9d67b034
   ref: gohpaulyvalenti2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: ATR2
@@ -3927,6 +4059,10 @@
     facts: ATR_2 |_W Σ^1_1-DS (Thm 5.22).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added atr2 (from Goh 2019) with Theorem 5.22.
 - id: diener2018-4eeb0e09
   ref: diener2018
   date: 2026-11-03
@@ -13754,7 +13890,7 @@
 - id: goh2019b-4bf8fc4a
   ref: goh2019b
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: CWO / WCWO
@@ -13764,10 +13900,14 @@
     facts: CWO ≡sW UC_{N^N} ≡sW ATR (cited). CWO ≡W ATR ≡W WCWO.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: CWO ≡W WCWO ≡W UC_NN (already the degree of ucnn)."
 - id: goh2019b-b0a4269a
   ref: goh2019b
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: WQO_LO, WQO_WO, NDS_WO, NIAC_WO
@@ -13777,10 +13917,14 @@
     facts: WQO_WO ≤W ATR. ATR ≤c NDS_WO and ATR ≤c NIAC_WO. UC_{N^N} <c WQO_LO <W C_{N^N}. C_{N^N} is not arithmetically Weihrauch reducible to WQO_LO. WQO_LO has a computable instance with no hyperarithmetic solution.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: "Not added: WQO_LO and variants studied only here; the c and arithmetic Weihrauch results are not in W."
 - id: goh2019b-4cffc2fd
   ref: goh2019b
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: CWO2, WCWO2, ATR2
@@ -13790,10 +13934,14 @@
     facts: UC_{N^N} <W P <W C_{N^N} for each of them. None is ≤c UC_{N^N}. Each has a computable instance with no hyperarithmetic solution. CWO2 ≤W ATR2.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added atr2, cwo2, wcwo2 (minor) with Corollaries 3.8-3.9 and Theorem 3.14.
 - id: goh2019b-b3099a77
   ref: goh2019b
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: KDT
@@ -13803,10 +13951,14 @@
     facts: KDT ≤W C_{N^N}, while C_{N^N} is not arithmetically Weihrauch reducible to KDT. KDT is parallelizable. ATR ≤W KDT. ATR2 ≤W LPO ∗ KDT. KDT is arithmetically Weihrauch equivalent to ATR2. LPO ≤W KDT.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added kdt with Propositions 3.17-3.18, Theorems 3.33 and 3.39; arithmetic Weihrauch results not entered.
 - id: goh2019b-f4c71f65
   ref: goh2019b
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: finite-Σ11-AC0
@@ -13816,10 +13968,14 @@
     facts: ABW0 implies it over IΣ¹₁. It does not imply INDEC0, Δ¹₁-CA0 or Σ¹₁-AC0. There is an ω-model of Δ¹₁-CA not satisfying it, so neither Δ¹₁-CA0 nor unique-Σ¹₁-AC0 implies it.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added finite-sigma11-ac (minor) with Corollary 6.10 and Theorem 6.11.
 - id: goh2019b-ace2c10f
   ref: goh2019b
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: ABW0
@@ -13829,10 +13985,14 @@
     facts: Implies finite-Σ¹₁-AC0 over IΣ¹₁. There is an ω-model of ABW not satisfying IRT.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added abw (minor) with Theorem 7.18; Proposition 6.8 needs IΣ11, not in the zoo.
 - id: goh2019b-1c4c1614
   ref: goh2019b
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: IRT / WIRT
@@ -13842,10 +14002,14 @@
     facts: ACA0 proves WIRT. RCA0 does not prove WIRT, even for highly recursive graphs. RCA0 proves WIRT for trees. Σ¹₁-AC0 proves IRT. IRT implies ACA0, and implies ABW0 over IΣ¹₁. IRT is a theorem of hyperarithmetic analysis. Nonuniform-WIRT is equivalent to ACA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Added irt and wirt (minor) with Theorem 7.5, Propositions 7.8, 7.11, 7.14, 7.15; question wirt-aca.
 - id: goh2019b-dea1ed67
   ref: goh2019b
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Σ11-AC0, Δ11-CA0, unique-Σ11-AC0, INDEC0
@@ -13855,3 +14019,7 @@
     facts: There is an ω-model of Δ¹₁-CA not satisfying finite-Σ¹₁-AC.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: ludovic
+    note: Δ11-CA0 and Σ11-AC0 already in the zoo; Theorem 6.11 entered on finite-sigma11-ac.

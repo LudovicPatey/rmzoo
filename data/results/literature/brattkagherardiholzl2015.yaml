@@ -18,3 +18,12 @@
 - { type: separation, from: auc.fin, to: pcc, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 17.8 } ] }
 - { type: separation, from: pcc, to: auc.fin, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: "Section 17, before Corollary 17.8 (from Corollary 17.5)" } ] }
 - { type: equivalence, from: ldl, to: cn, over: sw, refs: [ { ref: brattkagherardiholzl2015, loc: Theorem 11.2 } ] }
+- { type: implication, from: wwkl-half, to: wwkl-lstar, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 10.6 } ] }
+- { type: separation, from: wwkl-lstar, to: wwkl-half, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 10.6 } ] }
+- { type: implication, from: wwkl-star, to: wwkl-half, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 10.6 } ] }
+- { type: separation, from: wwkl-half, to: wwkl-star, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 10.6 } ] }
+- { type: implication, from: wwkl, to: wwkl-star, over: sw, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 10.6 } ] }
+- { type: separation, from: wwkl-star, to: wwkl, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 10.10 } ] }
+- { type: separation, from: wwkl-star, to: pcc, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Proposition 10.9 } ] }
+- { type: separation, from: wwkl-star, to: auc, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Theorem 16.6 } ] }
+- { type: separation, from: wwkl-half, to: llpo, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 10.3 } ] }

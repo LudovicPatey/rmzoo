@@ -371,3 +371,427 @@
   solution: A word $w$ with $\mu(A \cap w2^\mathbb{N}) \geq (1 - 2^{-k}) 2^{-|w|}$.
   refs:
     - { ref: brattkagherardiholzl2015, role: rm, loc: "Lemma 11.1, Theorem 11.2" }
+
+# Quantitative versions of WWKL (Brattka, Gherardi, Hölzl 2015, Sections 8 and 10).
+# ε-WWKL is a family indexed by ε ∈ [0,1], strictly decreasing in ε (Corollary 10.2);
+# only ε = 1/2 is entered.
+- id: wwkl-half
+  label: '\tfrac{1}{2}\text{-}\mathsf{WWKL}'
+  name: Weak weak König's lemma with measure above 1/2
+  kind: problem
+  minor: true
+  tags: [ weihrauch, randomness ]
+  aliases: [ 1/2-WWKL ]
+  definition: >
+    $\mathsf{WWKL}$ restricted to binary trees $T$ with $\mu([T]) > 1/2$ (an instance of $\varepsilon$-$\mathsf{WWKL}$;
+    these problems get strictly weaker as $\varepsilon$ grows).
+  instance: 'A binary tree $T$ with $\mu([T]) > 1/2$.'
+  solution: An infinite path through $T$.
+  refs: [ { ref: brattkagherardiholzl2015, role: origin, loc: Definition 8.7 } ]
+
+- id: wwkl-star
+  label: '{*}\text{-}\mathsf{WWKL}'
+  name: Star weak weak König's lemma
+  kind: problem
+  tags: [ weihrauch, randomness ]
+  aliases: [ "*-WWKL" ]
+  definition: >
+    Given $n$ and a binary tree $T$ with $\mu([T]) > 2^{-n}$, find an infinite path through $T$ (the uniform version
+    of “$2^{-n}$-$\mathsf{WWKL}$ for every $n$”).
+  instance: 'A number $n$ and a binary tree $T$ with $\mu([T]) > 2^{-n}$.'
+  solution: An infinite path through $T$.
+  refs: [ { ref: brattkagherardiholzl2015, role: origin, loc: Definition 10.4 } ]
+
+- id: wwkl-lstar
+  label: '(1-{*})\text{-}\mathsf{WWKL}'
+  name: Lower star weak weak König's lemma
+  kind: problem
+  minor: true
+  tags: [ weihrauch, randomness ]
+  aliases: [ "(1-*)-WWKL" ]
+  definition: >
+    Given a sequence of binary trees $(T_n)_n$ with $\mu([T_n]) > 1 - 2^{-n}$ for every $n$, find some $n$ and an
+    infinite path through $T_n$.
+  instance: 'A sequence $(T_n)_n$ of binary trees with $\mu([T_n]) > 1 - 2^{-n}$.'
+  solution: 'A pair $(n, p)$ with $p \in [T_n]$.'
+  refs: [ { ref: brattkagherardiholzl2015, role: origin, loc: Definition 10.5 } ]
+
+# Hyperarithmetic-level problems (Kihara, Marcone, Pauly 2020; Marcone, Valenti 2021).
+- id: chipi11
+  label: '\chi_{\Pi^1_1}'
+  name: Characteristic function of a Π¹₁-complete set
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ χΠ11, chi_Pi11, WF ]
+  definition: >
+    Given a tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$, decide whether $T$ is well-founded. A single-valued
+    function which is not effectively Borel measurable, hence not Weihrauch reducible to $\mathsf{C}_{\mathbb{N}^{\mathbb{N}}}$.
+  instance: A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$.
+  solution: 1 if $T$ is well-founded, 0 otherwise.
+  refs:
+    - { ref: kiharamarconepauly2020, role: rm, loc: "Section 7, before Observation 7.4" }
+    - { ref: marconevalenti2020, role: rm, loc: Section 2.2 }
+
+- id: nha
+  label: '\mathsf{NHA}'
+  name: Non-hyperarithmeticity problem
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: Given $p \in \mathbb{N}^{\mathbb{N}}$, find some $q$ that is not hyperarithmetical relative to $p$.
+  instance: 'A point $p \in \mathbb{N}^{\mathbb{N}}$.'
+  solution: 'A point $q$ not hyperarithmetical in $p$.'
+  refs: [ { ref: kiharamarconepauly2020, role: origin, loc: "Section 3, before Corollary 3.6" } ]
+
+- id: stcnn
+  label: '\mathsf{sTC}_{\mathbb{N}^\mathbb{N}}'
+  name: Strong total continuation of choice on Baire space
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  aliases: [ sTCNN ]
+  definition: >
+    Given a tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$, output a bit $b$ telling whether $T$ is ill-founded and, if it is,
+    an infinite path through $T$.
+  instance: A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$.
+  solution: '$(0, x)$ for any $x$ if $[T] = \emptyset$; $(1, x)$ with $x \in [T]$ otherwise.'
+  refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.17 } ]
+
+- id: sigma01-rt
+  label: '\Sigma^0_1\text{-}\mathsf{RT}'
+  name: Open Ramsey theorem (Weihrauch problem)
+  kind: problem
+  tags: [ weihrauch, ramsey ]
+  aliases: [ Σ01-RT ]
+  definition: >
+    Given an open set $P \subseteq [\mathbb{N}]^{\mathbb{N}}$, find a homogeneous solution: an infinite set $H$ whose
+    infinite subsets are all in $P$ or all outside $P$. The problem form of the open Ramsey theorem (equivalent to $\mathsf{ATR}_0$).
+  instance: 'An open set $P \subseteq [\mathbb{N}]^{\mathbb{N}}$.'
+  solution: 'An infinite $H$ with $[H]^{\mathbb{N}} \subseteq P$ or $[H]^{\mathbb{N}} \cap P = \emptyset$.'
+  refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.1 } ]
+
+- id: findhs-sigma01
+  label: '\mathsf{FindHS}_{\Sigma^0_1}'
+  name: Strong open Ramsey theorem (open side)
+  kind: problem
+  tags: [ weihrauch, ramsey ]
+  aliases: [ FindHSΣ01 ]
+  definition: >
+    Given an open set $P \subseteq [\mathbb{N}]^{\mathbb{N}}$ with a homogeneous solution landing in $P$, find such a solution.
+  instance: 'An open set $P$ having some $H$ with $[H]^{\mathbb{N}} \subseteq P$.'
+  solution: 'An infinite $H$ with $[H]^{\mathbb{N}} \subseteq P$.'
+  refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.1 } ]
+
+- id: findhs-pi01
+  label: '\mathsf{FindHS}_{\Pi^0_1}'
+  name: Strong open Ramsey theorem (closed side)
+  kind: problem
+  minor: true
+  tags: [ weihrauch, ramsey ]
+  aliases: [ FindHSΠ01 ]
+  definition: >
+    Given an open set $P \subseteq [\mathbb{N}]^{\mathbb{N}}$ with a homogeneous solution avoiding $P$, find such a solution.
+  instance: 'An open set $P$ having some $H$ with $[H]^{\mathbb{N}} \cap P = \emptyset$.'
+  solution: 'An infinite $H$ with $[H]^{\mathbb{N}} \cap P = \emptyset$.'
+  refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.1 } ]
+
+- id: wfindhs-sigma01
+  label: '\mathsf{wFindHS}_{\Sigma^0_1}'
+  name: Weak open Ramsey theorem (open side)
+  kind: problem
+  minor: true
+  tags: [ weihrauch, ramsey ]
+  aliases: [ wFindHSΣ01 ]
+  definition: >
+    $\mathsf{FindHS}_{\Sigma^0_1}$ restricted to open sets $P$ all of whose homogeneous solutions land in $P$.
+  instance: 'An open set $P$ such that every homogeneous solution $H$ has $[H]^{\mathbb{N}} \subseteq P$.'
+  solution: 'A homogeneous solution of $P$.'
+  refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.1 } ]
+
+- id: wfindhs-pi01
+  label: '\mathsf{wFindHS}_{\Pi^0_1}'
+  name: Weak open Ramsey theorem (closed side)
+  kind: problem
+  tags: [ weihrauch, ramsey ]
+  aliases: [ wFindHSΠ01 ]
+  definition: >
+    $\mathsf{FindHS}_{\Pi^0_1}$ restricted to open sets $P$ with no homogeneous solution landing in $P$. It lies strictly
+    above $\mathsf{UC}_{\mathbb{N}^{\mathbb{N}}}$, below $\mathsf{C}_{\mathbb{N}^{\mathbb{N}}}$, and not below $\mathsf{ATR}_2$.
+  instance: 'An open set $P$ such that every homogeneous solution $H$ has $[H]^{\mathbb{N}} \cap P = \emptyset$.'
+  solution: 'A homogeneous solution of $P$.'
+  refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.1 } ]
+
+- id: delta01-rt
+  label: '\Delta^0_1\text{-}\mathsf{RT}'
+  name: Clopen Ramsey theorem (Weihrauch problem)
+  kind: problem
+  minor: true
+  tags: [ weihrauch, ramsey ]
+  aliases: [ Δ01-RT ]
+  definition: >
+    Given a clopen set $D \subseteq [\mathbb{N}]^{\mathbb{N}}$ (by names of it and its complement), find a homogeneous solution.
+  instance: 'A clopen set $D \subseteq [\mathbb{N}]^{\mathbb{N}}$.'
+  solution: 'An infinite $H$ with $[H]^{\mathbb{N}} \subseteq D$ or $[H]^{\mathbb{N}} \cap D = \emptyset$.'
+  refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.2 } ]
+
+- id: findhs-delta01
+  label: '\mathsf{FindHS}_{\Delta^0_1}'
+  name: Strong clopen Ramsey theorem
+  kind: problem
+  minor: true
+  tags: [ weihrauch, ramsey ]
+  aliases: [ FindHSΔ01 ]
+  definition: Given a clopen set $D$ with a homogeneous solution landing in $D$, find such a solution.
+  instance: 'A clopen set $D$ having some $H$ with $[H]^{\mathbb{N}} \subseteq D$.'
+  solution: 'An infinite $H$ with $[H]^{\mathbb{N}} \subseteq D$.'
+  refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.2 } ]
+
+- id: wfindhs-delta01
+  label: '\mathsf{wFindHS}_{\Delta^0_1}'
+  name: Weak clopen Ramsey theorem
+  kind: problem
+  minor: true
+  tags: [ weihrauch, ramsey ]
+  aliases: [ wFindHSΔ01 ]
+  definition: $\mathsf{FindHS}_{\Delta^0_1}$ restricted to clopen sets $D$ all of whose homogeneous solutions land in $D$.
+  instance: 'A clopen set $D$ such that every homogeneous solution $H$ has $[H]^{\mathbb{N}} \subseteq D$.'
+  solution: 'A homogeneous solution of $D$.'
+  refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.2 } ]
+
+- id: sigma11-wkl
+  label: '\Sigma^1_1\text{-}\mathsf{WKL}'
+  name: Σ¹₁ weak König's lemma
+  kind: problem
+  tags: [ weihrauch, compactness ]
+  aliases: [ Σ11-WKL ]
+  definition: >
+    Given a $\Sigma^1_1$ code of an infinite binary tree $T \subseteq 2^{<\omega}$, find an infinite path through $T$.
+    Weihrauch equivalent to $\Pi^1_1$ separation, to $\Pi^1_1\text{-}\mathsf{DNC}_2$ and to the parallelization of
+    $\Sigma^1_1$ choice on $\{0,1\}$; strictly between $\mathsf{UC}_{\mathbb{N}^\mathbb{N}}$ and $\mathsf{C}_{\mathbb{N}^\mathbb{N}}$.
+  instance: A $\Sigma^1_1$ code of an infinite binary tree $T$.
+  solution: An infinite path through $T$.
+  refs: [ { ref: kiharamarconepauly2020, role: origin, loc: "Definition 4.2, Theorem 4.3" } ]
+
+- id: pi11-sep-w
+  label: '\Pi^1_1\text{-}\mathsf{Sep}'
+  name: Π¹₁ separation (Weihrauch problem)
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  aliases: [ Π11-Sep ]
+  definition: Given $\Pi^1_1$ codes of disjoint sets $A, B \subseteq \mathbb{N}$, find a set $C$ with $A \subseteq C$ and $B \cap C = \emptyset$.
+  instance: 'Two disjoint $\Pi^1_1$ sets $A, B \subseteq \mathbb{N}$, given by codes.'
+  solution: A set separating $A$ from $B$.
+  refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 4.1 } ]
+
+- id: sigma11-cn
+  label: '\Sigma^1_1\text{-}\mathsf{C}_{\mathbb{N}}'
+  name: Σ¹₁ choice on the natural numbers
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ Σ11-CN ]
+  definition: >
+    Given a $\Sigma^1_1$ code of a nonempty set $A \subseteq \mathbb{N}$, find an element of $A$. Weihrauch equivalent to the
+    first-order part of $\mathsf{C}_{\mathbb{N}^\mathbb{N}}$.
+  instance: A $\Sigma^1_1$ code of a nonempty $A \subseteq \mathbb{N}$.
+  solution: An element of $A$.
+  refs:
+    - { ref: kiharamarconepauly2020, role: origin, loc: "Section 3, after Definition 3.1" }
+    - { ref: gohpaulyvalenti2021, role: rm, loc: Proposition 2.4 }
+
+- id: sigma11-wwkl
+  label: '\Sigma^1_1\text{-}\mathsf{WWKL}'
+  name: Σ¹₁ weak weak König's lemma
+  kind: problem
+  minor: true
+  tags: [ weihrauch, randomness ]
+  aliases: [ Σ11-WWKL ]
+  definition: Given a $\Sigma^1_1$ code of a binary tree $T$ with $\mu([T]) > 0$, find an infinite path through $T$.
+  instance: A $\Sigma^1_1$ code of a binary tree $T$ with $\mu([T]) > 0$.
+  solution: An infinite path through $T$.
+  refs: [ { ref: kiharamarconepauly2020, role: origin, loc: "Section 4.2, before Theorem 4.9" } ]
+
+- id: perfect1
+  label: '\mathsf{PTT}_1'
+  name: One-sided perfect tree theorem
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  aliases: [ PTT1 ]
+  definition: Given a tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$ with uncountably many paths, find a perfect subtree of $T$.
+  instance: A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$ with $[T]$ uncountable.
+  solution: A perfect subtree of $T$.
+  refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 6.2 } ]
+
+- id: list-baire
+  label: '\mathsf{List}'
+  name: Listing countable closed subsets of Baire space
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  aliases: [ wList ]
+  definition: >
+    Given a countable closed set $A \subseteq \mathbb{N}^\mathbb{N}$, enumerate its elements, together with its cardinality
+    (the weak version $\mathsf{wList}$, without the cardinality, is equivalent).
+  instance: A countable closed set $A \subseteq \mathbb{N}^\mathbb{N}$.
+  solution: 'A pair $n\langle p_0, p_1, \dots \rangle$: if $n = 0$ the $p_i$ are distinct and $A = \{p_i : i \in \mathbb{N}\}$, otherwise $|A| = n - 1$ and $A = \{p_i : i < n - 1\}$.'
+  refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 6.1 } ]
+
+- id: findws-sigma
+  label: '\mathsf{FindWS}_\Sigma'
+  name: Winning strategies for the open player
+  kind: problem
+  minor: true
+  tags: [ weihrauch, determinacy ]
+  aliases: [ FindWSΣ ]
+  definition: Given an open game on $\mathbb{N}^\mathbb{N}$ in which Player 2 has no winning strategy, find a winning strategy for Player 1 (the open player).
+  instance: 'An open set $W \subseteq \mathbb{N}^\mathbb{N}$ (the winning condition of Player 1) such that Player 2 has no winning strategy.'
+  solution: A winning strategy for Player 1.
+  refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 6.18 } ]
+
+- id: findws-pi
+  label: '\mathsf{FindWS}_\Pi'
+  name: Winning strategies for the closed player
+  kind: problem
+  minor: true
+  tags: [ weihrauch, determinacy ]
+  aliases: [ FindWSΠ ]
+  definition: Given an open game on $\mathbb{N}^\mathbb{N}$ in which Player 1 has no winning strategy, find a winning strategy for Player 2 (the closed player).
+  instance: 'An open set $W \subseteq \mathbb{N}^\mathbb{N}$ such that Player 1 has no winning strategy.'
+  solution: A winning strategy for Player 2.
+  refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 6.18 } ]
+
+- id: det-sigma
+  label: '\mathsf{Det}_\Sigma'
+  name: Open determinacy (Nash equilibria of open games)
+  kind: problem
+  tags: [ weihrauch, determinacy ]
+  aliases: [ DetΣ ]
+  definition: >
+    Given an open game on $\mathbb{N}^\mathbb{N}$, find a pair of strategies $(\sigma, \tau)$ such that either $\sigma$ is winning
+    for Player 1 or $\tau$ is winning for Player 2, without being told which player wins.
+  instance: 'An open set $W \subseteq \mathbb{N}^\mathbb{N}$, the winning condition of Player 1.'
+  solution: 'A pair of strategies $(\sigma, \tau)$, one of which is winning.'
+  refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 7.3 } ]
+
+- id: perfect2
+  label: '\mathsf{PTT}_2'
+  name: Two-sided perfect tree theorem
+  kind: problem
+  tags: [ weihrauch ]
+  definition: >
+    Given a tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$, find either a perfect subtree of $T$ or a listing of $[T]$ together
+    with its cardinality.
+  instance: A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$.
+  solution: 'A pair $(T'', n\langle p_0, p_1, \dots \rangle)$ such that $T''$ is a perfect subtree of $T$, or the second component lists $[T]$ as in $\mathsf{List}$.'
+  refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 7.2 } ]
+
+- id: wperfect2
+  label: '\mathsf{wPTT}_2'
+  name: Weak two-sided perfect tree theorem
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: Like $\mathsf{PTT}_2$, with a listing of $[T]$ that carries no information on its cardinality.
+  instance: A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$.
+  solution: 'A pair $(T'', \langle b_0 p_0, b_1 p_1, \dots \rangle)$ such that $T''$ is a perfect subtree of $T$ or $[T] = \{p_i : b_i \neq 0\}$.'
+  refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 7.1 } ]
+
+# Descending sequences, Π¹₁ bounds and two-sided ATR (Goh, Pauly, Valenti 2021; Goh 2019).
+- id: rt1n
+  label: '\mathsf{RT}^1_{\mathbb{N}}'
+  name: Pigeonhole principle without a bound on the colors
+  kind: problem
+  tags: [ weihrauch, ramsey ]
+  aliases: [ RT1N ]
+  definition: >
+    Given a coloring $c : \mathbb{N} \to k$ for some $k$ which is not given, find an infinite homogeneous set.
+  instance: 'A coloring $c : \mathbb{N} \to k$ for some $k$ (without $k$).'
+  solution: An infinite set on which $c$ is constant.
+  refs: [ { ref: gohpaulyvalenti2021, role: rm, loc: Definition 4.23 } ]
+
+- id: pi11bound
+  label: '\Pi^1_1\text{-}\mathsf{Bound}'
+  name: Bound for finite Π¹₁ sets
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ Π11-Bound, Σ11-Ccof_N ]
+  definition: >
+    Given a finite $\Pi^1_1$ subset of $\mathbb{N}$, find an upper bound for it. Strongly Weihrauch equivalent to
+    $\Sigma^1_1$ choice on $\mathbb{N}$ for cofinite sets, and Weihrauch equivalent to the first-order part of $\mathsf{DS}$.
+  instance: 'A finite $\Pi^1_1$ set $A \subseteq \mathbb{N}$.'
+  solution: 'A number $n$ with $m \notin A$ for every $m \geq n$.'
+  refs: [ { ref: gohpaulyvalenti2021, role: origin, loc: "Definition 4.7, Theorem 4.10" } ]
+
+- id: sigma11-ds
+  label: '\Sigma^1_1\text{-}\mathsf{DS}'
+  name: Descending sequences in Σ¹₁ linear orders
+  kind: problem
+  tags: [ weihrauch, orders ]
+  aliases: [ Σ11-DS ]
+  definition: '$\mathsf{DS}$ for ill-founded linear orders given by a $\Sigma^1_1$ code.'
+  instance: An ill-founded linear order given by a $\Sigma^1_1$ code.
+  solution: An infinite descending sequence.
+  refs: [ { ref: gohpaulyvalenti2021, role: origin, loc: Definition 5.1 } ]
+
+- id: sigma11-bs
+  label: '\Sigma^1_1\text{-}\mathsf{BS}'
+  name: Bad sequences in Σ¹₁ quasi-orders
+  kind: problem
+  minor: true
+  tags: [ weihrauch, orders ]
+  aliases: [ Σ11-BS ]
+  definition: '$\mathsf{BS}$ for non-well quasi-orders given by a $\Sigma^1_1$ code.'
+  instance: A quasi-order which is not a well quasi-order, given by a $\Sigma^1_1$ code.
+  solution: An infinite bad sequence.
+  refs: [ { ref: gohpaulyvalenti2021, role: origin, loc: Definition 5.1 } ]
+
+- id: atr2
+  label: '\mathsf{ATR}_2'
+  name: Two-sided arithmetical transfinite recursion
+  kind: problem
+  tags: [ weihrauch ]
+  definition: >
+    Given a linear order $L$ and a set $A$, produce either an infinite $<_L$-descending sequence or a jump hierarchy
+    on $L$ starting with $A$, indicating which. Strictly between $\mathsf{UC}_{\mathbb{N}^\mathbb{N}}$ and $\mathsf{C}_{\mathbb{N}^\mathbb{N}}$.
+  instance: A linear order $L$ and a set $A \subseteq \mathbb{N}$.
+  solution: 'An infinite descending sequence in $L$, or a jump hierarchy $\langle X_a \rangle_{a \in L}$ with $X_0 = A$.'
+  refs: [ { ref: goh2019b, role: origin, loc: Definition 3.2 } ]
+
+- id: cwo2
+  label: '\mathsf{CWO}_2'
+  name: Two-sided comparability of well-orderings
+  kind: problem
+  minor: true
+  tags: [ weihrauch, well-orders ]
+  definition: >
+    Given linear orders $L$ and $M$, produce an embedding of one onto an initial segment of the other, or an infinite
+    descending sequence in one of them, indicating which.
+  instance: Two linear orders $L$ and $M$.
+  solution: An embedding of one onto an initial segment of the other, or a descending sequence in one of them.
+  refs: [ { ref: goh2019b, role: origin, loc: Definition 3.1 } ]
+
+- id: wcwo2
+  label: '\mathsf{WCWO}_2'
+  name: Two-sided weak comparability of well-orderings
+  kind: problem
+  minor: true
+  tags: [ weihrauch, well-orders ]
+  definition: >
+    Given linear orders $L$ and $M$, produce an embedding of one into the other, or an infinite descending sequence in
+    one of them, indicating which.
+  instance: Two linear orders $L$ and $M$.
+  solution: An embedding of one into the other, or a descending sequence in one of them.
+  refs: [ { ref: goh2019b, role: origin, loc: Definition 3.1 } ]
+
+- id: kdt
+  label: '\mathsf{KDT}'
+  name: König's duality theorem (Weihrauch problem)
+  kind: problem
+  tags: [ weihrauch, graphs ]
+  definition: >
+    Given a countable bipartite graph, produce a König cover $(C, M)$: a vertex cover $C$ and a matching $M$ such that
+    $C$ consists of exactly one vertex from each edge of $M$. The problem form of the Podewski–Steffens theorem.
+  instance: A countable bipartite graph $G$.
+  solution: A König cover of $G$.
+  refs: [ { ref: goh2019b, role: origin, loc: Definition 3.16 } ]

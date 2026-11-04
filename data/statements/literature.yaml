@@ -490,3 +490,50 @@
     all $\sigma_0, \dots, \sigma_n$ in the tree, each $\sigma_i$ extends to an atom.
   refs:
     - { ref: hirschfeldt2015, role: rm, loc: "Section 4.6, Exercise 4.35" }
+
+# Theorems of hyperarithmetic analysis (Goh 2019, Chapters 6 and 7).
+- id: finite-sigma11-ac
+  label: '\textsf{finite-}\Sigma^1_1\textsf{-AC}_0'
+  name: Σ¹₁ axiom of finite choice
+  kind: sentence
+  minor: true
+  tags: [ big-five ]
+  definition: >
+    For every arithmetic $\varphi(n, Y)$: if for each $n$ there are finitely many $Y$ with $\varphi(n, Y)$, then there is a
+    sequence $(Z_n)_n$ with $\varphi(n, Z_n)$ for every $n$ (implicitly, at least one $Y$; equivalently, a sequence of trees
+    with finitely many paths has a sequence of paths). A theory of hyperarithmetic analysis.
+  refs: [ { ref: goh2019b, role: origin, loc: Definition 6.6 } ]
+
+- id: abw
+  label: '\mathsf{ABW}_0'
+  name: Arithmetic Bolzano–Weierstrass theorem
+  kind: sentence
+  minor: true
+  tags: [ compactness ]
+  aliases: [ ABW0, ABW ]
+  definition: >
+    For every arithmetic predicate $A(X)$ on $2^\mathbb{N}$, either $A$ has finitely many solutions or the set
+    $\{X \in 2^\mathbb{N} : A(X)\}$ has an accumulation point.
+  refs: [ { ref: goh2019b, role: rm, loc: Definition 6.7 } ]
+
+- id: irt
+  label: '\mathsf{IRT}'
+  name: Infinite ray theorem (Halin)
+  kind: sentence
+  tags: [ graphs ]
+  aliases: [ infinite ray theorem ]
+  definition: >
+    If a graph $G$ has, for each $k$, a set of $k$ disjoint rays, then it has an infinite set of disjoint rays. A natural
+    theorem of hyperarithmetic analysis.
+  refs: [ { ref: goh2019b, role: origin, loc: Definition 7.2 } ]
+
+- id: wirt
+  label: '\mathsf{WIRT}'
+  name: Weak infinite ray theorem
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    If $G$ is a graph and $(X_k)_k$ is a sequence such that each $X_k$ is a set of $k$ disjoint rays of $G$, then $G$ has an
+    infinite set of disjoint rays.
+  refs: [ { ref: goh2019b, role: origin, loc: Definition 7.2 } ]

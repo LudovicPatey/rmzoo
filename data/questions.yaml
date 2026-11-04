@@ -1341,3 +1341,30 @@
     stronger than WKL₀. Kierstead and Rosenstein showed that every well-founded computable partial
     order has a well-ordered computable linear extension, but Rosenstein and Statman built a computably
     well-founded one with no computably well-founded computable linear extension.
+
+- id: sigma11-cn-par-cnn
+  question: Is the parallelization of $\Sigma^1_1\text{-}\mathsf{C}_{\mathbb{N}}$ strictly Weihrauch below $\mathsf{C}_{\mathbb{N}^\mathbb{N}}$?
+  asked:
+    - {ref: kiharamarconepauly2020, loc: Question 4.10}
+  statements: [sigma11-cn, cnn]
+  formal:
+    - {from: sigma11-cn.par, to: cnn, over: w}
+  resolvedBy:
+    - {ref: dauriackihara2021, loc: Theorem 3.34}
+    - {ref: gohpaulyvalenti2021, loc: proof of Proposition 2.4}
+  context: >-
+    Kihara, Marcone and Pauly showed that $\Sigma^1_1$-WKL lies strictly below the parallelization of
+    $\Sigma^1_1$ choice on ℕ, which is below $\mathsf{C}_{\mathbb{N}^\mathbb{N}}$. Anglès d'Auriac and Kihara
+    separated $\Sigma^1_1$ countable choice from $\Sigma^1_1$ dependent choice, which gives the strict reduction.
+
+- id: wirt-aca
+  question: Does the weak infinite ray theorem $\mathsf{WIRT}$ imply $\mathsf{ACA}_0$ over $\mathsf{RCA}_0$?
+  asked:
+    - {ref: goh2019b, loc: "Section 7.1, after Proposition 7.9"}
+    - {ref: barnesgohshore2023, loc: "Section 8, before Theorem 8.9"}
+  statements: [wirt, aca]
+  formal:
+    - {from: wirt, to: aca, over: rca0}
+  context: >-
+    $\mathsf{ACA}_0$ proves WIRT (Theorem 7.5) and $\mathsf{RCA}_0$ does not, even for highly recursive graphs
+    (Proposition 7.8), while the nonuniform version of WIRT is equivalent to $\mathsf{ACA}_0$ (Proposition 7.13).
