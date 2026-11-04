@@ -119,7 +119,7 @@ Then go through:
 | **schema** (`scripts/lib/schema.mjs`) | new/renamed field documented, `usedBy` updated; `npm test` checks `usedBy` |
 | **build** validation | the new field/value is validated (unknown references, allowed values); derived fields (labels, `studied`, operator statements, conjunctions) handle it |
 | **engine** | inference rules, `questionStatus`, `classMembers`, search ranking |
-| **viewer** | catalogue (filters, checkboxes, "over" chips, select all), statement page (its tabs: definition, context, glance, related statements, frames, operator line, position, properties, questions), paper page (abstract, BibTeX, questions asked/answered), results, questions, about page, home page stats and recent items |
+| **viewer** | modes (`data/modes.yaml`: what each framework shows; every page filters through `inMode`, `rInMode`, `resInMode`, `qInMode`), catalogue (filters, checkboxes, "over" chips, select all), statement page (its tabs: definition, context, glance, related statements, frames, operator line, position, properties, questions), paper page (abstract, BibTeX, questions asked/answered), results, questions, about page, home page stats and recent items |
 | **miners** (`scripts/mine/common.mjs`) | the acronym dictionary (labels in extracted-text form, `extra` spellings, operator forms, `PHRASES`), `relation()` (which reduction a theorem speaks of: one branch per reduction), `normalize()` |
 | **consolidate** steps | 1 sweep (relevance and auto-add rules, rejected list), 2 pubstatus, 3 texts, 4 mining (screened list), 5 statements (`known` labels/aliases, `acronyms-ignored.yaml`, `STOP`), 6 questions (status changes, resolution leads), 7 checks |
 | **AI reader** (`scripts/ai-analyze.mjs`, `scripts/ai/*.md`, `scripts/lib/ai-facts.mjs`) | the catalogue given to the model (statement fields, reductions, properties, classes, operations), the answer schema (`FACT_SCHEMA`: result types and their fields), `entry()` and `validity()`, the reading rules in `scripts/ai/extract.md` and `verify.md` (notation for reductions, dotted ids), `tests/ai-facts.test.mjs`; the paper order (`scripts/lib/paper-rank.mjs`) uses the miner's dictionary and its `PROPERTY` phrases, which a new property or reduction may need. Saved answers can be re-checked with `--replay` |
@@ -138,7 +138,7 @@ Specific cases:
   for strong vs weak reductions: `algebra` in `data/reductions.yaml`), viewer op
   line, miner textual forms, the dotted-id paragraph of `scripts/ai/extract.md`. `tests/schema.test.mjs` fails until all are done.
 * **New reduction**: `data/reductions.yaml` (`finerThan`, `domain`, `algebra`…),
-  `FRAME` for labels, `relation()` in the miners, the catalogue chips, preset zoos,
+  the modes that should show it (`data/modes.yaml`), `FRAME` for labels, `relation()` in the miners, the catalogue chips, preset zoos,
   the reduction paragraphs of `scripts/ai/extract.md` and `verify.md`.
 * **New kind of result or statement field**: schema, build validation, engine,
   viewer, `resultKey` if it changes the identity of a result, `scripts/lib/results.mjs`,

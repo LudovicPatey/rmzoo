@@ -1,0 +1,37 @@
+# Modes of the viewer (docs/DESIGN.md, "Modes"): lenses for readers interested in
+# one framework. A mode only filters what is shown; the inference always uses all
+# results. A statement belongs to a mode when a cited result about it lives there
+# (a comparison over one of the reductions, or a property or conservation result
+# when the mode shows them), or when it is the base system of one of the reductions.
+# The default view (no mode) shows everything. Fields: scripts/lib/schema.mjs (mode).
+
+- id: rm
+  name: Reverse mathematics
+  short: Reverse math.
+  description: Provability over RCA₀ and implication over ω-models, with conservation results and the computability-theoretic properties that separate statements over ω-models.
+  reductions: [ rca0, omega ]
+  default: rca0
+  properties: true
+  conservation: true
+
+- id: wrm
+  name: Weak reverse mathematics
+  short: Weak RM
+  description: Provability over RCA₀*, where only Δ⁰₁-induction is available and IΣ⁰₁ becomes a statement like the others.
+  reductions: [ rca0star ]
+  default: rca0star
+
+- id: computable
+  name: Computable reducibility
+  short: Computable
+  description: Computable, strongly computable and ω-model reducibility between problems, with the computability-theoretic properties (cone avoidance, basis theorems, preservation properties).
+  reductions: [ c, sc, omega ]
+  default: c
+  properties: true
+
+- id: weihrauch
+  name: Weihrauch complexity
+  short: Weihrauch
+  description: Strong, plain and generalized Weihrauch reducibility between problems, and the operations of the Weihrauch lattice.
+  reductions: [ sw, w, gw ]
+  default: w

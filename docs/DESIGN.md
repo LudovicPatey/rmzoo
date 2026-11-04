@@ -68,6 +68,30 @@ the results database, so the viewer can show *exactly at which reductions*
 two formulations coincide, and the claim "they are equivalent" can never get
 out of sync with the literature.
 
+**Modes** (`data/modes.yaml`). Readers often care about one framework only:
+reverse mathematics (provability over RCA₀ and ω-models), weak reverse
+mathematics (RCA₀*), computable reducibility (c, sc, ω) or Weihrauch complexity
+(sW, W, gW). A mode is a lens, not a change of the mathematics: the inference
+always uses every result (a Weihrauch reduction still gives the computable one,
+a provability result the ω-model one), and the mode only selects what is shown.
+Each mode lists its reductions, its default reduction, and whether it shows the
+computability-theoretic properties and the conservation results. A statement
+belongs to a mode when a cited result about it is stated with one of the mode's
+reductions (or is a property or conservation result the mode shows), or when it
+is the base system of one of those reductions; the build stores this as
+`_modes`. In a mode, the viewer shows only:
+* the statements of the mode: catalogue, related statements, the relations of the
+  Position tab, the summary lines, search results first (others are marked), the
+  front page counts and recent items;
+* its reductions: the reduction pickers (the others are dimmed), the columns of
+  the Formulations table, the mini-lattices of Compare, the preset zoos;
+* its results: the Results tab and the Results page, the papers of the Literature
+  page and their results, the questions (formal parts over its reductions, or,
+  without formal parts, a statement of the mode).
+The page of a statement outside the mode says so. The mode is chosen in the
+header, remembered in the browser, and set by `?mode=<id>` in a link. The default
+view (no mode) shows everything.
+
 **Minor statements** (`minor: true`). The zoo aims to record every principle
 studied in the literature, but a statement studied in a single paper, or of
 secondary interest (a classical theorem equivalent to a Big Five system, a

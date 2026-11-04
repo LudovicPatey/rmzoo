@@ -42,6 +42,7 @@ const raw = {
   statements: readDir('statements'),
   results: readDir('results'),
   zoos: readYaml(path.join(dataDir, 'zoos.yaml')),
+  modes: fs.existsSync(path.join(dataDir, 'modes.yaml')) ? readYaml(path.join(dataDir, 'modes.yaml')) || [] : [],
   classes: readYaml(path.join(dataDir, 'classes.yaml')),
   questions: readYaml(path.join(dataDir, 'questions.yaml')),
 };
@@ -61,7 +62,7 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
   for (const x of raw.statements) errs.push(...unknownFields(x, 'statement', `Statement ${x.id} (${x._file})`));
   raw.results.forEach((x, i) => errs.push(...unknownFields(x, 'result', `Result #${i} (${x._file}: ${x.from ?? x.statement} ${x.type} ${x.to ?? x.property ?? x.base ?? ''})`)));
   for (const [k, x] of Object.entries(raw.references)) errs.push(...unknownFields(x, 'reference', `Reference ${k}`));
-  for (const [list, entity] of [['reductions', 'reduction'], ['tags', 'tag'], ['properties', 'property'], ['zoos', 'zoo'], ['classes', 'class'], ['questions', 'question']])
+  for (const [list, entity] of [['reductions', 'reduction'], ['tags', 'tag'], ['properties', 'property'], ['zoos', 'zoo'], ['modes', 'mode'], ['classes', 'class'], ['questions', 'question']])
     for (const x of raw[list] || []) errs.push(...unknownFields(x, entity, `${entity} ${x.id} (data/${list}.yaml)`));
   for (const [k, x] of Object.entries(abstracts)) errs.push(...unknownFields(x, 'abstract', `abstracts.yaml ${k}`));
   const rej = path.join(dataDir, 'sweep-rejected.yaml');
@@ -518,6 +519,32 @@ const t0 = Date.now();
     const st = Object.entries(o).filter(([f]) => !(s.base || []).includes(f));
     if (st.length) s.studied = Object.fromEntries(st.map(([f, set]) => [f, [...set].sort()]));
   }
+}
+
+// ---- modes (data/modes.yaml): which statements each lens shows ------------------
+// a statement belongs to a mode when a cited result about it lives there, or when
+// it is the base system of one of the mode's reductions
+{
+  const rids = new Set(raw.reductions.map((r) => r.id));
+  for (const m of raw.modes) {
+    for (const r of m.reductions || []) if (!rids.has(r)) errors.push(`modes.yaml ${m.id}: unknown reduction ${r}`);
+    if (!(m.reductions || []).includes(m.default)) errors.push(`modes.yaml ${m.id}: the default reduction ${m.default} is not one of its reductions`);
+  }
+  uniq(raw.modes, 'mode');
+  const byId = new Map(raw.statements.map((s) => [s.id, s]));
+  const inMode = (m, r) => r.type === 'property' ? !!m.properties : r.type === 'conservation' ? !!m.conservation
+    : [].concat(r.over || []).some((o) => m.reductions.includes(o));
+  const add = (s, m) => { if (s && !(s._modes ||= []).includes(m.id)) s._modes.push(m.id); };
+  for (const r of raw.results) {
+    if (!(r.refs || []).length) continue;
+    for (const m of raw.modes) if (inMode(m, r))
+      for (const id of [r.from, r.to, r.statement, r.base].filter(Boolean)) {
+        add(byId.get(id), m);
+        for (const c of byId.get(id)?.conjunction || []) add(byId.get(c), m);
+      }
+  }
+  for (const s of raw.statements) for (const m of raw.modes)
+    if (Array.isArray(s.base) && s.base.some((b) => m.reductions.includes(b))) add(s, m);
 }
 
 const zoo = buildZoo(raw);

@@ -43,6 +43,7 @@ data/
   properties.yaml    separating properties (cone avoidance, low basis, …)
   questions.yaml     open questions stated in the literature, with their status
   zoos.yaml          predefined selections shown on the front page
+  modes.yaml         frameworks of the viewer's mode switch (reductions shown, properties, conservation)
   classes.yaml       formula classes for conservation results (Π⁰ₙ, ∀Π⁰ₙ, Π¹₁, rΠ¹₂…)
   context.yaml       short historical context for the main statements ([@key] cites a paper)
   abstracts.yaml     abstracts of the papers (scripts/abstracts.mjs)

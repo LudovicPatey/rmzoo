@@ -63,6 +63,7 @@ export const SCHEMA = {
     priority: { doc: 'ranking boost in search results', usedBy: ['engine'] },
     firstOrder: { doc: 'true for first-order (arithmetical) sentences: they hold in every ω-model', usedBy: ['build', 'engine', 'viewer'] },
     formulationOf: { doc: 'id of the main formulation this statement is a variant of', usedBy: ['build', 'engine', 'viewer'] },
+    _modes: { doc: '(build) the modes the statement belongs to (data/modes.yaml)', usedBy: ['build', 'viewer'] },
     minor: { doc: 'true for a statement studied in few papers or of secondary interest (a classical theorem equivalent to a Big Five system, a technical variant): hidden from the catalogue by default, not counted on the home page or in the implication counts, left out of related statements, listed as an equivalent statement on the pages of the statements equivalent to it', usedBy: ['build', 'viewer', 'related'] },
     conjunction: { doc: 'ids of the conjuncts (kind must be sentence)', usedBy: ['build', 'engine', 'viewer', 'mineCommon'] },
     form: { doc: 'syntactic class of the sentence (data/classes.yaml), used for conservation results', usedBy: ['build', 'engine', 'viewer'] },
@@ -143,6 +144,17 @@ export const SCHEMA = {
     domain: { doc: 'problems: defined through instances and solutions, so it only applies to statements formulated as problems (see statement.problemForm)', usedBy: ['build', 'engine', 'aiAnalyze'] },
     implies: { doc: 'properties every statement having this one also has (low basis ⇒ weakly low basis); failing one of them means failing this one; no cycles. Statement pages list only the extremal properties (engine salientProps)', usedBy: ['build', 'engine'] },
     optional: { doc: 'member of an infinite family (low_n, Σ⁰_n basis…): listed for a statement only when it is an extremal known property, or an extremal open one between a property it has and one it fails (engine salientProps)', usedBy: ['engine'] },
+  },
+  // data/modes.yaml — lenses of the viewer: what a reader of one framework sees
+  mode: {
+    id: { req: true, doc: 'mode id (also the value of ?mode= in links)', usedBy: ['build', 'viewer'] },
+    name: { req: true, doc: 'name', usedBy: ['viewer'] },
+    short: { req: true, doc: 'short name for the header switch', usedBy: ['viewer'] },
+    description: { doc: 'one sentence for the mode bar and the about page', usedBy: ['viewer'] },
+    reductions: { req: true, doc: 'reduction ids shown in this mode', usedBy: ['build', 'viewer'] },
+    default: { req: true, doc: 'the reduction selected when the mode is switched on', usedBy: ['build', 'viewer'] },
+    properties: { doc: 'true to show the computability-theoretic properties', usedBy: ['build', 'viewer'] },
+    conservation: { doc: 'true to show conservation results', usedBy: ['build', 'viewer'] },
   },
   zoo: {
     id: { req: true, doc: 'preset id', usedBy: ['build', 'viewer'] },
@@ -266,6 +278,7 @@ export const OPERATIONS = {
 //   data/screened.yaml         {facts, questions, resolutions}: leads already examined
 //   data/acronyms-ignored.yaml acronym → reason: not proposed as missing statements
 //   data/review.yaml           entity review above; data/ai-analyzed.yaml: aiAnalyzed
+//   data/modes.yaml            entity mode above: the frameworks of the viewer's mode switch
 //   data/endorsements.yaml     {people: orcid → person, endorsements: [endorsement]} (entities above)
 
 // ORCID iD with a valid check digit (ISO 7064 11,2). Used by the build and the sync.

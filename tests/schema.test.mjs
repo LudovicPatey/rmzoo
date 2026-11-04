@@ -60,3 +60,16 @@ test('a dotted id never duplicates an explicit operator statement (wkl.jump is w
     seen.set(k, s.id);
   }
 });
+
+test('modes: valid reductions, and membership follows the cited results', () => {
+  const zoo = JSON.parse(fs.readFileSync('site/data/zoo.json', 'utf8'));
+  const st = (id) => zoo.statements.find((s) => s.id === id);
+  const rids = new Set(zoo.reductions.map((r) => r.id));
+  for (const m of zoo.modes) {
+    assert.ok(m.reductions.every((r) => rids.has(r)) && m.reductions.includes(m.default), m.id);
+  }
+  assert.ok(st('rca0')._modes.includes('rm'), 'a base system belongs to the modes of its reductions');
+  assert.ok(st('lim')._modes.includes('weihrauch'));
+  assert.ok(!(st('atr')._modes || []).includes('weihrauch'), 'a sentence has no Weihrauch results');
+  assert.ok(st('lrt22')._modes.includes('wrm'));
+});

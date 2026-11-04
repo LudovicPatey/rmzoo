@@ -49,15 +49,66 @@ const state = {
   r: store.get('rmzoo.r', 'rca0'),
   sep: store.get('rmzoo.sep', true),
   open: store.get('rmzoo.open', false),
+  mode: store.get('rmzoo.mode', ''), // '' = all reductions (data/modes.yaml)
 };
 const saveState = () => {
   store.set('rmzoo.sel', state.sel); store.set('rmzoo.r', state.r);
   store.set('rmzoo.sep', state.sep); store.set('rmzoo.open', state.open);
+  store.set('rmzoo.mode', state.mode);
 };
+
+// ---- modes (data/modes.yaml, docs/DESIGN.md "Modes") ---------------------------------
+// A mode is a lens: it keeps the statements, reductions and results of one framework.
+// The inference always uses all results; only what is shown changes.
+const MODE = () => (state.mode && Z.raw.modes?.find((m) => m.id === state.mode)) || null;
+const inMode = (i) => !MODE() || (S(i)._modes || []).includes(MODE().id);
+const rInMode = (r) => !MODE() || MODE().reductions.includes(Z.R[r].id);
+const resInMode = (res) => {
+  const m = MODE();
+  if (!m) return true;
+  if (res.type === 'property') return !!m.properties;
+  if (res.type === 'conservation') return !!m.conservation;
+  return [].concat(res.over || []).some((o) => m.reductions.includes(o));
+};
+// a question belongs to the mode when one of its formal parts does, or (without
+// formal parts) when one of its statements does
+const qInMode = (q) => !MODE() || (q.formal?.length ? q.formal.some((f) => MODE().reductions.includes(f.over))
+  : (q.statements || []).some((id) => idx(id) !== undefined && inMode(idx(id))));
+function setMode(id) {
+  state.mode = id || '';
+  const m = MODE();
+  if (m && !m.reductions.includes(state.r)) state.r = m.default;
+  saveState();
+  renderModeSwitch();
+  const y = window.scrollY;
+  route();
+  window.scrollTo(0, y);
+}
+function renderModeSwitch() {
+  const m = MODE();
+  const sw = $('#mode-switch');
+  if (sw) sw.innerHTML = `<select id="mode-select" aria-label="Mode" title="Show only one framework: its statements, reductions and results">
+      <option value="">All frameworks</option>${(Z.raw.modes || []).map((x) => `<option value="${x.id}" ${m?.id === x.id ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}</select>`;
+  const bar = $('#mode-bar');
+  if (!bar) return;
+  bar.hidden = !m;
+  if (!m) { bar.innerHTML = ''; return; }
+  const principle = (s) => !s.conjunction && !s.op && !s.minor && !s.formulationOf; // as counted on the front page
+  const n = Z.S.filter((s, i) => inMode(i) && principle(s)).length;
+  bar.innerHTML = `<b>${esc(m.name)}</b> <span class="muted">· ${m.reductions.map((r) => esc(Z.R[Z.ridx.get(r)].short)).join(', ')}
+    · ${n} of ${Z.S.filter(principle).length} principles</span>
+    <span class="grow"></span><span class="small muted mode-desc">${esc(m.description || '')}</span>
+    <button class="btn small" id="mode-off">Show all frameworks</button>`;
+}
+document.addEventListener('change', (e) => { if (e.target.id === 'mode-select') setMode(e.target.value); });
+document.addEventListener('click', (e) => { if (e.target.id === 'mode-off') setMode(''); });
 
 const S = (i) => Z.S[i];
 const idx = (id) => Z.sidx.get(id);
-const rIdx = () => Z.ridx.get(state.r) ?? 0;
+const rIdx = () => {
+  const r = Z.ridx.get(state.r) ?? 0;
+  return rInMode(r) ? r : Z.ridx.get(MODE().default);
+};
 function labelOf(i, r = rIdx()) {
   const s = S(i);
   return s.label;
@@ -177,6 +228,7 @@ function search(q, limit = 50) {
     if (s.conjunction) score -= 5;
     if (s.minor) score -= 3;
     if (s.formulationOf) score -= 2;
+    if (!inMode(i)) score -= 20; // outside the current mode: after its members
     score += Math.min(8, Math.log2(1 + usage()[i])); // well-studied statements first among similar matches
     res.push([score, i]);
   });
@@ -190,7 +242,7 @@ function attachSearch(input, pop, onPick) {
     if (!items.length) { pop.hidden = true; return; }
     hl = Math.min(hl, items.length - 1);
     pop.innerHTML = items.map((i, k) => `<div class="opt ${k === hl ? 'hl' : ''}" data-i="${i}">
-      <span>${L(i)}</span><span class="muted">${esc(S(i).name)}</span></div>`).join('');
+      <span>${L(i)}</span><span class="muted">${esc(S(i).name)}</span>${inMode(i) ? '' : '<span class="badge other-mode" title="Not studied in the current mode">other framework</span>'}</div>`).join('');
     pop.hidden = false;
   };
   input.addEventListener('input', () => { hl = 0; show(); });
@@ -232,7 +284,7 @@ function latticeSvg(opts = {}) {
     const color = { implies: 'var(--yes)', separated: 'var(--no)', open: 'var(--open)', na: 'var(--line)', contradiction: '#000' };
     return `<svg width="${w.toFixed(0)}" height="${h.toFixed(0)}" class="mini">
       ${g.edgeList.map(([a, b]) => `<line x1="${pts[a][0]}" y1="${pts[a][1]}" x2="${pts[b][0]}" y2="${pts[b][1]}" stroke="var(--line)" stroke-width="1"/>`).join('')}
-      ${pts.map((p, r) => `<circle cx="${p[0]}" cy="${p[1]}" r="4.2" fill="${color[opts.status(r)]}"><title>${esc(Z.R[r].short)}</title></circle>`).join('')}
+      ${pts.map((p, r) => `<circle cx="${p[0]}" cy="${p[1]}" r="4.2" fill="${color[opts.status(r)]}"${rInMode(r) ? '' : ' class="off"'}><title>${esc(Z.R[r].short)}</title></circle>`).join('')}
     </svg>`;
   }
   const w = g.width + 2 * pad, h = g.height + 2 * pad;
@@ -240,7 +292,8 @@ function latticeSvg(opts = {}) {
     ${g.edgeList.map(([a, b]) => `<path class="edge" d="${verticalSpline([[g.nodes[a].x, g.nodes[a].y + 11], [g.nodes[b].x, g.nodes[b].y - 11]])}"/>`).join('')}
     ${g.nodes.map((nd, r) => {
       const cls = ['node'];
-      if (opts.pick) cls.push('pick');
+      if (opts.pick && rInMode(r)) cls.push('pick');
+      if (!rInMode(r)) cls.push('off');
       if (opts.selected === r) cls.push('sel');
       if (opts.status) cls.push('st-' + opts.status(r), 'pick');
       return `<g class="${cls.join(' ')}" data-r="${r}"><title>${esc(Z.R[r].name)}</title>
@@ -257,7 +310,7 @@ function reductionPicker(onPick) {
     `<div class="small muted" style="margin-top:6px">${esc(Z.R[rIdx()].name)}</div>`;
   el.addEventListener('click', (e) => {
     const g = e.target.closest('[data-r]');
-    if (!g) return;
+    if (!g || !rInMode(+g.dataset.r)) return;
     state.r = Z.R[+g.dataset.r].id; saveState(); onPick();
   });
   return el;
@@ -388,7 +441,7 @@ const QSTATUS = { open: ['open', 'warn'], partial: ['partially answered', 'parti
 const qInfo = (q) => (q._st ||= questionStatus(Z, q));
 const questionCounts = () => {
   const c = { open: 0, partial: 0, resolved: 0 };
-  for (const q of Z.raw.questions || []) c[qInfo(q).status]++;
+  for (const q of Z.raw.questions || []) if (qInMode(q)) c[qInfo(q).status]++;
   return c;
 };
 const firstAsked = (q) => Math.min(...q.asked.map((a) => Z.raw.references[a.ref]?.year || 9999));
@@ -421,6 +474,7 @@ function viewQuestions(params, id) {
   const m = main();
   m.className = '';
   const all = (Z.raw.questions || []).slice().sort((a, b) => firstAsked(a) - firstAsked(b) || a.id.localeCompare(b.id));
+  const listed = all.filter(qInMode); // the list follows the mode; a question's own page is always shown
   if (id) {
     const q = all.find((x) => x.id === id);
     if (!q) { m.innerHTML = '<h1>Unknown question</h1><p><a href="#/questions">All questions</a></p>'; return; }
@@ -459,7 +513,7 @@ function viewQuestions(params, id) {
       its status is derived from the database, so it becomes resolved as soon as the answering result is entered.</p>
     <div class="filters">
       <input class="text" id="q-q" placeholder="Search…" value="${esc(params.get('q') || '')}" style="width:220px">
-      <select id="q-status"><option value="">All (${all.length})</option><option value="open">Open (${c.open})</option>
+      <select id="q-status"><option value="">All (${listed.length})</option><option value="open">Open (${c.open})</option>
         <option value="partial">Partially answered (${c.partial})</option><option value="resolved">Resolved (${c.resolved})</option></select>
       <select id="q-sort"><option value="asc">Oldest first</option><option value="desc">Newest first</option></select>
     </div>
@@ -470,7 +524,7 @@ function viewQuestions(params, id) {
     const text = $('#q-q').value.trim().toLowerCase(), stv = $('#q-status').value, dir = $('#q-sort').value === 'desc' ? -1 : 1;
     const hit = (q) => !text || [q.question, q.context, q.id, ...q.asked.map((a) => refShort(a.ref)), ...qStatements(q).map((s) => S(idx(s)).name + ' ' + hay[idx(s)].ascii)]
       .join(' ').toLowerCase().includes(text);
-    const list = all.filter((q) => (!stv || qInfo(q).status === stv) && (!sid || qStatements(q).includes(sid)) && hit(q))
+    const list = listed.filter((q) => (!stv || qInfo(q).status === stv) && (!sid || qStatements(q).includes(sid)) && hit(q))
       .sort((a, b) => dir * (firstAsked(a) - firstAsked(b)));
     $('#q-count').textContent = `${list.length} question${list.length === 1 ? '' : 's'}${sid ? ` about ${S(idx(sid))?.name || sid}` : ''}`;
     $('#q-list').innerHTML = lazy(list, questionRow, { size: 30, noun: 'questions', empty: '<p class="muted">No question matches.</p>' });
@@ -497,15 +551,16 @@ const presetHref = (z) => `#/diagram?s=${z.statements.join(',')}&r=${z.reduction
 function viewHome() {
   const m = main();
   m.className = 'home';
-  const mains = Z.S.filter((s) => !s.conjunction && !s.formulationOf && !s.minor).length;
+  const mains = Z.S.filter((s, i) => !s.conjunction && !s.op && !s.formulationOf && !s.minor && inMode(i)).length;
   const refs = Object.values(Z.raw.references);
   const parsed = refs.filter((r) => /^pdf/.test(r.read || '')).length;
-  const cited = new Set(Z.raw.results.flatMap((r) => (r.refs || []).map((x) => x.ref))).size;
+  const modeResults = Z.raw.results.filter(resInMode);
+  const cited = new Set(modeResults.flatMap((r) => (r.refs || []).map((x) => x.ref))).size;
   const lastDate = Z.raw.results.concat(Z.raw.statements).reduce((d, x) => (x._date > d ? x._date : d), '');
   const N = 6;
   const recentRefs = newest(Object.entries(Z.raw.references)).slice(0, N);
-  const recentStmts = newest(Z.S.map((s, i) => [i, Z.raw.statements.find((x) => x.id === s.id) || s])).filter(([i]) => !S(i).conjunction).slice(0, N);
-  const recentRes = newest(Z.raw.results.map((res, ri) => [ri, res])).slice(0, N);
+  const recentStmts = newest(Z.S.map((s, i) => [i, Z.raw.statements.find((x) => x.id === s.id) || s])).filter(([i]) => !S(i).conjunction && !S(i).minor && inMode(i)).slice(0, N);
+  const recentRes = newest(Z.raw.results.map((res, ri) => [ri, res]).filter(([, res]) => resInMode(res))).slice(0, N);
   const stat = (num, label, href, title = '') => `<a class="card stat" href="${href}" title="${esc(title)}"><div class="num">${num}</div><div class="small muted">${label}</div></a>`;
   m.innerHTML = `
     <section class="hero">
@@ -514,11 +569,14 @@ function viewHome() {
       <div class="search big"><input id="home-q" type="search" placeholder="Search a statement — RT22, WKL, Ramsey, induction, LPO…" autocomplete="off" autofocus>
         <div id="home-pop" class="popover" hidden></div></div>
       <div class="chips hero-tags">${Z.raw.tags.map((t) => `<a class="chip" href="#/catalogue?tags=${t.id}">${esc(t.name)}</a>`).join('')}</div>
+      <div class="hero-modes"><span class="small muted">Frameworks:</span>
+        <a class="chip ${!MODE() ? 'on' : ''}" href="#/?mode=" title="Every reduction">All</a>
+        ${(Z.raw.modes || []).map((x) => `<a class="chip ${MODE()?.id === x.id ? 'on' : ''}" href="#/?mode=${x.id}" title="${esc(x.description || '')}">${esc(x.name)}</a>`).join('')}</div>
     </section>
 
     <div class="stats">
       ${stat(fmt(mains), 'principles', '#/catalogue', `${Z.S.length} statements counting all formulations and combinations`)}
-      ${stat(fmt(Z.raw.results.length), 'cited results', '#/results')}
+      ${stat(fmt(modeResults.length), 'cited results', '#/results')}
       ${stat(fmt(cited), 'papers cited', '#/refs', `${refs.length} papers in the bibliography`)}
       ${stat(fmt(parsed), 'papers read in full', '#/refs', 'Papers whose full text was parsed when building the database')}
       ${(() => { const c = questionCounts(); return stat(fmt(c.open), 'open questions', '#/questions?status=open',
@@ -528,7 +586,7 @@ function viewHome() {
 
     <h2>Predefined zoos</h2>
     <p class="small muted">Each opens the diagram of a classical selection of statements (it replaces your current selection).</p>
-    <div class="presets">${(Z.raw.zoos || []).map((z) => {
+    <div class="presets">${(Z.raw.zoos || []).filter((z) => rInMode(Z.ridx.get(z.reduction))).map((z) => {
       const R = Z.R[Z.ridx.get(z.reduction)];
       return `<a class="card preset" href="${presetHref(z)}">
         <div class="row"><h3 class="grow">${esc(z.name)}</h3><span class="badge" title="${esc(R.name)}">${esc(R.short)}</span></div>
@@ -615,6 +673,7 @@ function viewCatalogue(params) {
   function draw(c) {
     let ids = c.q ? search(c.q, 1000)
       : Z.S.map((_, i) => i).sort((x, y) => (S(y).base ? 1 : 0) - (S(x).base ? 1 : 0) || hay[x].ascii.localeCompare(hay[y].ascii, 'en', { numeric: true }));
+    ids = ids.filter(inMode);
     const matchesTags = (i) => [...c.tags].every((t) => (S(i).tags || []).includes(t));
     const tagCounts = new Map();
     ids.forEach((i) => (S(i).tags || []).forEach((t) => tagCounts.set(t, (tagCounts.get(t) || 0) + 1)));
@@ -694,7 +753,7 @@ const STMT_TABS = [['overview', 'Overview'], ['position', 'Position'], ['propert
   ['literature', 'Literature'], ['questions', 'Questions'], ['results', 'Results']];
 let relIndex; // computed once per zoo
 function relatedHtml(i) {
-  const rel = relatedStatements(Z, i, { index: (relIndex ||= relatedIndex(Z)) });
+  const rel = relatedStatements(Z, i, { index: (relIndex ||= relatedIndex(Z)), limit: 30 }).filter((x) => inMode(x.j)).slice(0, 12);
   if (!rel.length) return '';
   const why = (x) => x.papers.length
     ? `<span title="${esc(x.papers.map(refShort).join('; '))}">${x.papers.length} paper${x.papers.length === 1 ? '' : 's'} in common</span>`
@@ -718,11 +777,13 @@ function viewStatement(id, params = new URLSearchParams()) {
   const mainI = idx(mainId);
   const family = [mainI, ...Z.S.map((t, j) => (t.formulationOf === mainId ? j : -1)).filter((j) => j >= 0)];
   const refsOf = (s.refs || []);
-  const directResults = Z.raw.results.map((res, ri) => [res, ri]).filter(([res]) =>
+  const allResults = Z.raw.results.map((res, ri) => [res, ri]).filter(([res]) =>
     [res.from, res.to, res.statement, res.base].includes(s.id));
-  const qs = (Z.raw.questions || []).filter((q) => qStatements(q).includes(s.id));
+  const directResults = allResults.filter(([res]) => resInMode(res));
+  const hiddenResults = allResults.length - directResults.length;
+  const qs = (Z.raw.questions || []).filter((q) => qStatements(q).includes(s.id) && qInMode(q));
   const count = { literature: refsOf.length, questions: qs.length, results: directResults.length };
-  const tabs = STMT_TABS.filter(([t]) => t !== 'questions' || qs.length);
+  const tabs = STMT_TABS.filter(([t]) => (t !== 'questions' || qs.length) && (t !== 'properties' || !MODE() || MODE().properties));
   const tab = tabs.some(([t]) => t === params.get('tab')) ? params.get('tab') : 'overview';
   const panel = (t) => `<section class="tab-panel" data-panel="${t}"${t === tab ? '' : ' hidden'}>`;
 
@@ -739,6 +800,11 @@ function viewStatement(id, params = new URLSearchParams()) {
       ${frameBadges(s)}
       ${s.aliases ? `<span class="small muted">Also: ${s.aliases.map(esc).join(', ')}</span>` : ''}
     </div>
+    ${!inMode(i) ? `<p class="mode-note">${MODE().reductions.every((x) => !Z.inDomain(Z.ridx.get(x), i))
+      ? `${L(i)} is a second-order sentence: the reductions of <b>${esc(MODE().name)}</b> compare problems only and do not apply to it.`
+      : `${L(i)} is not studied in <b>${esc(MODE().name)}</b>: no cited result about it uses
+      ${MODE().reductions.map((x) => esc(Z.R[Z.ridx.get(x)].short)).join(', ')}. Its relations there are those the database derives.`}
+      <button class="btn small" id="mode-off">Show all frameworks</button></p>` : ''}
     <nav class="tabs" role="tablist">${tabs.map(([t, label]) => `<button role="tab" data-tab="${t}" aria-selected="${t === tab}">${label}${count[t] ? ` <span class="count">${count[t]}</span>` : ''}</button>`).join('')}</nav>
 
     ${panel('overview')}
@@ -764,8 +830,8 @@ function viewStatement(id, params = new URLSearchParams()) {
     ${family.length > 1 ? `<h2>Formulations</h2>
       <p class="small muted">How each formulation compares with the main one, ${L(mainI)}, at each notion of reduction.
       ≡ equivalent · &gt; main is strictly stronger · &lt; strictly weaker · | incomparable · ? unknown · – not applicable. Click a cell for proofs.</p>
-      <div style="overflow-x:auto"><table class="grid" id="forms"><tr><th></th>${Z.R.map((R) => `<th class="c">${esc(R.short)}</th>`).join('')}</tr>
-      ${family.filter((j) => j !== mainI).map((j) => `<tr><td>${sLink(j)}</td>${Z.R.map((_, rr) => {
+      <div style="overflow-x:auto"><table class="grid" id="forms"><tr><th></th>${Z.R.filter((_, rr) => rInMode(rr)).map((R) => `<th class="c">${esc(R.short)}</th>`).join('')}</tr>
+      ${family.filter((j) => j !== mainI).map((j) => `<tr><td>${sLink(j)}</td>${Z.R.map((_, rr) => rr).filter(rInMode).map((rr) => {
         const [sy, cls] = compareSym(Z.status(rr, mainI, j), Z.status(rr, j, mainI));
         return `<td class="c ${cls}" style="cursor:pointer" data-pair="${mainI},${j},${rr}">${sy}</td>`;
       }).join('')}</tr>`).join('')}</table></div>` : ''}
@@ -810,7 +876,8 @@ function viewStatement(id, params = new URLSearchParams()) {
     ${qs.length ? `${panel('questions')}<p class="small muted">Open questions from the literature that mention ${L(i)}.</p>${qs.map(questionRow).join('')}</section>` : ''}
 
     ${panel('results')}
-    <p class="small muted">Results of the database that mention ${L(i)} (the others are derived from them).</p>
+    <p class="small muted">Results of the database that mention ${L(i)} (the others are derived from them).${hiddenResults
+      ? ` ${hiddenResults} more concern other frameworks (<button class="linkish" id="mode-off">show all frameworks</button>).` : ''}</p>
     ${resultGroups(directResults)}
     </section>
   `;
@@ -870,7 +937,7 @@ function glance(i, directResults) {
   const studiedAny = !!s.studied && Object.keys(s.studied).length > 0;
   const shown = (f) => !studiedAny || !!s.studied[f];
   const r0 = Z.ridx.get('rca0');
-  if (r0 !== undefined && shown('rca0') && Z.inDomain(r0, i) && !(s.base || []).includes('rca0')) {
+  if (r0 !== undefined && rInMode(r0) && (MODE() || shown('rca0')) && Z.inDomain(r0, i) && !(s.base || []).includes('rca0')) {
     const b5 = BIG5.map(idx).filter((j) => j !== undefined && j !== i);
     const eq = b5.filter((j) => Z.status(r0, i, j) === 'implies' && Z.status(r0, j, i) === 'implies');
     if (BIG5.includes(s.id)) out.push('<b>Big Five:</b> it is one of them.');
@@ -890,7 +957,7 @@ function glance(i, directResults) {
     let imp = 0, by = 0, open = 0;
     const eq = [], minorEq = [];
     for (let j = 0; j < Z.n; j++) {
-      if (j === i || S(j).conjunction || !Z.inDomain(r, j)) continue;
+      if (j === i || S(j).conjunction || !Z.inDomain(r, j) || !inMode(j)) continue;
       const ab = Z.status(r, i, j), ba = Z.status(r, j, i);
       if (ab === 'implies' && ba === 'implies') { (S(j).minor ? minorEq : eq).push(j); continue; }
       if (S(j).minor) continue; // minor statements are not counted
@@ -902,10 +969,11 @@ function glance(i, directResults) {
     return `<b>Over ${esc(R.short)}:</b> ${eq.length ? `equivalent to ${listL(eq.slice(0, 6), r)}${eq.length > 6 ? ` and ${eq.length - 6} more` : ''}; ` : ''}implies ${imp} and is implied by ${by} of the zoo's statements; ${open} comparison${open === 1 ? '' : 's'} open.`
       + (minorEq.length ? `<div class="minor-eq"><b>Equivalent statements</b> (minor, not in the catalogue by default): ${minorEq.map((j) => sLink(j, r)).join(' · ')}</div>` : '');
   };
-  for (const [rid, f] of [['rca0', 'rca0'], ['rca0star', 'rca0star'], ['w', 'weihrauch']]) {
+  const frames = MODE() ? MODE().reductions.map((rid) => [rid, null]) : [['rca0', 'rca0'], ['rca0star', 'rca0star'], ['w', 'weihrauch']];
+  for (const [rid, f] of frames) {
     const r = Z.ridx.get(rid);
     if (r === undefined || !Z.inDomain(r, i) || (s.base || []).includes(rid)) continue;
-    if (rid === 'rca0star' ? s.studied?.rca0star : shown(f)) out.push(counts(r));
+    if (!f || (rid === 'rca0star' ? s.studied?.rca0star : shown(f))) out.push(counts(r));
   }
   return out.length ? `<ul class="glance">${out.map((x) => `<li>${x}</li>`).join('')}</ul>` : '';
 }
@@ -925,7 +993,7 @@ function relations(i, r) {
   if (!Z.inDomain(r, i)) return `<p class="muted">${L(i)} is not a problem, so it is not compared over ${esc(Z.R[r].name)}.</p>`;
   const groups = { eq: [], implies: [], impliedBy: [], notImp: [], notImpBy: [], openTo: [], openFrom: [] };
   for (let j = 0; j < Z.n; j++) {
-    if (j === i || !Z.inDomain(r, j)) continue;
+    if (j === i || !Z.inDomain(r, j) || !inMode(j)) continue;
     const ab = Z.status(r, i, j), ba = Z.status(r, j, i);
     if (ab === 'implies' && ba === 'implies') { groups.eq.push(j); continue; }
     if (ab === 'implies') groups.implies.push(j);
@@ -1087,7 +1155,7 @@ function viewDiagram(params) {
   });
   $('#add-tag').addEventListener('change', (e) => {
     const t = e.target.value;
-    Z.S.forEach((s) => { if ((s.tags || []).includes(t) && !s.conjunction && !isSel(s.id)) state.sel.push(s.id); });
+    Z.S.forEach((s, i) => { if ((s.tags || []).includes(t) && !s.conjunction && !s.minor && inMode(i) && !isSel(s.id)) state.sel.push(s.id); });
     e.target.value = ''; saveState(); redraw();
   });
   $('#clear-sel').onclick = () => { state.sel = []; saveState(); redraw(); };
@@ -1331,12 +1399,12 @@ function viewCompare(params) {
       <div style="overflow-x:auto"><table class="matrix" id="mx">
         <tr><th></th>${ids.map((b) => `<th class="col">${L(b)}</th>`).join('')}</tr>
         ${ids.map((a) => `<tr><th style="text-align:right">${L(a)}</th>${ids.map((b) => a === b ? '<td class="diag"></td>'
-          : `<td><span class="cell" data-pair="${a},${b}" title="${esc(plain(S(a).label))} ⇒ ${esc(plain(S(b).label))}: ${Z.R.map((R, rr) => `${R.short} ${sym(Z.status(rr, a, b))}`).join(', ')}">${latticeSvg({ small: true, status: (rr) => Z.status(rr, a, b) })}</span></td>`).join('')}</tr>`).join('')}
+          : `<td><span class="cell" data-pair="${a},${b}" title="${esc(plain(S(a).label))} ⇒ ${esc(plain(S(b).label))}: ${Z.R.map((R, rr) => [R, rr]).filter(([, rr]) => rInMode(rr)).map(([R, rr]) => `${R.short} ${sym(Z.status(rr, a, b))}`).join(', ')}">${latticeSvg({ small: true, status: (rr) => Z.status(rr, a, b) })}</span></td>`).join('')}</tr>`).join('')}
       </table></div>
       <div class="card"><h3>Key</h3>${latticeSvg({ pick: false })}<p class="small muted" style="max-width:${g.width + 10}px">Finer reductions are higher.</p></div>
     </div>
 
-    <h2>Properties</h2>
+    ${MODE() && !MODE().properties ? '' : `<h2>Properties</h2>
     <p class="muted small">✓ has · ✗ fails · ? unknown. Columns where every selected statement agrees are highlighted. Click a cell for the proof.</p>
     <div style="overflow-x:auto"><table class="grid pmatrix"><tr><th></th>${pcols.map(([p, pi]) => {
       const vals = ids.filter((i) => Z.propIn(pi, i)).map((i) => Z.prop(pi, i)?.v);
@@ -1347,7 +1415,7 @@ function viewCompare(params) {
       if (!Z.propIn(pi, i)) return '<td class="c muted" title="Not formulated as a problem">–</td>';
       const e = Z.prop(pi, i);
       return `<td class="c ${e ? (e.v ? 'yes' : 'no') : 'open'}" data-prop="${pi},${i}">${e ? (e.v ? '✓' : '✗') : '?'}</td>`;
-    }).join('')}</tr>`).join('')}</table></div>
+    }).join('')}</tr>`).join('')}</table></div>`}
     <h2>At ${esc(Z.R[r].name)}</h2>
     <div id="rpick"></div>
     <div id="eqs"></div>`;
@@ -1376,7 +1444,7 @@ function viewResults(params) {
     <div class="filters">
       <input class="text" id="f-q" placeholder="Statement…" value="${esc(params.get('q') || '')}" style="width:200px">
       <select id="f-type"><option value="">All types</option><option>implication</option><option>equivalence</option><option>separation</option><option>property</option><option>conservation</option></select>
-      <select id="f-r"><option value="">All reductions</option>${Z.R.map((R) => `<option value="${R.id}">${esc(R.name)}</option>`).join('')}</select>
+      <select id="f-r"><option value="">${MODE() ? `All reductions of the mode` : 'All reductions'}</option>${Z.R.filter((_, r) => rInMode(r)).map((R) => `<option value="${R.id}">${esc(R.name)}</option>`).join('')}</select>
       <select id="f-prov"><option value="">Any provenance</option><option value="lit">From the literature</option>
         <option value="folk">Folklore</option><option value="ai">AI-derived</option><option value="aiarg">Argument by AI</option>
         <option value="endorsed">Endorsed by a reader</option><option value="endorsed2">Endorsed by several readers</option></select>
@@ -1395,7 +1463,7 @@ function viewResults(params) {
       || (prov === 'aiarg' && res.justification?.by === 'ai')
       || (prov === 'endorsed' && C.endorsers(res._key).length >= 1)
       || (prov === 'endorsed2' && C.endorsers(res._key).length >= 2);
-    const list = Z.raw.results.map((res, ri) => [res, ri]).filter(([res]) =>
+    const list = Z.raw.results.map((res, ri) => [res, ri]).filter(([res]) => resInMode(res) &&
       (!type || res.type === type) &&
       (!rr || [].concat(res.over || []).includes(rr)) &&
       (!chk || res.status === 'needs-check') && provOk(res) &&
@@ -1413,8 +1481,8 @@ function viewRefs(key) {
   const m = main();
   m.className = '';
   const refs = Object.entries(Z.raw.references).sort((a, b) => a[1].year - b[1].year || a[0].localeCompare(b[0]));
-  const uses = (k) => Z.raw.results.map((res, ri) => [res, ri]).filter(([res]) => (res.refs || []).some((r) => r.ref === k));
-  const intro = (k) => Z.S.map((s, i) => [s, i]).filter(([s]) => (s.refs || []).some((r) => r.ref === k));
+  const uses = (k) => Z.raw.results.map((res, ri) => [res, ri]).filter(([res]) => resInMode(res) && (res.refs || []).some((r) => r.ref === k));
+  const intro = (k) => Z.S.map((s, i) => [s, i]).filter(([s, i]) => inMode(i) && (s.refs || []).some((r) => r.ref === k));
   if (key) {
     const r = Z.raw.references[key];
     if (!r) { m.innerHTML = '<h1>Unknown reference</h1>'; return; }
@@ -1432,12 +1500,15 @@ function viewRefs(key) {
         return `<a class="chip" href="#/s/${s.id}" style="color:var(--ink)">${L(i)} <span class="muted">${esc(role || '')}</span></a>`;
       }).join('')}</div>` : ''}
       ${(() => {
-        const asked = (Z.raw.questions || []).filter((q) => q.asked.some((a) => a.ref === key));
-        const answered = (Z.raw.questions || []).filter((q) => qInfo(q).status !== 'open' && qSolvers(q).some((a) => a.ref === key));
+        const asked = (Z.raw.questions || []).filter((q) => qInMode(q) && q.asked.some((a) => a.ref === key));
+        const answered = (Z.raw.questions || []).filter((q) => qInMode(q) && qInfo(q).status !== 'open' && qSolvers(q).some((a) => a.ref === key));
         return (asked.length ? `<h2>Questions asked</h2>${asked.map(questionRow).join('')}` : '')
           + (answered.length ? `<h2>Questions answered</h2>${answered.map(questionRow).join('')}` : '');
       })()}
-      <h2>Results</h2>${resultsTable(uses(key))}`;
+      <h2>Results</h2>${(() => {
+        const other = Z.raw.results.filter((res) => !resInMode(res) && (res.refs || []).some((x) => x.ref === key)).length;
+        return other ? `<p class="small muted">${other} more result${other === 1 ? '' : 's'} of this paper concern other frameworks (<button class="linkish" id="mode-off">show all frameworks</button>).</p>` : '';
+      })()}${resultsTable(uses(key))}`;
     $('#bib-ref').addEventListener('click', () => downloadBib([key], key));
     if (r.hasAbstract) loadAbstracts().then((a) => {
       const el = $('#abstract');
@@ -1452,11 +1523,11 @@ function viewRefs(key) {
     return;
   }
   const nUse = new Map();
-  Z.raw.results.forEach((res) => (res.refs || []).forEach((r) => nUse.set(r.ref, (nUse.get(r.ref) || 0) + 1)));
+  Z.raw.results.forEach((res) => resInMode(res) && (res.refs || []).forEach((r) => nUse.set(r.ref, (nUse.get(r.ref) || 0) + 1)));
   m.innerHTML = `<h1>Literature</h1>
     <p class="muted">${refs.length} papers. Papers with extracted results feed the zoo; the others come from Brattka's Bibliography on Weihrauch Complexity and sweeps of zbMATH Open and arXiv, and are waiting for their results to be entered.</p>
     <div class="filters"><input class="text" id="rq" placeholder="Author, title, year…" style="width:280px">
-      <select id="rsrc"><option value="results">With results in the zoo</option><option value="">All papers</option>
+      <select id="rsrc"><option value="results">${MODE() ? `With results in ${esc(MODE().name)}` : 'With results in the zoo'}</option><option value="">All papers</option>
         <option value="weihrauch-bibliography">Weihrauch bibliography only</option><option value="arxiv">arXiv sweep only</option><option value="zbmath">zbMATH sweep only</option></select>
       <select id="rread"><option value="">Any reading status</option><option value="pdf">Full text parsed</option>
         <option value="abstract">Abstract read</option><option value="screened">Abstract screened</option><option value="none">Not read</option></select>
@@ -1533,6 +1604,15 @@ function viewAbout(params) {
       maintainer and are not published. Endorsements are periodically committed to the database
       (<code>data/endorsements.yaml</code>) with the rest of the data.</p>
     ${C.live ? '' : liveNote()}
+    <h2>Frameworks</h2>
+    <p>The zoo gathers several frameworks. The switch in the header (or the chips on the front page) restricts the viewer to one of them:
+      the catalogue, the diagrams, the results, the literature and the questions then show only the statements studied there, the reductions
+      of the framework and the results stated with them. The inference itself always uses every result. A link with <code>?mode=…</code>
+      opens the viewer in a framework.</p>
+    <table class="grid"><tr><th>Framework</th><th>Reductions</th><th>Also shown</th></tr>${(Z.raw.modes || []).map((x) => `<tr><td><a href="#/?mode=${x.id}">${esc(x.name)}</a><div class="small muted">${esc(x.description || '')}</div></td>
+      <td>${x.reductions.map((r) => esc(Z.R[Z.ridx.get(r)].name)).join(', ')}</td>
+      <td class="small">${[x.properties && 'computability-theoretic properties', x.conservation && 'conservation results'].filter(Boolean).join(', ') || '—'}</td></tr>`).join('')}</table>
+    <p class="small muted">A statement belongs to a framework when a cited result about it is stated there, or when it is the base system of one of its reductions.</p>
     <h2>Review</h2>
     <p>The <a href="#/review">review page</a> lists proposals that are not part of the database: results and missing statements found
       by an AI reader of the full texts that did not pass its automatic checks, and candidates of the regular consolidation (theorems
@@ -1956,6 +2036,19 @@ function route() {
   const params = new URLSearchParams(qs || '');
   const p = path.split('/').filter(Boolean);
   const name = currentRoute();
+  if (params.has('mode')) {
+    const v = params.get('mode');
+    if (v !== state.mode && (v === '' || (Z.raw.modes || []).some((m) => m.id === v))) {
+      state.mode = v;
+      if (MODE() && !MODE().reductions.includes(state.r)) state.r = MODE().default;
+      saveState();
+      renderModeSwitch();
+    }
+    // the mode is applied once: later switches must not be undone by the URL
+    params.delete('mode');
+    const rest = params.toString();
+    history.replaceState(null, '', `#${path}${rest ? `?${rest}` : ''}`);
+  }
   $$('#nav a').forEach((a) => a.classList.toggle('active', a.dataset.route === name || (name === 'statement' && a.dataset.route === 'catalogue')));
   main().style.padding = '';
   closeDrawer();
@@ -1996,6 +2089,8 @@ async function boot() {
   const raw = await (await fetch('data/zoo.json', { cache: 'no-store' })).json();
   Z = buildZoo(raw);
   Z.raw.results.forEach((r, ri) => resultIdx.set(r._key, ri));
+  if (state.mode && !MODE()) state.mode = ''; // a mode that no longer exists
+  renderModeSwitch();
   C = createCommunity(Z);
   // the live state (server) may differ from the committed endorsements and votes: redraw
   // once known, with the validated proposals of the review page joined to the database
