@@ -2536,7 +2536,7 @@
 - id: patey2016c-c9d05d79
   ref: patey2016c
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: TS
@@ -2546,6 +2546,10 @@
     facts: Admits strong preservation of k hyperimmunities for every k (Corollary 8.4.2); RCA0 ∧ COH ∧ WKL ∧ TS^2_{k+1} ∧ TS does not imply STS^2_k over ω-models (Corollary 8.4.3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as ts (2026-11-04), with Theorem 3.2 of Cholak et al. 2005, Theorem 9.0.13 and Corollary 8.4.3 of the thesis, and Theorem 9.38 of Hirschfeldt 2015 (Wang).
 - id: patey2016c-1417af22
   ref: patey2016c
   date: 2026-11-03

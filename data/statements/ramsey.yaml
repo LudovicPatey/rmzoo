@@ -323,3 +323,17 @@
     For every coloring $c : [\mathbb{N}]^2 \to 2$ there is a set of cardinality $\mathbb{N}$ on which $c$ is transitive.
   refs:
     - { ref: fioricaroneskoodziejczykkowalik2021, role: origin, loc: "Section 2.1 and Section 4, after Question 4.12" }
+
+- id: ts
+  label: '\mathsf{TS}'
+  name: Thin set theorem
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ thin set theorem ]
+  definition: >
+    For every $n$, every function $f : [\mathbb{N}]^n \to \mathbb{N}$ has an infinite thin set $H$, i.e. $f[[H]^n] \neq \mathbb{N}$.
+  instance: 'A number $n$ and a function $f : [\mathbb{N}]^n \to \mathbb{N}$.'
+  solution: 'An infinite set $H$ with $f[[H]^n] \neq \mathbb{N}$.'
+  refs:
+    - { ref: cholaketal2005, role: rm, loc: Statement 3.1 }
+    - { ref: patey2016c, role: rm, loc: Definition 8.0.2 }

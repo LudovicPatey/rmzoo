@@ -1,0 +1,3 @@
+# Results from [cholaketal2005].
+
+[ { type: implication, from: fs, to: ts, over: rca0, refs: [ { ref: cholaketal2005, loc: Theorem 3.2 (uniformly in k) } ] } ]
