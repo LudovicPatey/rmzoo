@@ -31,6 +31,7 @@
     - { ref: brattkarakotoniaina2017, role: rm }
 
 - id: rt1inf
+  caution: 'For Weihrauch reducibility it matters whether the number of colors is part of the instance: here the bound k is given, unlike RT¹_ℕ ([[rt1n]]) of Goh, Pauly and Valenti [@gohpaulyvalenti2021]. Check which convention a paper uses.'
   label: '\mathsf{RT}^1_{<\infty}'
   name: Infinite pigeonhole principle (finitely many colors)
   kind: problem

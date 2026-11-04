@@ -106,6 +106,7 @@
     - { ref: ambosspiesetal2004, role: rm }
 
 - id: aca
+  caution: 'ACA₀ is equivalent over RCA₀ to the existence of Turing jumps, but as problems they differ: ACA here receives an arithmetical formula with a set parameter and returns the set it defines, while the jump X ↦ X′ is [[tj]], which unlike ACA has the Δ⁰₂ basis property.'
   label: '\mathsf{ACA}'
   name: Arithmetical comprehension
   kind: problem
@@ -121,6 +122,7 @@
     - { ref: simpson2009, role: survey, loc: Chapter III }
 
 - id: tj
+  caution: 'Equivalent to ACA₀ over RCA₀, but not the same problem as ACA ([[aca]]), which returns the set defined by an arbitrary arithmetical formula with a set parameter.'
   label: '\mathsf{TJ}'
   name: Turing jump
   kind: problem
@@ -137,6 +139,7 @@
     - { ref: dzhafarovsolomonyokoyama2023, role: rm, loc: "Section 4, before Theorem 4.2 (the problem TJ)" }
 
 - id: atr
+  caution: 'In the Weihrauch lattice, ATR names a problem (Definition 3.12 of [@kiharamarconepauly2020]) that is strongly Weihrauch equivalent to [[ucnn]] (Theorem 3.13), not to closed choice [[cnn]]; its two-sided version is [[atr2]]. The results here about ATR concern the axiom ATR₀.'
   label: '\mathsf{ATR}'
   name: Arithmetical transfinite recursion
   kind: sentence

@@ -26,6 +26,7 @@
   refs: [ { ref: astoretal2017, role: origin } ]
 
 - id: ht
+  caution: 'Hindman''s theorem is also called the finite sums theorem; FS here is the free set theorem ([[fs]]).'
   label: '\mathsf{HT}'
   name: Hindman's theorem
   kind: problem
@@ -160,6 +161,7 @@
     - weakly 2-random
 
 - id: cran
+  caution: 'CR abbreviates computable randomness in randomness papers, and closed choice on the reals ([[cr]]) in Weihrauch papers.'
   label: '\mathsf{CR}\text{-}\mathsf{RAN}'
   name: Existence of computable randoms
   kind: problem
@@ -334,6 +336,7 @@
     - { ref: dzhafarovmummert2022, role: rm, loc: Theorem 10.6.14 }
 
 - id: padeg
+  caution: 'In Weihrauch and computability papers this problem is usually written PA; here PA ([[pa]]) is first-order Peano arithmetic, the full induction scheme.'
   label: '\textsf{PA degrees}'
   name: PA degrees (problem)
   kind: problem

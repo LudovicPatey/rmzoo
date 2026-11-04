@@ -5,6 +5,7 @@
 # pages of the Big Five systems as equivalent statements.
 
 - id: heine-borel
+  caution: 'The acronyms HB and HBT name the Heine–Borel covering lemma in some papers and the Hahn–Banach theorem ([[hb]]) in others: check the definition in each paper.'
   label: "\\textsf{Heine–Borel}_{[0,1]}"
   name: "Heine–Borel covering lemma for [0,1]"
   kind: sentence
@@ -212,6 +213,7 @@
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem III.7.8" } ]
 
 - id: sigma11-sep
+  caution: 'As a sentence, Σ¹₁ separation is equivalent to ATR₀, and the weaker Π¹₁ separation lies strictly between Δ¹₁-CA₀ and ATR₀. As Weihrauch problems the order is reversed: Σ¹₁-Sep is strongly Weihrauch equivalent to [[ucnn]] (Theorem 3.11 of [@kiharamarconepauly2020]) and lies strictly below Π¹₁-Sep ([[pi11-sep-w]]).'
   label: "\\Sigma^1_1\\text{-}\\mathsf{SEP}"
   name: "Σ¹₁ separation"
   kind: sentence
@@ -221,6 +223,7 @@
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem V.5.1" } ]
 
 - id: cwo
+  caution: 'As a sentence, CWO is equivalent to ATR₀ over RCA₀; the Weihrauch problem CWO of Kihara, Marcone and Pauly is strongly Weihrauch equivalent to [[ucnn]] (Theorem 5.5 of [@kiharamarconepauly2020]). The two-sided version is [[cwo2]].'
   label: "\\mathsf{CWO}"
   name: "Comparability of countable well-orderings"
   kind: sentence

@@ -103,6 +103,16 @@ of the "implies N statements" counts and of related statements, and listed under
 (Simpson's equivalents of WKL₀ on the page of WKL). Such statements are labelled
 by their name in `\textsf{…}` rather than by an invented acronym.
 
+**Misleading names** (`caution`). Some acronyms name different principles in
+different papers or frameworks: PA is Peano arithmetic or the PA-degree problem,
+HB(T) Hahn–Banach or Heine–Borel, PTT the polarized or the perfect tree theorem,
+ATR, CWO and Σ¹₁-Sep are Big Five-level sentences but Weihrauch problems at the
+level of UC_ℕℕ. Such a statement carries a `caution`, a short text (with `[@ref]`
+citations and `[[id]]` links to the other statement) shown in a box at the top of
+its page, as a "⚠ name" badge in the catalogue and in its hover card, and given to
+the AI reader with the catalogue. The build warns when two statements share an
+alias or a label and neither has a caution.
+
 **Problem forms of comprehension.** As a problem, ACA is comprehension:
 (X, arithmetical φ) ↦ {n : φ(n, X)}, which is Weihrauch equivalent to the finite
 jumps ACA′ ((X, n) ↦ X⁽ⁿ⁾). The jump X ↦ X′ (J of Brattka et al., TJ of

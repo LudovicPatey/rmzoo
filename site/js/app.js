@@ -737,6 +737,7 @@ function card(i, shown) {
       <div class="name"><a href="#/s/${s.id}" style="color:inherit">${esc(s.name)}</a>
         ${kindBadge(s)}
         ${s.todo ? '<span class="badge warn" title="The precise definition should be checked against the source">to check</span>' : ''}
+        ${cautionBadge(s)}
         ${frameBadges(s)}</div>
       <div class="def">${def}</div>
       ${forms.length ? `<div class="forms">Other formulations: ${forms.map(([t, j]) =>
@@ -800,6 +801,7 @@ function viewStatement(id, params = new URLSearchParams()) {
       ${frameBadges(s)}
       ${s.aliases ? `<span class="small muted">Also: ${s.aliases.map(esc).join(', ')}</span>` : ''}
     </div>
+    ${s.caution ? `<div class="caution-box"><b>⚠ Beware of the name.</b> ${richLinks(s.caution)}</div>` : ''}
     ${!inMode(i) ? `<p class="mode-note">${MODE().reductions.every((x) => !Z.inDomain(Z.ridx.get(x), i))
       ? `${L(i)} is a second-order sentence: the reductions of <b>${esc(MODE().name)}</b> compare problems only and do not apply to it.`
       : `${L(i)} is not studied in <b>${esc(MODE().name)}</b>: no cited result about it uses
@@ -919,6 +921,15 @@ const richCite = (text) => String(text ?? '').split(/(\[@[^\]]+\])/g).map((p) =>
   const m = p.match(/^\[@([^\]]+)\]$/);
   return m ? `<a class="cite" href="#/refs/${m[1]}" title="${esc(Z.raw.references[m[1]]?.title || '')}">[${esc(refShort(m[1]))}]</a>` : rich(p);
 }).join('');
+// text of a caution: [@ref] citations and [[id]] links to statements
+const richLinks = (text) => String(text ?? '').split(/(\[\[[^\]]+\]\])/g).map((p) => {
+  const m = p.match(/^\[\[([^\]]+)\]\]$/);
+  return m ? (idx(m[1]) !== undefined ? sLink(idx(m[1])) : esc(m[1])) : richCite(p);
+}).join('');
+// the caution of a statement as plain text (titles, tooltips)
+const cautionText = (s) => String(s.caution || '').replace(/\s*\(\[\[[^\]]+\]\]\)/g, '').replace(/\[\[([^\]]+)\]\]/g, (_, k) => (idx(k) !== undefined ? plain(S(idx(k)).label) : k))
+  .replace(/\s*\[@[^\]]+\]/g, '').replace(/\$([^$]+)\$/g, (_, x) => plain(x));
+const cautionBadge = (s) => (s.caution ? `<span class="badge caution" title="${esc(cautionText(s))}">⚠ name</span>` : '');
 const BIG5 = ['rca0', 'wwkl', 'wkl', 'aca', 'atr', 'pi11ca'];
 const listL = (js, r) => js.map((j) => sLink(j, r)).join(', ');
 // A computed summary: literature, position among the Big Five, and counts at RCA₀ and W.
@@ -1971,6 +1982,7 @@ function peekHtml(a) {
     const def = s.conjunction ? `Conjunction of ${s.conjunction.map((c) => L(idx(c))).join(' and ')}.` : rich(s.definition || '');
     return `<div class="peek-head">${L(i)}${s.name ? ` <span class="muted">${esc(s.name)}</span>` : ''} ${kindBadge(s)}</div>
       <div class="peek-body">${def || '<span class="muted">No definition recorded.</span>'}</div>
+      ${s.caution ? `<div class="peek-caution small">⚠ ${esc(cautionText(s))}</div>` : ''}
       ${s.kind === 'problem' && s.instance ? `<div class="peek-io small"><b>Instances.</b> ${rich(s.instance)}<br><b>Solutions.</b> ${rich(s.solution)}</div>` : ''}`;
   }
   m = h.match(/^#\/refs\/([^?/]+)/);

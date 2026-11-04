@@ -58,6 +58,7 @@ export const SCHEMA = {
     instance: { doc: 'for problems: what an instance is', usedBy: ['build', 'viewer'] },
     solution: { doc: 'for problems: what a solution is', usedBy: ['build', 'viewer'] },
     refs: { doc: 'papers introducing or studying it: [{ref, role, loc}]', usedBy: ['build', 'viewer', 'consolidate'], items: 'statementRef' },
+    caution: { doc: 'warning shown with the statement when its name or acronym is misleading: the same acronym names another principle in some papers, or the label is read differently in another framework. Free text with $…$, [@ref] citations and [[id]] links to statements', usedBy: ['build', 'viewer', 'aiAnalyze'] },
     todo: { doc: 'the definition still needs to be checked against the source (free text); listed by consolidate', usedBy: ['viewer', 'consolidate'] },
     base: { doc: 'reductions in which this statement is the bottom (e.g. [rca0] for RCA₀ itself)', usedBy: ['engine', 'build', 'viewer'] },
     priority: { doc: 'ranking boost in search results', usedBy: ['engine'] },

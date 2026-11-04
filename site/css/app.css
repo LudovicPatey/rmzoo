@@ -425,6 +425,10 @@ table.related td { vertical-align: middle; }
 .mode-bar .mode-desc { max-width: 46rem; text-align: right; }
 @media (max-width: 900px) { .mode-bar .mode-desc { display: none; } }
 .mode-note { background: var(--open-soft); padding: 8px 12px; border-radius: 8px; font-size: .9rem; }
+/* misleading names (statement field caution) */
+.caution-box { background: var(--open-soft); border-left: 3px solid var(--open); padding: 8px 12px; border-radius: 6px; margin: 0 0 14px; font-size: .92rem; }
+.badge.caution { background: var(--open-soft); color: var(--open); border-color: transparent; cursor: help; }
+.peek-caution { margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--line, rgba(127,127,127,.25)); color: var(--open); }
 .lattice .node.off { opacity: .25; cursor: default; }
 svg.mini circle.off { opacity: .15; }
 .badge.other-mode { margin-left: auto; background: var(--bg); color: var(--muted); border: 1px solid var(--line); font-weight: 500; }

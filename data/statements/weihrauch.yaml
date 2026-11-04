@@ -150,6 +150,7 @@
     - {ref: brattkagherardipauly2021, role: survey, loc: Proposition 7.20}
 
 - id: cr
+  caution: 'C_ℝ, sometimes written CR, is closed choice on the reals. In randomness papers CR abbreviates computable randomness ([[cran]]).'
   label: '\mathsf{C}_{\mathbb{R}}'
   name: Closed choice on the reals
   kind: problem
@@ -192,12 +193,13 @@
     - {ref: kiharamarconepauly2020, role: rm}
 
 - id: ucn
+  caution: '“Unique choice” without qualification usually means unique choice on Baire space ([[ucnn]]) in the Weihrauch literature.'
   label: '\mathsf{UC}_{\mathbb{N}}'
   name: Unique choice on the natural numbers
   kind: problem
   formulationOf: cn
   tags: [ weihrauch ]
-  aliases: [ UCN, unique choice ]
+  aliases: [ UCN ]
   definition: >
     Given an enumeration of the complement of a singleton $\{n\} \subseteq \mathbb{N}$,
     find $n$.
@@ -573,6 +575,7 @@
   refs: [ { ref: kiharamarconepauly2020, role: origin, loc: "Definition 4.2, Theorem 4.3" } ]
 
 - id: pi11-sep-w
+  caution: 'As Weihrauch problems, Σ¹₁-Sep (≡ UC_ℕℕ, Theorem 3.11 of [@kiharamarconepauly2020]) lies strictly below Π¹₁-Sep, while as sentences Σ¹₁ separation ([[sigma11-sep]]) is equivalent to ATR₀ and Π¹₁ separation is strictly weaker than ATR₀.'
   label: '\Pi^1_1\text{-}\mathsf{Sep}'
   name: Π¹₁ separation (Weihrauch problem)
   kind: problem
@@ -612,6 +615,7 @@
   refs: [ { ref: kiharamarconepauly2020, role: origin, loc: "Section 4.2, before Theorem 4.9" } ]
 
 - id: perfect1
+  caution: 'PTT₁ is a perfect tree theorem; PTT with a superscript, as in PTT², is the polarized tree theorem ([[ptt2]]).'
   label: '\mathsf{PTT}_1'
   name: One-sided perfect tree theorem
   kind: problem
@@ -675,6 +679,7 @@
   refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 7.3 } ]
 
 - id: perfect2
+  caution: 'PTT₂ is a perfect tree theorem; PTT²₂ (superscript 2) is the polarized tree theorem for pairs and two colors ([[ptt22]]).'
   label: '\mathsf{PTT}_2'
   name: Two-sided perfect tree theorem
   kind: problem
@@ -699,6 +704,7 @@
 
 # Descending sequences, Π¹₁ bounds and two-sided ATR (Goh, Pauly, Valenti 2021; Goh 2019).
 - id: rt1n
+  caution: 'For Weihrauch reducibility it matters whether the number of colors is part of the instance. Here RT¹_ℕ receives only the coloring, as in Goh, Pauly and Valenti [@gohpaulyvalenti2021], while RT¹_{<∞} ([[rt1inf]]) also receives the bound k. Check which convention a paper uses.'
   label: '\mathsf{RT}^1_{\mathbb{N}}'
   name: Pigeonhole principle without a bound on the colors
   kind: problem

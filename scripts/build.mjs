@@ -430,6 +430,27 @@ raw.results.forEach((res, i) => {
       byArxiv.set(r.arxiv, k);
     }
   }
+  // cautions about misleading names: text whose citations and statement links resolve
+  for (const s of raw.statements) {
+    if (s.caution === undefined) continue;
+    if (typeof s.caution !== 'string' || !s.caution.trim()) { errors.push(`Statement ${s.id}: caution must be a non-empty text`); continue; }
+    for (const [, k] of s.caution.matchAll(/\[@([^\]]+)\]/g)) if (!raw.references[k]) errors.push(`Statement ${s.id}: caution cites unknown reference ${k}`);
+    for (const [, k] of s.caution.matchAll(/\[\[([^\]]+)\]\]/g)) if (!raw.statements.some((t) => t.id === k)) errors.push(`Statement ${s.id}: caution links unknown statement ${k}`);
+  }
+  // the same name for two statements (an alias equal to another's alias or plain label) needs a caution on one of them
+  {
+    const flat = (l) => String(l || '').replace(/\\(?:mathsf|mathrm|mathbf|textsf|text)\{([^}]*)\}/g, '$1').replace(/[{}\s]/g, '').toLowerCase();
+    const names = new Map();
+    for (const s of raw.statements) {
+      if (s.conjunction || s.op) continue;
+      for (const n of new Set([flat(s.label), ...(s.aliases || []).map((a) => a.toLowerCase().replace(/\s+/g, ''))])) {
+        if (!n || n.length < 2 || /\\/.test(n)) continue;
+        if (!names.has(n)) names.set(n, []);
+        names.get(n).push(s);
+      }
+    }
+    for (const [n, ss] of names) if (ss.length > 1 && !ss.some((s) => s.caution)) warnings.push(`Statements ${ss.map((s) => s.id).join(', ')} share the name "${n}": add a caution to one of them or remove the alias`);
+  }
   // minor statements: a boolean, never a base system or a conjunction
   for (const s of raw.statements) if (s.minor !== undefined && (s.minor !== true || s.conjunction || s.op)) errors.push(`Statement ${s.id}: minor must be true, on a plain statement`);
   // formulations point to a main formulation, never to another formulation

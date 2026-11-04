@@ -115,7 +115,9 @@ a separation over `omega`.
 * Subscripts and superscripts run together: `RT22` is RT²₂, `SRT23` is SRT²₃,
   `C′N` is C_N′.
 * The same acronym can name different principles in different papers (HBT,
-  BCT, …). Always identify a statement from the paper's own definition.
+  BCT, PA, PTT, …). Always identify a statement from the paper's own definition.
+  A catalogue entry with a `Caution:` line has a name known to be misleading:
+  read the caution before matching the paper's notation to it.
 
 Report nothing you have not found in the text. If the paper contains no fact
 about catalogue statements, return empty lists.

@@ -44,7 +44,9 @@ paper.
 5. **Ambiguous names**: the same acronym can name different principles in
    different papers (HBT is Hahn–Banach or Heine–Borel; BCT is Brattka–Gherardi's
    or Sanders' third-order version). Check the definition in each paper before
-   linking a result to a statement.
+   linking a result to a statement. When a statement's acronym is used for
+   something else in the literature, give it a `caution` (and the other statement
+   one pointing back); the build warns about shared aliases without one.
 6. **Open questions** (`data/questions.yaml`) are recorded only when a paper
    states them explicitly. Give `formal` parts whenever the question is a
    comparison of statements: the status is then derived from the database. Never
