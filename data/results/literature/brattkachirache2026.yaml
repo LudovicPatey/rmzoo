@@ -1,0 +1,3 @@
+# Results from [brattkachirache2026].
+
+[ { type: implication, from: wwkl, to: dnr, over: sw, refs: [ { ref: brattkachirache2026, loc: Proof of Proposition 22 } ] }, { type: equivalence, from: lim, to: lim.star.cn, over: sw, refs: [ { ref: brattkachirache2026, loc: Proposition 19 } ] }, { type: equivalence, from: cr, to: wkl.star.cn, over: sw, refs: [ { ref: brattkachirache2026, loc: Proposition 18 } ] } ]

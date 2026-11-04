@@ -830,6 +830,23 @@
     Δ⁰₁-induction is available, the usual proofs break down, and Kowalik
     [@kowalik2024] asked whether the implications survive.
 
+- id: lcrt22-crt22-rcastar
+  question: Over $\mathsf{RCA}_0^*$, is $\ell\text{-}\mathsf{CRT}^2_2$ equivalent to $\mathsf{CRT}^2_2$? Does it follow from $\mathsf{RT}^2_2$?
+  asked:
+    - {ref: fioricaroneskoodziejczykkowalik2021, loc: Question 4.12}
+    - {ref: kowalik2024, loc: Question 3.10}
+  statements: [lcrt22, crt22, rt22]
+  formal:
+    - {from: crt22, to: lcrt22, over: rca0star}
+    - {from: rt22, to: lcrt22, over: rca0star}
+  context: >-
+    The long version of a Ramseyan principle asks for a solution of cardinality ℕ
+    rather than an unbounded one. Over RCA₀* some long principles (ℓ-RT²₂, ℓ-CAC,
+    ℓ-ADS with set solutions) imply IΣ⁰₁, while ℓ-ADS with sequence solutions is
+    equivalent to ADS; ℓ-CRT²₂ is equivalent to CRT²₂ over WKL₀*
+    [@fioricaroneskoodziejczykkowalik2021]. Both parts would follow from a proof of
+    the growing grouping principle GGP²₂ in RCA₀* + ¬IΣ⁰₁.
+
 - id: ovw-bsig2-conservation
   question: Is $\mathsf{RCA}_0 + \mathsf{OVW}$ $\Pi^1_1$-conservative over $\mathsf{RCA}_0 + \mathsf{B}\Sigma^0_2$?
   asked:

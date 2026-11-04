@@ -75,6 +75,146 @@ diener2018:
   review: 9
   dropped: 0
   cost: 0.67
+dzhafarovmummert2022#1:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 6791da18be5150f8
+  part: 1/9 (chapters 1, 2, pages 1–67)
+  facts: 5
+  added: 0
+  review: 1
+  dropped: 4
+  cost: 0.73
+dzhafarovmummert2022#2:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: aead895bf0228dba
+  part: 2/9 (chapters 3, 4, pages 68–121)
+  facts: 49
+  added: 6
+  review: 49
+  dropped: 7
+  changes:
+    - "merged: property|wkl|low-basis||true"
+    - "merged: property|wkl|computably-true||false"
+    - "added: equivalence|kl|aca|c|"
+    - "merged: property|rt12|computably-true||true"
+    - "added: separation|rt13|rt14|sc|"
+    - "added: separation|rt14|rt15|sc|"
+  cost: 1.23
+dzhafarovmummert2022#3:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 661ac1a66eb67684
+  part: 3/9 (chapters 5, 6, pages 122–189)
+  facts: 33
+  added: 6
+  review: 34
+  dropped: 2
+  changes:
+    - "merged: equivalence|aca|kl|rca0|"
+    - "merged: implication|aca-prime|aca|rca0|"
+    - "merged: implication|aca-plus|aca-prime|rca0|"
+    - "merged: equivalence|wkl|sep|rca0|"
+    - "merged: property|rt1inf|computably-true||true"
+    - "merged: implication|isig2|bsig2|rca0|"
+  cost: 0.96
+dzhafarovmummert2022#4:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: c9e15b27d9674fac
+  part: 4/9 (chapter 7, pages 190–216)
+  facts: 9
+  added: 2
+  review: 6
+  dropped: 1
+  changes:
+    - "merged: conservation|coh|rca0|Pi11|true"
+    - "merged: conservation|wkl|rca0|Pi11|true"
+  cost: 0.36
+dzhafarovmummert2022#6:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 5f59502e40059815
+  part: 6/9 (chapter 9 (1/2), pages 273–322)
+  facts: 132
+  added: 22
+  review: 87
+  dropped: 27
+  changes:
+    - "merged: property|coh|hyperimmunity-preservation||true"
+    - "merged: implication|rt22|cac|rca0|"
+    - "merged: implication|cac|ads|rca0|"
+    - "merged: implication|ads|coh|rca0|"
+    - "added: implication|ads|coh|sw|"
+    - "added: implication|wscac|scac|sw|"
+    - "merged: separation|wkl|sads|omega|"
+    - "merged: property|scac|low-basis||true"
+    - "merged: separation|scac|srt22|omega|"
+    - "merged: separation|ads|scac|omega|"
+    - "added: property|ads|dep-hyperimmunity-preservation||true"
+    - "merged: property|scac|dep-hyperimmunity-preservation||false"
+    - "merged: separation|scac|wscac|c|"
+    - "added: implication|srt22|wscac|w|"
+    - "merged: separation|adc|sads|w|"
+    - "added: implication|pt22|ads|c|"
+    - "added: implication|pt22.star.pt22|rt22|c|"
+    - "merged: equivalence|srt22|spt22|rca0|"
+    - "merged: equivalence|srt22|sipt22|rca0|"
+    - "merged: implication|ipt22|dnr0|rca0|"
+    - "merged: implication|ran2|rrt22|rca0|"
+    - "merged: separation|rrt22|rrt32|omega|"
+  cost: 1.94
+dzhafarovmummert2022#7:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 68df8c65f50df35b
+  part: 7/9 (chapter 9 (2/2), pages 323–375)
+  facts: 89
+  added: 1
+  review: 73
+  dropped: 20
+  changes:
+    - "merged: separation|ast|opt|omega|"
+  cost: 1.2
+dzhafarovmummert2022#8:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 916be6cd8be71eac
+  part: 8/9 (chapters 10, 11, pages 376–437)
+  facts: 19
+  added: 1
+  review: 24
+  dropped: 9
+  changes:
+    - "merged: property|ivt|computably-true||true"
+  cost: 0.72
+dzhafarovmummert2022#9:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 5b4cd90422e7b215
+  part: 9/9 (chapter 12, pages 438–499)
+  facts: 0
+  added: 0
+  review: 7
+  dropped: 0
+  cost: 0.46
+goh2019b:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 472db2ec1b4a00af
+  facts: 20
+  added: 6
+  review: 16
+  dropped: 7
+  changes:
+    - "added: implication|rt14|rt12.x.rt12|sw|"
+    - "added: separation|rt13|rt12.x.rt12|w|"
+    - "added: separation|rt15|rt12.x.rt13|w|"
+    - "added: separation|rt15|rt13.x.rt13|w|"
+    - "merged: property|lpo|computably-true||true"
+    - "merged: property|cn|computably-true||true"
+  cost: 1
 gohpaulyvalenti2021:
   date: 2026-11-03
   model: claude-opus-5-5
@@ -207,6 +347,87 @@ patey2016c:
     - "added: separation|rrt32|sts3|c|"
     - "added: separation|wwkl2|coh|omega|"
   cost: 3.39
+simpson2009#2:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 8cfedae6dfcc97b1
+  part: 2/8 (chapters II, III, pages 81–144)
+  facts: 10
+  added: 0
+  review: 13
+  dropped: 8
+  cost: 0.54
+simpson2009#3:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: fdeb4ebee634124d
+  part: 3/8 (chapter IV, pages 145–184)
+  facts: 6
+  added: 0
+  review: 13
+  dropped: 3
+  cost: 0.35
+simpson2009#4:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: fcc5d04d427f65f8
+  part: 4/8 (chapters V, VI, pages 185–260)
+  facts: 5
+  added: 1
+  review: 17
+  dropped: 1
+  changes:
+    - "merged: implication|atr|aca|rca0|"
+  cost: 0.57
+simpson2009#5:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: bebfd20fa6c6cb81
+  part: 5/8 (chapter VII, pages 261–326)
+  facts: 2
+  added: 2
+  review: 6
+  dropped: 0
+  changes:
+    - "added: separation|atr|pi11ca|omega|"
+    - "merged: implication|pi11ca|atr|rca0|"
+  cost: 0.48
+simpson2009#6:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 6c9f11e6dec21ef9
+  part: 6/8 (chapter VIII, pages 327–376)
+  facts: 7
+  added: 2
+  review: 4
+  dropped: 5
+  changes:
+    - "merged: property|wkl|low-basis||true"
+    - "merged: property|wkl|computably-true||false"
+  cost: 0.44
+simpson2009#7:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: 63dd0f119090c7dd
+  part: 7/8 (chapter IX, pages 377–408)
+  facts: 6
+  added: 0
+  review: 2
+  dropped: 2
+  cost: 0.28
+simpson2009#8:
+  date: 2026-11-03
+  model: claude-opus-5-5
+  textHash: e182f04e71ae81f8
+  part: 8/8 (chapter X, pages 409–463)
+  facts: 12
+  added: 2
+  review: 13
+  dropped: 8
+  changes:
+    - "merged: separation|rca0|wwkl|omega|"
+    - "merged: equivalence|rca0|isig1|rca0star|"
+  cost: 0.45
 solda2021:
   date: 2026-11-03
   model: claude-opus-5-5

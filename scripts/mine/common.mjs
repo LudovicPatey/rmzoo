@@ -21,12 +21,13 @@ export function selectPapers(args) {
 const plain = (l) => l.replace(/\\overline\{([^}]*)\}/g, '$1̄').replace(/\\widehat\{([^}]*)\}/g, '$1̂')
   .replace(/\\text\{([^}]*)\}/g, '$1').replace(/\\(mathsf|mathrm|mathbf)\{([^}]*)\}/g, '$2')
   .replace(/\\(lim)\b/g, 'lim').replace(/\\Sigma/g, 'Σ').replace(/\\Pi/g, 'Π').replace(/\\Delta/g, 'Δ').replace(/\\omega/g, 'ω')
-  .replace(/<\\infty/g, '<∞').replace(/\\[a-zA-Z]+/g, '').replace(/[{}^_\s]/g, '');
+  .replace(/\\ell\b/g, 'ℓ').replace(/<\\infty/g, '<∞').replace(/\\[a-zA-Z]+/g, '').replace(/[{}^_\s]/g, '');
 export const dict = new Map();
 const put = (t, id) => { if (t && t.length >= 2 && !dict.has(t)) dict.set(t, id); };
 // plain statements first (a key never overwrites an existing one)
 for (const s of z.S) {
   if (s.conjunction || s.op) continue;
+  if (/\\textsf\{/.test(s.label)) continue; // a descriptive name (\textsf{Brouwer}), not an acronym the texts would use
   put(plain(s.label).replace(/Σ0|Π0|Δ0/g, (m) => m[0]), s.id);
 }
 // operator statements, in the notation of the papers: P′ P∗ P⋄, P ⋆ Q / P ∗ Q, P × Q
@@ -48,7 +49,7 @@ for (const s of z.S) {
   for (const s of ops) for (const t of forms.get(s.id) || []) put(t, s.id);
 }
 // common spellings
-const extra = { WKL0: 'wkl', ACA0: 'aca', ATR0: 'atr', RCA0: 'rca0', WWKL0: 'wwkl', 'Π11-CA0': 'pi11ca', 'Π11-CA': 'pi11ca',
+const extra = { WKL0: 'wkl', ACA0: 'aca', TJ: 'aca', ATR0: 'atr', RCA0: 'rca0', WWKL0: 'wwkl', 'Π11-CA0': 'pi11ca', 'Π11-CA': 'pi11ca',
   'BΣ2': 'bsig2', 'IΣ2': 'isig2', 'BΣ3': 'bsig3', 'IΣ3': 'isig3', 'IΣ1': 'isig1', DNC: 'dnr', 'RT1<∞': 'rt1inf', 'RT2<∞': 'rt2',
   'SRT2<∞': 'srt2', 'D2<∞': 'd2', 'TT1<∞': 'tt1', 'RT<∞1': 'rt1inf', MLR: 'ran1', '2-MLR': 'ran2', '1-GEN': 'gen1', 'Π01G': 'pi01g',
   CN: 'cn', 'C2N': 'wkl', LLPO: 'llpo', LPO: 'lpo', 'C2': 'llpo', 'KN': 'kn', 'CR': 'cr', 'CNN': 'cnn', 'UCNN': 'ucnn', 'lim': 'lim',

@@ -41,3 +41,9 @@
 - id: well-orders
   name: Well-orders & wqos
   description: Well-ordering principles, wqo and bqo theory.
+- id: algebra
+  name: Algebra
+  description: Theorems about countable fields, rings, groups and vector spaces.
+- id: determinacy
+  name: Determinacy & descriptive set theory
+  description: Determinacy of games, Ramsey theorems with infinite exponent, perfect sets and separation principles.

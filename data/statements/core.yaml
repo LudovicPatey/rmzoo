@@ -110,7 +110,7 @@
   name: Arithmetical comprehension
   kind: problem
   tags: [ big-five ]
-  aliases: [ ACA0, arithmetic comprehension, Turing jump ]
+  aliases: [ ACA0, arithmetic comprehension, Turing jump, TJ, J ]
   definition: >
     Every set defined by an arithmetical formula exists. Equivalently over RCA₀, every set has a Turing jump.
   instance: A set $X$.
@@ -118,6 +118,9 @@
   refs:
     - { ref: friedman1975, role: origin }
     - { ref: simpson2009, role: survey, loc: Chapter III }
+    - { ref: brattkagherardipauly2021, role: rm, loc: "Section 6, before Theorem 6.7 (the jump J)" }
+    - { ref: dzhafarovmummert2022, role: rm, loc: "Definition 3.6.9 (the problem TJ)" }
+    - { ref: dzhafarovsolomonyokoyama2023, role: rm, loc: "Section 4, before Theorem 4.2 (the problem TJ)" }
 
 - id: atr
   label: '\mathsf{ATR}'

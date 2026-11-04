@@ -25,7 +25,7 @@ export const RULES = {
   'prop-base': 'A problem has this property exactly when the base system implies it over this reduction (e.g. computably true = holds in every ω-model)',
   refine: 'Separation at a coarser reduction',
   'op-base': 'Algebra of Weihrauch degrees: a problem is below its jump, its parallelization and its finite parallelization (strongly), and below products and compositional products in which it occurs',
-  'op-monotone': 'Algebra of Weihrauch degrees: jumps, parallelizations, finite parallelizations, products, compositional products and the diamond operator are monotone',
+  'op-monotone': 'Algebra of Weihrauch degrees: parallelizations, finite parallelizations, products, compositional products and the diamond operator are monotone; jumps are monotone for strong Weihrauch reducibility',
   'op-diamond': 'Algebra of Weihrauch degrees: P⋄ is closed under products and compositional products (if Q, R ≤W P⋄ then Q × R ≤W P⋄ and Q ⋆ R ≤W P⋄)',
   'weaken-left': 'Weakening the hypothesis',
   'strengthen-right': 'Strengthening the conclusion',
@@ -189,7 +189,8 @@ export function buildZoo(raw) {
   // Laws, for reductions marked `algebra` (strong / weak Weihrauch):
   //   P ≤sW P', P ≤sW P̂, P ≤sW P*, P* ≤sW P̂;   P, Q ≤W P × Q ≤W P ⋆ Q, P, Q ≤W P ⋆ Q;
   //   P ≤W P⋄, and P⋄ is closed under × and ⋆ (diamond: weak only);
-  //   all operations are monotone (jump, par, fin also for ≤sW; ×, ⋆ for ≤W).
+  //   all operations are monotone for ≤W except the jump, which is monotone for ≤sW
+//   only (par and fin are monotone for both).
   // "X implies Y" means Y ≤ X, so P ≤ op(P) is the implication op(P) → P.
   const ops = [];
   S.forEach((s, i) => { if (s.op) ops.push({ i, op: s.op, args: (s.args || []).map((id) => sidx.get(id)) }); });
@@ -225,12 +226,16 @@ export function buildZoo(raw) {
         addI(r, d, c.i, { rule: 'op-diamond', prem: c.args.map((y) => fI(r, d, y)) });
     }
   };
-  // monotonicity, applied when an implication between arguments is derived
+  // monotonicity, applied when an implication between arguments is derived. The jump
+  // is monotone for ≤sW only: P ≤W Q does not give P' ≤W Q' (the identity is below
+  // every problem, but its jump is lim), so over ≤W jumps are compared only through
+  // ≤sW facts.
+  const monoAt = (r, o) => (o.op === 'jump' ? R[r].algebra === 'strong' : algebraAt(r, o));
   const monotone = (r, a, b) => {
     if (!R[r].algebra) return;
     diamondClosure(r, a, b);
     for (const o of opsByArg.get(b) || []) { // o = op(..., b, ...); look for o2 = op(..., a, ...)
-      if (!algebraAt(r, o)) continue;
+      if (!monoAt(r, o)) continue;
       for (const o2 of opsByArg.get(a) || []) {
         if (o2.op !== o.op || o2.args.length !== o.args.length) continue;
         // o2 implies o when every argument of o2 implies the corresponding argument of o

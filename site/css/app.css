@@ -404,3 +404,8 @@ table.related td { vertical-align: middle; }
   box-shadow: var(--shadow); padding: 10px 12px; font-size: .9rem; line-height: 1.45; max-height: 50vh; overflow: auto; }
 .peek-head { font-weight: 600; margin-bottom: 4px; }
 .peek-io { margin-top: 6px; color: var(--muted); }
+
+/* kind of a statement */
+.badge.kind-problem { background: var(--accent-soft); color: var(--accent); }
+.badge.kind-sentence { background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
+.peek-head .badge { font-weight: 600; vertical-align: 1px; }

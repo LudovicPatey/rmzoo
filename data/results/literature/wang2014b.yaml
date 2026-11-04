@@ -1,3 +1,3 @@
 # Results from [wang2014b].
 
-[ { type: property, statement: fs, property: cone-avoidance, value: true, refs: [ { ref: wang2014b, loc: Theorem 4.1 }, { ref: dzhafarovmummert2022, loc: Corollary 9.8.8 } ] }, { type: property, statement: rrt, property: cone-avoidance, value: true, refs: [ { ref: wang2014b, loc: Theorem 4.2 } ] }, { type: implication, from: fs, to: rrt, over: sc, refs: [ { ref: wang2014b, loc: Theorem 4.2 } ] } ]
+[ { type: property, statement: fs, property: cone-avoidance, value: true, refs: [ { ref: wang2014b, loc: Theorem 4.1 }, { ref: dzhafarovmummert2022, loc: Corollary 9.8.8 } ] }, { type: property, statement: rrt, property: cone-avoidance, value: true, refs: [ { ref: wang2014b, loc: Theorem 4.2 }, { ref: dzhafarovmummert2022, loc: Theorem 9.4.4 } ] }, { type: implication, from: fs, to: rrt, over: sc, refs: [ { ref: wang2014b, loc: Theorem 4.2 } ] } ]

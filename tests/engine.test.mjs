@@ -120,6 +120,27 @@ test('operator statements: P below its jump, parallelization; monotonicity', () 
   assert.equal(st('w', 'b.jump', 'a.jump'), 'open');
 });
 
+test('the jump is monotone for ≤sW only: b ≤W a does not give b′ ≤W a′', () => {
+  const zoo = buildZoo({
+    reductions: [
+      { id: 'sw', domain: 'problems', algebra: 'strong', finerThan: ['w'] },
+      { id: 'w', domain: 'problems', algebra: 'weak', finerThan: [] },
+    ],
+    properties: [],
+    statements: [
+      { id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' },
+      { id: 'a.jump', kind: 'problem', op: 'jump', args: ['a'] },
+      { id: 'b.jump', kind: 'problem', op: 'jump', args: ['b'] },
+      { id: 'a.par', kind: 'problem', op: 'par', args: ['a'] },
+      { id: 'b.par', kind: 'problem', op: 'par', args: ['b'] },
+    ],
+    results: [{ type: 'implication', from: 'a', to: 'b', over: 'w', refs: [{ ref: 'x' }] }],
+  });
+  const st = (r, x, y) => zoo.status(zoo.ridx.get(r), zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('w', 'a.jump', 'b.jump'), 'open');    // the identity is below lim, its jump is lim
+  assert.equal(st('w', 'a.par', 'b.par'), 'implies');   // parallelization is monotone for ≤W
+});
+
 test('diamond: P ≤W P⋄, closed under ⋆ and ×, monotone; not for ≤sW', () => {
   const zoo = buildZoo({
     reductions: [

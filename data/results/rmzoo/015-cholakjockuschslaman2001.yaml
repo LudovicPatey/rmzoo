@@ -10,7 +10,7 @@
 - { type: "implication", from: "coh-srt22", to: "rt22", over: "rca0", refs: [ { ref: cholakjockuschslaman2001, loc: Lemma 7.11 } ] }
 - { type: "equivalence", from: "srt2", to: "d2", over: "rca0", refs: [ { ref: "cholakjockuschslaman2001", loc: "Lemma 7.12" } ] }
 - { type: "equivalence", from: "rt2", to: "coh-srt2", over: "rca0", refs: [ { ref: "cholakjockuschslaman2001", loc: "Lemma 7.13" } ] }
-- { type: "conservation", statement: "coh", base: "rca0", class: "Pi11", value: true, refs: [ { ref: "cholakjockuschslaman2001", loc: "Theorem 9.1" } ] }
+- { type: "conservation", statement: "coh", base: "rca0", class: "Pi11", value: true, refs: [ { ref: cholakjockuschslaman2001, loc: Theorem 9.1 }, { ref: dzhafarovmummert2022, loc: Theorem 7.7.1 } ] }
 - { type: "conservation", statement: "coh-isig2-wkl", base: "isig2", class: "Pi11", value: true, refs: [ { ref: "cholakjockuschslaman2001", loc: "Lemma 9.5 and Lemma 6.6" } ] }
 - { type: "conservation", statement: "coh-wkl", base: "rca0", class: "Pi11", value: true, refs: [ { ref: "cholakjockuschslaman2001", loc: "Lemma 9.6 and Lemma 6.6" } ] }
 - { type: "separation", from: "wkl", to: "coh", over: "omega", refs: [ { ref: "cholakjockuschslaman2001", loc: "Lemma 9.14" } ] }

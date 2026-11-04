@@ -1,8 +1,8 @@
 # Property facts. Most come from the 'Unsupported' notes of Astor's RM Zoo file,
 # which could not express them; they are now used to derive separations.
 
-- { type: property, statement: sads, property: low-basis, value: true, refs: [ { ref: hirschfeldtshore2007, loc: Theorem 2.11 and Corollary 2.12 } ] }
-- { type: property, statement: scac, property: low-basis, value: true, refs: [ { ref: hirschfeldtshore2007, loc: Theorem 3.4 and Corollary 3.5 } ] }
+- { type: property, statement: sads, property: low-basis, value: true, refs: [ { ref: hirschfeldtshore2007, loc: Theorem 2.11 and Corollary 2.12 }, { ref: dzhafarovmummert2022, loc: "Section 9.10.2, after Theorem 9.10.8" } ] }
+- { type: property, statement: scac, property: low-basis, value: true, refs: [ { ref: hirschfeldtshore2007, loc: Theorem 3.4 and Corollary 3.5 }, { ref: dzhafarovmummert2022, loc: Theorem 9.2.19 } ] }
 - { type: property, statement: amt, property: low-basis, value: true, refs: [ { ref: hirschfeldtshoreslaman2009 } ] }
 - { type: property, statement: pi01g, property: low-basis, value: true, refs: [ { ref: hirschfeldtshoreslaman2009 } ] }
 - { type: property, statement: em, property: low-basis, value: false, refs: [ { ref: kreuzer2012b, loc: "Proposition 5.2" } ] }
@@ -10,11 +10,11 @@
 - { type: property, statement: wsrrt22, property: low-basis, value: true, refs: [ { ref: patey2015 }, { ref: patey2016c, loc: Theorem 9.3.4 } ] }
 - { type: property, statement: sads-sgp22-wkl, property: low-basis, value: true, refs: [ { ref: pateyyokoyama2018, loc: "Corollary 5.3" } ] }
 - { type: property, statement: sads, property: hyperimmunity-preservation, value: false, refs: [ { ref: patey2017a, loc: "Theorem 6" } ] }
-- { type: property, statement: sts2, property: hyperimmunity-preservation, value: false, refs: [ { ref: patey2017a, loc: "Theorem 9" } ] }
+- { type: property, statement: sts2, property: hyperimmunity-preservation, value: false, refs: [ { ref: patey2017a, loc: Theorem 9 }, { ref: patey2016c, loc: Corollary 8.2.4(i) } ] }
 - { type: property, statement: amt, property: hyperimmunity-preservation, value: true, refs: [ { ref: patey2017a, loc: "remark following Theorem 11" } ] }
 - { type: property, statement: pi01g, property: hyperimmunity-preservation, value: true, refs: [ { ref: patey2017a, loc: "remark following Theorem 11" } ] }
 - { type: property, statement: rrt22, property: hyperimmunity-preservation, value: true, refs: [ { ref: patey2017a, loc: remark following Theorem 11 }, { ref: patey2016c, loc: Corollary 9.1.4 } ] }
-- { type: property, statement: coh, property: hyperimmunity-preservation, value: true, refs: [ { ref: patey2017a, loc: Theorem 12 }, { ref: patey2016c, loc: Theorem 6.2.1 } ] }
+- { type: property, statement: coh, property: hyperimmunity-preservation, value: true, refs: [ { ref: patey2017a, loc: Theorem 12 }, { ref: patey2016c, loc: Theorem 6.2.1 }, { ref: dzhafarovmummert2022, loc: Lemma 9.1.15 } ] }
 - { type: property, statement: wkl, property: hyperimmunity-preservation, value: true, refs: [ { ref: patey2017a, loc: "Theorem 14" } ] }
 - { type: property, statement: em, property: hyperimmunity-preservation, value: true, refs: [ { ref: patey2017a, loc: Theorem 17 }, { ref: patey2016c, loc: Theorem 10.3.1 } ] }
 - { type: property, statement: sgp22, property: hyperimmunity-preservation, value: true, refs: [ { ref: pateyyokoyama2018, loc: "Theorem 5.5" } ] }
@@ -32,7 +32,7 @@
 - { type: property, statement: aca, property: arith-preservation, value: false, folklore: true, note: "∅′ makes a Σ⁰₂ set Σ⁰₁.", justification: { kind: reduction, text: "The set ∅′ is not Δ⁰₁, but it is Δ⁰₁ relative to ∅′, the only solution of the computable instance ∅.", by: ai } }
 - { type: property, statement: cac, property: cb-immunity-preservation, value: true, refs: [ { ref: patey2018a, loc: "Theorem 13" } ] }
 - { type: property, statement: dnr, property: cb-immunity-preservation, value: false, refs: [ { ref: patey2018a, loc: "Theorem 16" } ] }
-- { type: property, statement: scac, property: dep-hyperimmunity-preservation, value: false, refs: [ { ref: patey2018a, loc: "Corollary 24" } ] }
+- { type: property, statement: scac, property: dep-hyperimmunity-preservation, value: false, refs: [ { ref: patey2018a, loc: Corollary 24 }, { ref: dzhafarovmummert2022, loc: Lemma 9.2.25 }, { ref: patey2016c, loc: Corollary A.2.5 } ] }
 - { type: property, statement: wwkl, property: dep-hyperimmunity-preservation, value: true, refs: [ { ref: patey2018a, loc: "Corollary 30" } ] }
 - { type: property, statement: tt12, property: cone-avoidance, value: true, refs: [ { ref: dzhafarovpatey2017, loc: "Theorem 3.7" } ] }
 - { type: property, statement: stt22, property: cone-avoidance, value: true, refs: [ { ref: dzhafarovpatey2017, loc: "Corollary 3.10" } ] }

@@ -8,15 +8,19 @@ import { OPERATIONS, resultKey } from './schema.mjs';
 // locator(text)(quote) is the position of the quote in text, or -1. Quotes of
 // fewer than 15 letters and digits are never "found" (too easy to match by chance).
 export function locator(text) {
+  // letters and digits only, compared after NFKC folding (math italic 𝑋 → x,
+  // ligature ﬁ → fi), walking code points (𝑋 is two UTF-16 units)
   const keep = (c) => /[\p{L}\p{N}]/u.test(c);
+  const fold = (ch) => [...ch.normalize('NFKC').toLowerCase()].filter(keep);
   const norm = [], pos = [];
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i].toLowerCase();
-    if (keep(c)) { norm.push(c); pos.push(i); }
+  let i = 0;
+  for (const ch of text) {
+    for (const c of fold(ch)) { norm.push(c); pos.push(i); }
+    i += ch.length;
   }
   const flat = norm.join('');
   return (quote) => {
-    const q = [...String(quote ?? '').toLowerCase()].filter(keep).join('');
+    const q = [...String(quote ?? '')].flatMap(fold).join('');
     if (q.length < 15) return -1;
     const at = flat.indexOf(q);
     return at < 0 ? -1 : pos[at];

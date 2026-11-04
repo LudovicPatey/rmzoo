@@ -64,6 +64,11 @@ function labelOf(i, r = rIdx()) {
 }
 const L = (i, r) => tex(labelOf(i, r));
 const sLink = (i, r) => `<a href="#/s/${S(i).id}">${L(i, r)}</a>`;
+// what kind of statement: a problem (instances and solutions, compared also by
+// Weihrauch-style reductions) or a second-order sentence (theories and ω-models only)
+const kindBadge = (s) => (s.conjunction ? ''
+  : s.kind === 'problem' ? '<span class="badge kind-problem" title="A problem: instances and solutions. Compared over theories and ω-models, and by computable and Weihrauch reductions">problem</span>'
+  : '<span class="badge kind-sentence" title="A second-order sentence: compared over theories and ω-models only, not by computable or Weihrauch reductions">second-order</span>');
 const tagName = (id) => (Z.raw.tags.find((t) => t.id === id) || { name: id }).name;
 const isSel = (id) => state.sel.includes(id);
 function toggleSel(id) {
@@ -667,7 +672,7 @@ function card(i, shown) {
     <div class="label">${sLink(i)}</div>
     <div>
       <div class="name"><a href="#/s/${s.id}" style="color:inherit">${esc(s.name)}</a>
-        ${s.kind === 'sentence' && !s.conjunction ? '<span class="badge folk" title="Not a problem: only compared over theories and ω-models">sentence</span>' : ''}
+        ${kindBadge(s)}
         ${s.todo ? '<span class="badge warn" title="The precise definition should be checked against the source">to check</span>' : ''}
         ${frameBadges(s)}</div>
       <div class="def">${def}</div>
@@ -725,6 +730,7 @@ function viewStatement(id, params = new URLSearchParams()) {
       <button class="btn sel-toggle ${isSel(s.id) ? 'on' : ''}" data-sel="${s.id}">${isSel(s.id) ? '✓ Selected' : '+ Select'}</button>
     </div>
     <div class="row" style="margin:6px 0 14px">
+      ${kindBadge(s)}
       ${(s.tags || []).map((t) => `<a class="chip" href="#/catalogue?tags=${t}">${esc(tagName(t))}</a>`).join('')}
       ${frameBadges(s)}
       ${s.aliases ? `<span class="small muted">Also: ${s.aliases.map(esc).join(', ')}</span>` : ''}
@@ -741,7 +747,7 @@ function viewStatement(id, params = new URLSearchParams()) {
     ${s.kind === 'problem' && s.instance ? `<div class="io">
       <div class="card"><h3>Instances</h3>${rich(s.instance)}</div>
       <div class="card"><h3>Solutions</h3>${rich(s.solution)}</div></div>`
-      : s.kind === 'sentence' && !s.conjunction ? `<p class="small muted">Not a problem: compared only over theories and ω-models.</p>` : ''}
+      : s.kind === 'sentence' && !s.conjunction ? `<p class="small muted">A second-order sentence, not a problem: compared only over theories and ω-models.</p>` : ''}
 
     ${!s.conjunction ? `<h2>Context</h2>
       ${s.context ? `<div class="context">${richCite(s.context)}</div>` : ''}
@@ -1861,7 +1867,7 @@ function peekHtml(a) {
     if (i === undefined) return '';
     const s = S(i);
     const def = s.conjunction ? `Conjunction of ${s.conjunction.map((c) => L(idx(c))).join(' and ')}.` : rich(s.definition || '');
-    return `<div class="peek-head">${L(i)}${s.name ? ` <span class="muted">${esc(s.name)}</span>` : ''}</div>
+    return `<div class="peek-head">${L(i)}${s.name ? ` <span class="muted">${esc(s.name)}</span>` : ''} ${kindBadge(s)}</div>
       <div class="peek-body">${def || '<span class="muted">No definition recorded.</span>'}</div>
       ${s.kind === 'problem' && s.instance ? `<div class="peek-io small"><b>Instances.</b> ${rich(s.instance)}<br><b>Solutions.</b> ${rich(s.solution)}</div>` : ''}`;
   }

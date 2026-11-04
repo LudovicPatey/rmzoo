@@ -211,7 +211,13 @@ in git.
 
 Entry in the right `data/statements/*.yaml` (see the schema for fields), with
 `definition`, `instance`/`solution` for problems, `refs` with the defining paper
-and its number, `aliases` for other spellings. Then at least one result (the
+and its number, `aliases` for other spellings. The label is the acronym of the
+literature; a theorem the papers name only in words (Brouwer's fixed point
+theorem) gets a short descriptive label in `\textsf{…}`, which the miners do not
+look for in the texts (an invented acronym would never match, a word would match
+everywhere). `kind: problem` only when the principle is studied with
+instances and solutions (computable or Weihrauch reductions); otherwise
+`sentence`. Then at least one result (the
 build warns about statements in no result), and `data/context.yaml` if
 background helps. Operator statements (`lpo.jump`, `cn.x.wkl`, `tcn.star.tcn`,
 `(cn.x.lpo).jump`) need no entry: the build creates them from their dotted ids.

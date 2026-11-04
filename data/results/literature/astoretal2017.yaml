@@ -3,4 +3,4 @@
 - { type: "equivalence", from: "ads", to: "adc", over: "rca0", refs: [ { ref: astoretal2017 }, { ref: solda2021, loc: "Section 2.2, after Definition 2.2.3" } ], justification: { kind: reduction, text: An ascending (descending) sequence is an ascending (descending) chain; conversely an infinite chain can be enumerated in increasing order of ℕ and thinned out to a monotone sequence., by: ai } }
 - { type: "implication", from: "ads", to: "adc", over: "sw", refs: [ { ref: astoretal2017, loc: Proposition 2.2 } ] }
 - { type: "implication", from: "adc", to: "ads", over: "c", refs: [ { ref: astoretal2017, loc: Proposition 2.2 } ] }
-- { type: "separation", from: "adc", to: "sads", over: "w", note: "Even SADS is not Weihrauch reducible to ADC.", refs: [ { ref: astoretal2017, loc: Theorem 2.5 } ] }
+- { type: "separation", from: "adc", to: "sads", over: "w", note: "Even SADS is not Weihrauch reducible to ADC.", refs: [ { ref: astoretal2017, loc: Theorem 2.5 }, { ref: dzhafarovmummert2022, loc: Theorem 9.2.28 } ] }

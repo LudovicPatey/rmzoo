@@ -2,7 +2,7 @@
 # Conidis, Slaman (2013) — Random reals, the rainbow Ramsey theorem, and arithmetic conservation
 
 - { type: "implication", from: "csig", to: "csig2", over: "rca0", folklore: true, justification: { kind: restriction, text: "Specialization of a parameter: the cardinality scheme for every n, at n = 2.", by: ai } }
-- { type: "implication", from: "ran2", to: "rrt22", over: "rca0", refs: [ { ref: "conidisslaman2013", loc: "Theorem 2.1" } ] }
+- { type: "implication", from: "ran2", to: "rrt22", over: "rca0", refs: [ { ref: conidisslaman2013, loc: Theorem 2.1 }, { ref: dzhafarovmummert2022, loc: "Section 9.4, after Theorem 9.4.24" } ] }
 - { type: "separation", from: "csig", to: "bsig2", over: "rca0", refs: [ { ref: "conidisslaman2013", loc: "Theorem 3.2" } ] }
 - { type: "separation", from: "csig-isig2", to: "bsig3", over: "rca0", refs: [ { ref: "conidisslaman2013", loc: "Theorem 3.2" } ] }
 - { type: "implication", from: "rrt22", to: "csig2", over: "rca0", refs: [ { ref: "conidisslaman2013", loc: "Theorem 3.3" } ] }

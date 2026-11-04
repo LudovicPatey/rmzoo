@@ -98,8 +98,10 @@ created on the fly with their label, name and definition: `lpo.jump` (LPO′),
 group: `cn.star.(lpo.jump)` is C_ℕ ⋆ LPO′. The engine knows the laws of the
 algebra for the reductions marked `algebra` in `data/reductions.yaml`:
 P ≤sW P′, P̂, P*; P* ≤sW P̂; P, Q ≤W P × Q ≤W P ⋆ Q; P ≤W P⋄, and P⋄ is closed
-under × and ⋆; all operations are monotone (jump and parallelizations also for
-≤sW). Papers on completions (C̄_ℕ, …) write them with overlines that text
+under × and ⋆; parallelizations, products, compositional products and ⋄ are
+monotone for ≤W (parallelizations also for ≤sW), but the jump is monotone for
+≤sW only: P ≤W Q does not give P′ ≤W Q′ (the identity is below every problem,
+its jump is lim). Papers on completions (C̄_ℕ, …) write them with overlines that text
 extraction loses: check the rendered PDF before entering such results. These statements are hidden in
 the catalogue unless "Weihrauch operations" is checked.
 

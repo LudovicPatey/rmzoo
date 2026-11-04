@@ -16,7 +16,7 @@
     - ref: ddhms2016
   note: RT¹ₖ₊₁ is not Weihrauch reducible to RT¹ₖ.
 
-- { type: equivalence, from: rt1inf, to: bsig2, over: rca0, refs: [ { ref: hirst1987 } ] }
+- { type: equivalence, from: rt1inf, to: bsig2, over: rca0, refs: [ { ref: hirst1987 }, { ref: dzhafarovmummert2022, loc: Theorem 6.5.1 } ] }
 
 - { type: implication, from: rt22, to: rt23, over: rca0, folklore: true, note: Merge two of the colors and apply RT²₂ twice., justification: { kind: reduction, text: "Merge two colors and apply RT²₂, then apply RT²₂ again inside the homogeneous set if needed.", by: ai } }
 - { type: implication, from: rt23, to: rt22, over: [ sw, rca0star ], folklore: true, justification: { kind: restriction, text: A 2-coloring is a 3-coloring with the same homogeneous sets., by: ai } }
@@ -47,7 +47,10 @@
   from: d22
   to: srt22
   over: w
-  refs: [ { ref: dzhafarov2016 } ]
+  refs:
+    - ref: dzhafarov2016
+    - ref: dzhafarovmummert2022
+      loc: Theorem 9.1.18(1)
   note: SRT²₂ is not Weihrauch reducible to D²_{<∞}, hence not to D²₂.
 
 - { type: separation, from: srt22, to: rt22, over: omega, refs: [ { ref: moninpatey2021, loc: Theorem 1.4 } ] }

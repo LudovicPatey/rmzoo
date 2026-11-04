@@ -1,6 +1,6 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Friedman (1975) — Some Systems of Second Order Arithmetic and Their Use
 
-- {type: "equivalence", from: "aca", to: "kl", over: "rca0", refs: [{ref: "friedman1975", loc: "Theorem 1.1"}]}
-- {type: "separation", from: "wkl", to: "aca", over: "omega", refs: [{ref: "friedman1975", loc: "remark following Theorem 1.3"}]}
-- {type: "separation", from: "rca0", to: "wkl", over: "omega", refs: [{ref: friedman1975, loc: Theorem 1.4}, {ref: simpson2009, loc: Corollary VIII.2.2}], note: The computable sets form an ω-model of RCA₀ in which the Kleene tree has no path.}
+- { type: "equivalence", from: "aca", to: "kl", over: "rca0", refs: [ { ref: friedman1975, loc: Theorem 1.1 }, { ref: dzhafarovmummert2022, loc: Theorem 5.7.3 }, { ref: simpson2009, loc: Theorem III.7.2 } ] }
+- { type: "separation", from: "wkl", to: "aca", over: "omega", refs: [ { ref: "friedman1975", loc: "remark following Theorem 1.3" } ] }
+- { type: "separation", from: "rca0", to: "wkl", over: "omega", refs: [ { ref: friedman1975, loc: Theorem 1.4 }, { ref: simpson2009, loc: Corollary VIII.2.2 } ], note: The computable sets form an ω-model of RCA₀ in which the Kleene tree has no path. }

@@ -10,9 +10,9 @@
 
 # ---- Big Five --------------------------------------------------------------
 
-- { type: implication, from: pi11ca, to: atr, over: rca0, refs: [ { ref: simpson2009 } ] }
-- { type: implication, from: atr, to: aca, over: rca0, refs: [ { ref: simpson2009 } ] }
-- { type: implication, from: aca, to: wkl, over: rca0, refs: [ { ref: simpson2009, loc: Lemma IV.4.4 } ] }
+- { type: implication, from: pi11ca, to: atr, over: rca0, refs: [ { ref: simpson2009, loc: Remarks VII.5.2 }, { ref: dzhafarovmummert2022, loc: Theorem 5.8.22(1) } ] }
+- { type: implication, from: atr, to: aca, over: rca0, refs: [ { ref: simpson2009, loc: Definition V.2.4 } ] }
+- { type: implication, from: aca, to: wkl, over: rca0, refs: [ { ref: simpson2009, loc: Lemma IV.4.4 }, { ref: dzhafarovmummert2022, loc: Proposition 5.6.14(1) } ] }
 
 - type: separation
   from: atr
@@ -32,12 +32,16 @@
   from: wkl
   to: sep
   over: rca0
-  refs: [ { ref: simpson2009, loc: Lemma IV.4.4 } ]
+  refs:
+    - ref: simpson2009
+      loc: Lemma IV.4.4
+    - ref: dzhafarovmummert2022
+      loc: Section 5.8.2 (after Theorem 5.8.20); Exercise 5.13.18
 
-- { type: property, statement: wkl, property: low-basis, value: true, refs: [ { ref: jockuschsoare1972, loc: Theorem 2.1 } ] }
+- { type: property, statement: wkl, property: low-basis, value: true, refs: [ { ref: jockuschsoare1972, loc: Theorem 2.1 }, { ref: dzhafarovmummert2022, loc: "Section 3.6, remark after Proposition 3.6.6" }, { ref: simpson2009, loc: Lemma VIII.2.16 } ] }
 - { type: property, statement: wkl, property: cone-avoidance, value: true, refs: [ { ref: jockuschsoare1972, loc: Theorem 2.5 } ] }
 - { type: property, statement: wkl, property: pa-avoidance, value: false, folklore: true, justification: { kind: reduction, text: "The tree of DNC₂ functions (equivalently, of complete consistent extensions of PA) is a computable instance of WKL all of whose paths have PA degree.", by: ai } }
-- { type: property, statement: wkl, property: computably-true, value: false, refs: [ { ref: jockuschsoare1972 } ], note: Kleene tree. }
+- { type: property, statement: wkl, property: computably-true, value: false, refs: [ { ref: jockuschsoare1972 }, { ref: dzhafarovmummert2022, loc: "Proposition 4.3.8, proof" }, { ref: simpson2009, loc: Lemma VIII.2.15 } ], note: Kleene tree. }
 - type: property
   statement: wkl
   property: pi11-conservative
@@ -82,34 +86,48 @@
 # ---- Iterated jumps ----------------------------------------------------
 
 - { type: "implication", from: "atr", to: "aca-plus", over: "rca0", folklore: true, justification: { kind: reduction, text: Apply arithmetical transfinite recursion along the well-ordering ω to iterate the jump., by: ai } }
-- { type: "implication", from: "aca-plus", to: "aca-prime", over: "rca0", folklore: true, justification: { kind: reduction, text: X⁽ⁿ⁾ is computable uniformly from X^(ω)., by: ai } }
-- { type: "implication", from: "aca-prime", to: "aca", over: "rca0", folklore: true, justification: { kind: restriction, text: Take n = 1., by: ai } }
-- { type: "separation", from: "aca-prime", to: "aca-plus", over: "omega", folklore: true, note: "The arithmetical sets form an ω-model of ACA′ in which ∅^(ω) does not exist.", justification: { kind: classical, text: The arithmetical sets form an ω-model of ACA′ which does not contain ∅^(ω)., by: ai } }
+- { type: "implication", from: "aca-plus", to: "aca-prime", over: "rca0", justification: { kind: reduction, text: X⁽ⁿ⁾ is computable uniformly from X^(ω)., by: ai }, refs: [ { ref: dzhafarovmummert2022, loc: Proposition 5.6.9 } ] }
+- { type: "implication", from: "aca-prime", to: "aca", over: "rca0", justification: { kind: restriction, text: Take n = 1., by: ai }, refs: [ { ref: dzhafarovmummert2022, loc: Proposition 5.6.6 } ] }
+- { type: "separation", from: "aca-prime", to: "aca-plus", over: "omega", note: "The arithmetical sets form an ω-model of ACA′ in which ∅^(ω) does not exist.", justification: { kind: classical, text: The arithmetical sets form an ω-model of ACA′ which does not contain ∅^(ω)., by: ai }, refs: [ { ref: dzhafarovmummert2022, loc: Proposition 5.6.9 } ] }
 - { type: "implication", from: "gowers", to: "ht", over: "sw", folklore: true, note: "FIN₁ is Hindman's theorem.", justification: { kind: restriction, text: FIN₁ is Hindman’s theorem., by: ai } }
 - { type: "implication", from: "gowers", to: "ht", over: "rca0", folklore: true, justification: { kind: restriction, text: FIN₁ is Hindman’s theorem., by: ai } }
 
 # ---- Weihrauch landmarks seen as statements over RCA0 -----------------------
 
 - { type: equivalence, from: hb, to: wkl, over: rca0, refs: [ { ref: simpson2009, loc: Theorem IV.9.3 } ] }
-- { type: equivalence, from: lim, to: aca, over: sw, refs: [ { ref: brattkagherardipauly2021, loc: Theorem 6.7 } ], note: "lim is strongly Weihrauch equivalent to the Turing jump." }
+- { type: equivalence, from: lim, to: aca, over: sw, refs: [ { ref: brattkagherardipauly2021, loc: Theorem 6.7 }, { ref: solda2021, loc: "Proposition 2.4.6, proof" } ], note: "lim is strongly Weihrauch equivalent to the Turing jump." }
 - { type: equivalence, from: lim, to: aca, over: rca0star, folklore: true, justification: { kind: classical, text: "lim is the problem form of the Turing jump; over RCA₀*, ACA is equivalent to the statement that every set has a jump.", by: ai } }
-- { type: equivalence, from: bwt, to: aca, over: rca0, refs: [ { ref: simpson2009, loc: Theorem III.2.7 } ] }
+- { type: equivalence, from: bwt, to: aca, over: rca0, refs: [ { ref: simpson2009, loc: Theorem III.2.7 }, { ref: dzhafarovmummert2022, loc: Theorem 10.2.3 (1)↔(4) } ] }
 - { type: implication, from: rca0, to: ivt, over: rca0, refs: [ { ref: simpson2009, loc: Theorem II.6.6 } ] }
 - { type: implication, from: rcastar, to: lpo, over: rca0star, folklore: true, note: "Classically provable: decide whether p is the zero sequence.", justification: { kind: classical, text: "Classically provable by the law of excluded middle: either p is the zero sequence or it is not.", by: ai } }
 - { type: implication, from: rcastar, to: llpo, over: rca0star, folklore: true, justification: { kind: classical, text: "Classically provable: if p has a 1 at position n, the parity of n answers; otherwise any answer is correct.", by: ai } }
-- { type: separation, from: aca, to: aca-prime, over: rca0, folklore: true, justification: { kind: classical, by: ai, text: "ACA₀′ proves the consistency of PA (it proves the existence of truth sets for each Σ⁰ₙ level), while ACA₀ is conservative over PA, which does not prove its own consistency." } }
+- { type: separation, from: aca, to: aca-prime, over: rca0, justification: { kind: classical, by: ai, text: "ACA₀′ proves the consistency of PA (it proves the existence of truth sets for each Σ⁰ₙ level), while ACA₀ is conservative over PA, which does not prove its own consistency." }, refs: [ { ref: dzhafarovmummert2022, loc: Proposition 5.6.6 } ] }
 
 # ---- Base theories ----------------------------------------------------------
 
-- { type: equivalence, from: rca0, to: isig1, over: rca0star, refs: [ { ref: simpsonsmith1986 } ], note: "RCA₀ is RCA₀* together with Σ⁰₁ induction, which proves the totality of exponentiation." }
+- { type: equivalence, from: rca0, to: isig1, over: rca0star, refs: [ { ref: simpsonsmith1986 }, { ref: simpson2009, loc: "Section X.4, after Definition X.4.1" } ], note: "RCA₀ is RCA₀* together with Σ⁰₁ induction, which proves the totality of exponentiation." }
 
 # ---- Computably true problems -------------------------------------------------
 
-- { type: property, statement: rt12, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the two color classes is infinite and computable from the instance." } }
+- { type: property, statement: rt12, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the two color classes is infinite and computable from the instance." }, refs: [ { ref: dzhafarovmummert2022, loc: Section 3.6 } ] }
 - { type: property, statement: rt13, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the color classes is infinite and computable from the instance." } }
-- { type: property, statement: rt1inf, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the color classes is infinite and computable from the instance." }, refs: [ { ref: hirschfeldt2015, loc: Section 6.2 } ] }
-- { type: property, statement: lpo, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "The solution is a single bit." } }
+- { type: property, statement: rt1inf, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the color classes is infinite and computable from the instance." }, refs: [ { ref: hirschfeldt2015, loc: Section 6.2 }, { ref: dzhafarovmummert2022, loc: Chapter 6 introduction } ] }
+- { type: property, statement: lpo, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "The solution is a single bit." }, refs: [ { ref: goh2019b, loc: "Section 1.3.3, after Definition 1.11" } ] }
 - { type: property, statement: llpo, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "The solution is a single bit." } }
-- { type: property, statement: cn, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Solutions are natural numbers, hence computable." } }
+- { type: property, statement: cn, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "Solutions are natural numbers, hence computable." }, refs: [ { ref: goh2019b, loc: "Section 1.3.3, after Definition 1.11" } ] }
 - { type: property, statement: kn, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Solutions are natural numbers, hence computable." } }
-- { type: property, statement: ivt, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "A computable function with a sign change has a computable zero: either some rational is a zero, or the bisection method converges computably." } }
+- { type: property, statement: ivt, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "A computable function with a sign change has a computable zero: either some rational is a zero, or the bisection method converges computably." }, refs: [ { ref: dzhafarovmummert2022, loc: "Section 10.4, list of properties after Theorem 10.4.3 (item 1); Theorem 10.4.1" } ] }
+
+# Long versions of Ramseyan principles (data/statements/ramsey.yaml): they coincide
+# with the normal versions over RCA₀, and imply them over RCA₀*.
+- { type: equivalence, from: lrt22, to: rt22, over: rca0, folklore: true, justification: { kind: classical, text: "Over RCA₀, every unbounded set is the range of a strictly increasing function with domain N (Simpson 2009, Lemma II.3.6), so a solution of the normal version is a solution of the long one.", by: ai } }
+- { type: equivalence, from: lrt32, to: rt32, over: rca0, folklore: true, justification: { kind: classical, text: "Over RCA₀, every unbounded set is the range of a strictly increasing function with domain N (Simpson 2009, Lemma II.3.6), so a solution of the normal version is a solution of the long one.", by: ai } }
+- { type: equivalence, from: lcac, to: cac, over: rca0, folklore: true, justification: { kind: classical, text: "Over RCA₀, every unbounded set is the range of a strictly increasing function with domain N (Simpson 2009, Lemma II.3.6), so a solution of the normal version is a solution of the long one.", by: ai } }
+- { type: equivalence, from: ladsset, to: ads, over: rca0, folklore: true, justification: { kind: classical, text: "Over RCA₀, every unbounded set is the range of a strictly increasing function with domain N (Simpson 2009, Lemma II.3.6), so a solution of the normal version is a solution of the long one.", by: ai } }
+- { type: equivalence, from: ladsseq, to: ads, over: rca0, folklore: true, justification: { kind: classical, text: "Over RCA₀, every unbounded set is the range of a strictly increasing function with domain N (Simpson 2009, Lemma II.3.6), so a solution of the normal version is a solution of the long one.", by: ai } }
+- { type: equivalence, from: lcrt22, to: crt22, over: rca0, folklore: true, justification: { kind: classical, text: "Over RCA₀, every unbounded set is the range of a strictly increasing function with domain N (Simpson 2009, Lemma II.3.6), so a solution of the normal version is a solution of the long one.", by: ai } }
+- { type: implication, from: lrt22, to: rt22, over: rca0star, folklore: true, justification: { kind: classical, text: "A set of cardinality N, the range of a strictly increasing map with domain N, is unbounded (provably in RCA₀*, by Δ⁰₀ induction the n-th element is at least n), so a solution of the long version is one of the normal version.", by: ai } }
+- { type: implication, from: lrt32, to: rt32, over: rca0star, folklore: true, justification: { kind: classical, text: "A set of cardinality N, the range of a strictly increasing map with domain N, is unbounded (provably in RCA₀*, by Δ⁰₀ induction the n-th element is at least n), so a solution of the long version is one of the normal version.", by: ai } }
+- { type: implication, from: lcac, to: cac, over: rca0star, folklore: true, justification: { kind: classical, text: "A set of cardinality N, the range of a strictly increasing map with domain N, is unbounded (provably in RCA₀*, by Δ⁰₀ induction the n-th element is at least n), so a solution of the long version is one of the normal version.", by: ai } }
+- { type: implication, from: ladsset, to: ads, over: rca0star, folklore: true, justification: { kind: classical, text: "A set of cardinality N, the range of a strictly increasing map with domain N, is unbounded (provably in RCA₀*, by Δ⁰₀ induction the n-th element is at least n), so a solution of the long version is one of the normal version.", by: ai } }
+- { type: implication, from: lcrt22, to: crt22, over: rca0star, folklore: true, justification: { kind: classical, text: "A set of cardinality N, the range of a strictly increasing map with domain N, is unbounded (provably in RCA₀*, by Δ⁰₀ induction the n-th element is at least n), so a solution of the long version is one of the normal version.", by: ai } }

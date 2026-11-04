@@ -107,3 +107,13 @@ test('properties of problems are refused for first-order sentences; unknown lown
   assert.match(t2(fact({ property: 'weakly-low3-basis' }), locate).reasons.join(), /level of its hierarchy/);
   assert.match(t2(fact({ property: 'sigma5-basis' }), locate).reasons.join(), /level of its hierarchy/);
 });
+
+test('quotes are found in texts with math italic letters and ligatures', () => {
+  // pdftotext output of books: 𝑋 is two UTF-16 units, ﬁ a ligature
+  const book = 'Proposition 9.4.10. If 𝑐 : [𝜔]𝑛 → 𝜔 is an instance of RRT, there exists an inﬁnite 𝑐-computable set 𝐼 ⊆ 𝜔.';
+  const at = locator(book);
+  assert.ok(at('there exists an infinite c-computable set I') > 0);
+  assert.ok(at('there exists an inﬁnite 𝑐-computable set 𝐼') > 0);
+  assert.equal(book.slice(at('If c : [ω]n → ω is an instance of RRT')).startsWith('If 𝑐'), true);
+  assert.equal(at('there exists a finite c-computable set J'), -1);
+});

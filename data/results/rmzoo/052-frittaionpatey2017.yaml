@@ -7,4 +7,4 @@
 - { type: "implication", from: "isig2", to: "er1", over: "rca0", refs: [ { ref: frittaionpatey2017, loc: Lemma 3.1 } ] }
 - { type: "implication", from: "er1", to: "rt1inf", over: "rca0", refs: [ { ref: frittaionpatey2017, loc: Lemma 3.1 } ] }
 - { type: "separation", from: "bsig2", to: "er1", over: "rca0", refs: [ { ref: frittaionpatey2017, loc: Theorem 3.5 } ] }
-- { type: "separation", from: "rt2", to: "er22", over: "c", refs: [ { ref: "frittaionpatey2017", loc: "Theorem 4.2" } ] }
+- { type: "separation", from: "rt2", to: "er22", over: "c", refs: [ { ref: frittaionpatey2017, loc: Theorem 4.2 }, { ref: patey2016c, loc: Theorem 14.5.1 } ] }

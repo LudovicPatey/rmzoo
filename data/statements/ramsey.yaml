@@ -217,3 +217,86 @@
     A coloring $f : [\mathbb{N}]^2 \to 4$.
   solution: An infinite set $H$ with $f[[H]^2] \neq 4$.
   refs: [ { ref: liupatey2022, role: rm } ]
+
+# "Long" versions over RCA₀* (Fiori-Carones, Kołodziejczyk, Kowalik 2021, Section 2.1):
+# the solution must have cardinality N (be enumerated in increasing order by a map
+# with domain N), not merely be unbounded. Over RCA₀ they coincide with the normal
+# versions; over RCA₀* some imply IΣ⁰₁ and some are ∀Π⁰₃-conservative.
+- id: lrt22
+  label: '\ell\text{-}\mathsf{RT}^2_2'
+  name: Long Ramsey's theorem for pairs
+  kind: sentence
+  tags: [ ramsey, induction ]
+  aliases: [ ℓ-RT22, long RT22, RT22+ ]
+  definition: >
+    For every coloring $c : [\mathbb{N}]^2 \to 2$ there exists a set $H \subseteq \mathbb{N}$ of
+    cardinality $\mathbb{N}$ (the range of a strictly increasing map with domain $\mathbb{N}$) such that $c$
+    is constant on $[H]^2$. Over $\mathsf{RCA}_0$ it is $\mathsf{RT}^2_2$; over $\mathsf{RCA}_0^*$ it implies $\mathrm{I}\Sigma^0_1$.
+  refs:
+    - { ref: yokoyama2013, role: origin }
+    - { ref: fioricaroneskoodziejczykkowalik2021, role: rm, loc: Section 2.1 }
+    - { ref: kowalik2024, role: rm, loc: Section 3.1 }
+
+- id: lrt32
+  label: '\ell\text{-}\mathsf{RT}^3_2'
+  name: Long Ramsey's theorem for triples
+  kind: sentence
+  tags: [ ramsey, induction ]
+  aliases: [ ℓ-RT32, long RT32 ]
+  definition: >
+    For every coloring $c : [\mathbb{N}]^3 \to 2$ there exists a set $H \subseteq \mathbb{N}$ of
+    cardinality $\mathbb{N}$ such that $c$ is constant on $[H]^3$.
+  refs:
+    - { ref: kowalik2024, role: origin, loc: Section 3.1 }
+
+- id: lcac
+  label: '\ell\text{-}\mathsf{CAC}'
+  name: Long chain–antichain principle
+  kind: sentence
+  tags: [ orders, ramsey, induction ]
+  aliases: [ ℓ-CAC, long CAC ]
+  definition: >
+    For every partial order $(\mathbb{N}, \preceq)$ there exists a set $S \subseteq \mathbb{N}$ of cardinality
+    $\mathbb{N}$ which is either a chain or an antichain.
+  refs:
+    - { ref: fioricaroneskoodziejczykkowalik2021, role: origin, loc: Section 2.1 }
+    - { ref: kowalik2024, role: rm, loc: Section 3.1 }
+
+- id: ladsset
+  label: '\ell\text{-}\mathsf{ADS}_{\mathrm{set}}'
+  name: Long ascending or descending sequence (set solutions)
+  kind: sentence
+  tags: [ orders, ramsey, induction ]
+  aliases: [ ℓ-ADSset, long ADS ]
+  definition: >
+    For every linear order $(\mathbb{N}, \preceq)$ there exists a set $S \subseteq \mathbb{N}$ of cardinality
+    $\mathbb{N}$ on which $\preceq$ agrees with $\leq$, or on which $\preceq$ agrees with $\geq$.
+  refs:
+    - { ref: fioricaroneskoodziejczykkowalik2021, role: origin, loc: Section 2.1 }
+    - { ref: kowalik2024, role: rm, loc: Section 3.1 }
+
+- id: ladsseq
+  label: '\ell\text{-}\mathsf{ADS}_{\mathrm{seq}}'
+  name: Long ascending or descending sequence (sequence solutions)
+  kind: sentence
+  tags: [ orders, ramsey, induction ]
+  aliases: [ ℓ-ADSseq ]
+  definition: >
+    For every linear order $(\mathbb{N}, \preceq)$ there exists a sequence $(s_i)_{i \in \mathbb{N}}$ which is
+    either strictly $\preceq$-increasing or strictly $\preceq$-decreasing.
+  refs:
+    - { ref: fioricaroneskoodziejczykkowalik2021, role: origin, loc: Section 2.1 }
+    - { ref: kowalik2024, role: rm, loc: Section 3.1 }
+
+- id: lcrt22
+  label: '\ell\text{-}\mathsf{CRT}^2_2'
+  name: Long cohesive Ramsey theorem for pairs
+  kind: sentence
+  tags: [ ramsey, induction ]
+  aliases: [ ℓ-CRT22 ]
+  definition: >
+    For every coloring $c : [\mathbb{N}]^2 \to 2$ there exists a set $S \subseteq \mathbb{N}$ of cardinality
+    $\mathbb{N}$ such that for each $x \in S$ there is $y \in S$ with $c(x, z) = c(x, y)$ for all $z \in S$ with $z \geq y$.
+  refs:
+    - { ref: fioricaroneskoodziejczykkowalik2021, role: origin, loc: Section 2.1 }
+    - { ref: kowalik2024, role: rm, loc: Section 3.1 }
