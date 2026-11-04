@@ -164,6 +164,7 @@
   instance: >
     A coloring $f : \mathbb{N} \to 4$.
   solution: An infinite set on which $f$ is constant.
+  refs: [ { ref: dzhafarovmummert2022, role: rm, loc: "Definition 3.2.5(1)" } ]
 
 - id: rt15
   label: '\mathsf{RT}^1_5'
@@ -177,6 +178,7 @@
   instance: >
     A coloring $f : \mathbb{N} \to 5$.
   solution: An infinite set on which $f$ is constant.
+  refs: [ { ref: dzhafarovmummert2022, role: rm, loc: "Definition 3.2.5(1)" } ]
 
 - id: rt42
   label: '\mathsf{RT}^4_2'
@@ -189,6 +191,7 @@
   instance: >
     A coloring $f : [\mathbb{N}]^4 \to 2$.
   solution: An infinite set $H$ such that $f$ is constant on $[H]^4$.
+  refs: [ { ref: dzhafarovmummert2022, role: rm, loc: "Definition 3.2.5(1)" } ]
 
 - id: ts23
   label: '\mathsf{TS}^2_3'
