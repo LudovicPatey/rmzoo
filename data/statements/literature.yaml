@@ -249,3 +249,122 @@
   instance: A 2-coloring of the vertices of the triangle-free Henson graph.
   solution: A monochromatic set of vertices inducing a copy of the graph.
   refs: [ { ref: liupatey2026, role: rm, loc: Main Theorem 1.6 } ]
+
+# Entered on 2026-11-04 from the review queue (AI reader proposals, checked in the full texts).
+- id: sadc
+  label: '\mathsf{SADC}'
+  name: Stable ascending or descending chain
+  kind: problem
+  tags: [ orders, ramsey, stable ]
+  definition: >
+    Every infinite stable linear order has an infinite ascending chain or an infinite descending
+    chain (a chain need not be a sequence in the order of $\mathbb{N}$, unlike for SADS).
+  instance: An infinite stable linear order $L$.
+  solution: An infinite $C \subseteq L$ which is an ascending chain or a descending chain of $L$.
+  refs:
+    - { ref: solda2021, role: rm, loc: Definition 2.2.3 }
+    - { ref: dzhafarovmummert2022, role: rm, loc: "Definition 9.2.27(3)" }
+
+- id: wrsg
+  label: '\mathsf{wRSg}'
+  name: Weak Rival–Sands theorem for graphs
+  kind: problem
+  tags: [ graphs, ramsey ]
+  definition: >
+    For every infinite graph $G = (V, E)$ there is an infinite $H \subseteq V$ such that for every
+    $x \in H$, either $H \cap N(x)$ is infinite or $|H \cap N(x)| \le 1$.
+  instance: An infinite graph $G = (V, E)$.
+  solution: An infinite $H \subseteq V$ such that every $x \in H$ has either infinitely many or at most one neighbour in $H$.
+  refs:
+    - { ref: solda2021, role: origin, loc: Definition 2.1.3 }
+
+- id: mmlc
+  label: '\mathsf{MMLC}'
+  name: Maximal max-less chain principle
+  kind: sentence
+  tags: [ orders ]
+  definition: >
+    Every partial order has a max-less chain (a chain with no maximum element) which is
+    $\subseteq$-maximal among the max-less chains.
+  refs:
+    - { ref: solda2021, role: origin, loc: Definition 3.2.1 }
+
+- id: nfp
+  label: '\mathsf{NFP}'
+  name: Noetherian rings have finitely many prime ideals
+  kind: sentence
+  tags: [ algebra ]
+  definition: Every Noetherian ring has only finitely many prime ideals.
+  refs:
+    - { ref: dzhafarovmummert2022, role: rm, loc: "Definition 11.6.6 (Conidis)" }
+
+- id: delta11ca
+  label: '\Delta^1_1\text{-}\mathsf{CA}'
+  name: Δ¹₁ comprehension
+  kind: sentence
+  tags: [ ]
+  definition: >
+    Comprehension for $\Delta^1_1$-definable sets: if $\varphi$ and $\psi$ are $\Sigma^1_1$ formulas with
+    $(\forall n)[\varphi(n) \leftrightarrow \neg\psi(n)]$, then $\{n : \varphi(n)\}$ exists. HYP is its minimum $\omega$-model.
+  refs:
+    - { ref: dzhafarovmummert2022, role: rm, loc: Definition 5.8.14 }
+    - { ref: simpson2009, role: rm, loc: Section VIII.4 }
+
+- id: iht
+  label: '\mathsf{IHT}'
+  name: Iterated Hindman's theorem
+  kind: sentence
+  tags: [ ramsey ]
+  definition: >
+    For every sequence of 2-colorings $\langle C_i : i \in \mathbb{N} \rangle$ there is an increasing sequence
+    $\langle x_i \rangle$ such that for every $j$, the set $\{x_i : i > j\}$ satisfies Hindman's theorem for $C_j$.
+    Equivalent over $\mathsf{RCA}_0$ to AUF and to the Milliken–Taylor theorem $\mathsf{MT}^n$ for $n \ge 3$, and over $\mathsf{ACA}_0$ to the Auslander–Ellis theorem.
+  refs:
+    - { ref: dzhafarovmummert2022, role: rm, loc: Theorem 10.6.14 }
+
+- id: padeg
+  label: '\mathsf{PA}_{\deg}'
+  name: PA degrees (problem)
+  kind: problem
+  tags: [ computability, weihrauch ]
+  definition: Given $p$, find $q$ of PA degree relative to $p$ ($p \ll q$).
+  instance: A set $p$.
+  solution: A set $q$ with $p \ll q$, i.e. of PA degree relative to $p$.
+  refs:
+    - { ref: brattkachirache2026, role: rm, loc: "Definition 14(11)" }
+    - { ref: brattkahendtlasskreuzer2017, role: rm, loc: "Definition 6.2 (on Turing degrees)" }
+
+- id: sigma11ac
+  label: '\Sigma^1_1\text{-}\mathsf{AC}'
+  name: Σ¹₁ axiom of choice
+  kind: sentence
+  tags: [ ]
+  definition: >
+    $\mathsf{ACA}_0$ plus the scheme $\forall n \exists Y \eta(n, Y) \to \exists Z \forall n \eta(n, (Z)_n)$ for
+    $\Sigma^1_1$ formulas $\eta$. Strictly between $\Delta^1_1\text{-}\mathsf{CA}_0$ and $\mathsf{ATR}_0$; HYP is an $\omega$-model of it.
+  refs:
+    - { ref: simpson2009, role: rm, loc: "Definition VII.6.1(1)" }
+
+- id: cacord
+  label: '\mathsf{CAC}^{\mathrm{ord}}'
+  name: Chain–antichain principle for ω-ordered partial orders
+  kind: problem
+  tags: [ orders, ramsey ]
+  definition: >
+    Every infinite $\omega$-ordered partial order ($x \le_P y$ implies $x \le y$) has an infinite chain or antichain.
+  instance: An infinite $\omega$-ordered partial order $(P, \le_P)$.
+  solution: An infinite chain or antichain of $P$.
+  refs:
+    - { ref: dzhafarovmummert2022, role: rm, loc: "Definition 9.2.30(2) (Hughes; Towsner)" }
+
+- id: scacord
+  label: '\mathsf{SCAC}^{\mathrm{ord}}'
+  name: Stable chain–antichain principle for ω-ordered partial orders
+  kind: problem
+  tags: [ orders, ramsey, stable ]
+  definition: >
+    Every infinite $\omega$-ordered stable partial order has an infinite $\omega$-ordered chain or antichain.
+  instance: An infinite $\omega$-ordered stable partial order $(P, \le_P)$.
+  solution: An infinite chain or antichain of $P$.
+  refs:
+    - { ref: dzhafarovmummert2022, role: rm, loc: "Definition 9.2.30(3) (Hughes; Towsner)" }

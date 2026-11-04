@@ -628,7 +628,7 @@
 - id: solda2021-ab1546fb
   ref: solda2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: RSgr
@@ -638,10 +638,14 @@
     facts: Equivalent to ACA0 over RCA0 (Theorem 2.1.7), also for locally finite graphs; RCA0 proves it for highly recursive graphs; RSg ≡sW RSgr (cited from [27]).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by rsg: RSg ≡sW RSgr (cited in Soldà 2021)."
 - id: solda2021-ec636a46
   ref: solda2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: wRSg, wRSgr
@@ -651,10 +655,14 @@
     facts: Both equivalent to RT22 over RCA0 (Theorem 2.1.8); wRSg ≡c wRSgr; in computable degrees wRSg strictly below RT22 and lim, strictly above ADS and SRT22, incomparable with CAC; in Weihrauch degrees strictly below RT22, strictly above COH and RT1<∞ (both ≤sW wRSg), incomparable with lim, SRT22, SADC, DNR; SADC ≰W wRSgr, DNR ≰W wRSgr; SRT22 ≤W LPO ∗ wRSgr and SRT22 ≤W (LPO×LPO) ∗ wRSg; RT22 ≤W wRSg ∗ wRSg ∗ wRSg.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as wrsg (wRSg; the refined wRSgr, computably equivalent to it, is not entered) (2026-11-04), with the results stated in the papers.
 - id: solda2021-8347da05
   ref: solda2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: SADC
@@ -664,10 +672,14 @@
     facts: RCA0 ⊢ SADS ↔ SADC; SADS ≡sc SADC; SADC <W SADS; SADC ≤sW SRT22; SADC ≰W wRSgr.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as sadc (2026-11-04), with the results stated in the papers.
 - id: solda2021-052266e5
   ref: solda2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: RSpoCD_k, RSpoW_k (in particular RSpoW_2)
@@ -677,6 +689,10 @@
     facts: RSpoCD_<∞ ↔ RSpoW_<∞ ↔ ADS + IΣ02; for standard k ≥ 3 both equivalent to ADS; RSpoCD_3 → ADS; over WKL0, RSpoW_2 ↔ SADS; RSpoW_2 strictly weaker than ADS, not computably true, has ω-models of low sets; open whether RSpoW_2 ↔ SADS over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Covered by rspo, rspo3 and rspo2c, which cover these versions.
 - id: solda2021-ca8329d4
   ref: solda2021
   date: 2026-11-03
@@ -693,7 +709,7 @@
 - id: solda2021-b1790f19
   ref: solda2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: MMLC
@@ -703,10 +719,14 @@
     facts: Equivalent to Π11-CA0 over RCA0, also restricted to linear orders (Theorem 3.2.4).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as mmlc (2026-11-04), with the results stated in the papers.
 - id: solda2021-21f3c5b3
   ref: solda2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: CC_k, CC_<∞, CA_k, CA_<∞
@@ -716,10 +736,14 @@
     facts: RCA0 proves CC_k and CA_k for standard k; CC_<∞ and CA_<∞ are each equivalent to BΣ02 (Lemma 3.1.9).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: CC_k and CA_k are provable in RCA₀ for standard k, and CC_{<∞}, CA_{<∞} are equivalent to BΣ⁰₂ (Lemma 3.1.9); not entered separately.
 - id: solda2021-a4e19ce0
   ref: solda2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: n-SRT^2_k, n-SRT^2_N
@@ -729,6 +753,10 @@
     facts: RCA0 proves n-SRT^2_k for standard n,k; n-SRT^2_N ↔ BΣ02.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: n-SRT²_k is provable in RCA₀ for standard n, k, and n-SRT²_ℕ is equivalent to BΣ⁰₂; not entered separately.
 - id: solda2021-02bcaeb8
   ref: solda2021
   date: 2026-11-03
@@ -771,7 +799,7 @@
 - id: solda2021-b74ee517
   ref: solda2021
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: ^1P, P^{u*}
@@ -781,6 +809,10 @@
     facts: P* ≤W P^{u*} ≤W \hat P; for first-order Q, ^1(\hat Q) ≡W Q^{u*}; ^1 WKL ≡sW C_2^* (= K_N); ^1(WKL^(n)) ≡sW (C_2^*)^(n); ^1(\widehat{RT^n_k}) ≡W (C_2^*)^(n).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Operators on problems (first-order part, unbounded star), not principles; the zoo’s operations are listed in scripts/lib/schema.mjs.
 - id: kiharamarconepauly2020-e618f70a
   ref: kiharamarconepauly2020
   date: 2026-11-03
@@ -1088,7 +1120,7 @@
 - id: kiharamarconepauly2020-73a96e83
   ref: kiharamarconepauly2020
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: ATR
@@ -1098,6 +1130,10 @@
     facts: ATR ≡sW UC_NN (Theorem 3.13).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by ucnn: the function ATR is strongly Weihrauch equivalent to UC_NN (Theorem 3.13)."
 - id: kiharamarconepauly2020-cf102585
   ref: kiharamarconepauly2020
   date: 2026-11-03
@@ -1907,7 +1943,7 @@
 - id: kowalik2024-b5e434e5
   ref: kowalik2024
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: RT22 for transitive colourings
@@ -1917,6 +1953,10 @@
     facts: Equivalent to ADS over RCA0* (Lemma 2.5). The analogous result for semitransitive colourings and CAC holds over RCA0* (Remark 2.6).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by ads: RT²₂ for transitive colourings is equivalent to ADS over RCA₀* (Lemma 2.5)."
 - id: kowalik2024-06ff94a7
   ref: kowalik2024
   date: 2026-11-03
@@ -3480,7 +3520,7 @@
 - id: brattkachirache2026-a50ff099
   ref: brattkachirache2026
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: PA
@@ -3490,6 +3530,10 @@
     facts: PA ≤sW DNC_k for every k. PA ≰W WWKL^(n) (cited). DNC_N ≰W PA (cited).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as padeg (2026-11-04), with the results stated in the papers.
 - id: brattkachirache2026-3938d741
   ref: brattkachirache2026
   date: 2026-11-03
@@ -3806,7 +3850,7 @@
 - id: diener2018-4eeb0e09
   ref: diener2018
   date: 2026-11-03
-  status: pending
+  status: rejected
   kind: statement
   statement:
     notation: WLPO
@@ -3816,10 +3860,14 @@
     facts: Over intuitionistic logic (with countable choice) it is equivalent to the existence of a discontinuous function from 2^N to {0,1}, from N^N to N, or from [0,1] to R, to the existence of a bijection [0,1) -> (0,1), and to a version of the Rising Sun Lemma. It lies strictly between LPO and LLPO, and WLPO <-> WPFP + MP_or.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Constructive reverse mathematics (Bishop-style, over intuitionistic logic): these principles are trivial classically and the framework is not one of the zoo's reductions. LPO and LLPO are in the zoo as Weihrauch problems."
 - id: diener2018-698d5a1a
   ref: diener2018
   date: 2026-11-03
-  status: pending
+  status: rejected
   kind: statement
   statement:
     notation: MP
@@ -3829,10 +3877,14 @@
     facts: LPO <-> WLPO + MP and MP <-> MP_or + WMP. It holds in RUSS and in CLASS.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Constructive reverse mathematics (Bishop-style, over intuitionistic logic): these principles are trivial classically and the framework is not one of the zoo's reductions. LPO and LLPO are in the zoo as Weihrauch problems."
 - id: diener2018-1a4eec57
   ref: diener2018
   date: 2026-11-03
-  status: pending
+  status: rejected
   kind: statement
   statement:
     notation: WMP
@@ -3842,10 +3894,14 @@
     facts: Equivalent to every real-valued function on 2^N (or on [0,1], N^N, N_inf, or a two-point space) being strongly extensional. Under WMP, LPO and WLPO are equivalent. It fails in the topological model X_U.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Constructive reverse mathematics (Bishop-style, over intuitionistic logic): these principles are trivial classically and the framework is not one of the zoo's reductions. LPO and LLPO are in the zoo as Weihrauch problems."
 - id: diener2018-5a5093ab
   ref: diener2018
   date: 2026-11-03
-  status: pending
+  status: rejected
   kind: statement
   statement:
     notation: MP_or (WLLPO)
@@ -3855,10 +3911,14 @@
     facts: Equivalent to WKL!!! (a unique-path variant of WKL) and to a uniqueness-restricted intermediate value theorem. It is implied by LLPO.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Constructive reverse mathematics (Bishop-style, over intuitionistic logic): these principles are trivial classically and the framework is not one of the zoo's reductions. LPO and LLPO are in the zoo as Weihrauch problems."
 - id: diener2018-281e5eaf
   ref: diener2018
   date: 2026-11-03
-  status: pending
+  status: rejected
   kind: statement
   statement:
     notation: FAN_Delta, FAN_c, FAN_Pi01, FAN_stable, FAN_full
@@ -3868,10 +3928,14 @@
     facts: "FAN_Delta is equivalent to POS (every positive uniformly continuous function on [0,1] has a positive infimum) and to Dini's theorem. FAN_c is equivalent to the anti-Specker property AS_[0,1] and to uniform continuity of pointwise continuous f: 2^N -> N. They are linked by FAN_full => FAN_stable => FAN_Pi01 => UCT => FAN_c => FAN_Delta. Over intuitionistic logic, WKL (equivalently LLPO) implies UCT."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Constructive reverse mathematics (Bishop-style, over intuitionistic logic): these principles are trivial classically and the framework is not one of the zoo's reductions. LPO and LLPO are in the zoo as Weihrauch problems."
 - id: diener2018-1d60445f
   ref: diener2018
   date: 2026-11-03
-  status: pending
+  status: rejected
   kind: statement
   statement:
     notation: UCT
@@ -3881,10 +3945,14 @@
     facts: Equivalent to every pointwise continuous function on [0,1] or 2^N being bounded, to separability of C([0,1]), and to FAN_c + MC.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Constructive reverse mathematics (Bishop-style, over intuitionistic logic): these principles are trivial classically and the framework is not one of the zoo's reductions. LPO and LLPO are in the zoo as Weihrauch problems."
 - id: diener2018-b4f5ee97
   ref: diener2018
   date: 2026-11-03
-  status: pending
+  status: rejected
   kind: statement
   statement:
     notation: BD-N
@@ -3894,10 +3962,14 @@
     facts: Equivalent to every sequentially continuous map N^N -> N being pointwise continuous (or locally bounded). It implies FAN_c -> FAN_Pi01.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Constructive reverse mathematics (Bishop-style, over intuitionistic logic): these principles are trivial classically and the framework is not one of the zoo's reductions. LPO and LLPO are in the zoo as Weihrauch problems."
 - id: diener2018-d5b007fe
   ref: diener2018
   date: 2026-11-03
-  status: pending
+  status: rejected
   kind: statement
   statement:
     notation: KT, SS, SC
@@ -3907,10 +3979,14 @@
     facts: The hierarchy is SC => KT => SS. KT is equivalent to the failure of POS-type statements, and SS to the existence of an unbounded pointwise continuous function on [0,1].
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Constructive reverse mathematics (Bishop-style, over intuitionistic logic): these principles are trivial classically and the framework is not one of the zoo's reductions. LPO and LLPO are in the zoo as Weihrauch problems."
 - id: diener2018-965cf305
   ref: diener2018
   date: 2026-11-03
-  status: pending
+  status: rejected
   kind: statement
   statement:
     notation: LLPO_n
@@ -3920,6 +3996,10 @@
     facts: Equivalent to its arithmetic-progression version and to a statement about products of reals. It fails in topological models over metric spaces with an accumulation point.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Constructive reverse mathematics (Bishop-style, over intuitionistic logic): these principles are trivial classically and the framework is not one of the zoo's reductions. LPO and LLPO are in the zoo as Weihrauch problems."
 - id: hirschfeldt2015-e933911c
   ref: hirschfeldt2015
   date: 2026-11-03
@@ -4918,7 +4998,7 @@
 - id: hirschfeldt2015-0d47b619
   ref: hirschfeldt2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Lindenbaum's Lemma
@@ -4928,6 +5008,10 @@
     facts: Computably equivalent to WKL; equivalent to WKL0 over RCA0 (Simpson). The version for consistent theories is provable in RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Covered by completeness (Lindenbaum’s lemma is equivalent to it and to WKL₀, Simpson Theorem IV.3.3).
 - id: hirschfeldt2015-cea34b16
   ref: hirschfeldt2015
   date: 2026-11-03
@@ -5035,7 +5119,7 @@
 - id: hirschfeldt2015-deb72617
   ref: hirschfeldt2015
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: bounded KL
@@ -5045,6 +5129,10 @@
     facts: Equivalent to WKL0 over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Covered by bkl (bounded König’s lemma, Simpson Lemma IV.1.4).
 - id: hirschfeldt2015-6a4f5fe1
   ref: hirschfeldt2015
   date: 2026-11-03
@@ -5745,7 +5833,7 @@
 - id: brattkahendtlasskreuzer2017-a50ff099
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: PA
@@ -5755,6 +5843,10 @@
     facts: NON ≤sW PA; PA ≰W NON; ACC_N ≰W PA; PA ≡sW [DNC_n] for all n ≥ 2 (hence PA ≡sW [WKL]); PA ≤sW J_D and J_D ≰W PA; PA is not probabilistic; PA ≰W WWKL^(k) for all k; PA′ ≡sW PA ∘ J_D.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as padeg (2026-11-04), with the results stated in the papers.
 - id: brattkahendtlasskreuzer2017-4e0a7c1a
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
@@ -5888,7 +5980,7 @@
 - id: brattkahendtlasskreuzer2017-ebc47b7e
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: f → g
@@ -5898,6 +5990,10 @@
     facts: COH ≡W (lim → WKL′) (Corollary 14.9); WBWT_X ≡W (lim → BWT_X).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: The implication operator of the Weihrauch lattice, not a principle.
 - id: dzhafarovmummert2022-6dd4340b
   ref: dzhafarovmummert2022
   part: 1/9 (chapters 1, 2, pages 1–67)
@@ -6779,7 +6875,7 @@
   ref: dzhafarovmummert2022
   part: 2/9 (chapters 3, 4, pages 68–121)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: IPHP
@@ -6789,11 +6885,15 @@
     facts: Does not uniformly admit computable solutions (Prop 3.7.2). RT^1 ≡W IPHP ≡W General-IPHP (Prop 4.3.4); computably equivalent to RT^1 and FUF (Prop 4.2.10). IPHP ≰W IPHP+ (Prop 4.3.6). RT^1_2 ≰sW IPHP and IPHP ≰sW RT^1 (Prop 4.4.4). TJ is uniformly identity reducible to its parallelization (Prop 4.1.4), whose converse fails even under ≤c (Prop 4.2.11), but the parallelization is computably reducible to two applications of TJ (Prop 4.5.3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "IPHP ≡W RT¹ (Proposition 4.3.4): a reformulation of the infinite pigeonhole principle, which the zoo has (rt1inf)."
 - id: dzhafarovmummert2022-35a1a83a
   ref: dzhafarovmummert2022
   part: 2/9 (chapters 3, 4, pages 68–121)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: IPHP+
@@ -6803,11 +6903,15 @@
     facts: IPHP+ ≡c IPHP, IPHP+ is uniformly identity reducible to IPHP, and IPHP ≰W IPHP+.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: IPHP⁺ ≡c IPHP ≡c RT¹; a reformulation, not entered.
 - id: dzhafarovmummert2022-f7f134a7
   ref: dzhafarovmummert2022
   part: 2/9 (chapters 3, 4, pages 68–121)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: General-IPHP
@@ -6817,11 +6921,15 @@
     facts: ≡W RT^1 and IPHP (Prop 4.3.4); General-IPHP ≡sW IPHP (Prop 4.4.3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: General-IPHP ≡W RT¹ (Proposition 4.3.4); a reformulation, not entered.
 - id: dzhafarovmummert2022-7bc5c485
   ref: dzhafarovmummert2022
   part: 2/9 (chapters 3, 4, pages 68–121)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: FUF
@@ -6831,11 +6939,15 @@
     facts: Computably equivalent to RT^1 (Prop 4.2.10); FUF ≤W RT^1 but RT^1_2 ≰W FUF (Prop 4.3.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: FUF ≡c RT¹ (Proposition 4.2.10); a textbook example, not entered.
 - id: dzhafarovmummert2022-11eebaad
   ref: dzhafarovmummert2022
   part: 2/9 (chapters 3, 4, pages 68–121)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Disj-WKL
@@ -6845,11 +6957,15 @@
     facts: WKL is a subproblem of Disj-WKL; Disj-WKL is identity reducible to WKL but not uniformly so (Prop 4.1.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: A disjunctive form of WKL used to illustrate reductions (Proposition 4.1.5); not entered.
 - id: dzhafarovmummert2022-b6f81865
   ref: dzhafarovmummert2022
   part: 2/9 (chapters 3, 4, pages 68–121)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: HBT_[0,1], Disj-HBT_[0,1]
@@ -6859,11 +6975,15 @@
     facts: Disj-HBT admits solutions in PA (Prop 3.8.1) and codes PA (Prop 3.8.3); Disj-HBT ≡c WKL (Cor 4.2.6). HBT admits computable solutions.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: HBT admits computable solutions and Disj-HBT ≡c WKL (Corollary 4.2.6); the Heine–Borel theorem is in the zoo as heine-borel.
 - id: dzhafarovmummert2022-3c60f5a2
   ref: dzhafarovmummert2022
   part: 2/9 (chapters 3, 4, pages 68–121)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: FAN
@@ -6873,11 +6993,15 @@
     facts: FAN ≤W WKL but WKL ≰c FAN; FAN admits computable solutions (Prop 4.3.8).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "FAN admits computable solutions (Proposition 4.3.8): a principle of constructive mathematics, trivial classically; not entered."
 - id: dzhafarovmummert2022-0c620c3e
   ref: dzhafarovmummert2022
   part: 2/9 (chapters 3, 4, pages 68–121)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: FRT
@@ -6887,11 +7011,15 @@
     facts: None.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: A finitary statement provable in RCA₀; its problem forms concern Ramsey numbers. Not a principle of the zoo.
 - id: dzhafarovmummert2022-8e1b51af
   ref: dzhafarovmummert2022
   part: 2/9 (chapters 3, 4, pages 68–121)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: BW
@@ -6901,11 +7029,15 @@
     facts: None.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by bwt: the subsequence and cluster point versions are both equivalent to ACA₀ over RCA₀ (Simpson, Theorem III.2.2)."
 - id: dzhafarovmummert2022-057d9111
   ref: dzhafarovmummert2022
   part: 2/9 (chapters 3, 4, pages 68–121)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: SeqCompact_{2^ω}
@@ -6915,11 +7047,15 @@
     facts: Admits PA avoidance (Prop 3.8.5), omits PA solutions (Prop 3.8.6), and is uniformly identity equivalent to COH (Prop 4.1.7).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by coh: SeqCompact(2^ω) is uniformly identity equivalent to COH (Proposition 4.1.7)."
 - id: dzhafarovmummert2022-4d453c26
   ref: dzhafarovmummert2022
   part: 2/9 (chapters 3, 4, pages 68–121)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: DNR_k
@@ -6929,11 +7065,15 @@
     facts: WKL ≡W DNR_2; DNR_j ≡c DNR_k; DNR_k ≤W DNR_j for j<k; DNR_j ≰W DNR_k for k>j (Theorem 4.3.11, Jockusch).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: DNR₂ ≡W WKL and DNR_j ≡c DNR_k (Theorem 4.3.11); the hierarchy of k-valued DNC functions under ≤W is not entered for now.
 - id: dzhafarovmummert2022-1870adae
   ref: dzhafarovmummert2022
   part: 2/9 (chapters 3, 4, pages 68–121)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (linear extension problem)
@@ -6943,11 +7083,15 @@
     facts: Uniformly identity reducible to WKL.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: An example of identity reducibility to WKL (Proposition 4.1.3); not entered.
 - id: dzhafarovmummert2022-d134f571
   ref: dzhafarovmummert2022
   part: 2/9 (chapters 3, 4, pages 68–121)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Church's thesis (problem)
@@ -6957,6 +7101,10 @@
     facts: Computably true but does not admit computable solutions.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: An example of a computably true problem without computable solutions (Example 4.6.7); not a principle of the zoo.
 - id: dzhafarovmummert2022-1638d98b
   ref: dzhafarovmummert2022
   part: 3/9 (chapters 5, 6, pages 122–189)
@@ -7525,7 +7673,7 @@
   ref: dzhafarovmummert2022
   part: 3/9 (chapters 5, 6, pages 122–189)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Δ11-CA0
@@ -7535,11 +7683,15 @@
     facts: Δ¹₁-CA0 ⊢ ACA0+ (Prop 5.8.15(1)). There is an ω-model of ACA0+ + ¬Δ¹₁-CA0 (Prop 5.8.15(2)). ATR0 ⊢ Δ¹₁-CA0 (Prop 5.8.21(1)). HYP is an ω-model of Δ¹₁-CA0 + ¬ATR0 (Prop 5.8.21(2)), and HYP is the minimum ω-model of Δ¹₁-CA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as delta11ca (2026-11-04), with the results stated in the papers.
 - id: dzhafarovmummert2022-f2e16937
   ref: dzhafarovmummert2022
   part: 3/9 (chapters 5, 6, pages 122–189)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Σ11 separation
@@ -7549,11 +7701,15 @@
     facts: Equivalent to ATR0 over RCA0 (Theorem 5.8.20, Simpson). Implies ACA0 over RCA0. Π¹₁ separation is equivalent to it over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Covered by sigma11-sep (from Simpson, Theorem V.5.1).
 - id: dzhafarovmummert2022-6f7c7e0e
   ref: dzhafarovmummert2022
   part: 3/9 (chapters 5, 6, pages 122–189)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (range existence)
@@ -7563,11 +7719,15 @@
     facts: Equivalent to ACA0 over RCA0 (Theorem 5.7.2).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Covered by rng (from Simpson, Lemma III.1.3).
 - id: dzhafarovmummert2022-09ea8416
   ref: dzhafarovmummert2022
   part: 3/9 (chapters 5, 6, pages 122–189)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (hyperjump existence)
@@ -7577,11 +7737,15 @@
     facts: Equivalent to Π¹₁-CA0 over RCA0 (Theorem 5.8.6).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: An equivalent form of Π¹₁-CA₀ (Theorem 5.8.6); not entered separately.
 - id: dzhafarovmummert2022-89cd1a8e
   ref: dzhafarovmummert2022
   part: 3/9 (chapters 5, 6, pages 122–189)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (tree path set)
@@ -7591,11 +7755,15 @@
     facts: Equivalent to Π¹₁-CA0 over RCA0 (Theorem 5.8.9, proof left as Exercise 5.13.22).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: An equivalent form of Π¹₁-CA₀ (Theorem 5.8.9); not entered separately.
 - id: dzhafarovmummert2022-ee905427
   ref: dzhafarovmummert2022
   part: 3/9 (chapters 5, 6, pages 122–189)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: KL (≤2 successors)
@@ -7605,11 +7773,15 @@
     facts: Equivalent to ACA0 and to KL over RCA0 (Theorem 5.7.3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by kl: equivalent to KL and ACA₀ (Theorem 5.7.3)."
 - id: dzhafarovmummert2022-e8d84e48
   ref: dzhafarovmummert2022
   part: 3/9 (chapters 5, 6, pages 122–189)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (leftmost path)
@@ -7619,11 +7791,15 @@
     facts: Equivalent to ACA0 over RCA0 (Exercise 5.13.23(1)).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: An equivalent form of ACA₀ (Exercise 5.13.23); not entered separately.
 - id: dzhafarovmummert2022-ad1b3e0e
   ref: dzhafarovmummert2022
   part: 3/9 (chapters 5, 6, pages 122–189)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: LH
@@ -7633,6 +7809,10 @@
     facts: Equivalent to RT1 (hence to BΣ02) over RCA0 (Proposition 6.5.3, Dzhafarov–Hirschfeldt–Reitzes). Uniformly computably true.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: LH is equivalent to RT¹ (hence BΣ⁰₂) over RCA₀ (Proposition 6.5.3); not entered separately.
 - id: dzhafarovmummert2022-458f34c3
   ref: dzhafarovmummert2022
   part: 3/9 (chapters 5, 6, pages 122–189)
@@ -9622,7 +9802,7 @@
   ref: dzhafarovmummert2022
   part: 6/9 (chapter 9 (1/2), pages 273–322)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: SADC
@@ -9632,11 +9812,15 @@
     facts: SADC ≡_c SADS. In Figure 9.2 it lies below SADS under (strong) Weihrauch reducibility.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as sadc (2026-11-04), with the results stated in the papers.
 - id: dzhafarovmummert2022-33279341
   ref: dzhafarovmummert2022
   part: 6/9 (chapter 9 (1/2), pages 273–322)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: CAC^ord
@@ -9646,11 +9830,15 @@
     facts: RCA0 ⊢ CAC ↔ CAC^ord (Prop. 9.2.31). CAC^ord admits Δ^0_2 solutions, hence CAC ≰_c CAC^ord (Thm. 9.2.32).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as cacord (2026-11-04), with Proposition 9.2.31 and Theorem 9.2.32.
 - id: dzhafarovmummert2022-6ec6aea9
   ref: dzhafarovmummert2022
   part: 6/9 (chapter 9 (1/2), pages 273–322)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: SCAC^ord
@@ -9660,11 +9848,15 @@
     facts: SCAC ≡_c SCAC^ord (Thm. 9.2.33). SCAC ≰_W SCAC^ord and SCAC ≰_sc SCAC^ord (Thm. 9.2.34).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as scacord (2026-11-04), with Theorems 9.2.33 and 9.2.34.
 - id: dzhafarovmummert2022-3e305531
   ref: dzhafarovmummert2022
   part: 6/9 (chapter 9 (1/2), pages 273–322)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: RT22 restricted to semi-transitive / transitive colorings
@@ -9674,6 +9866,10 @@
     facts: Over RCA0 (via identity reductions), the semi-transitive version is equivalent to CAC and the transitive version to ADS. The stable versions are equivalent to SCAC and SADS (Prop. 9.2.12).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by cac and ads: over RCA₀ the semi-transitive and transitive restrictions of RT²₂ are equivalent to CAC and ADS (Proposition 9.2.7)."
 - id: dzhafarovmummert2022-f485b163
   ref: dzhafarovmummert2022
   part: 7/9 (chapter 9 (2/2), pages 323–375)
@@ -11303,7 +11499,7 @@
   ref: dzhafarovmummert2022
   part: 7/9 (chapter 9 (2/2), pages 323–375)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: PMTT^n_k, PMTT^n, PMTT
@@ -11313,11 +11509,15 @@
     facts: PMTT^1 admits computable solutions (Thm 9.7.6). ACA0 proves PMTT^n_k. For n ≥ 3, PMTT^n is equivalent to ACA. PMTT is equivalent to ACA0' over RCA0 and PMTT ≡W MTT. PMTT^2 admits cone avoidance and does not imply ACA0 (Thm 9.7.8).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by mtt: PMTT ≡W MTT and PMTT is equivalent to ACA₀′ (Section 9.7)."
 - id: dzhafarovmummert2022-0d85aa29
   ref: dzhafarovmummert2022
   part: 7/9 (chapter 9 (2/2), pages 323–375)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: FUT
@@ -11327,11 +11527,15 @@
     facts: RCA0 ⊢ HT ↔ FUT and HT ≡W FUT (Prop 9.9.14).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by ht: HT ≡W FUT and RCA₀ ⊢ HT ↔ FUT (Proposition 9.9.14)."
 - id: dzhafarovmummert2022-1c86f206
   ref: dzhafarovmummert2022
   part: 7/9 (chapter 9 (2/2), pages 323–375)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: HT with apartness; HT^{=n}_k / HT^{≤n}_k with apartness
@@ -11341,11 +11545,15 @@
     facts: HT is equivalent to HT with apartness over RCA0 and Weihrauch (Thm 9.9.9). RCA0 ⊢ HT^{≤n}_{2k} → HT^{≤n}_k with apartness, and the latter ≤sc HT^{≤n}_{2k} (Thm 9.9.31). For n ≥ 3, k ≥ 2, HT^{=n}_k with apartness ↔ ACA0 (Thm 9.9.32). HT^{≤2}_2 with apartness → ACA0, hence HT^{≤2}_4 → ACA0 (Thm 9.9.33). HT^{=2}_2 with apartness → IPT^2_2 (Thm 9.9.36).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by ht: HT with apartness is equivalent to HT over RCA₀ and under ≤W (Theorem 9.9.9)."
 - id: dzhafarovmummert2022-7ff87dd5
   ref: dzhafarovmummert2022
   part: 7/9 (chapter 9 (2/2), pages 323–375)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: nIP (n ≥ 3)
@@ -11355,11 +11563,15 @@
     facts: FIP → mIP → nIP for m > n ≥ 2 over RCA0. nIP ≡c FIP ≡c 1-GEN, and RCA0 + IΣ2 ⊢ nIP ↔ 1-GEN (Thm 9.10.23).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: nIP lies between FIP and 2IP over RCA₀ and is computably equivalent to them (Theorem 9.10.23); not entered separately.
 - id: dzhafarovmummert2022-66bbaa4e
   ref: dzhafarovmummert2022
   part: 7/9 (chapter 9 (2/2), pages 323–375)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: q-WWKL
@@ -11369,11 +11581,15 @@
     facts: p-WWKL ≡sc q-WWKL and RCA0 ⊢ q-WWKL ↔ WWKL (Thm 9.11.12). For p < q, p-WWKL ≰W q-WWKL (Prop 9.11.13).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by wwkl: RCA₀ ⊢ q-WWKL ↔ WWKL and p-WWKL ≡sc q-WWKL (Theorem 9.11.12)."
 - id: dzhafarovmummert2022-32b4f200
   ref: dzhafarovmummert2022
   part: 9/9 (chapter 12, pages 438–499)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: WCWO
@@ -11383,11 +11599,15 @@
     facts: RCA0 + WCWO proves ACA0 (Proposition 12.1.11, Friedman). RCA0 + WCWO proves the Σ11 axiom of choice (Proposition 12.1.12). Over RCA0, WCWO is equivalent to ATR0 and to SCWO (Theorem 12.1.13, Friedman; see Hirst and Friedman).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by cwo: WCWO is equivalent to ATR₀ and to CWO over RCA₀ (Theorem 12.1.13)."
 - id: dzhafarovmummert2022-6c3c4e07
   ref: dzhafarovmummert2022
   part: 9/9 (chapter 12, pages 438–499)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: SCWO
@@ -11397,11 +11617,15 @@
     facts: Over RCA0, SCWO is equivalent to ATR0 and to WCWO (Theorem 12.1.13).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by cwo: SCWO is equivalent to ATR₀ and to WCWO over RCA₀ (Theorem 12.1.13)."
 - id: dzhafarovmummert2022-c030ec3d
   ref: dzhafarovmummert2022
   part: 9/9 (chapter 12, pages 438–499)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Open determinacy (Σ^0_1 determinacy)
@@ -11411,11 +11635,15 @@
     facts: Over RCA0, equivalent to ATR0 and to clopen determinacy (Theorem 12.3.4, Steel).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Covered by open-det (from Simpson, Theorem V.8.7).
 - id: dzhafarovmummert2022-9ee9c9be
   ref: dzhafarovmummert2022
   part: 9/9 (chapter 12, pages 438–499)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Clopen determinacy (Δ^0_1 determinacy)
@@ -11425,11 +11653,15 @@
     facts: Over RCA0, equivalent to ATR0 and to open determinacy (Theorem 12.3.4); the proof shows clopen determinacy implies ACA0 over RCA0. Determinacy for intersections of open and closed classes is equivalent to Π11-CA0 (Tanaka, cited).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Covered by clopen-det (from Simpson, Theorem V.8.7).
 - id: dzhafarovmummert2022-06b0c4c1
   ref: dzhafarovmummert2022
   part: 9/9 (chapter 12, pages 438–499)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Σ^0_4 determinacy, n-Π^0_3 determinacy
@@ -11439,11 +11671,15 @@
     facts: Z2 does not prove Σ^0_4 determinacy (Theorem 12.3.14, Friedman; Martin). Π^1_{n+2}-CA0 proves n-Π^0_3 determinacy, while Δ^1_{n+2}-CA0 with full induction does not (Theorem 12.3.3, Montalbán–Shore, cited).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Beyond second-order arithmetic: Z₂ does not prove Σ⁰₄ determinacy (Theorem 12.3.14). Outside the zoo."
 - id: dzhafarovmummert2022-410e48bb
   ref: dzhafarovmummert2022
   part: 9/9 (chapter 12, pages 438–499)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Existence of evaluation maps for (trivial) Borel codes
@@ -11453,11 +11689,15 @@
     facts: Each version is equivalent to ATR0 over RCA0 (Theorem 12.2.4, Dzhafarov–Flood–Solomon–Westrick; Corollary 12.2.5). Uniqueness of evaluation maps is provable in ACA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Equivalent to ATR₀ (Theorem 12.2.4); not entered for now.
 - id: dzhafarovmummert2022-ff8bff85
   ref: dzhafarovmummert2022
   part: 9/9 (chapter 12, pages 438–499)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Lusin's separation theorem
@@ -11467,6 +11707,10 @@
     facts: Equivalent to ATR0 over RCA0 (Theorem 12.2.9, Simpson, cited).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Equivalent to ATR₀ (Simpson, cited as Theorem 12.2.9); not entered for now.
 - id: dzhafarovmummert2022-98177ebf
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
@@ -11674,7 +11918,7 @@
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: B
@@ -11684,11 +11928,15 @@
     facts: "IVT ≡sW B (Theorem 10.4.3). Cited from Brattka–Gherardi: B is equivalent to C_I, choice for closed intervals."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by ivt: B ≡sW IVT (Theorem 10.4.3)."
 - id: dzhafarovmummert2022-bb36e47d
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: IHT
@@ -11698,11 +11946,15 @@
     facts: Equivalent over RCA0 to IHT_{<ω}, AUF and MT^n for n ≥ 3. Provable in ACA0+ (Blass–Hirst–Simpson). Equivalent over ACA0 to the Auslander–Ellis theorem (Theorem 10.6.15, Corollary 10.6.16). Open whether HT implies IHT (Question 10.6.18).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as iht (2026-11-04), with the results stated in the papers.
 - id: dzhafarovmummert2022-9623804e
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: AUF
@@ -11712,11 +11964,15 @@
     facts: Equivalent to IHT over RCA0, and to the Auslander–Ellis theorem over ACA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by iht: AUF is equivalent to IHT over RCA₀ (Theorem 10.6.14)."
 - id: dzhafarovmummert2022-24977583
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: MT^n
@@ -11726,11 +11982,15 @@
     facts: For each n ≥ 3, equivalent to IHT over RCA0, and to the Auslander–Ellis theorem over ACA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by iht: MTⁿ (n ≥ 3) is equivalent to IHT over RCA₀ (Theorem 10.6.14)."
 - id: dzhafarovmummert2022-661a62d1
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (recurrent points)
@@ -11740,11 +12000,15 @@
     facts: Equivalent to WKL0 over RCA0 (Day).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Equivalent to WKL₀ for Cantor space (Day, Theorem 10.6.5); the zoo has the almost periodic point principle ap; not entered.
 - id: dzhafarovmummert2022-89acf65e
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: VSB_n
@@ -11754,11 +12018,15 @@
     facts: VSB_n ≡W C_N for all n ≥ 2 (Hirst–Mummert, Theorem 11.2.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: VSB_n ≡W C_N (Theorem 11.2.5); not entered separately.
 - id: dzhafarovmummert2022-7d2391eb
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (vector space basis)
@@ -11768,11 +12036,15 @@
     facts: Equivalent to TJ under ≤c and to ACA0 over RCA0. The version for spaces of bounded dimension is equivalent to IΣ02 (Theorem 11.2.3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Covered by vs-basis (from Simpson, Theorem III.4.3).
 - id: dzhafarovmummert2022-d367dd47
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (prime ideal)
@@ -11782,11 +12054,15 @@
     facts: Equivalent to WKL under ≤c and over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Covered by prime-ideal (from Simpson, Theorem IV.6.4).
 - id: dzhafarovmummert2022-82318ac3
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (maximal ideal)
@@ -11796,11 +12072,15 @@
     facts: Equivalent to TJ under ≤c and to ACA0 over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Covered by max-ideal (from Simpson, Theorem III.5.5).
 - id: dzhafarovmummert2022-f958144f
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (orderability)
@@ -11810,11 +12090,15 @@
     facts: Each is equivalent to WKL under ≤c and over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Covered by formally-real for fields (from Simpson, Theorem IV.4.5); the group versions are not entered.
 - id: dzhafarovmummert2022-9f3cdc1e
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (induced ordering)
@@ -11824,11 +12108,15 @@
     facts: For linearly orderable G it is computably true and provable in RCA0. For partially orderable G it is equivalent to TJ under ≤c and to ACA0 over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Equivalent to ACA₀ for partially orderable groups (Theorems 11.4.5–11.4.6); not entered for now.
 - id: dzhafarovmummert2022-fae16cbd
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (Nielsen–Schreier)
@@ -11838,11 +12126,15 @@
     facts: Equivalent to TJ under ≤c and to ACA0 over RCA0. The version for subgroups given as sets is provable in RCA0 (Theorem 11.5.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Equivalent to ACA₀ (Theorem 11.5.7); not entered for now.
 - id: dzhafarovmummert2022-da0d2a17
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: NFP
@@ -11852,6 +12144,10 @@
     facts: RCA0 ⊢ WKL + CAC → NFP → TAC (Conidis's TAC). WKL0 does not prove NFP, and NFP does not imply ACA0 over ω-models. Open whether NFP → WKL.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as nfp (2026-11-04), with the results stated in the papers.
 - id: dzhafarovmummert2022-408fc74c
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
@@ -11874,7 +12170,7 @@
   ref: dzhafarovmummert2022
   part: 8/9 (chapters 10, 11, pages 376–437)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: (Artinian ⇒ Noetherian)
@@ -11884,6 +12180,10 @@
     facts: Equivalent to WKL0 over RCA0 (Conidis).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Equivalent to WKL₀ (Conidis, Theorem 11.6.5); not entered for now.
 - id: simpson2009-73883d87
   ref: simpson2009
   part: 3/8 (chapter IV, pages 145–184)
@@ -12109,7 +12409,7 @@
   ref: simpson2009
   part: 3/8 (chapter IV, pages 145–184)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Π01 separation
@@ -12119,6 +12419,10 @@
     facts: Provable in RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Provable in RCA₀ (Exercise IV.4.8); not a principle of the zoo.
 - id: simpson2009-83d4256d
   ref: simpson2009
   part: 2/8 (chapters II, III, pages 81–144)
@@ -12146,7 +12450,7 @@
   ref: simpson2009
   part: 2/8 (chapters II, III, pages 81–144)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: bounded Σ⁰₁ comprehension
@@ -12156,6 +12460,10 @@
     facts: It is provable in RCA0 (Theorem II.3.9). Over the basic axioms, induction axiom and Δ⁰₁ comprehension it is equivalent to Σ⁰₁ induction (Remark II.3.11).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Provable in RCA₀ (Theorem II.3.9); not a principle of the zoo.
 - id: simpson2009-daeaddfc
   ref: simpson2009
   part: 2/8 (chapters II, III, pages 81–144)
@@ -12340,7 +12648,7 @@
   ref: simpson2009
   part: 2/8 (chapters II, III, pages 81–144)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Baire category theorem; Banach–Steinhaus; Tietze (closed set version)
@@ -12350,11 +12658,15 @@
     facts: All are provable in RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Theorems provable in RCA₀; not principles of the zoo.
 - id: simpson2009-62dc72a9
   ref: simpson2009
   part: 5/8 (chapter VII, pages 261–326)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Π1k-TI0, Σ1k-TI0, Π1∞-TI0
@@ -12364,11 +12676,15 @@
     facts: Every β-model satisfies Π¹∞-TI0 (Lemma VII.2.15). Π¹₁-CA0 proves the existence of a countable coded β-model of Π¹∞-TI0 (Theorem VII.2.16). ATR0 is provable from Π¹∞-TI0 (Corollary VII.2.19). Π¹∞-TI0 is not finitely axiomatizable (Corollary VII.2.23). For AΠ¹₁ sentences, provability in Π¹∞-TI0 is equivalent to provability in ACA0 plus the existence of HJ(∅) (Corollary VII.2.21). Σ¹₁-TI0 is equivalent to ATR0 plus Σ¹₁-IND (Remark VII.2.20).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Transfinite induction schemes above ACA₀: systems of the β-model hierarchy, not entered."
 - id: simpson2009-ea29469c
   ref: simpson2009
   part: 5/8 (chapter VII, pages 261–326)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: HJ(X) exists / countable coded β-models
@@ -12378,11 +12694,15 @@
     facts: An ω-model of RCA0 is a β-model of Π¹₁-CA0 iff it is closed under hyperjump (Theorem VII.1.8). Π¹₁-CA0 is equivalent over ACA0 to 'every X belongs to some countable coded β-model' (Theorem VII.2.10). Π¹₁-CA0 is equivalent over RCA0 to the totality of the hyperjump (Exercise VII.1.16). ACA0 proves that every countable coded β-model satisfies ATR0 (Theorem VII.2.7). ATR0 does not prove the existence of a countable coded β-model (Corollary VII.2.8).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Equivalent forms of Π¹₁-CA₀ (Theorems VII.1.8, VII.2.10); not entered separately.
 - id: simpson2009-cbe51ea4
   ref: simpson2009
   part: 5/8 (chapter VII, pages 261–326)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Π1k-CA0, ∆1k-CA0, Π1∞-CA0
@@ -12392,11 +12712,15 @@
     facts: ∆¹ₖ-CA0 ⊆ Π¹ₖ-CA0 ⊆ ∆¹ₖ₊₁-CA0, with all inclusions proper (Remarks VII.5.2). Each of these theories has a minimum β-model of the form Lα(X), and these models are distinct (Theorem VII.5.17, Corollary VII.7.10). Adding ∃X∀Y(Y ∈ L(X)) is conservative for Π¹₄ sentences (Corollary VII.5.11). Π¹ₖ₊₁-CA0 proves the existence of a countable coded β-model of ∆¹ₖ₊₁-CA0 (Corollary VII.7.9). ∆¹₂-CA0 fails in the minimum β-model of Π¹₁-CA0 (Exercise VII.5.7).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Systems stronger than Π¹₁-CA₀ (Π¹ₖ-CA₀, Δ¹ₖ-CA₀ for k ≥ 2): outside the range of the zoo for now."
 - id: simpson2009-63ec8769
   ref: simpson2009
   part: 5/8 (chapter VII, pages 261–326)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Σ1k-AC0, Σ1k-DC0, strong Σ1k-DC0, Σ1k-IND
@@ -12406,11 +12730,15 @@
     facts: "Σ¹ₖ-AC0 implies ∆¹ₖ-CA0; Σ¹ₖ-DC0 implies Σ¹ₖ-AC0 and Σ¹ₖ-IND; strong Σ¹ₖ-DC0 implies Π¹ₖ-CA0 (Lemma VII.6.6). Σ¹₂-AC0 ≡ ∆¹₂-CA0, Σ¹₂-DC0 ≡ ∆¹₂-CA0 + Σ¹₂-IND, strong Σ¹₂-DC0 ≡ Π¹₂-CA0, and strong Σ¹₁-DC0 ≡ Π¹₁-CA0 (Theorem VII.6.9). Analogous equivalences hold for Σ¹ₖ₊₃ under ∃X∀Y(Y ∈ L(X)) (Theorem VII.6.16), with Π¹₄ conservation results (Theorem VII.6.20). Strength strictly increases: Σ¹ₖ₊₁-DC0 < strong Σ¹ₖ₊₁-DC0 < Σ¹ₖ₊₂-DC0 (Theorem VII.7.7)."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Choice and dependent choice schemes beyond Σ¹₁ (Σ¹ₖ-AC₀ for k ≥ 2): outside the range of the zoo for now; Σ¹₁-AC₀ was added."
 - id: simpson2009-9444dfeb
   ref: simpson2009
   part: 5/8 (chapter VII, pages 261–326)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: βk-model reflection
@@ -12420,11 +12748,15 @@
     facts: Strong Σ¹ₖ₊₁-DC0 is equivalent to the existence of a countable coded βₖ₊₁-model containing any given X (Theorem VII.7.4), and to βₖ₊₁-model reflection for Σ¹ₖ₊₃ formulas. Σ¹ₖ₊₂-DC0 is equivalent to βₖ₊₁-model reflection for Σ¹ₖ₊₄ formulas (Theorem VII.7.6).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "β_k-model reflection: systems stronger than Π¹₁-CA₀, outside the range of the zoo for now."
 - id: simpson2009-4061fbbd
   ref: simpson2009
   part: 5/8 (chapter VII, pages 261–326)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: ATR0^set, T0^set
@@ -12434,6 +12766,10 @@
     facts: ATR0^set is a conservative extension of ATR0, and more generally T0^set of T0 (Theorems VII.3.23, VII.3.34). Π¹₁-CA0^set proves the Shoenfield absoluteness theorem (Theorem VII.4.14).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Set-theoretic systems conservative over ATR₀ and stronger theories, not L₂ principles.
 - id: simpson2009-1c8ed544
   ref: simpson2009
   part: 4/8 (chapters V, VI, pages 185–260)
@@ -12518,7 +12854,7 @@
   ref: simpson2009
   part: 4/8 (chapters V, VI, pages 185–260)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Lusin / Borel domain / unique paths
@@ -12528,11 +12864,15 @@
     facts: Lusin's theorem and the Borel domain theorem are provable in ATR0. The unique-paths scheme, also in its arithmetical-formula form, is equivalent to ATR0 over RCA0 (Theorem V.5.2). Souslin's theorem holds in HYP, so it is not equivalent to ATR0 (Remark V.3.12).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Lusin’s theorem and the Borel domain theorem are provable in ATR₀; the unique-paths scheme is a form of ATR₀ (Theorem V.5.2). Not entered.
 - id: simpson2009-88cda8de
   ref: simpson2009
   part: 4/8 (chapters V, VI, pages 185–260)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: PST
@@ -12542,6 +12882,10 @@
     facts: All versions are equivalent to ATR0 over ACA0 (Theorem V.5.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Equivalent to ATR₀ over ACA₀ (Theorem V.5.5): equivalence over ACA₀ cannot be recorded; not entered."
 - id: simpson2009-c3cd1eef
   ref: simpson2009
   part: 4/8 (chapters V, VI, pages 185–260)
@@ -12582,7 +12926,7 @@
   ref: simpson2009
   part: 4/8 (chapters V, VI, pages 185–260)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Σ11-AC0
@@ -12592,6 +12936,10 @@
     facts: "Provable in ATR0 (Theorem V.8.3). Not equivalent to ATR0: HYP satisfies it but not ATR0 (Remark V.8.4)."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: Added as sigma11ac (2026-11-04), with the results stated in the papers.
 - id: simpson2009-c0c5e2fd
   ref: simpson2009
   part: 4/8 (chapters V, VI, pages 185–260)
@@ -12632,7 +12980,7 @@
   ref: simpson2009
   part: 4/8 (chapters V, VI, pages 185–260)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Kondo
@@ -12642,6 +12990,10 @@
     facts: Equivalent to Π11-CA0 over ATR0 (Theorem VI.2.6).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Equivalent to Π¹₁-CA₀ over ATR₀ (Theorem VI.2.6): equivalence over ATR₀ cannot be recorded; not entered."
 - id: simpson2009-ee4466da
   ref: simpson2009
   part: 4/8 (chapters V, VI, pages 185–260)
@@ -12718,7 +13070,7 @@
   ref: simpson2009
   part: 4/8 (chapters V, VI, pages 185–260)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Π11-TR0, Σ11-MI0
@@ -12728,6 +13080,10 @@
     facts: "Cited from Tanaka: Π11-TR0 is equivalent over RCA0 to Δ02 determinacy and to the Δ11 Ramsey theorem (Theorem VI.7.3). Σ11-MI0 is equivalent over RCA0 to Σ02 determinacy and to the Σ11 Ramsey theorem (Theorem VI.7.5)."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Π¹₁-TR₀ and Σ¹₁-MI₀ lie above Π¹₁-CA₀ (Tanaka): outside the range of the zoo for now."
 - id: simpson2009-35437c9e
   ref: simpson2009
   part: 7/8 (chapter IX, pages 377–408)
@@ -12782,7 +13138,7 @@
   ref: simpson2009
   part: 6/8 (chapter VIII, pages 327–376)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: weak Σ11-AC0
@@ -12792,11 +13148,15 @@
     facts: Implied by Σ11-AC and (exercise) by Δ11-CA. Every countable coded ω-model of it is closed under hyperarithmetic reducibility. HYP is its minimum ω-model. For any recursive S ⊇ weak Σ11-AC0 with a countable ω-model, HYP is the intersection of all countable ω-models of S.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Weak Σ¹₁-AC₀: not entered for now (its minimum ω-model is HYP, like Δ¹₁-CA₀ and Σ¹₁-AC₀, which are in the zoo)."
 - id: simpson2009-49a6d8de
   ref: simpson2009
   part: 6/8 (chapter VIII, pages 327–376)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: Σ1k-RFN0 / Σ1∞-RFN0
@@ -12806,11 +13166,15 @@
     facts: Σ1∞-RFN0 is equivalent to Π1∞-TI0 (Thm VIII.5.4). Π11-TI0 ≡ Σ11-DC0 ≡ Σ13-RFN0 over ACA0 (Thm VIII.5.12). Π1∞-CA0 proves all instances. Essentially-Σ11 reflection is provable in ATR0 (Lemma VIII.6.3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "ω-model reflection schemes above ACA₀: not entered."
 - id: simpson2009-e6e9677b
   ref: simpson2009
   part: 6/8 (chapter VIII, pages 327–376)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: strong Π01 dependent choice
@@ -12820,11 +13184,15 @@
     facts: Provable in WKL0. Used to show WKL0 proves the existence of countable coded strict β-models containing any X.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: A technical scheme provable in WKL₀ (Lemma VIII.2.5); not a principle of the zoo.
 - id: simpson2009-140895de
   ref: simpson2009
   part: 6/8 (chapter VIII, pages 327–376)
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: ∀X∀a(O(a,X) → H^X_a exists)
@@ -12834,6 +13202,10 @@
     facts: Equivalent to ATR0 over ACA0 (Theorem VIII.3.15).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: An equivalent form of ATR₀ over ACA₀ (Theorem VIII.3.15); not entered separately.
 - id: simpson2009-a3d59e87
   ref: simpson2009
   part: 8/8 (chapter X, pages 409–463)
@@ -13221,7 +13593,7 @@
 - id: goh2019b-73a96e83
   ref: goh2019b
   date: 2026-11-03
-  status: pending
+  status: done
   kind: statement
   statement:
     notation: ATR
@@ -13231,6 +13603,10 @@
     facts: ATR is parallelizable (Prop 2.7). CWO ≡W ATR ≡W WCWO (Cor 2.31). ATR ≡W UC_{N^N} (cited from Kihara–Marcone–Pauly). ATR ≤W C_N ∗ NDS_WO and ATR ≤W C_N ∗ NIAC_WO (Thms 2.32, 2.33). ATR ≤W KDT (Thm 3.33). The catalogue's atr is the sentence ATR0, not this problem.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-04
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Covered by ucnn: the problem ATR is Weihrauch equivalent to UC_NN (Kihara–Marcone–Pauly 2020, Theorem 3.13)."
 - id: goh2019b-4bf8fc4a
   ref: goh2019b
   date: 2026-11-03

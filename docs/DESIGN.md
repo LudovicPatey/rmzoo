@@ -287,7 +287,8 @@ Everything not derivable is **open**. The viewer distinguishes "open" from
   *Overview* (definition, instance/solution reading, context, related
   statements), *Position* (formulations with their equivalence profile; what
   it implies / is implied by / fails to imply), *Properties* (with proofs),
-  *Literature*, *Questions* (when there are some) and *Results*. **Related
+  *Literature*, *Questions* (when there are some) and *Results* (grouped:
+  implications and equivalences, separations, properties, conservation). **Related
   statements** (`site/js/related.js`) are those worth comparing it with: the
   ones studied in the same papers (results citing the paper, or its literature
   list), papers about many statements counting less and very common statements

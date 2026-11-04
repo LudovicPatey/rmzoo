@@ -409,3 +409,7 @@ table.related td { vertical-align: middle; }
 .badge.kind-problem { background: var(--accent-soft); color: var(--accent); }
 .badge.kind-sentence { background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
 .peek-head .badge { font-weight: 600; vertical-align: 1px; }
+
+/* results of a statement, grouped by kind */
+.res-group { margin: 22px 0 8px; font-size: 1rem; }
+.res-group .count { font-weight: 400; color: var(--muted); font-size: .85rem; margin-left: 4px; }

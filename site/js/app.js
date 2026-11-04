@@ -806,7 +806,7 @@ function viewStatement(id, params = new URLSearchParams()) {
 
     ${panel('results')}
     <p class="small muted">Results of the database that mention ${L(i)} (the others are derived from them).</p>
-    ${resultsTable(directResults)}
+    ${resultGroups(directResults)}
     </section>
   `;
   // reduction picker + relations
@@ -998,6 +998,21 @@ function resultFact(res) {
   }
   const arrow = { implication: '<span class="yes">⇒</span>', equivalence: '<span class="yes">⇔</span>', separation: '<span class="no">⇏</span>' }[res.type];
   return `<span class="res-stmt">${sLink(idx(res.from), r0)} ${arrow} ${sLink(idx(res.to), r0)}</span> <span class="muted small">over ${over}</span>`;
+}
+// results of one statement, by kind: implications and equivalences, separations,
+// properties, conservation (one table each, in the same tab)
+const RESULT_GROUPS = [
+  ['Implications and equivalences', (r) => r.type === 'implication' || r.type === 'equivalence'],
+  ['Separations', (r) => r.type === 'separation'],
+  ['Computability-theoretic properties', (r) => r.type === 'property'],
+  ['Conservation', (r) => r.type === 'conservation'],
+];
+function resultGroups(list) {
+  if (!list.length) return '<p class="muted">None.</p>';
+  return RESULT_GROUPS.map(([title, test]) => {
+    const part = list.filter(([res]) => test(res));
+    return part.length ? `<h3 class="res-group">${title} <span class="count">${part.length}</span></h3>${resultsTable(part)}` : '';
+  }).join('');
 }
 function resultsTable(list, size = 25) {
   return lazy(list, ([res, ri]) => `<tr><td>${resultFact(res)}</td><td>${resultCite(ri)}</td></tr>`,

@@ -27,3 +27,4 @@
 - { type: equivalence, from: sep, to: wkl, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proof of Lemma 14.20 } ] }
 - { type: equivalence, from: gen1.star.gen1, to: gen1, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 10.7 } ] }
 - { type: implication, from: coh.jump, to: coh, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 12.3 } ] }
+- { type: separation, from: wwkl, to: padeg, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.11 (k = 0) } ] }
