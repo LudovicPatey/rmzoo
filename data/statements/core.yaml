@@ -110,14 +110,28 @@
   name: Arithmetical comprehension
   kind: problem
   tags: [ big-five ]
-  aliases: [ ACA0, arithmetic comprehension, Turing jump, TJ, J ]
+  aliases: [ ACA0, arithmetic comprehension ]
   definition: >
-    Every set defined by an arithmetical formula exists. Equivalently over RCA₀, every set has a Turing jump.
-  instance: A set $X$.
-  solution: The Turing jump $X'$.
+    Every set defined by an arithmetical formula exists. Equivalently over RCA₀, every set has a Turing jump
+    (the problem form of the jump is TJ).
+  instance: 'A set $X$ and an arithmetical formula $\varphi(n, X)$.'
+  solution: 'The set $\{n : \varphi(n, X)\}$.'
   refs:
     - { ref: friedman1975, role: origin }
     - { ref: simpson2009, role: survey, loc: Chapter III }
+
+- id: tj
+  label: '\mathsf{TJ}'
+  name: Turing jump
+  kind: problem
+  tags: [ computability, weihrauch ]
+  aliases: [ Turing jump, J, jump ]
+  definition: >
+    Every set has a Turing jump. As a problem: given $X$, compute $X'$ (the map $J$ of Weihrauch complexity,
+    strongly Weihrauch equivalent to $\lim$). Over RCA₀ it is equivalent to ACA₀.
+  instance: A set $X$.
+  solution: The Turing jump $X'$.
+  refs:
     - { ref: brattkagherardipauly2021, role: rm, loc: "Section 6, before Theorem 6.7 (the jump J)" }
     - { ref: dzhafarovmummert2022, role: rm, loc: "Definition 3.6.9 (the problem TJ)" }
     - { ref: dzhafarovsolomonyokoyama2023, role: rm, loc: "Section 4, before Theorem 4.2 (the problem TJ)" }

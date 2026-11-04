@@ -68,6 +68,23 @@ the results database, so the viewer can show *exactly at which reductions*
 two formulations coincide, and the claim "they are equivalent" can never get
 out of sync with the literature.
 
+**Minor statements** (`minor: true`). The zoo aims to record every principle
+studied in the literature, but a statement studied in a single paper, or of
+secondary interest (a classical theorem equivalent to a Big Five system, a
+technical variant), would flood the catalogue. Such a statement is a full member
+of the database (results, inference, its own page), but it is hidden from the
+catalogue unless "Minor statements" is ticked, left out of the home page count,
+of the "implies N statements" counts and of related statements, and listed under
+**Equivalent statements** on the overview of each statement equivalent to it
+(Simpson's equivalents of WKL₀ on the page of WKL). Such statements are labelled
+by their name in `\textsf{…}` rather than by an invented acronym.
+
+**Problem forms of comprehension.** As a problem, ACA is comprehension:
+(X, arithmetical φ) ↦ {n : φ(n, X)}, which is Weihrauch equivalent to the finite
+jumps ACA′ ((X, n) ↦ X⁽ⁿ⁾). The jump X ↦ X′ (J of Brattka et al., TJ of
+Dzhafarov–Mummert, strongly Weihrauch equivalent to lim) is a separate problem,
+TJ, equivalent to ACA₀ over RCA₀ only: it has Δ⁰₂ solutions, ACA does not.
+
 When a diagram is drawn at reduction R, statements that are provably
 equivalent at R are collapsed into one node. The displayed label is chosen by
 (1) main formulation of a principle, (2) explicit `priority`, (3) the first

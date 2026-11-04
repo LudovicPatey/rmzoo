@@ -49,7 +49,7 @@ for (const s of z.S) {
   for (const s of ops) for (const t of forms.get(s.id) || []) put(t, s.id);
 }
 // common spellings
-const extra = { WKL0: 'wkl', ACA0: 'aca', TJ: 'aca', ATR0: 'atr', RCA0: 'rca0', WWKL0: 'wwkl', 'Π11-CA0': 'pi11ca', 'Π11-CA': 'pi11ca',
+const extra = { WKL0: 'wkl', ACA0: 'aca', TJ: 'tj', ATR0: 'atr', RCA0: 'rca0', WWKL0: 'wwkl', 'Π11-CA0': 'pi11ca', 'Π11-CA': 'pi11ca',
   'BΣ2': 'bsig2', 'IΣ2': 'isig2', 'BΣ3': 'bsig3', 'IΣ3': 'isig3', 'IΣ1': 'isig1', DNC: 'dnr', 'RT1<∞': 'rt1inf', 'RT2<∞': 'rt2',
   'SRT2<∞': 'srt2', 'D2<∞': 'd2', 'TT1<∞': 'tt1', 'RT<∞1': 'rt1inf', MLR: 'ran1', '2-MLR': 'ran2', '1-GEN': 'gen1', 'Π01G': 'pi01g',
   CN: 'cn', 'C2N': 'wkl', LLPO: 'llpo', LPO: 'lpo', 'C2': 'llpo', 'KN': 'kn', 'CR': 'cr', 'CNN': 'cnn', 'UCNN': 'ucnn', 'lim': 'lim',

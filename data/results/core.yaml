@@ -49,9 +49,9 @@
   refs: [ { ref: simpson2009, loc: Corollary IX.2.6 } ]
   note: Due to Harrington.
 
-- { type: property, statement: aca, property: cone-avoidance, value: false, folklore: true, note: "∅' is a solution to a computable instance.", justification: { kind: reduction, text: The jump problem has the computable instance ∅ whose only solution ∅′ is not computable., by: ai } }
-- { type: property, statement: aca, property: low-basis, value: false, folklore: true, justification: { kind: reduction, text: "The only solution to the instance ∅ is ∅′, which is not low.", by: ai } }
-- { type: property, statement: aca, property: weakly-low2-basis, value: false, folklore: true, justification: { kind: reduction, text: "The only solution to the instance ∅ is ∅′. If ∅‴ = (∅′)″ were computable in a set P of PA degree over ∅″, then, choosing P with P′ ≤_T ∅‴ (low basis theorem relative to ∅″), ∅⁗ ≤_T P′ ≤_T ∅‴, a contradiction. The same argument shows that ACA₀ fails every level of the lowness hierarchy; this fact is recorded at the highest level present in data/properties.yaml.", by: ai } }
+- { type: property, statement: tj, property: cone-avoidance, value: false, folklore: true, note: "∅' is a solution to a computable instance.", justification: { kind: reduction, text: The jump problem has the computable instance ∅ whose only solution ∅′ is not computable., by: ai } }
+- { type: property, statement: tj, property: low-basis, value: false, folklore: true, justification: { kind: reduction, text: "The only solution to the instance ∅ is ∅′, which is not low.", by: ai } }
+- { type: property, statement: tj, property: weakly-low2-basis, value: false, folklore: true, justification: { kind: reduction, text: "The only solution to the instance ∅ is ∅′. If ∅‴ = (∅′)″ were computable in a set P of PA degree over ∅″, then, choosing P with P′ ≤_T ∅‴ (low basis theorem relative to ∅″), ∅⁗ ≤_T P′ ≤_T ∅‴, a contradiction. The same argument shows that ACA₀ fails every level of the lowness hierarchy; this fact is recorded at the highest level present in data/properties.yaml.", by: ai } }
 
 - { type: property, statement: rca0, property: pi11-conservative, value: true, folklore: true, justification: { kind: classical, text: "Trivial: RCA₀ is conservative over itself.", by: ai } }
 
@@ -95,7 +95,7 @@
 # ---- Weihrauch landmarks seen as statements over RCA0 -----------------------
 
 - { type: equivalence, from: hb, to: wkl, over: rca0, refs: [ { ref: simpson2009, loc: Theorem IV.9.3 } ] }
-- { type: equivalence, from: lim, to: aca, over: sw, refs: [ { ref: brattkagherardipauly2021, loc: Theorem 6.7 }, { ref: solda2021, loc: "Proposition 2.4.6, proof" } ], note: "lim is strongly Weihrauch equivalent to the Turing jump." }
+- { type: equivalence, from: lim, to: tj, over: sw, refs: [ { ref: brattkagherardipauly2021, loc: Theorem 6.7 }, { ref: solda2021, loc: "Proposition 2.4.6, proof" } ], note: "lim is strongly Weihrauch equivalent to the Turing jump." }
 - { type: equivalence, from: lim, to: aca, over: rca0star, folklore: true, justification: { kind: classical, text: "lim is the problem form of the Turing jump; over RCA₀*, ACA is equivalent to the statement that every set has a jump.", by: ai } }
 - { type: equivalence, from: bwt, to: aca, over: rca0, refs: [ { ref: simpson2009, loc: Theorem III.2.7 }, { ref: dzhafarovmummert2022, loc: Theorem 10.2.3 (1)↔(4) } ] }
 - { type: implication, from: rca0, to: ivt, over: rca0, refs: [ { ref: simpson2009, loc: Theorem II.6.6 } ] }
@@ -131,3 +131,12 @@
 - { type: implication, from: lcac, to: cac, over: rca0star, folklore: true, justification: { kind: classical, text: "A set of cardinality N, the range of a strictly increasing map with domain N, is unbounded (provably in RCA₀*, by Δ⁰₀ induction the n-th element is at least n), so a solution of the long version is one of the normal version.", by: ai } }
 - { type: implication, from: ladsset, to: ads, over: rca0star, folklore: true, justification: { kind: classical, text: "A set of cardinality N, the range of a strictly increasing map with domain N, is unbounded (provably in RCA₀*, by Δ⁰₀ induction the n-th element is at least n), so a solution of the long version is one of the normal version.", by: ai } }
 - { type: implication, from: lcrt22, to: crt22, over: rca0star, folklore: true, justification: { kind: classical, text: "A set of cardinality N, the range of a strictly increasing map with domain N, is unbounded (provably in RCA₀*, by Δ⁰₀ induction the n-th element is at least n), so a solution of the long version is one of the normal version.", by: ai } }
+
+# The Turing jump problem TJ (X ↦ X′) and arithmetical comprehension as a problem
+# ((X, φ) ↦ {n : φ(n, X)}), separated on 2026-11-04.
+- { type: equivalence, from: tj, to: aca, over: rca0, refs: [ { ref: dzhafarovmummert2022, loc: Corollary 5.6.3 } ] }
+- { type: implication, from: aca, to: tj, over: sw, folklore: true, justification: { kind: restriction, text: "X′ is defined from X by the Σ⁰₁ formula ∃s Φ_{e,s}^X(e)↓, so TJ is ACA restricted to that formula.", by: ai } }
+- { type: property, statement: tj, property: delta2-basis, value: true, folklore: true, justification: { kind: reduction, text: "The solution X′ of a computable instance X is computable in ∅′ (indeed Σ⁰₁).", by: ai } }
+- { type: implication, from: aca, to: aca-prime, over: sw, folklore: true, justification: { kind: reduction, text: "Given (X, n), the arithmetical formula defining X^(n) from X is computable from n, and the solution of ACA on it is X^(n).", by: ai } }
+- { type: implication, from: aca-prime, to: aca, over: w, folklore: true, justification: { kind: reduction, text: "Given (X, φ) with φ a Σ⁰ₙ formula, {k : φ(k, X)} is computable from X^(n) uniformly in φ (with X and φ available, as Weihrauch reducibility allows).", by: ai } }
+- { type: property, statement: aca-prime, property: sigma4-basis, value: false, folklore: true, justification: { kind: reduction, text: "The computable instance (∅, 5) has the single solution ∅⁽⁵⁾, which is not Σ⁰₄; likewise (∅, n + 1) has no Σ⁰ₙ solution for any n.", by: ai } }

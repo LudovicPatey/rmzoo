@@ -217,7 +217,11 @@ theorem) gets a short descriptive label in `\textsf{…}`, which the miners do n
 look for in the texts (an invented acronym would never match, a word would match
 everywhere). `kind: problem` only when the principle is studied with
 instances and solutions (computable or Weihrauch reductions); otherwise
-`sentence`. Then at least one result (the
+`sentence`. A statement studied in a single paper or of secondary interest (a
+classical theorem equivalent to a Big Five system, a technical variant) gets
+`minor: true`: it stays in the database but out of the catalogue's default view,
+and is listed on the pages of the statements equivalent to it (docs/DESIGN.md).
+Do not invent an acronym for it: label it by its name in `\textsf{…}`. Then at least one result (the
 build warns about statements in no result), and `data/context.yaml` if
 background helps. Operator statements (`lpo.jump`, `cn.x.wkl`, `tcn.star.tcn`,
 `(cn.x.lpo).jump`) need no entry: the build creates them from their dotted ids.

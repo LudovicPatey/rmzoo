@@ -17,6 +17,7 @@ export const FILES = {
   engine: 'site/js/engine.js',          // inference engine (browser and Node)
   viewer: 'site/js/app.js',             // the web viewer
   bibtex: 'site/js/bibtex.js',          // BibTeX export
+  related: 'site/js/related.js',        // related statements on a statement page
   build: 'scripts/build.mjs',           // validation + site/data/zoo.json
   consolidate: 'scripts/consolidate.mjs',
   sweep: 'scripts/sweep.mjs',
@@ -62,6 +63,7 @@ export const SCHEMA = {
     priority: { doc: 'ranking boost in search results', usedBy: ['engine'] },
     firstOrder: { doc: 'true for first-order (arithmetical) sentences: they hold in every ω-model', usedBy: ['build', 'engine', 'viewer'] },
     formulationOf: { doc: 'id of the main formulation this statement is a variant of', usedBy: ['build', 'engine', 'viewer'] },
+    minor: { doc: 'true for a statement studied in few papers or of secondary interest (a classical theorem equivalent to a Big Five system, a technical variant): hidden from the catalogue by default, not counted on the home page or in the implication counts, left out of related statements, listed as an equivalent statement on the pages of the statements equivalent to it', usedBy: ['build', 'viewer', 'related'] },
     conjunction: { doc: 'ids of the conjuncts (kind must be sentence)', usedBy: ['build', 'engine', 'viewer', 'mineCommon'] },
     form: { doc: 'syntactic class of the sentence (data/classes.yaml), used for conservation results', usedBy: ['build', 'engine', 'viewer'] },
     op: { doc: 'Weihrauch operation: jump | par | fin | diamond | product | compose (normally created by the build from dotted ids)', usedBy: ['build', 'engine', 'viewer', 'mineCommon'] },

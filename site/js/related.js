@@ -34,7 +34,7 @@ export function relatedStatements(zoo, i, { limit = 12, fill = 6, index = relate
   const { S } = zoo;
   const s = S[i];
   const main = s.formulationOf || s.id;
-  const skip = (j) => j === i || !!S[j].op || !!S[j].base?.length || (S[j].formulationOf || S[j].id) === main;
+  const skip = (j) => j === i || !!S[j].op || !!S[j].base?.length || !!S[j].minor || (S[j].formulationOf || S[j].id) === main;
   const score = new Map(), common = new Map();
   for (const ref of index.byStmt[i]) {
     const w = index.weight.get(ref);

@@ -1,19 +1,23 @@
 # Theorems of ordinary mathematics equivalent over RCA₀ to a Big Five system or to
 # WWKL₀, from Simpson, Subsystems of Second Order Arithmetic (2009), entered on
 # 2026-11-04 from the review queue (AI reader proposals, checked in the full text).
+# They are minor statements: hidden from the catalogue by default, listed on the
+# pages of the Big Five systems as equivalent statements.
 
 - id: heine-borel
   label: "\\textsf{Heine–Borel}_{[0,1]}"
   name: "Heine–Borel covering lemma for [0,1]"
   kind: sentence
+  minor: true
   tags: ["compactness", "analysis"]
   definition: "Every covering of the closed unit interval $[0,1]$ by a sequence of open intervals has a finite subcovering."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem IV.1.2" } ]
 
 - id: bkl
-  label: "\\mathsf{BKL}"
+  label: "\\textsf{Bounded König’s lemma}"
   name: "Bounded König's lemma"
   kind: sentence
+  minor: true
   tags: ["compactness"]
   definition: "Every infinite tree $T \\subseteq \\mathbb{N}^{<\\mathbb{N}}$ bounded by a function $g$ (that is, $\\sigma(j) < g(j)$ for all $\\sigma \\in T$ and $j < |\\sigma|$) has an infinite path."
   refs: [ { ref: simpson2009, role: rm, loc: "Lemma IV.1.4" } ]
@@ -22,6 +26,7 @@
   label: "\\textsf{Unif. cont.}_{[0,1]}"
   name: "Uniform continuity on [0,1]"
   kind: sentence
+  minor: true
   tags: ["compactness", "analysis"]
   definition: "Every continuous function on the closed interval $[0,1]$ is uniformly continuous."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem IV.2.3(2)" } ]
@@ -30,6 +35,7 @@
   label: "\\textsf{Bounded}_{[0,1]}"
   name: "Boundedness of continuous functions on [0,1]"
   kind: sentence
+  minor: true
   tags: ["compactness", "analysis"]
   definition: "Every continuous function on the closed interval $[0,1]$ is bounded."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem IV.2.3(3)" } ]
@@ -38,6 +44,7 @@
   label: "\\textsf{Weierstrass}"
   name: "Weierstrass approximation theorem"
   kind: sentence
+  minor: true
   tags: ["compactness", "analysis"]
   definition: "For every continuous function $\\varphi$ on $[0,1]$ there is a polynomial $f$ with $|\\varphi(x) - f(x)| < 1$ for all $x \\in [0,1]$ (equivalently, a sequence of polynomials converging to $\\varphi$ at rate $2^{-n}$)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem IV.2.5" } ]
@@ -46,6 +53,7 @@
   label: "\\textsf{Riemann}"
   name: "Riemann integrability of continuous functions"
   kind: sentence
+  minor: true
   tags: ["compactness", "analysis"]
   definition: "For every continuous function $\\varphi$ on a closed bounded interval $[a,b]$, the Riemann integral $\\int_a^b \\varphi(x)\\,dx$ exists and is finite."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem IV.2.7" } ]
@@ -54,6 +62,7 @@
   label: "\\textsf{Completeness}"
   name: "Gödel's completeness theorem"
   kind: sentence
+  minor: true
   tags: ["compactness"]
   definition: "Every countable consistent set of sentences has a countable model. Equivalent over RCA₀ to Lindenbaum's lemma, to the compactness theorem, and to the completeness and compactness theorems for propositional logic (Theorem IV.3.3)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem IV.3.3(3)" } ]
@@ -62,6 +71,7 @@
   label: "\\textsf{Formally real}"
   name: "Orderability of formally real fields"
   kind: sentence
+  minor: true
   tags: ["compactness", "algebra"]
   definition: "Every countable formally real field is orderable (equivalently, has a real closure)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem IV.4.5(2)" } ]
@@ -70,6 +80,7 @@
   label: "\\textsf{Unique alg. closure}"
   name: "Uniqueness of algebraic closures"
   kind: sentence
+  minor: true
   tags: ["compactness", "algebra"]
   definition: "Every countable field has a unique algebraic closure, up to isomorphism over the field."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem IV.5.2" } ]
@@ -78,6 +89,7 @@
   label: "\\textsf{Prime ideal}"
   name: "Existence of prime ideals"
   kind: sentence
+  minor: true
   tags: ["compactness", "algebra"]
   definition: "Every countable commutative ring contains a prime ideal (equivalently, a radical ideal)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem IV.6.4(2)" } ]
@@ -86,6 +98,7 @@
   label: "\\textsf{Brouwer}"
   name: "Brouwer fixed point theorem"
   kind: sentence
+  minor: true
   tags: ["compactness", "analysis"]
   definition: "If $C$ is the convex hull of a nonempty finite set of points of $\\mathbb{R}^n$, every continuous $f : C \\to C$ has a fixed point. Already the case of the unit square is equivalent to $\\mathsf{WKL}_0$."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem IV.7.7" } ]
@@ -94,6 +107,7 @@
   label: "\\textsf{Peano}"
   name: "Peano existence theorem"
   kind: sentence
+  minor: true
   tags: ["compactness", "analysis"]
   definition: "If $f(x, y)$ is continuous in a neighborhood of $(0, 0)$, the initial value problem $y' = f(x, y)$, $y(0) = 0$ has a continuously differentiable solution in some interval containing $0$."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem IV.8.2" } ]
@@ -102,14 +116,16 @@
   label: "\\textsf{Banach sep.}"
   name: "Banach separation theorem"
   kind: sentence
+  minor: true
   tags: ["compactness", "analysis"]
   definition: "Two disjoint open convex sets in a separable Banach space can be strictly separated by a bounded linear functional."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem X.2.1" } ]
 
 - id: rng
-  label: "\\mathsf{RNG}"
+  label: "\\textsf{Range existence}"
   name: "Range existence"
   kind: sentence
+  minor: true
   tags: []
   definition: "Every one-to-one function $f : \\mathbb{N} \\to \\mathbb{N}$ has a range. Equivalent over RCA₀ to $\\Sigma^0_1$ comprehension."
   refs: [ { ref: simpson2009, role: rm, loc: "Lemma III.1.3(3)" } ]
@@ -118,6 +134,7 @@
   label: "\\textsf{Cauchy}_{\\mathbb{R}}"
   name: "Cauchy completeness of the reals"
   kind: sentence
+  minor: true
   tags: ["analysis"]
   definition: "Every Cauchy sequence of real numbers converges."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem III.2.2(3)" } ]
@@ -126,6 +143,7 @@
   label: "\\textsf{Seq. compactness}"
   name: "Sequential compactness of compact metric spaces"
   kind: sentence
+  minor: true
   tags: ["analysis"]
   definition: "In any compact metric space, every sequence of points has a convergent subsequence."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem III.2.7(2)" } ]
@@ -134,6 +152,7 @@
   label: "\\textsf{Ascoli}"
   name: "Ascoli lemma"
   kind: sentence
+  minor: true
   tags: ["analysis"]
   definition: "Every bounded equicontinuous sequence of continuous functions between compact metric spaces has a uniformly convergent subsequence."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem III.2.9" } ]
@@ -142,6 +161,7 @@
   label: "\\textsf{Strong alg. closure}"
   name: "Existence of strong algebraic closures"
   kind: sentence
+  minor: true
   tags: ["algebra"]
   definition: "Every countable field has a strong algebraic closure, that is, an algebraic closure whose embedding has a range (equivalently, every countable field is isomorphic to a subfield of a countable algebraically closed field)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem III.3.2(2)" } ]
@@ -150,6 +170,7 @@
   label: "\\textsf{Vector space basis}"
   name: "Bases of countable vector spaces"
   kind: sentence
+  minor: true
   tags: ["algebra"]
   definition: "Every countable vector space over a countable field has a basis (already over $\\mathbb{Q}$, Theorem III.4.3(3))."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem III.4.3(2)" } ]
@@ -158,6 +179,7 @@
   label: "\\textsf{Transcendence base}"
   name: "Existence of transcendence bases"
   kind: sentence
+  minor: true
   tags: ["algebra"]
   definition: "For every pair of countable fields $K \\subseteq L$ there is a transcendence base for $L$ over $K$."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem III.4.6(2)" } ]
@@ -166,6 +188,7 @@
   label: "\\textsf{Maximal ideal}"
   name: "Existence of maximal ideals"
   kind: sentence
+  minor: true
   tags: ["algebra"]
   definition: "Every countable commutative ring has a maximal ideal (already every countable integral domain, Theorem III.5.5(3))."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem III.5.5(2)" } ]
@@ -174,6 +197,7 @@
   label: "\\textsf{Torsion}"
   name: "Existence of torsion subgroups"
   kind: sentence
+  minor: true
   tags: ["algebra"]
   definition: "Every countable Abelian group has a subgroup consisting of its torsion elements."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem III.6.2" } ]
@@ -182,6 +206,7 @@
   label: "\\textsf{Radó}"
   name: "Radó selection lemma"
   kind: sentence
+  minor: true
   tags: []
   definition: "Countable Radó selection lemma (strong version): given a sequence of partial functions $f_i$ from $\\mathbb{N}$ to $\\mathbb{N}$ such that every finite set is included in some $\\mathrm{dom}(f_i)$ and the values at each point are bounded, there is $f : \\mathbb{N} \\to \\mathbb{N}$ each of whose finite restrictions agrees with some $f_i$ (with the uniformity condition of Theorem III.7.8)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem III.7.8" } ]
@@ -190,6 +215,7 @@
   label: "\\Sigma^1_1\\text{-}\\mathsf{SEP}"
   name: "Σ¹₁ separation"
   kind: sentence
+  minor: true
   tags: ["determinacy"]
   definition: "For any $\\Sigma^1_1$ formulas $\\varphi_0(n)$, $\\varphi_1(n)$ with no $n$ satisfying both, there is a set $Z$ containing every $n$ with $\\varphi_1(n)$ and no $n$ with $\\varphi_0(n)$."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem V.5.1" } ]
@@ -198,14 +224,16 @@
   label: "\\mathsf{CWO}"
   name: "Comparability of countable well-orderings"
   kind: sentence
+  minor: true
   tags: ["well-orders"]
   definition: "For any two countable well-orderings, one embeds as an initial segment of the other: $\\forall X \\forall Y ((\\mathrm{WO}(X) \\wedge \\mathrm{WO}(Y)) \\to (|X| \\le |Y| \\vee |Y| \\le |X|))$."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem V.6.8" } ]
 
 - id: sigma11-bound
-  label: "\\Sigma^1_1\\text{-}\\mathsf{Bound}"
+  label: "\\Sigma^1_1\\textsf{ bounding}"
   name: "Σ¹₁ bounding"
   kind: sentence
+  minor: true
   tags: ["well-orders"]
   definition: "If every element of an analytic set (given by an analytic code) is a well-ordering, there is a well-ordering $Y$ bounding the order types of all of them."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem V.6.9" } ]
@@ -214,6 +242,7 @@
   label: "\\textsf{Ulm}"
   name: "Existence of Ulm resolutions"
   kind: sentence
+  minor: true
   tags: ["algebra"]
   definition: "Every countable reduced Abelian $p$-group has an Ulm resolution."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem V.7.3(2)" } ]
@@ -222,6 +251,7 @@
   label: "\\Sigma^0_1\\text{-}\\mathsf{Det}"
   name: "Open determinacy"
   kind: sentence
+  minor: true
   tags: ["determinacy"]
   definition: "Every game on $\\mathbb{N}^\\mathbb{N}$ with a $\\Sigma^0_1$ payoff set is determined."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem V.8.7" } ]
@@ -230,6 +260,7 @@
   label: "\\Delta^0_1\\text{-}\\mathsf{Det}"
   name: "Clopen determinacy"
   kind: sentence
+  minor: true
   tags: ["determinacy"]
   definition: "Every game on $\\mathbb{N}^\\mathbb{N}$ with a $\\Delta^0_1$ payoff set is determined."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem V.8.7" } ]
@@ -238,6 +269,7 @@
   label: "\\Sigma^0_1\\text{-}\\mathsf{RT}"
   name: "Open Ramsey theorem"
   kind: sentence
+  minor: true
   tags: ["determinacy", "ramsey"]
   definition: "For every open set $P \\subseteq [\\mathbb{N}]^\\mathbb{N}$ there is an infinite $H$ such that $[H]^\\mathbb{N} \\subseteq P$ or $[H]^\\mathbb{N} \\cap P = \\emptyset$ (Galvin–Prikry for open sets)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem V.9.7" } ]
@@ -246,14 +278,16 @@
   label: "\\Delta^0_1\\text{-}\\mathsf{RT}"
   name: "Clopen Ramsey theorem"
   kind: sentence
+  minor: true
   tags: ["determinacy", "ramsey"]
   definition: "For every clopen set $P \\subseteq [\\mathbb{N}]^\\mathbb{N}$ there is an infinite $H$ such that $[H]^\\mathbb{N} \\subseteq P$ or $[H]^\\mathbb{N} \\cap P = \\emptyset$."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem V.9.7" } ]
 
 - id: cb
-  label: "\\mathsf{CB}"
+  label: "\\textsf{Cantor–Bendixson}"
   name: "Cantor–Bendixson theorem (perfect kernels)"
   kind: sentence
+  minor: true
   tags: ["determinacy"]
   definition: "Every tree $T \\subseteq \\mathbb{N}^{<\\mathbb{N}}$ has a perfect kernel (equivalently, a perfect subtree $P$ such that only countably many paths of $T$ are not paths of $P$)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem VI.1.3(2)" } ]
@@ -262,6 +296,7 @@
   label: "\\textsf{Silver}"
   name: "Silver's theorem"
   kind: sentence
+  minor: true
   tags: ["determinacy"]
   definition: "Every coanalytic equivalence relation on $\\mathbb{N}^\\mathbb{N}$ has either countably many equivalence classes or a perfect set of pairwise inequivalent points (already for $\\Delta^0_2$ relations)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem VI.3.6" } ]
@@ -270,6 +305,7 @@
   label: "\\textsf{Div+Red}"
   name: "Divisible–reduced decomposition"
   kind: sentence
+  minor: true
   tags: ["algebra"]
   definition: "Every countable Abelian group is the direct sum of a divisible group and a reduced group."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem VI.4.1" } ]
@@ -278,6 +314,7 @@
   label: "(\\Sigma^0_1 \\wedge \\Pi^0_1)\\text{-}\\mathsf{Det}"
   name: "Determinacy of differences of open sets"
   kind: sentence
+  minor: true
   tags: ["determinacy"]
   definition: "Every game on $\\mathbb{N}^\\mathbb{N}$ whose payoff set is the intersection of a $\\Sigma^0_1$ and a $\\Pi^0_1$ set is determined."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem VI.5.4" } ]
@@ -286,6 +323,7 @@
   label: "\\Delta^0_2\\text{-}\\mathsf{RT}_{\\infty}"
   name: "Δ⁰₂ Ramsey theorem (infinite exponent)"
   kind: sentence
+  minor: true
   tags: ["determinacy", "ramsey"]
   definition: "For every $\\Delta^0_2$ set $P \\subseteq [\\mathbb{N}]^\\mathbb{N}$ there is an infinite $H$ such that $[H]^\\mathbb{N} \\subseteq P$ or $[H]^\\mathbb{N} \\cap P = \\emptyset$ (equivalently, the same for arithmetical $P$)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem VI.6.4" } ]
@@ -294,6 +332,7 @@
   label: "\\textsf{CA}_\\mu"
   name: "Countable additivity of Borel measures"
   kind: sentence
+  minor: true
   tags: ["analysis", "randomness"]
   definition: "For any compact metric space $X$ and any Borel measure $\\mu$ on $X$, $\\mu$ is countably additive (equivalently, any covering of $[0,1]$ by open intervals $(a_n, b_n)$ has $\\sum_n |a_n - b_n| \\ge 1$)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem X.1.9(2)" } ]
@@ -302,6 +341,7 @@
   label: "\\textsf{Vitali}"
   name: "Vitali covering theorem"
   kind: sentence
+  minor: true
   tags: ["analysis", "randomness"]
   definition: "If $I$ Vitali covers an interval $E$, then $I$ contains a pairwise disjoint sequence of intervals $I_n$ such that $\\mu(E \\setminus \\bigcup_n I_n) = 0$."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem X.1.13(2)" } ]
@@ -310,6 +350,7 @@
   label: "\\textsf{MCT}_\\mu"
   name: "Monotone convergence theorem (measures)"
   kind: sentence
+  minor: true
   tags: ["analysis", "randomness"]
   definition: "The monotone convergence theorem for Borel measures on compact metric spaces (already for Lebesgue measure on $[0,1]$)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem X.1.14" } ]

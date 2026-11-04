@@ -175,6 +175,7 @@ function search(q, limit = 50) {
     else if (h.ascii.startsWith(qs)) score += 50;
     if (s.name.toLowerCase().includes(q)) score += 10;
     if (s.conjunction) score -= 5;
+    if (s.minor) score -= 3;
     if (s.formulationOf) score -= 2;
     score += Math.min(8, Math.log2(1 + usage()[i])); // well-studied statements first among similar matches
     res.push([score, i]);
@@ -496,7 +497,7 @@ const presetHref = (z) => `#/diagram?s=${z.statements.join(',')}&r=${z.reduction
 function viewHome() {
   const m = main();
   m.className = 'home';
-  const mains = Z.S.filter((s) => !s.conjunction && !s.formulationOf).length;
+  const mains = Z.S.filter((s) => !s.conjunction && !s.formulationOf && !s.minor).length;
   const refs = Object.values(Z.raw.references);
   const parsed = refs.filter((r) => /^pdf/.test(r.read || '')).length;
   const cited = new Set(Z.raw.results.flatMap((r) => (r.refs || []).map((x) => x.ref))).size;
@@ -559,6 +560,7 @@ function viewCatalogue(params) {
   const showForms = params.get('forms') !== '0';
   let showConj = params.get('conj') === '1';
   let showOps = params.get('ops') === '1';
+  let showMinor = params.get('minor') === '1';
   const m = main();
   m.className = '';
   const setParams = (next) => {
@@ -578,6 +580,7 @@ function viewCatalogue(params) {
         <h3>Show</h3>
         <label class="toggle"><input type="checkbox" id="cat-conj" ${showConj ? 'checked' : ''}> Combinations (A + B)</label>
         <label class="toggle" title="Jumps, parallelizations, products and compositional products of problems (Weihrauch algebra)"><input type="checkbox" id="cat-ops" ${showOps ? 'checked' : ''}> Weihrauch operations (P′, P̂, P*, P × Q, P ⋆ Q)</label>
+        <label class="toggle" title="Statements studied in a single paper or of secondary interest, such as classical theorems equivalent to a Big Five system; they are listed on the pages of the statements equivalent to them"><input type="checkbox" id="cat-minor" ${showMinor ? 'checked' : ''}> Minor statements (${Z.S.filter((s) => s.minor).length})</label>
         <h3>Database</h3>
         <div class="small muted">${Z.S.length} statements · ${Z.raw.results.length} results ·
           ${Object.keys(Z.raw.references).length} papers</div>
@@ -608,6 +611,7 @@ function viewCatalogue(params) {
   $('#cat-q').addEventListener('input', (e) => setParams({ ...cur, q: (cur.q = e.target.value) }));
   $('#cat-conj').addEventListener('change', (e) => { showConj = e.target.checked; draw(cur); });
   $('#cat-ops').addEventListener('change', (e) => { showOps = e.target.checked; draw(cur); });
+  $('#cat-minor').addEventListener('change', (e) => { showMinor = e.target.checked; draw(cur); });
   function draw(c) {
     let ids = c.q ? search(c.q, 1000)
       : Z.S.map((_, i) => i).sort((x, y) => (S(y).base ? 1 : 0) - (S(x).base ? 1 : 0) || hay[x].ascii.localeCompare(hay[y].ascii, 'en', { numeric: true }));
@@ -616,7 +620,7 @@ function viewCatalogue(params) {
     ids.forEach((i) => (S(i).tags || []).forEach((t) => tagCounts.set(t, (tagCounts.get(t) || 0) + 1)));
     const overCounts = new Map();
     ids.filter(matchesTags).forEach((i) => FRAMES.forEach(([f]) => S(i).studied?.[f] && overCounts.set(f, (overCounts.get(f) || 0) + 1)));
-    ids = ids.filter(matchesTags).filter((i) => [...c.over].every((f) => S(i).studied?.[f])).filter((i) => (showConj || !S(i).conjunction) && (showOps || !S(i).op));
+    ids = ids.filter(matchesTags).filter((i) => [...c.over].every((f) => S(i).studied?.[f])).filter((i) => (showConj || !S(i).conjunction) && (showOps || !S(i).op) && (showMinor || !S(i).minor));
     $('#over-chips').innerHTML = FRAMES.map(([f, label, what]) => `<span class="chip ${c.over.has(f) ? 'on' : ''}" data-over="${f}"
       title="Statements studied with ${what} in at least one paper">${label} <span class="count">${overCounts.get(f) || 0}</span></span>`).join('');
     $('#over-chips').onclick = (e) => {
@@ -739,6 +743,7 @@ function viewStatement(id, params = new URLSearchParams()) {
 
     ${panel('overview')}
     ${s.formulationOf ? `<p>A formulation of ${sLink(mainI)} (the main formulation of this principle).</p>` : ''}
+    ${s.minor ? `<p class="small muted">A minor statement: studied in few papers or of secondary interest, it is hidden from the catalogue by default and listed on the pages of the statements equivalent to it.</p>` : ''}
     ${s.op ? `<p class="small">Weihrauch operation — ${{ jump: 'jump', par: 'parallelization', fin: 'finite parallelization', diamond: 'diamond (closure under compositional product)', product: 'product', compose: 'compositional product' }[s.op]} of
       ${(s.args || []).map((x) => (idx(x) !== undefined ? sLink(idx(x)) : esc(x))).join(' and ')}. Such statements are hidden in the catalogue unless "Weihrauch operations" is checked.</p>` : ''}
     ${s.todo ? `<p><span class="badge warn">definition to be checked</span> <span class="small muted">The precise statement should be checked against the source paper.</span></p>` : ''}
@@ -883,17 +888,19 @@ function glance(i, directResults) {
   }
   const counts = (r) => {
     let imp = 0, by = 0, open = 0;
-    const eq = [];
+    const eq = [], minorEq = [];
     for (let j = 0; j < Z.n; j++) {
       if (j === i || S(j).conjunction || !Z.inDomain(r, j)) continue;
       const ab = Z.status(r, i, j), ba = Z.status(r, j, i);
-      if (ab === 'implies' && ba === 'implies') { eq.push(j); continue; }
+      if (ab === 'implies' && ba === 'implies') { (S(j).minor ? minorEq : eq).push(j); continue; }
+      if (S(j).minor) continue; // minor statements are not counted
       if (ab === 'implies') imp++;
       if (ba === 'implies') by++;
       if (ab === 'open' || ba === 'open') open++;
     }
     const R = Z.R[r];
-    return `<b>Over ${esc(R.short)}:</b> ${eq.length ? `equivalent to ${listL(eq.slice(0, 6), r)}${eq.length > 6 ? ` and ${eq.length - 6} more` : ''}; ` : ''}implies ${imp} and is implied by ${by} of the zoo's statements; ${open} comparison${open === 1 ? '' : 's'} open.`;
+    return `<b>Over ${esc(R.short)}:</b> ${eq.length ? `equivalent to ${listL(eq.slice(0, 6), r)}${eq.length > 6 ? ` and ${eq.length - 6} more` : ''}; ` : ''}implies ${imp} and is implied by ${by} of the zoo's statements; ${open} comparison${open === 1 ? '' : 's'} open.`
+      + (minorEq.length ? `<div class="minor-eq"><b>Equivalent statements</b> (minor, not in the catalogue by default): ${minorEq.map((j) => sLink(j, r)).join(' · ')}</div>` : '');
   };
   for (const [rid, f] of [['rca0', 'rca0'], ['rca0star', 'rca0star'], ['w', 'weihrauch']]) {
     const r = Z.ridx.get(rid);

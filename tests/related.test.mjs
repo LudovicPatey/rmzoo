@@ -11,11 +11,11 @@ const zoo = buildZoo({
   properties: [], classes: [],
   statements: [
     st('rca0', { kind: 'sentence', base: ['rca0'] }), st('a', { tags: ['ramsey'] }), st('b'), st('c'), st('d'),
-    st('e', { tags: ['ramsey'] }), st('f', { tags: ['ramsey'] }), st('a2', { formulationOf: 'a' }),
+    st('e', { tags: ['ramsey'] }), st('f', { tags: ['ramsey'] }), st('a2', { formulationOf: 'a' }), st('m', { minor: true }),
   ],
   results: [
     imp('a', 'b', 'p1'), imp('b', 'a', 'p2'), imp('a', 'c', 'p2'),           // b: two papers with a, c: one
-    imp('a', 'rca0', 'p1'), imp('a2', 'a', 'p1'),                            // base system, formulation
+    imp('a', 'rca0', 'p1'), imp('a2', 'a', 'p1'), imp('a', 'm', 'p1'),       // base system, formulation, minor statement
     ...['b', 'c', 'd', 'e'].map((x) => imp('a', x, 'book')), imp('f', 'f', 'other'), // a monograph
   ],
 });
@@ -24,7 +24,7 @@ const ids = (s, o) => relatedStatements(zoo, zoo.sidx.get(s), o).map((x) => zoo.
 test('statements studied in the same papers come first, monographs count less', () => {
   const r = ids('a');
   assert.deepEqual(r.slice(0, 2), ['b', 'c']);
-  assert.ok(!r.includes('rca0') && !r.includes('a2') && !r.includes('a'), 'base systems, formulations and itself are left out');
+  assert.ok(!r.includes('rca0') && !r.includes('a2') && !r.includes('a') && !r.includes('m'), 'base systems, formulations, minor statements and itself are left out');
   assert.ok(r.indexOf('e') < r.indexOf('d'), 'same area breaks ties');
 });
 

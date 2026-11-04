@@ -282,6 +282,7 @@
   label: '\mathsf{MMLC}'
   name: Maximal max-less chain principle
   kind: sentence
+  minor: true
   tags: [ orders ]
   definition: >
     Every partial order has a max-less chain (a chain with no maximum element) which is
@@ -323,7 +324,7 @@
     - { ref: dzhafarovmummert2022, role: rm, loc: Theorem 10.6.14 }
 
 - id: padeg
-  label: '\mathsf{PA}_{\deg}'
+  label: '\textsf{PA degrees}'
   name: PA degrees (problem)
   kind: problem
   tags: [ computability, weihrauch ]
@@ -349,6 +350,7 @@
   label: '\mathsf{CAC}^{\mathrm{ord}}'
   name: Chain–antichain principle for ω-ordered partial orders
   kind: problem
+  minor: true
   tags: [ orders, ramsey ]
   definition: >
     Every infinite $\omega$-ordered partial order ($x \le_P y$ implies $x \le y$) has an infinite chain or antichain.
@@ -361,6 +363,7 @@
   label: '\mathsf{SCAC}^{\mathrm{ord}}'
   name: Stable chain–antichain principle for ω-ordered partial orders
   kind: problem
+  minor: true
   tags: [ orders, ramsey, stable ]
   definition: >
     Every infinite $\omega$-ordered stable partial order has an infinite $\omega$-ordered chain or antichain.

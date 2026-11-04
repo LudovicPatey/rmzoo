@@ -413,6 +413,8 @@ raw.results.forEach((res, i) => {
       byArxiv.set(r.arxiv, k);
     }
   }
+  // minor statements: a boolean, never a base system or a conjunction
+  for (const s of raw.statements) if (s.minor !== undefined && (s.minor !== true || s.conjunction || s.op)) errors.push(`Statement ${s.id}: minor must be true, on a plain statement`);
   // formulations point to a main formulation, never to another formulation
   const byId = new Map(raw.statements.map((s) => [s.id, s]));
   for (const s of raw.statements) {
