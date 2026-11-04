@@ -234,6 +234,9 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
       par: () => [`A sequence $(x_n)_n$ of instances of ${L(a[0])}.`, `A sequence $(y_n)_n$ with each $y_n$ a solution to $x_n$.`],
       fin: () => [`A finite sequence of instances of ${L(a[0])}.`, `A solution to each of them.`],
       product: () => [`A pair of an instance of ${L(a[0])} and an instance of ${L(a[1])}.`, `A solution to each of them.`],
+      // the representative (id × f) ∘ gᵗ of f ⋆ g (Brattka and Pauly, "On the algebraic structure of Weihrauch degrees", Section 3)
+      compose: () => [`An instance $x$ of ${L(a[1])} together with a (name of a) continuous multi-valued map $h$ sending every solution of $x$ to a pair $(p, u)$ with $u$ an instance of ${L(a[0])}.`,
+        `A pair $(p, v)$ such that $(p, u) \\in h(y)$ for some solution $y$ of $x$ and $v$ is a solution of ${L(a[0])} to $u$.`],
     }[s.op]?.();
     if (io) { s.instance ||= io[0]; s.solution ||= io[1]; }
   }
@@ -392,7 +395,8 @@ for (const s of raw.statements) {
   if (s.formulationOf && !sids.has(s.formulationOf)) errors.push(`${where}: unknown formulationOf ${s.formulationOf}`);
   for (const c of s.conjunction || []) if (!sids.has(c)) errors.push(`${where}: unknown conjunct ${c}`);
   if (s.conjunction && s.kind !== 'sentence') errors.push(`${where}: conjunctions must have kind sentence`);
-  if (s.kind === 'problem' && !s.conjunction && !s.base && (!s.instance || !s.solution))
+  // a diamond is defined as a closure (any finite number of adaptive uses): it has no direct reading
+  if (s.kind === 'problem' && !s.conjunction && !s.base && s.op !== 'diamond' && (!s.instance || !s.solution))
     warnings.push(`${where}: problem without instance/solution`);
   if (!s.conjunction && !s.definition) warnings.push(`${where}: missing definition`);
   checkRefs(s.refs, where);
@@ -524,8 +528,11 @@ raw.results.forEach((res, i) => {
   }
   const names = new Map();
   for (const s of raw.statements) if (s.name) { if (names.has(s.name)) warnings.push(`Statements ${names.get(s.name)} and ${s.id} have the same name`); names.set(s.name, s.id); }
-  // every statement takes part in at least one result
+  // every statement takes part in at least one result, as an argument of an operation
+  // statement that does, or in the formal part of a question
   const used = new Set(raw.results.flatMap((r) => [r.from, r.to, r.statement, r.base]));
+  for (const q of raw.questions || []) for (const f of q.formal || []) { used.add(f.from); used.add(f.to); }
+  for (const s of raw.statements) if (used.has(s.id)) for (const x of s.args || []) used.add(x);
   for (const s of raw.statements) if (!used.has(s.id) && !raw.statements.some((t) => (t.conjunction || []).includes(s.id)))
     warnings.push(`Statement ${s.id} appears in no result`);
 }

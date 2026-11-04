@@ -49,7 +49,7 @@
 
 - id: tree
   term: Tree and path
-  match: [ 'trees?', 'paths?', 'well-founded', 'ill-founded' ]
+  match: [ 'trees?', 'paths?', 'well-founded trees?', 'ill-founded trees?' ]
   definition: >
     A tree is a set $T \subseteq X^{<\omega}$ of finite sequences closed under initial segments. An (infinite) path
     through $T$ is a function $f : \omega \to X$ all of whose initial segments are in $T$; $[T]$ is the set of paths,
@@ -172,3 +172,60 @@
     ω-models of computability theory). As structures of second-order arithmetic, ω-models are those whose
     first-order part is the standard natural numbers and whose sets form a Turing ideal.
   refs: [ { ref: dzhafarovmummert2022, loc: "Definitions 4.6.1 and 5.1.6" } ]
+
+- id: well-ordering
+  term: Well ordering
+  match: [ 'well-orders?', 'well-orderings?', 'well orderings?', 'well-ordered', 'well ordered', 'well-founded (partial|linear) orders?', 'ill-founded (partial|linear) orders?' ]
+  definition: >
+    A partial order is well founded if it has no infinite descending sequence $x_0 >_P x_1 >_P \cdots$; a well
+    ordering is a well-founded linear order. In second-order arithmetic, a countable well ordering codes a
+    countable ordinal, its order type.
+  refs:
+    - { ref: dzhafarovmummert2022, loc: Example 3.1.4 }
+    - { ref: simpson2009, loc: Definition I.6.1 }
+
+- id: wqo
+  term: Well quasi-order
+  match: [ 'well-quasi-orders?', 'well quasi-?orders?', 'well quasiorder(ing|ed)s?', 'wqos?', 'well partial orders?' ]
+  definition: >
+    A quasi-order (reflexive and transitive relation) is a well quasi-order if it is well founded and has no
+    infinite antichain; equivalently, for every sequence $(a_n)_n$ there are $m < n$ with $a_m \leq a_n$.
+  refs: [ { ref: simpson2009, loc: "Definition X.3.17, Remark X.3.18" } ]
+
+- id: bad-sequence
+  term: Bad sequence
+  match: [ 'bad sequences?' ]
+  definition: >
+    A sequence $(x_i)_i$ in a quasi-order $P$ is bad if $x_i \not\leq_P x_j$ for all $i < j$; a quasi-order is a
+    well quasi-order exactly when it has no infinite bad sequence.
+  refs:
+    - { ref: gohpaulyvalenti2021, loc: Definition 4.4 }
+    - { ref: simpson2009, loc: "Remark X.3.18(2)" }
+
+- id: matching
+  term: Matching and vertex covering
+  match: [ 'matchings?', 'vertex cover(ing)?s?', 'König covers?', 'König coverings?' ]
+  definition: >
+    In a bipartite graph $G = (X, Y, E)$, a matching is a set of pairwise disjoint edges and a vertex covering is a set
+    of vertices meeting every edge. A König covering is a pair $(C, M)$ of a covering and a matching with $C$
+    consisting of exactly one vertex from each edge of $M$.
+  refs: [ { ref: simpson2009, loc: "Definitions X.3.8 and X.3.10" } ]
+
+- id: negative-information
+  term: Closed sets by negative information
+  match: [ 'negative information', 'closed sets?', 'closed subsets?' ]
+  skip: [ weak-star-closure ]
+  definition: >
+    A closed subset $A$ of a computable metric space $X$ is represented by negative information: a name of $A$ is a
+    list of basic open balls whose union is $X \setminus A$. For $X = \mathbb{N}^\mathbb{N}$ the computably named sets
+    are the $\Pi^0_1$ classes, and closed choice $\mathsf{C}_X$ takes its inputs in this form.
+  refs: [ { ref: brattkagherardipauly2021, loc: "Definition 2.8, Definition 7.1" } ]
+
+- id: jump-hierarchy
+  term: Jump hierarchy
+  match: [ 'jump hierarch(y|ies)', 'pseudohierarch(y|ies)' ]
+  definition: >
+    For a linear order $L$ with first element $0_L$ and a set $A$, a jump hierarchy on $L$ starting with $A$ is a
+    sequence $\langle X_a \rangle_{a \in L}$ with $X_{0_L} = A$ and $X_b = (\bigoplus_{a <_L b} X_a)'$ for $b >_L 0_L$.
+    Jump hierarchies on ill-founded orders were first studied by Harrison and are often called pseudohierarchies.
+  refs: [ { ref: goh2019b, loc: Definition 2.2 } ]
