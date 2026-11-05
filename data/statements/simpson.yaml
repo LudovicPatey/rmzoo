@@ -429,3 +429,70 @@
   tags: ["analysis"]
   definition: "For every separable Banach space $X$ and countable set $Y \\subseteq X^*$, there is a smallest weak-*-closed set in $X^*$ containing $Y$ (equivalently, a smallest weak-*-closed convex set, or linear subspace)."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem X.2.9" } ]
+
+# Classical theorems equivalent to a Big Five system (Simpson, Chapter I surveys).
+- id: lub
+  label: "\\textsf{Lub}"
+  name: "Least upper bound principle"
+  kind: sentence
+  minor: true
+  tags: ["analysis"]
+  definition: "Every bounded sequence of real numbers has a least upper bound."
+  refs: [ { ref: simpson2009, role: rm, loc: "Theorem III.2.2(4); Theorem I.9.3(1)" } ]
+
+- id: mct
+  label: "\\textsf{MCT}"
+  name: "Monotone convergence theorem"
+  kind: problem
+  minor: true
+  tags: ["analysis"]
+  aliases: [ monotone convergence theorem ]
+  definition: "Every bounded increasing sequence of real numbers is convergent."
+  instance: "A bounded increasing sequence $(x_n)$ of real numbers."
+  solution: "Its limit $\\sup_n x_n$."
+  refs: [ { ref: simpson2009, role: rm, loc: "Theorem III.2.2(5)" }, { ref: brattkagherardimarcone2012, role: rm, loc: "before Fact 11.26" } ]
+
+- id: max-principle
+  label: "\\textsf{Max}_{[0,1]}"
+  name: "Maximum principle"
+  kind: sentence
+  minor: true
+  tags: ["analysis"]
+  definition: "Every continuous real-valued function on $[0,1]$ has a supremum, and attains it."
+  refs: [ { ref: simpson2009, role: rm, loc: "Theorem I.10.3(6); Theorem IV.2.3(4, 5)" } ]
+
+- id: perfect-set
+  label: "\\textsf{Perfect set}"
+  name: "Perfect set theorem"
+  kind: sentence
+  minor: true
+  tags: ["analysis"]
+  definition: "Every uncountable analytic set (in particular every uncountable closed set) has a nonempty perfect subset."
+  refs: [ { ref: simpson2009, role: rm, loc: "Theorem I.11.5(3); Theorems V.4.3 and V.5.5" } ]
+
+- id: lusin
+  label: "\\textsf{Lusin}"
+  name: "Lusin's separation theorem"
+  kind: sentence
+  minor: true
+  tags: ["analysis"]
+  definition: "Any two disjoint analytic sets can be separated by a Borel set."
+  refs: [ { ref: simpson2009, role: rm, loc: "Theorem I.11.5(4); Sections V.3 and V.5" } ]
+
+- id: baire
+  label: "\\textsf{Baire}"
+  name: "Baire category theorem"
+  kind: sentence
+  minor: true
+  tags: ["analysis"]
+  definition: "In a complete separable metric space, the intersection of a sequence of dense open sets is dense."
+  refs: [ { ref: simpson2009, role: rm, loc: "Theorem II.5.8" } ]
+
+- id: ulm-iso
+  label: "\\textsf{Ulm}_{\\cong}"
+  name: "Ulm's theorem (isomorphism form)"
+  kind: sentence
+  minor: true
+  tags: ["algebra"]
+  definition: "Any two countable reduced Abelian $p$-groups which have the same Ulm invariants are isomorphic."
+  refs: [ { ref: simpson2009, role: rm, loc: "Theorem I.11.5(2); Section V.7" } ]

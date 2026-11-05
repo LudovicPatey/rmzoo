@@ -1,0 +1,3 @@
+# Results from [goh2019].
+
+[ { type: implication, from: kdt, to: atrw, over: w, refs: [ { ref: goh2019, loc: Theorem 9.19 } ] } ]

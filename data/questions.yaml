@@ -785,14 +785,15 @@
   question: Does $\mathsf{RRT}^2_2$ imply $\mathsf{TAC}$?
   asked:
     - {ref: dzhafarovmummert2022, loc: Question 11.6.12}
-  statements: [rrt22, tac]
+  statements: [rrt22, ctac]
   formal:
-    - {from: rrt22, to: tac, over: rca0}
+    - {from: rrt22, to: ctac, over: rca0}
   context: >-
-    TAC, the chain/antichain principle for trees (every infinite subtree of
-    ℕ^{<ℕ} has an infinite path or an infinite antichain)
-    [@cervellegaudelierpatey2022], and RRT²₂ are both principles strictly below
-    ACA₀ that do not follow from WKL₀.
+    TAC, Conidis's tree antichain theorem (every infinite completely branching c.e.
+    binary tree has an infinite antichain) [@dzhafarovmummert2022], follows from CAC
+    and from 2-RAN; RRT²₂ and TAC are both principles strictly below ACA₀ that do not
+    follow from WKL₀. Not to be confused with CAC for trees, which is TAC + BΣ⁰₂
+    [@cervellegaudelierpatey2022].
 
 - id: gen1-fip-w
   question: Is $\mathsf{1}\text{-}\mathsf{GEN}$ Weihrauch reducible to the finite intersection principle $\mathsf{FIP}$?

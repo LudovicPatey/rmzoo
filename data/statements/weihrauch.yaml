@@ -928,3 +928,21 @@
   instance: 'Closed classes $\emptyset \neq C \subseteq H \subseteq 2^\mathbb{N}$ and $d \geq \mathrm{VCdim}(C)$.'
   solution: 'A learner $A : S \to H$ and a sample complexity $m$ with which $A$ PAC learns $C$ relative to $H$.'
   refs: [ { ref: brattkachirache2026, role: origin, loc: "Definition 4(1)" } ]
+
+- id: atrw
+  label: '\mathsf{ATR}'
+  name: Arithmetical transfinite recursion (problem)
+  kind: problem
+  formulationOf: atr
+  tags: [weihrauch]
+  aliases: [ ATR problem ]
+  caution: 'The Weihrauch problem of Kihara, Marcone and Pauly [@kiharamarconepauly2020]; the sentence ATR₀ of reverse mathematics is [[atr]].'
+  definition: >
+    Given a set $Z$, a well-order $X$ and an arithmetical operator (an index of an arithmetical formula), return the
+    hierarchy obtained by iterating the operator along $X$ starting from $Z$. A single-valued problem, strongly Weihrauch
+    equivalent to $\mathsf{UC}_{\mathbb{N}^\mathbb{N}}$.
+  instance: A set $Z$, a well-order $X$ and an index of an arithmetical formula.
+  solution: The unique hierarchy along $X$ starting from $Z$.
+  refs:
+    - { ref: kiharamarconepauly2020, role: origin, loc: Definition 3.12 }
+    - { ref: goh2019b, role: rm, loc: Section 2 }

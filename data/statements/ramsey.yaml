@@ -382,3 +382,27 @@
   refs:
     - { ref: cholaketal2005, role: rm, loc: Statement 3.1 }
     - { ref: patey2016c, role: rm, loc: Definition 8.0.2 }
+
+- id: sher
+  label: '\mathsf{SHER}'
+  name: Ramsey's theorem for semi-hereditary colorings
+  kind: problem
+  tags: [ ramsey ]
+  definition: >
+    Every coloring $f : [\mathbb{N}]^2 \to 2$ which is semi-hereditary for some color $i$ (for all $x < y < z$,
+    $f(x, z) = f(y, z) = i$ implies $f(x, y) = i$) has an infinite homogeneous set. Equivalent to CAC for trees.
+  instance: 'A coloring $f : [\mathbb{N}]^2 \to 2$ semi-hereditary for some color.'
+  solution: An infinite $f$-homogeneous set.
+  refs: [ { ref: cervellegaudelierpatey2022, role: rm, loc: "Definitions 6.1 and 6.2 (introduced by Dorais et al.)" } ]
+
+- id: hem
+  label: '\mathsf{HEM}'
+  name: Half Erdős–Moser theorem
+  kind: problem
+  tags: [ ramsey ]
+  definition: >
+    For every coloring $f : [\mathbb{N}]^2 \to 2$ there is an infinite set which is transitive for at least one color.
+    RT²₂ is equivalent to HEM + CAC.
+  instance: 'A coloring $f : [\mathbb{N}]^2 \to 2$.'
+  solution: An infinite set transitive for one of the colors.
+  refs: [ { ref: mimounipatey2025, role: origin, loc: Definition 7.2 } ]

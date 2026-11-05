@@ -248,15 +248,30 @@
   solution: An infinite set $C$ with $C \subseteq^* R_i$ or $C \subseteq^* \overline{R_i}$ for each $i < n$.
 
 - id: tac
-  label: '\mathsf{TAC}'
+  label: '\mathsf{CAC}\text{ for trees}'
   name: CAC for trees
   kind: problem
   tags: [ orders, ramsey ]
-  aliases: [ tree antichain, TCAC, CAC for trees ]
+  aliases: [ TCAC, CAC for trees ]
+  caution: 'Not the tree antichain theorem TAC of Conidis ([[ctac]]), which only concerns completely branching c.e. binary trees and is strictly weaker: CAC for trees is equivalent to TAC + BΣ⁰₂ (Theorem 2.5 of [@cervellegaudelierpatey2022]).'
   definition: Every infinite subtree of $\mathbb{N}^{<\mathbb{N}}$ has an infinite path or an infinite antichain.
   instance: An infinite subtree $T$ of $\mathbb{N}^{<\mathbb{N}}$.
   solution: An infinite path of $T$ or an infinite antichain of $T$.
-  refs: [ { ref: cervellegaudelierpatey2022, role: rm } ]
+  refs: [ { ref: cervellegaudelierpatey2022, role: rm, loc: Definition 2.1 } ]
+
+- id: ctac
+  label: '\mathsf{TAC}'
+  name: Tree antichain theorem (Conidis)
+  kind: problem
+  tags: [ orders ]
+  aliases: [ tree antichain theorem ]
+  caution: 'Not CAC for trees ([[tac]]), which is equivalent to TAC + BΣ⁰₂ (Theorem 2.5 of [@cervellegaudelierpatey2022]); TAC does not imply BΣ⁰₂.'
+  definition: >
+    Every infinite completely branching $\Sigma^0_1$-definable (c.e.) tree $T \subseteq 2^{<\mathbb{N}}$ has an infinite
+    antichain; completely branching: if $\sigma i \in T$ then $\sigma(1-i) \in T$.
+  instance: An infinite completely branching c.e. tree $T \subseteq 2^{<\mathbb{N}}$.
+  solution: An infinite antichain of $T$.
+  refs: [ { ref: dzhafarovmummert2022, role: rm, loc: Definition 11.6.7 (Conidis) }, { ref: cervellegaudelierpatey2022, role: rm, loc: Definition 2.4 } ]
 
 - id: henson-indiv
   label: '\mathsf{IND}_{\mathcal{H}_3}'
@@ -544,3 +559,43 @@
     If $G$ is a graph and $(X_k)_k$ is a sequence such that each $X_k$ is a set of $k$ disjoint rays of $G$, then $G$ has an
     infinite set of disjoint rays.
   refs: [ { ref: goh2019b, role: origin, loc: Definition 7.2 } ]
+
+# Principles inspired by cardinal invariants (Belanger, Chong, Hölzl and Stephan 2024),
+# stated for weakly represented families (Definition 1): by Lemma 2 every such family is
+# contained in the total functions computable from some set. HI is hyp.
+- id: dom
+  label: '\mathsf{DOM}'
+  name: Domination principle
+  kind: problem
+  tags: [ computability ]
+  definition: >
+    Every weakly represented family of functions has a function dominating it, i.e. eventually greater than each
+    member; equivalently, for every set $C$ there is a function dominating every $C$-computable function. In
+    ω-models, this is the existence of sets of high degree relative to any set (Martin).
+  instance: A set $C$.
+  solution: A function $g$ dominating every $C$-computable function.
+  refs: [ { ref: belangeretal2024, role: rm, loc: "Statement 4, Definition 1, Lemma 2" } ]
+
+- id: avoid
+  label: '\mathsf{AVOID}'
+  name: Avoidance principle
+  kind: problem
+  tags: [ computability ]
+  definition: >
+    Every weakly represented family of functions has a function eventually different from each member; equivalently,
+    for every set $C$ there is a function eventually different from every $C$-computable function.
+  instance: A set $C$.
+  solution: A function $g$ eventually different from every $C$-computable function.
+  refs: [ { ref: belangeretal2024, role: rm, loc: "Statement 17" } ]
+
+- id: bi
+  label: '\mathsf{BI}'
+  name: Bi-immunity principle
+  kind: problem
+  tags: [ computability ]
+  definition: >
+    For every weakly represented family of infinite sets there is a set $B$ such that no member is contained in $B$
+    or in its complement; equivalently, for every set $C$ there is a set which is bi-immune relative to $C$.
+  instance: A set $C$.
+  solution: A set $B$ such that neither $B$ nor its complement contains an infinite $C$-computable set.
+  refs: [ { ref: belangeretal2024, role: rm, loc: "Statement 27" } ]
