@@ -1611,7 +1611,12 @@ function viewAbout(params) {
   const needs = Z.raw.results.filter((r) => r.status === 'needs-check').length;
   const nAi = Z.raw.results.filter((r) => r.provenance === 'ai').length;
   const nFolk = Z.raw.results.filter((r) => r.folklore).length;
+  const TABS = [['overview', 'Overview'], ['reductions', 'Reductions'], ['properties', 'Properties'], ['rules', 'Inference rules'], ['community', 'Community']];
+  const tab = params.get('class') ? 'reductions' : TABS.some(([t]) => t === params.get('tab')) ? params.get('tab') : 'overview';
+  const panel = (t) => `<section class="tab-panel" data-panel="${t}"${t === tab ? '' : ' hidden'}>`;
   m.innerHTML = `<h1>About the zoo</h1>
+    <nav class="tabs" role="tablist">${TABS.map(([t, label]) => `<button role="tab" data-tab="${t}" aria-selected="${t === tab}">${label}</button>`).join('')}</nav>
+    ${panel('overview')}
     <div class="stats">
       <div class="card"><div class="num">${Z.S.length}</div><div class="small muted">statements</div></div>
       <div class="card"><div class="num">${Z.raw.results.length}</div><div class="small muted">published results</div></div>
@@ -1626,27 +1631,44 @@ function viewAbout(params) {
     <h2>How it works</h2>
     <p>The database only stores <b>atomic, cited facts</b>: implications, separations, and properties of statements, each over a notion of reduction.
        Everything else — equivalences, diagrams, separations obtained by preservation of properties — is derived, and every derived fact comes with a proof tree ending in citations.</p>
+    ${frameworksHtml()}
+    <h2>Credits</h2>
+    <p>The zoo continues the <a href="https://www.rmzoo.math.uconn.edu/" target="_blank" rel="noopener">Reverse Mathematics Zoo</a>, created by
+      Damir Dzhafarov (inspired by Joe Miller's Computability Menagerie) and largely rewritten by Eric Astor
+      (<a href="https://github.com/ericastor/rmzoo" target="_blank" rel="noopener">github.com/ericastor/rmzoo</a>), whose results file seeded this
+      database. The references on Weihrauch complexity were seeded from Vasco Brattka's
+      <a href="https://cca-net.de/publications/weibib.php" target="_blank" rel="noopener">Bibliography on Weihrauch Complexity</a>.
+      Every result is credited to the papers that prove it.</p>
+    <h2>How this site was made</h2>
+    <p>The viewer, the inference engine and the tools that maintain the database were written entirely with
+      <b>Claude Opus 5.5</b>, an AI model by Anthropic, under the direction of the maintainer; the full texts of the papers were
+      also read by Claude models to propose results. Every fact cites the paper and the theorem it comes from, results derived
+      by the AI are marked as such, and proposals that fail the automatic checks go to the <a href="#/review">review page</a>
+      instead of the database. Mistakes remain possible: please report them.</p>
+    <h2>Contact</h2>
+    <p>For any remark or suggestion of improvement, write to Ludovic Patey:
+      <button class="btn small" id="show-mail">Show the address</button> <span id="mail"></span></p>
+    </section>
+    ${panel('reductions')}
     <h2>Notions of reduction</h2>
     <div class="row" style="align-items:flex-start;gap:30px">${latticeSvg({})}
       <div class="grow"><p class="small muted">An implication at a reduction holds at every reduction below it; a separation at a reduction holds at every reduction above it.</p>
       <table class="grid">${Z.R.map((R) => `<tr><td><b>${esc(R.short)}</b></td><td>${esc(R.name)}<div class="small muted">${esc(R.description || '')}${R.refs ? ` (${R.refs.map(refLink).join('; ')})` : ''}</div></td></tr>`).join('')}</table></div></div>
+    ${classesHtml()}
+    </section>
+    ${panel('properties')}
     <h2>Properties</h2>
     <p class="small muted">Computability-theoretic and proof-theoretic properties are preserved downwards along a reduction, so a statement
       having one and a statement failing it are separated. Weihrauch properties (cylinders, idempotency, parallelizability…) are
       properties of Weihrauch degrees: shared by equivalent problems, they separate nothing by themselves, but the engine reads several of
       them from the operations of the Weihrauch lattice (a problem is idempotent when P × P ≤W P), and a cylinder's Weihrauch reductions are strong.</p>
     ${PGROUPS.map(([g, title]) => `<h3>${title}</h3><table class="grid">${Z.raw.properties.filter((p) => p.group === g).map((p) => `<tr><td><b>${esc(p.name)}</b></td><td>${rich(p.description)}<div class="small muted">${p.direction === 'equiv' ? `Invariant under equivalence for ${esc(Z.R[Z.ridx.get(p.closedUnder)].name)}` : p.closedUnder ? `Preserved under ${esc(Z.R[Z.ridx.get(p.closedUnder)].name)}` : 'Preserved by no reduction'}${p.domain === 'problems' ? '; applies to statements formulated as problems' : ''}.</div></td></tr>`).join('')}</table>`).join('')}
-    <h2 id="classes">Formula classes</h2>
-    <p class="small muted">Used by conservation results: <i>T</i> is Γ-conservative over <i>S</i> when every Γ sentence provable in <i>T</i> is provable in <i>S</i>.
-      A conservation result for a class also applies to the classes it contains.</p>
-    <table class="grid">${(Z.raw.classes || []).map((c) => {
-      const members = (Z.classMembers?.[c.id] || []).filter((d) => d !== c.id);
-      return `<tr id="class-${c.id}"><td style="white-space:nowrap"><b>${tex(c.notation)}</b>${c.aliases ? `<div class="small muted">formerly ${c.aliases.map(tex).join(', ')}</div>` : ''}</td>
-        <td>${c.name ? `<b>${esc(c.name)}.</b> ` : ''}${rich(c.definition)}
-        ${members.length ? `<div class="small muted">Contains: ${members.map((d) => tex(classOf(d)?.notation || d)).join(', ')}</div>` : ''}</td></tr>`;
-    }).join('')}</table>
+    </section>
+    ${panel('rules')}
     <h2>Inference rules</h2>
     <table class="grid">${Object.entries(RULES).map(([k, v]) => `<tr><td><code>${k}</code></td><td>${esc(v)}</td></tr>`).join('')}</table>
+    </section>
+    ${panel('community')}
     <h2 id="endorsements">Endorsements</h2>
     <p>Researchers signed in with <a href="https://orcid.org" target="_blank" rel="noopener">ORCID</a> on the live instance can
       <b>endorse</b> a result, stating: “${ENDORSE_TEXT}” A result endorsed by one person carries a
@@ -1656,15 +1678,6 @@ function viewAbout(params) {
       maintainer and are not published. Endorsements are periodically committed to the database
       (<code>data/endorsements.yaml</code>) with the rest of the data.</p>
     ${C.live ? '' : liveNote()}
-    <h2>Frameworks</h2>
-    <p>The zoo gathers several frameworks. The switch in the header (or the chips on the front page) restricts the viewer to one of them:
-      the catalogue, the diagrams, the results, the literature and the questions then show only the statements studied there, the reductions
-      of the framework and the results stated with them. The inference itself always uses every result. A link with <code>?mode=…</code>
-      opens the viewer in a framework.</p>
-    <table class="grid"><tr><th>Framework</th><th>Reductions</th><th>Also shown</th></tr>${(Z.raw.modes || []).map((x) => `<tr><td><a href="#/?mode=${x.id}">${esc(x.name)}</a><div class="small muted">${esc(x.description || '')}</div></td>
-      <td>${x.reductions.map((r) => esc(Z.R[Z.ridx.get(r)].name)).join(', ')}</td>
-      <td class="small">${[...PGROUPS.filter(([g]) => x.properties === true || (x.properties || []).includes(g)).map(([, t]) => t.toLowerCase()), x.conservation && 'conservation results'].filter(Boolean).join(', ') || '—'}</td></tr>`).join('')}</table>
-    <p class="small muted">A statement belongs to a framework when a cited result about it is stated there, or when it is the base system of one of its reductions.</p>
     <h2>Review</h2>
     <p>The <a href="#/review">review page</a> lists proposals that are not part of the database: results and missing statements found
       by an AI reader of the full texts that did not pass its automatic checks, and candidates of the regular consolidation (theorems
@@ -1674,8 +1687,48 @@ function viewAbout(params) {
       it; disputes and the other kinds are settled by the maintainer.</p>
     <h2>Contributing</h2>
     <p>Data lives in <code>data/*.yaml</code> (statements, results, references, properties, reductions, tags). Run <code>npm run check</code> to validate and detect contradictions, and <code>npm run build</code> to regenerate the viewer data. See <code>docs/DESIGN.md</code>.</p>
-    <p class="small muted">Built ${esc(Z.raw.builtAt || '')}.</p>`;
+    <p class="small muted">Built ${esc(Z.raw.builtAt || '')}.</p>
+    </section>`;
+  m.onclick = (e) => {
+    const tb = e.target.closest('[data-tab]');
+    if (tb) { // switch tab without re-rendering; the URL keeps it for links and reloads
+      const t = tb.dataset.tab;
+      m.querySelectorAll('[data-tab]').forEach((x) => x.setAttribute('aria-selected', x === tb));
+      m.querySelectorAll('[data-panel]').forEach((x) => { x.hidden = x.dataset.panel !== t; });
+      history.replaceState(null, '', `#/about${t === 'overview' ? '' : `?tab=${t}`}`);
+      return;
+    }
+    if (e.target.id === 'show-mail') showMail();
+  };
 }
+// The contact address is not in the page: it is assembled when a reader asks for it,
+// so that robots reading the HTML (or the script without running it) do not find it.
+function showMail() {
+  const r = (s) => s.split('').reverse().join('');
+  const a = [r('yetap.civodul'), r('rf.ytilibatupmoc')].join(String.fromCharCode(64));
+  const el = $('#mail');
+  if (el) el.innerHTML = `<a href="mailto:${a}">${esc(a)}</a>`;
+  $('#show-mail')?.remove();
+}
+// sections of the About page, also used by its tabs
+const classesHtml = () => `<h2 id="classes">Formula classes</h2>
+    <p class="small muted">Used by conservation results: <i>T</i> is Γ-conservative over <i>S</i> when every Γ sentence provable in <i>T</i> is provable in <i>S</i>.
+      A conservation result for a class also applies to the classes it contains.</p>
+    <table class="grid">${(Z.raw.classes || []).map((c) => {
+      const members = (Z.classMembers?.[c.id] || []).filter((d) => d !== c.id);
+      return `<tr id="class-${c.id}"><td style="white-space:nowrap"><b>${tex(c.notation)}</b>${c.aliases ? `<div class="small muted">formerly ${c.aliases.map(tex).join(', ')}</div>` : ''}</td>
+        <td>${c.name ? `<b>${esc(c.name)}.</b> ` : ''}${rich(c.definition)}
+        ${members.length ? `<div class="small muted">Contains: ${members.map((d) => tex(classOf(d)?.notation || d)).join(', ')}</div>` : ''}</td></tr>`;
+    }).join('')}</table>`;
+const frameworksHtml = () => `<h2>Frameworks</h2>
+    <p>The zoo gathers several frameworks. The switch in the header (or the chips on the front page) restricts the viewer to one of them:
+      the catalogue, the diagrams, the results, the literature and the questions then show only the statements studied there, the reductions
+      of the framework and the results stated with them. The inference itself always uses every result. A link with <code>?mode=…</code>
+      opens the viewer in a framework.</p>
+    <table class="grid"><tr><th>Framework</th><th>Reductions</th><th>Also shown</th></tr>${(Z.raw.modes || []).map((x) => `<tr><td><a href="#/?mode=${x.id}">${esc(x.name)}</a><div class="small muted">${esc(x.description || '')}</div></td>
+      <td>${x.reductions.map((r) => esc(Z.R[Z.ridx.get(r)].name)).join(', ')}</td>
+      <td class="small">${[...PGROUPS.filter(([g]) => x.properties === true || (x.properties || []).includes(g)).map(([, t]) => t.toLowerCase()), x.conservation && 'conservation results'].filter(Boolean).join(', ') || '—'}</td></tr>`).join('')}</table>
+    <p class="small muted">A statement belongs to a framework when a cited result about it is stated there, or when it is the base system of one of its reductions.</p>`;
 
 
 // ============================================================================
