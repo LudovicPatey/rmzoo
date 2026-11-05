@@ -84,3 +84,35 @@
   definition: >
     Every well partial order $P$ has a chain $C$ such that every chain of $P$ embeds into $C$ (Wolk's theorem).
   refs: [ { ref: marconeshore2010, role: rm, loc: Definition 2.12 } ]
+
+# Termination of programs (Steila and Yokoyama 2015).
+- id: wrt
+  label: '\mathsf{WRT}^2'
+  name: Weak Ramsey theorem for pairs
+  kind: sentence
+  minor: true
+  tags: [ ramsey, orders ]
+  definition: >
+    For every $k$ and every $P : [\mathbb{N}]^2 \to k$ there are a color $c$ and an infinite set $\{x_0 < x_1 < \dots\}$
+    with $P(x_i, x_{i+1}) = c$ for all $i$. With two colors it is psRT²₂, equivalent to ADS.
+  refs: [ { ref: steilayokoyama2015, role: rm, loc: Definition 2.2 } ]
+
+- id: prtt
+  label: '\textsf{Termination Theorem}'
+  name: Podelski–Rybalchenko termination theorem
+  kind: sentence
+  minor: true
+  tags: [ orders ]
+  definition: >
+    A binary relation $R$ is well-founded if there are $k$ well-founded relations whose union contains the transitive
+    closure of $R$ (a disjunctively well-founded transition invariant).
+  refs: [ { ref: steilayokoyama2015, role: rm, loc: "Theorem 3.1, Theorem 4.4(1)" } ]
+
+- id: hct
+  label: '\textsf{H-closure Theorem}'
+  name: H-closure theorem
+  kind: sentence
+  minor: true
+  tags: [ orders ]
+  definition: The union of finitely many H-well-founded relations is H-well-founded.
+  refs: [ { ref: steilayokoyama2015, role: rm, loc: "Definition 3.2, Theorem 4.2" } ]

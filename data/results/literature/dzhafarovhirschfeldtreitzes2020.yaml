@@ -1,3 +1,3 @@
 # Results from [dzhafarovhirschfeldtreitzes2020].
 
-[ { type: separation, from: cn, to: rt12, over: gw, refs: [ { ref: dzhafarovhirschfeldtreitzes2020, loc: Proposition 7.1 } ] } ]
+[ { type: separation, from: cn, to: rt12, over: gw, refs: [ { ref: dzhafarovhirschfeldtreitzes2020, loc: Proposition 7.1 } ] }, { type: equivalence, from: lh, to: bsig2, over: rca0, refs: [ { ref: dzhafarovhirschfeldtreitzes2020, loc: Proposition 6.2 } ] }, { type: property, statement: lh, property: computably-true, value: true, refs: [ { ref: dzhafarovhirschfeldtreitzes2020, loc: "Section 6, after Proposition 6.2 (uniformly computably true)" } ] } ]

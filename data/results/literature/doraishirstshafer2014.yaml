@@ -1,0 +1,3 @@
+# Results from [doraishirstshafer2014].
+
+[ { type: implication, from: dnrb-isig2, to: wkl, over: rca0, refs: [ { ref: doraishirstshafer2014, loc: "Theorem 2.7 (∀f DNR(2, f) is equivalent to WKL₀, Jockusch–Soare)" } ] }, { type: separation, from: bsig2-udnrb, to: wkl, over: rca0, refs: [ { ref: doraishirstshafer2014, loc: Theorem 4.9 } ] }, { type: separation, from: bsig2-dnrb, to: udnrb, over: rca0, refs: [ { ref: doraishirstshafer2014, loc: Theorem 4.10 } ] } ]

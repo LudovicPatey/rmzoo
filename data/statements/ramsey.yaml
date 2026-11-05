@@ -406,3 +406,76 @@
   instance: 'A coloring $f : [\mathbb{N}]^2 \to 2$.'
   solution: An infinite set transitive for one of the colors.
   refs: [ { ref: mimounipatey2025, role: origin, loc: Definition 7.2 } ]
+
+# Erdős–Moser and Ramsey-type principles for finitely many colors (Towsner and
+# Yokoyama 2018, Definitions 1.1 to 1.3 and 5.3). A coloring is transitive if
+# c(x, y) = c(y, z) implies c(x, z) = c(x, y), fallow if c(x, z) ∈ {c(x, y), c(y, z)}
+# (x < y < z).
+- id: emfin
+  label: '\mathsf{EM}_{<\infty}'
+  name: Erdős–Moser theorem for finitely many colors
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  definition: Every coloring $c$ of pairs with finitely many colors has an infinite set on which it is transitive.
+  instance: 'A coloring $c : [\mathbb{N}]^2 \to k$ for some $k$.'
+  solution: An infinite set on which $c$ is transitive.
+  refs: [ { ref: towsneryokoyama2018, role: origin, loc: Definition 1.1 } ]
+
+- id: femfin
+  label: '\mathsf{fEM}_{<\infty}'
+  name: Fallow Erdős–Moser theorem for finitely many colors
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  definition: Every coloring $c$ of pairs with finitely many colors has an infinite set on which it is fallow. Equivalent to solving finitely many instances of EM at once.
+  instance: 'A coloring $c : [\mathbb{N}]^2 \to k$ for some $k$.'
+  solution: An infinite set on which $c$ is fallow.
+  refs: [ { ref: towsneryokoyama2018, role: origin, loc: "Definition 1.2, Lemma 1.4" } ]
+
+- id: frtfin
+  label: '\mathsf{fRT}_{<\infty}'
+  name: Ramsey's theorem for fallow colorings
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  definition: Every fallow coloring of pairs with finitely many colors has an infinite homogeneous set.
+  instance: 'A fallow coloring $c : [\mathbb{N}]^2 \to k$ for some $k$.'
+  solution: An infinite $c$-homogeneous set.
+  refs: [ { ref: towsneryokoyama2018, role: origin, loc: Definition 1.2 } ]
+
+- id: trrtfin
+  label: '\mathsf{trRT}_{<\infty}'
+  name: Ramsey's theorem for transitive colorings, finitely many colors
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  definition: Every transitive coloring of pairs with finitely many colors has an infinite homogeneous set. With two colors it is TRT²₂, equivalent to ADS.
+  instance: 'A transitive coloring $c : [\mathbb{N}]^2 \to k$ for some $k$.'
+  solution: An infinite $c$-homogeneous set.
+  refs: [ { ref: towsneryokoyama2018, role: origin, loc: Definition 1.1 } ]
+
+- id: eminf
+  label: '\mathsf{EM}_{\infty}'
+  name: Erdős–Moser theorem for infinitely many colors
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  definition: Every coloring $c$ of pairs with infinitely many colors has an infinite set on which it is transitive.
+  instance: 'A coloring $c : [\mathbb{N}]^2 \to \mathbb{N}$.'
+  solution: An infinite set on which $c$ is transitive.
+  refs: [ { ref: towsneryokoyama2018, role: origin, loc: Definition 5.3 } ]
+
+- id: lh
+  label: '\mathsf{LH}'
+  name: Homogeneous subsets of limit-homogeneous sets
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  definition: >
+    Every coloring $c : [\mathbb{N}]^2 \to 2$ with $\lim_y c(x, y) = 1$ for all $x$ has an infinite homogeneous set; that is,
+    every infinite limit-homogeneous set has an infinite homogeneous subset. Uniformly computably true, yet equivalent to
+    BΣ⁰₂ over RCA₀.
+  instance: 'A coloring $c : [\mathbb{N}]^2 \to 2$ with $\lim_y c(x, y) = 1$ for every $x$.'
+  solution: An infinite $c$-homogeneous set.
+  refs: [ { ref: dzhafarovhirschfeldtreitzes2020, role: origin, loc: Definition 6.1 } ]

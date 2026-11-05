@@ -632,3 +632,22 @@
     Every countable graph has an independent matching whose support is not properly contained in the support of another
     independent matching.
   refs: [ { ref: floodetal2022, role: rm, loc: "Definition 4.1, Statement 2.1(3)" } ]
+
+# Bounded diagonally non-recursive functions (Dorais, Hirst and Shafer 2014, Definition 2.6).
+- id: udnrb
+  label: '\exists k \forall f\, \mathsf{DNR}(k, f)'
+  name: Uniformly bounded DNR
+  kind: sentence
+  minor: true
+  tags: [ computability ]
+  definition: There is a $k$ such that for every $f$ there is a $k$-bounded function which is diagonally non-recursive relative to $f$.
+  refs: [ { ref: doraishirstshafer2014, role: origin, loc: Definition 2.6 } ]
+
+- id: dnrb
+  label: '\forall f \exists k\, \mathsf{DNR}(k, f)'
+  name: Non-uniformly bounded DNR
+  kind: sentence
+  minor: true
+  tags: [ computability ]
+  definition: For every $f$ there are a $k$ and a $k$-bounded function which is diagonally non-recursive relative to $f$.
+  refs: [ { ref: doraishirstshafer2014, role: origin, loc: Definition 2.6 } ]

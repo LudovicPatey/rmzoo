@@ -18081,7 +18081,7 @@
 - id: soldavalenti2022-b2f0c925
   ref: soldavalenti2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -18092,10 +18092,14 @@
     facts: Σ^0_{n+1}-Bound ≡_W Σ^0_n-Bound' and hence ≡_W Σ^0_1-Bound^(n).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: Σ⁰ₙ₊₁-Bound ≡W the n-th jump of Σ⁰₁-Bound (Lemma 7.18), and Σ⁰₁-Bound ≡W C_ℕ."
 - id: soldavalenti2022-9c59e9af
   ref: soldavalenti2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -18106,6 +18110,10 @@
     facts: isInfinite and isFinite are ≡_W LPO'. isFinite ≤_W LPO ∗ isFiniteS and isInfinite ≤_W LPO ∗ isInfiniteS. isFiniteS ≤_W Sort and isInfiniteS ≤_W TC_N.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: isFinite and isInfinite are ≡W LPO′ (Section 7.1)."
 - id: soldavalenti2022-38bd284c
   ref: soldavalenti2022
   date: 2026-11-05
@@ -22236,7 +22244,7 @@
 - id: towsneryokoyama2018-56ce414e
   ref: towsneryokoyama2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22247,10 +22255,14 @@
     facts: fRT<∞ + RCA0 implies BΣ^0_3 (Theorem 1.5), already for the stable version fSRT<∞ (Theorem 2.3). trRT<∞ implies fRT<∞. ADS implies fRT^n for all finite n.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as frtfin, with Theorem 1.5.
 - id: towsneryokoyama2018-cd9574c1
   ref: towsneryokoyama2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22261,10 +22273,14 @@
     facts: Equivalent to EM× (Lemma 1.4). fEM<∞ + IΣ^0_2 is Π^1_1-conservative over IΣ^0_2 (Theorem 1.6, via Theorem 3.21 for the stable version fSEM<∞). WKL0 + fEM<∞ is Π̃^0_3-conservative over RCA0 (Theorems 1.7 and 4.6), hence does not imply IΣ^0_2 (Corollary 4.7). fEM<∞ implies EM<∞.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as femfin, with Theorems 1.6 and 1.7.
 - id: towsneryokoyama2018-f06f6e20
   ref: towsneryokoyama2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22275,6 +22291,10 @@
     facts: EM<∞ + IΣ^0_2 is Π^1_1-conservative over IΣ^0_2. It may be strictly weaker than fEM<∞, and it is not clear that it solves finitely many simultaneous EM instances.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as emfin.
 - id: towsneryokoyama2018-52bfc4d7
   ref: towsneryokoyama2018
   date: 2026-11-05
@@ -22296,7 +22316,7 @@
 - id: towsneryokoyama2018-1768aa19
   ref: towsneryokoyama2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22307,10 +22327,14 @@
     facts: Equivalent to fEM<∞ (Lemma 1.4).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: equivalent to fEM_{<∞} (Lemma 1.4)."
 - id: towsneryokoyama2018-a52314a0
   ref: towsneryokoyama2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22321,10 +22345,14 @@
     facts: ACA0 implies EM∞ (Lemma 5.4). It is open whether EM∞ implies ACA0 (Question 5.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as eminf, with Lemma 5.4; Question 5.5 recorded (eminf-aca).
 - id: towsneryokoyama2018-2ff6a515
   ref: towsneryokoyama2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22335,6 +22363,10 @@
     facts: fSRT<∞ + RCA0 implies BΣ^0_3 (Theorem 2.3). fSEM<∞ is Π^1_1-conservative over RCA0 + IΣ^0_2 (Theorem 3.21).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: stable versions studied in this paper only."
 - id: bazhenovetal2024-a3d59e87
   ref: bazhenovetal2024
   date: 2026-11-05
@@ -23750,7 +23782,7 @@
 - id: doraishirstshafer2014-f48de651
   ref: doraishirstshafer2014
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -23761,10 +23793,14 @@
     facts: "Equivalent to WKL over RCA0 for every fixed standard k ≥ 2: for k=2 by Jockusch–Soare, and for larger k by unwinding Jockusch's Theorem 5. Proposition 6.4 shows that over RCA0, for any k, it is equivalent to every ornamented complete k-partite graph being k-colorable."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: for each fixed k ≥ 2, ∀f DNR(k, f) is equivalent to WKL₀ (remark after Definition 2.6)."
 - id: doraishirstshafer2014-b2702c2a
   ref: doraishirstshafer2014
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -23775,10 +23811,14 @@
     facts: "Over RCA0+IΣ02 it is equivalent to WKL, and Theorem 2.7 gives ∀f DNR(2,f) from it. Theorem 4.9: ∃k∀f DNR(k,f)+BΣ02 does not prove WKL. It is strictly weaker than WKL0 and strictly stronger than ∀f∃k DNR(k,f) over RCA0+BΣ02 (by Theorem 4.10). Question 4.11 asks whether it implies WWKL."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as udnrb, with Theorem 4.9; Question 4.11 recorded (bounded-dnr-wwkl).
 - id: doraishirstshafer2014-561a5d74
   ref: doraishirstshafer2014
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -23789,6 +23829,10 @@
     facts: "Over RCA0+IΣ02 it is equivalent to WKL (Theorem 2.7). Theorem 4.10: ∀f∃k DNR(k,f)+BΣ02 does not prove ∃k∀f DNR(k,f). Question 4.11 asks whether it implies WWKL."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as dnrb, with Theorems 2.7 and 4.10.
 - id: doraishirstshafer2014-16fe2467
   ref: doraishirstshafer2014
   date: 2026-11-05
@@ -25803,7 +25847,7 @@
 - id: steilayokoyama2015-91cd6228
   ref: steilayokoyama2015
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25814,10 +25858,14 @@
     facts: Equivalent over RCA0 to RT^2_k for each k (Theorem 4.2), and to the same statement with classical H-well-foundedness. Hence it is strictly stronger than the Termination Theorem for k relations.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as hct (for every k), equivalent to RT² (Theorem 4.2).
 - id: steilayokoyama2015-2778c50e
   ref: steilayokoyama2015
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25828,6 +25876,10 @@
     facts: Equivalent over RCA0 to WRT^2_k and to the Weak H-closure Theorem for k relations. Strictly weaker than RT^2_k over RCA0, via CAC. The full version (for all k) is equivalent to the full Weak Ramsey theorem.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as prtt (for every k), equivalent to WRT² (Theorem 4.4).
 - id: steilayokoyama2015-4a5e20e0
   ref: steilayokoyama2015
   date: 2026-11-05
@@ -25885,7 +25937,7 @@
 - id: steilayokoyama2015-c1214c8e
   ref: steilayokoyama2015
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25896,6 +25948,10 @@
     facts: Equivalent to WRT^2_k and to the k-relation Termination Theorem over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: equivalent to the termination theorem (Theorem 4.4)."
 - id: steilayokoyama2015-7fe79c54
   ref: steilayokoyama2015
   date: 2026-11-05
@@ -26349,7 +26405,7 @@
 - id: dzhafarovhirschfeldtreitzes2020-ad1b3e0e
   ref: dzhafarovhirschfeldtreitzes2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -26360,10 +26416,14 @@
     facts: Equivalent to BΣ^0_2 over RCA0 (Proposition 6.2). It is uniformly computably true, so LH ≤_W 1, and also over RCA0+BΣ^0_2. LH is not generalized Weihrauch reducible over RCA0 to Bound* (Proposition 6.6) or to stRT^1_{<∞} (Proposition 6.8). LH is not Weihrauch reducible over RCA0 to RT^1_{<∞} (Corollary 7.5). Whether LH ≤_gW^RCA0 D^2_2 is open (Question 6.7).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as lh, with Proposition 6.2.
 - id: dzhafarovhirschfeldtreitzes2020-1ae67c95
   ref: dzhafarovhirschfeldtreitzes2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -26374,10 +26434,14 @@
     facts: Bound ≡_W C_N (Pauly, Fouché, Davie). Bound is equivalent to C_N over RCA0 and strictly below Bound* under ≤_W and ≤_gW over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: Bound ≡W C_ℕ (Pauly, Fouché and Davie)."
 - id: dzhafarovhirschfeldtreitzes2020-33cb8984
   ref: dzhafarovhirschfeldtreitzes2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -26388,10 +26452,14 @@
     facts: Bound* ≡_W Bound but not provably over RCA0. As a statement it is BΠ^0_1, equivalent to BΣ^0_2 over RCA0, so RCA0 ⊬ Bound → Bound*. Bound* ≡ C_N^* over RCA0. stBound* ≤_gW^{RCA0,2} Bound* but stBound* ≰_W^RCA0 Bound* (Proposition 7.3). Bound* ≤_W^RCA0 Bound ⋆ RT^1_{<∞}. LH ≰_gW^RCA0 Bound*.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: Bound* is C*_ℕ, and as a sentence BΠ⁰₁ (≡ BΣ⁰₂)."
 - id: dzhafarovhirschfeldtreitzes2020-609a509c
   ref: dzhafarovhirschfeldtreitzes2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -26402,6 +26470,10 @@
     facts: stBound* ≡_W Bound but not over RCA0. stBound* ≤_gW^{RCA0,2} Bound* and ≤_gW^{RCA0,2} stRT^1_{<∞} (Propositions 7.3 and 7.6), with no single-step Weihrauch reduction over RCA0. stBound* ≤_W^RCA0 Bound* ⋆ Bound.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: ≡W Bound, a variant studied for reductions over RCA₀ only."
 - id: brechtpaulyschroder2020-aaaa964b
   ref: brechtpaulyschroder2020
   date: 2026-11-05

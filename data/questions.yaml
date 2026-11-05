@@ -1387,3 +1387,26 @@
   context: >-
     Brattka, Hendtlass and Kreuzer proved $\mathsf{HYP} \leq_{\mathrm{sW}} 1\text{-}\mathsf{WGEN}$ (Proposition 9.3)
     and $1\text{-}\mathsf{WGEN} \leq_{\mathrm{W}} \mathsf{HYP}$ (Proposition 9.4), so the two are Weihrauch equivalent.
+
+- id: eminf-aca
+  question: Does the Erdős–Moser theorem for infinitely many colors $\mathsf{EM}_\infty$ imply $\mathsf{ACA}_0$?
+  asked:
+    - {ref: towsneryokoyama2018, loc: Question 5.5}
+  statements: [eminf, aca]
+  formal:
+    - {from: eminf, to: aca, over: rca0}
+  context: >-
+    ACA₀ proves EM_∞ through Ramsey's theorem for triples (Lemma 5.4 of [@towsneryokoyama2018]); for finitely many
+    colors, fEM_{<∞} is Π¹₁-conservative over IΣ⁰₂ and so far from ACA₀.
+
+- id: bounded-dnr-wwkl
+  question: Does $\exists k \forall f\, \mathsf{DNR}(k, f)$, or $\forall f \exists k\, \mathsf{DNR}(k, f)$, imply $\mathsf{WWKL}$ over $\mathsf{RCA}_0$?
+  asked:
+    - {ref: doraishirstshafer2014, loc: Question 4.11}
+  statements: [udnrb, dnrb, wwkl]
+  formal:
+    - {from: udnrb, to: wwkl, over: rca0}
+    - {from: dnrb, to: wwkl, over: rca0}
+  context: >-
+    For each fixed k ≥ 2, ∀f DNR(k, f) is equivalent to WKL₀. With IΣ⁰₂ the bounded versions also imply WKL₀
+    (Theorem 2.7 of [@doraishirstshafer2014]); with only BΣ⁰₂ they do not (Theorems 4.9 and 4.10).

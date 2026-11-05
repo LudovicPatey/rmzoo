@@ -1,0 +1,3 @@
+# Results from [steilayokoyama2015].
+
+[ { type: equivalence, from: prtt, to: wrt, over: rca0, refs: [ { ref: steilayokoyama2015, loc: Theorem 4.4 (for every k) } ] }, { type: equivalence, from: hct, to: rt2, over: rca0, refs: [ { ref: steilayokoyama2015, loc: Theorem 4.2 (for every k) } ] }, { type: implication, from: cac, to: wrt, over: rca0, refs: [ { ref: steilayokoyama2015, loc: Proposition 2.1(2) } ] } ]
