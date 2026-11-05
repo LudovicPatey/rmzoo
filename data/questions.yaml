@@ -1410,3 +1410,15 @@
   context: >-
     For each fixed k ≥ 2, ∀f DNR(k, f) is equivalent to WKL₀. With IΣ⁰₂ the bounded versions also imply WKL₀
     (Theorem 2.7 of [@doraishirstshafer2014]); with only BΣ⁰₂ they do not (Theorems 4.9 and 4.10).
+
+- id: sigma11ac-abw-rca0
+  question: Does $\Sigma^1_1\text{-}\mathsf{AC}_0$ imply $\mathsf{ABW}_0$ over $\mathsf{RCA}_0$, without $\mathsf{I}\Sigma^1_1$?
+  asked:
+    - {ref: conidis2012, loc: Question 1.10}
+  statements: [sigma11ac, abw]
+  formal:
+    - {from: sigma11ac, to: abw, over: rca0}
+  context: >-
+    Friedman asserted the implication over RCA (full induction); Conidis proved it over RCA₀ + IΣ¹₁ (Theorem 2.1 of
+    [@conidis2012]), and asked whether the implications of that theorem hold over RCA₀ — the other open one being
+    ABW₀ → weak-Σ¹₁-AC₀. ABW₀ implies ACA₀ over RCA₀ + IΣ¹₁ (Lemma 2.2).

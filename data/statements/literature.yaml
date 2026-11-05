@@ -89,6 +89,34 @@
   solution: An infinite set $H$ as above.
   refs: [ { ref: fioricaronesshafersolda2022, role: rm } ]
 
+- id: rsgr
+  label: '\mathsf{RSgr}'
+  name: Rival–Sands theorem for graphs, refined
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ RSgr ]
+  definition: >
+    Every infinite graph $G = (V, E)$ contains an infinite $H \subseteq V$ such that every vertex of $G$ has infinitely
+    many or at most one neighbours in $H$, and every vertex of $H$ has infinitely many or no neighbours in $H$.
+  instance: An infinite graph $G$.
+  solution: An infinite set $H$ as above.
+  refs: [ { ref: fioricaronesshafersolda2022, role: origin, loc: Section 3 } ]
+
+- id: wrsgr
+  label: '\mathsf{wRSgr}'
+  name: Weak Rival–Sands theorem for graphs, refined
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ wRSgr ]
+  definition: >
+    Every infinite graph $G = (V, E)$ contains an infinite $H \subseteq V$ such that every vertex of $H$ has infinitely
+    many or no neighbours in $H$.
+  instance: An infinite graph $G$.
+  solution: An infinite set $H$ as above.
+  refs: [ { ref: fioricaronesshafersolda2022, role: origin, loc: Section 3 } ]
+
 - id: rspo
   label: '\mathsf{RSpo}'
   name: Rival–Sands theorem for partial orders of finite width

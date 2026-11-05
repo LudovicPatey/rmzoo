@@ -17205,7 +17205,7 @@
 - id: brattkagherardi2019-75632694
   ref: brattkagherardi2019
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -17216,10 +17216,14 @@
     facts: WBWT2 ≤W C̄_N, and WBWT2 ≰W C_N and ≰W L. It is strongly complete and not co-complete.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: WBWT₂ is studied here through completions (Proposition 8.8 compares it with the completion of C_N, which the catalogue does not have)."
 - id: brattkagherardi2019-48beef00
   ref: brattkagherardi2019
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -17230,10 +17234,14 @@
     facts: "C_{2^N} and CC[0,1] are complete, co-complete and co-total. PC_{2^N} and PCC[0,1] are co-complete, co-total and not complete. PCC[0,1] ≰W PC_R and PCC[0,1] ≰W C_N. PCC[0,1] is a strong total fractal. PC_{2^N} <W its completion ≤W TPC_{2^N} <W C_{2^N}, and TPC_{2^N} ≤W PC″_{2^N}. Cited: PC_{2^N} ≡sW WWKL."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Covered: CC_[0,1] is an alias of ivt, PCC_[0,1] is pcc, and C_{2^N} is WKL."
 - id: brattkagherardi2019-8ac26bce
   ref: brattkagherardi2019
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -17244,10 +17252,14 @@
     facts: LPO′ ≡sW INF ≡sW NEG and LPO′_S ≡sW INF_S. LPO′ and INF are co-total, and LPO′_S is co-complete but not co-total. LPO′_S ≤W TC_N and LPO′_S ≰W C_N.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: INF ≡sW LPO′ (Lemma 4.23), in the catalogue as the jump of LPO; NEG and the Sierpiński-space variants are technical problems of this paper."
 - id: brattkagherardi2019-20370a9b
   ref: brattkagherardi2019
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -17258,10 +17270,14 @@
     facts: C̄_N is low2 but not low. L <sW L̄ and L is not a cylinder. L̄ is not complete. WBWT2, C̄_N and SORT are not ≤W L.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: the low maps L and L₂ characterize lowness (a property in the catalogue) rather than being principles studied for themselves."
 - id: brattkagherardi2019-ac966ce7
   ref: brattkagherardi2019
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -17272,6 +17288,10 @@
     facts: WFT′ ≡sW WFT. WFT and WFT_S are strongly complete and co-complete, and WFT is co-total. WFT_S ≤W TC_{N^N}, WFT_S ≰W C̄_{N^N}, and WFT_S is not co-total.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: technical problems (characteristic function of the empty closed set, with Sierpiński variant) studied in this paper only."
 - id: gohpaulyvalenti2024-1c63460e
   ref: gohpaulyvalenti2024
   date: 2026-11-05
@@ -28003,7 +28023,7 @@
 - id: fioricaronesshafersolda2022-ab1546fb
   ref: fioricaronesshafersolda2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -28014,10 +28034,14 @@
     facts: ACA0 proves it (Theorem 3.2). It is equivalent to RSg and ACA0 over RCA0 (Theorem 3.5). RSg ≤sW RSgr ≤sW 3-DNR2. RSgr ≡sW RSg ≡sW WKL'' (Corollary 6.12), so it is a cylinder. RSgr↾LF ≡sW lim.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as rsgr (minor), with Corollary 6.12 (RSgr ≡sW RSg ≡sW WKL″).
 - id: fioricaronesshafersolda2022-658b670b
   ref: fioricaronesshafersolda2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -28028,10 +28052,14 @@
     facts: RT^2_2 ↔ wRSgr over RCA0 (Theorem 3.6). wRSg ≤sW wRSgr and wRSg ≡c wRSgr (Proposition 7.4). It is open whether wRSgr ≤W wRSg (Question 7.5). SADC ≰W wRSgr (Theorem 7.7). DNR ≰W wRSgr (Theorem 7.8). SRT^2_2 ≤W LPO ∗ wRSgr (Theorem 7.14(1)). It has the same location in the Weihrauch degrees as wRSg (Theorem 7.11).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as wrsgr (minor), with Proposition 7.4 (≡c wRSg) and Theorems 7.7, 7.8, 7.11.
 - id: fioricaronesshafersolda2022-0ebbaef5
   ref: fioricaronesshafersolda2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -28042,6 +28070,10 @@
     facts: As a sentence it is equivalent to ACA0 over RCA0. RSg↾LF ≡sW RSgr↾LF ≡sW lim, so RSg↾LF <c RSg.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: technical restriction (RSg↾LF ≡sW RSgr↾LF ≡sW lim, Proposition 6.14) studied in this paper only."
 - id: fioricaronesshafersolda2022-1b35b8a5
   ref: fioricaronesshafersolda2022
   date: 2026-11-05
@@ -28063,7 +28095,7 @@
 - id: fioricaronesshafersolda2022-256678e6
   ref: fioricaronesshafersolda2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -28074,10 +28106,14 @@
     facts: WKL^(n) ≡sW DNR2^(n) ≡sW (n+1)-DNR2, so WKL'' ≡sW 3-DNR2 (Lemma 4.13). 3-DNR2 ≡sW RSg (Corollary 6.12). WKL ≡sW DNR2 is cited from [5, Corollary 5.3].
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: technical family; 3-DNR₂ ≡sW WKL″ (Corollary 6.12), already in the catalogue as WKL″."
 - id: fioricaronesshafersolda2022-6570ea48
   ref: fioricaronesshafersolda2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -28088,10 +28124,14 @@
     facts: INForONE ≡W oCOH (Proposition 6.6). oCOH ≡sW WKL' (remark after Corollary 6.12). It is a cylinder (Lemma 6.11).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: technical problem used in the proofs of Section 6."
 - id: fioricaronesshafersolda2022-28bdb976
   ref: fioricaronesshafersolda2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -28102,10 +28142,14 @@
     facts: 3-DNR2 ≤sW oCOH-in-Δ^0_2 (Lemma 6.8). It is equivalent to INForONE-in-Δ^0_2 and INForONE-in*-Δ^0_2 (Lemma 6.7). It is a cylinder, and is strongly Weihrauch equivalent to RSg and WKL'' (Corollary 6.12).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: technical problem, ≡sW WKL″ (Corollary 6.12)."
 - id: fioricaronesshafersolda2022-0205bc98
   ref: fioricaronesshafersolda2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -28116,10 +28160,14 @@
     facts: INForONE ≡W oCOH ≡sW WKL' and INForONE is not a cylinder. INForONE-in*-Δ^0_2 ≤sW RSg (Lemma 6.9). The Δ^0_2 versions are cylinders and strongly equivalent to RSg and WKL'' (Corollary 6.12).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: technical problems, the Δ⁰₂ versions ≡sW WKL″ (Corollary 6.12)."
 - id: fioricaronesshafersolda2022-699da797
   ref: fioricaronesshafersolda2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -28130,6 +28178,10 @@
     facts: RSg↾V=ω ≡sW RSg. wRSg↾V=ω ≡W wRSg but is strictly below it in ≤sW and is not a cylinder (Proposition 7.2). wRSg ≡sW id × wRSg↾V=ω.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: the restrictions to V = ω have the same Weihrauch degrees (Proposition 7.2, Section 6); rsg carries a caution about this."
 - id: fioricaronesshafersolda2022-8347da05
   ref: fioricaronesshafersolda2022
   date: 2026-11-05
@@ -28151,7 +28203,7 @@
 - id: fioricaronesshafersolda2022-3d0a11c0
   ref: fioricaronesshafersolda2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -28162,6 +28214,10 @@
     facts: CADS^strict ≰W CADS, so CADS <W CADS^strict.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: technical variant of CADS studied in this paper only."
 - id: kreuzer2013-7deb0ebc
   ref: kreuzer2013
   date: 2026-11-05
