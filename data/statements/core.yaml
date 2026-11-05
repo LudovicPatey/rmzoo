@@ -161,3 +161,14 @@
   refs:
     - { ref: friedman1975, role: origin }
     - { ref: simpson2009, role: survey, loc: Chapter VI }
+
+- id: ss
+  label: '\textsf{SS}'
+  name: Every set belongs to a countable Scott set
+  kind: sentence
+  minor: true
+  tags: [ compactness ]
+  definition: >
+    Every set belongs to a countable (coded) Scott set: a nonempty family closed under join, in which every infinite
+    binary tree computable from a member has an infinite path in the family.
+  refs: [ { ref: cholakjockuschslaman2001, role: rm, loc: "Definition 8.15, before Lemma 8.18" } ]

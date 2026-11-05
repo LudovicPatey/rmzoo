@@ -479,3 +479,49 @@
   instance: 'A coloring $c : [\mathbb{N}]^2 \to 2$ with $\lim_y c(x, y) = 1$ for every $x$.'
   solution: An infinite $c$-homogeneous set.
   refs: [ { ref: dzhafarovhirschfeldtreitzes2020, role: origin, loc: Definition 6.1 } ]
+
+# Ramsey-type theorems for colorings of exactly ω-large sets (Carlucci, Mainardi,
+# Zdanowski 2024): s is exactly ω-large when |s| = 1 + min s; [ℕ]^{!ω} is the set of them.
+- id: rtlarge
+  label: '\mathsf{RT}^{!\omega}_2'
+  name: Large Ramsey theorem
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  definition: 'Every coloring $f : [\mathbb{N}]^{!\omega} \to 2$ of the exactly ω-large sets has an infinite homogeneous set.'
+  instance: 'A coloring $f : [\mathbb{N}]^{!\omega} \to 2$.'
+  solution: An infinite $f$-homogeneous set.
+  refs: [ { ref: carluccietal2024, role: rm, loc: Definition 3.1 } ]
+
+- id: fslarge
+  label: '\mathsf{FS}^{!\omega}'
+  name: Large free set theorem
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  definition: 'For every $f : [\mathbb{N}]^{!\omega} \to \mathbb{N}$ there is an infinite set $H$ with $f(s) \notin H \setminus s$ for every $s \in [H]^{!\omega}$.'
+  instance: 'A function $f : [\mathbb{N}]^{!\omega} \to \mathbb{N}$.'
+  solution: An infinite $f$-free set.
+  refs: [ { ref: carluccietal2024, role: rm, loc: Section 3 } ]
+
+- id: tslarge
+  label: '\mathsf{TS}^{!\omega}'
+  name: Large thin set theorem
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  definition: 'For every $f : [\mathbb{N}]^{!\omega} \to \mathbb{N}$ there is an infinite set $H$ with $f([H]^{!\omega}) \neq \mathbb{N}$.'
+  instance: 'A function $f : [\mathbb{N}]^{!\omega} \to \mathbb{N}$.'
+  solution: An infinite $f$-thin set.
+  refs: [ { ref: carluccietal2024, role: rm, loc: Definition 3.6 } ]
+
+- id: rrtlarge
+  label: '\mathsf{RRT}^{!\omega}_2'
+  name: Large rainbow Ramsey theorem
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  definition: 'For every 2-bounded $f : [\mathbb{N}]^{!\omega} \to \mathbb{N}$ there is an infinite set on which $f$ is injective.'
+  instance: 'A 2-bounded function $f : [\mathbb{N}]^{!\omega} \to \mathbb{N}$.'
+  solution: An infinite $f$-rainbow.
+  refs: [ { ref: carluccietal2024, role: rm, loc: Definition 3.9 } ]

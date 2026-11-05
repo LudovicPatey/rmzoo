@@ -698,3 +698,14 @@
     $\{\sum A_0, \dots, \sum A_{n-1}\}$ with $A_i$ finite subsets of $X$ and $\max A_i < \min A_j$ for $i < j$ have the same
     color. For $n = 1$ it is Hindman's theorem.
   refs: [ { ref: hirst1987, role: rm, loc: "Definition 7.20(i)" } ]
+
+- id: mirt
+  label: '\mathsf{MIRT}'
+  name: Maximal infinite ray theorem
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every graph has a (possibly finite) sequence of disjoint rays which is maximal: no ray of the graph is disjoint from
+    all of them (for each of the variants of graphs, disjointness and rays of the infinite ray theorem).
+  refs: [ { ref: barnesgohshore2023, role: rm, loc: Definition 6.17 } ]
