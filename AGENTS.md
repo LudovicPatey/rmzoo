@@ -51,7 +51,10 @@ paper.
    states them explicitly. Give `formal` parts whenever the question is a
    comparison of statements: the status is then derived from the database. Never
    set a status that the database contradicts (the build fails).
-7. When unsure whether a theorem says what you think, leave it out and tell the
+7. When a paper states something false, or prints a theorem wrongly, record the
+   correct fact and an erratum in `data/errata.yaml` (shown on the paper's page),
+   with the sources of the correction.
+8. When unsure whether a theorem says what you think, leave it out and tell the
    maintainer which theorem and why. A missing fact is better than a wrong one.
 
 ## 2. Ground rules for the repository
@@ -88,7 +91,7 @@ paper.
 | validation, derived fields (operator statements, conjunctions, labels "studied over"), `site/data/zoo.json` | `scripts/build.mjs` | all of `data/` |
 | data model: allowed fields, operations, result identity | `scripts/lib/schema.mjs` | — |
 | inference engine (rules, operator laws, question status) | `site/js/engine.js` | `zoo.json` |
-| viewer (home, catalogue, statement, paper, results, questions pages) | `site/js/app.js`, `layout.js`, `bibtex.js`, `related.js` | `zoo.json`, `abstracts.json` |
+| viewer (home, catalogue, statement, paper (with its errata), results, questions pages) | `site/js/app.js`, `layout.js`, `bibtex.js`, `related.js` | `zoo.json`, `abstracts.json` |
 | consolidation (steps 1–7, report in `reports/`) | `scripts/consolidate.mjs` | everything below |
 | new papers | `scripts/sweep.mjs` | references, `data/sweep-rejected.yaml` |
 | publication status | `scripts/pubstatus.mjs` | references |
@@ -152,7 +155,8 @@ Specific cases:
   it: `computably-true` implies every preservation property). A new level of the
   lowness hierarchy is `optional`, implied by the level below and implying the one
   above; move ACA₀'s folklore failure (in `data/results/core.yaml`) to the new
-  top level. Give it a `group` (computability, proof, weihrauch) and add the group
+  top level. The same holds for the levels of hyperimmunity preservation (one, 2, 3,
+  every k, countably many). Give it a `group` (computability, proof, weihrauch) and add the group
   to the modes that should show it (`data/modes.yaml`). A property of Weihrauch
   degrees is `direction: equiv` over w or sw, with its laws on operations
   (`selfOp`, `opHas`, `opKeeps`) and `lift` when they hold (docs/DESIGN.md). Nothing

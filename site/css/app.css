@@ -441,3 +441,5 @@ svg.mini circle.off { opacity: .15; }
 .concepts dt { font-weight: 600; }
 .concepts dd { margin: 0; }
 @media (max-width: 640px) { .concepts { grid-template-columns: 1fr; } .concepts dd { margin-bottom: 8px; } }
+.erratum { background: var(--open-soft); border-left: 3px solid var(--open); padding: 8px 12px; border-radius: 6px; margin: 0 0 10px; }
+.erratum > div + div { margin-top: 4px; }

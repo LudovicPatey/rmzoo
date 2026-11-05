@@ -47,6 +47,7 @@ data/
   classes.yaml       formula classes for conservation results (Π⁰ₙ, ∀Π⁰ₙ, Π¹₁, rΠ¹₂…)
   context.yaml       short historical context for the main statements ([@key] cites a paper)
   concepts.yaml      sourced definitions of the words used in statement definitions (shown on statement pages)
+  errata.yaml        wrong statements or claims of papers, with the correction (shown on paper pages)
   abstracts.yaml     abstracts of the papers (scripts/abstracts.mjs)
   references/*.yaml  bibliography
   statements/*.yaml  the catalogue (definitions, formulations, literature)

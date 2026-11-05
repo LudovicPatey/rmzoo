@@ -161,6 +161,16 @@ export const SCHEMA = {
     definition: { req: true, doc: 'the definition, following its source ($…$ for TeX)', usedBy: ['build', 'viewer'] },
     refs: { req: true, doc: 'sources of the definition: [{ref, loc}]', usedBy: ['build', 'viewer'], items: 'resultRef' },
   },
+  // data/errata.yaml — a list: wrong statements or claims of papers (shown on the paper's page)
+  erratum: {
+    ref: { req: true, doc: 'the paper (reference key)', usedBy: ['build', 'viewer'] },
+    loc: { req: true, doc: 'where: theorem number, proof of…', usedBy: ['build', 'viewer'] },
+    kind: { req: true, doc: 'misprint (the proof gives the right statement) | error (the claim is false) | gap (the proof is incomplete)', usedBy: ['build', 'viewer'] },
+    claim: { req: true, doc: 'what the paper says ($…$ for TeX)', usedBy: ['build', 'viewer'] },
+    correction: { req: true, doc: 'the correct statement and why ([@key] cites a paper, [[id]] links a statement)', usedBy: ['build', 'viewer'] },
+    refs: { doc: 'sources of the correction [{ref, loc}]', usedBy: ['build', 'viewer'], items: 'resultRef' },
+    date: { doc: 'when it was entered', usedBy: ['viewer'] },
+  },
   // data/modes.yaml — lenses of the viewer: what a reader of one framework sees
   mode: {
     id: { req: true, doc: 'mode id (also the value of ?mode= in links)', usedBy: ['build', 'viewer'] },
@@ -298,6 +308,7 @@ export const OPERATIONS = {
 //   data/acronyms-ignored.yaml acronym → reason: not proposed as missing statements
 //   data/review.yaml           entity review above; data/ai-analyzed.yaml: aiAnalyzed
 //   data/modes.yaml            entity mode above: the frameworks of the viewer's mode switch
+//   data/errata.yaml           entity erratum above: wrong statements of papers, on the paper's page
 //   data/concepts.yaml         entity concept above: definitions of the words used in statements
 //   data/endorsements.yaml     {people: orcid → person, endorsements: [endorsement]} (entities above)
 

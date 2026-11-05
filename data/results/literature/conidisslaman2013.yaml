@@ -1,3 +1,3 @@
 # Results from [conidisslaman2013].
 
-[ { type: conservation, statement: ran2, base: bsig2, class: Pi11, value: true, refs: [ { ref: conidisslaman2013, loc: Corollary 4.2 } ] } ]
+[ { type: conservation, statement: ran2, base: bsig2, class: Pi11, value: true, refs: [ { ref: conidisslaman2013, loc: Corollary 4.2 } ] }, { type: conservation, statement: rrt22, base: rca0, class: arith, value: false, refs: [ { ref: conidisslaman2013, loc: "Section 3 (Theorems 3.2 and 3.3: RRT²₂ proves CΣ₂, which IΣ₁ does not)" } ] } ]

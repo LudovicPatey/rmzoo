@@ -5,6 +5,3 @@
 - {type: "conservation", statement: "gp22-wkl", base: "bsig2", class: "Pi11", value: true, refs: [{ref: lehoueroupateyyokoyama2024, loc: "Theorem 4.2"}]}
 - { type: conservation, statement: bsig2, base: rca0, class: uPi04, value: false, refs: [ { ref: lehoueroupateyyokoyama2024, loc: "Section 6, first paragraph" } ] }
 - { type: conservation, statement: rt22, base: rca0, class: uPi04, value: false, refs: [ { ref: lehoueroupateyyokoyama2024, loc: "Section 6, first paragraph" } ] }
-- { type: conservation, statement: rt22, base: bsig2, class: uPi04, value: true, refs: [ { ref: lehoueroupateyyokoyama2024, loc: Theorem 1.4 } ] }
-- { type: conservation, statement: em, base: bsig2, class: uPi04, value: true, refs: [ { ref: lehoueroupateyyokoyama2024, loc: Theorem 5.3 } ] }
-- { type: conservation, statement: gp22, base: bsig2, class: Pi11, value: true, refs: [ { ref: lehoueroupateyyokoyama2024, loc: Theorem 4.2 } ] }

@@ -1,3 +1,3 @@
 # Results from [mimounipatey2025].
 
-[ { type: separation, from: coh-wkl, to: em, over: rca0, note: Even WKL + HEM + COH does not imply EM., refs: [ { ref: mimounipatey2025, loc: Corollary 7.6 } ] } ]
+[ { type: separation, from: coh-wkl, to: em, over: rca0, note: Even WKL + HEM + COH does not imply EM., refs: [ { ref: mimounipatey2025, loc: Corollary 7.6 } ] }, { type: property, statement: rt22, property: hyperimmunities-1-preservation, value: true, note: "Also Theorem 6.2.3 of Patey's thesis with k = 1, since π(1, 2) = 1.", refs: [ { ref: mimounipatey2025, loc: "Section 6, first paragraph" } ] } ]

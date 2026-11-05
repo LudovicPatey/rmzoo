@@ -22,3 +22,4 @@
 - { type: implication, from: wrsg, to: coh, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Theorem 7.9 } ] }
 - { type: separation, from: lim, to: wrsg, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Theorem 7.11 } ] }
 - { type: separation, from: rt1n, to: wrsg, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Theorem 7.11 } ] }
+- { type: property, statement: wrsg, property: cylinder, value: true, refs: [ { ref: fioricaronesshafersolda2022, loc: "Proposition 7.2(2)" } ], note: "For graphs with any infinite vertex set, the catalogue's convention." }

@@ -207,6 +207,10 @@ low → weakly low → low₂ → weakly low₂ → … is infinite: its members
 `optional`, and a
 new level is added to `data/properties.yaml` when a paper proves something about
 it (ACA₀'s failure, true at every level, is recorded at the highest level present).
+Preservation of hyperimmunities is another chain (Patey's thesis, Definition 6.2.2):
+countably many sets → k sets for every k → 3 → 2 → one. TS²₃ preserves 2 but not 3,
+RT²₂ one but not 2, FS² every finite number but not countably many; a statement
+page shows the strongest level a statement has and the weakest it fails.
 
 **Groups of properties** (`group`): computability-theoretic (cone avoidance, basis
 theorems, preservation properties), proof-theoretic (Π¹₁-conservation) and Weihrauch.
@@ -231,6 +235,21 @@ algebra of the Weihrauch lattice:
 * `lift`: for a cylinder P, every Q ≤W P satisfies Q ≤sW P (Proposition 3.5), so the
   engine lifts the Weihrauch implications of P to strong ones. This uses the cited
   cylinders and the laws on operations only.
+
+**Errata** (`data/errata.yaml`). When a paper states something false (a theorem
+extended to a case where it fails, a reduction claimed strong where only the
+Weihrauch one holds) or prints a statement with its sides swapped, the database
+records the correct fact, and an erratum records the place, what the paper says,
+the correction and its sources (`kind`: misprint, error, or gap in a proof). The
+paper's page lists its errata.
+
+**Conservation properties.** Π¹₁-conservation over RCA₀, over RCA₀ + BΣ⁰₂ and over
+RCA₀ + IΣ⁰₂ are proof-theoretic properties, each implying the next: the bases differ by
+arithmetical axioms, finitely many of which can be moved into a Π¹₁ sentence. Their
+values are read from the conservation results (conservation for a larger class gives
+it, failure for a smaller class refutes it), the base system has the property over
+itself, and they pass down implications, so WKL₀ + GP²₂ conservative over BΣ⁰₂ makes
+GP²₂ so. Other conservation results (∀Π⁰₃, ∀Π⁰₄, over RCA₀* or IΣ⁰₃) stay in the results.
 
 **Concepts** (`data/concepts.yaml`) define the words statement definitions use
 (coloring, homogeneous set, stable coloring, tree and path, cohesive set, DNC

@@ -1513,6 +1513,17 @@ function viewResults(params) {
 }
 
 // ---- literature ------------------------------------------------------------------
+// errata (data/errata.yaml): wrong statements of a paper, with the correction
+const ERRATUM_KINDS = { misprint: 'Misprint', error: 'Error', gap: 'Gap in the proof' };
+const erratumHtml = (key) => {
+  const list = (Z.raw.errata || []).filter((x) => x.ref === key);
+  if (!list.length) return '';
+  return `<h2>Errata</h2>${list.map((x) => `<div class="erratum">
+    <div><b>${esc(x.loc)}</b> <span class="badge">${esc(ERRATUM_KINDS[x.kind] || x.kind)}</span></div>
+    <div class="small"><span class="muted">Printed:</span> ${rich(x.claim)}</div>
+    <div class="small"><span class="muted">Correction:</span> ${richLinks(x.correction)}</div>
+    ${(x.refs || []).length ? `<div class="small muted">Sources: ${x.refs.map(refLink).join('; ')}</div>` : ''}</div>`).join('')}`;
+};
 function viewRefs(key) {
   const m = main();
   m.className = '';
@@ -1529,6 +1540,7 @@ function viewRefs(key) {
       ${r.arxiv ? ` · <a href="https://arxiv.org/abs/${esc(r.arxiv)}" target="_blank" rel="noopener">arXiv:${esc(r.arxiv)}</a>` : ''}
       · ${readBadge(r)}${C.live ? ` · <a href="#" data-feedback="comment|reference|${key}">Comment or report an error</a>` : ''}</p>
       ${r.hasAbstract ? '<h2>Abstract</h2><div class="abstract" id="abstract"><span class="muted small">Loading…</span></div>' : ''}
+      ${erratumHtml(key)}
       <details class="bib"><summary>BibTeX</summary><pre id="bib-one">${esc(bibtex(Z.raw.references, [key]))}</pre>
         <div class="row">${bibButton('bib-ref', 'Download')}<button class="btn small" id="bib-copy">Copy</button></div></details>
       ${st.length ? `<h2>Statements</h2><div class="rel-list">${st.map(([s, i]) => {

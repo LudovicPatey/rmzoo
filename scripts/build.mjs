@@ -46,6 +46,7 @@ const raw = {
   classes: readYaml(path.join(dataDir, 'classes.yaml')),
   questions: readYaml(path.join(dataDir, 'questions.yaml')),
   concepts: fs.existsSync(path.join(dataDir, 'concepts.yaml')) ? readYaml(path.join(dataDir, 'concepts.yaml')) || [] : [],
+  errata: fs.existsSync(path.join(dataDir, 'errata.yaml')) ? readYaml(path.join(dataDir, 'errata.yaml')) || [] : [],
 };
 const contexts = readYaml(path.join(dataDir, 'context.yaml')) || {};
 const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml(path.join(dataDir, 'abstracts.yaml')) || {} : {};
@@ -66,6 +67,7 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
   for (const [list, entity] of [['reductions', 'reduction'], ['tags', 'tag'], ['properties', 'property'], ['zoos', 'zoo'], ['modes', 'mode'], ['classes', 'class'], ['questions', 'question'], ['concepts', 'concept']])
     for (const x of raw[list] || []) errs.push(...unknownFields(x, entity, `${entity} ${x.id} (data/${list}.yaml)`));
   for (const [k, x] of Object.entries(abstracts)) errs.push(...unknownFields(x, 'abstract', `abstracts.yaml ${k}`));
+  raw.errata.forEach((x, i) => errs.push(...unknownFields(x, 'erratum', `errata.yaml #${i} (${x.ref} ${x.loc})`)));
   const rej = path.join(dataDir, 'sweep-rejected.yaml');
   if (fs.existsSync(rej)) (readYaml(rej) || []).forEach((x, i) => errs.push(...unknownFields(x, 'sweepRejected', `sweep-rejected.yaml #${i}`)));
   queue.forEach((x, i) => errs.push(...unknownFields(x, 'review', `review.yaml #${i} (${x.id})`)));
@@ -318,6 +320,16 @@ const tids = uniq(raw.tags, 'tag');
     byId.get(id).context = String(text).trim();
   }
   for (const k of Object.keys(abstracts)) if (!raw.references[k]) warnings.push(`abstracts.yaml: unknown reference ${k}`);
+  // errata (data/errata.yaml): wrong statements of papers, shown on the paper's page
+  raw.errata.forEach((x, i) => {
+    const at = `errata.yaml #${i} (${x.ref} ${x.loc})`;
+    if (!raw.references[x.ref]) errors.push(`${at}: unknown reference ${x.ref}`);
+    if (!['misprint', 'error', 'gap'].includes(x.kind)) errors.push(`${at}: kind must be misprint, error or gap`);
+    if (!String(x.claim || '').trim() || !String(x.correction || '').trim()) errors.push(`${at}: needs the claim and the correction`);
+    for (const r of x.refs || []) if (!raw.references[r.ref]) errors.push(`${at}: unknown reference ${r.ref}`);
+    for (const [, k] of String(x.correction || '').matchAll(/\[@([^\]\s]+)\]/g)) if (!raw.references[k]) errors.push(`${at}: unknown citation [@${k}]`);
+    for (const [, k] of String(x.correction || '').matchAll(/\[\[([^\]]+)\]\]/g)) if (!byId.has(k)) errors.push(`${at}: unknown statement [[${k}]]`);
+  });
   // concepts (data/concepts.yaml): sourced definitions of the words used in statement
   // definitions, attached to the statements that mention them (`_concepts`)
   uniq(raw.concepts, 'concept');

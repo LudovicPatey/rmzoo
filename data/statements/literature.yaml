@@ -79,6 +79,7 @@
 - id: rsg
   label: '\mathsf{RSg}'
   name: Rival–Sands theorem for graphs
+  caution: 'For strong Weihrauch reducibility the vertex set matters. Here, as in Fiori-Carones, Shafer and Soldà [@fioricaronesshafersolda2022], it is any infinite subset of ℕ; this version is the cylindrification of the one with vertex set ℕ (their Proposition 7.2), and both have the same Weihrauch degree.'
   kind: problem
   tags: [ ramsey ]
   aliases: [ inside/outside Ramsey theorem, Rival-Sands ]
@@ -286,6 +287,7 @@
 - id: wrsg
   label: '\mathsf{wRSg}'
   name: Weak Rival–Sands theorem for graphs
+  caution: 'For strong Weihrauch reducibility the vertex set matters. Here, as in Fiori-Carones, Shafer and Soldà [@fioricaronesshafersolda2022], it is any infinite subset of ℕ; this version is the cylindrification of the one with vertex set ℕ (their Proposition 7.2), and both have the same Weihrauch degree.'
   kind: problem
   tags: [ graphs, ramsey ]
   definition: >

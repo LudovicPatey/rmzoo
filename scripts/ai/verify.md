@@ -26,3 +26,9 @@ and say what a human should check.
 Reduction ids: rca0star (provability over RCA₀*), rca0 (over RCA₀), omega
 (ω-models), sw (strong Weihrauch), w (Weihrauch), sc (strong computable),
 c (computable), gw (generalized Weihrauch).
+
+A statement id joined by "-" (coh-fs-wkl) is the conjunction of these principles
+(RCA₀ + COH + FS + WKL). Check that the fact keeps every principle of the theorem:
+reject a fact that drops part of a hypothesis ("FS ⊬ SRT²₂" when the paper proves
+"WKL + COH + FS ⊬ SRT²₂" is fine, since it is weaker, but "WKL + COH + FS ⊢ X" read
+as "FS ⊢ X" is wrong).

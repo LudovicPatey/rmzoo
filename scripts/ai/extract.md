@@ -74,6 +74,13 @@ a separation over `omega`.
   (parallelization), `cn.fin` (finite parallelization), `wkl.diamond`, `cn.x.lpo`
   (product), `tcn.star.tcn` (compositional product); nest with parentheses:
   `(cn.x.lpo).jump`. Use them only when every component is in the catalogue.
+* Theories made of several principles (RCA₀ + WKL + COH + FS, "WKL₀ + RT²₂",
+  "COH and SRT²₂ together") are conjunctions: their catalogue ids sorted
+  alphabetically and joined by "-", as `coh-fs-wkl` or `rt22-wkl` (RCA₀ itself is
+  left out). Never drop a conjunct: "RCA₀ + WKL + COH + FS ⊬ SRT²₂" is
+  `{separation, from: coh-fs-wkl, to: srt22}`, much stronger than "FS ⊬ SRT²₂", and
+  "WKL₀ + RT²₂ is Π¹₁-conservative over B" has statement `rt22-wkl`: report the
+  theorem as stated, with all its principles.
 * `over`: one reduction id (empty for `property` and `conservation`). If a result
   holds over several reductions, give the finest one stated.
 * `property`, `value`: for `property` facts. Most properties are defined

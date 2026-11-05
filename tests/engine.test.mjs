@@ -336,3 +336,29 @@ test('Weihrauch properties: invariance, operations, cited values, cylinder lift'
   assert.equal(st('w', 'a', 'b'), 'open');     // Weihrauch properties separate nothing
   assert.equal(zoo.contradictions.length, 0);
 });
+
+test('conservation properties: read from results, the base itself, failure for a smaller class, conjunctions', () => {
+  const z = buildZoo({
+    reductions: [{ id: 'rca0', domain: 'all', conjunction: true, finerThan: [] }],
+    properties: [
+      { id: 'c0', closedUnder: 'rca0', direction: 'down', fromConservation: { base: 'rca0', class: 'Pi11' }, implies: ['c1'] },
+      { id: 'c1', closedUnder: 'rca0', direction: 'down', fromConservation: { base: 'b2', class: 'Pi11' } },
+    ],
+    classes: [{ id: 'arith' }, { id: 'Pi11', includes: ['arith'] }],
+    statements: [
+      { id: 'rca0', kind: 'sentence', base: true }, { id: 'b2', kind: 'sentence' }, { id: 'p', kind: 'sentence' },
+      { id: 'w', kind: 'sentence' }, { id: 'pw', kind: 'sentence', conjunction: ['p', 'w'] }, { id: 'i2', kind: 'sentence' },
+    ],
+    results: [
+      { type: 'conservation', statement: 'pw', base: 'b2', class: 'Pi11', value: true }, // WKL₀ + P over BΣ⁰₂
+      { type: 'conservation', statement: 'i2', base: 'b2', class: 'arith', value: false }, // BΣ⁰₂ ⊬ IΣ⁰₂
+      { type: 'implication', from: 'rca0', to: 'w', over: 'rca0' },
+    ],
+  });
+  const v = (p, s) => z.prop(z.pidx.get(p), z.sidx.get(s))?.v;
+  assert.equal(v('c1', 'b2'), true, 'a base is conservative over itself');
+  assert.equal(v('c1', 'p'), true, 'a conjunct of a conservative conjunction is conservative');
+  assert.equal(v('c1', 'i2'), false, 'not conservative for arithmetical sentences: not Π¹₁-conservative');
+  assert.equal(v('c0', 'i2'), false, 'failing over BΣ⁰₂ means failing over RCA₀');
+  assert.equal(v('c0', 'w'), true, 'what the base proves is conservative over it');
+});

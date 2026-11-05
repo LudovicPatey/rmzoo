@@ -182,26 +182,105 @@
     in every ω-model (Turing ideal), i.e. RCA₀ implies it over ω-models: so NON, DNR,
     WKL… fail it, and the engine reads it off the ω-model comparison with RCA₀.
 
+# Π¹₁-conservation over RCA₀, RCA₀ + BΣ⁰₂ and RCA₀ + IΣ⁰₂: each implies the next,
+# since these bases differ by arithmetical axioms (finitely many of them can be moved
+# into the Π¹₁ sentence). Values are read from the conservation results.
 - id: pi11-conservative
   name: Π¹₁-conservative over RCA₀
   group: proof
   closedUnder: rca0
   direction: down
   fromConservation: {base: rca0, class: Pi11}
+  implies: [ pi11-conservative-bsig2 ]
   description: >
     RCA₀ + the statement proves no Π¹₁ sentence which is not already provable in RCA₀.
 
+- id: pi11-conservative-bsig2
+  name: Π¹₁-conservative over RCA₀ + BΣ⁰₂
+  group: proof
+  closedUnder: rca0
+  direction: down
+  fromConservation: {base: bsig2, class: Pi11}
+  implies: [ pi11-conservative-isig2 ]
+  description: >
+    RCA₀ + BΣ⁰₂ + the statement proves no Π¹₁ sentence which is not already provable in RCA₀ + BΣ⁰₂.
+    Principles weaker than RT²₂ (COH, ADS, CAC, EM…) have it; whether RT²₂ does was a long-standing question.
+
+- id: pi11-conservative-isig2
+  name: Π¹₁-conservative over RCA₀ + IΣ⁰₂
+  group: proof
+  closedUnder: rca0
+  direction: down
+  fromConservation: {base: isig2, class: Pi11}
+  description: >
+    RCA₀ + IΣ⁰₂ + the statement proves no Π¹₁ sentence which is not already provable in RCA₀ + IΣ⁰₂
+    (Cholak, Jockusch and Slaman for RT²₂).
+
+# Preservation of hyperimmunities (Patey's thesis, Definitions 6.2.1 and 6.2.2):
+# countably many → k for every k → 3 → 2 → one, like the levels of a hierarchy; a
+# statement page shows only the strongest level it has and the weakest it fails.
 - id: hyperimmunity-preservation
-  name: Preservation of hyperimmunity
+  name: Preservation of hyperimmunity (countably many sets)
   group: computability
   closedUnder: omega
   direction: down
   domain: problems
+  implies: [ hyperimmunities-k-preservation ]
   description: >
     For every set Z and every countable collection A₀, A₁, … of Z-hyperimmune sets, every Z-computable
     instance has a solution Y such that every Aᵢ is (Z ⊕ Y)-hyperimmune (Patey, "Iterative forcing and
-    hyperimmunity in reverse mathematics", Definition 4.2). Preserving a single hyperimmune set is weaker:
-    RT²₂ does (Mimouni and Patey 2025, Section 6), but it does not preserve two (Patey, Theorem 6, through SADS).
+    hyperimmunity in reverse mathematics", Definition 4.2; Patey's thesis, Definition 6.2.1). Preserving
+    finitely many hyperimmune sets is weaker: RT²₂ preserves one but not two.
+
+- id: hyperimmunities-k-preservation
+  name: Preservation of k hyperimmunities for every k
+  group: computability
+  closedUnder: omega
+  direction: down
+  domain: problems
+  optional: true
+  implies: [ hyperimmunities-3-preservation ]
+  description: >
+    For every k ∈ ω, every set Z and Z-hyperimmune sets A₀, …, A_{k−1}, every Z-computable instance has a
+    solution Y such that every Aᵢ is (Z ⊕ Y)-hyperimmune (Patey's thesis, Definition 6.2.2, for every k).
+    The free set and thin set theorems have it.
+
+- id: hyperimmunities-3-preservation
+  name: Preservation of 3 hyperimmunities
+  group: computability
+  closedUnder: omega
+  direction: down
+  domain: problems
+  optional: true
+  implies: [ hyperimmunities-2-preservation ]
+  description: >
+    For every set Z and Z-hyperimmune sets A₀, A₁, A₂, every Z-computable instance has a solution Y such
+    that A₀, A₁, A₂ are (Z ⊕ Y)-hyperimmune (Patey's thesis, Definition 6.2.2, k = 3). TS²₄ has it and STS²₃
+    fails it.
+
+- id: hyperimmunities-2-preservation
+  name: Preservation of 2 hyperimmunities
+  group: computability
+  closedUnder: omega
+  direction: down
+  domain: problems
+  optional: true
+  implies: [ hyperimmunities-1-preservation ]
+  description: >
+    For every set Z and Z-hyperimmune sets A₀, A₁, every Z-computable instance has a solution Y such that
+    A₀ and A₁ are (Z ⊕ Y)-hyperimmune (Patey's thesis, Definition 6.2.2, k = 2). TS²₃ has it; SRT²₂, SADS
+    and ADS fail it. Not to be confused with the preservation of 2-hyperimmunity of Liu and Patey.
+
+- id: hyperimmunities-1-preservation
+  name: Preservation of one hyperimmunity
+  group: computability
+  closedUnder: omega
+  direction: down
+  domain: problems
+  optional: true
+  description: >
+    For every set Z and Z-hyperimmune set A, every Z-computable instance has a solution Y such that A is
+    (Z ⊕ Y)-hyperimmune (Patey's thesis, Definition 6.2.2, k = 1). RT²₂ has it.
 
 - id: delta02-preservation
   name: Preservation of Δ⁰₂ definitions
@@ -240,7 +319,7 @@
     Preservation of dependent hyperimmunity, in the sense of Patey, "Partial orders and immunity in reverse mathematics".
 
 - id: hyperimmunity2-preservation
-  name: Preservation of 2-hyperimmunity
+  name: Preservation of 2-hyperimmunity (Liu–Patey)
   group: computability
   closedUnder: omega
   direction: down

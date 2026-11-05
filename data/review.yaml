@@ -14348,7 +14348,7 @@
 - id: fioricaronesetal2021-5638652c
   ref: fioricaronesetal2021
   date: 2026-11-05
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -14367,6 +14367,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to Simpson–Smith 1986 [39]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Read in Simpson–Smith (OCR text): WKL₀* is Π¹₁-conservative over RCA₀*."
 - id: fioricaronesetal2021-b035f9f6
   ref: fioricaronesetal2021
   date: 2026-11-05
@@ -15656,7 +15660,7 @@
 - id: houeroupateyyokoyama2024-2be1ff1d
   ref: houeroupateyyokoyama2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -15675,6 +15679,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to Patey and Yokoyama [28]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Weaker than the ∀Π⁰₄-conservation of WKL₀ + RT²₂ over BΣ⁰₂ (rt22-wkl, Le Houérou–Patey–Yokoyama Theorem 1.4) and now than Hwang 2026.
 - id: houeroupateyyokoyama2024-1d726eb8
   ref: houeroupateyyokoyama2024
   date: 2026-11-05
@@ -15704,7 +15712,7 @@
 - id: houeroupateyyokoyama2024-83c10d6b
   ref: houeroupateyyokoyama2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -15723,6 +15731,10 @@
   concerns: The paper reproves this result.
   reasons:
     - "attributed by the paper to Cholak, Jockusch and Slaman [3]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Follows from RT² + WKL₀ Π¹₁-conservative over BΣ⁰₃ (rt2-wkl, Slaman–Yokoyama), in the database.
 - id: houeroupateyyokoyama2024-660c2898
   ref: houeroupateyyokoyama2024
   date: 2026-11-05
@@ -17298,7 +17310,7 @@
 - id: soldavalenti2022-a17eb76d
   ref: soldavalenti2022
   date: 2026-11-05
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -17317,6 +17329,10 @@
     - contradicts the database
     - "extractor confidence: medium"
     - "attributed by the paper to Brattka–Rakotoniaina [13, Prop. 3.4]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Error in the paper for k = ℕ: BWT_k ≡sW C′_k holds only for finite k (Brattka–Rakotoniaina Fact 2.1(1)); for k = ℕ, RT¹_ℕ ≡W BWT_ℕ ≡sW K′_ℕ <W C′_ℕ (Brattka–Gherardi–Marcone Theorem 11.2 and 12.10), consistent with the paper's own Lemma 7.31 (LPO′ ≰W RT¹_ℕ). Recorded RT¹_ℕ ≡W K′_ℕ instead."
 - id: soldavalenti2022-4d677932
   ref: soldavalenti2022
   date: 2026-11-05
@@ -18835,7 +18851,7 @@
 - id: pateyyokoyama2018-e09aefea
   ref: pateyyokoyama2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -18852,6 +18868,10 @@
   confidence: high
   reasons:
     - "attributed by the paper to Harrington, see [58]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Already in the database (WKL₀ Π¹₁-conservative over RCA₀, whose first-order part is IΣ⁰₁).
 - id: pateyyokoyama2018-572132e1
   ref: pateyyokoyama2018
   date: 2026-11-05
@@ -21685,7 +21705,7 @@
 - id: chongliyang2014-08bdfdb8
   ref: chongliyang2014
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -21702,6 +21722,10 @@
   confidence: high
   reasons:
     - "attributed by the paper to Conidis and Slaman [21]; independently Wei Wang (unpublished): cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Follows from RRT²₂ ≤ 2-RAN and the Π¹₁-conservation of 2-RAN over BΣ⁰₂ (Conidis–Slaman), both in the database; and from Hwang 2026.
 - id: chongliyang2014-3b595cb1
   ref: chongliyang2014
   date: 2026-11-05
@@ -21929,7 +21953,7 @@
 - id: towsneryokoyama2018-30d0d14f
   ref: towsneryokoyama2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -21948,6 +21972,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to Slaman and Yokoyama [1]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Already in the database in the stronger form RT² + WKL₀ (rt2-wkl), Slaman–Yokoyama Theorem 2.1.
 - id: towsneryokoyama2018-ed1dec05
   ref: towsneryokoyama2018
   date: 2026-11-05
@@ -22856,7 +22884,7 @@
   decision:
     date: 2026-11-05
     by: ludovic
-    note: "Different notion: the paper says RT²₂ preserves one hyperimmune set; the catalogue property (Patey 2017, Definition 4.2) is preservation of countably many, which RT²₂ fails (Theorem 6, through SADS). The property's description wrongly said one set and has been corrected."
+    note: "Different notion: the paper says RT²₂ preserves one hyperimmune set; the catalogue property (Patey 2017, Definition 4.2) is preservation of countably many, which RT²₂ fails (Theorem 6, through SADS). The property's description wrongly said one set and has been corrected. The paper's claim is now recorded as the property hyperimmunities-1-preservation."
 - id: mimounipatey2025-cb202c5d
   ref: mimounipatey2025
   date: 2026-11-05
@@ -25258,7 +25286,7 @@
 - id: steilayokoyama2015-436787f2
   ref: steilayokoyama2015
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -25277,6 +25305,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to Paris/Kirby [29]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Already in the database (BΣ⁰₂ Π⁰₃-conservative over RCA₀).
 - id: steilayokoyama2015-54cb3411
   ref: steilayokoyama2015
   date: 2026-11-05
@@ -27021,7 +27053,7 @@
 - id: kreuzer2013-7deb0ebc
   ref: kreuzer2013
   date: 2026-11-05
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -27038,6 +27070,10 @@
   concerns: Stated as folklore/cited from [5], with a sketch of proof using Proposition 3.
   reasons:
     - "attributed by the paper to Blass, Hirst, Simpson [5], folklore: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Read: stated with a proof sketch (Blass–Hirst–Simpson, folklore)."
 - id: kreuzer2013-927d4720
   ref: kreuzer2013
   date: 2026-11-05
@@ -27194,7 +27230,7 @@
 - id: cholakjockuschslaman2001-8db6882e
   ref: cholakjockuschslaman2001
   date: 2026-11-05
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -27211,10 +27247,14 @@
   confidence: high
   reasons:
     - "attributed by the paper to Hirst: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Read: proved there (BΣ⁰₂ is an unprovable Σ⁰₃ sentence of RCA₀)."
 - id: cholakjockuschslaman2001-3f22e67f
   ref: cholakjockuschslaman2001
   date: 2026-11-05
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -27231,6 +27271,10 @@
   confidence: high
   reasons:
     - "attributed by the paper to Hirst: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Read: proved there."
 - id: cholakjockuschslaman2001-6a5273f4
   ref: cholakjockuschslaman2001
   date: 2026-11-05

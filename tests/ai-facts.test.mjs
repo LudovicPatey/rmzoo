@@ -127,3 +127,17 @@ test('AI reader: base systems of conservation results are catalogue ids', async 
   assert.equal(baseId('rcastar + not isig1'), 'rcastar + not isig1'); // left as is: rejected as unknown
   assert.equal(entry({ type: 'conservation', statement: 'ads', base: 'rca0 + bsig2', class: 'Pi11', value: true }).base, 'bsig2');
 });
+
+test('AI reader: conjunctions of principles are kept, as sorted conjunction ids', async () => {
+  const { entry, conjId } = await import('../scripts/lib/ai-facts.mjs');
+  assert.equal(conjId('wkl-coh-fs'), 'coh-fs-wkl');
+  assert.equal(conjId('WKL + RT22'), 'rt22-wkl');
+  assert.equal(conjId('wkl-j', (id) => id === 'wkl-j'), 'wkl-j'); // a catalogue id containing "-"
+  assert.equal(conjId('(cn.x.lpo).jump'), '(cn.x.lpo).jump');
+  assert.deepEqual(entry({ type: 'separation', from: 'wkl-fs-coh', to: 'srt22', over: 'omega' }), { type: 'separation', from: 'coh-fs-wkl', to: 'srt22', over: 'omega' });
+  const raw = { statements: [{ id: 'coh' }, { id: 'fs' }, { id: 'wkl' }, { id: 'srt22' }], reductions: [], properties: [], classes: [], results: [] };
+  const { factChecker } = await import('../scripts/lib/ai-facts.mjs');
+  const zoo = { pidx: new Map(), sidx: new Map(), propIn: () => true };
+  assert.deepEqual(factChecker(raw, zoo).validity({ type: 'conservation', statement: 'coh-fs-wkl', base: 'coh', class: 'Pi11', value: true }).filter((e) => /catalogue/.test(e)), []);
+  assert.ok(factChecker(raw, zoo).validity({ type: 'conservation', statement: 'coh-xyz', base: 'coh', class: 'Pi11', value: true }).some((e) => /catalogue/.test(e)));
+});

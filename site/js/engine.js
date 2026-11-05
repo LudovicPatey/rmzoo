@@ -31,6 +31,7 @@ export const RULES = {
   'weaken-left': 'Weakening the hypothesis',
   'strengthen-right': 'Strengthening the conclusion',
   conservation: 'Conservation: the conclusion has the right syntactic form and is not provable from the base',
+  'cons-base': 'A base system is conservative over itself',
   'prop-equiv': 'A Weihrauch property is invariant under equivalence (the same Weihrauch degree, or strong degree for strong properties)',
   'prop-self': 'A problem has this property exactly when it is above the corresponding operation applied to itself (idempotent: P × P ≤W P; parallelizable: P̂ ≤W P; closed under compositional product: P ⋆ P ≤W P)',
   'prop-op': 'Weihrauch operations produce problems with this property (P̂ is parallelizable, P* idempotent, P⋄ closed under compositional product, P ⋆ Q a cylinder; a jump P′ is finitely tolerant and a fractal, and the jump of a cylinder is a cylinder)',
@@ -402,10 +403,14 @@ export function buildZoo(raw) {
   raw.properties.forEach((prop, p) => {
     const fc = prop.fromConservation;
     if (!fc) return;
+    // the base system is conservative over itself (and so is everything it implies)
+    if (sidx.has(fc.base)) setP(p, sidx.get(fc.base), true, { rule: 'cons-base' });
     directResults.forEach((res, ri) => {
-      if (res.type !== 'conservation' || res.value === false) return;
-      if (res.base !== fc.base || !(CLASS_MEMBERS[res.class] || []).includes(fc.class)) return;
-      setP(p, sidx.get(res.statement), true, { rule: 'direct', result: ri });
+      if (res.type !== 'conservation' || res.base !== fc.base || !sidx.has(res.statement)) return;
+      // conservative for a larger class: conservative for this one
+      if (res.value !== false && (CLASS_MEMBERS[res.class] || []).includes(fc.class)) setP(p, sidx.get(res.statement), true, { rule: 'direct', result: ri });
+      // not conservative for a smaller class: not conservative for this one
+      if (res.value === false && (CLASS_MEMBERS[fc.class] || []).includes(res.class)) setP(p, sidx.get(res.statement), false, { rule: 'direct', result: ri });
     });
   });
   drainP();

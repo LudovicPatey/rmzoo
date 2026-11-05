@@ -444,10 +444,11 @@
     - {ref: lehoueroupateyyokoyama2024, loc: Question 1.1}
     - {ref: birs2008, loc: Problems 3.11 and 5.8}
   statements: [srt22, rt22, bsig2]
-  status: partial
-  answer: RT²₂ + WKL₀ is ∀Π⁰₄-conservative over RCA₀ + BΣ⁰₂; full Π¹₁-conservation is open.
+  status: resolved
+  answer: Yes for both. RCA₀ + RT²₂ is Π¹₁-conservative over RCA₀ + BΣ⁰₂ (Hwang 2026, an unrefereed preprint), hence so is SRT²₂, which follows from RT²₂. Earlier, RT²₂ + WKL₀ was shown ∀Π⁰₄-conservative over RCA₀ + BΣ⁰₂.
   resolvedBy:
-    - {ref: lehoueroupateyyokoyama2024}
+    - {ref: hwang2026, loc: Theorem 1.1}
+    - {ref: lehoueroupateyyokoyama2024, loc: Theorem 1.4}
   context: >-
     RT²₂ implies BΣ⁰₂ and is Π¹₁-conservative over RCA₀ + IΣ⁰₂
     [@cholakjockuschslaman2001], so the question is whether BΣ⁰₂ is exactly its
@@ -695,6 +696,9 @@
   statements: [gp22, bsig2, em]
   formal:
     - {from: em, to: gp22, over: rca0}
+  answer: First question, yes. WKL₀ + GP²₂ is Π¹₁-conservative over RCA₀ + BΣ⁰₂ (Le Houérou, Levy Patey and Yokoyama). Whether EM implies GP²₂ is still open.
+  resolvedBy:
+    - {ref: lehoueroupateyyokoyama2024, loc: Theorem 4.2}
   context: >-
     Patey and Yokoyama [@pateyyokoyama2018] introduced the grouping principle to
     obtain density bounds for the Erdős–Moser theorem in their conservation proof
@@ -1179,7 +1183,10 @@
   asked:
     - {ref: lehoueroupatey2025, loc: Question 5.1}
   statements: [brt22, bsig2]
-  status: open
+  status: resolved
+  answer: Yes. BRT²₂ follows from RT²₂, which is Π¹₁-conservative over RCA₀ + BΣ⁰₂ (Hwang 2026, an unrefereed preprint).
+  resolvedBy:
+    - {ref: hwang2026, loc: Theorem 1.1}
   context: >-
     BRT²₂ follows from RT²₂ [@lehoueroupatey2025], so a negative answer would show
     that RT²₂ is not Π¹₁-conservative over RCA₀ + BΣ⁰₂ — the long-standing question

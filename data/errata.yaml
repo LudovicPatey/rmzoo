@@ -1,0 +1,54 @@
+# Errata: statements or claims of papers of the database that are wrong as printed
+# (docs/DESIGN.md, "Errata"). Shown on the page of the paper. Each entry gives the
+# place, what the paper says, and the correct statement with its sources. The
+# database records the correct fact, not the printed one.
+#   kind: misprint (the proof gives the right statement) | error (the claim is false)
+#         | gap (the proof is incomplete; the claim may still hold)
+# Fields: scripts/lib/schema.mjs (erratum).
+
+- ref: soldavalenti2022
+  loc: Proposition 7.17
+  kind: error
+  claim: For k = ℕ, $\mathsf{C}'_k \equiv_W \mathsf{RT}^1_k$ (and $\mathrm{lim}_k \equiv_W \mathsf{SRT}^1_k$, which holds).
+  correction: >
+    False for k = ℕ. The proof cites $\mathsf{C}'_k \equiv_W \mathsf{BWT}_k$, which holds only for finite k (Fact 2.1(1) of
+    [@brattkarakotoniaina2017]). For k = ℕ, [[rt1n]] ≡W BWT_ℕ (Proposition 3.4 of [@brattkarakotoniaina2017]) and
+    BWT_ℕ ≡sW K′_ℕ (Theorem 11.2 of [@brattkagherardimarcone2012]), which is strictly below C′_ℕ. The paper's own Lemma 7.31
+    (LPO′ ≰W RT¹_ℕ) agrees with the corrected statement.
+  refs:
+    - { ref: brattkarakotoniaina2017, loc: "Fact 2.1(1), Proposition 3.4" }
+    - { ref: brattkagherardimarcone2012, loc: "Theorems 11.2 and 12.10" }
+  date: 2026-11-05
+
+- ref: fioricaronesshafersolda2022
+  loc: Proofs of Proposition 7.6 and Theorem 7.11
+  kind: error
+  claim: Trivially $\mathsf{wRSg} \leq_{sW} \mathsf{RT}^2_2$, and trivially $\mathsf{wRSgr} \leq_{sW} \mathsf{RT}^2_2$.
+  correction: >
+    Not for graphs with an arbitrary infinite vertex set, the paper's convention: [[wrsg]] and wRSgr are then
+    cylinders (Proposition 7.2), while LLPO ≰sW RT²₂ (Corollary 3.15 of [@brattkarakotoniaina2017]). The strong reduction holds for
+    graphs with vertex set ℕ, and the Weihrauch reductions hold; the results, about computable and Weihrauch
+    reducibility, are not affected.
+  refs:
+    - { ref: brattkarakotoniaina2017, loc: Corollary 3.15 }
+  date: 2026-11-05
+
+- ref: solda2021
+  loc: Proof of Proposition 2.4.6
+  kind: error
+  claim: $\mathsf{wRSg} \leq_{sW} \mathsf{RT}^2_2$.
+  correction: >
+    As in the journal version [@fioricaronesshafersolda2022]: false for graphs with an arbitrary infinite vertex set, for
+    which [[wrsg]] is a cylinder, since LLPO ≰sW RT²₂ (Corollary 3.15 of [@brattkarakotoniaina2017]); only wRSg ≤W RT²₂ holds.
+  refs:
+    - { ref: brattkarakotoniaina2017, loc: Corollary 3.15 }
+  date: 2026-11-05
+
+- ref: suzukiyokoyama2024
+  loc: Theorem 3.8
+  kind: misprint
+  claim: $\mathsf{ATR}_2 \not\leq_W \mathsf{ATR}_2 \times \mathsf{ATR}_2$.
+  correction: >
+    The sides are swapped: the proof (Lemma 3.7 applied to ATR₂ × ATR₂) and Theorem 3.10 give
+    ATR₂ × ATR₂ ≰W ATR₂, so [[atr2]] is not idempotent.
+  date: 2026-11-05

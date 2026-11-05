@@ -1,0 +1,3 @@
+# Results from [hwang2026] (preprint, October 2026, not yet refereed).
+
+- { type: conservation, statement: rt22, base: bsig2, class: Pi11, value: true, refs: [ { ref: hwang2026, loc: Theorem 1.1 } ], note: "Resolves the long-standing question of the first-order part of RT²₂: RCA₀ + RT²₂ and RCA₀ + BΣ⁰₂ have the same first-order consequences. Unrefereed preprint." }

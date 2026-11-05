@@ -37,14 +37,24 @@ export const baseId = (b) => {
 };
 
 // The fact proposed by the model as a database entry (data/results/ format, no refs).
-export function entry(f) {
+// A conjunction written "wkl-coh" or "coh + wkl": its ids sorted and joined by "-",
+// as the build names conjunctions (ids of the catalogue that contain "-" are kept).
+export const conjId = (id, known = () => false) => {
+  const s = String(id ?? '').trim();
+  if (!s || known(s) || !/[-+]/.test(s) || /[.()]/.test(s)) return s;
+  const parts = s.split(/\s*[-+]\s*/).filter(Boolean).map((p) => p.toLowerCase());
+  return parts.length > 1 ? [...new Set(parts)].sort().join('-') : s;
+};
+
+export function entry(f, known) {
+  const c = (id) => conjId(id, known);
   switch (f.type) {
     case 'implication': case 'separation': case 'equivalence':
-      return { type: f.type, from: f.from, to: f.to, over: f.over };
+      return { type: f.type, from: c(f.from), to: c(f.to), over: f.over };
     case 'property':
-      return { type: 'property', statement: f.statement, property: f.property, value: f.value };
+      return { type: 'property', statement: c(f.statement), property: f.property, value: f.value };
     case 'conservation':
-      return { type: 'conservation', statement: f.statement, base: baseId(f.base), class: f.class, value: f.value };
+      return { type: 'conservation', statement: c(f.statement), base: baseId(f.base), class: f.class, value: f.value };
     default: return null;
   }
 }
@@ -55,7 +65,9 @@ export function factChecker(raw, zoo) {
   const OPNAMES = new Set(Object.values(OPERATIONS).map((o) => o.dotted));
   // A dotted operator id (cn.x.lpo, (cn.x.lpo).jump) is acceptable when all its
   // components are known statements: the build creates the operator statement.
-  const knownId = (id) => kindOf.has(id) || (/\./.test(id) && id.replace(/[()]/g, '').split('.').every((p) => kindOf.has(p) || OPNAMES.has(p)));
+  const knownId = (id) => kindOf.has(id) || (/\./.test(id) && id.replace(/[()]/g, '').split('.').every((p) => kindOf.has(p) || OPNAMES.has(p)))
+    // a conjunction of catalogue statements (the build creates it): coh-fs-wkl
+    || (/-/.test(id) && !/[.()]/.test(id) && id.split('-').length > 1 && id.split('-').every((p) => kindOf.has(p)));
   const isProblem = (id) => (kindOf.has(id) ? kindOf.get(id) === 'problem' : id.includes('.'));
   const rmap = new Map(raw.reductions.map((r) => [r.id, r]));
   const pset = new Set(raw.properties.map((p) => p.id));
@@ -112,7 +124,7 @@ export function factChecker(raw, zoo) {
   //            special-case, no contradiction;
   //   'review' anything else, with the reasons.
   function triage(f, locate) {
-    const e = entry(f);
+    const e = entry(f, (id) => kindOf.has(id));
     const reasons = validity(e);
     if (locate(f.quote) < 0) reasons.push('the quoted passage was not found in the text');
     if (!String(f.loc ?? '').trim()) reasons.push('no theorem number');

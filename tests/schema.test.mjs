@@ -85,3 +85,27 @@ test('concepts (data/concepts.yaml) have a source and are used by some statement
   assert.ok(!(zoo.statements.find((s) => s.id === 'rsat')?._concepts || []).includes('homogeneous'));
   assert.ok((zoo.statements.find((s) => s.id === 'rt22')?._concepts || []).includes('homogeneous'));
 });
+
+test('levels of hyperimmunity preservation: a chain, and pages show the optimal level', async () => {
+  const { buildZoo } = await import('../site/js/engine.js');
+  const raw = JSON.parse(fs.readFileSync('site/data/zoo.json', 'utf8'));
+  const chain = ['hyperimmunity-preservation', 'hyperimmunities-k-preservation', 'hyperimmunities-3-preservation', 'hyperimmunities-2-preservation', 'hyperimmunities-1-preservation'];
+  chain.slice(0, -1).forEach((p, i) => assert.deepEqual(raw.properties.find((x) => x.id === p).implies, [chain[i + 1]], p));
+  const z = buildZoo(raw);
+  const shown = (id) => z.salientProps(z.sidx.get(id)).map((p) => raw.properties[p].id).filter((p) => chain.includes(p));
+  // RT²₂ preserves one hyperimmunity but not two: both levels, nothing else of the chain
+  assert.deepEqual(shown('rt22').sort(), ['hyperimmunities-1-preservation', 'hyperimmunities-2-preservation']);
+  // COH preserves countably many: only the top level is listed
+  assert.deepEqual(shown('coh'), ['hyperimmunity-preservation']);
+});
+
+test('errata (data/errata.yaml): known papers, kinds, shown on paper pages', () => {
+  const zoo = JSON.parse(fs.readFileSync('site/data/zoo.json', 'utf8'));
+  assert.ok(zoo.errata.length > 0);
+  for (const x of zoo.errata) {
+    assert.ok(zoo.references[x.ref], x.ref);
+    assert.ok(['misprint', 'error', 'gap'].includes(x.kind), `${x.ref} ${x.loc}`);
+    for (const r of x.refs || []) assert.ok(zoo.references[r.ref], r.ref);
+  }
+  assert.match(fs.readFileSync('site/js/app.js', 'utf8'), /erratumHtml\(key\)/);
+});
