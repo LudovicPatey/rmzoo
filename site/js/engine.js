@@ -133,6 +133,8 @@ export function buildZoo(raw) {
 
   // --- implications --------------------------------------------------------
   const I = R.map(() => new Map());
+  // membership of I (and N below) as byte arrays: the hot loops test them millions of times
+  const Ib = R.map(() => new Uint8Array(n * n));
   const out = R.map(() => S.map(() => []));
   const inn = R.map(() => S.map(() => []));
   const queue = [];
@@ -142,7 +144,8 @@ export function buildZoo(raw) {
   function addI(r, a, b, just) {
     if (!inDomain(r, a) || !inDomain(r, b)) return;
     const k = key(a, b);
-    if (I[r].has(k)) return;
+    if (Ib[r][k]) return;
+    Ib[r][k] = 1;
     I[r].set(k, just);
     out[r][a].push(b);
     inn[r][b].push(a);
@@ -300,12 +303,12 @@ export function buildZoo(raw) {
     const ob = out[r][b];
     for (let i = 0, len = ob.length; i < len; i++) {
       const c = ob[i];
-      if (!I[r].has(key(a, c))) addI(r, a, c, { rule: 'trans', prem: [fI(r, a, b), fI(r, b, c)] });
+      if (!Ib[r][key(a, c)]) addI(r, a, c, { rule: 'trans', prem: [fI(r, a, b), fI(r, b, c)] });
     }
     const ia = inn[r][a];
     for (let i = 0, len = ia.length; i < len; i++) {
       const z = ia[i];
-      if (!I[r].has(key(z, b))) addI(r, z, b, { rule: 'trans', prem: [fI(r, z, a), fI(r, a, b)] });
+      if (!Ib[r][key(z, b)]) addI(r, z, b, { rule: 'trans', prem: [fI(r, z, a), fI(r, a, b)] });
     }
     for (const r2 of coarserDirect[r]) addI(r2, a, b, { rule: 'coarsen', prem: [fI(r, a, b)] });
     if (R[r].conjunction) {
@@ -417,6 +420,7 @@ export function buildZoo(raw) {
 
   // --- non-implications ----------------------------------------------------
   const N = R.map(() => new Map());
+  const Nb = R.map(() => new Uint8Array(n * n));
   const fN = (r, a, b) => ({ t: 'N', r, a, b });
   for (const r of order) {
     const q = [];
@@ -424,7 +428,8 @@ export function buildZoo(raw) {
     const addN = (a, b, just) => {
       if (!inDomain(r, a) || !inDomain(r, b)) return;
       const k = key(a, b);
-      if (N[r].has(k)) return;
+      if (Nb[r][k]) return;
+      Nb[r][k] = 1;
       N[r].set(k, just);
       q.push(a, b);
     };
@@ -477,8 +482,16 @@ export function buildZoo(raw) {
           if ((CLASS_MEMBERS[cls] || []).includes(f))
             addN(x, c, { rule: 'conservation', result: ri, prem: [fN(r, a, c)] });
       }
-      for (const b of out[r][a]) if (b !== a) addN(b, c, { rule: 'weaken-left', prem: [fN(r, a, c), fI(r, a, b)] });
-      for (const d of inn[r][c]) if (d !== c) addN(a, d, { rule: 'strengthen-right', prem: [fN(r, a, c), fI(r, d, c)] });
+      // check before building the justification: most candidates are already known
+      const Nr = Nb[r], oa = out[r][a], ic = inn[r][c];
+      for (let i = 0, len = oa.length; i < len; i++) {
+        const b = oa[i];
+        if (b !== a && !Nr[key(b, c)]) addN(b, c, { rule: 'weaken-left', prem: [fN(r, a, c), fI(r, a, b)] });
+      }
+      for (let i = 0, len = ic.length; i < len; i++) {
+        const d = ic[i];
+        if (d !== c && !Nr[key(a, d)]) addN(a, d, { rule: 'strengthen-right', prem: [fN(r, a, c), fI(r, d, c)] });
+      }
     }
     for (const k of N[r].keys()) {
       if (I[r].has(k)) {

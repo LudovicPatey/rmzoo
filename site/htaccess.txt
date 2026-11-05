@@ -1,3 +1,15 @@
 RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE,QSA]
+
+# Compress text responses (zoo.json is about 1.5 MB, 230 KB compressed).
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE application/json text/javascript application/javascript text/css text/html image/svg+xml
+</IfModule>
+# Keep a copy in the browser but revalidate it at each visit: the server answers
+# "304 not modified" until the next deploy (file names are not versioned).
+<IfModule mod_headers.c>
+  <FilesMatch "\.(json|js|css|html)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

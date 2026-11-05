@@ -443,3 +443,7 @@ svg.mini circle.off { opacity: .15; }
 @media (max-width: 640px) { .concepts { grid-template-columns: 1fr; } .concepts dd { margin-bottom: 8px; } }
 .erratum { background: var(--open-soft); border-left: 3px solid var(--open); padding: 8px 12px; border-radius: 6px; margin: 0 0 10px; }
 .erratum > div + div { margin-top: 4px; }
+.loading { display: flex; align-items: center; gap: 10px; padding: 24px 0; }
+.spinner { width: 16px; height: 16px; border: 2px solid var(--line, rgba(127,127,127,.3)); border-top-color: var(--accent, #4a6cf7); border-radius: 50%; animation: spin .8s linear infinite; flex: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }

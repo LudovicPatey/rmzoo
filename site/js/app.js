@@ -2137,9 +2137,39 @@ function rerender() { // re-run the current view without scrolling (after select
 // ============================================================================
 // boot
 // ============================================================================
+// The data is downloaded while KaTeX loads, with the progress shown; the browser keeps
+// a copy and revalidates it (304 until the next deploy). The inference then runs on the
+// main thread, after the message has been painted.
+const bootStatus = (html) => { const m = main(); if (m) m.innerHTML = `<div class="loading"><span class="spinner"></span>${html}</div>`; };
+// let the browser paint the message; requestAnimationFrame never fires in a background
+// tab, so a short timer is the fallback
+const paint = () => new Promise((r) => { const t = setTimeout(r, 50); requestAnimationFrame(() => setTimeout(() => { clearTimeout(t); r(); }, 0)); });
+async function loadZoo() {
+  const res = await fetch('data/zoo.json', { cache: 'no-cache' });
+  if (!res.ok) throw new Error(`data/zoo.json: ${res.status}`);
+  if (!res.body?.getReader) return res.json();
+  const reader = res.body.getReader();
+  const chunks = [];
+  let got = 0, shown = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+    got += value.length;
+    if (got - shown > 100e3) { shown = got; bootStatus(`Downloading the zoo… ${(got / 1e6).toFixed(1)} MB`); }
+  }
+  const all = new Uint8Array(got);
+  let at = 0;
+  for (const c of chunks) { all.set(c, at); at += c.length; }
+  return JSON.parse(new TextDecoder().decode(all));
+}
 async function boot() {
+  bootStatus('Downloading the zoo…');
+  const rawP = loadZoo();
   while (!window.katex) await new Promise((r) => setTimeout(r, 20));
-  const raw = await (await fetch('data/zoo.json', { cache: 'no-store' })).json();
+  const raw = await rawP;
+  bootStatus(`Deriving the relations between ${raw.statements.length} statements from ${raw.results.length} results…`);
+  await paint();
   Z = buildZoo(raw);
   Z.raw.results.forEach((r, ri) => resultIdx.set(r._key, ri));
   if (state.mode && !MODE()) state.mode = ''; // a mode that no longer exists

@@ -65,6 +65,7 @@ scripts/             build (YAML → JSON + validation), consolidation, dev serv
   lib/results.mjs    writing results without duplicates (add-results, AI reader)
   lib/ai-facts.mjs   checks deciding which AI-proposed facts are published
   lib/ai-models.mjs  models of the AI reader, prices, cost estimates, the --upgrade selection
+  lib/data-hash.mjs  hash of data/ stored in zoo.json by the build, checked by deploy
   mine/              candidate results and questions from the full texts (regexes)
   ai-analyze.mjs     AI reading of each full text, once (Claude API)
   review.mjs         the review queue: list, accept / reject, apply the votes of the review page

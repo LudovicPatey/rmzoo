@@ -11,6 +11,7 @@
 //       asks in the terminal; an SSH key works too). The default.
 // ftp:  FTP with TLS through curl, for hosts that support it (OVH does not); the
 //       password is asked (or RMZOO_FTP_PASSWORD), never stored.
+import { dataHash } from './lib/data-hash.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync, execFileSync } from 'node:child_process';
@@ -36,12 +37,9 @@ if (!dry && (!opt.host || !opt.user)) {
 
 // ---- checks ------------------------------------------------------------------
 const files = deployFiles('site');
-// the built data must be newer than the sources
-const newest = (dir) => fs.readdirSync(dir, { withFileTypes: true }).reduce((m, e) => {
-  const p = path.join(dir, e.name);
-  return Math.max(m, e.isDirectory() ? newest(p) : fs.statSync(p).mtimeMs);
-}, 0);
-if (newest('data') > fs.statSync('site/data/zoo.json').mtimeMs) {
+// the built data must come from the current data/ (compared by content, not file times)
+const built = JSON.parse(fs.readFileSync('site/data/zoo.json', 'utf8')).dataHash;
+if (built !== dataHash('data')) {
   console.error('data/ changed after the last build: run npm run check && npm run build first.');
   process.exit(1);
 }

@@ -12,6 +12,7 @@ import { execFileSync } from 'node:child_process';
 import { buildZoo, questionStatus } from '../site/js/engine.js';
 import { KINDS, screenKey, reviewStatus } from '../site/js/review.js';
 import { cli } from './lib/cli.mjs';
+import { dataHash } from './lib/data-hash.mjs';
 import { unknownFields, OPERATIONS, resultKey, orcidValid } from './lib/schema.mjs';
 cli('node scripts/build.mjs [--check] [--verbose]', { '--check': 0, '--verbose': 0 });
 
@@ -659,7 +660,8 @@ if (!checkOnly) {
   const outDir = path.join(root, 'site', 'data');
   fs.mkdirSync(outDir, { recursive: true });
   // _key: identity of each result (endorsements refer to it)
-  const clean = { ...raw, statements: raw.statements, results: raw.results.map((r) => ({ ...r, _key: resultKey(r) })), builtAt: new Date().toISOString() };
+  // dataHash: the contents of data/ this build was made from (deploy checks it)
+  const clean = { ...raw, statements: raw.statements, results: raw.results.map((r) => ({ ...r, _key: resultKey(r) })), builtAt: new Date().toISOString(), dataHash: dataHash(dataDir) };
   fs.writeFileSync(path.join(outDir, 'zoo.json'), JSON.stringify(clean));
   // abstracts are loaded on demand by the paper pages; light TeX clean-up for display
   const detex = (t) => String(t).replace(/<\/?(jats:)?[a-z]+[^>]*>/g, '')

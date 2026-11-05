@@ -32,3 +32,18 @@ test('curl and sftp instructions upload and never delete', () => {
   assert.deepEqual(b.trim().split('\n').map((l) => l.split(' ')[0]), ['-mkdir', '-mkdir', 'put', 'put']);
   assert.doesNotMatch(b, /^-?(rm|rmdir|rename)\b/m);
 });
+
+test('the build check of deploy compares contents, not file times', async () => {
+  const { dataHash } = await import('../scripts/lib/data-hash.mjs');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rmzoo-hash-'));
+  fs.mkdirSync(path.join(dir, 'results'));
+  fs.writeFileSync(path.join(dir, 'a.yaml'), 'x: 1\n');
+  fs.writeFileSync(path.join(dir, 'results', 'b.yaml'), 'y: 2\n');
+  const h = dataHash(dir);
+  const later = new Date(Date.now() + 60e3);
+  fs.utimesSync(path.join(dir, 'a.yaml'), later, later); // touched, same content
+  assert.equal(dataHash(dir), h);
+  fs.writeFileSync(path.join(dir, 'results', 'b.yaml'), 'y: 3\n');
+  assert.notEqual(dataHash(dir), h);
+  fs.rmSync(dir, { recursive: true });
+});
