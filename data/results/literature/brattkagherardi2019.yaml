@@ -3,9 +3,9 @@
 - { type: separation, from: cn, to: tcn, over: w, refs: [ { ref: brattkagherardi2019, loc: Corollary 8.3 } ] }
 - { type: separation, from: lim, to: lpo.jump, over: w, refs: [ { ref: brattkagherardi2019, loc: Lemma 4.24 } ] }
 - { type: separation, from: tcn, to: lpo.jump, over: w, refs: [ { ref: brattkagherardi2019, loc: Corollary 8.11(1) } ] }
-- { type: implication, from: sort, to: cn, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" } ] }
-- { type: separation, from: cn, to: sort, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" } ] }
+- { type: implication, from: sort, to: cn, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" }, { ref: gherardimarconepauly2018, loc: Proposition 3.2 } ] }
+- { type: separation, from: cn, to: sort, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" }, { ref: gherardimarconepauly2018, loc: Proposition 3.2 } ] }
 - { type: implication, from: lim, to: sort, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" }, { ref: brattkachirache2026, loc: Proof of Theorem 32 } ] }
-- { type: separation, from: sort, to: lim, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" } ] }
+- { type: separation, from: sort, to: lim, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" }, { ref: gherardimarconepauly2018, loc: Proposition 3.3 } ] }
 - { type: separation, from: tcn, to: sort, over: w, refs: [ { ref: brattkagherardi2019, loc: after Corollary 8.15 } ] }
 - { type: separation, from: sort, to: tcn, over: w, refs: [ { ref: brattkagherardi2019, loc: after Corollary 8.15 } ] }

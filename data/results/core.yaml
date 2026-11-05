@@ -116,7 +116,7 @@
 - { type: property, statement: llpo, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "The solution is a single bit." } }
 - { type: property, statement: cn, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "Solutions are natural numbers, hence computable." }, refs: [ { ref: goh2019b, loc: "Section 1.3.3, after Definition 1.11" } ] }
 - { type: property, statement: kn, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Solutions are natural numbers, hence computable." } }
-- { type: property, statement: ivt, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "A computable function with a sign change has a computable zero: either some rational is a zero, or the bisection method converges computably." }, refs: [ { ref: dzhafarovmummert2022, loc: "Section 10.4, list of properties after Theorem 10.4.3 (item 1); Theorem 10.4.1" } ] }
+- { type: property, statement: ivt, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "A computable function with a sign change has a computable zero: either some rational is a zero, or the bisection method converges computably." }, refs: [ { ref: dzhafarovmummert2022, loc: "Section 10.4, list of properties after Theorem 10.4.3 (item 1); Theorem 10.4.1" }, { ref: brattkagherardi2011b, loc: "Section 6, main results listed before Theorem 6.2" } ] }
 
 # Long versions of Ramseyan principles (data/statements/ramsey.yaml): they coincide
 # with the normal versions over RCA₀, and imply them over RCA₀*.

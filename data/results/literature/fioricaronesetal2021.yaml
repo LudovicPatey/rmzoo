@@ -1,0 +1,3 @@
+# Results from [fioricaronesetal2021].
+
+[ { type: equivalence, from: wkl, to: sep, over: rca0star, refs: [ { ref: fioricaronesetal2021, loc: Proof of Lemma 3.2 } ] } ]

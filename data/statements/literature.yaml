@@ -16,6 +16,7 @@
 - id: adc
   label: '\mathsf{ADC}'
   name: Ascending or descending chain
+  caution: 'For strong Weihrauch reducibility the domain of the instance matters. Here the linear order has domain ℕ, as in Astor et al. [@astoretal2017]; Fiori-Carones, Shafer and Soldà [@fioricaronesshafersolda2022] allow any infinite subset of ℕ, which gives the cylindrification of this problem (same Weihrauch degree). Their strong reductions and cylinder claims are about that version.'
   kind: problem
   formulationOf: ads
   tags: [ orders ]
@@ -308,6 +309,7 @@
 - id: nfp
   label: '\mathsf{NFP}'
   name: Noetherian rings have finitely many prime ideals
+  caution: 'In higher-order reverse mathematics, NFP is the neighbourhood function principle, an unrelated statement about functionals (Definition 5.1 of [@sanders2019b]); it is not in the catalogue.'
   kind: sentence
   tags: [ algebra ]
   definition: Every Noetherian ring has only finitely many prime ideals.

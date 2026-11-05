@@ -117,3 +117,13 @@ test('quotes are found in texts with math italic letters and ligatures', () => {
   assert.equal(book.slice(at('If c : [ω]n → ω is an instance of RRT')).startsWith('If 𝑐'), true);
   assert.equal(at('there exists a finite c-computable set J'), -1);
 });
+
+test('AI reader: base systems of conservation results are catalogue ids', async () => {
+  const { entry, baseId } = await import('../scripts/lib/ai-facts.mjs');
+  assert.equal(baseId('rca0 + bsig2'), 'bsig2');
+  assert.equal(baseId('RCA0+isig2'), 'isig2');
+  assert.equal(baseId('RCA0'), 'rca0');
+  assert.equal(baseId('isig1'), 'rca0'); // RCA₀ contains IΣ⁰₁: recorded over rca0
+  assert.equal(baseId('rcastar + not isig1'), 'rcastar + not isig1'); // left as is: rejected as unknown
+  assert.equal(entry({ type: 'conservation', statement: 'ads', base: 'rca0 + bsig2', class: 'Pi11', value: true }).base, 'bsig2');
+});

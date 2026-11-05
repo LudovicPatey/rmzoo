@@ -5,3 +5,6 @@
 - { type: "separation", from: "cn", to: "lim", over: "w", refs: [ { ref: brattkadebrechtpauly2012 } ] }
 - { type: equivalence, from: ucn, to: cn, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: Proposition 6.2 } ] }
 - { type: equivalence, from: cr, to: cn.x.wkl, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: Corollary 4.9 } ] }
+- { type: property, statement: cr, property: idempotent, value: true, refs: [ { ref: brattkadebrechtpauly2012, loc: Corollary 7.6 } ] }
+- { type: equivalence, from: cn.par, to: lim, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: Example 3.10 } ] }
+- { type: property, statement: cr, property: compose-closed, value: true, refs: [ { ref: brattkadebrechtpauly2012, loc: Corollary 7.6 } ] }

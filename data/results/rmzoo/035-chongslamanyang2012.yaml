@@ -1,7 +1,7 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Chong, Slaman, Yang (2012) — $\Pi^1_1-conservation of combinatorial principles weaker than Ramsey's theorem for pairs
 
-- {type: "conservation", statement: "bsig2-sads", base: "bsig2", class: "Pi11", value: true, refs: [{ref: "chongslamanyang2012", loc: "Corollary 4.1"}]}
-- {type: "conservation", statement: "ads", base: "bsig2", class: "Pi11", value: true, refs: [{ref: "chongslamanyang2012", loc: "Corollary 4.4"}]}
-- {type: "conservation", statement: "scac", base: "bsig2", class: "Pi11", value: true, refs: [{ref: "chongslamanyang2012", loc: "Corollary 5.1"}]}
-- {type: "conservation", statement: "cac", base: "bsig2", class: "Pi11", value: true, refs: [{ref: "chongslamanyang2012", loc: "Corollary 5.2"}]}
+- { type: "conservation", statement: "bsig2-sads", base: "bsig2", class: "Pi11", value: true, refs: [ { ref: "chongslamanyang2012", loc: "Corollary 4.1" } ] }
+- { type: "conservation", statement: "ads", base: "bsig2", class: "Pi11", value: true, refs: [ { ref: "chongslamanyang2012", loc: "Corollary 4.4" } ] }
+- { type: "conservation", statement: "scac", base: "bsig2", class: "Pi11", value: true, refs: [ { ref: chongslamanyang2012, loc: Corollary 5.1 }, { ref: chongliyang2014, loc: After Theorem 4.13 } ] }
+- { type: "conservation", statement: "cac", base: "bsig2", class: "Pi11", value: true, refs: [ { ref: "chongslamanyang2012", loc: "Corollary 5.2" } ] }

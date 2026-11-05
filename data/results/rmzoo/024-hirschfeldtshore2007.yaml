@@ -5,7 +5,7 @@
 - { type: "separation", from: "rca0", to: "sads", over: "omega", refs: [ { ref: "hirschfeldtshore2007", loc: "Corollary 2.6" } ] }
 - { type: "separation", from: "rca0", to: "cads", over: "omega", refs: [ { ref: "hirschfeldtshore2007", loc: "Corollary 2.6" } ] }
 - { type: "equivalence", from: "ads", to: "cads-sads", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 2.7" } ] }
-- { type: "implication", from: "srt22", to: "sads", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 2.8" } ] }
+- { type: "implication", from: "srt22", to: "sads", over: "rca0", refs: [ { ref: hirschfeldtshore2007, loc: Proposition 2.8 }, { ref: cervellegaudelierpatey2022, loc: "Section 7, after Definition 7.1" } ] }
 - { type: "implication", from: "crt22", to: "cads", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 2.9" } ] }
 - { type: "implication", from: "ads", to: "coh", over: "rca0", refs: [ { ref: hirschfeldtshore2007, loc: Proposition 2.10 }, { ref: dzhafarovmummert2022, loc: Theorem 9.2.8 } ] }
 - { type: "separation", from: "sads", to: "srt22", over: "omega", refs: [ { ref: "hirschfeldtshore2007", loc: "Corollary 2.13" } ] }
@@ -15,7 +15,7 @@
 - { type: "conservation", statement: "coh", base: "rca0", class: "rPi12", value: true, refs: [ { ref: "hirschfeldtshore2007", loc: "Corollary 2.21" } ] }
 - { type: "separation", from: "coh-wkl", to: "sads", over: "omega", refs: [ { ref: "hirschfeldtshore2007", loc: "Corollary 2.25" } ] }
 - { type: "separation", from: "coh-sads", to: "dnr", over: "omega", refs: [ { ref: "hirschfeldtshore2007", loc: "Corollary 2.28" } ] }
-- { type: "implication", from: "cac", to: "ads", over: "rca0", refs: [ { ref: hirschfeldtshore2007, loc: Proposition 3.1 }, { ref: dzhafarovmummert2022, loc: Proposition 9.2.5 } ] }
+- { type: "implication", from: "cac", to: "ads", over: "rca0", refs: [ { ref: hirschfeldtshore2007, loc: Proposition 3.1 }, { ref: dzhafarovmummert2022, loc: Proposition 9.2.5 }, { ref: steilayokoyama2015, loc: "Section 2, remark before Proposition 2.1" } ] }
 - { type: "implication", from: "srt22", to: "scac", over: "rca0", refs: [ { ref: hirschfeldtshore2007, loc: Proposition 3.3 }, { ref: dzhafarovmummert2022, loc: Proposition 9.2.12(3) } ] }
 - { type: "implication", from: "scac", to: "sads", over: "rca0", refs: [ { ref: hirschfeldtshore2007, loc: Proposition 3.3 }, { ref: dzhafarovmummert2022, loc: Proposition 9.2.12(3) } ] }
 - { type: "separation", from: "scac", to: "srt22", over: "omega", refs: [ { ref: hirschfeldtshore2007, loc: Corollary 3.6 }, { ref: dzhafarovmummert2022, loc: Corollary 9.2.20 } ] }
@@ -40,4 +40,4 @@
 - { type: "equivalence", from: "stcrt22", to: "bsig2-crt22", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 4.8" } ] }
 - { type: "equivalence", from: "bsig2-crt22", to: "stcoh", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 4.8" } ] }
 - { type: "implication", from: "coh", to: "crt22", over: "rca0", refs: [ { ref: cholakjockuschslaman2001, loc: Lemma 7.11 (implicit) }, { ref: hirschfeldtshore2007, loc: Proposition 1.4 }, { ref: kowalik2024, loc: Theorem 1.20 }, { ref: patey2016c, loc: Lemma 5.1.2 }, { ref: hirschfeldt2015, loc: "Section 9.1, after Exercise 9.17" } ] }
-- { type: "implication", from: "rt22", to: "cac", over: "rca0", refs: [ { ref: cholakjockuschslaman2001, loc: Question 13.8 }, { ref: hirschfeldtshore2007, loc: comment following the definition of CAC }, { ref: hirschfeldt2015, loc: "Section 9.1, after Definition 9.2" }, { ref: dzhafarovmummert2022, loc: Proposition 9.2.4 } ], justification: { kind: reduction, text: "Color the pair {x < y} by whether x and y are comparable; homogeneous sets are chains or antichains.", by: ai } }
+- { type: "implication", from: "rt22", to: "cac", over: "rca0", refs: [ { ref: cholakjockuschslaman2001, loc: Question 13.8 }, { ref: hirschfeldtshore2007, loc: comment following the definition of CAC }, { ref: hirschfeldt2015, loc: "Section 9.1, after Definition 9.2" }, { ref: dzhafarovmummert2022, loc: Proposition 9.2.4 }, { ref: cervellegaudelierpatey2022, loc: Section 1.1 } ], justification: { kind: reduction, text: "Color the pair {x < y} by whether x and y are comparable; homogeneous sets are chains or antichains.", by: ai } }

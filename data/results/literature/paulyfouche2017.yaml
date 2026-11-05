@@ -1,0 +1,3 @@
+# Results from [paulyfouche2017].
+
+[ { type: implication, from: lim.star.lim, to: lim, over: w, refs: [ { ref: paulyfouche2017, loc: "Section 2.3, paragraph after Brattka–Pauly [11] (lim)" } ] }, { type: separation, from: lim, to: lim.star.lim, over: w, refs: [ { ref: paulyfouche2017, loc: "Section 2.3, paragraph after Brattka–Pauly [11] (lim)" } ] } ]

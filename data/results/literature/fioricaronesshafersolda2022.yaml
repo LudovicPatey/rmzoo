@@ -11,3 +11,14 @@
 - { type: implication, from: rt1inf, to: rt15, over: sw, refs: [ { ref: fioricaronesshafersolda2022, loc: "Section 5 (RT¹ₖ ≤sW RT¹_{<∞})" } ] }
 - { type: implication, from: rca0, to: rt14, over: rca0, refs: [ { ref: fioricaronesshafersolda2022, loc: Section 2 (RCA₀ proves RT¹ₖ for each standard k) } ] }
 - { type: implication, from: rca0, to: rt15, over: rca0, refs: [ { ref: fioricaronesshafersolda2022, loc: Section 2 (RCA₀ proves RT¹ₖ for each standard k) } ] }
+- { type: implication, from: wrsg, to: rt1n, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Proposition 7.10 } ] }
+- { type: separation, from: wrsg, to: sadc, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Theorem 7.11 } ] }
+- { type: separation, from: wrsg, to: dnr, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Theorem 7.11 } ] }
+- { type: separation, from: wrsg, to: srt22, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Theorem 7.11 } ] }
+- { type: implication, from: (lpo.x.lpo).star.wrsg, to: srt22, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Theorem 7.14(2) } ] }
+- { type: implication, from: (wrsg.star.wrsg).star.wrsg, to: rt22, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Corollary 7.15 } ] }
+- { type: implication, from: wrsg, to: lpo.x.lpo, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Proof of Corollary 7.15 } ] }
+- { type: property, statement: wkl-jj, property: cylinder, value: true, refs: [ { ref: fioricaronesshafersolda2022, loc: "Section 6, remarks after Corollary 6.12" } ] }
+- { type: implication, from: wrsg, to: coh, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Theorem 7.9 } ] }
+- { type: separation, from: lim, to: wrsg, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Theorem 7.11 } ] }
+- { type: separation, from: rt1n, to: wrsg, over: w, refs: [ { ref: fioricaronesshafersolda2022, loc: Theorem 7.11 } ] }

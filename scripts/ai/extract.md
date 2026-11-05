@@ -16,7 +16,9 @@ more than coverage. A missing fact is acceptable; a wrong fact is not.
   "P × P ≡W P" is `idempotent`, "P̂ ≡W P" `parallelizable` (`strongly-parallelizable`
   for ≡sW), "P ⋆ P ≤W P" `compose-closed`, "id × P ≤sW P" `cylinder`.
 * `conservation` statement S is (value true) or is not (value false)
-  Γ-conservative over a base system B, for a formula class Γ.
+  Γ-conservative over a base system B, for a formula class Γ. B is one catalogue
+  id: RCA₀ + BΣ⁰₂ is `bsig2`, RCA₀ + IΣ⁰₂ is `isig2`, RCA₀ itself is `rca0`
+  (also for conservation "over IΣ⁰₁"), never "rca0 + bsig2".
 
 Reductions are given by id (see the catalogue). In particular:
 * `rca0` provability over RCA₀; `rca0star` over RCA₀*; `omega` implication over

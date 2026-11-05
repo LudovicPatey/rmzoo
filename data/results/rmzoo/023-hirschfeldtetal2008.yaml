@@ -3,4 +3,4 @@
 
 - { type: "implication", from: "srt22", to: "dnr", over: "rca0", refs: [ { ref: hirschfeldtetal2008, loc: Theorem 2.4 } ] }
 - { type: "separation", from: "coh", to: "dnr", over: "omega", refs: [ { ref: hirschfeldtetal2008, loc: Theorem 3.7 } ] }
-- { type: "separation", from: "wkl", to: "rt22", over: "rca0", refs: [ { ref: jockusch1972, loc: Theorem 3.1 }, { ref: jockuschsoare1972, loc: Theorem 2.1 } ], note: "A computable coloring with no Δ⁰₂ homogeneous set, together with an ω-model of WKL of low sets." }
+- { type: "separation", from: "wkl", to: "rt22", over: "rca0", refs: [ { ref: jockusch1972, loc: Theorem 3.1 }, { ref: jockuschsoare1972, loc: Theorem 2.1 }, { ref: hirst1987, loc: Corollary 6.9 } ], note: "A computable coloring with no Δ⁰₂ homogeneous set, together with an ω-model of WKL of low sets." }

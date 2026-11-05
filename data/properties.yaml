@@ -198,7 +198,10 @@
   direction: down
   domain: problems
   description: >
-    For every set Z and every Z-hyperimmune set A, every Z-computable instance has a solution Y such that A is (Z ⊕ Y)-hyperimmune.
+    For every set Z and every countable collection A₀, A₁, … of Z-hyperimmune sets, every Z-computable
+    instance has a solution Y such that every Aᵢ is (Z ⊕ Y)-hyperimmune (Patey, "Iterative forcing and
+    hyperimmunity in reverse mathematics", Definition 4.2). Preserving a single hyperimmune set is weaker:
+    RT²₂ does (Mimouni and Patey 2025, Section 6), but it does not preserve two (Patey, Theorem 6, through SADS).
 
 - id: delta02-preservation
   name: Preservation of Δ⁰₂ definitions

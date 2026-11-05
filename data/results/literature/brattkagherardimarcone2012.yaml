@@ -14,3 +14,4 @@
 - { type: separation, from: bwt, to: lim.jump, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 12.7 } ] }
 - { type: property, statement: bwt, property: parallelizable, value: true, refs: [ { ref: brattkagherardimarcone2012, loc: Corollary 11.13 } ] }
 - { type: property, statement: bwt, property: cylinder, value: true, refs: [ { ref: brattkagherardimarcone2012, loc: Corollary 11.13 } ] }
+- { type: equivalence, from: wkl.jump, to: bwt, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: Corollary 11.7 } ] }

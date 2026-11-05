@@ -20,4 +20,4 @@
 - { type: "implication", from: "rcolor2", to: "ast", over: "rca0", refs: [ { ref: "bienvenupateyshafer2017", loc: "Proposition 6.3" } ] }
 - { type: "separation", from: "cac", to: "rcolor2", over: "omega", refs: [ { ref: bienvenupateyshafer2017, loc: Theorem 6.9 }, { ref: patey2016c, loc: Theorem 11.4.7 } ] }
 - { type: "separation", from: "wwkl", to: "rcolor2", over: "omega", refs: [ { ref: bienvenupateyshafer2017, loc: Theorem 6.11 }, { ref: patey2016c, loc: Theorem 11.4.9 } ] }
-- { type: "implication", from: "ran1", to: "dnr", over: "rca0", refs: [ { ref: kucera1985 } ], note: Relativization and formalization of Kučera’s theorem. }
+- { type: "implication", from: "ran1", to: "dnr", over: "rca0", refs: [ { ref: kucera1985 }, { ref: astoretal2026, loc: Theorem 1.1 } ], note: Relativization and formalization of Kučera’s theorem. }

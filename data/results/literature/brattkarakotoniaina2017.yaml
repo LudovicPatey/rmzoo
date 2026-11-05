@@ -47,3 +47,4 @@
 - { type: property, statement: rt32, property: idempotent, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.11 } ] }
 - { type: property, statement: rt42, property: idempotent, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.11 } ] }
 - { type: property, statement: rt1n, property: idempotent, value: true, refs: [ { ref: brattkarakotoniaina2017, loc: "Corollary 3.20 (RT_{1,ℕ}, colors not given)" } ] }
+- { type: implication, from: rt22, to: rt1n, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.25 } ] }

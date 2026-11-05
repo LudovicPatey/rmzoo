@@ -1,3 +1,3 @@
 # Results from [suzukiyokoyama2024].
 
-[ { type: separation, from: atr2, to: atr2.x.atr2, over: w, note: "Printed as ATR₂ ≰W ATR₂ × ATR₂; the proof (Lemma 3.7 applied to ATR₂ × ATR₂) and Theorem 3.10 give ATR₂ × ATR₂ ≰W ATR₂, so ATR₂ is not idempotent.", refs: [ { ref: suzukiyokoyama2024, loc: Theorem 3.8 } ] }, { type: property, statement: atr2, property: parallelizable, value: false, refs: [ { ref: suzukiyokoyama2024, loc: Theorem 3.8 } ] } ]
+[ { type: separation, from: atr2, to: atr2.x.atr2, over: w, note: "Printed as ATR₂ ≰W ATR₂ × ATR₂; the proof (Lemma 3.7 applied to ATR₂ × ATR₂) and Theorem 3.10 give ATR₂ × ATR₂ ≰W ATR₂, so ATR₂ is not idempotent.", refs: [ { ref: suzukiyokoyama2024, loc: Theorem 3.8 } ] }, { type: property, statement: atr2, property: parallelizable, value: false, refs: [ { ref: suzukiyokoyama2024, loc: Theorem 3.8 } ] }, { type: equivalence, from: atr, to: atr2, over: rca0, refs: [ { ref: suzukiyokoyama2024, loc: Example 2.26 } ] } ]

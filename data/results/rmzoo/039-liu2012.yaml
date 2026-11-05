@@ -1,4 +1,4 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Liu (2012) — $\mathsf{RT}^2_2$ does not imply \mathsf{WKL}_0$
 
-- {type: "separation", from: "rt22", to: "wkl", over: "omega", refs: [{ref: "liu2012", loc: "Corollary 1.6"}]}
+- { type: "separation", from: "rt22", to: "wkl", over: "omega", refs: [ { ref: liu2012, loc: Corollary 1.6 }, { ref: dzhafarovmummert2022, loc: Corollary 8.6.2 } ] }

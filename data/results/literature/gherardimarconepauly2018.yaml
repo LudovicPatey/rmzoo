@@ -1,0 +1,3 @@
+# Results from [gherardimarconepauly2018].
+
+[ { type: separation, from: sort, to: cr, over: w, refs: [ { ref: gherardimarconepauly2018, loc: Proposition 3.5 } ] }, { type: separation, from: cr, to: sort, over: w, refs: [ { ref: gherardimarconepauly2018, loc: Proposition 3.5 } ] } ]

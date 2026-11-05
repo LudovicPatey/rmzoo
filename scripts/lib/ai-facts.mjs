@@ -27,6 +27,15 @@ export function locator(text) {
   };
 }
 
+// A base system written "RCA0 + BΣ2", "rca0+isig2" or "RCA0": the catalogue id
+// (base systems extend RCA₀; IΣ⁰₁ is recorded as rca0, as the existing entries).
+export const baseId = (b) => {
+  const s = String(b ?? '').trim();
+  if (/^rca0$/i.test(s) || /^isig1$/i.test(s)) return 'rca0';
+  const m = s.match(/^rca0\s*\+\s*([a-z0-9]+)$/i);
+  return m ? (m[1].toLowerCase() === 'isig1' ? 'rca0' : m[1].toLowerCase()) : s;
+};
+
 // The fact proposed by the model as a database entry (data/results/ format, no refs).
 export function entry(f) {
   switch (f.type) {
@@ -35,7 +44,7 @@ export function entry(f) {
     case 'property':
       return { type: 'property', statement: f.statement, property: f.property, value: f.value };
     case 'conservation':
-      return { type: 'conservation', statement: f.statement, base: f.base, class: f.class, value: f.value };
+      return { type: 'conservation', statement: f.statement, base: baseId(f.base), class: f.class, value: f.value };
     default: return null;
   }
 }

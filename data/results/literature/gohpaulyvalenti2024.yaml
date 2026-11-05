@@ -2,5 +2,11 @@
 
 - { type: "separation", from: "ds", to: "kl", over: "w", refs: [ { ref: gohpaulyvalenti2024, loc: Corollary 4.4 } ] }
 - { type: "separation", from: "bs", to: "kl", over: "w", refs: [ { ref: gohpaulyvalenti2024, loc: Corollary 4.4 } ], note: "KL ≡ WKL′ is parallelizable and above ACC_N, so it would be below lim." }
-- { type: "implication", from: "bs", to: "ds", over: "w", refs: [ { ref: gohpaulyvalenti2024 } ] }
+- { type: "implication", from: "bs", to: "ds", over: "w", refs: [ { ref: gohpaulyvalenti2024, loc: Theorem 3.1 } ] }
 - { type: "separation", from: "ds", to: "bs", over: "w", refs: [ { ref: gohpaulyvalenti2024, loc: Theorem 3.1 } ] }
+- { type: property, statement: bs, property: cylinder, value: true, refs: [ { ref: gohpaulyvalenti2024, loc: Proof of Proposition 9.8 } ] }
+- { type: equivalence, from: ds, to: cn.x.ds, over: w, refs: [ { ref: gohpaulyvalenti2024, loc: Proposition 9.4 } ] }
+- { type: equivalence, from: ds, to: ds.star.cn, over: w, refs: [ { ref: gohpaulyvalenti2024, loc: Proposition 9.4 } ] }
+- { type: equivalence, from: bs, to: cn.x.bs, over: w, refs: [ { ref: gohpaulyvalenti2024, loc: Proposition 9.4 } ] }
+- { type: equivalence, from: bs, to: bs.star.cn, over: w, refs: [ { ref: gohpaulyvalenti2024, loc: Proposition 9.4 } ] }
+- { type: separation, from: bs, to: sort.x.rt12, over: w, refs: [ { ref: gohpaulyvalenti2024, loc: Proposition 9.8 } ] }

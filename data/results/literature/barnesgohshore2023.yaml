@@ -1,0 +1,3 @@
+# Results from [barnesgohshore2023].
+
+[ { type: separation, from: aca, to: irt, over: rca0, refs: [ { ref: barnesgohshore2023, loc: "Section 4, remark after Theorem 4.2" } ] }, { type: separation, from: delta11ca, to: irt, over: omega, refs: [ { ref: barnesgohshore2023, loc: Theorem 7.9 } ] } ]

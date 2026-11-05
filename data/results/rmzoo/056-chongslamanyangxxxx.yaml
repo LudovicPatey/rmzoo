@@ -1,4 +1,4 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Chong, Slaman, Yang (0) — The inductive strength of Ramsey's theorem for pairs
 
-- {type: "separation", from: "rt22", to: "isig2", over: "rca0", refs: [{ref: "chongslamanyang2017", loc: "Corollary 4.2"}]}
+- { type: "separation", from: "rt22", to: "isig2", over: "rca0", refs: [ { ref: chongslamanyang2017, loc: Corollary 4.2 }, { ref: chongliyang2014, loc: Theorem 4.18 } ] }

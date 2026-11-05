@@ -27,6 +27,7 @@
 - id: ads
   label: '\mathsf{ADS}'
   name: Ascending or descending sequence
+  caution: 'For strong Weihrauch reducibility the domain of the instance matters. Here the linear order has domain ℕ, as in Astor et al. [@astoretal2017]; Fiori-Carones, Shafer and Soldà [@fioricaronesshafersolda2022] allow any infinite subset of ℕ, which gives the cylindrification of this problem (same Weihrauch degree). Their strong reductions and cylinder claims are about that version.'
   kind: problem
   tags: [ orders, ramsey ]
   aliases: [ ascending descending sequence ]

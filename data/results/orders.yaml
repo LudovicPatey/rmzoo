@@ -5,6 +5,6 @@
 - { type: implication, from: ads, to: sads, over: [ sw, rca0star ], folklore: true, justification: { kind: restriction, text: SADS is ADS restricted to linear orders of type ω + ω*., by: ai } }
 - { type: implication, from: ads, to: cads, over: rca0, justification: { kind: reduction, text: "An infinite ascending or descending sequence is a suborder of type ω or ω*, hence stable.", by: ai }, refs: [ { ref: hirschfeldt2015, loc: "Section 9.1, after Definition 9.16" } ] }
 - { type: implication, from: cads-sads, to: ads, over: rca0, refs: [ { ref: hirschfeldtshore2007, loc: Proposition 2.7 } ] }
-- { type: implication, from: coh, to: cads, over: rca0, refs: [ { ref: hirschfeldtshore2007, loc: Proposition 2.9 }, { ref: dzhafarovmummert2022, loc: Proposition 9.2.15(3) } ] }
+- { type: implication, from: coh, to: cads, over: rca0, refs: [ { ref: hirschfeldtshore2007, loc: Proposition 2.9 }, { ref: dzhafarovmummert2022, loc: Proposition 9.2.15(3) }, { ref: freundpischkeuftring2026, loc: "Proposition 5.9, proof of forward direction" } ] }
 
 - { type: separation, from: ads, to: cac, over: omega, refs: [ { ref: lermansolomontowsner2013, loc: Theorem 1.7 } ] }
