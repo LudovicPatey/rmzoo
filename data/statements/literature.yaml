@@ -599,3 +599,36 @@
   instance: A set $C$.
   solution: A set $B$ such that neither $B$ nor its complement contains an infinite $C$-computable set.
   refs: [ { ref: belangeretal2024, role: rm, loc: "Statement 27" } ]
+
+# Matchings in countable graphs (Flood, Jura, Levin and Markkanen 2022, Statement 2.1).
+- id: pm
+  label: '\mathsf{PM}'
+  name: Perfect matching theorem (Steffens)
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every countable graph satisfying condition (A) (for every matching $M$ and every vertex outside $M$ there is an
+    $M$-augmenting path starting at it) has a perfect matching.
+  refs: [ { ref: floodetal2022, role: rm, loc: "Definition 1.1, Statement 2.1(1)" } ]
+
+- id: mm
+  label: '\mathsf{MM}'
+  name: Maximal matching theorem (Steffens)
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every countable graph has a matching whose support is not properly contained in the support of another matching.
+  refs: [ { ref: floodetal2022, role: rm, loc: "Statement 2.1(2)" } ]
+
+- id: mim
+  label: '\mathsf{MIM}'
+  name: Maximal independent matching
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every countable graph has an independent matching whose support is not properly contained in the support of another
+    independent matching.
+  refs: [ { ref: floodetal2022, role: rm, loc: "Definition 4.1, Statement 2.1(3)" } ]

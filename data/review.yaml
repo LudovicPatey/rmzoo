@@ -15476,7 +15476,7 @@
   ref: dauriac2020
   part: 2/4 (chapters II, III, pages 66–137)
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -15487,6 +15487,10 @@
     facts: "Theorem III.6 (Lemma 2.2 of Hindman [43]): HT_FU is equivalent to HT_FS (the catalogue `ht`) over RCA0, and the proof gives a Weihrauch equivalence. Theorem III.34: there is a computable coloring (c_imp or c_vsg) such that every monochromatic IP-union set computes the halting set, uniformly. The proof also shows that even unions of at most 3 elements with 2 colors imply ACA0, and with c_imp that unions of at most 2 elements suffice. Theorem III.39: c_vsg has a monochromatic IP-union set computable in the halting set, uniformly in the triple jump. Corollary III.38.1: c_imp admits an arithmetical monochromatic IP set."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: the finite union form of Hindman's theorem, equivalent to HT."
 - id: dauriac2020-656abb4e
   ref: dauriac2020
   part: 2/4 (chapters II, III, pages 66–137)
@@ -22274,7 +22278,7 @@
 - id: towsneryokoyama2018-52bfc4d7
   ref: towsneryokoyama2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22285,6 +22289,10 @@
     facts: trRT^2 is equivalent to ADS. trRT<∞ + RCA0 implies BΣ^0_3, because it implies fRT<∞. It is unknown whether trRT^n implies trRT^{n+1}.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: trRT² is trt22 (≡ ADS); the version for finitely many colors is not added.
 - id: towsneryokoyama2018-1768aa19
   ref: towsneryokoyama2018
   date: 2026-11-05
@@ -24081,7 +24089,7 @@
 - id: brattkahendtlasskreuzer2018-62b25ab1
   ref: brattkahendtlasskreuzer2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -24092,10 +24100,14 @@
     facts: BCT_0 is computable. BCT_1 ≡sW C_N. BCT_2 ≡sW BCT_0′ and BCT_3 ≡sW BCT_1′ ≡sW CL_N on perfect spaces. BCT_0 and BCT_2 are strongly parallelizable, strongly idempotent and not cylinders. BCT_i is the same strong degree for all perfect Polish spaces. Π01G ≡sW BCT_2. BCT_0 ≤sW 1-GEN ≤sW BCT_2 ≤sW lim_J. BCT_2 ≰W WWKL^(n), and BCT_2 ≰W 1-GEN.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as bct0, bct1, bct2, bct3, with Fact 1.4, Theorem 4.3, Corollaries 5.1, 8.3, 9.7 and Proposition 5.5.
 - id: brattkahendtlasskreuzer2018-b30d8bb8
   ref: brattkahendtlasskreuzer2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -24106,10 +24118,14 @@
     facts: C_X′ ≡sW CL_X (cited from [13]). CL_N ≡sW BCT_3 ≡sW BCT_1′ for perfect spaces. The parallelization of CL_N is ≡sW lim′. CL_N is Σ0_3-measurable but not Σ0_2-measurable.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: CL_ℕ ≡sW C′_ℕ (Fact 3.3), already in the catalogue as cn.jump."
 - id: brattkahendtlasskreuzer2018-6f130e01
   ref: brattkahendtlasskreuzer2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -24120,6 +24136,10 @@
     facts: DBCT_i ≡sW BCT_i for computable perfect Polish spaces and i ∈ {0,2}. DBCT_0,X ≤sW BCT_0,N^N for every computable Polish space X.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: DBCTᵢ ≡sW BCTᵢ (Corollary 7.4)."
 - id: brattkahendtlasskreuzer2018-16d7faad
   ref: brattkahendtlasskreuzer2018
   date: 2026-11-05
@@ -25021,7 +25041,7 @@
 - id: hirst1987-a0679d49
   ref: hirst1987
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25032,6 +25052,10 @@
     facts: Equivalent to HT over RCA0 (Lemma 7.3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: equivalent to HT over RCA₀ (Lemma 7.3)."
 - id: hirst1987-c3a8ee07
   ref: hirst1987
   date: 2026-11-05
@@ -25481,7 +25505,7 @@
 - id: floodetal2022-1f358454
   ref: floodetal2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25492,10 +25516,14 @@
     facts: RCA0 proves PM for finite graphs. PM for locally finite graphs is equivalent to ACA0 (Sakakibara), and PM for bounded graphs is equivalent to WKL0. Π12-CA0+ proves PM, but PM does not imply Π12-CA0 over RCA0. PM implies Σ11-AC0 and is equivalent to a Π13 sentence. PM is not implied by Σ11-AC0, Σ11-DC0 or Collection of PM. MM implies PM, and PM implies (?). Condition (A) is Σ11-hard for computable graphs.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as pm, with Proposition 1.5 and Theorem 5.2.
 - id: floodetal2022-c361354c
   ref: floodetal2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25506,10 +25534,14 @@
     facts: MM implies PM, MIM and Sequential PM over RCA0. MIM + PM implies MM. Π12-CA0+ proves MM, and MM does not imply Π12-CA0. For locally finite graphs MM is equivalent to Locally Finite PM, and for bounded graphs to Bounded PM.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as mm, with Propositions 1.5, 4.14 and Theorem 4.12.
 - id: floodetal2022-fb490e05
   ref: floodetal2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25520,10 +25552,14 @@
     facts: Π12-CA0 proves MIM (Theorem 4.7, via β2-models). MIM implies Π11-CA0 over RCA0, and MIM does not imply Π12-CA0. MM implies MIM. MIM + (?) implies PM and MM.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as mim, with Theorem 5.6 and Proposition 4.14.
 - id: floodetal2022-81ccf362
   ref: floodetal2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25534,10 +25570,14 @@
     facts: Equivalent to Σ11-AC0 over RCA0 (Corollary 5.4). Does not imply PM or Finite Path PM (Corollary 6.14).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: a variant of PM studied in this paper only."
 - id: floodetal2022-796f0e04
   ref: floodetal2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25548,10 +25588,14 @@
     facts: Implies PM, implies Π11-CA0 over RCA0 (Proposition 5.8), and is implied by MM over RCA0 (Proposition 5.7). The paper notes it is the parallelization of the total continuation of PM.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: a variant of PM studied in this paper only."
 - id: floodetal2022-0725c712
   ref: floodetal2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25562,10 +25606,14 @@
     facts: Π11-CA0+ proves it. It does not imply Π11-CA0. Finite Path PM + Π11-TI0 implies ATR0 over RCA0. ATR is Weihrauch reducible to Finite Path PM (Corollary 6.18). Conjectured equivalent to ATR0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: a restriction of PM studied in this paper only."
 - id: floodetal2022-c424b5b8
   ref: floodetal2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25576,10 +25624,14 @@
     facts: PM implies (?) over RCA0. MIM + (?) implies PM and MM. The exact strength of (?) is left open.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: an auxiliary statement of the paper (Statement 4.16)."
 - id: floodetal2022-1ab46d9c
   ref: floodetal2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25590,6 +25642,10 @@
     facts: Locally Finite PM is equivalent to ACA0 over RCA0 (Sakakibara, Proposition 3.5). Bounded PM is equivalent to WKL0 over RCA0 (Proposition 3.4). They are equivalent to MM for the respective graph classes (Proposition 3.6).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: restrictions of PM (equivalent to ACA₀ and to WKL₀, Propositions 3.4 and 3.5)."
 - id: steilayokoyama2015-c6f4c303
   ref: steilayokoyama2015
   date: 2026-11-05
@@ -25775,7 +25831,7 @@
 - id: steilayokoyama2015-4a5e20e0
   ref: steilayokoyama2015
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25786,10 +25842,14 @@
     facts: WRT^2_2 = ADS (equal to psrt22 in the catalogue). CAC implies WRT^2_k for each k, and WRT^2_k lies between ADS and CAC. Whether WRT^2_k and WRT^2_{k+1} are equivalent is open. ∀k WRT^2_k is provable from CAC plus full induction, so it does not imply RT^2_2.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: WRT²₂ is psrt22 (≡ ADS); the k-color versions are not added (single paper).
 - id: steilayokoyama2015-4b6dcf9c
   ref: steilayokoyama2015
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25800,6 +25860,10 @@
     facts: Equivalent to ADS, citing Hirschfeldt–Shore [15].
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as trt22 (≡ ADS, Hirschfeldt–Shore Theorem 5.3).
 - id: steilayokoyama2015-c87e79f6
   ref: steilayokoyama2015
   date: 2026-11-05
@@ -26481,7 +26545,7 @@
 - id: marconeshore2010-27a64c93
   ref: marconeshore2010
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -26492,6 +26556,10 @@
     facts: Equivalent to ATR0 over RCA0 (Theorem 1.6). ATR0 proves MC (Theorem 6.4, with the stronger MC+ in Theorem 6.5, which is Wolk's original result). RCA0 proves MC implies ATR0 (Theorem 6.6). MC restricted to disjoint unions of two linear orders is also equivalent to ATR0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as mc (≡ ATR₀, Theorem 1.6).
 - id: marconeshore2010-aa18ab1b
   ref: marconeshore2010
   date: 2026-11-05

@@ -946,3 +946,52 @@
   refs:
     - { ref: kiharamarconepauly2020, role: origin, loc: Definition 3.12 }
     - { ref: goh2019b, role: rm, loc: Section 2 }
+
+# Baire category theorem as problems (Brattka, Hendtlass and Kreuzer 2018, Definition
+# 1.3), on a computable perfect Polish space; by their Corollary 6.7 the strong degree
+# does not depend on the space.
+- id: bct0
+  label: '\mathsf{BCT}_0'
+  name: Baire category theorem (negative information, point)
+  kind: problem
+  tags: [weihrauch]
+  definition: >
+    Given a sequence of nowhere dense closed sets by negative information, find a point outside their union.
+  instance: A sequence of nowhere dense closed sets, given by negative information.
+  solution: A point outside their union.
+  refs: [ { ref: brattkahendtlasskreuzer2018, role: origin, loc: Definition 1.3 } ]
+
+- id: bct1
+  label: '\mathsf{BCT}_1'
+  name: Baire category theorem (negative information, index)
+  kind: problem
+  tags: [weihrauch]
+  definition: >
+    Given a sequence of closed sets by negative information whose union is the whole space, find an index of a set with
+    nonempty interior.
+  instance: A sequence of closed sets covering the space, given by negative information.
+  solution: An $i$ such that the $i$-th set has nonempty interior.
+  refs: [ { ref: brattkahendtlasskreuzer2018, role: origin, loc: Definition 1.3 } ]
+
+- id: bct2
+  label: '\mathsf{BCT}_2'
+  name: Baire category theorem (positive information, point)
+  kind: problem
+  tags: [weihrauch]
+  definition: >
+    Given a sequence of nowhere dense closed sets by positive information, find a point outside their union.
+  instance: A sequence of nowhere dense closed sets, given by positive information.
+  solution: A point outside their union.
+  refs: [ { ref: brattkahendtlasskreuzer2018, role: origin, loc: Definition 1.3 } ]
+
+- id: bct3
+  label: '\mathsf{BCT}_3'
+  name: Baire category theorem (positive information, index)
+  kind: problem
+  tags: [weihrauch]
+  definition: >
+    Given a sequence of closed sets by positive information whose union is the whole space, find an index of a set with
+    nonempty interior.
+  instance: A sequence of closed sets covering the space, given by positive information.
+  solution: An $i$ such that the $i$-th set has nonempty interior.
+  refs: [ { ref: brattkahendtlasskreuzer2018, role: origin, loc: Definition 1.3 } ]
