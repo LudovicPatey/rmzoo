@@ -1237,7 +1237,7 @@ kohlenbach2019:
   venue: Computability, 8(3, 4), 377–387
   doi: 10.3233/COM-180097
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-oa
 kawamuraetal2012:
   authors:
     - Akitoshi Kawamura
@@ -1647,6 +1647,7 @@ porterdaydowney2017:
   venue: Theory of Computing Systems, 60(1), 53–111
   doi: 10.1007/s00224-016-9732-y
   source: weihrauch-bibliography
+  read: pdf-oa
 paulyfouche2017:
   authors:
     - Arno Pauly
