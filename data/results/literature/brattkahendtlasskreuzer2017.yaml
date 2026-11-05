@@ -61,3 +61,6 @@
 - { type: implication, from: wwkl-lstar, to: dnr, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.7 } ] }
 - { type: separation, from: dnr, to: wwkl-lstar, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.7 } ] }
 - { type: separation, from: wwkl-half, to: wwkl-half.par, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.13 } ] }
+- { type: property, statement: wwkl-lstar, property: strongly-parallelizable, value: true, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 7.6 } ] }
+- { type: property, statement: wwkl, property: parallelizable, value: false, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.13 (WWKL := 0-WWKL) } ] }
+- { type: property, statement: wwkl-half, property: parallelizable, value: false, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.13 } ] }

@@ -1861,10 +1861,10 @@ function reviewBody(it) {
       ${it.quote ? passage(it.quote) : ''}
       ${it.argument ? `<p class="small"><b>Argument.</b> ${esc(it.argument)}</p>` : ''}
       ${it.concerns ? `<p class="small"><b>To check.</b> ${esc(it.concerns)}</p>` : ''}
-      <p class="small muted">AI reader: confidence ${esc(it.confidence)}${it.verifier ? `; verifier: ${esc(it.verifier.verdict)} (${esc(it.verifier.reason)})` : ''}.
+      <p class="small muted">AI reader${it.model ? ` (${esc(it.model)})` : ''}: confidence ${esc(it.confidence)}${it.verifier ? `; verifier${it.verifier.model ? ` (${esc(it.verifier.model)})` : ''}: ${esc(it.verifier.verdict)} (${esc(it.verifier.reason)})` : ''}.
         Not published because: ${esc((it.reasons || []).join('; '))}.</p>`;
     case 'statement': return `<p class="rv-fact"><b>${esc(S0.notation)}</b> — ${esc(S0.name)}</p>
-      <p class="small">${it.ref ? refLink({ ref: it.ref, loc: S0.loc }) : ''}</p>
+      <p class="small">${it.ref ? refLink({ ref: it.ref, loc: S0.loc }) : ''}${it.model ? ` · read by ${esc(it.model)}` : ''}</p>
       <p><b>Definition.</b> ${esc(S0.definition)}</p>
       ${S0.facts ? `<p class="small"><b>Facts in the paper.</b> ${esc(S0.facts)}</p>` : ''}`;
     case 'lead': return `<p class="small">${refLink({ ref: it.ref, loc: it.loc })}${it.over ? ` · about ${esc(it.over)}` : ''}</p>

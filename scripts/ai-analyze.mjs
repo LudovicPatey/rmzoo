@@ -6,7 +6,8 @@
 // notation.
 //
 //   node scripts/ai-analyze.mjs [--only key1,key2] [--part 1,2] [--since YYYY-MM-DD] [--limit N] [--budget DOLLARS]
-//                               [--redo] [--replay] [--dry-run] [--concurrency N] [--effort level]
+//                               [--redo | --upgrade | --replay] [--dry-run] [--concurrency N] [--effort level]
+//                               [--model haiku|sonnet|opus] [--verify-model haiku|sonnet|opus]
 //
 // Papers are read in decreasing order of importance (scripts/lib/paper-rank.mjs:
 // open leads, theorems about catalogue statements, papers defining them, minus
@@ -23,6 +24,10 @@
 //   --limit     at most N papers (or parts of long texts) in this run
 //   --budget    stop before the estimated cost of the run exceeds this many dollars
 //   --redo      analyze again papers already in data/ai-analyzed.yaml
+//   --upgrade   second pass: analyze again only the papers read before by a weaker
+//               model than --model (e.g. a first pass with sonnet, then --upgrade
+//               --model opus --budget 50 on the most important ones); papers never
+//               read are not included
 //   --replay    no new reading: process again the saved answers (cache/ai/<key>.json),
 //               e.g. after the catalogue or these rules changed; only facts never
 //               verified cost a (small) verification call
@@ -32,6 +37,11 @@
 //               cache/ai/<key>.prompt.txt
 //   --concurrency  papers analyzed in parallel (default 2)
 //   --effort    effort of the extraction call (default high)
+//   --model     model of the extraction call, the long and costly one (default opus;
+//               sonnet costs about half, haiku a few cents a paper: scripts/lib/ai-models.mjs)
+//   --verify-model  model of the verification call, which decides what is published
+//               without human review (default opus: it is short, so cheap, and a weaker
+//               verifier would let more errors through)
 //
 // Credentials: ANTHROPIC_API_KEY (or an `ant auth login` profile), read by the
 // Anthropic SDK. Each paper costs one long call (the whole text) and one short
@@ -51,8 +61,10 @@
 //    identical to an existing entry is not dropped: its citation is merged);
 //  * otherwise written to the review queue, data/review.yaml, with the reasons:
 //    shown on the review page of the viewer, treated with scripts/review.mjs.
-// Every analyzed paper is recorded in data/ai-analyzed.yaml (date, model, what
-// was added), so it is not analyzed again; the raw answers are kept in cache/ai/.
+// Every analyzed paper is recorded in data/ai-analyzed.yaml (date, models, what
+// was added), so it is not analyzed again (except by --upgrade with a stronger
+// model); the raw answers are kept in cache/ai/. Review items carry the models
+// that read and verified them.
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
@@ -66,14 +78,21 @@ import { factChecker, locator } from './lib/ai-facts.mjs';
 import { rankPapers } from './lib/paper-rank.mjs';
 import { splitText } from './lib/split-text.mjs';
 import { addToQueue, QUEUE } from './lib/review-queue.mjs';
+import { modelOf, callCost, wantsUnit, calibration } from './lib/ai-models.mjs';
 import { buildZoo } from '../site/js/engine.js';
 
-const USAGE = 'node scripts/ai-analyze.mjs [--only key1,key2] [--part 1,2] [--since YYYY-MM-DD] [--limit N] [--budget DOLLARS] [--redo] [--replay] [--dry-run] [--concurrency N] [--effort low|medium|high|xhigh|max]';
-const args = cli(USAGE, { '--only': 1, '--part': 1, '--since': 1, '--limit': 1, '--budget': 1, '--redo': 0, '--replay': 0, '--dry-run': 0, '--concurrency': 1, '--effort': 1 });
+const USAGE = 'node scripts/ai-analyze.mjs [--only key1,key2] [--part 1,2] [--since YYYY-MM-DD] [--limit N] [--budget DOLLARS] [--redo | --upgrade | --replay] [--dry-run] [--concurrency N] [--effort low|medium|high|xhigh|max] [--model haiku|sonnet|opus] [--verify-model haiku|sonnet|opus]';
+const args = cli(USAGE, { '--only': 1, '--part': 1, '--since': 1, '--limit': 1, '--budget': 1, '--redo': 0, '--upgrade': 0, '--replay': 0, '--dry-run': 0, '--concurrency': 1, '--effort': 1, '--model': 1, '--verify-model': 1 });
 const DRY = args.has('--dry-run');
 const REPLAY = args.has('--replay');
-const MODEL = 'claude-opus-5-5';
-const PRICE = { input: 4, output: 20, cacheRead: 0.2, cacheWrite: 8 }; // $ per million tokens (cache write: 1-hour TTL)
+const MODES = ['--redo', '--upgrade', '--replay'].filter((o) => args.has(o));
+if (MODES.length > 1) { console.error(`${MODES.join(' and ')} cannot be combined`); process.exit(1); }
+const MODE = MODES[0]?.slice(2) || 'new';
+let MODEL, VERIFY_MODEL;
+try {
+  MODEL = modelOf(args.get('--model', 'opus'));
+  VERIFY_MODEL = modelOf(args.get('--verify-model', 'opus'));
+} catch (err) { console.error(err.message); process.exit(1); }
 const EFFORT = args.get('--effort', 'high');
 const CONCURRENCY = Number(args.get('--concurrency', 2));
 const LEDGER = 'data/ai-analyzed.yaml';
@@ -172,8 +191,11 @@ const partsOfPaper = (k) => partsOf.get(k) || partsOf.set(k, splitText(fs.readFi
 const unitId = (k, p) => (p.of > 1 ? `${k}#${p.n}` : k);
 const unitFile = (k, p) => `${RAW_DIR}/${p.of > 1 ? `${k}.part${p.n}` : k}.json`;
 const onlyParts = args.has('--part') ? new Set(args.get('--part').split(',').map(Number)) : null;
-const todo = (k) => (!REPLAY && !args.has('--redo') && ledger[k] ? [] : partsOfPaper(k).filter((p) => (!onlyParts || onlyParts.has(p.n))
-  && (REPLAY ? fs.existsSync(unitFile(k, p)) : args.has('--redo') || !ledger[unitId(k, p)])));
+// a paper read whole (or, with --upgrade, one never read) is skipped before its text is split
+const readBefore = (k) => ledger[k] || Object.keys(ledger).some((u) => u.startsWith(`${k}#`));
+const todo = (k) => ((MODE === 'new' && ledger[k]) || (MODE === 'upgrade' && !readBefore(k)) ? []
+  : partsOfPaper(k).filter((p) => (!onlyParts || onlyParts.has(p.n))
+    && wantsUnit({ ledger, key: k, uid: unitId(k, p), mode: MODE, model: MODEL, saved: REPLAY && fs.existsSync(unitFile(k, p)) })));
 let papers = Object.keys(raw.references).sort()
   .filter((k) => fs.existsSync(`cache/fulltext/${k}.txt`))
   .filter((k) => !only || only.has(k))
@@ -208,9 +230,17 @@ const userPrompt = (key, text, part = { of: 1 }) => {
 };
 const estTokens = (s) => Math.round(s.length / 3.3);
 // estimated cost of one paper: its text, the cached catalogue, ~15k output and
-// thinking tokens (the verification call is small)
+// thinking tokens, times the ratio of recorded costs to these estimates (output
+// and verification vary a lot: scripts/lib/ai-models.mjs, calibration)
 const catTokens = estTokens(INSTRUCTIONS + catalogue);
-const estCost = (x) => (estTokens({ length: x.chars }) * PRICE.input + catTokens * PRICE.cacheRead + 15000 * PRICE.output) / 1e6;
+const rawCost = (chars, model) => callCost(model, { input: estTokens({ length: chars }), cacheRead: catTokens, cacheWrite: 0, output: 15000 });
+const unitChars = (uid) => {
+  const [k, n] = uid.split('#');
+  if (!fs.existsSync(`cache/fulltext/${k}.txt`)) return null;
+  return n ? partsOfPaper(k)[Number(n) - 1]?.text.length ?? null : fs.readFileSync(`cache/fulltext/${k}.txt`, 'utf8').length;
+};
+const CALIB = calibration(ledger, MODEL, (uid, model) => { const c = unitChars(uid); return c ? rawCost(c, model) : null; });
+const estCost = (x) => rawCost(x.chars, MODEL) * CALIB.factor;
 {
   let sum = 0;
   for (const x of ranking) { x.cost = estCost(x); sum += x.cost; x.cumulative = sum; }
@@ -225,7 +255,9 @@ if (DRY) {
   const total = ranking.filter((x) => papers.includes(x.uid)).reduce((s, x) => s + x.cost, 0);
   const all = ranking.at(-1)?.cumulative || 0;
   const nPapers = (list) => new Set(list.map((u) => u.split('#')[0])).size;
-  console.log(`${nPapers(papers)} papers (${papers.length} units: long texts are read in parts) in this run, estimated $${total.toFixed(0)} (all ${nPapers(ranking.map((x) => x.uid))} papers to analyze: about $${all.toFixed(0)}; ~15k output and thinking tokens assumed per unit).`);
+  console.log(`${nPapers(papers)} papers (${papers.length} units: long texts are read in parts) in this run with ${MODEL.id}, estimated $${total.toFixed(0)} (all ${nPapers(ranking.map((x) => x.uid))} papers to analyze: about $${all.toFixed(0)}; ${CALIB.units
+    ? `calibrated ×${CALIB.factor.toFixed(2)} on the costs of ${CALIB.units} units read ${CALIB.sameModel ? 'by the same model' : 'by other models'}`
+    : '~15k output and thinking tokens assumed per unit'}).`);
   // the full ranking, to choose a budget
   const yr = (k) => raw.references[k]?.year || '';
   const row = (x, i) => `| ${i + 1} | ${x.uid}${x.part.of > 1 ? ` (${x.part.title})` : ''} | ${yr(x.key)} | ${x.score} | ${x.leads} | ${x.property} | ${x.theorems} | ${x.defines} | ${x.covered} | $${x.cost.toFixed(2)} | $${x.cumulative.toFixed(0)} |`;
@@ -233,7 +265,7 @@ if (DRY) {
   fs.writeFileSync('reports/ai-priority.md', `# Papers for the AI reader, most important first
 
 `
-    + `Generated by \`node scripts/ai-analyze.mjs --dry-run\` on ${new Date().toISOString().slice(0, 10)}: ${ranking.length} papers or parts of long texts not yet analyzed.
+    + `Generated by \`node scripts/ai-analyze.mjs --dry-run\` on ${new Date().toISOString().slice(0, 10)}: ${ranking.length} papers or parts of long texts ${MODE === 'upgrade' ? `read before by a weaker model than ${MODEL.id}` : 'not yet analyzed'}; costs for ${MODEL.id}.
 `
     + `Score (scripts/lib/paper-rank.mjs) = (4·leads + 2·property + theorems + 3·defines + 2·log2(1 + breadth)) / (1 + covered/10).
 `
@@ -296,15 +328,14 @@ const describe = (id) => {
 
 // ---- API ---------------------------------------------------------------------------
 const client = new Anthropic({ maxRetries: 4 });
-const usage = { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 };
-const cost = (u) => (u.input * PRICE.input + u.output * PRICE.output + u.cacheRead * PRICE.cacheRead + u.cacheWrite * PRICE.cacheWrite) / 1e6;
+const usage = { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, dollars: 0 };
 
-async function call({ system, user, schema, effort, maxTokens }) {
+async function call({ model, system, user, schema, effort, maxTokens }) {
   const msg = await client.beta.messages.stream({
-    model: MODEL,
+    model: model.id,
     max_tokens: maxTokens,
-    betas: ['server-side-fallback-2026-07-01'],
-    fallbacks: 'default', // a policy decline is retried server-side on another model
+    // a policy decline is retried server-side on another model (not offered for Haiku)
+    ...(model.fallbacks ? { betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default' } : {}),
     thinking: { type: 'adaptive' },
     output_config: { effort, format: { type: 'json_schema', schema } },
     system,
@@ -312,6 +343,7 @@ async function call({ system, user, schema, effort, maxTokens }) {
   }).finalMessage();
   const u = msg.usage || {};
   const mine = { input: u.input_tokens || 0, output: u.output_tokens || 0, cacheRead: u.cache_read_input_tokens || 0, cacheWrite: u.cache_creation_input_tokens || 0 };
+  mine.dollars = callCost(model, mine);
   for (const k in usage) usage[k] += mine[k];
   if (msg.stop_reason === 'refusal') throw new Error(`declined (${msg.stop_details?.category ?? 'no category'})`);
   if (msg.stop_reason === 'max_tokens') throw new Error('answer cut at max_tokens');
@@ -344,8 +376,9 @@ async function analyze(unit) {
   const locate = locator(text);
   const hash = crypto.createHash('sha256').update(text).digest('hex').slice(0, 16);
   const saved = REPLAY ? JSON.parse(fs.readFileSync(unit.file, 'utf8')) : null;
-  const none = { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 };
+  const none = { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, dollars: 0 };
   const ex = saved ? { json: saved.extraction, usage: none, model: saved.model } : await call({
+    model: MODEL,
     system: [
       { type: 'text', text: INSTRUCTIONS },
       { type: 'text', text: catalogue, cache_control: { type: 'ephemeral', ttl: '1h' } },
@@ -387,6 +420,7 @@ async function analyze(unit) {
       ].join('\n');
     });
     verify = await call({
+      model: VERIFY_MODEL,
       system: VERIFY,
       user: `Paper [${key}]: "${raw.references[key].title}".\n\n${blocks.join('\n\n')}\n\nGive one verdict per candidate (index = candidate number).`,
       schema: VERIFY_SCHEMA,
@@ -396,7 +430,7 @@ async function analyze(unit) {
     const byIndex = new Map(verify.json.verdicts.map((v) => [v.index, v]));
     ask.forEach((it, j) => {
       const v = byIndex.get(j);
-      if (v) verdicts[it.id] = { verdict: v.verdict, reason: v.reason };
+      if (v) verdicts[it.id] = { verdict: v.verdict, reason: v.reason, model: verify.model };
     });
   }
   for (let j = auto.length - 1; j >= 0; j--) {
@@ -435,7 +469,7 @@ async function analyze(unit) {
       }
     }
     const items = review.map(({ id, f, e, reasons, verifier }) => ({
-      id, ref: key, ...(partLabel ? { part: partLabel } : {}), date: today, status: 'pending', kind: 'result',
+      id, ref: key, ...(partLabel ? { part: partLabel } : {}), date: today, status: 'pending', kind: 'result', model: ex.model,
       result: e, loc: f.loc, origin: f.origin, quote: f.quote,
       ...(f.paperNotation ? { paperNotation: f.paperNotation } : {}),
       ...(f.argument ? { argument: f.argument } : {}),
@@ -446,26 +480,28 @@ async function analyze(unit) {
       reasons,
     }));
     out.missingStatements.forEach((m) => items.push({
-      id: factId(key, m.notation), ref: key, ...(partLabel ? { part: partLabel } : {}), date: today, status: 'pending', kind: 'statement',
+      id: factId(key, m.notation), ref: key, ...(partLabel ? { part: partLabel } : {}), date: today, status: 'pending', kind: 'statement', model: ex.model,
       statement: m, reasons: ['principle not in the catalogue'],
     }));
     // the pending proposals of this paper (or of this part) are replaced
     addToQueue(items, { replace: (n) => n.get('ref') === key && ['result', 'statement'].includes(n.get('kind'))
       && (partLabel ? String(n.get('part') || '').startsWith(`${part.n}/`) : !n.get('part')) });
-    const u = { input: ex.usage.input + (verify?.usage.input || 0), output: ex.usage.output + (verify?.usage.output || 0), cacheRead: ex.usage.cacheRead + (verify?.usage.cacheRead || 0), cacheWrite: ex.usage.cacheWrite + (verify?.usage.cacheWrite || 0) };
+    const dollars = ex.usage.dollars + (verify?.usage.dollars || 0);
     const changes = [...new Set([...(ledger[uid]?.changes || []), ...added])]; // keep earlier changes (--redo, --replay)
     writeLedger(uid, {
-      date: today, model: ex.model, textHash: hash, ...(partLabel ? { part: partLabel } : {}),
+      date: today, model: ex.model, ...(REPLAY ? (ledger[uid]?.effort ? { effort: ledger[uid].effort } : {}) : { effort: EFFORT }),
+      ...(verify ? { verifiedBy: verify.model } : ledger[uid]?.verifiedBy ? { verifiedBy: ledger[uid].verifiedBy } : {}),
+      textHash: hash, ...(partLabel ? { part: partLabel } : {}),
       facts: out.facts.length, added: changes.length, review: items.length, dropped: nDropped,
       ...(changes.length ? { changes } : {}),
-      cost: REPLAY ? ledger[uid]?.cost ?? 0 : Number(cost(u).toFixed(2)),
+      cost: Number(((REPLAY ? ledger[uid]?.cost ?? 0 : 0) + dollars).toFixed(2)),
     });
-    console.log(`${uid}: ${out.facts.length} facts → ${added.length} added, ${items.length} to review, ${nDropped} already known ($${cost(u).toFixed(2)})`);
+    console.log(`${uid}: ${out.facts.length} facts → ${added.length} added, ${items.length} to review, ${nDropped} already known ($${dollars.toFixed(2)})`);
   });
 }
 
 // ---- run -------------------------------------------------------------------------
-console.log(`${papers.length} papers or parts to analyze with ${MODEL} (effort ${EFFORT}, ${CONCURRENCY} at a time).`);
+console.log(`${papers.length} papers or parts to ${REPLAY ? 'replay' : 'analyze'} with ${MODEL.id} (effort ${EFFORT}; verification by ${VERIFY_MODEL.id}; ${CONCURRENCY} at a time).`);
 const failures = [];
 let next = 0, stop = false;
 async function worker() {
@@ -490,6 +526,6 @@ async function worker() {
 }
 await Promise.all(Array.from({ length: Math.max(1, CONCURRENCY) }, worker));
 await writing;
-console.log(`Done. Tokens: ${usage.input} input, ${usage.cacheRead} cache read, ${usage.cacheWrite} cache write, ${usage.output} output (≈ $${cost(usage).toFixed(2)}).`);
+console.log(`Done. Tokens: ${usage.input} input, ${usage.cacheRead} cache read, ${usage.cacheWrite} cache write, ${usage.output} output (≈ $${usage.dollars.toFixed(2)}).`);
 if (failures.length) console.log(`Not analyzed (run again to retry): ${failures.join(', ')}`);
 console.log(`Pending human review: ${REVIEW} (review page of the viewer, node scripts/review.mjs).`);

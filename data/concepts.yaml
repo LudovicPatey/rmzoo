@@ -229,3 +229,65 @@
     sequence $\langle X_a \rangle_{a \in L}$ with $X_{0_L} = A$ and $X_b = (\bigoplus_{a <_L b} X_a)'$ for $b >_L 0_L$.
     Jump hierarchies on ill-founded orders were first studied by Harrison and are often called pseudohierarchies.
   refs: [ { ref: goh2019b, loc: Definition 2.2 } ]
+
+- id: induction-scheme
+  term: Induction scheme
+  match: [ 'induction schemes?', '\$?\\Sigma\^0_[0-9n]\$? induction', 'Σ⁰₁ induction', 'Δ⁰₀ induction' ]
+  definition: >
+    For a class $\Gamma$ of formulas of second-order arithmetic, the $\Gamma$ induction scheme $\mathsf{I}\Gamma$
+    consists of the universal closures of
+    $(\varphi(0) \wedge \forall x\, [\varphi(x) \to \varphi(x+1)]) \to \forall x\, \varphi(x)$ for all $\varphi \in \Gamma$
+    (set parameters allowed).
+  refs: [ { ref: dzhafarovmummert2022, loc: "Definition 5.3.5(2), recalled in Section 6.1" } ]
+
+- id: collection-scheme
+  term: Collection (bounding) scheme
+  match: [ 'collection (\(bounding\) )?schemes?', 'bounding schemes?' ]
+  definition: >
+    For a class $\Gamma$ of formulas, the $\Gamma$ bounding (or collection) scheme $\mathsf{B}\Gamma$ consists of the
+    sentences $\forall z\, [\forall x < z\, \exists y\, \varphi(x, y) \to \exists w\, \forall x < z\, \exists y < w\, \varphi(x, y)]$
+    for $\varphi \in \Gamma$: a bounded universal quantifier can be moved past an existential one.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 6.1.1 } ]
+
+- id: atomic-theory
+  term: Atomic theory, atomic model
+  match: [ 'atomic theor(y|ies)', 'atomic models?' ]
+  definition: >
+    A formula $\varphi$ is an atom of a theory $T$ if for every formula $\psi$ in the same free variables exactly one of
+    $T \vdash \varphi \to \psi$ and $T \vdash \varphi \to \neg\psi$ holds; $T$ is atomic if for every $\psi$ consistent
+    with $T$ there is an atom $\varphi$ with $T \vdash \varphi \to \psi$. A type of $T$ is principal if some formula
+    consistent with $T$ implies all its members, and a model of $T$ is atomic if the only types it realizes are principal.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 9.10.2 } ]
+
+- id: stable-order
+  term: Stable partial and linear orders
+  match: [ 'stable partial orders?', 'stable linear orders?' ]
+  definition: >
+    In an infinite partial order $P$, an element $x$ is small if $x \leq_P y$ for almost all $y$, large if $y \leq_P x$
+    for almost all $y$, and isolated if $x$ is incomparable with almost all $y$. $P$ is weakly stable if every element
+    is small, large or isolated; stable if either every element is small or isolated, or every element is large or
+    isolated. An infinite linear order is stable if every element is small or large (it has order type
+    $\omega + \omega^*$).
+  refs: [ { ref: dzhafarovmummert2022, loc: "Definitions 9.2.9 and 9.2.10" } ]
+
+- id: intersection-property
+  term: Intersection properties of families
+  match: [ 'intersection property' ]
+  skip: [ d2ip, nd2ip ]
+  definition: >
+    A family $\vec X = \langle X_i : i \in \omega \rangle$ is nontrivial if some $X_i$ is nonempty; $\vec Y$ is a
+    subfamily of $\vec X$ if every $Y_i$ is some $X_j$. $\vec Y$ has the $n$ intersection property if every $n$ of its
+    members have nonempty intersection, and the finite intersection property if every nonempty finite set of its members
+    has nonempty intersection. A subfamily with one of these properties is maximal if every subfamily with the same
+    property containing it is contained in it.
+  refs: [ { ref: dzhafarovmummert2022, loc: Definition 9.10.17 } ]
+
+- id: cohen-generic
+  term: Cohen genericity
+  match: [ '(Cohen )?[0-9n]-generic' ]
+  skip: [ wgen1 ]
+  definition: >
+    A set $G$ is Cohen $n$-generic if for every $\Sigma^0_n$-definable set $W$ of finite binary strings, $G$ meets or
+    avoids $W$: some initial segment of $G$ is in $W$, or some initial segment of $G$ has no extension in $W$
+    (relativized to $X$: $W$ is $\Sigma^0_n$ in $X$).
+  refs: [ { ref: dzhafarovmummert2022, loc: "Definition 7.4.3 and Proposition 7.5.11" } ]

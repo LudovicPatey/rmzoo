@@ -237,7 +237,8 @@ export const SCHEMA = {
     citedFrom: { doc: 'result: the work the paper attributes the fact to', usedBy: ['aiAnalyze', 'review', 'viewer', 'reviewLib'] },
     confidence: { doc: "result: the extractor's confidence (high | medium | low)", usedBy: ['aiAnalyze', 'review', 'viewer'] },
     concerns: { doc: 'result: what the extractor thinks a human should check', usedBy: ['aiAnalyze', 'viewer'] },
-    verifier: { doc: 'result: {verdict: confirmed | rejected | unsure, reason} of the independent verification call', usedBy: ['aiAnalyze', 'viewer'] },
+    verifier: { doc: 'result: {verdict: confirmed | rejected | unsure, reason, model} of the independent verification call', usedBy: ['aiAnalyze', 'viewer'] },
+    model: { doc: 'result, statement (AI reader): the model that read the paper (a weaker one may have missed or misread facts: --upgrade re-reads)', usedBy: ['aiAnalyze', 'viewer'] },
     statement: { doc: 'statement: {notation, name, loc, definition, facts} as read in the paper', usedBy: ['aiAnalyze', 'review', 'viewer'] },
     text: { doc: 'lead, question, answer: the passage of the paper (extracted text)', usedBy: ['consolidate', 'viewer'] },
     open: { doc: 'lead: the relations still open in the database between the statements it names (e.g. "rt22⇏coh"), and over: the reduction', usedBy: ['consolidate', 'viewer'] },
@@ -264,14 +265,16 @@ export const SCHEMA = {
   aiAnalyzed: {
     part: { doc: 'for a part of a long text: "<n>/<of> (chapters…, pages…)" (scripts/lib/split-text.mjs)', usedBy: ['aiAnalyze'] },
     date: { req: true, doc: 'date of the analysis', usedBy: ['aiAnalyze'] },
-    model: { req: true, doc: 'model that read the paper', usedBy: ['aiAnalyze'] },
+    model: { req: true, doc: 'model that read the paper (--upgrade re-reads the papers read by a weaker one: scripts/lib/ai-models.mjs)', usedBy: ['aiAnalyze'] },
+    effort: { doc: 'effort of the extraction call', usedBy: ['aiAnalyze'] },
+    verifiedBy: { doc: 'model of the verification call, when there was one', usedBy: ['aiAnalyze'] },
     textHash: { req: true, doc: 'sha256 prefix of the text read (a new version of the text can be analyzed with --redo)', usedBy: ['aiAnalyze'] },
     facts: { req: true, doc: 'number of facts proposed', usedBy: ['aiAnalyze'] },
     added: { req: true, doc: 'number of results added or citations merged (all runs)', usedBy: ['aiAnalyze'] },
     review: { req: true, doc: 'number of items sent to the review queue, data/review.yaml', usedBy: ['aiAnalyze'] },
     dropped: { req: true, doc: 'number of cited/deduced facts dropped because the database already has them', usedBy: ['aiAnalyze'] },
     changes: { doc: 'the database changes ("added: <resultKey>", "merged: …"), to audit or undo them', usedBy: ['aiAnalyze'] },
-    cost: { doc: 'cost of the two calls in dollars (estimate)', usedBy: ['aiAnalyze'] },
+    cost: { doc: 'cost of the two calls in dollars (from the usage reported by the API); also calibrates the estimates of --budget and --dry-run', usedBy: ['aiAnalyze'] },
   },
 };
 

@@ -95,7 +95,7 @@ paper.
 | full texts, `read` status | `scripts/fulltext.mjs` | references, `data/fulltext-exclude.yaml`, Zotero |
 | abstracts | `scripts/abstracts.mjs`, `scripts/pdf-abstracts.mjs` | references, cached texts |
 | mining (candidate results / questions) | `scripts/mine/{common,facts,questions}.mjs` | `zoo.json`, cached texts, `data/screened.yaml` |
-| AI reading of full texts (once per paper, most important first), triage, verification | `scripts/ai-analyze.mjs`, `scripts/lib/ai-facts.mjs`, `scripts/lib/paper-rank.mjs` (order), prompts in `scripts/ai/` | `zoo.json` (catalogue in the prompt), cached texts, `data/ai-analyzed.yaml` |
+| AI reading of full texts (once per paper, most important first), triage, verification | `scripts/ai-analyze.mjs`, `scripts/lib/ai-facts.mjs`, `scripts/lib/paper-rank.mjs` (order), `scripts/lib/ai-models.mjs` (models, prices, `--upgrade`), prompts in `scripts/ai/` | `zoo.json` (catalogue in the prompt), cached texts, `data/ai-analyzed.yaml` |
 | review queue: AI proposals and consolidation candidates, votes of the review page (`docs/REVIEW.md`) | `scripts/review.mjs`, `scripts/lib/review-queue.mjs`, `site/js/review.js` | `data/review.yaml`, `site/data/review.json` |
 | long texts read in parts by the AI reader | `scripts/lib/split-text.mjs` | cached texts |
 | adding results | `scripts/add-results.mjs` → `scripts/lib/results.mjs` | results |

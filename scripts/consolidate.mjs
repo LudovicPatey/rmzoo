@@ -14,8 +14,8 @@
 //                 the last run, for reading.
 //  4b. ai         only with --ai (costs API tokens): scripts/ai-analyze.mjs reads the
 //                 cached texts not yet analyzed, most important first (all of them, or
-//                 up to --ai-budget dollars); reliable facts are added, the others
-//                 queued for review (data/review.yaml).
+//                 up to --ai-budget dollars, with the model --ai-model, default opus);
+//                 reliable facts are added, the others queued for review (data/review.yaml).
 //  5. statements  definitions still flagged "to check" (with the cached texts that
 //                 should settle them) and acronyms frequent in the literature but
 //                 absent from the catalogue (candidate missing statements).
@@ -37,7 +37,7 @@ import { acquireLock } from './lib/lock.mjs';
 import { cli } from './lib/cli.mjs';
 import { addToQueue } from './lib/review-queue.mjs';
 import crypto from 'node:crypto';
-const opts = cli('npm run consolidate [-- --since YYYY-MM-DD] [--skip sweep,pubstatus,texts,mine,statements,questions] [--ai [--ai-budget DOLLARS]]', { '--since': 1, '--skip': 1, '--ai': 0, '--ai-budget': 1 });
+const opts = cli('npm run consolidate [-- --since YYYY-MM-DD] [--skip sweep,pubstatus,texts,mine,statements,questions] [--ai [--ai-budget DOLLARS] [--ai-model haiku|sonnet|opus]]', { '--since': 1, '--skip': 1, '--ai': 0, '--ai-budget': 1, '--ai-model': 1 });
 acquireLock('consolidate.mjs');
 
 const args = process.argv.slice(2);
@@ -134,7 +134,8 @@ if (!skip.has('mine')) {
 // 4b. AI reading of the texts not yet analyzed (opt-in: it costs API tokens)
 if (args.includes('--ai')) {
   say('## 4b. AI reading of the full texts');
-  const out = run('node', ['scripts/ai-analyze.mjs', ...(opts.has('--ai-budget') ? ['--budget', opts.get('--ai-budget')] : [])]);
+  const out = run('node', ['scripts/ai-analyze.mjs', ...(opts.has('--ai-budget') ? ['--budget', opts.get('--ai-budget')] : []),
+    ...(opts.has('--ai-model') ? ['--model', opts.get('--ai-model')] : [])]);
   const lines = out.split('\n').filter((l) => /facts →|failed|Authentication|Rate limited|Done\./.test(l));
   lines.forEach((l) => say(`- ${l}`));
   const review = fs.existsSync('data/review.yaml') ? YAML.parse(fs.readFileSync('data/review.yaml', 'utf8')) || [] : [];

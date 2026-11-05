@@ -63,6 +63,7 @@ scripts/             build (YAML → JSON + validation), consolidation, dev serv
   lib/cli.mjs        --help and option checking for every script
   lib/results.mjs    writing results without duplicates (add-results, AI reader)
   lib/ai-facts.mjs   checks deciding which AI-proposed facts are published
+  lib/ai-models.mjs  models of the AI reader, prices, cost estimates, the --upgrade selection
   mine/              candidate results and questions from the full texts (regexes)
   ai-analyze.mjs     AI reading of each full text, once (Claude API)
   review.mjs         the review queue: list, accept / reject, apply the votes of the review page
@@ -101,7 +102,7 @@ derivable, the check fails and names the pair.
 ## AI reading of the full texts
 
 The miners only see results written in the usual notation. `scripts/ai-analyze.mjs`
-has Claude (Opus 5.5) read each cached paper once, in full, with the catalogue,
+has Claude (Opus 5.5 by default) read each cached paper once, in full, with the catalogue,
 and list every fact it states about catalogue statements however it is worded
 ("every computable instance has a solution not computing C" is cone avoidance),
 plus immediate special cases of stated theorems (MTT² is the case d = 1 of the
@@ -113,12 +114,30 @@ node scripts/ai-analyze.mjs --budget 25            # the most important papers, 
 node scripts/ai-analyze.mjs --only dauriacetal2024  # one paper
 node scripts/ai-analyze.mjs --only simpson2009 --part 3  # one part of a book
 node scripts/ai-analyze.mjs                        # every paper not yet read
+node scripts/ai-analyze.mjs --model sonnet --budget 25        # a cheaper reader: about twice as many papers
+node scripts/ai-analyze.mjs --upgrade --model opus --budget 25  # second pass: re-read the most important papers read by a weaker model
 node scripts/review.mjs list                       # proposals awaiting a decision
 ```
 
-It needs `ANTHROPIC_API_KEY` (or an `ant auth login` profile). A paper costs
-about $0.10–$2 depending on its length; the whole cache (≈ 700 texts, 20 M
-tokens) about $300 at once. Papers are read **most important first**
+**Models.** `--model haiku|sonnet|opus` chooses the model of the long extraction
+call, which is nearly all the cost (prices in `scripts/lib/ai-models.mjs`): Sonnet
+5.5 costs half as much as Opus 5.5, Haiku 5.5 a few cents a paper. The
+verification call, which decides what is published without human review, stays
+on Opus (`--verify-model` to change it): it is short, and a weaker verifier would
+let more errors through. A weaker reader mostly misses facts or proposes more
+dubious ones to the review queue; what it publishes passes the same checks. The
+ledger records the models of each paper and the review page shows them, so a
+later `--upgrade --model opus` re-reads only the papers a weaker model read, most
+important first, up to `--budget`; their pending proposals are replaced by the
+new reading, and facts already added are found again (citations merged) or kept.
+Estimates (`--dry-run`, `--budget`) are calibrated on the costs recorded in the
+ledger (by the same model once it has read 5 units): the actual output and
+verification vary a lot with the number of facts.
+
+It needs `ANTHROPIC_API_KEY` (or an `ant auth login` profile). With Opus, a paper
+costs about $0.40–$3.50 depending on its length and the number of facts (about $1
+on average for the first 28 papers); the whole cache (≈ 700 texts, 20 M tokens)
+about $450. Papers are read **most important first**
 (`scripts/lib/paper-rank.mjs`): open leads of the miner, theorems naming catalogue
 statements with a computability or reduction phrase, papers that define catalogue
 statements, discounted by the results already citing them; texts too short to be
