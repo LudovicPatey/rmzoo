@@ -20732,7 +20732,7 @@
 - id: takeda2026-4b341b9d
   ref: takeda2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -20743,10 +20743,14 @@
     facts: Provable in ACA+_0 (Theorem 2.5). Equivalent over RCA0 to ACA+_0 (Theorem 2.24). Implies ACA0 over RCA0 (Proposition 2.9). Corollary 2.13 gives a computable frame all of whose valuations compute ∅^(ω). Existence of some valuation on every frame is also equivalent to ACA+_0 (Theorem 2.24).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as vel (≡ ACA₀⁺, Theorem 2.24).
 - id: takeda2026-9410506d
   ref: takeda2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -20757,10 +20761,14 @@
     facts: Equivalent to ACA'_0 over RCA0 (Theorem 2.25). Provable in ACA'_0 (Corollary 2.6). For standard k the k-restricted version is provable in ACA0 (Corollary 2.7). Existence of 1-restricted valuations on all frames is equivalent to ACA0 (Theorem 2.26).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as rvel (≡ ACA₀′, Theorem 2.25).
 - id: takeda2026-20086343
   ref: takeda2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -20771,10 +20779,14 @@
     facts: Equivalent to ACA+_0 over RCA0 (Theorem 2.24). The weak version, restricted to k-restricted valuations, is equivalent to ACA'_0 (Theorem 2.25).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: a variant studied in this paper only (frame definability or VEL for other logics; equivalent to ACA₀⁺, ACA₀′ or ACA₀, or of open strength)."
 - id: takeda2026-1f5fdfa2
   ref: takeda2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -20785,10 +20797,14 @@
     facts: Equivalent to ACA+_0 over RCA0 (Theorem 2.24). The weak version (3-restricted valuations) is equivalent to ACA0 (Theorem 2.26).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: a variant studied in this paper only (frame definability or VEL for other logics; equivalent to ACA₀⁺, ACA₀′ or ACA₀, or of open strength)."
 - id: takeda2026-1a16da41
   ref: takeda2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -20799,10 +20815,14 @@
     facts: All are equivalent to ACA0 over RCA0. The finite-frame versions are provable in RCA0 (Corollary 2.28).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: a variant studied in this paper only (frame definability or VEL for other logics; equivalent to ACA₀⁺, ACA₀′ or ACA₀, or of open strength)."
 - id: takeda2026-ca2e6ee2
   ref: takeda2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -20813,10 +20833,14 @@
     facts: Each is equivalent to ACA+_0 over RCA0, as is the existence of a valuation on every predicate frame (Theorem 2.34).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: a variant studied in this paper only (frame definability or VEL for other logics; equivalent to ACA₀⁺, ACA₀′ or ACA₀, or of open strength)."
 - id: takeda2026-31a58ccd
   ref: takeda2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -20827,10 +20851,14 @@
     facts: Restricted VEL for CTL implies Π^1_1-CA0 over RCA0 (Theorem 3.9) and is provable in Π^1_1-CA0 + Σ^1_2-induction (Theorem 3.10). VEL for CTL is provable in Σ^1_2-DC0 (Corollary 3.11). VEL for image-finite CTL is equivalent to ACA+_0 over RCA0 (Theorem 3.15). Some CTL-valuation exists on every serial frame, provably in RCA0 (Theorem 3.16).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: a variant studied in this paper only (frame definability or VEL for other logics; equivalent to ACA₀⁺, ACA₀′ or ACA₀, or of open strength)."
 - id: takeda2026-a6e6572c
   ref: takeda2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -20841,6 +20869,10 @@
     facts: Implies ACA0 over RCA0 (Corollary 3.19) and is provable in ACA'_0 (Theorem 3.32). The restricted version is provable in ACA'_0 (Proposition 3.20). The exact strength is open (Questions 4.1 and 4.2).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: a variant studied in this paper only (frame definability or VEL for other logics; equivalent to ACA₀⁺, ACA₀′ or ACA₀, or of open strength)."
 - id: freundpischkeuftring2026-9519f613
   ref: freundpischkeuftring2026
   date: 2026-11-05
@@ -21335,7 +21367,7 @@
 - id: brattkagherardi2011b-7222e530
   ref: brattkagherardi2011b
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -21346,10 +21378,14 @@
     facts: B_F ≡sW C_F ≡W C_N (Proposition 3.3). C_N ≡W B_F is idempotent and is reduced to by LPO.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: B_F ≡sW C_F ≡W C_ℕ (Proposition 3.3)."
 - id: brattkagherardi2011b-960ea555
   ref: brattkagherardi2011b
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -21360,10 +21396,14 @@
     facts: B_I ≡sW C_I and B_I^- ≡sW C_I^- (Proposition 3.6). IVT ≡sW C_I (Theorem 6.2). The chain LLPO < C_I^- < C_I < C_K ≡ WKL is strict, C_I^- < C_N, and C_N | C_I. C_I^- ≤W C_N, and C_I is not reducible to C_I^-.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: C_I ≡sW IVT (Theorem 6.2), already in the catalogue as ivt."
 - id: brattkagherardi2011b-7b59b6e3
   ref: brattkagherardi2011b
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -21374,10 +21414,14 @@
     facts: C_K(X) ≤sW LLPO^, with equality when {0,1}^N embeds computably into X (Theorem 2.10). C_K ≡W WKL, and HBT ≡W C_K (Theorem 7.1).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: C_K ≡W WKL (Theorem 2.10)."
 - id: brattkagherardi2011b-c2e8c0cc
   ref: brattkagherardi2011b
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -21388,10 +21432,14 @@
     facts: B ≡W C ≡W LPO^ (Proposition 3.7). C_A <W C (Proposition 4.8).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: C ≡W the parallelization of LPO (Proposition 3.7), that is lim."
 - id: brattkagherardi2011b-16345b90
   ref: brattkagherardi2011b
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -21402,10 +21450,14 @@
     facts: BCT_X ≡W C_N for any non-empty complete computable metric space X, and UBT_{X,Y} ≡W C_N for Banach spaces different from {0}. IMT, OMT and CGT are ≤W C_N, with equivalence on ℓ2.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: BCT ≡W C_ℕ is bct1 (≡sW C_ℕ); the Banach space theorems IMT, OMT, CGT, UBT are studied in this paper only."
 - id: brattkagherardi2011b-b243cc28
   ref: brattkagherardi2011b
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -21416,6 +21468,10 @@
     facts: BFT ≤W WKL (Corollary 8.7) and computable fixed points have low names (Corollary 8.8). WAT ≡W id (Corollary 8.4).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: problem versions studied in this paper only (BFT ≤W WKL, WAT computable)."
 - id: dooley2025-1a3cf29e
   ref: dooley2025
   date: 2026-11-05
@@ -22629,7 +22685,7 @@
 - id: pachecoyokoyama2022-ceeae9ff
   ref: pachecoyokoyama2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22640,10 +22696,14 @@
     facts: Over ACA0 it is equivalent to ACA'0 (Propositions 3, 4) and to Π¹₂-Ref(ACA0) (Theorem 15); in particular it is equivalent to a Π¹₂ sentence.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: levels of determinacy and reflection above Π¹₁-CA₀ studied in this paper only (their base Π¹₁-CA₀′ is not in the catalogue)."
 - id: pachecoyokoyama2022-7290a985
   ref: pachecoyokoyama2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22654,10 +22714,14 @@
     facts: Over ACA0 it is equivalent to Π¹₁-CA'0 and to Π¹₃-Ref(Π¹₁-CA0) (Theorem 12).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: levels of determinacy and reflection above Π¹₁-CA₀ studied in this paper only (their base Π¹₁-CA₀′ is not in the catalogue)."
 - id: pachecoyokoyama2022-1c9a3292
   ref: pachecoyokoyama2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22668,10 +22732,14 @@
     facts: Over ACA0 it is equivalent to Π¹₃-Ref(Π¹₂-CA0) and to ∀n.[Σ¹₁]n-ID (Theorem 16). Over RCA0 it is equivalent to its Cantor-space version ∀n.(Σ⁰₂)n-Det* (Proposition 5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: levels of determinacy and reflection above Π¹₁-CA₀ studied in this paper only (their base Π¹₁-CA₀′ is not in the catalogue)."
 - id: pachecoyokoyama2022-8c01333c
   ref: pachecoyokoyama2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22682,6 +22750,10 @@
     facts: "Over ACA0 it is equivalent to Π¹₃-Ref(Z2) (Theorem 29). This uses Montalbán–Shore: Π¹ₘ₊₂-CA0 proves (Π⁰₃)m-Det, and (Π⁰₃)m-Det proves the existence of β-models of Δ¹ₘ-CA0."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: levels of determinacy and reflection above Π¹₁-CA₀ studied in this paper only (their base Π¹₁-CA₀′ is not in the catalogue)."
 - id: pachecoyokoyama2022-c5a72665
   ref: pachecoyokoyama2022
   date: 2026-11-05
@@ -22703,7 +22775,7 @@
 - id: pachecoyokoyama2022-affe0a10
   ref: pachecoyokoyama2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22714,6 +22786,10 @@
     facts: Equivalent over ACA0 to ∀n.(Σ⁰₁)n-Det and to Π¹₃-Ref(Π¹₁-CA0) (Theorem 12).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: levels of determinacy and reflection above Π¹₁-CA₀ studied in this paper only (their base Π¹₁-CA₀′ is not in the catalogue)."
 - id: pachecoyokoyama2022-0e8bfad6
   ref: pachecoyokoyama2022
   date: 2026-11-05
@@ -22735,7 +22811,7 @@
 - id: pachecoyokoyama2022-04c62410
   ref: pachecoyokoyama2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22746,10 +22822,14 @@
     facts: Over ATR0, MedSalem–Tanaka show (Σ⁰₂)k-Det ↔ [Σ¹₁]k-ID. In this paper ∀n.(Σ⁰₂)n-Det implies ∀n.[Σ¹₁]n-ID over ATR0 (Proposition 7), and ∀n.[Σ¹₁]n-ID implies ∀n.ψ₁(2,n) over ACA0 (Lemma 18).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: levels of determinacy and reflection above Π¹₁-CA₀ studied in this paper only (their base Π¹₁-CA₀′ is not in the catalogue)."
 - id: pachecoyokoyama2022-765d39ab
   ref: pachecoyokoyama2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -22760,6 +22840,10 @@
     facts: Equivalent over ACA0 to Π¹ₖ-CA0 for k = 1, 2 (Simpson VII.6.9), and to the existence for every X of a βk-model containing X.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: levels of determinacy and reflection above Π¹₁-CA₀ studied in this paper only (their base Π¹₁-CA₀′ is not in the catalogue)."
 - id: fioricaronesetal2024-1f9519cd
   ref: fioricaronesetal2024
   date: 2026-11-05
@@ -23864,7 +23948,7 @@
 - id: barrett2021-926be801
   ref: barrett2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -23875,10 +23959,14 @@
     facts: Provable in WKL0 (Proposition 4.11) and provable in RCA0 plus WKL0, but exact strength open (Question 4.13); lies between RCA0 and WKL0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: notions of commutative algebra studied in this paper only."
 - id: barrett2021-bea3b1d4
   ref: barrett2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -23889,10 +23977,14 @@
     facts: Equivalent to WKL0 over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: notions of commutative algebra studied in this paper only."
 - id: barrett2021-99d0a54c
   ref: barrett2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -23903,10 +23995,14 @@
     facts: "Σ1-Noeth implies ∆1-Noeth, sequential Noeth, ∆1-a.c.c. over RCA0; sequential Noeth implies ∆1-a.c.c. Theorem 5.4: RCA0+IΣ2 proves equivalence of weak and strict chain conditions for Σ1-ideals. Theorem 5.10: ACA0 equivalent to 'every ring with ∆1-a.c.c. is Σ1-Noetherian' (also with ∆1-Noetherian or sequentially Noetherian variants). Theorem 5.11: WKL0 equivalent to 'every ring with ∆1-a.c.c. is sequentially Noetherian'. Corollary 5.13: WKL0 equivalent to 'every Artinian ring is sequentially Noetherian'."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: notions of commutative algebra studied in this paper only."
 - id: barrett2021-1678af94
   ref: barrett2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -23917,10 +24013,14 @@
     facts: "Σ1-Noetherian rings have a.c.c.p.; Theorem 6.23 (cited, Bura/Greenberg–Melnikov): ACA0 equivalent to 'in a ring with a.c.c.p. every element has an irreducible factorisation'."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: notions of commutative algebra studied in this paper only."
 - id: barrett2021-cd9380d5
   ref: barrett2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -23931,10 +24031,14 @@
     facts: "Euclidean domains are PIDs and DHD implies PID in RCA0; every GCD domain is AP in RCA0; ACA0 proves PIDs are UFDs; Theorem 6.26: in ACA0, if every prime Σ1-ideal is principal then R is a PID; Theorem 6.44: RCA0+IΣ3 proves R UFD implies R[x] UFD; Theorem 6.41 RCA0: R field iff R[x] Euclidean iff R[x] PID."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: notions of commutative algebra studied in this paper only."
 - id: barrett2021-79a78a81
   ref: barrett2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -23945,10 +24049,14 @@
     facts: "Provable in ACA0 and implies ACA0 over RCA0, hence equivalent. Corollary 6.38: ACA0 equivalent to 'for any PID the set of units exists' and to 'the set of primes exists'. Theorem 6.39: computable PID whose set of irreducibles is Π2 complete."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: notions of commutative algebra studied in this paper only."
 - id: barrett2021-65e4d37b
   ref: barrett2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -23959,6 +24067,10 @@
     facts: ACA0 proves ZL(arithmetical, arithmetical); RCA0 proves ZL(Σ1,Σ1) (Theorem B.4); ZL(Γ,Θ) is equivalent to ACA0 if Γ contains Π1 and ≤ is Θ, or N is Γ and Θ contains Π1 (Corollary B.6).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: notions of commutative algebra studied in this paper only."
 - id: brattkahendtlasskreuzer2018-c1f33adb
   ref: brattkahendtlasskreuzer2018
   date: 2026-11-05
@@ -25103,7 +25215,7 @@
 - id: hirst1987-c3a8ee07
   ref: hirst1987
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25114,10 +25226,14 @@
     facts: MT ↔ MTU over RCA0 (Lemma 7.21). MT is equivalent to the strong Hindman theorem of Theorem 7.5 over RCA0 (Theorem 7.22). ACA0' proves MT (Corollary 7.23). RCA0 ⊢ MT → ACA0 (Corollary 7.24). Theorem 7.25 characterises MT in countable models via additive restricted Galvin ultrafilters.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as milliken (block sums), with Corollaries 7.23 (ACA₀⁺ proves it, read in the rendered scan) and 7.24; MTU is equivalent (Lemma 7.21).
 - id: hirst1987-c450b9cf
   ref: hirst1987
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25128,10 +25244,14 @@
     facts: Equivalent to HT over RCA0 (Theorem 7.8). It cannot be extended to all rings, to rings of finite characteristic, or to monochromatic ideals (Theorems 7.9–7.11). Equivalent to the Boolean-algebra version (Theorem 7.12) and to a version with a monochromatic subring isomorphic to R for Boolean rings of finite sets (Porism 7.13).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: equivalent to HT over RCA₀ (Theorem 7.8)."
 - id: hirst1987-d91fc40a
   ref: hirst1987
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25142,10 +25262,14 @@
     facts: The unbounded versions are equivalent to ACA0 over RCA0, and the bounded versions (including k-societies) to WKL0 (Theorems 2.2, 2.3, 3.1, 3.3). The finite marriage theorem is provable in RCA0 (Theorem 2.1).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: the catalogue has marriage; the unbounded versions are equivalent to ACA₀ and the bounded ones to WKL₀ (Theorems 2.2–3.3)."
 - id: hirst1987-02a79264
   ref: hirst1987
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25156,10 +25280,14 @@
     facts: Equivalent to WKL0 over RCA0 (Theorem 3.5). The version without range hypotheses is equivalent to ACA0 (Theorem 3.8).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as cbbt (≡ WKL₀, Theorem 3.5); the unbounded version is equivalent to ACA₀ (Theorem 3.8).
 - id: hirst1987-2f9dc6ce
   ref: hirst1987
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25170,6 +25298,10 @@
     facts: The principle is equivalent to ACA0 over RCA0 (Theorem 3.30) and the weak version to WKL0 (Theorem 3.31). The formulation differs from the catalogue's rado, so it was not matched.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: the catalogue has rado (strong version, ≡ ACA₀); this formulation is also equivalent to ACA₀ (Theorem 3.30)."
 - id: marconevolpi2026-d4d09c60
   ref: marconevolpi2026
   date: 2026-11-05
@@ -25314,7 +25446,7 @@
 - id: kihara2020-32c455ee
   ref: kihara2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25325,10 +25457,14 @@
     facts: (WKL≤2)♦ ≡W (WKL≤2)* (Fact 5.2, from Le Roux–Pauly/Pauly–Tsuiki). WKLaou ≰cW (WKL≤2)♦ (Prop. 5.3). WKLclop → WKLaou (Prop. 4.2). WKL≤2 ≰cW F for F with a semicontinuous bound, in particular WKL≤2 ≰cW (RT12 × Limω)♦ (Prop. 5.9). WKLconv ≰cW (RT12 × Limω × WKL≤2)♦ (Prop. 5.10). WKL≤2 ≰cW (WKL=2 × WKLaou)♦ and WKL≤2 ≰cW (WKLclop)♦.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: one of a family of problems of constructive analysis compared in this paper only."
 - id: kihara2020-d7395310
   ref: kihara2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25339,10 +25475,14 @@
     facts: BEQ ↔ WKL=2 (Prop. 4.5). WKLclop → WKL=2 (Prop. 4.3). WKL=2 ≰cW (WKLaou)♦ (Prop. 5.5). WKL=2 ≤W Limω.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: one of a family of problems of constructive analysis compared in this paper only."
 - id: kihara2020-0af12c65
   ref: kihara2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25353,10 +25493,14 @@
     facts: (WKLaou)♦ ≡W (WKLaou)* ⋆ (WKLaou)* (Fact 5.4, from Kihara–Pauly). WKLaou ≰cW (WKL≤2)♦ (Prop. 5.3). WKL=2 ≰cW (WKLaou)♦ (Prop. 5.5). LLPO ≤W WKLaou is used in the proof of Lemma 5.12.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: one of a family of problems of constructive analysis compared in this paper only."
 - id: kihara2020-1577c50a
   ref: kihara2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25367,10 +25511,14 @@
     facts: WKLconv ≰cW (RT12 × Limω × WKL≤2)♦ (Prop. 5.10). IVT ≰cgW Σ02-DML × Σ02-DNE × BE (Thm 5.1(5)).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: one of a family of problems of constructive analysis compared in this paper only."
 - id: kihara2020-de623bd6
   ref: kihara2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25381,10 +25529,14 @@
     facts: IVTlin ↔ WKLclop (Prop. 4.6). WKLclop → WKLaou, WKLclop → WKL=2 (Props. 4.2, 4.3). Σ02-DNE → WKLclop (Prop. 4.4). WKLclop ≰cW (WKLaou × WKL≤2)♦ (Prop. 5.7). WKLclop ≤W Limω.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: one of a family of problems of constructive analysis compared in this paper only."
 - id: kihara2020-e8a6cb7c
   ref: kihara2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25395,10 +25547,14 @@
     facts: RDIV ≰cgW BE; BE ≰cgW Σ02-DML × Σ02-DNE (Thm 5.1). Used to separate IVT, BE, RDIV, LLPO over IZF via realizability (Thm 1.1).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: one of a family of problems of constructive analysis compared in this paper only."
 - id: kihara2020-67a7ebeb
   ref: kihara2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25409,10 +25565,14 @@
     facts: BEQ ↔ WKL=2 (Prop. 4.5). BEQ ≰cgW RDIV (Thm 5.1(2)).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: one of a family of problems of constructive analysis compared in this paper only."
 - id: kihara2020-babde571
   ref: kihara2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25423,10 +25583,14 @@
     facts: IVTlin ↔ WKLclop (Prop. 4.6). IVTlin ≰cgW RDIV × BE (Thm 5.1(3)).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: one of a family of problems of constructive analysis compared in this paper only."
 - id: kihara2020-e36cc378
   ref: kihara2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25437,10 +25601,14 @@
     facts: Σ02-DML_R ≡W RT12 (Prop. 4.8). BE ≰cgW Σ02-DML × Σ02-DNE (Thm 5.1(4)).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: one of a family of problems of constructive analysis compared in this paper only."
 - id: kihara2020-32211b95
   ref: kihara2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25451,10 +25619,14 @@
     facts: Σ02-DNE_R ≡W Limω (Prop. 4.7). Limω does not satisfy rCT! (Example 3.38). Limω <W Limω! ≡W lim_{ω^ω}.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: one of a family of problems of constructive analysis compared in this paper only."
 - id: kihara2020-aece3b60
   ref: kihara2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25465,6 +25637,10 @@
     facts: Realizability separations over IZF between RDIV, BE, IVT, WKL, LLPO (Thm 1.1); RDIV ≰cgW BE (Thm 5.1(1)).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: one of a family of problems of constructive analysis compared in this paper only."
 - id: nies2014-d01cb5bf
   ref: nies2014
   date: 2026-11-05

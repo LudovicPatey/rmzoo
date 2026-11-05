@@ -1,0 +1,3 @@
+# Results from [takeda2026].
+
+[ { type: equivalence, from: vel, to: aca-plus, over: rca0, refs: [ { ref: takeda2026, loc: Theorem 2.24 } ] }, { type: equivalence, from: rvel, to: aca-prime, over: rca0, refs: [ { ref: takeda2026, loc: Theorem 2.25 } ] } ]
