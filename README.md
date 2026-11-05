@@ -217,6 +217,16 @@ superscripts (RT²₂ may come out as "RT3", RCA₀ as "RCAg"): the AI reader is
 warned for these papers and must identify principles from their definitions,
 and the regex miners' leads from them deserve extra care.
 
+When neither Zotero nor `--download` finds a paper, look on each author's web
+page (publications list, CV, preprint folder): many authors post their papers
+there, sometimes as a conference or preprint version. Save it by hand as
+`cache/fulltext/<key>.pdf` and `.txt` (`pdftotext`), add
+`"<key>": {"source": "oa", "url": "…", "date": "…"}` to
+`cache/fulltext/index.json`, then run `node scripts/fulltext.mjs --status --only
+<key>`. A different version of the work (conference vs journal) gets its own
+reference linked by `version`, and results cite the version that was read.
+Never use shadow libraries (Sci-Hub, LibGen and the like).
+
 ## Abstracts
 
 Abstracts live in `data/abstracts.yaml`, each with its source:

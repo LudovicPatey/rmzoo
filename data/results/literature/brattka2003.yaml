@@ -1,0 +1,3 @@
+# Results from [brattka2003].
+
+[ { type: implication, from: ec, to: lim, over: w, refs: [ { ref: brattka2003, loc: "Theorem 5.5(2) with Proposition 9.1 (lim is Σ⁰₂-computable, hence reducible to C₁, which is computably equivalent to EC by the remark after Definition 5.3)" } ] } ]

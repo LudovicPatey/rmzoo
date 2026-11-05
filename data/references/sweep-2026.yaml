@@ -1978,6 +1978,7 @@ conidis2010:
   year: 2010
   doi: 10.1016/j.apal.2010.07.004
   source: zbmath
+  read: pdf-oa
 keisler2010:
   authors:
     - H. Jerome Keisler
@@ -2053,6 +2054,7 @@ conidis2010b:
   year: 2010
   doi: 10.1090/S0002-9947-2010-05013-5
   source: zbmath
+  read: pdf-oa
 cookfontes2010:
   authors:
     - Stephen Cook
@@ -2332,6 +2334,7 @@ conidis2012:
   year: 2012
   doi: 10.1090/S0002-9947-2012-05416-X
   source: zbmath
+  read: pdf-oa
 dienerhedin2012:
   authors:
     - Hannes Diener
@@ -2403,6 +2406,7 @@ conidisgreenbergturetsky2013:
   year: 2013
   doi: 10.1215/00294527-1960488
   source: zbmath
+  read: pdf-oa
 yokoyama2013:
   authors:
     - Keita Yokoyama
@@ -2515,6 +2519,7 @@ conidis2014:
   year: 2014
   doi: 10.1016/j.jalgebra.2014.02.027
   source: zbmath
+  read: pdf-oa
 juralevinmarkkanen2014:
   authors:
     - Matthew Jura
@@ -2938,6 +2943,7 @@ conidis2019:
   year: 2019
   doi: 10.1016/j.aim.2018.10.036
   source: zbmath
+  read: pdf-oa
 freund2019c:
   authors:
     - Anton Freund

@@ -73,6 +73,9 @@ paper.
   do not use it or work around its blocking.**
 * Zotero (`~/Zotero`) is read-only. Papers are copied into `cache/fulltext/`,
   which is git-ignored (copyrighted texts are never committed).
+* When a paper's full text is missing (not in Zotero, no open-access copy), look
+  systematically on each author's web page before giving up (README, "Full texts
+  of the papers"), and say what you found. Never use shadow libraries (Sci-Hub…).
 * Commit only when the maintainer asks; they push. Deploying to the live
   instance (`node scripts/deploy.mjs`) is also theirs to run; a new file the
   site needs must be added to the list in `scripts/lib/deploy.mjs`. End commit messages with the

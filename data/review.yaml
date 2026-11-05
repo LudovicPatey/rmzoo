@@ -15119,7 +15119,7 @@
 - id: barnesgohshore2023-8b1c3b44
   ref: barnesgohshore2023
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -15135,6 +15135,10 @@
   confidence: high
   reasons:
     - "attributed by the paper to Conidis [4, Theorem 3.1]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Entered from the original, Conidis 2012, Theorem 3.1 (Section 3: an ω-model of Δ¹₁-CA₀ that is not a model of ABW₀), PDF from the author's page; this passage is cited too."
 - id: barnesgohshore2023-ea4e6f58
   ref: barnesgohshore2023
   date: 2026-11-05
@@ -24541,7 +24545,7 @@
 - id: brattka2021-54631ad4
   ref: brattka2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -24557,6 +24561,10 @@
   confidence: high
   reasons:
     - "attributed by the paper to Fact 1.10 ([BG11b]): cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Entered lim ≤W EC from the conference version (Brattka 2003, Theorem 5.5(2) with Proposition 9.1, PDF from the author's page), so J ≡W EC is derived. Not entered over sW: the reducibility of the 2003 version is the ordinary one, and the journal version (Brattka 2005) is not available."
 - id: brattka2021-516fa39d
   ref: brattka2021
   date: 2026-11-05

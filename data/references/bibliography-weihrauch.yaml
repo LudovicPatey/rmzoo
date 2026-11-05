@@ -391,6 +391,15 @@ brattka2005:
   year: 2005
   venue: Mathematical Logic Quarterly, 51(1), 19–44
   source: weihrauch-bibliography
+brattka2003:
+  authors:
+    - Vasco Brattka
+  title: Effective Borel measurability and reducibility of functions (conference version)
+  year: 2003
+  venue: "Computability and Complexity in Analysis (CCA 2003), Informatik Berichte 302, FernUniversität in Hagen"
+  url: http://cca-net.de/vasco/publications/borel.html
+  version: brattka2005
+  read: pdf-oa
 brattka2016:
   authors:
     - Vasco Brattka
