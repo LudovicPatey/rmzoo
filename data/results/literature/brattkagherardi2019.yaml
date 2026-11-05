@@ -9,3 +9,4 @@
 - { type: separation, from: sort, to: lim, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" }, { ref: gherardimarconepauly2018, loc: Proposition 3.3 } ] }
 - { type: separation, from: tcn, to: sort, over: w, refs: [ { ref: brattkagherardi2019, loc: after Corollary 8.15 } ] }
 - { type: separation, from: sort, to: tcn, over: w, refs: [ { ref: brattkagherardi2019, loc: after Corollary 8.15 } ] }
+- { type: implication, from: sort, to: cn, over: sw, refs: [ { ref: brattkagherardi2019, loc: Proof of Corollary 8.16 (Corollary 8.16 itself is for the completion of C_N) } ] }

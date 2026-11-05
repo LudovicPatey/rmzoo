@@ -148,7 +148,7 @@ created on the fly with their label, name and definition: `lpo.jump` (LPO′),
 `tcn.star.tcn` (TC_ℕ ⋆ TC_ℕ); operators apply left to right and parentheses
 group: `cn.star.(lpo.jump)` is C_ℕ ⋆ LPO′. The engine knows the laws of the
 algebra for the reductions marked `algebra` in `data/reductions.yaml`:
-P ≤sW P′, P̂, P*; P* ≤sW P̂; P, Q ≤W P × Q ≤W P ⋆ Q; P ≤W P⋄, and P⋄ is closed
+P ≤sW P′, P̂, P*; P* ≤sW P̂; P, Q ≤W P × Q ≤W P ⋆ Q; P × Q ≡W Q × P (so P × Q ≤W Q ⋆ P too); P ≤W P⋄, and P⋄ is closed
 under × and ⋆; parallelizations, products, compositional products and ⋄ are
 monotone for ≤W (parallelizations also for ≤sW), but the jump is monotone for
 ≤sW only: P ≤W Q does not give P′ ≤W Q′ (the identity is below every problem,

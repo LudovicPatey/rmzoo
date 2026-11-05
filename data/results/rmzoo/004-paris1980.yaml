@@ -1,7 +1,7 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Paris (1980) — A hierarchy of cuts in models of arithmetic
 
-- {type: "conservation", statement: "bsig2", base: "rca0", class: "Pi03", value: true, refs: [{ref: "paris1980", loc: "Theorem 33, and independently by Friedman"}]}
-- {type: "conservation", statement: "bsig3", base: "isig2", class: "Pi04", value: true, refs: [{ref: "paris1980", loc: "Theorem 33, and independently by Friedman"}]}
-- {type: "conservation", statement: "bsig2", base: "rca0", class: "Sig03", value: false, refs: [{ref: "paris1980", loc: "remark following proof of Theorem 33, p. 331"}]}
-- {type: "conservation", statement: "bsig3", base: "isig2", class: "Sig04", value: false, refs: [{ref: "paris1980", loc: "remark following proof of Theorem 33, p. 331"}]}
+- { type: "conservation", statement: "bsig2", base: "rca0", class: "Pi03", value: true, refs: [ { ref: paris1980, loc: "Theorem 33, and independently by Friedman" }, { ref: hajekpudlak1998, loc: "Chapter IV, Theorem 1.59 (k = 1; due to Paris and Friedman)" } ] }
+- { type: "conservation", statement: "bsig3", base: "isig2", class: "Pi04", value: true, refs: [ { ref: "paris1980", loc: "Theorem 33, and independently by Friedman" } ] }
+- { type: "conservation", statement: "bsig2", base: "rca0", class: "Sig03", value: false, refs: [ { ref: "paris1980", loc: "remark following proof of Theorem 33, p. 331" } ] }
+- { type: "conservation", statement: "bsig3", base: "isig2", class: "Sig04", value: false, refs: [ { ref: "paris1980", loc: "remark following proof of Theorem 33, p. 331" } ] }

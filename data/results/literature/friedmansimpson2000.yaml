@@ -1,0 +1,3 @@
+# Results from [friedmansimpson2000].
+
+[ { type: separation, from: aca, to: ts, over: rca0, refs: [ { ref: friedmansimpson2000, loc: "Section 7, Consequences of Ramsey's theorem (Friedman: T2 is not provable in ACA₀)" } ] } ]

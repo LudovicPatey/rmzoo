@@ -25,7 +25,8 @@ export const RULES = {
   'prop-base': 'A problem has this property exactly when the base system implies it over this reduction (e.g. computably true = holds in every ω-model)',
   refine: 'Separation at a coarser reduction',
   'base-lift': 'Over a weaker base theory, a statement implying the stronger base theory has all its consequences over that theory (over RCA₀*, a statement implying IΣ⁰₁ implies everything it implies over RCA₀)',
-  'op-base': 'Algebra of Weihrauch degrees: a problem is below its jump, its parallelization and its finite parallelization (strongly), and below products and compositional products in which it occurs',
+  'op-base': 'Algebra of Weihrauch degrees: a problem is below its jump, its parallelization and its finite parallelization (strongly), and below products and compositional products in which it occurs; a product is below the compositional products of its two factors, in either order',
+  'op-comm': 'The product of Weihrauch problems is commutative: P × Q ≡W Q × P',
   'op-monotone': 'Algebra of Weihrauch degrees: parallelizations, finite parallelizations, products, compositional products and the diamond operator are monotone; jumps are monotone for strong Weihrauch reducibility',
   'op-diamond': 'Algebra of Weihrauch degrees: P⋄ is closed under products and compositional products (if Q, R ≤W P⋄ then Q × R ≤W P⋄ and Q ⋆ R ≤W P⋄)',
   'weaken-left': 'Weakening the hypothesis',
@@ -197,6 +198,7 @@ export function buildZoo(raw) {
   // Operator statements (op: jump | par | fin | product | compose, args: [ids]).
   // Laws, for reductions marked `algebra` (strong / weak Weihrauch):
   //   P ≤sW P', P ≤sW P̂, P ≤sW P*, P* ≤sW P̂;   P, Q ≤W P × Q ≤W P ⋆ Q, P, Q ≤W P ⋆ Q;
+  //   P × Q ≡W Q × P, hence also P × Q ≤W Q ⋆ P;
   //   P ≤W P⋄, and P⋄ is closed under × and ⋆ (diamond: weak only);
   //   all operations are monotone for ≤W except the jump, which is monotone for ≤sW
 //   only (par and fin are monotone for both).
@@ -214,9 +216,13 @@ export function buildZoo(raw) {
       for (const o of ops) {
         if (!algebraAt(r, o) || o.args.some((x) => x === undefined)) continue;
         for (const x of o.args) addI(r, o.i, x, { rule: 'op-base' });
-        if (o.op === 'compose') { // P × Q ≤W P ⋆ Q
-          const pr = ops.find((q) => q.op === 'product' && q.args[0] === o.args[0] && q.args[1] === o.args[1]);
-          if (pr) addI(r, o.i, pr.i, { rule: 'op-base' });
+        const [x0, x1] = o.args;
+        if (o.op === 'compose') { // P × Q ≤W P ⋆ Q, and Q × P ≤W P ⋆ Q since × is commutative
+          for (const q of ops) if (q.op === 'product' && ((q.args[0] === x0 && q.args[1] === x1) || (q.args[0] === x1 && q.args[1] === x0))) addI(r, o.i, q.i, { rule: 'op-base' });
+        }
+        if (o.op === 'product' && x0 !== x1) { // P × Q ≡W Q × P
+          const q = ops.find((p) => p.op === 'product' && p.args[0] === x1 && p.args[1] === x0);
+          if (q) addI(r, o.i, q.i, { rule: 'op-comm' });
         }
         if (o.op === 'par') { // P* ≤sW P̂
           const fin = ops.find((q) => q.op === 'fin' && q.args[0] === o.args[0]);

@@ -120,6 +120,30 @@ test('operator statements: P below its jump, parallelization; monotonicity', () 
   assert.equal(st('w', 'b.jump', 'a.jump'), 'open');
 });
 
+test('products commute, and a product is below the compositional products in either order', () => {
+  const zoo = buildZoo({
+    reductions: [
+      { id: 'sw', domain: 'problems', algebra: 'strong', finerThan: ['w'] },
+      { id: 'w', domain: 'problems', algebra: 'weak', finerThan: [] },
+    ],
+    properties: [],
+    statements: [
+      { id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' }, { id: 'c', kind: 'problem' },
+      { id: 'a.x.b', kind: 'problem', op: 'product', args: ['a', 'b'] },
+      { id: 'b.x.a', kind: 'problem', op: 'product', args: ['b', 'a'] },
+      { id: 'b.star.a', kind: 'problem', op: 'compose', args: ['b', 'a'] },
+    ],
+    // the pattern of Dzhafarov et al. 2018, Corollary 2.8: SRT²₂ × COH ≰W RT²₂
+    results: [{ type: 'separation', from: 'c', to: 'a.x.b', over: 'w', refs: [{ ref: 'x' }] }],
+  });
+  const st = (r, x, y) => zoo.status(zoo.ridx.get(r), zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('w', 'a.x.b', 'b.x.a'), 'implies');
+  assert.equal(st('w', 'b.x.a', 'a.x.b'), 'implies');
+  assert.equal(st('w', 'b.star.a', 'a.x.b'), 'implies'); // a × b ≡W b × a ≤W b ⋆ a
+  assert.equal(st('w', 'c', 'b.star.a'), 'separated');
+  assert.equal(st('sw', 'a.x.b', 'b.x.a'), 'open');      // the laws on products are only used for ≤W
+});
+
 test('base lift: over RCA₀*, a statement implying RCA₀ has its RCA₀ consequences', () => {
   const zoo = buildZoo({
     reductions: [

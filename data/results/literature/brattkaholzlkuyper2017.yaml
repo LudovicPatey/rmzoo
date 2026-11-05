@@ -1,0 +1,3 @@
+# Results from [brattkaholzlkuyper2017].
+
+[ { type: property, statement: cn.jump, property: compose-closed, value: true, refs: [ { ref: brattkaholzlkuyper2017, loc: Proof of Proposition 21 } ] } ]

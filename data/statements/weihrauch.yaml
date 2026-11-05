@@ -270,6 +270,48 @@
   solution: A sequence $q \neq U(p)$.
   refs: [ { ref: brattka2021, role: rm, loc: "Section 1, (13)" } ]
 
+- id: nrng
+  label: '\mathsf{NRNG}'
+  name: Range non-equality problem
+  kind: problem
+  minor: true
+  tags: [ weihrauch, computability ]
+  aliases: [ NRNG ]
+  definition: >
+    Given $p \in \mathbb{N}^\mathbb{N}$, find a set $A \in 2^\mathbb{N}$ with $A \neq \mathrm{range}(p - 1)$, the set of the
+    numbers $n$ with $n + 1$ in the range of $p$.
+  instance: 'A sequence $p \in \mathbb{N}^\mathbb{N}$.'
+  solution: 'A set $A \neq \mathrm{range}(p - 1)$.'
+  refs: [ { ref: brattka2021, role: origin, loc: Definition 5.11 } ]
+
+- id: nmaj
+  label: '\mathsf{NMAJ}'
+  name: Non-majorization problem
+  kind: problem
+  minor: true
+  tags: [ weihrauch, computability ]
+  aliases: [ NMAJ ]
+  definition: >
+    Given $\langle i, p\rangle$, find $q \in \mathbb{N}^\mathbb{N}$ not majorized by $\varphi^p_i$: for some $n$, either
+    $\varphi^p_i(n)$ is undefined or $\varphi^p_i(n) < q(n)$.
+  instance: 'A pair $\langle i, p\rangle$ with $i \in \mathbb{N}$ and $p \in \mathbb{N}^\mathbb{N}$.'
+  solution: 'A function $q$ with $\varphi^p_i(n) \not\geq q(n)$ for some $n$.'
+  refs: [ { ref: brattka2021, role: origin, loc: "Definition 6.1(2)" } ]
+
+- id: meet
+  label: '\mathsf{MEET}'
+  name: Meeting principle
+  kind: problem
+  minor: true
+  tags: [ weihrauch, computability ]
+  aliases: [ MEET ]
+  definition: >
+    Given $p \in \mathbb{N}^\mathbb{N}$, find $q \in \mathbb{N}^\mathbb{N}$ that meets every $p$-computable function: for every
+    $r \leq_T p$ there is $n$ with $r(n) = q(n)$. Introduced by Hölzl, Raghavan, Stephan and Zhang in reverse mathematics.
+  instance: 'A sequence $p \in \mathbb{N}^\mathbb{N}$.'
+  solution: 'A function $q$ with $(\forall r \leq_T p)(\exists n)\, r(n) = q(n)$.'
+  refs: [ { ref: brattka2021, role: rm, loc: "Definition 6.1(4)" } ]
+
 - id: sort
   label: '\mathsf{SORT}'
   name: Binary sorting problem
@@ -461,16 +503,16 @@
 
 - id: sigma01-rt
   label: '\Sigma^0_1\text{-}\mathsf{RT}'
-  name: Open Ramsey theorem (Weihrauch problem)
+  name: Open Ramsey theorem
   kind: problem
   tags: [ weihrauch, ramsey ]
-  aliases: [ Σ01-RT ]
+  aliases: [ Σ01-RT, open Ramsey theorem ]
   definition: >
     Given an open set $P \subseteq [\mathbb{N}]^{\mathbb{N}}$, find a homogeneous solution: an infinite set $H$ whose
     infinite subsets are all in $P$ or all outside $P$. The problem form of the open Ramsey theorem (equivalent to $\mathsf{ATR}_0$).
   instance: 'An open set $P \subseteq [\mathbb{N}]^{\mathbb{N}}$.'
   solution: 'An infinite $H$ with $[H]^{\mathbb{N}} \subseteq P$ or $[H]^{\mathbb{N}} \cap P = \emptyset$.'
-  refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.1 } ]
+  refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.1 }, { ref: simpson2009, role: rm, loc: "Theorem V.9.7" } ]
 
 - id: findhs-sigma01
   label: '\mathsf{FindHS}_{\Sigma^0_1}'
@@ -525,16 +567,16 @@
 
 - id: delta01-rt
   label: '\Delta^0_1\text{-}\mathsf{RT}'
-  name: Clopen Ramsey theorem (Weihrauch problem)
+  name: Clopen Ramsey theorem
   kind: problem
   minor: true
   tags: [ weihrauch, ramsey ]
-  aliases: [ Δ01-RT ]
+  aliases: [ Δ01-RT, clopen Ramsey theorem ]
   definition: >
     Given a clopen set $D \subseteq [\mathbb{N}]^{\mathbb{N}}$ (by names of it and its complement), find a homogeneous solution.
   instance: 'A clopen set $D \subseteq [\mathbb{N}]^{\mathbb{N}}$.'
   solution: 'An infinite $H$ with $[H]^{\mathbb{N}} \subseteq D$ or $[H]^{\mathbb{N}} \cap D = \emptyset$.'
-  refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.2 } ]
+  refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.2 }, { ref: simpson2009, role: rm, loc: "Theorem V.9.7" } ]
 
 - id: findhs-delta01
   label: '\mathsf{FindHS}_{\Delta^0_1}'

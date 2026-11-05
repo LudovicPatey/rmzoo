@@ -14138,7 +14138,7 @@
 - id: marconeosso2024-c14ad320
   ref: marconeosso2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -14156,6 +14156,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to [Sim09, Theorem V.9.7]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Already in the database from Simpson 2009, Theorem V.9.7; the sentence entry open-rt was merged into sigma01-rt (and clopen-rt into delta01-rt), the same principle.
 - id: marconeosso2024-c7c2c172
   ref: marconeosso2024
   date: 2026-11-05
@@ -14207,7 +14211,7 @@
 - id: marconeosso2024-2cac763a
   ref: marconeosso2024
   date: 2026-11-05
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -14226,6 +14230,10 @@
     - the quoted passage was not found in the text
     - "extractor confidence: low"
     - "attributed by the paper to [MV21, Theorem 4.7]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Marcone–Valenti 2020, Theorem 4.7 is C_{N^N} ≡sW FindHS_{Π⁰₁} (not wFindHS, which is strictly below by Proposition 4.9); the correct fact is already entered.
 - id: marconeosso2024-b0267533
   ref: marconeosso2024
   date: 2026-11-05
@@ -16433,7 +16441,7 @@
 - id: marconeosso2026b-fb6f8373
   ref: marconeosso2026b
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -16451,6 +16459,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to well-known facts (cf. [BGP21]): cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Entered with Marcone–Osso Proposition 2.24(2) as source: Brattka–Gherardi–Pauly 2021 list C_{N^N} but not UC_{N^N} among the cylinders."
 - id: marconeosso2026b-650b9d62
   ref: marconeosso2026b
   date: 2026-11-05
@@ -17070,7 +17082,7 @@
 - id: brattkagherardi2019-98cdb13d
   ref: brattkagherardi2019
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -17088,6 +17100,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to [21, Proposition 24]; [12, Proposition 12]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Entered from the proof of Corollary 8.16 (the rendered page shows Corollary 8.16 itself is for the completion of C_N; completions are not in the catalogue).
 - id: brattkagherardi2019-28f88574
   ref: brattkagherardi2019
   date: 2026-11-05
@@ -17141,7 +17157,7 @@
 - id: brattkagherardi2019-70a5399c
   ref: brattkagherardi2019
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -17160,6 +17176,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to [12, Proposition 21]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Entered: C′_N ∗ C′_N ≡W C′_N is stated in the proof of Proposition 21 of Brattka–Hölzl–Kuyper 2017 ([12] of the paper)."
 - id: brattkagherardi2019-68cda2c0
   ref: brattkagherardi2019
   date: 2026-11-05
@@ -17640,7 +17660,7 @@
 - id: soldavalenti2022-d98ce70c
   ref: soldavalenti2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -17656,6 +17676,10 @@
   concerns: The hat is lost in extraction (the quote begins with 'dN' for the hatted TC_N); read from context.
   reasons:
     - "extractor confidence: medium"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Entered: Corollary 7.13, TĈ_N ≡W lim′ (hat checked on the rendered page)."
 - id: soldavalenti2022-25b2c788
   ref: soldavalenti2022
   date: 2026-11-05
@@ -19063,7 +19087,7 @@
 - id: pateyyokoyama2018-572132e1
   ref: pateyyokoyama2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -19082,6 +19106,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to see, e.g., [12] or [37]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Entered over rca0 (the convention for IΣ⁰₁): ∀Π⁰₃ from Theorem 1.5, and the Π⁰₃ version gets Hájek–Pudlák IV.1.59 as a second source next to Paris 1980."
 - id: pateyyokoyama2018-0a0d1aa6
   ref: pateyyokoyama2018
   date: 2026-11-05
@@ -19649,7 +19677,7 @@
 - id: patey2014b-03748c3d
   ref: patey2014b
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -19665,10 +19693,14 @@
   confidence: high
   reasons:
     - "attributed by the paper to Patey [23]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Entered from Patey 2015, Theorem 5.30 (c) and Corollary 5.31 (RCA₀), with this passage.
 - id: patey2014b-10a3ca15
   ref: patey2014b
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -19686,10 +19718,14 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to Patey [23]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Entered from Patey 2015, Theorem 5.28, with this passage.
 - id: patey2014b-cf0154ec
   ref: patey2014b
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -19706,6 +19742,10 @@
   reasons:
     - the quoted passage was not found in the text
     - "extractor confidence: medium"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Derived (SRRT²₂ ≤c SEM ≤c SRT²₂).
 - id: patey2014b-7a4df997
   ref: patey2014b
   date: 2026-11-05
@@ -19733,7 +19773,7 @@
 - id: patey2014b-8e09cc17
   ref: patey2014b
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -19751,6 +19791,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to Cholak, Giusto, Hirst, Jockusch [3] (attributed to Friedman): cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Entered from the original: Friedman–Simpson 2000, Section 7 (Friedman: the thin set theorem for all arities is not provable in ACA₀)."
 - id: patey2014b-b4d0d65f
   ref: patey2014b
   date: 2026-11-05
@@ -19891,7 +19935,7 @@
   ref: dzhafarovmummert2022
   part: 5/9 (chapter 8, pages 217–272)
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -19909,6 +19953,10 @@
   reasons:
     - "extractor confidence: low"
     - "attributed by the paper to Dzhafarov, Goh, Hirschfeldt, Patey, and Pauly [81]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Entered the source, Dzhafarov et al. 2018, Corollaries 2.7–2.9 (SRT²₂ × COH ≰W RT²₂); the engine now knows P × Q ≤W Q ⋆ P, so both compositional products of COH and SRT²₂ are above RT²₂ only through the product. The remark probably means SRT²₂ ∗ COH (the Cholak–Jockusch–Slaman decomposition).
 - id: dzhafarovmummert2022-2605b240
   ref: dzhafarovmummert2022
   part: 5/9 (chapter 8, pages 217–272)
@@ -20980,7 +21028,7 @@
 - id: freundpischkeuftring2026-9519f613
   ref: freundpischkeuftring2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -20998,6 +21046,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to Conidis–Slaman [7, Section 3.1]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Derived: entered BΣ⁰₂ → CΣ⁰₂ from Conidis–Slaman 2013, Section 3.1, and IPP ≡ BΣ⁰₂."
 - id: freundpischkeuftring2026-09ca0ec6
   ref: freundpischkeuftring2026
   date: 2026-11-05
@@ -21121,7 +21173,7 @@
 - id: freundpischkeuftring2026-e393931d
   ref: freundpischkeuftring2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -21140,6 +21192,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to Hirschfeldt–Shore–Slaman [20]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not entered as a separate result: it follows from IPP ≡ BΣ⁰₂ not being Π¹₁-conservative over RCA₀ (Paris–Kirby), recorded as the property, since Π¹₁ ⊆ rΠ¹₂."
 - id: freundpischkeuftring2026-458f34c3
   ref: freundpischkeuftring2026
   date: 2026-11-05
@@ -23139,7 +23195,7 @@
 - id: astoretal2026-623467d2
   ref: astoretal2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -23156,6 +23212,10 @@
   reasons:
     - the quoted passage was not found in the text
     - "attributed by the paper to Hirschfeldt, Shore and Slaman [14] and Conidis [6]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Entered with Astor et al. Theorem 5.2 as source (Hirschfeldt–Shore–Slaman and Conidis state the parts over RCA₀ and over ω-models, not the computable reduction).
 - id: astoretal2026-5bb06401
   ref: astoretal2026
   date: 2026-11-05
@@ -23232,7 +23292,7 @@
 - id: astoretal2026-8a53880f
   ref: astoretal2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -23249,10 +23309,14 @@
   reasons:
     - the quoted passage was not found in the text
     - "extractor confidence: medium"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Entered from Figures 1 and 2 (the paper states the equivalence there; it holds over ω-models by Hirschfeldt–Shore–Slaman).
 - id: astoretal2026-6a94e8dd
   ref: astoretal2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -23269,10 +23333,14 @@
   reasons:
     - the quoted passage was not found in the text
     - "extractor confidence: medium"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Entered from Figures 1 and 2 (the paper states the equivalence there; it holds over ω-models by Hirschfeldt–Shore–Slaman).
 - id: astoretal2026-79ad12a7
   ref: astoretal2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -23289,10 +23357,14 @@
   reasons:
     - the quoted passage was not found in the text
     - "extractor confidence: medium"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Entered from Figures 1 and 2 (the paper states the equivalence there).
 - id: astoretal2026-39e20477
   ref: astoretal2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -23309,6 +23381,10 @@
   reasons:
     - the quoted passage was not found in the text
     - "extractor confidence: medium"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Entered from Figures 1 and 2 (the paper states the equivalence there).
 - id: astoretal2026-dffa8213
   ref: astoretal2026
   date: 2026-11-05
@@ -24247,7 +24323,7 @@
 - id: brattkahendtlasskreuzer2018-2b168463
   ref: brattkahendtlasskreuzer2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -24265,6 +24341,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to [12, Theorem 9.3]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Derived: entered Corollary 10.10 (BCT₁ ≤sW WWKL′, BCT₃ ≤sW WWKL″) with BCT₁ ≡sW C_N (Fact 1.4)."
 - id: brattkahendtlasskreuzer2018-7c9ff0bb
   ref: brattkahendtlasskreuzer2018
   date: 2026-11-05
@@ -24503,7 +24583,7 @@
 - id: brattka2021-1b3c58ca
   ref: brattka2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -24520,6 +24600,10 @@
   confidence: high
   reasons:
     - "attributed by the paper to Jockusch 1989 [Joc89, Theorem 6]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Entered as AI-derived: a DNC₃ solution is a DNC_N solution (Jockusch 1989 is about degrees, not sW)."
 - id: brattka2021-906f8315
   ref: brattka2021
   date: 2026-11-05
@@ -24675,7 +24759,7 @@
 - id: brattka2021-3d2bf16d
   ref: brattka2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -24686,10 +24770,14 @@
     facts: NRNG ≡sW DIS (Corollary 5.12 / Proposition 1.13).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as nrng (minor), with Corollary 5.12 (NRNG ≡sW DIS).
 - id: brattka2021-0a274ab1
   ref: brattka2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -24700,10 +24788,14 @@
     facts: DIS <W NMAJ <W HYP (Proposition 6.3). NMAJ-hat ≡sW HYP. The stashing of NMAJ is ≡W DIS, so NMAJ is not stashable. It is open whether the stashing of NMAJ is ≡sW DIS (Question 6.4). NMAJ ≰W DIS.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as nmaj (minor), with Proposition 6.3 (DIS <W NMAJ <W HYP, NMAJ^ ≡sW HYP; checked on the rendered page).
 - id: brattka2021-876bdf51
   ref: brattka2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -24714,10 +24806,14 @@
     facts: DIS ≤sW NMAJ ≤sW NGEQ ≤W LPO. The stashing of NGEQ is ≡W DIS (Proposition 6.3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: technical problem of this paper, characterized only through stashing (NGEQ stashed ≡W DIS, Proposition 6.3), an operator the catalogue does not have."
 - id: brattka2021-e4090feb
   ref: brattka2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -24728,10 +24824,14 @@
     facts: HYP ≡W MEET (Proposition 6.6); HYP ≤sW MEET, but the reverse reduction is not strong.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as meet (minor), with Proposition 6.6 (HYP ≡W MEET).
 - id: brattka2021-36d84f8a
   ref: brattka2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -24742,10 +24842,14 @@
     facts: RET_X-hat ≡sW EXT_X (Corollary 7.5). LLPO ≤sW RET_n ≡sW AUC_n ≤sW C_n and RET_n ≤sW RET_N ≡W LPO (Proposition 7.8). RET_n-hat ≡sW WKL, and the stashing of RET_n and RET_N is ≡W DIS (Corollary 7.9). RET_X ≤sW lim for totally represented X and RET_N ≤sW C_N (Fact 7.7).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: retraction and extension problems are technical tools of Section 7; their degrees are given through stashing and parallelization (Corollary 7.9)."
 - id: brattka2021-00716317
   ref: brattka2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -24756,10 +24860,14 @@
     facts: AUC_n <W AUC_{n+1} <W AUC_N for n ≥ 2 (Proposition 7.10). AUC_n ≡sW RET_n. AUC_n is not equal to the catalogue's auc, which is on [0,1].
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: AUC_n is a family of technical problems of this paper (AUC_2 = LLPO; AUC_n ≡sW RET_n, Propositions 7.8, 7.10)."
 - id: brattka2021-49a1ccdb
   ref: brattka2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -24770,10 +24878,14 @@
     facts: ACC_N <sW ACC_{n+1} <sW ACC_n for n ≥ 2 (Weihrauch 1992). ACC_n-hat ≡sW DNC_n. The stashing of ACC_n is ≡sW DIS (Proposition 5.6).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: ACC_2 = LLPO and ACC_N (accn) are in the catalogue; the intermediate ACC_n (Fact 5.5(2)) are not entered separately."
 - id: brattka2021-6782e7bb
   ref: brattka2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -24784,10 +24896,14 @@
     facts: ACC_n-stashed ≡sW DIS_n ≡sW DIS for all n ≥ 2 (Proposition 5.6).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: DIS_n ≡sW DIS (Proposition 5.10 and its proof), so it adds nothing to dis."
 - id: brattka2021-29293f9f
   ref: brattka2021
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -24798,6 +24914,10 @@
     facts: "ACC_N ≤sW NLIM_N ≤sW NLIM_2 ≡sW lim_2 ≤sW lim_N ≡sW C_N (Fact 8.2). The stashing of NLIM_N is not ≤W WKL (Proposition 8.3), so DIS is not its stashing: the phase transition lies between LPO and lim_2. ΠΣ(NLIM_N) ≤sW NLOW (Proposition 8.4), and NLOW is parallelizable."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: NLIM_N and NLOW are technical problems of Section 8 (Fact 8.2: ACC_N ≤sW NLIM_N ≤sW NLIM_2 ≡sW lim_2), studied in this paper only."
 - id: sanders2019b-967abdaa
   ref: sanders2019b
   date: 2026-11-05
@@ -25595,7 +25715,7 @@
 - id: kihara2020-5ee1830c
   ref: kihara2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -25611,6 +25731,10 @@
   confidence: high
   reasons:
     - "attributed by the paper to [18] Hirschfeldt–Jockusch, Proposition 4.9: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Entered, with Hirschfeldt–Jockusch 2016, Proposition 4.9 (P ≤gu WKL ⇒ P ≤su WKL) as the original.
 - id: kihara2020-32c455ee
   ref: kihara2020
   date: 2026-11-05
@@ -26640,7 +26764,7 @@
 - id: dzhafarovhirschfeldtreitzes2020-04f5c78b
   ref: dzhafarovhirschfeldtreitzes2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -26658,6 +26782,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to Hirschfeldt and Jockusch [17, Proposition 4.7] (proof): cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Entered: the paper states that the proof of Hirschfeldt–Jockusch Proposition 4.7 gives stRT¹_{<∞} ≤gW RT¹₂ (stRT¹_{<∞} is rt1n)."
 - id: dzhafarovhirschfeldtreitzes2020-2eb43fc7
   ref: dzhafarovhirschfeldtreitzes2020
   date: 2026-11-05
@@ -26685,7 +26813,7 @@
 - id: dzhafarovhirschfeldtreitzes2020-20383f06
   ref: dzhafarovhirschfeldtreitzes2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -26704,10 +26832,14 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to Brattka and Rakotoniaina [7]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Entered from Brattka–Rakotoniaina 2017, Proposition 7.7 (C_N ≰W RT_{1,+}).
 - id: dzhafarovhirschfeldtreitzes2020-c7dd678c
   ref: dzhafarovhirschfeldtreitzes2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -26726,10 +26858,14 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to Brattka and Rakotoniaina [7]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Entered from Brattka–Rakotoniaina 2017, Propositions 3.4(2) and 7.7.
 - id: dzhafarovhirschfeldtreitzes2020-cd4ce185
   ref: dzhafarovhirschfeldtreitzes2020
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -26748,6 +26884,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to Brattka and Rakotoniaina [7]; Hirschfeldt and Jockusch [17]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Derived from C_N ≤W RT¹_N and C_N ≰W RT¹_{<∞} (Brattka–Rakotoniaina, Propositions 3.4, 7.7).
 - id: dzhafarovhirschfeldtreitzes2020-39a5f048
   ref: dzhafarovhirschfeldtreitzes2020
   date: 2026-11-05
@@ -27339,7 +27479,7 @@
 - id: fioricaronesshafersolda2022-77860a44
   ref: fioricaronesshafersolda2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5
   result:
@@ -27357,6 +27497,10 @@
   reasons:
     - "extractor confidence: medium"
     - "attributed by the paper to Brattka and Rakotoniaina [7, Corollary 4.20]: cite the original"
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Derived: entered RT¹₂ ≰W lim from Brattka–Rakotoniaina 2017, remark after Corollary 4.19 (RT_{1,k} is not Σ⁰₂-measurable), the result the paper cites as [7, Corollary 4.20]."
 - id: fioricaronesshafersolda2022-2f27ac77
   ref: fioricaronesshafersolda2022
   date: 2026-11-05

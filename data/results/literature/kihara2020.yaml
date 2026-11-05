@@ -1,0 +1,3 @@
+# Results from [kihara2020].
+
+[ { type: equivalence, from: wkl.diamond, to: wkl, over: w, refs: [ { ref: kihara2020, loc: "Section 3.3.2, after Example 3.18" }, { ref: hirschfeldtjockusch2016, loc: Proposition 4.9 (P ≤gu WKL implies P ≤su WKL) } ] } ]

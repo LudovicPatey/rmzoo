@@ -8,3 +8,11 @@
 - { type: implication, from: non, to: dis, over: w, refs: [ { ref: brattka2021, loc: Section 8 (DIS <W NON <W WKL) } ] }
 - { type: separation, from: dis, to: non, over: w, refs: [ { ref: brattka2021, loc: Section 8 (DIS <W NON <W WKL) } ] }
 - { type: property, statement: hyp, property: strongly-parallelizable, value: true, refs: [ { ref: brattka2021, loc: Proof of Proposition 6.3 } ] }
+- { type: equivalence, from: nrng, to: dis, over: sw, refs: [ { ref: brattka2021, loc: Corollary 5.12 } ] }
+- { type: implication, from: nmaj, to: dis, over: sw, refs: [ { ref: brattka2021, loc: "Proposition 6.3, proof" } ] }
+- { type: separation, from: dis, to: nmaj, over: w, refs: [ { ref: brattka2021, loc: Proposition 6.3 } ] }
+- { type: implication, from: hyp, to: nmaj, over: sw, refs: [ { ref: brattka2021, loc: "Proposition 6.3, proof" } ] }
+- { type: separation, from: nmaj, to: hyp, over: w, refs: [ { ref: brattka2021, loc: Proposition 6.3 } ] }
+- { type: equivalence, from: nmaj.par, to: hyp, over: sw, refs: [ { ref: brattka2021, loc: Proposition 6.3 } ] }
+- { type: equivalence, from: meet, to: hyp, over: w, refs: [ { ref: brattka2021, loc: Proposition 6.6 } ] }
+- { type: implication, from: meet, to: hyp, over: sw, refs: [ { ref: brattka2021, loc: "Proposition 6.6, proof" } ] }

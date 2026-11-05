@@ -48,3 +48,6 @@
 - { type: property, statement: rt42, property: idempotent, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.11 } ] }
 - { type: property, statement: rt1n, property: idempotent, value: true, refs: [ { ref: brattkarakotoniaina2017, loc: "Corollary 3.20 (RT_{1,ℕ}, colors not given)" } ] }
 - { type: implication, from: rt22, to: rt1n, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.25 } ] }
+- { type: separation, from: rt1inf, to: cn, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Proposition 7.7 } ] }
+- { type: implication, from: rt1n, to: cn, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: "Propositions 3.4(2) and 7.7 (C_N ≡W SRT_{1,N} ≤ RT_{1,N})" } ] }
+- { type: separation, from: lim, to: rt12, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: "Remark after Corollary 4.19 (n = 1: RT_{1,k} is not Σ⁰₂-measurable)" } ] }

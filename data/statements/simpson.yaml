@@ -268,24 +268,6 @@
   definition: "Every game on $\\mathbb{N}^\\mathbb{N}$ with a $\\Delta^0_1$ payoff set is determined."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem V.8.7" } ]
 
-- id: open-rt
-  label: "\\Sigma^0_1\\text{-}\\mathsf{RT}"
-  name: "Open Ramsey theorem"
-  kind: sentence
-  minor: true
-  tags: ["determinacy", "ramsey"]
-  definition: "For every open set $P \\subseteq [\\mathbb{N}]^\\mathbb{N}$ there is an infinite $H$ such that $[H]^\\mathbb{N} \\subseteq P$ or $[H]^\\mathbb{N} \\cap P = \\emptyset$ (Galvin–Prikry for open sets)."
-  refs: [ { ref: simpson2009, role: rm, loc: "Theorem V.9.7" } ]
-
-- id: clopen-rt
-  label: "\\Delta^0_1\\text{-}\\mathsf{RT}"
-  name: "Clopen Ramsey theorem"
-  kind: sentence
-  minor: true
-  tags: ["determinacy", "ramsey"]
-  definition: "For every clopen set $P \\subseteq [\\mathbb{N}]^\\mathbb{N}$ there is an infinite $H$ such that $[H]^\\mathbb{N} \\subseteq P$ or $[H]^\\mathbb{N} \\cap P = \\emptyset$."
-  refs: [ { ref: simpson2009, role: rm, loc: "Theorem V.9.7" } ]
-
 - id: cb
   label: "\\textsf{Cantor–Bendixson}"
   name: "Cantor–Bendixson theorem (perfect kernels)"
