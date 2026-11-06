@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { buildZoo, orderView } from '../site/js/engine.js';
+import { buildZoo, orderView, questionStatus } from '../site/js/engine.js';
 
 // ---- toy zoo: checks the rules in isolation ---------------------------------
 const toy = {
@@ -394,4 +394,18 @@ test('conservation properties: read from results, the base itself, failure for a
   assert.equal(v('c1', 'i2'), false, 'not conservative for arithmetical sentences: not Π¹₁-conservative');
   assert.equal(v('c0', 'i2'), false, 'failing over BΣ⁰₂ means failing over RCA₀');
   assert.equal(v('c0', 'w'), true, 'what the base proves is conservative over it');
+});
+
+test('a question with sub-questions: each settled on its own, untracked parts left out', () => {
+  const q = (parts) => questionStatus(z, { id: 'x', asked: [], parts });
+  const yes = { question: 'a', formal: [{ from: 'rt22', to: 'rt12', over: 'c' }] };
+  const no = { question: 'b', formal: [{ from: 'rt22', to: 'aca', over: 'rca0' }] };
+  const op = { question: 'c', status: 'open' };
+  const un = { question: 'd' };
+  assert.equal(q([yes, no]).status, 'resolved');
+  assert.equal(q([yes, op]).status, 'partial');
+  assert.deepEqual(q([yes, op]).subs.map((s) => s.status), ['resolved', 'open']);
+  assert.equal(q([yes, un]).status, 'resolved');  // a part without a recorded status does not count
+  assert.equal(q([op, un]).status, 'open');
+  assert.equal(q([yes, no]).parts[1].sub, 1);      // comparisons keep their sub-question
 });

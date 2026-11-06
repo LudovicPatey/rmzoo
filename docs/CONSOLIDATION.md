@@ -69,7 +69,8 @@ the next build, and an item rejected on the review page is recorded in
   only points at it.
 * **Questions** go to `data/questions.yaml`. Prefer a `formal` encoding, so the
   database keeps the status up to date; otherwise give the status and
-  `resolvedBy` by hand.
+  `resolvedBy` by hand. A question that asks several things gets `parts`, one per
+  sub-question, so that the viewer shows which are answered.
 * **Statements**: give the precise definition from the source paper (with its
   statement number in `refs[].loc`), never a paraphrase from a title or abstract.
   Use `todo: true` only when no source text is available, and say why.

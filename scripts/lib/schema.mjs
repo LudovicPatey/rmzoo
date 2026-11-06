@@ -32,6 +32,7 @@ export const FILES = {
   aiAnalyze: 'scripts/ai-analyze.mjs',  // AI reading of the full texts
   review: 'scripts/review.mjs',         // the review queue: listing, decisions, applying votes
   reviewLib: 'site/js/review.js',       // review statuses and kinds (viewer, build, scripts)
+  reviewQueue: 'scripts/lib/review-queue.mjs', // writing the queue: new proposals, repeats of decided ones
   results: 'scripts/lib/results.mjs',   // writing results without duplicates
   community: 'site/js/community.js',    // endorsements and comments in the viewer
   api: 'site/api/index.php',            // endorsement and review server (PHP, live instance)
@@ -205,7 +206,8 @@ export const SCHEMA = {
   // data/questions.yaml (format documented at the top of that file)
   question: {
     id: { req: true, doc: 'slug', usedBy: ['build', 'viewer', 'consolidate'] },
-    question: { req: true, doc: 'the question, in our own words', usedBy: ['build', 'viewer'] },
+    question: { doc: 'the question, in our own words; with parts: an optional lead-in (required without parts)', usedBy: ['build', 'viewer'] },
+    parts: { doc: 'sub-questions, numbered in the viewer, each settled on its own: [{question, formal | status, answer, resolvedBy}]; the question is resolved when all are, partial when some are (no formal or status at the top then)', usedBy: ['build', 'engine', 'viewer'], items: 'questionPart' },
     asked: { req: true, doc: 'every paper that asked it [{ref, loc}]', usedBy: ['build', 'viewer', 'consolidate', 'mineQuestions'], items: 'resultRef' },
     statements: { doc: 'statements it is about', usedBy: ['build', 'viewer'] },
     formal: { doc: 'comparisons [{from, to, over}] from which the status is derived', usedBy: ['build', 'engine', 'viewer'], items: 'formalPart' },
@@ -214,6 +216,13 @@ export const SCHEMA = {
     resolvedBy: { doc: 'papers that answered it [{ref, loc}]', usedBy: ['build', 'viewer'], items: 'resultRef' },
     kind: { doc: 'question (default) | conjecture', usedBy: ['build', 'viewer'] },
     context: { doc: 'background; [@key] cites a reference', usedBy: ['build', 'viewer'] },
+  },
+  questionPart: {
+    question: { req: true, doc: 'the sub-question', usedBy: ['build', 'viewer'] },
+    formal: { doc: 'its comparisons [{from, to, over}], from which its status is derived', usedBy: ['build', 'engine', 'viewer'], items: 'formalPart' },
+    status: { doc: 'open | partial | resolved; without formal or status, the status is not recorded (shown so, left out of the count)', usedBy: ['build', 'engine', 'viewer'] },
+    answer: { doc: 'short answer when (partially) resolved', usedBy: ['viewer'] },
+    resolvedBy: { doc: 'papers that answered it [{ref, loc}]; required when resolved without formal', usedBy: ['build', 'viewer'], items: 'resultRef' },
   },
   formalPart: {
     from: { req: true, doc: 'does `from` imply `to`…', usedBy: ['build', 'engine'] },
@@ -242,6 +251,7 @@ export const SCHEMA = {
     date: { req: true, doc: 'date it was proposed', usedBy: ['aiAnalyze', 'consolidate', 'viewer'] },
     ref: { doc: 'the paper (the analyzed paper; for lead, question, answer: the paper of the passage); not for kind paper', usedBy: ['aiAnalyze', 'review', 'viewer', 'reviewLib', 'consolidate'] },
     part: { doc: 'AI proposals from a long text read in parts: the part (scripts/lib/split-text.mjs)', usedBy: ['aiAnalyze', 'viewer'] },
+    proposed: { doc: 'fingerprint of the original proposal (kind, paper, fact), kept when the result is corrected by hand: a later proposal of the same fact is not asked again', usedBy: ['reviewQueue'] },
     reasons: { doc: 'why a human must decide (AI: unknown id, quote not found, low confidence, verifier not confirming…; consolidation: what the miner saw)', usedBy: ['aiAnalyze', 'review', 'viewer', 'consolidate'] },
     result: { doc: 'result: the proposed entry, as in data/results/ without refs; edit it before accepting if needed', usedBy: ['aiAnalyze', 'review', 'viewer', 'reviewLib'] },
     loc: { doc: 'result, lead, question: the theorem or question number in the paper', usedBy: ['aiAnalyze', 'review', 'viewer', 'reviewLib', 'consolidate'] },

@@ -195,6 +195,11 @@ every Turing ideal). The engine then derives the property from that comparison
 (RCA₀ ⇏ NON over ω gives "NON is not computably true") and conversely (a
 published "computably true" gives RCA₀ ⇒ P over ω).
 
+A question that asks several things is split into **sub-questions** (`parts` in
+`data/questions.yaml`), each with its own comparisons or status. The viewer numbers
+them, so one can say which are answered ("2 of 3 answered"), and the question's
+status follows from theirs.
+
 A property may also make a problem the **bottom of a reduction** (`bottomOf: c` on
 *computably true*): a computably true problem P is computably reducible to every
 problem Q, since an instance X of P computes an instance of Q and X itself computes a

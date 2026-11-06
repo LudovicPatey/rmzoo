@@ -346,6 +346,7 @@ tr.flash { animation: flash 2s ease-out; }
 .badge.q-warn { background: var(--open-soft); color: var(--open); white-space: nowrap; }
 .badge.q-partial { background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
 .badge.q-ok { background: var(--yes-soft); color: var(--yes); white-space: nowrap; }
+.badge.q-na { background: transparent; color: var(--muted); border: 1px solid var(--line); white-space: nowrap; }
 table.q-parts td.c { width: 90px; text-align: center; }
 @media (max-width: 960px) { nav a { padding: 6px 7px; } nav { gap: 0; } }
 @media (max-width: 1120px) and (min-width: 701px) { header .search:not(.big) { width: 180px; } nav a { padding: 6px 7px; } }
@@ -463,3 +464,10 @@ table.uploads progress { width: 100%; margin-top: 4px; }
 .bell-count { background: var(--accent); color: #fff; border-radius: 9px; padding: 0 6px; font-size: .75rem; font-weight: 600; line-height: 1.5; }
 details.hidden-papers { margin-top: 14px; }
 
+/* sub-questions of a question, numbered (data/questions.yaml `parts`) */
+.q-subs { margin: 6px 0 4px; padding-left: 1.6em; }
+.q-subs li { margin: 4px 0; }
+.q-subs li::marker { color: var(--muted); font-weight: 600; }
+.q-subs .badge { margin-left: 4px; vertical-align: 1px; }
+.q-row .q-subs { font-size: 0.95em; }
+h1.q-title + .q-subs { font-size: 1.1em; margin-bottom: 14px; }

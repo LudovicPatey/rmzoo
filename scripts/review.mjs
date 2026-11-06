@@ -10,6 +10,7 @@
 //   node scripts/review.mjs accept <id> [--ref key] [--loc "Theorem 3"] [--note text]
 //   node scripts/review.mjs reject <id> --note "why"
 //   node scripts/review.mjs done <id> --note "what was done by hand"
+//   node scripts/review.mjs repeats [--dry-run]                             close the pending items that repeat a decided one
 //
 // accept (result items) writes the proposed `result` into data/results/ and runs
 // the build check (undone if it fails):
@@ -39,11 +40,11 @@ import { cli } from './lib/cli.mjs';
 import { acquireLock } from './lib/lock.mjs';
 import { addResults } from './lib/results.mjs';
 import { unknownFields } from './lib/schema.mjs';
-import { readQueue, writeQueue, QUEUE } from './lib/review-queue.mjs';
+import { readQueue, writeQueue, closeRepeats, QUEUE } from './lib/review-queue.mjs';
 import { reviewStatus, screenKey, KINDS } from '../site/js/review.js';
 import { surname } from '../site/js/names.js';
 
-const USAGE = 'node scripts/review.mjs list [--all] [--ref key] [--kind k] [--voted] | show <id> | apply [--dry-run] | accept <id> [--ref key] [--loc text] [--note text] | reject <id> --note text | done <id> --note text';
+const USAGE = 'node scripts/review.mjs list [--all] [--ref key] [--kind k] [--voted] | show <id> | apply [--dry-run] | accept <id> [--ref key] [--loc text] [--note text] | reject <id> --note text | done <id> --note text | repeats [--dry-run]';
 const args = cli(USAGE, { '--all': 0, '--ref': 1, '--kind': 1, '--voted': 0, '--loc': 1, '--note': 1, '--dry-run': 0 });
 const [cmd, id] = args.rest;
 if (!fs.existsSync(QUEUE)) { console.log(`No review queue yet (${QUEUE}).`); process.exit(0); }
@@ -148,6 +149,16 @@ switch (cmd) {
     for (const it of shown) console.log(line(it));
     const byKind = Object.keys(KINDS).map((k) => [k, items.filter((x) => x.status === 'pending' && x.kind === k).length]).filter(([, n]) => n);
     console.log(`${shown.length} items (pending in all: ${byKind.map(([k, n]) => `${n} ${k}`).join(', ') || 'none'})`);
+    break;
+  }
+  case 'repeats': { // pending items that repeat a decided one: closed with the same outcome
+    const dry = args.has('--dry-run');
+    if (!dry) acquireLock('review.mjs');
+    const doc = readQueue();
+    const closed = closeRepeats(doc);
+    if (!dry && closed.length) writeQueue(doc);
+    for (const id of closed) console.log(`${id}: ${doc.contents.items.find((n) => n.get('id') === id).get('decision').get('note')}`);
+    console.log(`${closed.length} pending items repeat a decided one${dry ? ' (dry run: nothing written)' : ': closed'}`);
     break;
   }
   case 'show':

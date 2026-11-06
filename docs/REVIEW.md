@@ -16,6 +16,18 @@ and nowhere else, until they are validated.
 The kinds, their texts and the voting rule are in `site/js/review.js`; the
 fields of an item in `scripts/lib/schema.mjs` (entity `review`).
 
+**A decision is taken once.** Each item has a fingerprint: its kind, its paper and
+what it proposes (the fact with its keys in a fixed order, the notation of a
+missing statement, the passage of a lead). `proposed` keeps the fingerprint of the
+original proposal, so a result corrected by hand before it was accepted is still
+recognized. When the AI reader reads a paper again (`--replay`, `--redo`,
+`--upgrade`) or the consolidation runs again, a proposal with the fingerprint of a
+decided item is not queued. A pending copy left from an earlier run is closed with
+the same outcome (rejected stays rejected; accepted or done becomes done) and a note
+naming the decided item. This happens at every write of the queue, or on demand with
+`node scripts/review.mjs repeats [--dry-run]`. A fact that differs in any way (another
+reduction, statement or base) is a new proposal.
+
 ## Votes
 
 On the live instance, researchers signed in with ORCID **validate** or

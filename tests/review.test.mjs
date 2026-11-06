@@ -55,3 +55,28 @@ test('the queue never adds an item twice and keeps proposals under discussion', 
   assert.deepEqual(YAML.parse(fs.readFileSync(file, 'utf8')).map((x) => x.id), ['p-2', 'p-3']);
   fs.rmSync(dir, { recursive: true });
 });
+
+test('a fact already decided is not asked again, even with another id or key order', () => {
+  const file = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'rq-')), 'review.yaml');
+  const base = { ref: 'p2020', date: '2026-11-01', kind: 'result', loc: 'Theorem 1', reasons: [] };
+  addToQueue([{ ...base, id: 'p2020-aaaa', status: 'pending', result: { type: 'implication', from: 'a', to: 'b', over: 'c' } }], { file });
+  // decided by hand, after correcting the reduction: the original proposal is remembered
+  const q = YAML.parse(fs.readFileSync(file, 'utf8'));
+  assert.ok(q[0].proposed);
+  q[0].status = 'rejected'; q[0].result.over = 'w';
+  fs.writeFileSync(file, YAML.stringify(q));
+  // a replay finds the same fact (other key order, other id), and a new one
+  const n = addToQueue([
+    { ...base, id: 'p2020-bbbb', status: 'pending', result: { over: 'c', to: 'b', from: 'a', type: 'implication' } },
+    { ...base, id: 'p2020-cccc', status: 'pending', result: { type: 'implication', from: 'a', to: 'd', over: 'c' } },
+  ], { file });
+  assert.equal(n, 1);
+  // an older copy still pending is closed with the same outcome
+  const q2 = YAML.parse(fs.readFileSync(file, 'utf8'));
+  q2.push({ ...base, id: 'p2020-dddd', status: 'pending', result: { type: 'implication', from: 'a', to: 'b', over: 'w' } });
+  fs.writeFileSync(file, YAML.stringify(q2));
+  addToQueue([], { file });
+  const d = YAML.parse(fs.readFileSync(file, 'utf8')).find((x) => x.id === 'p2020-dddd');
+  assert.equal(d.status, 'rejected');
+  assert.match(d.decision.note, /p2020-aaaa/);
+});

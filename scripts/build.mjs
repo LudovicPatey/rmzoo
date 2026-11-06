@@ -14,6 +14,8 @@ import { KINDS, screenKey, reviewStatus } from '../site/js/review.js';
 import { cli } from './lib/cli.mjs';
 import { dataHash } from './lib/data-hash.mjs';
 import { unknownFields, OPERATIONS, resultKey, orcidValid } from './lib/schema.mjs';
+// a question's comparisons: its own, or those of its sub-questions (parts)
+const qFormal = (q) => (q.parts?.length ? q.parts.flatMap((p) => p.formal || []) : q.formal || []);
 cli('node scripts/build.mjs [--check] [--verbose]', { '--check': 0, '--verbose': 0 });
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -133,7 +135,7 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
   // A result may mention a conjunction "a-b-c" (conjuncts sorted, joined by "-")
   // without defining it: create it.
   const mentioned = [...raw.results.flatMap((r) => [r.from, r.to, r.statement, r.base]),
-    ...raw.questions.flatMap((q) => (q.formal || []).flatMap((f) => [f.from, f.to]))].filter(Boolean);
+    ...raw.questions.flatMap((q) => qFormal(q).flatMap((f) => [f.from, f.to]))].filter(Boolean);
   for (const id of new Set(mentioned)) {
     if (byId.has(id)) continue;
     const parts = id.split('-');
@@ -200,7 +202,7 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
   // refer to operator statements by their canonical ids everywhere
   const C = (id) => canon.get(id) || id;
   for (const r of raw.results) for (const f of ['from', 'to', 'statement', 'base']) if (r[f]) r[f] = C(r[f]);
-  for (const q of raw.questions) { q.statements = (q.statements || []).map(C); for (const f of q.formal || []) { f.from = C(f.from); f.to = C(f.to); } }
+  for (const q of raw.questions) { q.statements = (q.statements || []).map(C); for (const f of qFormal(q)) { f.from = C(f.from); f.to = C(f.to); } }
   for (const z of raw.zoos || []) z.statements = (z.statements || []).map(C);
   // labels, names and definitions of operator statements (unless given)
   // binary expressions get parentheses; a base that already has sub/superscripts is
@@ -290,19 +292,30 @@ const tids = uniq(raw.tags, 'tag');
   const sids = new Set(raw.statements.map((x) => x.id));
   for (const q of raw.questions) {
     const w = `Question ${q.id}`;
-    if (!q.question) errors.push(`${w}: missing question`);
+    if (!q.question && !q.parts?.length) errors.push(`${w}: missing question`);
+    if (q.parts?.length) {
+      if (q.formal?.length || q.status) errors.push(`${w}: with parts, formal comparisons and statuses belong to the parts`);
+      if (q.parts.length < 2) errors.push(`${w}: parts are for two sub-questions or more`);
+      q.parts.forEach((p, i) => {
+        const pw = `${w}, part ${i + 1}`;
+        if (!p.question) errors.push(`${pw}: missing question`);
+        if (p.status && !['open', 'partial', 'resolved'].includes(p.status)) errors.push(`${pw}: status must be open, partial or resolved`);
+        if (!p.formal?.length && p.status && p.status !== 'open' && !p.resolvedBy?.length && !q.resolvedBy?.length) errors.push(`${pw}: a (partially) resolved part needs resolvedBy`);
+        for (const a of p.resolvedBy || []) if (!raw.references[a.ref]) errors.push(`${pw}: unknown reference ${a.ref}`);
+      });
+    }
     if (!q.asked?.length) errors.push(`${w}: missing asked (where it was stated)`);
     for (const a of q.asked || []) if (!raw.references[a.ref]) errors.push(`${w}: unknown reference ${a.ref}`);
     for (const a of q.resolvedBy || []) if (!raw.references[a.ref]) errors.push(`${w}: unknown reference ${a.ref}`);
     for (const id of q.statements || []) if (!sids.has(id)) errors.push(`${w}: unknown statement ${id}`);
-    for (const f of q.formal || []) {
+    for (const f of qFormal(q)) {
       if (!rids.has(f.over)) errors.push(`${w}: unknown reduction ${f.over}`);
       for (const id of [f.from, f.to]) if (!sids.has(id)) errors.push(`${w}: unknown statement ${id}`);
     }
     if (q.kind && !['question', 'conjecture'].includes(q.kind)) errors.push(`${w}: kind must be question or conjecture`);
     if (q.status && !['open', 'partial', 'resolved'].includes(q.status)) errors.push(`${w}: status must be open, partial or resolved`);
-    if (!q.formal?.length && !q.status) errors.push(`${w}: a question without formal parts needs a status`);
-    if (!q.formal?.length && q.status !== 'open' && !q.resolvedBy?.length) errors.push(`${w}: a (partially) resolved question needs resolvedBy`);
+    if (!q.parts?.length && !q.formal?.length && !q.status) errors.push(`${w}: a question without formal parts needs a status`);
+    if (!q.parts?.length && !q.formal?.length && q.status !== 'open' && !q.resolvedBy?.length) errors.push(`${w}: a (partially) resolved question needs resolvedBy`);
     for (const [, k] of String(q.context || '').matchAll(/\[@([^\]]+)\]/g)) if (!raw.references[k]) errors.push(`${w}: context cites unknown reference ${k}`);
   }
 }
@@ -560,7 +573,7 @@ raw.results.forEach((res, i) => {
   // every statement takes part in at least one result, as an argument of an operation
   // statement that does, or in the formal part of a question
   const used = new Set(raw.results.flatMap((r) => [r.from, r.to, r.statement, r.base]));
-  for (const q of raw.questions || []) for (const f of q.formal || []) { used.add(f.from); used.add(f.to); }
+  for (const q of raw.questions || []) for (const f of qFormal(q)) { used.add(f.from); used.add(f.to); }
   for (const s of raw.statements) if (used.has(s.id)) for (const x of s.args || []) used.add(x);
   for (const s of raw.statements) if (!used.has(s.id) && !raw.statements.some((t) => (t.conjunction || []).includes(s.id)))
     warnings.push(`Statement ${s.id} appears in no result`);
@@ -638,8 +651,10 @@ zoo.errors.forEach((e) => errors.push(e));
 const name = (i) => raw.statements[i].id;
 // formal questions: a manual status must agree with the database
 for (const q of raw.questions) {
-  if (!q.formal?.length) continue;
+  if (!qFormal(q).length) continue;
   const st = questionStatus(zoo, q);
+  // a part's manual status must agree too
+  (q.parts || []).forEach((p, i) => { if (p.formal?.length && p.status && p.status !== st.subs[i].status) errors.push(`Question ${q.id}, part ${i + 1} is marked ${p.status} but the database makes it ${st.subs[i].status}`); });
   if (q.status && q.status !== st.status)
     errors.push(`Question ${q.id} is marked ${q.status} but the database makes it ${st.status} (${st.parts.map((p) => `${p.from}→${p.to}/${p.over}: ${p.status}`).join(', ')})`);
   for (const p of st.parts) if (p.status === 'na') errors.push(`Question ${q.id}: ${p.from}→${p.to} is not comparable over ${p.over}`);

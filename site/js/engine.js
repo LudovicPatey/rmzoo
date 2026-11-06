@@ -707,6 +707,18 @@ export function orderView(zoo, ids, r, { selectionOrder } = {}) {
 // results are the published results the settling proofs rest on. Other
 // questions carry a manual status.
 export function questionStatus(zoo, q) {
+  // a question with sub-questions (`parts`): each part is settled on its own (its
+  // comparisons, or its manual status; without either its status is not recorded:
+  // `untracked`, left out of the count); the question is resolved when all the others
+  // are, partially answered when some are. `parts` of the result: every comparison,
+  // with `sub`, the index of its sub-question; `subs`: the status of each.
+  if (q.parts?.length) {
+    const subs = q.parts.map((p) => (p.formal?.length || p.status ? questionStatus(zoo, p) : { status: 'untracked', parts: [], results: [] }));
+    const tracked = subs.filter((x) => x.status !== 'untracked');
+    const n = tracked.filter((x) => x.status === 'resolved').length;
+    const status = tracked.length && n === tracked.length ? 'resolved' : n || tracked.some((x) => x.status === 'partial') ? 'partial' : 'open';
+    return { status, subs, parts: subs.flatMap((x, i) => x.parts.map((f) => ({ ...f, sub: i }))), results: [...new Set(subs.flatMap((x) => x.results))] };
+  }
   if (!q.formal?.length) return { status: q.status || 'open', parts: [], results: [] };
   const parts = q.formal.map((f) => {
     const r = zoo.ridx.get(f.over), a = zoo.sidx.get(f.from), b = zoo.sidx.get(f.to);
