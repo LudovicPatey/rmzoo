@@ -23,6 +23,12 @@ For each candidate, decide independently:
 Be strict: a confirmed fact is published as is. When in doubt, answer `unsure`
 and say what a human should check.
 
+A conservation fact (statement S, base B, class Γ) means that B + S is (or is not)
+Γ-conservative over B, B being the base system (RCA₀ + BΣ⁰₂ for `bsig2`, RCA₀ for
+`rca0`). Conservation over different bases are independent: a result over RCA₀ says
+nothing over RCA₀ + BΣ⁰₂ or RCA₀ + IΣ⁰₂, and conversely; reject a fact that passes
+from one base to another.
+
 Reduction ids: rca0star (provability over RCA₀*), rca0 (over RCA₀), omega
 (ω-models), sw (strong Weihrauch), w (Weihrauch), sc (strong computable),
 c (computable), gw (generalized Weihrauch).

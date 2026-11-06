@@ -109,3 +109,17 @@ test('errata (data/errata.yaml): known papers, kinds, shown on paper pages', () 
   }
   assert.match(fs.readFileSync('site/js/app.js', 'utf8'), /erratumHtml\(key\)/);
 });
+
+test('conservation properties over different bases do not imply each other', async () => {
+  // RCA₀ + P may be Π¹₁-conservative over RCA₀ while T + P is not over T (T = BΣ⁰₂, IΣ⁰₂),
+  // and conversely: no `implies` between properties read from conservation over different bases
+  const { default: YAML } = await import('yaml');
+  const props = YAML.parse(fs.readFileSync('data/properties.yaml', 'utf8'));
+  const byId = new Map(props.map((p) => [p.id, p]));
+  const bad = [];
+  for (const p of props) for (const q of p.implies || []) {
+    const a = p.fromConservation, b = byId.get(q)?.fromConservation;
+    if (a && b && a.base !== b.base) bad.push(`${p.id} → ${q}`);
+  }
+  assert.deepEqual(bad, []);
+});

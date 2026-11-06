@@ -244,9 +244,12 @@ the correction and its sources (`kind`: misprint, error, or gap in a proof). The
 paper's page lists its errata.
 
 **Conservation properties.** Π¹₁-conservation over RCA₀, over RCA₀ + BΣ⁰₂ and over
-RCA₀ + IΣ⁰₂ are proof-theoretic properties, each implying the next: the bases differ by
-arithmetical axioms, finitely many of which can be moved into a Π¹₁ sentence. Their
-values are read from the conservation results (conservation for a larger class gives
+RCA₀ + IΣ⁰₂ are three proof-theoretic properties, with no implication between them:
+RCA₀ + P may be Π¹₁-conservative over RCA₀ while T + P is not over T (T = BΣ⁰₂ or
+IΣ⁰₂), and conversely. A conservation result `{statement: S, base: B}` means that
+B + S is Γ-conservative over B, where B is the base system (RCA₀ + BΣ⁰₂ for `bsig2`;
+RCA₀, RCA₀* or PA for those base statements); S may repeat B as a conjunct
+(`bsig2-coh`), which changes nothing. Their values are read from the conservation results (conservation for a larger class gives
 it, failure for a smaller class refutes it), the base system has the property over
 itself, and they pass down implications, so WKL₀ + GP²₂ conservative over BΣ⁰₂ makes
 GP²₂ so. Other conservation results (∀Π⁰₃, ∀Π⁰₄, over RCA₀* or IΣ⁰₃) stay in the results.

@@ -182,16 +182,16 @@
     in every ω-model (Turing ideal), i.e. RCA₀ implies it over ω-models: so NON, DNR,
     WKL… fail it, and the engine reads it off the ω-model comparison with RCA₀.
 
-# Π¹₁-conservation over RCA₀, RCA₀ + BΣ⁰₂ and RCA₀ + IΣ⁰₂: each implies the next,
-# since these bases differ by arithmetical axioms (finitely many of them can be moved
-# into the Π¹₁ sentence). Values are read from the conservation results.
+# Π¹₁-conservation over RCA₀, RCA₀ + BΣ⁰₂ and RCA₀ + IΣ⁰₂ (T + the statement over T).
+# Three independent properties: RCA₀ + P may be Π¹₁-conservative over RCA₀ while
+# T + P is not over T (T = BΣ⁰₂ or IΣ⁰₂), and conversely, so none implies another.
+# Values are read from the conservation results.
 - id: pi11-conservative
   name: Π¹₁-conservative over RCA₀
   group: proof
   closedUnder: rca0
   direction: down
   fromConservation: {base: rca0, class: Pi11}
-  implies: [ pi11-conservative-bsig2 ]
   description: >
     RCA₀ + the statement proves no Π¹₁ sentence which is not already provable in RCA₀.
 
@@ -201,7 +201,6 @@
   closedUnder: rca0
   direction: down
   fromConservation: {base: bsig2, class: Pi11}
-  implies: [ pi11-conservative-isig2 ]
   description: >
     RCA₀ + BΣ⁰₂ + the statement proves no Π¹₁ sentence which is not already provable in RCA₀ + BΣ⁰₂.
     Principles weaker than RT²₂ (COH, ADS, CAC, EM…) have it; whether RT²₂ does was a long-standing question.

@@ -1133,9 +1133,14 @@ function resultFact(res) {
   }
   if (res.type === 'conservation') {
     const cls = classHtml(res.class);
-    // "RCA₀ + X", or just "RCA₀" when X is RCA₀ itself (or another base statement over RCA₀)
-    const sys = (id) => (S(idx(id)).base || []).includes('rca0') ? sLink(idx(id), Z.ridx.get('rca0')) : `RCA₀ + ${sLink(idx(id), Z.ridx.get('rca0'))}`;
-    return `${sys(res.statement)} is ${res.value === false ? '<b class="no">not</b> ' : ''}<b>${cls}</b>-conservative over ${sys(res.base)}`;
+    // "B + S is Γ-conservative over B": the base system B is RCA₀ + the base statement, or the
+    // base statement itself when it is a base system (RCA₀, RCA₀*, PA); S is added to it (a
+    // conjunct of S that is the base itself is not repeated)
+    const r0 = Z.ridx.get('rca0');
+    const b = idx(res.base), s = idx(res.statement);
+    const baseSys = S(b).base?.length ? sLink(b, r0) : `RCA₀ + ${sLink(b, r0)}`;
+    const parts = S(s).conjunction ? S(s).conjunction.filter((c) => c !== res.base).map((c) => sLink(idx(c), r0)) : [sLink(s, r0)];
+    return `${baseSys} + ${parts.join(' + ')} is ${res.value === false ? '<b class="no">not</b> ' : ''}<b>${cls}</b>-conservative over ${baseSys}`;
   }
   const arrow = { implication: '<span class="yes">⇒</span>', equivalence: '<span class="yes">⇔</span>', separation: '<span class="no">⇏</span>' }[res.type];
   return `<span class="res-stmt">${sLink(idx(res.from), r0)} ${arrow} ${sLink(idx(res.to), r0)}</span> <span class="muted small">over ${over}</span>`;
@@ -2204,7 +2209,7 @@ function reviewFact(r) {
   const id = (x) => `<code>${esc(x)}</code>`;
   const arrow = { implication: '⇒', equivalence: '⇔', separation: '⇏' }[r.type];
   return r.type === 'property' ? `${id(r.statement)} ${r.value ? 'has' : 'fails'} ${id(r.property)}`
-    : r.type === 'conservation' ? `${id(r.statement)} is ${r.value === false ? 'not ' : ''}${id(r.class)}-conservative over ${id(r.base)}`
+    : r.type === 'conservation' ? `${id(r.base)} + ${id(r.statement)} is ${r.value === false ? 'not ' : ''}${id(r.class)}-conservative over ${id(r.base)}`
     : `${id(r.from)} ${arrow} ${id(r.to)} <span class="muted small">over ${esc([].concat(r.over).join(', '))}</span>`;
 }
 const passage = (t) => `<blockquote class="rv-quote">${esc(t)}</blockquote>`;

@@ -15,10 +15,15 @@ more than coverage. A missing fact is acceptable; a wrong fact is not.
   compositional product, fractal, finitely tolerant, (countably) join-irreducible).
   "P × P ≡W P" is `idempotent`, "P̂ ≡W P" `parallelizable` (`strongly-parallelizable`
   for ≡sW), "P ⋆ P ≤W P" `compose-closed`, "id × P ≤sW P" `cylinder`.
-* `conservation` statement S is (value true) or is not (value false)
-  Γ-conservative over a base system B, for a formula class Γ. B is one catalogue
-  id: RCA₀ + BΣ⁰₂ is `bsig2`, RCA₀ + IΣ⁰₂ is `isig2`, RCA₀ itself is `rca0`
-  (also for conservation "over IΣ⁰₁"), never "rca0 + bsig2".
+* `conservation` (statement S, base B, class Γ): the base system B together with S
+  is (value true) or is not (value false) Γ-conservative over B, i.e. every Γ sentence
+  provable from B + S is provable from B. B is one catalogue id: RCA₀ + BΣ⁰₂ is `bsig2`,
+  RCA₀ + IΣ⁰₂ is `isig2`, RCA₀ itself is `rca0` (also for conservation "over IΣ⁰₁"),
+  never "rca0 + bsig2". "P is Π¹₁-conservative over RCA₀ + BΣ⁰₂" and "RCA₀ + BΣ⁰₂ + P is
+  Π¹₁-conservative over RCA₀ + BΣ⁰₂" are both statement P, base `bsig2`. Conservation
+  over different bases are independent facts: RCA₀ + P may be Π¹₁-conservative over RCA₀
+  while RCA₀ + BΣ⁰₂ + P is not over RCA₀ + BΣ⁰₂, and conversely; never derive one from
+  the other.
 
 Reductions are given by id (see the catalogue). In particular:
 * `rca0` provability over RCA₀; `rca0star` over RCA₀*; `omega` implication over
