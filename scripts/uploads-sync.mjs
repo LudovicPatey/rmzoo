@@ -33,7 +33,10 @@ if (!dry) acquireLock('uploads-sync.mjs');
 const auth = { headers: { Authorization: `Bearer ${token}` } };
 const res = await fetch(`${url}/api/index.php?a=uploads-export`, auth);
 if (!res.ok) { console.error(`${url}: ${res.status} ${(await res.text()).slice(0, 200)}`); process.exit(1); }
-const uploads = (await res.json()).uploads || [];
+const exported = await res.json();
+const uploads = exported.uploads || [];
+// papers that researchers marked as not theirs: the name matching of the bell was wrong
+const notMine = Object.entries(exported.dismissed || {}).flatMap(([orcid, d]) => Object.entries(d).filter(([, x]) => x.reason === 'not-author').map(([ref]) => `${ref} (${orcid})`));
 
 const DIR = 'cache/fulltext', UP = 'cache/uploads';
 fs.mkdirSync(DIR, { recursive: true });
@@ -97,4 +100,5 @@ for (const k of dropped) console.log(`  - ${k} (upload removed)`);
 for (const k of kept) console.log(`  = ${k}`);
 if (unknown.length) { console.log('Papers not in the database (add the reference, then rerun):'); for (const x of unknown) console.log(`  ? ${x}`); }
 for (const x of failed) console.log(`  ! ${x}`);
+if (notMine.length) console.log(`Marked as "not my paper" (the bell matched the name wrongly): ${notMine.join(', ')}`);
 if (changed.length && !dry) console.log('Next: node scripts/mine/facts.mjs --only <keys>, or node scripts/ai-analyze.mjs --only <keys> (the AI reader).');

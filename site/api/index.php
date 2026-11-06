@@ -10,6 +10,8 @@
 //   GET  ?a=uploads    the signed-in person's uploaded full texts (docs/UPLOADS.md)
 //   POST ?a=upload     multipart: file (PDF), ref (reference key) or citation, rights=1, replace=<upload id>?
 //   POST ?a=unupload   {id} removes one's own upload
+//   POST ?a=dismiss    {ref, reason: not-author|not-allowed|null}: a paper of one's own without a
+//                      full text that one is not an author of or may not share (null: undo)
 //   GET  ?a=export     (admin token) endorsements, votes, comments and all feedback, for scripts/endorsements-sync.mjs
 //   GET  ?a=uploads-export        (admin token) the index of all uploads, for scripts/uploads-sync.mjs
 //   GET  ?a=upload-file&id=<id>   (admin token) one uploaded file
@@ -174,7 +176,24 @@ switch ($a) {
     start_session();
     $u = user();
     if (!$u) fail(401, 'Sign in with ORCID first.');
-    json_out(['uploads' => my_uploads(with_uploads(fn ($l) => null), $u['orcid'])]);
+    json_out(['uploads' => my_uploads(with_uploads(fn ($l) => null), $u['orcid']), 'dismissed' => (object) (with_dismissed(fn ($d) => null)[$u['orcid']] ?? [])]);
+  }
+
+  case 'dismiss': {
+    start_session();
+    $u = require_user();
+    $b = body();
+    $ref = (string) ($b['ref'] ?? '');
+    $reason = $b['reason'] ?? null;
+    if (!isset(zoo()['references'][$ref])) fail(404, 'Unknown paper (reload the page).');
+    if ($reason !== null && !in_array($reason, ['not-author', 'not-allowed'], true)) fail(400, 'reason: not-author, not-allowed or null.');
+    $all = with_dismissed(function (array $all) use ($u, $ref, $reason) {
+      $mine = $all[$u['orcid']] ?? [];
+      if ($reason === null) unset($mine[$ref]); else $mine[$ref] = ['reason' => $reason, 'date' => gmdate('Y-m-d')];
+      if ($mine) $all[$u['orcid']] = $mine; else unset($all[$u['orcid']]);
+      return $all;
+    });
+    json_out(['dismissed' => (object) ($all[$u['orcid']] ?? [])]);
   }
 
   case 'upload': {
@@ -239,7 +258,7 @@ switch ($a) {
     $auth = $_SERVER['HTTP_AUTHORIZATION'] ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? '';
     if (strlen($tok) < 20 || !hash_equals('Bearer ' . $tok, $auth)) fail(403, 'Forbidden.');
     $list = with_uploads(fn ($l) => null);
-    if ($a === 'uploads-export') json_out(['uploads' => $list]);
+    if ($a === 'uploads-export') json_out(['uploads' => $list, 'dismissed' => (object) with_dismissed(fn ($d) => null)]);
     $id = (string) ($_GET['id'] ?? '');
     if (!preg_match('/^\d{8}T\d{6}-[0-9a-f]{8}$/', $id) || !is_file(uploads_dir() . "/$id.pdf")) fail(404, 'Unknown upload.');
     header('Content-Type: application/pdf');

@@ -457,4 +457,9 @@ table.uploads progress { width: 100%; margin-top: 4px; }
 /* search suggestions: papers after the statements */
 .popover .opt-sep { padding: 6px 10px 2px; border-top: 1px solid var(--line); text-transform: uppercase; letter-spacing: .04em; font-size: .72rem; }
 .popover .opt.paper i { font-style: italic; }
+/* the bell next to the account button: one's papers without a full text */
+#account { display: flex; gap: 6px; align-items: center; }
+.btn.bell { display: inline-flex; align-items: center; gap: 4px; }
+.bell-count { background: var(--accent); color: #fff; border-radius: 9px; padding: 0 6px; font-size: .75rem; font-weight: 600; line-height: 1.5; }
+details.hidden-papers { margin-top: 14px; }
 

@@ -215,4 +215,26 @@ function my_uploads(array $list, string $orcid): array {
   return array_values(array_map(fn ($u) => array_intersect_key($u, array_flip(['id', 'ref', 'citation', 'filename', 'size', 'date', 'replaced'])),
     array_filter($list, fn ($u) => $u['orcid'] === $orcid)));
 }
+// Papers a person marked as not theirs or not shareable (the bell of the viewer):
+// data_dir/uploads/dismissed.json  {orcid: {refkey: {reason: not-author|not-allowed, date}}}
+function with_dismissed(callable $fn) {
+  $dir = uploads_dir();
+  $lock = fopen("$dir/.lock-dismissed", 'c');
+  flock($lock, LOCK_EX);
+  try {
+    $file = "$dir/dismissed.json";
+    $all = is_file($file) ? json_decode((string) file_get_contents($file), true) : [];
+    if (!is_array($all)) fail(500, 'Corrupted dismissals file.');
+    $out = $fn($all);
+    if (is_array($out)) {
+      file_put_contents("$file.tmp", json_encode((object) $out, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+      rename("$file.tmp", $file);
+      return $out;
+    }
+    return $all;
+  } finally {
+    flock($lock, LOCK_UN);
+    fclose($lock);
+  }
+}
 

@@ -1864,8 +1864,11 @@ function refreshMarks() {
 function renderAccount() {
   const a = $('#account');
   if (!C.live) { a.innerHTML = ''; return; }
+  const n = C.user && C.uploads ? myMissingPapers().length : 0;
+  const bell = n ? `<a class="btn small bell" href="#/u/${C.user.orcid}?tab=texts" title="${n} of your papers ${n === 1 ? 'has' : 'have'} no full text in the zoo: share ${n === 1 ? 'it' : 'them'}, or say that you cannot">
+      <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5.5-6.84V3.5a1.5 1.5 0 0 0-3 0v.66A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2Z"/></svg><span class="bell-count">${n}</span></a> ` : '';
   a.innerHTML = C.user
-    ? `<a class="btn small" href="#/u/${C.user.orcid}" title="Your profile: endorsements and full texts"><span class="orcid-dot"></span>${esc(C.user.name)}</a>`
+    ? `${bell}<a class="btn small" href="#/u/${C.user.orcid}" title="Your profile: endorsements and full texts"><span class="orcid-dot"></span>${esc(C.user.name)}</a>`
     : `<a class="btn small" id="signin" href="${C.loginUrl()}"><span class="orcid-dot"></span>Sign in</a>`;
 }
 // the sign-in link returns to the page being viewed
@@ -1938,11 +1941,25 @@ function normWords(s) {
     .replace(/[^a-z0-9]+/g, ' ').split(' ').filter((x) => x.length > 2 && !['the', 'and', 'for', 'with', 'from'].includes(x));
 }
 // the signed-in person's papers in the database without a full text (surname match)
-function myMissingPapers() {
-  const sur = normWords(C.user?.name || '').pop();
-  if (!sur) return [];
-  return Object.entries(Z.raw.references).filter(([, r]) => !r.read && r.authors.some((a) => normWords(a).pop() === sur))
+// Is the author `a` (as written in a reference) the signed-in person `me` (their ORCID name)?
+// Same surname, and same first initial when both names have one.
+const nameParts = (s) => String(s).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z\s]/g, ' ').split(/\s+/).filter(Boolean);
+function sameAuthor(a, me) {
+  const x = nameParts(a), y = nameParts(me);
+  if (!x.length || !y.length || x[x.length - 1] !== y[y.length - 1]) return false;
+  return x.length < 2 || y.length < 2 || x[0][0] === y[0][0];
+}
+// the signed-in person's papers of the database whose full text the zoo does not have
+function myPapersWithoutText() {
+  if (!C.user) return [];
+  return Object.entries(Z.raw.references).filter(([, r]) => !r.read && r.authors.some((a) => sameAuthor(a, C.user.name)))
     .sort((a, b) => b[1].year - a[1].year);
+}
+// …minus those already uploaded (waiting for the maintainer) and those marked as not one's own
+// or not shareable: what the bell counts
+function myMissingPapers() {
+  const sent = new Set((C.uploads || []).map((u) => u.ref));
+  return myPapersWithoutText().filter(([k]) => !sent.has(k) && !C.dismissed[k]);
 }
 function refPicker(id, value) {
   return `<input class="ref-pick" list="ref-options" data-row="${id}" placeholder="Paper of the database (type a title)…" value="${esc(value ? refLabel(value) : '')}" style="width:100%">`;
@@ -1971,11 +1988,13 @@ async function loadUploads(params) {
   renderUploads();
 }
 function renderUploads() {
+  renderAccount(); // the bell's count follows uploads and dismissals
   const m = uploadsRoot();
   if (!m) return; // the profile page was left
   const S = uploadsState;
-  const sent = new Set((S.list || []).map((u) => u.ref));
-  const missing = myMissingPapers().filter(([k]) => !sent.has(k)); // already uploaded: waiting for the maintainer
+  const missing = myMissingPapers();
+  const hidden = Object.entries(C.dismissed).filter(([k]) => Z.raw.references[k]);
+  const WHY = { 'not-author': 'not my paper', 'not-allowed': 'not allowed to share' };
   m.innerHTML = `<p>Share the PDF of papers you wrote (or that you are allowed to share) so that their results can be analyzed for the zoo.
       <b>The files are private</b>: they are not published, only the maintainer reads them, and you can remove them at any time.</p>
     ${refOptions()}
@@ -2008,10 +2027,17 @@ function renderUploads() {
         <td style="white-space:nowrap"><label class="btn small" title="Choose a new PDF, or drop it on this row">Replace<input type="file" data-replace="${esc(u.id)}" accept="application/pdf,.pdf" hidden></label>
           <button class="btn small" data-remove="${esc(u.id)}">Remove</button></td></tr>`).join('')}</table>
       <p class="small muted">To replace a file, drop the new PDF on its row. A paper is marked “read” once the maintainer has imported its text.</p>`}
-    ${missing.length ? `<h2>Your papers without a full text</h2>
-      <p class="small muted">Papers of the database with an author named like you, whose text the zoo does not have.</p>
+    ${missing.length ? `<h2>Your papers without a full text <span class="muted small">${missing.length}</span></h2>
+      <p class="small muted">Papers of the database with an author named like you, whose text the zoo does not have.
+        If one is not yours, or if you may not share it, say so: it leaves this list and the bell.</p>
       <table class="grid">${missing.map(([k, r]) => `<tr><td><a href="#/refs/${esc(k)}">${rich(r.title)}</a> <span class="small muted">${esc(r.authors.join(', '))}, ${r.year}</span></td>
-        <td style="white-space:nowrap"><button class="btn small" data-add="${esc(k)}">Upload its PDF</button></td></tr>`).join('')}</table>` : ''}`;
+        <td style="white-space:nowrap"><button class="btn small primary" data-add="${esc(k)}">Upload its PDF</button>
+          <button class="btn small" data-dismiss="${esc(k)}|not-author">Not my paper</button>
+          <button class="btn small" data-dismiss="${esc(k)}|not-allowed">Not allowed to share</button></td></tr>`).join('')}</table>` : ''}
+    ${hidden.length ? `<details class="hidden-papers"><summary class="small muted">Papers you set aside (${hidden.length})</summary>
+      <table class="grid">${hidden.map(([k, d]) => `<tr><td><a href="#/refs/${esc(k)}">${rich(Z.raw.references[k].title)}</a>
+        <span class="small muted">${esc(WHY[d.reason] || d.reason)}, ${esc(d.date || '')}</span></td>
+        <td style="white-space:nowrap"><button class="btn small" data-dismiss="${esc(k)}|">Undo</button></td></tr>`).join('')}</table></details>` : ''}`;
   wireUploads();
 }
 function addFiles(files, ref) {
@@ -2072,6 +2098,11 @@ function wireUploads() {
     if (b.dataset.send) { const p = S.pending.find((q) => q.id === b.dataset.send); if (p) await sendPending(p); }
     if (b.id === 'send-all') for (const p of S.pending.slice()) if (p.file && !(await sendPending(p))) break;
     if (b.dataset.add) { S.pending.push({ id: Math.random().toString(36).slice(2), ref: b.dataset.add, file: null }); renderUploads(); }
+    if (b.dataset.dismiss) {
+      const [ref, reason] = b.dataset.dismiss.split('|');
+      try { S.error = ''; await C.dismiss(ref, reason || null); } catch (err) { S.error = err.message; }
+      renderUploads();
+    }
     if (b.dataset.remove) {
       const u = S.list.find((x) => x.id === b.dataset.remove);
       if (!u || !confirm(`Remove ${u.filename}? The maintainer will no longer have it.`)) return;
@@ -2474,6 +2505,7 @@ async function boot() {
   // once known, with the validated proposals of the review page joined to the database
   C.ready.then(async () => {
     renderAccount();
+    if (C.user) C.listUploads().then(renderAccount).catch(() => {}); // the bell
     const added = await mergeValidated();
     if (C.live || added) { const y = window.scrollY; route(); window.scrollTo(0, y); }
   });

@@ -22,8 +22,12 @@ for this purpose, and can remove them at any time.
   confirmation box is ticked.
 * The same page lists one's uploads: **replace** a file (button, or drop the new PDF on its
   row) or **remove** it.
-* It also lists the papers of the database with an author of the same surname as the
-  signed-in person that have no full text yet.
+* It also lists the papers of the database without a full text that have an author with
+  the signed-in person's surname and first initial. Each can be uploaded, or marked **not my
+  paper** or **not allowed to share**: it then leaves the list (a collapsed list of the papers
+  set aside allows to undo).
+* A **bell** next to the account button counts these papers (not yet uploaded nor set aside)
+  and opens the Full texts tab.
 * The page of a paper without a full text shows a drop zone for its PDF to signed-in
   researchers.
 * The code: `viewProfile`, `loadUploads`, `paperUploadPanel` in `site/js/app.js`; `listUploads`, `upload`,
@@ -36,11 +40,13 @@ for this purpose, and can remove them at any time.
 | `GET ?a=uploads` | the signed-in person's uploads (no checksums or paths) |
 | `POST ?a=upload` | multipart: `file` (a PDF), `ref` (a reference key) or `citation`, `rights=1`, `replace=<id>` to replace one's own file; CSRF header as for the other writes |
 | `POST ?a=unupload` | `{id}`: removes one's own upload and its file |
+| `POST ?a=dismiss` | `{ref, reason: not-author \| not-allowed \| null}`: sets aside a paper of the bell (null: undo); `GET ?a=uploads` returns them as `dismissed` |
 | `GET ?a=uploads-export` | admin token: the index of all uploads |
 | `GET ?a=upload-file&id=<id>` | admin token: one file |
 
 Storage: `data_dir/uploads/index.json` (`[{id, orcid, name, ref?, citation?, filename, size,
-sha256, date, replaced?}]`) and `data_dir/uploads/<id>.pdf`. Limits in `api/config.php`:
+sha256, date, replaced?}]`), `data_dir/uploads/<id>.pdf`, and the papers set aside
+`data_dir/uploads/dismissed.json` (`{orcid: {ref: {reason, date}}}`). Limits in `api/config.php`:
 `upload_max_mb` (default 40; PHP's `upload_max_filesize` and `post_max_size` must allow
 it: on OVH shared hosting, set them in the hosting's PHP configuration or a `.user.ini`
 in `api/`) and `uploads_per_day` (default 50 per person). Only PDFs are accepted (checked

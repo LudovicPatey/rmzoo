@@ -83,12 +83,18 @@ export function createCommunity(zoo) {
   c.addComment = async (id, text) => indexReviews(await post('rcomment', { item: id, text }));
   c.deleteComment = async (cid) => indexReviews(await post('rcomment', { delete: cid }));
   // uploaded full texts (docs/UPLOADS.md): private files for the maintainer's analysis
+  // c.uploads: one's uploads; c.dismissed: {ref: {reason: not-author|not-allowed, date}}, the papers
+  // one marked as not one's own or not shareable (they leave the bell's count)
+  c.uploads = null;
+  c.dismissed = {};
   c.listUploads = async () => {
     const r = await fetch(`${API}?a=uploads`, { credentials: 'same-origin', cache: 'no-store' });
     const j = await r.json().catch(() => ({ error: `Server error ${r.status}` }));
     if (!r.ok) throw new Error(j.error || `Server error ${r.status}`);
-    return j.uploads;
+    c.dismissed = j.dismissed || {};
+    return (c.uploads = j.uploads);
   };
+  c.dismiss = async (ref, reason) => { c.dismissed = (await post('dismiss', { ref, reason })).dismissed || {}; return c.dismissed; };
   // fields: {ref} or {citation}, and {replace: upload id} to replace a file; onProgress(fraction)
   c.upload = (file, fields, onProgress) => new Promise((resolve, reject) => {
     const fd = new FormData();
@@ -103,12 +109,12 @@ export function createCommunity(zoo) {
     x.onload = () => {
       let j;
       try { j = JSON.parse(x.responseText); } catch { j = { error: `Server error ${x.status}` }; }
-      if (x.status >= 200 && x.status < 300) resolve(j.uploads); else reject(new Error(j.error || `Server error ${x.status}`));
+      if (x.status >= 200 && x.status < 300) resolve((c.uploads = j.uploads)); else reject(new Error(j.error || `Server error ${x.status}`));
     };
     x.onerror = () => reject(new Error('Network error'));
     x.send(fd);
   });
-  c.removeUpload = async (id) => (await post('unupload', { id })).uploads;
+  c.removeUpload = async (id) => (c.uploads = (await post('unupload', { id })).uploads);
   c.loginUrl = () => `${API}?a=login&back=${encodeURIComponent(location.hash.slice(1) || '/')}`;
   c.logoutUrl = () => `${API}?a=logout&back=${encodeURIComponent('/')}`;
   return c;
