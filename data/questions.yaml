@@ -1422,3 +1422,31 @@
     Friedman asserted the implication over RCA (full induction); Conidis proved it over RCA₀ + IΣ¹₁ (Theorem 2.1 of
     [@conidis2012]), and asked whether the implications of that theorem hold over RCA₀ — the other open one being
     ABW₀ → weak-Σ¹₁-AC₀. ABW₀ implies ACA₀ over RCA₀ + IΣ¹₁ (Lemma 2.2).
+
+- id: bounded-dnr-col
+  question: >-
+    Are $\exists k \forall f\, \mathsf{DNR}(k, f)$ and $\forall \ell \exists k \forall G\, \mathsf{COL}(\ell, k, G)$
+    equivalent over $\mathsf{RCA}_0$? Are $\forall f \exists k\, \mathsf{DNR}(k, f)$ and
+    $\forall \ell \forall G \exists k\, \mathsf{COL}(\ell, k, G)$?
+  asked:
+    - {ref: doraishirstshafer2014, loc: Question 5.9}
+  statements: [udnrb, ucol, dnrb, col]
+  formal:
+    - {from: udnrb, to: ucol, over: rca0}
+    - {from: ucol, to: udnrb, over: rca0}
+    - {from: dnrb, to: col, over: rca0}
+    - {from: col, to: dnrb, over: rca0}
+  context: >-
+    The paper also asks the same over RCA₀ + BΣ⁰₂. With BΣ⁰₂, neither coloring principle implies WKL (Theorem 5.7) and
+    the non-uniform one does not imply ∃k∀f DNR(k, f) (Theorem 5.8), as for the bounded DNR principles.
+
+- id: col-ucol
+  question: Does $\forall \ell \forall G \exists k\, \mathsf{COL}(\ell, k, G)$ imply $\forall \ell \exists k \forall G\, \mathsf{COL}(\ell, k, G)$ over $\mathsf{RCA}_0$?
+  asked:
+    - {ref: doraishirstshafer2014, loc: Question 5.11}
+  statements: [col, ucol]
+  formal:
+    - {from: col, to: ucol, over: rca0}
+  context: >-
+    The authors expect the non-uniform version to be strictly weaker over RCA₀ + BΣ⁰₂, as for the bounded DNR
+    principles, but their techniques do not adapt to graph colorings.
