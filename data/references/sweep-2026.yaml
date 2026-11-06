@@ -1106,7 +1106,7 @@ jagerstrahm2000:
 cenzerjockusch2000:
   authors:
     - Douglas Cenzer
-    - Carl G. jun. Jockusch
+    - Carl G. Jockusch Jr.
   title: $\Pi_1^0$ classes -- structure and applications
   venue: "Cholak, Peter A. (ed.) et al., Computability theory and its applications. Current trends and open problems. Proceedings of a 1999 AMS-IMS-SIAM joint summer research conference, Boulder, CO, USA, June 13-17, 1999. Providence, RI: American Mathematical Society (AMS). Contemp. Math. 257, 39-59 (2000)"
   year: 2000
@@ -1977,7 +1977,7 @@ bergerschuster2006:
     - schuster.peter-michael
 jaegerescardosantini2006:
   authors:
-    - Frédéric De Jaeger
+    - "De Jaeger, Frédéric"
     - Martín Escardó
     - Gabriele Santini
   title: On the computational content of the Lawson topology
@@ -2086,7 +2086,7 @@ heinatschmollerfeld2007:
     - mollerfeld.michael
 medsalemtanaka2007:
   authors:
-    - MedYahya Ould MedSalem
+    - "Ould MedSalem, MedYahya"
     - Kazuyuki Tanaka
   title: $\Delta^0_3$-determinacy, comprehension and induction
   venue: The Journal of Symbolic Logic 72(2), 452-462
@@ -2100,7 +2100,7 @@ medsalemtanaka2007:
 nemotomedsalemtanaka2007:
   authors:
     - Takako Nemoto
-    - MedYahya Ould MedSalem
+    - "Ould MedSalem, MedYahya"
     - Kazuyuki Tanaka
   title: Infinite games in the Cantor space and subsystems of second order arithmetic
   venue: Mathematical Logic Quarterly (MLQ) 53(3), 226-236
@@ -2430,7 +2430,7 @@ loeb2008b:
     - loeb.iris
 medsalemtanaka2008:
   authors:
-    - MedYahya Ould MedSalem
+    - "Ould MedSalem, MedYahya"
     - Kazuyuki Tanaka
   title: Weak determinacy and iterations of inductive definitions
   venue: "Chong, Chitat (ed.) et al., Computational prospects of infinity. Part II: Presented talks. Selected papers of the workshop, June 20--August 15, 2005. Hackensack, NJ: World Scientific (ISBN 978-981-279-654-7/hbk). Lecture Notes Series. Institute for Mathematical Sciences. National University of Singapore 15, 333-353 (2008)"
@@ -4811,7 +4811,7 @@ wu2024b:
   source: zbmath
 dauriacetal2024:
   authors:
-    - Paul-Elliot Anglès d'Auriac
+    - "Anglès d'Auriac, Paul-Elliot"
     - Peter A. Cholak
     - Damir D. Dzhafarov
     - Benoît Monin

@@ -15,7 +15,8 @@
 // the build check (undone if it fails):
 //   origin stated        cites the analyzed paper at `loc`;
 //   origin cited         needs --ref (and --loc): the work the paper attributes it to;
-//   special-case/deduced goes to data/results/ai-derived.yaml with provenance: ai and
+//   special-case/deduced goes to data/results/ai-derived.yaml with provenance: direct
+//   (special cases) or ai (deductions) and
 //                        the argument as justification.
 // accept (paper items) adds the paper to data/references/sweep-<year>.yaml.
 // Other kinds (statements, leads, questions, answers) are entered by hand
@@ -40,6 +41,7 @@ import { addResults } from './lib/results.mjs';
 import { unknownFields } from './lib/schema.mjs';
 import { readQueue, writeQueue, QUEUE } from './lib/review-queue.mjs';
 import { reviewStatus, screenKey, KINDS } from '../site/js/review.js';
+import { surname } from '../site/js/names.js';
 
 const USAGE = 'node scripts/review.mjs list [--all] [--ref key] [--kind k] [--voted] | show <id> | apply [--dry-run] | accept <id> [--ref key] [--loc text] [--note text] | reject <id> --note text | done <id> --note text';
 const args = cli(USAGE, { '--all': 0, '--ref': 1, '--kind': 1, '--voted': 0, '--loc': 1, '--note': 1, '--dry-run': 0 });
@@ -100,7 +102,7 @@ function rejectPaper(it, reason) {
 function addPaper(it) {
   const p = it.paper;
   const refs = Object.assign({}, ...fs.readdirSync('data/references').filter((f) => f.endsWith('.yaml')).map((f) => YAML.parse(fs.readFileSync(`data/references/${f}`, 'utf8')) || {}));
-  const last = (a) => String(a || '').normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/,?\s+(jr\.?|sr\.?|iii|ii)$/, '').split(/\s+/).pop().replace(/[^a-z]/g, '');
+  const last = (a) => surname(a).normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().split(/\s+/).pop().replace(/[^a-z]/g, '');
   const au = (p.authors || []).filter(Boolean);
   const base = (au.length > 3 ? last(au[0]) + 'etal' : au.map(last).join('') || 'anon') + (p.year || '');
   let k = base, j = 0;

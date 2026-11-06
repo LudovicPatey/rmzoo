@@ -56,7 +56,7 @@
 //    independent call shown the passages confirms it; and `npm run check` still
 //    passes afterwards. Stated facts cite the paper (merged into an existing entry
 //    if there is one); special cases go to data/results/ai-derived.yaml with
-//    provenance: ai and the argument as justification.
+//    provenance: direct (special cases) or ai (deductions) and the argument as justification.
 //  * dropped when the database already has it or derives it (a stated fact
 //    identical to an existing entry is not dropped: its citation is merged);
 //  * otherwise written to the review queue, data/review.yaml, with the reasons:
@@ -80,6 +80,7 @@ import { splitText } from './lib/split-text.mjs';
 import { addToQueue, QUEUE } from './lib/review-queue.mjs';
 import { modelOf, callCost, wantsUnit, calibration } from './lib/ai-models.mjs';
 import { buildZoo } from '../site/js/engine.js';
+import { fullName } from '../site/js/names.js';
 
 const USAGE = 'node scripts/ai-analyze.mjs [--only key1,key2] [--part 1,2] [--since YYYY-MM-DD] [--limit N] [--budget DOLLARS] [--redo | --upgrade | --replay] [--dry-run] [--concurrency N] [--effort low|medium|high|xhigh|max] [--model haiku|sonnet|opus] [--verify-model haiku|sonnet|opus]';
 const args = cli(USAGE, { '--only': 1, '--part': 1, '--since': 1, '--limit': 1, '--budget': 1, '--redo': 0, '--upgrade': 0, '--replay': 0, '--dry-run': 0, '--concurrency': 1, '--effort': 1, '--model': 1, '--verify-model': 1 });
@@ -226,7 +227,7 @@ catalogue and from what this part says, and lower your confidence when the defin
 numbers as printed. List as missing statements only principles defined in this part.` : '');
 const userPrompt = (key, text, part = { of: 1 }) => {
   const r = raw.references[key];
-  return `Paper [${key}]: ${(r.authors || []).join(', ')}, "${r.title}", ${r.year}.${index[key]?.ocr ? OCR_NOTE : ''}${partNote(part)}\n\n<paper>\n${text}\n</paper>\n\nExtract the facts of this ${part.of > 1 ? 'part' : 'paper'} as instructed.`;
+  return `Paper [${key}]: ${(r.authors || []).map(fullName).join(', ')}, "${r.title}", ${r.year}.${index[key]?.ocr ? OCR_NOTE : ''}${partNote(part)}\n\n<paper>\n${text}\n</paper>\n\nExtract the facts of this ${part.of > 1 ? 'part' : 'paper'} as instructed.`;
 };
 const estTokens = (s) => Math.round(s.length / 3.3);
 // estimated cost of one paper: its text, the cached catalogue, ~15k output and

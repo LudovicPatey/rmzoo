@@ -8,6 +8,7 @@ const classHtml = (id) => {
 };
 import { layered, verticalSpline } from './layout.js';
 import { bibtex } from './bibtex.js';
+import { surname, fullName } from './names.js';
 import { relatedIndex, relatedStatements } from './related.js';
 import { createCommunity } from './community.js';
 import { KINDS, STATUS_NAMES, reviewStatus, itemResult, resultKey } from './review.js';
@@ -134,7 +135,7 @@ function toggleSel(id) {
 function refShort(key) {
   const r = Z.raw.references[key];
   if (!r) return key;
-  const last = (a) => a.replace(/,?\s+(Jr\.?|Sr\.?|III|II)$/, '').split(' ').slice(-1)[0];
+  const last = surname;
   const au = r.authors.length > 3 ? `${last(r.authors[0])} et al.` : r.authors.map(last).join(', ');
   return `${au} ${r.year}`;
 }
@@ -383,6 +384,7 @@ function resultCite(ri) {
   const j = res.justification;
   return `<div class="cite">${endorseMark(ri)}${refs}${res.folklore ? ' <span class="badge folk">folklore</span>' : ''}
     ${res.provenance === 'ai' ? ' <span class="badge ai" title="Not taken from the literature: derived by an AI assistant and to be checked">AI-derived</span>' : ''}
+    ${res.provenance === 'direct' ? ' <span class="badge folk" title="An immediate consequence of a cited result: a specialization or a restriction of its instances">direct</span>' : ''}
     ${j?.by === 'ai' && res.provenance !== 'ai' ? ' <span class="badge ai" title="The justification below was written by an AI assistant">argument by AI</span>' : ''}
     ${res.status === 'needs-check' ? ' <span class="badge warn">needs check</span>' : ''}
     ${res._review ? ` <a class="badge yes" href="#/review/${esc(res._review)}" title="Proposed by the AI reader and validated on the review page; not yet committed to the database">validated on the review page</a>` : ''}</div>
@@ -490,7 +492,7 @@ function qSolvers(q) {
   const refs = new Map();
   for (const ri of qInfo(q).results) {
     const res = Z.raw.results[ri];
-    if (res.provenance === 'ai') continue;
+    if (res.provenance) continue;
     for (const r of res.refs || []) if ((Z.raw.references[r.ref]?.year || 0) >= y && !refs.has(r.ref)) refs.set(r.ref, r);
   }
   return [...refs.values()].sort((a, b) => (Z.raw.references[a.ref]?.year || 0) - (Z.raw.references[b.ref]?.year || 0));
@@ -633,7 +635,7 @@ function viewHome() {
     <h2>Recently added${lastDate ? ` <span class="small muted">· last update ${esc(lastDate)}</span>` : ''}</h2>
     <div class="recent">
       <div class="card"><h3><a href="#/results">Results</a></h3><ul>${recentRes.map(([ri, res]) =>
-        `<li>${resultFact(res)}<div class="small muted">${(res.refs || []).slice(0, 2).map(refLink).join('; ') || (res.provenance === 'ai' ? 'AI-derived' : 'folklore')} · ${esc(res._date)}</div></li>`).join('')}</ul></div>
+        `<li>${resultFact(res)}<div class="small muted">${(res.refs || []).slice(0, 2).map(refLink).join('; ') || ({ ai: 'AI-derived', direct: 'direct consequence' }[res.provenance] || 'folklore')} · ${esc(res._date)}</div></li>`).join('')}</ul></div>
       <div class="card"><h3><a href="#/catalogue">Statements</a></h3><ul>${recentStmts.map(([i, s]) =>
         `<li>${sLink(i)} <span class="muted">${esc(S(i).name)}</span><div class="small muted">${esc(s._date)}</div></li>`).join('')}</ul></div>
       <div class="card"><h3><a href="#/refs">Papers</a></h3><ul>${recentRefs.map(([k, r]) =>
@@ -1115,7 +1117,7 @@ const sortKeys = (keys) => [...new Set(keys)].filter((k) => Z.raw.references[k])
 function refFull(key) {
   const r = Z.raw.references[key];
   if (!r) return esc(key);
-  return `${esc(r.authors.join(', '))}. <a href="#/refs/${key}"><i>${rich(r.title)}</i></a>. ${esc(r.venue)}, ${r.year}.
+  return `${esc(r.authors.map(fullName).join(', '))}. <a href="#/refs/${key}"><i>${rich(r.title)}</i></a>. ${esc(r.venue)}, ${r.year}.
     ${r.doi ? `<a href="https://doi.org/${esc(r.doi)}" target="_blank" rel="noopener" class="small">doi</a>` : ''}
     ${r.arxiv ? `<a href="https://arxiv.org/abs/${esc(r.arxiv)}" target="_blank" rel="noopener" class="small">arXiv</a>` : ''}
     ${r.url && !r.doi ? `<a href="${esc(r.url)}" target="_blank" rel="noopener" class="small">link</a>` : ''}
@@ -1518,7 +1520,7 @@ function viewResults(params) {
       <select id="f-type"><option value="">All types</option><option>implication</option><option>equivalence</option><option>separation</option><option>property</option><option>conservation</option></select>
       <select id="f-r"><option value="">${MODE() ? `All reductions of the mode` : 'All reductions'}</option>${Z.R.filter((_, r) => rInMode(r)).map((R) => `<option value="${R.id}">${esc(R.name)}</option>`).join('')}</select>
       <select id="f-prov"><option value="">Any provenance</option><option value="lit">From the literature</option>
-        <option value="folk">Folklore</option><option value="ai">AI-derived</option><option value="aiarg">Argument by AI</option>
+        <option value="folk">Folklore</option><option value="direct">Direct consequences</option><option value="ai">AI-derived</option><option value="aiarg">Argument by AI</option>
         <option value="endorsed">Endorsed by a reader</option><option value="endorsed2">Endorsed by several readers</option></select>
       <label class="toggle"><input type="checkbox" id="f-check"> Needs check only</label>
       ${bibButton('bib-res', 'BibTeX of cited papers')}
@@ -1529,7 +1531,8 @@ function viewResults(params) {
     const matchIds = q ? new Set(search(q, 1000).map((i) => S(i).id)) : null;
     const type = $('#f-type').value, rr = $('#f-r').value, chk = $('#f-check').checked, prov = $('#f-prov').value;
     const provOk = (res) => !prov
-      || (prov === 'lit' && res.refs?.length && !res.folklore && res.provenance !== 'ai')
+      || (prov === 'lit' && res.refs?.length && !res.folklore && !res.provenance)
+      || (prov === 'direct' && res.provenance === 'direct')
       || (prov === 'folk' && res.folklore)
       || (prov === 'ai' && res.provenance === 'ai')
       || (prov === 'aiarg' && res.justification?.by === 'ai')
@@ -1541,7 +1544,7 @@ function viewResults(params) {
       (!chk || res.status === 'needs-check') && provOk(res) &&
       (!matchIds || [res.from, res.to, res.statement, res.base].some((x) => matchIds.has(x))));
     shown = list;
-    $('#res').innerHTML = `<p class="small muted">${list.length} result${list.length === 1 ? '' : 's'} citing ${sortKeys(citedKeys(list)).length} papers</p>${resultsTable(list, 50)}`;
+    $('#res').innerHTML = `<p class="small muted">${list.length} result${list.length === 1 ? '' : 's'} citing ${(n => `${n} paper${n === 1 ? '' : 's'}`)(sortKeys(citedKeys(list)).length)}</p>${resultsTable(list, 50)}`;
   };
   $('#bib-res').addEventListener('click', () => downloadBib(sortKeys(citedKeys(shown)), 'rmzoo-results'));
   ['#f-q', '#f-type', '#f-r', '#f-check', '#f-prov'].forEach((s) => $(s).addEventListener('input', draw));
@@ -1571,7 +1574,7 @@ function viewRefs(key) {
     if (!r) { m.innerHTML = '<h1>Unknown reference</h1>'; return; }
     const st = intro(key);
     m.innerHTML = `<p><a href="#/refs">← Literature</a></p>
-      <h1>${rich(r.title)}</h1><p>${esc(r.authors.join(', '))} — ${esc(r.venue)}, ${r.year}
+      <h1>${rich(r.title)}</h1><p>${esc(r.authors.map(fullName).join(', '))} — ${esc(r.venue)}, ${r.year}
       ${r.doi ? ` · <a href="https://doi.org/${esc(r.doi)}" target="_blank" rel="noopener">doi:${esc(r.doi)}</a>` : ''}
       ${r.arxiv ? ` · <a href="https://arxiv.org/abs/${esc(r.arxiv)}" target="_blank" rel="noopener">arXiv:${esc(r.arxiv)}</a>` : ''}
       ${r.zbmath ? ` · <a href="https://zbmath.org/?q=an:${esc(r.zbmath)}" target="_blank" rel="noopener">Zbl ${esc(r.zbmath)}</a>` : ''}
@@ -1649,6 +1652,7 @@ function viewAbout(params) {
   const { nI, nN, nO } = zooCounts();
   const needs = Z.raw.results.filter((r) => r.status === 'needs-check').length;
   const nAi = Z.raw.results.filter((r) => r.provenance === 'ai').length;
+  const nDirect = Z.raw.results.filter((r) => r.provenance === 'direct').length;
   const nFolk = Z.raw.results.filter((r) => r.folklore).length;
   const TABS = [['overview', 'Overview'], ['reductions', 'Reductions'], ['properties', 'Properties'], ['rules', 'Inference rules'], ['community', 'Community']];
   const tab = params.get('class') ? 'reductions' : TABS.some(([t]) => t === params.get('tab')) ? params.get('tab') : 'overview';
@@ -1663,6 +1667,7 @@ function viewAbout(params) {
       <div class="card"><div class="num">${nN}</div><div class="small muted">derived separations</div></div>
       <div class="card"><div class="num">${nO}</div><div class="small muted">open pairs</div></div>
       <div class="card"><div class="num">${nFolk}</div><div class="small muted"><a href="#/results">folklore results</a></div></div>
+      <div class="card"><div class="num">${nDirect}</div><div class="small muted">direct consequences</div></div>
       <div class="card"><div class="num">${nAi}</div><div class="small muted">AI-derived results</div></div>
       <div class="card"><div class="num ${needs ? 'open' : ''}">${needs}</div><div class="small muted">results to check</div></div>
     </div>
@@ -1927,7 +1932,7 @@ function viewProfile(orcid, params = new URLSearchParams()) {
 const fmtSize = (n) => (n >= 1 << 20 ? `${(n / (1 << 20)).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} kB`);
 // a title as plain text: its $…$ parts through plain(), the rest as is
 const titleText = (s) => String(s).replace(/\$([^$]*)\$/g, (m, x) => plain(x));
-const refLabel = (k) => { const r = Z.raw.references[k]; return r ? `${titleText(r.title)} (${r.authors.map((a) => a.split(' ').pop()).join(', ')}, ${r.year})` : k; };
+const refLabel = (k) => { const r = Z.raw.references[k]; return r ? `${titleText(r.title)} (${r.authors.map(surname).join(', ')}, ${r.year})` : k; };
 // the paper a file name most likely is: the reference whose title words occur most in it
 function guessRef(filename) {
   const w = new Set(normWords(filename.replace(/\.pdf$/i, '')));
@@ -2054,7 +2059,7 @@ function renderUploads() {
       <p class="small muted">Papers of the database whose text the zoo does not have, of which you are an author: by your ORCID iD on
         <a href="https://zbmath.org" target="_blank" rel="noopener">zbMATH Open</a> when the paper and your profile are there, otherwise by your name.
         If one is not yours, or if you may not share it, say so: it leaves this list and the bell.</p>
-      <table class="grid">${missing.map(([k, r]) => `<tr><td><a href="#/refs/${esc(k)}">${rich(r.title)}</a> <span class="small muted">${esc(r.authors.join(', '))}, ${r.year}</span></td>
+      <table class="grid">${missing.map(([k, r]) => `<tr><td><a href="#/refs/${esc(k)}">${rich(r.title)}</a> <span class="small muted">${esc(r.authors.map(fullName).join(', '))}, ${r.year}</span></td>
         <td style="white-space:nowrap"><button class="btn small primary" data-add="${esc(k)}">Upload its PDF</button>
           <button class="btn small" data-dismiss="${esc(k)}|not-author">Not my paper</button>
           <button class="btn small" data-dismiss="${esc(k)}|not-allowed">Not allowed to share</button></td></tr>`).join('')}</table>` : ''}
@@ -2238,7 +2243,7 @@ function reviewBody(it) {
     }
     case 'paper': {
       const p = it.paper;
-      return `<p class="rv-fact"><i>${esc(p.title)}</i></p><p class="small">${esc((p.authors || []).join(', '))}. ${esc(p.venue || '')}, ${esc(p.year)}.
+      return `<p class="rv-fact"><i>${esc(p.title)}</i></p><p class="small">${esc((p.authors || []).map(fullName).join(', '))}. ${esc(p.venue || '')}, ${esc(p.year)}.
         ${p.doi ? `<a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">doi</a>` : ''}
         ${p.arxiv ? `<a href="https://arxiv.org/abs/${esc(p.arxiv)}" target="_blank" rel="noopener">arXiv</a>` : ''}</p>`;
     }

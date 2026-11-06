@@ -79,6 +79,15 @@ const expected = [
   ['omega', 'ovw', 'rt22', 'separated'],
   ['w', 'wkl-j', 'lim', 'implies'],
   ['rca0', 'rsg', 'aca', 'implies'],
+  ['soc', 'sd', 'rt12', 'implies'],          // sc gives soc
+  ['soc', 'rt22', 'rt12', 'implies'],        // sW → sc → soc
+  ['sc', 'rt12', 'sd', 'separated'],         // a separation at soc holds at sc (HLL, Theorem 7.5)
+  ['c', 'rt12.fin', 'rt13', 'implies'],
+  ['c', 'rt12', 'sd', 'implies'],            // SD is computably true (prop-bottom), though SD ≰soc RT¹₂
+  ['c', 'lpo', 'rt13', 'implies'],           // computably true problems are ≤c everything
+  ['sc', 'rt13', 'lpo', 'implies'],          // first-order problems are ≤sc everything
+  ['sc', 'wkl', 'cn', 'implies'],
+  ['sc', 'lpo', 'wkl', 'separated'],
 ];
 for (const [r, a, b, s] of expected)
   test(`${a} ${s} ${b} over ${r}`, () => assert.equal(st(r, a, b), s));

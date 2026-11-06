@@ -22,6 +22,7 @@ export const RULES = {
   'prop-up': 'Failure of a property inherited along an implication',
   'prop-sep': 'Separation by a property',
   'prop-implies': 'Relation between properties (a low basis is a weakly low basis, a computably true problem has every preservation property…)',
+  'prop-bottom': 'A problem with this property is below every problem over this reduction (a computably true problem P is computably reducible to every Q: the P-instance X computes a Q-instance, and itself a solution; a first-order problem is strongly computably reducible to every Q: every set computes a number)',
   'prop-base': 'A problem has this property exactly when the base system implies it over this reduction (e.g. computably true = holds in every ω-model)',
   refine: 'Separation at a coarser reduction',
   'base-lift': 'Over a weaker base theory, a statement implying the stronger base theory has all its consequences over that theory (over RCA₀*, a statement implying IΣ⁰₁ implies everything it implies over RCA₀)',
@@ -298,33 +299,36 @@ export function buildZoo(raw) {
   const liftsCoarse = R.map((_, r) => lifts.filter((l) => l.coarse === r));
   const liftsFine = R.map((_, r) => lifts.filter((l) => l.fine === r));
 
-  while (qh < queue.length) {
-    const r = queue[qh++], a = queue[qh++], b = queue[qh++];
-    if (ops.length) monotone(r, a, b);
-    for (const l of lifting) if (l.from === r && l.has.has(a)) addI(l.to, a, b, { rule: 'prop-lift', prem: [fI(r, a, b)] });
-    for (const { fine, B } of liftsCoarse[r]) // a → b over the coarse frame
-      if (I[fine].has(key(a, B))) addI(fine, a, b, { rule: 'base-lift', prem: [fI(fine, a, B), fI(r, a, b)] });
-    for (const { coarse, B } of liftsFine[r]) // a → B over the fine frame
-      if (b === B) for (const c of [...out[coarse][a]]) addI(r, a, c, { rule: 'base-lift', prem: [fI(r, a, B), fI(coarse, a, c)] });
-    const ob = out[r][b];
-    for (let i = 0, len = ob.length; i < len; i++) {
-      const c = ob[i];
-      if (!Ib[r][key(a, c)]) addI(r, a, c, { rule: 'trans', prem: [fI(r, a, b), fI(r, b, c)] });
-    }
-    const ia = inn[r][a];
-    for (let i = 0, len = ia.length; i < len; i++) {
-      const z = ia[i];
-      if (!Ib[r][key(z, b)]) addI(r, z, b, { rule: 'trans', prem: [fI(r, z, a), fI(r, a, b)] });
-    }
-    for (const r2 of coarserDirect[r]) addI(r2, a, b, { rule: 'coarsen', prem: [fI(r, a, b)] });
-    if (R[r].conjunction) {
-      for (const k of conjOf[b]) {
-        const parts = conjParts[k];
-        if (parts.every((p) => I[r].has(key(a, p))))
-          addI(r, a, k, { rule: 'conj-intro', prem: parts.map((p) => fI(r, a, p)) });
+  function drainI() {
+    while (qh < queue.length) {
+      const r = queue[qh++], a = queue[qh++], b = queue[qh++];
+      if (ops.length) monotone(r, a, b);
+      for (const l of lifting) if (l.from === r && l.has.has(a)) addI(l.to, a, b, { rule: 'prop-lift', prem: [fI(r, a, b)] });
+      for (const { fine, B } of liftsCoarse[r]) // a → b over the coarse frame
+        if (I[fine].has(key(a, B))) addI(fine, a, b, { rule: 'base-lift', prem: [fI(fine, a, B), fI(r, a, b)] });
+      for (const { coarse, B } of liftsFine[r]) // a → B over the fine frame
+        if (b === B) for (const c of [...out[coarse][a]]) addI(r, a, c, { rule: 'base-lift', prem: [fI(r, a, B), fI(coarse, a, c)] });
+      const ob = out[r][b];
+      for (let i = 0, len = ob.length; i < len; i++) {
+        const c = ob[i];
+        if (!Ib[r][key(a, c)]) addI(r, a, c, { rule: 'trans', prem: [fI(r, a, b), fI(r, b, c)] });
+      }
+      const ia = inn[r][a];
+      for (let i = 0, len = ia.length; i < len; i++) {
+        const z = ia[i];
+        if (!Ib[r][key(z, b)]) addI(r, z, b, { rule: 'trans', prem: [fI(r, z, a), fI(r, a, b)] });
+      }
+      for (const r2 of coarserDirect[r]) addI(r2, a, b, { rule: 'coarsen', prem: [fI(r, a, b)] });
+      if (R[r].conjunction) {
+        for (const k of conjOf[b]) {
+          const parts = conjParts[k];
+          if (parts.every((p) => I[r].has(key(a, p))))
+            addI(r, a, k, { rule: 'conj-intro', prem: parts.map((p) => fI(r, a, p)) });
+        }
       }
     }
   }
+  drainI();
 
   // --- properties ----------------------------------------------------------
   // A property with `domain: problems` (defined through instances and solutions)
@@ -423,6 +427,25 @@ export function buildZoo(raw) {
     });
   });
   drainP();
+  // properties that make a problem the bottom of a reduction (`bottomOf: r`: a
+  // computably true problem is ≤c every problem). The values come from the cited
+  // results, the laws above and the implications from the base (holding in every
+  // ω-model); the new implications are closed, and may give new values, until nothing
+  // changes. This runs before the separations, which then see these implications.
+  const bottomProps = raw.properties.map((prop, p) => ({ p, r: ridx.get(prop.bottomOf) })).filter((x) => x.r !== undefined);
+  for (let changed = bottomProps.length > 0; changed;) {
+    changed = false;
+    for (const { p, r, dom } of charProps)
+      for (const b of basesAt(r).slice(0, 1))
+        for (let s = 0; s < n; s++)
+          if (inDomain(dom, s) && !P[p].has(s) && I[r].has(key(b, s))) setP(p, s, true, { rule: 'prop-base', prem: [fI(r, b, s)] });
+    drainP();
+    const before = queue.length;
+    for (const { p, r } of bottomProps)
+      for (const [s, { v }] of P[p]) if (v && inDomain(r, s))
+        for (let a = 0; a < n; a++) if (a !== s && !Ib[r][key(a, s)]) addI(r, a, s, { rule: 'prop-bottom', prem: [fP(p, s, true)] });
+    if (queue.length > before) { changed = true; drainI(); }
+  }
 
   // --- non-implications ----------------------------------------------------
   const N = R.map(() => new Map());

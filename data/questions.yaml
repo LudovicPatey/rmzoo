@@ -690,13 +690,12 @@
     [@liupatey2026] proved OVW in ACA₀ and showed that it does not imply ACA₀.
 
 - id: gp22-bsig2-conservation
-  question: Is the grouping principle $\mathsf{GP}^2_2$ $\Pi^1_1$-conservative over $\mathsf{RCA}_0 + \mathsf{B}\Sigma^0_2$? Does $\mathsf{EM}$ imply $\mathsf{GP}^2_2$?
+  question: Is the grouping principle $\mathsf{GP}^2_2$ $\Pi^1_1$-conservative over $\mathsf{RCA}_0 + \mathsf{B}\Sigma^0_2$?
   asked:
-    - {ref: pateyyokoyama2018, loc: Questions 9.3 and 9.4}
-  statements: [gp22, bsig2, em]
-  formal:
-    - {from: em, to: gp22, over: rca0}
-  answer: First question, yes. WKL₀ + GP²₂ is Π¹₁-conservative over RCA₀ + BΣ⁰₂ (Le Houérou, Levy Patey and Yokoyama). Whether EM implies GP²₂ is still open.
+    - {ref: pateyyokoyama2018, loc: Question 9.3}
+  statements: [gp22, bsig2]
+  status: resolved
+  answer: Yes. Even WKL₀ + GP²₂ is Π¹₁-conservative over RCA₀ + BΣ⁰₂ (Le Houérou, Levy Patey and Yokoyama).
   resolvedBy:
     - {ref: lehoueroupateyyokoyama2024, loc: Theorem 4.2}
   context: >-
@@ -704,6 +703,19 @@
     obtain density bounds for the Erdős–Moser theorem in their conservation proof
     for RT²₂. Le Houérou, Levy Patey and Yokoyama [@lehoueroupateyyokoyama2024]
     later showed GP²₂ + WKL₀ Π¹₁-conservative over RCA₀ + BΣ⁰₂.
+
+- id: em-gp22
+  question: Does the Erdős–Moser theorem $\mathsf{EM}$ imply the grouping principle $\mathsf{GP}^2_2$ over $\mathsf{RCA}_0$?
+  asked:
+    - {ref: pateyyokoyama2018, loc: Question 9.4}
+  statements: [em, gp22]
+  formal:
+    - {from: em, to: gp22, over: rca0}
+  context: >-
+    The grouping principle was used to establish a density bound for the Erdős–Moser
+    theorem [@pateyyokoyama2018]. The stable grouping principle does not imply the
+    stable Erdős–Moser theorem, since the former admits low solutions and the latter
+    does not.
 
 - id: rrt22-ht-eq22
   question: Does $\mathsf{RRT}^2_2$ imply Hindman's theorem for sums of exactly two elements $\mathsf{HT}^{=2}_2$?

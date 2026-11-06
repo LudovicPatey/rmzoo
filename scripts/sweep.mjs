@@ -20,6 +20,7 @@ import fs from 'node:fs';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
 import { cli } from './lib/cli.mjs';
+import { surname } from '../site/js/names.js';
 cli('node scripts/sweep.mjs [--since YYYY-MM-DD] [--add] [--out candidates.json]', { '--since': 1, '--add': 0, '--out': 1 });
 acquireLock('sweep.mjs');
 
@@ -81,7 +82,7 @@ const refs = Object.entries(Object.assign({}, ...fs.readdirSync('data/references
 const SYM = { '²': '2', '³': '3', '¹': '1', '⁰': '0', '₀': '0', '₁': '1', '₂': '2', '₃': '3', 'ω': 'omega', 'Σ': 'sigma', 'Π': 'pi', 'Δ': 'delta' };
 const norm = (t) => String(t || '').replace(/<[^>]+>/g, '').replace(/[²³¹⁰₀₁₂₃ωΣΠΔ]/g, (c) => SYM[c]).replace(/\\(omega|sigma|pi|delta)\b/gi, (m, x) => x.toLowerCase())
   .replace(/\\[a-zA-Z]+/g, '').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]/g, '').replace(/0$/, '');
-const last = (a) => String(a || '').normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/,?\s+(jr\.?|sr\.?|iii|ii)$/, '').split(/\s+/).pop().replace(/[^a-z]/g, '');
+const last = (a) => surname(a).normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().split(/\s+/).pop().replace(/[^a-z]/g, '');
 const words = (t) => new Set(String(t || '').toLowerCase().normalize('NFKD').replace(/\\[a-z]+/g, ' ').match(/[a-z]{4,}/g) || []);
 const have = refs.map(([k, r]) => ({ k, doi: r.doi?.toLowerCase(), ax: r.arxiv && String(r.arxiv), t: norm(r.title), y: r.year, a: new Set((r.authors || []).map(last)), w: words(r.title) }));
 const dup = (x) => have.some((h) => (x.doi && h.doi === x.doi.toLowerCase()) || (x.arxiv && h.ax === String(x.arxiv)) || h.t === norm(x.title) ||

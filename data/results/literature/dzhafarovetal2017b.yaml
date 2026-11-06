@@ -2,3 +2,4 @@
 
 - { type: "separation", from: "srt22", to: "rt13", over: "sc", note: "RT¹ₖ is not strongly computably reducible to SRT²ℓ for k > ℓ.", refs: [ { ref: dzhafarovetal2017b, loc: Corollary 1.4 } ] }
 - { type: "separation", from: "srt2", to: "coh", over: "sc", refs: [ { ref: dzhafarovetal2017b, loc: Corollary 1.6 } ] }
+- { type: separation, from: srt22, to: rt13, over: soc, refs: [ { ref: dzhafarovetal2017b, loc: "Theorem 1.3 (k = 3, ℓ = 2: for every stable coloring, computable from c or not)" } ] }

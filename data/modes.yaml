@@ -25,7 +25,7 @@
   name: Computable reducibility
   short: Computable
   description: Computable, strongly computable and ω-model reducibility between problems, with the computability-theoretic properties (cone avoidance, basis theorems, preservation properties).
-  reductions: [ c, sc, omega ]
+  reductions: [ c, sc, soc, omega ]
   default: c
   properties: [ computability ]
 

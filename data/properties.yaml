@@ -6,6 +6,9 @@
 #   baseImplication: r -> a problem has the property exactly when the bottom of
 #                reduction r (e.g. RCA₀ for omega) implies it over r; the engine
 #                derives the property from that comparison and conversely.
+#   bottomOf: r -> a problem with the property is below every problem over r
+#                (computably true: c; first-order: sc), assuming every problem has an
+#                instance computable from any set (true of the zoo's problems).
 #   domain: problems -> defined through instances and solutions: it only applies
 #                to statements that can be formulated as problems (problems, and
 #                sentences that are not first-order and not marked problemForm: false).
@@ -173,6 +176,9 @@
   closedUnder: c
   direction: down
   baseImplication: omega
+  # P ≤c Q for every problem Q: an instance X of P computes an instance of Q (every
+  # problem of the zoo has computable instances), and X itself computes a solution of X
+  bottomOf: c
   domain: problems
   # a solution computable in Z leaves Z ⊕ Y ≡_T Z, so every property defined by
   # "every Z-computable instance has a solution Y such that Z ⊕ Y …" holds
@@ -333,6 +339,22 @@
 # Properties of Weihrauch degrees (Brattka, Gherardi and Pauly, "Weihrauch complexity
 # in computable analysis", Sections 3, 4 and 6). They are invariant under equivalence
 # and not preserved downwards, so they separate nothing by themselves.
+- id: first-order
+  name: First-order problem
+  # computability, not weihrauch: it implies computable truth and serves the ≤sc rule
+  group: computability
+  domain: problems
+  optional: true
+  # P ≤sc Q for every problem Q: an instance X of P computes an instance of Q, and every
+  # set computes a natural number, hence the solution of X it needs. No reduction keeps
+  # the property (it is about the problem, not its degree).
+  bottomOf: sc
+  implies: [ computably-true ]
+  description: >
+    Every solution of every instance is a natural number (Definition 1.3 of Dzhafarov, Solomon and
+    Yokoyama): LPO, C_ℕ, lim_ℕ… In particular it is computably true and strongly computably reducible
+    to every problem.
+
 - id: cylinder
   name: Cylinder
   group: weihrauch

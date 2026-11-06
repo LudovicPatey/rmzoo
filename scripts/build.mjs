@@ -369,6 +369,7 @@ for (const r of raw.reductions)
 for (const p of raw.properties) {
   if (p.closedUnder !== undefined && !rids.has(p.closedUnder)) errors.push(`Property ${p.id}: unknown reduction ${p.closedUnder}`);
   if ((p.closedUnder === undefined) !== (p.direction === undefined)) errors.push(`Property ${p.id}: closedUnder and direction go together`);
+  if (p.bottomOf && !rids.has(p.bottomOf)) errors.push(`Property ${p.id}: unknown bottomOf ${p.bottomOf}`);
   if (p.baseImplication && !rids.has(p.baseImplication)) errors.push(`Property ${p.id}: unknown baseImplication ${p.baseImplication}`);
   if (p.domain !== undefined && p.domain !== 'problems') errors.push(`Property ${p.id}: domain must be problems`);
   for (const q of p.implies || []) if (!pids.has(q) || q === p.id) errors.push(`Property ${p.id}: implies unknown property ${q}`);
@@ -430,10 +431,10 @@ raw.results.forEach((res, i) => {
     if (!pids.has(res.property)) errors.push(`${where}: unknown property ${res.property}`);
     if (typeof res.value !== 'boolean') errors.push(`${where}: value must be true or false`);
   } else errors.push(`${where}: unknown type ${res.type}`);
-  if (!res.folklore && res.provenance !== 'ai' && !(res.refs && res.refs.length))
-    errors.push(`${where}: needs refs, folklore: true, or provenance: ai`);
-  if (res.provenance && res.provenance !== 'ai') errors.push(`${where}: provenance must be ai`);
-  if (res.provenance === 'ai' && !res.justification) errors.push(`${where}: AI-derived results need a justification`);
+  if (!res.folklore && !res.provenance && !(res.refs && res.refs.length))
+    errors.push(`${where}: needs refs, folklore: true, or provenance: ai | direct`);
+  if (res.provenance && !['ai', 'direct'].includes(res.provenance)) errors.push(`${where}: provenance must be ai or direct`);
+  if (res.provenance && !res.justification) errors.push(`${where}: AI-derived and direct results need a justification`);
   if (res.justification) {
     const kinds = ['restriction', 'reduction', 'classical', 'personal-communication', 'unreferenced'];
     if (!kinds.includes(res.justification.kind)) errors.push(`${where}: justification.kind must be one of ${kinds.join(', ')}`);
@@ -583,7 +584,7 @@ const t0 = Date.now();
   const acc = new Map();
   for (const r of raw.results) {
     const refs = (r.refs || []).map((x) => x.ref);
-    if (!refs.length || r.provenance === 'ai') continue;
+    if (!refs.length || r.provenance) continue;
     const frames = [...new Set([].concat(r.over || (r.type === 'conservation' ? 'rca0' : [])).map((o) => FRAME[o]).filter(Boolean))];
     if (!frames.length) continue;
     for (const id of [r.from, r.to, r.statement, r.base].filter(Boolean)) {

@@ -35,9 +35,11 @@ paper.
    * texts read by OCR from scans (`ocr: true` in `cache/fulltext/index.json`)
      are worse: "RT3" may be RT²₂, "RCAg" is RCA₀, "w-model" is ω-model. Always
      check the rendered PDF before entering a fact from one.
-3. **Facts you derive yourself** (no paper states them) get
-   `provenance: ai` and a `justification` with the argument. Never cite a paper
-   for something it does not state. Folklore gets `folklore: true` and a
+3. **Facts you derive yourself** (no paper states them) get a `justification`
+   with the argument and a `provenance`: `direct` for an immediate consequence of
+   a cited result (a specialization, a restriction of its instances: justification
+   kind `restriction`), `ai` for any other derivation. Never cite a paper for
+   something it does not state. Folklore gets `folklore: true` and a
    justification.
 4. **Definitions** come from the source paper, with its number in `refs[].loc`.
    Use `todo:` only when no source text is available, and say why.

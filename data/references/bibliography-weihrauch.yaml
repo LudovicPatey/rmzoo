@@ -34,7 +34,7 @@ ahmanbauer2025:
   arxiv: "2409.17664"
 dauriac2020:
   authors:
-    - Paul-Elliot Anglès d'Auriac
+    - "Anglès d'Auriac, Paul-Elliot"
   title: Infinite Computations in Algorithmic Randomness and Reverse Mathematics
   year: 2020
   venue: Université Paris-Est
@@ -42,7 +42,7 @@ dauriac2020:
   read: pdf-zotero
 dauriackihara2021:
   authors:
-    - Paul-Elliot Anglès d'Auriac
+    - "Anglès d'Auriac, Paul-Elliot"
     - Takayuki Kihara
   title: A Comparison of Various Analytic Choice Principles
   year: 2021
@@ -382,7 +382,7 @@ brattkaetal2016:
 brattkarouxpauly2012:
   authors:
     - Vasco Brattka
-    - Stéphane Le Roux
+    - "Le Roux, Stéphane"
     - Arno Pauly
   title: On the Computational Content of the Brouwer Fixed Point Theorem
   year: 2012
@@ -397,7 +397,7 @@ brattkarouxpauly2012:
 brattkaetal2016b:
   authors:
     - Vasco Brattka
-    - Stéphane Le Roux
+    - "Le Roux, Stéphane"
     - Joseph S. Miller
     - Arno Pauly
   title: The Brouwer Fixed Point Theorem Revisited
@@ -458,7 +458,7 @@ bochepohl2019:
   read: screened
 brechtpaulyschroder2020:
   authors:
-    - Matthew de Brecht
+    - "de Brecht, Matthew"
     - Arno Pauly
     - Matthias Schröder
   title: Overt choice
@@ -769,7 +769,7 @@ ciprianipauly2025:
   arxiv: "2305.00935"
 brecht2014:
   authors:
-    - Matthew de Brecht
+    - "de Brecht, Matthew"
   title: Levels of Discontinuity, Limit-Computability, and Jump Operators
   year: 2014
   venue: Logic, Computation, Hierarchies, 93–122
@@ -1743,7 +1743,7 @@ lemppmarconevalenti2024:
   arxiv: "2411.07792"
 rouxpauly2013:
   authors:
-    - Stéphane Le Roux
+    - "Le Roux, Stéphane"
     - Arno Pauly
   title: Closed Choice for Finite and for Convex Sets
   year: 2013
@@ -1756,7 +1756,7 @@ rouxpauly2013:
     - pauly.arno-m
 rouxpauly2015:
   authors:
-    - Stéphane Le Roux
+    - "Le Roux, Stéphane"
     - Arno Pauly
   title: Weihrauch Degrees of Finding Equilibria in Sequential Games (Extended Abstract)
   year: 2015
@@ -2039,7 +2039,7 @@ pauly2017:
 paulybrecht2013:
   authors:
     - Arno Pauly
-    - Matthew de Brecht
+    - "de Brecht, Matthew"
   title: "Towards Synthetic Descriptive Set Theory: An instantiation with represented spaces"
   year: 2013
   venue: arXiv 1307.1850
@@ -2052,7 +2052,7 @@ paulybrecht2013:
 paulybrecht2014:
   authors:
     - Arno Pauly
-    - Matthew de Brecht
+    - "de Brecht, Matthew"
   title: Non-deterministic computation and the Jayne-Rogers Theorem
   year: 2014
   venue: Proceedings 8th International Workshop on Developments in Computational Models, DCM 2012, Cambridge, United Kingdom, 17 June 2012., 143, 87–96
@@ -2067,7 +2067,7 @@ paulybrecht2014:
 paulybrecht2015:
   authors:
     - Arno Pauly
-    - Matthew de Brecht
+    - "de Brecht, Matthew"
   title: Descriptive Set Theory in the Category of Represented Spaces
   year: 2015
   venue: 30th Annual ACM/IEEE Symposium on Logic in Computer Science (LICS), 438-449
@@ -2229,7 +2229,7 @@ sovine2017:
   source: weihrauch-bibliography
 stein1989:
   authors:
-    - Thorsten von Stein
+    - "von Stein, Thorsten"
   title: Vergleich nicht konstruktiv lösbarer Probleme in der Analysis
   year: 1989
   venue: Fachbereich Informatik, FernUniversität Hagen
@@ -2272,7 +2272,7 @@ trottavalentipaiva2022:
   authors:
     - Davide Trotta
     - Manlio Valenti
-    - Valeria de Paiva
+    - "de Paiva, Valeria"
   title: Categorifying Computable Reducibilities
   year: 2022
   venue: arXiv 2208.08656
@@ -2382,7 +2382,7 @@ paulypradicsolda2024:
   arxiv: "2301.02833"
 lerouxpauly2015:
   authors:
-    - Stéphane Le Roux
+    - "Le Roux, Stéphane"
     - Arno Pauly
   title: Finite choice, convex choice and finding roots
   year: 2015

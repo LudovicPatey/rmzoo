@@ -37,6 +37,7 @@ import { acquireLock } from './lib/lock.mjs';
 import { cli } from './lib/cli.mjs';
 import { addToQueue } from './lib/review-queue.mjs';
 import crypto from 'node:crypto';
+import { surname } from '../site/js/names.js';
 const opts = cli('npm run consolidate [-- --since YYYY-MM-DD] [--skip sweep,pubstatus,texts,mine,statements,questions] [--ai [--ai-budget DOLLARS] [--ai-model haiku|sonnet|opus]]', { '--since': 1, '--skip': 1, '--ai': 0, '--ai-budget': 1, '--ai-model': 1 });
 acquireLock('consolidate.mjs');
 
@@ -59,7 +60,7 @@ const run = (cmd, a, opts = {}) => {
 };
 const node = (script, a = []) => run('node', [script, ...a]);
 const loadRefs = () => Object.assign({}, ...fs.readdirSync('data/references').filter((f) => f.endsWith('.yaml')).map((f) => YAML.parse(fs.readFileSync('data/references/' + f, 'utf8'))));
-const short = (k, refs) => { const r = refs[k]; if (!r) return k; const a = (r.authors || []).map((x) => String(x).split(' ').pop()); return `${a.length > 3 ? a[0] + ' et al.' : a.join(', ')} ${r.year} (\`${k}\`)`; };
+const short = (k, refs) => { const r = refs[k]; if (!r) return k; const a = (r.authors || []).map(surname); return `${a.length > 3 ? a[0] + ' et al.' : a.join(', ')} ${r.year} (\`${k}\`)`; };
 const keysBefore = new Set(Object.keys(loadRefs()));
 // candidates for a reader also go to the review queue (data/review.yaml, the review
 // page of the viewer; docs/REVIEW.md); an item already queued or decided is not added again
@@ -207,7 +208,7 @@ if (!skip.has('questions')) {
     if (now[q.id] === 'resolved') continue;
     for (const a of q.asked) {
       const r = raw.references[a.ref]; if (!r) continue;
-      const author = String(r.authors?.[0] || '').split(' ').pop();
+      const author = surname(r.authors?.[0]);
       const num = String(a.loc || '').match(/\d+(?:\.\d+)*/)?.[0];
       for (const k of recent) {
         if (k === a.ref || (raw.references[k]?.year || 0) < (r.year || 0)) continue;

@@ -61,7 +61,8 @@ export function addResults(spec) {
       if (ref === '_ai') {
         if (hit) { changes.push({ action: 'skipped', file: hit.f, key }); continue; }
         const { justification, ...rest } = fact;
-        append(AI_FILE, '', { ...rest, provenance: 'ai', justification }, null);
+        // a specialization (restriction of a cited result) is direct; other derivations are AI-derived
+        append(AI_FILE, '', { ...rest, provenance: justification?.kind === 'restriction' ? 'direct' : 'ai', justification }, null);
         changes.push({ action: 'added', file: AI_FILE, key });
         continue;
       }

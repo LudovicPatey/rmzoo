@@ -112,6 +112,7 @@
 - { type: property, statement: rt12, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the two color classes is infinite and computable from the instance." }, refs: [ { ref: dzhafarovmummert2022, loc: Section 3.6 } ] }
 - { type: property, statement: rt13, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the color classes is infinite and computable from the instance." } }
 - { type: property, statement: rt1inf, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the color classes is infinite and computable from the instance." }, refs: [ { ref: hirschfeldt2015, loc: Section 6.2 }, { ref: dzhafarovmummert2022, loc: Chapter 6 introduction } ] }
+- { type: property, statement: sd, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "The instance A is infinite and is itself a solution." } }
 - { type: property, statement: lpo, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "The solution is a single bit." }, refs: [ { ref: goh2019b, loc: "Section 1.3.3, after Definition 1.11" } ] }
 - { type: property, statement: llpo, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "The solution is a single bit." } }
 - { type: property, statement: cn, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "Solutions are natural numbers, hence computable." }, refs: [ { ref: goh2019b, loc: "Section 1.3.3, after Definition 1.11" } ] }
@@ -148,3 +149,20 @@
 - { type: implication, from: lrt22, to: lem, over: rca0star, folklore: true, justification: { kind: restriction, text: "A set of cardinality N homogeneous for c is a set of cardinality N on which c is transitive.", by: ai } }
 - { type: implication, from: ts, to: ts2, over: rca0, folklore: true, justification: { kind: restriction, text: "TS² is TS for the exponent 2.", by: ai } }
 - { type: implication, from: ts, to: ts3, over: rca0, folklore: true, justification: { kind: restriction, text: "TS³ is TS for the exponent 3.", by: ai } }
+
+# First-order problems (data/properties.yaml): every solution is a natural number, read off
+# the instance/solution fields of the statements.
+- { type: property, statement: lpo, property: first-order, value: true, refs: [ { ref: dzhafarovsolomonyokoyama2023, loc: "Definition 1.3 and the examples after it" } ] }
+- { type: property, statement: llpo, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solution is a parity, 0 or 1." } }
+- { type: property, statement: cn, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are elements of a set A ⊆ ℕ." } }
+- { type: property, statement: kn, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are elements of a set A ⊆ ℕ." } }
+- { type: property, statement: ucn, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solution is a natural number." } }
+- { type: property, statement: tcn, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are natural numbers." } }
+- { type: property, statement: accn, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are elements of a set A ⊆ ℕ." } }
+- { type: property, statement: sigma11-cn, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are elements of a set A ⊆ ℕ." } }
+- { type: property, statement: ert, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are numbers b." } }
+- { type: property, statement: ect, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are numbers b." } }
+- { type: property, statement: bwt2, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are values 0 or 1 of the sequence." } }
+- { type: property, statement: pi11bound, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are numbers n." } }
+- { type: property, statement: bct1, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are indices i." } }
+- { type: property, statement: bct3, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are indices i." } }

@@ -26,7 +26,7 @@ brattkagherardi2011b:
     - brattka.vasco
     - gherardi.guido
 brattkadebrechtpauly2012:
-  authors: [ Vasco Brattka, Matthew de Brecht, Arno Pauly ]
+  authors: [ Vasco Brattka, "de Brecht, Matthew", Arno Pauly ]
   title: Closed choice and a uniform low basis theorem
   venue: Annals of Pure and Applied Logic 163(8), 986–1008
   year: 2012
@@ -78,7 +78,7 @@ brattkahendtlasskreuzer2017:
     - hendtlass.matthew
     - kreuzer.alexander-p
 brattkaetal2019:
-  authors: [ Vasco Brattka, Stéphane Le Roux, Joseph S. Miller, Arno Pauly ]
+  authors: [ Vasco Brattka, "Le Roux, Stéphane", Joseph S. Miller, Arno Pauly ]
   title: Connected choice and the Brouwer fixed point theorem
   venue: Journal of Mathematical Logic 19(1), 1950004
   year: 2019
@@ -342,7 +342,7 @@ liumoninpatey2017:
     - monin.benoit
     - patey.ludovic
 lehoueroupatey2024:
-  authors: [ Quentin Le Houérou, Ludovic Levy Patey ]
+  authors: [ "Le Houérou, Quentin", "Levy Patey, Ludovic" ]
   title: Π⁰₄ conservation of the Ordered Variable Word theorem
   venue: arXiv preprint
   year: 2024
@@ -353,7 +353,7 @@ lehoueroupatey2024:
     - le-houerou.quentin
     - patey.ludovic
 lehoueroupateyyokoyama2024:
-  authors: [ Quentin Le Houérou, Ludovic Levy Patey, Keita Yokoyama ]
+  authors: [ "Le Houérou, Quentin", "Levy Patey, Ludovic", Keita Yokoyama ]
   title: Π⁰₄ conservation of Ramsey's theorem for pairs
   venue: arXiv preprint
   year: 2024
@@ -370,7 +370,7 @@ sun2025:
   zbmathAuthors:
     - sun.mengzhou
 lehoueroupatey2025:
-  authors: [ Quentin Le Houérou, Ludovic Patey ]
+  authors: [ "Le Houérou, Quentin", Ludovic Patey ]
   title: The reverse mathematics of bounded Ramsey's theorem for pairs
   venue: arXiv preprint
   year: 2025
@@ -410,7 +410,7 @@ liupatey2026:
     - liu.lu.1
     - patey.ludovic
 lehoueroupatey2026:
-  authors: [ Quentin Le Houérou, Ludovic Patey ]
+  authors: [ "Le Houérou, Quentin", Ludovic Patey ]
   title: Π⁰₄ conservation of a Carlson–Simpson lemma for 1-variable words
   venue: arXiv preprint
   year: 2026

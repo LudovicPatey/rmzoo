@@ -167,7 +167,7 @@ in the text, it has a theorem number, the model is confident and says the paper
 states it (or that it is a special case of one stated theorem), it does not
 contradict the database, a second independent call shown the passages confirms
 it, and `npm run check` still passes. Stated facts cite the paper; special cases go
-to `data/results/ai-derived.yaml` (shown as "AI-derived"). Facts the database
+to `data/results/ai-derived.yaml` (shown as "direct", with the argument). Facts the database
 already derives are dropped. Everything else — and principles missing from the
 catalogue — goes to the review queue, `data/review.yaml`, with the reasons: it is
 shown on the review page of the viewer, where signed-in researchers validate,
@@ -283,7 +283,7 @@ recovered from the free-text venue (`site/js/bibtex.js`).
 | Hand-written seed | ~30 core statements and results | `data/statements/{core,induction,ramsey,orders}.yaml`, `data/results/*.yaml` |
 | Eric Astor's RM Zoo (`github.com/ericastor/rmzoo`, 2024) | ~470 cited results from ~60 papers up to ~2017, 169 statements | `data/results/rmzoo/`, `data/statements/rmzoo.yaml`, importer in `scripts/import/` |
 | Literature sweep 1987–2026 (arXiv and OpenAlex abstracts) | ~180 results from ~60 papers: Weihrauch landmarks, post-2017 combinatorics, theorems of ordinary mathematics equivalent to Big Five systems | `data/results/literature/`, `data/statements/{weihrauch,literature,classical}.yaml` |
-| AI-derived trivial implications | ~55 restrictions and one-line reductions, each with its argument and an "AI-derived" badge | `data/results/ai-derived.yaml` |
+| Derived results | ~140 direct consequences (specializations, restrictions of instances; "direct" badge) and ~100 AI-derived ones (reductions; "AI-derived" badge), each with its argument | `data/results/ai-derived.yaml` |
 | Property facts (Astor's "unsupported" notes + papers) | ~35 facts on low basis, hyperimmunity, Δ⁰₂ and arithmetic preservation, c.b.-immunity, cone avoidance | `data/results/properties.yaml` |
 | Brattka's Bibliography on Weihrauch Complexity + arXiv sweep | ~560 further papers, mostly computable analysis, proof theory or outside the zoo's statements | `data/references/bibliography-*.yaml` |
 

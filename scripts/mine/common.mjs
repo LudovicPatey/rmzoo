@@ -85,6 +85,7 @@ export function relation(t) {
   if (/≤ ?gW|<gW|≡gW|generali[sz]ed Weihrauch/.test(t)) over = 'gw';
   else if (/≤ ?sW|<sW|≡sW|strongly Weihrauch/.test(t)) over = 'sw';
   else if (/≤ ?W|<W|≡W|Weihrauch/.test(t)) over = 'w';
+  else if (/≤ ?soc|<soc|≡soc|omnisciently computabl|omniscient computable/.test(t)) over = 'soc';
   else if (/≤ ?sc|strongly computabl/.test(t)) over = 'sc';
   else if (/≤ ?c\b|<c\b|≡c|computably reducib/.test(t)) over = 'c';
   else if (/RCA∗0|RCA\*0|RCA∗/.test(t)) over = 'rca0star';

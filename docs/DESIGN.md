@@ -21,13 +21,16 @@ information.
    RCA₀*          sW
      │          ╱    ╲
    RCA₀       W       sc
-     │      ╱   ╲    ╱
-     │    gW      c
+     │      ╱   ╲    ╱  ╲
+     │    gW      c     soc
       ╲    │    ╱
          ω (ω-models)
 ```
 
-(`a` above `b` means "a reduction at `a` yields a reduction at `b`".)
+(`a` above `b` means "a reduction at `a` yields a reduction at `b`". soc, the strong
+omniscient computable reduction of Monin and Patey, asks the instance of the second problem
+to exist, not to be computable: it yields no other reduction, and its separations are
+combinatorial ones.)
 
 Two transfer rules follow, and they are the backbone of the engine:
 
@@ -70,7 +73,7 @@ out of sync with the literature.
 
 **Modes** (`data/modes.yaml`). Readers often care about one framework only:
 reverse mathematics (provability over RCA₀ and ω-models), weak reverse
-mathematics (RCA₀*), computable reducibility (c, sc, ω) or Weihrauch complexity
+mathematics (RCA₀*), computable reducibility (c, sc, soc, ω) or Weihrauch complexity
 (sW, W, gW). A mode is a lens, not a change of the mathematics: the inference
 always uses every result (a Weihrauch reduction still gives the computable one,
 a provability result the ω-model one), and the mode only selects what is shown.
@@ -192,6 +195,15 @@ every Turing ideal). The engine then derives the property from that comparison
 (RCA₀ ⇏ NON over ω gives "NON is not computably true") and conversely (a
 published "computably true" gives RCA₀ ⇒ P over ω).
 
+A property may also make a problem the **bottom of a reduction** (`bottomOf: c` on
+*computably true*): a computably true problem P is computably reducible to every
+problem Q, since an instance X of P computes an instance of Q and X itself computes a
+solution of X (this assumes every problem has an instance computable from any set,
+true of every problem of the zoo). Likewise a *first-order* problem (every solution is a
+natural number: `bottomOf: sc`) is strongly computably reducible to every problem, since
+every set computes a number. The engine adds these implications (rule `prop-bottom`)
+after the properties are known and before the separations.
+
 Most properties are defined through instances and solutions ("every Z-computable
 instance has a solution Y such that…"): they carry `domain: problems` and only
 apply to statements that can be formulated as problems — problems, and sentences
@@ -306,11 +318,13 @@ justification:
 ```
 
 Results that were not taken from the literature at all, but derived by an AI
-assistant (typically restrictions of instances or one-line reductions that no
-paper states), are marked `provenance: ai` and must have a justification.
-They live in `data/results/ai-derived.yaml`. The viewer shows them with an
-"AI-derived" badge, and the Results page can filter by provenance, so they can
-be reviewed and either confirmed (add a reference, drop `provenance`) or
+assistant, must have a justification and are marked by their `provenance`:
+`direct` for an immediate consequence of a cited result (a specialization, a
+restriction of its instances: justification kind `restriction`), shown like
+folklore as "direct" with "argument by AI"; `ai` for any other derivation (a
+reduction, an argument from several results), shown "AI-derived". They live in
+`data/results/ai-derived.yaml`, and the Results page can filter by provenance, so
+they can be reviewed and either confirmed (add a reference, drop `provenance`) or
 removed.
 
 Results are grouped into files by topic, but nothing depends on the grouping;

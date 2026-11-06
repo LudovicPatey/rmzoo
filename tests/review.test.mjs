@@ -22,8 +22,9 @@ test('a validated proposal becomes the entry that scripts/review.mjs writes', ()
   const base = { kind: 'result', ref: 'p2020', loc: 'Theorem 3', result: { type: 'implication', from: 'a', to: 'b', over: 'rca0' } };
   assert.deepEqual(itemResult({ ...base, origin: 'stated' }).refs, [{ ref: 'p2020', loc: 'Theorem 3' }]);
   const d = itemResult({ ...base, origin: 'special-case', argument: 'Take k = 2.' });
-  assert.equal(d.provenance, 'ai');
+  assert.equal(d.provenance, 'direct'); // a special case is a direct consequence
   assert.equal(d.justification.kind, 'restriction');
+  assert.equal(itemResult({ ...base, origin: 'deduced', argument: 'Compose.' }).provenance, 'ai');
   assert.match(d.justification.text, /Take k = 2\. \(From Theorem 3 of \[@p2020\]\.\)/);
   assert.match(itemResult({ ...base, origin: 'cited', citedFrom: 'Smith 1990' }).refs[0].loc, /attributed to Smith 1990/);
   assert.equal(itemResult({ kind: 'statement' }), null);

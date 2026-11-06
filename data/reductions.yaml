@@ -76,12 +76,27 @@
   short: sc
   tex: '\le_{\mathrm{sc}}'
   domain: problems
-  finerThan: [c]
+  finerThan: [c, soc]
   phrase: '{b} ≤_sc {a}'
   description: >
     Every instance X of the second problem computes an instance X̂ of the first such that every solution of X̂ computes a solution of X.
   refs:
     - ref: hirschfeldtjockusch2016
+
+- id: soc
+  name: Strong omniscient computable reduction
+  short: soc
+  tex: '\le_{\mathrm{soc}}'
+  domain: problems
+  finerThan: []
+  phrase: '{b} ≤_soc {a}'
+  description: >
+    For every instance X of the second problem there is an instance X̂ of the first, computable from X or not,
+    such that every solution of X̂ computes a solution of X. A separation at soc is a combinatorial one: no
+    instance, however complex, encodes enough information.
+  refs:
+    - ref: moninpatey2019
+      loc: Section 1.1
 
 - id: c
   name: Computable reduction

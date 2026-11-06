@@ -794,3 +794,17 @@
     For every open set $A \subseteq \omega^\omega$ there is either a Hechler tree $T$ (a Laver tree in which every node has
     all but finitely many immediate successors) with $[T] \subseteq A$, or a Laver tree $S$ with $[S] \cap A = \emptyset$.
   refs: [ { ref: marconeosso2026b, role: origin, loc: Definition 1.4 } ]
+
+- id: sd
+  label: '\mathsf{SD}'
+  name: Infinite subset of a dense set
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  definition: >
+    Every set $A \subseteq \mathbb{N}$ of positive lower density has an infinite subset.
+    Studied as a problem: its solutions are the infinite subsets of $A$ ("SD" stands for
+    "subset of a dense set").
+  instance: A set $A \subseteq \mathbb{N}$ of positive lower density.
+  solution: An infinite subset of $A$.
+  refs: [ { ref: harrisontrainorliulutz2023, role: origin, loc: Section 7.1 } ]

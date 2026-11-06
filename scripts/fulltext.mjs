@@ -32,6 +32,7 @@ import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
 import { cli } from './lib/cli.mjs';
+import { surname } from '../site/js/names.js';
 cli('node scripts/fulltext.mjs [--zotero] [--download] [--author-pages] [--retry] [--only k1,k2] [--status]', { '--zotero': 0, '--download': 0, '--author-pages': 0, '--retry': 0, '--only': 1, '--status': 0 });
 acquireLock('fulltext.mjs');
 
@@ -170,7 +171,7 @@ const getPdf = async (url) => {
   const buf = Buffer.from(await res.arrayBuffer());
   return buf.subarray(0, 5).toString().startsWith('%PDF') ? buf : null;
 };
-const surnames = (r) => (r.authors || []).map((a) => nt(String(a).split(/[ ,]/).filter(Boolean).pop()));
+const surnames = (r) => (r.authors || []).map((a) => nt(surname(a).split(/\s+/).pop()));
 const candidates = async (e) => {
   const out = [];
   const doi = e.r.doi;

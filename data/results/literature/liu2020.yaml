@@ -1,0 +1,3 @@
+# Results from [liu2020].
+
+[ { type: separation, from: rt12.fin, to: rt13, over: soc, refs: [ { ref: liu2020, loc: "Theorem 2.1 ((RT¹₂)<ω: an r-tuple of 2-colorings, r part of the instance)" } ] } ]

@@ -1,3 +1,8 @@
 # Results from [moninpatey2019].
 
 - {type: "separation", from: "rt", to: "wwkl", over: "sc", note: "WWKL is not strongly computably reducible to Ramsey's theorem.", refs: [{ref: moninpatey2019}]}
+- { type: separation, from: rt, to: wwkl, over: soc, refs: [ { ref: moninpatey2019, loc: Corollary 2.7 } ] }
+- { type: implication, from: wkl, to: kl, over: soc, refs: [ { ref: moninpatey2019, loc: "Section 1.2 (any instance: a binary tree whose unique path codes a solution)" } ] }
+- { type: implication, from: wkl, to: rt, over: soc, refs: [ { ref: moninpatey2019, loc: Section 1.2 } ] }
+- { type: separation, from: wwkl, to: kl, over: soc, refs: [ { ref: moninpatey2019, loc: Section 1.2 (a tree with a unique noncomputable path) } ] }
+- { type: implication, from: rt22, to: srt2, over: soc, refs: [ { ref: moninpatey2019, loc: "Section 1.2 (the coloring g(x, y) = 1 iff f(x, y) = lim_s f(y, s))" } ] }

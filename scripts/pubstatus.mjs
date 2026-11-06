@@ -14,6 +14,7 @@ import fs from 'node:fs';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
 import { cli } from './lib/cli.mjs';
+import { surname as lastName } from '../site/js/names.js';
 cli('node scripts/pubstatus.mjs [--apply] [--only k1,k2]', { '--apply': 0, '--only': 1 });
 acquireLock('pubstatus.mjs');
 
@@ -30,7 +31,7 @@ const todo = entries.filter((e) => isPreprint(e.r));
 const SYM = { '²': '2', '³': '3', '¹': '1', '⁰': '0', '₀': '0', '₁': '1', '₂': '2', '₃': '3', 'ω': 'omega', 'Σ': 'sigma', 'Π': 'pi', 'Δ': 'delta' };
 const norm = (t) => String(t || '').replace(/<[^>]+>/g, '').replace(/[²³¹⁰₀₁₂₃ωΣΠΔ]/g, (c) => SYM[c])
   .replace(/\\(omega|sigma|pi|delta)\b/gi, (m, x) => x.toLowerCase()).replace(/\\[a-zA-Z]+/g, '').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]/g, '');
-const surname = (a) => String(a).normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().split(/\s+/).pop();
+const surname = (a) => lastName(a).normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().split(/\s+/).pop();
 const updates = [];
 
 // 1. arXiv

@@ -30,7 +30,10 @@ Reductions are given by id (see the catalogue). In particular:
   ω-models (every ω-model, i.e. Turing ideal, of A is a model of B);
 * `sw` strong Weihrauch, `w` Weihrauch, `sc` strong computable, `c` computable
   reduction (B ≤ A in the paper's notation means "A implies B" here: `from` is
-  the stronger principle), `gw` generalized Weihrauch reduction.
+  the stronger principle), `gw` generalized Weihrauch reduction, `soc` strong
+  omniscient computable reduction (for every instance X of B there is an instance
+  of A, computable from X or not, every solution of which computes a solution of X;
+  a statement "for every instance … computable or not" or "≤_soc" is over `soc`).
 A paper stating "B ≤_W A" gives `{implication, from: A, to: B, over: w}`;
 "B ≰_W A" gives `{separation, from: A, to: B, over: w}`; "A ≡_sW B" gives an
 equivalence over `sw`. "RCA₀ ⊢ A → B" gives over `rca0`; "RCA₀ + A ⊬ B" gives a
@@ -62,7 +65,7 @@ a separation over `omega`.
    argument in `argument`.
    Do not report what the database derives by itself: transitivity of
    implications, combining an implication with a separation, coarser reductions
-   (sw ⇒ w ⇒ c, sw ⇒ sc ⇒ c, rca0star ⇒ rca0 ⇒ omega for implications, the
+   (sw ⇒ w ⇒ c, sw ⇒ sc ⇒ c, sc ⇒ soc, rca0star ⇒ rca0 ⇒ omega for implications, the
    converse for separations), and properties passed along implications.
 3. Results the paper attributes to other work ("by [12, Theorem 3]"): report them
    with `origin: cited` and the citation in `citedFrom`, only when they concern

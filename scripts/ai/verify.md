@@ -31,7 +31,8 @@ from one base to another.
 
 Reduction ids: rca0star (provability over RCA₀*), rca0 (over RCA₀), omega
 (ω-models), sw (strong Weihrauch), w (Weihrauch), sc (strong computable),
-c (computable), gw (generalized Weihrauch).
+soc (strong omniscient computable: the instance of the stronger problem need not be
+computable from the given one), c (computable), gw (generalized Weihrauch).
 
 A statement id joined by "-" (coh-fs-wkl) is the conjunction of these principles
 (RCA₀ + COH + FS + WKL). Check that the fact keeps every principle of the theorem:

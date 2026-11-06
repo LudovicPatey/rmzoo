@@ -82,7 +82,7 @@ test('addResults appends without reformatting, merges citations, and can be undo
     let res = addResults({ _ai: [{ type: 'property', statement: 'a', property: 'ca', value: true, justification: { kind: 'restriction', by: 'ai', text: 't' } }] });
     const after = fs.readFileSync('data/results/ai-derived.yaml', 'utf8');
     assert.ok(after.startsWith(before), 'existing lines untouched');
-    assert.match(after, /provenance: ai, justification/);
+    assert.match(after, /provenance: direct, justification/); // kind restriction: a direct consequence
     res.restore();
     assert.equal(fs.readFileSync('data/results/ai-derived.yaml', 'utf8'), before);
 

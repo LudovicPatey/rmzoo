@@ -52,3 +52,16 @@
     The sides are swapped: the proof (Lemma 3.7 applied to ATR₂ × ATR₂) and Theorem 3.10 give
     ATR₂ × ATR₂ ≰W ATR₂, so [[atr2]] is not idempotent.
   date: 2026-11-05
+
+- ref: moninpatey2019
+  loc: Section 1.2
+  kind: error
+  claim: Dzhafarov, Patey, Solomon and Westrick proved that $\mathsf{SRT}^2_{<\infty} \not\le_{soc} \mathsf{RT}^2_2$.
+  correction: >
+    The opposite holds, and the next sentences of the paper prove it: [[srt2]] ≤soc [[rt22]] (given a stable coloring f,
+    every infinite homogeneous set of g(x, y) = 1 iff f(x, y) = lim_s f(y, s) is homogeneous for f). The cited paper
+    [@dzhafarovetal2017b] proves instead that $\mathsf{RT}^1_k \not\le_{soc} \mathsf{SRT}^2_\ell$ for k > ℓ (Theorem 1.3) and
+    $\mathsf{COH} \not\le_{sc} \mathsf{SRT}^2_{<\infty}$ (Corollary 1.6).
+  refs:
+    - { ref: dzhafarovetal2017b, loc: "Theorem 1.3, Corollary 1.6" }
+  date: 2026-11-06

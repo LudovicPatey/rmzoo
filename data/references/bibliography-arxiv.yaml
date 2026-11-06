@@ -784,7 +784,7 @@ holzlstephanyu2014:
 rathjenvizcaino2014:
   authors:
     - Michael Rathjen
-    - Pedro Francisco Valencia Vizcaino
+    - "Valencia Vizcaino, Pedro Francisco"
   title: Well ordering principles and bar induction
   year: 2014
   venue: arXiv preprint
@@ -851,7 +851,7 @@ weihrauchjafarikhah2014:
     - weihrauch.klaus
 rouxpauly2014:
   authors:
-    - Stephane Le Roux
+    - "Le Roux, Stephane"
     - Arno Pauly
   title: Weihrauch degrees of finding equilibria in sequential games
   year: 2014
@@ -939,7 +939,7 @@ binnskjoshanssen2014:
     - kjos-hanssen.bjorn
 bergsanders2014:
   authors:
-    - Benno van den Berg
+    - "van den Berg, Benno"
     - Sam Sanders
   title: Reverse Mathematics and parameter-free Transfer
   year: 2019
@@ -999,7 +999,7 @@ patey2014b:
     - patey.ludovic
 meerenrathjenweiermann2014:
   authors:
-    - Jeroen Van der Meeren
+    - "Van der Meeren, Jeroen"
     - Michael Rathjen
     - Andreas Weiermann
   title: An order-theoretic characterization of the Howard-Bachmann-hierarchy
@@ -1137,7 +1137,7 @@ frittaionetal2015:
     - Matt Hendtlass
     - Alberto Marcone
     - Paul Shafer
-    - Jeroen Van der Meeren
+    - "Van der Meeren, Jeroen"
   title: Reverse mathematics, well-quasi-orders, and Noetherian spaces
   year: 2015
   venue: Archive for Mathematical Logic, 55 (2016), 431-459
@@ -1948,7 +1948,7 @@ fokinarosseggermauro2018:
   authors:
     - Ekaterina Fokina
     - Dino Rossegger
-    - Luca San Mauro
+    - "San Mauro, Luca"
   title: Measuring the complexity of reductions between equivalence relations
   year: 2018
   venue: arXiv preprint
@@ -2135,7 +2135,7 @@ bazhenovetal2018:
   authors:
     - Nikolay Bazhenov
     - Manat Mustafa
-    - Luca San Mauro
+    - "San Mauro, Luca"
     - Andrea Sorbi
     - Mars Yamaleev
   title: Classifying equivalence relations in the Ershov hierarchy
@@ -2430,7 +2430,7 @@ bazhenovetal2019:
   authors:
     - Nikolay Bazhenov
     - Manat Mustafa
-    - Luca San Mauro
+    - "San Mauro, Luca"
     - Mars Yamaleev
   title: Minimal Equivalence Relations in Hyperarithmetical and Analytical Hierarchies
   year: 2020
@@ -2640,8 +2640,8 @@ liu2020:
   read: pdf-zotero
 rosemaurosorbi2020:
   authors:
-    - Valentino Delle Rose
-    - Luca San Mauro
+    - "Delle Rose, Valentino"
+    - "San Mauro, Luca"
     - Andrea Sorbi
   title: Word problems and ceers
   year: 2020
@@ -2693,7 +2693,7 @@ mummert2020:
 fernandezduquereyes2020:
   authors:
     - David Fernández-Duque
-    - Eduardo Hermo Reyes
+    - "Hermo Reyes, Eduardo"
   title: Deducibility and Independence in Beklemishev's Autonomous Provability Calculus
   year: 2022
   venue: Information and Computation, 287, 104758
@@ -3003,7 +3003,7 @@ andrewsbelinmauro2021:
   authors:
     - Uri Andrews
     - Daniel Belin
-    - Luca San Mauro
+    - "San Mauro, Luca"
   title: On the structure of computable reducibility on equivalence relations of natural numbers
   year: 2021
   venue: arXiv preprint
@@ -3031,7 +3031,7 @@ sanders2021:
 hirschfeldtcarlgjockuschschupp2021:
   authors:
     - Denis R. Hirschfeldt
-    - Carl G. Jockusch,
+    - Carl G. Jockusch Jr.
     - Paul E. Schupp
   title: Coarse computability, the density metric, Hausdorff distances between Turing degrees, perfect trees, and reverse mathematics
   year: 2023
@@ -3081,7 +3081,7 @@ bazhenovetal2021:
   authors:
     - Nikolay Bazhenov
     - Keng Meng Ng
-    - Luca San Mauro
+    - "San Mauro, Luca"
     - Andrea Sorbi
   title: Punctual equivalence relations and their (punctual) complexity
   year: 2021
@@ -3358,7 +3358,7 @@ frittaion2022:
     - frittaion.emanuele
 dauriacetal2022:
   authors:
-    - Paul-Elliot Anglès d'Auriac
+    - "Anglès d'Auriac, Paul-Elliot"
     - Bastien Mignoty
     - Lu Liu
     - Ludovic Patey
@@ -3590,8 +3590,8 @@ freundetal2023:
     - solda.giovanni
 rosemaurosorbi2023:
   authors:
-    - Valentino Delle Rose
-    - Luca San Mauro
+    - "Delle Rose, Valentino"
+    - "San Mauro, Luca"
     - Andrea Sorbi
   title: Classifying word problems of finitely generated algebras via computable reducibility
   year: 2023
@@ -3670,7 +3670,7 @@ barnesgohshore2023:
   read: pdf-arxiv
 bergotten2023:
   authors:
-    - Benno van den Berg
+    - "van den Berg, Benno"
     - Daniël Otten
   title: Conservativity of Type Theory over Higher-order Arithmetic
   year: 2023
@@ -3680,7 +3680,7 @@ bergotten2023:
   read: pdf-arxiv
 pateymimouni2023:
   authors:
-    - Ludovic Levy Patey
+    - "Levy Patey, Ludovic"
     - Ahmed Mimouni
   title: The weakness of the Erdős-Moser theorem under arithmetic reductions
   year: 2025
@@ -3734,7 +3734,7 @@ jeon2023:
 koberdagonzalez2023:
   authors:
     - Thomas Koberda
-    - J. de la Nuez González
+    - "de la Nuez González, J."
   title: Uniform first order interpretation of the second order theory of countable groups of homeomorphisms
   year: 2023
   venue: Pacific J. Math. 341 (2026) 69-101
@@ -3758,7 +3758,7 @@ carluccimainardizdanowski2024:
 benhametal2024:
   authors:
     - Heidi Benham
-    - Andrew De Lapo
+    - "De Lapo, Andrew"
     - Damir Dzhafarov
     - Reed Solomon
     - Java Darleen Villano
@@ -3771,8 +3771,8 @@ benhametal2024:
   doi: 10.1016/j.aim.2024.109618
 houeroupateyyokoyama2024:
   authors:
-    - Quentin Le Houérou
-    - Ludovic Levy Patey
+    - "Le Houérou, Quentin"
+    - "Levy Patey, Ludovic"
     - Keita Yokoyama
   title: Conservation of Ramsey's theorem for pairs and well-foundedness
   year: 2024
@@ -3964,8 +3964,8 @@ freund2024b:
   preprintYear: 2024
 houeroupateymimouni2024:
   authors:
-    - Quentin Le Houérou
-    - Ludovic Levy Patey
+    - "Le Houérou, Quentin"
+    - "Levy Patey, Ludovic"
     - Ahmed Mimouni
   title: The reverse mathematics of the pigeonhole hierarchy
   year: 2024
@@ -3977,7 +3977,7 @@ cervellegaudelierpatey2024:
   authors:
     - Julien Cervelle
     - William Gaudelier
-    - Ludovic Levy Patey
+    - "Levy Patey, Ludovic"
   title: Cross-constraint basis theorems and products of partitions
   year: 2026
   venue: Computability, 15(1-2), 60-84
@@ -4066,7 +4066,7 @@ towsnerwalsh2024:
 andrewsmauro2024:
   authors:
     - Uri Andrews
-    - Luca San Mauro
+    - "San Mauro, Luca"
   title: Analogues of the countable Borel equivalence relations in the setting of computable reducibility
   year: 2025
   venue: Proceedings of the American Mathematical Society, 153(8), 3577-3593
@@ -4178,8 +4178,8 @@ carluccietal2024:
   authors:
     - Lorenzo Carlucci
     - Oriola Gjetaj
-    - Quentin Le Houérou
-    - Ludovic Levy Patey
+    - "Le Houérou, Quentin"
+    - "Levy Patey, Ludovic"
   title: Ramsey-like theorems for the Schreier barrier
   year: 2024
   venue: arXiv preprint
@@ -4528,7 +4528,7 @@ horittermauro2026:
   authors:
     - Meng-Che "Turbo" Ho
     - Martin Ritter
-    - Luca San Mauro
+    - "San Mauro, Luca"
   title: Isomorphism relations on classes of c.e. algebras
   year: 2026
   venue: arXiv preprint
@@ -4600,7 +4600,7 @@ chenetal2026:
     - williams.ryan
 houeroupatey2026:
   authors:
-    - Quentin Le Houérou
+    - "Le Houérou, Quentin"
     - Ludovic Patey
   title: Largeness notions and polytime translation for $\forall Σ^0_3$-consequences of $\mathsf{RT}^2_2$
   year: 2026
