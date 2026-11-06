@@ -98,6 +98,7 @@ paper.
 | consolidation (steps 1–7, report in `reports/`) | `scripts/consolidate.mjs` | everything below |
 | new papers | `scripts/sweep.mjs` | references, `data/sweep-rejected.yaml` |
 | publication status | `scripts/pubstatus.mjs` | references |
+| zbMATH identifiers of the references, authors' zbMATH codes and ORCID iDs | `scripts/zbmath.mjs` | references, `data/authors.yaml` |
 | full texts, `read` status | `scripts/fulltext.mjs` | references, `data/fulltext-exclude.yaml`, Zotero |
 | abstracts | `scripts/abstracts.mjs`, `scripts/pdf-abstracts.mjs` | references, cached texts |
 | mining (candidate results / questions) | `scripts/mine/{common,facts,questions}.mjs` | `zoo.json`, cached texts, `data/screened.yaml` |

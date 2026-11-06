@@ -1,0 +1,3 @@
+# Results from [goh2020b].
+
+[ { type: implication, from: cwo2, to: wcwo2, over: w, refs: [ { ref: goh2020b, loc: Proof of Corollary 8.7 } ] }, { type: implication, from: cnn, to: wqolo, over: w, refs: [ { ref: goh2020b, loc: "Section 8, before Proposition 8.4" } ] }, { type: separation, from: ucnn, to: wqolo, over: c, refs: [ { ref: goh2020b, loc: Corollary 8.8 } ] } ]

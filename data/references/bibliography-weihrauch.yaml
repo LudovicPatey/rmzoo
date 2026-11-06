@@ -14,6 +14,13 @@ ackermanetal2022:
   doi: 10.1145/3531130.3533330
   source: weihrauch-bibliography
   read: abstract
+  zbmath: "1553.68127"
+  zbmathAuthors:
+    - ackerman.nathanael-leedom
+    - asilis.julian
+    - di.jieqi
+    - freer.cameron-e
+    - tristan.jean-baptiste
 ahmanbauer2025:
   authors:
     - Danel Ahman
@@ -44,6 +51,10 @@ dauriackihara2021:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1907.02769"
+  zbmath: "1547.03279"
+  zbmathAuthors:
+    - angles-dauriac.paul-elliot
+    - kihara.takayuki
 ackermanfreerroy2017:
   authors:
     - Nathanael L. Ackerman
@@ -56,6 +67,11 @@ ackermanfreerroy2017:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1509.02992"
+  zbmath: "1423.03251"
+  zbmathAuthors:
+    - ackerman.nathanael-leedom
+    - freer.cameron-e
+    - roy.daniel-m
 amirhoyrup2022:
   authors:
     - Djamel Eddine Amir
@@ -77,6 +93,10 @@ amirhoyrup2022b:
   arxiv: "2210.08309"
   doi: 10.3233/com-220430
   preprintYear: 2022
+  zbmath: "1582.03057"
+  zbmathAuthors:
+    - amir.djamel-eddine
+    - hoyrup.mathieu
 amir2023:
   authors:
     - Djamel Eddine Amir
@@ -104,6 +124,9 @@ bauer2021:
   arxiv: "2106.01734"
   doi: 10.46298/lmcs-18(3:20)2022
   preprintYear: 2021
+  zbmath: "1554.03083"
+  zbmathAuthors:
+    - bauer.andrej
 brattkachirache2026:
   authors:
     - Vasco Brattka
@@ -114,6 +137,10 @@ brattkachirache2026:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2601.18663"
+  zbmath: arXiv:2601.18663
+  zbmathAuthors:
+    - brattka.vasco
+    - chirache.guillaume
 brattkaetal2017:
   authors:
     - Vasco Brattka
@@ -121,11 +148,18 @@ brattkaetal2017:
     - Guido Gherardi
     - Alberto Marcone
     - Matthias Schröder
-  title: ""
+  title: "Addendum to: “The Bolzano–Weierstrass theorem is the jump of weak Kőnig's lemma”"
   year: 2017
   venue: Annals of Pure and Applied Logic, 168(8), 1605–1608
   doi: 10.1016/j.apal.2017.04.004
   source: weihrauch-bibliography
+  zbmath: "1403.03127"
+  zbmathAuthors:
+    - brattka.vasco
+    - cettolo.andrea
+    - gherardi.guido
+    - marcone.alberto
+    - schroder.matthias
 brattkaetal2019b:
   authors:
     - Vasco Brattka
@@ -149,6 +183,7 @@ brattkaetal2020:
   venue: IOS Press, 9(3, 4), 167–341
   doi: 10.3233/COM-208001
   source: weihrauch-bibliography
+  zbmath: "1530.00035"
 bazhenovetal2024:
   authors:
     - Nikolay Bazhenov
@@ -162,6 +197,12 @@ bazhenovetal2024:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2210.13080"
+  zbmath: "1587.03020"
+  zbmathAuthors:
+    - bazhenov.n-a
+    - fiori-carones.marta
+    - liu.lu.1
+    - melnikov.alexander-g
 brattkagherardi2009:
   authors:
     - Vasco Brattka
@@ -170,6 +211,10 @@ brattkagherardi2009:
   year: 2009
   venue: Journal of Logic and Computation, 19(1), 45–76
   source: weihrauch-bibliography
+  zbmath: "1169.03047"
+  zbmathAuthors:
+    - brattka.vasco
+    - gherardi.guido
 brattkagherardi2018:
   authors:
     - Vasco Brattka
@@ -182,6 +227,10 @@ brattkagherardi2018:
   arxiv: "1809.00380"
   doi: 10.1017/jsl.2020.76
   preprintYear: 2018
+  zbmath: "1485.03156"
+  zbmathAuthors:
+    - brattka.vasco
+    - gherardi.guido
 brattkagherardi2019:
   authors:
     - Vasco Brattka
@@ -194,6 +243,10 @@ brattkagherardi2019:
   arxiv: "1910.13186"
   doi: 10.1016/j.apal.2020.102914
   preprintYear: 2019
+  zbmath: "1462.03019"
+  zbmathAuthors:
+    - brattka.vasco
+    - gherardi.guido
 brattkagherardiholzl2015b:
   authors:
     - Vasco Brattka
@@ -205,6 +258,11 @@ brattkagherardiholzl2015b:
   doi: 10.4230/LIPIcs.STACS.2015.130
   source: weihrauch-bibliography
   read: pdf-oa
+  zbmath: "1355.68132"
+  zbmathAuthors:
+    - brattka.vasco
+    - gherardi.guido
+    - holzl.rupert
 brattkaetal2017b:
   authors:
     - Vasco Brattka
@@ -218,6 +276,12 @@ brattkaetal2017b:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1605.03354"
+  zbmath: "1485.03241"
+  zbmathAuthors:
+    - brattka.vasco
+    - gherardi.guido
+    - holzl.rupert
+    - pauly.arno-m
 brattkaetal2022:
   authors:
     - Vasco Brattka
@@ -229,6 +293,7 @@ brattkaetal2022:
   venue: IOS Press, 11(3, 4), 163–358
   doi: 10.3233/COM-220950
   source: weihrauch-bibliography
+  zbmath: "1560.00046"
 brattkahertling2021:
   authors:
     - Vasco Brattka
@@ -238,6 +303,7 @@ brattkahertling2021:
   venue: Springer
   doi: 10.1007/978-3-030-59234-9
   source: weihrauch-bibliography
+  zbmath: "1472.03001"
 brattkaholzlkuyper2017:
   authors:
     - Vasco Brattka
@@ -249,6 +315,11 @@ brattkaholzlkuyper2017:
   doi: 10.4230/LIPIcs.STACS.2017.17
   source: weihrauch-bibliography
   read: pdf-oa
+  zbmath: "1402.03068"
+  zbmathAuthors:
+    - brattka.vasco
+    - holzl.rupert
+    - kuyper.rutger
 brattkahendtlasskreuzer2018:
   authors:
     - Vasco Brattka
@@ -261,6 +332,11 @@ brattkahendtlasskreuzer2018:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1510.01913"
+  zbmath: "1455.03080"
+  zbmathAuthors:
+    - brattka.vasco
+    - hendtlass.matthew
+    - kreuzer.alexander-p
 bementhirstwallace2021:
   authors:
     - Zack BeMent
@@ -273,6 +349,11 @@ bementhirstwallace2021:
   read: pdf-arxiv
   arxiv: "2105.01719"
   doi: 10.3233/com-210310
+  zbmath: "1539.03040"
+  zbmathAuthors:
+    - bement.zach
+    - hirst.jeffry-l
+    - wallace.asuka
 bienvenukuyper2017:
   authors:
     - Laurent Bienvenu
@@ -282,6 +363,10 @@ bienvenukuyper2017:
   venue: "Computability and Complexity: Essays Dedicated to Rodney G. Downey on the Occasion of His 60th Birthday, 10010, 201–217"
   doi: 10.1007/978-3-319-50062-1_15
   source: weihrauch-bibliography
+  zbmath: "1485.03240"
+  zbmathAuthors:
+    - bienvenu.laurent
+    - kuyper.rutger
 brattkaetal2016:
   authors:
     - Vasco Brattka
@@ -304,6 +389,11 @@ brattkarouxpauly2012:
   venue: How the World Computes, 7318, 57–67
   doi: 10.1007/978-3-642-30870-3_7
   source: weihrauch-bibliography
+  zbmath: "1357.03091"
+  zbmathAuthors:
+    - brattka.vasco
+    - le-roux.stephane
+    - pauly.arno-m
 brattkaetal2016b:
   authors:
     - Vasco Brattka
@@ -315,6 +405,12 @@ brattkaetal2016b:
   venue: Pursuit of the Universal, 9709, 58–67
   doi: 10.1007/978-3-319-40189-8_6
   source: weihrauch-bibliography
+  zbmath: "1476.03064"
+  zbmathAuthors:
+    - brattka.vasco
+    - le-roux.stephane
+    - miller.joseph-s
+    - pauly.arno-m
 borges2016:
   authors:
     - Ana de Almeida Gabriel Vieira Borges
@@ -331,6 +427,10 @@ brattkapauly2010:
   venue: CCA 2010, Proceedings of the Seventh International Conference on Computability and Complexity in Analysis, 24, 41–55
   source: weihrauch-bibliography
   read: pdf-arxiv
+  zbmath: "1456.03065"
+  zbmathAuthors:
+    - brattka.vasco
+    - pauly.arno-m
 brattkapauly2018:
   authors:
     - Vasco Brattka
@@ -342,6 +442,10 @@ brattkapauly2018:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1604.08348"
+  zbmath: "1454.03053"
+  zbmathAuthors:
+    - brattka.vasco
+    - pauly.arno-m
 bochepohl2019:
   authors:
     - H. Boche
@@ -364,6 +468,11 @@ brechtpaulyschroder2020:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1902.05926"
+  zbmath: "1485.03152"
+  zbmathAuthors:
+    - de-brecht.matthew
+    - pauly.arno-m
+    - schroder.matthias
 brattkarauzy2025:
   authors:
     - Vasco Brattka
@@ -392,6 +501,9 @@ brattka2005:
   year: 2005
   venue: Mathematical Logic Quarterly, 51(1), 19–44
   source: weihrauch-bibliography
+  zbmath: "1059.03074"
+  zbmathAuthors:
+    - brattka.vasco
 brattka2003:
   authors:
     - Vasco Brattka
@@ -411,6 +523,9 @@ brattka2016:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1602.07509"
+  zbmath: "1476.03063"
+  zbmathAuthors:
+    - brattka.vasco
 brattka2020:
   authors:
     - Vasco Brattka
@@ -422,6 +537,9 @@ brattka2020:
   arxiv: "2012.02143"
   doi: 10.1017/jsl.2021.106
   preprintYear: 2020
+  zbmath: "1581.03060"
+  zbmathAuthors:
+    - brattka.vasco
 brattka2021:
   authors:
     - Vasco Brattka
@@ -440,6 +558,9 @@ brattka2022:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2203.06166"
+  zbmath: arXiv:2203.06166
+  zbmathAuthors:
+    - brattka.vasco
 brattka2023:
   authors:
     - Vasco Brattka
@@ -448,6 +569,9 @@ brattka2023:
   venue: Unity of Logic and Computation, 13967, 166–177
   doi: 10.1007/978-3-031-36978-0_14
   source: weihrauch-bibliography
+  zbmath: "1564.68075"
+  zbmathAuthors:
+    - brattka.vasco
 brattka2023b:
   authors:
     - Vasco Brattka
@@ -468,6 +592,9 @@ brattka2025:
   arxiv: "2501.17734"
   doi: 10.46298/lmcs-22(4:3)2026
   preprintYear: 2025
+  zbmath: arXiv:2501.17734
+  zbmathAuthors:
+    - brattka.vasco
 brattka1993:
   authors:
     - Vasco Brattka
@@ -482,6 +609,9 @@ brattka1997:
   year: 1997
   venue: Computing and Combinatorics, 1276, 146–155
   source: weihrauch-bibliography
+  zbmath: "0881.03033"
+  zbmathAuthors:
+    - brattka.vasco
 brattkasmischliaew2024:
   authors:
     - Vasco Brattka
@@ -511,6 +641,9 @@ carroy2013b:
   doi: 10.2178/jsl.7802150
   source: weihrauch-bibliography
   read: screened
+  zbmath: "1278.03080"
+  zbmathAuthors:
+    - carroy.raphael
 carl2016:
   authors:
     - Merlin Carl
@@ -521,6 +654,9 @@ carl2016:
   read: pdf-arxiv
   arxiv: "1601.01899"
   doi: 10.1007/978-3-319-40189-8_23
+  zbmath: "1436.03224"
+  zbmathAuthors:
+    - carl.merlin
 carl2019:
   authors:
     - Merlin Carl
@@ -528,6 +664,9 @@ carl2019:
   year: 2019
   venue: de Gruyter, 9
   source: weihrauch-bibliography
+  zbmath: "1531.03001"
+  zbmathAuthors:
+    - carl.merlin
 carl2021:
   authors:
     - Merlin Carl
@@ -537,6 +676,9 @@ carl2021:
   doi: 10.3233/COM-210307
   source: weihrauch-bibliography
   read: pdf-arxiv
+  zbmath: "1500.03015"
+  zbmathAuthors:
+    - carl.merlin
 carluccicelli2025:
   authors:
     - Lorenzo Carlucci
@@ -560,6 +702,12 @@ cholaketal2020:
   source: weihrauch-bibliography
   arxiv: "1901.10326"
   read: pdf-zotero
+  zbmath: "1485.03024"
+  zbmathAuthors:
+    - cholak.peter-a
+    - dzhafarov.damir-d
+    - hirschfeldt.denis-r
+    - patey.ludovic
 cipriani2023:
   authors:
     - Vittorio Cipriani
@@ -590,6 +738,10 @@ ciprianipauly2023:
   venue: Unity of Logic and Computation, 13967, 178–189
   doi: 10.1007/978-3-031-36978-0_15
   source: weihrauch-bibliography
+  zbmath: "1541.03131"
+  zbmathAuthors:
+    - cipriani.vittorio
+    - pauly.arno-m
 carroypequignot2024:
   authors:
     - Raphaël Carroy
@@ -600,6 +752,10 @@ carroypequignot2024:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2410.13150"
+  zbmath: arXiv:2410.13150
+  zbmathAuthors:
+    - carroy.raphael
+    - pequignot.yann
 ciprianipauly2025:
   authors:
     - Vittorio Cipriani
@@ -632,6 +788,11 @@ daydowneywestrick2022:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1906.07600"
+  zbmath: "1521.03131"
+  zbmathAuthors:
+    - day.adam-r
+    - downey.rodney-graham
+    - westrick.linda-brown
 dzhafarovetal2017:
   authors:
     - Damir Dzhafarov
@@ -646,6 +807,12 @@ dzhafarovetal2017:
   arxiv: "1710.00070"
   doi: 10.1215/00294527-2021-0024
   preprintYear: 2017
+  zbmath: "1508.03078"
+  zbmathAuthors:
+    - dzhafarov.damir-d
+    - flood.stephen-p
+    - solomon.reed
+    - westrick.linda-brown
 dzhafarovetal2018:
   authors:
     - Damir D. Dzhafarov
@@ -679,6 +846,11 @@ dzhafarovhirschfeldtreitzes2020:
   arxiv: "2008.00907"
   doi: 10.1142/s021906132250009x
   preprintYear: 2020
+  zbmath: "1560.03032"
+  zbmathAuthors:
+    - dzhafarov.damir-d
+    - hirschfeldt.denis-r
+    - reitzes.sarah-c
 downeymelnikovng2020:
   authors:
     - Rod Downey
@@ -692,6 +864,11 @@ downeymelnikovng2020:
   arxiv: "2007.07401"
   doi: 10.46298/lmcs-17(3:6)2021
   preprintYear: 2020
+  zbmath: "1544.03039"
+  zbmathAuthors:
+    - downey.rodney-graham
+    - melnikov.alexander-g
+    - ng.kengmeng
 dzhafarovpatey2021:
   authors:
     - Damir D. Dzhafarov
@@ -703,6 +880,10 @@ dzhafarovpatey2021:
   source: weihrauch-bibliography
   read: pdf-zotero
   arxiv: "1905.00321"
+  zbmath: "1535.03058"
+  zbmathAuthors:
+    - dzhafarov.damir-d
+    - patey.ludovic
 dzhafarovsolomonvalenti2023:
   authors:
     - Damir Dzhafarov
@@ -737,6 +918,9 @@ dzhafarov2015:
   doi: 10.1090/S0002-9939-2014-12261-1
   source: weihrauch-bibliography
   read: pdf-zotero
+  zbmath: "1386.03055"
+  zbmathAuthors:
+    - dzhafarov.damir-d
 dzhafarov2019:
   authors:
     - Damir D. Dzhafarov
@@ -747,6 +931,9 @@ dzhafarov2019:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1704.01494"
+  zbmath: "1486.03072"
+  zbmathAuthors:
+    - dzhafarov.damir-d
 fujiwarahiguchikihara2014:
   authors:
     - Makoto Fujiwara
@@ -758,6 +945,11 @@ fujiwarahiguchikihara2014:
   doi: 10.1002/malq.201300021
   source: weihrauch-bibliography
   read: abstract
+  zbmath: "1331.03015"
+  zbmathAuthors:
+    - fujiwara.makoto
+    - higuchi.kojiro
+    - kihara.takayuki
 floodetal2022:
   authors:
     - Stephen Flood
@@ -771,6 +963,12 @@ floodetal2022:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2006.11334"
+  zbmath: "1553.03126"
+  zbmathAuthors:
+    - flood.stephen-p
+    - jura.matthew
+    - levin.oscar
+    - markkanen.tyler
 fioricaronesmarcone2021:
   authors:
     - Marta Fiori-Carones
@@ -782,6 +980,10 @@ fioricaronesmarcone2021:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1910.01879"
+  zbmath: "1547.03077"
+  zbmathAuthors:
+    - fiori-carones.marta
+    - marcone.alberto
 beckmannoitavemmanea2025:
   authors:
     - Arnold Beckmann
@@ -801,6 +1003,9 @@ fujiwara2020:
   doi: 10.1007/978-3-030-51466-2_4
   source: weihrauch-bibliography
   read: pdf-oa
+  zbmath: "1551.03056"
+  zbmathAuthors:
+    - fujiwara.makoto
 fujiwara2021:
   authors:
     - Makoto Fujiwara
@@ -810,6 +1015,9 @@ fujiwara2021:
   doi: 10.3233/COM-190278
   source: weihrauch-bibliography
   read: abstract
+  zbmath: "1535.03294"
+  zbmathAuthors:
+    - fujiwara.makoto
 gherardi2006:
   authors:
     - Guido Gherardi
@@ -817,6 +1025,9 @@ gherardi2006:
   year: 2006
   venue: Logical Approaches to Computational Barriers, 3988, 199–208
   source: weihrauch-bibliography
+  zbmath: "1145.03340"
+  zbmathAuthors:
+    - gherardi.guido
 gherardi2006b:
   authors:
     - Guido Gherardi
@@ -824,6 +1035,9 @@ gherardi2006b:
   year: 2006
   venue: Mathematical Logic Quarterly, 52(6), 625–642
   source: weihrauch-bibliography
+  zbmath: "1109.03070"
+  zbmathAuthors:
+    - gherardi.guido
 gherardi2006c:
   authors:
     - Guido Gherardi
@@ -843,6 +1057,11 @@ gurahirstmummert2015:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1406.4786"
+  zbmath: "1337.03086"
+  zbmathAuthors:
+    - gura.kirill
+    - hirst.jeffry-l
+    - mummert.carl
 gill2023:
   authors:
     - Kenneth Gill
@@ -865,6 +1084,11 @@ greenbergkuyperturetsky2019:
   doi: 10.3233/COM-180219
   source: weihrauch-bibliography
   read: abstract
+  zbmath: "1480.03043"
+  zbmathAuthors:
+    - greenberg.noam
+    - kuyper.rutger
+    - turetsky.daniel-d
 gherardimarcone2008:
   authors:
     - Guido Gherardi
@@ -876,6 +1100,10 @@ gherardimarcone2008:
   arxiv: "0808.1663"
   version: gherardimarcone2009
   read: pdf-arxiv
+  zbmath: "1223.03052"
+  zbmathAuthors:
+    - gherardi.guido
+    - marcone.alberto
 greenbergmillernies2021:
   authors:
     - Noam Greenberg
@@ -888,6 +1116,11 @@ greenbergmillernies2021:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1912.03016"
+  zbmath: "1485.03164"
+  zbmathAuthors:
+    - greenberg.noam
+    - miller.joseph-s
+    - nies.andre-otfrid
 gherardimarconepauly2018:
   authors:
     - Guido Gherardi
@@ -901,6 +1134,11 @@ gherardimarconepauly2018:
   arxiv: "1805.12026"
   doi: 10.3233/COM-180207
   preprintYear: 2018
+  zbmath: "1455.03057"
+  zbmathAuthors:
+    - gherardi.guido
+    - marcone.alberto
+    - pauly.arno-m
 galeottinobrega2017:
   authors:
     - Lorenzo Galeotti
@@ -911,6 +1149,10 @@ galeottinobrega2017:
   doi: 10.1007/978-3-319-58741-7_24
   source: weihrauch-bibliography
   read: pdf-oa
+  zbmath: "1496.03174"
+  zbmathAuthors:
+    - galeotti.lorenzo
+    - nobrega.hugo
 goh2019:
   authors:
     - Jun Le Goh
@@ -920,6 +1162,9 @@ goh2019:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1905.06868"
+  zbmath: arXiv:1905.06868
+  zbmathAuthors:
+    - goh.jun-le
 goh2019b:
   authors:
     - Jun Le Goh
@@ -938,6 +1183,9 @@ goh2020:
   doi: 10.3233/com-180235
   source: weihrauch-bibliography
   read: abstract
+  zbmath: "1460.03013"
+  zbmathAuthors:
+    - goh.jun-le
 goh2020b:
   authors:
     - Jun Le Goh
@@ -948,6 +1196,9 @@ goh2020b:
   version: goh2019
   source: weihrauch-bibliography
   read: pdf-oa
+  zbmath: "1479.03008"
+  zbmathAuthors:
+    - goh.jun-le
 hertling2020:
   authors:
     - Peter Hertling
@@ -957,6 +1208,9 @@ hertling2020:
   doi: 10.3233/com-190255
   source: weihrauch-bibliography
   read: abstract
+  zbmath: "1464.03040"
+  zbmathAuthors:
+    - hertling.peter-h
 hertling1993:
   authors:
     - Peter Hertling
@@ -998,6 +1252,9 @@ hirschfeldt2017:
   doi: 10.1007/978-3-319-50062-1_4
   source: weihrauch-bibliography
   read: pdf-zotero
+  zbmath: "1480.03006"
+  zbmathAuthors:
+    - hirschfeldt.denis-r
 hirst2018:
   authors:
     - Jeffry L. Hirst
@@ -1009,6 +1266,9 @@ hirst2018:
   arxiv: "1812.09762"
   doi: 10.3233/com-180243
   preprintYear: 2018
+  zbmath: "1485.03242"
+  zbmathAuthors:
+    - hirst.jeffry-l
 higuchikihara2014:
   authors:
     - Kojiro Higuchi
@@ -1020,6 +1280,10 @@ higuchikihara2014:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1210.0697"
+  zbmath: "1315.03071"
+  zbmathAuthors:
+    - higuchi.kojiro
+    - kihara.takayuki
 higuchikihara2014b:
   authors:
     - Kojiro Higuchi
@@ -1031,6 +1295,10 @@ higuchikihara2014b:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1309.1937"
+  zbmath: "1315.03072"
+  zbmathAuthors:
+    - higuchi.kojiro
+    - kihara.takayuki
 hirstmummert2017:
   authors:
     - Jeffry L. Hirst
@@ -1042,6 +1310,10 @@ hirstmummert2017:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1604.04912"
+  zbmath: "1480.03007"
+  zbmathAuthors:
+    - hirst.jeffry-l
+    - mummert.carl
 hirstmummert2019:
   authors:
     - Jeffry L. Hirst
@@ -1053,6 +1325,10 @@ hirstmummert2019:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1611.03134"
+  zbmath: "1475.03071"
+  zbmathAuthors:
+    - hirst.jeffry-l
+    - mummert.carl
 hirstmummert2023:
   authors:
     - Jeffry L. Hirst
@@ -1064,6 +1340,10 @@ hirstmummert2023:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2303.05355"
+  zbmath: "1582.03013"
+  zbmathAuthors:
+    - hirst.jeffry-l
+    - mummert.carl
 hoyrup2017:
   authors:
     - Mathieu Hoyrup
@@ -1072,6 +1352,9 @@ hoyrup2017:
   venue: Theory of Computing Systems, 60(3), 396–420
   doi: 10.1007/s00224-016-9737-6
   source: weihrauch-bibliography
+  zbmath: "1366.68056"
+  zbmathAuthors:
+    - hoyrup.mathieu
 hoyrup2023:
   authors:
     - Mathieu Hoyrup
@@ -1088,6 +1371,9 @@ hoyrup2023b:
   doi: 10.3233/COM-230458
   source: weihrauch-bibliography
   read: pdf-oa
+  zbmath: "1555.03087"
+  zbmathAuthors:
+    - hoyrup.mathieu
 higuchipauly2013:
   authors:
     - Kojiro Higuchi
@@ -1099,6 +1385,10 @@ higuchipauly2013:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1101.0112"
+  zbmath: "1271.03057"
+  zbmathAuthors:
+    - higuchi.kojiro
+    - pauly.arno-m
 hoyruprojasweihrauch2011:
   authors:
     - Mathieu Hoyrup
@@ -1111,6 +1401,11 @@ hoyruprojasweihrauch2011:
   source: weihrauch-bibliography
   arxiv: "1112.2838"
   read: pdf-arxiv
+  zbmath: "1345.03084"
+  zbmathAuthors:
+    - hoyrup.mathieu
+    - rojas.cristobal
+    - weihrauch.klaus
 hertlingselivanov2011:
   authors:
     - Peter Hertling
@@ -1120,6 +1415,10 @@ hertlingselivanov2011:
   venue: Models of computation in context, 6735, 112–121
   doi: 10.1007/978-3-642-21875-0_12
   source: weihrauch-bibliography
+  zbmath: "1344.68096"
+  zbmathAuthors:
+    - hertling.peter-h
+    - selivanov.victor-l
 holzlshafer2015:
   authors:
     - Rupert Hölzl
@@ -1131,6 +1430,10 @@ holzlshafer2015:
   source: weihrauch-bibliography
   arxiv: "1409.8589"
   read: pdf-arxiv
+  zbmath: "1386.03047"
+  zbmathAuthors:
+    - holzl.rupert
+    - shafer.paul
 hughes2021:
   authors:
     - Noah A. Hughes
@@ -1163,6 +1466,9 @@ kawamura2009:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1004.4622"
+  zbmath: "1232.03031"
+  zbmathAuthors:
+    - kawamura.akitoshi
 kawamuracook2010:
   authors:
     - Akitoshi Kawamura
@@ -1174,6 +1480,10 @@ kawamuracook2010:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1305.0453"
+  zbmath: "1293.68134"
+  zbmathAuthors:
+    - kawamura.akitoshi
+    - cook.stephen-a
 kihara2016:
   authors:
     - Takayuki Kihara
@@ -1184,6 +1494,9 @@ kihara2016:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1608.03269"
+  zbmath: "1445.03051"
+  zbmathAuthors:
+    - kihara.takayuki
 kihara2020:
   authors:
     - Takayuki Kihara
@@ -1193,6 +1506,9 @@ kihara2020:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2002.10712"
+  zbmath: arXiv:2002.10712
+  zbmathAuthors:
+    - kihara.takayuki
 kihara2021:
   authors:
     - Takayuki Kihara
@@ -1204,6 +1520,9 @@ kihara2021:
   arxiv: "2106.03061"
   doi: 10.1090/btran/134
   preprintYear: 2021
+  zbmath: "1569.03077"
+  zbmathAuthors:
+    - kihara.takayuki
 kihara2022:
   authors:
     - Takayuki Kihara
@@ -1213,6 +1532,9 @@ kihara2022:
   doi: 10.1007/s11856-022-2367-6
   source: weihrauch-bibliography
   read: pdf-arxiv
+  zbmath: "1560.03140"
+  zbmathAuthors:
+    - kihara.takayuki
 kiharamarconepauly2020:
   authors:
     - Takayuki Kihara
@@ -1225,6 +1547,11 @@ kiharamarconepauly2020:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1812.01549"
+  zbmath: "1473.03026"
+  zbmathAuthors:
+    - kihara.takayuki
+    - marcone.alberto
+    - pauly.arno-m
 kawamuraota2014:
   authors:
     - Akitoshi Kawamura
@@ -1234,6 +1561,10 @@ kawamuraota2014:
   venue: Mathematical foundations of computer science 2014. Part II, 8635, 432–444
   doi: 10.1007/978-3-662-44465-8_37
   source: weihrauch-bibliography
+  zbmath: "1427.68097"
+  zbmathAuthors:
+    - kawamura.akitoshi
+    - ota.hiroyuki
 kohlenbach2019:
   authors:
     - Ulrich Kohlenbach
@@ -1243,6 +1574,9 @@ kohlenbach2019:
   doi: 10.3233/COM-180097
   source: weihrauch-bibliography
   read: pdf-oa
+  zbmath: "1454.03017"
+  zbmathAuthors:
+    - kohlenbach.ulrich-wilhelm
 kawamuraetal2012:
   authors:
     - Akitoshi Kawamura
@@ -1256,6 +1590,12 @@ kawamuraetal2012:
   source: weihrauch-bibliography
   arxiv: "1311.5414"
   read: pdf-arxiv
+  zbmath: "1326.68151"
+  zbmathAuthors:
+    - kawamura.akitoshi
+    - ota.hiroyuki
+    - rosnick.carsten
+    - ziegler.martin
 kawamurapauly2014:
   authors:
     - Akitoshi Kawamura
@@ -1267,6 +1607,10 @@ kawamurapauly2014:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1401.2861"
+  zbmath: "1433.03122"
+  zbmathAuthors:
+    - kawamura.akitoshi
+    - pauly.arno-m
 kiharapauly2016:
   authors:
     - Takayuki Kihara
@@ -1278,6 +1622,10 @@ kiharapauly2016:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1606.04126"
+  zbmath: "1398.03160"
+  zbmathAuthors:
+    - kihara.takayuki
+    - pauly.arno-m
 kiharapauly2019:
   authors:
     - Takayuki Kihara
@@ -1287,6 +1635,10 @@ kiharapauly2019:
   venue: Theory and applications of models of computation, 11436, 378–393
   doi: 10.1007/978-3-030-14812-6_23
   source: weihrauch-bibliography
+  zbmath: "1528.03191"
+  zbmathAuthors:
+    - kihara.takayuki
+    - pauly.arno-m
 kreuzer2012c:
   authors:
     - Alexander P. Kreuzer
@@ -1297,6 +1649,9 @@ kreuzer2012c:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1106.5124"
+  zbmath: "1270.03128"
+  zbmathAuthors:
+    - kreuzer.alexander-p
 kreuzer2014:
   authors:
     - Alexander P. Kreuzer
@@ -1306,6 +1661,9 @@ kreuzer2014:
   doi: 10.1002/malq.201200076
   source: weihrauch-bibliography
   read: pdf-arxiv
+  zbmath: "1331.03016"
+  zbmathAuthors:
+    - kreuzer.alexander-p
 kreuzer2014b:
   authors:
     - Alexander P. Kreuzer
@@ -1316,6 +1674,9 @@ kreuzer2014b:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1308.3881"
+  zbmath: "1322.03012"
+  zbmathAuthors:
+    - kreuzer.alexander-p
 kudinovselivanovzhukov2010:
   authors:
     - Oleg V. Kudinov
@@ -1325,6 +1686,11 @@ kudinovselivanovzhukov2010:
   year: 2010
   venue: Programs, Proofs, Processes, 6158, 256–265
   source: weihrauch-bibliography
+  zbmath: "1286.03143"
+  zbmathAuthors:
+    - kudinov.oleg-victorovich
+    - selivanov.victor-l
+    - zhukov.anton-v
 kuyper2017:
   authors:
     - Rutger Kuyper
@@ -1335,6 +1701,9 @@ kuyper2017:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1511.05189"
+  zbmath: "1421.03003"
+  zbmathAuthors:
+    - kuyper.rutger
 li2024:
   authors:
     - Ang Li
@@ -1381,6 +1750,10 @@ rouxpauly2013:
   venue: The Nature of Computation. Logic, Algorithms, Applications, 7921, 294–305
   doi: 10.1007/978-3-642-39053-1_34
   source: weihrauch-bibliography
+  zbmath: "1433.03151"
+  zbmathAuthors:
+    - le-roux.stephane
+    - pauly.arno-m
 rouxpauly2015:
   authors:
     - Stéphane Le Roux
@@ -1391,6 +1764,10 @@ rouxpauly2015:
   doi: 10.1007/978-3-319-20028-6_25
   source: weihrauch-bibliography
   read: abstract
+  zbmath: "1461.03034"
+  zbmathAuthors:
+    - le-roux.stephane
+    - pauly.arno-m
 lutzsiskind2023:
   authors:
     - Patrick Lutz
@@ -1428,6 +1805,10 @@ marconeosso2024:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2410.06928"
+  zbmath: arXiv:2410.06928
+  zbmathAuthors:
+    - marcone.alberto
+    - osso.gian-marco
 mourad2024:
   authors:
     - Daniel Mourad
@@ -1436,6 +1817,10 @@ mourad2024:
   venue: arXiv 2405.15281
   source: weihrauch-bibliography
   read: pdf-arxiv
+  zbmath: arXiv:2405.15281
+  zbmathAuthors:
+    - mourad.daniel-samir
+  version: mourad2025
 mourad2025:
   authors:
     - Daniel S. Mourad
@@ -1445,6 +1830,9 @@ mourad2025:
   doi: 10.1177/22113568251314744
   source: weihrauch-bibliography
   read: pdf-arxiv
+  zbmath: arXiv:2405.15281
+  zbmathAuthors:
+    - mourad.daniel-samir
 maschiotrotta2025:
   authors:
     - Samuele Maschio
@@ -1469,6 +1857,10 @@ marconevalenti2020:
   read: pdf-arxiv
   doi: 10.1017/jsl.2021.10
   preprintYear: 2020
+  zbmath: "1529.03225"
+  zbmathAuthors:
+    - marcone.alberto
+    - valenti.manlio
 marconevalenti2021:
   authors:
     - Alberto Marcone
@@ -1481,6 +1873,10 @@ marconevalenti2021:
   arxiv: "2108.06941"
   doi: 10.3233/COM-210372
   preprintYear: 2021
+  zbmath: "1523.03019"
+  zbmathAuthors:
+    - marcone.alberto
+    - valenti.manlio
 mylatz2006:
   authors:
     - Uwe Mylatz
@@ -1503,6 +1899,9 @@ neumann2014:
   venue: Department of Mathematics, Universität Darmstadt
   source: weihrauch-bibliography
   read: pdf-arxiv
+  zbmath: "1351.03054"
+  zbmathAuthors:
+    - neumann.eike
 nichols2017:
   authors:
     - David Nichols
@@ -1512,6 +1911,9 @@ nichols2017:
   source: weihrauch-bibliography
   arxiv: "1711.06532"
   read: pdf-arxiv
+  zbmath: arXiv:1711.06532
+  zbmathAuthors:
+    - nichols.david-a
 nobrega2018:
   authors:
     - Hugo Nobrega
@@ -1530,6 +1932,10 @@ nobregapauly2017:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1511.03693"
+  zbmath: "1496.03175"
+  zbmathAuthors:
+    - nobrega.hugo
+    - pauly.arno-m
 neumannpauly2018:
   authors:
     - Eike Neumann
@@ -1541,6 +1947,10 @@ neumannpauly2018:
   source: weihrauch-bibliography
   arxiv: "1602.08004"
   read: pdf-arxiv
+  zbmath: "1522.03180"
+  zbmathAuthors:
+    - neumann.eike
+    - pauly.arno-m
 patey2016c:
   authors:
     - Ludovic Patey
@@ -1550,6 +1960,9 @@ patey2016c:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1601.04428"
+  zbmath: arXiv:1601.04428
+  zbmathAuthors:
+    - patey.ludovic
 pauly2007:
   authors:
     - Arno Pauly
@@ -1566,6 +1979,9 @@ pauly2009:
   doi: 10.4230/OASIcs.CCA.2009.2271
   source: weihrauch-bibliography
   read: pdf-oa
+  zbmath: "1247.03100"
+  zbmathAuthors:
+    - pauly.arno-m
 pauly2010:
   authors:
     - Arno Pauly
@@ -1575,6 +1991,9 @@ pauly2010:
   doi: 10.3217/jucs-016-18-2686
   source: weihrauch-bibliography
   read: pdf-zotero
+  zbmath: "1216.91004"
+  zbmathAuthors:
+    - pauly.arno-m
 pauly2010b:
   authors:
     - Arno Pauly
@@ -1585,6 +2004,9 @@ pauly2010b:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "0903.2177"
+  zbmath: "1200.03028"
+  zbmathAuthors:
+    - pauly.arno-m
 pauly2011:
   authors:
     - Arno Pauly
@@ -1611,6 +2033,9 @@ pauly2017:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1102.3151"
+  zbmath: "1423.03157"
+  zbmathAuthors:
+    - pauly.arno-m
 paulybrecht2013:
   authors:
     - Arno Pauly
@@ -1620,6 +2045,10 @@ paulybrecht2013:
   venue: arXiv 1307.1850
   source: weihrauch-bibliography
   read: pdf-arxiv
+  zbmath: arXiv:1307.1850
+  zbmathAuthors:
+    - pauly.arno-m
+    - de-brecht.matthew
 paulybrecht2014:
   authors:
     - Arno Pauly
@@ -1631,6 +2060,10 @@ paulybrecht2014:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1404.0079"
+  zbmath: "1464.03042"
+  zbmathAuthors:
+    - pauly.arno-m
+    - de-brecht.matthew
 paulybrecht2015:
   authors:
     - Arno Pauly
@@ -1641,6 +2074,10 @@ paulybrecht2015:
   doi: 10.1109/LICS.2015.48
   source: weihrauch-bibliography
   read: screened
+  zbmath: "1395.03021"
+  zbmathAuthors:
+    - pauly.arno-m
+    - de-brecht.matthew
 porterdaydowney2017:
   authors:
     - Michelle Porter
@@ -1652,6 +2089,11 @@ porterdaydowney2017:
   doi: 10.1007/s00224-016-9732-y
   source: weihrauch-bibliography
   read: pdf-oa
+  zbmath: "1420.03114"
+  zbmathAuthors:
+    - porter.michelle
+    - day.adam-r
+    - downey.rodney-graham
 paulyfouche2017:
   authors:
     - Arno Pauly
@@ -1663,6 +2105,10 @@ paulyfouche2017:
   source: weihrauch-bibliography
   read: pdf-oa
   arxiv: "1409.3428"
+  zbmath: "1423.03158"
+  zbmathAuthors:
+    - pauly.arno-m
+    - fouche.willem-louw
 pradicprice2025:
   authors:
     - Cécilia Pradic
@@ -1683,6 +2129,10 @@ paulysteinberg2016:
   doi: 10.1007/978-3-319-34171-2_26
   source: weihrauch-bibliography
   read: pdf-arxiv
+  zbmath: "1386.03054"
+  zbmathAuthors:
+    - pauly.arno-m
+    - steinberg.florian
 paulysteinberg2018:
   authors:
     - Arno Pauly
@@ -1694,6 +2144,10 @@ paulysteinberg2018:
   source: weihrauch-bibliography
   read: pdf-oa
   arxiv: "1512.03024"
+  zbmath: "1436.03241"
+  zbmathAuthors:
+    - pauly.arno-m
+    - steinberg.florian
 pradicsolda2022:
   authors:
     - Pierre Pradic
@@ -1703,6 +2157,10 @@ pradicsolda2022:
   venue: Revolutions and revelations in computability, 13359, 259–271
   doi: 10.1007/978-3-031-08740-0_22
   source: weihrauch-bibliography
+  zbmath: "1566.03228"
+  zbmathAuthors:
+    - pradic.cecilia
+    - solda.giovanni
 paulytsuiki2016:
   authors:
     - Arno Pauly
@@ -1729,6 +2187,9 @@ selivanov2013:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1304.1239"
+  zbmath: "1285.03064"
+  zbmathAuthors:
+    - selivanov.victor-l
 selivanov2020:
   authors:
     - Victor Selivanov
@@ -1738,6 +2199,9 @@ selivanov2020:
   doi: 10.3233/COM-180241
   source: weihrauch-bibliography
   read: screened
+  zbmath: "1472.03053"
+  zbmathAuthors:
+    - selivanov.victor-l
 smischliaew2024:
   authors:
     - Hendrik Alexander Smischliaew
@@ -1753,6 +2217,9 @@ solomon2016:
   venue: Pursuit of the Universal, 9709, 182–191
   doi: 10.1007/978-3-319-40189-8_19
   source: weihrauch-bibliography
+  zbmath: "1476.03006"
+  zbmathAuthors:
+    - solomon.reed
 sovine2017:
   authors:
     - Sean Sovine
@@ -1779,6 +2246,10 @@ soldavalenti2022:
   arxiv: "2203.16298"
   doi: 10.1016/j.apal.2023.103270
   preprintYear: 2022
+  zbmath: "1578.03149"
+  zbmathAuthors:
+    - solda.giovanni
+    - valenti.manlio
 suzukiyokoyama2024:
   authors:
     - Yudai Suzuki
@@ -1820,6 +2291,10 @@ tavanaweihrauch2011:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1105.3335"
+  zbmath: arXiv:1105.3335
+  zbmathAuthors:
+    - tavana.nazanin-r
+    - weihrauch.klaus
 uftring2018:
   authors:
     - Patrick Uftring
@@ -1838,6 +2313,9 @@ uftring2023:
   arxiv: "2308.01422"
   doi: 10.3233/com-230471
   preprintYear: 2023
+  zbmath: arXiv:2308.01422
+  zbmathAuthors:
+    - uftring.patrick
 valenti2021:
   authors:
     - Manlio Valenti
@@ -1862,6 +2340,9 @@ weihrauch2019:
   doi: 10.3233/COM-180102
   source: weihrauch-bibliography
   read: screened
+  zbmath: "1480.03034"
+  zbmathAuthors:
+    - weihrauch.klaus
 weihrauch1992:
   authors:
     - Klaus Weihrauch
@@ -1884,6 +2365,9 @@ westrick2020:
   read: pdf-arxiv
   arxiv: "2001.09372"
   doi: 10.3233/com-200295
+  zbmath: "1535.03217"
+  zbmathAuthors:
+    - westrick.linda-brown
 paulypradicsolda2024:
   authors:
     - Arno Pauly
@@ -1907,6 +2391,10 @@ lerouxpauly2015:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1302.0380"
+  zbmath: "1448.03052"
+  zbmathAuthors:
+    - le-roux.stephane
+    - pauly.arno-m
 paulyfouchedavie2018:
   authors:
     - Arno Pauly
@@ -1919,6 +2407,11 @@ paulyfouchedavie2018:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "1505.02091"
+  zbmath: "1459.03069"
+  zbmathAuthors:
+    - pauly.arno-m
+    - fouche.willem-louw
+    - davie.george
 paulysolda2024:
   authors:
     - Arno Pauly
@@ -1929,3 +2422,7 @@ paulysolda2024:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2401.12641"
+  zbmath: "1578.03147"
+  zbmathAuthors:
+    - pauly.arno-m
+    - solda.giovanni

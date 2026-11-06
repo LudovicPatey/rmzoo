@@ -22,8 +22,11 @@ for this purpose, and can remove them at any time.
   confirmation box is ticked.
 * The same page lists one's uploads: **replace** a file (button, or drop the new PDF on its
   row) or **remove** it.
-* It also lists the papers of the database without a full text that have an author with
-  the signed-in person's surname and first initial. Each can be uploaded, or marked **not my
+* It also lists the papers of the database without a full text of which the signed-in
+  person is an author: one of the paper's zbMATH authors (`zbmathAuthors`, written by
+  `scripts/zbmath.mjs`) has their ORCID iD in its zbMATH profile (`data/authors.yaml`); not if
+  a zbMATH author of the paper with their surname has another ORCID iD (someone else);
+  otherwise by the surname and first initial in the reference's author list. Each can be uploaded, or marked **not my
   paper** or **not allowed to share**: it then leaves the list (a collapsed list of the papers
   set aside allows to undo).
 * A **bell** next to the account button counts these papers (not yet uploaded nor set aside)

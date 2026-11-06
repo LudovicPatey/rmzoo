@@ -1,3 +1,26 @@
+aguilerakouptchinskyyokoyama2026:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 5795936a3609066c
+  facts: 0
+  added: 0
+  review: 4
+  dropped: 0
+  cost: 0.08
+andrewsetal2024:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  verifiedBy: claude-opus-5-5
+  textHash: 0ce70980338e9e6b
+  facts: 16
+  added: 1
+  review: 7
+  dropped: 10
+  changes:
+    - "merged: property|tcn|fractal||true"
+  cost: 0.23
 astoretal2026:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -25,6 +48,19 @@ barnesgohshore2023:
   changes:
     - "merged: separation|sigma11ac|atr|omega|"
   cost: 0.27
+barrett2020:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  verifiedBy: claude-opus-5-5
+  textHash: "376702e606252043"
+  facts: 10
+  added: 1
+  review: 2
+  dropped: 9
+  changes:
+    - "merged: equivalence|cousin-c|wkl|rca0|"
+  cost: 0.2
 barrett2021:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -55,6 +91,39 @@ belangeretal2024:
   review: 6
   dropped: 7
   cost: 0.1
+benhametal2024:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  verifiedBy: claude-opus-5-5
+  textHash: 118f8444e52bd897
+  facts: 26
+  added: 2
+  review: 8
+  dropped: 22
+  changes:
+    - "merged: implication|rt22|cac|rca0|"
+    - "merged: implication|cac|ads|rca0|"
+  cost: 0.32
+bienvenupateyshafer2017:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  verifiedBy: claude-opus-5-5
+  textHash: 506fd065fbd2d642
+  facts: 39
+  added: 7
+  review: 20
+  dropped: 20
+  changes:
+    - "merged: implication|rsat2b|rwkl|rca0|"
+    - "merged: separation|dnr|rcolor2|omega|"
+    - "merged: separation|dnr|rwkl|rca0|"
+    - "merged: separation|rwkl|opt|rca0|"
+    - "merged: implication|wwkl|dnr|rca0|"
+    - "merged: implication|rt22|em|rca0|"
+    - "merged: implication|srt22|sem|rca0|"
+  cost: 0.52
 brattka2021:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -204,6 +273,16 @@ carluccietal2024:
     - "added: implication|fs2|ts2|sw|"
     - "added: implication|fs3|ts3|sw|"
   cost: 0.28
+carluccimainardi2022:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 75d5aa34d69bb4ac
+  facts: 7
+  added: 0
+  review: 7
+  dropped: 7
+  cost: 0.18
 cervellegaudelierpatey2022:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -253,6 +332,20 @@ chongliyang2014:
     - "merged: conservation|scac|bsig2|Pi11|true"
     - "added: conservation|part|bsig2|Pi11|true"
   cost: 0.34
+chongslamanyang2012:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  verifiedBy: claude-opus-5-5
+  textHash: bc797a3b9ae01aaf
+  facts: 15
+  added: 2
+  review: 1
+  dropped: 9
+  changes:
+    - "merged: conservation|coh|bsig2|Pi11|true"
+    - "merged: conservation|sads|bsig2|Pi11|true"
+  cost: 0.22
 ciprianimarconevalenti2022:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -277,6 +370,26 @@ ciprianipauly2025:
   changes:
     - "merged: property|cnn|cylinder||true"
   cost: 0.19
+conidis2010b:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 1f0eabc237218f11
+  facts: 8
+  added: 0
+  review: 6
+  dropped: 7
+  cost: 0.14
+conidis2019:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 02cabc8ea70959ac
+  facts: 7
+  added: 0
+  review: 8
+  dropped: 4
+  cost: 0.14
 dauriac2020#1:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -342,6 +455,30 @@ dauriacetal2024:
     - "merged: equivalence|mtt|aca-prime|rca0|"
     - "added: property|er22|cone-avoidance||true"
   cost: 1.32
+dauriackihara2021:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: b1bf5afeff193b97
+  facts: 4
+  added: 0
+  review: 8
+  dropped: 3
+  cost: 0.16
+ddhms2016:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  verifiedBy: claude-opus-5-5
+  textHash: 6e2d8cda99465d16
+  facts: 30
+  added: 2
+  review: 15
+  dropped: 21
+  changes:
+    - "added: equivalence|wkl|wkl.par|sw|"
+    - "merged: separation|wwkl|wkl|w|"
+  cost: 0.45
 diener2018:
   date: 2026-11-03
   model: claude-opus-5-5
@@ -371,6 +508,17 @@ doraishirstshafer2014:
   review: 7
   dropped: 7
   cost: 0.15
+dzhafarovetal2018:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  verifiedBy: claude-opus-5-5
+  textHash: 37632e972f852e37
+  facts: 18
+  added: 0
+  review: 16
+  dropped: 7
+  cost: 0.27
 dzhafarovhirschfeldtreitzes2020:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -539,6 +687,17 @@ dzhafarovmummert2022#9:
   review: 7
   dropped: 0
   cost: 0.46
+dzhafarovpatey2017:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  verifiedBy: claude-opus-5-5
+  textHash: 92eaa10ba4f2e112
+  facts: 20
+  added: 0
+  review: 2
+  dropped: 15
+  cost: 0.27
 fernandezduque2015:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -549,6 +708,16 @@ fernandezduque2015:
   review: 5
   dropped: 1
   cost: 0.11
+fernandezduqueshaferyokoyama2019:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 410e9a09b0d1cfad
+  facts: 3
+  added: 0
+  review: 6
+  dropped: 2
+  cost: 0.15
 fioricaronesetal2021:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -681,6 +850,46 @@ goh2019b:
     - "merged: property|lpo|computably-true||true"
     - "merged: property|cn|computably-true||true"
   cost: 1
+goh2020b:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  verifiedBy: claude-opus-5-5
+  textHash: feb9221b9ed8d383
+  facts: 43
+  added: 28
+  review: 9
+  dropped: 10
+  changes:
+    - "merged: equivalence|wcwow|atrw|w|"
+    - "merged: implication|atrw|wqowo|w|"
+    - "merged: implication|wqowo|ndswo|w|"
+    - "merged: implication|wqolo|wqowo|w|"
+    - "merged: implication|wcwow|niacwo|w|"
+    - "merged: implication|cwow|wcwow|w|"
+    - "merged: property|atrw|parallelizable||true"
+    - "merged: implication|ndswo|atrw|c|"
+    - "merged: implication|niacwo|atrw|c|"
+    - "added: implication|cwo2|wcwo2|w|"
+    - "merged: implication|atr2|cwo2|w|"
+    - "merged: implication|cnn|cwo2|w|"
+    - "merged: implication|cnn|wcwo2|w|"
+    - "merged: implication|cnn|atr2|w|"
+    - "added: implication|cnn|wqolo|w|"
+    - "merged: separation|cwo2|cnn|w|"
+    - "merged: separation|wcwo2|cnn|w|"
+    - "merged: separation|atr2|cnn|w|"
+    - "merged: separation|wqolo|cnn|w|"
+    - "merged: separation|ucnn|cwo2|c|"
+    - "merged: separation|ucnn|wcwo2|c|"
+    - "merged: separation|ucnn|atr2|c|"
+    - "added: separation|ucnn|wqolo|c|"
+    - "merged: implication|kdt|atrw|w|"
+    - "merged: implication|kdt|atr2|c|"
+    - "merged: implication|cnn|kdt|w|"
+    - "merged: separation|kdt|cnn|w|"
+    - "merged: property|kdt|parallelizable||true"
+  cost: 0.96
 gohpaulyvalenti2021:
   date: 2026-11-03
   model: claude-opus-5-5
@@ -722,6 +931,26 @@ gohpaulyvalenti2024:
     - "added: equivalence|bs|cn.x.bs|w|"
     - "added: equivalence|bs|bs.star.cn|w|"
   cost: 0.36
+greenbergmillernies2021:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 02ffc5f7e5a93536
+  facts: 0
+  added: 0
+  review: 4
+  dropped: 0
+  cost: 0.11
+greenbergmontalban2008:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 7027690c48121f93
+  facts: 5
+  added: 0
+  review: 5
+  dropped: 3
+  cost: 0.47
 hirschfeldt2015:
   date: 2026-11-03
   model: claude-opus-5-5
@@ -753,6 +982,16 @@ hirschfeldt2015:
     - "added: property|ts2|sigma2-basis||false"
     - "added: property|ts3|sigma3-basis||false"
   cost: 2.54
+hirschfeldtlangeshore2017:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 4a80b8cd89a497ed
+  facts: 19
+  added: 0
+  review: 18
+  dropped: 13
+  cost: 0.38
 hirst1987:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -766,6 +1005,16 @@ hirst1987:
   changes:
     - "merged: separation|wkl|rt22|rca0|"
   cost: 0.35
+hirst2005:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: eaf3e231715b1a2a
+  facts: 1
+  added: 0
+  review: 4
+  dropped: 1
+  cost: 0.06
 houeroupatey2026:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -776,6 +1025,16 @@ houeroupatey2026:
   review: 3
   dropped: 0
   cost: 0.14
+houeroupateymimouni2024:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 1de23a1ddc6669c1
+  facts: 12
+  added: 0
+  review: 7
+  dropped: 8
+  cost: 0.27
 houeroupateyyokoyama2024:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -789,6 +1048,26 @@ houeroupateyyokoyama2024:
   changes:
     - "merged: implication|rt22|em|rca0|"
   cost: 0.25
+ikariyokoyama2026:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 2ea259aa122fc07a
+  facts: 16
+  added: 0
+  review: 11
+  dropped: 6
+  cost: 0.15
+kanekoyokoyama2026:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 88d6b68bfe2024ca
+  facts: 0
+  added: 0
+  review: 3
+  dropped: 0
+  cost: 0.15
 kihara2020:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -812,6 +1091,36 @@ kiharamarconepauly2020:
     - "merged: separation|ucnn|cnn|w|"
     - "added: equivalence|ucnn.par|ucnn|w|"
   cost: 0.54
+kohlenbach2002:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: df6f0511db54d898
+  facts: 0
+  added: 0
+  review: 4
+  dropped: 0
+  cost: 0.1
+koodziejczykmichalewski2015:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 37ba2ad0b41e47f0
+  facts: 0
+  added: 0
+  review: 6
+  dropped: 0
+  cost: 0.09
+koodziejczykyokoyama2021:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: f83d3fa7923f50b6
+  facts: 16
+  added: 0
+  review: 9
+  dropped: 10
+  cost: 0.13
 kowalik2024:
   date: 2026-11-03
   model: claude-opus-5-5
@@ -826,6 +1135,16 @@ kowalik2024:
     - "added: implication|coh|crt22|rca0star|"
     - "merged: implication|coh|crt22|rca0|"
   cost: 1.01
+kreuzer2012d:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: ae2b5b8974b52b76
+  facts: 3
+  added: 0
+  review: 4
+  dropped: 3
+  cost: 0.08
 kreuzer2013:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -850,6 +1169,43 @@ lehoueroupateyyokoyama2024:
     - "added: conservation|bsig2|isig1|uPi04|false"
     - "added: conservation|rt22|isig1|uPi04|false"
   cost: 0.22
+marcone1994:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  verifiedBy: claude-opus-5-5
+  textHash: 8894a3a1de47c45d
+  facts: 9
+  added: 0
+  review: 6
+  dropped: 5
+  cost: 0.2
+marcone2005:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  verifiedBy: claude-opus-5-5
+  textHash: e230b37d9f58a0a4
+  facts: 13
+  added: 0
+  review: 15
+  dropped: 8
+  cost: 0.21
+marcone2017:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  verifiedBy: claude-opus-5-5
+  textHash: 112070c3e6a5c3da
+  facts: 33
+  added: 3
+  review: 19
+  dropped: 20
+  changes:
+    - "merged: separation|wkl|rt1inf|rca0|"
+    - "merged: equivalence|higman|aca|rca0|"
+    - "merged: implication|fra|atr|rca0|"
+  cost: 0.34
 marconeosso2024:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -902,6 +1258,16 @@ marconevolpi2026:
   review: 7
   dropped: 2
   cost: 0.12
+meerenrathjenweiermann2014:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 8aa9c96eef0e9a93
+  facts: 1
+  added: 0
+  review: 2
+  dropped: 1
+  cost: 0.15
 mimounipatey2025:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -912,6 +1278,26 @@ mimounipatey2025:
   review: 4
   dropped: 11
   cost: 0.19
+montalban2006b:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 0e6e0d928353ca65
+  facts: 3
+  added: 0
+  review: 6
+  dropped: 2
+  cost: 0.14
+neumann2014:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 61b976b976c02af6
+  facts: 6
+  added: 0
+  review: 12
+  dropped: 1
+  cost: 0.18
 nies2014:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -922,6 +1308,36 @@ nies2014:
   review: 5
   dropped: 1
   cost: 0.17
+normannsanders2017:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: dd7a25adfa71fc2f
+  facts: 0
+  added: 0
+  review: 6
+  dropped: 0
+  cost: 0.16
+normannsanders2018:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: d201ed3c1662f8b8
+  facts: 5
+  added: 0
+  review: 6
+  dropped: 5
+  cost: 0.17
+normannsanders2021:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 8a4e448884965b55
+  facts: 0
+  added: 0
+  review: 8
+  dropped: 0
+  cost: 0.2
 pachecoyokoyama2022:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -1002,6 +1418,17 @@ patey2016c:
     - "added: separation|rrt32|sts3|c|"
     - "added: separation|wwkl2|coh|omega|"
   cost: 3.39
+pateyshafer2026:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  verifiedBy: claude-opus-5-5
+  textHash: fe0d8a78d11799e7
+  facts: 8
+  added: 0
+  review: 4
+  dropped: 3
+  cost: 0.2
 pateyyokoyama2018:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -1032,6 +1459,26 @@ paulyfouchedavie2018:
   review: 13
   dropped: 2
   cost: 0.1
+rouxpauly2014:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 3481a246a96ad274
+  facts: 8
+  added: 0
+  review: 10
+  dropped: 4
+  cost: 0.13
+sanders2018b:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: cc489d80e43699e8
+  facts: 0
+  added: 0
+  review: 15
+  dropped: 0
+  cost: 0.11
 sanders2019b:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -1135,6 +1582,16 @@ simpson2009#8:
     - "merged: separation|rca0|wwkl|omega|"
     - "merged: equivalence|rca0|isig1|rca0star|"
   cost: 0.45
+simpsonyokoyama2021:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 1572ff344d70552a
+  facts: 1
+  added: 0
+  review: 12
+  dropped: 0
+  cost: 0.06
 solda2021:
   date: 2026-11-03
   model: claude-opus-5-5
@@ -1247,6 +1704,16 @@ veldman2011:
   review: 8
   dropped: 0
   cost: 0.24
+veldman2014:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: 9578824c0e5d5e26
+  facts: 0
+  added: 0
+  review: 5
+  dropped: 0
+  cost: 0.22
 veldman2025:
   date: 2026-11-05
   model: claude-sonnet-5-5
@@ -1257,6 +1724,16 @@ veldman2025:
   review: 9
   dropped: 0
   cost: 0.26
+walsh2021:
+  date: 2026-11-06
+  model: claude-sonnet-5-5
+  effort: high
+  textHash: aff2fd82fdd617de
+  facts: 0
+  added: 0
+  review: 1
+  dropped: 0
+  cost: 0.06
 yokoyama2023:
   date: 2026-11-05
   model: claude-sonnet-5-5

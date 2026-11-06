@@ -54,6 +54,8 @@ const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml
 // endorsements by researchers (live instance, docs/ENDORSEMENTS.md)
 const endorsed = fs.existsSync(path.join(dataDir, 'endorsements.yaml')) ? readYaml(path.join(dataDir, 'endorsements.yaml')) || {} : {};
 raw.endorsements = { people: endorsed.people || {}, endorsements: endorsed.endorsements || [] };
+// zbMATH author profiles of the authors of the references (scripts/zbmath.mjs): code → {name, orcid}
+const zbAuthors = fs.existsSync(path.join(dataDir, 'authors.yaml')) ? readYaml(path.join(dataDir, 'authors.yaml')) || {} : {};
 // the review queue (docs/REVIEW.md): not part of the database; the open items go to
 // site/data/review.json for the review page and the server
 const queue = fs.existsSync(path.join(dataDir, 'review.yaml')) ? readYaml(path.join(dataDir, 'review.yaml')) || [] : [];
@@ -459,6 +461,15 @@ raw.results.forEach((res, i) => {
   // `version: key` marks another version of the same work (e.g. conference and journal papers)
   const related = (a, b) => raw.references[a]?.version === b || raw.references[b]?.version === a;
   for (const [k, r] of Object.entries(raw.references)) if (r.version && !raw.references[r.version]) errors.push(`Reference ${k}: unknown version ${r.version}`);
+  for (const [c, a] of Object.entries(zbAuthors)) if (a?.orcid && !orcidValid(a.orcid)) errors.push(`authors.yaml: invalid ORCID iD ${a.orcid} for ${c}`);
+  // two references with the same zbMATH document are versions of one work (`version`), or one is wrong
+  {
+    const byZb = new Map();
+    for (const [k, r] of Object.entries(raw.references)) if (r.zbmath) { if (!byZb.has(r.zbmath)) byZb.set(r.zbmath, []); byZb.get(r.zbmath).push(k); }
+    const linked = (a, b) => raw.references[a].version === b || raw.references[b].version === a;
+    for (const [z, ks] of byZb) if (ks.length > 1 && !ks.every((a) => ks.some((b) => a !== b && linked(a, b))))
+      warnings.push(`References ${ks.join(', ')} have the same zbMATH document ${z}: link the versions (version) or correct the mapping`);
+  }
   const byDoi = new Map(), byTitle = new Map(), byArxiv = new Map();
   for (const [k, r] of Object.entries(raw.references)) {
     if (!r.year) errors.push(`Reference ${k} has no year`);
@@ -467,6 +478,8 @@ raw.results.forEach((res, i) => {
     if (r.doi) { const d = r.doi.toLowerCase(); if (byDoi.has(d)) errors.push(`References ${byDoi.get(d)} and ${k} have the same DOI`); byDoi.set(d, k); }
     // a DOI is 10.<registrant>/<suffix>; TeX escapes or an arXiv id in its place break the links and the full-text lookup
     if (r.doi && !/^10\.\d{4,9}\/[^\s\\$]+$/.test(String(r.doi))) errors.push(`Reference ${k}: malformed DOI ${JSON.stringify(r.doi)} (an arXiv id goes in arxiv)`);
+    if (r.zbmath && !/^(\d{4}\.\d{5}|\d{2}\.\d{4}\.\d{2}|arXiv:\S+)$/.test(String(r.zbmath))) errors.push(`Reference ${k}: malformed zbMATH identifier ${JSON.stringify(r.zbmath)} (Zbl number such as 1214.03047, JFM number such as 55.0032.04, or arXiv:<id>)`);
+    for (const c of r.zbmathAuthors || []) if (!zbAuthors[c]) errors.push(`Reference ${k}: zbMATH author ${c} is not in data/authors.yaml (run node scripts/zbmath.mjs)`);
     const t = norm(r.title).replace(/0$/, ''); // "…ATR" = "…ATR₀"
     if (t.length > 15 && byTitle.has(t) && !related(byTitle.get(t), k)) errors.push(`References ${byTitle.get(t)} and ${k} have the same title (merge them, or mark one as \`version\` of the other)`);
     byTitle.set(t, k);
@@ -663,7 +676,10 @@ if (!checkOnly) {
   fs.mkdirSync(outDir, { recursive: true });
   // _key: identity of each result (endorsements refer to it)
   // dataHash: the contents of data/ this build was made from (deploy checks it)
-  const clean = { ...raw, statements: raw.statements, results: raw.results.map((r) => ({ ...r, _key: resultKey(r) })), builtAt: new Date().toISOString(), dataHash: dataHash(dataDir) };
+  // the authors of the references with their ORCID iDs (the viewer's bell, docs/UPLOADS.md)
+  const used = new Set(Object.values(raw.references).flatMap((r) => r.zbmathAuthors || []));
+  const authorsOut = Object.fromEntries(Object.entries(zbAuthors).filter(([c]) => used.has(c)).map(([c, a]) => [c, { name: a.name, ...(a.orcid ? { orcid: a.orcid } : {}) }]));
+  const clean = { ...raw, authors: authorsOut, statements: raw.statements, results: raw.results.map((r) => ({ ...r, _key: resultKey(r) })), builtAt: new Date().toISOString(), dataHash: dataHash(dataDir) };
   fs.writeFileSync(path.join(outDir, 'zoo.json'), JSON.stringify(clean));
   // abstracts are loaded on demand by the paper pages; light TeX clean-up for display
   const detex = (t) => String(t).replace(/<\/?(jats:)?[a-z]+[^>]*>/g, '')

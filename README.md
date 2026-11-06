@@ -54,6 +54,7 @@ data/
   results/**/*.yaml  implications, separations, properties — each cited
   fulltext-exclude.yaml  Zotero items not to use (wrong attachment)
   author-pages.yaml      authors' publication pages searched for missing full texts
+  authors.yaml           zbMATH author profiles (name, ORCID iD) of the references' authors
   sweep-rejected.yaml    papers found by the sweep and judged out of scope
   screened.yaml          consolidation leads already examined (not proposed again)
   acronyms-ignored.yaml  acronyms examined and deliberately not added as statements
@@ -233,6 +234,14 @@ there, sometimes as a conference or preprint version. Save it by hand as
 <key>`. A different version of the work (conference vs journal) gets its own
 reference linked by `version`, and results cite the version that was read.
 Never use shadow libraries (Sci-Hub, LibGen and the like).
+
+## zbMATH identifiers and authors
+
+`node scripts/zbmath.mjs` gives each reference its zbMATH Open identifier (`zbmath`, found by
+DOI, else by exact title with an author's surname and the year) and its authors' zbMATH codes
+(`zbmathAuthors`), and reads the profiles of new authors into `data/authors.yaml` (name, ORCID
+iD when the profile lists one). The viewer uses them to recognize the papers of a signed-in
+researcher by ORCID iD (docs/UPLOADS.md). References not found are skipped until `--retry`.
 
 ## Abstracts
 

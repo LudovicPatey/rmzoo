@@ -1569,6 +1569,7 @@ function viewRefs(key) {
       <h1>${rich(r.title)}</h1><p>${esc(r.authors.join(', '))} — ${esc(r.venue)}, ${r.year}
       ${r.doi ? ` · <a href="https://doi.org/${esc(r.doi)}" target="_blank" rel="noopener">doi:${esc(r.doi)}</a>` : ''}
       ${r.arxiv ? ` · <a href="https://arxiv.org/abs/${esc(r.arxiv)}" target="_blank" rel="noopener">arXiv:${esc(r.arxiv)}</a>` : ''}
+      ${r.zbmath ? ` · <a href="https://zbmath.org/?q=an:${esc(r.zbmath)}" target="_blank" rel="noopener">Zbl ${esc(r.zbmath)}</a>` : ''}
       · ${readBadge(r)}${C.live ? ` · <a href="#" data-feedback="comment|reference|${key}">Comment or report an error</a>` : ''}</p>
       ${paperUploadPanel(key)}
       ${r.hasAbstract ? '<h2>Abstract</h2><div class="abstract" id="abstract"><span class="muted small">Loading…</span></div>' : ''}
@@ -1943,17 +1944,34 @@ function normWords(s) {
 // the signed-in person's papers in the database without a full text (surname match)
 // Is the author `a` (as written in a reference) the signed-in person `me` (their ORCID name)?
 // Same surname, and same first initial when both names have one.
-const nameParts = (s) => String(s).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z\s]/g, ' ').split(/\s+/).filter(Boolean);
+// (a name written "Surname, First names", as zbMATH does, is put back in the usual order)
+const nameParts = (s) => {
+  const [last, first] = String(s).split(',', 2);
+  return String(first !== undefined ? `${first} ${last}` : s).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z\s]/g, ' ').split(/\s+/).filter(Boolean);
+};
 function sameAuthor(a, me) {
   const x = nameParts(a), y = nameParts(me);
   if (!x.length || !y.length || x[x.length - 1] !== y[y.length - 1]) return false;
   return x.length < 2 || y.length < 2 || x[0][0] === y[0][0];
 }
 // the signed-in person's papers of the database whose full text the zoo does not have
+// Is the signed-in person an author of r? Yes if one of its zbMATH authors (scripts/zbmath.mjs)
+// has their ORCID iD; no if a zbMATH author with their surname has another ORCID iD (someone
+// else); otherwise the names of the reference decide (surname and first initial; zbMATH names
+// can be misspelled, as "Coskey, Amuel").
+function isMine(r) {
+  const A = Z.raw.authors || {};
+  if (r.zbmathAuthors?.length) {
+    if (r.zbmathAuthors.some((c) => A[c]?.orcid === C.user.orcid)) return true;
+    const sur = nameParts(C.user.name).pop();
+    if (r.zbmathAuthors.some((c) => A[c]?.orcid && nameParts(A[c].name).pop() === sur)) return false;
+  }
+  return r.authors.some((a) => sameAuthor(a, C.user.name));
+}
 function myPapersWithoutText() {
   if (!C.user) return [];
-  return Object.entries(Z.raw.references).filter(([, r]) => !r.read && r.authors.some((a) => sameAuthor(a, C.user.name)))
-    .sort((a, b) => b[1].year - a[1].year);
+  return Object.entries(Z.raw.references).filter(([, r]) => !r.read && isMine(r)).sort((a, b) => b[1].year - a[1].year);
 }
 // …minus those already uploaded (waiting for the maintainer) and those marked as not one's own
 // or not shareable: what the bell counts
@@ -2028,7 +2046,8 @@ function renderUploads() {
           <button class="btn small" data-remove="${esc(u.id)}">Remove</button></td></tr>`).join('')}</table>
       <p class="small muted">To replace a file, drop the new PDF on its row. A paper is marked “read” once the maintainer has imported its text.</p>`}
     ${missing.length ? `<h2>Your papers without a full text <span class="muted small">${missing.length}</span></h2>
-      <p class="small muted">Papers of the database with an author named like you, whose text the zoo does not have.
+      <p class="small muted">Papers of the database whose text the zoo does not have, of which you are an author: by your ORCID iD on
+        <a href="https://zbmath.org" target="_blank" rel="noopener">zbMATH Open</a> when the paper and your profile are there, otherwise by your name.
         If one is not yours, or if you may not share it, say so: it leaves this list and the bell.</p>
       <table class="grid">${missing.map(([k, r]) => `<tr><td><a href="#/refs/${esc(k)}">${rich(r.title)}</a> <span class="small muted">${esc(r.authors.join(', '))}, ${r.year}</span></td>
         <td style="white-space:nowrap"><button class="btn small primary" data-add="${esc(k)}">Upload its PDF</button>

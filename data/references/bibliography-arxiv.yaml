@@ -12,6 +12,9 @@ jech1992:
   read: pdf-arxiv
   doi: 10.2307/2160398
   preprintYear: 1992
+  zbmath: "0797.03059"
+  zbmathAuthors:
+    - jech.thomas-j
 gasarchhirst1994:
   authors:
     - William Gasarch
@@ -24,6 +27,10 @@ gasarchhirst1994:
   read: pdf-zotero
   doi: 10.1002/malq.19980440405
   preprintYear: 1994
+  zbmath: "0919.03045"
+  zbmathAuthors:
+    - gasarch.william-i
+    - hirst.jeffry-l
 marcone1994:
   authors:
     - Alberto Marcone
@@ -55,6 +62,10 @@ hummeljockusch1997:
   read: pdf-arxiv
   doi: 10.2307/2586482
   preprintYear: 1997
+  zbmath: "0935.03050"
+  zbmathAuthors:
+    - hummel.tamara-j
+    - jockusch.carl-g-jun
 bissellsiders1998:
   authors:
     - Ryan Bissell-Siders
@@ -92,6 +103,9 @@ ziegler2006:
   arxiv: cs/0607114
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1262.03150"
+  zbmathAuthors:
+    - ziegler.martin
 taranovsky2006:
   authors:
     - Dmytro Taranovsky
@@ -101,6 +115,9 @@ taranovsky2006:
   arxiv: math/0605138
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:math/0605138
+  zbmathAuthors:
+    - taranovsky.dmytro
 marcone2006:
   authors:
     - Alberto Marcone
@@ -111,6 +128,9 @@ marcone2006:
   arxiv: math/0609022
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1135.03005"
+  zbmathAuthors:
+    - marcone.alberto
 potgieter2008:
   authors:
     - Petrus H. Potgieter
@@ -131,6 +151,9 @@ hirschorn2008:
   read: pdf-arxiv
   doi: 10.1016/j.apal.2008.09.021
   preprintYear: 2008
+  zbmath: "1165.03036"
+  zbmathAuthors:
+    - hirschorn.james
 andersonhirst2008:
   authors:
     - Bernard A. Anderson
@@ -163,6 +186,11 @@ solovayarthanharrison2009:
   read: pdf-arxiv
   doi: 10.1016/j.apal.2012.04.003
   preprintYear: 2009
+  zbmath: "1259.03020"
+  zbmathAuthors:
+    - solovay.robert-m
+    - arthan.rob-d
+    - harrison.john-r.1
 adamsluo2009:
   authors:
     - Robin Adams
@@ -174,6 +202,10 @@ adamsluo2009:
   arxiv: "0906.1726"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1231.03008"
+  zbmathAuthors:
+    - adams.robin
+    - luo.zhaohui
 towsner2009:
   authors:
     - Henry Towsner
@@ -185,6 +217,9 @@ towsner2009:
   read: pdf-zotero
   doi: 10.2178/jsl/1294171005
   preprintYear: 2009
+  zbmath: "1214.03046"
+  zbmathAuthors:
+    - towsner.henry
 marconemontalban2009:
   authors:
     - Alberto Marcone
@@ -196,6 +231,10 @@ marconemontalban2009:
   arxiv: "0910.5442"
   source: arxiv
   read: pdf-zotero
+  zbmath: "1220.03050"
+  zbmathAuthors:
+    - marcone.alberto
+    - montalban.antonio
 kreuzer2010:
   authors:
     - Alexander P. Kreuzer
@@ -206,6 +245,9 @@ kreuzer2010:
   arxiv: "1005.5316"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1243.03016"
+  zbmathAuthors:
+    - kreuzer.alexander-p
 cholakgalvinsolomon2010:
   authors:
     - Peter Cholak
@@ -219,6 +261,11 @@ cholakgalvinsolomon2010:
   read: pdf-arxiv
   doi: 10.1002/malq.201190019
   preprintYear: 2010
+  zbmath: "1241.03008"
+  zbmathAuthors:
+    - cholak.peter-a
+    - galvin.david-j
+    - solomon.reed
 dzhafarovmummert2010:
   authors:
     - Damir D. Dzhafarov
@@ -229,6 +276,10 @@ dzhafarovmummert2010:
   arxiv: "1009.3242"
   source: arxiv
   read: pdf-zotero
+  zbmath: arXiv:1009.3242
+  zbmathAuthors:
+    - dzhafarov.damir-d
+    - mummert.carl
 gasparkohlenbach2010:
   authors:
     - Jaime Gaspar
@@ -240,6 +291,10 @@ gasparkohlenbach2010:
   arxiv: "1009.5684"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1188.03045"
+  zbmathAuthors:
+    - gaspar.jaime
+    - kohlenbach.ulrich-wilhelm
 dzhafarov2010:
   authors:
     - Damir D. Dzhafarov
@@ -250,6 +305,9 @@ dzhafarov2010:
   source: arxiv
   read: pdf-arxiv
   doi: 10.1007/s11083-010-9160-6
+  zbmath: "1226.03023"
+  zbmathAuthors:
+    - dzhafarov.damir-d
 hirstmummert2010:
   authors:
     - Jeffry L. Hirst
@@ -261,6 +319,10 @@ hirstmummert2010:
   arxiv: "1010.5165"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1225.03083"
+  zbmathAuthors:
+    - hirst.jeffry-l
+    - mummert.carl
 aschieri2010:
   authors:
     - Federico Aschieri
@@ -270,6 +332,9 @@ aschieri2010:
   arxiv: "1012.4992"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1012.4992
+  zbmathAuthors:
+    - aschieri.federico
 arai2011:
   authors:
     - Toshiyasu Arai
@@ -279,6 +344,9 @@ arai2011:
   arxiv: "1102.0596"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1275.03153"
+  zbmathAuthors:
+    - arai.toshiyasu
 arthan2011:
   authors:
     - Rob Arthan
@@ -288,6 +356,9 @@ arthan2011:
   arxiv: "1104.3293"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1104.3293
+  zbmathAuthors:
+    - arthan.rob-d
 veldman2011:
   authors:
     - Wim Veldman
@@ -299,6 +370,9 @@ veldman2011:
   read: pdf-arxiv
   doi: 10.1007/s00153-014-0384-9
   preprintYear: 2011
+  zbmath: "1327.03046"
+  zbmathAuthors:
+    - veldman.wim
 towsner2011:
   authors:
     - Henry Towsner
@@ -310,6 +384,9 @@ towsner2011:
   read: pdf-arxiv
   doi: 10.2178/jsl.7802070
   preprintYear: 2011
+  zbmath: "1275.03079"
+  zbmathAuthors:
+    - towsner.henry
 coskeyhamkinsmiller2011:
   authors:
     - Samuel Coskey
@@ -322,6 +399,11 @@ coskeyhamkinsmiller2011:
   arxiv: "1109.3375"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1325.03049"
+  zbmathAuthors:
+    - coskey.amuel
+    - hamkins.joel-david
+    - miller.russell-g
 dzhafarovmummert2011:
   authors:
     - Damir D. Dzhafarov
@@ -334,6 +416,10 @@ dzhafarovmummert2011:
   read: pdf-arxiv
   doi: 10.1016/j.apal.2012.01.007
   preprintYear: 2011
+  zbmath: "1253.03032"
+  zbmathAuthors:
+    - dzhafarov.damir-d
+    - mummert.carl
 towsner2011b:
   authors:
     - Henry Towsner
@@ -345,6 +431,9 @@ towsner2011b:
   read: pdf-zotero
   doi: 10.1142/s0219061314500019
   preprintYear: 2011
+  zbmath: "1301.03018"
+  zbmathAuthors:
+    - towsner.henry
 kreuzer2011:
   authors:
     - Alexander P. Kreuzer
@@ -355,6 +444,9 @@ kreuzer2011:
   arxiv: "1109.4277"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1269.03021"
+  zbmathAuthors:
+    - kreuzer.alexander-p
 dorais2011:
   authors:
     - François G. Dorais
@@ -364,6 +456,9 @@ dorais2011:
   arxiv: "1110.6555"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1110.6555
+  zbmathAuthors:
+    - dorais.francois-gilbert
 dorais2011b:
   authors:
     - François G. Dorais
@@ -374,6 +469,9 @@ dorais2011b:
   arxiv: "1110.6559"
   source: arxiv
   read: pdf-zotero
+  zbmath: "1269.03020"
+  zbmathAuthors:
+    - dorais.francois-gilbert
 corduandorais2011:
   authors:
     - Jared R. Corduan
@@ -385,6 +483,10 @@ corduandorais2011:
   arxiv: "1111.1367"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1260.03017"
+  zbmathAuthors:
+    - corduan.jared-r
+    - dorais.francois-gilbert
 frittaionmarcone2012:
   authors:
     - Emanuele Frittaion
@@ -396,6 +498,10 @@ frittaionmarcone2012:
   arxiv: "1203.5207"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1259.03023"
+  zbmathAuthors:
+    - frittaion.emanuele
+    - marcone.alberto
 mclarty2012:
   authors:
     - Colin McLarty
@@ -405,6 +511,9 @@ mclarty2012:
   arxiv: "1207.0276"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1207.0276
+  zbmathAuthors:
+    - mclarty.colin
 kreuzer2012d:
   authors:
     - Alexander P. Kreuzer
@@ -415,6 +524,9 @@ kreuzer2012d:
   arxiv: "1208.1424"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1358.03021"
+  zbmathAuthors:
+    - kreuzer.alexander-p
 doraishirstshafer2012:
   authors:
     - François G. Dorais
@@ -428,6 +540,11 @@ doraishirstshafer2012:
   read: pdf-arxiv
   doi: 10.3233/com-13021
   preprintYear: 2012
+  zbmath: "1308.03038"
+  zbmathAuthors:
+    - dorais.francois-gilbert
+    - hirst.jeffry-l
+    - shafer.paul
 kawamuraetal2012b:
   authors:
     - Akitoshi Kawamura
@@ -440,6 +557,12 @@ kawamuraetal2012b:
   arxiv: "1211.4974"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1211.4974
+  zbmathAuthors:
+    - kawamura.akitoshi
+    - muller.norbert-th
+    - rosnick.carsten
+    - ziegler.martin
 dzhafarov2012:
   authors:
     - Damir D. Dzhafarov
@@ -460,6 +583,9 @@ towsner2013:
   read: pdf-zotero
   doi: 10.3233/com-150033
   preprintYear: 2013
+  zbmath: "1326.03072"
+  zbmathAuthors:
+    - towsner.henry
 flood2013:
   authors:
     - Stephen Flood
@@ -471,6 +597,9 @@ flood2013:
   read: pdf-zotero
   doi: 10.1090/s0002-9947-2015-06164-9
   preprintYear: 2013
+  zbmath: "1371.03095"
+  zbmathAuthors:
+    - flood.stephen-p
 fernandezduquejoosten2013:
   authors:
     - David Fernández-Duque
@@ -483,6 +612,10 @@ fernandezduquejoosten2013:
   read: pdf-arxiv
   doi: 10.1016/j.apal.2017.12.006
   preprintYear: 2013
+  zbmath: "1429.03211"
+  zbmathAuthors:
+    - fernandez-duque.david
+    - joosten.joost-j
 frittaionmarcone2013:
   authors:
     - Emanuele Frittaion
@@ -494,6 +627,10 @@ frittaionmarcone2013:
   arxiv: "1303.2926"
   source: arxiv
   read: pdf-zotero
+  zbmath: "1284.03137"
+  zbmathAuthors:
+    - frittaion.emanuele
+    - marcone.alberto
 selivanovaselivanov2013:
   authors:
     - Svetlana Selivanova
@@ -516,6 +653,9 @@ day2013:
   read: pdf-arxiv
   doi: 10.1017/jsl.2016.9
   preprintYear: 2013
+  zbmath: "1368.03016"
+  zbmathAuthors:
+    - day.adam-r
 kreuzer2013:
   authors:
     - Alexander P. Kreuzer
@@ -525,6 +665,9 @@ kreuzer2013:
   arxiv: "1305.6530"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1305.6530
+  zbmathAuthors:
+    - kreuzer.alexander-p
 wang2013b:
   authors:
     - Wei Wang
@@ -535,6 +678,9 @@ wang2013b:
   arxiv: "1309.5428"
   source: arxiv
   read: pdf-zotero
+  zbmath: "1313.03019"
+  zbmathAuthors:
+    - wang.wei.9
 skordev2013:
   authors:
     - Dimiter Skordev
@@ -545,6 +691,9 @@ skordev2013:
   arxiv: "1310.5656"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1315.03121"
+  zbmathAuthors:
+    - skordev.dimitr-g
 schweber2013:
   authors:
     - Noah Schweber
@@ -556,6 +705,9 @@ schweber2013:
   read: pdf-arxiv
   doi: 10.1017/jsl.2015.2
   preprintYear: 2013
+  zbmath: "1358.03023"
+  zbmathAuthors:
+    - schweber.noah-david
 mummertsaadaouisovine2014:
   authors:
     - Carl Mummert
@@ -568,6 +720,11 @@ mummertsaadaouisovine2014:
   arxiv: "1401.0648"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1369.03102"
+  zbmathAuthors:
+    - mummert.carl
+    - saadaoui.alaeddine
+    - sovine.sean-r
 doraishirstshafer2014:
   authors:
     - François G. Dorais
@@ -597,6 +754,9 @@ nies2014:
   arxiv: "1403.5719"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1403.5719
+  zbmathAuthors:
+    - nies.andre-otfrid
 sanders2014:
   authors:
     - Sam Sanders
@@ -607,6 +767,9 @@ sanders2014:
   arxiv: "1404.0080"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1464.03039"
+  zbmathAuthors:
+    - sanders.sam
 holzlstephanyu2014:
   authors:
     - Rupert Hölzl
@@ -628,6 +791,10 @@ rathjenvizcaino2014:
   arxiv: "1405.4485"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1386.03017"
+  zbmathAuthors:
+    - rathjen.michael
+    - valencia-vizcaino.pedro-francisco
 dzhafarovigusa2014:
   authors:
     - Damir Dzhafarov
@@ -640,6 +807,10 @@ dzhafarovigusa2014:
   read: pdf-arxiv
   doi: 10.3233/com-160059
   preprintYear: 2014
+  zbmath: "1420.03096"
+  zbmathAuthors:
+    - dzhafarov.damir-d
+    - igusa.gregory
 millerng2014:
   authors:
     - Russell Miller
@@ -660,6 +831,9 @@ walsh2014:
   arxiv: "1407.0436"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1251.03078"
+  zbmathAuthors:
+    - walsh.sean
 weihrauchjafarikhah2014:
   authors:
     - Klaus Weihrauch
@@ -671,6 +845,10 @@ weihrauchjafarikhah2014:
   arxiv: "1407.3679"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1337.03067"
+  zbmathAuthors:
+    - jafarikhah.tahereh
+    - weihrauch.klaus
 rouxpauly2014:
   authors:
     - Stephane Le Roux
@@ -681,6 +859,11 @@ rouxpauly2014:
   arxiv: "1407.5587"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1461.03034"
+  zbmathAuthors:
+    - le-roux.stephane
+    - pauly.arno-m
+  version: rouxpauly2015
 brodheadetal2014:
   authors:
     - Katie Brodhead
@@ -708,6 +891,12 @@ binnsetal2014:
   arxiv: "1408.2282"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1103.03014"
+  zbmathAuthors:
+    - binns.stephen
+    - kjos-hanssen.bjorn
+    - lerman.manuel
+    - solomon.reed
 binnsetal2014b:
   authors:
     - Stephen Binns
@@ -730,6 +919,9 @@ veldman2014:
   arxiv: "1408.2493"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1408.2493
+  zbmathAuthors:
+    - veldman.wim
 binnskjoshanssen2014:
   authors:
     - Stephen Binns
@@ -741,6 +933,10 @@ binnskjoshanssen2014:
   arxiv: "1408.2857"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1161.03035"
+  zbmathAuthors:
+    - binns.stephen
+    - kjos-hanssen.bjorn
 bergsanders2014:
   authors:
     - Benno van den Berg
@@ -753,6 +949,10 @@ bergsanders2014:
   read: pdf-arxiv
   doi: 10.1016/j.apal.2018.10.003
   preprintYear: 2014
+  zbmath: "1532.03014"
+  zbmathAuthors:
+    - van-den-berg.benno
+    - sanders.sam
 koodziejczykyokoyama2014:
   authors:
     - Leszek Aleksander Kołodziejczyk
@@ -765,6 +965,10 @@ koodziejczykyokoyama2014:
   read: pdf-zotero
   doi: 10.1016/j.apal.2014.10.003
   preprintYear: 2014
+  zbmath: "1369.03100"
+  zbmathAuthors:
+    - kolodziejczyk.leszek-aleksander
+    - yokoyama.keita
 patey2014:
   authors:
     - Ludovic Patey
@@ -776,6 +980,9 @@ patey2014:
   read: pdf-zotero
   doi: 10.3233/com-150034
   preprintYear: 2014
+  zbmath: "1326.03022"
+  zbmathAuthors:
+    - patey.ludovic
 patey2014b:
   authors:
     - Ludovic Patey
@@ -787,6 +994,9 @@ patey2014b:
   read: pdf-zotero
   doi: 10.1016/j.apal.2015.07.003
   preprintYear: 2014
+  zbmath: "1372.03027"
+  zbmathAuthors:
+    - patey.ludovic
 meerenrathjenweiermann2014:
   authors:
     - Jeroen Van der Meeren
@@ -800,6 +1010,11 @@ meerenrathjenweiermann2014:
   read: pdf-arxiv
   doi: 10.1007/s00153-016-0515-6
   preprintYear: 2014
+  zbmath: "1421.03005"
+  zbmathAuthors:
+    - van-der-meeren.jeroen
+    - rathjen.michael
+    - weiermann.andreas
 sanders2014b:
   authors:
     - Sam Sanders
@@ -809,6 +1024,9 @@ sanders2014b:
   arxiv: "1412.2022"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1412.2022
+  zbmathAuthors:
+    - sanders.sam
 cholakmccoy2014:
   authors:
     - Peter Cholak
@@ -821,6 +1039,10 @@ cholakmccoy2014:
   read: pdf-arxiv
   doi: 10.1090/proc/13675
   preprintYear: 2014
+  zbmath: "1377.03033"
+  zbmathAuthors:
+    - cholak.peter-a
+    - mccoy.charlie-c-s-c
 sanders2015:
   authors:
     - Sam Sanders
@@ -830,6 +1052,9 @@ sanders2015:
   arxiv: "1502.03613"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1502.03613
+  zbmathAuthors:
+    - sanders.sam
 sanders2015b:
   authors:
     - Sam Sanders
@@ -839,6 +1064,9 @@ sanders2015b:
   arxiv: "1502.03615"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1502.03615
+  zbmathAuthors:
+    - sanders.sam
 sanders2015c:
   authors:
     - Sam Sanders
@@ -848,6 +1076,9 @@ sanders2015c:
   arxiv: "1502.03618"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1502.03618
+  zbmathAuthors:
+    - sanders.sam
 sanders2015d:
   authors:
     - Sam Sanders
@@ -857,6 +1088,9 @@ sanders2015d:
   arxiv: "1502.03621"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1502.03621
+  zbmathAuthors:
+    - sanders.sam
 raguni2015:
   authors:
     - Giuseppe Raguni
@@ -866,6 +1100,9 @@ raguni2015:
   arxiv: "1503.03087"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1503.03087
+  zbmathAuthors:
+    - raguni.giuseppe
 dzhafarov2015b:
   authors:
     - Damir D. Dzhafarov
@@ -889,6 +1126,11 @@ caigreenbergmcinerney2015:
   read: pdf-zotero
   doi: 10.1017/fms.2016.3
   preprintYear: 2015
+  zbmath: "1528.03094"
+  zbmathAuthors:
+    - cai.minzhong
+    - greenberg.noam
+    - mcinerney.michael
 frittaionetal2015:
   authors:
     - Emanuele Frittaion
@@ -903,6 +1145,13 @@ frittaionetal2015:
   arxiv: "1504.07452"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1342.03041"
+  zbmathAuthors:
+    - frittaion.emanuele
+    - hendtlass.matthew
+    - marcone.alberto
+    - shafer.paul
+    - van-der-meeren.jeroen
 kachapova2015:
   authors:
     - Farida Kachapova
@@ -912,6 +1161,9 @@ kachapova2015:
   arxiv: "1504.08062"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1504.08062
+  zbmathAuthors:
+    - kachapova.farida
 patey2015c:
   authors:
     - Ludovic Patey
@@ -923,6 +1175,9 @@ patey2015c:
   read: pdf-zotero
   doi: 10.1017/bsl.2015.40
   preprintYear: 2015
+  zbmath: "1396.03012"
+  zbmathAuthors:
+    - patey.ludovic
 simpson2015:
   authors:
     - Stephen G. Simpson
@@ -932,6 +1187,9 @@ simpson2015:
   arxiv: "1508.02655"
   source: arxiv
   read: pdf-zotero
+  zbmath: arXiv:1508.02655
+  zbmathAuthors:
+    - simpson.stephen-g
 koodziejczykmichalewski2015:
   authors:
     - Leszek Aleksander Kołodziejczyk
@@ -952,6 +1210,9 @@ sanders2015e:
   arxiv: "1508.07434"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1516.03023"
+  zbmathAuthors:
+    - sanders.sam
 fernandezduque2015:
   authors:
     - David Fernández-Duque
@@ -972,6 +1233,9 @@ patey2015d:
   read: pdf-zotero
   doi: 10.3233/com-160056
   preprintYear: 2015
+  zbmath: "1420.03027"
+  zbmathAuthors:
+    - patey.ludovic
 lubarsky2015:
   authors:
     - Robert Lubarsky
@@ -990,6 +1254,9 @@ kreuzer2015:
   arxiv: "1510.01838"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1510.01838
+  zbmathAuthors:
+    - kreuzer.alexander-p
 rinwalsh2015:
   authors:
     - Benjamin G. Rin
@@ -1001,6 +1268,10 @@ rinwalsh2015:
   arxiv: "1510.01977"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1400.03050"
+  zbmathAuthors:
+    - rin.benjamin-g
+    - walsh.sean
 hatzikiriakousimpson2015:
   authors:
     - Kostas Hatzikiriakou
@@ -1013,6 +1284,10 @@ hatzikiriakousimpson2015:
   read: pdf-arxiv
   doi: 10.1017/jsl.2016.17
   preprintYear: 2015
+  zbmath: "1422.03018"
+  zbmathAuthors:
+    - hatzikiriakou.kostas.1
+    - simpson.stephen-g
 antosfriedman2015:
   authors:
     - Carolin Antos
@@ -1025,6 +1300,10 @@ antosfriedman2015:
   read: pdf-arxiv
   doi: 10.1017/jsl.2016.74
   preprintYear: 2015
+  zbmath: "1419.03046"
+  zbmathAuthors:
+    - antos.carolin
+    - friedman.sy-david
 sanders2015f:
   authors:
     - Sam Sanders
@@ -1034,6 +1313,9 @@ sanders2015f:
   arxiv: "1511.04679"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1511.04679
+  zbmathAuthors:
+    - sanders.sam
 omatapelupessy2015:
   authors:
     - Yasuhiko Omata
@@ -1045,6 +1327,10 @@ omatapelupessy2015:
   arxiv: "1512.02954"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1477.03031"
+  zbmathAuthors:
+    - omata.yasuhiko
+    - pelupessy.florian
 dagostinomarcone2015:
   authors:
     - Giovanna D'Agostino
@@ -1056,6 +1342,10 @@ dagostinomarcone2015:
   arxiv: "1512.08035"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1512.08035
+  zbmathAuthors:
+    - dagostino.giovanna
+    - marcone.alberto
 steilayokoyama2015:
   authors:
     - Silvia Steila
@@ -1068,6 +1358,10 @@ steilayokoyama2015:
   read: pdf-arxiv
   doi: 10.1016/j.apal.2016.06.001
   preprintYear: 2015
+  zbmath: "1402.03023"
+  zbmathAuthors:
+    - steila.silvia
+    - yokoyama.keita
 berardisteila2016:
   authors:
     - Stefano Berardi
@@ -1080,6 +1374,10 @@ berardisteila2016:
   read: pdf-arxiv
   doi: 10.1017/jsl.2016.41
   preprintYear: 2016
+  zbmath: "1419.03055"
+  zbmathAuthors:
+    - berardi.stefano
+    - steila.silvia
 sanders2016:
   authors:
     - Sam Sanders
@@ -1090,6 +1388,9 @@ sanders2016:
   arxiv: "1602.02270"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1455.03015"
+  zbmathAuthors:
+    - sanders.sam
 kjoshanssenliu2016:
   authors:
     - Bjørn Kjos-Hanssen
@@ -1110,6 +1411,9 @@ shafer2016:
   source: arxiv
   read: pdf-arxiv
   doi: 10.1090/proc/13217
+  zbmath: "1528.03096"
+  zbmathAuthors:
+    - shafer.paul
 pelupessy2016:
   authors:
     - Florian Pelupessy
@@ -1130,6 +1434,9 @@ arai2016:
   read: pdf-arxiv
   doi: 10.1017/jsl.2018.36
   preprintYear: 2016
+  zbmath: "1502.03021"
+  zbmathAuthors:
+    - arai.toshiyasu
 patey2016d:
   authors:
     - Ludovic Patey
@@ -1141,6 +1448,9 @@ patey2016d:
   read: pdf-zotero
   doi: 10.1007/s00153-017-0536-9
   preprintYear: 2016
+  zbmath: "1431.03021"
+  zbmathAuthors:
+    - patey.ludovic
 arai2016b:
   authors:
     - Toshiyasu Arai
@@ -1160,6 +1470,9 @@ sanders2016b:
   arxiv: "1606.06386"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1486.03128"
+  zbmathAuthors:
+    - sanders.sam
 pelupessy2016b:
   authors:
     - Florian Pelupessy
@@ -1169,6 +1482,9 @@ pelupessy2016b:
   arxiv: "1608.05160"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1608.05160
+  zbmathAuthors:
+    - pelupessy.florian
 koodziejczyketal2016:
   authors:
     - Leszek Kołodziejczyk
@@ -1192,6 +1508,9 @@ dzhafarov2016b:
   arxiv: "1610.00213"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1532.03012"
+  zbmathAuthors:
+    - dzhafarov.damir-d
 pelupessy2016c:
   authors:
     - Florian Pelupessy
@@ -1202,6 +1521,9 @@ pelupessy2016c:
   arxiv: "1610.00878"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1521.03021"
+  zbmathAuthors:
+    - pelupessy.florian
 taranovsky2016:
   authors:
     - Dmytro Taranovsky
@@ -1211,6 +1533,9 @@ taranovsky2016:
   arxiv: "1610.04633"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1610.04633
+  zbmathAuthors:
+    - taranovsky.dmytro
 carlucci2016:
   authors:
     - Lorenzo Carlucci
@@ -1222,6 +1547,9 @@ carlucci2016:
   read: pdf-zotero
   doi: 10.1007/s00153-017-0576-1
   preprintYear: 2016
+  zbmath: "1384.03094"
+  zbmathAuthors:
+    - carlucci.lorenzo
 neumannpapestreicher2016:
   authors:
     - Eike Neumann
@@ -1245,6 +1573,11 @@ frittaionsteilayokoyama2016:
   arxiv: "1611.05176"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1459.03010"
+  zbmathAuthors:
+    - frittaion.emanuele
+    - steila.silvia
+    - yokoyama.keita
 pelupessy2016d:
   authors:
     - Florian Pelupessy
@@ -1254,6 +1587,9 @@ pelupessy2016d:
   arxiv: "1611.08988"
   source: arxiv
   read: pdf-zotero
+  zbmath: arXiv:1611.08988
+  zbmathAuthors:
+    - pelupessy.florian
 deanwalsh2016:
   authors:
     - Walter Dean
@@ -1266,6 +1602,10 @@ deanwalsh2016:
   read: pdf-zotero
   doi: 10.1017/s1755020316000411
   preprintYear: 2016
+  zbmath: "1376.03005"
+  zbmathAuthors:
+    - dean.walter
+    - walsh.sean
 sanders2017:
   authors:
     - Sam Sanders
@@ -1276,6 +1616,9 @@ sanders2017:
   source: arxiv
   read: pdf-arxiv
   doi: 10.1007/s11229-017-1322-2
+  zbmath: "1475.03045"
+  zbmathAuthors:
+    - sanders.sam
 normannsanders2017:
   authors:
     - Dag Normann
@@ -1287,6 +1630,10 @@ normannsanders2017:
   arxiv: "1702.06556"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1454.03018"
+  zbmathAuthors:
+    - normann.dag
+    - sanders.sam
 enayat2017:
   authors:
     - Ali Enayat
@@ -1296,6 +1643,9 @@ enayat2017:
   arxiv: "1702.07093"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1418.03147"
+  zbmathAuthors:
+    - enayat.ali
 nies2017:
   authors:
     - Andre Nies
@@ -1305,6 +1655,9 @@ nies2017:
   arxiv: "1703.01573"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1703.01573
+  zbmathAuthors:
+    - nies.andre-otfrid
 niestriplettyokoyama2017:
   authors:
     - André Nies
@@ -1318,6 +1671,11 @@ niestriplettyokoyama2017:
   read: pdf-arxiv
   doi: 10.1017/jsl.2021.16
   preprintYear: 2017
+  zbmath: "1547.03080"
+  zbmathAuthors:
+    - nies.andre-otfrid
+    - triplett.marcus-anthony
+    - yokoyama.keita
 galeottinobrega2017b:
   authors:
     - Lorenzo Galeotti
@@ -1328,6 +1686,11 @@ galeottinobrega2017b:
   arxiv: "1704.02884"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1496.03174"
+  zbmathAuthors:
+    - galeotti.lorenzo
+    - nobrega.hugo
+  version: galeottinobrega2017
 arai2017:
   authors:
     - Toshiyasu Arai
@@ -1348,6 +1711,10 @@ kudinovselivanov2017:
   arxiv: "1705.04564"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1459.03062"
+  zbmathAuthors:
+    - kudinov.oleg-victorovich
+    - selivanov.victor-l
 taranovsky2017:
   authors:
     - Dmytro Taranovsky
@@ -1357,16 +1724,22 @@ taranovsky2017:
   arxiv: "1707.05772"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1707.05772
+  zbmathAuthors:
+    - taranovsky.dmytro
 marcone2017:
   authors:
     - Alberto Marcone
   title: The reverse mathematics of wqos and bqos
   year: 2017
   venue: "in: P. Schuster, M. Seisenberger, A. Weiermann (eds.), Well quasi-orders in computation, logic, language and reasoning, Trends in Logic, Vol. 53, Springer, 2020, pp. 189-219"
-  doi: 10.1007/978-3-030-30229-0
+  doi: 10.1007/978-3-030-30229-0_8
   arxiv: "1707.08365"
   source: arxiv
   read: pdf-zotero
+  zbmath: "1496.03035"
+  zbmathAuthors:
+    - marcone.alberto
 astor2017:
   authors:
     - Eric P. Astor
@@ -1378,6 +1751,9 @@ astor2017:
   read: pdf-arxiv
   doi: 10.1017/jsl.2018.4
   preprintYear: 2017
+  zbmath: "1436.03223"
+  zbmathAuthors:
+    - astor.eric-p
 forssellespindola2017:
   authors:
     - Henrik Forssell
@@ -1388,6 +1764,10 @@ forssellespindola2017:
   arxiv: "1709.05817"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1709.05817
+  zbmathAuthors:
+    - forssell.henrik
+    - espindola.christian
 frittaionetal2017:
   authors:
     - Emanuele Frittaion
@@ -1402,6 +1782,12 @@ frittaionetal2017:
   read: pdf-arxiv
   doi: 10.1093/logcom/exy003
   preprintYear: 2017
+  zbmath: "1445.03009"
+  zbmathAuthors:
+    - frittaion.emanuele
+    - pelupessy.florian
+    - steila.silvia
+    - yokoyama.keita
 normannsanders2017b:
   authors:
     - Dag Normann
@@ -1413,6 +1799,10 @@ normannsanders2017b:
   arxiv: "1711.08939"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1484.03018"
+  zbmathAuthors:
+    - normann.dag
+    - sanders.sam
 normannsanders2018:
   authors:
     - Dag Normann
@@ -1425,6 +1815,10 @@ normannsanders2018:
   read: pdf-arxiv
   doi: 10.1016/j.apal.2019.05.007
   preprintYear: 2018
+  zbmath: "1430.03035"
+  zbmathAuthors:
+    - normann.dag
+    - sanders.sam
 kenny2018:
   authors:
     - Robert Kenny
@@ -1434,6 +1828,9 @@ kenny2018:
   arxiv: "1801.10280"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1801.10280
+  zbmathAuthors:
+    - kenny.robert
 eastaugh2018:
   authors:
     - Benedict Eastaugh
@@ -1444,6 +1841,9 @@ eastaugh2018:
   arxiv: "1802.05950"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1423.03049"
+  zbmathAuthors:
+    - eastaugh.benedict
 andrewssorbi2018:
   authors:
     - Uri Andrews
@@ -1456,6 +1856,10 @@ andrewssorbi2018:
   read: pdf-arxiv
   doi: 10.3233/com-180098
   preprintYear: 2018
+  zbmath: "1454.03048"
+  zbmathAuthors:
+    - andrews.uri
+    - sorbi.andrea
 carljamneshan2018:
   authors:
     - Merlin Carl
@@ -1466,6 +1870,10 @@ carljamneshan2018:
   arxiv: "1804.01573"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1511.03019"
+  zbmathAuthors:
+    - carl.merlin
+    - jamneshan.asgar
 diener2018:
   authors:
     - Hannes Diener
@@ -1475,6 +1883,9 @@ diener2018:
   arxiv: "1804.05495"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1804.05495
+  zbmathAuthors:
+    - diener.hannes
 sanders2018:
   authors:
     - Sam Sanders
@@ -1484,6 +1895,9 @@ sanders2018:
   arxiv: "1804.07952"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1509.03038"
+  zbmathAuthors:
+    - sanders.sam
 davisetal2018:
   authors:
     - Caleb Davis
@@ -1497,6 +1911,12 @@ davisetal2018:
   source: arxiv
   read: pdf-arxiv
   doi: 10.1007/s00153-018-0654-z
+  zbmath: "1477.03029"
+  zbmathAuthors:
+    - davis.caleb-s
+    - hirst.jeffry-l
+    - pardo.jake
+    - ransom.tim
 sanders2018b:
   authors:
     - Sam Sanders
@@ -1507,6 +1927,9 @@ sanders2018b:
   arxiv: "1805.11342"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1462.03009"
+  zbmathAuthors:
+    - sanders.sam
 sanders2018c:
   authors:
     - Sam Sanders
@@ -1518,6 +1941,9 @@ sanders2018c:
   read: pdf-arxiv
   doi: 10.1016/j.apal.2018.11.001
   preprintYear: 2018
+  zbmath: "1532.03098"
+  zbmathAuthors:
+    - sanders.sam
 fokinarosseggermauro2018:
   authors:
     - Ekaterina Fokina
@@ -1530,6 +1956,11 @@ fokinarosseggermauro2018:
   arxiv: "1806.10363"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1454.03056"
+  zbmathAuthors:
+    - fokina.ekaterina-b
+    - rossegger.dino
+    - san-mauro.luca
 koodziejczykyokoyama2018:
   authors:
     - Leszek Aleksander Kołodziejczyk
@@ -1542,6 +1973,10 @@ koodziejczykyokoyama2018:
   read: pdf-zotero
   doi: 10.1007/s00029-020-00577-3
   preprintYear: 2018
+  zbmath: "1479.05349"
+  zbmathAuthors:
+    - kolodziejczyk.leszek-aleksander
+    - yokoyama.keita
 kornell2018:
   authors:
     - Andre Kornell
@@ -1551,6 +1986,9 @@ kornell2018:
   arxiv: "1807.01494"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1807.01494
+  zbmathAuthors:
+    - kornell.andre
 towsneryokoyama2018:
   authors:
     - Henry Towsner
@@ -1563,6 +2001,10 @@ towsneryokoyama2018:
   read: pdf-zotero
   doi: 10.1007/s11856-024-2643-8
   preprintYear: 2018
+  zbmath: "1551.05404"
+  zbmathAuthors:
+    - towsner.henry
+    - yokoyama.keita
 eastaugh2018b:
   authors:
     - Benedict Eastaugh
@@ -1572,6 +2014,9 @@ eastaugh2018b:
   arxiv: "1807.10022"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1807.10022
+  zbmathAuthors:
+    - eastaugh.benedict
 das2018:
   authors:
     - Anupam Das
@@ -1595,6 +2040,11 @@ friedmangitmankanovei2018:
   read: pdf-arxiv
   doi: 10.1142/s0219061318500137
   preprintYear: 2018
+  zbmath: "1484.03067"
+  zbmathAuthors:
+    - friedman.sy-david
+    - gitman.victoria
+    - kanovei.vladimir-g
 chongetal2018:
   authors:
     - Chitat Chong
@@ -1609,6 +2059,12 @@ chongetal2018:
   read: pdf-zotero
   doi: 10.1090/proc/14413
   preprintYear: 2018
+  zbmath: "1484.03077"
+  zbmathAuthors:
+    - chong.chi-tat
+    - li.wei.2
+    - wang.wei.9
+    - yang.yue
 kawai2018:
   authors:
     - Tatsuji Kawai
@@ -1618,6 +2074,9 @@ kawai2018:
   arxiv: "1808.08076"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1475.03100"
+  zbmathAuthors:
+    - kawai.tatsuji
 sanders2018d:
   authors:
     - Sam Sanders
@@ -1629,6 +2088,9 @@ sanders2018d:
   read: pdf-arxiv
   doi: 10.1215/00294527-2020-0021
   preprintYear: 2018
+  zbmath: "1486.03023"
+  zbmathAuthors:
+    - sanders.sam
 normannsanders2018b:
   authors:
     - Dag Normann
@@ -1641,6 +2103,10 @@ normannsanders2018b:
   read: pdf-arxiv
   doi: 10.1016/j.apal.2020.102788
   preprintYear: 2018
+  zbmath: "1443.03008"
+  zbmathAuthors:
+    - normann.dag
+    - sanders.sam
 dobrinen2018:
   authors:
     - Natasha Dobrinen
@@ -1650,6 +2116,9 @@ dobrinen2018:
   arxiv: "1808.10227"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1808.10227
+  zbmathAuthors:
+    - dobrinen.natasha-l
 kawamuraetal2018:
   authors:
     - Akitoshi Kawamura
@@ -1676,6 +2145,13 @@ bazhenovetal2018:
   arxiv: "1810.03559"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1461.03041"
+  zbmathAuthors:
+    - bazhenov.n-a
+    - mustafa.manat
+    - san-mauro.luca
+    - sorbi.andrea
+    - yamaleev.mars-m
 bahrami2018:
   authors:
     - Saeideh Bahrami
@@ -1686,6 +2162,9 @@ bahrami2018:
   arxiv: "1811.08514"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1461.03055"
+  zbmathAuthors:
+    - bahrami.saeideh
 patey2019:
   authors:
     - Ludovic Patey
@@ -1696,6 +2175,9 @@ patey2019:
   arxiv: "1901.04388"
   source: arxiv
   read: pdf-zotero
+  zbmath: "1505.03028"
+  zbmathAuthors:
+    - patey.ludovic
 dimitrovetal2019:
   authors:
     - Rumen Dimitrov
@@ -1711,6 +2193,14 @@ dimitrovetal2019:
   arxiv: "1901.04786"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1434.03095"
+  zbmathAuthors:
+    - dimitrov.rumen-d
+    - harizanov.valentina-s
+    - morozov.andrei-sergeevich
+    - shafer.paul
+    - soskova.alexandra-a
+    - vatev.stefan-v
 normannsanders2019:
   authors:
     - Dag Normann
@@ -1736,6 +2226,11 @@ fernandezduqueshaferyokoyama2019:
   read: pdf-arxiv
   doi: 10.1007/s00029-020-00597-z
   preprintYear: 2019
+  zbmath: "1467.03006"
+  zbmathAuthors:
+    - fernandez-duque.david
+    - shafer.paul
+    - yokoyama.keita
 downeyetal2019:
   authors:
     - Rod Downey
@@ -1751,6 +2246,13 @@ downeyetal2019:
   read: pdf-zotero
   doi: 10.1017/jsl.2020.38
   preprintYear: 2019
+  zbmath: "1507.03067"
+  zbmathAuthors:
+    - downey.rodney-graham
+    - greenberg.noam
+    - harrison-trainor.matthew
+    - patey.ludovic
+    - turetsky.daniel-d
 shafer2019:
   authors:
     - Paul Shafer
@@ -1761,6 +2263,9 @@ shafer2019:
   source: arxiv
   read: pdf-arxiv
   doi: 10.3233/com-190262
+  zbmath: "1485.03028"
+  zbmathAuthors:
+    - shafer.paul
 freundrathjen2019:
   authors:
     - Anton Freund
@@ -1772,6 +2277,10 @@ freundrathjen2019:
   arxiv: "1904.04630"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1473.03036"
+  zbmathAuthors:
+    - freund.anton
+    - rathjen.michael
 kiharapauly2019b:
   authors:
     - Takayuki Kihara
@@ -1782,6 +2291,10 @@ kiharapauly2019b:
   arxiv: "1905.03190"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1905.03190
+  zbmathAuthors:
+    - kihara.takayuki
+    - pauly.arno-m
 sanders2019:
   authors:
     - Sam Sanders
@@ -1811,6 +2324,9 @@ freund2019:
   arxiv: "1906.00645"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1462.03008"
+  zbmathAuthors:
+    - freund.anton
 paulyseonziegler2019:
   authors:
     - Arno Pauly
@@ -1833,6 +2349,9 @@ bard2019:
   read: pdf-arxiv
   doi: 10.1090/proc/15159
   preprintYear: 2019
+  zbmath: "1485.03151"
+  zbmathAuthors:
+    - bard.vittorio
 freund2019b:
   authors:
     - Anton Freund
@@ -1843,6 +2362,9 @@ freund2019b:
   arxiv: "1908.00280"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1521.03235"
+  zbmathAuthors:
+    - freund.anton
 sunzhongziegler2019:
   authors:
     - Shu-Ming Sun
@@ -1863,6 +2385,9 @@ sanders2019b:
   arxiv: "1908.05676"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:1908.05676
+  zbmathAuthors:
+    - sanders.sam
 sanders2019c:
   authors:
     - Sam Sanders
@@ -1884,6 +2409,10 @@ beklemishevpakhomov2019:
   read: pdf-arxiv
   doi: 10.1016/j.apal.2022.103093
   preprintYear: 2019
+  zbmath: "1539.03190"
+  zbmathAuthors:
+    - beklemishev.lev-d
+    - pakhomov.fedor-n
 joosten2019:
   authors:
     - Joost J. Joosten
@@ -1894,6 +2423,9 @@ joosten2019:
   arxiv: "1908.11264"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1509.03162"
+  zbmathAuthors:
+    - joosten.joost-j
 bazhenovetal2019:
   authors:
     - Nikolay Bazhenov
@@ -1908,6 +2440,12 @@ bazhenovetal2019:
   read: pdf-arxiv
   doi: 10.1134/s199508022002002x
   preprintYear: 2019
+  zbmath: "1469.03116"
+  zbmathAuthors:
+    - bazhenov.n-a
+    - mustafa.manat
+    - san-mauro.luca
+    - yamaleev.mars-m
 normannsanders2019b:
   authors:
     - Dag Normann
@@ -1920,6 +2458,10 @@ normannsanders2019b:
   read: pdf-arxiv
   doi: 10.1093/logcom/exaa049
   preprintYear: 2019
+  zbmath: "1472.03012"
+  zbmathAuthors:
+    - normann.dag
+    - sanders.sam
 sanders2019d:
   authors:
     - Sam Sanders
@@ -1930,6 +2472,9 @@ sanders2019d:
   arxiv: "1910.07913"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1547.03081"
+  zbmathAuthors:
+    - sanders.sam
 enayatschmerl2019:
   authors:
     - Ali Enayat
@@ -1942,6 +2487,10 @@ enayatschmerl2019:
   read: pdf-arxiv
   doi: 10.1090/proc/15216
   preprintYear: 2019
+  zbmath: "1459.03049"
+  zbmathAuthors:
+    - enayat.ali
+    - schmerl.james-h
 westrick2020b:
   authors:
     - Linda Westrick
@@ -1964,6 +2513,11 @@ freundrathjenweiermann2020:
   read: pdf-arxiv
   doi: 10.1016/j.aim.2022.108265
   preprintYear: 2020
+  zbmath: "1547.03079"
+  zbmathAuthors:
+    - freund.anton
+    - rathjen.michael
+    - weiermann.andreas
 limziegler2020:
   authors:
     - Donghyun Lim
@@ -1975,6 +2529,10 @@ limziegler2020:
   arxiv: "2002.04005"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1551.03061"
+  zbmathAuthors:
+    - lim.donghyun
+    - ziegler.martin
 kihara2020b:
   authors:
     - Takayuki Kihara
@@ -1985,6 +2543,9 @@ kihara2020b:
   arxiv: "2002.10715"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1485.03027"
+  zbmathAuthors:
+    - kihara.takayuki
 uftring2020:
   authors:
     - Patrick Uftring
@@ -1995,6 +2556,9 @@ uftring2020:
   arxiv: "2003.13331"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1529.03224"
+  zbmathAuthors:
+    - uftring.patrick
 spreen2020:
   authors:
     - Dieter Spreen
@@ -2005,6 +2569,9 @@ spreen2020:
   arxiv: "2004.05392"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1547.03300"
+  zbmathAuthors:
+    - spreen.dieter
 fernandezduquegjetajweiermann2020:
   authors:
     - David Fernández-Duque
@@ -2041,6 +2608,11 @@ clemenscoskeykrakoff2020:
   arxiv: "2005.13777"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1578.03137"
+  zbmathAuthors:
+    - clemens.john-daniel
+    - coskey.samuel
+    - krakoff.gianni
 normannsanders2020:
   authors:
     - Dag Normann
@@ -2053,6 +2625,10 @@ normannsanders2020:
   read: pdf-arxiv
   doi: 10.1093/logcom/exaa080
   preprintYear: 2020
+  zbmath: "1509.03037"
+  zbmathAuthors:
+    - normann.dag
+    - sanders.sam
 liu2020:
   authors:
     - Lu Liu
@@ -2074,6 +2650,11 @@ rosemaurosorbi2020:
   source: arxiv
   read: pdf-arxiv
   doi: 10.1002/malq.202000021
+  zbmath: "1521.03128"
+  zbmathAuthors:
+    - delle-rose.valentino
+    - san-mauro.luca
+    - sorbi.andrea
 freund2020:
   authors:
     - Anton Freund
@@ -2084,6 +2665,9 @@ freund2020:
   arxiv: "2006.08953"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1521.03020"
+  zbmathAuthors:
+    - freund.anton
 normannsanders2020b:
   authors:
     - Dag Normann
@@ -2103,6 +2687,9 @@ mummert2020:
   arxiv: "2008.12694"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2008.12694
+  zbmathAuthors:
+    - mummert.carl
 fernandezduquereyes2020:
   authors:
     - David Fernández-Duque
@@ -2115,6 +2702,10 @@ fernandezduquereyes2020:
   read: pdf-arxiv
   doi: 10.1016/j.ic.2021.104758
   preprintYear: 2020
+  zbmath: "1553.03178"
+  zbmathAuthors:
+    - fernandez-duque.david
+    - hermo-reyes.eduardo
 dimitrovetal2020:
   authors:
     - Rumen Dimitrov
@@ -2131,6 +2722,14 @@ dimitrovetal2020:
   read: pdf-arxiv
   doi: 10.1017/jsl.2023.14
   preprintYear: 2020
+  zbmath: "1581.03038"
+  zbmathAuthors:
+    - dimitrov.rumen-d
+    - harizanov.valentina-s
+    - morozov.andrei-sergeevich
+    - shafer.paul
+    - soskova.alexandra-a
+    - vatev.stefan-v
 ngtavanayang2020:
   authors:
     - Keng Meng Ng
@@ -2144,6 +2743,11 @@ ngtavanayang2020:
   read: pdf-arxiv
   doi: 10.1093/logcom/exab042
   preprintYear: 2020
+  zbmath: "1547.03297"
+  zbmathAuthors:
+    - ng.kengmeng
+    - tavana.nazanin-r
+    - yang.yue
 bochebockdeppe2020:
   authors:
     - Holger Boche
@@ -2175,6 +2779,9 @@ sanders2020:
   read: pdf-arxiv
   doi: 10.3233/com-210313
   preprintYear: 2020
+  zbmath: "1539.03042"
+  zbmathAuthors:
+    - sanders.sam
 koodziejczykkowalikyokoyama2020:
   authors:
     - Leszek Aleksander Kołodziejczyk
@@ -2188,6 +2795,11 @@ koodziejczykkowalikyokoyama2020:
   read: pdf-zotero
   doi: 10.1017/jsl.2022.46
   preprintYear: 2020
+  zbmath: "1578.03079"
+  zbmathAuthors:
+    - kolodziejczyk.leszek-aleksander
+    - kowalik.katarzyna-w
+    - yokoyama.keita
 sanders2020b:
   authors:
     - Sam Sanders
@@ -2197,6 +2809,9 @@ sanders2020b:
   arxiv: "2011.02915"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2011.02915
+  zbmathAuthors:
+    - sanders.sam
 barrett2020:
   authors:
     - Jordan Mitchell Barrett
@@ -2206,6 +2821,9 @@ barrett2020:
   arxiv: "2011.13060"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2011.13060
+  zbmathAuthors:
+    - barrett.jordan-mitchell
 freund2020b:
   authors:
     - Anton Freund
@@ -2217,6 +2835,9 @@ freund2020b:
   read: pdf-arxiv
   doi: 10.1007/s00029-021-00748-w
   preprintYear: 2020
+  zbmath: "1547.03078"
+  zbmathAuthors:
+    - freund.anton
 berarduccieleftherioumamino2021:
   authors:
     - Alessandro Berarducci
@@ -2239,6 +2860,10 @@ simpsonyokoyama2021:
   arxiv: "2101.00636"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2101.00636
+  zbmathAuthors:
+    - simpson.stephen-g
+    - yokoyama.keita
 moschovakis2021:
   authors:
     - Joan Rand Moschovakis
@@ -2249,6 +2874,9 @@ moschovakis2021:
   source: arxiv
   read: pdf-arxiv
   doi: 10.1215/00294527-2021-0034
+  zbmath: "1529.03271"
+  zbmathAuthors:
+    - moschovakis.joan-rand
 viale2021:
   authors:
     - Matteo Viale
@@ -2258,6 +2886,9 @@ viale2021:
   arxiv: "2101.07573"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2101.07573
+  zbmathAuthors:
+    - viale.matteo
 fioricaronesmarcone2021b:
   authors:
     - Marta Fiori-Carones
@@ -2269,6 +2900,10 @@ fioricaronesmarcone2021b:
   arxiv: "2101.09111"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1553.05131"
+  zbmathAuthors:
+    - fiori-carones.marta
+    - marcone.alberto
 moschovakis2021b:
   authors:
     - Joan Rand Moschovakis
@@ -2278,6 +2913,9 @@ moschovakis2021b:
   arxiv: "2101.10313"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2101.10313
+  zbmathAuthors:
+    - moschovakis.joan-rand
 normannsanders2021:
   authors:
     - Dag Normann
@@ -2299,6 +2937,10 @@ pakhomovwalsh2021:
   source: arxiv
   read: pdf-arxiv
   doi: 10.1142/s0219061322500015
+  zbmath: "1578.03180"
+  zbmathAuthors:
+    - pakhomov.fedor-n
+    - walsh.james-a
 barmpaliaswang2021:
   authors:
     - George Barmpalias
@@ -2322,6 +2964,11 @@ barrettdowneygreenberg2021:
   read: pdf-arxiv
   doi: 10.1090/bproc/111
   preprintYear: 2021
+  zbmath: "1547.03075"
+  zbmathAuthors:
+    - barrett.jordan-mitchell
+    - downey.rodney-graham
+    - greenberg.noam
 fioricaroneskoodziejczykkowalik2021:
   authors:
     - Marta Fiori-Carones
@@ -2334,6 +2981,11 @@ fioricaroneskoodziejczykkowalik2021:
   source: arxiv
   read: pdf-zotero
   doi: 10.1016/j.apal.2021.103028
+  zbmath: "1490.03012"
+  zbmathAuthors:
+    - fiori-carones.marta
+    - kolodziejczyk.leszek-aleksander
+    - kowalik.katarzyna-w
 schrittesser2021:
   authors:
     - David Schrittesser
@@ -2344,6 +2996,9 @@ schrittesser2021:
   arxiv: "2105.11318"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1580.03022"
+  zbmathAuthors:
+    - schrittesser.david
 andrewsbelinmauro2021:
   authors:
     - Uri Andrews
@@ -2356,6 +3011,11 @@ andrewsbelinmauro2021:
   arxiv: "2105.12534"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1531.81056"
+  zbmathAuthors:
+    - andrews.uri
+    - belin.daniel-f
+    - san-mauro.luca
 sanders2021:
   authors:
     - Sam Sanders
@@ -2365,6 +3025,9 @@ sanders2021:
   arxiv: "2106.05602"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1566.03049"
+  zbmathAuthors:
+    - sanders.sam
 hirschfeldtcarlgjockuschschupp2021:
   authors:
     - Denis R. Hirschfeldt
@@ -2398,6 +3061,10 @@ normannsanders2021b:
   arxiv: "2109.01352"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1541.03125"
+  zbmathAuthors:
+    - normann.dag
+    - sanders.sam
 barrett2021:
   authors:
     - Jordan Mitchell Barrett
@@ -2407,6 +3074,9 @@ barrett2021:
   arxiv: "2109.02037"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2109.02037
+  zbmathAuthors:
+    - barrett.jordan-mitchell
 bazhenovetal2021:
   authors:
     - Nikolay Bazhenov
@@ -2420,6 +3090,12 @@ bazhenovetal2021:
   arxiv: "2109.04055"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1560.03135"
+  zbmathAuthors:
+    - bazhenov.n-a
+    - ng.kengmeng
+    - san-mauro.luca
+    - sorbi.andrea
 walsh2021:
   authors:
     - James Walsh
@@ -2442,6 +3118,10 @@ carcassiaidala2021:
   arxiv: "2111.09107"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1486.00017"
+  zbmathAuthors:
+    - carcassi.gabriele
+    - aidala.christine-a
 ackermanetal2021:
   authors:
     - Nathanael Ackerman
@@ -2467,6 +3147,10 @@ freundrathjen2021:
   read: pdf-arxiv
   doi: 10.1007/s00029-023-00879-2
   preprintYear: 2021
+  zbmath: "1536.03005"
+  zbmathAuthors:
+    - freund.anton
+    - rathjen.michael
 freund2021:
   authors:
     - Anton Freund
@@ -2477,6 +3161,9 @@ freund2021:
   arxiv: "2112.08727"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2112.08727
+  zbmathAuthors:
+    - freund.anton
 fioricaronesetal2021:
   authors:
     - Marta Fiori-Carones
@@ -2500,6 +3187,9 @@ kihara2022b:
   arxiv: "2201.12472"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2201.12472
+  zbmathAuthors:
+    - kihara.takayuki
 jagerrathjen2022:
   authors:
     - Gerhard Jäger
@@ -2529,6 +3219,9 @@ uftring2022:
   arxiv: "2202.05611"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1533.03009"
+  zbmathAuthors:
+    - uftring.patrick
 sanders2022:
   authors:
     - Sam Sanders
@@ -2538,6 +3231,9 @@ sanders2022:
   arxiv: "2203.05292"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1566.03050"
+  zbmathAuthors:
+    - sanders.sam
 hirschfeldtreitzes2022:
   authors:
     - Denis R. Hirschfeldt
@@ -2549,6 +3245,10 @@ hirschfeldtreitzes2022:
   source: arxiv
   read: pdf-arxiv
   doi: 10.1215/00294527-2022-0027
+  zbmath: "1560.03033"
+  zbmathAuthors:
+    - hirschfeldt.denis-r
+    - reitzes.sarah-c
 jeonmatthews2022:
   authors:
     - Hanul Jeon
@@ -2569,6 +3269,9 @@ petrakis2022:
   arxiv: "2204.11298"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2204.11298
+  zbmathAuthors:
+    - petrakis.iosif
 freund2022:
   authors:
     - Anton Freund
@@ -2580,17 +3283,24 @@ freund2022:
   read: pdf-arxiv
   doi: 10.1007/s11083-024-09658-w
   preprintYear: 2022
+  zbmath: "1561.03026"
+  zbmathAuthors:
+    - freund.anton
 bochepohl2022:
   authors:
     - Holger Boche
     - Volker Pohl
   title: On non-detectability of non-computability and the degree of non-computability of solutions of circuit and wave equations on digital computers
   year: 2022
-  venue: arXiv preprint
-  doi: 10.1109/TSP.2021.3102826
+  venue: IEEE Transactions on Information Theory (2022)
+  doi: 10.1109/tit.2022.3172837
   arxiv: "2205.12626"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1505.03093"
+  zbmathAuthors:
+    - boche.holger
+    - pohl.volker
 cervellegaudelierpatey2022:
   authors:
     - Julien Cervelle
@@ -2615,6 +3325,9 @@ freund2022b:
   read: pdf-zotero
   doi: 10.1090/tran/8966
   preprintYear: 2022
+  zbmath: "1548.03019"
+  zbmathAuthors:
+    - freund.anton
 carluccimainardi2022:
   authors:
     - Lorenzo Carlucci
@@ -2626,6 +3339,10 @@ carluccimainardi2022:
   arxiv: "2207.08554"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1543.03047"
+  zbmathAuthors:
+    - carlucci.lorenzo
+    - mainardi.leonardo.1
 frittaion2022:
   authors:
     - Emanuele Frittaion
@@ -2636,6 +3353,9 @@ frittaion2022:
   source: arxiv
   read: pdf-arxiv
   doi: 10.1017/bsl.2022.23
+  zbmath: "1521.03236"
+  zbmathAuthors:
+    - frittaion.emanuele
 dauriacetal2022:
   authors:
     - Paul-Elliot Anglès d'Auriac
@@ -2648,6 +3368,12 @@ dauriacetal2022:
   arxiv: "2207.12828"
   source: arxiv
   read: pdf-zotero
+  zbmath: "1579.03024"
+  zbmathAuthors:
+    - angles-dauriac.paul-elliot
+    - liu.lu.1
+    - mignoty.bastien
+    - patey.ludovic
 freunduftring2022:
   authors:
     - Anton Freund
@@ -2660,6 +3386,10 @@ freunduftring2022:
   read: pdf-arxiv
   doi: 10.1098/rsta.2022.0016
   preprintYear: 2022
+  zbmath: arXiv:2208.00209
+  zbmathAuthors:
+    - freund.anton
+    - uftring.patrick
 sanders2022b:
   authors:
     - Sam Sanders
@@ -2689,6 +3419,9 @@ batyrshin2022:
   arxiv: "2209.00108"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2209.00108
+  zbmathAuthors:
+    - batyrshin.ilnur-i
 pachecoyokoyama2022:
   authors:
     - Leonardo Pacheco
@@ -2699,6 +3432,10 @@ pachecoyokoyama2022:
   arxiv: "2209.04082"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2209.04082
+  zbmathAuthors:
+    - pacheco.leonardo
+    - yokoyama.keita
 dayetal2022:
   authors:
     - Adam Day
@@ -2723,6 +3460,9 @@ arai2022:
   source: arxiv
   read: pdf-arxiv
   doi: 10.1007/s00153-022-00840-8
+  zbmath: "1523.03026"
+  zbmathAuthors:
+    - arai.toshiyasu
 normannsanders2022:
   authors:
     - Dag Normann
@@ -2779,6 +3519,9 @@ tzouvaras2023:
   arxiv: "2303.11741"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1521.03125"
+  zbmathAuthors:
+    - tzouvaras.athanassios
 freundpakhomovsolda2023:
   authors:
     - Anton Freund
@@ -2839,6 +3582,12 @@ freundetal2023:
   read: pdf-zotero
   doi: 10.1215/00294527-2024-0036
   preprintYear: 2023
+  zbmath: "1571.03005"
+  zbmathAuthors:
+    - freund.anton
+    - marcone.alberto
+    - pakhomov.fedor-n
+    - solda.giovanni
 rosemaurosorbi2023:
   authors:
     - Valentino Delle Rose
@@ -2851,6 +3600,11 @@ rosemaurosorbi2023:
   source: arxiv
   read: pdf-arxiv
   doi: 10.1142/s0218196723500339
+  zbmath: "1579.03077"
+  zbmathAuthors:
+    - delle-rose.valentino
+    - san-mauro.luca
+    - sorbi.andrea
 harrisontrainorliulutz2023:
   authors:
     - Matthew Harrison-Trainor
@@ -2874,6 +3628,9 @@ eastaugh2023:
   arxiv: "2306.06471"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1586.03014"
+  zbmathAuthors:
+    - eastaugh.benedict
 dasmelgaard2023:
   authors:
     - Anupam Das
@@ -2884,6 +3641,10 @@ dasmelgaard2023:
   arxiv: "2306.08535"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1548.03051"
+  zbmathAuthors:
+    - das.anupam
+    - melgaard.lukas
 carney2023:
   authors:
     - Mark Carney
@@ -2893,6 +3654,9 @@ carney2023:
   arxiv: "2307.13075"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2307.13075
+  zbmathAuthors:
+    - carney.mark
 barnesgohshore2023:
   authors:
     - James S. Barnes
@@ -3016,6 +3780,11 @@ houeroupateyyokoyama2024:
   arxiv: "2402.11616"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1581.03012"
+  zbmathAuthors:
+    - le-houerou.quentin
+    - patey.ludovic
+    - yokoyama.keita
 andrewsetal2024:
   authors:
     - Uri Andrews
@@ -3030,6 +3799,13 @@ andrewsetal2024:
   arxiv: "2402.13163"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2402.13163
+  zbmathAuthors:
+    - andrews.uri
+    - lempp.steffen
+    - marcone.alberto
+    - miller.joseph-s
+    - valenti.manlio
 normannsanders2024:
   authors:
     - Dag Normann
@@ -3053,6 +3829,11 @@ neumannpaulypradic2024:
   arxiv: "2403.13975"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2403.13975
+  zbmathAuthors:
+    - neumann.eike
+    - pauly.arno-m
+    - pradic.cecilia
 towsner2024:
   authors:
     - Henry Towsner
@@ -3062,6 +3843,9 @@ towsner2024:
   arxiv: "2403.17922"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2403.17922
+  zbmathAuthors:
+    - towsner.henry
 hayashi2024:
   authors:
     - Daichi Hayashi
@@ -3093,6 +3877,9 @@ freund2024:
   read: pdf-arxiv
   doi: 10.1142/s0219061325500102
   preprintYear: 2024
+  zbmath: arXiv:2404.06872
+  zbmathAuthors:
+    - freund.anton
 holzlng2024:
   authors:
     - Rupert Hölzl
@@ -3135,6 +3922,9 @@ kulshreshtha2024:
   arxiv: "2406.01336"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2406.01336
+  zbmathAuthors:
+    - kulshreshtha.dhruv
 gonzalez2024:
   authors:
     - David Gonzalez
@@ -3144,6 +3934,9 @@ gonzalez2024:
   arxiv: "2406.01840"
   source: arxiv
   read: pdf-arxiv
+  zbmath: "1578.03078"
+  zbmathAuthors:
+    - gonzalez.david-gonzalez
 normannsanders2024b:
   authors:
     - Dag Normann
@@ -3154,6 +3947,10 @@ normannsanders2024b:
   arxiv: "2406.10716"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2406.10716
+  zbmathAuthors:
+    - normann.dag
+    - sanders.sam
 freund2024b:
   authors:
     - Anton Freund
@@ -3198,6 +3995,9 @@ pauly2024:
   arxiv: "2407.03722"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2407.03722
+  zbmathAuthors:
+    - pauly.arno-m
 suzuki2024:
   authors:
     - Yudai Suzuki
@@ -3208,6 +4008,9 @@ suzuki2024:
   arxiv: "2407.13504"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2407.13504
+  zbmathAuthors:
+    - suzuki.yudai
 belangeretal2024:
   authors:
     - David Belanger
@@ -3221,6 +4024,12 @@ belangeretal2024:
   arxiv: "2408.09796"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2408.09796
+  zbmathAuthors:
+    - belanger.david-r
+    - chong.chi-tat
+    - holzl.rupert
+    - stephan.frank
 pradic2024:
   authors:
     - Cécilia Pradic
@@ -3240,6 +4049,9 @@ sanders2024c:
   arxiv: "2409.04562"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2409.04562
+  zbmathAuthors:
+    - sanders.sam
 towsnerwalsh2024:
   authors:
     - Henry Towsner
@@ -3275,6 +4087,11 @@ fuchinogappoparente2024:
   arxiv: "2410.15384"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2410.15384
+  zbmathAuthors:
+    - fuchino.sakae
+    - gappo.takehiko
+    - parente.francesco
 freunduftring2024:
   authors:
     - Anton Freund
@@ -3287,6 +4104,10 @@ freunduftring2024:
   read: pdf-zotero
   doi: 10.4171/dm/1049
   preprintYear: 2024
+  zbmath: arXiv:2410.20591
+  zbmathAuthors:
+    - freund.anton
+    - uftring.patrick
 genovesi2024:
   authors:
     - Giorgio G. Genovesi
@@ -3297,6 +4118,9 @@ genovesi2024:
   arxiv: "2410.22227"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2410.22227
+  zbmathAuthors:
+    - genovesi.giorgio-g
 atseriastzameret2024:
   authors:
     - Albert Atserias
@@ -3307,6 +4131,10 @@ atseriastzameret2024:
   arxiv: "2411.07966"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2411.07966
+  zbmathAuthors:
+    - atserias.albert
+    - tzameret.iddo
 neri2024:
   authors:
     - Morenikeji Neri
@@ -3329,6 +4157,11 @@ dzhafarovsolomonvolpi2024:
   arxiv: "2411.16950"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2411.16950
+  zbmathAuthors:
+    - dzhafarov.damir-d
+    - solomon.reed
+    - volpi.andrea
 carl2024:
   authors:
     - Merlin Carl
@@ -3338,6 +4171,9 @@ carl2024:
   arxiv: "2411.19386"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2411.19386
+  zbmathAuthors:
+    - carl.merlin
 carluccietal2024:
   authors:
     - Lorenzo Carlucci
@@ -3351,6 +4187,12 @@ carluccietal2024:
   arxiv: "2412.11598"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2412.11598
+  zbmathAuthors:
+    - carlucci.lorenzo
+    - gjetaj.oriola
+    - le-houerou.quentin
+    - patey.ludovic
 aguilerafreundweiermann2024:
   authors:
     - Juan P. Aguilera
@@ -3386,6 +4228,9 @@ hughes2025:
   arxiv: "2501.09566"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2501.09566
+  zbmathAuthors:
+    - hughes.noah-a
 uftring2025:
   authors:
     - Patrick Uftring
@@ -3397,6 +4242,9 @@ uftring2025:
   read: pdf-arxiv
   doi: 10.1142/s0219061326500078
   preprintYear: 2025
+  zbmath: arXiv:2502.03978
+  zbmathAuthors:
+    - uftring.patrick
 deansanders2025:
   authors:
     - Walter Dean
@@ -3442,6 +4290,10 @@ mullerwciso2025:
   arxiv: "2505.16628"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2505.16628
+  zbmathAuthors:
+    - muller.sandra
+    - wcislo.bartosz
 enayat2025:
   authors:
     - Ali Enayat
@@ -3451,6 +4303,9 @@ enayat2025:
   arxiv: "2505.23998"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2505.23998
+  zbmathAuthors:
+    - enayat.ali
 dooley2025:
   authors:
     - Gavin Dooley
@@ -3460,6 +4315,9 @@ dooley2025:
   arxiv: "2506.20620"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2506.20620
+  zbmathAuthors:
+    - dooley.gavin
 curzimelgaard2025:
   authors:
     - Gianluca Curzi
@@ -3480,6 +4338,10 @@ delapogonzalez2025:
   arxiv: "2507.18564"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2507.18564
+  zbmathAuthors:
+    - delapo.andrew
+    - gonzalez.david-gonzalez
 uftring2025b:
   authors:
     - Patrick Uftring
@@ -3489,6 +4351,9 @@ uftring2025b:
   arxiv: "2507.21877"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2507.21877
+  zbmathAuthors:
+    - uftring.patrick
 chenmeadows2025:
   authors:
     - Jason Chen
@@ -3499,6 +4364,10 @@ chenmeadows2025:
   arxiv: "2508.03956"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2508.03956
+  zbmathAuthors:
+    - chen.jason-jen-yen
+    - meadows.toby
 mimounipatey2025:
   authors:
     - Ahmed Mimouni
@@ -3509,6 +4378,10 @@ mimounipatey2025:
   arxiv: "2508.15597"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2508.15597
+  zbmathAuthors:
+    - mimouni.ahmed
+    - patey.ludovic
 clarkedoane2025:
   authors:
     - Justin Clarke-Doane
@@ -3527,6 +4400,9 @@ carl2025:
   arxiv: "2509.02766"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2509.02766
+  zbmathAuthors:
+    - carl.merlin
 kowalik2025:
   authors:
     - Katarzyna W. Kowalik
@@ -3538,6 +4414,9 @@ kowalik2025:
   read: pdf-arxiv
   doi: 10.1090/tran/9827
   preprintYear: 2025
+  zbmath: arXiv:2510.00323
+  zbmathAuthors:
+    - kowalik.katarzyna-w
 brattkarauzy2025c:
   authors:
     - Vasco Brattka
@@ -3560,6 +4439,10 @@ chongwong2025:
   arxiv: "2510.18490"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2510.18490
+  zbmathAuthors:
+    - chong.chi-tat
+    - wong.tin-lok
 buriolaweiermann2025:
   authors:
     - Gabriele Buriola
@@ -3572,6 +4455,10 @@ buriolaweiermann2025:
   read: pdf-arxiv
   doi: 10.1017/bsl.2026.10175
   preprintYear: 2025
+  zbmath: arXiv:2511.11297
+  zbmathAuthors:
+    - buriola.gabriele
+    - weiermann.andreas
 pakhomovsolda2025:
   authors:
     - Fedor Pakhomov
@@ -3582,6 +4469,10 @@ pakhomovsolda2025:
   arxiv: "2512.07685"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2512.07685
+  zbmathAuthors:
+    - pakhomov.fedor-n
+    - solda.giovanni
 marconeosso2026:
   authors:
     - Alberto Marcone
@@ -3592,6 +4483,10 @@ marconeosso2026:
   arxiv: "2601.04001"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2601.04001
+  zbmathAuthors:
+    - marcone.alberto
+    - osso.gian-marco
 bochepohlpoor2026:
   authors:
     - Holger Boche
@@ -3615,6 +4510,10 @@ ikariyokoyama2026:
   arxiv: "2601.07569"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2601.07569
+  zbmathAuthors:
+    - ikari.hiroyuki
+    - yokoyama.keita
 kirstzeng2026:
   authors:
     - Dominik Kirst
@@ -3636,6 +4535,11 @@ horittermauro2026:
   arxiv: "2601.13005"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2601.13005
+  zbmathAuthors:
+    - ho.meng-che
+    - ritter.martin
+    - san-mauro.luca
 pradicprice2026:
   authors:
     - Cécilia Pradic
@@ -3646,6 +4550,10 @@ pradicprice2026:
   arxiv: "2601.15420"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2601.15420
+  zbmathAuthors:
+    - pradic.cecilia
+    - price.ian-m
 normannsanders2026:
   authors:
     - Dag Normann
@@ -3656,6 +4564,10 @@ normannsanders2026:
   arxiv: "2602.05558"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2602.05558
+  zbmathAuthors:
+    - normann.dag
+    - sanders.sam
 sanders2026:
   authors:
     - Sam Sanders
@@ -3665,6 +4577,9 @@ sanders2026:
   arxiv: "2602.06728"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2602.06728
+  zbmathAuthors:
+    - sanders.sam
 chenetal2026:
   authors:
     - Lijie Chen
@@ -3677,6 +4592,12 @@ chenetal2026:
   arxiv: "2602.09302"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2602.09302
+  zbmathAuthors:
+    - chen.lijie
+    - li.jiatu
+    - oliveira.igor-carboni
+    - williams.ryan
 houeroupatey2026:
   authors:
     - Quentin Le Houérou
@@ -3687,6 +4608,10 @@ houeroupatey2026:
   arxiv: "2602.11906"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2602.11906
+  zbmathAuthors:
+    - le-houerou.quentin
+    - patey.ludovic
 kohlenbach2026:
   authors:
     - Ulrich Kohlenbach
@@ -3707,6 +4632,10 @@ brattkasorg2026:
   arxiv: "2603.16802"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2603.16802
+  zbmathAuthors:
+    - brattka.vasco
+    - sorg.christopher
 marconevolpi2026:
   authors:
     - Alberto Marcone
@@ -3718,6 +4647,10 @@ marconevolpi2026:
   source: arxiv
   read: pdf-arxiv
   doi: 10.1017/jsl.2026.10213
+  zbmath: arXiv:2603.18759
+  zbmathAuthors:
+    - marcone.alberto
+    - volpi.andrea
 sorg2026:
   authors:
     - Christopher Sorg
@@ -3727,6 +4660,9 @@ sorg2026:
   arxiv: "2603.18955"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2603.18955
+  zbmathAuthors:
+    - sorg.christopher
 fernandezduquemorreelweiermann2026:
   authors:
     - David Fernández-Duque
@@ -3749,6 +4685,11 @@ aguilerakouptchinskyyokoyama2026:
   arxiv: "2603.22503"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2603.22503
+  zbmathAuthors:
+    - aguilera.juan-pablo
+    - kouptchinsky.thibaut
+    - yokoyama.keita
 carluccivolpizdanowski2026:
   authors:
     - Lorenzo Carlucci
@@ -3760,6 +4701,11 @@ carluccivolpizdanowski2026:
   arxiv: "2603.22579"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2603.22579
+  zbmathAuthors:
+    - carlucci.lorenzo
+    - volpi.andrea
+    - zdanowski.konrad
 cholak2026:
   authors:
     - Peter Cholak
@@ -3770,6 +4716,9 @@ cholak2026:
   source: arxiv
   read: pdf-arxiv
   doi: 10.1017/bsl.2026.10166
+  zbmath: arXiv:2603.23704
+  zbmathAuthors:
+    - cholak.peter-a
 dimitrovetal2026:
   authors:
     - Rumen Dimitrov
@@ -3782,6 +4731,12 @@ dimitrovetal2026:
   arxiv: "2604.09965"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2604.09965
+  zbmathAuthors:
+    - dimitrov.rumen-d
+    - harizanov.valentina-s
+    - klatt.henry-j
+    - srinivasan.keshav
 carluccigjetaj2026:
   authors:
     - Lorenzo Carlucci
@@ -3802,6 +4757,10 @@ bourneznunez2026:
   arxiv: "2605.07128"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2605.07128
+  zbmathAuthors:
+    - bournez.olivier
+    - nunez.alonso
 kanekoyokoyama2026:
   authors:
     - Yuzuki Kaneko
@@ -3812,6 +4771,10 @@ kanekoyokoyama2026:
   arxiv: "2605.15052"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2605.15052
+  zbmathAuthors:
+    - kaneko.yuzuki
+    - yokoyama.keita
 freundpischkeuftring2026:
   authors:
     - Anton Freund
@@ -3823,6 +4786,11 @@ freundpischkeuftring2026:
   arxiv: "2605.15151"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2605.15151
+  zbmathAuthors:
+    - freund.anton
+    - pischke.nicholas
+    - uftring.patrick
 kiharang2026:
   authors:
     - Takayuki Kihara
@@ -3842,6 +4810,9 @@ rauzy2026:
   arxiv: "2605.30138"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2605.30138
+  zbmathAuthors:
+    - rauzy.emmanuel
 sanderstaranovsky2026:
   authors:
     - Sam Sanders
@@ -3852,6 +4823,10 @@ sanderstaranovsky2026:
   arxiv: "2606.01420"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2606.01420
+  zbmathAuthors:
+    - sanders.sam
+    - taranovsky.dmytro
 sorg2026b:
   authors:
     - Christopher Sorg
@@ -3861,6 +4836,9 @@ sorg2026b:
   arxiv: "2606.13250"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2606.13250
+  zbmathAuthors:
+    - sorg.christopher
 suzukiyokoyama2026:
   authors:
     - Yudai Suzuki
@@ -3871,6 +4849,10 @@ suzukiyokoyama2026:
   arxiv: "2606.29802"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2606.29802
+  zbmathAuthors:
+    - suzuki.yudai
+    - yokoyama.keita
 cholakdobrinentowsner2026:
   authors:
     - Peter Cholak
@@ -3882,6 +4864,11 @@ cholakdobrinentowsner2026:
   arxiv: "2606.30885"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2606.30885
+  zbmathAuthors:
+    - cholak.peter-a
+    - dobrinen.natasha-l
+    - towsner.henry
 takedayokoyama2026:
   authors:
     - Yuto Takeda
@@ -3892,6 +4879,10 @@ takedayokoyama2026:
   arxiv: "2607.01970"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2607.01970
+  zbmathAuthors:
+    - takeda.yuto
+    - yokoyama.keita
 downeylemppscott2026:
   authors:
     - Rodney G. Downey
@@ -3903,6 +4894,11 @@ downeylemppscott2026:
   arxiv: "2607.02870"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2607.02870
+  zbmathAuthors:
+    - downey.rodney-graham
+    - lempp.steffen
+    - scott.isabella
 kajikawaetal2026:
   authors:
     - Akihito Kajikawa
@@ -3915,6 +4911,12 @@ kajikawaetal2026:
   arxiv: "2608.02133"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2608.02133
+  zbmathAuthors:
+    - kajikawa.akihito
+    - kaku.masamori
+    - kihara.takayuki
+    - nakata.satoshi
 ichikawa2026:
   authors:
     - Koshiro Ichikawa
@@ -3924,6 +4926,9 @@ ichikawa2026:
   arxiv: "2608.03238"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2608.03238
+  zbmathAuthors:
+    - ichikawa.koshiro
 gonzalezshafer2026:
   authors:
     - David Gonzalez
@@ -3934,6 +4939,10 @@ gonzalezshafer2026:
   arxiv: "2608.04654"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2608.04654
+  zbmathAuthors:
+    - gonzalez.david-gonzalez
+    - shafer.paul
 pakhomov2026:
   authors:
     - Fedor Pakhomov
@@ -3943,6 +4952,9 @@ pakhomov2026:
   arxiv: "2608.07050"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2608.07050
+  zbmathAuthors:
+    - pakhomov.fedor-n
 takeda2026:
   authors:
     - Yuto Takeda
@@ -3952,6 +4964,9 @@ takeda2026:
   arxiv: "2608.22822"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2608.22822
+  zbmathAuthors:
+    - takeda.yuto
 marconeosso2026b:
   authors:
     - Alberto Marcone
@@ -3962,6 +4977,10 @@ marconeosso2026b:
   arxiv: "2608.24716"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2608.24716
+  zbmathAuthors:
+    - marcone.alberto
+    - osso.gian-marco
 miyatayokoyama2026:
   authors:
     - Yamato Miyata
@@ -3972,6 +4991,10 @@ miyatayokoyama2026:
   arxiv: "2608.25339"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2608.25339
+  zbmathAuthors:
+    - miyata.yamato
+    - yokoyama.keita
 kolar2026:
   authors:
     - Martin Kolář
@@ -3981,6 +5004,9 @@ kolar2026:
   arxiv: "2608.28813"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2608.28813
+  zbmathAuthors:
+    - kolar.martin
 astoretal2026:
   authors:
     - Eric P. Astor
@@ -3996,6 +5022,15 @@ astoretal2026:
   arxiv: "2609.00884"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2609.00884
+  zbmathAuthors:
+    - astor.eric-p
+    - bienvenu.laurent
+    - dzhafarov.damir-d
+    - patey.ludovic
+    - shafer.paul
+    - solomon.reed
+    - westrick.linda-brown
 kawai2026:
   authors:
     - Tatsuji Kawai
@@ -4005,6 +5040,9 @@ kawai2026:
   arxiv: "2609.04644"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2609.04644
+  zbmathAuthors:
+    - kawai.tatsuji
 pshenitsyn2026:
   authors:
     - Tikhon Pshenitsyn
@@ -4014,6 +5052,9 @@ pshenitsyn2026:
   arxiv: "2609.16173"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2609.16173
+  zbmathAuthors:
+    - pshenitsyn.tikhon
 sanders2026b:
   authors:
     - Sam Sanders
@@ -4023,6 +5064,9 @@ sanders2026b:
   arxiv: "2609.18371"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2609.18371
+  zbmathAuthors:
+    - sanders.sam
 sorg2026c:
   authors:
     - Christopher Sorg
@@ -4032,6 +5076,9 @@ sorg2026c:
   arxiv: "2609.20378"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2609.20378
+  zbmathAuthors:
+    - sorg.christopher
 eastaugh2026:
   authors:
     - Benedict Eastaugh
@@ -4041,6 +5088,9 @@ eastaugh2026:
   arxiv: "2609.25183"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2609.25183
+  zbmathAuthors:
+    - eastaugh.benedict
 kawai2026b:
   authors:
     - Tatsuji Kawai
@@ -4050,6 +5100,9 @@ kawai2026b:
   arxiv: "2610.12964"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2610.12964
+  zbmathAuthors:
+    - kawai.tatsuji
 buriolaetal2026:
   authors:
     - Gabriele Buriola
@@ -4062,6 +5115,12 @@ buriolaetal2026:
   arxiv: "2610.26336"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2610.26336
+  zbmathAuthors:
+    - buriola.gabriele
+    - cozzi.giacomo
+    - dammrau.antonia
+    - freund.anton
 bresolinmamino2026:
   authors:
     - Lorenzo Bresolin
@@ -4072,3 +5131,7 @@ bresolinmamino2026:
   arxiv: "2610.30433"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2610.30433
+  zbmathAuthors:
+    - bresolin.lorenzo
+    - mamino.marcello

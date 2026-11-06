@@ -9,6 +9,10 @@ brattkagherardi2011:
   doi: 10.2178/jsl/1294170993
   arxiv: '0905.4679'
   read: pdf-zotero
+  zbmath: "1222.03071"
+  zbmathAuthors:
+    - brattka.vasco
+    - gherardi.guido
 brattkagherardi2011b:
   authors: [ Vasco Brattka, Guido Gherardi ]
   title: Effective choice and boundedness principles in computable analysis
@@ -17,6 +21,10 @@ brattkagherardi2011b:
   doi: 10.2178/bsl/1294186663
   arxiv: '0905.4685'
   read: pdf-arxiv
+  zbmath: "1226.03062"
+  zbmathAuthors:
+    - brattka.vasco
+    - gherardi.guido
 brattkadebrechtpauly2012:
   authors: [ Vasco Brattka, Matthew de Brecht, Arno Pauly ]
   title: Closed choice and a uniform low basis theorem
@@ -25,6 +33,11 @@ brattkadebrechtpauly2012:
   doi: 10.1016/j.apal.2011.12.020
   arxiv: '1002.2800'
   read: pdf-zotero
+  zbmath: "1251.03082"
+  zbmathAuthors:
+    - brattka.vasco
+    - de-brecht.matthew
+    - pauly.arno-m
 brattkagherardimarcone2012:
   authors: [ Vasco Brattka, Guido Gherardi, Alberto Marcone ]
   title: The Bolzano–Weierstrass theorem is the jump of weak König's lemma
@@ -33,6 +46,11 @@ brattkagherardimarcone2012:
   doi: 10.1016/j.apal.2011.10.006
   arxiv: '1101.0792'
   read: pdf-zotero
+  zbmath: "1245.03097"
+  zbmathAuthors:
+    - brattka.vasco
+    - gherardi.guido
+    - marcone.alberto
 brattkagherardiholzl2015:
   authors: [ Vasco Brattka, Guido Gherardi, Rupert Hölzl ]
   title: Probabilistic computability and choice
@@ -41,6 +59,11 @@ brattkagherardiholzl2015:
   doi: 10.1016/j.ic.2015.03.005
   arxiv: '1312.7305'
   read: pdf-arxiv
+  zbmath: "1320.03071"
+  zbmathAuthors:
+    - brattka.vasco
+    - gherardi.guido
+    - holzl.rupert
 brattkahendtlasskreuzer2017:
   authors: [ Vasco Brattka, Matthew Hendtlass, Alexander P. Kreuzer ]
   title: On the uniform computational content of computability theory
@@ -49,6 +72,11 @@ brattkahendtlasskreuzer2017:
   doi: 10.1007/s00224-017-9798-1
   arxiv: '1501.00433'
   read: pdf-zotero
+  zbmath: "1420.03110"
+  zbmathAuthors:
+    - brattka.vasco
+    - hendtlass.matthew
+    - kreuzer.alexander-p
 brattkaetal2019:
   authors: [ Vasco Brattka, Stéphane Le Roux, Joseph S. Miller, Arno Pauly ]
   title: Connected choice and the Brouwer fixed point theorem
@@ -57,6 +85,12 @@ brattkaetal2019:
   doi: 10.1142/S0219061319500041
   arxiv: '1206.4809'
   read: pdf-arxiv
+  zbmath: "1484.03130"
+  zbmathAuthors:
+    - brattka.vasco
+    - le-roux.stephane
+    - miller.joseph-s
+    - pauly.arno-m
 brattkagherardipauly2021:
   authors: [ Vasco Brattka, Guido Gherardi, Arno Pauly ]
   title: Weihrauch complexity in computable analysis
@@ -64,6 +98,11 @@ brattkagherardipauly2021:
   year: 2021
   arxiv: '1707.03202'
   read: pdf-arxiv
+  zbmath: "1547.03289"
+  zbmathAuthors:
+    - brattka.vasco
+    - gherardi.guido
+    - pauly.arno-m
 pauly2020:
   authors: [ Arno Pauly ]
   title: An update on Weihrauch complexity, and some open questions
@@ -71,12 +110,20 @@ pauly2020:
   year: 2020
   arxiv: '2008.11168'
   read: pdf-arxiv
+  zbmath: arXiv:2008.11168
+  zbmathAuthors:
+    - pauly.arno-m
 blasshirstsimpson1987:
   authors: [ Andreas R. Blass, Jeffry L. Hirst, Stephen G. Simpson ]
   title: Logical analysis of some theorems of combinatorics and topological dynamics
   venue: Logic and Combinatorics, Contemporary Mathematics 65, AMS, 125–156
   year: 1987
   read: pdf-zotero
+  zbmath: "0652.03040"
+  zbmathAuthors:
+    - blass.andreas-raphael
+    - hirst.jeffry-l
+    - simpson.stephen-g
 patey2015b:
   authors: [ Ludovic Patey ]
   title: Ramsey-type graph coloring and diagonal non-computability
@@ -84,6 +131,9 @@ patey2015b:
   year: 2015
   arxiv: '1412.0917'
   read: pdf-zotero
+  zbmath: "1342.03015"
+  zbmathAuthors:
+    - patey.ludovic
 patey2017b:
   authors: [ Ludovic Patey ]
   title: Dominating the Erdős–Moser theorem in reverse mathematics
@@ -98,6 +148,12 @@ astoretal2017:
   year: 2017
   arxiv: '1605.06164'
   read: pdf-zotero
+  zbmath: "1390.03040"
+  zbmathAuthors:
+    - astor.eric-p
+    - dzhafarov.damir-d
+    - solomon.reed
+    - suggs.jacob
 dzhafarovetal2017a:
   authors: [ Damir D. Dzhafarov, Carl G. Jockusch Jr., Reed Solomon, Linda Brown Westrick ]
   title: Effectiveness of Hindman's theorem for bounded sums
@@ -105,6 +161,12 @@ dzhafarovetal2017a:
   year: 2017
   arxiv: '1603.08249'
   read: pdf-zotero
+  zbmath: "1480.03005"
+  zbmathAuthors:
+    - dzhafarov.damir-d
+    - jockusch.carl-g-jun
+    - solomon.reed
+    - westrick.linda-brown
 dzhafarovetal2017b:
   authors: [ Damir D. Dzhafarov, Ludovic Patey, Reed Solomon, Linda Brown Westrick ]
   title: Ramsey's theorem for singletons and strong computable reducibility
@@ -112,6 +174,12 @@ dzhafarovetal2017b:
   year: 2017
   arxiv: '1602.04481'
   read: pdf-zotero
+  zbmath: "1423.03159"
+  zbmathAuthors:
+    - dzhafarov.damir-d
+    - patey.ludovic
+    - solomon.reed
+    - westrick.linda-brown
 moninpatey2019:
   authors: [ Benoît Monin, Ludovic Patey ]
   title: Π⁰₁-encodability and omniscient reductions
@@ -120,6 +188,10 @@ moninpatey2019:
   doi: 10.1215/00294527-2018-0020
   arxiv: '1603.01086'
   read: pdf-zotero
+  zbmath: "1529.03219"
+  zbmathAuthors:
+    - monin.benoit
+    - patey.ludovic
 slamanyokoyama2018:
   authors: [ Theodore A. Slaman, Keita Yokoyama ]
   title: The strength of Ramsey's theorem for pairs and arbitrarily many colors
@@ -127,6 +199,10 @@ slamanyokoyama2018:
   year: 2018
   arxiv: '1711.08704'
   read: pdf-arxiv
+  zbmath: "1436.03098"
+  zbmathAuthors:
+    - slaman.theodore-a
+    - yokoyama.keita
 csimaetal2019:
   authors: [ Barbara F. Csima, Damir D. Dzhafarov, Denis R. Hirschfeldt, Carl G. Jockusch Jr., Reed Solomon, Linda Brown Westrick ]
   title: The reverse mathematics of Hindman's theorem for sums of exactly two elements
@@ -134,6 +210,14 @@ csimaetal2019:
   year: 2019
   arxiv: '1804.09809'
   read: pdf-arxiv
+  zbmath: "1448.03007"
+  zbmathAuthors:
+    - csima.barbara-f
+    - dzhafarov.damir-d
+    - hirschfeldt.denis-r
+    - jockusch.carl-g-jun
+    - solomon.reed
+    - westrick.linda-brown
 niesshafer2020:
   authors: [ André Nies, Paul Shafer ]
   title: Randomness notions and reverse mathematics
@@ -141,6 +225,10 @@ niesshafer2020:
   year: 2020
   arxiv: '1808.02746'
   read: pdf-arxiv
+  zbmath: "1444.03013"
+  zbmathAuthors:
+    - nies.andre-otfrid
+    - shafer.paul
 davisetal2020:
   authors: [ Caleb Davis, Denis R. Hirschfeldt, Jeffry L. Hirst, Jake Pardo, Arno Pauly, Keita Yokoyama ]
   title: Combinatorial principles equivalent to weak induction
@@ -148,6 +236,14 @@ davisetal2020:
   year: 2020
   arxiv: '1812.09943'
   read: pdf-arxiv
+  zbmath: "1485.03025"
+  zbmathAuthors:
+    - davis.caleb-s
+    - hirschfeldt.denis-r
+    - hirst.jeffry-l
+    - pardo.jake
+    - pauly.arno-m
+    - yokoyama.keita
 chongetal2019:
   authors: [ Chi Tat Chong, Wei Li, Lu Liu, Yue Yang ]
   title: 'The strength of Ramsey''s theorem for pairs over trees: I. Weak König''s lemma'
@@ -157,6 +253,12 @@ chongetal2019:
   read: pdf-zotero
   doi: 10.1090/tran/8339
   preprintYear: 2019
+  zbmath: "1486.03021"
+  zbmathAuthors:
+    - chong.chi-tat
+    - li.wei.2
+    - liu.lu.1
+    - yang.yue
 fioricaronesshafersolda2022:
   authors: [ Marta Fiori-Carones, Paul Shafer, Giovanni Soldà ]
   title: An inside/outside Ramsey theorem and recursion theory
@@ -172,6 +274,11 @@ gohpaulyvalenti2021:
   doi: 10.1017/jsl.2021.15
   arxiv: '2010.03840'
   read: pdf-arxiv
+  zbmath: "1537.03053"
+  zbmathAuthors:
+    - goh.jun-le
+    - pauly.arno-m
+    - valenti.manlio
 gohpaulyvalenti2024:
   authors: [ Jun Le Goh, Arno Pauly, Manlio Valenti ]
   title: The weakness of finding descending sequences in ill-founded linear orders
@@ -181,6 +288,11 @@ gohpaulyvalenti2024:
   read: pdf-arxiv
   doi: 10.1017/jsl.2025.10160
   preprintYear: 2024
+  zbmath: "1578.03146"
+  zbmathAuthors:
+    - goh.jun-le
+    - pauly.arno-m
+    - valenti.manlio
 liupatey2022:
   authors: [ Lu Liu, Ludovic Patey ]
   title: The reverse mathematics of the thin set and Erdős–Moser theorems
@@ -204,6 +316,9 @@ belanger2022:
   year: 2022
   arxiv: '2212.13011'
   read: pdf-zotero
+  zbmath: arXiv:2212.13011
+  zbmathAuthors:
+    - belanger.david-r
 fioricaronesetal2024:
   authors: [ Marta Fiori-Carones, Alberto Marcone, Paul Shafer, Giovanni Soldà ]
   title: (Extra)ordinary equivalences with the ascending/descending sequence principle
@@ -221,6 +336,11 @@ liumoninpatey2017:
   read: pdf-zotero
   doi: 10.1090/proc/14269
   preprintYear: 2017
+  zbmath: "1484.03017"
+  zbmathAuthors:
+    - liu.lu.1
+    - monin.benoit
+    - patey.ludovic
 lehoueroupatey2024:
   authors: [ Quentin Le Houérou, Ludovic Levy Patey ]
   title: Π⁰₄ conservation of the Ordered Variable Word theorem
@@ -228,6 +348,10 @@ lehoueroupatey2024:
   year: 2024
   arxiv: '2404.18749'
   read: pdf-arxiv
+  zbmath: arXiv:2404.18749
+  zbmathAuthors:
+    - le-houerou.quentin
+    - patey.ludovic
 lehoueroupateyyokoyama2024:
   authors: [ Quentin Le Houérou, Ludovic Levy Patey, Keita Yokoyama ]
   title: Π⁰₄ conservation of Ramsey's theorem for pairs
@@ -242,6 +366,9 @@ sun2025:
   year: 2025
   arxiv: '2503.18383'
   read: pdf-arxiv
+  zbmath: arXiv:2503.18383
+  zbmathAuthors:
+    - sun.mengzhou
 lehoueroupatey2025:
   authors: [ Quentin Le Houérou, Ludovic Patey ]
   title: The reverse mathematics of bounded Ramsey's theorem for pairs
@@ -249,6 +376,10 @@ lehoueroupatey2025:
   year: 2025
   arxiv: '2509.03688'
   read: pdf-arxiv
+  zbmath: arXiv:2509.03688
+  zbmathAuthors:
+    - le-houerou.quentin
+    - patey.ludovic
 pateyshafer2026:
   authors: [ Ludovic Patey, Paul Shafer ]
   title: Bounded Ramsey's theorem for triples in computability theory
@@ -256,6 +387,10 @@ pateyshafer2026:
   year: 2026
   arxiv: '2604.02092'
   read: pdf-arxiv
+  zbmath: arXiv:2604.02092
+  zbmathAuthors:
+    - patey.ludovic
+    - shafer.paul
 kolodziejczyksun2026:
   authors: [ Leszek Aleksander Kołodziejczyk, Mengzhou Sun ]
   title: The cohesive and stable Ramsey theorems and proof size over a weak base theory
@@ -270,6 +405,10 @@ liupatey2026:
   year: 2026
   arxiv: '2606.12962'
   read: pdf-arxiv
+  zbmath: arXiv:2606.12962
+  zbmathAuthors:
+    - liu.lu.1
+    - patey.ludovic
 lehoueroupatey2026:
   authors: [ Quentin Le Houérou, Ludovic Patey ]
   title: Π⁰₄ conservation of a Carlson–Simpson lemma for 1-variable words
@@ -277,6 +416,10 @@ lehoueroupatey2026:
   year: 2026
   arxiv: '2607.28116'
   read: pdf-arxiv
+  zbmath: arXiv:2607.28116
+  zbmathAuthors:
+    - le-houerou.quentin
+    - patey.ludovic
 patey2026:
   authors: [ Ludovic Patey ]
   title: The first-order part of the Ordered Variable Word theorem
@@ -284,11 +427,17 @@ patey2026:
   year: 2026
   arxiv: '2610.27643'
   read: pdf-arxiv
+  zbmath: arXiv:2610.27643
+  zbmathAuthors:
+    - patey.ludovic
 hirst2012:
   authors: [ Jeffry L. Hirst ]
   title: Hilbert versus Hindman
   venue: Archive for Mathematical Logic 51(1-2), 123–125
   year: 2012
+  zbmath: "1239.03038"
+  zbmathAuthors:
+    - hirst.jeffry-l
 gherardimarcone2009:
   authors: [ Guido Gherardi, Alberto Marcone ]
   title: How incomputable is the separable Hahn–Banach theorem?
@@ -297,45 +446,75 @@ gherardimarcone2009:
   doi: 10.1215/00294527-2009-018
   arxiv: "0808.1663"
   read: pdf-arxiv
+  zbmath: "1223.03052"
+  zbmathAuthors:
+    - gherardi.guido
+    - marcone.alberto
 specker1971:
   authors: [ Ernst Specker ]
   title: Ramsey's theorem does not hold in recursive set theory
   venue: Logic Colloquium '69, North-Holland, 439–442
   year: 1971
+  zbmath: "0285.02038"
+  zbmathAuthors:
+    - specker.ernst-p
 kucera1985:
   authors: [ Antonín Kučera ]
   title: Measure, Π⁰₁-classes and complete extensions of PA
   venue: Recursion Theory Week (Oberwolfach 1984), Lecture Notes in Mathematics 1141, Springer, 245–259
   year: 1985
   read: pdf-zotero
+  zbmath: "0622.03031"
+  zbmathAuthors:
+    - kucera.antonin
 millermartin1968:
   authors: [ Webb Miller, Donald A. Martin ]
   title: The degrees of hyperimmune sets
   venue: Zeitschrift für Mathematische Logik und Grundlagen der Mathematik 14, 159–166
   year: 1968
   read: pdf-zotero
+  zbmath: "0216.29102"
+  zbmathAuthors:
+    - miller.webb
+    - martin.donald-a
 cholakmarconesolomon2004:
   authors: [ Peter Cholak, Alberto Marcone, Reed Solomon ]
   title: Reverse mathematics and the equivalence of definitions for well and better quasi-orders
   venue: Journal of Symbolic Logic 69(3), 683–712
   year: 2004
   read: pdf-oa
+  zbmath: "1075.03030"
+  zbmathAuthors:
+    - cholak.peter-a
+    - marcone.alberto
+    - solomon.reed
 hummel1994:
   authors: [ Tamara Lakins Hummel ]
   title: 'Effective versions of Ramsey''s theorem: avoiding the cone above 0′'
   venue: Journal of Symbolic Logic 59(4), 1301–1325
   year: 1994
+  zbmath: "0815.03028"
+  zbmathAuthors:
+    - hummel.tamara-lakins
 sacks1963:
   authors: [ Gerald E. Sacks ]
   title: Degrees of unsolvability
   venue: Annals of Mathematics Studies 55, Princeton University Press
   year: 1963
+  zbmath: "0143.25302"
+  zbmathAuthors:
+    - sacks.gerald-e
 chongliyang2014:
   authors: [ Chi Tat Chong, Wei Li, Yue Yang ]
   title: Nonstandard models in recursion theory and reverse mathematics
   venue: Bulletin of Symbolic Logic 20(2), 170–200
   year: 2014
   read: pdf-zotero
+  zbmath: "1341.03098"
+  zbmathAuthors:
+    - chong.chi-tat
+    - li.wei.2
+    - yang.yue
 solda2021:
   authors: [ Giovanni Soldà ]
   title: 'Calibrating the complexity of combinatorics: reverse mathematics and Weihrauch degrees of some principles related to Hindman''s theorem'
@@ -348,6 +527,13 @@ jockuschetal2009:
   venue: Journal of Symbolic Logic 74(2), 693–711
   year: 2009
   read: pdf-zotero
+  zbmath: "1171.03034"
+  zbmathAuthors:
+    - jockusch.carl-g-jun
+    - kastermans.bart
+    - lempp.steffen
+    - lerman.manuel
+    - solomon.reed
 kowalik2024:
   authors: [ Katarzyna W. Kowalik ]
   title: The logical strength of Ramsey-theoretic principles over a weak base theory
@@ -361,6 +547,9 @@ montalban2011:
   year: 2011
   doi: 10.2178/bsl/1309952320
   read: pdf-zotero
+  zbmath: "1233.03023"
+  zbmathAuthors:
+    - montalban.antonio
 simpson1999open:
   authors: [ Stephen G. Simpson ]
   title: Open problems in reverse mathematics
@@ -380,6 +569,9 @@ montalban2017:
   year: 2017
   doi: 10.1142/S0219061317500064
   read: pdf-zotero
+  zbmath: "1472.03066"
+  zbmathAuthors:
+    - montalban.antonio
 shore1993:
   authors: [ Richard A. Shore ]
   title: On the strength of Fraïssé's conjecture
@@ -393,6 +585,9 @@ schmerl2000:
   year: 2000
   doi: 10.1002/1521-3870(200010)46:4<543::AID-MALQ543>3.0.CO;2-E
   read: abstract
+  zbmath: "0963.03079"
+  zbmathAuthors:
+    - schmerl.james-h
 hwang2026:
   authors: [ Hank Yu-Shiang Hwang ]
   title: Π¹₁-conservation of Ramsey's theorem for pairs over BΣ⁰₂

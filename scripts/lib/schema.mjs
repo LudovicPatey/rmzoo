@@ -38,6 +38,7 @@ export const FILES = {
   apiLib: 'site/api/lib.php',           // its storage
   endorseSync: 'scripts/endorsements-sync.mjs', // server → data/endorsements.yaml, feedback/
   uploadsSync: 'scripts/uploads-sync.mjs', // server → cache/fulltext/ (full texts uploaded by researchers)
+  zbmath: 'scripts/zbmath.mjs',          // zbMATH identifiers of the references, authors' ORCID iDs
 };
 
 const cite = (extra = {}) => ({
@@ -106,6 +107,8 @@ export const SCHEMA = {
     title: { req: true, doc: 'title ($…$ for TeX)', usedBy: ['build', 'viewer', 'bibtex', 'sweep', 'pubstatus', 'fulltext', 'abstracts', 'consolidate'] },
     year: { req: true, doc: 'publication year (preprint year if unpublished)', usedBy: ['build', 'viewer', 'bibtex', 'sweep', 'pubstatus', 'consolidate', 'mineFacts', 'mineQuestions'] },
     venue: { doc: 'journal/book with volume and pages, or "arXiv preprint"', usedBy: ['viewer', 'bibtex', 'sweep', 'pubstatus'] },
+    zbmath: { doc: 'zbMATH Open identifier (Zbl number, e.g. 1214.03047; JFM number, e.g. 55.0032.04; or arXiv:<id> for an indexed preprint), written by scripts/zbmath.mjs; versions of one work (version) may share it', usedBy: ['build', 'viewer', 'zbmath'] },
+    zbmathAuthors: { doc: 'zbMATH author codes of its authors, in order (data/authors.yaml), written by scripts/zbmath.mjs', usedBy: ['build', 'viewer', 'zbmath'] },
     doi: { doc: 'DOI, of the form 10.<registrant>/<suffix> without TeX escapes (unique across references; an arXiv id goes in arxiv)', usedBy: ['build', 'viewer', 'bibtex', 'sweep', 'pubstatus', 'fulltext', 'abstracts', 'consolidate'] },
     arxiv: { doc: 'arXiv id (unique unless `version` links the two)', usedBy: ['build', 'viewer', 'bibtex', 'sweep', 'pubstatus', 'fulltext', 'abstracts', 'consolidate'] },
     url: { doc: 'link when there is no DOI', usedBy: ['viewer', 'bibtex', 'fulltext'] },
@@ -306,6 +309,7 @@ export const OPERATIONS = {
 //   data/context.yaml          statement id → background text ([@key] citations)
 //   data/fulltext-exclude.yaml reference key → {zotero | url, reason}: Zotero items or URLs not to use
 //   data/author-pages.yaml     [{author, url, base?}]: publication pages read by fulltext.mjs --author-pages
+//   data/authors.yaml          zbMATH author code → {name, orcid?}: written by scripts/zbmath.mjs, used by the viewer's bell
 //   data/screened.yaml         {facts, questions, resolutions}: leads already examined
 //   data/acronyms-ignored.yaml acronym → reason: not proposed as missing statements
 //   data/review.yaml           entity review above; data/ai-analyzed.yaml: aiAnalyzed

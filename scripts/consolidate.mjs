@@ -90,6 +90,9 @@ if (!skip.has('pubstatus')) {
   const lines = out.split('\n').filter((l) => l.includes('→'));
   say(lines.length ? `${lines.length} preprints are now published (updated):` : 'No preprint newly published.');
   lines.forEach((l) => say(`- ${l}`));
+  // zbMATH identifiers of the new references and their authors' ORCID iDs (the viewer's bell)
+  const zb = run('node', ['scripts/zbmath.mjs']).trim().split('\n').pop();
+  say(zb);
   say();
 }
 // 3. texts

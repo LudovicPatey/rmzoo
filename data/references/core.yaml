@@ -7,6 +7,9 @@ friedman1975:
   venue: Proceedings of the International Congress of Mathematicians (Vancouver, 1974), vol. 1, 235–242
   year: 1975
   read: pdf-zotero
+  zbmath: "0344.02022"
+  zbmathAuthors:
+    - friedman.harvey-m
 simpson2009:
   authors:
     - Stephen G. Simpson
@@ -23,6 +26,9 @@ hirschfeldt2015:
   year: 2015
   doi: 10.1142/9208
   read: pdf-zotero
+  zbmath: "1304.03001"
+  zbmathAuthors:
+    - hirschfeldt.denis-r
 dzhafarovmummert2022:
   authors:
     - Damir D. Dzhafarov
@@ -32,6 +38,10 @@ dzhafarovmummert2022:
   year: 2022
   doi: 10.1007/978-3-031-11367-3
   read: pdf-zotero
+  zbmath: "1555.03002"
+  zbmathAuthors:
+    - dzhafarov.damir-d
+    - mummert.carl
 ramsey1930:
   authors:
     - Frank P. Ramsey
@@ -39,6 +49,9 @@ ramsey1930:
   venue: Proceedings of the London Mathematical Society s2-30(1), 264–286
   year: 1930
   doi: 10.1112/plms/s2-30.1.264
+  zbmath: 55.0032.04
+  zbmathAuthors:
+    - ramsey.frank-plumpton
 jockusch1972:
   authors:
     - Carl G. Jockusch Jr.
@@ -47,6 +60,9 @@ jockusch1972:
   year: 1972
   doi: 10.2307/2272972
   read: pdf-zotero
+  zbmath: "0262.02042"
+  zbmathAuthors:
+    - jockusch.carl-g-jun
 jockuschsoare1972:
   authors:
     - Carl G. Jockusch Jr.
@@ -56,6 +72,10 @@ jockuschsoare1972:
   year: 1972
   doi: 10.1090/S0002-9947-1972-0316227-0
   read: pdf-zotero
+  zbmath: "0262.02041"
+  zbmathAuthors:
+    - jockusch.carl-g-jun
+    - soare.robert-i
 pariskirby1978:
   authors:
     - Jeff B. Paris
@@ -65,6 +85,10 @@ pariskirby1978:
   year: 1978
   doi: 10.1016/S0049-237X(08)72003-2
   read: pdf-zotero
+  zbmath: "0442.03042"
+  zbmathAuthors:
+    - paris.jeffrey-bruce
+    - kirby.laurence
 simpsonsmith1986:
   authors:
     - Stephen G. Simpson
@@ -74,6 +98,10 @@ simpsonsmith1986:
   year: 1986
   doi: 10.1016/0168-0072(86)90074-1
   read: pdf-zotero
+  zbmath: "0603.03019"
+  zbmathAuthors:
+    - simpson.stephen-g
+    - smith.rick-l
 hirst1987:
   authors:
     - Jeffry L. Hirst
@@ -90,6 +118,10 @@ yusimpson1990:
   year: 1990
   doi: 10.1007/BF01621469
   read: pdf-zotero
+  zbmath: "0718.03043"
+  zbmathAuthors:
+    - yu.xiaokang
+    - simpson.stephen-g
 jockuschstephan1993:
   authors:
     - Carl G. Jockusch Jr.
@@ -99,6 +131,10 @@ jockuschstephan1993:
   year: 1993
   doi: 10.1002/malq.19930390153
   read: pdf-zotero
+  zbmath: "0799.03048"
+  zbmathAuthors:
+    - jockusch.carl-g-jun
+    - stephan.frank
 seetapunslaman1995:
   authors:
     - David Seetapun
@@ -108,6 +144,10 @@ seetapunslaman1995:
   year: 1995
   doi: 10.1305/ndjfl/1040136917
   read: pdf-zotero
+  zbmath: "0843.03034"
+  zbmathAuthors:
+    - seetapun.david
+    - slaman.theodore-a
 giustosimpson2000:
   authors:
     - Mariagnese Giusto
@@ -116,6 +156,10 @@ giustosimpson2000:
   venue: Journal of Symbolic Logic 65(3), 1451–1480
   year: 2000
   doi: 10.2307/2586708
+  zbmath: "0967.03051"
+  zbmathAuthors:
+    - giusto.mariagnese
+    - simpson.stephen-g
 cholakjockuschslaman2001:
   authors:
     - Peter A. Cholak
@@ -126,6 +170,11 @@ cholakjockuschslaman2001:
   year: 2001
   doi: 10.2307/2694910
   read: pdf-zotero
+  zbmath: "0977.03033"
+  zbmathAuthors:
+    - cholak.peter-a
+    - jockusch.carl-g-jun
+    - slaman.theodore-a
 downeyetal2001:
   authors:
     - Rod Downey
@@ -137,6 +186,12 @@ downeyetal2001:
   year: 2001
   doi: 10.2307/2695113
   read: pdf-zotero
+  zbmath: "0990.03046"
+  zbmathAuthors:
+    - downey.rodney-graham
+    - hirschfeldt.denis-r
+    - lempp.steffen
+    - solomon.reed
 slaman2004:
   authors:
     - Theodore A. Slaman
@@ -145,6 +200,9 @@ slaman2004:
   year: 2004
   doi: 10.1090/S0002-9939-04-07294-6
   read: pdf-zotero
+  zbmath: "1053.03034"
+  zbmathAuthors:
+    - slaman.theodore-a
 ambosspiesetal2004:
   authors:
     - Klaus Ambos-Spies
@@ -157,6 +215,12 @@ ambosspiesetal2004:
   doi: 10.2178/jsl/1102022212
   read: pdf-zotero
   arxiv: "1408.2281"
+  zbmath: "1076.03039"
+  zbmathAuthors:
+    - ambos-spies.klaus
+    - kjos-hanssen.bjorn
+    - lempp.steffen
+    - slaman.theodore-a
 hirschfeldtshore2007:
   authors:
     - Denis R. Hirschfeldt
@@ -166,6 +230,10 @@ hirschfeldtshore2007:
   year: 2007
   doi: 10.2178/jsl/1174668391
   read: pdf-zotero
+  zbmath: "1118.03055"
+  zbmathAuthors:
+    - hirschfeldt.denis-r
+    - shore.richard-a
 hirschfeldtetal2008:
   authors:
     - Denis R. Hirschfeldt
@@ -179,6 +247,13 @@ hirschfeldtetal2008:
   doi: 10.1142/9789812796554_0008
   read: pdf-zotero
   arxiv: "1408.2897"
+  zbmath: "1167.03009"
+  zbmathAuthors:
+    - hirschfeldt.denis-r
+    - jockusch.carl-g-jun
+    - kjos-hanssen.bjorn
+    - lempp.steffen
+    - slaman.theodore-a
 cjs2009:
   authors:
     - Peter A. Cholak
@@ -188,6 +263,11 @@ cjs2009:
   venue: Journal of Symbolic Logic 74(4), 1438–1439
   year: 2009
   read: pdf-zotero
+  zbmath: "1182.03107"
+  zbmathAuthors:
+    - cholak.peter-a
+    - jockusch.carl-g-jun
+    - slaman.theodore-a
 chonglemppyang2010:
   authors:
     - Chi Tat Chong
@@ -198,6 +278,11 @@ chonglemppyang2010:
   year: 2010
   doi: 10.1090/S0002-9939-09-10115-6
   read: pdf-zotero
+  zbmath: "1195.03015"
+  zbmathAuthors:
+    - chong.chi-tat
+    - lempp.steffen
+    - yang.yue
 liu2012:
   authors:
     - Lu Liu
@@ -207,6 +292,9 @@ liu2012:
   doi: 10.2178/jsl/1333566640
   arxiv: "1602.03784"
   read: pdf-zotero
+  zbmath: "1245.03095"
+  zbmathAuthors:
+    - liu.lu.1
 lermansolomontowsner2013:
   authors:
     - Manuel Lerman
@@ -218,6 +306,11 @@ lermansolomontowsner2013:
   doi: 10.1142/S0219061313500074
   read: pdf-zotero
   arxiv: "1302.0828"
+  zbmath: "1326.03021"
+  zbmathAuthors:
+    - lerman.manuel
+    - solomon.reed
+    - towsner.henry
 chongslamanyang2014:
   authors:
     - Chi Tat Chong
@@ -228,6 +321,11 @@ chongslamanyang2014:
   year: 2014
   doi: 10.1090/S0894-0347-2014-00789-X
   read: pdf-zotero
+  zbmath: "1341.03015"
+  zbmathAuthors:
+    - chong.chi-tat
+    - slaman.theodore-a
+    - yang.yue
 liu2015:
   authors:
     - Lu Liu
@@ -237,6 +335,9 @@ liu2015:
   doi: 10.1090/S0002-9947-2014-06049-2
   read: pdf-zotero
   arxiv: "1602.03777"
+  zbmath: "1369.03101"
+  zbmathAuthors:
+    - liu.lu.1
 ddhms2016:
   authors:
     - François G. Dorais
@@ -250,6 +351,13 @@ ddhms2016:
   doi: 10.1090/tran/6465
   read: pdf-zotero
   arxiv: "1212.0157"
+  zbmath: "1528.03095"
+  zbmathAuthors:
+    - dorais.francois-gilbert
+    - dzhafarov.damir-d
+    - hirst.jeffry-l
+    - mileti.joseph-r
+    - shafer.paul
 dzhafarov2016:
   authors:
     - Damir D. Dzhafarov
@@ -258,6 +366,9 @@ dzhafarov2016:
   year: 2016
   doi: 10.1017/jsl.2016.1
   read: pdf-zotero
+  zbmath: "1368.03044"
+  zbmathAuthors:
+    - dzhafarov.damir-d
 hirschfeldtjockusch2016:
   authors:
     - Denis R. Hirschfeldt
@@ -267,6 +378,10 @@ hirschfeldtjockusch2016:
   year: 2016
   doi: 10.1142/S0219061316500021
   read: pdf-zotero
+  zbmath: "1373.03068"
+  zbmathAuthors:
+    - hirschfeldt.denis-r
+    - jockusch.carl-g-jun
 patey2016:
   authors:
     - Ludovic Patey
@@ -276,6 +391,9 @@ patey2016:
   doi: 10.1007/s11856-016-1433-3
   read: pdf-zotero
   arxiv: "1502.03709"
+  zbmath: "1368.03018"
+  zbmathAuthors:
+    - patey.ludovic
 bovykinweiermann2017:
   authors:
     - Andrey Bovykin
@@ -283,8 +401,12 @@ bovykinweiermann2017:
   title: The strength of infinitary Ramseyan principles can be accessed by their densities
   venue: Annals of Pure and Applied Logic 168(9), 1700–1709
   year: 2017
-  doi: 10.1016/j.apal.2017.03.002
+  doi: 10.1016/j.apal.2017.03.005
   read: pdf-zotero
+  zbmath: "1422.03127"
+  zbmathAuthors:
+    - bovykin.andrey-i
+    - weiermann.andreas
 brattkarakotoniaina2017:
   authors:
     - Vasco Brattka
@@ -295,6 +417,10 @@ brattkarakotoniaina2017:
   doi: 10.1017/jsl.2017.43
   read: pdf-zotero
   arxiv: "1508.00471"
+  zbmath: "1422.03132"
+  zbmathAuthors:
+    - brattka.vasco
+    - rakotoniaina.tahina
 moninpatey2021:
   authors:
     - Benoît Monin
@@ -305,6 +431,10 @@ moninpatey2021:
   doi: 10.1016/j.aim.2021.107903
   arxiv: "1905.08427"
   read: pdf-zotero
+  zbmath: "1534.03021"
+  zbmathAuthors:
+    - monin.benoit
+    - patey.ludovic
 erdosmoser1964:
   authors:
     - Paul Erdős
@@ -312,3 +442,7 @@ erdosmoser1964:
   title: On the representation of directed graphs as unions of orderings
   venue: Publ. Math. Inst. Hungar. Acad. Sci. 9, 125–132
   year: 1964
+  zbmath: "0136.44901"
+  zbmathAuthors:
+    - erdos.pal
+    - moser.leo
