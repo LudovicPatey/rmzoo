@@ -1,21 +1,24 @@
 // Local full-text cache of the papers in data/references (git-ignored).
 //
-//   node scripts/fulltext.mjs [--zotero] [--download] [--retry] [--only k1,k2] [--status]
+//   node scripts/fulltext.mjs [--zotero] [--download] [--author-pages] [--retry] [--only k1,k2] [--status]
 //
 //   --zotero    extract the PDFs of your Zotero library (~/Zotero, or $ZOTERO_DIR)
 //               whose title matches a reference
-//   --download  fetch missing papers: the arXiv PDF when the reference has an
-//               arXiv id, otherwise an open-access PDF found via OpenAlex (DOI)
-//               or Semantic Scholar (DOI or exact title)
+//   --download  fetch missing papers from open sources: arXiv (by id, or by exact
+//               title and author), OpenAlex, Crossref full-text links, Unpaywall
+//               (when UNPAYWALL_EMAIL is set) and Semantic Scholar
+//   --author-pages  look for missing papers on the publication pages listed in
+//               data/author-pages.yaml (AUTHOR_PAGES_DELAY=s waits between requests)
 //   --retry     also retry papers whose download failed before
 //   --only      restrict to these reference keys
 //   --status    (always done) record in data/references/*.yaml how each cached
-//               paper was read: read: pdf-zotero | pdf-arxiv | pdf-oa
+//               paper was read: read: pdf-zotero | pdf-arxiv | pdf-oa | pdf-author
+//               (pdf-author: uploaded by a researcher, scripts/uploads-sync.mjs)
 //
 // Layout of cache/fulltext/:
 //   <key>.txt     text (pdftotext -layout), what the extraction scripts read
 //   <key>.pdf     the PDF (downloaded, or copied from Zotero)
-//   index.json    { key: { source: zotero|arxiv|oa, url?, zotero?, ocr?, date } }
+//   index.json    { key: { source: zotero|arxiv|oa|upload, url?, via?, zotero?, upload?, ocr?, date } }
 //   failed.json   { key: { reason, date } }   — skipped unless --retry
 // Scanned PDFs (no text layer) are read by OCR: each page rendered at 300 dpi
 // (pdftoppm) and read by Tesseract; the index marks them `ocr: true` (formulas
@@ -29,7 +32,7 @@ import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { acquireLock } from './lib/lock.mjs';
 import { cli } from './lib/cli.mjs';
-cli('node scripts/fulltext.mjs [--zotero] [--download] [--retry] [--only k1,k2] [--status]', { '--zotero': 0, '--download': 0, '--retry': 0, '--only': 1, '--status': 0 });
+cli('node scripts/fulltext.mjs [--zotero] [--download] [--author-pages] [--retry] [--only k1,k2] [--status]', { '--zotero': 0, '--download': 0, '--author-pages': 0, '--retry': 0, '--only': 1, '--status': 0 });
 acquireLock('fulltext.mjs');
 
 const args = process.argv.slice(2);
@@ -150,59 +153,204 @@ if (flag('--zotero')) {
 }
 
 // ---- downloads ----
+// Legitimate open sources only, tried in order until one gives a PDF:
+//   1. arXiv, when the reference has an arXiv id;
+//   2. OpenAlex open-access locations (by DOI);
+//   3. Crossref full-text links (by DOI; paywalled links answer with HTML and are skipped);
+//   4. Unpaywall (by DOI), when UNPAYWALL_EMAIL is set (its API requires an email address);
+//   5. Semantic Scholar open-access PDF (by DOI, else exact title);
+//   6. arXiv searched by exact title with a matching author surname (the id is then recorded
+//      in the reference).
+// Sites behind bot protection (e.g. Project Euclid) are not worked around: those papers are
+// downloaded by hand. Shadow libraries are never used.
+const UA = { 'User-Agent': 'rm-zoo full-text cache (https://github.com/LudovicPatey/rmzoo)' };
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const getPdf = async (url) => {
+  const res = await fetch(url, { headers: UA, redirect: 'follow', signal: AbortSignal.timeout(90000) });
+  const buf = Buffer.from(await res.arrayBuffer());
+  return buf.subarray(0, 5).toString().startsWith('%PDF') ? buf : null;
+};
+const surnames = (r) => (r.authors || []).map((a) => nt(String(a).split(/[ ,]/).filter(Boolean).pop()));
+const candidates = async (e) => {
+  const out = [];
+  const doi = e.r.doi;
+  if (e.r.arxiv) out.push({ url: `https://arxiv.org/pdf/${e.r.arxiv}`, source: 'arxiv' });
+  if (doi) {
+    try {
+      const w = await (await fetch(`https://api.openalex.org/works/doi:${encodeURIComponent(doi)}`, { headers: UA })).json();
+      for (const l of [w.best_oa_location, ...(w.locations || [])]) if (l?.pdf_url) out.push({ url: l.pdf_url, source: 'oa' });
+    } catch { /* next source */ }
+    try {
+      const m = (await (await fetch(`https://api.crossref.org/works/${encodeURIComponent(doi)}`, { headers: UA })).json()).message || {};
+      for (const l of m.link || []) if (l.URL && !/projecteuclid\.org/.test(l.URL)) out.push({ url: l.URL, source: 'oa' });
+    } catch { /* next source */ }
+    if (process.env.UNPAYWALL_EMAIL) {
+      try {
+        const u = await (await fetch(`https://api.unpaywall.org/v2/${encodeURIComponent(doi)}?email=${encodeURIComponent(process.env.UNPAYWALL_EMAIL)}`, { headers: UA })).json();
+        for (const l of u.oa_locations || []) if (l.url_for_pdf) out.push({ url: l.url_for_pdf, source: 'oa' });
+      } catch { /* next source */ }
+    }
+  }
+  const q = doi ? `paper/DOI:${encodeURIComponent(doi)}?fields=title,openAccessPdf`
+    : `paper/search/match?query=${encodeURIComponent(String(e.r.title).replace(/\$[^$]*\$/g, ' '))}&fields=title,openAccessPdf`;
+  for (let i = 0; i < 3; i++) {
+    const r = await fetch('https://api.semanticscholar.org/graph/v1/' + q, { headers: UA });
+    if (r.status === 429) { await sleep(5000 * (i + 1)); continue; }
+    if (r.ok) {
+      const j = await r.json();
+      const p = j.data ? j.data[0] : j;
+      if (p?.openAccessPdf?.url && (doi || nt(p.title) === nt(e.r.title))) out.push({ url: p.openAccessPdf.url, source: 'oa' });
+    }
+    break;
+  }
+  await sleep(1100);
+  if (!e.r.arxiv) { // arXiv by exact title and an author surname
+    try {
+      const title = String(e.r.title).replace(/\$[^$]*\$/g, ' ').replace(/[^\p{L}\p{N} ]+/gu, ' ').trim();
+      const xml = await (await fetch(`http://export.arxiv.org/api/query?search_query=${encodeURIComponent(`ti:"${title}"`)}&max_results=5`, { headers: UA })).text();
+      for (const entry of xml.split('<entry>').slice(1)) {
+        const id = (entry.match(/<id>https?:\/\/arxiv\.org\/abs\/([^<v]+)(v\d+)?<\/id>/) || [])[1];
+        const t = (entry.match(/<title>([\s\S]*?)<\/title>/) || [])[1];
+        const names = [...entry.matchAll(/<name>([^<]+)<\/name>/g)].map((m) => nt(m[1].split(' ').pop()));
+        if (id && nt(t) === nt(e.r.title) && surnames(e.r).some((s) => names.includes(s))) {
+          out.push({ url: `https://arxiv.org/pdf/${id}`, source: 'arxiv', arxiv: id });
+          break;
+        }
+      }
+      await sleep(3000); // arXiv asks for one request every 3 s
+    } catch { /* none */ }
+  }
+  return out.filter((c, i) => out.findIndex((d) => d.url === c.url) === i && EXCLUDE[e.key]?.url !== c.url);
+};
 if (flag('--download')) {
-  const UA = { 'User-Agent': 'rm-zoo full-text cache (https://github.com/LudovicPatey/rmzoo)' };
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   let ok = 0, ko = 0;
   for (const e of refs) {
     if (index[e.key] && okText(`${DIR}/${e.key}.txt`)) continue;
     if (failed[e.key] && !flag('--retry')) continue;
-    let url = null, source = null;
+    let tried = [];
     try {
-      if (e.r.arxiv) { url = `https://arxiv.org/pdf/${e.r.arxiv}`; source = 'arxiv'; }
-      if (!url && e.r.doi) {
-        const r = await fetch(`https://api.openalex.org/works/doi:${encodeURIComponent(e.r.doi)}`, { headers: UA });
-        const w = r.ok ? await r.json() : {};
-        const loc = [w.best_oa_location, ...(w.locations || [])].find((l) => l?.pdf_url);
-        if (loc) { url = loc.pdf_url; source = 'oa'; }
+      const cands = await candidates(e);
+      let got = null;
+      for (const c of cands) {
+        let buf = null;
+        try { buf = await getPdf(c.url); } catch { /* next */ }
+        tried.push(c.url);
+        if (!buf) continue;
+        fs.writeFileSync(`${DIR}/${e.key}.pdf`, buf);
+        const t = toText(`${DIR}/${e.key}.pdf`, `${DIR}/${e.key}.txt`);
+        if (!t) continue;
+        got = { ...c, ocr: t === 'ocr' };
+        break;
       }
-      if (!url) { // Semantic Scholar: by DOI, else by title
-        const q = e.r.doi ? `paper/DOI:${encodeURIComponent(e.r.doi)}?fields=title,openAccessPdf`
-          : `paper/search/match?query=${encodeURIComponent(String(e.r.title).replace(/\$[^$]*\$/g, ' '))}&fields=title,openAccessPdf`;
-        for (let i = 0; i < 3; i++) {
-          const r = await fetch('https://api.semanticscholar.org/graph/v1/' + q, { headers: UA });
-          if (r.status === 429) { await sleep(5000 * (i + 1)); continue; }
-          if (r.ok) {
-            const j = await r.json();
-            const p = j.data ? j.data[0] : j;
-            const same = (a, b) => String(a).toLowerCase().replace(/[^a-z]/g, '') === String(b).toLowerCase().replace(/[^a-z]/g, '');
-            if (p?.openAccessPdf?.url && (e.r.doi || same(p.title, e.r.title))) { url = p.openAccessPdf.url; source = 'oa'; }
-          }
-          break;
-        }
-        await sleep(1100);
+      if (!got) { failed[e.key] = { reason: cands.length ? 'no PDF at the open-access links' : (e.r.doi ? 'no open-access PDF' : 'no arXiv id or DOI'), date: today }; ko++; }
+      else {
+        if (got.arxiv) e.pair.value.set('arxiv', got.arxiv);
+        index[e.key] = { source: got.source, url: got.url, ...(got.ocr ? { ocr: true } : {}), date: today }; delete failed[e.key]; ok++;
       }
-      if (url && EXCLUDE[e.key]?.url === url) url = null;
-      if (!url) { failed[e.key] = { reason: e.r.doi ? 'no open-access PDF' : 'no arXiv id or DOI', date: today }; ko++; continue; }
-      const res = await fetch(url, { headers: UA, redirect: 'follow', signal: AbortSignal.timeout(90000) });
-      const buf = Buffer.from(await res.arrayBuffer());
-      if (!buf.subarray(0, 5).toString().startsWith('%PDF')) throw new Error(`not a PDF (HTTP ${res.status})`);
-      fs.writeFileSync(`${DIR}/${e.key}.pdf`, buf);
-      const got = toText(`${DIR}/${e.key}.pdf`, `${DIR}/${e.key}.txt`);
-      if (!got) throw new Error('no text layer');
-      index[e.key] = { source, url, ...(got === 'ocr' ? { ocr: true } : {}), date: today }; delete failed[e.key]; ok++;
     } catch (err) {
-      failed[e.key] = { reason: String(err.message || err).slice(0, 120), url, date: today }; ko++;
+      failed[e.key] = { reason: String(err.message || err).slice(0, 120), tried, date: today }; ko++;
     }
     if ((ok + ko) % 10 === 0) save();
-    await sleep(source === 'arxiv' ? 3000 : 500); // arXiv asks for one request every 3 s
+    await sleep(500);
   }
   save();
   console.log(`downloads: ${ok} new texts, ${ko} failed`);
 }
 
+// ---- authors' web pages (data/author-pages.yaml) ----
+// Each listed publication page is read; its links to PDF/PostScript files (and to one page per
+// paper on the same site) are matched against the missing references of that author, in any
+// position of the author list. A file is kept only if the reference's title is at the top of
+// its first page, and a file serves one reference.
+if (flag('--author-pages')) {
+  const pages = fs.existsSync('data/author-pages.yaml') ? YAML.parse(fs.readFileSync('data/author-pages.yaml', 'utf8')) || [] : [];
+  const curl = (u) => {
+    if (process.env.AUTHOR_PAGES_DELAY) execFileSync('sleep', [process.env.AUTHOR_PAGES_DELAY]);
+    const buf = execFileSync('curl', ['-sL', '-m', '40', '-A', UA['User-Agent'], '-w', '\n%{http_code}', u], { maxBuffer: 1 << 28 });
+    const cut = buf.lastIndexOf(10);
+    return { status: Number(buf.subarray(cut + 1).toString()), buf: buf.subarray(0, cut) };
+  };
+  const strip = (h) => h.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#?\w+;/g, ' ').replace(/\s+/g, ' ');
+  const score = (title, text) => { const t = words(title), x = new Set(words(text)); return t.length ? t.filter((w) => x.has(w)).length / t.length : 0; };
+  const anchors = (html, base) => {
+    const ms = [...html.matchAll(/<a\s[^>]*href\s*=\s*["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)];
+    return ms.flatMap((m, i) => {
+      let href;
+      try { href = new URL(m[1].trim(), base).href; } catch { return []; }
+      const prevEnd = i ? ms[i - 1].index + ms[i - 1][0].length : 0;
+      const nextStart = i + 1 < ms.length ? ms[i + 1].index : html.length;
+      const ctx = `${strip(html.slice(Math.max(prevEnd, m.index - 400), m.index))} ${strip(m[2])} ${strip(html.slice(m.index + m[0].length, Math.min(nextStart, m.index + m[0].length + 200)))}`;
+      return [{ href, isDoc: /\.(pdf|ps|ps\.gz)(\?|#|$)/i.test(href), ctx }];
+    });
+  };
+  const used = new Set(Object.values(index).map((c) => c.url).filter(Boolean));
+  const allRefs = refDocs.flatMap(([, d]) => d.contents.items.map((pair) => ({ key: pair.key.value, r: pair.value.toJSON() })));
+  const cached = (k) => index[k] && okText(`${DIR}/${k}.txt`);
+  // a version of the paper (conference/journal, linked by `version`) already cached: skip it,
+  // so that one version's text is not filed under the other
+  const otherVersion = (e) => allRefs.some((x) => x.key !== e.key && (x.r.version === e.key || e.r.version === x.key) && cached(x.key));
+  // Is this first page the paper's? Its title must be one, two or three consecutive lines at
+  // the top (or, for a title of six words or more, nearly all its words in the first 600
+  // characters), and no longer title of another reference may appear there (the file would
+  // be that paper: "Subsystems of second order arithmetic" inside "Countable valued fields
+  // in weak subsystems of second order arithmetic").
+  const isPaper = (e, first) => {
+    const lines = first.split('\n').map((l) => l.trim()).filter(Boolean).slice(0, 40);
+    const t = nt(e.r.title);
+    const exact = lines.some((l, i) => [1, 2, 3].some((w) => nt(lines.slice(i, i + w).join(' ')) === t));
+    const flat = first.replace(/\s+/g, ' ').slice(0, 600);
+    const loose = words(e.r.title).length >= 6 && score(e.r.title, flat) >= 0.8;
+    if (!exact && !loose) return false;
+    const head = nt(flat);
+    return !allRefs.some((x) => x.key !== e.key && nt(x.r.title).length > t.length && nt(x.r.title).includes(t) && head.includes(nt(x.r.title)));
+  };
+  let n = 0;
+  for (const { author, url, base } of pages) {
+    let html;
+    try { const r = curl(url); if (!r.status || r.status >= 400) throw new Error(`HTTP ${r.status}`); html = r.buf.toString('latin1'); }
+    catch (err) { console.log(`${author}: ${url} unreachable (${String(err.message).split('\n')[0]})`); continue; }
+    const all = anchors(html, base || url);
+    const links = all.filter((a) => a.isDoc);
+    const missing = refs.filter((e) => (e.r.authors || []).some((a) => String(a).includes(author)) && !(index[e.key] && okText(`${DIR}/${e.key}.txt`)));
+    const host = new URL(url).host;
+    for (const e of missing) for (const a of all.filter((a) => !a.isDoc && new URL(a.href).host === host && score(e.r.title, a.ctx) >= 0.75).slice(0, 2)) {
+      try { const h = curl(a.href).buf.toString('latin1'); links.push(...anchors(h, a.href).filter((x) => x.isDoc).map((x) => ({ ...x, ctx: `${strip(h).slice(0, 600)} ${x.ctx}` }))); } catch { /* skip */ }
+    }
+    for (const e of missing) {
+      if (words(e.r.title).length < 3 || otherVersion(e)) continue; // a short title cannot be checked on the first page
+      const cands = links.map((l) => ({ l, s: score(e.r.title, l.ctx) })).filter((c) => c.s >= 0.6 && !used.has(c.l.href) && EXCLUDE[e.key]?.url !== c.l.href)
+        .sort((a, b) => b.s - a.s).filter((c, i, a) => a.findIndex((d) => d.l.href === c.l.href) === i).slice(0, 3);
+      for (const { l } of cands) {
+        try {
+          let buf = curl(l.href).buf;
+          if (buf[0] === 0x1f && buf[1] === 0x8b) buf = (await import('node:zlib')).gunzipSync(buf);
+          if (buf.subarray(0, 2).toString() === '%!') { // PostScript
+            fs.writeFileSync(`${DIR}/${e.key}.ps`, buf);
+            execFileSync('ps2pdf', [`${DIR}/${e.key}.ps`, `${DIR}/${e.key}.pdf`], { stdio: 'ignore' });
+            fs.rmSync(`${DIR}/${e.key}.ps`);
+            buf = fs.readFileSync(`${DIR}/${e.key}.pdf`);
+          }
+          if (!buf.subarray(0, 5).toString().startsWith('%PDF')) continue;
+          fs.writeFileSync(`${DIR}/${e.key}.pdf`, buf);
+          const first = execFileSync('pdftotext', ['-l', '1', `${DIR}/${e.key}.pdf`, '-'], { encoding: 'utf8' });
+          if (!isPaper(e, first)) { fs.rmSync(`${DIR}/${e.key}.pdf`); continue; }
+          const t = toText(`${DIR}/${e.key}.pdf`, `${DIR}/${e.key}.txt`);
+          if (!t) continue;
+          index[e.key] = { source: 'oa', url: l.href, via: 'author page', ...(t === 'ocr' ? { ocr: true } : {}), date: today };
+          delete failed[e.key]; used.add(l.href); n++;
+          console.log(`${e.key}: ${l.href}`);
+          break;
+        } catch { /* next candidate */ }
+      }
+    }
+    save();
+  }
+  console.log(`authors' pages: ${n} new texts`);
+}
+
 // ---- reading status ----
-const STATUS = { zotero: 'pdf-zotero', arxiv: 'pdf-arxiv', oa: 'pdf-oa' };
+const STATUS = { zotero: 'pdf-zotero', arxiv: 'pdf-arxiv', oa: 'pdf-oa', upload: 'pdf-author' };
 const counts = {};
 for (const e of refs) {
   const c = index[e.key];

@@ -330,6 +330,7 @@ brattkapauly2010:
   year: 2010
   venue: CCA 2010, Proceedings of the Seventh International Conference on Computability and Complexity in Analysis, 24, 41–55
   source: weihrauch-bibliography
+  read: pdf-arxiv
 brattkapauly2018:
   authors:
     - Vasco Brattka
@@ -445,7 +446,7 @@ brattka2023:
   title: On the complexity of learning programs
   year: 2023
   venue: Unity of Logic and Computation, 13967, 166–177
-  doi: 10.1007/978-3-031-36978-0$\_$14
+  doi: 10.1007/978-3-031-36978-0_14
   source: weihrauch-bibliography
 brattka2023b:
   authors:
@@ -543,8 +544,9 @@ carluccicelli2025:
   title: "Weihrauch reducibility between Ramsey-type theorems and well-ordering principles at the level of $^0_2$-induction: A pilot study"
   year: 2025
   venue: arXiv 2511.21481
-  doi: arXiv.2511.21481
+  arxiv: "2511.21481"
   source: weihrauch-bibliography
+  read: pdf-arxiv
 cholaketal2020:
   authors:
     - Peter A. Cholak
@@ -586,7 +588,7 @@ ciprianipauly2023:
   title: The Complexity of Finding Supergraphs
   year: 2023
   venue: Unity of Logic and Computation, 13967, 178–189
-  doi: 10.1007/978-3-031-36978-0\_$15
+  doi: 10.1007/978-3-031-36978-0_15
   source: weihrauch-bibliography
 carroypequignot2024:
   authors:
@@ -798,6 +800,7 @@ fujiwara2020:
   venue: Beyond the Horizon of Computability, 38–49
   doi: 10.1007/978-3-030-51466-2_4
   source: weihrauch-bibliography
+  read: pdf-oa
 fujiwara2021:
   authors:
     - Makoto Fujiwara
@@ -942,7 +945,9 @@ goh2020b:
   year: 2020
   venue: Annals of Pure and Applied Logic, 171(6), 102789
   doi: 10.1016/j.apal.2020.102789
+  version: goh2019
   source: weihrauch-bibliography
+  read: pdf-oa
 hertling2020:
   authors:
     - Peter Hertling
@@ -1122,7 +1127,7 @@ holzlshafer2015:
   title: Universality, optimality, and randomness deficiency
   year: 2015
   venue: Annals of Pure and Applied Logic, 166(10), 1049–1069
-  doi: j.apal.2015.05.006
+  doi: 10.1016/j.apal.2015.05.006
   source: weihrauch-bibliography
   arxiv: "1409.8589"
   read: pdf-arxiv
@@ -1364,7 +1369,6 @@ lemppmarconevalenti2024:
   title: Chains and antichains in the Weihrauch lattice
   year: 2024
   venue: arXiv 2411.07792
-  doi: arXiv.2411.07792
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2411.07792"
@@ -1666,7 +1670,6 @@ pradicprice2025:
   title: Weihrauch problems as containers
   year: 2025
   venue: arXiv 2501.17250
-  doi: arXiv.2501.17250
   source: weihrauch-bibliography
   arxiv: "2501.17250"
   read: pdf-arxiv
@@ -1698,7 +1701,7 @@ pradicsolda2022:
   title: On the Weihrauch degree of the additive Ramsey theorem over the rationals
   year: 2022
   venue: Revolutions and revelations in computability, 13359, 259–271
-  doi: 10.1007/978-3-031-08740-0\_22
+  doi: 10.1007/978-3-031-08740-0_22
   source: weihrauch-bibliography
 paulytsuiki2016:
   authors:
@@ -1923,7 +1926,6 @@ paulysolda2024:
   title: Sequential discontinuity and first-order problems
   year: 2024
   venue: arXiv 2401.12641
-  doi: arXiv.2401.12641
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2401.12641"

@@ -106,6 +106,7 @@ paper.
 | long texts read in parts by the AI reader | `scripts/lib/split-text.mjs` | cached texts |
 | adding results | `scripts/add-results.mjs` → `scripts/lib/results.mjs` | results |
 | endorsements and comments: server (PHP), viewer, download | `site/api/*.php`, `site/js/community.js`, `scripts/endorsements-sync.mjs` | `zoo.json` (results' `_key`), `data/endorsements.yaml` |
+| full texts uploaded by researchers (`docs/UPLOADS.md`): server, viewer, import | `site/api/*.php`, `site/js/community.js`, `viewUploads` in `site/js/app.js`, `scripts/uploads-sync.mjs` | `zoo.json` (references), the server's uploads |
 | upload to the live instance (explicit file list, never deletes) | `scripts/deploy.mjs` → `scripts/lib/deploy.mjs` | `site/`, `cache/deploy.json` |
 | one-off imports (kept for provenance, not maintained) | `scripts/import/` | — |
 | tests | `tests/*.test.mjs` | engine, data, schema |
@@ -223,6 +224,14 @@ authoritative: never edit it by hand) and saves new messages in
 theorem in the paper (section 1) before changing data, then move the file to
 `feedback/done/`. Never put messages, `site/api/config.php` or the admin token
 in git.
+
+### Full texts uploaded by researchers
+
+`RMZOO_ADMIN_TOKEN=… node scripts/uploads-sync.mjs` (see `docs/UPLOADS.md`) copies
+the PDFs shared on the live instance into `cache/fulltext/` (`read: pdf-author`).
+They are private: never commit them, never publish them. Mine or read the new texts
+like any other; a file about a paper not in the database is listed for you to add
+the reference first.
 
 ### Adding a statement
 

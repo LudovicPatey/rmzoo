@@ -53,6 +53,7 @@ data/
   statements/*.yaml  the catalogue (definitions, formulations, literature)
   results/**/*.yaml  implications, separations, properties — each cited
   fulltext-exclude.yaml  Zotero items not to use (wrong attachment)
+  author-pages.yaml      authors' publication pages searched for missing full texts
   sweep-rejected.yaml    papers found by the sweep and judged out of scope
   screened.yaml          consolidation leads already examined (not proposed again)
   acronyms-ignored.yaml  acronyms examined and deliberately not added as statements
@@ -80,6 +81,7 @@ site/                the viewer (vanilla JS, KaTeX, no build step)
 cache/fulltext/      local full texts of the papers (git-ignored)
 docs/DESIGN.md       data model and design rationale
 docs/ENDORSEMENTS.md endorsements and comments: server set-up, sync, privacy
+docs/UPLOADS.md      full texts uploaded by researchers: viewer, server, import
 docs/REVIEW.md      the review queue and the review page (votes, apply)
 feedback/            comments and error reports downloaded from the server (git-ignored)
 docs/CONSOLIDATION.md  keeping the database up to date
@@ -206,9 +208,14 @@ node scripts/fulltext.mjs --zotero --download
 ```
 
 `--zotero` extracts the matching PDFs of your Zotero library, `--download`
-fetches the missing ones (arXiv, else an open-access copy found through
-OpenAlex), `--retry` retries previous failures and `--only k1,k2` restricts to
-some references. It then records the reading status (`read: pdf-zotero |
+fetches the missing ones from open sources (arXiv by id, or by exact title and an
+author; OpenAlex; Crossref full-text links; Unpaywall when `UNPAYWALL_EMAIL` is set;
+Semantic Scholar), `--author-pages` searches the publication pages listed in
+`data/author-pages.yaml` (a file is kept only if the reference's title is at the
+top of its first page; `AUTHOR_PAGES_DELAY=5` slows down for servers that limit
+requests), `--retry` retries previous failures and `--only k1,k2` restricts to
+some references. Sites behind bot protection (Project Euclid) are not worked
+around: download those papers in a browser and cache them as below. It then records the reading status (`read: pdf-zotero |
 pdf-arxiv | pdf-oa`) in `data/references/`. It needs `pdftotext` and `sqlite3`.
 Scanned PDFs (no text layer) are read by OCR with Tesseract (`brew install
 tesseract`; about 5 s per page) and marked `ocr: true` in
@@ -218,7 +225,7 @@ warned for these papers and must identify principles from their definitions,
 and the regex miners' leads from them deserve extra care.
 
 When neither Zotero nor `--download` finds a paper, look on each author's web
-page (publications list, CV, preprint folder): many authors post their papers
+page (publications list, CV, preprint folder; add it to `data/author-pages.yaml` when it lists PDFs): many authors post their papers
 there, sometimes as a conference or preprint version. Save it by hand as
 `cache/fulltext/<key>.pdf` and `.txt` (`pdftotext`), add
 `"<key>": {"source": "oa", "url": "…", "date": "…"}` to

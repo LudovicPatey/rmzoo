@@ -239,16 +239,46 @@ function search(q, limit = 50) {
   return res.sort((a, b) => b[0] - a[0]).slice(0, limit).map((x) => x[1]);
 }
 
-function attachSearch(input, pop, onPick) {
+// Papers matching a query: every word is the start of a word of the title, an author's
+// name, the year or the key; title matches first, then the most recent.
+let paperHay;
+function searchPapers(q, limit = 6) {
+  const norm = (x) => String(x).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+  const toks = norm(q).split(/[^a-z0-9]+/).filter(Boolean);
+  if (!toks.length || toks.join('').length < 3) return [];
+  paperHay ||= Object.entries(Z.raw.references).map(([k, r]) => {
+    const title = norm(String(r.title).replace(/\$([^$]*)\$/g, (m, x) => plain(x))).split(/[^a-z0-9]+/).filter(Boolean);
+    const names = (r.authors || []).flatMap((a) => norm(a).split(/[^a-z0-9]+/)).filter(Boolean);
+    return { k, r, title, words: [...title, ...names, String(r.year), k] };
+  });
+  const res = [];
+  for (const p of paperHay) {
+    if (!toks.every((t) => p.words.some((w) => w.startsWith(t)))) continue;
+    const score = toks.filter((t) => p.title.some((w) => w.startsWith(t))).length * 2 + (p.k === toks.join('') ? 10 : 0);
+    res.push([score, p]);
+  }
+  return res.sort((a, b) => b[0] - a[0] || b[1].r.year - a[1].r.year).slice(0, limit).map((x) => x[1]);
+}
+// opts.papers: also propose papers (opening their page); items are statement indices or {paper: key}
+function attachSearch(input, pop, onPick, opts = {}) {
   let hl = 0, items = [];
   const show = () => {
-    items = search(input.value, 12);
+    const papers = opts.papers ? searchPapers(input.value) : [];
+    items = [...search(input.value, papers.length ? 8 : 12), ...papers.map((p) => ({ paper: p.k }))];
     if (!items.length) { pop.hidden = true; return; }
     hl = Math.min(hl, items.length - 1);
-    pop.innerHTML = items.map((i, k) => `<div class="opt ${k === hl ? 'hl' : ''}" data-i="${i}">
-      <span>${L(i)}</span><span class="muted">${esc(S(i).name)}</span>${inMode(i) ? '' : '<span class="badge other-mode" title="Not studied in the current mode">other framework</span>'}</div>`).join('');
+    pop.innerHTML = items.map((it, k) => {
+      if (typeof it === 'object') {
+        const r = Z.raw.references[it.paper];
+        return `${k && typeof items[k - 1] !== 'object' ? '<div class="opt-sep small muted">Papers</div>' : ''}<div class="opt paper ${k === hl ? 'hl' : ''}" data-k="${k}">
+          <span><i>${rich(r.title)}</i></span><span class="muted">${esc(refShort(it.paper))}</span></div>`;
+      }
+      return `<div class="opt ${k === hl ? 'hl' : ''}" data-k="${k}">
+      <span>${L(it)}</span><span class="muted">${esc(S(it).name)}</span>${inMode(it) ? '' : '<span class="badge other-mode" title="Not studied in the current mode">other framework</span>'}</div>`;
+    }).join('');
     pop.hidden = false;
   };
+  const pick = (it) => { if (typeof it === 'object') location.hash = `#/refs/${it.paper}`; else onPick(it); };
   input.addEventListener('input', () => { hl = 0; show(); });
   input.addEventListener('focus', show);
   input.addEventListener('blur', () => setTimeout(() => (pop.hidden = true), 150));
@@ -256,12 +286,12 @@ function attachSearch(input, pop, onPick) {
     if (pop.hidden) return;
     if (e.key === 'ArrowDown') { hl = Math.min(hl + 1, items.length - 1); show(); e.preventDefault(); }
     else if (e.key === 'ArrowUp') { hl = Math.max(hl - 1, 0); show(); e.preventDefault(); }
-    else if (e.key === 'Enter' && items[hl] !== undefined) { onPick(items[hl]); input.value = ''; pop.hidden = true; e.preventDefault(); }
+    else if (e.key === 'Enter' && items[hl] !== undefined) { pick(items[hl]); input.value = ''; pop.hidden = true; e.preventDefault(); }
     else if (e.key === 'Escape') { pop.hidden = true; input.blur(); }
   });
   pop.addEventListener('mousedown', (e) => {
     const o = e.target.closest('.opt');
-    if (o) { onPick(+o.dataset.i); input.value = ''; pop.hidden = true; e.preventDefault(); }
+    if (o) { pick(items[+o.dataset.k]); input.value = ''; pop.hidden = true; e.preventDefault(); }
   });
 }
 
@@ -572,7 +602,7 @@ function viewHome() {
     <section class="hero">
       <h1>The Reverse Mathematics Zoo</h1>
       <p class="muted">Principles of reverse mathematics and the Weihrauch lattice, how they compare under ${Z.R.length} notions of reduction, and where each fact was proved.</p>
-      <div class="search big"><input id="home-q" type="search" placeholder="Search a statement — RT22, WKL, Ramsey, induction, LPO…" autocomplete="off" autofocus>
+      <div class="search big"><input id="home-q" type="search" placeholder="Search a statement or a paper — RT22, WKL, Ramsey, induction, Hirst…" autocomplete="off" autofocus>
         <div id="home-pop" class="popover" hidden></div></div>
       <div class="chips hero-tags">${Z.raw.tags.map((t) => `<a class="chip" href="#/catalogue?tags=${t.id}">${esc(t.name)}</a>`).join('')}</div>
       <div class="hero-modes"><span class="small muted">Frameworks:</span>
@@ -610,7 +640,7 @@ function viewHome() {
         `<li><a href="#/refs/${k}"><i>${rich(r.title)}</i></a><div class="small muted">${esc(refShort(k))} · ${esc(r._date)}</div></li>`).join('')}</ul></div>
     </div>`;
   const q = $('#home-q');
-  attachSearch(q, $('#home-pop'), (i) => { location.hash = '#/s/' + S(i).id; });
+  attachSearch(q, $('#home-pop'), (i) => { location.hash = '#/s/' + S(i).id; }, { papers: true });
   q.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && $('#home-pop').hidden && q.value.trim()) location.hash = '#/catalogue?q=' + encodeURIComponent(q.value.trim());
   });
@@ -1057,7 +1087,8 @@ function relations(i, r) {
 const READ = {
   'pdf-zotero': ['full text parsed', 'The PDF (from the maintainer\'s Zotero library) was parsed when extracting results.'],
   'pdf-arxiv': ['full text parsed', 'The arXiv PDF was parsed when extracting results.'],
-  'pdf-oa': ['full text parsed', 'An open-access PDF (found via OpenAlex) was parsed when extracting results.'],
+  'pdf-oa': ['full text parsed', 'An open-access PDF (arXiv, OpenAlex, Crossref or an author\'s page) was parsed when extracting results.'],
+  'pdf-author': ['full text parsed', 'A PDF shared by a researcher on this site was parsed when extracting results.'],
   abstract: ['abstract read', 'Only the abstract was read; theorem numbers may be missing.'],
   screened: ['abstract screened', 'The abstract was only screened by keywords; results may be missing.'],
 };
@@ -1539,6 +1570,7 @@ function viewRefs(key) {
       ${r.doi ? ` · <a href="https://doi.org/${esc(r.doi)}" target="_blank" rel="noopener">doi:${esc(r.doi)}</a>` : ''}
       ${r.arxiv ? ` · <a href="https://arxiv.org/abs/${esc(r.arxiv)}" target="_blank" rel="noopener">arXiv:${esc(r.arxiv)}</a>` : ''}
       · ${readBadge(r)}${C.live ? ` · <a href="#" data-feedback="comment|reference|${key}">Comment or report an error</a>` : ''}</p>
+      ${paperUploadPanel(key)}
       ${r.hasAbstract ? '<h2>Abstract</h2><div class="abstract" id="abstract"><span class="muted small">Loading…</span></div>' : ''}
       ${erratumHtml(key)}
       <details class="bib"><summary>BibTeX</summary><pre id="bib-one">${esc(bibtex(Z.raw.references, [key]))}</pre>
@@ -1568,6 +1600,7 @@ function viewRefs(key) {
       el.innerHTML = x ? `${rich(x.text)}<div class="small muted" style="margin-top:6px">Source: ${src}</div>` : '<span class="muted small">Not available.</span>';
     }).catch(() => { const el = $('#abstract'); if (el) el.innerHTML = '<span class="muted small">Could not load the abstract.</span>'; });
     $('#bib-copy').addEventListener('click', (e) => navigator.clipboard?.writeText($('#bib-one').textContent).then(() => { e.target.textContent = 'Copied'; }));
+    wirePaperUpload();
     return;
   }
   const nUse = new Map();
@@ -1832,33 +1865,241 @@ function renderAccount() {
   const a = $('#account');
   if (!C.live) { a.innerHTML = ''; return; }
   a.innerHTML = C.user
-    ? `<a class="btn small" href="#/u/${C.user.orcid}" title="Your profile and endorsements"><span class="orcid-dot"></span>${esc(C.user.name)}</a>`
+    ? `<a class="btn small" href="#/u/${C.user.orcid}" title="Your profile: endorsements and full texts"><span class="orcid-dot"></span>${esc(C.user.name)}</a>`
     : `<a class="btn small" id="signin" href="${C.loginUrl()}"><span class="orcid-dot"></span>Sign in</a>`;
 }
 // the sign-in link returns to the page being viewed
 window.addEventListener('hashchange', () => { const s = $('#signin'); if (s) s.href = C.loginUrl(); });
 
-function viewProfile(orcid) {
+function viewProfile(orcid, params = new URLSearchParams()) {
   const m = main();
   m.className = '';
   if (orcid === 'me') {
     if (C.user) { location.replace(`#/u/${C.user.orcid}`); return; }
-    m.innerHTML = `<h1>Your profile</h1>${C.live ? signInPrompt('see your endorsements') : liveNote()}`;
+    m.innerHTML = `<h1>Your profile</h1>${C.live ? signInPrompt('see your endorsements and the full texts you shared') : liveNote()}`;
     return;
   }
   const own = C.user?.orcid === orcid;
   const mine = (C.byPerson.get(orcid) || []).slice().sort((a, b) => b.date.localeCompare(a.date));
   const list = mine.map((e) => [Z.raw.results[resultIdx.get(e.result)], resultIdx.get(e.result), e.date]).filter(([res]) => res);
   const gone = mine.length - list.length;
+  // tabs: endorsements (anyone's), full texts (one's own only: uploads are private)
+  const TABS = [['endorsements', `Endorsements <span class="count">${list.length}</span>`], ...(own ? [['texts', 'Full texts']] : [])];
+  const tab = TABS.some(([x]) => x === params.get('tab')) ? params.get('tab') : 'endorsements';
+  const panel = (x) => `<section class="tab-panel" data-panel="${x}"${x === tab ? '' : ' hidden'}>`;
   m.innerHTML = `<h1>${esc(own ? C.user.name : C.name(orcid))}</h1>
     <p><a href="https://orcid.org/${esc(orcid)}" target="_blank" rel="noopener"><span class="orcid-dot"></span>orcid.org/${esc(orcid)}</a>
       ${own ? ` · <a href="${C.logoutUrl()}">Sign out</a>` : ''}</p>
-    <h2>Endorsed results <span class="muted small">${list.length}</span></h2>
+    ${TABS.length > 1 ? `<nav class="tabs" role="tablist">${TABS.map(([x, label]) => `<button role="tab" data-tab="${x}" aria-selected="${x === tab}">${label}</button>`).join('')}</nav>` : ''}
+    ${panel('endorsements')}
     <p class="small muted">Results whose proof ${own ? 'you have' : 'this researcher has'} read and believe${own ? '' : 's'} correct.${own ? ' Open a result to withdraw your endorsement.' : ''}</p>
     ${lazy(list, ([res, ri, date]) => `<tr><td>${resultFact(res)}</td><td>${resultCite(ri)}</td><td class="small muted">${esc(date)}</td></tr>`,
       { size: 50, wrap: 'table', head: '<thead><tr><th>Result</th><th>Source</th><th>Endorsed</th></tr></thead>', noun: 'results',
         empty: `<p class="muted">${own ? 'You have not endorsed any result yet: open a result (its ✓ mark) to endorse it.' : 'No endorsement.'}</p>` })}
-    ${gone ? `<p class="small muted">${gone} endorsed result${gone === 1 ? ' has' : 's have'} since been changed in the database.</p>` : ''}`;
+    ${gone ? `<p class="small muted">${gone} endorsed result${gone === 1 ? ' has' : 's have'} since been changed in the database.</p>` : ''}
+    </section>
+    ${own ? `${panel('texts')}<div id="uploads-root"><p class="muted">Loading…</p></div></section>` : ''}`;
+  m.onclick = (e) => {
+    const tb = e.target.closest('[data-tab]');
+    if (!tb) return;
+    const x = tb.dataset.tab;
+    m.querySelectorAll('[data-tab]').forEach((b) => b.setAttribute('aria-selected', b === tb));
+    m.querySelectorAll('[data-panel]').forEach((p) => { p.hidden = p.dataset.panel !== x; });
+    history.replaceState(null, '', `#/u/${orcid}${x === 'endorsements' ? '' : `?tab=${x}`}`);
+  };
+  if (own) loadUploads(params);
+}
+
+// ============================================================================
+// uploaded full texts (docs/UPLOADS.md): signed-in researchers share the PDFs of
+// papers (theirs, or that they may share) with the maintainer, for the analysis of
+// their results. The files are private: never published, only read by the maintainer.
+// ============================================================================
+const fmtSize = (n) => (n >= 1 << 20 ? `${(n / (1 << 20)).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} kB`);
+// a title as plain text: its $…$ parts through plain(), the rest as is
+const titleText = (s) => String(s).replace(/\$([^$]*)\$/g, (m, x) => plain(x));
+const refLabel = (k) => { const r = Z.raw.references[k]; return r ? `${titleText(r.title)} (${r.authors.map((a) => a.split(' ').pop()).join(', ')}, ${r.year})` : k; };
+// the paper a file name most likely is: the reference whose title words occur most in it
+function guessRef(filename) {
+  const w = new Set(normWords(filename.replace(/\.pdf$/i, '')));
+  if (w.size < 2) return '';
+  let best = '', bs = 0;
+  for (const [k, r] of Object.entries(Z.raw.references)) {
+    const t = normWords(r.title);
+    if (t.length < 2) continue;
+    // matched words over the longer of the two lists: a short title inside a long file name scores low
+    const s = t.filter((x) => w.has(x)).length / Math.max(t.length, w.size) + (w.has(k) ? 1 : 0);
+    if (s > bs) { bs = s; best = k; }
+  }
+  return bs >= 0.5 ? best : '';
+}
+function normWords(s) {
+  return String(s).toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/\$[^$]*\$/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ').split(' ').filter((x) => x.length > 2 && !['the', 'and', 'for', 'with', 'from'].includes(x));
+}
+// the signed-in person's papers in the database without a full text (surname match)
+function myMissingPapers() {
+  const sur = normWords(C.user?.name || '').pop();
+  if (!sur) return [];
+  return Object.entries(Z.raw.references).filter(([, r]) => !r.read && r.authors.some((a) => normWords(a).pop() === sur))
+    .sort((a, b) => b[1].year - a[1].year);
+}
+function refPicker(id, value) {
+  return `<input class="ref-pick" list="ref-options" data-row="${id}" placeholder="Paper of the database (type a title)…" value="${esc(value ? refLabel(value) : '')}" style="width:100%">`;
+}
+// the datalist of the papers, built once
+function refOptions() {
+  if ($('#ref-options')) return '';
+  return `<datalist id="ref-options">${Object.keys(Z.raw.references).map((k) => `<option value="${esc(refLabel(k))}"></option>`).join('')}</datalist>`;
+}
+const refFromLabel = (label) => Object.keys(Z.raw.references).find((k) => refLabel(k) === label) || '';
+
+let uploadsState = { list: null, pending: [], error: '' };
+// #/uploads: the "Full texts" tab of one's profile
+async function viewUploads(params) {
+  const m = main();
+  m.className = '';
+  await C.ready;
+  if (C.live && C.user) { location.replace(`#/u/${C.user.orcid}?tab=texts${params.get('ref') ? `&ref=${encodeURIComponent(params.get('ref'))}` : ''}`); return; }
+  m.innerHTML = `<h1>Full texts</h1>${C.live ? signInPrompt('share the full texts of your papers') : liveNote()}`;
+}
+const uploadsRoot = () => $('#uploads-root');
+async function loadUploads(params) {
+  const pre = params.get('ref');
+  if (pre && Z.raw.references[pre] && !uploadsState.pending.some((p) => p.ref === pre && !p.file)) uploadsState.pending.push({ id: Math.random().toString(36).slice(2), ref: pre, file: null });
+  try { uploadsState.list = await C.listUploads(); } catch (e) { uploadsState.error = e.message; }
+  renderUploads();
+}
+function renderUploads() {
+  const m = uploadsRoot();
+  if (!m) return; // the profile page was left
+  const S = uploadsState;
+  const sent = new Set((S.list || []).map((u) => u.ref));
+  const missing = myMissingPapers().filter(([k]) => !sent.has(k)); // already uploaded: waiting for the maintainer
+  m.innerHTML = `<p>Share the PDF of papers you wrote (or that you are allowed to share) so that their results can be analyzed for the zoo.
+      <b>The files are private</b>: they are not published, only the maintainer reads them, and you can remove them at any time.</p>
+    ${refOptions()}
+    <div class="dropzone" id="dropzone" tabindex="0">
+      <p><b>Drop PDF files here</b> or <label class="btn small">choose files<input type="file" id="pick" accept="application/pdf,.pdf" multiple hidden></label></p>
+      <p class="small muted">PDF only. Each file is attached to a paper of the database, or described if the paper is not in the database.</p>
+    </div>
+    ${S.pending.length ? `<h2>To upload</h2><table class="grid uploads">
+      <thead><tr><th>File</th><th>Paper</th><th></th></tr></thead>
+      ${S.pending.map((p) => `<tr data-pending="${p.id}">
+        <td>${p.file ? `${esc(p.file.name)}<div class="small muted">${fmtSize(p.file.size)}</div>` : `<label class="btn small">choose the PDF<input type="file" data-choose="${p.id}" accept="application/pdf,.pdf" hidden></label>`}</td>
+        <td>${refPicker(p.id, p.ref)}
+          <details${p.ref ? '' : ' open'}><summary class="small">Not in the database?</summary>
+            <textarea data-citation="${p.id}" rows="2" placeholder="Title, authors, year, DOI or arXiv id" style="width:100%">${esc(p.citation || '')}</textarea></details>
+          ${p.progress != null ? `<progress max="1" value="${p.progress}"></progress>` : ''}${p.error ? `<div class="small" style="color:var(--bad, #c33)">${esc(p.error)}</div>` : ''}</td>
+        <td style="white-space:nowrap"><button class="btn small primary" data-send="${p.id}"${p.file ? '' : ' disabled'}>Upload</button>
+          <button class="btn small" data-drop="${p.id}" title="Remove from this list">✕</button></td></tr>`).join('')}
+      </table>
+      <p><label><input type="checkbox" id="rights"${S.rights ? ' checked' : ''}> I am an author of these papers, or I am otherwise allowed to share these files with the
+        maintainer of the zoo for the analysis of their results. They will not be published.</label></p>
+      <p><button class="btn primary" id="send-all">Upload all</button></p>` : ''}
+    <h2>Your uploads <span class="muted small">${S.list ? S.list.length : ''}</span></h2>
+    ${S.error ? `<p class="small" style="color:var(--bad, #c33)">${esc(S.error)}</p>` : ''}
+    ${!S.list ? '<p class="muted">Loading…</p>' : !S.list.length ? '<p class="muted">You have not uploaded any file yet.</p>' : `<table class="grid uploads">
+      <thead><tr><th>Paper</th><th>File</th><th>Date</th><th></th></tr></thead>
+      ${S.list.slice().sort((a, b) => (b.replaced || b.date).localeCompare(a.replaced || a.date)).map((u) => `<tr data-upload="${esc(u.id)}" class="drop-target">
+        <td>${u.ref && Z.raw.references[u.ref] ? `<a href="#/refs/${esc(u.ref)}">${rich(Z.raw.references[u.ref].title)}</a> ${readBadge(Z.raw.references[u.ref])}` : `<span class="muted">Not in the database:</span> ${esc(u.citation || u.ref || '')}`}</td>
+        <td>${esc(u.filename)}<div class="small muted">${fmtSize(u.size)}</div></td>
+        <td class="small muted">${esc(u.date)}${u.replaced ? `<br>replaced ${esc(u.replaced)}` : ''}</td>
+        <td style="white-space:nowrap"><label class="btn small" title="Choose a new PDF, or drop it on this row">Replace<input type="file" data-replace="${esc(u.id)}" accept="application/pdf,.pdf" hidden></label>
+          <button class="btn small" data-remove="${esc(u.id)}">Remove</button></td></tr>`).join('')}</table>
+      <p class="small muted">To replace a file, drop the new PDF on its row. A paper is marked “read” once the maintainer has imported its text.</p>`}
+    ${missing.length ? `<h2>Your papers without a full text</h2>
+      <p class="small muted">Papers of the database with an author named like you, whose text the zoo does not have.</p>
+      <table class="grid">${missing.map(([k, r]) => `<tr><td><a href="#/refs/${esc(k)}">${rich(r.title)}</a> <span class="small muted">${esc(r.authors.join(', '))}, ${r.year}</span></td>
+        <td style="white-space:nowrap"><button class="btn small" data-add="${esc(k)}">Upload its PDF</button></td></tr>`).join('')}</table>` : ''}`;
+  wireUploads();
+}
+function addFiles(files, ref) {
+  for (const f of files) {
+    if (!/\.pdf$/i.test(f.name) && f.type !== 'application/pdf') { uploadsState.error = `${f.name}: only PDF files are accepted.`; continue; }
+    uploadsState.pending.push({ id: Math.random().toString(36).slice(2), file: f, ref: ref || guessRef(f.name) });
+  }
+  renderUploads();
+}
+async function sendPending(p) {
+  const S = uploadsState;
+  if (!S.rights) { p.error = 'Please confirm that you may share this file (the box below the list).'; renderUploads(); return false; }
+  if (!p.file) return false;
+  if (!p.ref && !(p.citation || '').trim()) { p.error = 'Choose the paper, or describe it if it is not in the database.'; renderUploads(); return false; }
+  p.error = ''; p.progress = 0; renderUploads();
+  try {
+    S.list = await C.upload(p.file, p.ref ? { ref: p.ref } : { citation: p.citation.trim() }, (x) => { p.progress = x; const bar = $(`[data-pending="${p.id}"] progress`); if (bar) bar.value = x; });
+    S.pending = S.pending.filter((q) => q !== p);
+    renderUploads();
+    return true;
+  } catch (e) { p.error = e.message; p.progress = null; renderUploads(); return false; }
+}
+async function replaceUpload(id, file) {
+  const S = uploadsState;
+  const u = S.list.find((x) => x.id === id);
+  if (!u) return;
+  if (!/\.pdf$/i.test(file.name) && file.type !== 'application/pdf') { S.error = `${file.name}: only PDF files are accepted.`; renderUploads(); return; }
+  if (!confirm(`Replace ${u.filename} by ${file.name}?`)) return;
+  try { S.error = ''; S.list = await C.upload(file, { ref: u.ref, citation: u.citation, replace: id }); } catch (e) { S.error = e.message; }
+  renderUploads();
+}
+function wireUploads() {
+  const S = uploadsState;
+  const dz = $('#dropzone');
+  const stop = (e) => { e.preventDefault(); e.stopPropagation(); };
+  ['dragenter', 'dragover'].forEach((t) => dz.addEventListener(t, (e) => { stop(e); dz.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach((t) => dz.addEventListener(t, (e) => { stop(e); dz.classList.remove('over'); }));
+  dz.addEventListener('drop', (e) => addFiles([...e.dataTransfer.files]));
+  $('#pick').onchange = (e) => addFiles([...e.target.files]);
+  $$('tr[data-upload]').forEach((tr) => {
+    ['dragenter', 'dragover'].forEach((t) => tr.addEventListener(t, (e) => { stop(e); tr.classList.add('over'); }));
+    tr.addEventListener('dragleave', (e) => { stop(e); tr.classList.remove('over'); });
+    tr.addEventListener('drop', (e) => { stop(e); tr.classList.remove('over'); const f = e.dataTransfer.files[0]; if (f) replaceUpload(tr.dataset.upload, f); });
+  });
+  const m = uploadsRoot();
+  m.onchange = (e) => {
+    const t = e.target;
+    if (t.dataset.replace && t.files[0]) replaceUpload(t.dataset.replace, t.files[0]);
+    if (t.dataset.choose && t.files[0]) { const p = S.pending.find((q) => q.id === t.dataset.choose); p.file = t.files[0]; renderUploads(); }
+    if (t.id === 'rights') S.rights = t.checked;
+    if (t.classList.contains('ref-pick')) { const p = S.pending.find((q) => q.id === t.dataset.row); p.ref = refFromLabel(t.value); if (t.value && !p.ref) p.error = 'Choose a paper from the list, or describe it below.'; else p.error = ''; renderUploads(); }
+  };
+  m.oninput = (e) => { const t = e.target; if (t.dataset.citation) { const p = S.pending.find((q) => q.id === t.dataset.citation); p.citation = t.value; } };
+  m.onclick = async (e) => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    if (b.dataset.drop) { S.pending = S.pending.filter((q) => q.id !== b.dataset.drop); renderUploads(); }
+    if (b.dataset.send) { const p = S.pending.find((q) => q.id === b.dataset.send); if (p) await sendPending(p); }
+    if (b.id === 'send-all') for (const p of S.pending.slice()) if (p.file && !(await sendPending(p))) break;
+    if (b.dataset.add) { S.pending.push({ id: Math.random().toString(36).slice(2), ref: b.dataset.add, file: null }); renderUploads(); }
+    if (b.dataset.remove) {
+      const u = S.list.find((x) => x.id === b.dataset.remove);
+      if (!u || !confirm(`Remove ${u.filename}? The maintainer will no longer have it.`)) return;
+      try { S.error = ''; S.list = await C.removeUpload(u.id); } catch (err) { S.error = err.message; }
+      renderUploads();
+    }
+  };
+}
+// on a paper's page: a drop zone for its PDF (signed-in researchers, papers without a text)
+function paperUploadPanel(key) {
+  const r = Z.raw.references[key];
+  if (!C.live || !C.user || r.read) return '';
+  return `<div class="dropzone small-zone" id="paper-drop" data-ref="${esc(key)}">
+    <p class="small"><b>The zoo does not have the full text of this paper.</b> If you may share it, drop its PDF here
+      (or <a href="#/uploads?ref=${esc(key)}">open your full texts</a>): only the maintainer reads it, to analyze its results.</p></div>`;
+}
+function wirePaperUpload() {
+  const dz = $('#paper-drop');
+  if (!dz) return;
+  const stop = (e) => { e.preventDefault(); e.stopPropagation(); };
+  ['dragenter', 'dragover'].forEach((t) => dz.addEventListener(t, (e) => { stop(e); dz.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach((t) => dz.addEventListener(t, (e) => { stop(e); dz.classList.remove('over'); }));
+  dz.addEventListener('drop', (e) => {
+    const f = e.dataTransfer.files[0];
+    if (!f) return;
+    uploadsState.pending.push({ id: Math.random().toString(36).slice(2), file: f, ref: dz.dataset.ref });
+    location.hash = '#/uploads'; // confirm the right to share there
+  });
 }
 
 // ============================================================================
@@ -2135,7 +2376,7 @@ function currentRoute() {
   const p = path.split('/').filter(Boolean);
   // old links "#/?q=…" and "#/?tags=…" pointed to the catalogue
   if (!p.length) return /[?&](q|tags)=/.test(location.hash) ? 'catalogue' : 'home';
-  return { catalogue: 'catalogue', questions: 'questions', s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', refs: 'refs', about: 'about', u: 'profile', review: 'review' }[p[0]] || 'catalogue';
+  return { catalogue: 'catalogue', questions: 'questions', s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', refs: 'refs', about: 'about', u: 'profile', review: 'review', uploads: 'uploads' }[p[0]] || 'catalogue';
 }
 function route() {
   const [path, qs] = (location.hash.slice(1) || '/').split('?');
@@ -2166,8 +2407,9 @@ function route() {
   else if (name === 'about') { viewAbout(params); const c = params.get('class'); if (c) setTimeout(() => { const el = document.getElementById('class-' + c); if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); } }, 50); }
   else if (name === 'home') viewHome();
   else if (name === 'questions') viewQuestions(params, p[1]);
-  else if (name === 'profile') viewProfile(p[1] || 'me');
+  else if (name === 'profile') viewProfile(p[1] || 'me', params);
   else if (name === 'review') viewReview(params, p[1] && decodeURIComponent(p[1]));
+  else if (name === 'uploads') viewUploads(params);
   else viewCatalogue(params);
   renderTray();
   if (name !== 'diagram' || route.last !== 'diagram') window.scrollTo(0, 0);
@@ -2238,7 +2480,7 @@ async function boot() {
   if (!Z.ridx.has(state.r)) state.r = 'rca0';
   state.sel = state.sel.filter((id) => idx(id) !== undefined);
   buildHaystack();
-  attachSearch($('#global-search'), $('#search-pop'), (i) => { location.hash = `#/s/${S(i).id}`; });
+  attachSearch($('#global-search'), $('#search-pop'), (i) => { location.hash = `#/s/${S(i).id}`; }, { papers: true });
   document.addEventListener('keydown', (e) => {
     if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); $('#global-search').focus(); }
     if (e.key === 'Escape') closeDrawer();

@@ -82,6 +82,33 @@ export function createCommunity(zoo) {
   c.setVote = async (id, verdict) => indexReviews(await post('review', { item: id, verdict }));
   c.addComment = async (id, text) => indexReviews(await post('rcomment', { item: id, text }));
   c.deleteComment = async (cid) => indexReviews(await post('rcomment', { delete: cid }));
+  // uploaded full texts (docs/UPLOADS.md): private files for the maintainer's analysis
+  c.listUploads = async () => {
+    const r = await fetch(`${API}?a=uploads`, { credentials: 'same-origin', cache: 'no-store' });
+    const j = await r.json().catch(() => ({ error: `Server error ${r.status}` }));
+    if (!r.ok) throw new Error(j.error || `Server error ${r.status}`);
+    return j.uploads;
+  };
+  // fields: {ref} or {citation}, and {replace: upload id} to replace a file; onProgress(fraction)
+  c.upload = (file, fields, onProgress) => new Promise((resolve, reject) => {
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('rights', '1');
+    for (const [k, v] of Object.entries(fields)) if (v) fd.append(k, v);
+    const x = new XMLHttpRequest(); // fetch has no upload progress
+    x.open('POST', `${API}?a=upload`);
+    x.withCredentials = true;
+    x.setRequestHeader('X-CSRF-Token', c.csrf);
+    x.upload.onprogress = (e) => { if (e.lengthComputable && onProgress) onProgress(e.loaded / e.total); };
+    x.onload = () => {
+      let j;
+      try { j = JSON.parse(x.responseText); } catch { j = { error: `Server error ${x.status}` }; }
+      if (x.status >= 200 && x.status < 300) resolve(j.uploads); else reject(new Error(j.error || `Server error ${x.status}`));
+    };
+    x.onerror = () => reject(new Error('Network error'));
+    x.send(fd);
+  });
+  c.removeUpload = async (id) => (await post('unupload', { id })).uploads;
   c.loginUrl = () => `${API}?a=login&back=${encodeURIComponent(location.hash.slice(1) || '/')}`;
   c.logoutUrl = () => `${API}?a=logout&back=${encodeURIComponent('/')}`;
   return c;

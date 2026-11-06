@@ -37,6 +37,7 @@ export const FILES = {
   api: 'site/api/index.php',            // endorsement and review server (PHP, live instance)
   apiLib: 'site/api/lib.php',           // its storage
   endorseSync: 'scripts/endorsements-sync.mjs', // server → data/endorsements.yaml, feedback/
+  uploadsSync: 'scripts/uploads-sync.mjs', // server → cache/fulltext/ (full texts uploaded by researchers)
 };
 
 const cite = (extra = {}) => ({
@@ -105,11 +106,11 @@ export const SCHEMA = {
     title: { req: true, doc: 'title ($…$ for TeX)', usedBy: ['build', 'viewer', 'bibtex', 'sweep', 'pubstatus', 'fulltext', 'abstracts', 'consolidate'] },
     year: { req: true, doc: 'publication year (preprint year if unpublished)', usedBy: ['build', 'viewer', 'bibtex', 'sweep', 'pubstatus', 'consolidate', 'mineFacts', 'mineQuestions'] },
     venue: { doc: 'journal/book with volume and pages, or "arXiv preprint"', usedBy: ['viewer', 'bibtex', 'sweep', 'pubstatus'] },
-    doi: { doc: 'DOI (unique across references)', usedBy: ['build', 'viewer', 'bibtex', 'sweep', 'pubstatus', 'fulltext', 'abstracts', 'consolidate'] },
+    doi: { doc: 'DOI, of the form 10.<registrant>/<suffix> without TeX escapes (unique across references; an arXiv id goes in arxiv)', usedBy: ['build', 'viewer', 'bibtex', 'sweep', 'pubstatus', 'fulltext', 'abstracts', 'consolidate'] },
     arxiv: { doc: 'arXiv id (unique unless `version` links the two)', usedBy: ['build', 'viewer', 'bibtex', 'sweep', 'pubstatus', 'fulltext', 'abstracts', 'consolidate'] },
     url: { doc: 'link when there is no DOI', usedBy: ['viewer', 'bibtex', 'fulltext'] },
     source: { doc: 'where the entry came from (zbmath, arxiv, rmzoo, review: added from the review page, …)', usedBy: ['viewer', 'sweep'] },
-    read: { doc: 'how its content was checked: pdf-zotero | pdf-arxiv | pdf-oa | abstract | screened (written by fulltext.mjs)', usedBy: ['build', 'viewer', 'fulltext'] },
+    read: { doc: 'how its content was checked: pdf-zotero | pdf-arxiv | pdf-oa | pdf-author (uploaded by a researcher) | abstract | screened (written by fulltext.mjs)', usedBy: ['build', 'viewer', 'fulltext', 'uploadsSync'] },
     preprintYear: { doc: 'year of the preprint, when `year` became the publication year (written by pubstatus.mjs)', usedBy: ['pubstatus'] },
     version: { doc: 'key of another version of the same work (conference vs journal)', usedBy: ['build'] },
   },
@@ -303,7 +304,8 @@ export const OPERATIONS = {
 
 // Other data files with a simple shape (not entity lists):
 //   data/context.yaml          statement id → background text ([@key] citations)
-//   data/fulltext-exclude.yaml reference key → {zotero, reason}: Zotero items not to use
+//   data/fulltext-exclude.yaml reference key → {zotero | url, reason}: Zotero items or URLs not to use
+//   data/author-pages.yaml     [{author, url, base?}]: publication pages read by fulltext.mjs --author-pages
 //   data/screened.yaml         {facts, questions, resolutions}: leads already examined
 //   data/acronyms-ignored.yaml acronym → reason: not proposed as missing statements
 //   data/review.yaml           entity review above; data/ai-analyzed.yaml: aiAnalyzed

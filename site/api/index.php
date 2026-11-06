@@ -7,7 +7,12 @@
 //   POST ?a=feedback   {kind: error|comment, target: {type, id}, text, page}
 //   POST ?a=review     {item: <review item id>, verdict: valid|invalid|null}   (the review page, docs/REVIEW.md)
 //   POST ?a=rcomment   {item, text} a public comment on a review item; {delete: <comment id>} removes one's own
+//   GET  ?a=uploads    the signed-in person's uploaded full texts (docs/UPLOADS.md)
+//   POST ?a=upload     multipart: file (PDF), ref (reference key) or citation, rights=1, replace=<upload id>?
+//   POST ?a=unupload   {id} removes one's own upload
 //   GET  ?a=export     (admin token) endorsements, votes, comments and all feedback, for scripts/endorsements-sync.mjs
+//   GET  ?a=uploads-export        (admin token) the index of all uploads, for scripts/uploads-sync.mjs
+//   GET  ?a=upload-file&id=<id>   (admin token) one uploaded file
 //   GET  ?a=devlogin   (local development only, config dev_login) sign in as any ORCID iD
 
 declare(strict_types=1);
@@ -163,6 +168,84 @@ switch ($a) {
     ];
     file_put_contents("$dir/$id.json", json_encode($rec, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
     json_out(['ok' => true, 'id' => $id]);
+  }
+
+  case 'uploads': {
+    start_session();
+    $u = user();
+    if (!$u) fail(401, 'Sign in with ORCID first.');
+    json_out(['uploads' => my_uploads(with_uploads(fn ($l) => null), $u['orcid'])]);
+  }
+
+  case 'upload': {
+    start_session();
+    $u = require_user();
+    $c = cfg();
+    $f = $_FILES['file'] ?? null;
+    if (!$f || ($f['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) {
+      $tooBig = in_array($f['error'] ?? 0, [UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE], true);
+      fail(400, $tooBig ? "The file is too large (at most {$c['upload_max_mb']} MB)." : 'No file received.');
+    }
+    if ($f['size'] > $c['upload_max_mb'] * 1024 * 1024) fail(400, "The file is too large (at most {$c['upload_max_mb']} MB).");
+    $head = (string) file_get_contents($f['tmp_name'], false, null, 0, 5);
+    if ($head !== '%PDF-') fail(400, 'Only PDF files are accepted.');
+    if (empty($_POST['rights'])) fail(400, 'Please confirm that you may share this file with the maintainer.');
+    $ref = trim((string) ($_POST['ref'] ?? ''));
+    $citation = trim((string) ($_POST['citation'] ?? ''));
+    if ($ref !== '' && !isset(zoo()['references'][$ref])) fail(404, 'Unknown paper (reload the page).');
+    if ($ref === '' && ($citation === '' || mb_strlen($citation) > 500)) fail(400, 'Choose the paper, or describe it (title, authors, year) in at most 500 characters.');
+    $replace = (string) ($_POST['replace'] ?? '');
+    $today = gmdate('Y-m-d');
+    $filename = mb_substr(preg_replace('/[^\p{L}\p{N} ._()-]+/u', '_', basename((string) $f['name'])), 0, 120);
+    $sha = hash_file('sha256', $f['tmp_name']);
+    $list = with_uploads(function (array $list) use ($u, $c, $f, $ref, $citation, $replace, $today, $filename, $sha) {
+      $mine = array_filter($list, fn ($x) => $x['orcid'] === $u['orcid'] && (($x['replaced'] ?? $x['date']) === $today));
+      if (count($mine) >= $c['uploads_per_day']) fail(429, 'Too many uploads today; please try again tomorrow.');
+      $dir = uploads_dir();
+      if ($replace !== '') {
+        $i = null;
+        foreach ($list as $k => $x) if ($x['id'] === $replace && $x['orcid'] === $u['orcid']) $i = $k;
+        if ($i === null) fail(404, 'Unknown upload (reload the page).');
+        if (!move_uploaded_file($f['tmp_name'], "$dir/{$replace}.pdf")) fail(500, 'Cannot store the file.');
+        $list[$i] = array_merge($list[$i], ['filename' => $filename, 'size' => (int) $f['size'], 'sha256' => $sha, 'replaced' => $today]);
+        return $list;
+      }
+      foreach ($list as $x) if ($x['orcid'] === $u['orcid'] && $x['sha256'] === $sha) fail(409, 'You have already uploaded this file.');
+      $id = gmdate('Ymd\THis') . '-' . bin2hex(random_bytes(4));
+      if (!move_uploaded_file($f['tmp_name'], "$dir/$id.pdf")) fail(500, 'Cannot store the file.');
+      $list[] = array_filter(['id' => $id, 'orcid' => $u['orcid'], 'name' => $u['name'], 'ref' => $ref ?: null, 'citation' => $ref ? null : $citation,
+        'filename' => $filename, 'size' => (int) $f['size'], 'sha256' => $sha, 'date' => $today], fn ($v) => $v !== null);
+      return $list;
+    });
+    json_out(['uploads' => my_uploads($list, $u['orcid'])]);
+  }
+
+  case 'unupload': {
+    start_session();
+    $u = require_user();
+    $id = (string) (body()['id'] ?? '');
+    $list = with_uploads(function (array $list) use ($u, $id) {
+      $keep = array_filter($list, fn ($x) => !($x['id'] === $id && $x['orcid'] === $u['orcid']));
+      if (count($keep) === count($list)) fail(404, 'Unknown upload (reload the page).');
+      @unlink(uploads_dir() . "/$id.pdf");
+      return $keep;
+    });
+    json_out(['uploads' => my_uploads($list, $u['orcid'])]);
+  }
+
+  case 'uploads-export':
+  case 'upload-file': {
+    $tok = cfg()['admin_token'] ?? '';
+    $auth = $_SERVER['HTTP_AUTHORIZATION'] ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? '';
+    if (strlen($tok) < 20 || !hash_equals('Bearer ' . $tok, $auth)) fail(403, 'Forbidden.');
+    $list = with_uploads(fn ($l) => null);
+    if ($a === 'uploads-export') json_out(['uploads' => $list]);
+    $id = (string) ($_GET['id'] ?? '');
+    if (!preg_match('/^\d{8}T\d{6}-[0-9a-f]{8}$/', $id) || !is_file(uploads_dir() . "/$id.pdf")) fail(404, 'Unknown upload.');
+    header('Content-Type: application/pdf');
+    header('Cache-Control: no-store');
+    readfile(uploads_dir() . "/$id.pdf");
+    exit;
   }
 
   case 'export': {

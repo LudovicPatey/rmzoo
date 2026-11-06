@@ -17,6 +17,8 @@ function cfg(): array {
     'review_json' => dirname(__DIR__) . '/data/review.json',
     'dev_login' => false,
     'feedback_per_day' => 30,
+    'upload_max_mb' => 40,      // largest PDF accepted (PHP's upload_max_filesize must allow it too)
+    'uploads_per_day' => 50,    // uploads (new or replaced files) per person and day
   ];
   return $c;
 }
@@ -177,3 +179,40 @@ function record_person(array $u): void {
     return $s;
   });
 }
+
+// ---- uploaded full texts (docs/UPLOADS.md) ----------------------------------------
+// data_dir/uploads/index.json  [{id, orcid, name, ref?, citation?, filename, size, sha256, date, replaced?}]
+// data_dir/uploads/<id>.pdf    the files; private (outside the web root), read only by the
+//                              maintainer's scripts/uploads-sync.mjs, never published.
+function uploads_dir(): string {
+  $d = data_dir() . '/uploads';
+  if (!is_dir($d) && !@mkdir($d, 0700, true)) fail(500, 'Cannot create the uploads directory.');
+  return $d;
+}
+// Run $fn(list) under the lock of the uploads index; if it returns an array, save it.
+function with_uploads(callable $fn) {
+  $dir = uploads_dir();
+  $lock = fopen("$dir/.lock", 'c');
+  flock($lock, LOCK_EX);
+  try {
+    $file = "$dir/index.json";
+    $list = is_file($file) ? json_decode((string) file_get_contents($file), true) : [];
+    if (!is_array($list)) fail(500, 'Corrupted uploads index.');
+    $out = $fn($list);
+    if (is_array($out)) {
+      file_put_contents("$file.tmp", json_encode(array_values($out), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+      rename("$file.tmp", $file);
+      return array_values($out);
+    }
+    return $list;
+  } finally {
+    flock($lock, LOCK_UN);
+    fclose($lock);
+  }
+}
+// What a person sees of their uploads (no server paths).
+function my_uploads(array $list, string $orcid): array {
+  return array_values(array_map(fn ($u) => array_intersect_key($u, array_flip(['id', 'ref', 'citation', 'filename', 'size', 'date', 'replaced'])),
+    array_filter($list, fn ($u) => $u['orcid'] === $orcid)));
+}
+

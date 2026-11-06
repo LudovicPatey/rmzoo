@@ -99,7 +99,7 @@ if (!skip.has('texts')) {
   say('## 3. Abstracts and full texts');
   const idx0 = fs.existsSync('cache/fulltext/index.json') ? Object.keys(JSON.parse(fs.readFileSync('cache/fulltext/index.json', 'utf8'))).length : 0;
   run('node', ['scripts/abstracts.mjs']);
-  run('node', ['scripts/fulltext.mjs', '--zotero', '--download']);
+  run('node', ['scripts/fulltext.mjs', '--zotero', '--download', '--author-pages']);
   run('node', ['scripts/pdf-abstracts.mjs']);
   const idx = JSON.parse(fs.readFileSync('cache/fulltext/index.json', 'utf8'));
   say(`${Object.keys(idx).length - idx0} new full texts cached (${Object.keys(idx).length} in total).`);

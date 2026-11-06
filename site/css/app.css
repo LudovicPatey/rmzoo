@@ -448,3 +448,13 @@ svg.mini circle.off { opacity: .15; }
 .spinner { width: 16px; height: 16px; border: 2px solid var(--line, rgba(127,127,127,.3)); border-top-color: var(--accent, #4a6cf7); border-radius: 50%; animation: spin .8s linear infinite; flex: none; }
 @keyframes spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+/* uploads of full texts (docs/UPLOADS.md) */
+.dropzone { border: 2px dashed var(--line); border-radius: 10px; padding: 18px; text-align: center; margin: 12px 0; transition: background .15s, border-color .15s; }
+.dropzone.small-zone { padding: 10px 14px; text-align: left; }
+.dropzone.over, tr.drop-target.over { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+table.uploads td { vertical-align: top; }
+table.uploads progress { width: 100%; margin-top: 4px; }
+/* search suggestions: papers after the statements */
+.popover .opt-sep { padding: 6px 10px 2px; border-top: 1px solid var(--line); text-transform: uppercase; letter-spacing: .04em; font-size: .72rem; }
+.popover .opt.paper i { font-style: italic; }
+

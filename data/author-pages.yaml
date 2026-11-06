@@ -1,0 +1,22 @@
+# Publication pages of authors, read by `node scripts/fulltext.mjs --author-pages` to find
+# missing full texts that the authors post themselves. Each entry: the surname as written
+# in the references (matched in any position of the author list), the page, and `base` when
+# the page's relative links resolve against another directory.
+# Pages found unreachable or without usable links (2026-11-05): Solomon (UConn), Jockusch,
+# Rathjen, Dzhafarov, Mummert, Kreuzer, Tanaka (no PDF links), Loeb (page gone).
+- { author: Simpson, url: "https://sgslogic.net/t20/papers/" }
+- { author: Brattka, url: "http://cca-net.de/vasco/publications/" }
+- { author: Marcone, url: "https://users.dimi.uniud.it/~alberto.marcone/publications.html" }
+- { author: Montalbán, url: "https://math.berkeley.edu/~antonio/papers.html", base: "https://math.berkeley.edu/~antonio/papers/papers.html" }
+- { author: Shore, url: "https://pi.math.cornell.edu/~shore/papers.html" }
+- { author: Kohlenbach, url: "https://www2.mathematik.tu-darmstadt.de/~kohlenbach/" }
+- { author: Avigad, url: "https://www.andrew.cmu.edu/user/avigad/papers.html" }
+- { author: Slaman, url: "https://math.berkeley.edu/~slaman/papers/" }
+- { author: Downey, url: "https://homepages.ecs.vuw.ac.nz/~downey/publications/" }
+- { author: Greenberg, url: "https://homepages.ecs.vuw.ac.nz/~greenberg/papers/" }
+- { author: Friedman, url: "https://u.osu.edu/friedman.8/foundational-adventures/downloadable-manuscripts/" }
+- { author: Kihara, url: "https://www.math.mi.i.nagoya-u.ac.jp/~kihara/" }
+- { author: Ferreira, url: "https://webpages.ciencias.ulisboa.pt/~fjferreira/index_english.html" }
+- { author: Hirst, url: "https://www.appstate.edu/~hirstjl/bib/bib.html" }
+- { author: Conidis, url: "https://www.math.csi.cuny.edu/~conidis/Chris_J._Conidis/Publications.html" }
+- { author: Diener, url: "https://www.math.canterbury.ac.nz/~h.diener/publications.html" }
