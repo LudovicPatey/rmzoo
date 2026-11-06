@@ -84,6 +84,32 @@
   refs:
     - { ref: brattkagherardimarcone2012, role: rm }
 
+- id: bwtn
+  label: '\mathsf{BWT}_{\mathbb{N}}'
+  name: Bolzano–Weierstrass theorem on the natural numbers
+  kind: problem
+  minor: true
+  tags: [ weihrauch, compactness ]
+  aliases: [ BWT_N, BWTN ]
+  definition: >
+    Given a sequence of natural numbers with bounded range (the bound not being given), find a cluster point of it,
+    i.e. a number that occurs infinitely often.
+  instance: 'A sequence $(x_n)$ in $\mathbb{N}$ with finite range.'
+  solution: 'A cluster point of $(x_n)$.'
+  refs: [ { ref: brattkagherardimarcone2012, role: origin, loc: "Definition 11.1 (X = ℕ)" } ]
+
+- id: bwt2
+  label: '\mathsf{BWT}_{2}'
+  name: Bolzano–Weierstrass theorem on {0,1}
+  kind: problem
+  minor: true
+  tags: [ weihrauch, compactness ]
+  aliases: [ BWT_2, BWT2 ]
+  definition: Given a sequence in $\{0, 1\}$, find a cluster point of it, i.e. a value that occurs infinitely often.
+  instance: 'A sequence $(x_n)$ in $\{0, 1\}$.'
+  solution: 'A value occurring infinitely often in $(x_n)$.'
+  refs: [ { ref: brattkagherardimarcone2012, role: origin, loc: "Definition 11.1 (X = {0, 1})" } ]
+
 - id: wkl-j
   op: jump
   args: [ wkl ]
@@ -668,6 +694,21 @@
   instance: A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$ with $[T]$ uncountable.
   solution: A perfect subtree of $T$.
   refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 6.2 } ]
+
+- id: pst
+  label: '\mathsf{PST}_{\mathbb{N}^\mathbb{N}}'
+  name: Perfect set theorem (Weihrauch problem)
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  aliases: [ PST, PST_N^N ]
+  definition: >
+    Given an uncountable closed set $A \subseteq \mathbb{N}^\mathbb{N}$ (by a tree $T$ with $[T] = A$), find a perfect closed
+    subset of $A$ (by a tree $S$ with $[S] \subseteq A$ perfect). Unlike PTT₁, the tree of the solution need not be perfect
+    itself. Strongly equivalent to its version on $2^\mathbb{N}$.
+  instance: 'A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$ with $[T]$ uncountable.'
+  solution: 'A tree $S$ with $[S] \subseteq [T]$ perfect.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: Definition 3.2 } ]
 
 - id: list-baire
   label: '\mathsf{List}'

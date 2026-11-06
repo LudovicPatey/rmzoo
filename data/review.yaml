@@ -14918,7 +14918,7 @@
 - id: ciprianimarconevalenti2022-fdc7fa3f
   ref: ciprianimarconevalenti2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -14929,10 +14929,14 @@
     facts: PST_{2^N} ≡sW PST_{N^N} (Thm 3.3). UC_{N^N} <sW PST_{N^N} <sW C_{N^N} (Thm 3.6). PST_{N^N} ≰W UC_{N^N}. The first-order part of PST_{N^N} is Π11-C_N (Lemma 3.5). PST_{[0,1]} ≡W PST_{N^N} (Thm 5.6), and PST_R ≡W PST_{N^N} (Remark 5.7). PST_{N^N} ≤W PST_X for any rich X (Lemma 5.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added pst (PST_{N^N}, minor) with Theorem 3.6 (UC_{N^N} <sW PST ≡sW PST_{2^N} <sW C_{N^N}, checked on the rendered page) and Lemma 3.4; PST on [0,1] is not entered.
 - id: ciprianimarconevalenti2022-b8bc9264
   ref: ciprianimarconevalenti2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -14943,10 +14947,14 @@
     facts: PTT_1↾Tr_2 ≡sW PTT_1 (Thm 3.3). It is Weihrauch equivalent to C_{N^N} (via [18, Prop. 6.3]) and ≤W lim ∗ PST_{2^N}.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: PTT₁↾Tr₂ ≡sW PTT₁ (Theorem 3.3), in the catalogue as perfect1."
 - id: ciprianimarconevalenti2022-529f97cb
   ref: ciprianimarconevalenti2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -14957,10 +14965,14 @@
     facts: WF-hat ≡sW PK (Hirst, Thm 4.2). PK_{N^N} ≡W WF-hat_S, where WF_S is the Sierpiński-space version of WF (Thm 4.9). PK_{2^N} ≡sW PK_{N^N}, and both are strongly parallelizable and cylinders. PK_{N^N} <W PK ≤W lim ∗ PK_{N^N}; whether PK ≡W lim ∗ PK_{N^N} is open. PK_{N^N} is incomparable with C_{N^N}, and PK_{N^N} <W TC-bar_{N^N}. Det(PK_{N^N}) ≡W UC_{N^N}. The first-order part of PK_{N^N} is Π11-C_N. PK_X ≡W PK_{N^N} for every rich computable Polish space X (Thm 5.18).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: the perfect kernel function is a technical single-valued tool of this paper."
 - id: ciprianimarconevalenti2022-164803b0
   ref: ciprianimarconevalenti2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -14971,10 +14983,14 @@
     facts: Theorem 3.10 and Figure 2. wList_{2^N} is parallelizable, and its first-order part is C_N (Lemmas 3.11, 3.12). wList_R ≡W wList_{[0,1]} ≡W wList_{2^N}. wList_N ≡W lim and wList_N <W List_N. List_n ≡W wList_n ≡W LPO^n.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: listing variants on 2^N studied in this paper only; List on Baire space is in the catalogue (list-baire)."
 - id: ciprianimarconevalenti2022-3131cf6b
   ref: ciprianimarconevalenti2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -14985,10 +15001,14 @@
     facts: wScList_{N^N} ≡W PK_{N^N} (Thm 4.25). PK_{N^N} <W ScList_{N^N} <W WF-hat (Thms 4.27, 4.29). The first-order part of wScList_{2^N} is Π02-C_N (Lemma 4.31). Theorem 4.32 gives the relations for the Cantor-space versions. ScCount_X ≤W Π04-C_N for computably Kσ spaces. Problems 6.2–6.4 are open.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: scattered-part listing and counting problems studied in this paper only."
 - id: ciprianimarconevalenti2022-7e748329
   ref: ciprianimarconevalenti2022
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -14999,6 +15019,10 @@
     facts: wCB ≡W CB ≡W WF-hat (Prop 4.34). wCB_{2^N} ≡W CB_{2^N} ≡W PK_{N^N} <W ScList_{N^N} ≤W CB_{N^N} <W CB (Thm 4.35). CB_{N^N} ≤W WF^{u*} × PK_{N^N} ≤W C_N ∗ PK_{N^N} (Thm 4.36). wCB_X ≡W PK_{N^N} for rich X, and CB_X ≡W PK_{N^N} for rich computably Kσ X. CB_{N^N} ≤W CB_X when X is computably non-Kσ.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: Cantor–Bendixson problems studied in this paper only (the sentence form is in the catalogue as cb)."
 - id: barnesgohshore2023-108fea94
   ref: barnesgohshore2023
   date: 2026-11-05
@@ -17318,7 +17342,7 @@
 - id: gohpaulyvalenti2024-477d8708
   ref: gohpaulyvalenti2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -17329,10 +17353,14 @@
     facts: 1BS ≤W Σ¹₁-DUCC (Prop 5.1). It is equivalent to its restriction to (2^<N, ⊑) (Lemma 5.2). Fin_k(Σ¹₁-DUCC) ≡W RT^1_k (Thm 5.3). Det(Σ¹₁-DUCC) ≡W C_N (Prop 5.8).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: technical choice problem used in this paper only."
 - id: gohpaulyvalenti2024-e723c7ff
   ref: gohpaulyvalenti2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -17343,10 +17371,14 @@
     facts: Π⁰₂-ACC_2 ≡W RT^1_2. Π⁰₂-ACC_N ≰W lim (Prop 7.3). Fin_k of the parallelization of Π⁰₂-ACC_{k+2} is id (Cor 7.6). Fin_2(Π⁰₂-ACC_3 diamond) ≡W C_2 (Cor 7.10). The parallelization of Π⁰₂-ACC_2 is equivalent to KL (Fig. 2).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: technical variants of all-or-co-unique choice used in this paper only."
 - id: gohpaulyvalenti2024-71801e32
   ref: gohpaulyvalenti2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -17357,10 +17389,14 @@
     facts: BS|Tree ≤W the parallelization of Π⁰₂-ACC_k for every k≥2 (Prop 8.2). Fin_k(BS|Tree) ≡W id and Det(BS|Tree) ≡W id (Cor 8.3). ExtVer ≡W 1BS|Tree (Prop 8.5). Π⁰₂-ACC_N <W ExtVer <W the meet of the Π⁰₂-ACC_k (Cor 8.9). ACC_N × ACC_N ≰W BS|Tree (Cor 8.10). Whether BS|Tree ≤W DS is open (Question 8.11).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: restrictions of BS (in the catalogue) studied in this paper only."
 - id: gohpaulyvalenti2024-f59a0ce5
   ref: gohpaulyvalenti2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -17371,10 +17407,14 @@
     facts: wList_{2^N,≤ω} ≰W BS and hence ≰W DS (Cor 4.6). It is parallelizable and lim ≤W wList_{2^N,≤ω}, cited from [19].
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: listing problem of Cipriani, Marcone and Valenti, used here as a tool."
 - id: gohpaulyvalenti2024-707027fb
   ref: gohpaulyvalenti2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -17385,6 +17425,10 @@
     facts: RT^1_2 × DS_FE ≤W DS and RT^1_2 × BS_FE ≤W BS (Prop 9.7). They are characterized as C_N → DS and C_N → BS.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: finite-error variants of DS and BS studied in this paper only."
 - id: gohpaulyvalenti2024-0f2d0161
   ref: gohpaulyvalenti2024
   date: 2026-11-05
@@ -18283,7 +18327,7 @@
 - id: suzukiyokoyama2024-0831544e
   ref: suzukiyokoyama2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -18294,10 +18338,14 @@
     facts: FP(Σ^0_2) ≡W MFP(Σ^0_2) (monotone Σ^0_2 operators, Corollary 3.4). FP(Σ^0_2) is parallelizable (Corollary 3.5). ATR2 ≤W FP(Σ^0_2) (Theorem 3.6, essentially Avigad). FP(Σ^0_2) is not Weihrauch reducible to ATR2 (Theorem 3.10), so ATR2 <W FP(Σ^0_2). Over RCA0 it is equivalent to ATR0 (Theorem 2.21, Avigad/Bärtschi, cited).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: hierarchy of fixed-point and leftmost-path problems characterized through reflection operators (not in the catalogue); the one link to the catalogue is ATR₂ <W Δ⁰₃ LPP (Suzuki–Yokoyama, Corollary 6.11)."
 - id: suzukiyokoyama2024-23dc6087
   ref: suzukiyokoyama2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -18308,6 +18356,10 @@
     facts: Weihrauch equivalent to FP(Σ^0_2), hence parallelizable.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: hierarchy of fixed-point and leftmost-path problems characterized through reflection operators (not in the catalogue); the one link to the catalogue is ATR₂ <W Δ⁰₃ LPP (Suzuki–Yokoyama, Corollary 6.11)."
 - id: suzukiyokoyama2024-5c3fd442
   ref: suzukiyokoyama2024
   date: 2026-11-05
@@ -18347,7 +18399,7 @@
 - id: suzukiyokoyama2024-69d124bb
   ref: suzukiyokoyama2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -18358,10 +18410,14 @@
     facts: Equivalent to the variant without the input path f in the output condition (Lemma 6.5). Δ^0_k β-model reflection ≤W Δ^0_k LPP (Lemma 6.8, from Towsner). (ATR2+Π^1_1-TI)^rfn ≤W Δ^0_3 LPP (Theorem 6.10). (Δ^0_n LPP+Π^1_1-TI)^rfn ≤W Δ^0_{n+2} LPP and (Δ^0_n LPP)^(k-rfn) <W Δ^0_{n+2} LPP (Theorem 6.12). Δ^0_k LPP ≤W Δ^0_k LFP(Π^0_1) (Theorem 7.6). Δ^0_k LCP(Σ^0_2) ≤W Δ^0_k LPP (Theorem 7.13). Δ^0_k LCP(Π^0_1) ≡W Δ^0_k LCP(Σ^0_2) ≡W Δ^0_k LPP (Corollary 7.14).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: hierarchy of fixed-point and leftmost-path problems characterized through reflection operators (not in the catalogue); the one link to the catalogue is ATR₂ <W Δ⁰₃ LPP (Suzuki–Yokoyama, Corollary 6.11)."
 - id: suzukiyokoyama2024-c4f13750
   ref: suzukiyokoyama2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -18372,10 +18428,14 @@
     facts: Δ^0_k LFP(Π^0_{k'}) ≤W Δ^0_k LCP(Π^0_{k'}) for k'<k (Theorem 7.9). For k=2, Δ^0_k LPP ≡W Δ^0_k LFP(Π^0_1). For k≥3, Δ^0_k LPP ≡W Δ^0_k LFP(Π^0_1) ≡W Δ^0_k LFP(Σ^0_2) (Corollary 7.14). Σ^0_k LFP(Σ^0_1) is equivalent to lim (Remark 7.8).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: hierarchy of fixed-point and leftmost-path problems characterized through reflection operators (not in the catalogue); the one link to the catalogue is ATR₂ <W Δ⁰₃ LPP (Suzuki–Yokoyama, Corollary 6.11)."
 - id: suzukiyokoyama2024-61144f79
   ref: suzukiyokoyama2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -18386,6 +18446,10 @@
     facts: Weihrauch equivalent to C_{ω^ω} (Lemma 4.15, d'Auriac). Any (Σ^1_∞,Σ^0_1)-representable problem is ≤W C_{ω^ω}, and (Π^1_1,Σ^0_1)-representable ones are <W C_{ω^ω} (Theorem 4.16).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: Σ¹₁ choice on sets is the problem form of Σ¹₁-AC (in the catalogue as sigma11ac); studied here as a tool."
 - id: simpson2009-f10d2891
   ref: simpson2009
   part: 1/8 (chapter I, pages 1–80)
@@ -19645,7 +19709,7 @@
 - id: gherardimarconepauly2018-da862f64
   ref: gherardimarconepauly2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -19656,10 +19720,14 @@
     facts: "Proposition 3.1: Sort ≡_sW min^-_{ω+1}. Proposition 3.4: min^-_{ω+1} ≰_W BWT_n for every n ≥ 1. C_N ≡_W min^-_N ≤_sW min^-_{ω+1}."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: technical single-valued problem used in this paper only."
 - id: gherardimarconepauly2018-a6ebdf84
   ref: gherardimarconepauly2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -19670,10 +19738,14 @@
     facts: Proj^- and Proj^+ ≤_sW BWT_R (Theorem 4.7). Proj^-_{R^n} ≡_sW BWT_R for n ≥ 2 (Corollary 4.9) and Proj^+_{R^n} ≡_sW BWT_R for n ≥ 2 (Corollary 4.15). Proj^-_R ≡_W BWT_2 × lim (Corollary 4.13) and Proj^+_R ≡_W BWT_2 × lim (Corollary 4.18). Proj_R ≡_W LLPO (Corollary 4.21), with LLPO ≤_sW Proj_R. Proj_{R^n} ≡_sW WKL for n ≥ 2 (Corollary 4.23). C_X ≤_sW Proj^-_X (Fact 4.3). The compact-set versions are equivalent to the closed-set versions in several cases (Theorem 4.6).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: projection operators of computable analysis studied in this paper only."
 - id: gherardimarconepauly2018-63c6f553
   ref: gherardimarconepauly2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -19684,10 +19756,14 @@
     facts: ε-Proj^-_{R^n} ≡_sW C_R for all ε > 0 and n ≥ 1 (Theorem 5.4). ε-Proj^+_{R^n} ≡_W Sort for all ε > 0 and n ≥ 1 (Corollary 5.8). Hence the negative and positive versions are Weihrauch incomparable (Corollary 5.9). ε-Proj_{R^n} is computable (Theorem 5.10). The compact negative version satisfies WKL ≤_sW ε-Proj K^-_{R^n} ≤_W WKL * LPO^* * LPO <_W C_R (Proposition 5.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: approximate projection operators studied in this paper only."
 - id: gherardimarconepauly2018-85e486c4
   ref: gherardimarconepauly2018
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -19698,6 +19774,10 @@
     facts: "Used in Proposition 3.4: min^-_{ω+1} ≰_W BWT_n; cited facts C_N ≡_W UBWT_N [BGM12, Cor. 11.24] and BWT_2 ≡_sW LLPO' [BGM12, Cor. 11.11]."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Covered: BWT₂ (bwt2) and BWT_N (bwtn) are now in the catalogue (Brattka–Gherardi–Marcone 2012); UBWT_N ≡sW C_N."
 - id: patey2014b-03748c3d
   ref: patey2014b
   date: 2026-11-05
@@ -20583,7 +20663,7 @@
 - id: brattkagherardimarcone2012-183baf27
   ref: brattkagherardimarcone2012
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -20594,10 +20674,14 @@
     facts: BWT_X ≡sW K_X′ (Theorem 11.2). BWT_X ≡sW BWT_{0,1}^N for rich spaces X, so BWT_{R^n} ≡sW BWT_{l2} ≡sW BWT_[0,1] ≡sW BWT_{0,1}^N ≡sW BWT_{N^N}. BWT_2 ≡sW LLPO′ and BWT_N ≡sW (LLPO*)′. BWT_n <W BWT_{n+1} <W BWT_N <W BWT_R (Theorem 13.4). BWT_N is idempotent. BWT_2 ≰W lim.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added bwtn and bwt2 (minor) beside bwt (BWT_R), with Theorem 11.2 (BWT_X ≡sW K′_X), Corollary 11.11 (BWT₂ ≡sW LLPO′) and Theorem 12.10; the other spaces give BWT_R's degree (Corollaries 11.5, 11.6).
 - id: brattkagherardimarcone2012-bc361dde
   ref: brattkagherardimarcone2012
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -20608,10 +20692,14 @@
     facts: C_X′ ≡sW CL_X (Theorem 9.4). CL_{N^N} ≡sW C_{N^N} (Theorem 9.16). BWT_R <W CL_R. UCL_R and CL_N are incomparable with BWT_R (Theorem 12.4). CL_R ≤sW L′ (uniform relative low basis theorem). Every computable sequence with a cluster point has a cluster point that is low relative to the halting problem.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: CL_N ≡sW UCL_N ≡sW C′_N (Corollary 9.10) and CL_{N^N} ≡sW C_{N^N} (Theorem 9.16), already in the catalogue."
 - id: brattkagherardimarcone2012-a8c8ff0d
   ref: brattkagherardimarcone2012
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -20622,6 +20710,10 @@
     facts: UBWT_X = lim_X for Hausdorff X (Proposition 11.21). UBWT_R ≡sW lim and UBWT_N ≡sW C_N (Corollaries 11.22 and 11.24).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: UBWT_N ≡sW C_N (Corollary 11.24); UBWT_R is complete for limit computable functions (≡ lim)."
 - id: brattkagherardimarcone2012-2889ab15
   ref: brattkagherardimarcone2012
   date: 2026-11-05
@@ -20643,7 +20735,7 @@
 - id: brattkagherardimarcone2012-d6449e8f
   ref: brattkagherardimarcone2012
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -20654,10 +20746,14 @@
     facts: AS ≡W C_N ≡W BCT (Theorem 15.2).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: AS is equivalent to the Baire category theorem, i.e. to C_N (introduction, (8)); in the catalogue as cn."
 - id: brattkagherardimarcone2012-b3327d56
   ref: brattkagherardimarcone2012
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -20668,6 +20764,10 @@
     facts: K_N ≡sW LLPO*. K_N <W KC_N ≡sW C_N. K_X ≡sW KC_X ≡sW C_X for computably compact X. K_X ≡sW K_{0,1}^N for rich X. K_R ≡sW C_{0,1}^N ≡sW WKL.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: K_N (kn) is in the catalogue; compact choice on other spaces gives WKL's degree."
 - id: brattkagherardimarcone2012-2feba329
   ref: brattkagherardimarcone2012
   date: 2026-11-05
@@ -23890,7 +23990,7 @@
 - id: suzuki2024-38eff53c
   ref: suzuki2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -23901,10 +24001,14 @@
     facts: Equivalent over RCA0 to ∆⁰ₙ LPP (Lemma 3.4), and Weihrauch equivalent to ∆⁰ₙ LPP (Lemma 4.4). For k>1 (Theorem 3.28) it is equivalent over RCA0 to R∆⁰ₖ β-RFN, to the ω-model reflection of Π¹ₖ₊₁-TI, and to the ω-model reflection of ∆⁰ₖ(Π¹₁)-TI. It is equivalent to RFN(Π¹ₖ₊₂-RFN0) (Corollary 3.31). Σ⁰ₙ₊₁ LPP proves the ω-model reflection of Σ⁰ₙ LPP, hence is strictly stronger than Σ⁰ₙ LPP over RCA0 (Corollary 3.32). In the Weihrauch lattice, Σ⁰ₙ LPP ≡W R∆⁰ₙ βRFN for n>1 (Theorem 4.5), and Σ⁰ₙ LPP <W Σ⁰ₙ₊₁ LPP for n>0 (Theorem 4.8).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: hierarchy of fixed-point and leftmost-path problems characterized through reflection operators (not in the catalogue); the one link to the catalogue is ATR₂ <W Δ⁰₃ LPP (Suzuki–Yokoyama, Corollary 6.11)."
 - id: suzuki2024-4aacab5a
   ref: suzuki2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -23915,6 +24019,10 @@
     facts: Over RCA0, ALPP is equivalent to β⁰₁RFN(1), to RFN(Π¹∞-TI) and to RFN(AΠ¹₁-TI) (Theorem 3.13). The equivalence with the single pseudo hyperjump is attributed to [6], and the equivalence with RFN(Π¹∞-TI) to Freund [1].
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: hierarchy of fixed-point and leftmost-path problems characterized through reflection operators (not in the catalogue); the one link to the catalogue is ATR₂ <W Δ⁰₃ LPP (Suzuki–Yokoyama, Corollary 6.11)."
 - id: suzuki2024-637c828f
   ref: suzuki2024
   date: 2026-11-05
@@ -23954,7 +24062,7 @@
 - id: suzuki2024-983ae40c
   ref: suzuki2024
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -23965,6 +24073,10 @@
     facts: Equivalent over RCA0 to Σ⁰ₖ LPP (Lemma 3.4), and Weihrauch equivalent to Σ⁰ₖ LPP (Lemma 4.4). It follows from RFN(∆⁰ₖ(Π¹₁)-TI0) over RCA0 (Lemma 3.27).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: hierarchy of fixed-point and leftmost-path problems characterized through reflection operators (not in the catalogue); the one link to the catalogue is ATR₂ <W Δ⁰₃ LPP (Suzuki–Yokoyama, Corollary 6.11)."
 - id: suzuki2024-9b4dd24a
   ref: suzuki2024
   date: 2026-11-05
@@ -25621,7 +25733,7 @@
 - id: marconevolpi2026-d4d09c60
   ref: marconevolpi2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25632,10 +25744,14 @@
     facts: Equivalent to WKL0 over RCA0 for every n≥1; likewise ∀n DB^i_n is equivalent to WKL0 (Theorems 4.4, 4.7, 4.10, Corollary 4.8). DB^i_1 and DB^i_2 are due to Hiraguchi, and the bounds are sharp (Examples 3.1–3.3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: DB^i_n is equivalent to WKL₀ over RCA₀ for every n (Theorem 1)."
 - id: marconevolpi2026-10469fc2
   ref: marconevolpi2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25646,10 +25762,14 @@
     facts: Equivalent to WKL0 over RCA0 for each n, and ∀n DB^c_n is equivalent to WKL0 (Theorems 4.6, 4.7, 4.9). The bound is sharp (Example 3.5). DB^c_1 coincides with DB^i_1.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: DB^c_n is equivalent to WKL₀ over RCA₀ for every n (Theorem 1)."
 - id: marconevolpi2026-d3f4fa71
   ref: marconevolpi2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25660,10 +25780,14 @@
     facts: Provable in WKL0 and also in IΣ^0_2, so it is equivalent to neither (Corollary 5.6). It follows from LS* over RCA0 (Corollary 5.4).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as dbp (minor), with Corollaries 5.4 and 5.6.
 - id: marconevolpi2026-68ab1144
   ref: marconevolpi2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25674,10 +25798,14 @@
     facts: Equivalent to LS* over RCA0 (Theorem 5.3). Provable from WKL0 and from IΣ^0_2. Not provable in RCA0 + BΣ^0_2 (Corollary 5.9).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: Added as dbpplus (minor), with Theorem 5.3 and Corollaries 5.4, 5.6, 5.9 (provable from WKL₀ and from IΣ⁰₂, implying neither; not provable from BΣ⁰₂).
 - id: marconevolpi2026-d02f051e
   ref: marconevolpi2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25688,10 +25816,14 @@
     facts: Provable in RCA0 (Lemma 5.2) but with no uniform proof, since it relies on non-uniform information. As a problem it is Weihrauch equivalent to XC_1, the restriction of closed choice on [0,1] to convex sets (Proposition A.1), and so it is not computable.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: LS is a lemma of the paper (provable in WKL₀, Lemma 5.1), studied through its finite parallelization LS*."
 - id: marconevolpi2026-5af3be15
   ref: marconevolpi2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25702,10 +25834,14 @@
     facts: Equivalent to DB_p^+ over RCA0 (Theorem 5.3). Provable from WKL0 and from IΣ^0_2 (Corollary 5.6) but implies neither. The statement "LS* is computably true" is equivalent to IΣ^0_2 over RCA0 (Corollary 5.9). RCA0 + BΣ^0_2 does not prove LS* (Corollary 5.9).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added separately: LS* is equivalent to DB⁺_p over RCA₀ (Theorem 5.3), added as dbpplus."
 - id: marconevolpi2026-09b2ab43
   ref: marconevolpi2026
   date: 2026-11-05
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -25716,6 +25852,10 @@
     facts: Weihrauch equivalent to LS (Proposition A.1, proved by Arno Pauly). Its degree was studied in Le Roux–Pauly and Kihara–Pauly.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-05
+    by: ludovic
+    note: "Not added: technical choice problem used in this paper only."
 - id: kihara2020-3e7d5c6e
   ref: kihara2020
   date: 2026-11-05

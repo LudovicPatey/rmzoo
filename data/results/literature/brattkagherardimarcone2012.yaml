@@ -16,3 +16,9 @@
 - { type: property, statement: bwt, property: cylinder, value: true, refs: [ { ref: brattkagherardimarcone2012, loc: Corollary 11.13 } ] }
 - { type: equivalence, from: wkl.jump, to: bwt, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: Corollary 11.7 } ] }
 - { type: equivalence, from: mct, to: lim, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: Fact 11.26 } ] }
+- { type: equivalence, from: bwtn, to: kn.jump, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 11.2 (X = ℕ) } ] }
+- { type: equivalence, from: bwt2, to: llpo.jump, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: Corollary 11.11 } ] }
+- { type: implication, from: bwtn, to: cn, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 12.10 } ] }
+- { type: separation, from: cn, to: bwtn, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 12.10 } ] }
+- { type: implication, from: cn.jump, to: bwtn, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: "Theorem 12.10 (CL_N ≡sW C′_N, Corollary 9.10)" } ] }
+- { type: separation, from: bwtn, to: cn.jump, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: "Theorem 12.10 (CL_N ≡sW C′_N, Corollary 9.10)" } ] }
