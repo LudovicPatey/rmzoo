@@ -4,3 +4,4 @@
 - { type: "separation", from: "ads", to: "brt22", over: "rca0", refs: [ { ref: lehoueroupatey2025, loc: Corollary 4.24 } ] }
 - { type: implication, from: isig2, to: brt22, over: rca0, refs: [ { ref: lehoueroupatey2025, loc: Proposition 2.1 (due to Belanger and Yokoyama) }, { ref: solda2021, loc: Lemma 4.1.9 } ] }
 - { type: separation, from: bsig2, to: brt22, over: rca0, refs: [ { ref: lehoueroupatey2025, loc: Corollary 3.5 } ] }
+- { type: implication, from: bsig2-hem, to: brt22, over: rca0, refs: [ { ref: lehoueroupatey2025, loc: Proposition 2.9 } ] }

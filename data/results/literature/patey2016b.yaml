@@ -1,0 +1,3 @@
+# Results from [patey2016b].
+
+[ { type: separation, from: rt12, to: tt12, over: soc, refs: [ { ref: patey2016b, loc: "Theorem 2.2 (for every, not necessarily computable, RT¹₂-instance: a separation over soc)" } ] } ]

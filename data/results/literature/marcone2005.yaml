@@ -1,0 +1,3 @@
+# Results from [marcone2005].
+
+[ { type: implication, from: atr, to: bqo3, over: rca0, refs: [ { ref: marcone2005, loc: "Section 3, before Lemma 3.2 (ATR₀ proves the clopen Ramsey theorem, hence that every p is bqo)" } ] }, { type: separation, from: atr-fra, to: pi11ca, over: rca0, refs: [ { ref: marcone2005, loc: Theorem 2.30 } ] }, { type: implication, from: ght, to: atr, over: rca0, refs: [ { ref: marcone2005, loc: "Section 5, after Theorem 5.6 (by Shore" }, { ref: pakhomovsolda2025, loc: "Section 1 (by Shore's results, with a correction of Freund and Manca)" } ] } ]

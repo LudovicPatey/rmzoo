@@ -5024,3 +5024,36 @@ carluccietal2020:
     - kolodziejczyk.leszek-aleksander
     - lepore.francesco
     - zdanowski.konrad
+liupatey2026b:
+  authors:
+    - Lu Liu
+    - Ludovic Patey
+  title: Hindman's theorem does not code $\emptyset^{(\omega)}$ in one application
+  year: 2026
+  venue: arXiv preprint
+  arxiv: "2607.17666"
+  source: arxiv
+  read: pdf-arxiv
+freundkowalikmanca2026:
+  authors:
+    - Anton Freund
+    - Katarzyna W. Kowalik
+    - Davide Manca
+  title: Fraïssé's conjecture, partial impredicativity and well-ordering principles, part II
+  year: 2026
+  venue: arXiv preprint
+  arxiv: "2609.12581"
+  source: arxiv
+  read: pdf-arxiv
+bienvenuetal2026:
+  authors:
+    - Laurent Bienvenu
+    - Noam Greenberg
+    - Ludovic Patey
+    - Dan Turetsky
+  title: Escaping and generics over ideals
+  year: 2026
+  venue: arXiv preprint
+  arxiv: "2611.06439"
+  source: arxiv
+  read: pdf-arxiv

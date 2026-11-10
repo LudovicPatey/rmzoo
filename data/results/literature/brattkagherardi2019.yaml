@@ -1,12 +1,12 @@
 # Results from [brattkagherardi2019].
 - { type: implication, from: tcn, to: cn, over: w, refs: [ { ref: brattkagherardi2019, loc: Corollary 8.3 } ] }
 - { type: separation, from: cn, to: tcn, over: w, refs: [ { ref: brattkagherardi2019, loc: Corollary 8.3 } ] }
-- { type: separation, from: lim, to: lpo.jump, over: w, refs: [ { ref: brattkagherardi2019, loc: Lemma 4.24 } ] }
+- { type: separation, from: lim, to: lpo.jump, over: w, refs: [ { ref: brattkagherardi2019, loc: Lemma 4.24 }, { ref: dzhafarovetal2018, loc: "Corollary 4.13, proof" } ] }
 - { type: separation, from: tcn, to: lpo.jump, over: w, refs: [ { ref: brattkagherardi2019, loc: Corollary 8.11(1) } ] }
-- { type: implication, from: sort, to: cn, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" }, { ref: gherardimarconepauly2018, loc: Proposition 3.2 } ] }
-- { type: separation, from: cn, to: sort, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" }, { ref: gherardimarconepauly2018, loc: Proposition 3.2 } ] }
-- { type: implication, from: lim, to: sort, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" }, { ref: brattkachirache2026, loc: Proof of Theorem 32 } ] }
-- { type: separation, from: sort, to: lim, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" }, { ref: gherardimarconepauly2018, loc: Proposition 3.3 } ] }
+- { type: implication, from: sort, to: cn, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" }, { ref: gherardimarconepauly2018, loc: Proposition 3.2 }, { ref: neumannpauly2018, loc: Proposition 24(1) } ] }
+- { type: separation, from: cn, to: sort, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" }, { ref: gherardimarconepauly2018, loc: Proposition 3.2 }, { ref: neumannpauly2018, loc: Proposition 24(1) } ] }
+- { type: implication, from: lim, to: sort, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" }, { ref: brattkachirache2026, loc: Proof of Theorem 32 }, { ref: neumannpauly2018, loc: "Proposition 24(1), proof" } ] }
+- { type: separation, from: sort, to: lim, over: w, refs: [ { ref: brattkagherardi2019, loc: "Section 1 (b), citing Neumann and Pauly, Proposition 24" }, { ref: gherardimarconepauly2018, loc: Proposition 3.3 }, { ref: neumannpauly2018, loc: "Proposition 24(1), proof" } ] }
 - { type: separation, from: tcn, to: sort, over: w, refs: [ { ref: brattkagherardi2019, loc: after Corollary 8.15 } ] }
 - { type: separation, from: sort, to: tcn, over: w, refs: [ { ref: brattkagherardi2019, loc: after Corollary 8.15 } ] }
 - { type: implication, from: sort, to: cn, over: sw, refs: [ { ref: brattkagherardi2019, loc: Proof of Corollary 8.16 (Corollary 8.16 itself is for the completion of C_N) } ] }

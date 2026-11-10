@@ -1,0 +1,3 @@
+# Results from [ikariyokoyama2026].
+
+[ { type: property, statement: femfin, property: weakly-low-basis, value: true, refs: [ { ref: ikariyokoyama2026, loc: Theorem 3.5 } ] } ]

@@ -653,6 +653,7 @@
       formal: [{from: er22, to: aca, over: rca0}]
     - question: 'Does $\mathsf{RT}^2_2$ imply $\mathsf{ER}^2_2$?'
       formal: [{from: rt22, to: er22, over: rca0}]
+      answer: 'No: RCA₀ + WKL₀ + RT²₂ does not even prove the stable version SER²₂ (Dzhafarov and Patey, Theorem 5.5).'
   asked:
     - {ref: dzhafarovpatey2017, loc: Questions 6.1 and 6.2}
     - {ref: frittaionpatey2017, loc: "Questions 5.2, 5.3 and 5.4"}
@@ -1071,12 +1072,17 @@
   statements: [nwt, atr]
   formal:
     - {from: atr, to: nwt, over: rca0}
+  answer: Yes. Pakhomov and Soldà proved the generalized Higman theorem in ATR₀, hence Nash-Williams' theorem, which is equivalent to it over ATR₀.
+  resolvedBy:
+    - {ref: pakhomovsolda2025, loc: Corollary 6.6 and Section 1}
   context: >-
     Marcone [@marcone1994] showed that the theorem is provable in Π¹₁-CA₀ but not
     equivalent to it, and Shore's work [@shore1993] shows that it implies ATR₀.
     Over ATR₀ it is equivalent to the generalized Higman theorem (if Q is a bqo, so
     is Q^{<ω}). The finite-range version for wqos is now known to be equivalent to
-    ATR₀ [@pakhomovsolda2024], but the bqo version remains open.
+    ATR₀ [@pakhomovsolda2024]. Pakhomov and Soldà [@pakhomovsolda2025] then proved
+    the generalized Higman theorem in ATR₀, through a transfinite hierarchy of ideal
+    orders, which settles the bqo version too.
 
 - id: fraisse-atr
   parts:
@@ -1290,11 +1296,16 @@
   statements: [ght, atr, nwt]
   formal:
     - {from: atr, to: ght, over: rca0}
+  answer: Yes, proved by Pakhomov and Soldà.
+  resolvedBy:
+    - {ref: pakhomovsolda2025, loc: Corollary 6.6}
   context: >-
     Marcone [@marcone1994] proved GHT in Π¹₁-CA₀ and conjectured that ATR₀ suffices,
     as a step towards his conjecture that Nash-Williams' theorem is provable in
     ATR₀: over ATR₀, the two statements are closely tied. Montalbán
-    [@montalban2011] recalls that they are equivalent over ATR₀.
+    [@montalban2011] recalls that they are equivalent over ATR₀. Pakhomov and Soldà
+    [@pakhomovsolda2025] proved the conjecture, with a new proof that characterizes
+    the transfinite iterated ideals of $Q^{<\omega}$.
 
 - id: mtt2-wkl
   question: Over $\mathsf{RCA}_0$, does Milliken's tree theorem for height 2, $\mathsf{MTT}^2$, imply $\mathsf{WKL}_0$?

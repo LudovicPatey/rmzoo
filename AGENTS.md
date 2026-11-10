@@ -97,7 +97,7 @@ paper.
 | data model: allowed fields, operations, result identity | `scripts/lib/schema.mjs` | — |
 | inference engine (rules, operator laws, question status) | `site/js/engine.js` | `zoo.json` |
 | viewer (home, catalogue, statement, paper (with its errata), results, questions pages) | `site/js/app.js`, `layout.js`, `bibtex.js`, `related.js` | `zoo.json`, `abstracts.json` |
-| consolidation (steps 1–7, report in `reports/`) | `scripts/consolidate.mjs` | everything below |
+| consolidation (steps 1–7, report in `reports/`) | `scripts/consolidate.mjs`, `scripts/lib/citations.mjs` (how a paper cites another: step 6) | everything below |
 | new papers | `scripts/sweep.mjs` | references, `data/sweep-rejected.yaml` |
 | publication status | `scripts/pubstatus.mjs` | references |
 | zbMATH identifiers of the references, authors' zbMATH codes and ORCID iDs | `scripts/zbmath.mjs` | references, `data/authors.yaml` |
@@ -132,7 +132,7 @@ Then go through:
 | **build** validation | the new field/value is validated (unknown references, allowed values); derived fields (labels, `studied`, operator statements, conjunctions) handle it |
 | **engine** | inference rules, `questionStatus`, `classMembers`, search ranking |
 | **viewer** | modes (`data/modes.yaml`: what each framework shows; every page filters through `inMode`, `rInMode`, `resInMode`, `qInMode`), catalogue (filters, checkboxes, "over" chips, select all), statement page (its tabs: definition, concepts, context, glance, related statements, frames, operator line, position, properties by group, questions), paper page (abstract, BibTeX, questions asked/answered), results, questions, about page, home page stats and recent items |
-| **miners** (`scripts/mine/common.mjs`) | the acronym dictionary (labels in extracted-text form, `extra` spellings, operator forms, `PHRASES`), `relation()` (which reduction a theorem speaks of: one branch per reduction), `normalize()` |
+| **miners** (`scripts/mine/common.mjs`) | the acronym dictionary (labels in extracted-text form, `extra` spellings, operator forms, `PHRASES`, statements' `phrases`), `relation()` (which reduction a theorem speaks of: one branch per reduction), `normalize()` |
 | **consolidate** steps | 1 sweep (relevance and auto-add rules, rejected list), 2 pubstatus, 3 texts, 4 mining (screened list), 5 statements (`known` labels/aliases, `acronyms-ignored.yaml`, `STOP`), 6 questions (status changes, resolution leads), 7 checks |
 | **AI reader** (`scripts/ai-analyze.mjs`, `scripts/ai/*.md`, `scripts/lib/ai-facts.mjs`) | the catalogue given to the model (statement fields, reductions, properties, classes, operations), the answer schema (`FACT_SCHEMA`: result types and their fields), `entry()` and `validity()`, the reading rules in `scripts/ai/extract.md` and `verify.md` (notation for reductions, dotted ids), `tests/ai-facts.test.mjs`; the paper order (`scripts/lib/paper-rank.mjs`) uses the miner's dictionary and its `PROPERTY` phrases, which a new property or reduction may need. Saved answers can be re-checked with `--replay` |
 | **sweep / pubstatus / fulltext / abstracts** | reference fields they read or write (`doi`, `arxiv`, `venue`, `year`, `read`, `preprintYear`) |
@@ -244,7 +244,9 @@ and its number, `aliases` for other spellings. The label is the acronym of the
 literature; a theorem the papers name only in words (Brouwer's fixed point
 theorem) gets a short descriptive label in `\textsf{…}`, which the miners do not
 look for in the texts (an invented acronym would never match, a word would match
-everywhere). `kind: problem` only when the principle is studied with
+everywhere). When papers name a statement in words, even one with an acronym
+("generalized Higman's theorem" for GHT), give those names as `phrases` (two words
+or more): the miners read them as the statement. `kind: problem` only when the principle is studied with
 instances and solutions (computable or Weihrauch reductions); otherwise
 `sentence`. A statement studied in a single paper or of secondary interest (a
 classical theorem equivalent to a Big Five system, a technical variant) gets

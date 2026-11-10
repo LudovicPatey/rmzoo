@@ -46,6 +46,7 @@
   kind: sentence
   tags: [ well-orders ]
   aliases: [ Nash-Williams theorem ]
+  phrases: [ "Nash-Williams' theorem" ]
   definition: >
     If $Q$ is a better quasi-order and $\alpha$ is a countable well-order, then the set $S_\alpha(Q)$ of $\alpha$-sequences of elements of $Q$, ordered by embeddability, is a better quasi-order.
   refs: [ { ref: marcone1994, role: rm } ]
@@ -63,6 +64,7 @@
   label: '\mathsf{GHT}'
   name: Generalized Higman theorem
   kind: sentence
+  phrases: [ generalized Higman theorem, "generalized Higman's theorem", generalised Higman theorem, "generalised Higman's theorem" ]
   tags: [ well-orders ]
   definition: >
     If $Q$ is a better quasi-order, then so is the set $Q^{<\omega}$ of finite sequences of elements of $Q$ under embeddability.

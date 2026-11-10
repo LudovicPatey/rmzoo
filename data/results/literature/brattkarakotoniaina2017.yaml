@@ -14,7 +14,7 @@
 - { type: implication, from: cnn, to: rt, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 4.17 } ] }
 - { type: separation, from: rt, to: cnn, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 4.17 } ] }
 - { type: equivalence, from: wkl-j, to: lim.star.coh, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Fact 4.13 }, { ref: brattkahendtlasskreuzer2017, loc: Corollary 14.15 } ] }
-- { type: implication, from: srt22.star.coh, to: rt22, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.5 }, { ref: solda2021, loc: "Corollary 2.4.15, proof" } ] }
+- { type: implication, from: srt22.star.coh, to: rt22, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.5 }, { ref: solda2021, loc: "Corollary 2.4.15, proof" }, { ref: dzhafarovetal2018, loc: Theorem 2.1(1) } ] }
 - { type: implication, from: wkl-jj, to: srt22.star.coh, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.5 } ] }
 - { type: equivalence, from: d22, to: rt12.jump, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: "Corollary 5.23 (RT′₁,₂ = D₂,₂)" } ] }
 - { type: implication, from: d22, to: dnr, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.23 } ] }

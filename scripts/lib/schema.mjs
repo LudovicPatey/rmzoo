@@ -56,6 +56,7 @@ export const SCHEMA = {
     name: { doc: 'full English name', usedBy: ['build', 'viewer', 'consolidate'] },
     kind: { req: true, doc: 'problem (instance/solution form, can be compared by Weihrauch-style reductions) | sentence', usedBy: ['build', 'engine', 'viewer'] },
     tags: { doc: 'topic tags (data/tags.yaml)', usedBy: ['build', 'engine', 'viewer'] },
+    phrases: { doc: 'names in words that papers use instead of the label ("generalized Higman\'s theorem"), read by the miners as the statement; case, apostrophes and hyphens do not matter', usedBy: ['build', 'mineCommon'] },
     aliases: { doc: 'other names and spellings; used by search and by the missing-statement check of consolidate', usedBy: ['viewer', 'consolidate'] },
     definition: { doc: 'definition in prose ($…$ for TeX)', usedBy: ['build', 'viewer'] },
     instance: { doc: 'for problems: what an instance is', usedBy: ['build', 'viewer'] },

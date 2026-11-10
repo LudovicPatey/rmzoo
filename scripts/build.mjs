@@ -523,6 +523,21 @@ raw.results.forEach((res, i) => {
     }
     for (const [n, ss] of names) if (ss.length > 1 && !ss.some((s) => s.caution)) warnings.push(`Statements ${ss.map((s) => s.id).join(', ')} share the name "${n}": add a caution to one of them or remove the alias`);
   }
+  // phrases (names in words, read by the miners): lists of names of two words or more,
+  // each naming one statement
+  {
+    const seen = new Map();
+    for (const s of raw.statements) {
+      if (s.phrases === undefined) continue;
+      if (!Array.isArray(s.phrases) || s.phrases.some((p) => typeof p !== 'string')) { errors.push(`Statement ${s.id}: phrases must be a list of names`); continue; }
+      for (const p of s.phrases) {
+        const k = p.toLowerCase().replace(/['’`]/g, '').replace(/[\s-]+/g, ' ').trim();
+        if (k.split(' ').length < 2) errors.push(`Statement ${s.id}: phrase "${p}" is a single word (it would match everywhere)`);
+        if (seen.has(k) && seen.get(k) !== s.id) errors.push(`Statements ${seen.get(k)} and ${s.id} share the phrase "${p}"`);
+        seen.set(k, s.id);
+      }
+    }
+  }
   // minor statements: a boolean, never a base system or a conjunction
   for (const s of raw.statements) if (s.minor !== undefined && (s.minor !== true || s.conjunction || s.op)) errors.push(`Statement ${s.id}: minor must be true, on a plain statement`);
   // formulations point to a main formulation, never to another formulation

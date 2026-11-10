@@ -55,6 +55,8 @@ const extra = { WKL0: 'wkl', ACA0: 'aca', TJ: 'tj', ATR0: 'atr', RCA0: 'rca0', W
   CN: 'cn', 'C2N': 'wkl', LLPO: 'llpo', LPO: 'lpo', 'C2': 'llpo', 'KN': 'kn', 'CR': 'cr', 'CNN': 'cnn', 'UCNN': 'ucnn', 'lim': 'lim',
   'TS2': 'ts2', 'FS2': 'fs2', 'STS2': 'sts2', 'SFS2': 'sfs2', 'TS(2)': 'ts2', 'STS(2)': 'sts2', 'FS(2)': 'fs2', 'SFS(2)': 'sfs2' };
 for (const [k, v] of Object.entries(extra)) if (z.sidx.has(v)) dict.set(k, v);
+// a statement named in words only (\textsf label) gets a token for its `phrases` (below)
+for (const s of z.S) if (s.phrases?.length && ![...dict.values()].includes(s.id)) dict.set(`⟨${s.id}⟩`, s.id);
 const keys = [...dict.keys()].sort((a, b) => b.length - a.length);
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 export const tokRe = new RegExp('(?<![A-Za-z0-9])(' + keys.map(esc).join('|') + ')(?![A-Za-z0-9])', 'g');
@@ -68,6 +70,17 @@ const PHRASES = [
   [/∀X ?∃Y ?\(?Y is (DNC|DNR|diagonally non-?(computable|recursive)) (over|relative to) X ?′\)?/gi, ' 2-DNR '],
   [/∀X ?∃Y ?\(?Y is (DNC|DNR|diagonally non-?(computable|recursive)) (over|relative to) X\)?/gi, ' DNR '],
 ];
+// names in words that papers use instead of the acronym (statements' `phrases`:
+// "generalized Higman's theorem" for GHT), read as the acronym. Case, apostrophes,
+// hyphens and line breaks do not matter.
+{
+  const tokenOf = new Map();
+  for (const [t, id] of dict) if (!tokenOf.has(id)) tokenOf.set(id, t);
+  for (const s of z.S) for (const p of s.phrases || []) {
+    const re = p.split(/\s+/).map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/['’]/g, "['’`]?").replace(/-/g, '[-‐ ]?')).join('[\\s-]+');
+    PHRASES.push([new RegExp(`(?<![A-Za-z])${re}(?![A-Za-z])`, 'gi'), ` ${tokenOf.get(s.id)} `]);
+  }
+}
 export function normalize(t) {
   for (const [re, tok] of PHRASES) t = t.replace(re, tok);
   return t.replace(/\s+/g, ' ')
@@ -78,7 +91,7 @@ export function normalize(t) {
     .replace(/C ?\{0,1\}N/g, 'C2N').replace(/C ?N ?N/g, 'CNN');
 }
 export function relation(t) {
-  const neg = /(does not imply|not imply|doesn't imply|not provable|do not imply|0 |6⊢|⊬|6≤|≰|not .{0,15}reducib|does not prove|strictly weaker|is not a model|not a model of|incomparable|\|W|\|c)/i.test(t);
+  const neg = /(does not imply|not imply|doesn't imply|not provable|do not imply|(?:^|\s)0 |6⊢|⊬|6≤|≰|not .{0,15}reducib|does not prove|strictly weaker|is not a model|not a model of|incomparable|\|W|\|c)/i.test(t);
   let over = 'rca0';
   if (/ω-model|omega-model|Turing ideal|ω-models/i.test(t)) over = 'omega';
   // one branch per reduction of data/reductions.yaml (finest notation first)

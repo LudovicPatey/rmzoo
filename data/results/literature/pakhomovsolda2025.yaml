@@ -1,0 +1,3 @@
+# Results from [pakhomovsolda2025].
+
+[ { type: implication, from: atr, to: ght, over: rca0, refs: [ { ref: pakhomovsolda2025, loc: Corollary 6.6 } ] }, { type: implication, from: atr, to: nwt, over: rca0, refs: [ { ref: pakhomovsolda2025, loc: Section 1 (consequence of Corollary 6.6 and Marcone's equivalence of NWT and GHT over ATR₀) } ] } ]

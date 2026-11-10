@@ -16,8 +16,10 @@
 //              introduced or first analysed them)
 //   covered    results of the database already citing the paper: each one
 //              lowers the score a little (part of the paper is already read)
+//   answers    claims, in the first fifth of the text (abstract, introduction), to
+//              answer, resolve or settle an open question, problem or conjecture (at most 3)
 //
-// score = (4·leads + 2·property + theorems + 3·defines + 2·log2(1 + breadth)) / (1 + covered/10)
+// score = (4·leads + 2·property + theorems + 3·defines + 2·log2(1 + breadth) + 10·answers) / (1 + covered/10)
 // Tested in tests/paper-rank.test.mjs.
 import fs from 'node:fs';
 import { raw, dict, tokRe, normalize } from '../mine/common.mjs';
@@ -27,6 +29,9 @@ const THEOREM = /\n\s*(Theorem|Proposition|Corollary|Lemma|Claim|Fact|THEOREM|PR
 const PROPERTY = /cone[- ]avoid|avoids? cones|low ?2?[- ](basis|solution|set|degree)|low solutions?|computable instance|computable solution|computably true|hyperimmun|PA[- ](degree|over|avoid)|DNC|preserv|ω-model|omega-model|Turing ideal|Weihrauch|cylinder|first-order (problem|part)|idempotent|parallelizable|fractal|join-irreducible|≤ ?s?W|≡ ?s?W|<s?W|computabl[ey] reduc|conservative|Δ ?0 ?2|Σ ?0 ?2|Π ?0 ?[12]|arithmetical|admits|strictly weaker|does not imply|implies|equivalent/i;
 const BASE = new Set(['rca0', 'rca0star']);
 
+// a paper that says, in its abstract or introduction, that it answers an open question
+// ("thus resolving a long-standing open problem", "answering Question 24 of [13]")
+const ANSWERS = /\b(answer(s|ed|ing)?|resolv(e|es|ed|ing)|settl(e|es|ed|ing)|solv(e|es|ed|ing)|refut(e|es|ed|ing)|confirm(s|ed|ing)?)\b[^.]{0,60}\b(open )?(question|problem|conjecture)s?\b/gi;
 export function paperSignals(key, leadCount = 0, text = fs.readFileSync(`cache/fulltext/${key}.txt`, 'utf8')) {
   const ids = (s) => [...new Set([...normalize(s).matchAll(tokRe)].map((m) => dict.get(m[1])))].filter((x) => x && !BASE.has(x));
   let theorems = 0, property = 0, m;
@@ -41,8 +46,9 @@ export function paperSignals(key, leadCount = 0, text = fs.readFileSync(`cache/f
   const breadth = ids(text).length;
   const defines = raw.statements.filter((s) => !s.op && (s.refs || []).some((r) => r.ref === key)).length;
   const covered = raw.results.filter((r) => (r.refs || []).some((x) => x.ref === key)).length;
-  const score = (4 * leadCount + 2 * property + theorems + 3 * defines + 2 * Math.log2(1 + breadth)) / (1 + covered / 10);
-  return { key, leads: leadCount, property, theorems, breadth, defines, covered, score: Math.round(score * 10) / 10, chars: text.length };
+  const answers = Math.min(3, (text.slice(0, Math.max(6000, text.length / 5)).replace(/\s+/g, ' ').match(ANSWERS) || []).length);
+  const score = (4 * leadCount + 2 * property + theorems + 3 * defines + 2 * Math.log2(1 + breadth) + 10 * answers) / (1 + covered / 10);
+  return { key, leads: leadCount, property, theorems, breadth, defines, covered, answers, score: Math.round(score * 10) / 10, chars: text.length };
 }
 
 // The keys ranked by decreasing score (ties: newer papers first, then key).

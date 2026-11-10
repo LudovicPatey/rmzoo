@@ -8,3 +8,5 @@
 - { type: property, statement: brt32, property: weakly-low-basis, value: true, refs: [ { ref: pateyshafer2026, loc: Theorem 1.6 } ] }
 - { type: property, statement: brt32, property: pi2-basis, value: true, refs: [ { ref: pateyshafer2026, loc: "Section 3, introduction" } ] }
 - { type: property, statement: brt32, property: sigma2-basis, value: false, refs: [ { ref: pateyshafer2026, loc: "Section 3, introduction" } ] }
+- { type: separation, from: brt32, to: wwkl, over: omega, refs: [ { ref: pateyshafer2026, loc: "Section 2, after Theorem 1.5" } ] }
+- { type: implication, from: brt32, to: rt2, over: c, refs: [ { ref: pateyshafer2026, loc: Section 1.3 ("a classical argument shows that RT² ≤c BRT³₂") } ] }

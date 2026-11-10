@@ -34,3 +34,14 @@ test('open leads weigh most; results already citing the paper lower the score', 
   assert.ok(Math.abs(c.score * (1 + c.covered / 10) - (base + 3 * c.defines)) < 0.2); // divided by 1 + covered/10
   assert.ok(c.score < base + 3 * c.defines);
 });
+
+test('a paper that says it answers an open question comes first', () => {
+  const claims = `Abstract. We prove the generalized Higman theorem in ATR0, thus resolving a long-standing open problem.
+These results answer the second part of Question 24 of [13].\n${text}`;
+  const a = paperSignals('nosuchpaper', 0, claims), b = paperSignals('nosuchpaper', 0, text);
+  assert.equal(a.answers, 2);
+  assert.equal(b.answers, 0);
+  assert.ok(a.score >= b.score + 20);
+  // the same words far into the text (a survey of other people's work) do not count
+  assert.equal(paperSignals('nosuchpaper', 0, `${text}${'Filler sentence. '.repeat(3000)}This answers an open question of X.`).answers, 0);
+});

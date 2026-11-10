@@ -38,6 +38,8 @@ import { cli } from './lib/cli.mjs';
 import { addToQueue } from './lib/review-queue.mjs';
 import crypto from 'node:crypto';
 import { surname } from '../site/js/names.js';
+import { citationPattern } from './lib/citations.mjs';
+const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const opts = cli('npm run consolidate [-- --since YYYY-MM-DD] [--skip sweep,pubstatus,texts,mine,statements,questions] [--ai [--ai-budget DOLLARS] [--ai-model haiku|sonnet|opus]]', { '--since': 1, '--skip': 1, '--ai': 0, '--ai-budget': 1, '--ai-model': 1 });
 acquireLock('consolidate.mjs');
 
@@ -213,13 +215,22 @@ if (!skip.has('questions')) {
       for (const k of recent) {
         if (k === a.ref || (raw.references[k]?.year || 0) < (r.year || 0)) continue;
         if (screenedRes.has(`${q.id}|${k}`)) continue;
-        const t = fs.readFileSync(`cache/fulltext/${k}.txt`, 'utf8').replace(/\s+/g, ' ');
-        const re = new RegExp(`${author}[^.]{0,120}(question|problem|conjecture)${num ? `[^.]{0,40}${num.replace(/\./g, '\\.')}` : ''}|(answer|solv|settl|refut|confirm)[a-z]*[^.]{0,80}(question|problem|conjecture)[^.]{0,80}${author}`, 'i');
+        const full = fs.readFileSync(`cache/fulltext/${k}.txt`, 'utf8');
+        const t = full.replace(/\s+/g, ' ');
+        // the asking paper: its author's name, or its label in this paper's bibliography ("[13]")
+        const cite = citationPattern(full, r), label = citationPattern(full, r, { name: false });
+        const n = num ? `(?<![\\d.])${num.replace(/\./g, '\\.')}\\b` : null;
+        const re = new RegExp(`${cite}[^.]{0,120}(question|problem|conjecture)${n ? `[^.]{0,40}${n}` : ''}`
+          + (n ? `|(question|problem|conjecture) ${n}[^.]{0,40}${cite}` : '')
+          // an answer word near the question and the author's name; or, for a numbered
+          // citation ("[13]", which says less than a name), near the question's number
+          + `|(answer|solv|settl|refut|confirm)[a-z]*[^.]{0,80}(question|problem|conjecture)[^.]{0,80}${esc(author)}`
+          + (label && n ? `|(answer|solv|settl|refut|confirm)[a-z]*[^.]{0,80}(question|problem|conjecture)[^.]{0,20}${n}[^.]{0,80}${label}` : ''), 'i');
         const m = t.match(re);
         if (m) {
           leads.push(`- \`${q.id}\` (asked in ${short(a.ref, raw.references)}${a.loc ? ', ' + a.loc : ''}): ${short(k, raw.references)} — "…${t.slice(Math.max(0, m.index - 60), m.index + 200)}…"`);
           queued.push({ id: qid('answer', q.id, k), kind: 'answer', status: 'pending', date: today, question: q.id, ref: k,
-            text: `…${t.slice(Math.max(0, m.index - 300), m.index + 500)}…`, reasons: [`the passage names ${author} next to a question word`] });
+            text: `…${t.slice(Math.max(0, m.index - 300), m.index + 500)}…`, reasons: [`the passage cites ${author}'s paper next to a question word`] });
         }
       }
     }
