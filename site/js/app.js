@@ -1115,6 +1115,7 @@ const READ = {
   'pdf-arxiv': ['full text parsed', 'The arXiv PDF was parsed when extracting results.'],
   'pdf-oa': ['full text parsed', 'An open-access PDF (arXiv, OpenAlex, Crossref or an author\'s page) was parsed when extracting results.'],
   'pdf-author': ['full text parsed', 'A PDF shared by a researcher on this site was parsed when extracting results.'],
+  'pdf-local': ['full text parsed', 'A copy provided by the maintainer was parsed when extracting results.'],
   abstract: ['abstract read', 'Only the abstract was read; theorem numbers may be missing.'],
   screened: ['abstract screened', 'The abstract was only screened by keywords; results may be missing.'],
 };

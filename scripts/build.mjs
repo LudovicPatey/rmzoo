@@ -487,7 +487,7 @@ raw.results.forEach((res, i) => {
   const byDoi = new Map(), byTitle = new Map(), byArxiv = new Map();
   for (const [k, r] of Object.entries(raw.references)) {
     if (!r.year) errors.push(`Reference ${k} has no year`);
-    if (r.read && !['pdf-zotero', 'pdf-arxiv', 'pdf-oa', 'pdf-author', 'abstract', 'screened'].includes(r.read)) errors.push(`Reference ${k}: unknown read status ${r.read}`);
+    if (r.read && !['pdf-zotero', 'pdf-arxiv', 'pdf-oa', 'pdf-author', 'pdf-local', 'abstract', 'screened'].includes(r.read)) errors.push(`Reference ${k}: unknown read status ${r.read}`);
     if (!r.authors || !r.authors.join('').trim()) errors.push(`Reference ${k} has no authors`);
     if (r.doi) { const d = r.doi.toLowerCase(); if (byDoi.has(d)) errors.push(`References ${byDoi.get(d)} and ${k} have the same DOI`); byDoi.set(d, k); }
     // a DOI is 10.<registrant>/<suffix>; TeX escapes or an arXiv id in its place break the links and the full-text lookup

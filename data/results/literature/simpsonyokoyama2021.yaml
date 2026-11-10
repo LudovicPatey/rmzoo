@@ -1,0 +1,3 @@
+# Results from [simpsonyokoyama2021].
+
+[ { type: implication, from: isig2, to: wkl-wbd, over: rca0, refs: [ { ref: simpsonyokoyama2021, loc: Lemma 2.2 (with Theorem 3.2) } ] }, { type: separation, from: rca0, to: wkl-wbd, over: rca0, refs: [ { ref: simpsonyokoyama2021, loc: Corollary 3.4 (with Theorem 3.2) } ] } ]

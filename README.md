@@ -231,7 +231,10 @@ there, sometimes as a conference or preprint version. Save it by hand as
 `cache/fulltext/<key>.pdf` and `.txt` (`pdftotext`), add
 `"<key>": {"source": "oa", "url": "…", "date": "…"}` to
 `cache/fulltext/index.json`, then run `node scripts/fulltext.mjs --status --only
-<key>`. A different version of the work (conference vs journal) gets its own
+<key>`. A copy you have yourself (a scanned book, say) is recorded the same way with
+`"source": "local", "via": "…"` (reading status `pdf-local`); extract only the paper's
+pages (`pdfseparate`, `pdfunite`), and read a scan by OCR (`pdftoppm -r 300`, then
+`tesseract`, and `"ocr": true`). A different version of the work (conference vs journal) gets its own
 reference linked by `version`, and results cite the version that was read.
 Never use shadow libraries (Sci-Hub, LibGen and the like).
 

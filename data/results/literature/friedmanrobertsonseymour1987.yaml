@@ -1,0 +1,3 @@
+# Results from [friedmanrobertsonseymour1987].
+
+[ { type: implication, from: gmtb, to: kt, over: rca0, refs: [ { ref: friedmanrobertsonseymour1987, loc: "Introduction and Section 2 (Proposition 2.3, Corollary 2.4: Kruskal's theorem from the graph minor theorem for tree-width < 2)" } ] }, { type: separation, from: pi11ca, to: gmtb, over: rca0, refs: [ { ref: friedmanrobertsonseymour1987, loc: Theorem 4.2 } ] } ]

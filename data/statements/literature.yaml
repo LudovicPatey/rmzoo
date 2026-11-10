@@ -808,3 +808,310 @@
   instance: A set $A \subseteq \mathbb{N}$ of positive lower density.
   solution: An infinite subset of $A$.
   refs: [ { ref: harrisontrainorliulutz2023, role: origin, loc: Section 7.1 } ]
+
+- id: gst1
+  label: '\mathsf{GST}_1'
+  name: Ginsburg–Sands theorem for T₁ spaces
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ GST1 ]
+  definition: >
+    Every infinite T₁ CSC space (countable second-countable space, in Dorais's formalization) has an
+    infinite subspace which is discrete or has the cofinite topology.
+  instance: An infinite T₁ CSC space.
+  solution: An infinite subspace which is discrete or has the cofinite topology.
+  refs: [ { ref: benhametal2024, role: origin, loc: Definition 4.5 }, { ref: houeroupateymimouni2024, role: rm } ]
+
+- id: sgst1
+  label: '\mathsf{SGST}_1'
+  name: Ginsburg–Sands theorem for stable T₁ spaces
+  kind: problem
+  minor: true
+  tags: [ ramsey, stable ]
+  aliases: [ SGST1 ]
+  definition: >
+    The restriction of GST₁ to stable CSC spaces: for every point $x$, either $\{x\}$ is open, or every open
+    set containing $x$ is cofinite.
+  instance: An infinite stable T₁ CSC space.
+  solution: An infinite subspace which is discrete or has the cofinite topology.
+  refs: [ { ref: benhametal2024, role: origin, loc: Definition 6.3 } ]
+
+- id: gs
+  label: '\mathsf{GS}'
+  name: Ginsburg–Sands theorem
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  definition: >
+    Every infinite CSC space has an infinite subspace which is indiscrete, has the initial segment topology,
+    has the final segment topology, is discrete, or has the cofinite topology.
+  instance: An infinite CSC space.
+  solution: An infinite subspace with one of the five topologies.
+  refs: [ { ref: benhametal2024, role: rm, loc: Definition 4.1 } ]
+
+- id: sigma02-subset
+  label: '\Sigma^0_2\text{-}\mathsf{Subset}'
+  name: Σ⁰₂ subset principle
+  kind: sentence
+  tags: [ ramsey ]
+  aliases: [ Σ02-Subset, Sigma02-Subset ]
+  definition: >
+    For every $\Sigma^0_2$ formula $\varphi(x)$ there is an infinite set $H$ such that either $\varphi(x)$ holds
+    for all $x \in H$, or $\neg\varphi(x)$ holds for all $x \in H$.
+  refs: [ { ref: benhametal2024, role: origin, loc: Definition 6.7 }, { ref: houeroupateymimouni2024, role: rm, loc: Statement 1.2 } ]
+
+- id: delta03-subset
+  label: '\Delta^0_3\text{-}\mathsf{Subset}'
+  name: Δ⁰₃ subset principle
+  kind: sentence
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ Δ03-Subset, Delta03-Subset ]
+  definition: >
+    For every $\Sigma^0_3$ formula $\varphi(x)$ and every $\Pi^0_3$ formula $\psi(x)$ such that
+    $\forall x (\varphi(x) \leftrightarrow \psi(x))$, there is an infinite set $H$ such that either $\varphi(x)$
+    holds for all $x \in H$, or $\neg\varphi(x)$ holds for all $x \in H$.
+  refs: [ { ref: houeroupateymimouni2024, role: origin, loc: Statement 1.2 } ]
+
+- id: canrt2
+  label: '\mathsf{canRT}^2'
+  name: Canonical Ramsey theorem for pairs (Erdős–Rado)
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ canRT2 ]
+  definition: >
+    For every $c : [\mathbb{N}]^2 \to \mathbb{N}$ there are an infinite set $H$ and a set $S \subseteq \{1, 2\}$ such
+    that for all $I, J \in [H]^2$, $c(I) = c(J)$ if and only if $I$ and $J$ agree on the positions in $S$.
+  instance: 'A coloring $c : [\mathbb{N}]^2 \to \mathbb{N}$.'
+  solution: An infinite canonical set $H$ (with its set $S$).
+  refs: [ { ref: carluccimainardi2022, role: rm, loc: Definition 2 }, { ref: mileti2004, role: rm, loc: Proposition 7.1.2 } ]
+
+- id: regrt2
+  label: '\mathsf{regRT}^2'
+  name: Regressive Ramsey theorem for pairs (Kanamori–McAloon)
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ regRT2, REG2 ]
+  definition: >
+    For every regressive $c : [\mathbb{N}]^2 \to \mathbb{N}$ (that is, $c(x, y) < x$ when $x > 0$) there is an
+    infinite min-homogeneous set: $c(x, y) = c(x, z)$ for all $x < y < z$ in it.
+  instance: 'A regressive coloring $c : [\mathbb{N}]^2 \to \mathbb{N}$.'
+  solution: An infinite min-homogeneous set.
+  refs: [ { ref: carluccimainardi2022, role: rm, loc: Definition 5 }, { ref: mileti2004, role: rm, loc: Proposition 7.1.2 } ]
+
+- id: canht
+  label: '\mathsf{canHT}'
+  name: Taylor's canonical Hindman theorem
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ canHT ]
+  definition: >
+    For every $c : \mathbb{N} \to \mathbb{N}$ there is an infinite set $H = \{h_0 < h_1 < \dots\}$ such that the color
+    $c(\sum_{i \in I} h_i)$ of the finite sums over $H$ is constant, or injective in $I$, or depends exactly on
+    $\min I$, or exactly on $\max I$, or exactly on the pair $(\min I, \max I)$.
+  instance: 'A coloring $c : \mathbb{N} \to \mathbb{N}$.'
+  solution: An infinite set $H$ as above.
+  refs: [ { ref: carluccimainardi2022, role: rm, loc: Definition 7 } ]
+
+- id: reght
+  label: '\lambda\mathsf{regHT}'
+  name: Regressive Hindman theorem
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ λregHT ]
+  definition: >
+    For every $\lambda$-regressive $c : \mathbb{N} \to \mathbb{N}$ ($c(n) < \lambda(n)$ when $\lambda(n) > 0$, where
+    $\lambda(n)$ is the least term of the binary expansion of $n$) there is an infinite set $H$ such that $FS(H)$ is
+    min-term-homogeneous for $c$.
+  instance: 'A $\lambda$-regressive coloring $c : \mathbb{N} \to \mathbb{N}$.'
+  solution: An infinite set $H$ such that $FS(H)$ is min-term-homogeneous.
+  refs: [ { ref: carluccimainardi2022, role: origin, loc: Definition 11 } ]
+
+- id: reght-eq2-ap
+  label: '\lambda\mathsf{regHT}^{=2}[\mathsf{ap}]'
+  name: Regressive Hindman theorem for sums of exactly two terms, with apartness
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  definition: >
+    $\lambda\mathsf{regHT}$ restricted to sums of exactly two terms, with the apartness condition on the solution.
+  instance: 'A $\lambda$-regressive coloring $c : \mathbb{N} \to \mathbb{N}$.'
+  solution: An infinite apart set $H$ such that $FS^{=2}(H)$ is min-term-homogeneous.
+  refs: [ { ref: carluccimainardi2022, role: origin, loc: Definition 14 } ]
+
+- id: wop-omega
+  label: '\mathsf{WOP}(X \mapsto \omega^X)'
+  name: Well-ordering principle for base-ω exponentiation
+  kind: problem
+  tags: [ well-orders ]
+  definition: >
+    If $X$ is a well-ordering, then so is $\omega^X$. As a problem: an instance is a linear order $X$ with an infinite
+    descending sequence in $\omega^X$, a solution an infinite descending sequence in $X$.
+  instance: A linear order $X$ and an infinite descending sequence in $\omega^X$.
+  solution: An infinite descending sequence in $X$.
+  refs: [ { ref: hirst1994, role: rm, loc: Theorem 2.6 }, { ref: carluccimainardi2022, role: rm, loc: Section 4.2 } ]
+
+- id: brt324
+  label: '\mathsf{BRT}^3_{2,4}'
+  name: Bounded Ramsey's theorem for triples with bound 4
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ "BRT32,4" ]
+  definition: >
+    Every coloring $f : [\mathbb{N}]^3 \to 2$ with no $f$-homogeneous set of size 4 for color 1 has an infinite
+    $f$-homogeneous set for color 0.
+  instance: 'A coloring $f : [\mathbb{N}]^3 \to 2$ with no homogeneous set of size 4 for color 1.'
+  solution: An infinite homogeneous set for color 0.
+  refs: [ { ref: pateyshafer2026, role: rm, loc: "Section 1, Statement (Bounded Ramsey's theorem)" } ]
+
+- id: rcoh
+  label: '\mathsf{RCOH}'
+  name: Ramsey-type cohesiveness principle
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ RCOH ]
+  definition: >
+    Every sequence of sets $R_0, R_1, \dots$ has an infinite Ramsey-cohesive set $C$: for infinitely many $n$,
+    either $C \subseteq^* R_n$ or $C \subseteq^* \overline{R_n}$.
+  instance: A sequence of sets $R_0, R_1, \dots$
+  solution: An infinite Ramsey-cohesive set.
+  refs: [ { ref: cholaketal2020, role: origin, loc: Definition 2.4 } ]
+
+- id: cdrt32
+  label: '\mathsf{CDRT}^3_2'
+  name: Combinatorial dual Ramsey theorem for 3-partitions
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ CDRT32 ]
+  definition: >
+    For every 2-coloring of the finite ordered 2-partitions $(\omega)^2_{\mathrm{fin}}$ there are an infinite
+    partition $p \in (\omega)^\omega$ and a color $i$ such that for every 3-partition $x$ coarser than $p$, the
+    restriction of $x$ to the start of its last block, $x \upharpoonright \mu^x(2)$, has color $i$. By
+    Proposition 3.7 of the source, the number of colors does not matter.
+  instance: A 2-coloring of $(\omega)^2_{\mathrm{fin}}$.
+  solution: An infinite partition $p$ (with a color) as above.
+  refs: [ { ref: dzhafarovetal2017, role: rm, loc: "Definition 3.4(4), Proposition 3.7" } ]
+
+- id: wkl-wbd
+  label: '\mathsf{WKL}(\textsf{w-bd})'
+  name: Weak König's lemma for trees of bounded width
+  kind: sentence
+  minor: true
+  tags: [ compactness ]
+  aliases: [ WKL(w-bd), WKL(ext-bd) ]
+  definition: >
+    An infinite binary tree $T \subseteq 2^{<\mathbb{N}}$ has a path if there is $c$ such that $|T^{=n}| \le c$ for every
+    $n$. Equivalent over $\mathsf{RCA}_0$ to the version bounding the number of extendible nodes of each length
+    (Theorem 3.2 of the source).
+  refs: [ { ref: simpsonyokoyama2021, role: origin, loc: "Definition 1.1(2), Theorem 3.2" } ]
+
+- id: mbs
+  label: '\textsf{minimal bad sequence lemma}'
+  name: Minimal bad sequence lemma
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  aliases: [ minimal bad sequence lemma ]
+  phrases: [ minimal bad sequence lemma ]
+  definition: >
+    Let $(Q, \preceq)$ be a quasi-order and $<'$ a well-founded relation on $Q$ compatible with $\preceq$ ($q_0 <' q_1$
+    implies $q_0 \preceq q_1$). If there is a bad $Q$-sequence, then there is a $Q$-sequence which is minimal bad with
+    respect to $<'$.
+  refs: [ { ref: marcone1994, role: rm, loc: "Definition 6.2, Theorem 6.5" } ]
+
+- id: lmba
+  label: '\textsf{locally minimal bad array lemma}'
+  name: Locally minimal bad array lemma
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  aliases: [ locally minimal bad array lemma ]
+  phrases: [ locally minimal bad array lemma ]
+  definition: >
+    Let $(Q, \preceq)$ be a quasi-order and $<'$ a well-founded relation on $Q$ compatible with $\preceq$. Every bad
+    $Q$-array $f$ (indexed by a barrier) has a bad $Q$-array $g \le' f$ which is locally minimal bad with respect to $<'$.
+  refs: [ { ref: marcone1994, role: origin, loc: "Definition 2.16, Theorem 2.17" } ]
+
+- id: leftmost-path
+  label: '\textsf{leftmost path}'
+  name: Existence of leftmost paths
+  kind: sentence
+  minor: true
+  tags: [ compactness ]
+  definition: >
+    Every non-well-founded tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$ has a leftmost path: a path $f$ such that every
+    other path $g$ satisfies $f(n) < g(n)$ at the first $n$ where they differ.
+  refs: [ { ref: marcone1994, role: rm, loc: "Definition 6.4, Theorem 6.5" } ]
+
+- id: swwkl
+  label: '\mathsf{SWWKL}'
+  name: Strong weak weak Kőnig's lemma
+  kind: problem
+  minor: true
+  tags: [ compactness, randomness ]
+  aliases: [ SWWKL ]
+  definition: >
+    If $T \subseteq 2^{<\mathbb{N}}$ is a tree with positive measure, then there is a nonempty subtree $S \subseteq T$
+    such that for every $\sigma \in S$, $S$ has positive measure above $\sigma$.
+  instance: A tree $T \subseteq 2^{<\mathbb{N}}$ of positive measure.
+  solution: A nonempty subtree $S$ with positive measure above each of its nodes.
+  refs: [ { ref: greenbergmillernies2021, role: origin, loc: Section 6 } ]
+
+- id: wswwkl
+  label: '\mathsf{WSWWKL}'
+  name: Weak strong weak weak Kőnig's lemma
+  kind: problem
+  minor: true
+  tags: [ compactness, randomness ]
+  aliases: [ WSWWKL ]
+  definition: >
+    If $T \subseteq 2^{<\mathbb{N}}$ is a tree with positive measure, then there is a subtree $S \subseteq T$ of positive
+    measure with no dead ends.
+  instance: A tree $T \subseteq 2^{<\mathbb{N}}$ of positive measure.
+  solution: A subtree of positive measure with no dead ends.
+  refs: [ { ref: greenbergmillernies2021, role: origin, loc: Section 6 } ]
+
+- id: pi01ga
+  label: '\Pi^0_1\mathsf{GA}'
+  name: Π⁰₁ generic approximation principle
+  kind: sentence
+  minor: true
+  tags: [ computability ]
+  aliases: [ Π01GA, Pi01GA ]
+  definition: >
+    For any uniformly $\Pi^0_1$ collection of sets of strings $D_0, D_1, \dots$, each dense in $2^{<\mathbb{N}}$, there is a
+    sequence $g_0, g_1, \dots \in 2^{\mathbb{N}}$ such that for every $i$ there are $m$ and $t$ with
+    $g_u \upharpoonright m = g_t \upharpoonright m \in D_i$ for all $u > t$.
+  refs: [ { ref: hirschfeldtlangeshore2017, role: origin, loc: Section 3 } ]
+
+- id: att
+  label: '\mathsf{ATT}'
+  name: Atomic tree theorem
+  kind: problem
+  minor: true
+  tags: [ computability ]
+  aliases: [ ATT ]
+  definition: >
+    If $T$ is an atomic extendible tree, then there is a listing of the isolated paths of $T$.
+  instance: An atomic extendible tree $T$.
+  solution: A listing of the isolated paths of $T$.
+  refs: [ { ref: hirschfeldtlangeshore2017, role: origin, loc: "Section 3, after Proposition 3.6" } ]
+
+- id: fatt
+  label: '\mathsf{FATT}'
+  name: Finite atomic tree theorem
+  kind: sentence
+  minor: true
+  tags: [ computability ]
+  aliases: [ FATT ]
+  definition: >
+    For each atomic extendible tree $T$ and each finite set of nodes $\sigma_0, \dots, \sigma_k \in T$, there are isolated
+    paths $P_0, \dots, P_k$ of $T$ such that $P_i$ extends $\sigma_i$.
+  refs: [ { ref: hirschfeldtlangeshore2017, role: origin, loc: Appendix B } ]

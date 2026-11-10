@@ -1086,7 +1086,7 @@
 
 - id: fraisse-atr
   parts:
-    - question: 'Is Fraïssé''s conjecture (Laver''s theorem: countable linear orders are well-quasi-ordered under embeddability) equivalent to $\mathsf{ATR}_0$?'
+    - question: 'Is Fraïssé''s conjecture (countable linear orders are well-quasi-ordered under embeddability) equivalent to $\mathsf{ATR}_0$?'
       formal: [{from: atr, to: fra, over: rca0}]
     - question: 'Is it even provable in $\Pi^1_1\text{-}\mathsf{CA}_0$?'
       formal: [{from: pi11ca, to: fra, over: rca0}]

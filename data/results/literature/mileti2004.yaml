@@ -1,0 +1,3 @@
+# Results from [mileti2004].
+
+[ { type: equivalence, from: canrt2, to: aca, over: rca0, refs: [ { ref: mileti2004, loc: Proposition 7.1.2 } ] }, { type: equivalence, from: regrt2, to: aca, over: rca0, refs: [ { ref: mileti2004, loc: Proposition 7.1.2 } ] } ]

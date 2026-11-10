@@ -1,0 +1,3 @@
+# Results from [dzhafarovetal2017].
+
+[ { type: implication, from: ht, to: cdrt32, over: rca0, refs: [ { ref: dzhafarovetal2017, loc: Proposition 3.23 (ℓ = 2) } ] }, { type: implication, from: cdrt32, to: rt22, over: rca0, refs: [ { ref: dzhafarovetal2017, loc: Corollary 3.10 (k = ℓ = 2) } ] } ]

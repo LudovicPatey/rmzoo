@@ -5057,3 +5057,21 @@ bienvenuetal2026:
   arxiv: "2611.06439"
   source: arxiv
   read: pdf-arxiv
+simpson1985b:
+  authors:
+    - Stephen G. Simpson
+  title: Nichtbeweisbarkeit von gewissen kombinatorischen Eigenschaften endlicher Bäume
+  year: 1985
+  venue: Archiv für mathematische Logik und Grundlagenforschung 25, 45–65
+  doi: 10.1007/bf02007556
+  read: pdf-oa
+friedmanrobertsonseymour1987:
+  authors:
+    - Harvey M. Friedman
+    - Neil Robertson
+    - Paul D. Seymour
+  title: The metamathematics of the graph minor theorem
+  year: 1987
+  venue: "Logic and Combinatorics (S. G. Simpson, ed.), Contemporary Mathematics 65, 229–261"
+  doi: 10.1090/conm/065/891251
+  read: pdf-local

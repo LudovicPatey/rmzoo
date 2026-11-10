@@ -114,7 +114,7 @@
   kind: problem
   formulationOf: srt22
   tags: [ ramsey, stable, computability ]
-  aliases: [ D22, delta2 subset ]
+  aliases: [ D22, delta2 subset, Δ02-Subset, Delta02-Subset ]
   definition: >
     For every stable coloring $f : [\mathbb{N}]^2 \to 2$ there is an infinite set $H$ and a color $i$ such that $\lim_y f(x, y) = i$ for all $x \in H$. Equivalently, every $\Delta^0_2$ set has an infinite subset in it or its complement.
   instance: >

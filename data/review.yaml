@@ -29346,7 +29346,7 @@
 - id: hirschfeldtlangeshore2017-44e743ad
   ref: hirschfeldtlangeshore2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -29357,10 +29357,14 @@
     facts: Provable in RCA0 + IΣ02 (Thm 3.2); RCA0 + BΣ02 + Π01GA proves IΣ02 (Thm 3.3); implied by Π01G, hence Π11-conservative over RCA0 and does not imply BΣ02; AMT does not imply it (Cor. 3.4). It is the key principle in Figure 2 for entries marked 3 and 4.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as pi01ga (minor), with Theorems 3.2, 3.3 and Corollary 3.4.
 - id: hirschfeldtlangeshore2017-2159b297
   ref: hirschfeldtlangeshore2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -29371,10 +29375,14 @@
     facts: RCA0 + IΣ0n+1 proves Π0nGA (Thm A.1); RCA0 + BΣ0n+1 + Π0nGA proves IΣ0n+1 (Thm A.2); Π0nG is Π11-conservative (indeed restricted Π12-conservative) over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: levels n ≥ 2 studied in an appendix only; n = 1 is pi01ga."
 - id: hirschfeldtlangeshore2017-21ea4324
   ref: hirschfeldtlangeshore2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -29385,10 +29393,14 @@
     facts: ATT implies AMT; provable from Π01G and from RCA0 + BΣ02 + AMT; restricted Π12-conservative over RCA0 and Π11-conservative over RCA0 + BΣ02. Open whether AMT implies ATT.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as att (minor), with its implications and conservation (Section 3).
 - id: hirschfeldtlangeshore2017-6afbc9c2
   ref: hirschfeldtlangeshore2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -29399,10 +29411,14 @@
     facts: Follows from BΣ02 and from ATT; not provable in RCA0 (Thm B.2). Open whether Π01GA implies it.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as fatt (minor), with Theorem B.2.
 - id: hirschfeldtlangeshore2017-83d5b911
   ref: hirschfeldtlangeshore2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -29413,10 +29429,14 @@
     facts: Intermediate between ATT and AMT; no results proved.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: no result proved about it."
 - id: hirschfeldtlangeshore2017-adfecb8d
   ref: hirschfeldtlangeshore2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -29427,10 +29447,14 @@
     facts: Equivalent to AMT over RCA0 (Thm 7.6) and uniformly (Weihrauch) equivalent to AMT (Thm 7.11); HMT-bounding degrees coincide with AMT-bounding degrees (Cor. 7.12).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to AMT (Theorems 7.6 and 7.11)."
 - id: hirschfeldtlangeshore2017-bb77bbc4
   ref: hirschfeldtlangeshore2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -29441,10 +29465,14 @@
     facts: Equivalent to AMT over RCA0 (Thm 7.6); uniformly equivalent to AMT (Thm 7.11).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to AMT (Theorems 7.6 and 7.11)."
 - id: hirschfeldtlangeshore2017-df12b2de
   ref: hirschfeldtlangeshore2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -29455,10 +29483,14 @@
     facts: Equivalent to AMT + IΣ02 over RCA0 (Thm 7.7).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to AMT + IΣ⁰₂ (Theorem 7.7)."
 - id: hirschfeldtlangeshore2017-ae3b5c20
   ref: hirschfeldtlangeshore2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -29469,10 +29501,14 @@
     facts: Each implies AMT over RCA0 (Thm 7.8); provable in RCA0 + ATT + Π01GA (Thm 7.9); not provable in RCA0 + ATT + BΣ02 (Thm 7.10); exact strength open.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: model-existence variants studied in this paper only, with open exact strength."
 - id: hirschfeldtlangeshore2017-1accfb1c
   ref: hirschfeldtlangeshore2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -29483,6 +29519,10 @@
     facts: For finite full or finite free amalgamation, equivalent to AMT over RCA0; for pairwise full, pairwise free or 1-point full, implies AMT and is implied by ATT (Thm 7.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: technical principles about lists of types studied in this paper only."
 - id: hirschfeldtlangeshore2017-8d31fa38
   ref: hirschfeldtlangeshore2017
   date: 2026-11-06
@@ -30319,7 +30359,7 @@
 - id: montalban2006b-5f7f3619
   ref: montalban2006b
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30330,10 +30370,14 @@
     facts: The left-to-right direction is provable in RCA0. JUL implies FRA over RCA0. FRA plus Σ¹₁-IND implies JUL; JUL and FRA are equivalent over RCA0 + Σ¹₁-IND.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to FRA over RCA₀ + Σ¹₁-IND, a base not in the catalogue."
 - id: montalban2006b-78f2068c
   ref: montalban2006b
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30344,10 +30388,14 @@
     facts: Equivalent to FRA and FINDEC over RCA0 (Theorem 4.2, Corollary 3.7). Implies ATR0 over RCA0 (Proposition 2.14). Follows from FRA.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to FRA (Theorem 4.2, Corollary 3.7), studied in this paper only."
 - id: montalban2006b-f93271ac
   ref: montalban2006b
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30358,10 +30406,14 @@
     facts: Equivalent over RCA0 to WQO(ST) and FRA, and to the existence of minimal decompositions of scattered linear orderings (Corollary 3.11). Implies ACA0 over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to FRA (Corollary 3.11), studied in this paper only."
 - id: montalban2006b-26708553
   ref: montalban2006b
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30372,10 +30424,14 @@
     facts: Equivalent to ATR* (ATR0 + Σ¹₁-IND) over RCA0 + Σ¹₁-IND (Theorem 5.14). The left-to-right direction is provable in RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: results over RCA₀ + Σ¹₁-IND, a base not in the catalogue."
 - id: montalban2006b-6dfe49a1
   ref: montalban2006b
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30386,6 +30442,10 @@
     facts: ATR* proves extendibility of ω*, (ω²)*, η and every h-indecomposable linear ordering (Theorems 6.1, 6.2, 6.3, 6.20), with hyperarithmetic linearizations. Extendibility of ζ implies ATR0 (cited DHLS03).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: extendibility statements studied in this paper only, over ATR₀ + Σ¹₁-IND."
 - id: veldman2014-797e9df4
   ref: veldman2014
   date: 2026-11-06
@@ -30622,7 +30682,7 @@
 - id: koodziejczykyokoyama2021-a60e2412
   ref: koodziejczykyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30633,10 +30693,14 @@
     facts: RCA0* + RT^2_2 proves it. Over RCA0* + ¬IΣ^0_1 it is equivalent to RT^2_2, so RT^2_2 is equivalent to a Π^1_1 statement there. It is not provable in RCA0*, even in its lightface version.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: a first-order statement studied over RCA₀* + ¬IΣ⁰₁."
 - id: koodziejczykyokoyama2021-c10175ba
   ref: koodziejczykyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30647,10 +30711,14 @@
     facts: RCA0 + IΣ^0_2 proves it (Theorem 5). RCA0 + RT^2_2 proves it (Theorem 14). Whether RCA0 + BΣ^0_2 proves it is open; RT^2_2 is Π^1_1-conservative over RCA0 + BΣ^0_2 if and only if RCA0 + BΣ^0_2 proves it (Corollary 7). It can be formulated as a Π^0_5 statement.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: a technical first-jump statement; its role (RT²₂ Π¹₁-conservative over BΣ⁰₂ iff BΣ⁰₂ proves it) is settled by Hwang 2026, in the database."
 - id: koodziejczykyokoyama2021-fa4e8414
   ref: koodziejczykyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30661,6 +30729,10 @@
     facts: RCA0 + RT^2_2 + BME is a Π^0_4-conservative extension of RCA0 + BΣ^0_2 + BME (Theorem 10).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: a first-order scheme used as an extra base in one result."
 - id: rouxpauly2014-0ed51767
   ref: rouxpauly2014
   date: 2026-11-06
@@ -30758,7 +30830,7 @@
 - id: rouxpauly2014-032d3782
   ref: rouxpauly2014
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30769,10 +30841,14 @@
     facts: "Det_A ≡W FindWS_A ≡W C_{0,1}^N for closed sets A (Theorem 9). Det_{D_{n+1}} ≡W C_{0,1}^N⋆lim^(n)-type degree: Det_{D_{n+1}} ≡W (C_{0,1}^N)^[n] (Theorem 15), and Det_D ≡W C_{0,1}^N ⋆ lim for D the differences of closed sets (introduction). Det_D is equivalent to the Bolzano-Weierstrass theorem by combining with [10]. Det_Γ ≡W Det of the complement class."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: game problems in the Weihrauch degrees studied in this paper only (equivalent to WKL, its compositional powers, …)."
 - id: rouxpauly2014-1c4bb15f
   ref: rouxpauly2014
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30783,10 +30859,14 @@
     facts: Win_A ≡W LPO (Proposition 10). Win_{D_{n+1}} ≡W LPO^[n] (Theorem 15). Win_{D(Γ)} ≤W LPO ⋆s Win^_Γ (Lemma 11).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: game problems studied in this paper only (equivalent to LPO and its compositional powers)."
 - id: rouxpauly2014-2ccbbe39
   ref: rouxpauly2014
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30797,10 +30877,14 @@
     facts: FindWS_A ≡W Det_A ≡W C_{0,1}^N (Theorem 9). FindWS_Γ ≡W its parallelization for pointclasses closed under a countable-union operation (Proposition 20).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: game problems studied in this paper only."
 - id: rouxpauly2014-b41f918b
   ref: rouxpauly2014
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30811,10 +30895,14 @@
     facts: NE^ap_Γ ≤W Det*_Γ × Win*_Γ (Theorem 21). NE_Γ ≤W Win^_Γ × Det^_Γ (Theorem 22). NE^ap_{O∪A} ≡W C_{0,1}^N × LPO* (Theorem 29). NE^ap_{D_{n+1}∪D_{n+1}} ≡W C_{0,1}^N^[n] × (LPO^[n])* (Theorem 30). C_{0,1}^N × LPO* ≤W NE_{O∪A} ≤W lim (Corollary 32).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: game problems studied in this paper only."
 - id: rouxpauly2014-ea441607
   ref: rouxpauly2014
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30825,10 +30913,14 @@
     facts: SPE_Γ ≤W Win^_Γ × Det^_Γ (Theorem 23). SPE_{O∪A} ≡W lim, and more generally SPE_{D_n∪D_n} ≡W lim^(n) (Theorem 31). Win^_{Γ1} ≤W SPE_Γ under the hypotheses of Lemma 28.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: game problems studied in this paper only (SPE ≡W lim, Theorem 31)."
 - id: rouxpauly2014-a833c6b2
   ref: rouxpauly2014
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30839,6 +30931,10 @@
     facts: Σ^0_{n+1}-LLPO ≡W LLPO^[n] and Σ^0_{n+1}-LEM ≡W LPO^[n] (Proposition 13). Σ^0_n-LEM ≤W Win_{D_n} and the parallelization of Σ^0_n-LLPO ≤W Det_{D_n} (Lemma 14).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: arithmetical levels equivalent to compositional powers of LLPO and LPO (Proposition 13), expressible with the operations of the catalogue."
 - id: steilayokoyama2015-09ca0ec6
   ref: steilayokoyama2015
   date: 2026-11-06
@@ -30919,7 +31015,7 @@
 - id: dauriackihara2021-84297ae1
   ref: dauriackihara2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30930,10 +31026,14 @@
     facts: Σ11-C_{N^N} ≡W C_{N^N} (Proposition 2.2, with the reduction Σ11-C_{N^N} ≤W C_{N^N}). The parallelization of Σ11-C_2 is equivalent to Σ11-WKL and Π11-Sep. The parallelization of Σ11-C_N is equivalent to Σ11-KC, ATR2′ (arithmetically) and Π11-Tot2 (Corollary 2.9 and Theorem 2.10).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: Σ¹₁-choice variants studied in this paper only; sigma11-cn and sigma11-wkl are in the catalogue."
 - id: dauriackihara2021-38b0694d
   ref: dauriackihara2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30944,10 +31044,14 @@
     facts: Σ11-AC^fin ≡W Σ11-DC^fin <W Σ11-AC^aof ≡W Σ11-DC^aof ≡W Σ11-AC^aou ≡W Σ11-AC^fosc (Theorem 3.37, Corollaries 3.12 and 3.14). Σ11-AC^cof is Weihrauch incomparable with Σ11-AC^fin and Σ11-AC^aof (Corollary 3.23). Σ11-AC^aof and Σ11-AC^cof are not reducible to Σ11-KσC (Corollaries 3.19 and 3.26). Σ11-AC_{N^N} <W Σ11-DC_{N^N} (Theorem 3.34). Upward density of the Medvedev lattices of Σ11-AC^cof, Σ11-AC^foc and Σ11-AC_{N^N} (Theorems 3.24, 3.27, 3.29).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: restricted Σ¹₁-choice variants studied in this paper only."
 - id: dauriackihara2021-28f799dc
   ref: dauriackihara2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30958,10 +31062,14 @@
     facts: C_{N^N} ≡W [Σ11-DC_{N^N}]mv ≡W [Σ11-DC_N]mv (Proposition 2.2). Σ11-DC_{N^N} ≡W Σ11-AC^fin ⋆ Σ11-AC^cof (Theorem 3.34). Σ11-AC ⋆ Σ11-AC ≡W Σ11-AC ⋆ Σ11-AC ⋆ Σ11-AC, so compositional powers stabilize at level two.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: Σ¹₁ dependent choice variants studied in this paper only."
 - id: dauriackihara2021-6c999135
   ref: dauriackihara2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30972,10 +31080,14 @@
     facts: Σ11-KC ≡W Σ11-WKL ≡W the parallelization of Σ11-C_2 (Proposition 2.5, Fact 2.4). Σ11-KσC is not parallelizable, and Σ11-KC <W Σ11-KσC (Corollary 3.20).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: Σ¹₁-KC is equivalent to Σ¹₁-WKL (sigma11-wkl, Proposition 2.5); the σ-compact version is studied in this paper only."
 - id: dauriackihara2021-8116a6b0
   ref: dauriackihara2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -30986,10 +31098,14 @@
     facts: The parallelization of Σ11-C_2 ≡W Π11-Tot2 ≡W Π11-DNC2 (Proposition 2.6). The parallelization of Σ11-C^aou_N ≡W Π11-TotN (Proposition 2.7). Π11-DNCN ≤W Π11-DNC2 ≤W Π11-TotN.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to the parallelization of Σ¹₁-C₂, i.e. Σ¹₁-WKL (Proposition 2.6)."
 - id: dauriackihara2021-162f16f6
   ref: dauriackihara2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -31000,10 +31116,14 @@
     facts: The parallelization of ATR2′ is arithmetically Weihrauch equivalent to Σ11-KC and to the parallelization of Σ11-C^aou_N (Theorem 2.10). Σ11-C^aou_N ≤W ATR2^po (Proposition 2.13). ATR ≤W ATR2′ ≤W ATR2 ≤W ATR2^po ≤W Σ11-C_{N^N}. Whether ATR2, ATR2′ and ATR2^po are arithmetically equivalent is open (Question 2.14).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: ATR₂ variants studied in this paper only."
 - id: dauriackihara2021-3e52d8c3
   ref: dauriackihara2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -31014,6 +31134,10 @@
     facts: Σ11-UC^tot_X ≡W Σ11-C^aou_X for X a Δ11 subset of N (Proposition 2.8). The parallelization of Σ11-UC^tot_2 ≡W Σ11-KC_{N^N} (Corollary 2.9).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: technical variant studied in this paper only."
 - id: kowalik2024-9e54c6d1
   ref: kowalik2024
   date: 2026-11-06
@@ -31122,7 +31246,7 @@
 - id: kanekoyokoyama2026-0f038d96
   ref: kanekoyokoyama2026
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -31133,6 +31257,10 @@
     facts: Equivalent to ACA₀ over RCA₀.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to ACA₀, studied in this paper only."
 - id: conidis2010b-1638d98b
   ref: conidis2010b
   date: 2026-11-06
@@ -31536,7 +31664,7 @@
 - id: aguilerakouptchinskyyokoyama2026-772fa99f
   ref: aguilerakouptchinskyyokoyama2026
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -31547,10 +31675,14 @@
     facts: Equivalent to Σ¹₁-Induction over ATR₀ (Theorem 1); the reversal is Lemma 6 over ACA₀. Σ¹₁-IND with ATR₀ also gives regularity of all analytic sets A ⊂ R (Theorem 33).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to Σ¹₁-IND over ATR₀, a base not in the catalogue."
 - id: aguilerakouptchinskyyokoyama2026-7a1f62fd
   ref: aguilerakouptchinskyyokoyama2026
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -31561,10 +31693,14 @@
     facts: Equivalent to Π¹₁-CA₀ over ATR₀ (Theorem 2); the reversal is Lemma 7 over ACA₀. Π¹₁-CA₀ gives measurability of all analytic A ⊂ R (Theorem 34).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to Π¹₁-CA₀ over ATR₀, studied in this paper only."
 - id: aguilerakouptchinskyyokoyama2026-64a63b4b
   ref: aguilerakouptchinskyyokoyama2026
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -31575,10 +31711,14 @@
     facts: Equivalent over RCA₀ to finite Σ¹₁-Comprehension (Lemma 5). Equivalent to regularity of analytic sets over ATR₀ (Theorem 1). Nemoto's result, cited in the introduction, gives equivalence over ATR₀ with determinacy of games with payoff in B(Δ⁰₁, Σ⁰₂).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: Σ¹₁-IND is related here to catalogue statements only over ATR₀."
 - id: aguilerakouptchinskyyokoyama2026-626a11d3
   ref: aguilerakouptchinskyyokoyama2026
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -31589,6 +31729,10 @@
     facts: Equivalent to Σ¹₁-Induction over RCA₀ (Lemma 5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to Σ¹₁-IND (Lemma 5)."
 - id: normannsanders2017-633bfe97
   ref: normannsanders2017
   date: 2026-11-06
@@ -31753,7 +31897,7 @@
 - id: marcone1994-42271341
   ref: marcone1994
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -31764,10 +31908,14 @@
     facts: Provable in Π11-CA0 (Theorem 2.17). Equivalent over RCA0 to Π11-CA0 (Theorem 6.5), hence not provable in ATR0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as lmba (minor), with Theorem 6.5.
 - id: marcone1994-4598e34b
   ref: marcone1994
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -31778,10 +31926,14 @@
     facts: Implies ACA0 over RCA0 (Lemma 6.3). Equivalent over RCA0 to Π11-CA0 and to the locally minimal bad array lemma (Theorem 6.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as mbs (minor), with Theorem 6.5.
 - id: marcone1994-db968925
   ref: marcone1994
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -31792,6 +31944,10 @@
     facts: Equivalent over RCA0 to Π11-CA0 and to the minimal bad sequence lemma (Theorem 6.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as leftmost-path (minor), with Theorem 6.5.
 - id: marcone1994-356eb04d
   ref: marcone1994
   date: 2026-11-06
@@ -32226,7 +32382,7 @@
 - id: sanders2018b-ab4360ec
   ref: sanders2018b
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32237,6 +32393,10 @@
     facts: For n≥1, [HBU ∨ n-WWKL] ↔ [WKL ∨ n-WWKL] over RCA₀^ω.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: higher-order reverse mathematics; n = 2 is wwkl2 in the catalogue."
 - id: simpsonyokoyama2021-0edfb585
   ref: simpsonyokoyama2021
   date: 2026-11-06
@@ -32264,7 +32424,7 @@
 - id: simpsonyokoyama2021-ba9f9e07
   ref: simpsonyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32275,10 +32435,14 @@
     facts: Provable in RCA0 (Proposition 3.1). It is implied by WKL(w-bd) and WKL(ext-bd).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: provable in RCA₀ (Proposition 3.1)."
 - id: simpsonyokoyama2021-3f6f4cb8
   ref: simpsonyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32289,10 +32453,14 @@
     facts: Equivalent to WKL(ext-bd) over RCA0 (Theorem 3.2). Not provable in RCA0 (Corollary 3.4 and Theorem 3.3, which shows that if IΣ02 fails there is a counterexample). It is provable in RCA0 + IΣ02 (Lemma 2.2). It is implied by IΣ02 ∨ VSMALL (Proposition 3.7). Together with 'there is a set X computing every set' it implies IΣ02 (Corollary 3.6). Strictly between RCA0 and WKL0. Whether it is strictly weaker than IΣ02 ∨ VSMALL is left open (Question 3.2).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as wkl-wbd (minor), with Lemma 2.2 and Corollary 3.4.
 - id: simpsonyokoyama2021-cb4e408f
   ref: simpsonyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32303,10 +32471,14 @@
     facts: Equivalent to WKL(w-bd) over RCA0 (Theorem 3.2). Provable from IΣ02 (Lemma 2.2). Not provable in RCA0 (Corollary 3.4).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Equivalent to WKL(w-bd) (Theorem 3.2): an alias of wkl-wbd."
 - id: simpsonyokoyama2021-84f6fb18
   ref: simpsonyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32317,10 +32489,14 @@
     facts: Equivalent to BΣ02 and to KL(pf-bd) over RCA0 (Theorem 2.1).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to BΣ⁰₂ (Theorem 2.1), studied in this paper only."
 - id: simpsonyokoyama2021-0f2e2bf3
   ref: simpsonyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32331,10 +32507,14 @@
     facts: Equivalent to IΣ02 and to KL(w-bd) over RCA0 (Theorem 2.3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to IΣ⁰₂ (Theorem 2.3), studied in this paper only."
 - id: simpsonyokoyama2021-868b94b1
   ref: simpsonyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32345,10 +32525,14 @@
     facts: Equivalent to ACA0 and to KL(ext-bd) over RCA0 (Corollary 1.2, using Proposition 1.1).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to ACA₀ (Corollary 1.2), studied in this paper only."
 - id: simpsonyokoyama2021-6918d40a
   ref: simpsonyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32359,10 +32543,14 @@
     facts: Equivalent to BΣ02 and to Σ01-WKL(pf-bd) over RCA0 (Theorem 2.1).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to BΣ⁰₂ (Theorem 2.1), studied in this paper only."
 - id: simpsonyokoyama2021-39adaa8b
   ref: simpsonyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32373,10 +32561,14 @@
     facts: Equivalent to IΣ02 and to Σ01-WKL(w-bd) over RCA0 (Theorem 2.3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to IΣ⁰₂ (Theorem 2.3), studied in this paper only."
 - id: simpsonyokoyama2021-3aaf8924
   ref: simpsonyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32387,10 +32579,14 @@
     facts: Equivalent to ACA0 and to Σ01-WKL(ext-bd) over RCA0 (Corollary 1.2).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to ACA₀ (Corollary 1.2), studied in this paper only."
 - id: simpsonyokoyama2021-37b2a021
   ref: simpsonyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32401,10 +32597,14 @@
     facts: Each is equivalent to IΣ02 over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to IΣ⁰₂ (Corollary 3.5), studied in this paper only."
 - id: simpsonyokoyama2021-bf2a355d
   ref: simpsonyokoyama2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32415,6 +32615,10 @@
     facts: IΣ02 ∨ VSMALL implies WKL(w-bd) over RCA0 (Proposition 3.7).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: a technical notion (very smallness) used in one sufficient condition."
 - id: meerenrathjenweiermann2014-6d5d7db8
   ref: meerenrathjenweiermann2014
   date: 2026-11-06
@@ -32645,7 +32849,7 @@
 - id: pateyshafer2026-12aabbb4
   ref: pateyshafer2026
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32656,6 +32860,10 @@
     facts: BRT^3_{2,4} is not ω-reducible to RT^2_2 with any fixed number k of applications (Theorem 1.7). It is not computably reducible to RT^2 (Theorem 1.8), and RT^2_2 ≤c BRT^3_{2,4}. It does not preserve ℓ among k hyperimmunities for suitable triangle-free graphs (Corollary 4.6). The question whether BRT^3_2 ≤ω RT^2_2 is left open.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as brt324 (minor), with Theorem 1.8 and RT²₂ ≤c BRT³₂,₄ (Section 1.3); the bounded ω-reductions of Theorem 1.7 are not expressible.
 - id: normannsanders2018-f6c73793
   ref: normannsanders2018
   date: 2026-11-06
@@ -32767,7 +32975,7 @@
 - id: carluccimainardi2022-0937ae20
   ref: carluccimainardi2022
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32778,10 +32986,14 @@
     facts: canHT implies HT and canHT implies λregHT (both over RCA0 and by strong Weihrauch reductions, Propositions 1 and 3). canHT implies canHT[ap] (Theorem 2).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as canht (minor), with Propositions 1 and 3.
 - id: carluccimainardi2022-99437ba0
   ref: carluccimainardi2022
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32792,10 +33004,14 @@
     facts: Implies RT^1 (Lemma 3), HT (Proposition 5) and λregHT[ap] (Proposition 4, strongly Weihrauch). It follows from canHT (Proposition 3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as reght (minor), with Lemma 3 and Proposition 5.
 - id: carluccimainardi2022-538019ac
   ref: carluccimainardi2022
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32806,10 +33022,14 @@
     facts: For n >= 2, λregHT^{=n}[ap] is equivalent to ACA0 over RCA0 (Theorems 3 and 4). It satisfies λregHT^{=n}[ap] ≥W RAN, ≥W WOP(X -> ω^X), ≥c HT^{=n}_k[ap] and ≥c IPT^2_2, and ≤sW regRT^n. RT^3_3 ≰c λregHT^{=2}[ap].
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added λregHT^{=2}[ap] (reght-eq2-ap, minor), with Theorems 3, 4 and 6; other bounds not added.
 - id: carluccimainardi2022-bf15d621
   ref: carluccimainardi2022
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32820,10 +33040,14 @@
     facts: Equivalent to ACA0 over RCA0 for n >= 2 (Theorem 1). RT^n_k ≤c regRT^n (Proposition 7). RT^{2n-1}_2 ≥sW regRT^n (Hirst). regRT^n ≰c RT^n_k (Corollary 3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as regrt2 (minor), with Mileti 2004, Proposition 7.1.2, and Proposition 7 and Corollary 3 (n = k = 2).
 - id: carluccimainardi2022-3b6f3daa
   ref: carluccimainardi2022
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32834,10 +33058,14 @@
     facts: Equivalent to ACA0 over RCA0 for n >= 2 (Theorem 1). It implies RT^n and regRT^n.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as canrt2 (minor), with Mileti 2004, Proposition 7.1.2.
 - id: carluccimainardi2022-5658f471
   ref: carluccimainardi2022
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32848,10 +33076,14 @@
     facts: HT ≥sW HT[ap] (Corollary 1). HT^{=2}_2[ap] is strictly weaker than ACA0 (follows from RT^2_2). HT^{=n}_k[ap] is equivalent to ACA0 for n >= 3, k >= 2 (cited from [5]).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: apartness variants of HT studied in this paper only."
 - id: carluccimainardi2022-9e011681
   ref: carluccimainardi2022
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -32862,6 +33094,10 @@
     facts: Equivalent to ACA0 (Girard, Hirst). WOP(X -> ω^X) ≤W λregHT^{=n}[ap] for n >= 2 (Theorem 6). It is also ≤W RT^3_3 (cited from [7]) and claimed ≤W HT^{=3}_2[ap].
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as wop-omega, with Hirst 1994, Theorem 2.6 and Theorem 6 of this paper.
 - id: dzhafarovetal2018-30c76c30
   ref: dzhafarovetal2018
   date: 2026-11-06
@@ -33222,7 +33458,7 @@
 - id: greenbergmillernies2021-8b2731f7
   ref: greenbergmillernies2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33233,10 +33469,14 @@
     facts: RCA0 + WKL ⊢ SWWKL (Prop. 6.1). SWWKL implies WSWWKL; the converse is open. Over RCA0, SWWKL does not imply WKL (Prop. 6.5), via an ω-model with no set of PA degree. Both SWWKL and WSWWKL lie strictly between WKL and WWKL over RCA0. SWWKL implies that every closed set of positive measure has a perfect subset of positive measure, which strengthens Patey's result that 'every closed set of positive measure has a perfect subset' does not imply WKL.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as swwkl (minor), with Propositions 6.1 and 6.5.
 - id: greenbergmillernies2021-ed02be72
   ref: greenbergmillernies2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33247,10 +33487,14 @@
     facts: RCA0 + WSWWKL ⊢ WWKL (Prop. 6.2). RCA0 + WWKL does not prove WSWWKL (Prop. 6.3), shown by an ω-model of incomplete ML-randoms. It is implied by SWWKL and therefore by WKL. Whether it implies SWWKL is open.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as wswwkl (minor), with Propositions 6.2 and 6.3.
 - id: greenbergmillernies2021-058fe365
   ref: greenbergmillernies2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33261,10 +33505,14 @@
     facts: JDQ is Weihrauch equivalent to AMD (Prop. 2.12). JDQ is strongly Weihrauch equivalent to JDQ2, its dyadic version (Lemma 2.16). Any oracle computing Jordan decompositions on the rationals of a suitable computable function has PA degree (Cor. 2.13). There is no uniform way to compute a DNC_k function from such decompositions (Cor. 2.14).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: an analysis problem studied in the Weihrauch degrees in this paper only."
 - id: greenbergmillernies2021-e676cb5e
   ref: greenbergmillernies2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33275,6 +33523,10 @@
     facts: AMD is Weihrauch equivalent to JDQ (Prop. 2.12). PJDQ2 and JDQ2 are strongly Weihrauch reducible to AMD and AMD is strongly Weihrauch reducible to JDQ2 (Prop. 2.18, 2.21).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: a martingale problem studied in this paper only."
 - id: fernandezduqueshaferyokoyama2019-63865da5
   ref: fernandezduqueshaferyokoyama2019
   date: 2026-11-06
@@ -33629,7 +33881,7 @@
 - id: ikariyokoyama2026-1ce68590
   ref: ikariyokoyama2026
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33640,10 +33892,14 @@
     facts: IΣ^0_2 proves the ≪2-basis theorem for sEM_{<∞} (Theorem 3.5, whose proof reduces EM_{<∞} to this case). RCA0 + IΣ^0_2 proves COH + sEM_{<∞} → EM_{<∞}.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: a technical variant (stable fallow EM) studied in this paper only, with results over IΣ⁰₂."
 - id: walsh2021-798868f7
   ref: walsh2021
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33654,6 +33910,10 @@
     facts: Used as the base theory for the incompleteness theorems. No Σ¹₁-AC₀ facts relating catalogue statements are proved. The paper shows that Π¹₁-sound Σ¹₁-definable extensions of Σ¹₁-AC₀ do not prove their own Π¹₁-soundness.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the catalogue (sigma11ac); no result relating it to other statements here.
 - id: marcone2005-4bddb253
   ref: marcone2005
   date: 2026-11-06
@@ -33777,7 +34037,7 @@
 - id: marcone2005-4598e34b
   ref: marcone2005
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33788,10 +34048,14 @@
     facts: Equivalent to Π¹₁-CA0 over RCA0 (Theorem 2.3, from Simpson–Marcone [26]).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as mbs (minor), with Marcone 1994, Theorem 6.5.
 - id: marcone2005-42271341
   ref: marcone2005
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33802,10 +34066,14 @@
     facts: Equivalent to Π¹₁-CA0 over RCA0 (Theorem 2.22, from [26]).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as lmba (minor), with Marcone 1994, Theorem 6.5.
 - id: marcone2005-e803820c
   ref: marcone2005
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33816,10 +34084,14 @@
     facts: Provable in Π¹₂-CA0 by a crude analysis; its exact strength is open (Problem 2.19), conjectured not provable in Π¹₁-CA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: only an upper bound and an open problem are stated here (the strength of the minimal bad array lemma)."
 - id: marcone2005-2c63855f
   ref: marcone2005
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33830,10 +34102,14 @@
     facts: Provable in Π¹₁-CA0 and not provable in ATR0 (Theorem 2.10, Friedman).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: the unprovability in ATR₀ is Friedman’s (Simpson 1985), not in the database."
 - id: marcone2005-ac54e364
   ref: marcone2005
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33844,10 +34120,14 @@
     facts: Not provable in Π¹₁-CA0 (Theorem 2.13, Friedman–Robertson–Seymour).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: the unprovability in Π¹₁-CA₀ is Friedman, Robertson and Seymour’s, not in the database."
 - id: marcone2005-d747173a
   ref: marcone2005
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33858,10 +34138,14 @@
     facts: Equivalent to ATR0 over RCA0, and to the statement that for bqo Q every map from a barrier has a perfect restriction on a subbarrier (Theorem 4.9).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to ATR₀ (Theorem 4.9), like the clopen Ramsey theorem in the catalogue."
 - id: marcone2005-4bc72d2b
   ref: marcone2005
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33872,10 +34156,14 @@
     facts: Equivalent to ACA0 over RT22.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: a statement studied over RT²₂ only, in this paper."
 - id: marcone2005-b262947f
   ref: marcone2005
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33886,10 +34174,14 @@
     facts: Equivalent to each other over RCA0; each implies ACA0 (Lemma 5.17) and is provable in ATR0; conjectured equivalent to ATR0 (Conjecture 5.18).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: closure properties of bqos studied in this paper only (between ACA₀ and ATR₀, conjectured ≡ ATR₀)."
 - id: marcone2005-1c512568
   ref: marcone2005
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33900,6 +34192,10 @@
     facts: Provable in RT22 and implies RT1<∞ over RCA0; conjectured equivalent to RT22 (Conjecture 4.3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: a wqo characterization studied in this paper only (between RT¹<∞ and RT²₂)."
 - id: marcone2005-98fd8844
   ref: marcone2005
   date: 2026-11-06
@@ -33921,7 +34217,7 @@
 - id: barrett2020-a74b64a4
   ref: barrett2020
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33932,10 +34228,14 @@
     facts: Over RCA0, CL_Bn implies WKL0 for every n (Theorem 7.1.6). CL_B2 implies ATR0 (Theorem 7.4.1), and implies ACA0+ (remark after Theorem 7.3.2). ACA0 does not imply CL_B2 (Theorem 7.3.2). For n ≥ 2, CL_Bn is provable in Π11-CA0 and implies ATR0 (Theorem 8.1(iii)). CL_B(n+1) implies CL_Bn since the Baire classes are nested. The strength of CL_B1 beyond implying ACA0 is open (Question 8.2).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: the implication to ATR₀ (Theorem 7.4.1) is proved by a model argument with no stated base, and the Π¹₁-CA₀ upper bound was not found in the text; to check."
 - id: barrett2020-e9a72728
   ref: barrett2020
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -33946,6 +34246,10 @@
     facts: Over RCA0, CL_B1 implies SC (Theorem 7.2.2). SC is equivalent to ACA0 over RCA0 (cited from Friedman 1976).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: sequential completeness is equivalent to ACA₀ (Friedman), a classical equivalent."
 - id: koodziejczykmichalewski2015-bf799c79
   ref: koodziejczykmichalewski2015
   date: 2026-11-06
@@ -34107,7 +34411,7 @@
 - id: benhametal2024-aafa7206
   ref: benhametal2024
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34118,10 +34422,14 @@
     facts: GS is equivalent to ACA0 over RCA0 (Theorem 4.6) and also equivalent to wGS. GS implies GScl, wGS and GST1.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as gs (minor), with GS ≡ ACA₀ (Theorem 4.6).
 - id: benhametal2024-205c5c94
   ref: benhametal2024
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34132,10 +34440,14 @@
     facts: wGS is equivalent to ACA0 over RCA0 (Theorem 4.6). wGScl is equivalent to CAC (Theorem 4.7). GScl is equivalent to GST1 (Theorem 4.8). The existence of the closure relation for every CSC space is equivalent to ACA0 (Proposition 4.3).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: technical variants (wGS, GScl, wGScl) studied in this paper only; GScl ≡ GST₁ and wGScl ≡ CAC are recorded in the paper."
 - id: benhametal2024-d152014b
   ref: benhametal2024
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34146,10 +34458,14 @@
     facts: Over RCA0, GST1 ↔ SGST1 + COH (Corollary 6.6), GST1 implies ADS (Theorem 6.5), and GST1 implies RT22 (Corollary 6.10). GST1 is strictly weaker than ACA0, since it has an ω-model without PA degrees and admits cone avoidance (Corollary 6.11). It has an ω-model consisting of low2 sets (Corollary 6.16). Every computable instance has a Δ⁰₂ discrete subspace or a computable cofinite subspace (Theorem 6.12). There is an ω-model of RT22 which is not a model of GST1 (Corollary 7.5). Whether it implies MTT22 or TT22 is open.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as gst1, with Theorem 6.5, Corollaries 6.6, 6.10, 6.11 and 7.5; open questions (MTT²₂, TT²₂) not recorded as results.
 - id: benhametal2024-3de7b7da
   ref: benhametal2024
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34160,10 +34476,14 @@
     facts: SGST1 + COH → GST1 (Proposition 6.4). SGST1 ↔ Σ02-Subset over RCA0 (Proposition 6.8). SGST1 implies SRT22 (Corollary 6.9).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as sgst1 (minor), with Proposition 6.8 and Corollary 6.9.
 - id: benhametal2024-5dd42ee2
   ref: benhametal2024
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34174,10 +34494,14 @@
     facts: Δ02-Subset is equivalent to D22 and SRT22, and Σ02-Subset is equivalent to SGST1 over RCA0. Σ02-Subset implies Δ02-Subset (hence SRT22). Every Σ⁰₂ set has an infinite low2 subset in it or its complement (Theorem 6.14). The proof of Theorem 7.1 shows there is an ω-model of RCA0 + RT22 (D22 + COH) not satisfying Σ02-Subset, and by relativization Δ0n-Subset does not imply Σ0n-Subset for n ≥ 2. Σ02-Subset does not imply Δ03-Subset. The hierarchy is summarized in Figure 2.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added Σ⁰₂-Subset (sigma02-subset) and Δ⁰₃-Subset (delta03-subset); Δ⁰₂-Subset is d22 (alias added). Higher levels not added.
 - id: benhametal2024-ee95134c
   ref: benhametal2024
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34188,6 +34512,10 @@
     facts: The first is equivalent to ACA0 (Proposition 3.10). Every infinite Hausdorff CSC space has an infinite discrete subspace, provably in RCA0 (Theorem 5.2). The second statement is not provable in RCA0, since a computable counterexample exists (Theorem 5.4, Corollary 5.5); its exact strength is open (Question 8.1).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: effective-discreteness statements about CSC spaces studied in this paper only."
 - id: neumann2014-621d2e12
   ref: neumann2014
   date: 2026-11-06
@@ -34403,7 +34731,7 @@
 - id: neumann2014-6c09f8c7
   ref: neumann2014
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34414,6 +34742,10 @@
     facts: BFT_n ≡_W CC_[0,1]^n ≤_W WKL, BFT_1 ≡_W IVT, and BFT_3 ≡_W WKL (cited, Fact 2.21).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: BFT₁ ≡W IVT and BFT₃ ≡W WKL (cited); intermediate dimensions studied in computable analysis only."
 - id: neumann2014-14f2fbf5
   ref: neumann2014
   date: 2026-11-06
@@ -34538,7 +34870,7 @@
 - id: houeroupateymimouni2024-3921c5f8
   ref: houeroupateymimouni2024
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34549,10 +34881,14 @@
     facts: Σ⁰ₙ₊₁-Subset has a weakly lowₙ basis and a lowₙ₊₁ basis (Main Theorem 1.6, Cor. 6.1, Thm 6.26). Over RCA₀, Σ⁰ₙ-Subset does not imply Δ⁰ₙ₊₁-Subset (Cor. 6.2, via ω-models). Δ⁰ₙ₊₁-Subset does not imply Σ⁰ₙ₊₁-Subset (Cor. 7.2), so the hierarchy Σ⁰₁ < Δ⁰₂ < Σ⁰₂ < Δ⁰₃ < … is strict (Main Theorem 1.9). RCA₀+IΣ⁰ₙ+Σ⁰ₙ-Subset is Π¹₁-conservative over RCA₀+IΣ⁰ₙ for n ≥ 2 (Main Theorem 1.10). Σ⁰₂-Subset does not preserve hyperimmunity at levels {0,1}. Whether Σ⁰₂-Subset is Π¹₁-conservative over BΣ⁰₂ is open.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added Σ⁰₂-Subset (sigma02-subset), with Main Theorems 1.9 and 1.10; higher levels not added.
 - id: houeroupateymimouni2024-b1a54146
   ref: houeroupateymimouni2024
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34563,10 +34899,14 @@
     facts: Δ⁰ₙ₊₁-Subset has no lowₙ basis [13] and a weakly lowₙ basis [34]. It preserves hyperimmunity at levels {n−2,n−1} (Main Theorem 1.8). RCA₀+Δ⁰ₙ₊₂-Subset is not Π¹₁-conservative over RCA₀+BΣ⁰ₙ₊₁ (Prop. 8.15), e.g. Δ⁰₃-Subset is not Π¹₁-conservative over BΣ⁰₂. Only Δ⁰₂-Subset was matched to catalogue entry d22; its facts are listed under d22.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added Δ⁰₃-Subset (delta03-subset), with Main Theorem 1.9 and Proposition 8.15; higher levels not added.
 - id: houeroupateymimouni2024-394aa437
   ref: houeroupateymimouni2024
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34577,6 +34917,10 @@
     facts: RCA₀ ⊢ GST₁ ↔ COH + Σ⁰₂-Subset (Benham et al.). GST₁ admits a weakly low basis (Cor. 6.32). RCA₀+IΣ⁰₂+GST₁ is Π¹₁-conservative over RCA₀+IΣ⁰₂ (Cor. 8.14).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as gst1, with Corollaries 6.32 and 8.14.
 - id: kohlenbach2002-9732b3a4
   ref: kohlenbach2002
   date: 2026-11-06
@@ -34832,7 +35176,7 @@
 - id: ddhms2016-66bbaa4e
   ref: ddhms2016
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34843,10 +35187,14 @@
     facts: "RCA0 proves WWKL ↔ q-WWKL for each q (Proposition 4.4 formalized). Proposition 4.7: p-WWKL ≰W q-WWKL for rationals p<q<1. There is no effective procedure uniformly blowing up the measure and also yielding uniform reductions (Proposition 4.5)."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to WWKL over RCA₀ (Proposition 4.4)."
 - id: ddhms2016-b0193ac3
   ref: ddhms2016
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34857,10 +35205,14 @@
     facts: "TS^n_2 is RT^n_2. Implications go in the opposite direction to RT: TS^n_k ≤sW TS^n_j for j<k. TS^{n+2}_{2^n} implies ACA over RCA0. TS^3_8 + CAC, TS^3_7 + ADS and TS^3_6 + SHER each imply RT^2_2 over RCA0, and TS^3_3 implies RT^2_{<∞}. For every n, SeqTS^n_k has a computable instance with no ∅^(n)-computable solution but every solution computes ∅^(n). Theorem 5.27: TS^1_j ≰W TS^1_k for j<k; Theorem 5.28 (Hirschfeldt–Jockusch) extends this to n>1. Only some instances (ts23, ts24, ts2, ts13) are in the catalogue."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added as a family: the thin set theorems of the catalogue (ts23, ts24, …) represent it."
 - id: ddhms2016-cb0e74b2
   ref: ddhms2016
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34871,10 +35223,14 @@
     facts: Every computable instance of SeqTS^1_ω has a ∅'-computable solution (Proposition 5.22), SeqTS^1_ω ≤sW TJ^1, and every computable instance has a low2 solution (Theorem 5.24). SeqTS^1_ω ≤sW L2 (Corollary 5.26). Also a cone-avoidance statement is mentioned.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: technical problem studied in this paper only."
 - id: ddhms2016-0eb0fc9a
   ref: ddhms2016
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34885,6 +35241,10 @@
     facts: Equivalent to RT^1_{<∞} over RCA0 but apparently not strongly Weihrauch equivalent. CAC, ADS and SHER each imply it and none of these implications reverse.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to RT¹<∞ over RCA₀, studied in this paper only."
 - id: ddhms2016-0585c9ef
   ref: ddhms2016
   date: 2026-11-06
@@ -34906,7 +35266,7 @@
 - id: ddhms2016-d6778220
   ref: ddhms2016
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -34917,6 +35277,10 @@
     facts: Every computable instance of SeqRRT^1_{<∞} has a computable solution. Every computable instance of SeqRRT^2_k has a solution computable in any 2-random (Theorem 6.6). SeqRRT^2_{<∞} ≰W 2-WWKL (Corollary 6.12), and some computable instance has no solution computable from some 2-random (Proposition 6.11).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added as a family: rrt22 represents it."
 - id: ddhms2016-0301aa97
   ref: ddhms2016
   date: 2026-11-06
@@ -35145,7 +35509,7 @@
 - id: bienvenupateyshafer2017-3ae5b0b0
   ref: bienvenupateyshafer2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35156,10 +35520,14 @@
     facts: Equivalent to ACA0 over RCA0 (Theorem 3.17). Also equivalent to ACA0 when restricted to trees with at most two successors per node.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to ACA₀ (Theorem 3.17), studied in this paper only."
 - id: bienvenupateyshafer2017-d3ffe635
   ref: bienvenupateyshafer2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35170,10 +35538,14 @@
     facts: Equivalent to WKL over RCA0 (Theorem 3.19). Also WKL for trees bounded by an arbitrarily slow order function.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to WKL (Theorem 3.19), studied in this paper only."
 - id: bienvenupateyshafer2017-d4a809c6
   ref: bienvenupateyshafer2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35184,10 +35556,14 @@
     facts: Equivalent to RWKL over RCA0 (Lemma 3.22).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to RWKL (Lemma 3.22), studied in this paper only."
 - id: bienvenupateyshafer2017-c45aff3e
   ref: bienvenupateyshafer2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35198,10 +35574,14 @@
     facts: Equivalent to DNR and RWWKL over RCA0 (Theorem 3.24).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to DNR and RWWKL (Theorem 3.24), studied in this paper only."
 - id: bienvenupateyshafer2017-d1726b46
   ref: bienvenupateyshafer2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35212,10 +35592,14 @@
     facts: For fixed k ≥ 2 each is equivalent to RWKL over RCA0 (Theorem 3.27). ∀k RWKL_k implies RT^1 (equivalently BΣ02) over RCA0. WKL0 does not prove ∀k RWKL_k, but WKL0 + BΣ02 does.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: for fixed k, equivalent to RWKL (Theorem 3.27), studied in this paper only."
 - id: bienvenupateyshafer2017-8fb41990
   ref: bienvenupateyshafer2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35226,10 +35610,14 @@
     facts: All equivalent to RWKL and RSAT over RCA0 (Theorem 4.7).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to RWKL and RSAT (Theorem 4.7), studied in this paper only."
 - id: bienvenupateyshafer2017-f7986e80
   ref: bienvenupateyshafer2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35240,10 +35628,14 @@
     facts: Equivalent to RWKL for k ≥ 3 (Corollary 5.14). Equivalent to RCOLOR_2 for k = 2 (Theorem 5.17).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to RWKL (k ≥ 3) or RCOLOR₂ (k = 2) (Corollary 5.14, Theorem 5.17), studied in this paper only."
 - id: bienvenupateyshafer2017-19eecc9d
   ref: bienvenupateyshafer2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35254,10 +35646,14 @@
     facts: Equivalent to RWKL for every standard k ≥ 3 (Corollary 5.14). Only k = 3 and k = 2 are in the catalogue.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to RWKL for every standard k ≥ 3 (Corollary 5.14); rcolor3 represents them."
 - id: bienvenupateyshafer2017-bad8683b
   ref: bienvenupateyshafer2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35268,10 +35664,14 @@
     facts: Equivalent to WKL over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to WKL, studied in this paper only."
 - id: bienvenupateyshafer2017-5a1137d3
   ref: bienvenupateyshafer2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35282,10 +35682,14 @@
     facts: Equivalent to WKL over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to WKL, studied in this paper only."
 - id: bienvenupateyshafer2017-77e77da8
   ref: bienvenupateyshafer2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35296,6 +35700,10 @@
     facts: n-RWWKL → n-DNR over RCA0 + BΣ0n (Lemma 3.6). n-DNR → n-RWWKL over RCA0 + IΣ0n (Lemma 3.7). They are equivalent over RCA0 + IΣ0n (Theorem 3.8). Whether 2-RWWKL implies BΣ02 is open (Question 3.9). The n = 2 case lies in the catalogue as rwwkl2 and dnr0, but only over bases not expressible as a reduction id.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: higher levels n ≥ 3 studied in this paper only; n = 2 is rwwkl2 and dnr0."
 - id: brattkahendtlasskreuzer2017-85dbcb6f
   ref: brattkahendtlasskreuzer2017
   date: 2026-11-06
@@ -35709,7 +36117,7 @@
 - id: marcone2017-f516fe0e
   ref: marcone2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35720,6 +36128,10 @@
     facts: Over RCA0 wqo(set) implies wqo, and wqo implies wqo(anti) and wqo(ext). No other implication holds in REC. WKL0 proves wqo(ext) implies wqo. 'Every wqo(anti) is wqo(set)' is equivalent to CAC. 'Every wqo is wqo(set)' implies RT^1_<∞. 'Every finite quasi-order is wqo(set)' is equivalent to RT^1_<∞. 'Every well-order is wqo(set)' is equivalent to ADS.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: definitions of wqo; the equivalences stated (with CAC, ADS, RT¹<∞) concern statements about them, studied in survey form."
 - id: marcone2017-09b7c3ec
   ref: marcone2017
   date: 2026-11-06
@@ -35741,7 +36153,7 @@
 - id: marcone2017-2c63855f
   ref: marcone2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35752,10 +36164,14 @@
     facts: Provable in Π^1_1-CA0 and in Towsner's Σ2-LPP0. Implies ATR0 (Theorem 6.12). The unlabelled statement is not provable in ATR0 (Friedman).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: the unprovability in ATR₀ is Friedman’s (Simpson 1985), not in the database."
 - id: marcone2017-c6b171bc
   ref: marcone2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35766,10 +36182,14 @@
     facts: Each is equivalent to Π^1_1-CA0 over RCA0 (Theorem 4.7). The minimal bad array lemma is provable in Π^1_2-CA0 and its exact strength is open.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as mbs and lmba (minor), with Marcone 1994, Theorem 6.5.
 - id: marcone2017-6e8a4acb
   ref: marcone2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35780,10 +36200,14 @@
     facts: Not provable in Π^1_1-CA0 (Friedman–Robertson–Seymour). A Π^1_1 statement, hence it holds in every ω-model.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: the unprovability in Π¹₁-CA₀ is Friedman, Robertson and Seymour’s, not in the database."
 - id: marcone2017-ecf6ca17
   ref: marcone2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35794,10 +36218,14 @@
     facts: Provable in Π^1_1-CA0 (Theorem 6.28). Implies ATR0 via Fraïssé's conjecture.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: provability of the bqo version in Π¹₁-CA₀ is attributed to Montalbán, whose Π¹₁-CA₀ paper proves Fraïssé’s conjecture; source to check."
 - id: marcone2017-b6ba8760
   ref: marcone2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35808,10 +36236,14 @@
     facts: "Provable in RCA0 + CAC, implies ADS. Towsner: WKL0 does not prove it implies CAC, nor that ADS implies it."
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: the results are from Cholak–Marcone–Solomon and Towsner, to be entered from them."
 - id: marcone2017-2625f7e2
   ref: marcone2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35822,10 +36254,14 @@
     facts: Equivalent over RCA0 to ω^ω being well-ordered (Hatzikiriakou–Simpson).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to WO(ω^ω) (wo-omega-omega) by Hatzikiriakou and Simpson, survey statement."
 - id: marcone2017-a8280212
   ref: marcone2017
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -35836,6 +36272,10 @@
     facts: Equivalent to ACA0 over RCA0.
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to ACA₀ (Theorem 5.5), survey statement."
 - id: goh2020b-8f3dd7e4
   ref: goh2020b
   date: 2026-11-06
@@ -36002,7 +36442,7 @@
 - id: goh2020b-d2fef70f
   ref: goh2020b
   date: 2026-11-06
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -36013,6 +36453,10 @@
     facts: KDT2 ≤W LPO × KDT, and KDT ≡W KDT2 (Proposition 9.5).
   reasons:
     - principle not in the catalogue
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: Weihrauch equivalent to KDT (Proposition 9.5)."
 - id: cholakjockuschslaman2001-f14addfd
   ref: cholakjockuschslaman2001
   date: 2026-11-06
@@ -37043,7 +37487,7 @@
 - id: cholaketal2020-b4fb1033
   ref: cholaketal2020
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37055,10 +37499,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 92c61153157f
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added as rcoh (minor), with Theorem 2.11 and COH → RCOH; the ≤oc reduction is not in the catalogue.
 - id: cholaketal2020-9e782bf7
   ref: cholaketal2020
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37070,10 +37518,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 78d03ca0bb11
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: technical problem studied in this paper only (computably equivalent to RCOH, Lemma 2.10)."
 - id: cholaketal2020-90f5a31f
   ref: cholaketal2020
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37085,10 +37537,14 @@
   reasons:
     - principle not in the catalogue
   proposed: d04b24e468fb
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: technical problem studied in this paper only."
 - id: cholaketal2020-e2258560
   ref: cholaketal2020
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37100,10 +37556,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 0c2b5987bca1
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: technical problem studied in this paper only."
 - id: cholaketal2020-6b723f1c
   ref: cholaketal2020
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37115,6 +37575,10 @@
   reasons:
     - principle not in the catalogue
   proposed: 4883dede51f6
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: D²₃ is studied here only through computable reductions to D²₂ and its products."
 - id: dzhafarovetal2017-dfdde74f
   ref: dzhafarovetal2017
   date: 2026-11-09
@@ -37145,7 +37609,7 @@
 - id: dzhafarovetal2017-16dc7c96
   ref: dzhafarovetal2017
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37157,10 +37621,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 0bbffe200e48
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: Borel and topological variants studied in this paper only; the combinatorial version for k = 3 is cdrt32."
 - id: dzhafarovetal2017-39abd6c1
   ref: dzhafarovetal2017
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37172,10 +37640,14 @@
   reasons:
     - principle not in the catalogue
   proposed: fe8a649f3d03
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to CDRT (Theorem 3.9); CDRT³₂ added as cdrt32."
 - id: dzhafarovetal2017-2c1ebf7f
   ref: dzhafarovetal2017
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37187,10 +37659,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 62161c75ea03
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to CDRT (Theorem 3.9); CDRT³₂ added as cdrt32."
 - id: dzhafarovetal2017-db4daed9
   ref: dzhafarovetal2017
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37202,10 +37678,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 6f5f82bab631
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added CDRT³₂ (cdrt32, minor), with Proposition 3.23 and Corollary 3.10; other k not added.
 - id: dzhafarovetal2017-77b94f66
   ref: dzhafarovetal2017
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37217,10 +37697,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 5b046cb5ee7c
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: technical variant (strongly Weihrauch equivalent to Dⁿ₂, Theorem 5.7) studied in this paper only."
 - id: dzhafarovetal2017-5bd3415e
   ref: dzhafarovetal2017
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37232,10 +37716,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 0d6958851320
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: n = 2 is d22 in the catalogue; higher n not added.
 - id: dzhafarovetal2017-cafc60b5
   ref: dzhafarovetal2017
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37247,10 +37735,14 @@
   reasons:
     - principle not in the catalogue
   proposed: bfe1d45d299b
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: only special cases and open questions about CSL(m, ℓ) are stated here."
 - id: dzhafarovetal2017-65579796
   ref: dzhafarovetal2017
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37262,6 +37754,10 @@
   reasons:
     - principle not in the catalogue
   proposed: 26dcc812376d
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: the cited facts are from Erhard and Miller–Solomon, not in the database."
 - id: patey2026-fb15b7a5
   ref: patey2026
   date: 2026-11-09
@@ -37446,7 +37942,7 @@
 - id: patey2026-2f48c4a3
   ref: patey2026
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37458,10 +37954,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 9afc3d112009
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added from this paper: only cited facts and a question; to reconsider with the paper on Π⁰₄ conservation of CSL for 1-variable words."
 - id: patey2026-e14197eb
   ref: patey2026
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37473,10 +37973,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 71de8bd680b7
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: an immediate consequence of OVW mentioned in passing."
 - id: patey2026-7d1baddb
   ref: patey2026
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37488,6 +37992,10 @@
   reasons:
     - principle not in the catalogue
   proposed: 3b8ae839c829
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: a first-order axiom used as a base theory in one cited result."
 - id: lehoueroupatey2025-8b018d6c
   ref: lehoueroupatey2025
   date: 2026-11-09
@@ -37516,7 +38024,7 @@
 - id: lehoueroupatey2025-4854f3ee
   ref: lehoueroupatey2025
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37528,10 +38036,14 @@
   reasons:
     - principle not in the catalogue
   proposed: e4a08f0c39b5
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to WKL (Hirst), a classical equivalent."
 - id: lehoueroupatey2025-ba205f7b
   ref: lehoueroupatey2025
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37543,10 +38055,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 688b5c4433bd
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to WKL (Hirst), a classical equivalent."
 - id: lehoueroupatey2025-3c9f56ce
   ref: lehoueroupatey2025
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37558,10 +38074,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 20ad724a38ca
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: provable in RCA₀."
 - id: lehoueroupatey2025-92ddc326
   ref: lehoueroupatey2025
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37573,6 +38093,10 @@
   reasons:
     - principle not in the catalogue
   proposed: 1b5c12da94bc
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: provable in RCA₀."
 - id: lehoueroupatey2025-9cb14b41
   ref: lehoueroupatey2025
   date: 2026-11-09
@@ -37595,7 +38119,7 @@
 - id: montalbanshore2018-1abf1af4
   ref: montalbanshore2018
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37607,10 +38131,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 526291823ac2
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: FU and IFU are equivalent to HT and IHT (Proposition 2.13)."
 - id: montalbanshore2018-f47f0e2d
   ref: montalbanshore2018
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37622,10 +38150,14 @@
   reasons:
     - principle not in the catalogue
   proposed: d7a9be6c4702
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: GG and IGG are equivalent to HT and IHT (Proposition 2.13)."
 - id: montalbanshore2018-49fa383b
   ref: montalbanshore2018
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37637,6 +38169,10 @@
   reasons:
     - principle not in the catalogue
   proposed: 60e06b462ac3
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: the Milliken–Taylor theorems are related here to iterated Hindman theorems, not in the catalogue."
 - id: montalbanshore2018-dea88e41
   ref: montalbanshore2018
   date: 2026-11-09
@@ -37735,7 +38271,7 @@
 - id: patey2016-6bd03be4
   ref: patey2016
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37747,10 +38283,14 @@
   reasons:
     - principle not in the catalogue
   proposed: d428002c917d
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: no result proved about it."
 - id: patey2016-45e06d62
   ref: patey2016
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37762,10 +38302,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 971b5f6db9dc
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: the stable thin set theorem is in the catalogue as sts2; results for STS²₂ specifically to be entered with it."
 - id: patey2016-1417af22
   ref: patey2016
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37777,10 +38321,14 @@
   reasons:
     - principle not in the catalogue
   proposed: c8a16e1e854d
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added as a family: ts12 (RT¹₂) and ts13 represent it."
 - id: patey2016-b2d6fd9e
   ref: patey2016
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37792,10 +38340,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 3a80d6e82275
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Not added as a family.
 - id: hirstmummert2023-7c3b3a8b
   ref: hirstmummert2023
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37807,10 +38359,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 7d22e7da970d
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: equivalent to ACA₀ (Hirst, cited)."
 - id: hirstmummert2023-88df320a
   ref: hirstmummert2023
   date: 2026-11-09
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5
   statement:
@@ -37822,6 +38378,10 @@
   reasons:
     - principle not in the catalogue
   proposed: 9e185ec56a15
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: strongly Weihrauch equivalent to LLPO (Proposition 4.1)."
 - id: hirstmummert2023-1f1712f2
   ref: hirstmummert2023
   date: 2026-11-09

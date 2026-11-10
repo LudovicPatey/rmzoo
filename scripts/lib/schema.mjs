@@ -115,7 +115,7 @@ export const SCHEMA = {
     arxiv: { doc: 'arXiv id (unique unless `version` links the two)', usedBy: ['build', 'viewer', 'bibtex', 'sweep', 'pubstatus', 'fulltext', 'abstracts', 'consolidate'] },
     url: { doc: 'link when there is no DOI', usedBy: ['viewer', 'bibtex', 'fulltext'] },
     source: { doc: 'where the entry came from (zbmath, arxiv, rmzoo, review: added from the review page, …)', usedBy: ['viewer', 'sweep'] },
-    read: { doc: 'how its content was checked: pdf-zotero | pdf-arxiv | pdf-oa | pdf-author (uploaded by a researcher) | abstract | screened (written by fulltext.mjs)', usedBy: ['build', 'viewer', 'fulltext', 'uploadsSync'] },
+    read: { doc: 'how its content was checked: pdf-zotero | pdf-arxiv | pdf-oa | pdf-author (uploaded by a researcher) | pdf-local (a copy the maintainer placed by hand) | abstract | screened (written by fulltext.mjs)', usedBy: ['build', 'viewer', 'fulltext', 'uploadsSync'] },
     preprintYear: { doc: 'year of the preprint, when `year` became the publication year (written by pubstatus.mjs)', usedBy: ['pubstatus'] },
     version: { doc: 'key of another version of the same work (conference vs journal)', usedBy: ['build'] },
   },

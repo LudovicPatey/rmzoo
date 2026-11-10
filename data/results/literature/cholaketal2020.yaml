@@ -1,0 +1,3 @@
+# Results from [cholaketal2020].
+
+[ { type: separation, from: rcoh, to: coh, over: omega, refs: [ { ref: cholaketal2020, loc: Theorem 2.11 } ] } ]

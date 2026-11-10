@@ -12,13 +12,14 @@
 //   --retry     also retry papers whose download failed before
 //   --only      restrict to these reference keys
 //   --status    (always done) record in data/references/*.yaml how each cached
-//               paper was read: read: pdf-zotero | pdf-arxiv | pdf-oa | pdf-author
+//               paper was read: read: pdf-zotero | pdf-arxiv | pdf-oa | pdf-author | pdf-local
 //               (pdf-author: uploaded by a researcher, scripts/uploads-sync.mjs)
 //
 // Layout of cache/fulltext/:
 //   <key>.txt     text (pdftotext -layout), what the extraction scripts read
 //   <key>.pdf     the PDF (downloaded, or copied from Zotero)
-//   index.json    { key: { source: zotero|arxiv|oa|upload, url?, via?, zotero?, upload?, ocr?, date } }
+//   index.json    { key: { source: zotero|arxiv|oa|upload|local, url?, via?, zotero?, upload?, ocr?, date } }
+//                 (local: a copy the maintainer placed by hand, e.g. a chapter of a scanned book; `via` says which)
 //   failed.json   { key: { reason, date } }   — skipped unless --retry
 // Scanned PDFs (no text layer) are read by OCR: each page rendered at 300 dpi
 // (pdftoppm) and read by Tesseract; the index marks them `ocr: true` (formulas
@@ -351,7 +352,7 @@ if (flag('--author-pages')) {
 }
 
 // ---- reading status ----
-const STATUS = { zotero: 'pdf-zotero', arxiv: 'pdf-arxiv', oa: 'pdf-oa', upload: 'pdf-author' };
+const STATUS = { zotero: 'pdf-zotero', arxiv: 'pdf-arxiv', oa: 'pdf-oa', upload: 'pdf-author', local: 'pdf-local' };
 const counts = {};
 for (const e of refs) {
   const c = index[e.key];

@@ -32,10 +32,11 @@
 
 - id: fra
   label: '\mathsf{FRA}'
-  name: Fraïssé's conjecture (Laver's theorem)
+  name: Fraïssé's conjecture
   kind: sentence
   tags: [ well-orders, orders ]
-  aliases: [ Laver's theorem, LAV, Fraisse conjecture ]
+  aliases: [ Fraisse conjecture ]
+  caution: 'Laver proved it, so some papers call it Laver''s theorem; Laver''s stronger bqo statement is [[lav]].'
   definition: >
     The countable linear orders are well-quasi-ordered under embeddability: for every sequence $(L_n)$ of countable linear orders there are $i < j$ such that $L_i$ embeds into $L_j$.
   refs: [ { ref: shore1993, role: rm }, { ref: montalban2017, role: rm } ]
@@ -210,3 +211,51 @@
   definition: >
     Every well partial order has a linear extension of maximal order type (de Jongh and Parikh).
   refs: [ { ref: marconeshore2010, role: rm } ]
+
+- id: kt
+  label: '\mathsf{KT}'
+  name: Kruskal's theorem
+  kind: sentence
+  tags: [ well-orders ]
+  aliases: [ Kruskal's tree theorem ]
+  phrases: [ "Kruskal's theorem", "Kruskal's tree theorem" ]
+  definition: >
+    For every infinite sequence $(T_k)_{k \in \mathbb{N}}$ of finite trees there are $i < j$ such that $T_i$ embeds into
+    $T_j$, where a finite tree is a finite partial order with a least element in which the predecessors of each node
+    are linearly ordered, and an embedding is an injection preserving infima.
+  refs: [ { ref: simpson1985b, role: rm, loc: "Definitions 1.1, 1.2, Satz 1.3" } ]
+
+- id: gmt
+  label: '\mathsf{GMT}'
+  name: Graph minor theorem
+  kind: sentence
+  tags: [ well-orders, graphs ]
+  aliases: [ Robertson-Seymour theorem ]
+  phrases: [ graph minor theorem ]
+  definition: >
+    The finite graphs are well-quasi-ordered by minor inclusion (Robertson and Seymour).
+  refs: [ { ref: friedmanrobertsonseymour1987, role: rm, loc: Introduction } ]
+
+- id: gmtb
+  label: '\mathsf{GMT}_{\mathrm{bd}}'
+  name: Graph minor theorem for bounded tree-width
+  kind: sentence
+  minor: true
+  tags: [ well-orders, graphs ]
+  phrases: [ bounded graph minor theorem ]
+  definition: >
+    For every $k$, the finite graphs of tree-width less than $k$ are well-quasi-ordered by minor inclusion.
+  refs: [ { ref: friedmanrobertsonseymour1987, role: rm, loc: "Introduction, Theorem 4.2" } ]
+
+- id: lav
+  label: '\mathsf{LAV}'
+  name: Laver's theorem
+  kind: sentence
+  tags: [ well-orders ]
+  phrases: [ "Laver's theorem" ]
+  caution: 'Some papers call Fraïssé''s conjecture ([[fra]]) Laver''s theorem, since Laver proved it; LAV is his stronger result for labelled orders and bqos.'
+  definition: >
+    If $Q$ is a better quasi-order, then so is the class $\mathcal{L}_Q$ of countable linear orders labelled by
+    elements of $Q$, under label-respecting order-preserving embeddability. With a one-element $Q$ it gives that
+    countable linear orders are bqo under embeddability, which implies Fraïssé's conjecture.
+  refs: [ { ref: marcone2005, role: rm, loc: "Definition 2.27, Statement 2.29" }, { ref: montalban2011, role: rm, loc: Question 24 } ]
