@@ -6,3 +6,14 @@
 - { type: "implication", from: "lim", to: "cn", over: "w", refs: [ { ref: brattkagherardi2011b, loc: Theorem 3.10 } ] }
 - { type: property, statement: cr, property: low-basis, value: true, refs: [ { ref: brattkagherardi2011b, loc: Theorem 4.7 (Real Low Basis Theorem) } ] }
 - { type: equivalence, from: ivt.par, to: wkl, over: w, refs: [ { ref: brattkagherardi2011b, loc: "Section 6, Theorem 6.2 (IVT ≡sW C_I) and the remark after it (Ĉ_I ≡W WKL)" }, { ref: neumann2014, loc: Theorem 5.13 (essentially due to Brattka and Gherardi) } ] }
+- { type: implication, from: cim, to: llpo, over: w, refs: [ { ref: brattkagherardi2011b, loc: Proposition 3.9 } ] }
+- { type: separation, from: llpo, to: cim, over: w, refs: [ { ref: brattkagherardi2011b, loc: Proposition 4.5 } ] }
+- { type: implication, from: ci, to: cim, over: sw, refs: [ { ref: brattkagherardi2011b, loc: Definition 3.1 (restriction) } ] }
+- { type: separation, from: cim, to: ci, over: w, refs: [ { ref: brattkagherardi2011b, loc: Corollary 4.11 } ] }
+- { type: implication, from: ck, to: ci, over: sw, refs: [ { ref: brattkagherardi2011b, loc: Theorem 3.10 (restriction) } ] }
+- { type: separation, from: ci, to: ck, over: w, refs: [ { ref: brattkagherardi2011b, loc: Proposition 4.6 } ] }
+- { type: equivalence, from: ck, to: wkl, over: sw, refs: [ { ref: brattkagherardi2011b, loc: Theorem 2.10 (with Proposition 2.8) } ] }
+- { type: implication, from: cn, to: cim, over: w, refs: [ { ref: brattkagherardi2011b, loc: Proposition 3.8 } ] }
+- { type: separation, from: cim, to: cn, over: w, refs: [ { ref: brattkagherardi2011b, loc: Corollary 4.12(3) } ] }
+- { type: separation, from: ci, to: cn, over: w, refs: [ { ref: brattkagherardi2011b, loc: Corollary 4.10 } ] }
+- { type: separation, from: cn, to: ci, over: w, refs: [ { ref: brattkagherardi2011b, loc: Proposition 4.9 } ] }

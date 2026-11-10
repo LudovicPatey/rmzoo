@@ -175,6 +175,47 @@
   refs:
     - {ref: brattkagherardipauly2021, role: survey, loc: Proposition 7.20}
 
+- id: ci
+  label: '\mathsf{C}_{I}'
+  name: Interval choice
+  kind: problem
+  tags: [weihrauch]
+  aliases: [CI, C_I, interval choice]
+  caution: 'Not to be confused with connected choice CC_[0,1], which is equivalent to IVT.'
+  definition: >
+    Given (negative information about) a closed interval $[a, b] \subseteq [0, 1]$ with $a \leq b$,
+    find a point of it. Strongly equivalent to the boundedness principle $\mathsf{B}_I$: given $x$ from below
+    and $y \geq x$ from above, find a real in $[x, y]$.
+  instance: 'An enumeration of rational open balls whose union is the complement of an interval [a, b] ⊆ [0, 1] with a ≤ b.'
+  solution: A point of $[a, b]$.
+  refs: [ { ref: brattkagherardi2011b, role: origin, loc: "Definition 3.1(3), Proposition 3.6" } ]
+
+- id: cim
+  label: '\mathsf{C}_{I}^{-}'
+  name: Proper interval choice
+  kind: problem
+  tags: [weihrauch]
+  aliases: [CI-, C_I^-, proper interval choice]
+  definition: >
+    Interval choice $\mathsf{C}_I$ restricted to non-degenerate intervals $[a, b] \subseteq [0, 1]$ with $a < b$.
+  instance: 'An enumeration of rational open balls whose union is the complement of an interval [a, b] ⊆ [0, 1] with a < b.'
+  solution: A point of $[a, b]$.
+  refs: [ { ref: brattkagherardi2011b, role: origin, loc: "Definition 3.1(4), Proposition 3.6" } ]
+
+- id: ck
+  label: '\mathsf{C}_{K}'
+  name: Compact choice
+  kind: problem
+  minor: true
+  tags: [weihrauch]
+  aliases: [CK, C_K, compact choice]
+  definition: >
+    Given (negative information about) a nonempty compact set $K \subseteq [0, 1]$, find a point of $K$.
+    Equivalent to $\widehat{\mathsf{LLPO}}$, hence to $\mathsf{WKL}$.
+  instance: 'An enumeration of rational open balls whose union is the complement of a nonempty compact K ⊆ [0, 1].'
+  solution: A point of $K$.
+  refs: [ { ref: brattkagherardi2011b, role: origin, loc: "Definition 3.1(5), Theorem 2.10" } ]
+
 - id: cr
   caution: 'C_ℝ, sometimes written CR, is closed choice on the reals. In randomness papers CR abbreviates computable randomness ([[cran]]).'
   label: '\mathsf{C}_{\mathbb{R}}'

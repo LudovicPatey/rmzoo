@@ -265,6 +265,96 @@
   instance: A finite alphabet $A$ and a finite coloring of $A^{<\mathbb{N}}$.
   solution: A word $c_0$ and an infinite sequence of left-variable words as in the statement.
 
+- id: csl1
+  label: '\mathsf{CSL}_1'
+  name: Carlson–Simpson lemma for 1-variable words
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ CSL1 ]
+  definition: >
+    For every finite alphabet $A$, every $\ell \geq 1$ and every $\ell$-coloring of $A^{<\omega,1}$, the
+    1-variable words over $A$ of finite length, there is an $\omega$-variable word $W$ over $A$ such that
+    $\{W[u] : u \in A^{<\omega,1}\}$ is monochromatic. Here $W[u]$ replaces each variable $x_j$ of $W$ by
+    $u(j)$ and is cut before the first occurrence of $x_{|u|}$.
+  refs: [ { ref: liupatey2026, role: origin, loc: "Lemma 1.2 and the definition after it (n = 1)" } ]
+  instance: A finite alphabet $A$, some $\ell \geq 1$ and an $\ell$-coloring of $A^{<\omega,1}$.
+  solution: 'An $\omega$-variable word $W$ over $A$ such that $\{W[u] : u \in A^{<\omega,1}\}$ is monochromatic.'
+
+- id: csl2
+  label: '\mathsf{CSL}_2'
+  name: Carlson–Simpson lemma for 2-variable words
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ CSL2 ]
+  definition: >
+    The Carlson–Simpson lemma $\mathsf{CSL}_1$ for colorings of $A^{<\omega,2}$, the 2-variable words over $A$
+    of finite length: every finite coloring has an $\omega$-variable word $W$ with
+    $\{W[u] : u \in A^{<\omega,2}\}$ monochromatic.
+  refs: [ { ref: liupatey2026, role: origin, loc: "Lemma 1.2 and the definition after it (n = 2)" } ]
+  instance: A finite alphabet $A$, some $\ell \geq 1$ and an $\ell$-coloring of $A^{<\omega,2}$.
+  solution: 'An $\omega$-variable word $W$ over $A$ such that $\{W[u] : u \in A^{<\omega,2}\}$ is monochromatic.'
+
+- id: csl
+  label: '\mathsf{CSL}'
+  name: Carlson–Simpson lemma
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ ∀n CSLn ]
+  phrases: [ Carlson-Simpson lemma ]
+  definition: >
+    For every $n$, every finite alphabet $A$ and every finite coloring of $A^{<\omega,n}$, the $n$-variable
+    words over $A$ of finite length, there is an $\omega$-variable word $W$ over $A$ such that
+    $\{W[u] : u \in A^{<\omega,n}\}$ is monochromatic ($\forall n\, \mathsf{CSL}_n$).
+  refs: [ { ref: liupatey2026, role: origin, loc: "Lemma 1.2 and the definition after it" } ]
+  instance: Some $n$, a finite alphabet $A$ and a finite coloring of $A^{<\omega,n}$.
+  solution: 'An $\omega$-variable word $W$ over $A$ such that $\{W[u] : u \in A^{<\omega,n}\}$ is monochromatic.'
+
+- id: odrt3
+  label: '\mathsf{ODRT}_3'
+  name: Open dual Ramsey theorem for 3-partitions
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ ODRT3, "ODRT(3,2)" ]
+  definition: >
+    For every $\ell$ and every open $\ell$-coloring of $(\mathbb{N})^3$, the partitions of $\mathbb{N}$ into
+    exactly 3 non-empty blocks, there is a partition $p$ of $\mathbb{N}$ into infinitely many blocks such that
+    the partitions into 3 blocks coarser than $p$ all have the same color. Open colorings are given by
+    open codes, as in Miller and Solomon (Definition 2.1 and before Theorem 2.2).
+  refs: [ { ref: liupatey2026, role: origin, loc: "Section 1, after Theorem 1.1" }, { ref: millersolomon2004, role: rm, loc: "Section 2, before Theorem 2.2" } ]
+  instance: An open finite coloring of $(\mathbb{N})^3$.
+  solution: An infinite partition $p$ such that $(p)^3$ is monochromatic.
+
+- id: odrt4
+  label: '\mathsf{ODRT}_4'
+  name: Open dual Ramsey theorem for 4-partitions
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ ODRT4 ]
+  definition: >
+    The open dual Ramsey theorem $\mathsf{ODRT}_3$ for partitions of $\mathbb{N}$ into exactly 4 non-empty blocks.
+  refs: [ { ref: liupatey2026, role: origin, loc: "Section 1, after Theorem 1.1" }, { ref: millersolomon2004, role: rm, loc: "Section 2, before Theorem 2.2" } ]
+  instance: An open finite coloring of $(\mathbb{N})^4$.
+  solution: An infinite partition $p$ such that $(p)^4$ is monochromatic.
+
+- id: odrt
+  label: '\mathsf{ODRT}'
+  name: Open dual Ramsey theorem
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ ∀n ODRTn ]
+  phrases: [ open dual Ramsey theorem ]
+  definition: >
+    For every $k$, every $\ell$ and every open $\ell$-coloring of $(\mathbb{N})^k$, the partitions of
+    $\mathbb{N}$ into exactly $k$ non-empty blocks, there is a partition $p$ of $\mathbb{N}$ into infinitely
+    many blocks such that the partitions into $k$ blocks coarser than $p$ all have the same color.
+  refs: [ { ref: liupatey2026, role: origin, loc: "Section 1, after Theorem 1.1" }, { ref: millersolomon2004, role: rm, loc: "Section 2, before Theorem 2.2" } ]
+  instance: Some $k$ and an open finite coloring of $(\mathbb{N})^k$.
+  solution: An infinite partition $p$ such that $(p)^k$ is monochromatic.
+
 - id: fincoh
   label: '\mathsf{fin}\text{-}\mathsf{COH}'
   name: Finite cohesiveness principle
@@ -371,6 +461,36 @@
   refs:
     - { ref: dzhafarovmummert2022, role: rm, loc: Definition 5.8.14 }
     - { ref: simpson2009, role: rm, loc: Section VIII.4 }
+
+- id: wsigma11ac
+  label: '\textsf{weak-}\Sigma^1_1\textsf{-AC}'
+  name: Weak Σ¹₁ choice
+  kind: sentence
+  tags: []
+  aliases: [ weak-Σ11-AC0, weak Σ11-AC0, weak-Σ11-AC ]
+  phrases: [ weak Σ11 choice ]
+  definition: >
+    For every arithmetical formula $\theta(n, Y)$: if for every $n$ there is exactly one $Y$ with
+    $\theta(n, Y)$, then there is $Z$ with $\theta(n, (Z)_n)$ for every $n$. A statement of hyperarithmetic
+    analysis: HYP is its minimum $\omega$-model.
+  refs:
+    - { ref: simpson2009, role: origin, loc: Definition VIII.4.12 }
+    - { ref: montalban2006, role: rm, loc: Section 1.5 }
+
+- id: indec
+  label: '\mathsf{INDEC}'
+  name: Jullien's indecomposability theorem
+  kind: sentence
+  tags: []
+  aliases: [ INDEC0 ]
+  phrases: [ Jullien's indecomposability theorem ]
+  definition: >
+    Every scattered indecomposable linear ordering is either indecomposable to the right or indecomposable to
+    the left. A linear ordering $A$ is indecomposable if for every cut $\langle L, R \rangle$, $A$ embeds into $L$
+    or into $R$; indecomposable to the right if it embeds into $R$ for every cut with $R$ nonempty (and to the
+    left symmetrically).
+  refs:
+    - { ref: montalban2006, role: origin, loc: "Definition 1.2, Statement 1.3" }
 
 - id: iht
   label: '\mathsf{IHT}'

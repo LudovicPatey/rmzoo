@@ -1,0 +1,3 @@
+# Results from [gill2023b].
+
+[ { type: property, statement: henson-indiv, property: computably-true, value: false, refs: [ { ref: gill2023b, loc: Theorem 1 (n = 3) } ] }, { type: property, statement: henson-indiv, property: delta2-basis, value: true, refs: [ { ref: gill2023b, loc: "Section 1, after Theorem 1 (analysis of the proof of Komjáth and Rödl)" } ] } ]

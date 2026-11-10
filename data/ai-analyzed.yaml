@@ -401,6 +401,15 @@ chongslamanyang2012:
     - "merged: conservation|coh|bsig2|Pi11|true"
     - "merged: conservation|sads|bsig2|Pi11|true"
   cost: 0.22
+chongslamanyang2014:
+  date: 2026-11-10
+  model: claude-sonnet-5-5 (chat)
+  textHash: 4e2af42d44044bad
+  facts: 7
+  added: 0
+  review: 5
+  dropped: 2
+  cost: 0
 ciprianimarconevalenti2022:
   date: 2026-11-06
   model: claude-sonnet-5-5
@@ -866,6 +875,15 @@ freundpischkeuftring2026:
     - "merged: implication|rt22|coh|rca0|"
     - "merged: implication|coh|cads|rca0|"
   cost: 0.38
+friedman1975:
+  date: 2026-11-10
+  model: claude-sonnet-5-5 (chat)
+  textHash: b5c279c5b96c9e76
+  facts: 9
+  added: 0
+  review: 17
+  dropped: 4
+  cost: 0
 genovesi2024:
   date: 2026-11-06
   model: claude-sonnet-5-5
@@ -1218,6 +1236,15 @@ kihara2020:
   review: 11
   dropped: 3
   cost: 0.2
+kihara2021:
+  date: 2026-11-10
+  model: claude-sonnet-5-5 (chat)
+  textHash: 9bff49db66499fe4
+  facts: 0
+  added: 0
+  review: 3
+  dropped: 0
+  cost: 0
 kiharamarconepauly2020:
   date: 2026-11-06
   model: claude-opus-5-5
@@ -1609,6 +1636,15 @@ pakhomovwalsh2021:
   review: 1
   dropped: 0
   cost: 0.12
+patey2014:
+  date: 2026-11-10
+  model: claude-sonnet-5-5 (chat)
+  textHash: 1100d6bffabe4283
+  facts: 3
+  added: 0
+  review: 7
+  dropped: 2
+  cost: 0
 patey2014b:
   date: 2026-11-06
   model: claude-sonnet-5-5

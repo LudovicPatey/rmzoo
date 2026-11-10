@@ -10,3 +10,15 @@
 - { type: separation, from: henson-indiv, to: aca, over: omega, refs: [ { ref: liupatey2026, loc: "Section 9.1, after Theorem 9.6" } ] }
 - { type: implication, from: ovw, to: rt1inf, over: sc, refs: [ { ref: liupatey2026, loc: "Section 6, after Theorem 6.4" } ] }
 - { type: separation, from: ovw, to: sads, over: omega, refs: [ { ref: liupatey2026, loc: Corollary 4.7 } ] }
+- { type: equivalence, from: csl, to: aca-prime, over: rca0, refs: [ { ref: liupatey2026, loc: Theorem 7.7 ((1) ↔ (2)) } ] }
+- { type: equivalence, from: odrt, to: aca-prime, over: rca0, refs: [ { ref: liupatey2026, loc: Theorem 7.7 ((1) ↔ (4)) } ] }
+- { type: implication, from: aca, to: csl1, over: rca0, refs: [ { ref: liupatey2026, loc: Main Theorem 1.5 (n = 1) } ] }
+- { type: equivalence, from: csl2, to: aca, over: rca0, refs: [ { ref: liupatey2026, loc: Main Theorem 1.5 and its proof (n = 2) } ] }
+- { type: implication, from: aca, to: odrt3, over: rca0, refs: [ { ref: liupatey2026, loc: Main Theorem 1.5 (n = 1) } ] }
+- { type: implication, from: aca, to: odrt4, over: rca0, refs: [ { ref: liupatey2026, loc: Main Theorem 1.5 (n = 2) } ] }
+- { type: implication, from: csl1, to: odrt3, over: rca0, refs: [ { ref: liupatey2026, loc: Proof of Main Theorem 1.6 (Lemma 7.5) } ] }
+- { type: implication, from: csl2, to: odrt4, over: rca0, refs: [ { ref: liupatey2026, loc: Proof of Main Theorem 1.5 (Lemma 7.5) } ] }
+- { type: property, statement: csl1, property: hyperimmunities-1-preservation, value: true, refs: [ { ref: liupatey2026, loc: Theorem 8.1 } ] }
+- { type: separation, from: odrt3, to: aca, over: omega, refs: [ { ref: liupatey2026, loc: Main Theorem 1.6 (via Theorem 8.1) } ] }
+- { type: separation, from: csl1, to: aca, over: omega, refs: [ { ref: liupatey2026, loc: Main Theorem 1.6 (via Theorem 8.1) } ] }
+- { type: property, statement: csl1, property: cone-avoidance, value: true, refs: [ { ref: liupatey2026, loc: "Section 8, after Main Theorem 1.6 (with Downey et al.)" } ] }

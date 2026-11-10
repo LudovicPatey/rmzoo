@@ -596,3 +596,10 @@ hwang2026:
   url: https://www.researchgate.net/publication/415351695_P-conservation_of_Ramsey's_theorem_for_pairs_over_BS
   source: maintainer
   read: pdf-oa
+gill2023b:
+  authors: [ Kenneth Gill ]
+  title: A note on the indivisibility of the Henson graphs
+  year: 2023
+  venue: arXiv preprint
+  arxiv: "2310.20097"
+  read: pdf-arxiv

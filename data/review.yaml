@@ -39806,7 +39806,7 @@
 - id: carney2023-17ef9d9d
   ref: carney2023
   date: 2026-11-10
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5 (chat)
   statement:
@@ -39818,10 +39818,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 5e966d170a2a
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: studied in a single thesis; the domain of ChooseTiling (arbitrary sets of prototiles) needs care before entering CT ≡sW C_ℕ^ℕ."
 - id: carney2023-c49f17aa
   ref: carney2023
   date: 2026-11-10
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5 (chat)
   statement:
@@ -39833,10 +39837,14 @@
   reasons:
     - principle not in the catalogue
   proposed: a19ef645866d
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: studied in a single thesis."
 - id: carney2023-b1546cc3
   ref: carney2023
   date: 2026-11-10
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5 (chat)
   statement:
@@ -39848,10 +39856,14 @@
   reasons:
     - principle not in the catalogue
   proposed: b041cbce00ed
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: studied in a single thesis."
 - id: carney2023-63150dd7
   ref: carney2023
   date: 2026-11-10
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5 (chat)
   statement:
@@ -39863,6 +39875,10 @@
   reasons:
     - principle not in the catalogue
   proposed: e3c55172c46b
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: studied in a single thesis."
 - id: carney2023-33ebeba8
   ref: carney2023
   date: 2026-11-10
@@ -39885,7 +39901,7 @@
 - id: carney2023-17011f75
   ref: carney2023
   date: 2026-11-10
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5 (chat)
   statement:
@@ -39897,6 +39913,10 @@
   reasons:
     - principle not in the catalogue
   proposed: 4464e2ccd898
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added ci (interval choice), cim (proper interval choice) and ck (compact choice) from Brattka–Gherardi 2011b, with Corollary 4.12; boundedness principles are equivalent to them (Proposition 3.6).
 - id: liupatey2026-9e14e451
   ref: liupatey2026
   date: 2026-11-10
@@ -39992,7 +40012,7 @@
 - id: liupatey2026-fd0b74de
   ref: liupatey2026
   date: 2026-11-10
-  status: pending
+  status: done
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -40011,6 +40031,10 @@
     - "extractor confidence: medium"
     - "attributed by the paper to Gill [22]: cite the original"
   proposed: 741c3d3d96a9
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Entered from the original, Gill 2023 (arXiv 2310.20097), Theorem 1.
 - id: liupatey2026-dfdde74f
   ref: liupatey2026
   date: 2026-11-10
@@ -40194,7 +40218,7 @@
 - id: liupatey2026-a6a419c2
   ref: liupatey2026
   date: 2026-11-10
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5 (chat)
   statement:
@@ -40206,10 +40230,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 1a73d059198a
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added csl1, csl2 and csl (∀n CSLₙ) from Lemma 1.2, with Main Theorems 1.5, 1.6, Theorem 7.7 and Theorem 8.1.
 - id: liupatey2026-06f09bc7
   ref: liupatey2026
   date: 2026-11-10
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5 (chat)
   statement:
@@ -40221,10 +40249,14 @@
   reasons:
     - principle not in the catalogue
   proposed: bb5f0257c16a
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added odrt3, odrt4 and odrt (∀k ODRTₖ), with Miller–Solomon Theorem 2.3 and Corollary 2.5.
 - id: liupatey2026-adc9f25a
   ref: liupatey2026
   date: 2026-11-10
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5 (chat)
   statement:
@@ -40236,6 +40268,10 @@
   reasons:
     - principle not in the catalogue
   proposed: a4b9d88b780b
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added separately: ODRTₙ and CDRTₙ are equivalent over RCA₀ (Dzhafarov, Flood, Solomon and Westrick, Theorem 3.9); odrt carries the results."
 - id: liupatey2026-9ab66f7b
   ref: liupatey2026
   date: 2026-11-10
@@ -40858,7 +40894,7 @@
 - id: barnesgohshore2022-02c8bebe
   ref: barnesgohshore2022
   date: 2026-11-10
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5 (chat)
   statement:
@@ -40870,10 +40906,14 @@
   reasons:
     - principle not in the catalogue
   proposed: dec5a2906000
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added wsigma11ac from Simpson, Definition VIII.4.12, with Remark VIII.4.13 and Exercise VIII.4.14.
 - id: barnesgohshore2022-fa7ede59
   ref: barnesgohshore2022
   date: 2026-11-10
-  status: pending
+  status: done
   kind: statement
   model: claude-sonnet-5-5 (chat)
   statement:
@@ -40885,6 +40925,10 @@
   reasons:
     - principle not in the catalogue
   proposed: a3732a0f8a84
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Added indec from Montalbán 2006 (Statement 1.3), with Theorems 2.2, 2.4 and the separations of Section 1.
 - id: barnesgohshore2022-f6fd4afc
   ref: barnesgohshore2022
   date: 2026-11-10
@@ -41135,3 +41179,683 @@
     date: 2026-11-10
     by: ludovic
     note: "Not added: third-order principle, out of scope."
+- id: chongslamanyang2014-c1b41df2
+  ref: chongslamanyang2014
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: srt22-wkl
+    to: rt22
+    over: rca0
+  loc: Corollary 2.8
+  origin: stated
+  quote: Corollary 2.8. SRT 22 + WKL0 does not prove RT 22 over RCA0 + BΣ02 .
+  paperNotation: SRT^2_2 + WKL0
+  confidence: medium
+  concerns: Stated over RCA0 + BΣ⁰₂; since BΣ⁰₂ is implied by SRT^2_2 over RCA0, this gives non-provability over RCA0 as well. The model is not an ω-model.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 8e5041f19166
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: chongslamanyang2014-1d726eb8
+  ref: chongslamanyang2014
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: rt22
+    base: isig2
+    class: Pi11
+    value: true
+  loc: Section 1, introduction
+  origin: cited
+  quote: RT22 is Π11 -conservative over RCA0 + the Σ02 -induction scheme I Σ02
+  paperNotation: RT^2_2
+  citedFrom: Cholak, Jockusch, Slaman 2001
+  confidence: high
+  reasons:
+    - "attributed by the paper to Cholak, Jockusch, Slaman 2001: cite the original"
+  proposed: 9533255540b9
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: chongslamanyang2014-9c1e177a
+  ref: chongslamanyang2014
+  date: 2026-11-10
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: srt22
+    base: isig2
+    class: Pi11
+    value: true
+  loc: Section 1, introduction
+  origin: special-case
+  quote: It follows immediately that any subsystem of RT22 + RCA0 + I Σ02
+  paperNotation: SRT^2_2
+  argument: SRT^2_2 is provable from RT^2_2, so Π¹₁-conservativity of RT^2_2 over RCA0 + IΣ⁰₂ passes to SRT^2_2.
+  citedFrom: Cholak, Jockusch, Slaman 2001
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 3a8cc39197cb
+  decision:
+    date: 2026-11-10
+    by: ludovic
+- id: chongslamanyang2014-1cb3a83e
+  ref: chongslamanyang2014
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: srt22
+    to: isig2
+    over: rca0
+  loc: Corollary 2.6
+  origin: stated
+  quote: Corollary 2.6. SRT 22 does not imply IΣ02 .
+  paperNotation: SRT^2_2, IΣ^0_2
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 60e4416f82f5
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: chongslamanyang2014-addaa53a
+  ref: chongslamanyang2014
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: srt22
+    to: rt22
+    over: rca0
+  loc: Corollary 2.5
+  origin: stated
+  quote: Corollary 2.5. SRT 22 does not imply RT 22 .
+  paperNotation: SRT^2_2, RT^2_2
+  confidence: high
+  concerns: Proved by a model of RCA0 + BΣ⁰₂ (not an ω-model).
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 6669918bb487
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: friedman1975-83d4256d
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: aca
+    to: kl
+    over: rca0
+  loc: Theorem 1.1(a)
+  origin: stated
+  quote: THEOREM 1.1. ACA is equivalent to (a) KL, (b) SLUB,
+  paperNotation: ACA (= ACA0), KL
+  confidence: medium
+  concerns: The paper defines KL as RCA plus König's lemma for infinite finitely branching trees of finite sequences of naturals; the catalogue entry kl matches. Equivalence is over the base RCA (=RCA0) by the definitions of the systems.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: e4fe977ee838
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: friedman1975-0edfb585
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: wkl
+    base: rca0
+    class: Pi11
+    value: true
+  loc: Theorem 1.4
+  origin: stated
+  quote: RCA and WKL prove the same II formulae.
+  paperNotation: II formulae (Π¹₁ in Friedman's notation)
+  confidence: medium
+  concerns: Text extraction reads "II formulae" for Π formulae; by the paper's definition (no existential set quantifiers) these are Π¹₁ formulae. The same theorem says they do not prove the same Σ¹₁ sentences (not recorded).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 5c8e0c3e0cf4
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: friedman1975-a9ca03b6
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wkl
+    to: aca
+    over: omega
+  loc: Section 1, remark after Theorem 1.3
+  origin: stated
+  quote: |-
+    we have an <a-model of WKL
+    which is not an ûj-model of ACA.
+  paperNotation: ω-model of WKL not an ω-model of ACA
+  confidence: medium
+  concerns: OCR garbled the quote ("<a-model", "ûj-model"); the text before says "By taking a Δ¹₁? complete consistent extension of PA".
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 27d6adfb0793
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: friedman1975-db2c96da
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: pi11ca
+    to: atr
+    over: rca0
+  loc: Theorem 5.2
+  origin: stated
+  quote: IIi-CA proves ATR + HDC.
+  paperNotation: Π¹₁-CA (garbled "IIi-CA")
+  confidence: medium
+  concerns: OCR reads "IIi-CA" for Π¹₁-CA. The conjunct HDC is not in the catalogue; only the ATR part is recorded.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: b2ebd3c7a211
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: friedman1975-5a935f48
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: wkl
+    property: computably-true
+    value: false
+  loc: Section 1, remark after Theorem 1.3
+  origin: stated
+  quote: |-
+    It is also clear that the recursive sets do not form
+    an û)-model of WKL.
+  confidence: high
+  concerns: OCR garbled "ω-model". Failure of computable truth is equivalent to the recursive sets not being an ω-model of WKL.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: cea24f23ceb4
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: friedman1975-eeadbca7
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MLUB
+    name: Monotone least upper bound
+    loc: Section I, before Theorem 1.1
+    definition: Every bounded monotone increasing sequence of reals has a least upper bound.
+    facts: "Theorem 1.1(c): equivalent to ACA over RCA."
+  reasons:
+    - principle not in the catalogue
+  proposed: 836fdd9c4218
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: systems of Friedman 1975, read from an OCR text; to be added from the rendered pages or a later source if needed."
+- id: friedman1975-a5f87680
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SBW
+    name: Sequential Bolzano-Weierstrass
+    loc: Section I, before Theorem 1.1
+    definition: To every bounded sequence of distinct real numbers there is a real number every neighborhood of which contains at least two terms.
+    facts: "Theorem 1.1(d): equivalent to ACA over RCA."
+  reasons:
+    - principle not in the catalogue
+  proposed: a6adfe4167fe
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: systems of Friedman 1975, read from an OCR text; to be added from the rendered pages or a later source if needed."
+- id: friedman1975-0f631d90
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HAC
+    name: Hyperarithmetic axiom of choice
+    loc: Section II
+    definition: (forall n)(exists x)A(n,x) -> (exists y)(forall n)(exists x)(x=(y)_n & A(n,x)), A arithmetic.
+    facts: "Theorem 2.1: equivalent to SL; implies ABW (easy); HDC implies HAC implies HCA; Steel: HCA does not imply HAC; ATR proves HAC (Theorem 3.2)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 58a4e18e451d
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: systems of Friedman 1975, read from an OCR text; to be added from the rendered pages or a later source if needed."
+- id: friedman1975-36f529d1
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HDC
+    name: Hyperarithmetic axiom of dependent choice
+    loc: Section II
+    definition: Dependent choice for arithmetic relations A(x,y).
+    facts: "Theorem 2.3: HCA and HDC prove the same Pi^1_2 formulae; ATR does not prove HDC but proves an omega-model of HDC (Theorem 3.2); Pi^1_1-CA proves ATR+HDC (Theorem 5.2)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9148ec697d0f
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: systems of Friedman 1975, read from an OCR text; to be added from the rendered pages or a later source if needed."
+- id: friedman1975-02ff3bb4
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SL
+    name: Sequential limit system
+    loc: Section II
+    definition: If every neighborhood of x contains at least two solutions of an arithmetic predicate, x is the limit of a sequence of solutions.
+    facts: "Theorem 2.1: equivalent to HAC."
+  reasons:
+    - principle not in the catalogue
+  proposed: 6e88167fc2ba
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: systems of Friedman 1975, read from an OCR text; to be added from the rendered pages or a later source if needed."
+- id: friedman1975-88cda8de
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PST
+    name: Perfect subtree theorem
+    loc: Section III
+    definition: Every tree of finite sequences such that no infinite sequence of functions includes all infinite paths has a perfect subtree.
+    facts: "Theorem 3.1(b): equivalent to ATR over RCA."
+  reasons:
+    - principle not in the catalogue
+  proposed: 765f15cf7cfb
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: systems of Friedman 1975, read from an OCR text; to be added from the rendered pages or a later source if needed."
+- id: friedman1975-18f23503
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CDS
+    name: Countability of discrete sets
+    loc: Section III
+    definition: To every arithmetic predicate of reals whose distinct solutions are at least one unit apart there is a sequence including all solutions (over ACA).
+    facts: "Theorem 3.1(d): equivalent to ATR."
+  reasons:
+    - principle not in the catalogue
+  proposed: 6c38f7ddd979
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: systems of Friedman 1975, read from an OCR text; to be added from the rendered pages or a later source if needed."
+- id: friedman1975-89e49477
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: weak Pi^1_1-AC
+    name: Weak Pi^1_1 axiom of choice
+    loc: Section III
+    definition: (forall n)(exists! m)A(n,m) -> (exists f)(forall n)A(n,f(n)), A Pi^1_1.
+    facts: "Theorem 3.1(a): equivalent to ATR."
+  reasons:
+    - principle not in the catalogue
+  proposed: 40ff134421e0
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: systems of Friedman 1975, read from an OCR text; to be added from the rendered pages or a later source if needed."
+- id: friedman1975-a686a2bf
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: TI
+    name: Transfinite induction system
+    loc: Section IV
+    definition: Transfinite induction along any well ordering of naturals for any formula.
+    facts: "Theorem 4.1: equivalent to RFN; Theorem 4.2: TI for Sigma^1_1 formulae equivalent to ATR, ATR does not prove TI for Pi^1_1 formulae but HDC does, etc.; Theorem 4.3 and 4.4 about explicit definability of nonhyperarithmetic sets."
+  reasons:
+    - principle not in the catalogue
+  proposed: 62cefeeb08f7
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: systems of Friedman 1975, read from an OCR text; to be added from the rendered pages or a later source if needed."
+- id: friedman1975-89737281
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: RFN
+    name: Reflection system
+    loc: Section IV
+    definition: "ACA plus reflection: A(x) -> exists an omega-structure in which A holds."
+    facts: "Theorem 4.1: equivalent to TI."
+  reasons:
+    - principle not in the catalogue
+  proposed: c03e4a921081
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: systems of Friedman 1975, read from an OCR text; to be added from the rendered pages or a later source if needed."
+- id: friedman1975-3f983c95
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ALUB
+    name: Arithmetic least upper bound
+    loc: Section V
+    definition: If the solutions of a nonempty arithmetic predicate of reals have an upper bound, they have a least upper bound.
+    facts: "Theorem 5.1: equivalent to PKT and to Pi^1_1-CA."
+  reasons:
+    - principle not in the catalogue
+  proposed: cf3aa9fd1d05
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: systems of Friedman 1975, read from an OCR text; to be added from the rendered pages or a later source if needed."
+- id: friedman1975-cd98e38d
+  ref: friedman1975
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: compactness/completeness for propositional calculus
+    name: Propositional compactness and completeness
+    loc: Theorem 1.2(a),(b)
+    definition: Compactness theorem and completeness theorem for sets of sentences in propositional calculus.
+    facts: Equivalent to WKL (Theorem 1.2); also (e) complete consistent extensions, (f) Henkin complete extensions of predicate theories, (d) a reflection principle.
+  reasons:
+    - principle not in the catalogue
+  proposed: 39903e5bf11d
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: systems of Friedman 1975, read from an OCR text; to be added from the rendered pages or a later source if needed."
+- id: patey2014-4ed408ad
+  ref: patey2014
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: rwkl
+    to: dnr
+    over: rca0
+  loc: Section 4, text before Theorem 4.4
+  origin: stated
+  quote: RSAT implies LRSAT(Affine) over RCA0 , it gives another proof of RCA0 ` RWKL →
+  paperNotation: RWKL → DNR
+  confidence: medium
+  concerns: Quote is cut at a line break; the statement is RCA0 ⊢ RWKL → DNR, obtained from Theorem 4.4 (RSAT(Affine) → DNR) and RWKL ↔ RSAT.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 63c60daf2f3c
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: patey2014-64237045
+  ref: patey2014
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SAT
+    name: Satisfiability of finitely satisfiable sets of Boolean formulas
+    loc: Definition 1.1, Theorem 1.2
+    definition: For every finitely satisfiable set C of Boolean formulas over an infinite set of variables V there is an infinite assignment V -> B satisfying C.
+    facts: RCA0 proves WKL0 <-> SAT (Theorem 1.2, Simpson).
+  reasons:
+    - principle not in the catalogue
+  proposed: daf1439d3ca4
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: satisfiability variants specific to this paper (RSAT is in the catalogue)."
+- id: patey2014-e1288852
+  ref: patey2014
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LRSAT
+    name: Localized Ramsey-type satisfiability
+    loc: Definition 1.4
+    definition: For every finitely satisfiable set C of Boolean formulas over V and every infinite L subset of V there is an infinite H subset of L homogeneous for C.
+    facts: RCA0 proves RWKL <-> RSAT <-> LRSAT (Theorem 1.5, Bienvenu et al.).
+  reasons:
+    - principle not in the catalogue
+  proposed: 599f365cb523
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: satisfiability variants specific to this paper (RSAT is in the catalogue)."
+- id: patey2014-870606f8
+  ref: patey2014
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SAT(S), RSAT(S), LRSAT(S)
+    name: Satisfiability principles restricted to formulas built from a class S of Boolean relations
+    loc: Definitions 1.10, 1.12, 1.13
+    definition: SAT/RSAT/LRSAT restricted to finitely satisfiable sets of S-formulas.
+    facts: SAT(S) is provable in RCA0 if every relation of S is F-valid or T-valid, or the only non-F-default (resp. non-T-default) relation is [x] (resp. [not x]); otherwise equivalent to WKL0 (Theorem 1.11). LRSAT(S) is provable in RCA0 or equivalent to one of LRSAT, LRSAT([x != y]), LRSAT(Affine), LRSAT(Bijunctive) (Theorem 1.14). LRSAT(S) <-> LRSAT(Affine) if S affine (Theorem 3.16), RSAT(S) <-> LRSAT(S) for Sigma^0_1 co-clones (Theorem 4.1).
+  reasons:
+    - principle not in the catalogue
+  proposed: 4d84a4a36258
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: satisfiability variants specific to this paper (RSAT is in the catalogue)."
+- id: patey2014-b2628664
+  ref: patey2014
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: RSAT(Affine)
+    name: Ramsey-type satisfiability for affine formulas
+    loc: Section 1.2, Theorem 4.4
+    definition: RSAT(S) with S the set of all affine relations.
+    facts: RCA0 proves RSAT(Affine) -> DNR (Theorem 4.4); RSAT implies it; relation to RSAT, RSAT(Bijunctive), RCOLOR2 open (Question 5.1).
+  reasons:
+    - principle not in the catalogue
+  proposed: ef3598328979
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: satisfiability variants specific to this paper (RSAT is in the catalogue)."
+- id: patey2014-02900a02
+  ref: patey2014
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: RSAT(Bijunctive)
+    name: Ramsey-type satisfiability for bijunctive formulas
+    loc: Section 1.2, Corollary 4.2
+    definition: RSAT(S) with S the set of all bijunctive relations.
+    facts: Equivalent to its localized version LRSAT(Bijunctive) over RCA0 (Corollary 4.2).
+  reasons:
+    - principle not in the catalogue
+  proposed: af850de2851e
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: satisfiability variants specific to this paper (RSAT is in the catalogue)."
+- id: patey2014-f7986e80
+  ref: patey2014
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LRCOLOR_k
+    name: Localized Ramsey-type k-coloring
+    loc: Definition 3.18
+    definition: For every infinite finitely k-colorable graph G and every infinite L subset of V there is an infinite H subset of L homogeneous for G.
+    facts: "RCA0 proves RCOLOR2 <-> LRSAT([x != y]) (Theorem 3.19), and RCOLOR2 <-> LRCOLOR2 (from [2]). Question 5.2: does RCOLOR2 imply DNR or RWKL over RCA0?"
+  reasons:
+    - principle not in the catalogue
+  proposed: e3295e99d2b5
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: satisfiability variants specific to this paper (RSAT is in the catalogue)."
+- id: kihara2021-338cb141
+  ref: kihara2021
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Error_{m/k}
+    name: Error-relative computation (m wrong out of k parallel computations)
+    loc: Section 4
+    definition: Oracle for computations in which k computations are run in parallel and m of them may be wrong; used to define Lawvere-Tierney topologies on the effective topos.
+    facts: LLPO_{m/k} <=_1LT Error_{m/k+1} (Proposition 4.2); LLPO_{1/l} not<=_LT Error_{1/(l+2)} (Proposition 4.4). Reductions are one-query Turing reducibility on N-valued multifunctions, not a catalogue reduction.
+  reasons:
+    - principle not in the catalogue
+  proposed: ccdaa06eb2a0
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: principles on ℕ under one-query Turing reducibility in the effective topos, not the catalogue reductions."
+- id: kihara2021-dc2679f4
+  ref: kihara2021
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LLPO_{m/k}
+    name: Generalized lesser limited principle of omniscience on N
+    loc: Section 4
+    definition: "dom(LLPO_{m/k}) = {e : |{j<k : phi_e(j) halts}| <= m}, LLPO_{m/k}(e) = {0,...,k-1} minus {j<k : phi_e(j) halts}; LLPO is LLPO_{1/2}."
+    facts: Studied under (one-query) Turing reducibility of N-multifunctions in the effective topos setting.
+  reasons:
+    - principle not in the catalogue
+  proposed: 34b0eaef622a
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: principles on ℕ under one-query Turing reducibility in the effective topos, not the catalogue reductions."
+- id: kihara2021-7e92e21a
+  ref: kihara2021
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: AoUC_N
+    name: All-or-unique choice on N
+    loc: Section 6 (discussion before Question 2)
+    definition: Partial multifunction all-or-unique choice on N (Turing equivalent to the halting problem); the version on 2 (AoUC_2^N) is Turing equivalent to LLPO.
+    facts: Stated without proof in the discussion; reductions are one-query Turing reductions on N, differing from the catalogue's accn (all-or-co-unique choice).
+  reasons:
+    - principle not in the catalogue
+  proposed: 1879156219fb
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: principles on ℕ under one-query Turing reducibility in the effective topos, not the catalogue reductions."

@@ -1,0 +1,3 @@
+# Results from [millersolomon2004].
+
+[ { type: implication, from: odrt4, to: aca, over: rca0, refs: [ { ref: millersolomon2004, loc: Corollary 2.5 } ] }, { type: implication, from: odrt3, to: rt22, over: rca0, refs: [ { ref: millersolomon2004, loc: "Theorem 2.3 (k = 2, l = 2)" } ] } ]
