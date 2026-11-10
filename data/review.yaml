@@ -40350,3 +40350,788 @@
     date: 2026-11-10
     by: ludovic
     note: "Not added: lightface fragments of Π¹₁-CA studied by ordinal analysis; no comparison with catalogue statements."
+- id: hwang2026-ca401f63
+  ref: hwang2026
+  date: 2026-11-10
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: sem
+    base: bsig2
+    class: Pi11
+    value: true
+  loc: Section 1.3, remark after Theorem 1.1
+  origin: deduced
+  quote: Since RT22 implies SEM over RCA0 , Theorem 1.1 also gives Π11 -conservation of
+  paperNotation: RCA0 + BΣ^0_2 + SEM
+  argument: RT^2_2 implies SEM over RCA0 (cited from Le Houerou, Levy Patey, Yokoyama), so any Pi11 sentence provable from RCA0 + BSigma2 + SEM is provable from RCA0 + RT22 (which includes BSigma2), hence from RCA0 + BSigma2 by Theorem 1.1.
+  confidence: medium
+  concerns: Paper states the corollary as conservation of RCA0 + BSigma2 + SEM over RCA0 + BSigma2.
+  reasons:
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: 565b1ca920ae
+  decision:
+    date: 2026-11-10
+    by: ludovic
+- id: hwang2026-1d726eb8
+  ref: hwang2026
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: rt22
+    base: isig2
+    class: Pi11
+    value: true
+  loc: Section 1.1
+  origin: cited
+  quote: "[7], and Cholak, Jockusch, and Slaman proved Π11 -conservation over RCA0 + IΣ02 [2]."
+  paperNotation: RCA0 + RT^2_2 over RCA0 + IΣ^0_2
+  citedFrom: Cholak, Jockusch, Slaman [2]
+  confidence: medium
+  concerns: Sentence is about RT22 by context (first-order strength of RT22).
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Cholak, Jockusch, Slaman [2]: cite the original"
+  proposed: 9cbdc931b970
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Cited (Cholak, Jockusch and Slaman); already in the database.
+- id: hwang2026-5dfe2789
+  ref: hwang2026
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: rt22
+    base: rca0
+    class: uPi03
+    value: true
+  loc: Section 1.1
+  origin: cited
+  quote: Patey and Yokoyama proved ∀Π03 -conservation over RCA0 [14]
+  paperNotation: ∀Π^0_3-conservation of RT^2_2 over RCA0
+  citedFrom: Patey and Yokoyama [14]
+  confidence: high
+  reasons:
+    - "attributed by the paper to Patey and Yokoyama [14]: cite the original"
+  proposed: 8fb2c96190d4
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Cited (Patey and Yokoyama); already in the database.
+- id: hwang2026-960bee1a
+  ref: hwang2026
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: rt22
+    base: bsig2
+    class: uPi04
+    value: true
+  loc: Section 1.1
+  origin: cited
+  quote: Levy Patey, and Yokoyama proved ∀Π04 -conservation over RCA0 + BΣ02 [13]. FioriCarones, Kolodziejczyk, Wong, and Yokoyama showed that ∀Π05 -conservation over
+  paperNotation: ∀Π^0_4-conservation of RT^2_2 over RCA0 + BΣ^0_2
+  citedFrom: Le Houerou, Levy Patey, Yokoyama [13]
+  confidence: high
+  reasons:
+    - "attributed by the paper to Le Houerou, Levy Patey, Yokoyama [13]: cite the original"
+  proposed: e3ab6c7a5d77
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Cited (Le Houérou, Levy Patey and Yokoyama); already in the database.
+- id: hwang2026-41d07576
+  ref: hwang2026
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: rt22
+    base: bsig2
+    class: Pi11
+    value: true
+  loc: Theorem 1.1
+  origin: stated
+  quote: Theorem 1.1 (Conservation). The theory RCA0 + RT22 is Π11 -conservative over
+  paperNotation: RCA0 + RT^2_2 is Π^1_1-conservative over RCA0 + BΣ^0_2
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: e875041303b2
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database (Theorem 1.1).
+- id: koodziejczykwongyokoyama2020-63f97f7d
+  ref: koodziejczykwongyokoyama2020
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: rt22
+    base: rca0
+    class: Pi11
+    value: false
+  loc: Introduction, paragraph 2
+  origin: stated
+  quote: which itself witnesses that RT22 is not Π11 -conservative
+  paperNotation: RT^2_2
+  confidence: medium
+  concerns: Consequence of RCA0 + RT22 proving Σ02 collection (BΣ2 is a Π11 sentence not provable in RCA0); stated in passing.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 09fdcffac8e3
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Follows from RT²₂ → BΣ⁰₂ (Hirst), which RCA₀ does not prove; stated in passing.
+- id: koodziejczykwongyokoyama2020-0edfb585
+  ref: koodziejczykwongyokoyama2020
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: wkl
+    base: rca0
+    class: Pi11
+    value: true
+  loc: Introduction, paragraph 3
+  origin: cited
+  quote: the Π11 -conservativity of Weak König’s Lemma over RCA0
+  paperNotation: WKL0
+  citedFrom: classical (Harrington; Simpson, SOSOA IX.2)
+  confidence: medium
+  concerns: Cited as a known example, no reference given at this point.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to classical (Harrington; Simpson, SOSOA IX.2): cite the original"
+  proposed: ae7d157b6543
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Harrington’s theorem; already in the database.
+- id: dzhafarov2015b-7f9726e4
+  ref: dzhafarov2015b
+  date: 2026-11-10
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: d2
+    to: srt22
+    over: soc
+  loc: Corollary 3.5
+  origin: deduced
+  quote: "Corollary 3.5. There is a low stable coloring c : [ω]2 → 2 such that for every"
+  paperNotation: SRT^2_2 not<=_soc D^2_{<infty}
+  argument: 'Corollary 3.5 gives a (low) stable coloring c of 2 colours such that every stable coloring d of k colours (k>=2, any complexity, not necessarily computable from c) has an infinite limit-homogeneous set computing no infinite homogeneous set for c; this is exactly the failure of the soc reduction (Section 3 intro: "computable from c or not").'
+  confidence: medium
+  concerns: The paper does not name the soc reduction; the statement is in the paragraph before Theorem 3.2 and Corollary 3.5.
+  reasons:
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: df12a6afbff8
+  decision:
+    date: 2026-11-10
+    by: ludovic
+- id: dzhafarov2015b-9d5b2865
+  ref: dzhafarov2015b
+  date: 2026-11-10
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: srt2
+    to: d2
+    over: c
+  loc: Introduction, after Statement 1.4
+  origin: cited
+  quote: that SRT2k and D2k are computably equivalent, as are SRT2<∞ and D2<∞ (see [1],
+  paperNotation: SRT^2_{<infty}, D^2_{<infty}
+  citedFrom: Cholak, Jockusch, Slaman [1, Lemma 3.5]
+  confidence: high
+  reasons:
+    - "attributed by the paper to Cholak, Jockusch, Slaman [1, Lemma 3.5]: cite the original"
+  proposed: 0839b9c8e46f
+  decision:
+    date: 2026-11-10
+    by: ludovic
+- id: dzhafarov2015b-94abcb23
+  ref: dzhafarov2015b
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: srt22
+    to: coh
+    over: sc
+  loc: Corollary 5.3
+  origin: stated
+  quote: that COH is not strongly reducible to
+  paperNotation: COH not<=_sc SRT^2_2
+  confidence: high
+  concerns: Symbol lost in extraction; abstract says COH is not strongly reducible to SRT22.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 060d8ee85fcc
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: dzhafarov2015b-3d5ba961
+  ref: dzhafarov2015b
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: srt2
+    to: coh
+    over: w
+  loc: Corollary 4.5
+  origin: stated
+  quote: show that COH is not uniformly reducible to SRT2<∞
+  paperNotation: COH not<=_u SRT^2_{<infty}
+  confidence: high
+  concerns: Symbol lost in extraction; abstract says COH is not uniformly reducible to SRT2<inf.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 52e40f9137a1
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: dzhafarov2015b-4d673ad1
+  ref: dzhafarov2015b
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: d2
+    to: srt22
+    over: sc
+  loc: Corollary 3.6
+  origin: stated
+  quote: we prove that SRT22 is not uniformly or strongly computably
+  paperNotation: SRT^2_2 not<=_sc D^2_{<infty}
+  confidence: high
+  concerns: Symbol lost in extraction; the section introduction states it.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 2d590bf42b8e
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: dzhafarov2015b-d37be9c5
+  ref: dzhafarov2015b
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: d2
+    to: srt22
+    over: w
+  loc: Corollary 3.3
+  origin: stated
+  quote: we prove that SRT22 is not uniformly or strongly computably
+  paperNotation: SRT^2_2 not<=_u D^2_{<infty}
+  confidence: high
+  concerns: "The relation symbol vanished in the extraction; read from the section intro and the proof (Theorem 3.2). The paper proves more: omniscient version, instances of D2<inf computable from c or not."
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: c63993375782
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: dzhafarov2015b-a7bc8908
+  ref: dzhafarov2015b
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: RT^1_k and SRT^2_k for general k (RT^1_{#(k)}, SRT^2_k)
+    name: Pigeonhole and stable Ramsey for pairs with k colours
+    loc: Corollary 4.6
+    definition: "RT^1_k: every k-colouring of omega has an infinite homogeneous set; SRT^2_k: every stable k-colouring of pairs has an infinite homogeneous set."
+    facts: "RT^1_{#(k)} is not uniformly (Weihrauch) reducible to SRT^2_k for all k>=1, where #(0)=1, #(k)=(k+1)*#(k-1)^k (#(1)=2, #(2)=12, #(3)=6912). Only k=1,2 would involve RT^1_2 resp. RT^1_12; neither SRT^2_1 nor RT^1_12 is in the catalogue."
+  reasons:
+    - principle not in the catalogue
+  proposed: 5c5a08cba45b
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: the k-colour versions of the catalogue are those studied separately; RT¹_{#(k)} is specific to this paper."
+- id: barnesgohshore2022-90b71e7a
+  ref: barnesgohshore2022
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: mirt
+    to: pi11ca
+    over: rca0
+  loc: Theorem 3.12
+  origin: stated
+  quote: Theorem 3.12. Each MIRTXYZ is equivalent to Π11 -CA0 over RCA0 .
+  paperNotation: MIRT_XYZ, Π¹₁-CA₀
+  confidence: medium
+  concerns: Stated for each variant MIRT_XYZ; catalogue mirt is the generic form.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 67b088486893
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: barnesgohshore2022-108fea94
+  ref: barnesgohshore2022
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: irt
+    to: aca
+    over: rca0
+  loc: Section 3, discussion after Theorem 3.2
+  origin: stated
+  quote: Thus each of the principles imply ACA0 .
+  paperNotation: IRT_XYS, IRT_UVD imply ACA₀
+  confidence: medium
+  concerns: Stated for the single-ray variants and IRT_UVD (those of Theorem 3.2); catalogue aca is the problem form with alias ACA0, here the axiom system ACA₀ is meant.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: e9f8178c979b
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: barnesgohshore2022-df220250
+  ref: barnesgohshore2022
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: sigma11ac
+    to: irt
+    over: rca0
+  loc: Section 3, discussion after Theorem 3.2
+  origin: stated
+  quote: from the THA Σ11 -AC0 . Thus the IRT variants satisfy the first clause as well.
+  paperNotation: Σ¹₁-AC₀
+  confidence: medium
+  concerns: Applies to the variants of Theorem 3.2 (IRT_XYS and IRT_UVD); the proofs are only sketched.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 066956c60149
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: barnesgohshore2022-747b924a
+  ref: barnesgohshore2022
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: IRT_XYZ
+    name: Variants of the infinite ray theorem (undirected/directed, vertex/edge disjoint, single/double rays)
+    loc: Section 3 (Definition 2.6 and following)
+    definition: Every X-graph containing arbitrarily many Y-disjoint Z-rays contains infinitely many; X in {U,D}, Y in {V,E}, Z in {S,D}.
+    facts: "Theorem 3.1: implications among variants over RCA0. Theorem 3.2: all IRT_XYS and IRT_UVD are THAs (imply ACA0, provable in Σ¹₁-AC0). IRT_DED and IRT_DVD open for graphs; for directed forests equivalent to Σ¹₁-AC0+IΣ¹₁ together with IΣ¹₁ (Theorem 3.9)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9f7115daf68a
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: the catalogue has IRT, WIRT and MIRT; the variants are equivalent for the facts recorded."
+- id: barnesgohshore2022-4047a67e
+  ref: barnesgohshore2022
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: IRT*_XYZ
+    name: Maximum-cardinality ray theorem
+    loc: Definition 3.4
+    definition: Every X-graph has a set of Y-disjoint Z-rays of maximum cardinality.
+    facts: "Prop 3.5: equivalent to IRT over RCA0+IΣ¹₁, implies IRT over RCA0. Theorem 3.7: implies ACA*0, not provable in Σ¹₁-AC0. Theorem 3.10: IRT*_UVD implies IRT_UVS. Theorems 3.14, 3.15: imply finite-Σ¹₁-AC0 and ABW0 over RCA0. Thm 3.16, 3.17: not implied by Δ¹₁-CA0 or ABW0."
+  reasons:
+    - principle not in the catalogue
+  proposed: f3974a77311a
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper."
+- id: barnesgohshore2022-ba55dc94
+  ref: barnesgohshore2022
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SCR_XYZ
+    name: Sequence of ray sets
+    loc: Definition 3.3
+    definition: For every X-graph with arbitrarily many Y-disjoint Z-rays there is a sequence <R_n> with R_n a sequence of n Y-disjoint Z-rays.
+    facts: Equivalent over RCA0 to IRT_XYS and IRT_UVD (discussion after Theorem 3.2), hence THAs.
+  reasons:
+    - principle not in the catalogue
+  proposed: aa80c7e2c93f
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper."
+- id: barnesgohshore2022-bea7705a
+  ref: barnesgohshore2022
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LF_XY
+    name: Locally finite subgraph principle
+    loc: Definition 4.1
+    definition: Every X-graph with arbitrarily many Y-disjoint rays contains a locally finite subgraph with arbitrarily many Y-disjoint rays.
+    facts: "LF_XY + ACA0 is equivalent to IRT_XY over RCA0; Theorem 4.7: Γ-conservative over RCA0 for the G-Π¹₁, G-r-Π¹₂, G-Tanaka and G-r-Tanaka classes, so an ATHA."
+  reasons:
+    - principle not in the catalogue
+  proposed: 4de76cdfad84
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: auxiliary principle of this paper."
+- id: barnesgohshore2022-02c8bebe
+  ref: barnesgohshore2022
+  date: 2026-11-10
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: weak-Σ¹₁-AC0
+    name: Weak Σ¹₁ choice
+    loc: Section 3 after Definition 3.13
+    definition: Σ¹₁-AC restricted to the case where for each n there is precisely one X with A(n,X).
+    facts: Implied by Δ¹₁-CA0 and by finite-Σ¹₁-AC0; strictly weaker than finite-Σ¹₁-AC0 (Theorem 3.19).
+  reasons:
+    - principle not in the catalogue
+  proposed: dec5a2906000
+- id: barnesgohshore2022-fa7ede59
+  ref: barnesgohshore2022
+  date: 2026-11-10
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: INDEC0
+    name: Jullien indecomposability theorem
+    loc: Section 3 before Definition 3.13
+    definition: Indecomposability of linear orderings (Jullien).
+    facts: Δ¹₁-CA0 implies INDEC0 and ABW0 does not; THA by Montalbán 2006.
+  reasons:
+    - principle not in the catalogue
+  proposed: a3732a0f8a84
+- id: barnesgohshore2022-f6fd4afc
+  ref: barnesgohshore2022
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ¹_{n+1}-AC*, Σ¹_{n+1}-AC-
+    name: Restricted Σ¹ choice schemes
+    loc: Definition 4.8
+    definition: "Σ¹_{n+1}-AC*: ∀n∃X Φ → ∃Y ∀n∃σ Φ(A,n,Y_σ), Φ Π¹_n; Σ¹_{n+1}-AC-: with Y^[m] for some m."
+    facts: "Theorem 4.9: RCA0 proves Σ¹_{n+1}-AC → AC* → AC-, and equivalence over ACA0. Theorem 4.10: Σ¹_∞-AC*0 and the Σ¹_{n+1}-AC*0, AC-0 are Γ-conservative over RCA0 for all classes of Definition 4.2."
+  reasons:
+    - principle not in the catalogue
+  proposed: 796ec323ad3b
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: restricted choice schemes specific to this paper."
+- id: liu2020-56587ac3
+  ref: liu2020
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: rt12.fin
+    to: rt13
+    over: soc
+  loc: Theorem 2.1
+  origin: stated
+  quote: "Theorem 2.1: We have RT13 soc (RT12 )<ω . Moreover, there exists a ∅(ω) -"
+  paperNotation: RT^1_3 not<=_soc (RT^1_2)^{<omega}, where (RT^1_2)^{<omega} = union over r of (RT^1_2)^r (an instance is an r-tuple of 2-colorings, for some r)
+  confidence: medium
+  concerns: "The symbol is lost in extraction; the abstract and introduction ('RT13 is not soc-reducible to (RT12)<ω') confirm it is a non-reduction. (RT12)<ω is identified with the finite parallelization rt12.fin (instances are tuples of RT12-instances of arbitrary finite length r, solution the tuple of solutions). Theorem 4.1 strengthens it with a Delta^0_2 witness instance (relativized: D23 not computably reducible to D22 x D22, Question 1.4)."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 704faae17125
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database (Theorem 2.1).
+- id: cervellegaudelierpatey2024-dcbdffad
+  ref: cervellegaudelierpatey2024
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: rt22.fin
+    to: rt23
+    over: c
+  loc: Section 1.2, announcement before Liu's approach
+  origin: special-case
+  quote: answer to Question 1.1 and prove that RTn3 ęc pRTn2 q˚ for every n ě 2.
+  paperNotation: RT^n_3 not<=_c (RT^n_2)^*, n=2
+  argument: Instance n = 2 of the announced result; also follows from Theorem 5.21, since SRT^2_3 is the restriction of RT^2_3 to stable instances.
+  confidence: medium
+  concerns: Announced in the introduction and abstract; the numbered proof (Theorem 5.23) is for SRT^n_3 against (RT^n_2)^*.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 86927be0afbd
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Follows from Theorem 5.21 (SRT²₃ ≰c (RT²₂)*), entered.
+- id: cervellegaudelierpatey2024-4e2c28ed
+  ref: cervellegaudelierpatey2024
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: rt23
+    property: pi2-basis
+    value: true
+  loc: Section 1.1, Jockusch [17, Theorem 5.5]
+  origin: cited
+  quote: every computable instance of RTnk admits a Π0n solution.
+  paperNotation: RT^n_k, n = 2, k = 3
+  argument: Instance n = 2, k = 3.
+  citedFrom: Jockusch, Ramsey's theorem and recursion theory, Theorem 5.5
+  confidence: high
+  reasons:
+    - "attributed by the paper to Jockusch, Ramsey's theorem and recursion theory, Theorem 5.5: cite the original"
+  proposed: c67e5a0f4083
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Entered as a restriction of Jockusch 1972, Theorem 4.2 (RT²<∞ has Π⁰₂ solutions).
+- id: cervellegaudelierpatey2024-db0fdeb9
+  ref: cervellegaudelierpatey2024
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: rt22
+    property: pa-avoidance
+    value: true
+  loc: Section 1.1, Liu [21, Theorem 1.5]
+  origin: cited
+  quote: of non-PA degree.
+  paperNotation: RT^2_k, k = 2
+  argument: "Instance k = 2: every computable instance admits a solution of non-PA degree."
+  citedFrom: Liu, RT^2_2 does not imply WKL_0, Theorem 1.5
+  confidence: medium
+  concerns: Stated for computable instances; PA avoidance relativizes in Liu's theorem.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+    - "attributed by the paper to Liu, RT^2_2 does not imply WKL_0, Theorem 1.5: cite the original"
+  proposed: 9b39afe5ff6a
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: cervellegaudelierpatey2024-49775fb8
+  ref: cervellegaudelierpatey2024
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: rt23
+    property: pa-avoidance
+    value: true
+  loc: Section 1.1, Liu [21, Theorem 1.5]
+  origin: cited
+  quote: of non-PA degree.
+  paperNotation: RT^2_k, k = 3
+  argument: Instance k = 3.
+  citedFrom: Liu, RT^2_2 does not imply WKL_0, Theorem 1.5
+  confidence: medium
+  concerns: Stated for computable instances; relativizes.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+    - "attributed by the paper to Liu, RT^2_2 does not imply WKL_0, Theorem 1.5: cite the original"
+  proposed: 5fbbe73ec1bd
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: cervellegaudelierpatey2024-b36b4e20
+  ref: cervellegaudelierpatey2024
+  date: 2026-11-10
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: rt22.fin
+    to: srt23
+    over: c
+  loc: Theorem 5.21
+  quote: Theorem 5.21. SRT23 ęc pRT22 q˚
+  paperNotation: SRT^2_3 not<=_c (RT^2_2)^*
+  confidence: high
+  concerns: Stronger than the cited Liu result for (SRT^2_2)^*; the star is the finite parallelization.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: eaa0d20f60e7
+  decision:
+    date: 2026-11-10
+    by: ludovic
+- id: cervellegaudelierpatey2024-11ccbaba
+  ref: cervellegaudelierpatey2024
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CC
+    name: Cross-constraint problem
+    loc: Section 3 (cross-trees) and Section 4
+    definition: "Problem on left-full cross-trees T in the space X = 3^N x (2^N)^r: a solution is a pair of tuples (X^i, Y^i)_{i<2} of paths through T with the Y^i_s infinitely compatible (Lemma 4.5). Introduced by Liu to separate RT^1_3 from (RT^1_2)^*."
+    facts: Delta^0_2 basis (Theorem 4.4, Liu), cone avoidance (Theorem 4.15), preservation of non-Sigma^0_1 definitions (Theorem 4.18), low basis (Theorem 4.22, left-full computable instances); consequently there are cross-constraint ideals avoiding a cone, preserving non-Sigma^0_1 sets, or containing only low sets (Corollaries 4.17, 4.20, 4.24); the class of arithmetic sets is a cross-constraint ideal (Corollary 4.7).
+  reasons:
+    - principle not in the catalogue
+  proposed: 69df468312dc
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: auxiliary problem of the proof."
+- id: cervellegaudelierpatey2024-ae4aaad6
+  ref: cervellegaudelierpatey2024
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Gamma-hyperimmunity
+    name: Gamma-hyperimmunity (Liu)
+    loc: Definition 5.11
+    definition: "Invariant of 3-colorings f : N -> 3 relative to a set, defined through well-founded trees Gamma_m; implies hyperimmunity (Lemma 5.12)."
+    facts: There is a Delta^0_2 Gamma-hyperimmune coloring (Proposition 5.13); preserved by the cross-constraint problem and WKL, not by RT^2_2; COH preserves it (Theorems 5.14, 5.15, 5.16, Corollary 5.18), giving a cross-constraint ideal satisfying COH relative to which f stays Gamma-hyperimmune.
+  reasons:
+    - principle not in the catalogue
+  proposed: 960e977bc93f
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: a technical notion of the proof, not a principle."
+- id: normannsanders2019-7faf21a9
+  ref: normannsanders2019
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WHBU
+    name: Weak Heine-Borel for uncountable coverings (Vitali covering version)
+    loc: Principle 3.2
+    definition: "Third-order principle: a direct weakening of HBU, a version of the Vitali covering theorem asserting a finite sub-collection of an uncountable cover whose measure is close to full."
+    facts: Third-order; provable only with Kleene's exists^3 over higher-order RM base; implied by Lusin, Egorov and other approximation theorems; Pi11-CA0 + WHBU does not prove HBU. Out of scope (third-order).
+  reasons:
+    - principle not in the catalogue
+  proposed: b40d9caddb33
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: third-order principle, out of scope."
+- id: normannsanders2019-8eb4faae
+  ref: normannsanders2019
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HBU
+    name: Heine-Borel theorem for uncountable coverings
+    loc: Principle 2.9
+    definition: Third-order Heine-Borel compactness for arbitrary (uncountable) open coverings given by gauge functions.
+    facts: Third-order; related to Theta-functionals (special fan functionals). Out of scope (third-order).
+  reasons:
+    - principle not in the catalogue
+  proposed: d5e449f41e6f
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: third-order principle, out of scope."
