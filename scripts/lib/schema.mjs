@@ -100,7 +100,8 @@ export const SCHEMA = {
   justification: {
     kind: { req: true, doc: 'restriction | reduction | classical | personal-communication | unreferenced', usedBy: ['build', 'viewer'] },
     by: { doc: 'who wrote it (e.g. ai, or a person)', usedBy: ['viewer'] },
-    text: { req: true, doc: 'the argument ($…$ for TeX, [@key] cites a paper)', usedBy: ['build', 'viewer'] },
+    text: { req: true, doc: 'the argument ($…$ for TeX, [@key] cites a paper); with steps, the claim and the strategy of the proof', usedBy: ['build', 'viewer'] },
+    steps: { doc: 'a longer proof as a list of steps, numbered in the viewer (collapsed under the result, expanded on its page #/result/<key>); same conventions as text', usedBy: ['build', 'viewer'] },
   },
 
   // data/references/*.yaml — a map key → reference

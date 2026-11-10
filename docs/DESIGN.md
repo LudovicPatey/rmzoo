@@ -320,7 +320,13 @@ justification:
   kind: restriction | reduction | classical | personal-communication | unreferenced
   text: "A 2-coloring is a 3-coloring with the same homogeneous sets."
   by: ai            # present when the argument was written by an AI assistant
+  steps: [ "…", "…" ] # optional: a longer proof, one step per item
 ```
+
+A longer argument keeps its claim and strategy in `text` and puts the proof in
+`steps`. The viewer numbers the steps, collapsed under the result, and expanded
+on the result's own page `#/result/<key>` (linked from the result), so a proof can
+be read and shared on its own.
 
 Results that were not taken from the literature at all, but derived by an AI
 assistant, must have a justification and are marked by their `provenance`:

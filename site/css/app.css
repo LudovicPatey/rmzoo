@@ -471,3 +471,8 @@ details.hidden-papers { margin-top: 14px; }
 .q-subs .badge { margin-left: 4px; vertical-align: 1px; }
 .q-row .q-subs { font-size: 0.95em; }
 h1.q-title + .q-subs { font-size: 1.1em; margin-bottom: 14px; }
+/* proof steps of a justification (results' justification.steps) */
+.proof-steps { margin-top: 6px; }
+.proof-steps summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+.proof-steps ol { margin: 6px 0 2px; padding-left: 1.6em; }
+.proof-steps li { margin: 4px 0; line-height: 1.5; }

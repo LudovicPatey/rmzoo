@@ -38,8 +38,10 @@ paper.
 3. **Facts you derive yourself** (no paper states them) get a `justification`
    with the argument and a `provenance`: `direct` for an immediate consequence of
    a cited result (a specialization, a restriction of its instances: justification
-   kind `restriction`), `ai` for any other derivation. Never cite a paper for
-   something it does not state. Folklore gets `folklore: true` and a
+   kind `restriction`), `ai` for any other derivation. A proof longer than a few
+   sentences keeps its claim and strategy in `text` and its steps in `steps` (one
+   per item, each citing its sources). Never cite a paper for something it does
+   not state. Folklore gets `folklore: true` and a
    justification.
 4. **Definitions** come from the source paper, with its number in `refs[].loc`.
    Use `todo:` only when no source text is available, and say why.
@@ -104,7 +106,7 @@ paper.
 | full texts, `read` status | `scripts/fulltext.mjs` | references, `data/fulltext-exclude.yaml`, Zotero |
 | abstracts | `scripts/abstracts.mjs`, `scripts/pdf-abstracts.mjs` | references, cached texts |
 | mining (candidate results / questions) | `scripts/mine/{common,facts,questions}.mjs` | `zoo.json`, cached texts, `data/screened.yaml` |
-| AI reading of full texts (once per paper, most important first), triage, verification | `scripts/ai-analyze.mjs`, `scripts/lib/ai-facts.mjs`, `scripts/lib/paper-rank.mjs` (order), `scripts/lib/ai-models.mjs` (models, prices, `--upgrade`), prompts in `scripts/ai/` | `zoo.json` (catalogue in the prompt), cached texts, `data/ai-analyzed.yaml` |
+| AI reading of full texts (once per paper, most important first), triage, verification; `--export` and `--replay --no-verify` for a reading done in a chat session (README) | `scripts/ai-analyze.mjs`, `scripts/lib/ai-facts.mjs`, `scripts/lib/paper-rank.mjs` (order), `scripts/lib/ai-models.mjs` (models, prices, `--upgrade`), prompts in `scripts/ai/` | `zoo.json` (catalogue in the prompt), cached texts, `data/ai-analyzed.yaml` |
 | review queue: AI proposals and consolidation candidates, votes of the review page (`docs/REVIEW.md`) | `scripts/review.mjs`, `scripts/lib/review-queue.mjs`, `site/js/review.js` | `data/review.yaml`, `site/data/review.json` |
 | long texts read in parts by the AI reader | `scripts/lib/split-text.mjs` | cached texts |
 | adding results | `scripts/add-results.mjs` → `scripts/lib/results.mjs` | results |

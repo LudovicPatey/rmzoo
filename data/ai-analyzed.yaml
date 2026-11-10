@@ -21,6 +21,15 @@ andrewsetal2024:
   changes:
     - "merged: property|tcn|fractal||true"
   cost: 0.23
+arai2016:
+  date: 2026-11-10
+  model: claude-sonnet-5-5 (chat)
+  textHash: 8fd95332cabdf2d5
+  facts: 0
+  added: 0
+  review: 1
+  dropped: 0
+  cost: 0
 astoretal2026:
   date: 2026-11-06
   model: claude-sonnet-5-5
@@ -259,6 +268,15 @@ brechtpaulyschroder2020:
   review: 10
   dropped: 1
   cost: 0.12
+buriolaweiermann2025:
+  date: 2026-11-10
+  model: claude-sonnet-5-5 (chat)
+  textHash: 4dd2a967ca5b6a28
+  facts: 4
+  added: 0
+  review: 8
+  dropped: 2
+  cost: 0
 carluccietal2024:
   date: 2026-11-06
   model: claude-sonnet-5-5
@@ -283,6 +301,15 @@ carluccimainardi2022:
   review: 7
   dropped: 7
   cost: 0.18
+carney2023:
+  date: 2026-11-10
+  model: claude-sonnet-5-5 (chat)
+  textHash: a718bdab0c50f348
+  facts: 2
+  added: 0
+  review: 7
+  dropped: 1
+  cost: 0
 cervellegaudelierpatey2022:
   date: 2026-11-06
   model: claude-sonnet-5-5
@@ -836,6 +863,15 @@ gherardimarconepauly2018:
     - "merged: property|lim|cylinder||true"
     - "merged: property|wkl|cylinder||true"
   cost: 0.2
+gill2023:
+  date: 2026-11-10
+  model: claude-sonnet-5-5 (chat)
+  textHash: 84ed22bca8c70f67
+  facts: 20
+  added: 0
+  review: 11
+  dropped: 15
+  cost: 0
 giustomarcone1996:
   date: 2026-11-06
   model: claude-sonnet-5-5
@@ -1250,6 +1286,15 @@ lehoueroupateyyokoyama2024:
     - "added: conservation|bsig2|isig1|uPi04|false"
     - "added: conservation|rt22|isig1|uPi04|false"
   cost: 0.27
+liupatey2026:
+  date: 2026-11-10
+  model: claude-sonnet-5-5 (chat)
+  textHash: c19876a1816ef30b
+  facts: 20
+  added: 0
+  review: 20
+  dropped: 8
+  cost: 0
 marcone1994:
   date: 2026-11-06
   model: claude-sonnet-5-5
@@ -1359,6 +1404,15 @@ mimounipatey2025:
   review: 4
   dropped: 11
   cost: 0.19
+moninpatey2019b:
+  date: 2026-11-10
+  model: claude-sonnet-5-5 (chat)
+  textHash: c42db51d54f7b8d2
+  facts: 14
+  added: 0
+  review: 3
+  dropped: 11
+  cost: 0
 montalban2006b:
   date: 2026-11-06
   model: claude-sonnet-5-5
@@ -1424,6 +1478,15 @@ normannsanders2017:
   review: 6
   dropped: 0
   cost: 0.16
+normannsanders2017b:
+  date: 2026-11-10
+  model: claude-sonnet-5-5 (chat)
+  textHash: 8298cfaf2c48974c
+  facts: 1
+  added: 0
+  review: 2
+  dropped: 1
+  cost: 0
 normannsanders2018:
   date: 2026-11-06
   model: claude-sonnet-5-5
@@ -1484,6 +1547,15 @@ patey2014b:
   review: 6
   dropped: 24
   cost: 0.22
+patey2015c:
+  date: 2026-11-10
+  model: claude-sonnet-5-5 (chat)
+  textHash: 978998ea81a8df77
+  facts: 62
+  added: 0
+  review: 7
+  dropped: 57
+  cost: 0
 patey2016:
   date: 2026-11-09
   model: claude-sonnet-5-5
@@ -1933,6 +2005,15 @@ walsh2021:
   review: 1
   dropped: 0
   cost: 0.06
+yokoyama2010:
+  date: 2026-11-10
+  model: claude-sonnet-5-5 (chat)
+  textHash: 5cd97ef2f8dcf2f0
+  facts: 5
+  added: 0
+  review: 7
+  dropped: 0
+  cost: 0
 yokoyama2023:
   date: 2026-11-06
   model: claude-sonnet-5-5

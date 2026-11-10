@@ -31,6 +31,13 @@
 //   --replay    no new reading: process again the saved answers (cache/ai/<key>.json),
 //               e.g. after the catalogue or these rules changed; only facts never
 //               verified cost a (small) verification call
+//   --export    no API call, no data change: write for the next papers (with --limit N)
+//               the task the API would get, to cache/ai/tasks/<unit>.md (answer format,
+//               reading rules, catalogue, paper), for a reader outside this script (a
+//               Claude chat session or its subagents); the answer is saved as
+//               cache/ai/<unit>.json and processed with --replay (--no-verify)
+//   --no-verify with --replay: no verification call; the facts that would have been
+//               published go to the review queue ("not verified independently")
 //   --dry-run   no API call, no data change: list the papers in order with their
 //               score and estimated cost, write the full ranking to
 //               reports/ai-priority.md and the prompt of the first paper to
@@ -82,9 +89,11 @@ import { modelOf, callCost, wantsUnit, calibration } from './lib/ai-models.mjs';
 import { buildZoo } from '../site/js/engine.js';
 import { fullName } from '../site/js/names.js';
 
-const USAGE = 'node scripts/ai-analyze.mjs [--only key1,key2] [--part 1,2] [--since YYYY-MM-DD] [--limit N] [--budget DOLLARS] [--redo | --upgrade | --replay] [--dry-run] [--concurrency N] [--effort low|medium|high|xhigh|max] [--model haiku|sonnet|opus] [--verify-model haiku|sonnet|opus]';
-const args = cli(USAGE, { '--only': 1, '--part': 1, '--since': 1, '--limit': 1, '--budget': 1, '--redo': 0, '--upgrade': 0, '--replay': 0, '--dry-run': 0, '--concurrency': 1, '--effort': 1, '--model': 1, '--verify-model': 1 });
-const DRY = args.has('--dry-run');
+const USAGE = 'node scripts/ai-analyze.mjs [--only key1,key2] [--part 1,2] [--since YYYY-MM-DD] [--limit N] [--budget DOLLARS] [--redo | --upgrade | --replay] [--dry-run | --export] [--no-verify] [--concurrency N] [--effort low|medium|high|xhigh|max] [--model haiku|sonnet|opus] [--verify-model haiku|sonnet|opus]';
+const args = cli(USAGE, { '--only': 1, '--part': 1, '--since': 1, '--limit': 1, '--budget': 1, '--redo': 0, '--upgrade': 0, '--replay': 0, '--dry-run': 0, '--export': 0, '--no-verify': 0, '--concurrency': 1, '--effort': 1, '--model': 1, '--verify-model': 1 });
+const EXPORT = args.has('--export');
+const NOVERIFY = args.has('--no-verify');
+const DRY = args.has('--dry-run') || EXPORT;
 const REPLAY = args.has('--replay');
 const MODES = ['--redo', '--upgrade', '--replay'].filter((o) => args.has(o));
 if (MODES.length > 1) { console.error(`${MODES.join(' and ')} cannot be combined`); process.exit(1); }
@@ -252,6 +261,41 @@ if (!REPLAY && args.has('--budget')) {
 }
 if (args.has('--limit')) papers = papers.slice(0, Number(args.get('--limit')));
 
+if (EXPORT) {
+  // tasks for a reader outside this script; the answer goes where --replay reads it
+  fs.mkdirSync(`${RAW_DIR}/tasks`, { recursive: true });
+  for (const uid of papers) {
+    const u = ranking.find((x) => x.uid === uid);
+    const task = `${RAW_DIR}/tasks/${uid.replace('#', '.part')}.md`;
+    fs.writeFileSync(task, `# Reading task: ${uid}
+
+Read the paper below following the reading rules, and save your answer as JSON in
+\`${u.file}\`, exactly in this form:
+
+{ "key": "${u.key}",${u.part.of > 1 ? ` "part": "${u.part.n}/${u.part.of} (${u.part.title})",` : ''} "model": "<the model you are, e.g. claude-sonnet-5-5> (chat)", "extraction": <your answer> }
+
+where <your answer> follows this JSON schema:
+
+\`\`\`json
+${JSON.stringify(EXTRACT_SCHEMA, null, 1)}
+\`\`\`
+
+Quotes must be copied verbatim from the text below (they are searched for in it).
+
+---- reading rules ----
+${INSTRUCTIONS}
+
+---- catalogue ----
+${catalogue}
+
+---- paper ----
+${userPrompt(u.key, u.part.text, u.part)}
+`);
+    console.log(`${uid}: ${task} → answer in ${u.file}`);
+  }
+  console.log(`${papers.length} tasks written. Then: node scripts/ai-analyze.mjs --replay --no-verify --only <keys>`);
+  process.exit(0);
+}
 if (DRY) {
   const total = ranking.filter((x) => papers.includes(x.uid)).reduce((s, x) => s + x.cost, 0);
   const all = ranking.at(-1)?.cumulative || 0;
@@ -408,7 +452,7 @@ async function analyze(unit) {
   const verdicts = { ...(saved?.verdicts || {}) };
   const ask = auto.filter((it) => !verdicts[it.id]);
   let verify = null;
-  if (ask.length) {
+  if (ask.length && !NOVERIFY) {
     const blocks = ask.map(({ f, e }, j) => {
       const ids = [e.from, e.to, e.statement, e.base].filter(Boolean);
       const meaning = e.property ? `Property ${e.property}: ${squash(raw.properties.find((p) => p.id === e.property)?.description, 500)}`
@@ -437,7 +481,7 @@ async function analyze(unit) {
     });
   }
   for (let j = auto.length - 1; j >= 0; j--) {
-    const v = verdicts[auto[j].id] || { verdict: 'unsure', reason: 'no verdict returned' };
+    const v = verdicts[auto[j].id] || (NOVERIFY ? { verdict: 'not verified', reason: 'not verified independently (--no-verify)' } : { verdict: 'unsure', reason: 'no verdict returned' });
     auto[j].verifier = v;
     if (v.verdict !== 'confirmed') {
       auto[j].reasons.push(`verifier: ${v.verdict}`);

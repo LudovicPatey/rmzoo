@@ -294,7 +294,9 @@
   direction: down
   domain: problems
   description: >
-    For every Z and every set A which is not Δ⁰₂(Z), every Z-computable instance has a solution Y such that A is not Δ⁰₂(Z ⊕ Y) (Wang).
+    For every Z and every properly Δ⁰₂(Z) set A (Δ⁰₂(Z) but not Σ⁰₁(Z)), every Z-computable instance has a solution Y such
+    that A is not Σ⁰₁(Z ⊕ Y) (Wang 2016, Definition 2.1 and Proposition 2.2(3)). Not to be confused with keeping a
+    non-Δ⁰₂ set non-Δ⁰₂, the property of Cholak, Jockusch and Slaman for Δ⁰₂ instances of the pigeonhole principle.
 
 - id: arith-preservation
   name: Preservation of the arithmetic hierarchy
@@ -302,8 +304,11 @@
   closedUnder: omega
   direction: down
   domain: problems
+  implies: [ delta02-preservation ]
   description: >
-    For every Z, every n, and every set A which is not Σ⁰ₙ(Z) (resp. Π⁰ₙ, Δ⁰ₙ), every Z-computable instance has a solution Y such that A is still not Σ⁰ₙ(Z ⊕ Y) (resp. Π⁰ₙ, Δ⁰ₙ).
+    For every Z, every n and every set A which is not Σ⁰ₙ(Z), every Z-computable instance has a solution Y such that A is
+    still not Σ⁰ₙ(Z ⊕ Y) (equivalently for Π⁰ₙ; this gives the preservation of properly Δ⁰ₙ₊₁ sets too: Wang 2016,
+    Definition 2.1 and Proposition 2.2).
 
 - id: cb-immunity-preservation
   name: Preservation of c.b.-immunity

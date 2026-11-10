@@ -452,7 +452,10 @@ raw.results.forEach((res, i) => {
     const kinds = ['restriction', 'reduction', 'classical', 'personal-communication', 'unreferenced'];
     if (!kinds.includes(res.justification.kind)) errors.push(`${where}: justification.kind must be one of ${kinds.join(', ')}`);
     if (!res.justification.text) errors.push(`${where}: justification needs a text`);
-    for (const [, k] of String(res.justification.text || '').matchAll(/\[@([^\]]+)\]/g)) if (!raw.references[k]) errors.push(`${where}: justification cites unknown reference ${k}`);
+    const steps = res.justification.steps;
+    if (steps !== undefined && (!Array.isArray(steps) || !steps.length || steps.some((x) => typeof x !== 'string' || !x.trim()))) errors.push(`${where}: justification.steps must be a non-empty list of texts`);
+    for (const t of [res.justification.text, ...(Array.isArray(steps) ? steps : [])])
+      for (const [, k] of String(t || '').matchAll(/\[@([^\]]+)\]/g)) if (!raw.references[k]) errors.push(`${where}: justification cites unknown reference ${k}`);
   }
   checkRefs(res.refs, where);
 });

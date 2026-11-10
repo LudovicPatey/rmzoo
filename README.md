@@ -153,6 +153,23 @@ of the total score). Each paper is read only once (`data/ai-analyzed.yaml`), so
 later runs continue down the list; `--replay` re-applies the rules to the saved
 answers (`cache/ai/`) for free.
 
+**Reading without API credits.** The reading can also be done in a Claude chat
+session (Claude Code), whose usage is not billed per token. `--export --limit N`
+writes the next N tasks in priority order to `cache/ai/tasks/<unit>.md`: the answer
+format, the reading rules, the catalogue and the paper, exactly what the API would
+get. The chat (or one subagent per paper, e.g. on Sonnet) reads a task and saves
+its answer as `cache/ai/<unit>.json` (model recorded as "… (chat)"). Then
+`--replay --no-verify --only <keys>` processes the answers like API ones, without
+the verification call: what would have been published goes to the review queue
+("not verified independently"), to be treated as usual. The paper is then
+recorded in the ledger, so the API does not read it again (except `--upgrade`
+with a stronger model).
+
+```bash
+node scripts/ai-analyze.mjs --export --limit 3                       # tasks for the chat
+node scripts/ai-analyze.mjs --replay --no-verify --only key1,key2    # after the chat wrote the answers
+```
+
 Books and theses (texts over 400,000 characters) are read **in parts** of at
 most 250,000 characters (about 80 pages), made of whole chapters when the text
 has chapter headings (`scripts/lib/split-text.mjs`): a whole book does not fit in

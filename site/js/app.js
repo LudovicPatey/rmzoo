@@ -381,7 +381,14 @@ const JUSTIFICATION_KINDS = {
   'personal-communication': 'personal communication',
   unreferenced: 'no reference found',
 };
-function resultCite(ri) {
+// a justification: its text, and its proof steps (collapsed unless open)
+function justificationHtml(j, open = false) {
+  const steps = j.steps?.length ? `<details class="proof-steps"${open ? ' open' : ''}><summary>Proof (${j.steps.length} step${j.steps.length === 1 ? '' : 's'})</summary>
+    <ol>${j.steps.map((t) => `<li>${richCite(t)}</li>`).join('')}</ol></details>` : '';
+  return `<div class="note"><b>${esc(JUSTIFICATION_KINDS[j.kind] || j.kind)}.</b> ${richCite(j.text)}${steps}</div>`;
+}
+const resultHref = (res) => `#/result/${encodeURIComponent(res._key)}`;
+function resultCite(ri, { open = false } = {}) {
   const res = Z.raw.results[ri];
   const refs = (res.refs || []).map(refLink).join('; ');
   const j = res.justification;
@@ -391,7 +398,7 @@ function resultCite(ri) {
     ${j?.by === 'ai' && res.provenance !== 'ai' ? ' <span class="badge ai" title="The justification below was written by an AI assistant">argument by AI</span>' : ''}
     ${res.status === 'needs-check' ? ' <span class="badge warn">needs check</span>' : ''}
     ${res._review ? ` <a class="badge yes" href="#/review/${esc(res._review)}" title="Proposed by the AI reader and validated on the review page; not yet committed to the database">validated on the review page</a>` : ''}</div>
-    ${j ? `<div class="note"><b>${esc(JUSTIFICATION_KINDS[j.kind] || j.kind)}.</b> ${richCite(j.text)}</div>` : ''}
+    ${j ? justificationHtml(j, open) : ''}${j?.steps?.length && !open ? ` <a class="small" href="${resultHref(res)}">Open the proof on its own page</a>` : ''}
     ${res.note ? `<div class="note">${rich(res.note)}</div>` : ''}`;
 }
 function proofHtml(node) {
@@ -1187,6 +1194,20 @@ function resultGroups(list) {
     return part.length ? `<h3 class="res-group">${title} <span class="count">${part.length}</span></h3>${resultsTable(part)}` : '';
   }).join('');
 }
+// one result on its own page (#/result/<key>): the fact, its sources and its full proof
+function viewResult(key) {
+  const m = main();
+  m.className = '';
+  const ri = Z.raw.results.findIndex((r) => r._key === key);
+  if (ri < 0) { m.innerHTML = '<h1>Unknown result</h1><p><a href="#/results">All results</a></p>'; return; }
+  const res = Z.raw.results[ri];
+  const ids = [res.from, res.to, res.statement, res.base].filter((x) => x && idx(x) !== undefined);
+  m.innerHTML = `<p><a href="#/results">← Results</a></p>
+    <h1 class="q-title">${resultFact(res)}</h1>
+    <div class="card">${resultCite(ri, { open: true })}</div>
+    ${ids.length ? `<h2>Statements</h2><div class="rel-list">${ids.map((s) => `<a class="chip" href="#/s/${s}" style="color:var(--ink)">${L(idx(s))}</a>`).join('')}</div>` : ''}`;
+}
+
 function resultsTable(list, size = 25) {
   return lazy(list, ([res, ri]) => `<tr><td>${resultFact(res)}</td><td>${resultCite(ri)}</td></tr>`,
     { size, wrap: 'table', head: '<thead><tr><th>Result</th><th>Source</th></tr></thead>', noun: 'results' });
@@ -2461,7 +2482,7 @@ function currentRoute() {
   const p = path.split('/').filter(Boolean);
   // old links "#/?q=…" and "#/?tags=…" pointed to the catalogue
   if (!p.length) return /[?&](q|tags)=/.test(location.hash) ? 'catalogue' : 'home';
-  return { catalogue: 'catalogue', questions: 'questions', s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', refs: 'refs', about: 'about', u: 'profile', review: 'review', uploads: 'uploads' }[p[0]] || 'catalogue';
+  return { catalogue: 'catalogue', questions: 'questions', s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', result: 'result', refs: 'refs', about: 'about', u: 'profile', review: 'review', uploads: 'uploads' }[p[0]] || 'catalogue';
 }
 function route() {
   const [path, qs] = (location.hash.slice(1) || '/').split('?');
@@ -2481,13 +2502,14 @@ function route() {
     const rest = params.toString();
     history.replaceState(null, '', `#${path}${rest ? `?${rest}` : ''}`);
   }
-  $$('#nav a').forEach((a) => a.classList.toggle('active', a.dataset.route === name || (name === 'statement' && a.dataset.route === 'catalogue')));
+  $$('#nav a').forEach((a) => a.classList.toggle('active', a.dataset.route === name || (name === 'statement' && a.dataset.route === 'catalogue') || (name === 'result' && a.dataset.route === 'results')));
   main().style.padding = '';
   closeDrawer();
   if (name === 'statement') viewStatement(p[1], params);
   else if (name === 'diagram') viewDiagram(params);
   else if (name === 'compare') viewCompare(params);
   else if (name === 'results') viewResults(params);
+  else if (name === 'result') viewResult(decodeURIComponent(p[1] || ''));
   else if (name === 'refs') viewRefs(p[1]);
   else if (name === 'about') { viewAbout(params); const c = params.get('class'); if (c) setTimeout(() => { const el = document.getElementById('class-' + c); if (el) { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); } }, 50); }
   else if (name === 'home') viewHome();
