@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RM Zoo</title>
   <meta name="description" content="A database of reverse mathematics principles, implications and separations, with interactive diagrams.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>
+    // apply the saved theme before the first paint (toggle in js/app.js)
+    try { const t = JSON.parse(localStorage.getItem('rmzoo.theme')); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) { /* default: follow the system */ }
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +35,7 @@
       <input id="global-search" type="search" placeholder="Search statements, papers…  ( / )" autocomplete="off">
       <div id="search-pop" class="popover" hidden></div>
     </div>
+    <button id="theme-toggle" class="theme-toggle" type="button"></button>
     <div id="account"></div>
   </header>
   <div id="mode-bar" class="mode-bar" hidden></div>

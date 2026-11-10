@@ -115,6 +115,7 @@ main.wide { max-width: none; }
 .badge.warn { background: var(--open-soft); color: var(--open); }
 .badge.ai { background: #f3e8ff; color: #7c3aed; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .badge.ai { background: #2e2245; color: #c4a5ff; } }
+:root[data-theme="dark"] .badge.ai { background: #2e2245; color: #c4a5ff; }
 .badge.folk { background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
 .yes { color: var(--yes); } .no { color: var(--no); } .open { color: var(--open); } .na { color: var(--na); }
 table.grid { border-collapse: collapse; width: 100%; font-size: .9rem; }
@@ -379,6 +380,9 @@ table.related td { vertical-align: middle; }
 .fb-form textarea { width: 100%; box-sizing: border-box; font: inherit; padding: 8px; border: 1px solid var(--line); border-radius: 8px;
   background: var(--panel); color: var(--ink); margin: 8px 0; }
 #account { flex: none; }
+.theme-toggle { flex: none; width: 32px; height: 32px; padding: 0; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--panel); color: var(--muted); font-size: 1rem; line-height: 1; cursor: pointer; }
+.theme-toggle:hover { color: var(--ink); background: var(--bg); }
 #account .btn { white-space: nowrap; max-width: 200px; overflow: hidden; text-overflow: ellipsis; }
 .orcid-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #a6ce39; margin-right: 6px; vertical-align: -1px; }
 

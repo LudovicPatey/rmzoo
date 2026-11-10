@@ -37588,7 +37588,7 @@
   result:
     type: separation
     from: srt22
-    to: ovw
+    to: ovw0
     over: rca0
   loc: Introduction, paragraph on variants of the Carlson-Simpson Lemma
   origin: deduced
@@ -37790,7 +37790,7 @@
   model: claude-sonnet-5-5
   result:
     type: implication
-    from: ovw
+    from: ovw0
     to: tt1
     over: rca0
   loc: Proof of Corollary 1.4
@@ -37814,7 +37814,7 @@
   model: claude-sonnet-5-5
   result:
     type: conservation
-    statement: ovw
+    statement: ovw0
     base: bsig2
     class: uPi04
     value: true
@@ -39925,7 +39925,7 @@
   model: claude-sonnet-5-5 (chat)
   result:
     type: property
-    statement: ovw
+    statement: ovw0
     property: hyperimmunity-preservation
     value: true
   loc: Theorem 4.5
@@ -40044,7 +40044,7 @@
   result:
     type: separation
     from: srt22
-    to: ovw
+    to: ovw0
     over: rca0
   loc: Section 1.1
   origin: cited
@@ -40068,7 +40068,7 @@
   model: claude-sonnet-5-5 (chat)
   result:
     type: implication
-    from: ovw
+    from: ovw0
     to: rt1inf
     over: sc
   loc: Section 6, remark after Theorem 6.4
@@ -40119,7 +40119,7 @@
   result:
     type: implication
     from: aca
-    to: ovw
+    to: ovw0
     over: rca0
   loc: Theorem 2.11
   origin: stated
@@ -40146,7 +40146,7 @@
   model: claude-sonnet-5-5 (chat)
   result:
     type: property
-    statement: ovw
+    statement: ovw0
     property: weakly-low-basis
     value: true
   loc: Theorem 3.3
@@ -40172,7 +40172,7 @@
   model: claude-sonnet-5-5 (chat)
   result:
     type: separation
-    from: ovw
+    from: ovw0
     to: sads
     over: omega
   loc: Corollary 4.7
@@ -40198,7 +40198,7 @@
   model: claude-sonnet-5-5 (chat)
   result:
     type: separation
-    from: ovw
+    from: ovw0
     to: rt22
     over: omega
   loc: Main Theorem 1.4 (proved in Section 4)
@@ -40207,7 +40207,7 @@
   paperNotation: OVW^0, RT^2_2
   argument: Proved via preservation of omega hyperimmunities (Theorem 4.5), Lemma 4.3 and Lemma 4.4; the separation is witnessed by an omega-model (stated after Main Theorem 1.4), hence also over rca0.
   confidence: high
-  concerns: Catalogue ovw is stated with left-variable words; the paper uses ordered omega-variable words (equivalent reformulation, Theorem 5.2).
+  concerns: Catalogue ovw0 is stated with left-variable words; the paper uses ordered omega-variable words (equivalent reformulation, Theorem 5.2).
   verifier:
     verdict: not verified
     reason: not verified independently (--no-verify)
@@ -44596,7 +44596,7 @@
   model: claude-sonnet-5-5 (chat)
   result:
     type: conservation
-    statement: ovw
+    statement: ovw0
     base: bsig2
     class: uPi04
     value: true
@@ -45308,3 +45308,767 @@
     date: 2026-11-10
     by: ludovic
     note: Already in the database.
+- id: kreuzer2010-9e54c6d1
+  ref: kreuzer2010
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: coh
+    base: rca0
+    class: Pi11
+    value: true
+  loc: Theorem 4
+  origin: cited
+  quote: Theorem 4. COH is Π11 -conservative over RCA0 , RCA0 + Π01 -CP, RCA0 + Σ02 -IA.
+  paperNotation: COH
+  citedFrom: Cholak, Jockusch, Slaman [CJS01]
+  confidence: high
+  concerns: Paper attributes it to CJS01; stated here as Theorem 4.
+  reasons:
+    - "attributed by the paper to Cholak, Jockusch, Slaman [CJS01]: cite the original"
+  proposed: 3570e4f5e388
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database (Cholak, Jockusch and Slaman, Theorem 9.1).
+- id: kreuzer2010-3cb6d00c
+  ref: kreuzer2010
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: coh
+    base: isig2
+    class: Pi11
+    value: true
+  loc: Theorem 4
+  origin: cited
+  quote: Theorem 4. COH is Π11 -conservative over RCA0 , RCA0 + Π01 -CP, RCA0 + Σ02 -IA.
+  paperNotation: COH over RCA0 + Σ02-IA
+  citedFrom: Cholak, Jockusch, Slaman [CJS01]
+  confidence: medium
+  concerns: Σ02-IA read as Σ⁰₂ induction (IΣ⁰₂); the paper does not define IA. Also stated over RCA0 + Π01-CP (Chong-Slaman-Yang), which has no catalogue base id here.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Cholak, Jockusch, Slaman [CJS01]: cite the original"
+  proposed: af6035a9d648
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Follows from the Π¹₁-conservativity over RCA₀ (Cholak, Jockusch and Slaman, Theorem 9.1).
+- id: kreuzer2010-8e1b51af
+  ref: kreuzer2010
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BW
+    name: Bolzano-Weierstraß principle (fast converging subsequence)
+    loc: Section 2
+    definition: Every sequence of rationals in [0,1] admits a subsequence converging with rate 2^-n (full BW for bounded real sequences).
+    facts: "Theorem 7: instance-wise equivalent to Σ01-WKL over RCA0; consequently BW is equivalent to ACA0 over RCA0 (Simpson, Theorem I.9.1 of SOSOA); BW implies BW for Cantor space (Lemma 6). The use of Σ01-WKL cannot be replaced by Π01-CA nor Π02-CA instance-wise."
+  reasons:
+    - principle not in the catalogue
+  proposed: b8d51451e494
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: kreuzer2010-db491d06
+  ref: kreuzer2010
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BWweak
+    name: Weak Bolzano-Weierstraß principle (Cauchy subsequence)
+    loc: Section 2
+    definition: Every sequence of rationals in [0,1] has a strictly monotone f such that (y_f(i)) is Cauchy (not necessarily with a computable rate).
+    facts: "Theorem 8: instance-wise equivalent to StCOH over RCA0; Corollary 9: RCA0 ⊢ StCOH ↔ BWweak; Theorem 10: Π11-conservative over RCA0 + Π01-CP and RCA0 + Σ02-IA, hence RCA0 + BWweak is Π02-conservative over PRA; Theorem 11: every recursive sequence has a low2 Cauchy subsequence, some recursive sequence has no computable Cauchy subsequence and none converging subsequence computable in 0'. Possibly the same as the catalogue's sbwt (not matched: different setting)."
+  reasons:
+    - principle not in the catalogue
+  proposed: ea96486cca88
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: kreuzer2010-458f34c3
+  ref: kreuzer2010
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: StCOH
+    name: Strong cohesive principle
+    loc: Definition 1, Definition 2
+    definition: "Every sequence of sets (R_n) has an infinite set S strongly cohesive: for all n there is s such that S is almost contained in or almost disjoint from each R_i, i<n, beyond s (uniform version of cohesiveness)."
+    facts: "Hirschfeldt-Shore [HS07, 4.4]: StCOH ↔ COH ∧ Π01-CP; Corollary 5: RCA0 + StCOH is Π02-conservative over PRA. Differs from the catalogue's stcoh (stable cohesiveness)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 889463aaa999
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: kreuzer2010-95c1e2fe
+  ref: kreuzer2010
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ01-WKL
+    name: Weak König's lemma for Σ01-trees
+    loc: Introduction
+    definition: An infinite 0/1-tree given by a Σ01 predicate has an infinite branch.
+    facts: "Theorem 7: instance-wise equivalent to BW over RCA0; RCA0 ⊢ Σ01-WKL ↔ Π01-CA; instance-wise equivalent to Σ02-separation. Degrees d ≫ 0' are exactly those with solutions to all instances."
+  reasons:
+    - principle not in the catalogue
+  proposed: bb6dddf51821
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: kreuzer2010-03218712
+  ref: kreuzer2010
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Π01-CP
+    name: Π01 bounded collection
+    loc: Section 1
+    definition: ∀n (∀x<n ∃y φ(x,y) → ∃z ∀x<n ∃y<z φ(x,y)) for Π01 formulas φ.
+    facts: Follows from Σ02-induction; Π02-conservative over PRA; StCOH ↔ COH ∧ Π01-CP (HS07).
+  reasons:
+    - principle not in the catalogue
+  proposed: de35f29f3acb
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: pradicprice2025-eec1cb2d
+  ref: pradicprice2025
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wkl
+    to: lpo
+    over: w
+  loc: Section 1, Example 1 (text after the list)
+  origin: stated
+  quote: incomparable, as well as LPO and WKL.
+  paperNotation: LPO and WKL incomparable
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: e44f08f739e3
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: pradicprice2025-b372f31c
+  ref: pradicprice2025
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: lpo
+    to: wkl
+    over: w
+  loc: Section 1, Example 1 (text after the list)
+  origin: stated
+  quote: incomparable, as well as LPO and WKL.
+  paperNotation: LPO and WKL incomparable
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: bfe6c0d636bc
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: frittaionmarcone2013-549555cf
+  ref: frittaionmarcone2013
+  date: 2026-11-10
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: atr
+    to: perfect1
+    over: rca0
+  loc: Theorem 2.1 (cited from Simpson)
+  origin: cited
+  quote: "By [Sim09, Theorem V.5.5] ATR0 is equivalent to the perfect tree theorem:"
+  paperNotation: "ATR0; perfect tree theorem: every tree with uncountably many paths contains a perfect subtree"
+  argument: Theorem 2.1 states, over ACA0, ATR0 <-> (2) every tree with uncountably many paths contains a perfect subtree; ATR0 includes ACA0, so ATR0 proves the perfect tree theorem.
+  citedFrom: Simpson, Subsystems of second order arithmetic, Theorem V.5.5
+  confidence: medium
+  concerns: The equivalence is stated over ACA0, so only the implication ATR -> PTT1 is recorded over RCA0 (ATR0 contains ACA0). Catalogue perfect1 is the problem form; the paper states the sentence. The converse holds only over ACA0 and is not recorded.
+  reasons:
+    - contradicts the database
+    - "extractor confidence: medium"
+    - "attributed by the paper to Simpson, Subsystems of second order arithmetic, Theorem V.5.5: cite the original"
+  proposed: c6e324b0e29c
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Mismatch: the cited Simpson V.5.5 is the perfect set theorem for trees, equivalent to ATR₀, not PTT₁ (perfect1), which the database separates from ATR₀."
+- id: frittaionmarcone2013-d0c43af4
+  ref: frittaionmarcone2013
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ⁰₁ initial interval separation / initial interval separation
+    name: Initial interval separation
+    loc: Lemma 3.1
+    definition: For a partial order P and Σ⁰₁ formulas φ, ψ with (∀x,y∈P)(φ(x)∧ψ(y) ⟹ y ⋡ x), there is an initial interval I of P containing the φ-elements and avoiding the ψ-elements; version (3) with sets A, B.
+    facts: Equivalent to WKL0 over RCA0 (Lemma 3.1).
+  reasons:
+    - principle not in the catalogue
+  proposed: 8d3d10c47cd6
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: frittaionmarcone2013-8e2e6ea8
+  ref: frittaionmarcone2013
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Maximal strong antichain
+    name: Every strong antichain extends to a maximal one / every partial order has a maximal strong antichain
+    loc: Lemma 4.3
+    definition: "Strong antichain: pairwise incompatible elements."
+    facts: Each equivalent to ACA0 over RCA0 (Lemma 4.3).
+  reasons:
+    - principle not in the catalogue
+  proposed: eb42814df532
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: frittaionmarcone2013-2261f5a6
+  ref: frittaionmarcone2013
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Theorems 1.2/1.3/1.1 restricted to countable partial orders (Theorem 4.5 (2)-(6))
+    name: No arbitrarily large finite strong antichains implies finite union of ideals; no infinite strong antichains implies no arbitrarily large finite strong antichains (Erdős–Tarski); no infinite strong antichains implies finite union of ideals; no infinite antichains implies every initial interval is a finite union of ideals; every well-partial order is a finite union of ideals
+    loc: Theorem 4.5
+    definition: As named.
+    facts: Pairwise equivalent to ACA0 over RCA0 (Theorem 4.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: a071f6885b52
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: frittaionmarcone2013-c136e40f
+  ref: frittaionmarcone2013
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Countably many initial intervals (left to right of Bonnet)
+    name: Every scattered partial order with no infinite antichains has countably many initial intervals; every scattered linear order has countably many initial intervals
+    loc: Theorem 4.8
+    definition: As named.
+    facts: Equivalent to ATR0 over ACA0 (Theorem 4.8); the linear order version is Clote's (Theorem 2.5, with ACA0 base). Provable in ATR0 (Theorem 4.7).
+  reasons:
+    - principle not in the catalogue
+  proposed: 3947165f430d
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: frittaionmarcone2013-61d2db38
+  ref: frittaionmarcone2013
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Maximal antichain extension
+    name: Every antichain in a partial order extends to a maximal antichain
+    loc: Lemma 5.5
+    definition: As named.
+    facts: Equivalent to ACA0 over RCA0 (Lemma 5.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: 03cfa97211f7
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: frittaionmarcone2013-ac03435b
+  ref: frittaionmarcone2013
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Right to left of Bonnet 1.1
+    name: Every partial order with an infinite antichain contains an initial interval that is not a finite union of ideals
+    loc: Theorem 5.6
+    definition: As named.
+    facts: "Provable in WKL0 (Theorem 5.6), not provable in RCA0 (Theorem 5.12: fails in REC). Whether it implies WKL0 is open (Section 6); Bienvenu–Patey–Shafer (reported in Section 6): WWKL0 does not imply it."
+  reasons:
+    - principle not in the catalogue
+  proposed: dec29e7eca7d
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: frittaionmarcone2013-cfd91b57
+  ref: frittaionmarcone2013
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Right to left of Bonnet 1.5
+    name: Every partial order with countably many initial intervals has no infinite antichains (and uncountably many initial intervals if an infinite antichain)
+    loc: Theorem 5.10
+    definition: As named.
+    facts: Provable in WKL0 (Theorem 5.10), not provable in RCA0 (Theorem 5.13). Open whether equivalent to WKL0; WWKL0 does not imply it (Section 6).
+  reasons:
+    - principle not in the catalogue
+  proposed: 07bfd5fee0eb
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: frittaionmarcone2013-1a2cd98c
+  ref: frittaionmarcone2013
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Initial interval with infinite antichain avoided
+    name: If P has an infinite antichain D, there is an initial interval I with D ⊆ I (or I∩D infinite) and no element of I above an element of D
+    loc: Lemma 5.7
+    definition: As named.
+    facts: Both versions equivalent to WKL0 over RCA0 (Lemma 5.7).
+  reasons:
+    - principle not in the catalogue
+  proposed: a826f139d302
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: frittaionmarcone2013-9e30c99c
+  ref: frittaionmarcone2013
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Initial intervals of subsets
+    name: "For an embedding f:Q→P, I(Q) = {f^{-1}(J) : J ∈ I(P)}; for Q ⊆ P, I(Q)={J∩Q : J∈I(P)}"
+    loc: Lemma 5.8
+    definition: As named.
+    facts: Equivalent to WKL0 over RCA0 (Lemma 5.8).
+  reasons:
+    - principle not in the catalogue
+  proposed: fc09a2414246
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: frittaionmarcone2013-aba78b4f
+  ref: frittaionmarcone2013
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Statements provable in RCA0
+    name: Finite union of ideals has no infinite strong antichains; countably many initial intervals implies scattered
+    loc: Lemma 5.1, Theorem 5.2
+    definition: As named.
+    facts: Provable in RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: aaf546c9dadc
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: hoyrup2023b-b741afab
+  ref: hoyrup2023b
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: VC_X (overt choice on X)
+    name: Overt choice
+    loc: Definition 2.4
+    definition: For an effectively countably-based T0-space X, VC_X takes a non-empty closed set A of X given by an enumeration of the basic open sets meeting A, and outputs any point of A.
+    facts: "Theorem 3.1: VC_Ncof is Weihrauch equivalent to H. Corollary 3.1: VC_Ncof <=_W lim. Theorem 4.1: VC_Q is not Weihrauch reducible to lim. Theorem 4.2: VC_Ncof is strictly Weihrauch reducible to VC_Q. Proposition 6.1: there is a Sigma^0_2 subspace X of Baire space with VC_X not <=_W UC_N (unique choice over Baire space, catalogue ucnn)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 68be5182b2ff
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: hoyrup2023b-7499c53b
+  ref: hoyrup2023b
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: H
+    name: Deciding in the limit whether a binary sequence has infinitely many 1s
+    loc: Definition 3.1
+    definition: "H : 2^omega => 2^omega maps s to any converging binary sequence t with lim t_n = limsup s_n; i.e. decides with finitely many mind changes whether a set is infinite."
+    facts: "Theorem 3.1: H is Weihrauch equivalent to VC_Ncof. H <=_W lim (proof of Corollary 3.1). Remark before Theorem 3.1 (attributed to a referee): H is reducible to Sort but not to C_N (catalogue cn), since H is a non-computable closed fractal; stated without full proof, so not recorded as a fact."
+  reasons:
+    - principle not in the catalogue
+  proposed: d40e48ef13bf
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: hoyrup2023b-d9b53e38
+  ref: hoyrup2023b
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PVC_X (Pi^0_2 overt choice)
+    name: Pi^0_2 overt choice
+    loc: Definition 5.2
+    definition: Takes a non-empty Pi^0_2 subset of X together with an overt presentation and outputs a point of it.
+    facts: "Corollary 5.1: VC_X <=_W PVC_X. Theorem 5.2: for countably-based T0 X, PVC_X is continuous iff X is quasi-Polish. Effective versions in Theorems 5.3, 5.4, Corollary 5.4. These are topological characterisations, out of scope."
+  reasons:
+    - principle not in the catalogue
+  proposed: c4824e4e92c1
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: specific to this paper or out of scope (overt choice, partial-order variants, sequential Bolzano–Weierstrass forms of a single paper)."
+- id: normannsanders2019b-0720dafb
+  ref: normannsanders2019b
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HBC
+    name: Heine-Borel theorem for basic coverings (third-order open sets)
+    loc: Section 3.2
+    definition: Heine-Borel for [0,1] covered by a countable sequence of basic open sets, with closed sets given by third-order characteristic functions (Definition 1.2); not the second-order HBC with RM-codes (HBCrm).
+    facts: Over RCA_0^omega + QF-AC, WKL <-> HBC (Corollary 3.4); Z_2^omega does not prove HBC (Theorem 3.5); RCA_0^omega proves WKL0 <-> [ACA0 v HBC] (Corollary 3.7). All third-order, so not matched to second-order WKL.
+  reasons:
+    - principle not in the catalogue
+  proposed: f76f27265916
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: third-order, out of scope."
+- id: normannsanders2019b-967abdaa
+  ref: normannsanders2019b
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BOOT
+    name: Third-order boot-strapping principle for open sets
+    loc: Section 4
+    definition: Third-order principle on open sets given by characteristic functions (Section 4).
+    facts: NFP -> BOOT -> HBU_closed over RCA_0^omega + IND; BOOT has the first-order strength of ACA0 (Theorem 4.5). Third-order.
+  reasons:
+    - principle not in the catalogue
+  proposed: fb7fbb5fa8b1
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: third-order, out of scope."
+- id: brattkagherardiholzl2015b-80b6c6bd
+  ref: brattkagherardiholzl2015b
+  date: 2026-11-10
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wkl
+    to: wwkl
+    over: w
+  loc: Proposition 7
+  origin: cited
+  quote: WKL 6≤W WWKL (see [10, Theorem 20]).
+  paperNotation: WWKL <W WKL
+  citedFrom: Brattka and Pauly, Computation with advice, Theorem 20
+  confidence: high
+  concerns: The text has "6≤W" for the non-reduction WKL ≰W WWKL (the proof reference uses a Jockusch-Soare result). Proposition 7 states the strict inequality.
+  reasons:
+    - contradicts the database
+    - "attributed by the paper to Brattka and Pauly, Computation with advice, Theorem 20: cite the original"
+  proposed: cef08f6414d8
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Direction reversed: WKL ≰W WWKL means WWKL does not imply WKL; already in the database."
+- id: brattkagherardiholzl2015b-bda09b20
+  ref: brattkagherardiholzl2015b
+  date: 2026-11-10
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: wwkl
+    to: ran1
+    over: rca0star
+  loc: Section 6, remark after Corollary 13
+  origin: cited
+  quote: Kučera [14]; a detailed alternate proof, which even works over the weaker proof system RCA∗0 ,
+  paperNotation: WWKL and MLR (as principles)
+  citedFrom: Kučera 1985; Avigad, Dean and Rute, Theorem 3.1
+  confidence: medium
+  concerns: The text says WWKL and MLR are equivalent over RCA0 (Kučera), with a proof over RCA0* by Avigad et al.; here the principles are sentences, not the Weihrauch problems. Given over rca0star as the finest stated.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Kučera 1985; Avigad, Dean and Rute, Theorem 3.1: cite the original"
+  proposed: e48db7e91191
+  decision:
+    date: 2026-11-10
+    by: ludovic
+- id: brattkagherardiholzl2015b-7c58fabe
+  ref: brattkagherardiholzl2015b
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wwkl
+    to: nash
+    over: w
+  loc: Corollary 16
+  origin: stated
+  quote: I Corollary 16. NASH ≤W WWKL.
+  paperNotation: NASH ≤W WWKL
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 748f3d2a5889
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: brattkagherardiholzl2015b-d2c91d44
+  ref: brattkagherardiholzl2015b
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: ran1
+    to: wwkl-lstar
+    over: w
+  loc: Theorem 12
+  origin: stated
+  quote: I Theorem 12 (Martin-Löf computability). MLR <W (1 − ∗)-WWKL.
+  paperNotation: MLR <W (1 − ∗)-WWKL
+  citedFrom: Brattka, Hendtlass and Kreuzer, Lemma 7.4 (for strictness)
+  confidence: high
+  concerns: Strictness is stated in the theorem; the proof sketch attributes it to [9, Lemma 7.4].
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 9a8a5ccc48cb
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: brattkagherardiholzl2015b-a487c23f
+  ref: brattkagherardiholzl2015b
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: wwkl.fin
+    to: wwkl
+    over: w
+  loc: Proposition 9
+  origin: stated
+  quote: I Proposition 9. WWKL ≡W WWKL∗ .
+  paperNotation: WWKL ≡W WWKL*
+  confidence: high
+  concerns: WWKL* is the finite parallelization of the paper (f* = ⊔ f^n), not the catalogue statement wwkl-star (*-WWKL).
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: c6b5ce8c3239
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Already in the database.
+- id: brattkagherardiholzl2015b-d042bea6
+  ref: brattkagherardiholzl2015b
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ε-WWKL
+    name: WWKL restricted to trees of measure larger than ε
+    loc: Section 5
+    definition: "dom(ε-WWKL) = {T ∈ Tr : µ([T]) > ε}, WWKL restricted to such trees; 0-WWKL is WWKL, 1-WWKL is computable."
+    facts: "Theorem 10: ε-WWKL ≤W δ-WWKL iff ε ≥ δ (strictly anti-monotone); Corollary 11: (1 − ∗)-WWKL <W ε-WWKL for every ε in [0,1); Proposition 17: RDIV ≰W ε-WWKL for ε > 0. Only ε = 1/2 is in the catalogue (wwkl-half); the facts for it are extracted above."
+  reasons:
+    - principle not in the catalogue
+  proposed: 4230a60724e0
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: the ε-WWKL family; the catalogue has the (1 − *)-WWKL forms."
+- id: liumoninpatey2017-ec35af13
+  ref: liumoninpatey2017
+  date: 2026-11-10
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: aca
+    to: ovw0
+    over: rca0
+  loc: Theorem 1.4
+  origin: stated
+  quote: A formalization of Theorem 3.1 yields a proof of Theorem 1.4.
+  paperNotation: OVW(2, l) for every l >= 2
+  confidence: medium
+  concerns: The paper's OVW(2,l) is the ordered variable word theorem for binary strings with an infinite sequence of variables, identified with ovw0 as instructed by the maintainer; the paper's statement is for the binary alphabet only, whereas the catalogue's ovw0 has an arbitrary finite alphabet. Statement is for every l (number of colors).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 07bc55dd74ca
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: Stated for OVW(2, l) (binary alphabet) only; ACA₀ → OVW⁰ for every alphabet is already in the database (Liu–Patey 2026, Theorem 2.11).
+- id: liumoninpatey2017-0fefc5fb
+  ref: liumoninpatey2017
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: VW(n, r)
+    name: Variable word theorem
+    loc: Statement 1.3
+    definition: "If A^<omega is colored with r colors for an alphabet A of cardinality n, there is an infinite variable word W such that {W(a) : a in A^<omega} is monochromatic."
+    facts: "Not studied directly; Corollary 4.8: there is a computable instance of VW(2,2) such that every solution is of hyperimmune degree (using Lemma 4.7 and the instance of OVW(2,2) with no low solution). Seeing an OVW(2,2) instance as a VW(2,2) instance, the jump of a VW solution gives an OVW solution (introduction, Miller-Solomon). Question 4.9: does VW(2,2) or OVW(2,2) imply ACA over RCA0? (open)."
+  reasons:
+    - principle not in the catalogue
+  proposed: f7d61b5e5eaf
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added for now: the unordered variable word theorem VW(k, l), studied in Miller–Solomon and this paper; to add with its known facts."
+- id: liumoninpatey2017-252ddbf6
+  ref: liumoninpatey2017
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SeqOVW(n, l)
+    name: Sequential ordered variable word theorem
+    loc: Statement 3.7
+    definition: If c_0, c_1, ... is a sequence of l-colorings of strings over an alphabet A of cardinality n, there is a variable word W such that for every i and every tuple b of length i, {W(b a)} is monochromatic for c_i.
+    facts: "Theorem 3.8: every PA degree relative to the empty set jump computes a solution to every computable instance of SeqOVW(2,l). Theorem 3.9: there is a computable instance of SeqOVW(2,2) all of whose solutions are of PA degree relative to the empty set jump."
+  reasons:
+    - principle not in the catalogue
+  proposed: 7fe16b63d427
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: sequential variant of this paper."
+- id: liumoninpatey2017-23a70e37
+  ref: liumoninpatey2017
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FUT_l
+    name: Finite union theorem
+    loc: Statement 2.2
+    definition: "For every coloring c : P_fin(N) -> l there is a monochromatic IP collection (an infinite collection of finite sets closed under finite unions containing an infinite pairwise disjoint subcollection)."
+    facts: "Theorem 2.3: RCA0 proves forall l (FUT_l -> wFUT2_l). Used in Corollary 2.5 (ACA+ -> forall l FUT_l)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 1767d09466c1
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: finite union theorem, used in the proof."
+- id: liumoninpatey2017-e833f4f6
+  ref: liumoninpatey2017
+  date: 2026-11-10
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: wFUT2_l
+    name: Weak finite union theorem for pairs
+    loc: Statement 2.2
+    definition: "For every coloring c : P_fin(N) x N -> l there is an IP collection I and a color i < l with c(S, min T) = i for every S < T in I."
+    facts: "Theorem 2.3: RCA0 proves forall l (FUT_l -> wFUT2_l). Theorem 2.4: RCA0 proves forall l (wFUT2_l -> OVW(2,l))."
+  reasons:
+    - principle not in the catalogue
+  proposed: bbb934e33bb2
+  decision:
+    date: 2026-11-10
+    by: ludovic
+    note: "Not added: technical variant."

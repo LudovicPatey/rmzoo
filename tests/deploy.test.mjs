@@ -18,7 +18,7 @@ test('only the viewer and the server code are uploaded, never config.php or loca
   assert.ok(remote.includes('index.html') && remote.includes('data/zoo.json') && remote.includes('api/index.php') && remote.includes('api/.htaccess'));
   assert.ok(remote.includes('.htaccess'), 'htaccess.txt is uploaded as .htaccess');
   assert.ok(!remote.some((r) => /config\.php$|DS_Store|notes/.test(r)));
-  assert.ok(remote.every((r) => /^(index\.html|\.htaccess|(css|js|data|api)\/)/.test(r)));
+  assert.ok(remote.every((r) => /^(index\.html|favicon\.svg|\.htaccess|(css|js|data|api)\/)/.test(r)));
 });
 
 test('curl and sftp instructions upload and never delete', () => {

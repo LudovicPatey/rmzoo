@@ -253,24 +253,42 @@
   solution: An infinite 0-homogeneous set.
   refs: [ { ref: solda2021, role: origin, loc: Definition 4.1.1 (bRT⁴) } ]
 
-- id: ovw
-  label: '\mathsf{OVW}'
-  name: Ordered variable word theorem
+- id: ovw0
+  label: '\mathsf{OVW}^0'
+  name: Ordered variable word theorem for 0-variable words
   kind: problem
   tags: [ ramsey ]
-  aliases: [ OVW0, Carlson-Simpson theorem, ordered variable word ]
+  aliases: [ OVW0, "OVW^0", Carlson-Simpson theorem ]
+  caution: 'Several papers write OVW (or OVW(k, l) in Miller and Solomon) for this statement, the case n = 0 of the ordered variable word theorem [[ovw]].'
   definition: >
     For every finite alphabet $A$ and finite coloring of the words over $A$, there is a word $c_0$ and an infinite sequence of left-variable words $w_1, w_2, \dots$ such that all words $c_0 \cdot w_1[a_1] \cdots w_k[a_k]$ have the same color.
   refs: [ { ref: liumoninpatey2017, role: origin }, { ref: lehoueroupatey2024, role: rm } ]
   instance: A finite alphabet $A$ and a finite coloring of $A^{<\mathbb{N}}$.
   solution: A word $c_0$ and an infinite sequence of left-variable words as in the statement.
 
+- id: ovw
+  label: '\mathsf{OVW}'
+  name: Ordered variable word theorem
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ "∀n OVWn", ordered variable word ]
+  phrases: [ ordered variable word theorem, higher-order ordered variable word theorem ]
+  caution: 'Some papers write OVW for the case n = 0, [[ovw0]].'
+  definition: >
+    For every $n$, every finite alphabet $A$ and every finite coloring of the ordered $n$-variable words over $A$ of
+    finite length, there is an ordered $\omega$-variable word $W$ over $A$ (each variable $x_i$ occurs, and its last
+    occurrence comes before the first occurrence of $x_{i+1}$) whose ordered $n$-variable subwords all have the same
+    color ($\forall n\, \mathsf{OVW}^n$). It follows from Carlson's theorem.
+  refs: [ { ref: lehoueroupatey2026, role: origin, loc: "Theorem 2.2 and the notation after it" } ]
+  instance: Some $n$, a finite alphabet $A$ and a finite coloring of the ordered $n$-variable words over $A$.
+  solution: 'An ordered ω-variable word W over A whose ordered n-variable subwords are monochromatic.'
+
 - id: csl1
-  label: '\mathsf{CSL}_1'
+  label: '\mathsf{CSL}^1'
   name: Carlson–Simpson lemma for 1-variable words
   kind: problem
   tags: [ ramsey ]
-  aliases: [ CSL1 ]
+  aliases: [ CSL1, "CSL^1" ]
   definition: >
     For every finite alphabet $A$, every $\ell \geq 1$ and every $\ell$-coloring of $A^{<\omega,1}$, the
     1-variable words over $A$ of finite length, there is an $\omega$-variable word $W$ over $A$ such that
@@ -287,7 +305,7 @@
   tags: [ ramsey ]
   aliases: [ CSL12, "CSL^1_2" ]
   definition: >
-    The Carlson–Simpson lemma $\mathsf{CSL}_1$ restricted to 2-colorings: for every finite alphabet $A$ and every
+    The Carlson–Simpson lemma $\mathsf{CSL}^1$ restricted to 2-colorings: for every finite alphabet $A$ and every
     2-coloring of $A^{<\omega,1}$, the 1-variable words over $A$ of finite length, there is an $\omega$-variable word
     $W$ over $A$ such that $\{W[u] : u \in A^{<\omega,1}\}$ is monochromatic.
   refs: [ { ref: lehoueroupatey2026, role: origin, loc: "Theorem 2.1 and the notation after it" } ]
@@ -295,14 +313,14 @@
   solution: 'An ω-variable word W over A such that {W[u] : u ∈ A^{<ω,1}} is monochromatic.'
 
 - id: csl2
-  label: '\mathsf{CSL}_2'
+  label: '\mathsf{CSL}^2'
   name: Carlson–Simpson lemma for 2-variable words
   kind: problem
   minor: true
   tags: [ ramsey ]
-  aliases: [ CSL2 ]
+  aliases: [ CSL2, "CSL^2" ]
   definition: >
-    The Carlson–Simpson lemma $\mathsf{CSL}_1$ for colorings of $A^{<\omega,2}$, the 2-variable words over $A$
+    The Carlson–Simpson lemma $\mathsf{CSL}^1$ for colorings of $A^{<\omega,2}$, the 2-variable words over $A$
     of finite length: every finite coloring has an $\omega$-variable word $W$ with
     $\{W[u] : u \in A^{<\omega,2}\}$ monochromatic.
   refs: [ { ref: liupatey2026, role: origin, loc: "Lemma 1.2 and the definition after it (n = 2)" } ]
@@ -315,22 +333,22 @@
   kind: problem
   minor: true
   tags: [ ramsey ]
-  aliases: [ ∀n CSLn ]
+  aliases: [ "∀n CSLn", "∀n CSL^n" ]
   phrases: [ Carlson-Simpson lemma ]
   definition: >
     For every $n$, every finite alphabet $A$ and every finite coloring of $A^{<\omega,n}$, the $n$-variable
     words over $A$ of finite length, there is an $\omega$-variable word $W$ over $A$ such that
-    $\{W[u] : u \in A^{<\omega,n}\}$ is monochromatic ($\forall n\, \mathsf{CSL}_n$).
+    $\{W[u] : u \in A^{<\omega,n}\}$ is monochromatic ($\forall n\, \mathsf{CSL}^n$).
   refs: [ { ref: liupatey2026, role: origin, loc: "Lemma 1.2 and the definition after it" } ]
   instance: Some $n$, a finite alphabet $A$ and a finite coloring of $A^{<\omega,n}$.
   solution: 'An $\omega$-variable word $W$ over $A$ such that $\{W[u] : u \in A^{<\omega,n}\}$ is monochromatic.'
 
 - id: odrt3
-  label: '\mathsf{ODRT}_3'
+  label: '\mathsf{ODRT}^3'
   name: Open dual Ramsey theorem for 3-partitions
   kind: problem
   tags: [ ramsey ]
-  aliases: [ ODRT3, "ODRT(3,2)" ]
+  aliases: [ ODRT3, "ODRT^3" ]
   definition: >
     For every $\ell$ and every open $\ell$-coloring of $(\mathbb{N})^3$, the partitions of $\mathbb{N}$ into
     exactly 3 non-empty blocks, there is a partition $p$ of $\mathbb{N}$ into infinitely many blocks such that
@@ -341,14 +359,14 @@
   solution: An infinite partition $p$ such that $(p)^3$ is monochromatic.
 
 - id: odrt4
-  label: '\mathsf{ODRT}_4'
+  label: '\mathsf{ODRT}^4'
   name: Open dual Ramsey theorem for 4-partitions
   kind: problem
   minor: true
   tags: [ ramsey ]
-  aliases: [ ODRT4 ]
+  aliases: [ ODRT4, "ODRT^4" ]
   definition: >
-    The open dual Ramsey theorem $\mathsf{ODRT}_3$ for partitions of $\mathbb{N}$ into exactly 4 non-empty blocks.
+    The open dual Ramsey theorem $\mathsf{ODRT}^3$ for partitions of $\mathbb{N}$ into exactly 4 non-empty blocks.
   refs: [ { ref: liupatey2026, role: origin, loc: "Section 1, after Theorem 1.1" }, { ref: millersolomon2004, role: rm, loc: "Section 2, before Theorem 2.2" } ]
   instance: An open finite coloring of $(\mathbb{N})^4$.
   solution: An infinite partition $p$ such that $(p)^4$ is monochromatic.
@@ -359,7 +377,7 @@
   kind: problem
   minor: true
   tags: [ ramsey ]
-  aliases: [ ∀n ODRTn ]
+  aliases: [ "∀n ODRTn", "∀k ODRT^k" ]
   phrases: [ open dual Ramsey theorem ]
   definition: >
     For every $k$, every $\ell$ and every open $\ell$-coloring of $(\mathbb{N})^k$, the partitions of

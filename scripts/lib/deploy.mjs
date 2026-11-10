@@ -14,6 +14,7 @@ export function deployFiles(siteDir = 'site') {
   const list = (dir, ext) => fs.readdirSync(path.join(siteDir, dir)).filter((f) => f.endsWith(ext)).sort().map((f) => [`${dir}/${f}`, `${dir}/${f}`]);
   const files = [
     ['index.html', 'index.html'],
+    ['favicon.svg', 'favicon.svg'],
     ['htaccess.txt', '.htaccess'], // http → https redirect
     ...list('css', '.css'),
     ...list('js', '.js'),

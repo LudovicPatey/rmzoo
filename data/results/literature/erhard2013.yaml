@@ -1,3 +1,3 @@
 # Results from [erhard2013].
 
-[ { type: separation, from: srt22, to: ovw, over: rca0, refs: [ { ref: erhard2013, loc: Corollary 2.3.3 } ] } ]
+[ { type: separation, from: srt22, to: ovw0, over: rca0, refs: [ { ref: erhard2013, loc: Corollary 2.3.3 } ] } ]

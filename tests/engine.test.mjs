@@ -76,7 +76,7 @@ const expected = [
   ['c', 'adc', 'ads', 'implies'],
   ['w', 'adc', 'ads', 'separated'],          // ADC does not even compute SADS uniformly
   ['rca0', 'adc', 'ads', 'implies'],
-  ['omega', 'ovw', 'rt22', 'separated'],
+  ['omega', 'ovw0', 'rt22', 'separated'],
   ['w', 'wkl-j', 'lim', 'implies'],
   ['rca0', 'rsg', 'aca', 'implies'],
   ['soc', 'sd', 'rt12', 'implies'],          // sc gives soc

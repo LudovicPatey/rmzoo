@@ -2565,7 +2565,32 @@ async function loadZoo() {
   for (const c of chunks) { all.set(c, at); at += c.length; }
   return JSON.parse(new TextDecoder().decode(all));
 }
+// Theme: follow the system (default), or force light or dark. index.html applies the
+// saved choice before the first paint; the stylesheet reads data-theme on <html>.
+const THEMES = { auto: ['◐', 'Theme: follows the system (click for light)'],
+  light: ['☀', 'Theme: light (click for dark)'], dark: ['☾', 'Theme: dark (click to follow the system)'] };
+function setupThemeToggle() {
+  const btn = $('#theme-toggle');
+  if (!btn) return;
+  const apply = (t) => {
+    if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+    else delete document.documentElement.dataset.theme;
+    btn.textContent = THEMES[t][0];
+    btn.title = THEMES[t][1];
+    btn.setAttribute('aria-label', THEMES[t][1]);
+  };
+  let theme = store.get('rmzoo.theme', 'auto');
+  if (!THEMES[theme]) theme = 'auto';
+  apply(theme);
+  btn.addEventListener('click', () => {
+    theme = { auto: 'light', light: 'dark', dark: 'auto' }[theme];
+    store.set('rmzoo.theme', theme);
+    apply(theme);
+  });
+}
+
 async function boot() {
+  setupThemeToggle();
   bootStatus('Downloading the zoo…');
   const rawP = loadZoo();
   while (!window.katex) await new Promise((r) => setTimeout(r, 20));

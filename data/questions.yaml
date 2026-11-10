@@ -701,13 +701,13 @@
 - id: vw-aca
   parts:
     - question: 'Does the variable word theorem $\mathsf{VW}(2,2)$, or its ordered version $\mathsf{OVW}(2,2)$, imply $\mathsf{ACA}_0$?'
-      formal: [{from: ovw, to: aca, over: rca0}]
+      formal: [{from: ovw0, to: aca, over: rca0}]
     - question: 'Are these principles provable in $\mathsf{ACA}_0$?'
-      formal: [{from: aca, to: ovw, over: rca0}]
+      formal: [{from: aca, to: ovw0, over: rca0}]
   asked:
     - {ref: liumoninpatey2017, loc: Question 4.9}
     - {ref: millersolomon2004, loc: Problems 1 and 2}
-  statements: [ovw, aca]
+  statements: [ovw0, aca]
   context: >-
     Variable word theorems come from the Hales–Jewett theorem. Miller and Solomon
     [@millersolomon2004] showed that they are not provable in WKL₀, and noted that
@@ -893,10 +893,10 @@
     the growing grouping principle GGP²₂ in RCA₀* + ¬IΣ⁰₁.
 
 - id: ovw-bsig2-conservation
-  question: Is $\mathsf{RCA}_0 + \mathsf{OVW}$ $\Pi^1_1$-conservative over $\mathsf{RCA}_0 + \mathsf{B}\Sigma^0_2$?
+  question: Is $\mathsf{RCA}_0 + \mathsf{OVW}^0$ $\Pi^1_1$-conservative over $\mathsf{RCA}_0 + \mathsf{B}\Sigma^0_2$?
   asked:
     - {ref: lehoueroupatey2024, loc: Question 5.3}
-  statements: [ovw, bsig2]
+  statements: [ovw0, bsig2]
   status: resolved
   answer: Yes.
   resolvedBy:

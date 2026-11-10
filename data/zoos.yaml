@@ -1,10 +1,28 @@
 # Predefined selections shown on the front page. Each opens the diagram of
 # `statements` at the notion of reduction `reduction`.
 - id: reverse-mathematics
-  name: Reverse mathematics
+  name: Reverse mathematics below ACA₀
   reduction: rca0
-  description: The Big Five and the main principles below ACA₀ — Ramsey's theorem for pairs and its consequences, compactness and randomness — compared by provability over RCA₀.
-  statements: [aca, wkl, wwkl, rt22, srt22, coh, em, ads, cac, sads, dnr, amt, bsig2, isig2, rrt22, pi01g]
+  description: Ramsey's theorem for pairs and its consequences, compactness and randomness, between RCA₀ and ACA₀ — compared by provability over RCA₀, with the first-order markers BΣ⁰₂ and IΣ⁰₂.
+  statements: [aca, wkl, wwkl, rt22, srt22, coh, em, ads, cac, sads, dnr, amt, bsig2, isig2, rrt22, pi01g, tt22, gp22]
+
+- id: big-five-and-beyond
+  name: The Big Five and above
+  reduction: rca0
+  description: From WKL₀ to Π¹₁-CA₀, with the systems and theorems in between — ACA₀′ (Ramsey's theorem for every exponent), ACA₀⁺ and Hindman's theorem, ATR₀ and Fraïssé's conjecture, Kruskal's theorem.
+  statements: [wkl, aca, rt, aca-prime, ht, aca-plus, atr, fra, kt, sigma11ac, pi11ca]
+
+- id: hyperarithmetic-analysis
+  name: Hyperarithmetic analysis
+  reduction: omega
+  description: Statements whose minimum ω-model is HYP — Δ¹₁-comprehension, Σ¹₁-choice and its weak form, Jullien's indecomposability theorem, the arithmetic Bolzano–Weierstrass theorem — compared in ω-models, where most of their separations live.
+  statements: [aca, aca-plus, sigma11ac, delta11ca, wsigma11ac, indec, abw, sigma11-sep, atr]
+
+- id: trees-and-words
+  name: Trees, words and dual Ramsey theory
+  reduction: rca0
+  description: Ramsey's theorem on trees, the Carlson–Simpson lemma and the ordered variable word theorems, the open dual Ramsey theorem and the indivisibility of the Henson graph, with their place relative to RT²₂, ACA₀ and ACA₀′.
+  statements: [rt22, tt22, tt2, csl12, csl1, csl2, csl, ovw0, ovw, odrt3, henson-indiv, aca, aca-prime, isig2]
 
 - id: weak-reverse-mathematics
   name: Weak reverse mathematics
@@ -18,8 +36,14 @@
   description: The landmark problems of the Weihrauch lattice (LPO, LLPO, choice principles, lim) next to Ramsey-type and compactness problems, compared by Weihrauch reducibility.
   statements: [llpo, lpo, cn, kn, lim, wkl, wwkl, dnr, rt12, rt22, srt22, coh, ds, bs, ucnn, cnn]
 
+- id: pigeonhole-weihrauch
+  name: Pigeonhole principles in the Weihrauch lattice
+  reduction: w
+  description: The first-order and pigeonhole problems — RT¹ₖ with a fixed, a given or an unknown number of colors, the tree pigeonhole principle TT¹₂, its jump D²₂, the indivisibility of ℚ (ER¹) — next to C_ℕ, TC_ℕ and ECT.
+  statements: [llpo, lpo, rt12, rt13, rt1inf, rt1n, tt12, er1, d22, srt22, cn, tcn, ect]
+
 - id: ramsey-omega
   name: Ramsey-type principles in ω-models
   reduction: omega
-  description: Consequences of Ramsey's theorem for pairs, compared over ω-models (Turing ideals).
-  statements: [rt22, srt22, coh, em, ads, cac, sads, ts2, fs2, rrt22, dnr, wkl, wwkl]
+  description: Consequences of Ramsey's theorem for pairs, compared over ω-models (Turing ideals), where preservation properties separate them.
+  statements: [rt22, srt22, coh, em, sem, ads, cac, sads, ts2, fs2, rrt22, tt22, dnr, wkl, wwkl]
