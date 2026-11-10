@@ -17,3 +17,4 @@
 - { type: separation, from: cim, to: cn, over: w, refs: [ { ref: brattkagherardi2011b, loc: Corollary 4.12(3) } ] }
 - { type: separation, from: ci, to: cn, over: w, refs: [ { ref: brattkagherardi2011b, loc: Corollary 4.10 } ] }
 - { type: separation, from: cn, to: ci, over: w, refs: [ { ref: brattkagherardi2011b, loc: Proposition 4.9 } ] }
+- { type: equivalence, from: ivt, to: ci, over: sw, refs: [ { ref: brattkagherardi2011b, loc: Theorem 5.2 } ] }

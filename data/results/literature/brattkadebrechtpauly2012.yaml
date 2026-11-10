@@ -6,5 +6,5 @@
 - { type: equivalence, from: ucn, to: cn, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: Proposition 6.2 } ] }
 - { type: equivalence, from: cr, to: cn.x.wkl, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: Corollary 4.9 } ] }
 - { type: property, statement: cr, property: idempotent, value: true, refs: [ { ref: brattkadebrechtpauly2012, loc: Corollary 7.6 } ] }
-- { type: equivalence, from: cn.par, to: lim, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: Example 3.10 } ] }
-- { type: property, statement: cr, property: compose-closed, value: true, refs: [ { ref: brattkadebrechtpauly2012, loc: Corollary 7.6 } ] }
+- { type: equivalence, from: cn.par, to: lim, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: Example 3.10 }, { ref: brattkagherardipauly2021, loc: "Section 7.4, after Theorem 7.44" } ] }
+- { type: property, statement: cr, property: compose-closed, value: true, refs: [ { ref: brattkadebrechtpauly2012, loc: Corollary 7.6 }, { ref: brattkagherardipauly2021, loc: Corollary 7.12 } ] }

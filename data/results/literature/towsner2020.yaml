@@ -1,0 +1,3 @@
+# Results from [towsner2020].
+
+[ { type: separation, from: trrtfin-wkl, to: prodwqo, over: omega, refs: [ { ref: towsner2020, loc: Theorem 1.16 } ] }, { type: separation, from: trrtfin-wkl, to: cac, over: omega, refs: [ { ref: towsner2020, loc: Theorem 1.9 } ] }, { type: implication, from: prodwqo, to: trrtfin, over: omega, refs: [ { ref: towsner2020, loc: Lemma 1.15 } ] } ]

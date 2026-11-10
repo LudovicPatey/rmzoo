@@ -51,3 +51,15 @@
 - { type: separation, from: rt1inf, to: cn, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Proposition 7.7 } ] }
 - { type: implication, from: rt1n, to: cn, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: "Propositions 3.4(2) and 7.7 (C_N ≡W SRT_{1,N} ≤ RT_{1,N})" } ] }
 - { type: separation, from: lim, to: rt12, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: "Remark after Corollary 4.19 (n = 1: RT_{1,k} is not Σ⁰₂-measurable)" } ] }
+- { type: equivalence, from: rt12.fin, to: rt1inf, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Proposition 3.23 } ] }
+- { type: separation, from: srt22.star.coh, to: padeg, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.17 } ] }
+- { type: separation, from: rt22, to: padeg, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: "Section 5, after Corollary 5.17" } ] }
+- { type: separation, from: srt22, to: padeg, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: "Section 5, before Corollary 5.17" } ] }
+- { type: separation, from: rt12, to: bwt2, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 6.11 } ] }
+- { type: separation, from: bwt2, to: rt12, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 6.11 } ] }
+- { type: separation, from: (rt1n.jump).x.lim, to: rt22, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Proposition 5.1 } ] }
+- { type: separation, from: rt22, to: wkl, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.18 } ] }
+- { type: implication, from: cn.jump, to: ivt, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Proposition 5.19 } ] }
+- { type: separation, from: rt12.jump, to: bwt2.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Theorem 6.8 } ] }
+- { type: separation, from: bwt2.jump, to: rt12.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 6.10 } ] }
+- { type: separation, from: rt12.jump, to: srt22, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 6.12 } ] }

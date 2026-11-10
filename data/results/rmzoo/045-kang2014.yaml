@@ -1,6 +1,6 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Kang (2014) — Combinatorial principles between $\mathsf{RRT}^2_2$ and $\mathsf{RT}^2_2$
 
-- {type: "separation", from: "rrt22", to: "ts2", over: "omega", refs: [{ref: "kang2014", loc: "Theorem 9"}]}
-- {type: "implication", from: "em", to: "rrt22", over: "rca0", refs: [{ref: "kang2014", loc: "Theorem 10, due to Wang"}]}
-- {type: "separation", from: "rrt22", to: "em", over: "omega", refs: [{ref: "kang2014", loc: "Theorem 11"}]}
+- { type: "separation", from: "rrt22", to: "ts2", over: "omega", refs: [ { ref: "kang2014", loc: "Theorem 9" } ] }
+- { type: "implication", from: "em", to: "rrt22", over: "rca0", refs: [ { ref: kang2014, loc: "Theorem 10, due to Wang" }, { ref: patey2015, loc: Corollary 3.9 } ] }
+- { type: "separation", from: "rrt22", to: "em", over: "omega", refs: [ { ref: "kang2014", loc: "Theorem 11" } ] }

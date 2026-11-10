@@ -7,3 +7,7 @@
 - { type: "implication", from: "lim", to: "lpo", over: "sw", note: "lim is strongly Weihrauch equivalent to the parallelization of LPO.", refs: [ { ref: brattkagherardi2011 }, { ref: brattkagherardipauly2021, loc: Theorem 6.7 } ] }
 - { type: "separation", from: "lpo", to: "lim", over: "w", refs: [ { ref: brattkagherardi2011 } ] }
 - { type: separation, from: lpo, to: wkl, over: w, note: LPO and the parallelization of LLPO (≡ WKL) are Weihrauch incomparable., refs: [ { ref: brattkagherardi2011, loc: Theorem 7.13 } ] }
+- { type: separation, from: llpo.par, to: lpo, over: w, refs: [ { ref: brattkagherardi2011, loc: Theorem 7.13 } ] }
+- { type: separation, from: lpo, to: llpo.par, over: w, refs: [ { ref: brattkagherardi2011, loc: Theorem 7.13 } ] }
+- { type: separation, from: llpo.par, to: lpo.par, over: w, refs: [ { ref: brattkagherardi2011, loc: Theorem 7.13 } ] }
+- { type: equivalence, from: wkl, to: llpo.par, over: sw, refs: [ { ref: brattkagherardi2011, loc: Theorem 8.2 } ] }

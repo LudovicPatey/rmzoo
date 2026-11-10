@@ -1,0 +1,3 @@
+# Results from [brattka2020].
+
+[ { type: implication, from: lpo, to: dis, over: sw, refs: [ { ref: brattka2020, loc: "Proposition 24, proof" } ] } ]

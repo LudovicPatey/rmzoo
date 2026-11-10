@@ -29,7 +29,7 @@
   refs: [ { ref: patey2018a } ]
   note: RT²ₖ₊₁ is not computably reducible to RT²ₖ.
 
-- { type: property, statement: rt22, property: cone-avoidance, value: true, refs: [ { ref: seetapunslaman1995 }, { ref: cholakjockuschslaman2001, loc: Theorem 12.2 } ] }
+- { type: property, statement: rt22, property: cone-avoidance, value: true, refs: [ { ref: seetapunslaman1995, loc: Theorem 2.1 }, { ref: cholakjockuschslaman2001, loc: Theorem 12.2 } ] }
 - { type: property, statement: rt22, property: pa-avoidance, value: true, refs: [ { ref: liu2012 } ] }
 - { type: property, statement: rt22, property: computably-true, value: false, refs: [ { ref: jockusch1972 } ] }
 - { type: property, statement: rt32, property: cone-avoidance, value: false, refs: [ { ref: jockusch1972 } ] }

@@ -29,6 +29,7 @@
 - { id: "bsig2-sipt22", conjunction: [ "bsig2", "sipt22" ], kind: "sentence", tags: [] }
 - { id: "bsig2-srt22", conjunction: [ "bsig2", "srt22" ], kind: "sentence", tags: [] }
 - { id: "bsig2-wkl", conjunction: [ "bsig2", "wkl" ], kind: "sentence", tags: [] }
+- { id: "bsig2-wo-omega-omega", conjunction: [ "bsig2", "wo-omega-omega" ], kind: "sentence", tags: [] }
 - { id: "bsig3", label: "\\mathsf{B}\\Sigma^0_3", name: "Σ⁰₃ collection", definition: "The collection (bounding) scheme for $\\Sigma^0_3$ formulas.", tags: [ "induction", "first-order" ], kind: "sentence", firstOrder: true, priority: -10, refs: [ { ref: pariskirby1978, role: origin } ] }
 - { id: "bsig3-wkl", conjunction: [ "bsig3", "wkl" ], kind: "sentence", tags: [] }
 - { id: "cac-wkl", conjunction: [ "cac", "wkl" ], kind: "sentence", tags: [] }

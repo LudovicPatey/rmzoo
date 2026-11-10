@@ -1,7 +1,7 @@
 # Results from [liupatey2026].
 
 - { type: "separation", from: "ovw0", to: "rt22", over: "omega", refs: [ { ref: liupatey2026, loc: Theorem 4.5 and Corollary 4.7 } ] }
-- { type: "implication", from: "aca", to: "ovw0", over: "rca0", refs: [ { ref: liupatey2026, loc: Theorem 2.11 } ] }
+- { type: "implication", from: "aca", to: "ovw0", over: "rca0", refs: [ { ref: liupatey2026, loc: Theorem 2.11 }, { ref: dauriacetal2022, loc: Corollary 3.2 (also Corollary 4.2) } ] }
 - { type: separation, from: henson-indiv, to: aca, over: rca0, refs: [ { ref: liupatey2026, loc: Main Theorem 1.6 } ] }
 - { type: property, statement: ovw0, property: weakly-low-basis, value: true, note: "Stated for $\\mathsf{OVW}^0$.", refs: [ { ref: liupatey2026, loc: Theorem 3.3 } ] }
 - { type: property, statement: ovw0, property: hyperimmunity-preservation, value: true, refs: [ { ref: liupatey2026, loc: Theorem 4.5 } ] }

@@ -1,3 +1,5 @@
 # Results from [patey2017b].
 
-- {type: "separation", from: "coh-em-wkl", to: "amt", over: "omega", refs: [{ref: patey2017b}]}
+- { type: "separation", from: "coh-em-wkl", to: "amt", over: "omega", refs: [ { ref: patey2017b, loc: Theorem 6.1 } ] }
+- { type: separation, from: coh, to: amt, over: c, refs: [ { ref: patey2017b, loc: Theorem 2.2 } ] }
+- { type: separation, from: em, to: amt, over: c, refs: [ { ref: patey2017b, loc: Theorem 3.1 } ] }

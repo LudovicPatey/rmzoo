@@ -9,3 +9,5 @@
 - { type: implication, from: tcn.fin, to: ect, over: sw, refs: [ { ref: davisetal2020, loc: Theorem 10 } ] }
 - { type: separation, from: ect, to: tcn.fin, over: sw, refs: [ { ref: davisetal2020, loc: Theorem 10 } ] }
 - { type: equivalence, from: ect, to: tcn.fin, over: w, refs: [ { ref: davisetal2020, loc: Theorem 9 } ] }
+- { type: implication, from: tcn.fin, to: lpo.fin, over: sw, refs: [ { ref: davisetal2020, loc: "Section 3, after Theorem 9" } ] }
+- { type: separation, from: lpo.fin, to: ert, over: sw, refs: [ { ref: davisetal2020, loc: Theorem 10 } ] }

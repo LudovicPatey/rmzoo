@@ -1,16 +1,16 @@
 # Results from [brattkahendtlasskreuzer2017].
 
-- { type: "separation", from: "coh", to: "llpo", over: "w", note: "These problems are indiscriminative: LLPO is not Weihrauch reducible to them.", refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 4.3 } ] }
+- { type: "separation", from: "coh", to: "llpo", over: "w", note: "These problems are indiscriminative: LLPO is not Weihrauch reducible to them.", refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 4.3 }, { ref: brattkagherardipauly2021, loc: Proposition 8.16 } ] }
 - { type: "separation", from: "dnr", to: "llpo", over: "w", note: "These problems are indiscriminative: LLPO is not Weihrauch reducible to them.", refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 5.8 } ] }
-- { type: "separation", from: "ran1", to: "llpo", over: "w", note: "These problems are indiscriminative: LLPO is not Weihrauch reducible to them.", refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 4.3 } ] }
-- { type: "separation", from: "gen1", to: "llpo", over: "w", note: "These problems are indiscriminative: LLPO is not Weihrauch reducible to them.", refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 4.3 } ] }
+- { type: "separation", from: "ran1", to: "llpo", over: "w", note: "These problems are indiscriminative: LLPO is not Weihrauch reducible to them.", refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 4.3 }, { ref: brattkagherardipauly2021, loc: Proposition 8.16 } ] }
+- { type: "separation", from: "gen1", to: "llpo", over: "w", note: "These problems are indiscriminative: LLPO is not Weihrauch reducible to them.", refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 4.3 }, { ref: brattkagherardipauly2021, loc: Proposition 8.16 } ] }
 - { type: "separation", from: "hyp", to: "llpo", over: "w", note: "These problems are indiscriminative: LLPO is not Weihrauch reducible to them.", refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 4.3 } ] }
 - { type: separation, from: cn, to: dnr, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 5.10 } ] }
 - { type: separation, from: cr, to: hyp, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 9.7 } ] }
 - { type: separation, from: ran1, to: gen1, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 9.9 } ] }
 - { type: separation, from: gen1, to: ran1, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 9.9 } ] }
 - { type: implication, from: llpo, to: accn, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Fact 3.4 and remark after it } ] }
-- { type: separation, from: ran1, to: accn, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Lemma 7.1 } ] }
+- { type: separation, from: ran1, to: accn, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Lemma 7.1 }, { ref: brattkagherardipauly2021, loc: Proposition 8.16 } ] }
 - { type: implication, from: wwkl, to: ran1, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: "Section 9, before Corollary 9.9" } ] }
 - { type: equivalence, from: coh, to: coh.par, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proof of Proposition 14.10 } ] }
 - { type: implication, from: wkl, to: sep, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proof of Lemma 14.20 } ] }

@@ -1,3 +1,4 @@
 # Results from [slamanyokoyama2018].
 
-- {type: "conservation", statement: "rt2-wkl", base: "bsig3", class: "Pi11", value: true, refs: [{ref: slamanyokoyama2018}]}
+- { type: "conservation", statement: "rt2-wkl", base: "bsig3", class: "Pi11", value: true, refs: [ { ref: slamanyokoyama2018, loc: Theorem 2.1 } ] }
+- { type: conservation, statement: d2, base: bsig3, class: Pi11, value: true, refs: [ { ref: slamanyokoyama2018, loc: Theorem 2.4 } ] }

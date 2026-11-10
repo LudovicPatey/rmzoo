@@ -1,0 +1,3 @@
+# Results from [li2024].
+
+[ { type: separation, from: chipi11, to: lpo.x.lpo, over: w, refs: [ { ref: li2024, loc: Proposition 2.35 } ] }, { type: property, statement: chipi11, property: first-order, value: true, refs: [ { ref: li2024, loc: Proof of Proposition 2.35 } ] } ]

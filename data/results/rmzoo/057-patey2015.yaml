@@ -2,7 +2,7 @@
 # Patey (2015) — Somewhere over the rainbow Ramsey theorem for pairs
 
 - { type: "implication", from: "rrt22", to: "wsrrt22", over: "rca0", folklore: true, justification: { kind: restriction, text: WSRRT²₂ is RRT²₂ restricted to weakly stable colorings., by: ai } }
-- { type: "implication", from: "wsrrt22", to: "srrt22", over: "rca0", justification: { kind: restriction, text: "A rainbow-stable 2-bounded coloring is weakly rainbow-stable (Definitions 1.5 and 1.6 of [@patey2015]): if x is married to y, then f(x, s) differs from f(z, s) for every other z and almost every s, since each color is used at most twice.", by: ai }, refs: [ { ref: patey2016c, loc: Section 9.3 } ] }
+- { type: "implication", from: "wsrrt22", to: "srrt22", over: "rca0", justification: { kind: restriction, text: "A rainbow-stable 2-bounded coloring is weakly rainbow-stable (Definitions 1.5 and 1.6 of [@patey2015]): if x is married to y, then f(x, s) differs from f(z, s) for every other z and almost every s, since each color is used at most twice.", by: ai }, refs: [ { ref: patey2016c, loc: Section 9.3 }, { ref: patey2015, loc: "Section 6, introduction" } ] }
 - { type: "implication", from: "rrt32", to: "srrt32", over: "rca0", folklore: true, justification: { kind: restriction, text: "Restriction to stable instances: every stable instance is an instance, with the same solutions.", by: ai } }
 - { type: "separation", from: "srt22", to: "rrt22", over: "rca0", refs: [ { ref: patey2015, loc: Corollary 2.12 } ] }
 - { type: "implication", from: "sem", to: "dnr", over: "c", refs: [ { ref: patey2015, loc: Corollary 3.6 }, { ref: patey2016c, loc: Corollary 10.0.21 } ] }

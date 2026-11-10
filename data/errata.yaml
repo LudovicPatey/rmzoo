@@ -79,3 +79,15 @@
     - { ref: conidis2012, loc: "Theorem 3.1 (Section 3) and its proof, Theorem 4.1" }
     - { ref: montalban2006, loc: Theorem 2.2 }
   date: 2026-11-10
+
+- ref: ddhms2016
+  loc: Section 3, after the proof of Lemma 3.2
+  kind: error
+  claim: After relativization, $\mathsf{TJ}^n \leq_{sW} \mathsf{SeqRT}^n_2$.
+  correction: >
+    Only $\mathsf{TJ}^n \leq_{W} \mathsf{SeqRT}^n_2$ follows: the proof computes $\emptyset^{(n)}(i)$ as $f_i([H_i]^n)$,
+    which needs the instance $f_i$ (relativized, it depends on the oracle). The strong reduction fails: LLPO ≤sW TJⁿ, while
+    LLPO ≰sW the parallelization of RTⁿ₂, which is SeqRTⁿ₂ (Corollary 3.15 of [@brattkarakotoniaina2017]).
+  refs:
+    - { ref: brattkarakotoniaina2017, loc: "Corollary 3.15" }
+  date: 2026-11-10
