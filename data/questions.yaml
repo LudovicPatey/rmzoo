@@ -1506,3 +1506,14 @@
   context: >-
     The authors expect the non-uniform version to be strictly weaker over RCA₀ + BΣ⁰₂, as for the bounded DNR
     principles, but their techniques do not adapt to graph colorings.
+
+- id: inf2b-strength
+  question: What is the reverse mathematical strength of $\mathsf{INF}^{2B}_0$ (every infinite dimensional 2-based vector space has an infinite dimensional proper subspace)?
+  asked:
+    - {ref: conidis2014, loc: "Section 1, after the list of systems"}
+  statements: [inf2b, wkl]
+  formal:
+    - {from: inf2b, to: wkl, over: rca0}
+  context: >-
+    WKL₀ proves it (Theorem 8.1), while the variants for 2-based spaces with infinite/coinfinite or
+    infinite/cofinite dimensional subspaces are equivalent to ACA₀ (Theorems 1.5 and 1.6).

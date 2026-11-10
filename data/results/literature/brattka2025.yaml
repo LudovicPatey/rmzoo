@@ -1,0 +1,3 @@
+# Results from [brattka2025].
+
+[ { type: equivalence, from: lim.par, to: lim, over: w, refs: [ { ref: brattka2025, loc: Corollary 4.11(2) } ] }, { type: implication, from: lim.diamond, to: lim, over: w, refs: [ { ref: brattka2025, loc: Corollary 4.11(2) } ] }, { type: separation, from: lim, to: lim.diamond, over: w, refs: [ { ref: brattka2025, loc: Corollary 4.11(2) } ] } ]

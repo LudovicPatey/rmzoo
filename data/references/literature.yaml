@@ -603,3 +603,10 @@ gill2023b:
   venue: arXiv preprint
   arxiv: "2310.20097"
   read: pdf-arxiv
+erhard2013:
+  authors: [ Julia Christina Erhard ]
+  title: The Carlson-Simpson Lemma in Reverse Mathematics
+  year: 2013
+  venue: PhD thesis, University of California, Berkeley
+  url: https://escholarship.org/uc/item/6j42d395
+  read: pdf-local

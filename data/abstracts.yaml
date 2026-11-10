@@ -862,6 +862,9 @@ enayat2025:
 enayatschmerl2019:
   source: arxiv
   text: In 1975 Barwise and Schlipf published a landmark paper whose main theorem asserts that a nonstandard model $\mathcal{M}$ of PA (Peano arithmetic) is recursively saturated iff $\mathcal{M}$ has an expansion that satisfies the subsystem $Δ_1^1$-${\sf CA}_0$ of second order arithmetic. In this paper we identify a crucial error in the Barwise-Schlipf proof of the right-to-left direction of the theorem, and additionally, we offer a correct proof of the problematic direction.
+erhard2013:
+  source: openalex
+  text: We examine the Carlson-Simpson Lemma (VW(k,l)), which is the combinatorial core of the Dual Ramsey Theorem, from the perspective of Reverse Mathematics. Our results include the following:Working in the system BSigma_2^0, we carry out the construction of a failure of the ordered version of the Carlson-Simpson Lemma OVW(k,l), which was introduced in a paper by Miller and Solomon. This observation implies that we can construct such a recursive counterexample in the model of SRT_2^2 that was discussed in a recent paper by Chong, Slaman and Yang. It follows that SRT_2^2 does not prove OVW(k,l) over RCA_0.We also show that the strength of the principle VW(k,l) is independent of the number of colors l being used.By proving that VW(k,l) is not conservative over RCA_0 for arithmetical sentences, we conclude that VW(k,l) is not provable from any theory that is conservative over RCA_0 for arithmetical sentences.
 escardostreicher2002:
   source: openalex
   text: In this note we exhibit a continuity principle for real-valued functions on C[–1, 1] that is not validated by realizability over domains although it is validated by Kleene's functional realizability corresponding to Weihrauch's theory of type 2 effectivity.

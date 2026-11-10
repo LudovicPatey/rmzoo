@@ -3,3 +3,9 @@
 - { type: "separation", from: "tt22", to: "isig2", over: "rca0", note: "Consequence of the ∀Π⁰₄-conservation of CSL¹₂ over RCA₀ + BΣ⁰₂.", refs: [ { ref: lehoueroupatey2026, loc: Corollary 6.14 } ] }
 - { type: conservation, statement: tt22-wkl, base: bsig2, class: uPi04, value: true, refs: [ { ref: lehoueroupatey2026, loc: Corollary 6.14 } ] }
 - { type: separation, from: henson-indiv, to: isig2, over: rca0, refs: [ { ref: lehoueroupatey2026, loc: abstract (consequence of the ∀Π⁰₄-conservation of CSL¹₂ over RCA₀ + BΣ⁰₂) } ] }
+- { type: conservation, statement: csl12-wkl, base: bsig2, class: uPi04, value: true, refs: [ { ref: lehoueroupatey2026, loc: Main Theorem 1.1 } ] }
+- { type: implication, from: csl12-wkl, to: henson-indiv, over: rca0, refs: [ { ref: lehoueroupatey2026, loc: "Section 1, after Main Theorem 1.1" } ] }
+- { type: separation, from: csl12-wkl, to: isig2, over: rca0, refs: [ { ref: lehoueroupatey2026, loc: "Section 1, after Main Theorem 1.1" } ] }
+- { type: implication, from: csl1, to: tt2, over: rca0, refs: [ { ref: lehoueroupatey2026, loc: Proposition 6.13 } ] }
+- { type: implication, from: csl1, to: henson-indiv, over: rca0, refs: [ { ref: lehoueroupatey2026, loc: "Section 6.1, before Theorem 6.10" } ] }
+- { type: conservation, statement: henson-indiv, base: bsig2, class: uPi04, value: true, refs: [ { ref: lehoueroupatey2026, loc: "Section 6.1, after Theorem 6.10 (by Main Theorem 1.1 and Corollary 6.7)" } ] }

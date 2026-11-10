@@ -280,6 +280,20 @@
   instance: A finite alphabet $A$, some $\ell \geq 1$ and an $\ell$-coloring of $A^{<\omega,1}$.
   solution: 'An $\omega$-variable word $W$ over $A$ such that $\{W[u] : u \in A^{<\omega,1}\}$ is monochromatic.'
 
+- id: csl12
+  label: '\mathsf{CSL}^1_2'
+  name: Carlson–Simpson lemma for 1-variable words and 2 colors
+  kind: problem
+  tags: [ ramsey ]
+  aliases: [ CSL12, "CSL^1_2" ]
+  definition: >
+    The Carlson–Simpson lemma $\mathsf{CSL}_1$ restricted to 2-colorings: for every finite alphabet $A$ and every
+    2-coloring of $A^{<\omega,1}$, the 1-variable words over $A$ of finite length, there is an $\omega$-variable word
+    $W$ over $A$ such that $\{W[u] : u \in A^{<\omega,1}\}$ is monochromatic.
+  refs: [ { ref: lehoueroupatey2026, role: origin, loc: "Theorem 2.1 and the notation after it" } ]
+  instance: A finite alphabet $A$ and a 2-coloring of $A^{<\omega,1}$.
+  solution: 'An ω-variable word W over A such that {W[u] : u ∈ A^{<ω,1}} is monochromatic.'
+
 - id: csl2
   label: '\mathsf{CSL}_2'
   name: Carlson–Simpson lemma for 2-variable words

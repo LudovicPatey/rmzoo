@@ -1,3 +1,3 @@
 # Results from [conidis2012].
 
-[ { type: separation, from: delta11ca, to: abw, over: omega, refs: [ { ref: conidis2012, loc: Theorem 3.1 (Section 3; the introduction states it with the roles exchanged) }, { ref: barnesgohshore2023, loc: Proof of Theorem 7.9 } ] }, { type: implication, from: abw, to: aca, over: omega, refs: [ { ref: conidis2012, loc: "Lemma 2.2(2) (over RCA₀ + IΣ¹₁, which every ω-model satisfies)" } ] } ]
+[ { type: separation, from: delta11ca, to: abw, over: omega, refs: [ { ref: conidis2012, loc: Theorem 3.1 (Section 3; the introduction states it with the roles exchanged) }, { ref: barnesgohshore2023, loc: Proof of Theorem 7.9 } ] }, { type: implication, from: abw, to: aca, over: omega, refs: [ { ref: conidis2012, loc: "Lemma 2.2(2) (over RCA₀ + IΣ¹₁, which every ω-model satisfies)" } ] }, { type: separation, from: abw, to: indec, over: omega, refs: [ { ref: conidis2012, loc: Theorem 4.1 } ] } ]

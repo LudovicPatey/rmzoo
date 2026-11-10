@@ -65,3 +65,17 @@
   refs:
     - { ref: dzhafarovetal2017b, loc: "Theorem 1.3, Corollary 1.6" }
   date: 2026-11-06
+
+- ref: conidis2012
+  loc: Section 1.2, statement of Theorem 3.1 in the introduction
+  kind: misprint
+  claim: There is an ω-model of $\mathsf{ABW}_0$ that is not a model of $\Delta^1_1$-$\mathsf{CA}_0$; therefore $\mathsf{ABW}_0$ does not imply $\Delta^1_1$-$\mathsf{CA}_0$.
+  correction: >
+    The roles are reversed with respect to Section 3: Theorem 3.1 as stated and proved there gives an ω-model of
+    [[delta11ca]] that is not a model of [[abw]] (a modification of Steel's tagged-tree model), so Δ¹₁-CA₀ does not imply
+    ABW₀. The statement printed in the introduction also holds, but by another route: ABW₀ does not imply [[indec]]
+    (Theorem 4.1), which Δ¹₁-CA₀ implies (Theorem 2.2 of [@montalban2006]).
+  refs:
+    - { ref: conidis2012, loc: "Theorem 3.1 (Section 3) and its proof, Theorem 4.1" }
+    - { ref: montalban2006, loc: Theorem 2.2 }
+  date: 2026-11-10

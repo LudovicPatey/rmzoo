@@ -1,0 +1,3 @@
+# Results from [conidis2014].
+
+[ { type: equivalence, from: inf-vs, to: aca, over: rca0, refs: [ { ref: conidis2014, loc: Theorem 1.8 } ] }, { type: implication, from: wkl, to: inf2b, over: rca0, refs: [ { ref: conidis2014, loc: Theorem 8.1 } ] } ]
