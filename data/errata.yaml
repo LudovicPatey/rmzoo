@@ -91,3 +91,15 @@
   refs:
     - { ref: brattkarakotoniaina2017, loc: "Corollary 3.15" }
   date: 2026-11-10
+- ref: hirst2018
+  loc: Theorem 10
+  kind: error
+  claim: $\mathsf{PTT}_1 \equiv_{sW} \mathsf{PTT}_{1L} <_W \Sigma^1_1\text{-}\mathsf{SEP}$.
+  correction: >
+    The inequality is reversed: $\Sigma^1_1\text{-}\mathsf{SEP} <_W \mathsf{PTT}_1$. Σ¹₁-SEP is strongly Weihrauch equivalent to
+    $\mathsf{UC}_{\mathbb{N}^\mathbb{N}}$ (Theorem 3.11 of [@kiharamarconepauly2020]), $\mathsf{UC}_{\mathbb{N}^\mathbb{N}} <_W
+    \mathsf{C}_{\mathbb{N}^\mathbb{N}}$ (Corollary 3.7 there) and $\mathsf{PTT}_1 \equiv_W \mathsf{C}_{\mathbb{N}^\mathbb{N}}$
+    (Proposition 6.3 there). These are the results the proof cites.
+  refs:
+    - { ref: kiharamarconepauly2020, loc: "Theorem 3.11, Corollary 3.7, Proposition 6.3" }
+  date: 2026-11-11

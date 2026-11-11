@@ -1,0 +1,3 @@
+# Results from [hirst2004].
+
+[ { type: implication, from: iht, to: ht, over: rca0, refs: [ { ref: hirst2004, loc: Proof of Theorem 6 } ] } ]

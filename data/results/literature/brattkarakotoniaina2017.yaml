@@ -63,3 +63,4 @@
 - { type: separation, from: rt12.jump, to: bwt2.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Theorem 6.8 } ] }
 - { type: separation, from: bwt2.jump, to: rt12.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 6.10 } ] }
 - { type: separation, from: rt12.jump, to: srt22, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 6.12 } ] }
+- { type: implication, from: rt32, to: rt2, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.25 } ] }

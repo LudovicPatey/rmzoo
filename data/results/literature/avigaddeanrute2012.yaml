@@ -1,3 +1,3 @@
 # Results from [avigaddeanrute2012].
 
-[ { type: equivalence, from: wwkl, to: ran1, over: rca0star, refs: [ { ref: avigaddeanrute2012, loc: Theorem 3.1 and the remark after its proof (the equivalence goes through in RCA₀*) } ] } ]
+[ { type: equivalence, from: wwkl, to: ran1, over: rca0star, refs: [ { ref: avigaddeanrute2012, loc: Theorem 3.1 and the remark after its proof (the equivalence goes through in RCA₀*) } ] }, { type: equivalence, from: bsig2-ran2, to: wwkl2, over: rca0, refs: [ { ref: avigaddeanrute2012, loc: Theorem 3.7 } ] } ]

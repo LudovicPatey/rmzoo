@@ -1,3 +1,3 @@
 # Results from [bementhirstwallace2021].
 
-[ { type: equivalence, from: aca, to: lpo.par, over: rca0, refs: [ { ref: bementhirstwallace2021, loc: Corollary 9 (proved in iRCA₀) } ] }, { type: equivalence, from: wkl, to: llpo.par, over: rca0, refs: [ { ref: bementhirstwallace2021, loc: Corollary 17 (proved in iRCA₀) } ] } ]
+[ { type: equivalence, from: aca, to: lpo.par, over: rca0, refs: [ { ref: bementhirstwallace2021, loc: Corollary 9 (proved in iRCA₀) }, { ref: hirst2018, loc: Proposition 3 } ] }, { type: equivalence, from: wkl, to: llpo.par, over: rca0, refs: [ { ref: bementhirstwallace2021, loc: Corollary 17 (proved in iRCA₀) } ] } ]

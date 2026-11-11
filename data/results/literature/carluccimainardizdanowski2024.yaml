@@ -1,0 +1,3 @@
+# Results from [carluccimainardizdanowski2024].
+
+[ { type: implication, from: rt32, to: wop-omega, over: w, refs: [ { ref: carluccimainardizdanowski2024, loc: Theorem 1 } ] } ]

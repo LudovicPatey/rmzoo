@@ -2,3 +2,5 @@
 
 - { type: "implication", from: "pr2", to: "rt2", over: "rca0", refs: [ { ref: flood2013, loc: Theorem 7.3 } ] }
 - { type: separation, from: pr2, to: aca, over: omega, refs: [ { ref: flood2013, loc: Corollary 3.14 } ] }
+- { type: property, statement: pr2, property: low2-basis, value: true, refs: [ { ref: flood2013, loc: Theorem 3.13 } ] }
+- { type: implication, from: aca, to: pr2, over: rca0, refs: [ { ref: flood2013, loc: Corollary 2.12 } ] }

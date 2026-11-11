@@ -1,0 +1,3 @@
+# Results from [kreuzer2012].
+
+[ { type: implication, from: em, to: bpi1, over: rca0, refs: [ { ref: kreuzer2012, loc: Proposition 16 } ] } ]

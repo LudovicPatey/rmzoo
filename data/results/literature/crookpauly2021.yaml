@@ -1,0 +1,3 @@
+# Results from [crookpauly2021].
+
+[ { type: implication, from: wkl, to: auc.diamond, over: w, refs: [ { ref: crookpauly2021, loc: "Corollary 33, proof" } ] } ]

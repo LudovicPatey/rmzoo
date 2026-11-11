@@ -1,7 +1,7 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Avigad, Dean, Rute (2012) — Algorithmic randomness, reverse mathematics, and the dominated convergence theorem
 
-- { type: "implication", from: "wwkl2", to: "wwkl", over: "rca0", folklore: true, justification: { kind: restriction, text: A computable tree of positive measure is a Δ⁰₂ tree of positive measure., by: ai } }
+- { type: "implication", from: "wwkl2", to: "wwkl", over: "rca0", justification: { kind: restriction, text: A computable tree of positive measure is a Δ⁰₂ tree of positive measure., by: ai }, refs: [ { ref: avigaddeanrute2012, loc: Theorem 3.8 } ] }
 - { type: "implication", from: "pos-wwkl", to: "pos2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "remark on p. 2, end of Section 1" } ] }
 - { type: "equivalence", from: "pos1", to: "ran1", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Theorem 3.1" } ] }
 - { type: "implication", from: "wwkl2", to: "bsig2", over: "rca0", refs: [ { ref: "avigaddeanrute2012", loc: "Proposition 3.2" } ] }

@@ -5,7 +5,7 @@
 - { type: property, statement: scac, property: low-basis, value: true, refs: [ { ref: hirschfeldtshore2007, loc: Theorem 3.4 and Corollary 3.5 }, { ref: dzhafarovmummert2022, loc: Theorem 9.2.19 } ] }
 - { type: property, statement: amt, property: low-basis, value: true, refs: [ { ref: hirschfeldtshoreslaman2009 } ] }
 - { type: property, statement: pi01g, property: low-basis, value: true, refs: [ { ref: hirschfeldtshoreslaman2009 } ] }
-- { type: property, statement: em, property: low-basis, value: false, refs: [ { ref: kreuzer2012b, loc: "Proposition 5.2" } ] }
+- { type: property, statement: em, property: low-basis, value: false, refs: [ { ref: kreuzer2012b, loc: Proposition 5.2 }, { ref: kreuzer2012, loc: Proposition 17 } ] }
 - { type: property, statement: srrt22, property: low-basis, value: true, refs: [ { ref: patey2015 } ] }
 - { type: property, statement: wsrrt22, property: low-basis, value: true, refs: [ { ref: patey2015 }, { ref: patey2016c, loc: Theorem 9.3.4 } ] }
 - { type: property, statement: sads-sgp22-wkl, property: low-basis, value: true, refs: [ { ref: pateyyokoyama2018, loc: "Corollary 5.3" } ] }

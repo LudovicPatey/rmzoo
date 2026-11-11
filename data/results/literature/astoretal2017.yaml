@@ -4,3 +4,7 @@
 - { type: "implication", from: "ads", to: "adc", over: "sw", refs: [ { ref: astoretal2017, loc: Proposition 2.2 } ] }
 - { type: "implication", from: "adc", to: "ads", over: "c", refs: [ { ref: astoretal2017, loc: Proposition 2.2 } ] }
 - { type: "separation", from: "adc", to: "sads", over: "w", note: "Even SADS is not Weihrauch reducible to ADC.", refs: [ { ref: astoretal2017, loc: Theorem 2.5 }, { ref: dzhafarovmummert2022, loc: Theorem 9.2.28 } ] }
+- { type: separation, from: sads, to: sadc, over: w, refs: [ { ref: astoretal2017, loc: Theorem 2.7 } ] }
+- { type: implication, from: d2, to: sadc, over: sw, refs: [ { ref: astoretal2017, loc: Proposition 2.4(1) } ] }
+- { type: implication, from: adc, to: coh, over: sw, refs: [ { ref: astoretal2017, loc: Proof of Corollary 2.10 } ] }
+- { type: separation, from: d2, to: sads, over: w, refs: [ { ref: astoretal2017, loc: Theorem 2.6 } ] }
