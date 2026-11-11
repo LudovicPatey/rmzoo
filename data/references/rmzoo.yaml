@@ -123,7 +123,7 @@ cholakgreenbergmiller2006:
   venue: J. Symbolic Logic 71(3)
   doi: 10.2178/jsl/1154698592
   arxiv: math/0506019
-  read: pdf-zotero
+  read: pdf-arxiv
   zbmath: "1109.03034"
   zbmathAuthors:
     - cholak.peter-a
@@ -379,7 +379,7 @@ wang2014b:
   venue: Adv. Math. 261
   doi: 10.1016/j.aim.2014.05.003
   arxiv: "1303.3331"
-  read: pdf-zotero
+  read: pdf-arxiv
   zbmath: "1307.03011"
   zbmathAuthors:
     - wang.wei.9
@@ -549,7 +549,7 @@ patey2018a:
   year: 2018
   venue: Computability 7(4), 323–339
   arxiv: "1607.04506"
-  read: pdf-zotero
+  read: pdf-arxiv
   zbmath: "1435.03031"
   zbmathAuthors:
     - patey.ludovic

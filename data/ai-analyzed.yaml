@@ -3589,6 +3589,66 @@ hajek1993:
   review: 1
   dropped: 0
   cost: 0
+hajekpudlak1998#1:
+  date: 2026-11-11
+  model: claude-sonnet-5-5 (chat)
+  textHash: 231c56623b0a6355
+  part: 1/6 (pages 1–42)
+  facts: 0
+  added: 0
+  review: 0
+  dropped: 0
+  cost: 0
+hajekpudlak1998#2:
+  date: 2026-11-11
+  model: claude-sonnet-5-5 (chat)
+  textHash: 774ff8d6bbed1e78
+  part: 2/6 (chapter I, pages 43–126)
+  facts: 6
+  added: 0
+  review: 11
+  dropped: 0
+  cost: 0
+hajekpudlak1998#3:
+  date: 2026-11-11
+  model: claude-sonnet-5-5 (chat)
+  textHash: ffc054c3f14909c6
+  part: 3/6 (chapters II, III, pages 127–228)
+  facts: 2
+  added: 0
+  review: 4
+  dropped: 1
+  cost: 0
+hajekpudlak1998#4:
+  date: 2026-11-11
+  model: claude-sonnet-5-5 (chat)
+  textHash: c6a7717216127c37
+  part: 4/6 (chapter IV, pages 229–282)
+  facts: 9
+  added: 0
+  review: 4
+  dropped: 7
+  cost: 0
+hajekpudlak1998#5:
+  date: 2026-11-11
+  model: claude-sonnet-5-5 (chat)
+  textHash: 5011d96b1694cebd
+  part: 5/6 (chapter V (1/2), pages 283–402)
+  facts: 0
+  added: 0
+  review: 3
+  dropped: 0
+  cost: 0
+hajekpudlak1998#6:
+  date: 2026-11-11
+  model: claude-sonnet-5-5 (chat)
+  textHash: d056db7a38b32cff
+  part: 6/6 (chapter V (2/2), pages 403–482)
+  facts: 7
+  added: 0
+  review: 0
+  dropped: 7
+  cost: 0
 harizanovsrinivasan2023:
   date: 2026-11-11
   model: claude-sonnet-5-5 (chat)

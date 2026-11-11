@@ -209,6 +209,7 @@ brattkagherardi2009:
     - Guido Gherardi
   title: Borel Complexity of Topological Operations on Computable Metric Spaces
   year: 2009
+  doi: 10.1093/logcom/exn027
   venue: Journal of Logic and Computation, 19(1), 45–76
   source: weihrauch-bibliography
   zbmath: "1169.03047"
@@ -499,6 +500,7 @@ brattka2005:
     - Vasco Brattka
   title: Effective Borel measurability and reducibility of functions
   year: 2005
+  doi: 10.1002/malq.200310125
   venue: Mathematical Logic Quarterly, 51(1), 19–44
   source: weihrauch-bibliography
   zbmath: "1059.03074"
@@ -607,6 +609,7 @@ brattka1997:
     - Vasco Brattka
   title: Computable Invariance
   year: 1997
+  doi: 10.1007/bfb0045081
   venue: Computing and Combinatorics, 1276, 146–155
   source: weihrauch-bibliography
   zbmath: "0881.03033"
@@ -662,6 +665,7 @@ carl2019:
     - Merlin Carl
   title: Ordinal Computability, An Introduction to Infinitary Machines
   year: 2019
+  doi: 10.1515/9783110496154
   venue: de Gruyter, 9
   source: weihrauch-bibliography
   zbmath: "1531.03001"
@@ -1033,6 +1037,7 @@ gherardi2006b:
     - Guido Gherardi
   title: Effective Borel degrees of some topological functions
   year: 2006
+  doi: 10.1002/malq.200610021
   venue: Mathematical Logic Quarterly, 52(6), 625–642
   source: weihrauch-bibliography
   zbmath: "1109.03070"
@@ -1684,6 +1689,7 @@ kudinovselivanovzhukov2010:
     - Anton V. Zhukov
   title: Undecidability in Weihrauch Degrees
   year: 2010
+  doi: 10.1007/978-3-642-13962-8_29
   venue: Programs, Proofs, Processes, 6158, 256–265
   source: weihrauch-bibliography
   zbmath: "1286.03143"

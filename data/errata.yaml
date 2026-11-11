@@ -103,3 +103,52 @@
   refs:
     - { ref: kiharamarconepauly2020, loc: "Theorem 3.11, Corollary 3.7, Proposition 6.3" }
   date: 2026-11-11
+
+- ref: hajekpudlak1998
+  loc: "Chapter I, Theorem 2.24(2)"
+  kind: misprint
+  claim: For $n \ge 1$, $T\Sigma_{n+1} \Rightarrow P\Sigma_{n+1} \Rightarrow T\Sigma_n$.
+  correction: >
+    The middle theory is $P\Sigma_n$: for $n \ge 1$, $I\Sigma_{n+1} \Rightarrow P\Sigma_n \Rightarrow I\Sigma_n$, as stated
+    in Lemma 2.48, which proves this item, and in Theorem IV.1.26(3); this also agrees with Fig. 1. As printed the claim
+    would collapse $P\Sigma_{n+1}$ to $I\Sigma_{n+1}$, since $P\Sigma_{n+1} \Rightarrow T\Sigma_{n+1}$ trivially and
+    $T\Sigma_{n+1} \Leftrightarrow I\Sigma_{n+1}$ (2.24(3)), contradicting Theorem IV.1.29(1).
+  refs:
+    - { ref: hajekpudlak1998, loc: "Chapter I, Lemma 2.48 and Fig. 1; Chapter IV, Theorems 1.26(3) and 1.29" }
+  date: 2026-11-11
+
+- ref: hajekpudlak1998
+  loc: "Chapter I, Theorem 2.23(2)"
+  kind: misprint
+  claim: $PHP(\Sigma_0(\Sigma_n)) \Leftrightarrow I\Sigma_{n+1}$.
+  correction: >
+    The indices agree: $I\Sigma_{n+1} \Leftrightarrow PHP(\Sigma_0(\Sigma_{n+1}))$, as stated in Lemma 2.30, which proves
+    this item (its proof turns a $\Sigma_{n+1}$ failure of induction into a $\Sigma_0(\Sigma_{n+1})$ failure of the
+    pigeonhole principle). The proof of Lemma 2.33 uses the lemma in this form ($I\Sigma_n$ implies $PHP(\Pi_n)$).
+  refs:
+    - { ref: hajekpudlak1998, loc: "Chapter I, Lemmas 2.30 and 2.33" }
+  date: 2026-11-11
+
+- ref: hajekpudlak1998
+  loc: "Chapter I, remark after Lemma 2.35"
+  kind: misprint
+  claim: If $m > 0$, then $I\Sigma_1 + B\Pi_m$ is $B\Sigma_m$.
+  correction: >
+    It is $B\Sigma_{m+1}$, since $B\Pi_m \Leftrightarrow B\Sigma_{m+1}$ (Lemma 2.10); this is the form used in
+    Theorem 2.24(1), $B\Sigma_{n+1} \Leftrightarrow FAC(\Sigma_{n+1})$.
+  refs:
+    - { ref: hajekpudlak1998, loc: "Chapter I, Lemma 2.10 and Theorem 2.24(1)" }
+  date: 2026-11-11
+
+- ref: binnskjoshanssen2014
+  loc: Corollary 4.8 and Theorem 4.9
+  kind: gap
+  claim: If f is of hyperimmune-free degree, then no path of hyperimmune-free degree through an infinite f-computable f-diminutive tree computes a DNR function (Corollary 4.8); hence $\mathsf{RCA}_0 + \mathsf{DIM} \nvdash \mathsf{DNR}$ (Theorem 4.9).
+  correction: >
+    Corollary 4.8 is false, as the paper itself notes in a bracketed remark after it (due to Bienvenu and Shafer): take f
+    ML-random of hyperimmune-free degree and A = f. The proof of Theorem 4.9 uses Corollary 4.8, so the separation of
+    DIM from DNR is not established by this proof, and it is not entered in the database. Theorem 5.8 (VSMALL does
+    not imply DIM) uses computable traceability instead and is not affected.
+  refs:
+    - { ref: binnskjoshanssen2014, loc: "Corollary 4.8 (bracketed remark) and proof of Theorem 4.9" }
+  date: 2026-11-11

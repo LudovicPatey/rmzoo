@@ -87990,3 +87990,498 @@
     date: 2026-11-11
     by: Claude (AI assistant, Opus 5.5)
     note: "Not added: constructive principle over EL, outside the catalogue."
+- id: hajekpudlak1998-80ada08e
+  ref: hajekpudlak1998
+  part: 2/6 (chapter I, pages 43–126)
+  date: 2026-11-11
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: isig2
+    to: bsig2
+    over: rca0
+  loc: Theorem 2.5(1)
+  origin: special-case
+  quote: (1) IΣn+! =• BΣn+x =* IΣn;
+  paperNotation: IΣ_{n+1} contains BΣ_{n+1} (n=1)
+  argument: Instance n=1 of 2.5(1) (also Lemma 2.11).
+  confidence: medium
+  concerns: First-order theories over Q (IΣ0 with the schemes), not second-order RCA0; transfer to RCA0 (which contains IΣ1) is by the same proof but is a judgement call. Garbled extraction of subscripts and arrows; checked against the statement of 2.5/2.10.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: 57e3a8b8e181
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+- id: hajekpudlak1998-adedc2d9
+  ref: hajekpudlak1998
+  part: 2/6 (chapter I, pages 43–126)
+  date: 2026-11-11
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: bsig2
+    to: isig1
+    over: rca0
+  loc: Theorem 2.5(1)
+  origin: special-case
+  quote: (1) IΣn+! =• BΣn+x =* IΣn;
+  paperNotation: BΣ_{n+1} contains IΣ_n (n=1)
+  argument: Instance n=1 of 2.5(1) (also Lemma 2.15).
+  confidence: medium
+  concerns: First-order theories over Q (IΣ0 with the schemes), not second-order RCA0; transfer to RCA0 (which contains IΣ1) is by the same proof but is a judgement call. Garbled extraction of subscripts and arrows; checked against the statement of 2.5/2.10.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: 1a136670632d
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+- id: hajekpudlak1998-a82021a2
+  ref: hajekpudlak1998
+  part: 2/6 (chapter I, pages 43–126)
+  date: 2026-11-11
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: isig3
+    to: bsig3
+    over: rca0
+  loc: Theorem 2.5(1)
+  origin: special-case
+  quote: (1) IΣn+! =• BΣn+x =* IΣn;
+  paperNotation: IΣ_{n+1} contains BΣ_{n+1} (n=2)
+  argument: Instance n=2 of 2.5(1).
+  confidence: medium
+  concerns: First-order theories over Q (IΣ0 with the schemes), not second-order RCA0; transfer to RCA0 (which contains IΣ1) is by the same proof but is a judgement call. Garbled extraction of subscripts and arrows; checked against the statement of 2.5/2.10.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: e91b184f7e99
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+- id: hajekpudlak1998-0ce8c5e3
+  ref: hajekpudlak1998
+  part: 2/6 (chapter I, pages 43–126)
+  date: 2026-11-11
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: bsig3
+    to: isig2
+    over: rca0
+  loc: Theorem 2.5(1)
+  origin: special-case
+  quote: (1) IΣn+! =• BΣn+x =* IΣn;
+  paperNotation: BΣ_{n+1} contains IΣ_n (n=2)
+  argument: Instance n=2 of 2.5(1).
+  confidence: medium
+  concerns: First-order theories over Q (IΣ0 with the schemes), not second-order RCA0; transfer to RCA0 (which contains IΣ1) is by the same proof but is a judgement call. Garbled extraction of subscripts and arrows; checked against the statement of 2.5/2.10.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: 4f1d4cd36ab7
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+- id: hajekpudlak1998-8bed2c3f
+  ref: hajekpudlak1998
+  part: 2/6 (chapter I, pages 43–126)
+  date: 2026-11-11
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: bsig2
+    to: bpi1
+    over: rca0
+  loc: Lemma 2.10
+  origin: special-case
+  quote: 2.10 Lemma. BΣn+\ <& BΠn.
+  paperNotation: BΣ_{n+1} <-> BΠ_n (n=1)
+  argument: Instance n=1 of 2.10, proved by contraction of quantifiers.
+  confidence: medium
+  concerns: First-order theories over Q (IΣ0 with the schemes), not second-order RCA0; transfer to RCA0 (which contains IΣ1) is by the same proof but is a judgement call. Garbled extraction of subscripts and arrows; checked against the statement of 2.5/2.10.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: 5e585dd378eb
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+- id: hajekpudlak1998-0716aa6a
+  ref: hajekpudlak1998
+  part: 2/6 (chapter I, pages 43–126)
+  date: 2026-11-11
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: bsig3
+    to: bpi2
+    over: rca0
+  loc: Lemma 2.10
+  origin: special-case
+  quote: 2.10 Lemma. BΣn+\ <& BΠn.
+  paperNotation: BΣ_{n+1} <-> BΠ_n (n=2)
+  argument: Instance n=2 of 2.10.
+  confidence: medium
+  concerns: First-order theories over Q (IΣ0 with the schemes), not second-order RCA0; transfer to RCA0 (which contains IΣ1) is by the same proof but is a judgement call. Garbled extraction of subscripts and arrows; checked against the statement of 2.5/2.10.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: 5ab48ef37b92
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+- id: hajekpudlak1998-a4e4e5b2
+  ref: hajekpudlak1998
+  part: 2/6 (chapter I, pages 43–126)
+  date: 2026-11-11
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PHP(Σ_n)
+    name: Pigeonhole principle for Σ_n (Σ_0(Σ_n)) formulas
+    loc: "2.20"
+    definition: No Σ_n-definable (resp. Σ_0(Σ_n)-definable) one-one map of (<u+1) onto (<u) exists, for every u.
+    facts: "Lemma 2.30: IΣ_{n+1} <-> PHP(Σ_0(Σ_{n+1})); Theorem 2.23(3): for n>1 PHP(Σ_{n+1}) <-> BΣ_{n+1}, and PHP(Σ_1) implies BΣ_1 (2.31-2.33)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 52548dc1a222
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Not added: first-order scheme family (PHP for Σn), equivalent to induction or collection at each level; the catalogue keeps only the induction and collection levels."
+- id: hajekpudlak1998-5ce242ae
+  ref: hajekpudlak1998
+  part: 2/6 (chapter I, pages 43–126)
+  date: 2026-11-11
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SΣ_n / SΠ_n
+    name: Strong collection
+    loc: "2.20"
+    definition: (∀u)(∃v)(∀x<u)[(∃y)φ(x,y) -> (∃y<v)φ(x,y)] for φ in Σ_n/Π_n.
+    facts: "Theorem 2.23(1): SΣ_{n+1} <-> SΠ_n; Lemmas 2.27-2.29: IΣ_{n+1} implies SΠ_n implies IΣ_{n+1}."
+  reasons:
+    - principle not in the catalogue
+  proposed: 273f775a5fba
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Not added: first-order scheme family (strong collection), equivalent to induction at each level."
+- id: hajekpudlak1998-695febe7
+  ref: hajekpudlak1998
+  part: 2/6 (chapter I, pages 43–126)
+  date: 2026-11-11
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: RΠ_n
+    name: Regularity principle
+    loc: "2.20"
+    definition: (Cx)(∃y<u)φ(x,y) -> (∃y<u)(Cx)φ(x,y), where (Cx) means unboundedly many x.
+    facts: "Theorem 2.23(4): RΠ_n <-> BΠ_{n+1} <-> BΣ_{n+2}; RΠ_0 implies IΣ_1 (2.43)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 19f45dfef04a
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Not added: first-order scheme family (regularity), equivalent to collection at each level."
+- id: hajekpudlak1998-aed87735
+  ref: hajekpudlak1998
+  part: 2/6 (chapter I, pages 43–126)
+  date: 2026-11-11
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FAC(Σ_n), TΣ_n, PΣ_n
+    name: Finite axiom of choice; approximation principles for total/partial functions
+    loc: "2.21"
+    definition: Finite choice sequences for multivalued functions total beneath u; existence of arbitrarily long approximations of total (T) or partial (P) Σ_n/Π_n defined functions.
+    facts: "Theorem 2.24: over IΣ_1, BΣ_n <-> FAC(Σ_n), IΣ_1 <-> FAC(Σ_1); IΣ_{n+1} <-> TΣ_{n+1} <-> TΠ_n and PΣ_{n+1} <-> PΠ_n, TΣ_{n+1} => PΣ_{n+1} => TΠ_n."
+  reasons:
+    - principle not in the catalogue
+  proposed: 6866a5fb6cd1
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Not added: first-order scheme families (finite choice, approximation principles), equivalent to induction or collection at each level."
+- id: hajekpudlak1998-958c9aa5
+  ref: hajekpudlak1998
+  part: 2/6 (chapter I, pages 43–126)
+  date: 2026-11-11
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LΣ_n, IΠ_n, IΔ_n, LΔ_n
+    name: Least number principle, Π_n and Δ_n induction
+    loc: "2.3"
+    definition: Least number principle for Σ_n formulas; induction for Π_n formulas; induction/least number for formulas equivalent to a Σ_n and a Π_n formula.
+    facts: "Theorem 2.4: IΣ_n, IΠ_n, IΣ_0(Σ_n), LΣ_n, LΠ_n, LΣ_0(Σ_n) are equivalent; Lemma 2.17: LΔ_{n+1} implies BΣ_{n+1}; open whether IΔ_n and LΔ_n are equivalent."
+  reasons:
+    - principle not in the catalogue
+  proposed: 936274123ddf
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Not added: least number principles are equivalent to induction (Theorem 2.4); LΔn has no result relating it to a catalogue statement."
+- id: hajekpudlak1998-7532362a
+  ref: hajekpudlak1998
+  part: 3/6 (chapters II, III, pages 127–228)
+  date: 2026-11-11
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: rt
+    to: ph
+    over: rca0
+  loc: Section 1.2 (remark after the definition of PH)
+  origin: stated
+  quote: Harrington principle follows from the infinite Ramsey theorem using Kόnig's
+  paperNotation: infinite Ramsey theorem (for all arities and numbers of colours)
+  argument: "Informal remark: PH follows from infinite Ramsey's theorem by compactness (König's lemma). Not proved formally in this part."
+  confidence: low
+  concerns: Informal and not formalized over a base theory here; rt identified with the infinite Ramsey theorem for all arities and finite colours; confidence low-medium.
+  reasons:
+    - "extractor confidence: low"
+  proposed: 12d65bf9c843
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+- id: hajekpudlak1998-d18f7a3b
+  ref: hajekpudlak1998
+  part: 3/6 (chapters II, III, pages 127–228)
+  date: 2026-11-11
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Arrow(n,i,j) i.e. ω → (ω)^n_{<ω}(Δ_i,Δ_j)
+    name: Infinite Ramsey-type partition relation for Δ_i sets/colourings with Δ_j (or low Δ_j) homogeneous set
+    loc: Section 1.4, 1.24, Theorems 1.5, 1.6, 1.27
+    definition: For every unbounded Δ_i set X and every Δ_i colouring F:[X]^n→z (z a number) there is an unbounded Δ_j (or low Δ_j) set homogeneous for F; Arrow° is the version with X the whole universe.
+    facts: "Theorem 1.5: BΣ_{m+n} proves ω→(ω)^n_{<ω}(low Δ_{m+1}, low Δ_{m+1}). Theorem 1.6/1.27: over IΣ1, BΣ_{n+m} (n,m≥1) is equivalent to Arrow(n,m,m+n) and to Arrow°(n,m,m+n); so for n+m=2 it is equivalent to BΣ2 and for n+m=3 to BΣ3. Lemma 1.25: IΣ1 proves Arrow(1,m,m) iff Arrow°(1,m,m). Theorem 1.28: BΣ_{m+1} proves there is a Δ_m F:[V]^2→2 with no Σ_{m+1} unbounded homogeneous set."
+  reasons:
+    - principle not in the catalogue
+  proposed: f86b10235cde
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Not added: definability-restricted Ramsey relations, equivalent over IΣ1 to collection levels (Theorems 1.6, 1.27); the base IΣ1 is not a catalogue base."
+- id: hajekpudlak1998-c5b1b7d7
+  ref: hajekpudlak1998
+  part: 3/6 (chapters II, III, pages 127–228)
+  date: 2026-11-11
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (PH)_n = (∀z)PH(n+1,z)
+    name: n-th instance of the Paris–Harrington principle (arity n+1)
+    loc: Sections 1.3, 2.1; Theorem 1.9, Corollary 2.3
+    definition: PH(u,z) is (∀x,q)(∃y)([x,y]→(q)^u_z) with relatively large homogeneous set (min < cardinality); (PH)_n is (∀z)PH(n+1,z).
+    facts: "Theorem 1.9: IΣn proves (∀z)PH(n,z), and each numerical instance PH(n+1,k). Theorem 2.2/Corollary 2.3: IΣ1 proves (PH)_n equivalent to Con(IΣn+Tr(Π1)); (PH)_n is provable in IΣ_{n+1} but not in IΣn; IΣ1 proves (PH) (all n) equivalent to Con(PA+Tr(Π1)). Theorem 1.10: IΣ1 proves the finite Ramsey theorem."
+  reasons:
+    - principle not in the catalogue
+  proposed: 180fdf52cf5d
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Not added: numerical instances (PH)n of the Paris–Harrington principle, compared with IΣn only over IΣ1."
+- id: hajekpudlak1998-7e7360a0
+  ref: hajekpudlak1998
+  part: 3/6 (chapters II, III, pages 127–228)
+  date: 2026-11-11
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Con(IΣn+Tr(Π1)), Con^m
+    name: Consistency statements for fragments with true Π1 sentences
+    loc: Section 2
+    definition: Consistency of IΣn plus the set of all true Π1 sentences.
+    facts: Equivalent over IΣ1 to (PH)_n (Theorem 2.2) and, by Theorem 3.36, to (W)_n (largeness statement).
+  reasons:
+    - principle not in the catalogue
+  proposed: 0a4d8ddd1db3
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Not added: consistency statements, outside the catalogue."
+- id: hajekpudlak1998-09ca0ec6
+  ref: hajekpudlak1998
+  part: 4/6 (chapter IV, pages 229–282)
+  date: 2026-11-11
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: bsig2
+    base: rca0
+    class: Pi03
+    value: true
+  loc: Theorem 1.59
+  origin: special-case
+  quote: 1.59 Theorem. For each k > 0, BΣk+i is a ^ΓA +2~conservative extension of
+  paperNotation: BΣ_{k+1} is Π_{k+2}-conservative over IΣ_k, k=1
+  argument: "Case k=1: RCA0+BΣ2 is Π3-conservative over IΣ1 (= base rca0 for first-order sentences)."
+  citedFrom: Paris; Friedman (independently)
+  confidence: medium
+  concerns: Extraction cuts the sentence ('over IΣ_k' lost). Π_{k+2} read as Π^0_3 for k=1; the original is a first-order statement about arithmetic sentences.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 7300b448baab
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+- id: hajekpudlak1998-f8d26036
+  ref: hajekpudlak1998
+  part: 4/6 (chapter IV, pages 229–282)
+  date: 2026-11-11
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: bsig3
+    base: isig2
+    class: Pi04
+    value: true
+  loc: Theorem 1.59
+  origin: special-case
+  quote: 1.59 Theorem. For each k > 0, BΣk+i is a ^ΓA +2~conservative extension of
+  paperNotation: BΣ_{k+1} is Π_{k+2}-conservative over IΣ_k, k=2
+  argument: "Case k=2: BΣ3 is Π4-conservative over IΣ2."
+  citedFrom: Paris; Friedman (independently)
+  confidence: medium
+  concerns: As above.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 8b0bf48886af
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+- id: hajekpudlak1998-9006d251
+  ref: hajekpudlak1998
+  part: 4/6 (chapter IV, pages 229–282)
+  date: 2026-11-11
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PΣ_n
+    name: Parameter/approximation scheme for Σ_n partial functions
+    loc: Section 1(d) before Theorem 1.26 (defined in Chap. I, Section 2)
+    definition: "IΣ1 plus: every Σ_n-definable partial function F has, for each x, a finite approximation segment s of length x with F(u) < (s)_{i+1} for u<(s)_i in dom(F)."
+    facts: "Theorem 1.26(3): IΣ_{n+1} implies PΣ_n implies IΣ_n (n≥1). Theorem 1.29: IΣ_{n+1} strictly stronger than PΣ_n, PΣ_n strictly stronger than IΣ_n, PΣ_n and BΣ_{n+1} incomparable, and PΣ_n+BΣ_{n+1} does not imply IΣ_{n+1}. Corollary 1.62: BΣ_{k+1}+PΣ_k is Π_{k+2}-conservative over IΣ_k."
+  reasons:
+    - principle not in the catalogue
+  proposed: d412c1e8ea23
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Not added: first-order parameter scheme PΣn, compared only with induction and collection levels."
+- id: hajekpudlak1998-e019bb5d
+  ref: hajekpudlak1998
+  part: 4/6 (chapter IV, pages 229–282)
+  date: 2026-11-11
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Rams(n,m)
+    name: Ramsey-type statement for Δ_m functions on n-tuples with n-unbounded sets
+    loc: Lemma 2.18
+    definition: "(∀F∈Δ_m) F: V^n→a has an i<a with F^{-1}(i) n-unbounded."
+    facts: "Lemma 2.18: over IΣ1, BΣ_{n+m} is equivalent to Rams(n,m)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 0c783114af84
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Not added: Rams(n,m) is equivalent to collection levels over IΣ1 (Lemma 2.18); the case n = m = 1 is rt1inf ↔ bsig2, already in the database."
+- id: hajekpudlak1998-c1982d5a
+  ref: hajekpudlak1998
+  part: 5/6 (chapter V (1/2), pages 283–402)
+  date: 2026-11-11
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: IΣ0 (Σ0-induction)
+    name: Induction for bounded formulae of L_Q
+    loc: Chapter V, Section 1(a)
+    definition: Q plus the induction schema for all bounded (Δ0) formulae of the language of Q.
+    facts: No recursive nonstandard model (Theorem 1.1); every countable nonstandard model has a nonstandard initial segment satisfying PA (Theorem 1.2); Parikh's theorem (Theorem 1.4); IΣ0 ⊂ IΣ0+Ω1 ⊂ ... ⊂ IΣ0+Exp ⊂ IΣ0+Superexp is a proper hierarchy (Corollary 1.6).
+  reasons:
+    - principle not in the catalogue
+  proposed: 7d5c45a2cb5d
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Not added: bounded arithmetic, outside the catalogue."
+- id: hajekpudlak1998-59418ec6
+  ref: hajekpudlak1998
+  part: 5/6 (chapter V (1/2), pages 283–402)
+  date: 2026-11-11
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: IΣ0+Exp, IΣ0+Ωi
+    name: Bounded arithmetic with totality of exponentiation / ω_i
+    loc: Chapter V, Section 1(a)
+    definition: IΣ0 plus an axiom saying that exp (resp. ω_{i}) is total.
+    facts: Proper hierarchy by Parikh's theorem (Corollary 1.6); not stated relative to catalogue bases.
+  reasons:
+    - principle not in the catalogue
+  proposed: a0e796137463
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Not added: bounded arithmetic, outside the catalogue."
+- id: hajekpudlak1998-f3900681
+  ref: hajekpudlak1998
+  part: 5/6 (chapter V (1/2), pages 283–402)
+  date: 2026-11-11
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: T^i_2, S^i_2
+    name: Buss's fragments of bounded arithmetic
+    loc: Chapter V, Sections 1 and 4
+    definition: Theories in the language L2 with induction (resp. PIND) for Σ^b_i formulae.
+    facts: S^1_2 is a conservative extension of IΣ0+Ω1; for i>1, S^i_2 proves bounded collection BBΣ^b_i (Theorem 4.10); S^{i+1}_2 is Σ^b_{i+1}-conservative over T^i_2 (Corollary 4.34).
+  reasons:
+    - principle not in the catalogue
+  proposed: b6f8d5e63b8d
+  decision:
+    date: 2026-11-11
+    by: Claude (AI assistant, Opus 5.5)
+    note: "Not added: bounded arithmetic, outside the catalogue."

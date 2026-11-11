@@ -12,7 +12,7 @@
   over: w
   refs:
     - ref: brattkarakotoniaina2017
-      loc: Theorem 4.22
+      loc: "Theorem 4.21 (n = 1, k = 2)"
     - ref: ddhms2016
   note: RT¹ₖ₊₁ is not Weihrauch reducible to RT¹ₖ.
 
@@ -22,15 +22,9 @@
 - { type: implication, from: rt23, to: rt22, over: [ sw, rca0star ], folklore: true, justification: { kind: restriction, text: A 2-coloring is a 3-coloring with the same homogeneous sets., by: ai } }
 - { type: implication, from: rt32, to: rt22, over: [ sw, rca0star ], folklore: true, justification: { kind: reduction, text: "Color a triple {x < y < z} by f(x, y); an infinite homogeneous set for this coloring is homogeneous for f.", by: ai } }
 
-- type: separation
-  from: rt22
-  to: rt23
-  over: c
-  refs: [ { ref: patey2018a } ]
-  note: RT²ₖ₊₁ is not computably reducible to RT²ₖ.
 
 - { type: property, statement: rt22, property: cone-avoidance, value: true, refs: [ { ref: seetapunslaman1995, loc: Theorem 2.1 }, { ref: cholakjockuschslaman2001, loc: Theorem 12.2 } ] }
-- { type: property, statement: rt22, property: pa-avoidance, value: true, refs: [ { ref: liu2012 } ] }
+- { type: property, statement: rt22, property: pa-avoidance, value: true, refs: [ { ref: liu2012, loc: Theorem 1.5 } ] }
 - { type: property, statement: rt22, property: computably-true, value: false, refs: [ { ref: jockusch1972, loc: Corollary 2.2 } ] }
 - { type: property, statement: rt32, property: cone-avoidance, value: false, refs: [ { ref: jockusch1972 } ] }
 
@@ -40,7 +34,7 @@
 
 - { type: implication, from: srt22, to: d22, over: [ sw, rca0star ], folklore: true, justification: { kind: reduction, text: An infinite homogeneous set for a stable coloring is limit-homogeneous., by: ai } }
 - { type: implication, from: d22, to: rt12, over: [ sw, rca0star ], folklore: true, note: "Color the pair {x < y} by the color of x.", justification: { kind: reduction, text: "Color the pair {x < y} by the color of x; this coloring is stable and its limit-homogeneous sets are homogeneous for the original coloring.", by: ai } }
-- { type: implication, from: d22, to: srt22, over: rca0, refs: [ { ref: chonglemppyang2010 }, { ref: cholakjockuschslaman2001, loc: Lemma 7.10 }, { ref: cjs2009, loc: "Corrigendum, item 1" } ], note: "D²₂ implies BΣ⁰₂ [CLY10], and D²₂ + BΣ⁰₂ implies SRT²₂ [CJS01]." }
+- { type: implication, from: d22, to: srt22, over: rca0, refs: [ { ref: chonglemppyang2010, loc: "Theorem 1.4" }, { ref: cholakjockuschslaman2001, loc: Lemma 7.10 }, { ref: cjs2009, loc: "Corrigendum, item 1" } ], note: "D²₂ implies BΣ⁰₂ [CLY10], and D²₂ + BΣ⁰₂ implies SRT²₂ [CJS01]." }
 - { type: implication, from: d22, to: srt22, over: omega, refs: [ { ref: cholakjockuschslaman2001, loc: Lemma 7.10 } ] }
 
 - type: separation

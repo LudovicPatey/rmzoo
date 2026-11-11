@@ -435,6 +435,7 @@ hirst2012:
   title: Hilbert versus Hindman
   venue: Archive for Mathematical Logic 51(1-2), 123–125
   year: 2012
+  doi: 10.1007/s00153-011-0257-4
   zbmath: "1239.03038"
   zbmathAuthors:
     - hirst.jeffry-l
@@ -463,6 +464,7 @@ kucera1985:
   title: Measure, Π⁰₁-classes and complete extensions of PA
   venue: Recursion Theory Week (Oberwolfach 1984), Lecture Notes in Mathematics 1141, Springer, 245–259
   year: 1985
+  doi: 10.1007/bfb0076224
   read: pdf-zotero
   zbmath: "0622.03031"
   zbmathAuthors:
@@ -472,6 +474,7 @@ millermartin1968:
   title: The degrees of hyperimmune sets
   venue: Zeitschrift für Mathematische Logik und Grundlagen der Mathematik 14, 159–166
   year: 1968
+  doi: 10.1002/malq.19680140704
   read: pdf-zotero
   zbmath: "0216.29102"
   zbmathAuthors:
@@ -482,6 +485,7 @@ cholakmarconesolomon2004:
   title: Reverse mathematics and the equivalence of definitions for well and better quasi-orders
   venue: Journal of Symbolic Logic 69(3), 683–712
   year: 2004
+  doi: 10.2178/jsl/1096901762
   read: pdf-oa
   zbmath: "1075.03030"
   zbmathAuthors:
@@ -493,6 +497,7 @@ hummel1994:
   title: 'Effective versions of Ramsey''s theorem: avoiding the cone above 0′'
   venue: Journal of Symbolic Logic 59(4), 1301–1325
   year: 1994
+  doi: 10.2307/2275707
   zbmath: "0815.03028"
   zbmathAuthors:
     - hummel.tamara-lakins
@@ -501,6 +506,7 @@ sacks1963:
   title: Degrees of unsolvability
   venue: Annals of Mathematics Studies 55, Princeton University Press
   year: 1963
+  doi: 10.1515/9781400881840
   zbmath: "0143.25302"
   zbmathAuthors:
     - sacks.gerald-e
@@ -509,6 +515,7 @@ chongliyang2014:
   title: Nonstandard models in recursion theory and reverse mathematics
   venue: Bulletin of Symbolic Logic 20(2), 170–200
   year: 2014
+  doi: 10.1017/bsl.2014.14
   read: pdf-zotero
   zbmath: "1341.03098"
   zbmathAuthors:
@@ -526,6 +533,7 @@ jockuschetal2009:
   title: Stability and posets
   venue: Journal of Symbolic Logic 74(2), 693–711
   year: 2009
+  doi: 10.2178/jsl/1243948336
   read: pdf-zotero
   zbmath: "1171.03034"
   zbmathAuthors:

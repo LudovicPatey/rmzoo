@@ -1,4 +1,4 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Giusto, Simpson (2000) — Located sets and reverse mathematics
 
-- { type: "implication", from: "wwkl", to: "dnr", over: "rca0", refs: [ { ref: giustosimpson2000, loc: Lemma 6.18 }, { ref: ambosspiesetal2004 }, { ref: bienvenupateyshafer2017, loc: Section 2.4 } ] }
+- { type: "implication", from: "wwkl", to: "dnr", over: "rca0", refs: [ { ref: giustosimpson2000, loc: Lemma 6.18 }, { ref: ambosspiesetal2004, loc: "Theorem 1.7" }, { ref: bienvenupateyshafer2017, loc: Section 2.4 } ] }

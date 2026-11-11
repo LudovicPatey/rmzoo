@@ -4,7 +4,7 @@
 - { type: "implication", from: "wkl-jj", to: "rt22", over: "w", note: "The parallelization of RT²ₖ is equivalent to WKL″.", refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 4.15 } ] }
 - { type: "implication", from: "wkl-jj", to: "wkl-j", over: "sw", refs: [ { ref: brattkarakotoniaina2017 }, { ref: brattkagherardimarcone2012, loc: Proposition 5.6(1) } ] }
 - { type: implication, from: rt22, to: coh, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Proposition 5.4 } ] }
-- { type: equivalence, from: kl, to: wkl-j, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Theorem 5.13 } ] }
+- { type: equivalence, from: kl, to: wkl-j, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Theorem 5.11 } ] }
 - { type: separation, from: srt2, to: rt22, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.3 } ] }
 - { type: implication, from: srt22, to: cn, over: w, note: lim_N ≡ C_N is Weihrauch reducible to SRT²₂., refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.27 } ] }
 - { type: implication, from: rt32, to: wkl-j, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.30 } ] }

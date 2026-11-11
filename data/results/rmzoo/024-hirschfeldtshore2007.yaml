@@ -26,7 +26,7 @@
 - { type: "equivalence", from: "cac", to: "ads-scac", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 3.8" } ] }
 - { type: "equivalence", from: "cac", to: "coh-scac", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 3.8" } ] }
 - { type: "separation", from: "scac", to: "dnr", over: "omega", refs: [ { ref: "hirschfeldtshore2007", loc: "Corollary 3.10" } ] }
-- { type: "separation", from: "cac", to: "dnr", over: "omega", refs: [ { ref: hirschfeldtshore2007, loc: Corollary 3.11 }, { ref: patey2018a, loc: Corollary 17 }, { ref: dzhafarovmummert2022, loc: Theorem 9.2.21 } ] }
+- { type: "separation", from: "cac", to: "dnr", over: "omega", refs: [ { ref: hirschfeldtshore2007, loc: Corollary 3.11 }, { ref: patey2018a, loc: Corollary 18 }, { ref: dzhafarovmummert2022, loc: Theorem 9.2.21 } ] }
 - { type: "implication", from: "scac", to: "rt1inf", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 4.1" } ] }
 - { type: "equivalence", from: "stcads", to: "bsig2-cads", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 4.4" } ] }
 - { type: "equivalence", from: "stcoh", to: "bsig2-coh", over: "rca0", refs: [ { ref: "hirschfeldtshore2007", loc: "Proposition 4.4" } ] }

@@ -262,6 +262,7 @@ cjs2009:
   title: Corrigendum to "On the strength of Ramsey's theorem for pairs"
   venue: Journal of Symbolic Logic 74(4), 1438–1439
   year: 2009
+  doi: 10.2178/jsl/1254748700
   read: pdf-zotero
   zbmath: "1182.03107"
   zbmathAuthors:
@@ -291,7 +292,7 @@ liu2012:
   year: 2012
   doi: 10.2178/jsl/1333566640
   arxiv: "1602.03784"
-  read: pdf-zotero
+  read: pdf-arxiv
   zbmath: "1245.03095"
   zbmathAuthors:
     - liu.lu.1

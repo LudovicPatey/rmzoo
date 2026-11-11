@@ -1517,3 +1517,21 @@
   context: >-
     WKL₀ proves it (Theorem 8.1), while the variants for 2-based spaces with infinite/coinfinite or
     infinite/cofinite dimensional subspaces are equivalent to ACA₀ (Theorems 1.5 and 1.6).
+
+- id: mcsf-strength
+  parts:
+    - question: 'Does $\mathsf{MCSF}$ imply $\Pi^1_2\text{-}\mathsf{CA}_0$ over $\mathsf{RCA}_0$?'
+      formal: [{from: mcsf, to: pi12ca, over: rca0}]
+    - question: 'Does $\mathsf{MCSF}$ imply $\Delta^1_2\text{-}\mathsf{CA}_0$? (By Theorem 5.18 one may assume $\Pi^1_1\text{-}\mathsf{CA}_0$.) A positive answer would show that $\mathsf{MRSF}$ does not imply $\mathsf{MCSF}$.'
+      status: open
+  asked:
+    - {ref: shore2026, loc: "Questions 7.1 and 7.2"}
+  statements: [mcsf, mrsf, pi12ca, pi11ca]
+
+- id: mrsf-pi11ca
+  question: 'Does $\Pi^1_1\text{-}\mathsf{CA}_0$ imply $\mathsf{MRSF}$ (and so is equivalent to it)?'
+  formal: [{from: pi11ca, to: mrsf, over: rca0}]
+  asked:
+    - {ref: shore2026, loc: Question 7.3}
+  statements: [mrsf, pi11ca]
+  context: 'Each of MRSF and MCSF implies $\Pi^1_1\text{-}\mathsf{CA}_0$ over $\mathsf{RCA}_0$ (Theorem 5.18 of [@shore2026]), and MRSF does not imply $\Delta^1_2\text{-}\mathsf{CA}_0$.'

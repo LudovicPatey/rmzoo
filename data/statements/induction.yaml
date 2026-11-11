@@ -69,3 +69,218 @@
     The scheme $\forall m\, \exists X\, \forall i\, (i \in X \leftrightarrow (i < m \wedge \varphi(i)))$ for every
     $\Sigma^0_1$ formula $\varphi(i)$ in which $X$ does not occur.
   refs: [ { ref: simpsonsmith1986, role: rm, loc: "Section 1, Lemma 2.5(d)" } ]
+
+# Schemes of Hájek–Pudlák, Chapter I, Section 2 (least number principle, Π⁰ₙ and Δ⁰ₙ forms,
+# strong collection, regularity, pigeonhole principle, finite choice, partial approximation).
+# The book works in first-order arithmetic; here the schemes allow set parameters.
+
+- id: lsig2
+  label: '\mathsf{L}\Sigma^0_2'
+  name: Σ⁰₂ least number principle
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ LSigma2, sigma2 least number principle ]
+  definition: >
+    The scheme $\exists x\, \varphi(x) \to \exists x\, (\varphi(x) \wedge \forall y < x\, \neg\varphi(y))$ for every
+    $\Sigma^0_2$ formula $\varphi$.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.1 and 2.3" } ]
+
+- id: lsig3
+  label: '\mathsf{L}\Sigma^0_3'
+  name: Σ⁰₃ least number principle
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ LSigma3, sigma3 least number principle ]
+  definition: >
+    The scheme $\exists x\, \varphi(x) \to \exists x\, (\varphi(x) \wedge \forall y < x\, \neg\varphi(y))$ for every
+    $\Sigma^0_3$ formula $\varphi$.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.1 and 2.3" } ]
+
+- id: ipi2
+  label: '\mathsf{I}\Pi^0_2'
+  name: Π⁰₂ induction
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ IPi2, pi2 induction ]
+  definition: The induction scheme restricted to $\Pi^0_2$ formulas.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.1 and 2.3" } ]
+
+- id: ipi3
+  label: '\mathsf{I}\Pi^0_3'
+  name: Π⁰₃ induction
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ IPi3, pi3 induction ]
+  definition: The induction scheme restricted to $\Pi^0_3$ formulas.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.1 and 2.3" } ]
+
+- id: ldelta2
+  label: '\mathsf{L}\Delta^0_2'
+  name: Δ⁰₂ least number principle
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ LDelta2, delta2 least number principle ]
+  definition: >
+    For every $\Sigma^0_2$ formula $\sigma(x)$ and every $\Pi^0_2$ formula $\pi(x)$: if $\forall x\, (\sigma(x)
+    \leftrightarrow \pi(x))$, then the least number principle holds for $\sigma$: $\exists x\, \sigma(x) \to
+    \exists x\, (\sigma(x) \wedge \forall y < x\, \neg\sigma(y))$.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.3" } ]
+
+- id: ldelta3
+  label: '\mathsf{L}\Delta^0_3'
+  name: Δ⁰₃ least number principle
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ LDelta3, delta3 least number principle ]
+  definition: >
+    For every $\Sigma^0_3$ formula $\sigma(x)$ and every $\Pi^0_3$ formula $\pi(x)$: if $\forall x\, (\sigma(x)
+    \leftrightarrow \pi(x))$, then the least number principle holds for $\sigma$: $\exists x\, \sigma(x) \to
+    \exists x\, (\sigma(x) \wedge \forall y < x\, \neg\sigma(y))$.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.3" } ]
+
+- id: ssig2
+  label: '\mathsf{S}\Sigma^0_2'
+  name: Σ⁰₂ strong collection
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ SSigma2, sigma2 strong collection ]
+  definition: >
+    The scheme $\forall u\, \exists v\, \forall x \le u\, (\exists y\, \varphi(x, y) \to \exists y \le v\, \varphi(x,
+    y))$ for every $\Sigma^0_2$ formula $\varphi$.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.20 and 2.22" } ]
+
+- id: ssig3
+  label: '\mathsf{S}\Sigma^0_3'
+  name: Σ⁰₃ strong collection
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ SSigma3, sigma3 strong collection ]
+  definition: >
+    The scheme $\forall u\, \exists v\, \forall x \le u\, (\exists y\, \varphi(x, y) \to \exists y \le v\, \varphi(x,
+    y))$ for every $\Sigma^0_3$ formula $\varphi$.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.20 and 2.22" } ]
+
+- id: rsig1
+  label: '\mathsf{R}\Sigma^0_1'
+  name: Σ⁰₁ regularity
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ RSigma1, sigma1 regularity ]
+  definition: >
+    The scheme $(\mathrm{C}x)\, \exists y \le u\, \varphi(x, y) \to \exists y \le u\, (\mathrm{C}x)\, \varphi(x, y)$
+    for every $\Sigma^0_1$ formula $\varphi$, where $(\mathrm{C}x)$ is the quantifier $\forall w\, \exists x > w$
+    (there are unboundedly many $x$): if unboundedly many $x$ have a value below $u$, some $y \le u$ is a value of
+    unboundedly many $x$.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.20 and 2.22" } ]
+
+- id: rsig2
+  label: '\mathsf{R}\Sigma^0_2'
+  name: Σ⁰₂ regularity
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ RSigma2, sigma2 regularity ]
+  definition: >
+    The scheme $(\mathrm{C}x)\, \exists y \le u\, \varphi(x, y) \to \exists y \le u\, (\mathrm{C}x)\, \varphi(x, y)$
+    for every $\Sigma^0_2$ formula $\varphi$, where $(\mathrm{C}x)$ is the quantifier $\forall w\, \exists x > w$
+    (there are unboundedly many $x$).
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.20 and 2.22" } ]
+
+- id: php-sig2
+  label: '\mathsf{PHP}(\Sigma^0_2)'
+  name: Σ⁰₂ pigeonhole principle
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ PHP(Sigma2), sigma2 pigeonhole principle ]
+  definition: >
+    For every $\Sigma^0_2$ formula $\varphi(x, y)$ and every $u$, $\varphi$ does not define a bijection between
+    $\{x : x \le u\}$ and $\{y : y \le u + 1\}$: $\neg[\forall x \le u\, \exists! y \le u + 1\, \varphi(x, y) \wedge
+    \forall y \le u + 1\, \exists! x \le u\, \varphi(x, y)]$.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.20 and 2.22" } ]
+
+- id: php-sig3
+  label: '\mathsf{PHP}(\Sigma^0_3)'
+  name: Σ⁰₃ pigeonhole principle
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ PHP(Sigma3), sigma3 pigeonhole principle ]
+  definition: >
+    For every $\Sigma^0_3$ formula $\varphi(x, y)$ and every $u$, $\varphi$ does not define a bijection between
+    $\{x : x \le u\}$ and $\{y : y \le u + 1\}$.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.20 and 2.22" } ]
+
+- id: fac-sig2
+  label: '\mathsf{FAC}(\Sigma^0_2)'
+  name: Σ⁰₂ finite axiom of choice
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ FAC(Sigma2), sigma2 finite axiom of choice ]
+  definition: >
+    For every $\Sigma^0_2$ formula $\varphi(x, y)$ and every $u$: if $\forall x \le u\, \exists y\, \varphi(x, y)$,
+    then there is a finite sequence $s$ of length $u + 1$ with $\forall x \le u\, \varphi(x, (s)_x)$.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.21 and 2.22" } ]
+
+- id: fac-sig3
+  label: '\mathsf{FAC}(\Sigma^0_3)'
+  name: Σ⁰₃ finite axiom of choice
+  kind: sentence
+  firstOrder: true
+  minor: true
+  tags: [ induction, first-order ]
+  aliases: [ FAC(Sigma3), sigma3 finite axiom of choice ]
+  definition: >
+    For every $\Sigma^0_3$ formula $\varphi(x, y)$ and every $u$: if $\forall x \le u\, \exists y\, \varphi(x, y)$,
+    then there is a finite sequence $s$ of length $u + 1$ with $\forall x \le u\, \varphi(x, (s)_x)$.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.21 and 2.22" } ]
+
+- id: psig1
+  label: '\mathsf{P}\Sigma^0_1'
+  name: Approximation of Σ⁰₁ partial functions
+  kind: sentence
+  firstOrder: true
+  tags: [ induction, first-order ]
+  aliases: [ PSigma1 ]
+  definition: >
+    $\mathsf{I}\Sigma^0_1$ plus the scheme: every partial function $F$ whose graph is defined by a $\Sigma^0_1$ formula
+    has arbitrarily long approximations, that is, for every $z$ there is a finite sequence $s$ of length $z$ such
+    that for every $i$ with $i + 1 < \mathrm{lh}(s)$ and every $x \le (s)_i$ in the domain of $F$, $F(x) \le
+    (s)_{i+1}$.
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.21 and 2.22; Chapter IV, 1.26" } ]
+
+- id: psig2
+  label: '\mathsf{P}\Sigma^0_2'
+  name: Approximation of Σ⁰₂ partial functions
+  kind: sentence
+  firstOrder: true
+  tags: [ induction, first-order ]
+  aliases: [ PSigma2 ]
+  definition: >
+    $\mathsf{I}\Sigma^0_1$ plus the scheme: every partial function $F$ whose graph is defined by a $\Sigma^0_2$ formula
+    has arbitrarily long approximations (finite sequences $s$ such that $F(x) \le (s)_{i+1}$ for every $x \le (s)_i$
+    in the domain of $F$).
+  refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.21 and 2.22; Chapter IV, 1.26" } ]
