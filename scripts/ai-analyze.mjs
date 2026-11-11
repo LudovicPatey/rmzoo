@@ -133,7 +133,7 @@ const catalogue = [
   ...raw.classes.map((c) => `- ${c.id}: ${c.notation}`),
   '',
   '## Statements (id | TeX label | name | kind | other names), then the definition',
-  ...plain.map((s) => `- ${s.id} | ${s.label} | ${s.name || ''} | ${s.kind}${s.aliases?.length ? ' | ' + s.aliases.join(', ') : ''}\n  ${squash(s.definition, 500)}${s.instance ? `\n  Instance: ${squash(s.instance, 200)} Solution: ${squash(s.solution, 200)}` : ''}${s.caution ? `\n  Caution: ${squash(s.caution.replace(/\[\[([^\]]+)\]\]/g, '$1'), 300)}` : ''}`),
+  ...plain.map((s) => `- ${s.id} | ${s.label} | ${s.name || ''} | ${s.kind}${s.omegaAbsolute === false ? ' (not ω-absolute)' : ''}${s.aliases?.length ? ' | ' + s.aliases.join(', ') : ''}\n  ${squash(s.definition, 500)}${s.instance ? `\n  Instance: ${squash(s.instance, 200)} Solution: ${squash(s.solution, 200)}` : ''}${s.caution ? `\n  Caution: ${squash(s.caution.replace(/\[\[([^\]]+)\]\]/g, '$1'), 300)}` : ''}`),
   '',
   `Operations for dotted ids: ${Object.values(OPERATIONS).map((o) => o.dotted).join(', ')}.`,
 ].join('\n');

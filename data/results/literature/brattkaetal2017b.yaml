@@ -1,3 +1,3 @@
 # Results from [brattkaetal2017b].
 
-[ { type: equivalence, from: pcr, to: wwkl.x.cn, over: sw, refs: [ { ref: brattkaetal2017b, loc: Fact 3 } ] } ]
+[ { type: equivalence, from: pcr, to: wwkl.x.cn, over: sw, refs: [ { ref: brattkaetal2017b, loc: Fact 3 } ] }, { type: property, statement: vct0, property: computably-true, value: true, refs: [ { ref: brattkaetal2017b, loc: Theorem 11 (VCT₀ is computable) } ] }, { type: equivalence, from: vct1, to: wwkl, over: sw, refs: [ { ref: brattkaetal2017b, loc: Theorem 4(1); Theorem 13 with Fact 3 } ] }, { type: equivalence, from: vct2, to: pcr, over: sw, refs: [ { ref: brattkaetal2017b, loc: Corollary 18 (Theorem 4(2)) } ] }, { type: implication, from: vct2, to: vct1, over: sw, refs: [ { ref: brattkaetal2017b, loc: Proposition 15 } ] }, { type: equivalence, from: act, to: wwkl-star, over: sw, refs: [ { ref: brattkaetal2017b, loc: Theorem 20 } ] } ]

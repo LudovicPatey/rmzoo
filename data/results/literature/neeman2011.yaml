@@ -1,3 +1,3 @@
 # Results from [neeman2011].
 
-[ { type: separation, from: indec, to: wsigma11ac, over: rca0, refs: [ { ref: neeman2011, loc: Theorem 1.1 (even over RCA₀ + Δ¹₁-induction) } ] } ]
+[ { type: separation, from: indec, to: wsigma11ac, over: rca0, refs: [ { ref: neeman2011, loc: Theorem 1.1 (even over RCA₀ + Δ¹₁-induction) } ] }, { type: separation, from: indec, to: isig11, over: rca0, refs: [ { ref: neeman2011, loc: "Section 1, remark after Theorem 1.1; the model N (Lemma 3.1, Corollary 3.7, Section 4)" } ] }, { type: separation, from: wsigma11ac, to: isig11, over: rca0, refs: [ { ref: neeman2011, loc: "Section 1, remark after Theorem 1.1" } ] } ]

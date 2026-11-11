@@ -1,0 +1,3 @@
+# Results from [dobrinensimpson2004].
+
+[ { type: separation, from: wkl, to: gdreg, over: omega, refs: [ { ref: dobrinensimpson2004, loc: Remark 3.5 } ] } ]

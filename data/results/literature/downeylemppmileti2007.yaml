@@ -1,0 +1,3 @@
+# Results from [downeylemppmileti2007].
+
+[ { type: equivalence, from: npi, to: wkl, over: rca0, refs: [ { ref: downeylemppmileti2007, loc: Proposition 3.4 } ] }, { type: equivalence, from: fg-npi, to: aca, over: rca0, refs: [ { ref: downeylemppmileti2007, loc: Proposition 3.8 } ] } ]

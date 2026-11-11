@@ -1,0 +1,3 @@
+# Results from [shafer2012].
+
+[ { type: implication, from: pi11ca, to: menger, over: rca0, refs: [ { ref: shafer2012, loc: Theorem 4.4 } ] } ]

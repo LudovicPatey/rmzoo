@@ -118,6 +118,15 @@ export function buildZoo(raw) {
   const inDomain = (r, a) => R[r].domain !== 'problems' || S[a].kind === 'problem';
   const key = (a, b) => a * n + b;
 
+  // ω-implication reads a statement inside the model; Weihrauch and computable
+  // reductions read a problem through its true instances. The two agree when
+  // ω-models judge instances and solutions correctly, but not for a statement with
+  // `omegaAbsolute: false` (instances or solutions defined by a Σ¹₁/Π¹₁ condition:
+  // well-orders, trees with a path). A reduction over problems then says nothing
+  // about ω-models, and an ω-model separation nothing about such reductions.
+  const absolute = S.map((s) => s.omegaAbsolute !== false);
+  const bridge = (fine, coarse, a, b) => !(R[coarse].omegaModels && R[fine].domain === 'problems') || (absolute[a] && absolute[b]);
+
   // conjunctions
   const conjParts = S.map((s) => (s.conjunction || []).map((id) => sidx.get(id)));
   const conjOf = S.map(() => []);
@@ -318,7 +327,7 @@ export function buildZoo(raw) {
         const z = ia[i];
         if (!Ib[r][key(z, b)]) addI(r, z, b, { rule: 'trans', prem: [fI(r, z, a), fI(r, a, b)] });
       }
-      for (const r2 of coarserDirect[r]) addI(r2, a, b, { rule: 'coarsen', prem: [fI(r, a, b)] });
+      for (const r2 of coarserDirect[r]) if (bridge(r, r2, a, b)) addI(r2, a, b, { rule: 'coarsen', prem: [fI(r, a, b)] });
       if (R[r].conjunction) {
         for (const k of conjOf[b]) {
           const parts = conjParts[k];
@@ -338,7 +347,12 @@ export function buildZoo(raw) {
   const problemLike = S.map((s) => s.kind === 'problem'
     || (!s.firstOrder && s.problemForm !== false && !(s.conjunction || []).some((c) => S[sidx.get(c)]?.problemForm === false)));
   // a Weihrauch property (direction equiv) applies within the domain of its reduction
+  // a property defined through instances and preserved by ω-implication (cone
+  // avoidance, preservation properties) reads instances in the real world: it does
+  // not apply to a statement that is not ω-absolute
+  const trueInstances = (p) => raw.properties[p].domain === 'problems' && !!R[ridx.get(raw.properties[p].closedUnder)]?.omegaModels;
   const propIn = (p, s) => s !== undefined && (raw.properties[p].domain !== 'problems' || problemLike[s])
+    && (absolute[s] || !trueInstances(p))
     && (raw.properties[p].direction !== 'equiv' || inDomain(ridx.get(raw.properties[p].closedUnder), s));
   // `implies`: having p implies having each q (low basis ⇒ weakly low basis);
   // failing q then implies failing p.
@@ -399,7 +413,9 @@ export function buildZoo(raw) {
     if (res.type !== 'property') return;
     const p = pidx.get(res.property), s = sidx.get(res.statement);
     if (!propIn(p, s)) {
-      errors.push(`Result #${ri} (${res.statement} ${res.property}): the property only applies to statements formulated as problems`);
+      errors.push(s !== undefined && !absolute[s] && trueInstances(p)
+        ? `Result #${ri} (${res.statement} ${res.property}): the statement is not ω-absolute (omegaAbsolute: false), so ω-model properties do not apply`
+        : `Result #${ri} (${res.statement} ${res.property}): the property only applies to statements formulated as problems`);
       return;
     }
     setP(p, s, !!res.value, { rule: 'direct', result: ri });
@@ -499,7 +515,7 @@ export function buildZoo(raw) {
     for (const r2 of coarserAll[r]) {
       for (const k of N[r2].keys()) {
         const a = Math.floor(k / n), b = k % n;
-        addN(a, b, { rule: 'refine', prem: [fN(r2, a, b)] });
+        if (bridge(r, r2, a, b)) addN(a, b, { rule: 'refine', prem: [fN(r2, a, b)] });
       }
     }
     const conservationHere = R[r].conservation;

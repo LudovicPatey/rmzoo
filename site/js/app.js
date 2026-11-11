@@ -884,6 +884,7 @@ function viewStatement(id, params = new URLSearchParams()) {
     ${s.op ? `<p class="small">Weihrauch operation — ${{ jump: 'jump', par: 'parallelization', fin: 'finite parallelization', diamond: 'diamond (closure under compositional product)', product: 'product', compose: 'compositional product' }[s.op]} of
       ${(s.args || []).map((x) => (idx(x) !== undefined ? sLink(idx(x)) : esc(x))).join(' and ')}. Such statements are hidden in the catalogue unless "Weihrauch operations" is checked.</p>` : ''}
     ${s.todo ? `<p><span class="badge warn">definition to be checked</span> <span class="small muted">The precise statement should be checked against the source paper.</span></p>` : ''}
+    ${s.omegaAbsolute === false ? `<p class="small muted">Not ω-absolute: its instances or solutions are defined by a non-arithmetical condition, so an ω-model may judge them differently from the real world. Its ω-model results are read inside the model, and are not derived from Weihrauch or computable reductions (see the reductions on the About page).</p>` : ''}
     ${s.form || s.firstOrder ? `<p class="small muted">Syntactic form: ${classHtml(s.form || 'arith')} (used by conservation results).</p>` : ''}
     <div class="card def-box">${s.conjunction ? `Conjunction of ${s.conjunction.map((c) => sLink(idx(c))).join(' and ')}.` : rich(s.definition)}</div>
     ${s.kind === 'problem' && s.instance ? `<div class="io">
@@ -1743,7 +1744,7 @@ function viewAbout(params) {
     <h2>Notions of reduction</h2>
     <div class="row" style="align-items:flex-start;gap:30px">${latticeSvg({})}
       <div class="grow"><p class="small muted">An implication at a reduction holds at every reduction below it; a separation at a reduction holds at every reduction above it.</p>
-      <table class="grid">${Z.R.map((R) => `<tr><td><b>${esc(R.short)}</b></td><td>${esc(R.name)}<div class="small muted">${esc(R.description || '')}${R.refs ? ` (${R.refs.map(refLink).join('; ')})` : ''}</div></td></tr>`).join('')}</table></div></div>
+      <table class="grid">${Z.R.map((R) => `<tr><td><b>${esc(R.short)}</b></td><td>${esc(R.name)}<div class="small muted">${esc(R.description || '')}${R.refs ? ` (${R.refs.map(refLink).join('; ')})` : ''}</div>${R.warning ? `<div class="small warn">⚠ ${esc(R.warning)}</div>` : ''}</td></tr>`).join('')}</table></div></div>
     ${classesHtml()}
     </section>
     ${panel('properties')}

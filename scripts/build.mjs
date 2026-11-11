@@ -257,6 +257,14 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
     if (!s.name) s.name = parts.map((p) => p.name).join(' + ');
     if (parts.every((p) => p.firstOrder)) s.firstOrder = true;
   }
+  // a statement built from one that ω-models can misjudge (omegaAbsolute: false) inherits it
+  for (let changed = true; changed;) {
+    changed = false;
+    for (const s of raw.statements) {
+      if (s.omegaAbsolute === false) continue;
+      if ([...(s.args || []), ...(s.conjunction || [])].some((id) => byId.get(id)?.omegaAbsolute === false)) { s.omegaAbsolute = false; changed = true; }
+    }
+  }
 }
 
 // ---- validation ------------------------------------------------------------
@@ -406,8 +414,10 @@ for (const p of raw.properties) {
   };
   for (const id of imp.keys()) visit(id, []);
 }
-for (const s of raw.statements)
+for (const s of raw.statements) {
+  if (s.omegaAbsolute !== undefined && s.omegaAbsolute !== false) errors.push(`Statement ${s.id}: omegaAbsolute is only "false"`);
   if (s.problemForm !== undefined && (s.problemForm !== false || s.kind === 'problem')) errors.push(`Statement ${s.id}: problemForm is only "false", on sentences`);
+}
 
 const checkRefs = (refs, where) => {
   for (const r of refs || []) {

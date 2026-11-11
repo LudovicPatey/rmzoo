@@ -1,0 +1,3 @@
+# Results from [mummert2020].
+
+[ { type: equivalence, from: konig-edge, to: wkl, over: rca0, refs: [ { ref: mummert2020, loc: Theorem 3.5 } ] }, { type: equivalence, from: bipartite-decomp, to: wkl, over: rca0, refs: [ { ref: mummert2020, loc: Theorem 3.6 (originally Hirst 1990) } ] }, { type: implication, from: wkl, to: vizing, over: rca0, refs: [ { ref: mummert2020, loc: Proposition 3.4 } ] } ]

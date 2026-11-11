@@ -1,0 +1,3 @@
+# Results from [uftring2025b].
+
+[ { type: equivalence, from: atr, to: gap-seq-weak, over: rca0, refs: [ { ref: uftring2025b, loc: "Theorem 3.3 (b), (c) (Gordeev)" } ] }, { type: equivalence, from: atr, to: gap-seq-strong, over: rca0, refs: [ { ref: uftring2025b, loc: Theorem 3.3 (d) } ] }, { type: equivalence, from: atr, to: gap-btree-l, over: rca0, refs: [ { ref: uftring2025b, loc: Theorem 3.3 (e) } ] }, { type: equivalence, from: atr, to: gap-btree, over: rca0, refs: [ { ref: uftring2025b, loc: Theorem 3.3 (f) } ] } ]

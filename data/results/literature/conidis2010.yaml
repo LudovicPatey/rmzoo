@@ -1,0 +1,3 @@
+# Results from [conidis2010].
+
+[ { type: implication, from: wwkl, to: turing-incomp, over: omega, refs: [ { ref: conidis2010, loc: Theorem 4.1 } ] } ]

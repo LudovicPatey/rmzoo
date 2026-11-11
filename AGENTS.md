@@ -254,7 +254,12 @@ instances and solutions (computable or Weihrauch reductions); otherwise
 classical theorem equivalent to a Big Five system, a technical variant) gets
 `minor: true`: it stays in the database but out of the catalogue's default view,
 and is listed on the pages of the statements equivalent to it (docs/DESIGN.md).
-Do not invent an acronym for it: label it by its name in `\textsf{…}`. Then at least one result (the
+Do not invent an acronym for it: label it by its name in `\textsf{…}`. A problem whose instances or solutions are defined by a
+non-arithmetical condition (well-orders, ill-founded trees, unique paths,
+uncountable closed sets, Σ¹₁/Π¹₁ codes) gets `omegaAbsolute: false`: ω-models
+read statements inside the model (docs/DESIGN.md, 1.1), so an ω-model fact about
+it must come from a model argument, never from its Weihrauch degree or from what
+a Turing ideal such as HYP does with true instances. Then at least one result (the
 build warns about statements in no result), and `data/context.yaml` if
 background helps. Operator statements (`lpo.jump`, `cn.x.wkl`, `tcn.star.tcn`,
 `(cn.x.lpo).jump`) need no entry: the build creates them from their dotted ids. When an

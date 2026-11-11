@@ -1,0 +1,3 @@
+# Results from [paulybrecht2014].
+
+[ { type: separation, from: cn, to: jinv-lim, over: w, refs: [ { ref: paulybrecht2014, loc: Fact 15 } ] } ]

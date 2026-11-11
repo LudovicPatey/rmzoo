@@ -27,7 +27,13 @@ more than coverage. A missing fact is acceptable; a wrong fact is not.
 
 Reductions are given by id (see the catalogue). In particular:
 * `rca0` provability over RCA₀; `rca0star` over RCA₀*; `omega` implication over
-  ω-models (every ω-model, i.e. Turing ideal, of A is a model of B);
+  ω-models (every ω-model, i.e. Turing ideal, of A is a model of B). Statements are
+  read inside the model ("every instance has a solution", as the model judges
+  instances and solutions). For a statement marked "not ω-absolute" in the catalogue
+  (instances or solutions defined by a non-arithmetical condition: well-orders, trees
+  with a path), an argument about true instances in a Turing ideal (such as "HYP
+  solves every computable instance") is not an `omega` fact: record it over `c` if
+  the paper gives a computable reduction or non-reduction, or leave it out;
 * `sw` strong Weihrauch, `w` Weihrauch, `sc` strong computable, `c` computable
   reduction (B ≤ A in the paper's notation means "A implies B" here: `from` is
   the stronger principle), `gw` generalized Weihrauch reduction, `soc` strong

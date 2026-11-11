@@ -1,0 +1,3 @@
+# Results from [marcone2006].
+
+[ { type: equivalence, from: wkl, to: io-11, over: rca0, refs: [ { ref: marcone2006, loc: Theorem 1.2 (i)↔(ii) } ] }, { type: equivalence, from: wkl, to: io-closed, over: rca0, refs: [ { ref: marcone2006, loc: Theorem 1.2 (i)↔(iii) } ] }, { type: equivalence, from: wkl, to: pio-closed, over: rca0, refs: [ { ref: marcone2006, loc: Theorem 1.4 (i)↔(iii) } ] } ]

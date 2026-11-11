@@ -1,4 +1,4 @@
 # Imported from Eric Astor's RM Zoo results file (github.com/ericastor/rmzoo, 2024).
 # Mileti (2004) — Partition theorems and computability theory
 
-- { type: "implication", from: "rt22", to: "coh", over: "rca0", refs: [ { ref: mileti2004, loc: Claim A.1.3 }, { ref: cholakjockuschslaman2001, loc: Lemma 7.11 }, { ref: cjs2009 }, { ref: dzhafarovmummert2022, loc: Lemma 8.5.2 (proof) }, { ref: freundpischkeuftring2026, loc: Corollary 5.10 } ], note: ", and independently Jockusch and Lempp The original proof had a gap, fixed by Mileti and in the corrigendum." }
+- { type: "implication", from: "rt22", to: "coh", over: "rca0", refs: [ { ref: mileti2004, loc: Claim A.1.3 }, { ref: cholakjockuschslaman2001, loc: Lemma 7.11 }, { ref: cjs2009, loc: "Corrigendum, item 2" }, { ref: dzhafarovmummert2022, loc: Lemma 8.5.2 (proof) }, { ref: freundpischkeuftring2026, loc: Corollary 5.10 } ], note: ", and independently Jockusch and Lempp The original proof had a gap, fixed by Mileti and in the corrigendum." }

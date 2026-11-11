@@ -44,3 +44,28 @@
   definition: The induction scheme restricted to $\Sigma^0_2$ formulas.
   refs:
     - { ref: pariskirby1978, role: rm }
+
+- id: isig11
+  label: '\Sigma^1_1\text{-}\mathsf{IND}'
+  name: Σ¹₁ induction
+  kind: sentence
+  tags: [ induction ]
+  aliases: [ Sigma11-IND, Σ11 induction, Σ11-IND ]
+  definition: >
+    The induction scheme for $\Sigma^1_1$ formulas (with parameters): $(\varphi(0) \wedge \forall n\, (\varphi(n)
+    \to \varphi(n+1))) \to \forall n\, \varphi(n)$ for every $\Sigma^1_1$ formula $\varphi(n)$. $\mathsf{RCA}_0$
+    plus this scheme is the base theory $\mathsf{RCA}^*$ of Neeman and Montalbán.
+  refs:
+    - { ref: simpson2009, role: rm, loc: "Definition VII.6.1(2)" }
+    - { ref: neeman2011, role: rm, loc: Section 1 }
+
+- id: bounded-sigma01-ca
+  label: '\textsf{Bounded }\Sigma^0_1\textsf{ comprehension}'
+  name: Bounded Σ⁰₁ comprehension
+  kind: sentence
+  minor: true
+  tags: [ induction ]
+  definition: >
+    The scheme $\forall m\, \exists X\, \forall i\, (i \in X \leftrightarrow (i < m \wedge \varphi(i)))$ for every
+    $\Sigma^0_1$ formula $\varphi(i)$ in which $X$ does not occur.
+  refs: [ { ref: simpsonsmith1986, role: rm, loc: "Section 1, Lemma 2.5(d)" } ]

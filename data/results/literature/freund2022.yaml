@@ -1,0 +1,3 @@
+# Results from [freund2022].
+
+[ { type: implication, from: ght, to: rt, over: rca0, refs: [ { ref: freund2022, loc: Corollary 7 } ] }, { type: separation, from: aca, to: ght, over: rca0, refs: [ { ref: freund2022, loc: Corollary 7 } ] } ]

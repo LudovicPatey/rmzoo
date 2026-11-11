@@ -409,3 +409,33 @@ test('a question with sub-questions: each settled on its own, untracked parts le
   assert.equal(q([op, un]).status, 'open');
   assert.equal(q([yes, no]).parts[1].sub, 1);      // comparisons keep their sub-question
 });
+
+test('ω-models read statements inside the model: no bridge from reductions over problems for non-ω-absolute statements', () => {
+  const z = buildZoo({
+    reductions: [
+      { id: 'w', domain: 'problems', finerThan: ['omega'] },
+      { id: 'rca0', domain: 'all', finerThan: ['omega'] },
+      { id: 'omega', domain: 'all', omegaModels: true, finerThan: [] },
+    ],
+    properties: [{ id: 'ca', closedUnder: 'omega', direction: 'down', domain: 'problems' }],
+    statements: [
+      { id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' },
+      { id: 'u', kind: 'problem', omegaAbsolute: false }, { id: 'v', kind: 'problem', omegaAbsolute: false },
+      { id: 's', kind: 'sentence' },
+    ],
+    results: [
+      { type: 'implication', from: 'a', to: 'b', over: 'w' },
+      { type: 'implication', from: 'u', to: 'a', over: 'w' },
+      { type: 'separation', from: 'v', to: 'a', over: 'omega' },
+      { type: 'separation', from: 'b', to: 's', over: 'omega' },
+      { type: 'implication', from: 'v', to: 's', over: 'rca0' },
+    ],
+  });
+  const st = (r, a, b) => z.status(z.ridx.get(r), z.sidx.get(a), z.sidx.get(b));
+  assert.equal(st('omega', 'a', 'b'), 'implies'); // ω-absolute problems: coarsen as usual
+  assert.equal(st('omega', 'u', 'a'), 'open'); // a Weihrauch reduction gives no ω-model implication
+  assert.equal(st('w', 'v', 'a'), 'open'); // an ω-model separation gives no Weihrauch separation
+  assert.equal(st('omega', 'v', 's'), 'implies'); // provability over RCA₀ still gives the ω-model implication
+  assert.equal(z.propIn(0, z.sidx.get('u')), false); // cone-avoidance-like properties do not apply
+  assert.equal(z.contradictions.length, 0);
+});

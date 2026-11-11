@@ -1,0 +1,3 @@
+# Results from [shimomichitakedayokoyama2025].
+
+[ { type: equivalence, from: aca, to: modal-scc, over: rca0, refs: [ { ref: shimomichitakedayokoyama2025, loc: Theorem 5.10 } ] }, { type: equivalence, from: wkl, to: modal-sc, over: rca0, refs: [ { ref: shimomichitakedayokoyama2025, loc: Theorem 6.13 } ] } ]

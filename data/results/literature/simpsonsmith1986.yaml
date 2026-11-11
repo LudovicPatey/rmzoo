@@ -1,3 +1,3 @@
 # Results from [simpsonsmith1986].
 
-[ { type: conservation, statement: wkl, base: rcastar, class: Pi11, value: true, refs: [ { ref: simpsonsmith1986, loc: Corollary 4.7 } ] } ]
+[ { type: conservation, statement: wkl, base: rcastar, class: Pi11, value: true, refs: [ { ref: simpsonsmith1986, loc: Corollary 4.7 } ] }, { type: equivalence, from: bounded-sigma01-ca, to: isig1, over: rca0star, refs: [ { ref: simpsonsmith1986, loc: Lemma 2.5 } ] }, { type: equivalence, from: evaluation-field, to: isig1, over: rca0star, refs: [ { ref: simpsonsmith1986, loc: Theorem 3.3 } ] }, { type: equivalence, from: poly-finite-roots, to: isig1, over: rca0star, refs: [ { ref: simpsonsmith1986, loc: Theorem 3.9 } ] }, { type: equivalence, from: poly-factorization, to: isig1, over: rca0star, refs: [ { ref: simpsonsmith1986, loc: Theorem 3.10 } ] }, { type: equivalence, from: poly-irreducible-factor, to: isig1, over: rca0star, refs: [ { ref: simpsonsmith1986, loc: Theorem 3.11 } ] } ]

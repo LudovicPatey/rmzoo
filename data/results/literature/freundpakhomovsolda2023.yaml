@@ -1,0 +1,3 @@
+# Results from [freundpakhomovsolda2023].
+
+[ { type: implication, from: pi12ca, to: mba-laver, over: rca0, refs: [ { ref: freundpakhomovsolda2023, loc: Theorem 3.5 } ] }, { type: implication, from: mba-laver, to: mba-simpson, over: rca0, refs: [ { ref: freundpakhomovsolda2023, loc: Proposition 3.2 (stated over ATR₀; the text before it notes that RCA₀ suffices for blocks) } ] } ]

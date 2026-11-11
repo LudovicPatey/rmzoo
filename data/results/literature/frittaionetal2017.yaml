@@ -1,0 +1,3 @@
+# Results from [frittaionetal2017].
+
+[ { type: equivalence, from: isct, to: wo-omega-omega-omega, over: rca0, refs: [ { ref: frittaionetal2017, loc: Corollary 4.8 and Theorem 5.1 } ] }, { type: implication, from: isct, to: msct, over: rca0, refs: [ { ref: frittaionetal2017, loc: "Section 1 (after Theorem 1.2) and Section 6: every MSCT description is ISCT, provably in RCA₀" } ] }, { type: implication, from: msct, to: wo-omega-omega, over: rca0, refs: [ { ref: frittaionetal2017, loc: Remark 4.9 (by Corollary 4.6) } ] }, { type: separation, from: wo-omega-omega, to: msct, over: rca0, refs: [ { ref: frittaionetal2017, loc: "Section 6 (MSCT soundness > WO(ω^ω), using Simpson's IΣ⁰₂ ⊬ WO(ω^{ω^ω}))" } ] } ]

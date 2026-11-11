@@ -42,6 +42,14 @@
   phrase: 'every ω-model of {a} is a model of {b}'
   description: >
     Every ω-model (equivalently every Turing ideal) satisfying the first statement satisfies the second.
+  warning: >
+    Statements are read inside the model: a problem holds in an ω-model M when M satisfies the sentence "every
+    instance has a solution", with "instance" and "solution" as M judges them. For most problems this is the same as
+    "every true instance in M has a solution in M", the reading of Weihrauch and computable reductions. It is not the
+    same when instances or solutions are defined by a non-arithmetical condition (well-orders, trees with a path,
+    uncountable closed sets: statements marked "not ω-absolute"), since an ω-model such as HYP can misjudge them. For
+    those statements no ω-model result is derived from a Weihrauch or computable reduction, nor any such separation
+    from an ω-model result, and properties such as cone avoidance do not apply.
   refs:
     - ref: hirschfeldtjockusch2016
 
@@ -107,6 +115,9 @@
   phrase: '{b} ≤_c {a}'
   description: >
     Every instance X of the second problem computes an instance X̂ of the first such that for every solution Ŷ of X̂, X ⊕ Ŷ computes a solution of X.
+  warning: >
+    Instances and solutions are the true ones. A computable reduction gives an ω-model implication only for problems
+    that ω-models judge correctly; for statements marked "not ω-absolute" (see ω-model implication) it gives none.
   refs:
     - ref: hirschfeldtjockusch2016
 
@@ -119,5 +130,8 @@
   phrase: '{b} ≤_gW {a}'
   description: >
     Uniform reduction allowing finitely many adaptive uses of the first problem (Hirschfeldt–Jockusch 2016).
+  warning: >
+    Instances and solutions are the true ones. A generalized Weihrauch reduction gives an ω-model implication only for
+    problems that ω-models judge correctly; for statements marked "not ω-absolute" (see ω-model implication) it gives none.
   refs:
     - ref: hirschfeldtjockusch2016

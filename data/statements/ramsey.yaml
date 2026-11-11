@@ -525,3 +525,82 @@
   instance: 'A 2-bounded function $f : [\mathbb{N}]^{!\omega} \to \mathbb{N}$.'
   solution: An infinite $f$-rainbow.
   refs: [ { ref: carluccietal2024, role: rm, loc: Definition 3.9 } ]
+
+- id: rt2-inf-2
+  label: '\mathsf{RT}^2_{<\infty,2}'
+  name: Ramsey's theorem for pairs with at most 2 colors on the homogeneous set
+  kind: problem
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ "RT2<∞,2", "RT^2_{<∞,2}" ]
+  definition: >
+    For every $k$ and every coloring $c : [\mathbb{N}]^2 \to k$ there is an infinite set $H$ with
+    $|c([H]^2)| \leq 2$. The case $n = 2$, $\ell = 2$ of $\mathsf{RT}^n_{<\infty,\ell}$.
+  instance: 'A number $k$ and a coloring $c : [\mathbb{N}]^2 \to k$.'
+  solution: An infinite set $H$ with $|c([H]^2)| \leq 2$.
+  refs:
+    - { ref: miyatayokoyama2026, role: rm, loc: "Definition 1 (n = 2, ℓ = 2)" }
+
+# ---------------------------------------------------------------- ordinary mathematics equivalent to Big Five systems
+
+- id: rt-barrier
+  label: '\forall B\, \mathsf{RT}^B_2'
+  name: Barrier Ramsey theorem (Nash-Williams), 2 colors
+  kind: problem
+  minor: true
+  omegaAbsolute: false
+  tags: [ ramsey, well-orders ]
+  aliases: [ barrier theorem ]
+  caution: >
+    In Marcone, Montalbán and Volpi (2025) “the barrier Ramsey theorem” is a finitary theorem generalizing the
+    Paris–Harrington principle, not this infinitary statement.
+  definition: >
+    For every barrier $B$ on an infinite set $X$ and every $f : B \to 2$ there is an infinite $H \subseteq X$ such that
+    $f$ is constant on $B|H$ (equivalently, a sub-barrier $B' \subseteq B$ on which $f$ is constant). A barrier on $X$ is a
+    set of finite subsets of $X$, pairwise $\subseteq$-incomparable, such that every infinite subset of $X$ has an initial
+    segment in it.
+  instance: 'A barrier $B$ and a coloring $f : B \to 2$.'
+  solution: 'An infinite $H \subseteq \mathrm{base}(B)$ with $f$ constant on $B|H$.'
+  refs: [ { ref: carluccigjetaj2026, role: rm, loc: "Definition (Barriers), Theorem 2" }, { ref: marcone2005, role: rm, loc: "Theorem 4.9 (ii)" } ]
+
+- id: fs-barrier
+  label: '\forall B\, \mathsf{FS}^B'
+  name: Barrier free set theorem
+  kind: problem
+  minor: true
+  omegaAbsolute: false
+  tags: [ ramsey ]
+  definition: >
+    For every barrier $B$ on an infinite set $X$ and every $f : B \to \mathbb{N}$ there is a barrier $B' \subseteq B$ such
+    that for all $s \in B'$, if $f(s) \in \mathrm{base}(B')$ then $f(s) \in s$ ($B'$ is free for $f$).
+  instance: 'A barrier $B$ and a function $f : B \to \mathbb{N}$.'
+  solution: 'An infinite $Y \subseteq \mathrm{base}(B)$ such that $B|Y$ is free for $f$.'
+  refs: [ { ref: carluccigjetaj2026, role: rm, loc: "Definition (Barrier Free Set Theorem)" } ]
+
+- id: ts-barrier
+  label: '\forall B\, \mathsf{TS}^B'
+  name: Barrier thin set theorem
+  kind: problem
+  minor: true
+  omegaAbsolute: false
+  tags: [ ramsey ]
+  definition: >
+    For every barrier $B$ on an infinite set $X$ and every $f : B \to \mathbb{N}$ there is a barrier $B' \subseteq B$ such
+    that the image of $f$ restricted to $B'$ is different from $\mathbb{N}$.
+  instance: 'A barrier $B$ and a function $f : B \to \mathbb{N}$.'
+  solution: 'An infinite $Y \subseteq \mathrm{base}(B)$ with $f(B|Y) \neq \mathbb{N}$.'
+  refs: [ { ref: carluccigjetaj2026, role: rm, loc: "Definition (Barrier Thin Set Theorem)" } ]
+
+- id: rrt-barrier
+  label: '\forall B\, \mathsf{RRT}^B_2'
+  name: Barrier rainbow Ramsey theorem, 2-bounded colorings
+  kind: problem
+  minor: true
+  omegaAbsolute: false
+  tags: [ ramsey ]
+  definition: >
+    For every barrier $B$ on an infinite set $X$ and every 2-bounded $f : B \to \mathbb{N}$ (each color has at most 2
+    preimages) there is a barrier $B' \subseteq B$ on which $f$ is injective.
+  instance: 'A barrier $B$ and a 2-bounded function $f : B \to \mathbb{N}$.'
+  solution: 'An infinite $Y \subseteq \mathrm{base}(B)$ such that $f$ is injective on $B|Y$.'
+  refs: [ { ref: carluccigjetaj2026, role: rm, loc: "Definition (Barrier Rainbow Ramsey Theorem)" } ]

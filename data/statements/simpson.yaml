@@ -478,3 +478,233 @@
   tags: ["algebra"]
   definition: "Any two countable reduced Abelian $p$-groups which have the same Ulm invariants are isomorphic."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem I.11.5(2); Section V.7" } ]
+
+- id: modal-sc
+  label: '\textsf{Modal strong completeness}'
+  name: Strong completeness theorem for the modal logics KΣ
+  kind: sentence
+  minor: true
+  tags: [ compactness ]
+  definition: >
+    For $\Sigma \subseteq \{T, B, 4, D\}$: if a set $\Gamma$ of modal formulas is $K\Sigma$-consistent, then
+    $\Gamma \vdash_{K\Sigma} \varphi$ iff $\varphi$ holds in every Kripke model of $\Gamma$ on a frame
+    appropriate to $\Sigma$.
+  refs:
+    - { ref: shimomichitakedayokoyama2025, role: rm, loc: "Theorems 6.12 and 6.13" }
+
+- id: modal-scc
+  label: '\textsf{Modal canonical completeness}'
+  name: Strong completeness theorem for KΣ using canonical models
+  kind: sentence
+  minor: true
+  tags: []
+  definition: >
+    For $\Sigma \subseteq \{T, B, 4, 5, D, .2\}$: for every $K\Sigma$-consistent set $\Gamma$ of modal formulas
+    there are a frame $F$ appropriate to $\Sigma$ and a valuation $V$ such that $(F, V)$ is a model of $\Gamma$
+    and, for every formula $\varphi$, $\Gamma \vdash_{K\Sigma} \varphi$ iff $\varphi$ holds at every world of
+    $(F, V)$.
+  refs:
+    - { ref: shimomichitakedayokoyama2025, role: rm, loc: "Theorems 5.9 and 5.10" }
+
+- id: auniq
+  label: '\textsf{AUniqueness}'
+  name: Uniqueness of atomic models
+  kind: sentence
+  minor: true
+  tags: []
+  aliases: [ AUniqueness ]
+  definition: >
+    If $\mathcal{A}$ and $\mathcal{B}$ are atomic models of a complete theory $T$ (every tuple satisfies an atom
+    of $T$), then $\mathcal{A} \cong \mathcal{B}$.
+  refs:
+    - { ref: hirschfeldtshoreslaman2009, role: rm, loc: "Section 1, item 2; Theorem 2.3(3)" }
+
+- id: pmt-exist
+  label: '\textsf{Prime model existence}'
+  name: Every atomic theory has a prime model
+  kind: sentence
+  minor: true
+  tags: []
+  definition: >
+    Every complete atomic theory $T$ has a prime model (a model elementarily embeddable in every model of $T$).
+    A complete theory is atomic if every formula consistent with it is implied by an atom of $T$.
+  refs:
+    - { ref: hirschfeldtshoreslaman2009, role: rm, loc: "Section 1, item 3; Theorem 2.3(4)" }
+
+- id: atomic-prime
+  label: '\textsf{Atomic models are prime}'
+  name: Every atomic model is prime
+  kind: sentence
+  minor: true
+  tags: []
+  definition: >
+    Every atomic model of a complete theory $T$ is prime (elementarily embeddable in every model of $T$). The
+    converse, that every prime model is atomic, is provable in $\mathsf{RCA}_0$ (Proposition 2.2).
+  refs:
+    - { ref: hirschfeldtshoreslaman2009, role: rm, loc: "Section 1, item 5; Theorem 2.3(2)" }
+
+# ---------------------------------------------------------------- Weihrauch problems
+
+- id: riemann-bd
+  label: '\textsf{Riemann}_{\mathrm{bd}}'
+  name: Riemann integrability of bounded continuous functions
+  kind: sentence
+  minor: true
+  tags: [ analysis, randomness ]
+  definition: Every bounded continuous function on $[a, b]$ is (effectively) Riemann integrable.
+  refs:
+    - { ref: sandersyokoyama2012, role: rm, loc: "Theorem 10 (2)" }
+
+- id: ddt
+  label: '\mathsf{DDT}'
+  name: Dirac delta theorem
+  kind: sentence
+  minor: true
+  tags: [ analysis, randomness ]
+  phrases: [ Dirac Delta Theorem ]
+  definition: >
+    For any continuous function $f$ on $\mathbb{R}$ with bounded support and large enough $n$, the integral
+    $\int_{\mathbb{R}} f(x)\delta_n(x)\,dx$ exists and $\lim_n \int_{\mathbb{R}} f(x)\delta_n(x)\,dx = f(0)$,
+    where $\delta_n(x) = 2^n\eta(2^n x)$ for a fixed smooth $\eta$ with support in $[-1,1]$ and integral $1$.
+  refs:
+    - { ref: sandersyokoyama2012, role: rm, loc: "Theorem 12 (2)" }
+
+- id: nps
+  label: '\textsf{Nontrivial proper subspace}'
+  name: Existence of nontrivial proper subspaces
+  kind: sentence
+  minor: true
+  tags: [ algebra, compactness ]
+  definition: Every vector space of dimension greater than one (over an infinite field) has a nontrivial proper subspace.
+  refs:
+    - { ref: downeyetal2007, role: rm, loc: "Corollary 1.6 (1)" }
+
+- id: fd-nps
+  label: '\textsf{Finite-dim. nontrivial proper subspace}'
+  name: Existence of finite-dimensional nontrivial proper subspaces
+  kind: sentence
+  minor: true
+  tags: [ algebra ]
+  definition: Every vector space of dimension greater than one (over an infinite field) has a finite-dimensional nontrivial proper subspace.
+  refs:
+    - { ref: downeyetal2007, role: rm, loc: "Corollary 1.6 (2)" }
+
+- id: npi
+  label: '\textsf{Nontrivial proper ideal}'
+  name: Existence of nontrivial proper ideals
+  kind: sentence
+  minor: true
+  tags: [ algebra, compactness ]
+  definition: >
+    Every (infinite) commutative ring with identity that is not a field has a nontrivial proper ideal
+    (equivalently: if a ring has no nontrivial proper ideals, then it is a field).
+  refs:
+    - { ref: downeylemppmileti2007, role: rm, loc: "Proposition 3.4 (1)" }
+    - { ref: downeyetal2007, role: rm, loc: "Corollary 1.2 (1)" }
+
+- id: fg-npi
+  label: '\textsf{F.g. nontrivial proper ideal}'
+  name: Existence of finitely generated nontrivial proper ideals
+  kind: sentence
+  minor: true
+  tags: [ algebra ]
+  definition: >
+    Every (infinite) commutative ring with identity that is not a field has a finitely generated nontrivial
+    proper ideal (equivalently: if a ring has no nontrivial proper finitely generated ideals, then it is a
+    field).
+  refs:
+    - { ref: downeylemppmileti2007, role: rm, loc: "Proposition 3.8 (2)" }
+    - { ref: downeyetal2007, role: rm, loc: "Corollary 1.2 (2)" }
+
+- id: wo-log
+  label: '\textsf{Logarithms of well-orderings}'
+  name: Existence of logarithms of countable well-orderings
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  definition: >
+    If $\alpha > 1$ and $\beta$ are countable well-orderings, then there is a well-ordering $\gamma$ with
+    $\alpha^\gamma \le \beta < \alpha^{\gamma+1}$ (for strong or weak comparability).
+  refs:
+    - { ref: hirst1994, role: rm, loc: "Definitions 2.1, 2.2, Theorem 2.7" }
+
+- id: wcwo-indec
+  label: '\textsf{Comparability of indecomposables}'
+  name: Weak comparability of indecomposable well-orderings
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  definition: >
+    Any two indecomposable countable well-orderings are weakly comparable (one embeds into the other by an
+    order-preserving injection), where $\alpha$ is indecomposable if $\alpha \le_w \beta$ for every final
+    segment $\beta$ of $\alpha$.
+  refs:
+    - { ref: hirst1994, role: rm, loc: "Definition 3.1, Theorem 4.4" }
+
+- id: cnf
+  label: '\textsf{Cantor normal form}'
+  name: Cantor's normal form theorem for countable well-orderings
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  phrases: [ Cantor normal form theorem, Cantor's normal form theorem ]
+  definition: >
+    Every countable well-ordering $\beta$ is equal to $\omega^{\gamma_0} d_0 + \cdots + \omega^{\gamma_n}
+    d_n$ for well-orderings $\gamma_0 > \cdots > \gamma_n$ and positive integers $d_0, \ldots, d_n$ (for
+    strong or weak comparability).
+  refs:
+    - { ref: hirst1994, role: rm, loc: "Theorem 5.2 (iii)" }
+
+- id: indec-omega
+  label: '\textsf{Indecomposables are } \omega^\alpha'
+  name: Characterization of indecomposable well-orderings
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  definition: >
+    If $\beta$ is an indecomposable countable well-ordering, then $\beta \equiv_s \omega^\alpha$ for some
+    well-ordering $\alpha$.
+  refs:
+    - { ref: hirst1994, role: rm, loc: "Definition 3.1, Theorem 5.3" }
+
+- id: sherman
+  label: '\textsf{Sherman}'
+  name: Sherman's inequality for well-orderings
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  phrases: [ Sherman's inequality ]
+  definition: >
+    If $\alpha$, $\beta$ and $\gamma$ are countable well-orderings, then $(\alpha + \beta)\gamma \le
+    \alpha\gamma + \beta\gamma$ (for strong or weak comparability).
+  refs:
+    - { ref: hirst1994, role: rm, loc: Theorem 5.4 }
+
+- id: wo-omega-omega-omega
+  label: '\mathsf{WO}(\omega^{\omega^\omega})'
+  name: Well-orderedness of ω^(ω^ω)
+  kind: sentence
+  tags: [ well-orders ]
+  aliases: [ "WO(ω^ω^ω)" ]
+  definition: >
+    The ordinal $\omega^{\omega^\omega}$ (in the standard notation system for ordinals below $\varepsilon_0$) is
+    well ordered: there is no descending sequence through it. Over $\mathsf{RCA}_0$ it is equivalent to
+    $\mathsf{WO}(\omega^{\omega^m})$ for all $m \in \mathbb{N}$.
+  refs:
+    - { ref: simpson1988, role: rm, loc: "Section 2, Proposition 2.6(4)" }
+    - { ref: pelupessy2016c, role: rm, loc: "Theorems 2 and 7" }
+
+- id: robson
+  label: "\\textsf{Robson basis theorem}"
+  name: "Robson basis theorem"
+  kind: sentence
+  minor: true
+  tags: [ algebra ]
+  phrases: [ Robson basis theorem ]
+  definition: >
+    For every countable field $K$ and every $m \in \mathbb{N}$, the ring $K\langle x_1, \dots, x_m\rangle$ of polynomials
+    in $m$ noncommuting indeterminates is Robsonian: for every sequence $\langle h_k : k \in \mathbb{N}\rangle$ of
+    homogeneous elements there is $k$ such that every $h_j$ is a $K$-linear combination of insertions
+    $h_i[u_0, \dots, u_{l_i}]$ with $i \le k$ (Simpson's formal version of Robson's theorem that insertive homogeneous
+    ideals are finitely generated as insertive homogeneous ideals).
+  refs: [ { ref: simpson1988, role: rm, loc: "Definition 2.8, Theorem 2.9" } ]

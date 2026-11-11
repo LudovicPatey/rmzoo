@@ -1,0 +1,3 @@
+# Results from [fioricaronesmarcone2021b].
+
+[ { type: equivalence, from: aca, to: uo-interval-graphs, over: rca0, refs: [ { ref: fioricaronesmarcone2021b, loc: Theorem 2 } ] }, { type: equivalence, from: wkl, to: ig-char, over: rca0, refs: [ { ref: fioricaronesmarcone2021b, loc: Theorem 4.6 } ] } ]

@@ -1,0 +1,3 @@
+# Results from [pelupessy2016c].
+
+[ { type: equivalence, from: wpo-fin-down-nk, to: wo-omega-omega-omega, over: rca0, refs: [ { ref: pelupessy2016c, loc: Theorem 2 } ] }, { type: equivalence, from: adjacent-ramsey2, to: wo-omega-omega-omega, over: rca0, refs: [ { ref: pelupessy2016c, loc: Theorem 7 } ] } ]

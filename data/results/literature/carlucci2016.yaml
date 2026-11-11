@@ -1,5 +1,8 @@
 # Results from [carlucci2016].
 
-- { type: "implication", from: "rt22", to: "aht", over: "rca0", refs: [ { ref: carlucci2016, loc: Proposition 1 } ] }
-- { type: "implication", from: "aht", to: "ipt22", over: "rca0", refs: [ { ref: carlucci2016, loc: Proposition 2 } ] }
 - { type: "separation", from: "hilbert", to: "aht", over: "rca0", note: "The Adjacent Hindman theorem is strictly stronger than Hilbert's theorem.", refs: [ { ref: carlucci2016, loc: Corollary 2 } ] }
+- { type: implication, from: rt22, to: aht2, over: rca0, refs: [ { ref: carlucci2016, loc: Proposition 1 } ] }
+- { type: implication, from: rt2, to: aht, over: rca0, refs: [ { ref: carlucci2016, loc: Remark after Proposition 1 (∀k RT²ₖ implies ∀k AHTₖ) } ] }
+- { type: implication, from: aht2, to: ipt22, over: rca0, refs: [ { ref: carlucci2016, loc: Proposition 2 } ] }
+- { type: implication, from: aht2, to: rt1inf, over: rca0, refs: [ { ref: carlucci2016, loc: Proposition 3 } ] }
+- { type: separation, from: rt1inf, to: aht2, over: omega, note: Stated over RCA₀; the proof uses an ω-model of WKL₀ consisting of low sets., refs: [ { ref: carlucci2016, loc: Corollary 1 } ] }

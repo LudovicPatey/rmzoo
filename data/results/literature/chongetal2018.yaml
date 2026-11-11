@@ -1,0 +1,3 @@
+# Results from [chongetal2018].
+
+[ { type: implication, from: perfect-positive-closed, to: wwkl, over: rca0, refs: [ { ref: chongetal2018, loc: Section 3 } ] }, { type: implication, from: wkl, to: perfect-positive-closed, over: rca0, refs: [ { ref: chongetal2018, loc: Section 3 (by the proof of Proposition 2.2) } ] }, { type: separation, from: perfect-positive-closed, to: wkl, over: rca0, note: "Proved by Patey, reported in Section 3.", refs: [ { ref: chongetal2018, loc: Section 3 } ] }, { type: implication, from: perfect-positive-pi02, to: tt1, over: rca0, refs: [ { ref: chongetal2018, loc: Proposition 3.1 } ] }, { type: implication, from: perfect-positive-pi02, to: pos2, over: rca0, refs: [ { ref: chongetal2018, loc: Proof of Proposition 3.1 } ] } ]

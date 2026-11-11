@@ -1,0 +1,3 @@
+# Results from [towsner2011].
+
+[ { type: implication, from: sigma0-lpp, to: atr, over: rca0, refs: [ { ref: towsner2011, loc: Theorem 4.2 } ] }, { type: implication, from: sigma2-lpp, to: kt, over: rca0, note: "Theorem 5.5 proves Kruskal's theorem for Q-labeled trees, for any wqo Q; KT is the case of a one-element Q.", refs: [ { ref: towsner2011, loc: Theorem 5.5 (Theorem 1.1(2)) } ] }, { type: equivalence, from: mpp, to: leftmost-path, over: rca0, refs: [ { ref: towsner2011, loc: Theorem 4.4 (1) } ] }, { type: implication, from: tlpp, to: menger, over: rca0, refs: [ { ref: towsner2011, loc: Theorem 7.16 } ] } ]

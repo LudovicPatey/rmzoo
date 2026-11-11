@@ -1,0 +1,3 @@
+# Results from [freund2018].
+
+[ { type: equivalence, from: bachmann-howard, to: pi11ca, over: rca0, refs: [ { ref: freund2018, loc: Theorem 4.6 } ] } ]

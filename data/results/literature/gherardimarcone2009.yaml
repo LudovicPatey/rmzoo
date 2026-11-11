@@ -1,3 +1,8 @@
 # Results from [gherardimarcone2009].
 
-- {type: equivalence, from: hb, to: wkl, over: w, refs: [{ref: gherardimarcone2009}]}
+- { type: equivalence, from: hb, to: wkl, over: w, refs: [ { ref: gherardimarcone2009 } ] }
+- { type: implication, from: lpo.par, to: sep, over: w, refs: [ { ref: gherardimarcone2009, loc: Lemma 6.4 }, { ref: gherardimarcone2008, loc: Lemma 6.4 } ] }
+- { type: separation, from: lpo, to: sep, over: w, refs: [ { ref: gherardimarcone2009, loc: Lemma 6.2 }, { ref: gherardimarcone2008, loc: Lemma 6.2 } ] }
+- { type: separation, from: sep, to: lpo.par, over: w, refs: [ { ref: gherardimarcone2009, loc: "Corollary 6.11 (Sep <c C₁, C₁ the parallelization of LPO)" } ] }
+- { type: equivalence, from: sup, to: ec, over: w, refs: [ { ref: gherardimarcone2009, loc: Theorem 5.5 (Sup ≡ C₁) }, { ref: gherardimarcone2008, loc: Theorem 5.5 } ], note: Stated as Sup ≡ C1; C1 is EC (enumeration of a Σ⁰₁ set to its characteristic function). }
+- { type: equivalence, from: range, to: ec, over: w, refs: [ { ref: gherardimarcone2009, loc: Lemma 5.3 (Range ≡ C₁) }, { ref: gherardimarcone2008, loc: Lemma 5.3 } ], note: Stated as Range ≡ C1; C1 is EC. }

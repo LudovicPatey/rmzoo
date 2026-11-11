@@ -1,0 +1,3 @@
+# Results from [simpson1988].
+
+[ { type: equivalence, from: robson, to: wo-omega-omega-omega, over: rca0, refs: [ { ref: simpson1988, loc: Theorem 2.9 } ] }, { type: implication, from: wo-omega-omega-omega, to: wo-omega-omega, over: rca0, provenance: direct, justification: { kind: restriction, text: "Proposition 2.6(4): RCA₀ proves WO(ω^ω^ω) iff WO(ω^ω^m) for all m; take m = 1.", by: ai }, refs: [ { ref: simpson1988, loc: Proposition 2.6(4) } ] } ]

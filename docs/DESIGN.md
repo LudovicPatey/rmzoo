@@ -49,6 +49,23 @@ compare arbitrary statements; Weihrauch-style reductions only compare
 *problems* (Π¹₂ statements with an instance/solution reading). A first-order
 schema such as BΣ⁰₂ simply does not appear in a Weihrauch diagram.
 
+**How ω-models are read.** ω-implication reads statements *inside the model*: a
+problem holds in an ω-model M when M satisfies "every instance has a solution",
+with instances and solutions as M judges them (this is what provability over RCA₀
+transfers). Weihrauch and computable reductions read *true* instances. The two
+readings agree when ω-models judge instances and solutions correctly, which is the
+case when they are defined arithmetically. A problem whose instances or solutions
+are defined by a Σ¹₁/Π¹₁ condition (well-orders, ill-founded trees, trees with a
+unique path, uncountable closed sets, Σ¹₁ codes) is marked `omegaAbsolute: false`
+(inherited by operator statements and conjunctions). For such a statement the
+engine does not turn a reduction over problems into an ω-model implication, nor an
+ω-model separation into a separation over problems, and the properties defined
+through instances and preserved by ω-implication (cone avoidance, preservation
+properties) do not apply. Example: HYP solves every true instance of UC_ℕᴺ but not
+Kleene's instance of C_ℕᴺ, yet as sentences C_ℕᴺ holds in every ω-model; mixing the
+two readings once derived "ATR₀ does not prove C_ℕᴺ". The viewer shows the
+reading on the About page (`warning` of the reductions) and on the statement page.
+
 ### 1.2 Statements and formulations
 
 A **statement** is one precise mathematical formulation — one node of the zoo.

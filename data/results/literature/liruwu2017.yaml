@@ -1,2 +1,3 @@
 # Results from [liruwu2017].
 - { type: equivalence, from: rudin, to: aca, over: rca0, refs: [ { ref: liruwu2017, loc: Theorem 1 } ] }
+- { type: equivalence, from: rudin-disjoint, to: aca, over: rca0, refs: [ { ref: liruwu2017, loc: Theorem 2 } ] }

@@ -1,0 +1,3 @@
+# Results from [brattka2016].
+
+[ { type: equivalence, from: max01, to: wkl, over: w, refs: [ { ref: brattka2016, loc: "Theorem 27, Theorem 28(3)" } ] }, { type: equivalence, from: frr, to: lim, over: w, refs: [ { ref: brattka2016, loc: "Theorem 29, Theorem 30(5)" } ] } ]

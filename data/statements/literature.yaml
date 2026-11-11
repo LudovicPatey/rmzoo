@@ -1244,6 +1244,7 @@
   refs: [ { ref: hirschfeldtlangeshore2017, role: origin, loc: Section 3 } ]
 
 - id: att
+  omegaAbsolute: false
   label: '\mathsf{ATT}'
   name: Atomic tree theorem
   kind: problem
@@ -1267,3 +1268,1007 @@
     For each atomic extendible tree $T$ and each finite set of nodes $\sigma_0, \dots, \sigma_k \in T$, there are isolated
     paths $P_0, \dots, P_k$ of $T$ such that $P_i$ extends $\sigma_i$.
   refs: [ { ref: hirschfeldtlangeshore2017, role: origin, loc: Appendix B } ]
+
+- id: cdg-ca
+  label: '\mathsf{CDG}\text{-}\mathsf{CA}'
+  name: Comprehension for completely determined clopen games
+  kind: sentence
+  tags: [ determinacy ]
+  aliases: [ CDG-CA, "Lω1,ω-CA", "Lω1,ω-CA0", "L_{ω1,ω}-CA" ]
+  definition: >
+    Given a sequence $\{T_n : n \in \mathbb{N}\}$ of completely determined trees, there is a set $X$ such that
+    $n \in X$ iff player I has a winning strategy in the finitely terminating game $G(T_n)$. A well-founded tree
+    $T$ is completely determined if there is a winning function $d : T \to \{W, L\}$: for every $\sigma \in T$,
+    if $d(\sigma) = W$ then I has a winning strategy in $G(T_\sigma)$, and if $d(\sigma) = L$ then II has one.
+    Astor, Dzhafarov, Montalbán, Solomon and Westrick state it as $L_{\omega_1,\omega}$-CA: if
+    $\{\varphi_i : i \in \mathbb{N}\}$ is a sequence of completely determined $L_{\omega_1,\omega}$ formulas
+    (formulas with an evaluation map), then $\{i : \varphi_i \text{ is true}\}$ exists; they say that this is
+    Montalbán's CDG-CA stated in terms of formulas. A statement of hyperarithmetic analysis.
+  refs:
+    - { ref: montalban2006, role: origin, loc: "Definition 1.6, Statement 1.9" }
+    - { ref: astoretal2020, role: rm, loc: "Definition 2.15, Theorem 2.16" }
+
+- id: cdg-ac
+  label: '\mathsf{CDG}\text{-}\mathsf{AC}'
+  name: Choice for completely determined clopen games
+  kind: sentence
+  minor: true
+  tags: [ determinacy ]
+  aliases: [ CDG-AC ]
+  definition: >
+    Given a sequence $\{T_n : n \in \mathbb{N}\}$ of completely determined trees, the tree $\sum_n T_n$ is
+    also completely determined. Here $\sum_n T_n$ is the tree $S$ with $S_{\langle n \rangle} = T_n$: player I
+    chooses $n$ and the game $G(T_n)$ is then played starting with player II.
+  refs:
+    - { ref: montalban2006, role: origin, loc: "Definition 1.8, Statement 1.9" }
+
+- id: dg-ca
+  label: '\mathsf{DG}\text{-}\mathsf{CA}'
+  name: Comprehension for determined clopen games
+  kind: sentence
+  minor: true
+  tags: [ determinacy ]
+  aliases: [ DG-CA ]
+  definition: >
+    Given a sequence $\{T_n : n \in \mathbb{N}\}$ of determined trees (well-founded trees whose finitely
+    terminating game $G(T_n)$ has a winning strategy for one of the players), there is a set $X$ such that
+    $n \in X$ iff player I has a winning strategy for $G(T_n)$. Equivalent to $\Delta^1_1\text{-}\mathsf{CA}_0$.
+  refs:
+    - { ref: montalban2006, role: origin, loc: "Definition 1.6, Statement 1.9" }
+
+- id: dg-ac
+  label: '\mathsf{DG}\text{-}\mathsf{AC}'
+  name: Choice for determined clopen games
+  kind: sentence
+  minor: true
+  tags: [ determinacy ]
+  aliases: [ DG-AC ]
+  definition: >
+    Given a sequence $\{T_n : n \in \mathbb{N}\}$ of determined trees, the tree $\sum_n T_n$ (player I chooses
+    $n$, then $G(T_n)$ is played starting with player II) is also determined. A clopen-game version of Van
+    Wesep's Game-AC (Remark 1.10 of the source).
+  refs:
+    - { ref: montalban2006, role: origin, loc: "Definition 1.8, Statement 1.9, Remark 1.10" }
+
+- id: ji
+  label: '\mathsf{JI}'
+  name: Jump iteration
+  kind: sentence
+  tags: []
+  aliases: [ JI, Jump Iteration ]
+  phrases: [ jump iteration statement ]
+  definition: >
+    For every set $X$ and every ordinal $\alpha$, if $X^{(\beta)}$ exists for every $\beta < \alpha$, then
+    $X^{(\alpha)}$ exists. A sentence of hyperarithmetic analysis: its $\omega$-models are hyperarithmetically
+    closed.
+  refs:
+    - { ref: montalban2006, role: origin, loc: "Statement 1.11" }
+    - { ref: astoretal2020, role: rm, loc: "Section 2.7, Figure 1" }
+
+- id: sigma11dc
+  label: '\Sigma^1_1\text{-}\mathsf{DC}'
+  name: Σ¹₁ dependent choice
+  kind: sentence
+  tags: []
+  aliases: [ Σ11-DC0, Sigma11-DC0, Σ11-DC, Sigma11-DC ]
+  definition: >
+    $\mathsf{ACA}_0$ plus the scheme of $\Sigma^1_1$ dependent choice:
+    $\forall n\, \forall X\, \exists Y\, \eta(n, X, Y) \to \exists Z\, \forall n\, \eta(n, (Z)^n, (Z)_n)$ for
+    $\Sigma^1_1$ formulas $\eta$ in which $Z$ does not occur, where $(Z)_n = \{i : (i, n) \in Z\}$ and
+    $(Z)^n = \{(i, m) \in Z : m < n\}$. Equivalent over $\mathsf{ACA}_0$ to $\Pi^1_1$ transfinite induction
+    (Theorem VIII.5.12). A theory of hyperarithmetic analysis, strictly stronger than
+    $\Sigma^1_1\text{-}\mathsf{AC}_0$.
+  refs:
+    - { ref: simpson2009, role: origin, loc: "Definition VII.6.1(3)" }
+    - { ref: montalban2006, role: rm, loc: "Section 1.6" }
+
+- id: middle-cut
+  label: '\textsf{Middle cut}'
+  name: Existence of middle cuts of scattered weakly indecomposable linear orders
+  kind: sentence
+  minor: true
+  tags: [ orders ]
+  definition: >
+    If $A$ is a scattered, weakly indecomposable linear ordering (for every $a \in A$, $A$ embeds into
+    $A_{(\leq a)}$ or into $A_{(> a)}$), then the middle cut $\langle L, R \rangle$ of $A$ exists, with
+    $L = \{a \in A : A \preceq A_{(> a)}\}$ and $R = \{a \in A : A \preceq A_{(\leq a)}\}$.
+  refs:
+    - { ref: montalban2006, role: origin, loc: "Definition 2.1, Theorem 2.2(2)" }
+
+# ---------------------------------------------------------------- Borel sets (Astor et al.)
+
+- id: cd-pb
+  label: '\mathsf{CD}\text{-}\mathsf{PB}'
+  name: Property of Baire for completely determined Borel sets
+  kind: sentence
+  minor: true
+  tags: [ determinacy ]
+  aliases: [ CD-PB ]
+  definition: >
+    Every completely determined Borel set has the property of Baire: every completely determined labeled Borel
+    code $T$ has a Baire approximation, that is, open sets $U, V$ and $\{D_n\}$ with $U \cap V = \emptyset$ and
+    $U \cup V$ and each $D_n$ dense, such that for all $X \in \bigcap_n D_n$, $X \in U \Rightarrow X \in |T|$
+    and $X \in V \Rightarrow X \in |T^c|$. A labeled Borel code (a well-founded tree whose inner nodes are
+    labeled $\cup$ or $\cap$ and whose leaves carry clopen subsets of $2^\omega$) is completely determined if
+    every $X \in 2^\omega$ has an evaluation map in it. CD-PB fails in HYP, so it is not a statement of
+    hyperarithmetic analysis, but every $\omega$-model of it is hyperarithmetically closed.
+  refs:
+    - { ref: astoretal2020, role: origin, loc: "Definitions 2.6, 2.9, 2.10, 3.1 and 3.5" }
+
+- id: borel-drt32
+  label: '\mathsf{Borel}\text{-}\mathsf{DRT}^3_2'
+  name: Borel dual Ramsey theorem for 3-partitions and 2 colors
+  kind: sentence
+  minor: true
+  tags: [ ramsey, determinacy ]
+  aliases: [ Borel-DRT32, "Borel-DRT^3_2" ]
+  definition: >
+    Formalized with Borel codes: whenever $T_0, T_1$ are Borel codes such that every $X \in |P_3|$ (the
+    partitions of $\omega$ into exactly 3 pieces, coded as elements of $3^\omega$) satisfies
+    $X \in |T_0 \cup T_1|$, there are an infinite partition $p$ of $\omega$ and a color $i < 2$ such that
+    $X \circ p \in |T_i|$ for every $X \in |P_3|$. The hypothesis requires evaluation maps for every
+    $X \in |P_3|$.
+  refs:
+    - { ref: astoretal2020, role: rm, loc: "Definitions 8.2 and 8.3 (ℓ = 2)" }
+    - { ref: dzhafarovetal2017, role: origin, loc: "Section 3" }
+
+# ---------------------------------------------------------------- other sentences
+
+- id: turing-incomp
+  label: '\textsf{Turing incomparability}'
+  name: Every incomputable set has a Turing incomparable set
+  kind: sentence
+  minor: true
+  tags: [ computability ]
+  definition: >
+    For every set $A$ which is not computable there is a set $B$ such that $A \not\leq_T B$ and
+    $B \not\leq_T A$. Studied in $\omega$-models (Kučera–Slaman: every Scott set satisfies it).
+  refs:
+    - { ref: conidis2010, role: rm, loc: "Section 1.2, sentence (1); Theorem 4.1" }
+
+- id: reach-matrix
+  label: '\textsf{Reachability matrices}'
+  name: Existence of reachability matrices of graphs
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every (directed) graph $G = (V, E)$ has a reachability matrix: a function $M : V \times V \to \{0, 1\}$
+    with $M(v, w) = 1$ iff there is a path in $G$ from $v$ to $w$. Equivalent to $\mathsf{ACA}_0$ already
+    for 2-regular graphs, directed or not.
+  refs: [ { ref: clotehirst1998, role: origin, loc: Theorem 1 } ]
+
+- id: arc-count
+  label: '\textsf{Arc counting}'
+  name: Existence of the arc-counting function of graphs
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    For every (directed) graph $G$ there is a function $M : V \times V \to \mathbb{N} \cup \{\infty\}$ such that
+    $M(v, w)$ is the number of distinct arcs (acyclic paths) from $v$ to $w$. Equivalent to $\mathsf{ACA}_0$
+    already for 2-regular graphs, directed or not.
+  refs: [ { ref: clotehirst1998, role: origin, loc: Theorem 4 } ]
+
+- id: shortest-path
+  label: '\textsf{Shortest path matrices}'
+  name: Existence of shortest path matrices of weighted graphs
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every (directed) integer weighted graph has a shortest path matrix: a function
+    $M : V \times V \to \mathbb{N} \cup \{\infty\}$ with $M(v, w) = \infty$ if there is no path from $v$ to $w$,
+    and otherwise $M(v, w)$ a code for a path of minimal total weight. Equivalent to $\mathsf{ACA}_0$ already
+    for 2-regular graphs, directed or not.
+  refs: [ { ref: clotehirst1998, role: origin, loc: Theorem 6 } ]
+
+- id: weak-topsort
+  label: '\textsf{Weak topological sorting}'
+  name: Weak topological sortings of path bounded graphs
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every path bounded directed graph with a source node $v_0$ (for every vertex $u$ there is a bound on the
+    length of the paths from $v_0$ to $u$) has a weak topological sorting: a function $s : V \to \mathbb{N}$
+    whose range is $\mathbb{N}$ or an initial segment of $\mathbb{N}$ and with $s(u) < s(v)$ for every edge
+    $(u, v)$.
+  refs: [ { ref: clotehirst1998, role: origin, loc: "Definition 7, Theorem 9" } ]
+
+- id: topsort
+  label: '\textsf{Topological sorting}'
+  name: Topological sortings of path sparse graphs
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every path sparse directed graph with a source node $v_0$ (for every vertex $u \neq v_0$ there are only finitely
+    many directed paths from $v_0$ to $u$) has a topological sorting: an injective weak topological sorting
+    $s : V \to \mathbb{N}$ (range $\mathbb{N}$ or an initial segment, $s(u) < s(v)$ for every edge $(u, v)$).
+  refs: [ { ref: clotehirst1998, role: origin, loc: "Definition 11, Theorem 13" } ]
+
+- id: spanning-tree
+  label: '\textsf{Spanning trees}'
+  name: Every connected graph has a spanning tree
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every connected (undirected, countable) graph has a spanning tree: an acyclic connected subgraph
+    containing every vertex.
+  refs: [ { ref: clotehirst1998, role: origin, loc: Theorem 15 } ]
+
+- id: mst
+  label: '\textsf{Minimal spanning trees}'
+  name: Minimal spanning trees of finitely connected weighted graphs
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every finitely connected (connected, with only finitely many distinct arcs between any two vertices)
+    rationally weighted graph of bounded total weight has a minimal spanning tree: a spanning tree whose edge
+    weights sum to a finite value no greater than the weight of any other spanning tree.
+  refs: [ { ref: clotehirst1998, role: origin, loc: Theorem 17 } ]
+
+- id: mst-decision
+  label: '\textsf{Minimal spanning tree decision}'
+  name: Deciding which weighted directed graphs have a minimal spanning tree
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    For every sequence $\langle G_n \rangle_n$ of rationally weighted directed graphs there is a function
+    $f : \mathbb{N} \to \{0, 1\}$ with $f(n) = 1$ iff $G_n$ has a minimal spanning tree (a spanning tree, i.e. an
+    acyclic directed spanning subgraph with a source node, of least total weight).
+  refs: [ { ref: clotehirst1998, role: origin, loc: "Theorems 20 and 22" } ]
+
+- id: konig-edge
+  label: '\textsf{König edge colouring}'
+  name: König's edge colouring theorem (countable bipartite graphs)
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  phrases: [ König's edge coloring theorem ]
+  definition: >
+    If $G$ is a countable bipartite graph in which each vertex has degree at most $n$, then the edge chromatic
+    number of $G$ is at most $n$: $G$ has a proper edge colouring with $n$ colours. Equivalent to
+    $\mathsf{WKL}_0$ already for bounded bipartite graphs of degree at most 2.
+  refs: [ { ref: mummert2020, role: origin, loc: "Corollary 2.3, Theorem 3.5" } ]
+
+- id: bipartite-decomp
+  label: '\textsf{Regular bipartite decomposition}'
+  name: Decomposition of regular bipartite graphs into complete matchings
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    If $G$ is a countable regular bipartite graph of degree $n$, the edges of $G$ can be decomposed into $n$
+    complete matchings. Equivalent to $\mathsf{WKL}_0$ already for 2-regular bipartite graphs.
+  refs: [ { ref: mummert2020, role: origin, loc: Theorem 3.6 } ]
+
+- id: vizing
+  label: '\textsf{Vizing}'
+  name: Vizing's edge colouring theorem (countable graphs)
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  phrases: [ Vizing's theorem ]
+  definition: >
+    If $G$ is a countable graph with maximal degree $n$, then the edge chromatic number of $G$ is at most $n + 1$.
+  refs: [ { ref: mummert2020, role: origin, loc: "Proposition 3.4, Question 4.1" } ]
+
+- id: id0
+  label: '\mathsf{ID0}'
+  name: Existence of sets of intrinsic density 0
+  kind: problem
+  minor: true
+  tags: [ computability ]
+  aliases: [ ID0, ID_0 ]
+  definition: >
+    For every weakly represented class $\mathcal{F}$ of total functions there is a set $A$ such that every
+    injective $f \in \mathcal{F}$ samples $A$ with density 0: $\rho(f^{-1}(A)) = 0$ for every total injection
+    $f \in \mathcal{F}$. Statement 3.6 does not say “infinite”, but the set is meant to be infinite (the
+    paper studies infinite sets of intrinsic density 0, Corollary 2.7, and the proof of Theorem 3.11 builds an
+    infinite one); otherwise $A = \emptyset$ would do.
+  instance: A weakly represented class $\mathcal{F}$ of total functions.
+  solution: An infinite set $A$ with $\rho(f^{-1}(A)) = 0$ for every total injection $f \in \mathcal{F}$.
+  refs: [ { ref: astor2017, role: origin, loc: "Statement 3.6" } ]
+
+- id: exteta
+  label: '\mathsf{EXT}(\eta)'
+  name: Extendibility of η
+  kind: sentence
+  tags: [ orders ]
+  aliases: [ EXT(η) ]
+  phrases: [ extendibility of eta ]
+  definition: >
+    The order type $\eta$ of the rationals is extendible: every countable partial order with no subchain of
+    type $\eta$ (a scattered partial order) has a linear extension with no subchain of type $\eta$ (a scattered
+    linear extension). Provable in $\Pi^1_2\text{-}\mathsf{CA}_0$ (Theorem 2(1)); exact strength open.
+  refs: [ { ref: downeyetal2003, role: rm, loc: "Section 1 (definition of extendible), Theorem 2" } ]
+
+- id: bct-ii
+  label: '\mathsf{B.C.T.II}'
+  name: Baire category theorem for separably closed sets
+  kind: sentence
+  tags: [ analysis ]
+  aliases: [ B.C.T.II, BCT II ]
+  caution: >
+    Brown and Simpson's second version of the Baire category theorem, for sets coded by positive information
+    (separably closed sets) in an arbitrary complete separable metric space. The Weihrauch problem
+    [[bct2]] of Brattka, Hendtlass and Kreuzer is its analogue on a fixed computable perfect Polish space.
+  definition: >
+    Let $\widehat{A}$ be a complete separable metric space and $\langle \langle x_{n,k} : k \in \mathbb{N} \rangle
+    : n \in \mathbb{N} \rangle$ a sequence of codes for the complements of dense separably open sets $O_n$ (each
+    $O_n$ is the complement of the separably closed set $\overline{\{x_{n,k} : k \in \mathbb{N}\}}$). If $U$ is a
+    nonempty open set in $\widehat{A}$, then there is a point $x \in U$ such that $x \in O_n$ for all $n$, i.e.
+    $x \notin \overline{\{x_{n,k} : k \in \mathbb{N}\}}$ for every $n$.
+  refs: [ { ref: brownsimpson1993, role: origin, loc: "Section 1 (separably closed sets), Section 2 (B.C.T.II)" } ]
+
+- id: rca0plus
+  label: '\mathsf{RCA}_0^+'
+  name: Brown–Simpson genericity scheme (*)
+  kind: sentence
+  tags: [ computability ]
+  aliases: [ RCA0+ ]
+  definition: >
+    The scheme (*): for every arithmetical formula $\varphi(n, \tau)$ (with set parameters; $\sigma, \tau$ range
+    over $2^{<\mathbb{N}}$), if $\forall n\, \forall \sigma\, \exists \tau\, (\tau \supseteq \sigma \wedge
+    \varphi(n, \tau))$, then there is $X \in 2^{\mathbb{N}}$ with $\forall n\, \exists k\, \varphi(n, X[k])$.
+    $\mathsf{RCA}_0^+$ is $\mathsf{RCA}_0$ plus (*), and $\mathsf{WKL}_0^+$ is $\mathsf{WKL}_0$ plus (*), the
+    conjunction [[rca0plus-wkl]].
+  refs: [ { ref: brownsimpson1993, role: origin, loc: "Section 4, scheme (*)" } ]
+
+- id: nonprincipal-uf
+  label: '\textsf{non-principal ultrafilters}'
+  name: Non-principal ultrafilters on countable atomic algebras
+  kind: sentence
+  minor: true
+  tags: []
+  definition: >
+    For every infinite set $V \subseteq \mathbb{N}$ and every atomic countable algebra $\mathcal{A} = \langle A_n :
+    n \in \mathbb{N} \rangle$ over $V$ (subsets of $V$, containing $V$, closed under unions, intersections and
+    complements relative to $V$, and containing $\{v\}$ for every $v \in V$), there is a non-principal ultrafilter
+    on $\mathcal{A}$: a set $U \subseteq \mathbb{N}$ of indices which contains every $i$ with $A_i = V$, no $i$ with
+    $A_i = \emptyset$, is closed upwards and under intersections, contains $i$ or $j$ whenever $A_j = V \setminus
+    A_i$, and contains no $k$ with $A_k$ a singleton.
+  refs: [ { ref: eastaugh2023, role: rm, loc: "Definitions 2.1, 2.4, Lemma 2.6" } ]
+
+- id: delta02bqo3
+  label: '\mathbf{3}\text{-}\Delta^0_2\text{-}\mathsf{BQO}'
+  name: The antichain with three elements is a Δ⁰₂-bqo
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  aliases: [ 3 is a Delta02-bqo ]
+  definition: >
+    For every $\Delta^0_2$-function $F : [\mathbb{N}]^\mathbb{N} \to \mathbf{3}$ (a class function whose graph is
+    defined by a $\Sigma^0_2$ formula with set parameters) there is $X \in [\mathbb{N}]^\mathbb{N}$ with $F(X) \le
+    F(X^-)$, where $\mathbf{3}$ is the antichain with three elements (so $\le$ is equality) and $X^-$ is $X$ with its
+    first element removed.
+  refs: [ { ref: montalban2017, role: origin, loc: "Definitions 1.2, 1.3" } ]
+
+- id: mrsf
+  label: '\mathsf{MRSF}'
+  name: Maximal representable subfamilies (Podewski–Steffens)
+  kind: sentence
+  tags: [ graphs ]
+  aliases: [ MRSF ]
+  definition: >
+    Every countable family $F$ (a function with domain some $I \subseteq \mathbb{N}$ such that $\emptyset \neq F(i)
+    \subseteq \mathbb{N}$ for $i \in I$) has a maximal representable subfamily: a maximal $S \subseteq I$ such that
+    $F \upharpoonright S$ has an injective choice function (a one-one $f$ with $f(i) \in F(i)$ for $i \in S$).
+  refs: [ { ref: shore2026, role: rm, loc: "Definition 5.1, Theorem 5.2" } ]
+
+- id: mcsf
+  label: '\mathsf{MCSF}'
+  name: Maximal critical subfamilies (Podewski–Steffens)
+  kind: sentence
+  tags: [ graphs ]
+  aliases: [ MCSF ]
+  definition: >
+    Every countable family $F$ has a maximal critical subfamily, where a family is critical if it is representable
+    and every representation $f$ of it has $\mathrm{rg}(f) = \bigcup \mathrm{rg}(F)$.
+  refs: [ { ref: shore2026, role: rm, loc: "Definitions 5.1, 5.3, Theorem 5.4" } ]
+
+- id: ba-invariants
+  label: '\textsf{Boolean algebra invariants}'
+  name: Number invariants for elementary equivalence of countable Boolean algebras
+  kind: sentence
+  minor: true
+  tags: []
+  definition: >
+    For every sequence $\langle A_i : i \in \mathbb{N} \rangle$ of countable Boolean algebras there is a sequence
+    $\langle n_i : i \in \mathbb{N} \rangle$ of numbers such that, for all $i, j$, $A_i \equiv A_j$ if and only if
+    $n_i = n_j$ (Shore's $\psi(\mathcal{B}, \equiv)$; elementary equivalence is defined through partial satisfaction
+    relations, Definition 4.7).
+  refs: [ { ref: shore2006, role: origin, loc: "Section 1 (the sentence ψ), Definition 4.7, Theorem 6.10" } ]
+
+- id: dba-invariants
+  label: '\textsf{dense Boolean algebra invariants}'
+  name: Number invariants for isomorphism of countable dense Boolean algebras
+  kind: sentence
+  minor: true
+  tags: []
+  definition: >
+    For every sequence $\langle A_i : i \in \mathbb{N} \rangle$ of countable dense Boolean algebras there is a
+    sequence $\langle n_i : i \in \mathbb{N} \rangle$ of numbers such that, for all $i, j$, $A_i \cong A_j$ if and
+    only if $n_i = n_j$ (Shore's $\psi(\mathcal{DB}, \cong)$).
+  refs: [ { ref: shore2006, role: origin, loc: "Section 1 (the sentence ψ), Definitions 4.3, 6.2, Theorem 6.10" } ]
+
+- id: grs-paths
+  label: '\textsf{Galvin–Rival–Sands theorem}'
+  name: Galvin–Rival–Sands theorem on traceable graphs
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every infinite traceable graph (one with a bijection $T : \mathbb{N} \to V$ such that $T(i)$ and $T(i+1)$ are
+    adjacent for every $i$) either contains arbitrarily long finite chordless paths or contains a subgraph
+    isomorphic to $\mathbf{A}$, the bipartite graph with vertices $a_n, b_n$ ($n \in \mathbb{N}$) and edges $a_n
+    b_m$ for $n \le m$.
+  refs: [ { ref: cholakgalvinsolomon2010, role: rm, loc: "Theorem 1.1" } ]
+
+- id: grs-kww
+  label: '\textsf{Galvin–Rival–Sands } K_{\omega,\omega}\textsf{ theorem}'
+  name: Galvin–Rival–Sands theorem on traceable graphs without chordless 4-paths
+  kind: sentence
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every infinite traceable graph containing no chordless 4-path contains a subgraph isomorphic to the complete
+    countable bipartite graph $K_{\omega,\omega}$.
+  refs: [ { ref: cholakgalvinsolomon2010, role: rm, loc: "Theorem 1.2" } ]
+
+- id: least-nonext-pair
+  label: '\textsf{least failing extension pair}'
+  name: Least size of a failing extension pair in a non-random graph
+  kind: sentence
+  minor: true
+  tags: [ graphs, induction ]
+  definition: >
+    For every graph $G$ not isomorphic to the random graph $R$, there is a least $n$ for which some $n$-extension
+    pair $\langle X_0, X_1 \rangle$ (disjoint finite sets of vertices with $|X_0| + |X_1| = n$) fails the extension
+    property, i.e. no vertex outside $X_0 \cup X_1$ is adjacent to every vertex of $X_0$ and to none of $X_1$.
+  refs: [ { ref: dzhafarovsolomonvolpi2024, role: origin, loc: "Section 5, Theorem 5.1(1)" } ]
+
+- id: ht-le3
+  label: '\mathsf{HT}^{\le 3}'
+  name: Hindman's theorem for sums of at most 3 elements (any finite number of colors)
+  kind: problem
+  tags: [ ramsey ]
+  definition: >
+    For every $r \ge 2$ and every coloring $c : \mathbb{N} \to r$ there is an infinite set $H \subseteq \mathbb{N}$
+    such that all sums of at most 3 distinct elements of $H$ have the same color.
+  instance: 'A number $r$ and a coloring $c : \mathbb{N} \to r$.'
+  solution: An infinite set $H$ whose sums of at most 3 distinct elements are monochromatic.
+  refs: [ { ref: liao2026, role: rm, loc: "Theorem 1.6 (k = 3)" } ]
+
+- id: fut-simple
+  label: '\textsf{FUT for simple colorings}'
+  name: Finite union theorem for simple colorings
+  kind: sentence
+  minor: true
+  tags: [ ramsey ]
+  definition: >
+    For every block sequence $X = \{a_0, a_1, \dots\}$ of finite sets and every simple coloring $f :
+    \mathrm{FU}(X) \to \ell$ there is an infinite block sequence $Y \subseteq \mathrm{FU}(X)$ such that $f$ is
+    monochromatic on $\mathrm{FU}(Y)$. The coloring is simple if $f(a_n \cup b_0) = f(a_n \cup b_1)$ for all $n$ and
+    all $b_0, b_1 \in \mathrm{FU}(X)$ with $\max a_n < \min b_0, \min b_1$, $\min b_0 = \min b_1$, $\max b_0 = \max
+    b_1$ and $f(b_0) = f(b_1)$.
+  refs: [ { ref: liupatey2026b, role: origin, loc: "Definition 3.1, Section 3" } ]
+
+- id: vsmall
+  label: '\mathsf{VSMALL}'
+  name: Path axiom for trees with very small sets of branching nodes
+  kind: sentence
+  minor: true
+  tags: [ compactness ]
+  definition: >
+    If $T$ is an infinite binary tree such that there is no function $f : \mathbb{N} \to \mathbb{N}$ with
+    $\exists^\infty n\, \exists \sigma\, [f(n) \leq |\sigma| < f(n+1) \wedge \sigma \in \mathrm{Br}(T)]$, then $T$ has a path.
+    Here $\mathrm{Br}(T)$ is the set of branching nodes of $T$ (both $\sigma 0$ and $\sigma 1$ are extendible).
+  refs: [ { ref: binnskjoshanssen2014, role: rm, loc: "Section 2, Definition 2.1" } ]
+
+- id: dim
+  label: '\mathsf{DIM}'
+  name: Path axiom for diminutive trees
+  kind: sentence
+  minor: true
+  tags: [ compactness ]
+  definition: >
+    If $T$ is an infinite binary tree such that there is no function $f : \mathbb{N} \to \mathbb{N}$ with
+    $\forall \sigma \in \mathrm{Ext}(T)\, \exists \tau \in \mathrm{Br}(T)\, [\tau \supseteq \sigma \wedge |\tau| \leq f(|\sigma|)]$
+    (no witness to the perfection of $T$), then $T$ has a path. $\mathrm{Ext}(T)$ is the set of extendible nodes,
+    $\mathrm{Br}(T)$ the set of branching nodes.
+  refs: [ { ref: binnskjoshanssen2014, role: rm, loc: "Section 2, Definition 2.1" } ]
+
+- id: perfect-positive-closed
+  label: '\textsf{Perfect subsets of positive closed sets}'
+  name: Every positive closed set contains a perfect subset
+  kind: sentence
+  minor: true
+  tags: [ randomness ]
+  definition: >
+    Every closed subset of $2^{\mathbb{N}}$ of positive measure contains a perfect subset: for every binary tree $T$ with
+    $\mu([T]) > 0$ there is a perfect tree $P$ with $[P] \subseteq [T]$. The instance of (3.1) for closed sets.
+  refs: [ { ref: chongetal2018, role: rm, loc: "Section 3, (3.1)" } ]
+
+- id: perfect-positive-pi02
+  label: '\textsf{Perfect subsets of positive }\Pi^0_2\textsf{ sets}'
+  name: Every positive Π⁰₂ set contains a perfect subset
+  kind: sentence
+  minor: true
+  tags: [ randomness ]
+  definition: >
+    Every $\Pi^0_2$ subset of $2^{\mathbb{N}}$ of positive measure contains a perfect subset. The instance of (3.1)
+    for $\Pi^0_2$ sets.
+  refs: [ { ref: chongetal2018, role: rm, loc: "Section 3, (3.1), Proposition 3.1" } ]
+
+- id: wop-two-asc
+  label: '\textsf{Restricted }\mathsf{WOP}(X \mapsto 2^X)'
+  name: Base-2 exponentiation preserves well orders whose infinite suborders contain ascending sequences
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  definition: >
+    The map $\alpha \mapsto 2^\alpha$ preserves well orders $\alpha$ for which each infinite suborder contains a
+    strictly ascending sequence: if $\alpha$ is such a well order, then $2^\alpha$ is a well order.
+  refs: [ { ref: uftring2025, role: rm, loc: Theorem 2 } ]
+
+- id: evaluation-field
+  label: '\textsf{Evaluation fields}'
+  name: Every countable field is an evaluation field
+  kind: sentence
+  minor: true
+  tags: [ algebra ]
+  definition: >
+    For every countable field $F$ and every $n$ there is an evaluation function
+    $E : \mathbb{Z}[x_0, \dots, x_{n-1}] \times F^n \to F$ with $E(0, a) = 0$, $E(1, a) = 1$, $E(x_i, a) = a_i$,
+    $E(f + g, a) = E(f, a) + E(g, a)$ and $E(f \cdot g, a) = E(f, a) \cdot E(g, a)$.
+  refs: [ { ref: simpsonsmith1986, role: rm, loc: "Definition 3.2, Theorem 3.3" } ]
+
+- id: poly-finite-roots
+  label: '\textsf{Finitely many roots}'
+  name: Polynomials over countable fields have finitely many roots
+  kind: sentence
+  minor: true
+  tags: [ algebra ]
+  definition: >
+    For every countable field $F$ and every polynomial $f(x) \in F[x]$, $f(x)$ has only finitely many roots in $F$.
+    (Equivalent over $\mathsf{RCA}_0^*$ to the same statement for evaluation fields.)
+  refs: [ { ref: simpsonsmith1986, role: rm, loc: "Theorem 3.9(b)" } ]
+
+- id: poly-factorization
+  label: '\textsf{Finite factorization}'
+  name: Polynomials over countable fields factor into irreducibles
+  kind: sentence
+  minor: true
+  tags: [ algebra ]
+  definition: >
+    For every countable field $F$ and every polynomial $f(x) \in F[x]$, $f(x)$ has a finite factorization into
+    irreducible polynomials over $F$. (Equivalent over $\mathsf{RCA}_0^*$ to the same statement for evaluation fields.)
+  refs: [ { ref: simpsonsmith1986, role: rm, loc: "Theorem 3.10(b)" } ]
+
+- id: poly-irreducible-factor
+  label: '\textsf{Irreducible factor}'
+  name: Polynomials over countable fields have an irreducible factor
+  kind: sentence
+  minor: true
+  tags: [ algebra ]
+  definition: >
+    For every countable field $F$ and every polynomial $f(x) \in F[x]$, $f(x)$ has an irreducible factor over $F$.
+    (Equivalent over $\mathsf{RCA}_0^*$ to the same statement for evaluation fields.)
+  refs: [ { ref: simpsonsmith1986, role: rm, loc: "Theorem 3.11(b)" } ]
+
+- id: open-induction
+  label: '\textsf{Open induction}_{[0,1]}'
+  name: Open induction on [0,1]
+  kind: sentence
+  minor: true
+  tags: [ analysis ]
+  definition: >
+    For every (code for an) open set $O \subseteq [0,1]$: if
+    $\forall y \in [0,1]\, ((\forall z \in [0,1])(z < y \rightarrow z \in O) \rightarrow y \in O)$, then
+    $[0,1] \subseteq O$. (The single-statement form $\mathrm{OI}_4$ of the paper.)
+  refs: [ { ref: deansanders2025, role: rm, loc: "Section 6.2 (OI4), Theorem 6(i)" } ]
+
+- id: creeping-lemma
+  label: '\textsf{Creeping lemma}'
+  name: Creeping lemma for Σ⁰₁ formulas
+  kind: sentence
+  minor: true
+  tags: [ analysis, compactness ]
+  definition: >
+    For every $\Sigma^0_1$ formula $\Psi(x)$: if there is a covering $(O_i)_i$ of $[0,1]$ by open intervals such that
+    $\Psi(x) \leftrightarrow \Psi(y)$ for all $x, y$ in the same $O_i$, and $\Psi(0)$ holds, then $\Psi(x)$ for all
+    $x \in [0,1]$.
+  refs: [ { ref: deansanders2025, role: rm, loc: "Section 5 (CL), (18), Theorem 7(c)" } ]
+
+- id: sigma00-cub
+  label: '\Sigma^0_0\text{-}\mathsf{CUB}'
+  name: Continuous uniform boundedness for Σ⁰₀ formulas
+  kind: sentence
+  minor: true
+  tags: [ compactness ]
+  definition: >
+    For every $\Sigma^0_0$ formula $A(f, x)$:
+    $\forall n\, (\mathrm{cont}(A) \wedge \forall f : \mathbb{N} \to [n]\, \exists x\, A(f, x) \rightarrow
+    \exists z\, \forall f : \mathbb{N} \to [n]\, \exists x \leq z\, A(f, x))$, where $\mathrm{cont}(A)$ says that
+    $A$ depends continuously on $f$. Equivalent over $\mathsf{RCA}_0$ to $\Sigma^0_1$-CUB (Proposition 19).
+  refs: [ { ref: gasparkohlenbach2010, role: rm, loc: "Definition 18, Proposition 19" } ]
+
+- id: pi01-cub
+  label: '\Pi^0_1\text{-}\mathsf{CUB}'
+  name: Continuous uniform boundedness for Π⁰₁ formulas
+  kind: sentence
+  minor: true
+  tags: [ compactness ]
+  definition: >
+    The continuous uniform boundedness principle restricted to $\Pi^0_1$ formulas $A(f, x)$:
+    $\forall n\, (\mathrm{cont}(A) \wedge \forall f : \mathbb{N} \to [n]\, \exists x\, A(f, x) \rightarrow
+    \exists z\, \forall f : \mathbb{N} \to [n]\, \exists x \leq z\, A(f, x))$.
+  refs: [ { ref: gasparkohlenbach2010, role: rm, loc: Definition 18 } ]
+
+- id: fipp2
+  label: '\mathsf{FIPP}_2'
+  name: Second finitary infinite pigeonhole principle
+  kind: sentence
+  minor: true
+  tags: [ ramsey ]
+  definition: >
+    For every $n$ and every asymptotically stable $F : \mathbb{N} \to \mathbb{N}$ (on codes of finite sets) there is $k$
+    such that every $f : [k] \to [n]$ has a monochromatic set $A \subseteq [k]$ with $|A| > F(A)$.
+  refs: [ { ref: gasparkohlenbach2010, role: rm, loc: "Definitions 5, 7.3" } ]
+
+- id: fipp3
+  label: '\mathsf{FIPP}_3'
+  name: Third finitary infinite pigeonhole principle (Tao)
+  kind: sentence
+  minor: true
+  tags: [ ramsey ]
+  definition: >
+    For every $n$ and every $F : \mathbb{N} \to \mathbb{N}$ asymptotically stable near infinite sets there is $k$ such
+    that every $f : [k] \to [n]$ has a color class $A = f^{-1}(c)$ with $|A| > F(A)$.
+  refs: [ { ref: gasparkohlenbach2010, role: rm, loc: "Definitions 5, 7.4" } ]
+
+- id: wop-two
+  label: '\mathsf{WOP}(X \mapsto 2^X)'
+  name: Well-ordering principle for base-2 exponentiation
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  definition: >
+    If $X$ is a well-ordering, then so is $2^X$, the set of finite sequences $\langle x_1, \ldots, x_n\rangle$
+    of elements of $X$ with $x_n <_X \cdots <_X x_1$, ordered lexicographically (elements of $2^X$ are
+    ordinals in base-2 Cantor normal form).
+  refs:
+    - { ref: hirst1994, role: rm, loc: "Definitions 2.1, 2.2, Theorem 2.6 (iii)" }
+    - { ref: freund2019b, role: rm, loc: Theorem 1.1 }
+
+- id: wwo
+  label: '\textsf{Weak well orders}'
+  name: Every weak well order is a well order
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  definition: >
+    Every weak well order is a well order, where a countable linear order $X$ is a weak well order if no
+    initial segment $I \subseteq X$ can be embedded into a proper initial segment $I_0 \subsetneq I$.
+  refs:
+    - { ref: freundmanca2023, role: rm, loc: "Definition 1.1, Theorem 3.5" }
+
+- id: bh-fp-omega
+  label: '\textsf{BH fixed points}(Y \mapsto 1 + X \times Y)'
+  name: Well-founded Bachmann–Howard fixed points of Y ↦ 1 + X × Y
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  definition: >
+    For every well-order $X$ the transformation $Y \mapsto 1 + X \times Y$ has a well-founded
+    Bachmann–Howard fixed point: a well-order $Y$ with a Bachmann–Howard collapse $\vartheta : 1 + X \times Y
+    \to Y$, i.e. (i) $\sigma < \tau$ implies $\vartheta(\sigma) < \vartheta(\tau)$ whenever every element of
+    the support of $\sigma$ is below $\vartheta(\tau)$, and (ii) every element of the support of $\sigma$ is
+    below $\vartheta(\sigma)$.
+  refs:
+    - { ref: freund2020c, role: rm, loc: "Definitions 1.2, 1.3, Corollary 2.3" }
+
+- id: bh-fp-eps
+  label: '\textsf{BH fixed points}(Y \mapsto 1 + Y^2 + X)'
+  name: Well-founded Bachmann–Howard fixed points of Y ↦ 1 + Y² + X
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  definition: >
+    For every well-order $X$ the transformation $Y \mapsto 1 + Y^2 + X$ has a well-founded Bachmann–Howard
+    fixed point (a well-order $Y$ with a Bachmann–Howard collapse $1 + Y^2 + X \to Y$ in the sense of
+    Definition 1.3). The minimal such fixed point is $\varepsilon_X$ (Theorem 2.6).
+  refs:
+    - { ref: freund2020c, role: rm, loc: "Definition 1.3, Theorem 2.6, Corollary 2.7" }
+
+- id: bh-fp-veblen
+  label: '\textsf{BH fixed points}(Y \mapsto 1 + (Y + X) \times Y)'
+  name: Well-founded Bachmann–Howard fixed points of Y ↦ 1 + (Y + X) × Y
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  definition: >
+    For every well-order $X$ the transformation $Y \mapsto 1 + (Y + X) \times Y$ has a well-founded
+    Bachmann–Howard fixed point (Definition 1.3). The minimal such fixed point is $\varphi(1 + X)0$
+    (Theorem 1.4).
+  refs:
+    - { ref: freund2020c, role: rm, loc: "Definition 1.3, Theorem 1.4, Corollary 1.5" }
+
+- id: htbin
+  label: '\mathsf{HT}^{\mathrm{bin}}'
+  name: Hindman's theorem for sums along finite paths of the full binary tree
+  kind: sentence
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ HTbin, HT^bin ]
+  definition: >
+    For every $k \ge 1$ and every $c : \mathbb{N} \to k$ there are an infinite set $H = \{h_1 < h_2 < \cdots\}$
+    and $z < k$ such that $c(\sum_{i \in J} h_i) = z$ for every path $J$, where a path is a finite set
+    $i_1 < \cdots < i_n$ of positive integers with $i_1 = 1$ and $i_j \in \{2i_{j-1}, 2i_{j-1}+1\}$ for
+    $1 < j \le n$ (labels of finite paths from the root of $2^{<\mathbb{N}}$).
+  refs:
+    - { ref: carluccitavernelli2022, role: origin, loc: "Definitions 3, 4" }
+
+- id: aphtbin
+  label: '\mathsf{apHT}^{\mathrm{bin}}'
+  name: Hindman's theorem for sums along finite paths of the full binary tree, with apartness
+  kind: sentence
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ apHTbin, apHT^bin ]
+  definition: >
+    $\mathsf{HT}^{\mathrm{bin}}$ with the extra requirement that the solution set $H$ is apart: for $n < m$ in
+    $H$, $\mu(n) < \lambda(m)$, where for $n = 2^{e_1} + \cdots + 2^{e_m}$ with $e_1 < \cdots < e_m$,
+    $\lambda(n) = e_1$ and $\mu(n) = e_m$.
+  refs:
+    - { ref: carluccitavernelli2022, role: origin, loc: "Definitions 4, 5" }
+
+- id: aptt1
+  label: '\mathsf{apTT}^1'
+  name: Tree pigeonhole principle with tree apartness
+  kind: sentence
+  minor: true
+  tags: [ ramsey ]
+  aliases: [ apTT1, apTT^1 ]
+  definition: >
+    For every $k \ge 1$, every coloring of $2^{<\mathbb{N}}$ with $k$ colors has a monochromatic subtree
+    $S \cong 2^{<\mathbb{N}}$ which is apart: $S$ has at most one sequence of each length, its
+    length-increasing enumeration $\sigma_1, \sigma_2, \ldots$ is level-by-level (the children of $\sigma_i$
+    in $S$ are $\sigma_{2i}$ and $\sigma_{2i+1}$), and for every $i \ge 1$, $\sigma_{i+1} =
+    \mathrm{parent}(\sigma_{i+1})^\frown 0^{|\sigma_i| - |\mathrm{parent}(\sigma_{i+1})|\,\frown}\sigma$ for
+    some $\sigma \in 2^{<\mathbb{N}} \setminus \{0\}^{<\mathbb{N}}$.
+  refs:
+    - { ref: carluccitavernelli2022, role: origin, loc: "Definitions 6, 7, 8" }
+
+- id: mfmt
+  label: '\mathsf{MFMT}'
+  name: Metrization theorem for countably based MF spaces
+  kind: sentence
+  minor: true
+  tags: [ analysis ]
+  definition: >
+    A countably based MF space (the space $MF(P)$ of maximal filters on a countable poset $P$) is
+    homeomorphic to a complete separable metric space if and only if it is regular.
+  refs:
+    - { ref: mummertsimpson2005, role: origin, loc: "Definitions 2, 5, 6" }
+
+- id: mba-simpson
+  label: '\textsf{minimal bad array lemma}'
+  name: Minimal bad array lemma (Simpson's version)
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  phrases: [ minimal bad array lemma ]
+  caution: Different from the locally minimal bad array lemma ([[lmba]]) and from Laver's version ([[mba-laver]]).
+  definition: >
+    Let $Q$ be a quasi order and $\le'$ a partial ranking of $\le_Q$ (a well-founded partial order on $Q$ such
+    that $p \le_Q q \le' r$ implies $p \le_Q r$). Whenever $f_0$ is a $\le_Q$-bad $Q$-array (a continuous map
+    $f : [V]^\omega \to Q$, given on a block), there is a $Q$-array $f \le' f_0$ that is $\le'$-minimal
+    $\le_Q$-bad.
+  refs:
+    - { ref: freundpakhomovsolda2023, role: rm, loc: "Definitions 1.1, 1.2 and the statement following them" }
+
+- id: mba-laver
+  label: '\textsf{minimal bad array lemma (Laver)}'
+  name: Minimal bad array lemma (Laver's version)
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  caution: Different from Simpson's version ([[mba-simpson]]) and from the locally minimal bad array lemma ([[lmba]]).
+  definition: >
+    Let $\le'$ be a partial ranking of a reflexive relation $R$ on a set $Q$. For any $R$-bad $Q$-array $f_0$
+    given as a function on a block, there is an $R$-bad $Q$-array $f \mathrel{\underline{\lessdot}'} f_0$
+    that admits no $R$-bad $Q$-array $g \lessdot' f$ (the relations on blocks and arrays of Definition 3.1).
+  refs:
+    - { ref: freundpakhomovsolda2023, role: rm, loc: "Definition 3.1 and the statement following it" }
+
+- id: sigma0-lpp
+  label: '\Sigma_0\text{-}\mathsf{LPP}'
+  name: Σ₀-relative leftmost path principle
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  aliases: [ Σ0-LPP, Σ0-LPP0 ]
+  definition: >
+    Whenever $T$ is an ill-founded tree of finite sequences, there is a path $\Lambda$ through $T$ such that
+    no path through $T$ which is $\Sigma_0$ in $T \oplus \Lambda$ is to the left of $\Lambda$ (the case $n =
+    0$ of the $\Sigma_n$-relative leftmost path principle).
+  refs:
+    - { ref: towsner2011, role: origin, loc: Definition 3.3 }
+
+- id: sigma2-lpp
+  label: '\Sigma_2\text{-}\mathsf{LPP}'
+  name: Σ₂-relative leftmost path principle
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  aliases: [ Σ2-LPP, Σ2-LPP0 ]
+  definition: >
+    Whenever $T$ is an ill-founded tree of finite sequences, there is a path $\Lambda$ through $T$ such that
+    no path through $T$ which is $\Sigma_2$ in $T \oplus \Lambda$ is to the left of $\Lambda$.
+  refs:
+    - { ref: towsner2011, role: origin, loc: Definition 3.3 }
+
+- id: mpp
+  label: '\mathsf{MPP}'
+  name: Minimal path principle
+  kind: sentence
+  minor: true
+  tags: [ well-orders ]
+  aliases: [ MPP0 ]
+  definition: >
+    If $T$ is an ill-founded tree and $\prec$ is a well-founded partial order, then there is a path through
+    $T$ which is minimal with respect to $\prec$ (no path $\Lambda'$ through $T$ with $\Lambda' \prec
+    \Lambda$).
+  refs:
+    - { ref: towsner2011, role: origin, loc: Definition 3.1 }
+
+- id: sorites
+  label: '\textsf{Sorites connectedness}'
+  name: Connectedness implies lack of tolerance (countable V-spaces)
+  kind: sentence
+  minor: true
+  tags: []
+  definition: >
+    Let $(X, \{W_x : x \in X\})$ be a weak V-space ($X \subseteq \omega$ non-empty, each $W_x$ a sequence
+    $\langle W_{x,n} : n \in \omega\rangle$ with $x \in W_{x,n} \subseteq X$), $Y$ a set and $\pi : X \to Y$.
+    If $a, b \in X$ are connected (for every cover $\{V_x \in W_x : x \in X\}$ there is a finite chain $a =
+    x_0, \ldots, x_k = b$ with $V_{x_j} \cap V_{x_{j+1}} \ne \emptyset$) and $\pi(a) \ne \pi(b)$, then some
+    $x \in X$ has no vicinity in $W_x$ on which $\pi$ is constant. The version for strong V-spaces (pairwise
+    distinct vicinities) is equivalent.
+  refs:
+    - { ref: dzhafarov2016b, role: rm, loc: "Definitions 1.2, 2.1, Theorem 2.4" }
+
+- id: wpo-young
+  label: '\mathsf{WPO}(\mathcal{D})'
+  name: Young diagrams are well partially ordered
+  kind: sentence
+  minor: true
+  tags: [ orders ]
+  aliases: [ "WPO(D)" ]
+  definition: >
+    The set $\mathcal{D}$ of Young diagrams, ordered by $D \le E$ iff $r_i(D) \le r_i(E)$ for all $i$ (where $r_i$ is
+    the length of the $i$-th row), is a well partial ordering: every infinite sequence $\langle D_i \rangle$ has
+    $i < j$ with $D_i \le D_j$.
+  refs: [ { ref: hatzikiriakousimpson2015, role: rm, loc: "Section 1, Theorem 2.3" } ]
+
+- id: formanek-lawrence
+  label: "\\textsf{Formanek–Lawrence theorem}"
+  name: Ascending chain condition for two-sided ideals of K[S]
+  kind: sentence
+  minor: true
+  tags: [ algebra ]
+  phrases: [ Formanek/Lawrence theorem ]
+  definition: >
+    Let $S$ be the group of finitely supported permutations of $\mathbb{N}$ and $K$ a countable field of
+    characteristic 0 (e.g. $\mathbb{Q}$). There is no infinite ascending sequence of two-sided ideals of the group
+    algebra $K[S]$ (equivalently over $\mathsf{RCA}_0$: every two-sided ideal of $K[S]$ is finitely generated).
+  refs: [ { ref: hatzikiriakousimpson2015, role: rm, loc: "Definition 4.1, Theorem 4.4" } ]
+
+- id: wpo-fin-down-nk
+  label: "\\textsf{Finite down-sets of }\\mathbb{N}^k\\textsf{ wpo}"
+  name: Finite downwards closed subsets of N^k are well partially ordered
+  kind: sentence
+  minor: true
+  tags: [ orders ]
+  definition: >
+    For every $k$, the finite downwards closed subsets of $\mathbb{N}^k$ ($k$-tuples ordered coordinatewise), ordered
+    by inclusion, form a well partial order (every bad sequence is finite). The case $k = 2$ is equivalent to
+    $\mathsf{WPO}(\mathcal{D})$ for Young diagrams.
+  refs: [ { ref: pelupessy2016c, role: rm, loc: "Definition 1, Theorem 2" } ]
+
+- id: adjacent-ramsey2
+  label: "\\textsf{Adjacent Ramsey for pairs}"
+  name: Friedman's adjacent Ramsey theorem for pairs
+  kind: sentence
+  minor: true
+  tags: [ ramsey, well-orders ]
+  phrases: [ adjacent Ramsey theorem for pairs, adjacent Ramsey for pairs ]
+  definition: >
+    For every $r$ and every function $C : \mathbb{N}^2 \to \mathbb{N}^r$ there are $a < b < c$ with
+    $C(a, b) \le C(b, c)$ (coordinatewise order on $\mathbb{N}^r$).
+  refs: [ { ref: pelupessy2016c, role: rm, loc: "Definition 6, Theorem 7" } ]
+
+- id: heine-borel-q
+  label: "\\textsf{Heine–Borel}_{\\mathbb{Q}}"
+  name: Heine/Borel compactness of closed sets of rationals in [0,1]
+  kind: sentence
+  minor: true
+  tags: [ compactness, analysis ]
+  definition: >
+    Every closed set of rationals in $[0,1]$ (closed: the complement of an open set) is Heine/Borel compact: every
+    covering of it by a sequence of open intervals has a finite subcovering.
+  refs: [ { ref: hirst2005c, role: rm, loc: Theorem 1 }]
+
+- id: heine-borel-q-sep
+  label: "\\textsf{Heine–Borel}^{\\mathrm{sep}}_{\\mathbb{Q}}"
+  name: Heine/Borel compactness of separably closed sets of rationals in [0,1]
+  kind: sentence
+  minor: true
+  tags: [ compactness, analysis ]
+  definition: >
+    Every separably closed set of rationals in $[0,1]$ (the set $\bar X$ of limit points of a countable set $X$) is
+    Heine/Borel compact: every covering of it by a sequence of open intervals has a finite subcovering.
+  refs: [ { ref: hirst2005c, role: rm, loc: Theorem 2 }]
+
+- id: transitive-orientation
+  label: "\\textsf{Transitive orientation}"
+  name: Transitive orientation of comparability graphs (Ghouila-Houri)
+  kind: problem
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every countable graph in which every cycle of odd length has a triangular chord has a transitive orientation.
+    (A cycle $a_0, \dots, a_k = a_0$ has a triangular chord if $a_1 E a_{k-1}$ or $a_i E a_{i+2}$ for some
+    $i < k-1$; an orientation $\to$ of $E$ is transitive if $a \to b \to c$ implies $a \to c$.) Backward direction
+    of Ghouila-Houri's characterization of comparability graphs.
+  instance: A countable graph in which every cycle of odd length has a triangular chord.
+  solution: A transitive orientation of it.
+  refs: [ { ref: fioricaronesmarcone2021, role: rm, loc: "Theorem 1.1, Lemma 1.2(2)" } ]
+
+- id: pseudo-transitive-orientation
+  label: "\\textsf{Pseudo-transitive orientation}"
+  name: Pseudo-transitive orientation of graphs with triangular chords
+  kind: problem
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every countable graph in which every cycle of odd length has a triangular chord has a pseudo-transitive
+    orientation: an orientation $\to$ such that $a \to b \to c$ implies $a \to c$ or $c \to a$ (first step of
+    Ghouila-Houri's proof).
+  instance: A countable graph in which every cycle of odd length has a triangular chord.
+  solution: A pseudo-transitive orientation of it.
+  refs: [ { ref: fioricaronesmarcone2021, role: rm, loc: "Lemma 1.2(3)" } ]
+
+- id: transitive-reorientation
+  label: "\\textsf{Transitive reorientation}"
+  name: Transitive reorientation of pseudo-transitive oriented graphs
+  kind: problem
+  minor: true
+  tags: [ graphs ]
+  definition: >
+    Every countable pseudo-transitive ograph (oriented graph: at most one edge between two vertices) has a transitive
+    reorientation, i.e. one obtained by reversing some edges (second step of Ghouila-Houri's proof; Theorem 1.5).
+  instance: A countable pseudo-transitive ograph.
+  solution: A transitive reorientation of it.
+  refs: [ { ref: fioricaronesmarcone2021, role: rm, loc: "Theorem 1.5, Main Theorem" } ]
+
+- id: rkron
+  label: '\mathsf{RKRON}'
+  name: Kronecker's lemma with a rate of convergence
+  kind: sentence
+  minor: true
+  tags: [ analysis ]
+  definition: >
+    For all sequences of reals $\langle x_n \rangle$ and $\langle a_n \rangle$ with $0 < a_n \le a_{n+1}$,
+    $\langle a_n \rangle$ unbounded and $\sum_{i \le n} x_i$ Cauchy, there is $g : \mathbb{N} \to \mathbb{N}$ which is a
+    rate of convergence to 0 of $\frac{1}{a_n} \sum_{i \le n} a_i x_i$: $\forall k\, \forall n \ge g(k)\,
+    |\frac{1}{a_n}\sum_{i \le n} a_i x_i| \le 2^{-k}$. (Kronecker's lemma without the rate is provable in
+    $\mathsf{RCA}_0$, Theorem 3.8(i).)
+  refs: [ { ref: neri2024, role: rm, loc: "Section 3.2, Theorem 3.8" } ]

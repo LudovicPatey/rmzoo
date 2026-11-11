@@ -1,0 +1,3 @@
+# Results from [fernandezduquereyes2020].
+
+[ { type: separation, from: atr, to: worm-bc, over: rca0, refs: [ { ref: fernandezduquereyes2020, loc: Theorem 52 } ] } ]

@@ -8,3 +8,8 @@
 - { type: property, statement: cr, property: idempotent, value: true, refs: [ { ref: brattkadebrechtpauly2012, loc: Corollary 7.6 } ] }
 - { type: equivalence, from: cn.par, to: lim, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: Example 3.10 }, { ref: brattkagherardipauly2021, loc: "Section 7.4, after Theorem 7.44" } ] }
 - { type: property, statement: cr, property: compose-closed, value: true, refs: [ { ref: brattkadebrechtpauly2012, loc: Corollary 7.6 }, { ref: brattkagherardipauly2021, loc: Corollary 7.12 } ] }
+- { type: implication, from: jinv-lim, to: cr, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: "Theorem 8.7 (C_{ℕ×{0,1}^ℕ} ≤sW L) with Corollary 4.9 (C_{ℕ×{0,1}^ℕ} ≡W C_ℝ)" } ] }
+- { type: separation, from: cr, to: jinv-lim, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: Theorem 8.7 with Corollary 4.9 } ] }
+- { type: implication, from: lim, to: jinv-lim, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: "Section 8, after Theorem 8.7 (L <W lim)" } ] }
+- { type: separation, from: jinv-lim, to: lim, over: w, refs: [ { ref: brattkadebrechtpauly2012, loc: "Section 8, after Theorem 8.7 (L <W lim)" } ] }
+- { type: property, statement: jinv-lim, property: idempotent, value: false, refs: [ { ref: brattkadebrechtpauly2012, loc: Theorem 8.8 (L <W L × L) } ] }

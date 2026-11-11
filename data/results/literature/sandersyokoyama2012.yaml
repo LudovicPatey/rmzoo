@@ -1,0 +1,3 @@
+# Results from [sandersyokoyama2012].
+
+[ { type: equivalence, from: riemann-bd, to: wwkl, over: rca0, refs: [ { ref: sandersyokoyama2012, loc: Theorem 10 } ] }, { type: equivalence, from: ddt, to: wwkl, over: rca0, refs: [ { ref: sandersyokoyama2012, loc: Theorem 12 } ] } ]

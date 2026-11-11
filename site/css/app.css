@@ -480,3 +480,4 @@ h1.q-title + .q-subs { font-size: 1.1em; margin-bottom: 14px; }
 .proof-steps summary { cursor: pointer; color: var(--accent); font-weight: 600; }
 .proof-steps ol { margin: 6px 0 2px; padding-left: 1.6em; }
 .proof-steps li { margin: 4px 0; line-height: 1.5; }
+div.warn { color: var(--open); margin-top: .3em; }

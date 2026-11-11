@@ -1,0 +1,3 @@
+# Results from [carluccitavernelli2022].
+
+[ { type: implication, from: rt1inf, to: htbin, over: rca0, refs: [ { ref: carluccitavernelli2022, loc: Lemma 1 } ] }, { type: separation, from: htbin, to: tt1, over: rca0, refs: [ { ref: carluccitavernelli2022, loc: Corollary 1 } ] }, { type: equivalence, from: aphtbin, to: aptt1, over: rca0, refs: [ { ref: carluccitavernelli2022, loc: Corollary 2 } ] }, { type: equivalence, from: aphtbin, to: isig2, over: rca0, refs: [ { ref: carluccitavernelli2022, loc: Corollary 4 } ] }, { type: equivalence, from: aptt1, to: isig2, over: rca0, refs: [ { ref: carluccitavernelli2022, loc: Corollary 4 } ] } ]

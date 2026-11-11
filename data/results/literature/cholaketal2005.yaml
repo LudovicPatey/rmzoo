@@ -1,3 +1,3 @@
 # Results from [cholaketal2005].
 
-[ { type: implication, from: fs, to: ts, over: rca0, refs: [ { ref: cholaketal2005, loc: Theorem 3.2 (uniformly in k) } ] }, { type: conservation, statement: fs2, base: isig2, class: Pi11, value: true, refs: [ { ref: cholaketal2005, loc: Corollary 5.4(5) } ] } ]
+[ { type: implication, from: fs, to: ts, over: rca0, refs: [ { ref: cholaketal2005, loc: Theorem 3.2 (uniformly in k) }, { ref: friedmansimpson2000, loc: "Section 7, Consequences of Ramsey's theorem (T2 follows trivially from T1)" } ] }, { type: conservation, statement: fs2, base: isig2, class: Pi11, value: true, refs: [ { ref: cholaketal2005, loc: Corollary 5.4(5) } ] } ]

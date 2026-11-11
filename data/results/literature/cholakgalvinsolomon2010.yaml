@@ -1,0 +1,3 @@
+# Results from [cholakgalvinsolomon2010].
+
+[ { type: equivalence, from: grs-paths, to: aca, over: rca0, refs: [ { ref: cholakgalvinsolomon2010, loc: Theorem 2.13 } ] }, { type: equivalence, from: grs-kww, to: aca, over: rca0, refs: [ { ref: cholakgalvinsolomon2010, loc: Theorem 2.13 } ] } ]

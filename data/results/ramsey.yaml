@@ -16,7 +16,7 @@
     - ref: ddhms2016
   note: RT¹ₖ₊₁ is not Weihrauch reducible to RT¹ₖ.
 
-- { type: equivalence, from: rt1inf, to: bsig2, over: rca0, refs: [ { ref: hirst1987 }, { ref: dzhafarovmummert2022, loc: Theorem 6.5.1 }, { ref: mileti2004, loc: Proposition 7.1.5 } ] }
+- { type: equivalence, from: rt1inf, to: bsig2, over: rca0, refs: [ { ref: hirst1987 }, { ref: dzhafarovmummert2022, loc: Theorem 6.5.1 }, { ref: mileti2004, loc: Proposition 7.1.5 }, { ref: miyatayokoyama2026, loc: Theorem 6 (n = ℓ = 1) and the remark after Definition 2 } ] }
 
 - { type: implication, from: rt22, to: rt23, over: rca0, folklore: true, note: Merge two of the colors and apply RT²₂ twice., justification: { kind: reduction, text: "Merge two colors and apply RT²₂, then apply RT²₂ again inside the homogeneous set if needed.", by: ai } }
 - { type: implication, from: rt23, to: rt22, over: [ sw, rca0star ], folklore: true, justification: { kind: restriction, text: A 2-coloring is a 3-coloring with the same homogeneous sets., by: ai } }
@@ -31,7 +31,7 @@
 
 - { type: property, statement: rt22, property: cone-avoidance, value: true, refs: [ { ref: seetapunslaman1995, loc: Theorem 2.1 }, { ref: cholakjockuschslaman2001, loc: Theorem 12.2 } ] }
 - { type: property, statement: rt22, property: pa-avoidance, value: true, refs: [ { ref: liu2012 } ] }
-- { type: property, statement: rt22, property: computably-true, value: false, refs: [ { ref: jockusch1972 } ] }
+- { type: property, statement: rt22, property: computably-true, value: false, refs: [ { ref: jockusch1972, loc: Corollary 2.2 } ] }
 - { type: property, statement: rt32, property: cone-avoidance, value: false, refs: [ { ref: jockusch1972 } ] }
 
 # ---- Stable / cohesive decomposition ---------------------------------------
@@ -40,7 +40,7 @@
 
 - { type: implication, from: srt22, to: d22, over: [ sw, rca0star ], folklore: true, justification: { kind: reduction, text: An infinite homogeneous set for a stable coloring is limit-homogeneous., by: ai } }
 - { type: implication, from: d22, to: rt12, over: [ sw, rca0star ], folklore: true, note: "Color the pair {x < y} by the color of x.", justification: { kind: reduction, text: "Color the pair {x < y} by the color of x; this coloring is stable and its limit-homogeneous sets are homogeneous for the original coloring.", by: ai } }
-- { type: implication, from: d22, to: srt22, over: rca0, refs: [ { ref: chonglemppyang2010 }, { ref: cholakjockuschslaman2001, loc: Lemma 7.10 } ], note: "D²₂ implies BΣ⁰₂ [CLY10], and D²₂ + BΣ⁰₂ implies SRT²₂ [CJS01]." }
+- { type: implication, from: d22, to: srt22, over: rca0, refs: [ { ref: chonglemppyang2010 }, { ref: cholakjockuschslaman2001, loc: Lemma 7.10 }, { ref: cjs2009, loc: "Corrigendum, item 1" } ], note: "D²₂ implies BΣ⁰₂ [CLY10], and D²₂ + BΣ⁰₂ implies SRT²₂ [CJS01]." }
 - { type: implication, from: d22, to: srt22, over: omega, refs: [ { ref: cholakjockuschslaman2001, loc: Lemma 7.10 } ] }
 
 - type: separation

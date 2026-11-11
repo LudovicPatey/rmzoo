@@ -1,3 +1,4 @@
 # Results from [uftring2025].
 
 - {type: "equivalence", from: "ukt", to: "pi11ca", over: "rca0", refs: [{ref: uftring2025}]}
+- { type: equivalence, from: wop-two-asc, to: aca, over: rca0, refs: [ { ref: uftring2025, loc: Theorem 2 } ] }

@@ -1,0 +1,3 @@
+# Results from [downeyetal2007].
+
+[ { type: equivalence, from: nps, to: wkl, over: rca0, refs: [ { ref: downeyetal2007, loc: Corollary 1.6 (1) } ] }, { type: equivalence, from: fd-nps, to: aca, over: rca0, refs: [ { ref: downeyetal2007, loc: Corollary 1.6 (2) } ] } ]

@@ -1,0 +1,3 @@
+# Results from [dzhafarov2016b].
+
+[ { type: equivalence, from: sorites, to: aca, over: rca0, refs: [ { ref: dzhafarov2016b, loc: Theorem 2.4 } ] } ]

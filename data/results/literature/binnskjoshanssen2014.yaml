@@ -1,0 +1,3 @@
+# Results from [binnskjoshanssen2014].
+
+[ { type: implication, from: dim, to: vsmall, over: rca0, refs: [ { ref: binnskjoshanssen2014, loc: Section 2 } ] }, { type: separation, from: wwkl, to: vsmall, over: omega, refs: [ { ref: binnskjoshanssen2014, loc: Theorem 3.8 } ] }, { type: separation, from: vsmall, to: dim, over: omega, refs: [ { ref: binnskjoshanssen2014, loc: Theorem 5.8 } ] } ]

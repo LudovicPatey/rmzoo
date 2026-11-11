@@ -22,3 +22,4 @@
 - { type: separation, from: cn, to: bwtn, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 12.10 } ] }
 - { type: implication, from: cn.jump, to: bwtn, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: "Theorem 12.10 (CL_N ≡sW C′_N, Corollary 9.10)" } ] }
 - { type: separation, from: bwtn, to: cn.jump, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: "Theorem 12.10 (CL_N ≡sW C′_N, Corollary 9.10)" } ] }
+- { type: equivalence, from: cln, to: cn.jump, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 9.4 (X = ℕ) } ] }

@@ -2,7 +2,7 @@
 # Patey, Yokoyama (2016) — The proof-theoretic strength of Ramsey's theorem for pairs and two colors
 
 - { type: "implication", from: "gp22", to: "sgp22", over: "rca0", folklore: true, justification: { kind: restriction, text: "Restriction to stable instances: every stable instance is an instance, with the same solutions.", by: ai } }
-- { type: "implication", from: "rt22", to: "gp22", over: "rca0", folklore: true, note: "Infinite sets contain infinite families of large finite sets", justification: { kind: reduction, text: "An infinite homogeneous set contains an infinite sequence of large finite blocks F₀ < F₁ < ⋯, which is a solution.", by: ai } }
+- { type: "implication", from: "rt22", to: "gp22", over: "rca0", note: "Infinite sets contain infinite families of large finite sets", justification: { kind: reduction, text: "An infinite homogeneous set contains an infinite sequence of large finite blocks F₀ < F₁ < ⋯, which is a solution.", by: ai }, refs: [ { ref: brattkaetal2016, loc: "Section 4, Open Problems, question of Yokoyama" } ] }
 - { type: "implication", from: "srt22", to: "sgp22", over: "rca0", folklore: true, note: "Infinite sets contain infinite families of large finite sets", justification: { kind: reduction, text: "An infinite homogeneous set contains an infinite sequence of large finite blocks F₀ < F₁ < ⋯, which is a solution.", by: ai } }
 - { type: "conservation", statement: "bsig2", base: "rca0", class: "uPi03", value: true, refs: [ { ref: "pateyyokoyama2018", loc: "Theorem 1.5" } ], note: "; noted to be a parameterized version of the Parsons/Paris/Friedman conservation theorem" }
 - { type: "implication", from: "coh-sgp22", to: "gp22", over: "rca0", refs: [ { ref: "pateyyokoyama2018", loc: "remark preceding Definition 5.3" } ] }

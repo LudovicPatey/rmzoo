@@ -1,0 +1,3 @@
+# Results from [kreuzer2012c].
+
+[ { type: equivalence, from: bwt-weak-l2, to: aca, over: rca0, refs: [ { ref: kreuzer2012c, loc: Abstract and introduction (known; refined by Theorems 8 and 12) } ] }, { type: implication, from: bwt-weak-l2, to: bwt, over: sw, refs: [ { ref: kreuzer2012c, loc: Remark 14 } ] }, { type: separation, from: bwt, to: bwt-weak-l2, over: sw, refs: [ { ref: kreuzer2012c, loc: Remark 14 } ] } ]

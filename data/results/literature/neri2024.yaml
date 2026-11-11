@@ -1,0 +1,3 @@
+# Results from [neri2024].
+
+[ { type: equivalence, from: rkron, to: aca, over: rca0, refs: [ { ref: neri2024, loc: "Theorem 3.8(ii), (iii)" } ] } ]

@@ -23,7 +23,7 @@
 - { type: equivalence, from: cr, to: cn.x.wkl, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proof of Theorem 8.3 } ] }
 - { type: implication, from: coh, to: hyp, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Theorem 12.6 } ] }
 - { type: implication, from: lim, to: coh, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 12.10 } ] }
-- { type: equivalence, from: sep, to: wkl, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proof of Lemma 14.20 } ] }
+- { type: equivalence, from: sep, to: wkl, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proof of Lemma 14.20 }, { ref: gherardimarcone2009, loc: Theorem 6.7 }, { ref: gherardimarcone2008, loc: Theorem 6.7 } ] }
 - { type: equivalence, from: gen1.star.gen1, to: gen1, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 10.7 } ] }
 - { type: implication, from: coh.jump, to: coh, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 12.3 } ] }
 - { type: separation, from: wwkl, to: padeg, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.11 (k = 0) } ] }
@@ -64,3 +64,4 @@
 - { type: property, statement: wwkl-lstar, property: strongly-parallelizable, value: true, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 7.6 } ] }
 - { type: property, statement: wwkl, property: parallelizable, value: false, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.13 (WWKL := 0-WWKL) } ] }
 - { type: property, statement: wwkl-half, property: parallelizable, value: false, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Corollary 7.13 } ] }
+- { type: equivalence, from: coh, to: wbwt2.par, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 14.10 } ] }

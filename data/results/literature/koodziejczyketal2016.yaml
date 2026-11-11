@@ -2,3 +2,8 @@
 
 - { type: "equivalence", from: "art22", to: "isig2", over: "rca0", refs: [ { ref: koodziejczyketal2016, loc: Theorem 1 (Propositions 4.1 and 9.1) } ] }
 - { type: "equivalence", from: "buchi", to: "isig2", over: "rca0", refs: [ { ref: koodziejczyketal2016, loc: Theorem 1 } ] }
+- { type: equivalence, from: ordrt, to: isig2, over: rca0, refs: [ { ref: koodziejczyketal2016, loc: Lemma 4.3 and Proposition 9.1 } ] }
+- { type: implication, from: srt2, to: ordrt, over: rca0, refs: [ { ref: koodziejczyketal2016, loc: "Section 4, after Definition 4.2" } ] }
+- { type: equivalence, from: wilke, to: art22, over: rca0, refs: [ { ref: koodziejczyketal2016, loc: Theorem 10.2 } ] }
+- { type: equivalence, from: mso-depth5, to: isig2, over: rca0, refs: [ { ref: koodziejczyketal2016, loc: Theorem 1.1(4) (Propositions 6.1 and 7.1) } ] }
+- { type: implication, from: isig2, to: mcnaughton, over: rca0, refs: [ { ref: koodziejczyketal2016, loc: Theorem 12.1 (Theorem 1.1(5)) } ] }

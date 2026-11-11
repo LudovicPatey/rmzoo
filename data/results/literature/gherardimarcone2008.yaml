@@ -1,0 +1,3 @@
+# Results from [gherardimarcone2008].
+
+[ { type: implication, from: ec, to: sep, over: w, note: Stated as Sep < C1; C1 is EC., refs: [ { ref: gherardimarcone2008, loc: Corollary 6.11 } ] }, { type: separation, from: sep, to: ec, over: w, note: Stated as Sep < C1; C1 is EC., refs: [ { ref: gherardimarcone2008, loc: Corollary 6.11 } ] } ]

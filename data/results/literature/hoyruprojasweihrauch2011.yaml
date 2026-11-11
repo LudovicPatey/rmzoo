@@ -1,0 +1,3 @@
+# Results from [hoyruprojasweihrauch2011].
+
+[ { type: equivalence, from: rn, to: ec, over: w, refs: [ { ref: hoyruprojasweihrauch2011, loc: "Theorem 4.1, Theorem 5.1" } ] }, { type: implication, from: rn, to: ec, over: sw, note: "EC ≤sW RN0, the restriction of RN to Lebesgue measure on S.", refs: [ { ref: hoyruprojasweihrauch2011, loc: Theorem 5.1 } ] } ]

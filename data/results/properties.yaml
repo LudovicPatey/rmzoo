@@ -28,7 +28,7 @@
 - { type: property, statement: wkl, property: arith-preservation, value: true, refs: [ { ref: wang2016, loc: Theorem 3.6 } ] }
 - { type: property, statement: rrt22, property: arith-preservation, value: true, refs: [ { ref: wang2016, loc: Corollary 3.23 } ] }
 - { type: property, statement: coh, property: arith-preservation, value: true, refs: [ { ref: patey2015d, loc: Theorem 2.2 }, { ref: patey2016c, loc: Theorem 15.2.1 } ] }
-- { type: property, statement: em, property: arith-preservation, value: true, refs: [ { ref: patey2015d, loc: Theorem 3.2 }, { ref: patey2016c, loc: Theorem 15.3.1 } ] }
+- { type: property, statement: em, property: arith-preservation, value: true, refs: [ { ref: patey2015d, loc: Theorem 3.2 }, { ref: patey2016c, loc: Theorem 15.3.1 }, { ref: pateymimouni2023, loc: Main Theorem 1.3 } ] }
 - { type: property, statement: tj, property: arith-preservation, value: false, folklore: true, note: "∅′ makes a Σ⁰₂ set Σ⁰₁.", justification: { kind: reduction, text: "The complement of ∅′ is not Σ⁰₁, but it is Σ⁰₁ (even computable) relative to ∅′, the only solution of the computable instance ∅.", by: ai } }
 - { type: property, statement: cac, property: cb-immunity-preservation, value: true, refs: [ { ref: patey2018a, loc: "Theorem 13" } ] }
 - { type: property, statement: dnr, property: cb-immunity-preservation, value: false, refs: [ { ref: patey2018a, loc: "Theorem 16" } ] }

@@ -1,0 +1,3 @@
+# Results from [carluccigjetaj2026].
+
+[ { type: implication, from: rt-barrier, to: ts-barrier, over: sw, refs: [ { ref: carluccigjetaj2026, loc: Proposition 7 } ] }, { type: implication, from: fs-barrier, to: ts-barrier, over: sw, refs: [ { ref: carluccigjetaj2026, loc: Theorem 8 } ] }, { type: implication, from: rt-barrier, to: rrt-barrier, over: sw, refs: [ { ref: carluccigjetaj2026, loc: Proposition 10 } ] }, { type: implication, from: fs-barrier, to: rrt-barrier, over: sw, refs: [ { ref: carluccigjetaj2026, loc: Proposition 11 } ] }, { type: implication, from: rtlarge, to: tslarge, over: sw, note: Stated for all barriers; here the Schreier barrier., refs: [ { ref: carluccigjetaj2026, loc: Proposition 7 } ] } ]

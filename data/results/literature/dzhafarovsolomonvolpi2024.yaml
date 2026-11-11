@@ -1,0 +1,3 @@
+# Results from [dzhafarovsolomonvolpi2024].
+
+[ { type: equivalence, from: least-nonext-pair, to: isig2, over: rca0, refs: [ { ref: dzhafarovsolomonvolpi2024, loc: "Theorem 5.1 (with LΣ⁰₂ ↔ IΣ⁰₂ over RCA₀, Section 1)" } ] } ]

@@ -28,4 +28,4 @@
 - { type: "separation", from: "ast", to: "opt", over: "omega", refs: [ { ref: hirschfeldtshoreslaman2009, loc: remark following Theorem 6.3 }, { ref: dzhafarovmummert2022, loc: Section 9.10.2 after Proposition 9.10.16; Exercise 9.13.19 } ] }
 - { type: "separation", from: "ast", to: "dnr", over: "omega", refs: [ { ref: "hirschfeldtshoreslaman2009", loc: "remark following Theorem 6.3" } ] }
 - { type: "separation", from: "ast", to: "cads", over: "omega", refs: [ { ref: "hirschfeldtshoreslaman2009", loc: "remark following Theorem 6.3" } ] }
-- { type: "implication", from: "amt-isig2", to: "pi01g", over: "rca0", refs: [ { ref: conidis2008, loc: Corollary 3.11 (straightforward verification) } ] }
+- { type: "implication", from: "amt-isig2", to: "pi01g", over: "rca0", refs: [ { ref: conidis2008, loc: Corollary 3.11 (straightforward verification) }, { ref: hirschfeldtshoreslaman2009, loc: "Section 4, last paragraph" } ] }

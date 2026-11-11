@@ -1,0 +1,3 @@
+# Results from [liao2026].
+
+[ { type: property, statement: ht, property: pi3-basis, value: false, refs: [ { ref: liao2026, loc: Theorem 4.3 } ] }, { type: property, statement: ht-le3, property: delta3-basis, value: false, refs: [ { ref: liao2026, loc: Theorem 4.2 } ] } ]

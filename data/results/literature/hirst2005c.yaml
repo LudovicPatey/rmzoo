@@ -1,0 +1,3 @@
+# Results from [hirst2005c].
+
+[ { type: equivalence, from: heine-borel-q, to: wkl, over: rca0, refs: [ { ref: hirst2005c, loc: Theorem 1 } ] }, { type: equivalence, from: heine-borel-q-sep, to: aca, over: rca0, refs: [ { ref: hirst2005c, loc: Theorem 2 } ] } ]

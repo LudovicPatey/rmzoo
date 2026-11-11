@@ -1,0 +1,3 @@
+# Results from [deansanders2025].
+
+[ { type: equivalence, from: open-induction, to: aca, over: rca0, refs: [ { ref: deansanders2025, loc: "Theorem 6(a),(i)" } ] }, { type: equivalence, from: creeping-lemma, to: wkl, over: rca0, refs: [ { ref: deansanders2025, loc: "Theorem 7(a),(c)" } ] } ]

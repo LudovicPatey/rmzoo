@@ -1,0 +1,3 @@
+# Results from [goh2023].
+
+[ { type: implication, from: finite-sigma11-ac, to: wsigma11ac, over: rca0, refs: [ { ref: goh2023, loc: "Section 1, after Definition 1.2" } ] }, { type: separation, from: finite-sigma11-ac, to: sigma11ac, over: omega, refs: [ { ref: goh2023, loc: "Section 1, after Theorem 1.5" } ] } ]

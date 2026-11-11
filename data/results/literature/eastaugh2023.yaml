@@ -1,3 +1,4 @@
 # Results from [eastaugh2023].
 
 - { type: "equivalence", from: "fishburn", to: "aca", over: "rca0", refs: [ { ref: eastaugh2023, loc: Theorem 5.4 } ] }
+- { type: equivalence, from: nonprincipal-uf, to: aca, over: rca0, refs: [ { ref: eastaugh2023, loc: Lemma 2.6 } ] }

@@ -172,3 +172,16 @@
     Every set belongs to a countable (coded) Scott set: a nonempty family closed under join, in which every infinite
     binary tree computable from a member has an infinite path in the family.
   refs: [ { ref: cholakjockuschslaman2001, role: rm, loc: "Definition 8.15, before Lemma 8.18" } ]
+
+- id: pi12ca
+  label: '\Pi^1_2\text{-}\mathsf{CA}'
+  name: Π¹₂ comprehension
+  kind: sentence
+  tags: []
+  aliases: [ Pi12-CA0, Π12-CA0, pi12 comprehension ]
+  definition: >
+    Comprehension for $\Pi^1_2$ formulas: for every formula $\varphi(n)$ of the form $\forall Y \exists Z\,
+    \theta(n, Y, Z)$ with $\theta$ arithmetical (parameters allowed), the set $\{n : \varphi(n)\}$ exists.
+  refs:
+    - { ref: mummertsimpson2005, role: rm, loc: Definition 1 }
+    - { ref: freundpakhomovsolda2023, role: rm, loc: Section 1 }

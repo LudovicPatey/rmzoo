@@ -1,3 +1,3 @@
 # Results from [friedmansimpson2000].
 
-[ { type: separation, from: aca, to: ts, over: rca0, refs: [ { ref: friedmansimpson2000, loc: "Section 7, Consequences of Ramsey's theorem (Friedman: T2 is not provable in ACA₀)" } ] } ]
+[ { type: separation, from: aca, to: ts, over: rca0, refs: [ { ref: friedmansimpson2000, loc: "Section 7, Consequences of Ramsey's theorem (Friedman: T2 is not provable in ACA₀)" } ] }, { type: implication, from: stietze-csc, to: dnr, over: rca0, refs: [ { ref: friedmansimpson2000, loc: "Section 5 (partial reversal, proof outlined for closed, separably closed sets)" } ] }, { type: implication, from: stietze-closed, to: dnr, over: rca0, refs: [ { ref: friedmansimpson2000, loc: "Section 5 (partial reversal: (3) or (4) implies the DNR axiom)" } ] }, { type: implication, from: rt2, to: ts2, over: rca0, refs: [ { ref: friedmansimpson2000, loc: "Section 7, Consequences of Ramsey's theorem (RT(2) implies T2(2))" } ] } ]

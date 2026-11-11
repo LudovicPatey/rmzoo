@@ -139,6 +139,7 @@
     - { ref: brattkarakotoniaina2017, role: rm }
 
 - id: ds
+  omegaAbsolute: false
   label: '\mathsf{DS}'
   name: Descending sequences in ill-founded orders
   kind: problem
@@ -150,6 +151,7 @@
     - { ref: gohpaulyvalenti2021, role: origin }
 
 - id: bs
+  omegaAbsolute: false
   label: '\mathsf{BS}'
   name: Bad sequences in non-wqos
   kind: problem
@@ -233,6 +235,7 @@
     - {ref: brattkadebrechtpauly2012, role: rm}
 
 - id: ucnn
+  omegaAbsolute: false
   label: '\mathsf{UC}_{\mathbb{N}^{\mathbb{N}}}'
   name: Unique closed choice on Baire space
   kind: problem
@@ -245,6 +248,7 @@
     - {ref: brattkadebrechtpauly2012, role: rm}
 
 - id: cnn
+  omegaAbsolute: false
   label: '\mathsf{C}_{\mathbb{N}^{\mathbb{N}}}'
   name: Closed choice on Baire space
   kind: problem
@@ -420,6 +424,7 @@
   refs: [ { ref: brattkagherardiholzl2015, role: rm, loc: Section 2 } ]
 
 - id: tcnn
+  omegaAbsolute: false
   label: '\mathsf{TC}_{\mathbb{N}^\mathbb{N}}'
   name: Total continuation of choice on Baire space
   kind: problem
@@ -530,6 +535,7 @@
 
 # Hyperarithmetic-level problems (Kihara, Marcone, Pauly 2020; Marcone, Valenti 2021).
 - id: chipi11
+  omegaAbsolute: false
   label: '\chi_{\Pi^1_1}'
   name: Characteristic function of a Π¹₁-complete set
   kind: problem
@@ -545,6 +551,7 @@
     - { ref: marconevalenti2020, role: rm, loc: Section 2.2 }
 
 - id: nha
+  omegaAbsolute: false
   label: '\mathsf{NHA}'
   name: Non-hyperarithmeticity problem
   kind: problem
@@ -556,6 +563,7 @@
   refs: [ { ref: kiharamarconepauly2020, role: origin, loc: "Section 3, before Corollary 3.6" } ]
 
 - id: stcnn
+  omegaAbsolute: false
   label: '\mathsf{sTC}_{\mathbb{N}^\mathbb{N}}'
   name: Strong total continuation of choice on Baire space
   kind: problem
@@ -663,6 +671,7 @@
   refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.1 } ]
 
 - id: delta01-rt
+  omegaAbsolute: false
   label: '\Delta^0_1\text{-}\mathsf{RT}'
   name: Clopen Ramsey theorem
   kind: problem
@@ -700,6 +709,7 @@
   refs: [ { ref: marconevalenti2020, role: origin, loc: Definition 4.2 } ]
 
 - id: sigma11-wkl
+  omegaAbsolute: false
   label: '\Sigma^1_1\text{-}\mathsf{WKL}'
   name: Σ¹₁ weak König's lemma
   kind: problem
@@ -714,6 +724,7 @@
   refs: [ { ref: kiharamarconepauly2020, role: origin, loc: "Definition 4.2, Theorem 4.3" } ]
 
 - id: pi11-sep-w
+  omegaAbsolute: false
   caution: 'As Weihrauch problems, Σ¹₁-Sep (≡ UC_ℕℕ, Theorem 3.11 of [@kiharamarconepauly2020]) lies strictly below Π¹₁-Sep, while as sentences Σ¹₁ separation ([[sigma11-sep]]) is equivalent to ATR₀ and Π¹₁ separation is strictly weaker than ATR₀.'
   label: '\Pi^1_1\text{-}\mathsf{Sep}'
   name: Π¹₁ separation (Weihrauch problem)
@@ -727,6 +738,7 @@
   refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 4.1 } ]
 
 - id: sigma11-cn
+  omegaAbsolute: false
   label: '\Sigma^1_1\text{-}\mathsf{C}_{\mathbb{N}}'
   name: Σ¹₁ choice on the natural numbers
   kind: problem
@@ -742,6 +754,7 @@
     - { ref: gohpaulyvalenti2021, role: rm, loc: Proposition 2.4 }
 
 - id: sigma11-wwkl
+  omegaAbsolute: false
   label: '\Sigma^1_1\text{-}\mathsf{WWKL}'
   name: Σ¹₁ weak weak König's lemma
   kind: problem
@@ -754,6 +767,7 @@
   refs: [ { ref: kiharamarconepauly2020, role: origin, loc: "Section 4.2, before Theorem 4.9" } ]
 
 - id: perfect1
+  omegaAbsolute: false
   caution: 'PTT₁ is a perfect tree theorem; PTT with a superscript, as in PTT², is the polarized tree theorem ([[ptt2]]).'
   label: '\mathsf{PTT}_1'
   name: One-sided perfect tree theorem
@@ -767,6 +781,7 @@
   refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 6.2 } ]
 
 - id: pst
+  omegaAbsolute: false
   label: '\mathsf{PST}_{\mathbb{N}^\mathbb{N}}'
   name: Perfect set theorem (Weihrauch problem)
   kind: problem
@@ -782,6 +797,7 @@
   refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: Definition 3.2 } ]
 
 - id: list-baire
+  omegaAbsolute: false
   label: '\mathsf{List}'
   name: Listing countable closed subsets of Baire space
   kind: problem
@@ -796,6 +812,7 @@
   refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 6.1 } ]
 
 - id: findws-sigma
+  omegaAbsolute: false
   label: '\mathsf{FindWS}_\Sigma'
   name: Winning strategies for the open player
   kind: problem
@@ -808,6 +825,7 @@
   refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 6.18 } ]
 
 - id: findws-pi
+  omegaAbsolute: false
   label: '\mathsf{FindWS}_\Pi'
   name: Winning strategies for the closed player
   kind: problem
@@ -820,6 +838,7 @@
   refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 6.18 } ]
 
 - id: det-sigma
+  omegaAbsolute: false
   label: '\mathsf{Det}_\Sigma'
   name: Open determinacy (Nash equilibria of open games)
   kind: problem
@@ -871,6 +890,7 @@
   refs: [ { ref: gohpaulyvalenti2021, role: rm, loc: Definition 4.23 } ]
 
 - id: pi11bound
+  omegaAbsolute: false
   label: '\Pi^1_1\text{-}\mathsf{Bound}'
   name: Bound for finite Π¹₁ sets
   kind: problem
@@ -884,6 +904,7 @@
   refs: [ { ref: gohpaulyvalenti2021, role: origin, loc: "Definition 4.7, Theorem 4.10" } ]
 
 - id: sigma11-ds
+  omegaAbsolute: false
   label: '\Sigma^1_1\text{-}\mathsf{DS}'
   name: Descending sequences in Σ¹₁ linear orders
   kind: problem
@@ -895,6 +916,7 @@
   refs: [ { ref: gohpaulyvalenti2021, role: origin, loc: Definition 5.1 } ]
 
 - id: sigma11-bs
+  omegaAbsolute: false
   label: '\Sigma^1_1\text{-}\mathsf{BS}'
   name: Bad sequences in Σ¹₁ quasi-orders
   kind: problem
@@ -1084,6 +1106,7 @@
   refs: [ { ref: brattkachirache2026, role: origin, loc: "Definition 4(1)" } ]
 
 - id: atrw
+  omegaAbsolute: false
   label: '\mathsf{ATR}'
   name: Arithmetical transfinite recursion (problem)
   kind: problem
@@ -1102,6 +1125,7 @@
     - { ref: goh2019b, role: rm, loc: Section 2 }
 
 - id: cwow
+  omegaAbsolute: false
   label: '\mathsf{CWO}'
   name: Comparability of well-orderings (problem)
   kind: problem
@@ -1115,6 +1139,7 @@
   refs: [ { ref: goh2019, role: rm, loc: Definition 4.1 } ]
 
 - id: wcwow
+  omegaAbsolute: false
   label: '\mathsf{WCWO}'
   name: Weak comparability of well-orderings (problem)
   kind: problem
@@ -1140,6 +1165,7 @@
   refs: [ { ref: goh2019, role: origin, loc: Definition 4.3 } ]
 
 - id: wqowo
+  omegaAbsolute: false
   label: '\mathsf{WQO}_{\mathsf{WO}}'
   name: Fraïssé's conjecture for well-orderings (problem)
   kind: problem
@@ -1152,6 +1178,7 @@
   refs: [ { ref: goh2019, role: origin, loc: Definition 4.3 } ]
 
 - id: ndswo
+  omegaAbsolute: false
   label: '\mathsf{NDS}_{\mathsf{WO}}'
   name: No infinite descending sequence of well-orderings (problem)
   kind: problem
@@ -1166,6 +1193,7 @@
   refs: [ { ref: goh2019, role: origin, loc: Definition 4.3 } ]
 
 - id: niacwo
+  omegaAbsolute: false
   label: '\mathsf{NIAC}_{\mathsf{WO}}'
   name: No infinite antichain of well-orderings (problem)
   kind: problem
@@ -1225,3 +1253,349 @@
   instance: A sequence of closed sets covering the space, given by positive information.
   solution: An $i$ such that the $i$-th set has nonempty interior.
   refs: [ { ref: brattkahendtlasskreuzer2018, role: origin, loc: Definition 1.3 } ]
+
+- id: wbwt2
+  label: '\mathsf{WBWT}_2'
+  name: Weak Bolzano–Weierstrass theorem on {0,1}
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ WBWT2, WBWT_2 ]
+  definition: >
+    Given a sequence $p \in 2^{\mathbb{N}}$, find a sequence $q \in 2^{\mathbb{N}}$ converging to a cluster point
+    of $p$: $\mathsf{WBWT}_2(p) = \{q : \lim_n q(n) \text{ is a cluster point of } p\}$. It is
+    $\mathsf{BWT}_2$ with the jump of the representation on the output side; its parallelization is equivalent
+    to $\mathsf{COH}$.
+  instance: A sequence $p \in 2^{\mathbb{N}}$.
+  solution: A sequence $q \in 2^{\mathbb{N}}$ whose limit is a cluster point of $p$.
+  refs:
+    - { ref: brattkahendtlasskreuzer2017, role: origin, loc: "Definition 14.3 (X = 2)" }
+    - { ref: brattkagherardi2018, role: rm, loc: "Proposition 5.8(6)" }
+
+- id: ubrdiv
+  label: '\mathsf{ubrDiv}'
+  name: Unbounded robust division
+  kind: problem
+  minor: true
+  tags: [ weihrauch, analysis ]
+  aliases: [ ubrDiv ]
+  definition: >
+    $\mathsf{ubrDiv} : \mathbb{R} \times \mathbb{R} \rightrightarrows \mathbb{R}$: on $(x, y)$ with $y \neq 0$ output
+    $x / y$; on $(x, 0)$ output any real.
+  instance: A pair of reals $(x, y)$.
+  solution: $x / y$ if $y \neq 0$, any real if $y = 0$.
+  refs:
+    - { ref: kiharapauly2016, role: origin, loc: Definition 4 }
+
+- id: dependent-cut
+  label: '\mathsf{DependentCut}'
+  name: Dependent cut
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  aliases: [ DependentCut ]
+  definition: >
+    $\mathsf{DependentCut} : \{0,1\}^{\mathbb{N}} \rightrightarrows \{0,1\}^{\mathbb{N}}$ with
+    $\mathsf{DependentCut}(0^n 1 p) = \{p\}$ and $\mathsf{DependentCut}(0^{\mathbb{N}}) = \{0,1\}^{\mathbb{N}}$.
+    A representative of the degree of robust division ($\mathsf{AUC}_{[0,1]}$).
+  instance: A sequence $r \in \{0,1\}^{\mathbb{N}}$.
+  solution: $p$ if $r = 0^n 1 p$; any sequence if $r = 0^{\mathbb{N}}$.
+  refs:
+    - { ref: kiharapauly2016, role: origin, loc: "Section 3, before Proposition 13" }
+
+- id: lu-decomp-pq
+  label: '\mathsf{LU}\text{-}\mathsf{Decomp}_{P,Q}'
+  name: LU decomposition with row and column permutations
+  kind: problem
+  minor: true
+  tags: [ analysis, algebra ]
+  aliases: [ "LU-Decomp_{P,Q}", LU-DecompPQ ]
+  definition: >
+    Given a real matrix $A$, find permutation matrices $P, Q$, a matrix $U$ in upper echelon form and a matrix
+    $L$ in lower echelon form with all diagonal elements equal to 1 such that $PAQ = LU$.
+  instance: A real matrix $A$.
+  solution: Permutation matrices $P, Q$ and echelon matrices $L$ (unit diagonal), $U$ with $PAQ = LU$.
+  refs:
+    - { ref: kiharapauly2016, role: origin, loc: Definition 26 }
+
+- id: lu-decomp-q
+  label: '\mathsf{LU}\text{-}\mathsf{Decomp}_{Q}'
+  name: LU decomposition with column permutations
+  kind: problem
+  minor: true
+  tags: [ analysis, algebra ]
+  aliases: [ "LU-Decomp_Q", LU-DecompQ ]
+  definition: >
+    $\mathsf{LU}\text{-}\mathsf{Decomp}_{P,Q}$ with $P$ required to be the identity: given a real matrix $A$,
+    find a permutation matrix $Q$, an upper echelon $U$ and a lower echelon $L$ with unit diagonal such that
+    $AQ = LU$.
+  instance: A real matrix $A$.
+  solution: A permutation matrix $Q$ and echelon matrices $L$ (unit diagonal), $U$ with $AQ = LU$.
+  refs:
+    - { ref: kiharapauly2016, role: origin, loc: Definition 26 }
+
+- id: pure
+  label: '\mathsf{Pure}'
+  name: Pure equilibria of bimatrix games
+  kind: problem
+  minor: true
+  tags: [ analysis ]
+  aliases: [ Pure ]
+  definition: >
+    Given a finite bi-matrix game $(A, B)$ with real payoffs (of any dimensions $n \times m$) that has a pure
+    equilibrium, find one: a pair $(i, j)$ with $A_{ij} \geq A_{kj}$ for all $k$ and $B_{ij} \geq B_{il}$ for all
+    $l$. The coproduct of the problems $\mathsf{Pure}_{nm}$ over all dimensions.
+  instance: A real $n \times m$ bi-matrix game having a pure equilibrium.
+  solution: A pure equilibrium $(i, j)$.
+  refs:
+    - { ref: pauly2010, role: origin, loc: "Definition 1, Section 3" }
+
+- id: corr
+  label: '\mathsf{Corr}'
+  name: Correlated equilibria of bimatrix games
+  kind: problem
+  minor: true
+  tags: [ analysis ]
+  aliases: [ Corr ]
+  definition: >
+    Given a finite bi-matrix game $(A, B)$ with real payoffs, find a correlated equilibrium: a non-negative
+    $n \times m$ matrix $C$ with entries summing to 1 such that $\sum_j A_{ij} C_{ij} \geq \sum_j A_{lj} C_{ij}$
+    for all $i, l$ and $\sum_i B_{ij} C_{ij} \geq \sum_i B_{ik} C_{ij}$ for all $j, k$.
+  instance: A real $n \times m$ bi-matrix game.
+  solution: A correlated equilibrium.
+  refs:
+    - { ref: pauly2010, role: origin, loc: "Definition 3, Section 2" }
+
+- id: zcorr
+  label: '\mathsf{ZCorr}'
+  name: Correlated equilibria of zero-sum games
+  kind: problem
+  minor: true
+  tags: [ analysis ]
+  aliases: [ ZCorr ]
+  definition: >
+    $\mathsf{Corr}$ restricted to zero-sum bi-matrix games $(A, -A)$: find a correlated equilibrium.
+  instance: A real zero-sum bi-matrix game $(A, -A)$.
+  solution: A correlated equilibrium.
+  refs:
+    - { ref: pauly2010, role: origin, loc: "Section 2.1, Section 3 (after Corollary 20)" }
+
+- id: znash
+  label: '\mathsf{ZNash}'
+  name: Nash equilibria of zero-sum games
+  kind: problem
+  minor: true
+  tags: [ analysis ]
+  aliases: [ ZNash ]
+  definition: >
+    $\mathsf{NASH}$ restricted to zero-sum bi-matrix games $(A, -A)$: find a Nash equilibrium.
+  instance: A real zero-sum bi-matrix game $(A, -A)$.
+  solution: A Nash equilibrium.
+  refs:
+    - { ref: pauly2010, role: origin, loc: "Section 2.1, Section 3 (after Corollary 20)" }
+
+- id: blinineq
+  label: '\mathsf{BLinIneq}'
+  name: Bounded systems of linear inequalities
+  kind: problem
+  minor: true
+  tags: [ analysis, algebra ]
+  aliases: [ BLinIneq ]
+  definition: >
+    Given a matrix $A \in \mathbb{R}^{n \times m}$ and a vector $b \in \mathbb{R}^n$ such that the system
+    $Av \leq b$, $0 \leq v \leq 1$ has a solution, find a vector $v \in \mathbb{R}^m$ with $Av \leq b$ and
+    $0 \leq v \leq 1$ (componentwise). The coproduct of the problems $\mathsf{BLinIneq}_{nm}$ over all $n, m$.
+  instance: A real matrix $A$ and vector $b$ such that $Av \leq b$, $0 \leq v \leq 1$ is solvable.
+  solution: A solution $v$.
+  refs:
+    - { ref: pauly2010, role: origin, loc: Definition 36 }
+
+- id: vct0
+  label: '\mathsf{VCT}_0'
+  name: Vitali covering theorem (Weihrauch problem, version 0)
+  kind: problem
+  minor: true
+  tags: [ weihrauch, randomness ]
+  aliases: [ VCT_0, VCT0 ]
+  definition: >
+    Given a sequence $I = (I_n)_n$ of rational open intervals that is a Vitali cover of $[0,1]$ (every
+    $x \in [0,1]$ lies in intervals $I_n$ of arbitrarily small diameter), find a subsequence $J$ of $I$ that
+    eliminates $[0,1]$: the intervals of $J$ are pairwise disjoint and $\lambda([0,1] \setminus \bigcup J) = 0$.
+  instance: A sequence of rational open intervals that is a Vitali cover of $[0,1]$.
+  solution: A subsequence of it that eliminates $[0,1]$.
+  refs: [ { ref: brattkaetal2017b, role: origin, loc: "Definition 9(0)" } ]
+
+- id: vct1
+  label: '\mathsf{VCT}_1'
+  name: Vitali covering theorem (Weihrauch problem, version 1)
+  kind: problem
+  minor: true
+  omegaAbsolute: false
+  tags: [ weihrauch, randomness ]
+  aliases: [ VCT_1, VCT1 ]
+  definition: >
+    Given a saturated sequence $I = (I_n)_n$ of rational open intervals (a Vitali cover of $\bigcup_n I_n$)
+    that has no subsequence eliminating $[0,1]$ (pairwise disjoint with $\lambda([0,1] \setminus \bigcup J) = 0$),
+    find a point $x \in [0,1] \setminus \bigcup_n I_n$. A restriction of $\mathsf{VCT}_2$.
+  instance: A saturated sequence of rational open intervals with no subsequence eliminating $[0,1]$.
+  solution: A point of $[0,1]$ not covered by the sequence.
+  refs: [ { ref: brattkaetal2017b, role: origin, loc: "Definition 9(1)" } ]
+
+- id: vct2
+  label: '\mathsf{VCT}_2'
+  name: Vitali covering theorem (Weihrauch problem, version 2)
+  kind: problem
+  minor: true
+  omegaAbsolute: false
+  tags: [ weihrauch, randomness ]
+  aliases: [ VCT_2, VCT2 ]
+  definition: >
+    Given a sequence $I = (I_n)_n$ of rational open intervals that has no subsequence eliminating $[0,1]$
+    (pairwise disjoint with $\lambda([0,1] \setminus \bigcup J) = 0$), find a point $x \in [0,1]$ that is not
+    captured by $I$, i.e. such that for some $\varepsilon > 0$ no $I_n$ of diameter $< \varepsilon$ contains $x$.
+  instance: A sequence of rational open intervals with no subsequence eliminating $[0,1]$.
+  solution: A point of $[0,1]$ not captured by the sequence.
+  refs: [ { ref: brattkaetal2017b, role: origin, loc: "Definition 9(2)" } ]
+
+- id: act
+  label: '\mathsf{ACT}'
+  name: Additive covering theorem
+  kind: problem
+  minor: true
+  tags: [ weihrauch, randomness ]
+  aliases: [ ACT ]
+  definition: >
+    Given a non-disjoint sequence $I = (I_n)_n$ of rational open intervals ($I_i \cap I_j \neq \emptyset$ for
+    some $i \neq j$) with $\sum_n \lambda(I_n) < 1$, find a point $x \in [0,1] \setminus \bigcup_n I_n$.
+  instance: A non-disjoint sequence of rational open intervals whose lengths sum to less than $1$.
+  solution: A point of $[0,1]$ not covered by the sequence.
+  refs: [ { ref: brattkaetal2017b, role: origin, loc: Definition 19 } ]
+
+- id: cln
+  label: '\mathsf{CL}_{\mathbb{N}}'
+  name: Cluster point problem on the natural numbers
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  aliases: [ CL_N, CLN ]
+  definition: >
+    Given a sequence of natural numbers that has a cluster point (a number occurring infinitely often), find a
+    cluster point of it: $\mathsf{CL}_{\mathbb{N}} = \mathsf{C}_{\mathbb{N}} \circ L_{\mathbb{N}}$, where
+    $L_{\mathbb{N}}$ maps a sequence to its set of cluster points (as a closed set with negative information).
+    Unlike $\mathsf{BWT}_{\mathbb{N}}$, the range of the sequence need not be bounded.
+  instance: A sequence $(x_n)$ in $\mathbb{N}$ with some value occurring infinitely often.
+  solution: A number occurring infinitely often in $(x_n)$.
+  refs:
+    - { ref: brattkagherardimarcone2012, role: origin, loc: "Definition 9.1 (X = ℕ)" }
+    - { ref: brattkaholzlkuyper2017, role: rm, loc: "Proof of Proposition 18" }
+
+- id: jinv-lim
+  label: '\mathfrak{L}'
+  name: Low computation (inverse jump of the limit)
+  kind: problem
+  tags: [ weihrauch, computability ]
+  aliases: [ L, "J^{-1} ∘ lim", low representation of Baire space ]
+  definition: >
+    $\mathfrak{L} = J^{-1} \circ \lim :\subseteq \mathbb{N}^{\mathbb{N}} \to \mathbb{N}^{\mathbb{N}}$, where $J$ is
+    the Turing jump on Baire space ($J(p)(n) = 1$ iff $p \in U_n$, for a standard enumeration of the c.e. open
+    sets): given a convergent sequence $(p_i)_i$ whose limit is $J(q)$, find $q$. A problem is low computable iff
+    it is strongly Weihrauch reducible to $\mathfrak{L}$.
+  instance: A convergent sequence $(p_i)_i$ in Baire space whose limit is in the range of $J$.
+  solution: The $q$ with $J(q) = \lim_i p_i$.
+  refs:
+    - { ref: brattkadebrechtpauly2012, role: origin, loc: "Section 8, after Definition 8.1; Theorem 8.10" }
+    - { ref: paulybrecht2014, role: rm, loc: "Section 6, before Corollary 14" }
+
+- id: sort-nat
+  label: '\mathsf{Sort}_*'
+  name: Sorting problem on the natural numbers
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  aliases: [ Sort_* ]
+  definition: >
+    Given $p \in \mathbb{N}^\mathbb{N}$ in which some digit occurs infinitely often, output $0^{c_0} 1^{c_1} \dots
+    k^\omega$, where $c_j$ is the number of occurrences of $j$ in $p$ and $k$ is the least digit occurring infinitely
+    often. Its restriction $\mathsf{Sort}_k$ to $\{0, \dots, k-1\}^\mathbb{N}$ is $\equiv_W \mathsf{Sort}_2^{k-1}$, and
+    $\mathsf{Sort}_2$ is [[sort]].
+  instance: 'A sequence $p \in \mathbb{N}^\mathbb{N}$ in which some digit occurs infinitely often.'
+  solution: 'The sorted sequence $0^{c_0} 1^{c_1} \dots k^\omega$.'
+  refs: [ { ref: paulytsuiki2016, role: rm, loc: "Definition 63, Proposition 64" } ]
+
+- id: cfin-cantor
+  label: '\mathsf{C}_{\{0,1\}^\omega, \#<\infty}'
+  name: Finite closed choice on Cantor space
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: >
+    Closed choice on $\{0,1\}^\omega$ restricted to finite sets: given a nonempty finite closed set $A \subseteq
+    \{0,1\}^\omega$ (by negative information), find a point of $A$. Weihrauch equivalent to
+    $\mathsf{C}_{X, \#<\infty}$ for every computably rich computably compact computable metric space $X$.
+  instance: 'A nonempty finite closed set $A \subseteq \{0,1\}^\omega$, given by negative information.'
+  solution: A point of $A$.
+  refs: [ { ref: paulytsuiki2016, role: rm, loc: "Definition 55, Corollary 57" } ]
+
+- id: rn
+  label: '\mathsf{RN}'
+  name: Radon–Nikodym operator
+  kind: problem
+  minor: true
+  tags: [ weihrauch, analysis ]
+  definition: >
+    The Radon–Nikodym operator on the computable measurable space $S$ of $[0,1)$ generated by the binary intervals:
+    given a $\sigma$-finite measure $\lambda$ and a finite measure $\mu \ll \lambda$, compute the Radon–Nikodym
+    derivative $h \in L^1(\lambda)$, $\mu(E) = \int_E h\, d\lambda$.
+  instance: 'A $\sigma$-finite measure $\lambda$ and a finite measure $\mu \ll \lambda$ on $S$.'
+  solution: 'The derivative $d\mu/d\lambda \in L^1(\lambda)$.'
+  refs: [ { ref: hoyruprojasweihrauch2011, role: rm, loc: "Theorem 4.1, Section 5" } ]
+
+- id: max01
+  label: '\mathsf{MAX}_{[0,1]}'
+  name: Theorem of the maximum (problem)
+  kind: problem
+  minor: true
+  formulationOf: max-principle
+  caution: 'Problem form of [[max-principle]] (the sentence of Simpson’s book), which has the same label.'
+  tags: [ weihrauch, analysis ]
+  definition: >
+    Given a continuous $f : [0,1] \to \mathbb{R}$, find a point where $f$ attains its maximum:
+    $f \mapsto \{x : f(x) = \max f([0,1])\}$.
+  instance: 'A continuous function $f : [0,1] \to \mathbb{R}$.'
+  solution: 'A point $x$ with $f(x) = \max f([0,1])$.'
+  refs: [ { ref: brattka2016, role: rm, loc: "Section 4, Theorems 27, 28" } ]
+
+- id: frr
+  label: '\mathsf{FRR}_{\ell_2}'
+  name: Fréchet–Riesz representation theorem (problem)
+  kind: problem
+  minor: true
+  tags: [ weihrauch, analysis ]
+  definition: >
+    Given a continuous linear functional $f_y = \langle \cdot, y \rangle$ on the Hilbert space $\ell_2$, find $y$.
+  instance: 'A continuous linear functional $f$ on $\ell_2$.'
+  solution: 'The $y \in \ell_2$ with $f = \langle \cdot, y \rangle$.'
+  refs: [ { ref: brattka2016, role: rm, loc: "Section 4, Theorem 29" } ]
+
+- id: sup
+  label: '\mathsf{Sup}'
+  name: Supremum of a sequence in [0,1] (problem)
+  kind: problem
+  minor: true
+  tags: [ weihrauch, analysis ]
+  definition: >
+    Given a sequence $(x_n)_n$ of reals in $[0,1]$, compute its least upper bound.
+  instance: 'A sequence $(x_n)_n$ in $[0,1]$.'
+  solution: '$\sup_n x_n$.'
+  refs: [ { ref: gherardimarcone2008, role: rm, loc: Definition 5.4 } ]
+
+- id: range
+  label: '\mathsf{Range}'
+  name: Range of an injection (problem)
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: >
+    Given a one-to-one $p : \mathbb{N} \to \mathbb{N}$, compute the characteristic function of its range.
+  instance: 'A one-to-one function $p : \mathbb{N} \to \mathbb{N}$.'
+  solution: 'The characteristic function of $\mathrm{range}(p)$.'
+  refs: [ { ref: gherardimarcone2008, role: rm, loc: Definition 5.2 } ]

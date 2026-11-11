@@ -1,0 +1,3 @@
+# Results from [hajek1993].
+
+[ { type: conservation, statement: wkl, base: rca0, class: arith, value: true, refs: [ { ref: hajek1993, loc: Corollary 3.11(1) } ] } ]

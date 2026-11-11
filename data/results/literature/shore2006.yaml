@@ -1,0 +1,3 @@
+# Results from [shore2006].
+
+[ { type: equivalence, from: ba-invariants, to: aca-plus, over: rca0, refs: [ { ref: shore2006, loc: Theorem 6.10 (Theorems 4.4 and 6.6) } ] }, { type: equivalence, from: dba-invariants, to: aca-plus, over: rca0, refs: [ { ref: shore2006, loc: Theorem 6.10 (Theorems 4.4 and 6.9) } ] } ]

@@ -1,0 +1,3 @@
+# Results from [astor2017].
+
+[ { type: equivalence, from: id0, to: avoid, over: rca0, refs: [ { ref: astor2017, loc: Theorem 3.12 } ] } ]

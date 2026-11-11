@@ -3,4 +3,4 @@
 
 - { type: "implication", from: "pa", to: "isig3", over: "rca0", folklore: true, justification: { kind: restriction, text: Σ⁰₃ induction is an instance of the full induction scheme., by: ai } }
 - { type: "implication", from: "aca", to: "pa", over: "rca0", refs: [ { ref: simpson2009, loc: Theorem IX.1.5 } ], note: Due to Friedman and Harrington. }
-- { type: "conservation", statement: "wkl", base: "rca0", class: "Pi11", value: true, refs: [ { ref: simpson2009, loc: Corollary IX.2.6 }, { ref: dzhafarovmummert2022, loc: Theorem 7.7.3 } ], note: Due to Harrington. }
+- { type: "conservation", statement: "wkl", base: "rca0", class: "Pi11", value: true, refs: [ { ref: simpson2009, loc: Corollary IX.2.6 }, { ref: dzhafarovmummert2022, loc: Theorem 7.7.3 }, { ref: avigad1996, loc: Theorem 8.5 (also Corollary 2.4) }, { ref: ferreiraferreira2008, loc: "Introduction, Theorem (Harrington); reproved in Section 3" } ], note: Due to Harrington. }
