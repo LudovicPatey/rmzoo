@@ -2,6 +2,7 @@
 # Entries with todo: true need their definition checked against the source.
 
 - { id: "ads-em", conjunction: [ "ads", "em" ], kind: "sentence", tags: [] }
+- { id: "cac-em", conjunction: [ "cac", "em" ], kind: "sentence", tags: [] }
 - { id: "ads-gp22-wkl", conjunction: [ "ads", "gp22", "wkl" ], kind: "sentence", tags: [] }
 - { id: "ads-scac", conjunction: [ "ads", "scac" ], kind: "sentence", tags: [] }
 - { id: "ads-wkl", conjunction: [ "ads", "wkl" ], kind: "sentence", tags: [] }

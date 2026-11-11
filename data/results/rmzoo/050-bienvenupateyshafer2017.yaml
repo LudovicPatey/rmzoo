@@ -7,7 +7,7 @@
 - { type: "implication", from: "rwwkl2", to: "rwwkl", over: "rca0", folklore: true, justification: { kind: classical, text: 'Recorded as "by definition" in the RM Zoo database (Bienvenu, Patey and Shafer 2017); not re-checked.', by: ai } }
 - { type: "implication", from: "rcolor3", to: "rcolor2", over: "rca0", folklore: true, justification: { kind: classical, text: 'Recorded as "by definition" in the RM Zoo database (Bienvenu, Patey and Shafer 2017); not re-checked.', by: ai } }
 - { type: "implication", from: "srt22", to: "sem", over: "rca0", note: "easy to see, remarked in Bienvenu, Patey, and Shafer (2017)", refs: [ { ref: bienvenupateyshafer2017, loc: Section 2.2 } ], justification: { kind: reduction, text: "Color {x < y} by the direction of the edge; a stable tournament gives a stable coloring, and homogeneous sets are transitive.", by: ai } }
-- { type: "implication", from: "ran2", to: "dnr0", over: "rca0", refs: [ { ref: "bienvenupateyshafer2017", loc: "Theorem 2.8" } ] }
+- { type: "implication", from: "ran2", to: "dnr0", over: "rca0", refs: [ { ref: bienvenupateyshafer2017, loc: Theorem 2.8 }, { ref: niesshafer2020, loc: "Section 7, after Definition 7.3" } ] }
 - { type: "implication", from: "sem", to: "rwkl", over: "rca0", refs: [ { ref: bienvenupateyshafer2017, loc: Theorem 2.11 }, { ref: floodtowsner2016, loc: Theorem 5.2 }, { ref: patey2016c, loc: Theorem 11.0.6 } ] }
 - { type: "equivalence", from: "dnr", to: "rwwkl", over: "rca0", refs: [ { ref: bienvenupateyshafer2017, loc: Theorem 3.4 }, { ref: patey2016c, loc: Theorem 11.1.3 } ] }
 - { type: "implication", from: "bsig2-rwwkl2", to: "dnr0", over: "rca0", refs: [ { ref: "bienvenupateyshafer2017", loc: "Lemma 3.6" } ] }
@@ -20,4 +20,4 @@
 - { type: "implication", from: "rcolor2", to: "ast", over: "rca0", refs: [ { ref: "bienvenupateyshafer2017", loc: "Proposition 6.3" } ] }
 - { type: "separation", from: "cac", to: "rcolor2", over: "omega", refs: [ { ref: bienvenupateyshafer2017, loc: Theorem 6.9 }, { ref: patey2016c, loc: Theorem 11.4.7 } ] }
 - { type: "separation", from: "wwkl", to: "rcolor2", over: "omega", refs: [ { ref: bienvenupateyshafer2017, loc: Theorem 6.11 }, { ref: patey2016c, loc: Theorem 11.4.9 } ] }
-- { type: "implication", from: "ran1", to: "dnr", over: "rca0", refs: [ { ref: kucera1985 }, { ref: astoretal2026, loc: Theorem 1.1 } ], note: Relativization and formalization of Kučera’s theorem. }
+- { type: "implication", from: "ran1", to: "dnr", over: "rca0", refs: [ { ref: kucera1985 }, { ref: astoretal2026, loc: Theorem 1.1 }, { ref: niesshafer2020, loc: "Section 7, after Definition 7.1" } ], note: Relativization and formalization of Kučera’s theorem. }

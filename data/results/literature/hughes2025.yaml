@@ -1,0 +1,3 @@
+# Results from [hughes2025].
+
+[ { type: equivalence, from: scac, to: scacord, over: gw, refs: [ { ref: hughes2025, loc: Corollary 3.2 } ] }, { type: equivalence, from: cac, to: cacord, over: gw, refs: [ { ref: hughes2025, loc: Theorem 3.1 } ] }, { type: equivalence, from: scac, to: scacord, over: rca0, refs: [ { ref: hughes2025, loc: Corollary 2.3 } ] } ]
