@@ -10,6 +10,7 @@ import { layered, verticalSpline } from './layout.js';
 import { bibtex } from './bibtex.js';
 import { surname, fullName } from './names.js';
 import { relatedIndex, relatedStatements } from './related.js';
+import { queryIndex, tokenize, interpret, answer, complete, redText } from './query.js';
 import { createCommunity } from './community.js';
 import { KINDS, STATUS_NAMES, reviewStatus, itemResult, resultKey } from './review.js';
 
@@ -264,9 +265,12 @@ function searchPapers(q, limit = 6) {
   return res.sort((a, b) => b[0] - a[0] || b[1].r.year - a[1].r.year).slice(0, limit).map((x) => x[1]);
 }
 // opts.papers: also propose papers (opening their page); items are statement indices or {paper: key}
+// opts.query: the field has a query mode (switch on its right, query.js)
 function attachSearch(input, pop, onPick, opts = {}) {
   let hl = 0, items = [];
+  const qOn = () => opts.query && queryOn();
   const show = () => {
+    if (qOn()) { showQuery(input, pop); return; }
     const papers = opts.papers ? searchPapers(input.value) : [];
     items = [...search(input.value, papers.length ? 8 : 12), ...papers.map((p) => ({ paper: p.k }))];
     if (!items.length) { pop.hidden = true; return; }
@@ -286,7 +290,9 @@ function attachSearch(input, pop, onPick, opts = {}) {
   input.addEventListener('input', () => { hl = 0; show(); });
   input.addEventListener('focus', show);
   input.addEventListener('blur', () => setTimeout(() => (pop.hidden = true), 150));
+  if (opts.query) queryToggle(input, pop, () => { hl = 0; show(); });
   input.addEventListener('keydown', (e) => {
+    if (qOn()) { queryKey(e, input, pop); return; }
     if (pop.hidden) return;
     if (e.key === 'ArrowDown') { hl = Math.min(hl + 1, items.length - 1); show(); e.preventDefault(); }
     else if (e.key === 'ArrowUp') { hl = Math.max(hl - 1, 0); show(); e.preventDefault(); }
@@ -295,8 +301,151 @@ function attachSearch(input, pop, onPick, opts = {}) {
   });
   pop.addEventListener('mousedown', (e) => {
     const o = e.target.closest('.opt');
-    if (o) { pick(items[+o.dataset.k]); input.value = ''; pop.hidden = true; e.preventDefault(); }
+    if (!o) return;
+    e.preventDefault();
+    if (qOn()) { queryPick(+o.dataset.k, input, pop); return; }
+    pick(items[+o.dataset.k]); input.value = ''; pop.hidden = true;
   });
+}
+
+// ---- query mode (query.js): questions answered by the engine --------------------
+const queryOn = () => store.get('rmzoo.query', false);
+let QX;
+const qx = () => (QX ||= queryIndex(Z, { related: (relIndex ||= relatedIndex(Z)) }));
+const Q_PLACEHOLDER = 'Ask: Is RT22 c-reducible to BRT32? · Does RT12 admit cone avoidance? · RCA0 ⊢ RT22 → COH…';
+const VERDICT = { yes: ['✓', 'yes', 'yes'], no: ['✗', 'no', 'no'], open: ['?', 'open', 'unknown'], na: ['–', 'na', 'not applicable'], contradiction: ['‼', 'no', 'contradiction'] };
+// the switch on the right of the field; all fields follow the same setting
+function queryToggle(input, pop, redraw) {
+  const wrap = input.parentElement;
+  wrap.classList.add('has-q');
+  const base = input.placeholder;
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'q-toggle';
+  btn.textContent = 'Query';
+  wrap.insertBefore(btn, pop);
+  const sync = () => {
+    const on = queryOn();
+    btn.classList.toggle('on', on);
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btn.title = on ? 'Query mode on: ask questions (comparisons, properties, provability). Click to search by name instead.'
+      : 'Query mode: ask questions such as “Is RT22 c-reducible to BRT32?” or “Does RT12 admit cone avoidance?”';
+    input.placeholder = on ? Q_PLACEHOLDER : base;
+  };
+  sync();
+  document.addEventListener('rmzoo-query', sync);
+  btn.addEventListener('mousedown', (e) => e.preventDefault()); // keep the focus in the field
+  btn.addEventListener('click', () => {
+    store.set('rmzoo.query', !queryOn());
+    document.dispatchEvent(new Event('rmzoo-query'));
+    input.focus();
+    redraw();
+  });
+}
+const qState = new WeakMap(); // input → {hl, rows}
+const curStmt = () => { const m = /^#\/s\/([^?]+)/.exec(location.hash); return m ? idx(decodeURIComponent(m[1])) : undefined; };
+const qParse = (raw) => interpret(qx(), tokenize(qx(), raw).toks, { search, r: rIdx() });
+// the question in mathematical notation
+function queryHtml(q) {
+  const lab = (i) => labelOf(i, q.r);
+  if (q.type === 'prop') {
+    const p = Z.raw.properties[q.p];
+    return `${L(q.s)} ${q.neg ? 'fails' : 'has'} <b>${esc(p.name)}</b>`;
+  }
+  if (q.type === 'rel') {
+    const R = Z.R[q.r], prob = R.domain === 'problems';
+    const sub = `_{\\mathrm{${R.short}}}`;
+    const [a, op, b] = prob
+      ? { imp: [q.y, '\\leq', q.x], ge: [q.y, '\\leq', q.x], le: [q.x, '\\leq', q.y], eq: [q.x, '\\equiv', q.y], lt: [q.x, '<', q.y], gt: [q.y, '<', q.x], vs: [q.x, '\\mathrel{?}', q.y] }[q.kind]
+      : { imp: [q.x, '\\to', q.y], ge: [q.x, '\\to', q.y], le: [q.y, '\\to', q.x], eq: [q.x, '\\leftrightarrow', q.y], lt: [q.y, '\\to', q.x], gt: [q.x, '\\to', q.y], vs: [q.x, '\\mathrel{?}', q.y] }[q.kind];
+    const strict = !prob && (q.kind === 'lt' || q.kind === 'gt') ? ' <span class="muted small">strictly</span>' : '';
+    const math = prob ? `${lab(a)} ${q.neg ? '\\not' : ''}${op}${op === '\\mathrel{?}' ? '' : sub} ${lab(b)}` : `${q.neg ? '\\neg(' : ''}${lab(a)} ${op} ${lab(b)}${q.neg ? ')' : ''}`;
+    return `${tex(math)}${strict}${prob ? '' : ` <span class="muted small">over ${esc(R.short)}</span>`}`;
+  }
+  const list = q.ids.map((i) => L(i)).join(', ');
+  return { display: `Open ${list}`, diagram: `Diagram of ${list}`, compare: `Compare ${list}`, questions: `Questions about ${list}`, results: `Results about ${list}` }[q.type];
+}
+function queryVerdict(q) {
+  const a = answer(qx(), q);
+  if (!a) return '';
+  if (a.verdict === null) { const [s, c] = compareSym(a.xy, a.yx); return `<span class="q-v ${c}">${s}</span>`; }
+  const [s, c, word] = VERDICT[a.verdict] || VERDICT.open;
+  return `<span class="q-v ${c}" title="${word}">${s} ${word}</span>`;
+}
+function showQuery(input, pop) {
+  const raw = input.value;
+  const c = complete(qx(), raw, { search, r: rIdx(), rInMode, inMode, cur: curStmt() });
+  const q = raw.trim() ? qParse(raw) : null;
+  const comps = c.items.slice(0, q ? 8 : 10).map((it) => ({ comp: it }));
+  const rows = q && (q.exact || !comps.length) ? [{ answer: q }, ...comps] : [...comps, ...(q ? [{ answer: q }] : [])];
+  const st = qState.get(input) || { hl: 0 };
+  st.rows = rows;
+  st.hl = Math.min(st.hl, Math.max(0, rows.length - 1));
+  qState.set(input, st);
+  if (!rows.length) {
+    pop.innerHTML = `<div class="opt-sep small muted">Not understood. Try: Is RT22 c-reducible to BRT32? · Does RT12 admit cone avoidance? · Display RT22</div>`;
+    pop.hidden = !raw.trim();
+    return;
+  }
+  pop.innerHTML = rows.map((row, k) => {
+    if (row.answer) {
+      return `<div class="opt q-answer ${k === st.hl ? 'hl' : ''}" data-k="${k}"><span class="grow">${queryHtml(row.answer)}</span>${queryVerdict(row.answer)}<span class="q-enter small muted">↵</span></div>`;
+    }
+    const it = row.comp;
+    const full = raw.slice(0, it.from) + it.insert;
+    let main = esc(it.insert.trim()), hint = it.hint ? esc(it.hint) : '';
+    if (it.kind === 'stmt') { main = `${it.insert.trimStart().startsWith(',') ? ', ' : it.insert.trimStart().startsWith('and') ? 'and ' : ''}${L(it.i)}`; hint = esc(S(it.i).name); }
+    else if (it.kind === 'prop') hint = esc(Z.raw.properties[it.p].group || '');
+    else if (it.kind === 'red' && !it.template) hint = esc(Z.R[it.r].name);
+    // when the completion finishes a question, its answer
+    const fq = it.kind === 'stmt' || it.kind === 'prop' || (it.kind === 'red' && it.pair) ? qParse(full) : null;
+    const v = fq && fq.exact && (fq.type === 'rel' || fq.type === 'prop') ? queryVerdict(fq) : '';
+    return `<div class="opt ${k === st.hl ? 'hl' : ''}" data-k="${k}"><span class="q-prefix muted">${esc(raw.slice(Math.max(0, it.from - 18), it.from).replace(/^\S*\s/, '…'))}</span>
+      <span class="q-ins">${main}</span><span class="muted grow">${hint}</span>${v}</div>`;
+  }).join('') + `<div class="opt-sep small muted q-help">Tab completes · ↵ answers · <a href="#/about?tab=query" tabindex="-1">what can I ask?</a></div>`;
+  pop.hidden = false;
+}
+function queryPick(k, input, pop) {
+  const st = qState.get(input);
+  const row = st?.rows?.[k];
+  if (!row) return;
+  if (row.answer) { runQuery(row.answer); input.blur(); pop.hidden = true; return; }
+  const it = row.comp;
+  input.value = input.value.slice(0, it.from) + it.insert;
+  input.focus();
+  input.setSelectionRange(input.value.length, input.value.length);
+  st.hl = 0;
+  showQuery(input, pop);
+}
+function queryKey(e, input, pop) {
+  const st = qState.get(input) || { hl: 0, rows: [] };
+  const n = st.rows?.length || 0;
+  if (e.key === 'ArrowDown' && n) { st.hl = Math.min(st.hl + 1, n - 1); showQuery(input, pop); e.preventDefault(); }
+  else if (e.key === 'ArrowUp' && n) { st.hl = Math.max(st.hl - 1, 0); showQuery(input, pop); e.preventDefault(); }
+  else if (e.key === 'Tab' && n && !e.shiftKey) {
+    const k = st.rows[st.hl]?.comp ? st.hl : st.rows.findIndex((r) => r.comp);
+    if (k >= 0) { queryPick(k, input, pop); e.preventDefault(); }
+  } else if (e.key === 'Enter') {
+    e.preventDefault();
+    const q = qParse(input.value);
+    const row = st.rows?.[st.hl];
+    if (row && !pop.hidden && (row.comp || row.answer)) queryPick(st.hl, input, pop);
+    else if (q) { runQuery(q); input.blur(); pop.hidden = true; }
+  } else if (e.key === 'Escape') { pop.hidden = true; input.blur(); }
+}
+function runQuery(q) {
+  const ids = (q.ids || []).map((i) => S(i).id);
+  if (q.type === 'rel') {
+    const [a, b] = q.kind === 'le' || q.kind === 'lt' ? [q.y, q.x] : [q.x, q.y];
+    pairPanel(a, b, q.r);
+    const h = drawer().querySelector('h2');
+    if (h) h.insertAdjacentHTML('afterend', `<div class="q-asked"><span class="small muted">Your question</span> ${queryHtml(q)} ${queryVerdict(q)}</div>`);
+  } else if (q.type === 'prop') propertyPanel(q.p, q.s);
+  else if (q.type === 'display') location.hash = `#/s/${ids[0]}`;
+  else if (q.type === 'diagram') location.hash = `#/diagram?s=${ids.join(',')}${q.r !== undefined ? `&r=${Z.R[q.r].id}` : ''}`;
+  else if (q.type === 'compare') location.hash = `#/compare?s=${ids.join(',')}`;
+  else if (q.type === 'questions') location.hash = `#/questions?s=${ids[0]}`;
+  else if (q.type === 'results') location.hash = `#/results?q=${encodeURIComponent(ids[0])}`;
 }
 
 // ============================================================================
@@ -412,7 +561,8 @@ function proofHtml(node) {
 }
 function proofBlock(f) {
   const st = f.t === 'P' ? null : Z.status(f.r, f.a, f.b);
-  if (f.t !== 'P' && st === 'open') return `<p class="muted">No proof either way is known to the database.</p>`;
+  if (f.t !== 'P' && st === 'open') return `<p class="muted">No proof either way is known to the database.
+    <a href="#" data-suggest="${esc(`${S(f.a).id}|${S(f.b).id}|${Z.R[f.r].id}`)}">Known in the literature? Suggest the result with its source.</a></p>`;
   const tree = Z.proof(f);
   const srcs = Z.sources(f);
   return `<ul class="proof">${proofHtml(tree)}</ul>
@@ -559,6 +709,10 @@ function viewQuestions(params, id) {
         <b>${st.status === 'resolved' ? 'Resolved' : `Partially answered${q.parts?.length ? ` (${qSubCount(q)})` : ''}`}</b>${q.answer ? ` — ${esc(q.answer)}` : ''}
         ${solvers.length ? `<div class="small" style="margin-top:4px">Answered in ${solvers.map((r) => `<a href="#/refs/${r.ref}">${esc(refShort(r.ref))}</a>${r.loc ? `, ${esc(r.loc)}` : ''}`).join('; ')}.</div>` : ''}</div>`
         : `<div class="verdict open"><b>Open.</b> ${qFormal(q).length ? 'None of its parts is settled by the results of the database.' : 'No answer is recorded.'}</div>`}
+      ${C.live ? `<div class="row" style="margin:10px 0">
+        <button class="btn" data-feedback="comment|question|${esc(q.id)}" title="A comment, an error, or a paper that answers it (signed in with ORCID)">Comment on this question</button>
+        ${st.status !== 'resolved' ? `<button class="btn" data-suggest="${esc((() => { const p = st.parts.find((x) => x.status === 'open'); return p ? `${S(p.a).id}|${S(p.b).id}|${Z.R[p.r].id}` : '||'; })())}" data-question="${esc(q.id)}"
+          title="The result that answers it, with its source (signed in with ORCID)">Suggest an answer</button>` : ''}</div>` : ''}
       ${q.context ? `<h2>Context</h2><div class="context">${richCite(q.context)}</div>` : ''}
       ${st.parts.length ? `<h2>In the database</h2>
         <p class="small muted">The question as comparisons of the zoo. Click a row for the proof or the current state of knowledge.</p>
@@ -673,9 +827,9 @@ function viewHome() {
         `<li><a href="#/refs/${k}"><i>${rich(r.title)}</i></a><div class="small muted">${esc(refShort(k))} · ${esc(r._date)}</div></li>`).join('')}</ul></div>
     </div>`;
   const q = $('#home-q');
-  attachSearch(q, $('#home-pop'), (i) => { location.hash = '#/s/' + S(i).id; }, { papers: true });
+  attachSearch(q, $('#home-pop'), (i) => { location.hash = '#/s/' + S(i).id; }, { papers: true, query: true });
   q.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && $('#home-pop').hidden && q.value.trim()) location.hash = '#/catalogue?q=' + encodeURIComponent(q.value.trim());
+    if (e.key === 'Enter' && !queryOn() && $('#home-pop').hidden && q.value.trim()) location.hash = '#/catalogue?q=' + encodeURIComponent(q.value.trim());
   });
 }
 
@@ -861,7 +1015,8 @@ function viewStatement(id, params = new URLSearchParams()) {
     <div class="stmt-head">
       <span class="label">${L(i)}</span>
       <h1 style="margin:0" class="grow">${esc(s.name)}</h1>
-      ${C.live ? `<button class="btn" data-feedback="comment|statement|${s.id}" title="Comment or report an error (signed in with ORCID)">Comment</button>` : ''}
+      ${C.live ? `<button class="btn" data-feedback="comment|statement|${s.id}" title="Comment or report an error (signed in with ORCID)">Comment</button>
+        <button class="btn" data-suggest="${s.id}||" title="Suggest a result about ${esc(s.name)} that the database lacks (signed in with ORCID)">Suggest a result</button>` : ''}
       <button class="btn sel-toggle ${isSel(s.id) ? 'on' : ''}" data-sel="${s.id}">${isSel(s.id) ? '✓ Selected' : '+ Select'}</button>
     </div>
     <div class="row" style="margin:6px 0 14px">
@@ -1561,7 +1716,8 @@ function viewResults(params) {
   const m = main();
   m.className = '';
   m.innerHTML = `<h1>Results</h1>
-    <p class="muted">The atomic facts of the database. Everything else in the zoo is derived from these.</p>
+    <p class="muted">The atomic facts of the database. Everything else in the zoo is derived from these.
+      A result is missing? <a href="#" data-suggest="||">Suggest it with its source</a>.</p>
     <div class="filters">
       <input class="text" id="f-q" placeholder="Statement…" value="${esc(params.get('q') || '')}" style="width:200px">
       <select id="f-type"><option value="">All types</option><option>implication</option><option>equivalence</option><option>separation</option><option>property</option><option>conservation</option></select>
@@ -1701,7 +1857,7 @@ function viewAbout(params) {
   const nAi = Z.raw.results.filter((r) => r.provenance === 'ai').length;
   const nDirect = Z.raw.results.filter((r) => r.provenance === 'direct').length;
   const nFolk = Z.raw.results.filter((r) => r.folklore).length;
-  const TABS = [['overview', 'Overview'], ['reductions', 'Reductions'], ['properties', 'Properties'], ['rules', 'Inference rules'], ['community', 'Community']];
+  const TABS = [['overview', 'Overview'], ['reductions', 'Reductions'], ['properties', 'Properties'], ['rules', 'Inference rules'], ['query', 'Query mode'], ['community', 'Community']];
   const tab = params.get('class') ? 'reductions' : TABS.some(([t]) => t === params.get('tab')) ? params.get('tab') : 'overview';
   const panel = (t) => `<section class="tab-panel" data-panel="${t}"${t === tab ? '' : ' hidden'}>`;
   m.innerHTML = `<h1>About the zoo</h1>
@@ -1758,6 +1914,19 @@ function viewAbout(params) {
     ${panel('rules')}
     <h2>Inference rules</h2>
     <table class="grid">${Object.entries(RULES).map(([k, v]) => `<tr><td><code>${k}</code></td><td>${esc(v)}</td></tr>`).join('')}</table>
+    </section>
+    ${panel('query')}
+    <p>Switch on <b>Query</b> on the right of the search field to ask questions; the answer comes from the database (with its proof on Enter).
+      Names are those of the catalogue (RT22, RT^2_2, SRT22, “weak König's lemma”…); completions propose the statements studied together with
+      the ones already typed, the reductions and properties for which the answer is known, and show the answer as you type. Tab completes, Enter answers.</p>
+    <table class="grid"><tr><th>Kind</th><th>Examples</th></tr>
+      <tr><td>Reductions</td><td><ul class="q-ex"><li><code>Is RT22 c-reducible to BRT32?</code></li><li><code>Is RT22 Weihrauch reducible to RT23?</code></li><li><code>Is K_N strongly Weihrauch reducible to PCC?</code></li><li><code>RT22 ≤c BRT32 · RT22 <=_W SRT22 · LLPO^* ≤_{sW} K_N</code></li><li><code>RT22 ≰W RT12 · Is SRT22 strictly weaker than RT22 over W?</code></li></ul></td></tr>
+      <tr><td>Implications</td><td><ul class="q-ex"><li><code>Does RT22 imply COH?</code></li><li><code>Does RT22 imply COH over ω-models? · RT22 -> COH in omega models</code></li><li><code>Is every ω-model of RT22 a model of COH?</code></li><li><code>Does RT22 not imply WKL? · RT22 ⇏ WKL</code></li><li><code>Is ADS equivalent to CAC? · ADS ↔ CAC · ADS ≡ CAC over RCA0</code></li><li><code>Is WKL strictly stronger than WWKL? · WKL > WWKL</code></li><li><code>RT22 vs WKL · Compare RT22 and WKL</code></li></ul></td></tr>
+      <tr><td>Provability</td><td><ul class="q-ex"><li><code>Does RCA0 prove RT22 → RT12?</code></li><li><code>RCA0 ⊢ RT22 → COH · RCA0* |- RT22 -> COH</code></li><li><code>RCA0 + RT22 ⊢ COH</code></li><li><code>Is COH provable in RCA0 + RT22?</code></li></ul></td></tr>
+      <tr><td>Properties</td><td><ul class="q-ex"><li><code>Does RT12 admit cone avoidance?</code></li><li><code>Does RT22 have the low basis property?</code></li><li><code>Does COH preserve hyperimmunity?</code></li><li><code>Is LLPO idempotent? · Is SRT22 a cylinder? · Is WKL Π11-conservative?</code></li></ul></td></tr>
+      <tr><td>Pages</td><td><ul class="q-ex"><li><code>Display RT22 · What is COH?</code></li><li><code>Diagram of RT22, COH, WKL · RT22 WKL COH</code></li><li><code>Compare RT22, COH, WKL</code></li><li><code>Questions about RT22 · Results about COH</code></li></ul></td></tr>
+    </table>
+    <p class="small muted">Without a reduction, a question uses the current one (the reduction picker of the diagram), or RCA₀ when it does not apply to the statements.</p>
     </section>
     ${panel('community')}
     <h2 id="endorsements">Endorsements</h2>
@@ -1899,7 +2068,82 @@ function feedbackPanel(kind, type, id) {
     }
   });
 }
+// Suggesting results the database lacks: statements, relation and reduction for each, the sources
+// (papers and theorem numbers) and how the results follow from them when the papers do not state
+// them in these terms. Sent to the maintainer like a comment (kind suggestion, docs/ENDORSEMENTS.md).
+const REL = { implication: 'implies', separation: 'does not imply', equivalence: 'is equivalent to' };
+function suggestPanel(pre = {}) {
+  const title = `<h2 style="margin-top:0">${pre.question ? 'Suggest an answer' : 'Suggest a result'}</h2>`;
+  if (!C.live) { openDrawer(`${title}<p>Results missing from the database can be suggested, with their sources, on the live instance.</p>${liveNote()}`); return; }
+  if (!C.user) { openDrawer(`${title}${signInPrompt('suggest a result')}`); return; }
+  const resolve = (v) => { v = v.trim(); if (!v) return undefined; const i = idx(v); return i !== undefined ? i : search(v, 1)[0]; };
+  const red = Z.R.map((R, r) => ({ R, r })).filter(({ r }) => rInMode(r) || Z.R[r].id === pre.over);
+  const row = (p = {}) => `<div class="sg-row">
+      <span><input class="text sg-s" list="sg-stm" value="${esc(p.from || '')}" placeholder="Statement" required><span class="sg-l small"></span></span>
+      <select class="sg-t">${Object.entries(REL).map(([k, v]) => `<option value="${k}" ${k === (p.type || 'implication') ? 'selected' : ''}>${v}</option>`).join('')}</select>
+      <span><input class="text sg-s" list="sg-stm" value="${esc(p.to || '')}" placeholder="Statement" required><span class="sg-l small"></span></span>
+      <span class="small">over</span>
+      <select class="sg-r">${red.map(({ R }) => `<option value="${R.id}" ${R.id === (p.over || Z.R[rIdx()].id) ? 'selected' : ''}>${esc(R.short)}</option>`).join('')}</select>
+      <button type="button" class="btn small sg-del" title="Remove">✕</button></div>`;
+  const q = pre.question && (Z.raw.questions || []).find((x) => x.id === pre.question);
+  openDrawer(`${title}
+    ${q ? `<p>${q.question ? rich(q.question) : rich(q.parts[0].question)}</p>` : ''}
+    <form id="sg-form" class="fb-form">
+      <p class="small muted">One line per result. Choose the statements in the list (name, acronym or id).
+        Over a reduction, “A implies B” means that B reduces to A (B ≤ A).</p>
+      <datalist id="sg-stm">${Z.S.map((s, i) => `<option value="${esc(s.id)}">${esc(s.name)} · ${esc(hay[i].ascii)}</option>`).join('')}</datalist>
+      <div id="sg-rows">${row(pre)}</div>
+      <p><button type="button" class="btn small" id="sg-add">+ Another result</button></p>
+      <label class="small"><b>Sources</b>: papers and theorem numbers</label>
+      <textarea id="sg-src" rows="3" maxlength="5000" placeholder="e.g. Brattka, Gherardi, Marcone 2012, Proposition 10.9"></textarea>
+      <label class="small"><b>Explanation</b>: how the results follow from the sources when they are not stated in these terms (different names or definitions, a combination of results, an obvious reduction…)</label>
+      <textarea id="sg-text" rows="6" maxlength="10000"></textarea>
+      <p class="small muted">Sent to the maintainer of the zoo with your name and ORCID iD (${esc(C.user.name)}); not published.
+        The results are checked against the papers before they are entered.</p>
+      <div class="row"><button class="btn primary" type="submit">Send</button><span id="sg-msg" class="small"></span></div>
+    </form>`);
+  const form = $('#sg-form');
+  const preview = (inp) => { const i = resolve(inp.value); inp.nextElementSibling.innerHTML = i === undefined ? (inp.value.trim() ? '<span class="no">unknown</span>' : '') : `${L(i)}`; };
+  const wire = (el) => {
+    el.querySelectorAll('.sg-s').forEach((inp) => { inp.addEventListener('input', () => preview(inp)); preview(inp); });
+    el.querySelector('.sg-del').onclick = () => { if ($('#sg-rows').children.length > 1) el.remove(); };
+  };
+  [...$('#sg-rows').children].forEach(wire);
+  $('#sg-add').onclick = () => {
+    if ($('#sg-rows').children.length >= 20) return;
+    $('#sg-rows').insertAdjacentHTML('beforeend', row({ over: $('#sg-rows').lastElementChild?.querySelector('.sg-r').value }));
+    wire($('#sg-rows').lastElementChild);
+  };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const msg = $('#sg-msg'), btn = form.querySelector('button[type=submit]');
+    const results = [];
+    for (const el of $('#sg-rows').children) {
+      const [a, b] = [...el.querySelectorAll('.sg-s')].map((inp) => resolve(inp.value));
+      if (a === undefined || b === undefined) { msg.textContent = 'Choose each statement in the list.'; return; }
+      if (a === b) { msg.textContent = 'A result relates two different statements.'; return; }
+      results.push({ type: el.querySelector('.sg-t').value, from: S(a).id, to: S(b).id, over: el.querySelector('.sg-r').value });
+    }
+    const sources = $('#sg-src').value.trim(), text = $('#sg-text').value.trim();
+    if (!sources && !text) { msg.textContent = 'Give the sources or an explanation.'; return; }
+    btn.disabled = true;
+    try {
+      await C.suggest(results, sources, text, q ? { type: 'question', id: q.id } : { type: 'general', id: '' });
+      form.outerHTML = '<div class="verdict yes">Thank you: your suggestion was recorded. It will be checked against the papers and entered in the database.</div>';
+    } catch (err) {
+      msg.textContent = err.message;
+      btn.disabled = false;
+    }
+  });
+}
 document.addEventListener('click', async (e) => {
+  const sg = e.target.closest('[data-suggest]');
+  if (sg) {
+    e.preventDefault(); e.stopPropagation();
+    const [from, to, over] = sg.dataset.suggest.split('|');
+    suggestPanel({ from, to, over: over || undefined, question: sg.dataset.question });
+    return;
+  }
   const r = e.target.closest('[data-result]');
   if (r) { e.preventDefault(); e.stopPropagation(); resultPanel(+r.dataset.result); return; }
   const f = e.target.closest('[data-feedback]');
@@ -2614,7 +2858,7 @@ async function boot() {
   if (!Z.ridx.has(state.r)) state.r = 'rca0';
   state.sel = state.sel.filter((id) => idx(id) !== undefined);
   buildHaystack();
-  attachSearch($('#global-search'), $('#search-pop'), (i) => { location.hash = `#/s/${S(i).id}`; }, { papers: true });
+  attachSearch($('#global-search'), $('#search-pop'), (i) => { location.hash = `#/s/${S(i).id}`; }, { papers: true, query: true });
   document.addEventListener('keydown', (e) => {
     if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); $('#global-search').focus(); }
     if (e.key === 'Escape') closeDrawer();

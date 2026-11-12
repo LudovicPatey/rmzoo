@@ -75,6 +75,9 @@ export function createCommunity(zoo) {
   };
   // kind: error | comment; target: {type: result|statement|reference|question|general, id}
   c.sendFeedback = (kind, target, text) => post('feedback', { kind, target, text, page: location.hash });
+  // results missing from the database: [{type, from, to, over}], their sources and an explanation
+  c.suggest = (results, sources, text, target = { type: 'general', id: '' }) =>
+    post('feedback', { kind: 'suggestion', target, results, sources, text, page: location.hash });
   // the review page: votes and comments of an item (live: the server's; static: committed)
   c.votes = (it) => (c.byItem ? c.byItem.get(it.id)?.votes || [] : it.votes || []);
   c.comments = (it) => (c.byItem ? c.byItem.get(it.id)?.comments || [] : (it.comments || []).map((x, i) => ({ id: `${it.id}-c${i}`, ...x })));

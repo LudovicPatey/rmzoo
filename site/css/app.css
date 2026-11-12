@@ -481,3 +481,31 @@ h1.q-title + .q-subs { font-size: 1.1em; margin-bottom: 14px; }
 .proof-steps ol { margin: 6px 0 2px; padding-left: 1.6em; }
 .proof-steps li { margin: 4px 0; line-height: 1.5; }
 div.warn { color: var(--open); margin-top: .3em; }
+.sg-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 8px; }
+.sg-row input.text { width: 150px; }
+.sg-l { margin-left: 4px; }
+.fb-form label { display: block; margin-top: 8px; }
+
+/* query mode of the search fields (query.js) */
+.search.has-q input { padding-right: 66px; }
+.search.big.has-q input { padding-right: 86px; }
+.search.has-q input::-webkit-search-cancel-button { display: none; }
+.q-toggle { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font: inherit; font-size: .72rem; font-weight: 600;
+  letter-spacing: .02em; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel);
+  color: var(--muted); cursor: pointer; line-height: 1.3; }
+.search.big .q-toggle { right: 10px; font-size: .8rem; padding: 5px 12px; }
+.q-toggle:hover { color: var(--ink); border-color: var(--accent); }
+.q-toggle.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.search:not(.big).has-q .popover { left: auto; width: min(620px, 92vw); }
+.popover .q-prefix { white-space: nowrap; font-size: .85rem; }
+.popover .q-ins { white-space: nowrap; }
+.popover .grow { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.popover .q-answer { border: 1px solid var(--line); margin-bottom: 4px; align-items: center; }
+.q-v { white-space: nowrap; font-weight: 600; font-size: .85rem; }
+.q-v.yes { color: var(--yes); } .q-v.no { color: var(--no); } .q-v.open { color: var(--open); } .q-v.na { color: var(--muted); }
+.q-help a { color: inherit; text-decoration: underline; }
+.q-asked { margin: 0 0 12px; padding: 8px 10px; border-radius: 8px; background: var(--bg); }
+@media (max-width: 640px) { .search.has-q input { padding-right: 60px; } }
+.q-ex { margin: 0; padding-left: 18px; } .q-ex code { font-size: .88rem; }
+header .search.has-q { transition: width .15s; }
+header .search.has-q:focus-within { width: min(560px, 52vw); }

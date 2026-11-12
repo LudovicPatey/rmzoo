@@ -193,18 +193,6 @@
   solution: A point of $[a, b]$.
   refs: [ { ref: brattkagherardi2011b, role: origin, loc: "Definition 3.1(3), Proposition 3.6" } ]
 
-- id: cim
-  label: '\mathsf{C}_{I}^{-}'
-  name: Proper interval choice
-  kind: problem
-  tags: [weihrauch]
-  aliases: [CI-, C_I^-, proper interval choice]
-  definition: >
-    Interval choice $\mathsf{C}_I$ restricted to non-degenerate intervals $[a, b] \subseteq [0, 1]$ with $a < b$.
-  instance: 'An enumeration of rational open balls whose union is the complement of an interval [a, b] ⊆ [0, 1] with a < b.'
-  solution: A point of $[a, b]$.
-  refs: [ { ref: brattkagherardi2011b, role: origin, loc: "Definition 3.1(4), Proposition 3.6" } ]
-
 - id: ck
   label: '\mathsf{C}_{K}'
   name: Compact choice
@@ -457,11 +445,18 @@
   name: Positive connected choice on [0,1]
   kind: problem
   tags: [ weihrauch, analysis, randomness ]
+  aliases: [ 'CC_1^-', CC1-, CI-, 'C_I^-', proper interval choice, positive connected choice ]
   definition: >
-    Closed choice on $[0,1]$ restricted to connected sets of positive measure, that is, to proper closed intervals.
-  instance: A proper closed interval $I \subseteq [0,1]$ (by negative information).
-  solution: A point of $I$.
+    Closed choice on $[0,1]$ restricted to connected sets of positive measure, that is, to proper closed
+    intervals $[a, b]$ with $a < b$. Introduced as proper interval choice $\mathsf{C}_I^-$ (interval choice
+    $\mathsf{C}_I$ restricted to non-degenerate intervals), and called $\mathsf{CC}_1^-$ (connected choice
+    $\mathsf{CC}_1$ restricted to connected sets that are not singletons) by Brattka, Le Roux, Miller and Pauly;
+    Brattka, Gherardi and Hölzl note that the three names denote the same problem.
+  instance: A proper closed interval $[a, b] \subseteq [0,1]$, $a < b$ (by negative information).
+  solution: A point of $[a, b]$.
   refs:
+    - { ref: brattkagherardi2011b, role: origin, loc: "Definition 3.1(4), Proposition 3.6" }
+    - { ref: brattkaetal2019, role: rm, loc: Section 9 }
     - { ref: brattkagherardiholzl2015, role: rm, loc: "Section 10, before Lemma 10.7" }
 
 - id: nash

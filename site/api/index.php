@@ -5,6 +5,8 @@
 //   GET  ?a=logout     sign out, back to the site
 //   POST ?a=endorse    {result: <resultKey>, endorse: true|false}
 //   POST ?a=feedback   {kind: error|comment, target: {type, id}, text, page}
+//                      {kind: suggestion, results: [{type, from, to, over}], sources, text, page}: results
+//                      missing from the database, with their sources (target: general, or the question they answer)
 //   POST ?a=review     {item: <review item id>, verdict: valid|invalid|null}   (the review page, docs/REVIEW.md)
 //   POST ?a=rcomment   {item, text} a public comment on a review item; {delete: <comment id>} removes one's own
 //   GET  ?a=uploads    the signed-in person's uploaded full texts (docs/UPLOADS.md)
@@ -134,9 +136,12 @@ switch ($a) {
     $u = require_user();
     $b = body();
     $kind = $b['kind'] ?? '';
-    if (!in_array($kind, ['error', 'comment'], true)) fail(400, 'kind: error or comment.');
+    if (!in_array($kind, ['error', 'comment', 'suggestion'], true)) fail(400, 'kind: error, comment or suggestion.');
     $text = trim((string) ($b['text'] ?? ''));
-    if ($text === '' || mb_strlen($text) > 10000) fail(400, 'The text must have between 1 and 10000 characters.');
+    $sources = trim((string) ($b['sources'] ?? ''));
+    if (mb_strlen($sources) > 5000) fail(400, 'The sources must have at most 5000 characters.');
+    if ($kind === 'suggestion' ? $text . $sources === '' : $text === '') fail(400, $kind === 'suggestion' ? 'Give the sources or an explanation.' : 'The text must have between 1 and 10000 characters.');
+    if (mb_strlen($text) > 10000) fail(400, 'The text must have at most 10000 characters.');
     $t = $b['target'] ?? [];
     $type = $t['type'] ?? 'general';
     if (!in_array($type, ['result', 'statement', 'reference', 'question', 'general'], true)) fail(400, 'Unknown target type.');
@@ -156,6 +161,32 @@ switch ($a) {
     } elseif ($type === 'reference') {
       if (!isset($z['references'][$tid])) fail(404, 'Unknown reference.');
       $target['reference'] = array_intersect_key($z['references'][$tid], array_flip(['title', 'authors', 'year', 'venue', 'doi', 'arxiv']));
+    } elseif ($type === 'question') {
+      $q = null;
+      foreach ($z['questions'] ?? [] as $x) if ($x['id'] === $tid) $q = $x;
+      if (!$q) fail(404, 'Unknown question.');
+      $target['question'] = $q;
+    }
+    // a suggestion: the results it proposes, each with a copy of its statements
+    $results = null;
+    if ($kind === 'suggestion') {
+      $st = [];
+      foreach ($z['statements'] as $x) $st[$x['id']] = $x;
+      $red = array_column($z['reductions'], null, 'id');
+      $in = $b['results'] ?? null;
+      if (!is_array($in) || !$in || count($in) > 20) fail(400, 'A suggestion has between 1 and 20 results.');
+      $results = [];
+      foreach ($in as $r) {
+        $rt = $r['type'] ?? '';
+        if (!in_array($rt, ['implication', 'separation', 'equivalence'], true)) fail(400, 'type: implication, separation or equivalence.');
+        $from = (string) ($r['from'] ?? ''); $to = (string) ($r['to'] ?? ''); $over = (string) ($r['over'] ?? '');
+        if (!isset($st[$from]) || !isset($st[$to])) fail(404, 'Unknown statement (choose it from the list).');
+        if ($from === $to) fail(400, 'A result relates two different statements.');
+        if (!isset($red[$over])) fail(404, 'Unknown reduction.');
+        $label = fn ($s) => array_intersect_key($s, array_flip(['id', 'label', 'name']));
+        $results[] = ['type' => $rt, 'from' => $from, 'to' => $to, 'over' => $over,
+          'statements' => [$label($st[$from]), $label($st[$to])], 'reduction' => $red[$over]['name'] ?? $over];
+      }
     }
     $dir = data_dir() . '/feedback';
     if (!is_dir($dir)) mkdir($dir, 0700, true);
@@ -168,6 +199,7 @@ switch ($a) {
       'id' => $id, 'date' => gmdate('c'), 'kind' => $kind, 'target' => $target, 'text' => $text,
       'author' => $u, 'page' => mb_substr((string) ($b['page'] ?? ''), 0, 300), 'zooBuiltAt' => $z['builtAt'] ?? null,
     ];
+    if ($results !== null) { $rec['results'] = $results; $rec['sources'] = $sources; }
     file_put_contents("$dir/$id.json", json_encode($rec, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
     json_out(['ok' => true, 'id' => $id]);
   }
