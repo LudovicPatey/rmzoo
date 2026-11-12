@@ -61,15 +61,17 @@ const RED_FORMS = {
   soc: ['soc', 'strong(?:ly)? omnisciently computabl[ey]', 'strong(?:ly)? omniscient computabl[ey]'],
   sc: ['sc', 'strong(?:ly)? computabl[ey]'],
   gw: ['gw', 'generali[sz]ed weihrauch'],
+  cw: ['cw', 'continuous(?:ly)? weihrauch', 'topological(?:ly)? weihrauch'],
+  aw: ['aw', 'arithmetic(?:al)?(?:ly)? weihrauch'],
   sw: ['sw', 'strong(?:ly)? weihrauch'],
   w: ['w', 'weihrauch'],
   c: ['c', 'computabl[ey]'],
 };
-const SUB = '(?:\\s?\\(?(rca0\\*|rca0star|rca0|rca|omega|soc|sc|gw|sw|w|c)\\)?(?![a-z0-9]))?';
+const SUB = '(?:\\s?\\(?(rca0\\*|rca0star|rca0|rca|omega|soc|sc|gw|cw|aw|arith|sw|w|c)\\)?(?![a-z0-9]))?';
 const LEX = [
   // symbols (an optional reduction as subscript: ≤c, <=_W, ≤_{sW})
   ['!?(?:≤|⩽|≦|<=|=<|\\\\leq?)' + SUB, { role: 'op', kind: 'le' }],
-  ['!?(?:≥|⩾|≧|>=|=>(?=\\s?(?:sw|w|c|sc|soc|gw)\\b)|\\\\geq?)' + SUB, { role: 'op', kind: 'ge' }],
+  ['!?(?:≥|⩾|≧|>=|=>(?=\\s?(?:sw|w|c|sc|soc|gw|cw|aw)\\b)|\\\\geq?)' + SUB, { role: 'op', kind: 'ge' }],
   ['!?(?:≡|⇔|↔|⟺|<=>|<->|==|\\\\equiv|\\\\iff|\\\\leftrightarrow|~|≅)' + SUB, { role: 'op', kind: 'eq' }],
   ['(?:-/->|=/=>|-/>|=/>)' + SUB, { role: 'op', kind: 'imp', neg: true }],
   ['!?(?:⇒|→|⟹|⟶|=>|->|-->|\\\\to|\\\\rightarrow|\\\\implies|\\\\Rightarrow)' + SUB, { role: 'op', kind: 'imp' }],
@@ -202,7 +204,7 @@ export function tokenize(X, raw) {
       const m = re.exec(s);
       if (!m || (word && isW(s[p + m[0].length]))) continue;
       const t = { ...tok };
-      if (t.role === 'op') { if (m[0].startsWith('!')) t.neg = true; if (m[1]) t.sub = { rca: 'rca0', 'rca0*': 'rca0star' }[m[1]] || m[1]; }
+      if (t.role === 'op') { if (m[0].startsWith('!')) t.neg = true; if (m[1]) t.sub = { rca: 'rca0', 'rca0*': 'rca0star', arith: 'aw' }[m[1]] || m[1]; }
       offer(p + m[0].length, t);
     }
     if (best) { flush(p); toks.push(best); p = best.end; continue; }
@@ -342,7 +344,7 @@ export function answer(X, q) {
 // ---- completions --------------------------------------------------------------
 // Each item: {from, insert} (the raw text from `from` is replaced by `insert`), kind, and what it
 // names (i, p, r); score orders them. ctx: {search, r: current reduction, cur: statement of the page}.
-const RED_TEXT = { rca0star: 'RCA0*', rca0: 'RCA0', omega: 'ω-models', sw: 'sW', w: 'W', sc: 'sc', soc: 'soc', c: 'c', gw: 'gW' };
+const RED_TEXT = { rca0star: 'RCA0*', rca0: 'RCA0', omega: 'ω-models', sw: 'sW', w: 'W', sc: 'sc', soc: 'soc', c: 'c', gw: 'gW', cw: 'cW', aw: 'aW' };
 export const redText = (Z, r) => RED_TEXT[Z.R[r].id] || Z.R[r].short;
 export function stmtText(X, i) {
   const s = X.Z.S[i];

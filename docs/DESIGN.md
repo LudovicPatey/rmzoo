@@ -18,19 +18,23 @@ Reductions form a partial order by **strength**: a finer reduction gives more
 information.
 
 ```
-   RCA₀*          sW
-     │          ╱    ╲
-   RCA₀       W       sc
-     │      ╱   ╲    ╱  ╲
-     │    gW      c     soc
-      ╲    │    ╱
+   RCA₀*              sW
+     │              ╱    ╲
+   RCA₀           W       sc
+     │      ╱  ╱  │  ╲   ╱  ╲
+     │    gW  cW  aW   c     soc
+      ╲    │         ╱
          ω (ω-models)
 ```
 
 (`a` above `b` means "a reduction at `a` yields a reduction at `b`". soc, the strong
 omniscient computable reduction of Monin and Patey, asks the instance of the second problem
 to exist, not to be computable: it yields no other reduction, and its separations are
-combinatorial ones.)
+combinatorial ones. cW, the continuous Weihrauch reduction (≤W relative to some oracle),
+and aW, the arithmetic Weihrauch reduction (arithmetic functionals), are coarser than W and
+yield no other reduction: an oracle, or an arithmetic functional, may solve the problem
+outright. Their separations are topological (cW) or hold up to arithmetic (aW) ones, and
+give separations at W and sW.)
 
 Two transfer rules follow, and they are the backbone of the engine:
 
@@ -168,11 +172,15 @@ created on the fly with their label, name and definition: `lpo.jump` (LPO′),
 `tcn.star.tcn` (TC_ℕ ⋆ TC_ℕ); operators apply left to right and parentheses
 group: `cn.star.(lpo.jump)` is C_ℕ ⋆ LPO′. The engine knows the laws of the
 algebra for the reductions marked `algebra` in `data/reductions.yaml`:
-P ≤sW P′, P̂, P*; P* ≤sW P̂; P, Q ≤W P × Q ≤W P ⋆ Q; P × Q ≡W Q × P (so P × Q ≤W Q ⋆ P too); P ≤W P⋄, and P⋄ is closed
+P ≤sW P′, P̂, P*; P* ≤sW P̂; P, Q ≤W P × Q ≤W P ⋆ Q; P × Q ≡W Q × P (so P × Q ≤W Q ⋆ P too); × and ⋆ are associative (Brattka and Pauly 2018, Proposition 4.2), so two products with the same factors, however ordered and bracketed, are equivalent, and so are two compositional products of the same problems in the same order (`(a.star.b).star.c` and `a.star.(b.star.c)`; rule op-comm); P ≤W P⋄, and P⋄ is closed
 under × and ⋆; parallelizations, products, compositional products and ⋄ are
 monotone for ≤W (parallelizations also for ≤sW), but the jump is monotone for
 ≤sW only: P ≤W Q does not give P′ ≤W Q′ (the identity is below every problem,
-its jump is lim). Papers on completions (C̄_ℕ, …) write them with overlines that text
+its jump is lim). Over ≤cW (`algebra: weak`) the laws of ≤W hold, since they
+relativize. Over ≤aW (`algebra: arithmetic`) products, parallelizations and jumps are
+monotone and P′ ≡aW P (lim is arithmetic), but the engine applies no monotonicity of
+⋆ and ⋄ nor the closure of P⋄ (they would need an arithmetic step between two
+problems). Papers on completions (C̄_ℕ, …) write them with overlines that text
 extraction loses: check the rendered PDF before entering such results. These statements are hidden in
 the catalogue unless "Weihrauch operations" is checked.
 
@@ -269,6 +277,21 @@ algebra of the Weihrauch lattice:
 * `lift`: for a cylinder P, every Q ≤W P satisfies Q ≤sW P (Proposition 3.5), so the
   engine lifts the Weihrauch implications of P to strong ones. This uses the cited
   cylinders and the laws on operations only.
+* `eliminates: {side, factor}`: choice elimination. A total fractal P below Q ⋆ H
+  with H ≤W C_ℕ (H applied first: `side: right, factor: cn`) is below Q (Theorem
+  7.15); a single-valued P (equivalent to a single-valued map into a computable
+  metric space) below H ⋆ Q with H ≤W C_{2^ℕ} ≡sW WKL (`side: left, factor: wkl`) is
+  below Q (Theorem 7.25). Contrapositively, P ≰W Q gives P ≰W Q ⋆ H (rule
+  prop-elim). Like the lift, the implications use the cited values and the laws on
+  operations only; the separations use every derived value. The degenerate case
+  P ≤W C_ℕ (P is then computable) is not derived: the zoo has no computable bottom
+  over W.
+
+Two Weihrauch properties are preserved downwards (`direction: down`) and so separate:
+*reducible to a problem with finite codomain* (over cW: C_ℕ fails it even relative to
+an oracle, Soldà and Valenti 2022, Theorem 2.1; kept by × and ⋆, `opKeeps` on a down
+property) and *computable first-order part* (over W: densely realized problems such
+as NON, NHA and COH have it, Brattka and Pauly 2018, Proposition 6.3; LLPO fails it).
 
 **Errata** (`data/errata.yaml`). When a paper states something false (a theorem
 extended to a case where it fails, a reduction claimed strong where only the
@@ -416,6 +439,7 @@ over R), and `Has(p,s)` / `Lacks(p,s)`. Rules:
 | prop-self | `I(Rp,a,op(a))` / `N(Rp,a,op(a))`, p with `selfOp` op | `Has(p,a)` / `Lacks(p,a)`; a cited value gives the `I` or `N` |
 | prop-op | o = op(a…), op in `opHas` (or in `opKeeps` and the arguments have p) | `Has(p,o)` |
 | prop-lift | `I(R,a,b)`, a has p with `lift: {from: R, to: R'}` (cylinder) | `I(R',a,b)` |
+| prop-elim | `I(Rp,g⋆h,a)`, `Has(p,a)`, `I(Rp,F,h)`, p with `eliminates: {side: right, factor: F}` (side left: `h⋆g`) | `I(Rp,g,a)`; from `N(Rp,g,a)`: `N(Rp,g⋆h,a)` |
 | refine | `N(R,a,b)`, R' finer than R | `N(R',a,b)` |
 | weaken-left | `N(R,a,c)`, `I(R,a,b)` | `N(R,b,c)` |
 | strengthen-right | `N(R,a,c)`, `I(R,d,c)` | `N(R,a,d)` |

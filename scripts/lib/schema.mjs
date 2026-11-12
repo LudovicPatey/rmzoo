@@ -124,7 +124,7 @@ export const SCHEMA = {
 
   // data/reductions.yaml
   reduction: {
-    id: { req: true, doc: 'rca0star | rca0 | omega | sw | w | sc | c | gw', usedBy: ['build', 'engine', 'viewer'] },
+    id: { req: true, doc: 'rca0star | rca0 | omega | sw | w | sc | soc | c | gw | cw | aw', usedBy: ['build', 'engine', 'viewer'] },
     name: { req: true, doc: 'name', usedBy: ['viewer'] },
     short: { doc: 'short name for chips and tables', usedBy: ['viewer'] },
     tex: { doc: 'TeX notation (documentation)', usedBy: [] },
@@ -136,7 +136,7 @@ export const SCHEMA = {
     conjunction: { doc: 'true when "P + Q" behaves as a conjunction', usedBy: ['engine'] },
     conservation: { doc: 'true when conservation results yield separations here', usedBy: ['engine'] },
     omegaModels: { doc: 'true when first-order sentences are free (ω-models)', usedBy: ['engine'] },
-    algebra: { doc: 'strong | weak: which laws of the Weihrauch algebra hold (operator statements)', usedBy: ['engine'] },
+    algebra: { doc: 'strong | weak | arithmetic: which laws of the Weihrauch algebra hold (operator statements). weak: all laws of ≤W (products, compositional products, the diamond); strong: those of ≤sW (unary operations, and jumps are monotone); arithmetic: those of ≤aW (products, parallelizations and jumps are monotone, P′ ≡ P; no law for ⋆ and ⋄)', usedBy: ['engine', 'build'] },
     refs: { doc: 'references', usedBy: ['viewer'], items: 'resultRef' },
   },
   tag: {
@@ -152,7 +152,8 @@ export const SCHEMA = {
     group: { req: true, doc: 'computability | proof | weihrauch: the viewer lists the groups separately, and a mode shows the groups listed in its properties field', usedBy: ['build', 'viewer'] },
     selfOp: { doc: 'operation such that the statement has the property exactly when it implies that operation applied to itself over closedUnder (idempotent: product, parallelizable: par, closed under compositional product: compose)', usedBy: ['build', 'engine'] },
     opHas: { doc: 'operations whose results always have the property (par: parallelizable)', usedBy: ['build', 'engine'] },
-    opKeeps: { doc: 'operations whose results have the property when all their arguments do (jump: cylinder)', usedBy: ['build', 'engine'] },
+    opKeeps: { doc: 'operations whose results have the property when all their arguments do (jump: cylinder; product and compose: reducible to a problem with finite codomain). For equiv and down properties', usedBy: ['build', 'engine'] },
+    eliminates: { doc: '{side: left | right, factor: statement id}: choice elimination over closedUnder. A statement with the property below g ⋆ h, where h ≤ factor (side right: h applied first) — or below h ⋆ g (side left) — is below g; contrapositively s ≰ g gives s ≰ g ⋆ h (total fractal: right, C_ℕ; single-valued: left, WKL ≡ C_{2^ℕ})', usedBy: ['build', 'engine'] },
     lift: { doc: '{from, to}: a statement with the property implies over `to` what it implies over `from` (cylinder: from w to sw)', usedBy: ['build', 'engine'] },
     description: { doc: 'definition', usedBy: ['viewer'] },
     fromConservation: { doc: 'the property follows from a conservation result over this class', usedBy: ['engine'] },

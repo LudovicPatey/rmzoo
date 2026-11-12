@@ -385,8 +385,10 @@ const pids = uniq(raw.properties, 'property');
 const sids = uniq(raw.statements, 'statement');
 const refIds = new Set(Object.keys(raw.references));
 
-for (const r of raw.reductions)
+for (const r of raw.reductions) {
   for (const c of r.finerThan || []) if (!rids.has(c)) errors.push(`Reduction ${r.id}: unknown finerThan ${c}`);
+  if (r.algebra !== undefined && !['strong', 'weak', 'arithmetic'].includes(r.algebra)) errors.push(`Reduction ${r.id}: unknown algebra ${r.algebra}`);
+}
 for (const p of raw.properties) {
   if (p.closedUnder !== undefined && !rids.has(p.closedUnder)) errors.push(`Property ${p.id}: unknown reduction ${p.closedUnder}`);
   if ((p.closedUnder === undefined) !== (p.direction === undefined)) errors.push(`Property ${p.id}: closedUnder and direction go together`);
@@ -398,7 +400,14 @@ for (const p of raw.properties) {
   if (p.direction !== undefined && !['down', 'up', 'equiv'].includes(p.direction)) errors.push(`Property ${p.id}: direction must be down, up or equiv`);
   for (const o of [p.selfOp, ...(p.opHas || []), ...(p.opKeeps || [])].filter(Boolean))
     if (!OPERATIONS[o]) errors.push(`Property ${p.id}: unknown operation ${o}`);
-  if ((p.selfOp || p.opHas || p.opKeeps || p.lift) && p.direction !== 'equiv') errors.push(`Property ${p.id}: operation laws and lifts are for equiv (Weihrauch) properties`);
+  if ((p.selfOp || p.lift || p.eliminates) && p.direction !== 'equiv') errors.push(`Property ${p.id}: selfOp, lift and eliminates are for equiv (Weihrauch) properties`);
+  if ((p.opHas || p.opKeeps) && !['equiv', 'down'].includes(p.direction)) errors.push(`Property ${p.id}: operation laws are for equiv (Weihrauch) and down properties`);
+  if (p.eliminates) {
+    const e = p.eliminates;
+    if (!['left', 'right'].includes(e.side)) errors.push(`Property ${p.id}: eliminates.side must be left or right`);
+    if (!raw.statements.some((s) => s.id === e.factor)) errors.push(`Property ${p.id}: eliminates.factor ${e.factor} is not a statement`);
+    if (Object.keys(e).some((k) => !['side', 'factor'].includes(k))) errors.push(`Property ${p.id}: eliminates takes side and factor`);
+  }
   if (p.lift && (!rids.has(p.lift.from) || !rids.has(p.lift.to))) errors.push(`Property ${p.id}: lift needs known reductions from and to`);
   for (const q of p.implies || []) { const qq = raw.properties.find((x) => x.id === q); if (qq && (qq.group === 'weihrauch') !== (p.group === 'weihrauch')) errors.push(`Property ${p.id}: implies ${q} of another group`); }
 }
@@ -620,7 +629,7 @@ const t0 = Date.now();
 // it — in that framework. Folklore and AI-derived results do not count.
 // studied: { rca0: [refs], rca0star: [refs], weihrauch: [refs] }
 {
-  const FRAME = { rca0: 'rca0', rca0star: 'rca0star', w: 'weihrauch', sw: 'weihrauch' };
+  const FRAME = { rca0: 'rca0', rca0star: 'rca0star', w: 'weihrauch', sw: 'weihrauch', cw: 'weihrauch', aw: 'weihrauch' };
   const byId = new Map(raw.statements.map((s) => [s.id, s]));
   const acc = new Map();
   for (const r of raw.results) {

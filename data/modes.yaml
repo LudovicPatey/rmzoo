@@ -32,7 +32,7 @@
 - id: weihrauch
   name: Weihrauch complexity
   short: Weihrauch
-  description: Strong, plain and generalized Weihrauch reducibility between problems, the operations of the Weihrauch lattice and the properties of Weihrauch degrees (cylinders, idempotency, parallelizability…).
-  reductions: [ sw, w, gw ]
+  description: Strong, plain, generalized, continuous and arithmetic Weihrauch reducibility between problems, the operations of the Weihrauch lattice and the properties of Weihrauch degrees (cylinders, idempotency, parallelizability…).
+  reductions: [ sw, w, gw, cw, aw ]
   default: w
   properties: [ weihrauch ]

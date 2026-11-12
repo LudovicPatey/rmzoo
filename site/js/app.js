@@ -551,8 +551,8 @@ function resultCite(ri, { open = false } = {}) {
     ${res.note ? `<div class="note">${rich(res.note)}</div>` : ''}`;
 }
 function proofHtml(node) {
-  const rule = node.rule === 'prop-sep' && node.prop !== undefined
-    ? `${RULES['prop-sep']}: ${esc(Z.raw.properties[node.prop].name)}`
+  const rule = (node.rule === 'prop-sep' || node.rule === 'prop-elim') && node.prop !== undefined
+    ? `${RULES[node.rule]}: ${esc(Z.raw.properties[node.prop].name)}`
     : RULES[node.rule] || node.rule;
   const kids = node.children && node.children.length
     ? `<ul>${node.children.map(proofHtml).join('')}</ul>` : '';

@@ -38,3 +38,24 @@
 - { type: property, statement: stt22, property: cone-avoidance, value: true, refs: [ { ref: dzhafarovpatey2017, loc: "Corollary 3.10" } ] }
 - { type: property, statement: tt22, property: cone-avoidance, value: true, refs: [ { ref: dzhafarovpatey2017, loc: "Theorem 4.1" } ] }
 - { type: property, statement: ctt22, property: cone-avoidance, value: true, refs: [ { ref: dzhafarovpatey2017, loc: "Theorem 4.6" } ] }
+
+# ---- Weihrauch laws suggested by Manlio Valenti (2026) ------------------------------
+# Problems with a finite codomain are trivially reducible to one (finite-codomain, over cW);
+# a jump has the codomain of the problem (Brattka, Gherardi and Pauly, Definition 6.9).
+- { type: property, statement: llpo, property: finite-codomain, value: true, folklore: true, justification: { kind: restriction, text: "LLPO has codomain {0, 1}.", by: ai } }
+- { type: property, statement: lpo, property: finite-codomain, value: true, folklore: true, justification: { kind: restriction, text: "LPO has codomain {0, 1}.", by: ai } }
+- { type: property, statement: c3, property: finite-codomain, value: true, folklore: true, justification: { kind: restriction, text: "C_3 has codomain {0, 1, 2}.", by: ai } }
+- { type: property, statement: c4, property: finite-codomain, value: true, folklore: true, justification: { kind: restriction, text: "C_4 has codomain {0, 1, 2, 3}.", by: ai } }
+- { type: property, statement: lim2, property: finite-codomain, value: true, folklore: true, justification: { kind: restriction, text: "lim₂ has codomain {0, 1}.", by: ai } }
+- { type: property, statement: llpo.jump, property: finite-codomain, value: true, folklore: true, justification: { kind: restriction, text: "The jump of a problem is the same problem on a weaker input space, with the same codomain (Brattka, Gherardi and Pauly, Definition 6.9): LLPO′ has codomain {0, 1}.", by: ai } }
+- { type: property, statement: llpo.jump.jump, property: finite-codomain, value: true, folklore: true, justification: { kind: restriction, text: "A jump keeps the codomain (Brattka, Gherardi and Pauly, Definition 6.9): LLPO″ has codomain {0, 1}.", by: ai } }
+- { type: property, statement: llpo.jump.jump.jump, property: finite-codomain, value: true, folklore: true, justification: { kind: restriction, text: "A jump keeps the codomain (Brattka, Gherardi and Pauly, Definition 6.9): LLPO‴ has codomain {0, 1}.", by: ai } }
+- { type: property, statement: lpo.jump, property: finite-codomain, value: true, folklore: true, justification: { kind: restriction, text: "A jump keeps the codomain (Brattka, Gherardi and Pauly, Definition 6.9): LPO′ has codomain {0, 1}.", by: ai } }
+- { type: property, statement: lpo.jump.jump, property: finite-codomain, value: true, folklore: true, justification: { kind: restriction, text: "A jump keeps the codomain (Brattka, Gherardi and Pauly, Definition 6.9): LPO″ has codomain {0, 1}.", by: ai } }
+# jumps of single-valued maps are the same maps on a weaker input (Definition 6.9)
+- { type: property, statement: lpo.jump, property: single-valued, value: true, folklore: true, justification: { kind: restriction, text: "LPO′ is the single-valued map LPO : ℕ^ℕ → {0, 1} on a weaker input space (Brattka, Gherardi and Pauly, Definition 6.9).", by: ai } }
+- { type: property, statement: lpo.jump.jump, property: single-valued, value: true, folklore: true, justification: { kind: restriction, text: "LPO″ is the single-valued map LPO on a weaker input space (Brattka, Gherardi and Pauly, Definition 6.9).", by: ai } }
+- { type: property, statement: lim.jump, property: single-valued, value: true, folklore: true, justification: { kind: restriction, text: "lim′ is the single-valued map lim into ℕ^ℕ on a weaker input space (Brattka, Gherardi and Pauly, Definition 6.9).", by: ai } }
+- { type: property, statement: ucnn.jump, property: single-valued, value: true, folklore: true, justification: { kind: restriction, text: "UC_{ℕ^ℕ} has a unique solution for each instance, so it is a single-valued map into ℕ^ℕ; its jump is the same map on a weaker input space (Brattka, Gherardi and Pauly, Definition 6.9).", by: ai } }
+# a densely realized problem computes no non-computable first-order problem
+- { type: property, statement: llpo, property: computable-fop, value: false, folklore: true, justification: { kind: reduction, text: "LLPO has codomain {0, 1} ⊆ ℕ and is not computable (no continuous realizer: after reading finitely many zeros of the input it must commit to an answer, and a later 1 at a position of that parity refutes it), so LLPO is a non-computable problem with codomain ℕ below LLPO.", by: ai } }

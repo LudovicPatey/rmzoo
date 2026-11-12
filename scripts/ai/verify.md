@@ -32,7 +32,11 @@ from one base to another.
 Reduction ids: rca0star (provability over RCA₀*), rca0 (over RCA₀), omega
 (ω-models), sw (strong Weihrauch), w (Weihrauch), sc (strong computable),
 soc (strong omniscient computable: the instance of the stronger problem need not be
-computable from the given one), c (computable), gw (generalized Weihrauch).
+computable from the given one), c (computable), gw (generalized Weihrauch),
+cw (continuous Weihrauch: ≤cW, ≤W^*, ≤W^p for some oracle p; ≤W relative to a
+fixed oracle such as ∅′ gives a cw reduction, and a non-reduction only when it
+holds for every oracle), aw (arithmetic Weihrauch: ≤aW, ≤W^a, ≤W^arith). Neither cw
+nor aw implies c or the other.
 
 A statement id joined by "-" (coh-fs-wkl) is the conjunction of these principles
 (RCA₀ + COH + FS + WKL). Check that the fact keeps every principle of the theorem:

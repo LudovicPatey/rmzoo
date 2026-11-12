@@ -39,7 +39,14 @@ Reductions are given by id (see the catalogue). In particular:
   the stronger principle), `gw` generalized Weihrauch reduction, `soc` strong
   omniscient computable reduction (for every instance X of B there is an instance
   of A, computable from X or not, every solution of which computes a solution of X;
-  a statement "for every instance … computable or not" or "≤_soc" is over `soc`).
+  a statement "for every instance … computable or not" or "≤_soc" is over `soc`),
+  `cw` continuous Weihrauch reduction (the functionals only continuous: "≤cW",
+  "≤W^*", "≤W^p for some oracle p", "Weihrauch reducible with respect to some
+  oracle"; a non-reduction "≰W^p for every p" is a separation over `cw`), `aw`
+  arithmetic Weihrauch reduction (arithmetic functionals: "≤aW", "≤W^a",
+  "≤W^arith", "arithmetically Weihrauch reducible"). A reduction relative to one
+  fixed oracle (≤W^{∅′}) is not `w`: record it over `cw` (it gives a continuous
+  reduction), and its non-reductions not at all unless they hold for every oracle.
 A paper stating "B ≤_W A" gives `{implication, from: A, to: B, over: w}`;
 "B ≰_W A" gives `{separation, from: A, to: B, over: w}`; "A ≡_sW B" gives an
 equivalence over `sw`. "RCA₀ ⊢ A → B" gives over `rca0`; "RCA₀ + A ⊬ B" gives a
@@ -71,7 +78,7 @@ a separation over `omega`.
    argument in `argument`.
    Do not report what the database derives by itself: transitivity of
    implications, combining an implication with a separation, coarser reductions
-   (sw ⇒ w ⇒ c, sw ⇒ sc ⇒ c, sc ⇒ soc, rca0star ⇒ rca0 ⇒ omega for implications, the
+   (sw ⇒ w ⇒ c, sw ⇒ sc ⇒ c, sc ⇒ soc, w ⇒ cw, w ⇒ aw, rca0star ⇒ rca0 ⇒ omega for implications, the
    converse for separations), and properties passed along implications.
 3. Results the paper attributes to other work ("by [12, Theorem 3]"): report them
    with `origin: cited` and the citation in `citedFrom`, only when they concern

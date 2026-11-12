@@ -96,6 +96,8 @@ export function relation(t) {
   if (/ω-model|omega-model|Turing ideal|ω-models/i.test(t)) over = 'omega';
   // one branch per reduction of data/reductions.yaml (finest notation first)
   if (/≤ ?gW|<gW|≡gW|generali[sz]ed Weihrauch/.test(t)) over = 'gw';
+  else if (/≤ ?a ?W|<a ?W|≡a ?W|≤ ?arith ?W|≡ ?arith ?W|arithmetic(?:al)?(?:ly)? Weihrauch/i.test(t)) over = 'aw';
+  else if (/≤ ?cW|<cW|≡cW|≤ ?\* ?W|≤ ?p ?W|continuous(?:ly)? Weihrauch|topological Weihrauch|Weihrauch[ -]reduc\w* (?:with respect|relative) to (?:some|an) oracle/i.test(t)) over = 'cw';
   else if (/≤ ?sW|<sW|≡sW|strongly Weihrauch/.test(t)) over = 'sw';
   else if (/≤ ?W|<W|≡W|Weihrauch/.test(t)) over = 'w';
   else if (/≤ ?soc|<soc|≡soc|omnisciently computabl|omniscient computable/.test(t)) over = 'soc';

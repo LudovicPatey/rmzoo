@@ -129,6 +129,43 @@ test('operator statements: P below its jump, parallelization; monotonicity', () 
   assert.equal(st('w', 'b.jump', 'a.jump'), 'open');
 });
 
+test('continuous and arithmetic Weihrauch reductions: coarser than W, their own laws', () => {
+  const zoo = buildZoo({
+    reductions: [
+      { id: 'w', domain: 'problems', algebra: 'weak', finerThan: ['cw', 'aw', 'c'] },
+      { id: 'cw', domain: 'problems', algebra: 'weak', finerThan: [] },
+      { id: 'aw', domain: 'problems', algebra: 'arithmetic', finerThan: [] },
+      { id: 'c', domain: 'problems', finerThan: [] },
+    ],
+    properties: [],
+    statements: [
+      { id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' }, { id: 'd', kind: 'problem' },
+      { id: 'a.jump', kind: 'problem', op: 'jump', args: ['a'] },
+      { id: 'b.jump', kind: 'problem', op: 'jump', args: ['b'] },
+      { id: 'a.par', kind: 'problem', op: 'par', args: ['a'] },
+      { id: 'b.par', kind: 'problem', op: 'par', args: ['b'] },
+      { id: 'a.star.d', kind: 'problem', op: 'compose', args: ['a', 'd'] },
+      { id: 'b.star.d', kind: 'problem', op: 'compose', args: ['b', 'd'] },
+    ],
+    results: [
+      { type: 'implication', from: 'a', to: 'b', over: 'aw', refs: [{ ref: 'x' }] },
+      { type: 'implication', from: 'a', to: 'b', over: 'cw', refs: [{ ref: 'x' }] },
+      { type: 'separation', from: 'd', to: 'a', over: 'cw', refs: [{ ref: 'x' }] },
+    ],
+  });
+  const st = (r, x, y) => zoo.status(zoo.ridx.get(r), zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('w', 'd', 'a'), 'separated');           // a ≰cW d ⇒ a ≰W d
+  assert.equal(st('c', 'd', 'a'), 'open');                // but says nothing of computable reductions
+  assert.equal(st('aw', 'd', 'a'), 'open');               // nor of arithmetic ones
+  assert.equal(st('aw', 'a', 'a.jump'), 'implies');       // a′ ≡aW a
+  assert.equal(st('aw', 'a.jump', 'b.jump'), 'implies');  // jumps monotone for ≤aW
+  assert.equal(st('aw', 'a.par', 'b.par'), 'implies');    // parallelization monotone
+  assert.equal(st('aw', 'a.star.d', 'b.star.d'), 'open'); // no monotonicity of ⋆ for ≤aW
+  assert.equal(st('cw', 'a.star.d', 'b.star.d'), 'implies'); // all laws of ≤W for ≤cW
+  assert.equal(st('cw', 'a.jump', 'b.jump'), 'open');     // but jumps are not monotone
+  assert.equal(st('cw', 'a', 'a.jump'), 'open');
+});
+
 test('products commute, and a product is below the compositional products in either order', () => {
   const zoo = buildZoo({
     reductions: [
@@ -368,6 +405,92 @@ test('Weihrauch properties: invariance, operations, cited values, cylinder lift'
   assert.equal(P('idem', 's'), undefined);     // sentences are outside the domain
   assert.equal(st('w', 'a', 'b'), 'open');     // Weihrauch properties separate nothing
   assert.equal(zoo.contradictions.length, 0);
+});
+
+test('associativity and commutativity of × and ⋆', () => {
+  const ids = ['a', 'b', 'c'];
+  const zoo = buildZoo({
+    reductions: [{ id: 'w', domain: 'problems', algebra: 'weak', finerThan: [] }],
+    properties: [],
+    statements: [
+      ...ids.map((id) => ({ id, kind: 'problem' })),
+      ...[['a.x.b', 'product', 'a', 'b'], ['b.x.c', 'product', 'b', 'c'], ['a.x.c', 'product', 'a', 'c'],
+        ['(a.x.b).x.c', 'product', 'a.x.b', 'c'], ['a.x.(b.x.c)', 'product', 'a', 'b.x.c'], ['b.x.(a.x.c)', 'product', 'b', 'a.x.c'],
+        ['a.star.b', 'compose', 'a', 'b'], ['b.star.c', 'compose', 'b', 'c'], ['b.star.a', 'compose', 'b', 'a'],
+        ['(a.star.b).star.c', 'compose', 'a.star.b', 'c'], ['a.star.(b.star.c)', 'compose', 'a', 'b.star.c'], ['(b.star.a).star.c', 'compose', 'b.star.a', 'c']]
+        .map(([id, op, x, y]) => ({ id, kind: 'problem', op, args: [x, y] })),
+    ],
+    results: [],
+  });
+  const st = (x, y) => zoo.status(0, zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('(a.x.b).x.c', 'a.x.(b.x.c)'), 'implies');
+  assert.equal(st('a.x.(b.x.c)', '(a.x.b).x.c'), 'implies');
+  assert.equal(st('b.x.(a.x.c)', '(a.x.b).x.c'), 'implies');       // commutativity and associativity together
+  assert.equal(st('(a.star.b).star.c', 'a.star.(b.star.c)'), 'implies');
+  assert.equal(st('a.star.(b.star.c)', '(a.star.b).star.c'), 'implies');
+  assert.equal(st('(a.star.b).star.c', '(b.star.a).star.c'), 'open'); // ⋆ is not commutative
+});
+
+test('choice elimination: C_ℕ applied first, C_{2^ℕ} applied last, and the contrapositive', () => {
+  const zoo = buildZoo({
+    reductions: [{ id: 'w', domain: 'problems', algebra: 'weak', finerThan: [] }],
+    properties: [
+      { id: 'tf', closedUnder: 'w', direction: 'equiv', domain: 'problems', eliminates: { side: 'right', factor: 'cn' } },
+      { id: 'sv', closedUnder: 'w', direction: 'equiv', domain: 'problems', eliminates: { side: 'left', factor: 'wkl' } },
+    ],
+    statements: ['cn', 'ucn', 'wkl', 'llpo', 'g', 'f', 'f2', 'h', 'v', 'v2'].map((id) => ({ id, kind: 'problem' })).concat([
+      { id: 'g.star.ucn', kind: 'problem', op: 'compose', args: ['g', 'ucn'] },
+      { id: 'g.star.wkl', kind: 'problem', op: 'compose', args: ['g', 'wkl'] },
+      { id: 'llpo.star.g', kind: 'problem', op: 'compose', args: ['llpo', 'g'] },
+      { id: 'cn.star.g', kind: 'problem', op: 'compose', args: ['cn', 'g'] },
+    ]),
+    results: [
+      { type: 'property', statement: 'f', property: 'tf', value: true },
+      { type: 'property', statement: 'f2', property: 'tf', value: true },
+      { type: 'property', statement: 'v', property: 'sv', value: true },
+      { type: 'property', statement: 'v2', property: 'sv', value: true },
+      { type: 'implication', from: 'cn', to: 'ucn', over: 'w' },
+      { type: 'implication', from: 'wkl', to: 'llpo', over: 'w' },
+      { type: 'implication', from: 'g.star.ucn', to: 'f', over: 'w' },  // f ≤W g ⋆ UC_ℕ, UC_ℕ ≤W C_ℕ
+      { type: 'implication', from: 'llpo.star.g', to: 'v', over: 'w' }, // v ≤W LLPO ⋆ g, LLPO ≤W C_{2^ℕ}
+      { type: 'separation', from: 'g', to: 'f2', over: 'w' },
+      { type: 'separation', from: 'g', to: 'v2', over: 'w' },
+      { type: 'implication', from: 'g.star.wkl', to: 'h', over: 'w' }, // h has no property: nothing follows
+    ],
+  });
+  const st = (x, y) => zoo.status(0, zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('g', 'f'), 'implies');
+  assert.equal(zoo.just({ t: 'I', r: 0, a: zoo.sidx.get('g'), b: zoo.sidx.get('f') }).rule, 'prop-elim');
+  assert.equal(st('g', 'v'), 'implies');
+  assert.equal(st('g.star.ucn', 'f2'), 'separated');  // f2 ≰ g gives f2 ≰ g ⋆ UC_ℕ
+  assert.equal(st('llpo.star.g', 'v2'), 'separated'); // v2 ≰ g gives v2 ≰ LLPO ⋆ g
+  assert.equal(st('g.star.wkl', 'f2'), 'open');       // WKL is not below C_ℕ
+  assert.equal(st('cn.star.g', 'v2'), 'open');        // C_ℕ is not below C_{2^ℕ}
+  assert.equal(st('g', 'h'), 'open');
+  assert.equal(zoo.contradictions.length, 0);
+});
+
+test('a down property kept by operations (reducible to a finite codomain)', () => {
+  const zoo = buildZoo({
+    reductions: [{ id: 'w', domain: 'problems', algebra: 'weak', finerThan: [] }],
+    properties: [{ id: 'fin', closedUnder: 'w', direction: 'down', domain: 'problems', opKeeps: ['product', 'compose'] }],
+    statements: ['a', 'b', 'cn', 'x'].map((id) => ({ id, kind: 'problem' })).concat([
+      { id: 'a.x.b', kind: 'problem', op: 'product', args: ['a', 'b'] },
+      { id: 'a.star.b', kind: 'problem', op: 'compose', args: ['a', 'b'] },
+      { id: 'a.star.x', kind: 'problem', op: 'compose', args: ['a', 'x'] },
+    ]),
+    results: [
+      { type: 'property', statement: 'a', property: 'fin', value: true },
+      { type: 'property', statement: 'b', property: 'fin', value: true },
+      { type: 'property', statement: 'cn', property: 'fin', value: false },
+    ],
+  });
+  const v = (s) => zoo.prop(0, zoo.sidx.get(s))?.v;
+  const st = (x, y) => zoo.status(0, zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(v('a.x.b'), true);
+  assert.equal(v('a.star.b'), true);
+  assert.equal(v('a.star.x'), undefined);           // x is unknown
+  assert.equal(st('a.star.b', 'cn'), 'separated');  // C_ℕ is not below a ⋆ b
 });
 
 test('conservation properties: read from results, the base itself, failure for a smaller class, conjunctions', () => {

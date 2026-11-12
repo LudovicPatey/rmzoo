@@ -170,7 +170,7 @@ Specific cases:
   every k, countably many). Give it a `group` (computability, proof, weihrauch) and add the group
   to the modes that should show it (`data/modes.yaml`). A property of Weihrauch
   degrees is `direction: equiv` over w or sw, with its laws on operations
-  (`selfOp`, `opHas`, `opKeeps`) and `lift` when they hold (docs/DESIGN.md). Nothing
+  (`selfOp`, `opHas`, `opKeeps`), `lift` and choice elimination (`eliminates`) when they hold (docs/DESIGN.md); a down property may also have `opKeeps`. Nothing
   to change in the AI reader (the catalogue lists properties), but run
   `node scripts/ai-analyze.mjs --replay` to re-check saved answers that named it
   before it existed.

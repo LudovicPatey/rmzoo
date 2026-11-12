@@ -468,3 +468,64 @@
   domain: problems
   description: >
     P ≤W Q ⊔ R implies P ≤W Q or P ≤W R (Brattka, Gherardi and Pauly, Section 4).
+
+# Choice elimination (Brattka, Gherardi and Pauly, Theorems 7.15 and 7.25): the engine
+# drops C_ℕ applied first, or C_{2^ℕ} applied last, from a compositional product above
+# a problem with the property (`eliminates`).
+- id: total-fractal
+  name: Total fractal
+  group: weihrauch
+  closedUnder: w
+  direction: equiv
+  domain: problems
+  implies: [ fractal ]
+  eliminates: { side: right, factor: cn }
+  description: >
+    A fractal witnessed by a total F :⊆ ℕ^ℕ ⇒ ℕ^ℕ (Definition 4.10 of Brattka, Gherardi and Pauly):
+    some total F ≡W P with F restricted to A ≡W F for every nonempty clopen A. C_ℕ applied first
+    adds nothing below a total fractal: P ≤W Q ⋆ C_ℕ implies P ≤W Q (Theorem 7.15). C_{2^ℕ},
+    PC_{2^ℕ}, CC_{[0,1]} and XC_{[0,1]^{n+1}} are total fractals (Proposition 7.5).
+
+- id: single-valued
+  name: Single-valued
+  group: weihrauch
+  closedUnder: w
+  direction: equiv
+  domain: problems
+  opKeeps: [ product, par ]
+  eliminates: { side: left, factor: wkl }
+  description: >
+    Weihrauch equivalent to a single-valued problem f :⊆ X → Y into a computable metric space Y
+    (lim, LPO, UC_ℕ^ℕ; C_ℕ ≡W lim_ℕ). C_{2^ℕ} ≡sW WKL applied last adds nothing below it: P ≤W
+    C_{2^ℕ} ⋆ Q implies P ≤W Q (Brattka, Gherardi and Pauly, Theorem 7.25). Products and
+    parallelizations of single-valued maps are single-valued maps into the product spaces Y × Z and
+    Y^ℕ, again computable metric spaces (and both operations are monotone for ≤W). Jumps are not
+    covered by the law: they are not monotone for ≤W, so only problems that are themselves
+    single-valued pass the property to their jumps (Definition 6.9: the same map on a weaker input).
+
+- id: finite-codomain
+  name: Reducible to a problem with finite codomain
+  group: weihrauch
+  closedUnder: cw
+  direction: down
+  domain: problems
+  opKeeps: [ product, compose ]
+  description: >
+    P ≤cW f (Weihrauch reducible relative to some oracle) for some problem f with a finite codomain (LLPO,
+    LPO, C_k, lim₂ and their jumps). C_ℕ fails it: C_ℕ ≰W^p f for every oracle p and every f with finite
+    codomain (Soldà and Valenti 2022, Theorem 2.1). Kept by products (F × G has a finite codomain) and by
+    compositional products: if f₀ ≤W F and g₀ ≤W G (via Φ, Ψ for g₀), then f₀ ∘ g₀ ≤W h with h(x) =
+    {(i, j) : i ∈ G(Φx), j ∈ F(Φ′(Ψ(x, i)))}, of finite codomain (our argument; it relativizes).
+
+- id: computable-fop
+  name: Computable first-order part
+  group: weihrauch
+  closedUnder: w
+  direction: down
+  domain: problems
+  description: >
+    Every problem with codomain ℕ Weihrauch reducible to it is computable (its first-order part, in the
+    sense of Dzhafarov, Solomon and Yokoyama, is computable). Densely realized problems have it (Brattka
+    and Pauly 2018, Proposition 6.3; Brattka, Gherardi and Pauly, Proposition 4.13): NON, NHA, MLR, COH
+    (Soldà and Valenti 2022, Section 2). LLPO, a non-computable problem with codomain {0, 1}, fails it,
+    and so does every problem above LLPO.

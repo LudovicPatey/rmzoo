@@ -37,6 +37,10 @@ test('comparisons in words and symbols', () => {
   has('Is RT22 Weihrauch reducible to RT23?', { kind: 'le', r: 'w' });
   has('Is RT22 strongly Weihrauch reducible to RT23?', { kind: 'le', r: 'sw' });
   has('Is K_N ≤sW PCC', { x: 'kn', y: 'pcc', r: 'sw' });
+  for (const t of ['C_N ≤cW LPO', 'Is C_N continuously Weihrauch reducible to LPO?', 'C_N <=_{cW} LPO'])
+    has(t, { kind: 'le', x: 'cn', y: 'lpo', r: 'cw' });
+  for (const t of ['C_N ≤aW LPO', 'Is C_N arithmetically Weihrauch reducible to LPO?', 'C_N ≤_arith LPO'])
+    has(t, { kind: 'le', x: 'cn', y: 'lpo', r: 'aw' });
   has('RT22 ≥W SRT22', { kind: 'ge', r: 'w' });
   has('Is ADS equivalent to CAC?', { kind: 'eq', x: 'ads', y: 'cac' });
   for (const t of ['ADS ≡ CAC', 'ADS <-> CAC', 'ADS ↔ CAC over RCA0', 'ADS iff CAC']) has(t, { kind: 'eq', r: 'rca0' });

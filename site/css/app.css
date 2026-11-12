@@ -154,6 +154,7 @@ table.grid th.c { text-transform: none; }
 .role { font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-right: 6px; }
 
 /* ---- reduction picker / lattice ---------------------------------------- */
+svg.lattice { max-width: 100%; height: auto; }
 .lattice text { font: 600 11px Inter, sans-serif; fill: var(--ink); pointer-events: none; }
 .lattice .edge { stroke: var(--node-line); stroke-width: 1.2; fill: none; }
 .lattice .node rect { fill: var(--panel); stroke: var(--node-line); stroke-width: 1.2; rx: 6; }

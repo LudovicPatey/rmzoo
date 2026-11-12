@@ -27,8 +27,9 @@ export const RULES = {
   refine: 'Separation at a coarser reduction',
   'base-lift': 'Over a weaker base theory, a statement implying the stronger base theory has all its consequences over that theory (over RCA₀*, a statement implying IΣ⁰₁ implies everything it implies over RCA₀)',
   'op-base': 'Algebra of Weihrauch degrees: a problem is below its jump, its parallelization and its finite parallelization (strongly), and below products and compositional products in which it occurs; a product is below the compositional products of its two factors, in either order',
-  'op-comm': 'The product of Weihrauch problems is commutative: P × Q ≡W Q × P',
+  'op-comm': 'The product of Weihrauch problems is commutative and associative, the compositional product is associative: products with the same factors are equivalent however ordered and bracketed, and so are compositional products of the same problems in the same order (Brattka and Pauly 2018, Proposition 4.2)',
   'op-monotone': 'Algebra of Weihrauch degrees: parallelizations, finite parallelizations, products, compositional products and the diamond operator are monotone; jumps are monotone for strong Weihrauch reducibility',
+  'op-arith-jump': 'Arithmetic Weihrauch reducibility: a jump is equivalent to the problem itself (P′ ≤sW P ∘ lim, and lim is arithmetic: Marcone and Valenti 2020, Proposition 5.4)',
   'op-diamond': 'Algebra of Weihrauch degrees: P⋄ is closed under products and compositional products (if Q, R ≤W P⋄ then Q × R ≤W P⋄ and Q ⋆ R ≤W P⋄)',
   'weaken-left': 'Weakening the hypothesis',
   'strengthen-right': 'Strengthening the conclusion',
@@ -37,6 +38,7 @@ export const RULES = {
   'prop-equiv': 'A Weihrauch property is invariant under equivalence (the same Weihrauch degree, or strong degree for strong properties)',
   'prop-self': 'A problem has this property exactly when it is above the corresponding operation applied to itself (idempotent: P × P ≤W P; parallelizable: P̂ ≤W P; closed under compositional product: P ⋆ P ≤W P)',
   'prop-op': 'Weihrauch operations produce problems with this property (P̂ is parallelizable, P* idempotent, P⋄ closed under compositional product, P ⋆ Q a cylinder; a jump P′ is finitely tolerant and a fractal, and the jump of a cylinder is a cylinder)',
+  'prop-elim': 'Choice elimination: a problem with this property below a compositional product with a factor below the eliminated problem is below the other factor (a total fractal below g ⋆ C_ℕ is below g: Brattka, Gherardi and Pauly, Theorem 7.15; a single-valued problem below C_{2^ℕ} ⋆ g is below g: Theorem 7.25)',
   'prop-lift': 'For a cylinder, Weihrauch reductions to it are strong Weihrauch reductions (Brattka, Gherardi and Pauly, Proposition 3.5)',
 };
 
@@ -152,6 +154,7 @@ export function buildZoo(raw) {
   let qh = 0;
 
   const fI = (r, a, b) => ({ t: 'I', r, a, b });
+  const fP = (p, s, v) => ({ t: 'P', p, s, v });
   function addI(r, a, b, just) {
     if (!inDomain(r, a) || !inDomain(r, b)) return;
     const k = key(a, b);
@@ -206,7 +209,7 @@ export function buildZoo(raw) {
 
   // --- algebra of Weihrauch degrees --------------------------------------------
   // Operator statements (op: jump | par | fin | product | compose, args: [ids]).
-  // Laws, for reductions marked `algebra` (strong / weak Weihrauch):
+  // Laws, for reductions marked `algebra` (strong / weak / arithmetic Weihrauch):
   //   P ≤sW P', P ≤sW P̂, P ≤sW P*, P* ≤sW P̂;   P, Q ≤W P × Q ≤W P ⋆ Q, P, Q ≤W P ⋆ Q;
   //   P × Q ≡W Q × P, hence also P × Q ≤W Q ⋆ P;
   //   P ≤W P⋄, and P⋄ is closed under × and ⋆ (diamond: weak only);
@@ -218,22 +221,42 @@ export function buildZoo(raw) {
   const unary = new Set(['jump', 'par', 'fin', 'diamond']);
   const opsByArg = new Map();
   ops.forEach((o) => o.args.forEach((x) => { if (!opsByArg.has(x)) opsByArg.set(x, []); opsByArg.get(x).push(o); }));
+  // products (compositional products) with the same factors as a multiset (as a
+  // sequence) once nested products are flattened: equivalent by commutativity and
+  // associativity of × (associativity of ⋆)
+  const opOf = new Map(ops.map((o) => [o.i, o]));
+  const flat = (i, op) => { const o = opOf.get(i); return o && o.op === op && !o.args.includes(undefined) ? o.args.flatMap((x) => flat(x, op)) : [i]; };
+  const sameShape = new Map();
+  for (const op of ['product', 'compose']) {
+    const groups = new Map();
+    for (const o of ops) if (o.op === op && !o.args.includes(undefined)) {
+      const f = flat(o.i, op);
+      const k = (op === 'product' ? f.sort((x, y) => x - y) : f).join(',');
+      if (!groups.has(k)) groups.set(k, []);
+      groups.get(k).push(o.i);
+    }
+    for (const g of groups.values()) if (g.length > 1) for (const i of g) sameShape.set(i, g.filter((j) => j !== i));
+  }
   const strongOK = (o) => unary.has(o.op) && o.op !== 'diamond';
-  const algebraAt = (r, o) => R[r].algebra === 'weak' || (R[r].algebra === 'strong' && strongOK(o));
+  // arithmetic Weihrauch reducibility (≤aW): the laws of ≤W hold (it is coarser), but
+  // only these operations are monotone: arithmetic functionals can be applied
+  // componentwise (lim⁽ⁿ⁾ is parallelizable), and P′ ≡aW P. The compositional product
+  // and the diamond would need an arithmetic step between the two problems.
+  const arithMono = new Set(['jump', 'par', 'fin', 'product']);
+  const algebraAt = (r, o) => R[r].algebra === 'weak' || R[r].algebra === 'arithmetic' || (R[r].algebra === 'strong' && strongOK(o));
   const seedOps = () => {
     for (let r = 0; r < R.length; r++) {
       if (!R[r].algebra) continue;
       for (const o of ops) {
         if (!algebraAt(r, o) || o.args.some((x) => x === undefined)) continue;
         for (const x of o.args) addI(r, o.i, x, { rule: 'op-base' });
+        if (o.op === 'jump' && R[r].algebra === 'arithmetic') addI(r, o.args[0], o.i, { rule: 'op-arith-jump' });
         const [x0, x1] = o.args;
         if (o.op === 'compose') { // P × Q ≤W P ⋆ Q, and Q × P ≤W P ⋆ Q since × is commutative
           for (const q of ops) if (q.op === 'product' && ((q.args[0] === x0 && q.args[1] === x1) || (q.args[0] === x1 && q.args[1] === x0))) addI(r, o.i, q.i, { rule: 'op-base' });
         }
-        if (o.op === 'product' && x0 !== x1) { // P × Q ≡W Q × P
-          const q = ops.find((p) => p.op === 'product' && p.args[0] === x1 && p.args[1] === x0);
-          if (q) addI(r, o.i, q.i, { rule: 'op-comm' });
-        }
+        // P × Q ≡W Q × P, (P × Q) × R ≡W P × (Q × R), (P ⋆ Q) ⋆ R ≡W P ⋆ (Q ⋆ R)
+        for (const q of sameShape.get(o.i) || []) addI(r, o.i, q, { rule: 'op-comm' });
         if (o.op === 'par') { // P* ≤sW P̂
           const fin = ops.find((q) => q.op === 'fin' && q.args[0] === o.args[0]);
           if (fin) addI(r, o.i, fin.i, { rule: 'op-base' });
@@ -255,7 +278,8 @@ export function buildZoo(raw) {
   // is monotone for ≤sW only: P ≤W Q does not give P' ≤W Q' (the identity is below
   // every problem, but its jump is lim), so over ≤W jumps are compared only through
   // ≤sW facts.
-  const monoAt = (r, o) => (o.op === 'jump' ? R[r].algebra === 'strong' : algebraAt(r, o));
+  const monoAt = (r, o) => (R[r].algebra === 'arithmetic' ? arithMono.has(o.op)
+    : o.op === 'jump' ? R[r].algebra === 'strong' : algebraAt(r, o));
   const monotone = (r, a, b) => {
     if (!R[r].algebra) return;
     diamondClosure(r, a, b);
@@ -278,17 +302,42 @@ export function buildZoo(raw) {
   // property during the implication loop: it uses the cited values and the laws on
   // operations only.
   const opLaw = raw.properties.map((prop) => ({ has: new Set(prop.opHas || []), keeps: new Set(prop.opKeeps || []) }));
-  const lifting = [];
-  raw.properties.forEach((prop, p) => {
-    if (!prop.lift) return;
+  const citedHas = (p) => {
     const has = new Set();
     directResults.forEach((res) => { if (res.type === 'property' && res.value && pidx.get(res.property) === p) has.add(sidx.get(res.statement)); });
     for (let grew = true; grew;) {
       grew = false;
       for (const o of ops) if (!has.has(o.i) && (opLaw[p].has.has(o.op) || (opLaw[p].keeps.has(o.op) && o.args.length && o.args.every((x) => has.has(x))))) { has.add(o.i); grew = true; }
     }
-    lifting.push({ p, from: ridx.get(prop.lift.from), to: ridx.get(prop.lift.to), has });
+    return has;
+  };
+  const lifting = [];
+  raw.properties.forEach((prop, p) => {
+    if (prop.lift) lifting.push({ p, from: ridx.get(prop.lift.from), to: ridx.get(prop.lift.to), has: citedHas(p) });
   });
+  // choice elimination (`eliminates: {side, factor}`): if s has the property and
+  // s ≤ g ⋆ h with h ≤ factor (side right: h is applied first) — or s ≤ h ⋆ g
+  // (side left) — then s ≤ g, over closedUnder. `keep` is the index of g in the
+  // arguments of the compositional product. Like the lift, the implication loop
+  // uses the cited values and the laws on operations; the separations (the
+  // contrapositive: s ≰ g gives s ≰ g ⋆ h) use every derived value.
+  const elims = raw.properties.flatMap((prop, p) => (prop.eliminates
+    ? [{ p, r: ridx.get(prop.closedUnder), F: sidx.get(prop.eliminates.factor), keep: prop.eliminates.side === 'left' ? 1 : 0, has: citedHas(p) }] : []));
+  const elimI = (r, a, b) => {
+    for (const e of elims) {
+      if (e.r !== r || e.F === undefined) continue;
+      const c = opOf.get(a);
+      if (c && c.op === 'compose' && e.has.has(b) && !c.args.includes(undefined)) {
+        const g = c.args[e.keep], h = c.args[1 - e.keep];
+        if (Ib[r][key(e.F, h)]) addI(r, g, b, { rule: 'prop-elim', prop: e.p, prem: [fI(r, a, b), fP(e.p, b, true), fI(r, e.F, h)] });
+      }
+      if (a === e.F) for (const o of opsByArg.get(b) || []) {
+        if (o.op !== 'compose' || o.args[1 - e.keep] !== b) continue;
+        const g = o.args[e.keep];
+        for (const s of [...out[r][o.i]]) if (e.has.has(s)) addI(r, g, s, { rule: 'prop-elim', prop: e.p, prem: [fI(r, o.i, s), fP(e.p, s, true), fI(r, e.F, b)] });
+      }
+    }
+  };
   // a cited value of a property defined by an operation (`selfOp`) gives the
   // implication to the operation applied to the statement itself (idempotent: P → P × P)
   const selfOpOf = (p, s) => ops.find((o) => o.op === raw.properties[p].selfOp && o.args.length && o.args.every((x) => x === s));
@@ -313,6 +362,7 @@ export function buildZoo(raw) {
       const r = queue[qh++], a = queue[qh++], b = queue[qh++];
       if (ops.length) monotone(r, a, b);
       for (const l of lifting) if (l.from === r && l.has.has(a)) addI(l.to, a, b, { rule: 'prop-lift', prem: [fI(r, a, b)] });
+      if (elims.length) elimI(r, a, b);
       for (const { fine, B } of liftsCoarse[r]) // a → b over the coarse frame
         if (I[fine].has(key(a, B))) addI(fine, a, b, { rule: 'base-lift', prem: [fI(fine, a, B), fI(r, a, b)] });
       for (const { coarse, B } of liftsFine[r]) // a → B over the fine frame
@@ -369,7 +419,6 @@ export function buildZoo(raw) {
 
   const P = raw.properties.map(() => new Map()); // s -> {v, just}
   const contradictions = [];
-  const fP = (p, s, v) => ({ t: 'P', p, s, v });
   const pqueue = [];
   function setP(p, s, v, just) {
     if (!propIn(p, s)) return;
@@ -391,11 +440,11 @@ export function buildZoo(raw) {
       const { v } = P[p].get(s);
       const prop = raw.properties[p];
       const r = ridx.get(prop.closedUnder); // undefined: preserved by no reduction (Σ⁰ₙ basis)
+      if (v) for (const o of opsByArg.get(s) || []) if (opLaw[p].keeps.has(o.op) && o.args.every((x) => P[p].get(x)?.v))
+        setP(p, o.i, true, { rule: 'prop-op', prem: o.args.map((x) => fP(p, x, true)) });
       if (prop.direction === 'equiv') { // invariant under equivalence over r (Weihrauch properties)
         for (const t of out[r][s]) if (t !== s && I[r].has(key(t, s)))
           setP(p, t, v, { rule: 'prop-equiv', prem: [fP(p, s, v), fI(r, s, t), fI(r, t, s)] });
-        if (v) for (const o of opsByArg.get(s) || []) if (opLaw[p].keeps.has(o.op) && o.args.every((x) => P[p].get(x)?.v))
-          setP(p, o.i, true, { rule: 'prop-op', prem: o.args.map((x) => fP(p, x, true)) });
         for (const q of v ? impliesP[p] : impliedByP[p]) setP(q, s, v, { rule: 'prop-implies', prem: [fP(p, s, v)] });
         continue;
       }
@@ -526,6 +575,15 @@ export function buildZoo(raw) {
         if (f) for (const { x, cls, ri } of consByBase.get(a))
           if ((CLASS_MEMBERS[cls] || []).includes(f))
             addN(x, c, { rule: 'conservation', result: ri, prem: [fN(r, a, c)] });
+      }
+      // choice elimination, contrapositive: c ≰ a and c has p give c ≰ a ⋆ h (h ≤ factor)
+      for (const e of elims) {
+        if (e.r !== r || e.F === undefined || !P[e.p].get(c)?.v) continue;
+        for (const o of opsByArg.get(a) || []) {
+          if (o.op !== 'compose' || o.args[e.keep] !== a || o.args.includes(undefined)) continue;
+          const h = o.args[1 - e.keep];
+          if (I[r].has(key(e.F, h))) addN(o.i, c, { rule: 'prop-elim', prop: e.p, prem: [fN(r, a, c), fP(e.p, c, true), fI(r, e.F, h)] });
+        }
       }
       // check before building the justification: most candidates are already known
       const Nr = Nb[r], oa = out[r][a], ic = inn[r][c];

@@ -8,6 +8,8 @@
 #   conjunction: true    -> "P + Q" behaves as a conjunction
 #   conservation: true   -> conservation results are used to derive separations here
 #   phrase:    how "A ⇒ B" reads in prose ({a}, {b} are placeholders)
+#   algebra:   strong | weak | arithmetic -> which laws of the Weihrauch algebra the
+#              engine applies (site/js/engine.js, "algebra of Weihrauch degrees")
 
 - id: rca0star
   name: Provability over RCA₀*
@@ -72,7 +74,7 @@
   short: W
   tex: '\le_{\mathrm{W}}'
   domain: problems
-  finerThan: [c, gw]
+  finerThan: [c, gw, cw, aw]
   phrase: '{b} ≤_W {a}'
   description: >
     Uniform reduction: Φ maps instances to instances, Ψ maps (original instance, solution) to solutions.
@@ -135,3 +137,41 @@
     problems that ω-models judge correctly; for statements marked "not ω-absolute" (see ω-model implication) it gives none.
   refs:
     - ref: hirschfeldtjockusch2016
+
+- id: cw
+  name: Continuous Weihrauch reduction
+  algebra: weak     # the Weihrauch lattice relative to an oracle: all laws of ≤W relativize
+  short: cW
+  tex: '\le_{\mathrm{cW}}'
+  domain: problems
+  finerThan: []
+  phrase: '{b} ≤_cW {a}'
+  description: >
+    Weihrauch reduction in which the forward and backward functionals only need to be continuous, equivalently
+    Weihrauch reduction relative to some oracle p (≤W^p for some p ∈ ℕ^ℕ). Written ≤cW, ≤W^*, or "≤W with respect to
+    some oracle". A separation at cW is a topological one; it holds at W and sW, but says nothing about computable
+    reductions or ω-models (an oracle may compute the solutions).
+  refs:
+    - ref: pauly2010
+      loc: Definition 15
+    - ref: brattkagherardipauly2021
+      loc: "Section 6, after Theorem 6.5 and Theorem 6.11"
+
+- id: aw
+  name: Arithmetic Weihrauch reduction
+  algebra: arithmetic   # products, (finite) parallelizations and jumps are monotone, P′ ≡aW P; not ⋆ or ⋄
+  short: aW
+  tex: '\le_{\mathrm{aW}}'
+  domain: problems
+  finerThan: []
+  phrase: '{b} ≤_aW {a}'
+  description: >
+    Weihrauch reduction in which the forward and backward functionals only need to be arithmetic, i.e. Weihrauch
+    reducible to lim⁽ⁿ⁾ for some n (equivalently, computable from a fixed finite Turing jump of their inputs).
+    Every arithmetic problem is ≡aW id, so id ≡aW LPO ≡aW lim⁽ⁿ⁾. Written ≤aW, ≤W^a or ≤W^arith; used for the
+    problems of hyperarithmetic analysis and around ATR₀.
+  refs:
+    - ref: marconevalenti2020
+      loc: Definition 5.1
+    - ref: goh2020b
+      loc: "Definition 2.2 and the paragraph after it"
