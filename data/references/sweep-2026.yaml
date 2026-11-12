@@ -5077,3 +5077,11 @@ friedmanrobertsonseymour1987:
   venue: "Logic and Combinatorics (S. G. Simpson, ed.), Contemporary Mathematics 65, 229–261"
   doi: 10.1090/conm/065/891251
   read: pdf-local
+valenti2026:
+  authors:
+    - Manlio Valenti
+  title: "Well begun is half done: the computation of Eulerian paths"
+  year: 2026
+  venue: arXiv preprint
+  arxiv: "2611.00818"
+  read: pdf-arxiv

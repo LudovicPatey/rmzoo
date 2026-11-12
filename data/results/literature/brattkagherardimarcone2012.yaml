@@ -23,3 +23,5 @@
 - { type: implication, from: cn.jump, to: bwtn, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: "Theorem 12.10 (CL_N ≡sW C′_N, Corollary 9.10)" } ] }
 - { type: separation, from: bwtn, to: cn.jump, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: "Theorem 12.10 (CL_N ≡sW C′_N, Corollary 9.10)" } ] }
 - { type: equivalence, from: cln, to: cn.jump, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 9.4 (X = ℕ) } ] }
+- { type: implication, from: lim2, to: lpo, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: "Proposition 13.7 (lim_2 = UBWT_2, Proposition 11.21)" } ] }
+- { type: separation, from: lpo, to: lim2, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: "Proposition 13.7 (lim_2 = UBWT_2, Proposition 11.21)" } ] }

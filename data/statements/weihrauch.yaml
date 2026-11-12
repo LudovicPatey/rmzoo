@@ -1594,3 +1594,119 @@
   instance: 'A one-to-one function $p : \mathbb{N} \to \mathbb{N}$.'
   solution: 'The characteristic function of $\mathrm{range}(p)$.'
   refs: [ { ref: gherardimarcone2008, role: rm, loc: Definition 5.2 } ]
+
+# Finite choice, finite limits and related problems (imported from Manlio Valenti's notes, November 2026;
+# each definition checked in its source).
+- id: c3
+  label: '\mathsf{C}_3'
+  name: Closed choice on three points
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ C3, C_3, MLPO_3 ]
+  definition: >
+    Closed choice on the discrete space $\{0, 1, 2\}$: given a nonempty $A \subseteq \{0, 1, 2\}$ by an
+    enumeration of its complement, find an element of $A$.
+  instance: A nonempty $A \subseteq \{0, 1, 2\}$, given by an enumeration of its complement.
+  solution: An element of $A$.
+  refs: [ { ref: brattkagherardipauly2021, role: rm, loc: "Section 7.2, before Proposition 7.17" } ]
+
+- id: c4
+  label: '\mathsf{C}_4'
+  name: Closed choice on four points
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  aliases: [ C4, C_4 ]
+  definition: >
+    Closed choice on the discrete space $\{0, 1, 2, 3\}$: given a nonempty $A \subseteq \{0, \dots, 3\}$ by an
+    enumeration of its complement, find an element of $A$.
+  instance: A nonempty $A \subseteq \{0, \dots, 3\}$, given by an enumeration of its complement.
+  solution: An element of $A$.
+  refs: [ { ref: brattkagherardipauly2021, role: rm, loc: "Section 7.2, before Proposition 7.17" } ]
+
+- id: stcn
+  label: '\mathsf{sTC}_{\mathbb{N}}'
+  name: Strong total continuation of choice on the natural numbers
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ sTCN, sTC_N ]
+  definition: >
+    Given a $\Pi^0_1$ set $A \subseteq \mathbb{N}$ (by an enumeration of its complement), possibly empty, output $-1$
+    if $A = \emptyset$ and an element of $A$ otherwise. Unlike $\mathsf{TC}_{\mathbb{N}}$, the solution tells whether
+    $A$ is empty.
+  instance: A $\Pi^0_1$ set $A \subseteq \mathbb{N}$, given by an enumeration of its complement.
+  solution: $-1$ if $A$ is empty, an element of $A$ otherwise.
+  refs:
+    - { ref: marconevalenti2020, role: origin, loc: Definition 4.17 }
+    - { ref: dzhafarovsolomonvalenti2023, role: rm, loc: Definition 3.5(3) }
+
+- id: sigma11-c2
+  omegaAbsolute: false
+  label: '\Sigma^1_1\text{-}\mathsf{C}_2'
+  name: Σ¹₁ choice on two points
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  aliases: [ Σ11-C2 ]
+  definition: >
+    Given a $\Sigma^1_1$ code of a nonempty set $A \subseteq \{0, 1\}$, find an element of $A$. Its parallelization is
+    Weihrauch equivalent to $\Pi^1_1$ separation and to $\Sigma^1_1$ weak König's lemma.
+  instance: A $\Sigma^1_1$ code of a nonempty $A \subseteq \{0, 1\}$.
+  solution: An element of $A$.
+  refs: [ { ref: kiharamarconepauly2020, role: origin, loc: "Section 3, after Corollary 3.4; Theorem 4.3" } ]
+
+- id: usrt22
+  label: '\mathsf{u}\text{-}\mathsf{SRT}^2_2'
+  name: Unbalanced stable Ramsey's theorem for pairs
+  kind: problem
+  minor: true
+  tags: [ weihrauch, ramsey, stable ]
+  aliases: [ u-SRT22, uSRT22 ]
+  definition: >
+    $\mathsf{SRT}^2_2$ restricted to unbalanced colorings: stable colorings $c : [\mathbb{N}]^2 \to 2$ for which there is
+    a color $i < 2$ such that every infinite $c$-homogeneous set has color $i$.
+  instance: 'A stable coloring $c : [\mathbb{N}]^2 \to 2$ all of whose infinite homogeneous sets have the same color.'
+  solution: An infinite $c$-homogeneous set.
+  refs: [ { ref: soldavalenti2022, role: origin, loc: Definition 7.23 } ]
+
+- id: lim2
+  label: '\lim_2'
+  name: Limit on two points
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ lim_2, UBWT_2, UBWT2 ]
+  definition: >
+    The limit operation on the discrete space $\{0, 1\}$: given an eventually constant sequence of bits, find its
+    eventual value. Equal to the unique Bolzano–Weierstrass problem $\mathsf{UBWT}_2$ (Proposition 11.21).
+  instance: An eventually constant sequence $(x_n)$ in $\{0, 1\}$.
+  solution: $\lim_n x_n$.
+  refs: [ { ref: brattkagherardimarcone2012, role: rm, loc: "Section 3 (lim_X), Section 13" } ]
+
+- id: srt12
+  label: '\mathsf{SRT}^1_2'
+  name: Stable Ramsey's theorem for singletons (2 colors)
+  kind: problem
+  minor: true
+  tags: [ weihrauch, ramsey, stable ]
+  aliases: [ SRT12, 'SRT_{1,2}' ]
+  definition: >
+    Given a stable (that is, eventually constant) coloring $c : \mathbb{N} \to 2$, find an infinite homogeneous set.
+    Weihrauch equivalent to $\lim_2$.
+  instance: 'An eventually constant coloring $c : \mathbb{N} \to 2$.'
+  solution: An infinite $c$-homogeneous set.
+  refs: [ { ref: brattkarakotoniaina2017, role: rm, loc: "Section 3, Proposition 3.4(2)" } ]
+
+- id: llpo-j-meet-sort
+  label: '\mathsf{C}_2'' \sqcap \mathsf{Sort}_2'
+  name: Meet of the jump of binary choice and binary sorting
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: >
+    The meet (infimum in the Weihrauch degrees) of $\mathsf{C}_2'$ and $\mathsf{Sort}_2$: given an instance $p$ of
+    $\mathsf{C}_2'$ and an instance $q$ of $\mathsf{Sort}_2$, return $0$ and a $\mathsf{C}_2'$-solution of $p$, or $1$
+    and the $\mathsf{Sort}_2$-solution of $q$.
+  instance: A pair of an instance of $\mathsf{C}_2'$ and an instance of $\mathsf{Sort}_2$.
+  solution: A solution to one of the two, tagged with which.
+  caution: The zoo has no meet operation; this meet is entered as a statement of its own, with its two upper bounds.
+  refs: [ { ref: valenti2026, role: rm, loc: "Section 2.1, Theorem 4.11" } ]

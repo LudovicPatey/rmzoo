@@ -64,3 +64,7 @@
 - { type: separation, from: bwt2.jump, to: rt12.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 6.10 } ] }
 - { type: separation, from: rt12.jump, to: srt22, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 6.12 } ] }
 - { type: implication, from: rt32, to: rt2, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.25 } ] }
+- { type: equivalence, from: srt12, to: lim2, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Proposition 3.4(2) (k = 2) } ] }
+- { type: implication, from: rt12, to: srt12, over: sw, refs: [ { ref: brattkarakotoniaina2017, loc: "Lemma 3.2 (n = 1, k = 2)" } ] }
+- { type: separation, from: srt12, to: rt12, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Proposition 3.4(2) (k = 2) } ] }
+- { type: separation, from: rt12, to: c3, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Proposition 7.2 (k = 2) } ] }

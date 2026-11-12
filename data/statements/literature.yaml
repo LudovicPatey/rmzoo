@@ -2272,3 +2272,143 @@
     |\frac{1}{a_n}\sum_{i \le n} a_i x_i| \le 2^{-k}$. (Kronecker's lemma without the rate is provable in
     $\mathsf{RCA}_0$, Theorem 3.8(i).)
   refs: [ { ref: neri2024, role: rm, loc: "Section 3.2, Theorem 3.8" } ]
+
+# Connected components (Gura, Hirst, Mummert 2015)
+- id: conn-component
+  label: '\textsf{Connected component}'
+  name: Every countable graph has a connected component
+  kind: problem
+  tags: [ graphs ]
+  aliases: [ connected component of a graph ]
+  definition: >
+    Every countable graph has a connected component. As a problem: given a countable graph, find (the characteristic
+    function of) one of its connected components.
+  instance: A countable graph $G = (V, E)$.
+  solution: A connected component of $G$.
+  refs: [ { ref: gurahirstmummert2015, role: origin, loc: "Theorem 2.1, Section 6 (problem P)" } ]
+
+- id: conn-decomposition
+  label: '\textsf{Decomposition into components}'
+  name: Decomposition of a countable graph into connected components
+  kind: problem
+  tags: [ graphs ]
+  definition: >
+    Every countable graph can be decomposed into its connected components: there is $f : V \to \mathbb{N}$ with
+    $f(u) = f(v)$ if and only if $u$ and $v$ lie in the same connected component.
+  instance: A countable graph $G = (V, E)$.
+  solution: 'A decomposition $f : V \to \mathbb{N}$ of $G$ into connected components.'
+  refs: [ { ref: gurahirstmummert2015, role: rm, loc: "Section 3, Section 6 (problem D)" } ]
+
+- id: fc1
+  label: '\mathsf{FC}\text{-}1'
+  name: Finite components, sequence of canonical indices
+  kind: problem
+  minor: true
+  tags: [ graphs ]
+  aliases: [ FC-1, FC1 ]
+  definition: >
+    Every infinite graph in which every component is finite has a sequence $\langle d_1, d_2, \dots \rangle$ of
+    canonical indices of different components.
+  instance: An infinite countable graph all of whose connected components are finite.
+  solution: A sequence of canonical indices of distinct connected components.
+  refs: [ { ref: gurahirstmummert2015, role: origin, loc: Definition 4.1 } ]
+
+- id: fc2
+  label: '\mathsf{FC}\text{-}2'
+  name: Finite components, family of components
+  kind: problem
+  minor: true
+  tags: [ graphs ]
+  aliases: [ FC-2, FC2 ]
+  definition: >
+    Every infinite graph in which every component is finite has a family $\langle C_i : i \in \mathbb{N} \rangle$ of
+    distinct connected components, given as a function $C : \mathbb{N}^2 \to \{0, 1\}$.
+  instance: An infinite countable graph all of whose connected components are finite.
+  solution: A sequence of characteristic functions of distinct connected components.
+  refs: [ { ref: gurahirstmummert2015, role: origin, loc: Definition 4.1 } ]
+
+- id: fc3
+  label: '\mathsf{FC}\text{-}3'
+  name: Finite components, totally disconnected set
+  kind: problem
+  minor: true
+  tags: [ graphs ]
+  aliases: [ FC-3, FC3 ]
+  definition: >
+    Every infinite graph in which every component is finite has an infinite totally disconnected set (no two of its
+    vertices in the same component). Equivalently, every infinite graph has an infinite component or an infinite
+    totally disconnected set.
+  instance: An infinite countable graph all of whose connected components are finite.
+  solution: An infinite set of vertices no two of which lie in the same connected component.
+  refs: [ { ref: gurahirstmummert2015, role: origin, loc: Definition 4.1 } ]
+
+# Eulerian paths (Valenti 2026)
+- id: ep
+  label: '\mathsf{EP}'
+  name: One-way Eulerian paths in undirected graphs
+  kind: problem
+  tags: [ graphs, weihrauch ]
+  aliases: [ EP, Eulerian path ]
+  definition: >
+    Given a countable undirected graph (by the characteristic functions of its vertices and edges) that has a one-way
+    Eulerian path, find one: a sequence $(x_n)_{n \in \mathbb{N}}$ of vertices forming a trail that traverses every
+    edge exactly once.
+  instance: A countable undirected graph that has a one-way Eulerian path.
+  solution: A one-way Eulerian path $(x_n)_{n \in \mathbb{N}}$ through it.
+  refs: [ { ref: valenti2026, role: origin, loc: Definition 1.1 } ]
+
+- id: dep
+  label: '\mathsf{DEP}'
+  name: One-way Eulerian paths in directed graphs
+  kind: problem
+  minor: true
+  tags: [ graphs, weihrauch ]
+  aliases: [ DEP ]
+  definition: >
+    $\mathsf{EP}$ for directed graphs: given a countable directed graph that has a one-way (directed) Eulerian path, find one.
+  instance: A countable directed graph that has a one-way Eulerian path.
+  solution: A one-way directed Eulerian path through it.
+  refs: [ { ref: valenti2026, role: origin, loc: Definition 1.1 } ]
+
+- id: ep2
+  label: '\mathsf{EP}_2'
+  name: Two-way Eulerian paths in undirected graphs
+  kind: problem
+  minor: true
+  tags: [ graphs, weihrauch ]
+  aliases: [ EP_2, EP2 ]
+  definition: >
+    Given an infinite countable undirected graph that has a two-way Eulerian path, find one: a sequence
+    $(x_n)_{n \in \mathbb{Z}}$ of vertices forming a trail that traverses every edge exactly once.
+  instance: An infinite countable undirected graph that has a two-way Eulerian path.
+  solution: A two-way Eulerian path $(x_n)_{n \in \mathbb{Z}}$ through it.
+  refs: [ { ref: valenti2026, role: origin, loc: "Definitions 1.1, 5.1" } ]
+
+- id: dep2
+  label: '\mathsf{DEP}_2'
+  name: Two-way Eulerian paths in directed graphs
+  kind: problem
+  minor: true
+  tags: [ graphs, weihrauch ]
+  aliases: [ DEP_2, DEP2 ]
+  definition: >
+    $\mathsf{EP}_2$ for directed graphs: given an infinite countable directed graph that has a two-way directed Eulerian
+    path, find one.
+  instance: An infinite countable directed graph that has a two-way Eulerian path.
+  solution: A two-way directed Eulerian path through it.
+  refs: [ { ref: valenti2026, role: origin, loc: "Definitions 1.1, 5.1" } ]
+
+- id: orientep
+  label: '\mathsf{OrientEP}'
+  name: Orienting a graph so as to keep a one-way Eulerian path
+  kind: problem
+  minor: true
+  tags: [ graphs, weihrauch ]
+  aliases: [ OrientEP ]
+  definition: >
+    Given a countable undirected graph $G = (V, E)$ that has a one-way Eulerian path, find an orientation $D = (V, A)$
+    of its edges (the map $(v, w) \mapsto \{v, w\}$ is a bijection from $A$ onto $E$) that has a one-way directed
+    Eulerian path.
+  instance: A countable undirected graph that has a one-way Eulerian path.
+  solution: An orientation of its edges that has a one-way directed Eulerian path.
+  refs: [ { ref: valenti2026, role: origin, loc: Definition 4.1 } ]
