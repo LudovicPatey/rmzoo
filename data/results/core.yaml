@@ -10,15 +10,18 @@
 
 # ---- Big Five --------------------------------------------------------------
 
-- { type: implication, from: pi11ca, to: atr, over: rca0, refs: [ { ref: simpson2009, loc: Remarks VII.5.2 }, { ref: dzhafarovmummert2022, loc: Theorem 5.8.22(1) } ] }
-- { type: implication, from: atr, to: aca, over: rca0, refs: [ { ref: simpson2009, loc: Definition V.2.4 } ] }
-- { type: implication, from: aca, to: wkl, over: rca0, refs: [ { ref: simpson2009, loc: Lemma IV.4.4 }, { ref: dzhafarovmummert2022, loc: Proposition 5.6.14(1) } ] }
+- { type: implication, from: pi11ca, to: atr, over: rca0, refs: [ { ref: simpson2009, loc: Remarks VII.5.2 }, { ref: dzhafarovmummert2022, loc: Theorem 5.8.22(1) }, { ref: moninpatey2022, loc: Section 22-8.4 } ] }
+- { type: implication, from: atr, to: aca, over: rca0, refs: [ { ref: simpson2009, loc: Definition V.2.4 }, { ref: moninpatey2022, loc: "Section 31-1, remark after Definition 31-1.1" } ] }
+- { type: implication, from: aca, to: wkl, over: rca0, refs: [ { ref: simpson2009, loc: Lemma IV.4.4 }, { ref: dzhafarovmummert2022, loc: Proposition 5.6.14(1) }, { ref: moninpatey2022, loc: Section 22-8.5 } ] }
 
 - type: separation
   from: atr
   to: pi11ca
   over: rca0
-  refs: [ { ref: simpson2009 } ]
+  refs:
+    - ref: simpson2009
+    - ref: moninpatey2022
+      loc: Section 22-8.4
   note: Π¹₁-CA₀ proves the existence of a countable coded ω-model of ATR₀.
 
 - type: separation
@@ -38,10 +41,10 @@
     - ref: dzhafarovmummert2022
       loc: Section 5.8.2 (after Theorem 5.8.20); Exercise 5.13.18
 
-- { type: property, statement: wkl, property: low-basis, value: true, refs: [ { ref: jockuschsoare1972, loc: Theorem 2.1 }, { ref: dzhafarovmummert2022, loc: "Section 3.6, remark after Proposition 3.6.6" }, { ref: simpson2009, loc: Lemma VIII.2.16 } ] }
-- { type: property, statement: wkl, property: cone-avoidance, value: true, refs: [ { ref: jockuschsoare1972, loc: Theorem 2.5 } ] }
+- { type: property, statement: wkl, property: low-basis, value: true, refs: [ { ref: jockuschsoare1972, loc: Theorem 2.1 }, { ref: dzhafarovmummert2022, loc: "Section 3.6, remark after Proposition 3.6.6" }, { ref: simpson2009, loc: Lemma VIII.2.16 }, { ref: moninpatey2022, loc: Example 24-1.9 } ] }
+- { type: property, statement: wkl, property: cone-avoidance, value: true, refs: [ { ref: jockuschsoare1972, loc: Theorem 2.5 }, { ref: moninpatey2022, loc: Example 24-1.14 } ] }
 - { type: property, statement: wkl, property: pa-avoidance, value: false, folklore: true, justification: { kind: reduction, text: "The tree of DNC₂ functions (equivalently, of complete consistent extensions of PA) is a computable instance of WKL all of whose paths have PA degree.", by: ai } }
-- { type: property, statement: wkl, property: computably-true, value: false, refs: [ { ref: jockuschsoare1972 }, { ref: dzhafarovmummert2022, loc: "Proposition 4.3.8, proof" }, { ref: simpson2009, loc: Lemma VIII.2.15 } ], note: Kleene tree. }
+- { type: property, statement: wkl, property: computably-true, value: false, refs: [ { ref: jockuschsoare1972 }, { ref: dzhafarovmummert2022, loc: "Proposition 4.3.8, proof" }, { ref: simpson2009, loc: Lemma VIII.2.15 }, { ref: moninpatey2022, loc: "Section 24-3, remark after Exercise 24-3.12" } ], note: Kleene tree. }
 - type: property
   statement: wkl
   property: pi11-conservative
@@ -85,10 +88,10 @@
 
 # ---- Iterated jumps ----------------------------------------------------
 
-- { type: "implication", from: "atr", to: "aca-plus", over: "rca0", folklore: true, justification: { kind: reduction, text: Apply arithmetical transfinite recursion along the well-ordering ω to iterate the jump., by: ai } }
+- { type: "implication", from: "atr", to: "aca-plus", over: "rca0", justification: { kind: reduction, text: Apply arithmetical transfinite recursion along the well-ordering ω to iterate the jump., by: ai }, refs: [ { ref: moninpatey2022, loc: Section 22-8.3 } ] }
 - { type: "implication", from: "aca-plus", to: "aca-prime", over: "rca0", justification: { kind: reduction, text: X⁽ⁿ⁾ is computable uniformly from X^(ω)., by: ai }, refs: [ { ref: dzhafarovmummert2022, loc: Proposition 5.6.9 } ] }
 - { type: "implication", from: "aca-prime", to: "aca", over: "rca0", justification: { kind: restriction, text: Take n = 1., by: ai }, refs: [ { ref: dzhafarovmummert2022, loc: Proposition 5.6.6 } ] }
-- { type: "separation", from: "aca-prime", to: "aca-plus", over: "omega", note: "The arithmetical sets form an ω-model of ACA′ in which ∅^(ω) does not exist.", justification: { kind: classical, text: The arithmetical sets form an ω-model of ACA′ which does not contain ∅^(ω)., by: ai }, refs: [ { ref: dzhafarovmummert2022, loc: Proposition 5.6.9 } ] }
+- { type: "separation", from: "aca-prime", to: "aca-plus", over: "omega", note: "The arithmetical sets form an ω-model of ACA′ in which ∅^(ω) does not exist.", justification: { kind: classical, text: The arithmetical sets form an ω-model of ACA′ which does not contain ∅^(ω)., by: ai }, refs: [ { ref: dzhafarovmummert2022, loc: Proposition 5.6.9 }, { ref: moninpatey2022, loc: Section 22-8.2 } ] }
 - { type: "implication", from: "gowers", to: "ht", over: "sw", folklore: true, note: "FIN₁ is Hindman's theorem.", justification: { kind: restriction, text: FIN₁ is Hindman’s theorem., by: ai } }
 - { type: "implication", from: "gowers", to: "ht", over: "rca0", folklore: true, justification: { kind: restriction, text: FIN₁ is Hindman’s theorem., by: ai } }
 
@@ -101,7 +104,7 @@
 - { type: implication, from: rca0, to: ivt, over: rca0, refs: [ { ref: simpson2009, loc: Theorem II.6.6 } ] }
 - { type: implication, from: rcastar, to: lpo, over: rca0star, folklore: true, note: "Classically provable: decide whether p is the zero sequence.", justification: { kind: classical, text: "Classically provable by the law of excluded middle: either p is the zero sequence or it is not.", by: ai } }
 - { type: implication, from: rcastar, to: llpo, over: rca0star, folklore: true, justification: { kind: classical, text: "Classically provable: if p has a 1 at position n, the parity of n answers; otherwise any answer is correct.", by: ai } }
-- { type: separation, from: aca, to: aca-prime, over: rca0, justification: { kind: classical, by: ai, text: "ACA₀′ proves the consistency of PA (it proves the existence of truth sets for each Σ⁰ₙ level), while ACA₀ is conservative over PA, which does not prove its own consistency." }, refs: [ { ref: dzhafarovmummert2022, loc: Proposition 5.6.6 } ] }
+- { type: separation, from: aca, to: aca-prime, over: rca0, justification: { kind: classical, by: ai, text: "ACA₀′ proves the consistency of PA (it proves the existence of truth sets for each Σ⁰ₙ level), while ACA₀ is conservative over PA, which does not prove its own consistency." }, refs: [ { ref: dzhafarovmummert2022, loc: Proposition 5.6.6 }, { ref: moninpatey2022, loc: "Section 22-8.1, after Theorem 22-8.1" } ] }
 
 # ---- Base theories ----------------------------------------------------------
 
@@ -109,7 +112,7 @@
 
 # ---- Computably true problems -------------------------------------------------
 
-- { type: property, statement: rt12, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the two color classes is infinite and computable from the instance." }, refs: [ { ref: dzhafarovmummert2022, loc: Section 3.6 } ] }
+- { type: property, statement: rt12, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the two color classes is infinite and computable from the instance." }, refs: [ { ref: dzhafarovmummert2022, loc: Section 3.6 }, { ref: moninpatey2022, loc: Section 25-3.1 } ] }
 - { type: property, statement: rt13, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the color classes is infinite and computable from the instance." } }
 - { type: property, statement: rt1inf, property: computably-true, value: true, justification: { kind: reduction, by: ai, text: "Non-uniformly, one of the color classes is infinite and computable from the instance." }, refs: [ { ref: hirschfeldt2015, loc: Section 6.2 }, { ref: dzhafarovmummert2022, loc: Chapter 6 introduction } ] }
 - { type: property, statement: sd, property: computably-true, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "The instance A is infinite and is itself a solution." } }
@@ -166,3 +169,6 @@
 - { type: property, statement: pi11bound, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are numbers n." } }
 - { type: property, statement: bct1, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are indices i." } }
 - { type: property, statement: bct3, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are indices i." } }
+# suggested by Manlio Valenti on the live instance (November 2026), checked by the maintainer's assistant
+- { type: implication, from: chipi11, to: sigma11-c2, over: sw, folklore: true, justification: { kind: personal-communication, by: Manlio Valenti, text: "Given a Σ¹₁ code of a nonempty A ⊆ {0, 1}, the statement 0 ∈ A is Σ¹₁, so a tree computable from the code is ill-founded exactly when 0 ∈ A; χ_Π¹₁ decides it, and its answer alone gives an element of A (0 if 0 ∈ A, 1 otherwise)." } }
+- { type: implication, from: ucnn, to: rt42, over: w, folklore: true, justification: { kind: personal-communication, by: Manlio Valenti, text: "RT⁴₂ ≤sW WKL⁽⁴⁾ (Corollary 4.15 of [@brattkarakotoniaina2017]), WKL⁽⁴⁾ ≤sW lim⁽⁴⁾ (WKL ≤sW lim and jumps are monotone for ≤sW), and lim⁽ⁿ⁾ <W UC_ℕℕ for every n (Proposition 7.50 of [@brattkagherardipauly2021])." } }

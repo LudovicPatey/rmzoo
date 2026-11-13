@@ -4482,6 +4482,7 @@ moninpatey2022:
   zbmathAuthors:
     - monin.benoit
     - patey.ludovic
+  read: pdf-author
 yang2022:
   authors:
     - Yue Yang

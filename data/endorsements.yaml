@@ -6,6 +6,38 @@
 #   endorsements: {result: resultKey (scripts/lib/schema.mjs), orcid, date}
 people:
   0000-0002-0304-7926: { name: Ludovic Patey }
+  0000-0003-0351-3058: { name: Manlio Valenti }
 endorsements:
+  - { result: "implication|rrt|rrt22|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: "implication|rt|rt2|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: "implication|rt2|rt23|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: "implication|rt22|ccac|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: "implication|rt22|crt22|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: implication|rt22|ht-eq22|rca0star|, orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: implication|rt22|ht-eq22|sw|, orcid: 0000-0002-0304-7926, date: 2026-11-03 }
   - { result: "implication|rt22|pt22|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: "implication|sipt2|sipt22|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: "implication|spt2|spt22|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: "implication|srt2|srt23|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: "implication|tt2|tt1|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
   - { result: "implication|tt22|rt22|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: "implication|tt32|tt22|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: "implication|ttall|tt1|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: "implication|ttall|tt2|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: "implication|ttall|tt32|sw,rca0star|", orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: property|coh|delta2-basis||true, orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: property|mtt2|cone-avoidance||true, orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: property|rt22|weakly-low-basis||true, orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: property|srt22|delta2-basis||true, orcid: 0000-0002-0304-7926, date: 2026-11-03 }
+  - { result: equivalence|cnn.jump|cnn|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-13 }
+  - { result: equivalence|cnn.star.cnn|cnn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-13 }
+  - { result: equivalence|cr|cn.x.wkl|w|, orcid: 0000-0003-0351-3058, date: 2026-11-13 }
+  - { result: equivalence|lpo.jump.star.cnn|cnn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-13 }
+  - { result: equivalence|lpo.star.cnn|cnn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-13 }
+  - { result: equivalence|ucnn.star.cnn|cnn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-13 }
+  - { result: implication|chipi11.par|cnn|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-13 }
+  - { result: implication|cnn|rt|w|, orcid: 0000-0003-0351-3058, date: 2026-11-13 }
+  - { result: implication|cnn|ucnn|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-13 }
+  - { result: implication|cnn|ucnn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-13 }
+  - { result: implication|tcnn|cnn|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-13 }
+  - { result: separation|cnn|chipi11.par|w|, orcid: 0000-0003-0351-3058, date: 2026-11-13 }

@@ -88485,3 +88485,1260 @@
     date: 2026-11-11
     by: Claude (AI assistant, Opus 5.5)
     note: "Not added: bounded arithmetic, outside the catalogue."
+- id: moninpatey2022-914b9c47
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: aca
+    to: aca-prime
+    over: rca0
+  loc: Section 22-8.1, after Theorem 22-8.1
+  origin: stated
+  quote: It follows directly from Theorem 8.1 that the statement ∀n ∀X ∃Y Y =
+  paperNotation: ACA0 ⊬ ∀n ∀X ∃Y Y = X^(n)
+  confidence: medium
+  concerns: The book concludes that ∀n∀X∃Y Y=X^(n) is not provable in ACA0 (Theorem 8.1, Jockusch–Solovay); ACA′0 is defined as RCA0 plus the existence of finite jump sequences, which is this statement.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 1f090d96dca1
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book.
+- id: moninpatey2022-57d4305f
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: atr
+    to: aca-plus
+    over: rca0
+  loc: Section 22-8.3
+  origin: stated
+  quote: From the previous example, we see that ATR0 implies ACA+
+  paperNotation: ATR0 → ACA+_0
+  confidence: medium
+  concerns: The book argues from the jump along (N,<) example; "implies" over RCA0 (ATR0 = RCA0 + transfinite recursion).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 04b55e27e6af
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book.
+- id: moninpatey2022-db2c96da
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: pi11ca
+    to: atr
+    over: rca0
+  loc: Section 22-8.4
+  origin: stated
+  quote: The system Π11 -CA0 is strictly more powerful than ATR0 , and very rare
+  confidence: medium
+  concerns: Stated without proof here (Chapter 31). Strictness gives also atr does not imply pi11ca.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: c5755e96b4d6
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book.
+- id: moninpatey2022-55fdeb3f
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: atr
+    to: pi11ca
+    over: rca0
+  loc: Section 22-8.4
+  origin: stated
+  quote: The system Π11 -CA0 is strictly more powerful than ATR0 , and very rare
+  confidence: medium
+  concerns: Stated without proof here (Chapter 31).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: d857b5c9407f
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book.
+- id: moninpatey2022-1638d98b
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: aca
+    to: wkl
+    over: rca0
+  loc: Section 22-8.5 summary
+  origin: stated
+  quote: RCA0 < WKL0 < ACA0 < ACA′0 < ACA+
+  confidence: medium
+  concerns: Strictly increasing hierarchy stated in the summary; the implication is the order relation.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: cb42512d3775
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Section 22-8.5).
+- id: moninpatey2022-d1e4cef2
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: wkl
+    property: low-basis
+    value: true
+  loc: Example 24-1.9
+  origin: stated
+  quote: "Example 1.9. WKL preserves the class of low sets: For any Z of low"
+  paperNotation: WKL preserves low sets
+  confidence: medium
+  concerns: Preservation of low sets relative to low Z, derived from the relativized low basis theorem (Theorem 8-4.3 of the book); this is the low basis property.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 6737111cee2d
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Example 24-1.9).
+- id: moninpatey2022-9891280f
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: tj
+    to: kl
+    over: c
+  loc: Exercise 24-2.3
+  origin: stated
+  quote: that KL ̸⩽c J.
+  paperNotation: KL ≰c J
+  confidence: high
+  concerns: Stated as an exercise; "Show" is on the previous line.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: fe1982b47830
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Exercise 24-2.3).
+- id: moninpatey2022-5a935f48
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: wkl
+    property: computably-true
+    value: false
+  loc: Remark after Exercise 24-3.12
+  origin: stated
+  quote: not being computably true, LLPO is not uniformly true.
+  paperNotation: WKL is not computably true
+  confidence: medium
+  concerns: The sentence reads "WKL not being computably true, LLPO is not uniformly true"; the first half is on the previous line. WKL not computably true is also immediate from Section 22-7.1 (no computable PA degree).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 4a7e16eb2733
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Section 24-3, remark after Exercise 24-3.12).
+- id: moninpatey2022-55c6be9f
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: lpo
+    to: llpo
+    over: sw
+  loc: Example 24-5.2
+  origin: stated
+  quote: tion LLPO ⩽W LPO seen in Exercise 3.7 is not strong.
+  paperNotation: LLPO ≰sW LPO
+  confidence: medium
+  concerns: The book says the reduction of Exercise 3.7 is "not strong"; domain conventions for sW between LLPO and LPO follow the book's definitions.
+  reasons:
+    - contradicts the database
+    - "extractor confidence: medium"
+  proposed: 1915cb2e8a30
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: "Misread: Example 24-5.2 says the reduction LLPO ≤W LPO of Exercise 3.7 is not strong, not that LLPO ≰sW LPO (LLPO ≤sW LPO holds: ask whether p has a 1 at an even position)."
+- id: moninpatey2022-80ada08e
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: isig2
+    to: bsig2
+    over: rca0
+  loc: Theorem 23-3.3 (n = 2)
+  origin: special-case
+  quote: Q ⊢ IΣ0n → BΣ0n
+  paperNotation: IΣ0_2 → BΣ0_2
+  argument: Theorem 3.3 holds for every n>0 over Q; take n = 2 (RCA0 contains Q).
+  citedFrom: Paris and Kirby [181]
+  confidence: high
+  concerns: Quote is the statement for general n.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: a2c15c5c84ff
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Paris and Kirby).
+- id: moninpatey2022-a82021a2
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: isig3
+    to: bsig3
+    over: rca0
+  loc: Theorem 23-3.3 (n = 3)
+  origin: special-case
+  quote: Q ⊢ IΣ0n → BΣ0n
+  paperNotation: IΣ0_3 → BΣ0_3
+  argument: Theorem 3.3 for n = 3.
+  citedFrom: Paris and Kirby [181]
+  confidence: high
+  concerns: Quote is the statement for general n.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: 3999b2de4c9b
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Paris and Kirby).
+- id: moninpatey2022-adedc2d9
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: bsig2
+    to: isig1
+    over: rca0
+  loc: Theorem 23-3.7 (n = 1)
+  origin: special-case
+  quote: Q + I∆00 ⊢ BΣ0n+1 → IΣ0n
+  paperNotation: BΣ0_2 → IΣ0_1
+  argument: Theorem 3.7 with n = 1 gives BΣ0_2 → IΣ0_1 over Q + IΔ0_0 (contained in RCA0).
+  citedFrom: Paris and Kirby [181]
+  confidence: high
+  concerns: Quote is the general statement.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: c6d0f9467544
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Paris and Kirby).
+- id: moninpatey2022-0ce8c5e3
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: bsig3
+    to: isig2
+    over: rca0
+  loc: Theorem 23-3.7 (n = 2)
+  origin: special-case
+  quote: Q + I∆00 ⊢ BΣ0n+1 → IΣ0n
+  paperNotation: BΣ0_3 → IΣ0_2
+  argument: Theorem 3.7 with n = 2.
+  citedFrom: Paris and Kirby [181]
+  confidence: high
+  concerns: Quote is the general statement.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: 44b32c63ce75
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Paris and Kirby).
+- id: moninpatey2022-f6e29e43
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: bpi1
+    to: bsig2
+    over: rca0
+  loc: Proposition 23-3.2 (n = 1)
+  origin: special-case
+  quote: Q + I∆00 ⊢ BΠ0n ↔ BΣ0n+1
+  paperNotation: BΠ0_1 ↔ BΣ0_2
+  argument: Proposition 3.2 with n = 1.
+  citedFrom: Paris and Kirby [181]
+  confidence: high
+  concerns: Quote is the general statement.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: c8db2815a56f
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Paris and Kirby).
+- id: moninpatey2022-b4198668
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: bpi2
+    to: bsig3
+    over: rca0
+  loc: Proposition 23-3.2 (n = 2)
+  origin: special-case
+  quote: Q + I∆00 ⊢ BΠ0n ↔ BΣ0n+1
+  paperNotation: BΠ0_2 ↔ BΣ0_3
+  argument: Proposition 3.2 with n = 2.
+  citedFrom: Paris and Kirby [181]
+  confidence: high
+  concerns: Quote is the general statement.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: efda38c09db7
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Paris and Kirby).
+- id: moninpatey2022-029504b7
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: isig2
+    to: ipi2
+    over: rca0
+  loc: Theorem 23-3.5 (n = 2)
+  origin: special-case
+  quote: Q ⊢ IΣ0n ↔ IΠ0n
+  paperNotation: IΣ0_2 ↔ IΠ0_2
+  argument: Theorem 3.5 with n = 2.
+  citedFrom: Paris and Kirby [181]
+  confidence: high
+  concerns: Quote is the general statement.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: 92c6b1267b47
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Paris and Kirby).
+- id: moninpatey2022-9020e23f
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: isig3
+    to: ipi3
+    over: rca0
+  loc: Theorem 23-3.5 (n = 3)
+  origin: special-case
+  quote: Q ⊢ IΣ0n ↔ IΠ0n
+  paperNotation: IΣ0_3 ↔ IΠ0_3
+  argument: Theorem 3.5 with n = 3.
+  citedFrom: Paris and Kirby [181]
+  confidence: high
+  concerns: Quote is the general statement.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: 246bf1a1edbf
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Paris and Kirby).
+- id: moninpatey2022-215b200b
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: lsig2
+    to: isig2
+    over: rca0
+  loc: Proposition 23-3.4 with Theorem 23-3.5 (n = 2)
+  origin: deduced
+  quote: Q ⊢ IΣ0n ↔ IΠ0n
+  paperNotation: LΣ0_2 ↔ IΣ0_2
+  argument: "Proposition 3.4: Q ⊢ IΠ0_n ↔ LΣ0_n. With Theorem 3.5 (IΣ0_n ↔ IΠ0_n) for n = 2 we get LΣ0_2 ↔ IΣ0_2."
+  confidence: medium
+  concerns: Quote is Theorem 3.5; Proposition 3.4 (the minimum scheme) is the other ingredient.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: dd0002e116b4
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Hájek and Pudlák, Theorem I.2.4).
+- id: moninpatey2022-0ae3ae8a
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: lsig3
+    to: isig3
+    over: rca0
+  loc: Proposition 23-3.4 with Theorem 23-3.5 (n = 3)
+  origin: deduced
+  quote: Q ⊢ IΣ0n ↔ IΠ0n
+  paperNotation: LΣ0_3 ↔ IΣ0_3
+  argument: "Proposition 3.4: Q ⊢ IΠ0_n ↔ LΣ0_n; with Theorem 3.5 for n = 3."
+  confidence: medium
+  concerns: Quote is Theorem 3.5; Proposition 3.4 is the other ingredient.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: 1049fa963661
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Hájek and Pudlák, Theorem I.2.4).
+- id: moninpatey2022-fc813b9d
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: bsig2
+    to: idelta2
+    over: rca0
+  loc: Theorem 23-3.9 (n = 2)
+  origin: special-case
+  quote: Q + IΣ01 ⊢ BΣ0n ↔ I∆0n
+  paperNotation: BΣ0_2 ↔ IΔ0_2
+  argument: Slaman's theorem with n = 2; RCA0 contains Q + IΣ0_1.
+  citedFrom: Slaman [215]
+  confidence: high
+  concerns: "The book's IΔ0_n: for F Σ0_n and G Π0_n provably equivalent, induction for F; matches catalogue idelta2 up to this provably-Δ formulation."
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: f7cf08921ea1
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Slaman 2004).
+- id: moninpatey2022-5ac39d58
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: bounded-sigma01-ca
+    to: isig1
+    over: rca0
+  loc: Theorem 23-5.6 (n = 1)
+  origin: special-case
+  quote: RCA0 ⊢ BCΣ0n ↔ IΣ0n
+  paperNotation: BCΣ0_1 ↔ IΣ0_1
+  argument: "Theorem 5.6: RCA0 ⊢ BCΣ0_n ↔ IΣ0_n for n>0; n = 1 (BCΣ0_1 is the bounded Σ0_1 comprehension scheme)."
+  citedFrom: Hájek and Pudlák [86]
+  confidence: medium
+  concerns: "The book states BC as the existence of a canonical code n for {y<t : F(y)}, equivalent over RCA0 to the existence of the set X."
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: 83f77140d1c3
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Hájek and Pudlák).
+- id: moninpatey2022-0edfb585
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: wkl
+    base: rca0
+    class: Pi11
+    value: true
+  loc: Theorem 23-6.15
+  origin: stated
+  quote: WKL0 is a conservative extension of RCA0 for Π11 formulas.
+  paperNotation: WKL0
+  citedFrom: Harrington (see Simpson [214])
+  confidence: high
+  concerns: Attributed to Harrington; proved in the book by forcing.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: c55a21e0da55
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Theorem 23-6.15).
+- id: moninpatey2022-516fa39d
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: wkl
+    property: cylinder
+    value: true
+  loc: Proposition 24-5.5
+  origin: stated
+  quote: Proposition 5.5. WKL is a cylinder for ⩽sW .
+  paperNotation: cylinder for ≤sW
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 9b45775f9e59
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Proposition 24-5.5).
+- id: moninpatey2022-3db42428
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: llpo
+    to: lpo
+    over: w
+  loc: Exercise 24-3.7 and remark after Exercise 24-3.12
+  origin: stated
+  quote: tion 3.11 and Exercise 3.12 that LPO ̸⩽W LLPO. Likewise, if P is uni-
+  paperNotation: LPO ≰W LLPO
+  argument: J ≰c WKL (low basis theorem) with J ≡W LPO^ and WKL ≡W LLPO^.
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 178eca1b2ef8
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Exercise 24-3.7 and remark after Exercise 24-3.12).
+- id: moninpatey2022-6dd4340b
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: wkl
+    property: cone-avoidance
+    value: true
+  loc: Example 24-1.14
+  origin: stated
+  quote: Example 1.14. WKL avoids ω cones by Theorem 8 -4.7. On the other
+  paperNotation: WKL avoids ω cones
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 049745dbd21c
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Example 24-1.14).
+- id: moninpatey2022-69f2caad
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wwkl
+    to: wkl
+    over: omega
+  loc: Proposition 22-7.10
+  origin: stated
+  quote: Proposition 7.10. WWKL0 does not imply WKL0 over RCA0 .
+  confidence: high
+  concerns: Proved by an omega-model of WWKL0 (Turing ideal generated by a 2-random) without PA degrees; this is an omega-model separation.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 9bae29064b44
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Proposition 22-7.10 (an ω-model in the proof)).
+- id: moninpatey2022-a3d59e87
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wkl
+    to: wwkl
+    over: rca0
+  loc: Section 22-7.3
+  origin: stated
+  quote: lemma because any binary tree of positive mea-
+  paperNotation: WWKL0
+  argument: WWKL follows from WKL since a binary tree of positive measure is infinite.
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 826236d716d4
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Section 22-7.3).
+- id: moninpatey2022-343a2e1f
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: aca-prime
+    to: aca-plus
+    over: omega
+  loc: Section 22-8.2
+  origin: stated
+  quote: (and ACA′0 ), but does not contain the Turing ω-jump of ∅, so is not a model
+  paperNotation: ACA+_0
+  argument: The arithmetic sets form an omega-model of ACA0 and ACA′0 that is not closed under the omega-jump.
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 86dc18b9be31
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Section 22-8.2).
+- id: moninpatey2022-a9ca03b6
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wkl
+    to: aca
+    over: omega
+  loc: Section 22-7.1, after Proposition 22-7.3
+  origin: stated
+  quote: We can in particular deduce from Proposition 7.3 that WKL0 does not
+  argument: Every omega-model of ACA0 contains ∅′, but by Proposition 7.3 there is an omega-model of WKL0 omitting ∅′.
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 6ac3864de29d
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Section 22-7.1, after Proposition 22-7.3).
+- id: moninpatey2022-955185fe
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: rca0
+    to: wwkl
+    over: omega
+  loc: Section 22-7.3, after Proposition 22-7.9
+  origin: stated
+  quote: of RCA0 is not a model of WWKL0 , which implies that RCA0 does not
+  argument: No MLR is computable, so M_CALC is not a model of WWKL0.
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 885cce302ed8
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Section 22-7.3, after Proposition 22-7.9).
+- id: moninpatey2022-e1dd94c8
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: rca0
+    to: wkl
+    over: omega
+  loc: Section 22-7.1, after Proposition 22-7.2
+  origin: stated
+  quote: model of RCA0 which is not a model of WKL0 , which shows that RCA0
+  argument: The computable sets are not a Scott ideal.
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: a689f7c70986
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Section 22-7.1, after Proposition 22-7.2).
+- id: moninpatey2022-64c918c7
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ⁰₁-CA₀ (Σ⁰₁ comprehension scheme)
+    name: Σ⁰₁ comprehension
+    loc: Section 22-6, Proposition 22-6.1
+    definition: The comprehension scheme (9) ∃X∀y(y∈X ↔ F(y)) for Σ⁰₁ formulas F with parameters.
+    facts: "Proposition 6.1 (Simpson): RCA0 proves that ACA0 is equivalent to the Σ⁰₁ comprehension scheme."
+  reasons:
+    - principle not in the catalogue
+  proposed: b230e6ed8243
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: "Not a new principle: Σ⁰₁ comprehension is a formulation of ACA₀ (equivalent over RCA₀, Simpson, Lemma III.1.3)."
+- id: moninpatey2022-ecc6b6b2
+  ref: moninpatey2022
+  part: 6/10 (chapters 22, 23, 24, pages 487–578)
+  date: 2026-11-13
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BW subsequence (existence of a convergent subsequence)
+    name: Existence of a convergent subsequence of a bounded real sequence (no limit point asked)
+    loc: Section 22-6.2
+    definition: Every sequence of reals in [0,1] has a strictly increasing function f with (x_f(n)) convergent (a Cauchy subsequence), without requiring the point of convergence to exist.
+    facts: "Stated: RCA0 proves that the existence of a point of convergence implies the existence of a convergent subsequence; the existence of a convergent subsequence alone is equivalent over RCA0 to COH, strictly between RCA0 and ACA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9bb237c59537
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: "Already in the catalogue as sbwt (subsequential Bolzano–Weierstrass). Not entered: the book says it is equivalent to COH over RCA₀, but Kreuzer (Theorem 8 of kreuzer2010) shows it is equivalent to his strong cohesive principle, which is COH + BΣ⁰₂ (Hirschfeldt and Shore 2007, 4.4); COH alone does not prove BΣ⁰₂."
+- id: moninpatey2022-c03a047e
+  ref: moninpatey2022
+  part: 7/10 (chapters 25, 26, 27, 28, pages 579–678)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: rca0
+    to: rt12
+    over: rca0
+  loc: Proposition 2.4
+  origin: stated
+  quote: Proposition 2.4. RCA0 ⊢ RT12 .
+  paperNotation: RT^1_2
+  confidence: medium
+  concerns: Provability of RT12 in RCA0 recorded as an implication from RCA0 (no hypothesis).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: e8c1188fc48d
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Proposition 25-2.4).
+- id: moninpatey2022-858da3f4
+  ref: moninpatey2022
+  part: 7/10 (chapters 25, 26, 27, 28, pages 579–678)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: rt22
+    base: rca0
+    class: Pi03
+    value: true
+  loc: Theorem 3.4
+  origin: cited
+  quote: RT22 is a conservative extension of RCA0 for Π03 formulas.
+  paperNotation: RT^2_2
+  citedFrom: Patey, Yokoyama [184]
+  confidence: high
+  reasons:
+    - "attributed by the paper to Patey, Yokoyama [184]: cite the original"
+  proposed: 3a0a578d0a78
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Patey and Yokoyama 2018, Theorem 7.4, for ∀Π⁰₃).
+- id: moninpatey2022-4e8524d0
+  ref: moninpatey2022
+  part: 7/10 (chapters 25, 26, 27, 28, pages 579–678)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: rt12
+    property: computably-true
+    value: true
+  loc: Section 3.1, after Proposition 2.4
+  origin: stated
+  quote: computably true statement, in the sense that it always has a computable
+  paperNotation: RT^1_k
+  confidence: medium
+  concerns: Stated for RT^1_k with k a standard integer.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: cb0b0e4768d1
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Section 25-3.1).
+- id: moninpatey2022-b4c81e9a
+  ref: moninpatey2022
+  part: 7/10 (chapters 25, 26, 27, 28, pages 579–678)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: rt22
+    to: aca
+    over: rca0
+  loc: Corollary 4.15
+  origin: cited
+  quote: RCA0 + RT22 ⊬ ACA0 .
+  paperNotation: RCA_0 + RT^2_2 does not prove ACA_0
+  citedFrom: Seetapun [206]
+  confidence: high
+  concerns: ACA_0 as the sentence.
+  reasons:
+    - the quoted passage was not found in the text
+    - "attributed by the paper to Seetapun [206]: cite the original"
+  proposed: d936dbabbd24
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Seetapun and Slaman 1995).
+- id: moninpatey2022-327d9753
+  ref: moninpatey2022
+  part: 7/10 (chapters 25, 26, 27, 28, pages 579–678)
+  date: 2026-11-13
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: rt22
+    to: wkl
+    over: rca0
+  loc: Corollary 4.17
+  origin: cited
+  quote: RCA0 + RT22 ⊬ WKL0 .
+  paperNotation: RCA_0 + RT^2_2 does not prove WKL_0
+  citedFrom: Liu [153]
+  confidence: high
+  reasons:
+    - the quoted passage was not found in the text
+    - "attributed by the paper to Liu [153]: cite the original"
+  proposed: b18854f0293c
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Already in the database from the original source; the book restates it (Liu 2012).
+- id: moninpatey2022-39109a57
+  ref: moninpatey2022
+  part: 7/10 (chapters 25, 26, 27, 28, pages 579–678)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: rt32
+    to: rt42
+    over: c
+  loc: Proposition 2.19
+  origin: special-case
+  quote: Proposition 2.19. For all n ⩾ 1, RTn+1
+  paperNotation: RT^4_2 not<=_c RT^3_2
+  argument: Proposition 2.19 with n = 3.
+  confidence: high
+  concerns: The not-less-or-equal sign is garbled in the extraction; the proof shows no instance computable from f has a solution computing a solution of f.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: d4ba1fe7a56c
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: "Checked against the book: direct consequence."
+- id: moninpatey2022-d7481df1
+  ref: moninpatey2022
+  part: 7/10 (chapters 25, 26, 27, 28, pages 579–678)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wkl
+    to: rt22
+    over: rca0
+  loc: Corollary 2.7
+  origin: stated
+  quote: RT22 ̸⩽ω WKL. In particular, WKL0 ⊬ RT22 .
+  paperNotation: WKL_0 does not prove RT^2_2
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 4d68c99fb2ab
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Corollary 25-2.7).
+- id: moninpatey2022-8c896d3a
+  ref: moninpatey2022
+  part: 7/10 (chapters 25, 26, 27, 28, pages 579–678)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wkl
+    to: rt22
+    over: omega
+  loc: Corollary 2.7
+  origin: stated
+  quote: RT22 ̸⩽ω WKL. In particular, WKL0 ⊬ RT22 .
+  paperNotation: RT^2_2 not<=_omega WKL
+  confidence: high
+  concerns: The not-less-or-equal sign is garbled in the extraction; the proof builds an omega-model of WKL (low sets) that is not a model of RT22.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 2fa9d619512a
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Corollary 25-2.7).
+- id: moninpatey2022-9bd90eca
+  ref: moninpatey2022
+  part: 7/10 (chapters 25, 26, 27, 28, pages 579–678)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: rt22
+    property: pi2-basis
+    value: true
+  loc: Theorem 2.5
+  origin: stated
+  quote: For any k ⩾ 1, any instance f of RT2k has a Π02 (f ) solution.
+  paperNotation: RT^2_k, k = 2 (proof treats k = 2)
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: c3f2696643f8
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Theorem 25-2.5).
+- id: moninpatey2022-4dfab553
+  ref: moninpatey2022
+  part: 7/10 (chapters 25, 26, 27, 28, pages 579–678)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: rt22
+    property: sigma2-basis
+    value: false
+  loc: Theorem 2.6
+  origin: stated
+  quote: There is a computable instance of RT22 with no Σ02 solution.
+  paperNotation: RT^2_2
+  confidence: high
+  concerns: Attributed to Jockusch [104]; proved in the book.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 72ae143c1446
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Theorem 25-2.6).
+- id: moninpatey2022-15eda7d8
+  ref: moninpatey2022
+  part: 7/10 (chapters 25, 26, 27, 28, pages 579–678)
+  date: 2026-11-13
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: RT^n_{k,l}
+    name: Ramsey theorem with at most l colors on the homogeneous set
+    loc: Section 4.3, Notation after Definition 4.12
+    definition: "For any coloring f : [N]^n -> k there is an infinite set H with |f([H]^n)| <= l. RT^n_{k,1} is RT^n_k."
+    facts: "Wang [244] and Cholak and Patey [36] (Theorem 4.24): for all n >= 1, forall k RT^n_{k,l} strongly avoids 1 cone iff l >= C_n (Catalan number); RT^n_{k+1,l} follows from RT^n_{k,l} over RCA0 for k >= l+1 by color blindness; trivial for k <= l."
+  reasons:
+    - principle not in the catalogue
+  proposed: 89e317e37702
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: The family RTⁿ_{k,ℓ} is entered through its instances (rt2-inf-2…), as other families of the catalogue.
+- id: moninpatey2022-ccdc4364
+  ref: moninpatey2022
+  part: 8/10 (chapters 29, 30, 31, pages 679–744)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: atr
+    to: aca
+    over: rca0
+  loc: Chapter 31, Section 1, remark after Definition 1.1
+  origin: stated
+  quote: ATR0 implies ACA0 over RCA0 .
+  paperNotation: ATR₀, ACA₀
+  confidence: medium
+  concerns: Catalogue aca is a problem; here ACA0 is the axiom system (existence of Turing jumps), which is how the paper uses it.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 5de734de175d
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Section 31-1, remark after Definition 31-1.1).
+- id: moninpatey2022-44e21188
+  ref: moninpatey2022
+  part: 8/10 (chapters 29, 30, 31, pages 679–744)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: atr
+    to: pi11ca
+    over: omega
+  loc: Corollary 5.5 (via Theorem 5.4)
+  origin: stated
+  quote: ATR0 does not imply Π11 -CA0 .
+  paperNotation: ATR₀, Π¹₁-CA₀
+  confidence: medium
+  concerns: The paper states non-implication; the proof gives a beta-model (an omega-model) of ATR0 not containing O, which cannot satisfy Π¹₁-CA₀, so the separation holds over omega-models (hence over rca0). Recorded over omega on that basis.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 8da564c78dc5
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Corollary 31-5.5).
+- id: moninpatey2022-5adfa89b
+  ref: moninpatey2022
+  part: 10/10 (chapter 32 (2/2), pages 820–886)
+  date: 2026-11-13
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wkl
+    to: kl
+    over: omega
+  loc: Solution 1.4 (Chapter 24, Appendix A)
+  origin: stated
+  quote: Thus, I |= WKL but I ̸|= KL.
+  paperNotation: KL ̸⩽ω WKL
+  argument: A Scott ideal containing only low sets is not a jump ideal.
+  confidence: high
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: 3ca0267583c4
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Checked against the book (Solution of Exercise 24-1.4).
+- id: moninpatey2022-9f213912
+  ref: moninpatey2022
+  part: 10/10 (chapter 32 (2/2), pages 820–886)
+  date: 2026-11-13
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: rt22
+    property: delta02-preservation
+    value: true
+  loc: Solution 4.18 (Chapter 25, Appendix A)
+  origin: deduced
+  quote: homogeneous for f . In particular, C is not Σ01 (Y ).
+  paperNotation: RT^2_2, C non-Sigma^0_1
+  argument: For a computable coloring f and a non-Sigma^0_1 set C, the solution constructs an infinite homogeneous Y with C not Sigma^0_1(Y); this covers properly Delta^0_2 sets. Relativization is routine but not written.
+  confidence: low
+  concerns: Exercise statement not in this part; relativization to Z assumed.
+  reasons:
+    - contradicts the database
+    - "extractor confidence: low"
+    - deduction, not stated in the paper
+  proposed: a7ca0608082c
+  decision:
+    date: 2026-11-13
+    by: ludovic
+    note: Inferred from an exercise solution only (low confidence); contradicts the database, where RT²₂ (already SRT²₂) fails preservation of Δ⁰₂ definitions.
