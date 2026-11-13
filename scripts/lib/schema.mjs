@@ -93,7 +93,7 @@ export const SCHEMA = {
     value: { doc: 'property: true or false', usedBy: ['build', 'engine', 'viewer'] },
     refs: { doc: 'citations [{ref, loc}]; required unless folklore or provenance', usedBy: ['build', 'viewer', 'results'], items: 'resultRef' },
     folklore: { doc: 'true when the fact is folklore (then a justification explains it)', usedBy: ['build', 'viewer', 'results'] },
-    provenance: { doc: 'direct: an immediate consequence (specialization, restriction of instances) of a cited result, with the argument (written by an AI: justification.by); ai: a non-trivial derivation by an AI, with a justification. Never for facts read in a paper', usedBy: ['build', 'viewer', 'results', 'reviewLib'] },
+    provenance: { doc: 'direct: an immediate consequence (specialization, restriction of instances) of a cited result, with the argument (written by an AI: justification.by); ai: a non-trivial derivation by an AI, with a justification; contributed: a fact contributed by a researcher with their argument and no paper stating it (justification.by: the researcher, kind personal-communication), accepted from the review queue. Never for facts read in a paper', usedBy: ['build', 'viewer', 'results', 'reviewLib'] },
     justification: { doc: 'argument for folklore / AI-derived facts', usedBy: ['build', 'viewer'], fields: 'justification' },
     note: { doc: 'short remark shown with the result (quote it if it contains ", " or ": ")', usedBy: ['viewer', 'results'] },
   },
@@ -260,7 +260,7 @@ export const SCHEMA = {
     reasons: { doc: 'why a human must decide (AI: unknown id, quote not found, low confidence, verifier not confirming…; consolidation: what the miner saw)', usedBy: ['aiAnalyze', 'review', 'viewer', 'consolidate'] },
     result: { doc: 'result: the proposed entry, as in data/results/ without refs; edit it before accepting if needed', usedBy: ['aiAnalyze', 'review', 'viewer', 'reviewLib'] },
     loc: { doc: 'result, lead, question: the theorem or question number in the paper', usedBy: ['aiAnalyze', 'review', 'viewer', 'reviewLib', 'consolidate'] },
-    origin: { doc: 'result: stated (the paper states it) | cited (the paper attributes it to citedFrom) | special-case (instance of one stated result) | deduced', usedBy: ['aiAnalyze', 'review', 'viewer', 'reviewLib'] },
+    origin: { doc: 'result: stated (the paper states it) | cited (the paper attributes it to citedFrom) | special-case (instance of one stated result) | deduced | contributed (submitted by a researcher on the live instance: ref and loc, or citation, and/or argument)', usedBy: ['aiAnalyze', 'review', 'viewer', 'reviewLib'] },
     quote: { doc: 'result: verbatim passage of the extracted text', usedBy: ['aiAnalyze', 'viewer'] },
     paperNotation: { doc: "result: the paper's notation, when it differs from the catalogue", usedBy: ['aiAnalyze', 'viewer'] },
     argument: { doc: 'result: for special cases and deductions, the argument', usedBy: ['aiAnalyze', 'viewer', 'reviewLib'] },
@@ -279,6 +279,9 @@ export const SCHEMA = {
     votes: { doc: '[{orcid, verdict: valid | invalid, date}] from the live instance (scripts/endorsements-sync.mjs)', usedBy: ['build', 'review', 'viewer', 'apiLib', 'endorseSync'] },
     comments: { doc: '[{orcid, date, text}] public comments from the live instance (scripts/endorsements-sync.mjs)', usedBy: ['build', 'review', 'viewer', 'api', 'apiLib', 'endorseSync'] },
     decision: { doc: '{date, by, note} once treated', usedBy: ['review'] },
+    contributor: { doc: 'contributed result: {orcid, name} of the researcher who submitted it', usedBy: ['endorseSync', 'viewer', 'reviewLib'] },
+    contribution: { doc: 'contributed result: id of the suggestion it comes from (feedback/inbox/<id>.json)', usedBy: ['endorseSync'] },
+    citation: { doc: 'contributed result: the source as free text, when the paper is not in the references', usedBy: ['endorseSync', 'review', 'viewer'] },
   },
   // data/endorsements.yaml — {people: {orcid: person}, endorsements: [endorsement]},
   // written by scripts/endorsements-sync.mjs from the live server (docs/ENDORSEMENTS.md)
@@ -286,6 +289,13 @@ export const SCHEMA = {
     result: { req: true, doc: 'the resultKey of the endorsed result (see resultKey below)', usedBy: ['build', 'community', 'api'] },
     orcid: { req: true, doc: 'ORCID iD of the person (checksum validated)', usedBy: ['build', 'community', 'api', 'endorseSync'] },
     date: { req: true, doc: 'date of the endorsement (YYYY-MM-DD)', usedBy: ['api', 'community'] },
+  },
+  // data/endorsements.yaml discussions: public comments on the open questions (question pages)
+  discussion: {
+    question: { req: true, doc: 'id of the question (data/questions.yaml)', usedBy: ['build', 'viewer', 'api', 'endorseSync'] },
+    orcid: { req: true, doc: 'ORCID iD of the author', usedBy: ['build', 'viewer', 'api', 'endorseSync'] },
+    date: { req: true, doc: 'date (YYYY-MM-DD)', usedBy: ['viewer', 'api'] },
+    text: { req: true, doc: 'the comment (public)', usedBy: ['viewer', 'api'] },
   },
   person: {
     name: { req: true, doc: 'name public on the ORCID record at sign-in (the iD when private)', usedBy: ['community', 'api'] },

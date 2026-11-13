@@ -7,6 +7,7 @@ and nowhere else, until they are validated.
 | kind | from | validating means | what the maintainer does |
 |------|------|------------------|--------------------------|
 | `result` | AI reader (`scripts/ai-analyze.mjs`): a fact that failed an automatic check (quote not found, confidence, verifier…) | the paper proves it, at the place or by the argument given | accepted by `apply` (stated, special case, deduced); a fact the paper attributes to another work needs `accept <id> --ref` |
+| `result` (origin `contributed`) | a researcher, with the “Contribute facts” box of the live instance (docs/ENDORSEMENTS.md), brought in by `scripts/endorsements-sync.mjs` | the source (or the argument) proves it | read the source (AGENTS.md §1); `apply` or `accept` enters it citing `ref` at `loc`, or, with no paper, as `provenance: contributed` with the contributor's argument (`data/results/contributed.yaml`); a source given only as a citation needs the paper added first, then `accept <id> --ref key` |
 | `statement` | AI reader: a principle missing from the catalogue | it belongs in the zoo, with this definition | adds the statement by hand (AGENTS.md), then `done` |
 | `lead` | consolidation step 4: a theorem naming statements whose relation is open | it gives a result the zoo lacks (which: in a comment) | enters the result by hand, then `done` |
 | `question` | consolidation step 4: a numbered question not in `data/questions.yaml` | an open question worth recording | records it in `data/questions.yaml`, then `done` |

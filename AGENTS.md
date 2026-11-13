@@ -206,7 +206,10 @@ Specific cases:
 
 ### Treating the review queue (`data/review.yaml`, docs/REVIEW.md)
 
-It holds the AI proposals (kinds `result`, `statement`) and the candidates of
+It holds the AI proposals (kinds `result`, `statement`), the facts contributed by
+researchers on the live instance (kind `result`, origin `contributed`: check the
+source or the argument like any lead; with no paper, an accepted fact keeps the
+contributor's argument as `provenance: contributed`) and the candidates of
 the consolidation (`lead`, `question`, `answer`, `paper`), shown on the review
 page. After `endorsements-sync.mjs`, `node scripts/review.mjs apply --dry-run`
 shows what the votes of the review page would do; `apply` does it. A validated

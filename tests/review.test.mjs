@@ -80,3 +80,14 @@ test('a fact already decided is not asked again, even with another id or key ord
   assert.equal(d.status, 'rejected');
   assert.match(d.decision.note, /p2020-aaaa/);
 });
+
+test('a contributed fact cites its paper, or keeps the contributor\'s argument', () => {
+  const it = { kind: 'result', origin: 'contributed', result: { type: 'implication', from: 'a', to: 'b', over: 'w' }, contributor: { orcid: '0000-0001-2345-6789', name: 'Ada' } };
+  assert.deepEqual(itemResult({ ...it, ref: 'p2020', loc: 'Theorem 3' }).refs, [{ ref: 'p2020', loc: 'Theorem 3' }]);
+  const r = itemResult({ ...it, argument: 'By a direct construction.', citation: 'A preprint', loc: 'Lemma 2' });
+  assert.equal(r.provenance, 'contributed');
+  assert.equal(r.justification.by, 'Ada');
+  assert.equal(r.justification.kind, 'personal-communication');
+  assert.match(r.justification.text, /direct construction.*Source: A preprint, Lemma 2/);
+  assert.equal(r.refs, undefined);
+});

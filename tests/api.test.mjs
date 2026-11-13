@@ -24,10 +24,16 @@ const port = 18000 + Math.floor(Math.random() * 1000);
 const B = `http://127.0.0.1:${port}/api/index.php`;
 let server, dir;
 
+// each version of the configuration gets its own modification time (whole seconds), so that
+// PHP's opcache, which compares them, sees the change (after its revalidate_freq: settle below)
+let version = 0;
 const start = (devLogin) => {
-  fs.writeFileSync(path.join(dir, 'config.php'), `<?php return ['orcid_client_id' => 'APP-T', 'orcid_client_secret' => 'x',
+  const f = path.join(dir, 'config.php');
+  fs.writeFileSync(f, `<?php return ['orcid_client_id' => 'APP-T', 'orcid_client_secret' => 'x',
     'admin_token' => '${TOKEN}', 'data_dir' => ${JSON.stringify(path.join(dir, 'data'))}, 'dev_login' => ${devLogin},
     'review_json' => ${JSON.stringify(path.join(dir, 'review.json'))}];`);
+  const at = Math.floor(Date.now() / 1000) + 10 * ++version;
+  fs.utimesSync(f, at, at);
 };
 before(async () => {
   if (!php) return;
@@ -95,10 +101,14 @@ test('comments are stored with the object they are about, and exported with the 
   assert.equal(ex.feedback.find((f) => f.kind === 'comment').target.statement.id, 'coh');
 });
 
+// PHP's opcache may keep a rewritten config.php for up to 2 s (revalidate_freq): wait
+const settle = () => new Promise((r) => setTimeout(r, 2100));
 test('the development sign-in is off unless configured', { skip }, async () => {
   start(false);
+  await settle();
   assert.equal((await fetch(`${B}?a=devlogin&orcid=0000-0002-1825-0097`, { redirect: 'manual' })).status, 404);
   start(true);
+  await settle();
 });
 
 // the review page (docs/REVIEW.md): votes and public comments on the open items of the
@@ -134,4 +144,43 @@ test('votes and comments on review items', { skip }, async () => {
   r = await (await post(s, 'review', { item: ITEM, verdict: null }, st.csrf)).json();
   assert.deepEqual(mineOn(r), []);
   assert.ok(!r.people[ME]);
+});
+
+// contributed facts (the "Contribute facts" box), one's own messages, and the public
+// discussion of the open questions
+test('suggestions of facts, own messages and comments on questions', { skip }, async () => {
+  const s = session();
+  await s.req(`${B}?a=devlogin&orcid=0000-0001-2345-6789&name=Ada`);
+  const { csrf } = await (await s.req(`${B}?a=state`)).json();
+  const fact = { type: 'implication', from: 'rt22', to: 'coh', over: 'rca0' };
+  const send = (facts) => post(s, 'feedback', { kind: 'suggestion', target: { type: 'general', id: '' }, facts, text: '' }, csrf);
+  assert.equal((await send([])).status, 400);
+  assert.equal((await send([fact])).status, 400, 'a fact needs a source or a justification');
+  assert.equal((await send([{ ...fact, from: 'nope', source: { citation: 'x' } }])).status, 404);
+  assert.equal((await send([{ ...fact, source: { ref: 'no-such-paper' } }])).status, 404);
+  assert.equal((await send([{ type: 'property', statement: 'rt12', property: 'cone-avoidance', value: true, justification: 'Seetapun.' },
+    { ...fact, source: { ref: zoo.results.find((r) => r.refs?.length).refs[0].ref, loc: 'Theorem 1' } }])).status, 200);
+  const mine = await (await s.req(`${B}?a=mine`)).json();
+  const sug = mine.messages.find((m) => m.kind === 'suggestion');
+  assert.equal(sug.facts.length, 2);
+  assert.equal(sug.facts[0].propertyName, zoo.properties.find((p) => p.id === 'cone-avoidance').name);
+  assert.equal(sug.facts[1].statements[0].id, 'rt22');
+  // another person does not see these messages
+  const o = session();
+  await o.req(`${B}?a=devlogin&orcid=${ME}&name=Josiah%20Carberry`);
+  assert.ok(!(await (await o.req(`${B}?a=mine`)).json()).messages.some((m) => m.author.orcid !== ME));
+  // public comments on questions
+  const q = zoo.questions[0].id;
+  assert.equal((await post(s, 'qcomment', { question: 'nope', text: 'x' }, csrf)).status, 404);
+  const r = await (await post(s, 'qcomment', { question: q, text: 'A partial answer.' }, csrf)).json();
+  const c = r.qcomments.find((x) => x.question === q && x.orcid === '0000-0001-2345-6789');
+  assert.equal(c.text, 'A partial answer.');
+  assert.ok((await (await fetch(`${B}?a=state`)).json()).qcomments.some((x) => x.id === c.id), 'public');
+  const ostate = await (await o.req(`${B}?a=state`)).json();
+  await post(o, 'qcomment', { delete: c.id }, ostate.csrf); // not one's own: ignored
+  assert.ok((await (await fetch(`${B}?a=state`)).json()).qcomments.some((x) => x.id === c.id));
+  await post(s, 'qcomment', { delete: c.id }, csrf);
+  assert.ok(!(await (await fetch(`${B}?a=state`)).json()).qcomments.some((x) => x.id === c.id));
+  const ex = await (await fetch(`${B}?a=export`, { headers: { Authorization: `Bearer ${TOKEN}` } })).json();
+  assert.ok(Array.isArray(ex.qcomments));
 });

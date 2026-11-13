@@ -41,7 +41,7 @@ import { acquireLock } from './lib/lock.mjs';
 import { addResults } from './lib/results.mjs';
 import { unknownFields } from './lib/schema.mjs';
 import { readQueue, writeQueue, closeRepeats, QUEUE } from './lib/review-queue.mjs';
-import { reviewStatus, screenKey, KINDS } from '../site/js/review.js';
+import { reviewStatus, screenKey, KINDS, contributedResult } from '../site/js/review.js';
 import { surname } from '../site/js/names.js';
 
 const USAGE = 'node scripts/review.mjs list [--all] [--ref key] [--kind k] [--voted] | show <id> | apply [--dry-run] | accept <id> [--ref key] [--loc text] [--note text] | reject <id> --note text | done <id> --note text | repeats [--dry-run]';
@@ -121,7 +121,12 @@ function accept(i, { ref, loc } = {}) {
   if (it.kind !== 'result') throw new Error(`${KINDS[it.kind].one}: enter it by hand (AGENTS.md), then mark it with \`done\`.`);
   const at = loc ?? it.loc;
   let spec;
-  if (it.origin === 'stated') spec = { [it.ref]: [{ ...it.result, loc: at }] };
+  if (it.origin === 'contributed') {
+    const key = ref ?? it.ref;
+    if (key) spec = { [key]: [{ ...it.result, ...(at ? { loc: at } : {}) }] };
+    else if (it.citation && !it.argument) throw new Error(`the source is not in the references (${it.citation}): add the paper, then accept with --ref key (and --loc).`);
+    else spec = { _contributed: [contributedResult(it)] };
+  } else if (it.origin === 'stated') spec = { [it.ref]: [{ ...it.result, loc: at }] };
   else if (it.origin === 'cited') {
     if (!ref) throw new Error(`the paper attributes this to ${it.citedFrom || 'another work'}: give its key with --ref (and --loc).`);
     spec = { [ref]: [{ ...it.result, ...(loc ? { loc } : {}) }] };

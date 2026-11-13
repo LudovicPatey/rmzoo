@@ -55,7 +55,7 @@ const contexts = readYaml(path.join(dataDir, 'context.yaml')) || {};
 const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml(path.join(dataDir, 'abstracts.yaml')) || {} : {};
 // endorsements by researchers (live instance, docs/ENDORSEMENTS.md)
 const endorsed = fs.existsSync(path.join(dataDir, 'endorsements.yaml')) ? readYaml(path.join(dataDir, 'endorsements.yaml')) || {} : {};
-raw.endorsements = { people: endorsed.people || {}, endorsements: endorsed.endorsements || [] };
+raw.endorsements = { people: endorsed.people || {}, endorsements: endorsed.endorsements || [], discussions: endorsed.discussions || [] };
 // zbMATH author profiles of the authors of the references (scripts/zbmath.mjs): code → {name, orcid}
 const zbAuthors = fs.existsSync(path.join(dataDir, 'authors.yaml')) ? readYaml(path.join(dataDir, 'authors.yaml')) || {} : {};
 // the review queue (docs/REVIEW.md): not part of the database; the open items go to
@@ -80,6 +80,7 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
   if (fs.existsSync(analyzed)) for (const [k, x] of Object.entries(readYaml(analyzed) || {})) errs.push(...unknownFields(x, 'aiAnalyzed', `ai-analyzed.yaml ${k}`));
   for (const [k, x] of Object.entries(raw.endorsements.people)) errs.push(...unknownFields(x, 'person', `endorsements.yaml person ${k}`));
   raw.endorsements.endorsements.forEach((x, i) => errs.push(...unknownFields(x, 'endorsement', `endorsements.yaml #${i}`)));
+  raw.endorsements.discussions.forEach((x, i) => errs.push(...unknownFields(x, 'discussion', `endorsements.yaml discussion #${i}`)));
   if (errs.length) { errs.forEach((e) => console.error('✗ ' + e)); process.exit(1); }
 }
 
@@ -464,9 +465,10 @@ raw.results.forEach((res, i) => {
     if (typeof res.value !== 'boolean') errors.push(`${where}: value must be true or false`);
   } else errors.push(`${where}: unknown type ${res.type}`);
   if (!res.folklore && !res.provenance && !(res.refs && res.refs.length))
-    errors.push(`${where}: needs refs, folklore: true, or provenance: ai | direct`);
-  if (res.provenance && !['ai', 'direct'].includes(res.provenance)) errors.push(`${where}: provenance must be ai or direct`);
-  if (res.provenance && !res.justification) errors.push(`${where}: AI-derived and direct results need a justification`);
+    errors.push(`${where}: needs refs, folklore: true, or provenance: ai | direct | contributed`);
+  if (res.provenance && !['ai', 'direct', 'contributed'].includes(res.provenance)) errors.push(`${where}: provenance must be ai, direct or contributed`);
+  if (res.provenance && !res.justification) errors.push(`${where}: AI-derived, direct and contributed results need a justification`);
+  if (res.provenance === 'contributed' && (!res.justification?.by || res.justification.by === 'ai')) errors.push(`${where}: a contributed result names its contributor (justification.by)`);
   if (res.justification) {
     const kinds = ['restriction', 'reduction', 'classical', 'personal-communication', 'unreferenced'];
     if (!kinds.includes(res.justification.kind)) errors.push(`${where}: justification.kind must be one of ${kinds.join(', ')}`);
@@ -583,6 +585,11 @@ raw.results.forEach((res, i) => {
       if (seen.has(`${e.result}#${e.orcid}`)) errors.push(`endorsements.yaml: ${e.orcid} endorses ${e.result} twice`);
       seen.add(`${e.result}#${e.orcid}`);
       if (!keys.has(e.result)) warnings.push(`endorsements.yaml: endorsed result ${e.result} is no longer in the database`);
+    }
+    const qids = new Set((raw.questions || []).map((q) => q.id));
+    for (const c of raw.endorsements.discussions) {
+      if (!raw.endorsements.people[c.orcid]) errors.push(`endorsements.yaml: comment on ${c.question} by unknown person ${c.orcid}`);
+      if (!qids.has(c.question)) warnings.push(`endorsements.yaml: comment on unknown question ${c.question}`);
     }
   }
   // review queue: unique ids, known kinds and statuses, votes and comments by known people

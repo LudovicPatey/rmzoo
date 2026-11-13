@@ -46,12 +46,22 @@ export const STATUS_NAMES = { open: 'to review', validated: 'validated', invalid
 // attributes to another work cites the paper until the maintainer finds that work.
 export function itemResult(it) {
   if (it.kind !== 'result' || !it.result) return null;
+  if (it.origin === 'contributed') return contributedResult(it);
   if (it.origin === 'special-case' || it.origin === 'deduced') {
     const kind = it.origin === 'special-case' ? 'restriction' : 'reduction';
     return { ...it.result, provenance: kind === 'restriction' ? 'direct' : 'ai', justification: { kind, by: 'ai', text: `${it.argument || ''} (From ${it.loc} of [@${it.ref}].)`.trim() } };
   }
   const loc = it.origin === 'cited' && it.citedFrom ? `${it.loc} (attributed to ${it.citedFrom})` : it.loc;
   return { ...it.result, refs: [{ ref: it.ref, ...(loc ? { loc } : {}) }] };
+}
+
+// A fact contributed by a researcher: it cites the paper when one from the references is
+// given; otherwise it keeps the researcher's argument (provenance contributed). A source
+// given only as free text (a paper not yet in the references) is shown with the argument.
+export function contributedResult(it) {
+  if (it.ref) return { ...it.result, refs: [{ ref: it.ref, ...(it.loc ? { loc: it.loc } : {}) }] };
+  const text = [it.argument, it.citation ? `Source: ${it.citation}${it.loc ? `, ${it.loc}` : ''}.` : ''].filter(Boolean).join(' ');
+  return { ...it.result, provenance: 'contributed', justification: { kind: 'personal-communication', by: it.contributor?.name || it.contributor?.orcid || 'a researcher', text } };
 }
 
 // Identity of a result: resultKey of scripts/lib/schema.mjs (the viewer cannot

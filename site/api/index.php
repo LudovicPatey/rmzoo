@@ -5,8 +5,12 @@
 //   GET  ?a=logout     sign out, back to the site
 //   POST ?a=endorse    {result: <resultKey>, endorse: true|false}
 //   POST ?a=feedback   {kind: error|comment, target: {type, id}, text, page}
-//                      {kind: suggestion, results: [{type, from, to, over}], sources, text, page}: results
-//                      missing from the database, with their sources (target: general, or the question they answer)
+//                      {kind: suggestion, facts: [fact], text, target, page}: facts missing from the database
+//                      (target: general, or the question they answer); fact: {type: implication|separation|
+//                      equivalence, from, to, over} or {type: property, statement, property, value}, with
+//                      source: {ref (a reference key) | citation, loc} and/or justification (the argument)
+//   GET  ?a=mine       the signed-in person's own messages and suggestions (private to them)
+//   POST ?a=qcomment   {question, text} a public comment on an open question; {delete: <comment id>} removes one's own
 //   POST ?a=review     {item: <review item id>, verdict: valid|invalid|null}   (the review page, docs/REVIEW.md)
 //   POST ?a=rcomment   {item, text} a public comment on a review item; {delete: <comment id>} removes one's own
 //   GET  ?a=uploads    the signed-in person's uploaded full texts (docs/UPLOADS.md)
@@ -14,7 +18,7 @@
 //   POST ?a=unupload   {id} removes one's own upload
 //   POST ?a=dismiss    {ref, reason: not-author|not-allowed|null}: a paper of one's own without a
 //                      full text that one is not an author of or may not share (null: undo)
-//   GET  ?a=export     (admin token) endorsements, votes, comments and all feedback, for scripts/endorsements-sync.mjs
+//   GET  ?a=export     (admin token) endorsements, votes, comments (review items, questions) and all feedback, for scripts/endorsements-sync.mjs
 //   GET  ?a=uploads-export        (admin token) the index of all uploads, for scripts/uploads-sync.mjs
 //   GET  ?a=upload-file&id=<id>   (admin token) one uploaded file
 //   GET  ?a=devlogin   (local development only, config dev_login) sign in as any ORCID iD
@@ -32,7 +36,7 @@ switch ($a) {
     start_session();
     $s = read_state();
     json_out(['user' => user(), 'csrf' => $_SESSION['csrf'], 'people' => (object) ($s['people'] ?? []), 'endorsements' => $s['endorsements'] ?? [],
-      'reviews' => $s['reviews'], 'comments' => $s['comments']]);
+      'reviews' => $s['reviews'], 'comments' => $s['comments'], 'qcomments' => $s['qcomments']]);
   }
 
   case 'login': {
@@ -138,9 +142,7 @@ switch ($a) {
     $kind = $b['kind'] ?? '';
     if (!in_array($kind, ['error', 'comment', 'suggestion'], true)) fail(400, 'kind: error, comment or suggestion.');
     $text = trim((string) ($b['text'] ?? ''));
-    $sources = trim((string) ($b['sources'] ?? ''));
-    if (mb_strlen($sources) > 5000) fail(400, 'The sources must have at most 5000 characters.');
-    if ($kind === 'suggestion' ? $text . $sources === '' : $text === '') fail(400, $kind === 'suggestion' ? 'Give the sources or an explanation.' : 'The text must have between 1 and 10000 characters.');
+    if ($kind !== 'suggestion' && $text === '') fail(400, 'The text must have between 1 and 10000 characters.');
     if (mb_strlen($text) > 10000) fail(400, 'The text must have at most 10000 characters.');
     $t = $b['target'] ?? [];
     $type = $t['type'] ?? 'general';
@@ -167,25 +169,43 @@ switch ($a) {
       if (!$q) fail(404, 'Unknown question.');
       $target['question'] = $q;
     }
-    // a suggestion: the results it proposes, each with a copy of its statements
-    $results = null;
+    // a suggestion: the facts it proposes, each with a copy of its statements, its source and its argument
+    $facts = null;
     if ($kind === 'suggestion') {
       $st = [];
       foreach ($z['statements'] as $x) $st[$x['id']] = $x;
       $red = array_column($z['reductions'], null, 'id');
-      $in = $b['results'] ?? null;
-      if (!is_array($in) || !$in || count($in) > 20) fail(400, 'A suggestion has between 1 and 20 results.');
-      $results = [];
-      foreach ($in as $r) {
+      $prop = array_column($z['properties'], null, 'id');
+      $label = fn ($s) => array_intersect_key($s, array_flip(['id', 'label', 'name']));
+      $in = $b['facts'] ?? null;
+      if (!is_array($in) || !$in || count($in) > 30) fail(400, 'A suggestion has between 1 and 30 facts.');
+      $facts = [];
+      foreach ($in as $n => $r) {
+        $at = 'Fact ' . ($n + 1) . ': ';
         $rt = $r['type'] ?? '';
-        if (!in_array($rt, ['implication', 'separation', 'equivalence'], true)) fail(400, 'type: implication, separation or equivalence.');
-        $from = (string) ($r['from'] ?? ''); $to = (string) ($r['to'] ?? ''); $over = (string) ($r['over'] ?? '');
-        if (!isset($st[$from]) || !isset($st[$to])) fail(404, 'Unknown statement (choose it from the list).');
-        if ($from === $to) fail(400, 'A result relates two different statements.');
-        if (!isset($red[$over])) fail(404, 'Unknown reduction.');
-        $label = fn ($s) => array_intersect_key($s, array_flip(['id', 'label', 'name']));
-        $results[] = ['type' => $rt, 'from' => $from, 'to' => $to, 'over' => $over,
-          'statements' => [$label($st[$from]), $label($st[$to])], 'reduction' => $red[$over]['name'] ?? $over];
+        if ($rt === 'property') {
+          $s = (string) ($r['statement'] ?? ''); $p = (string) ($r['property'] ?? '');
+          if (!isset($st[$s])) fail(404, $at . 'unknown statement.');
+          if (!isset($prop[$p])) fail(404, $at . 'unknown property.');
+          $f = ['type' => 'property', 'statement' => $s, 'property' => $p, 'value' => !empty($r['value']),
+            'statements' => [$label($st[$s])], 'propertyName' => $prop[$p]['name']];
+        } elseif (in_array($rt, ['implication', 'separation', 'equivalence'], true)) {
+          $from = (string) ($r['from'] ?? ''); $to = (string) ($r['to'] ?? ''); $over = (string) ($r['over'] ?? '');
+          if (!isset($st[$from]) || !isset($st[$to])) fail(404, $at . 'unknown statement (choose it from the list).');
+          if ($from === $to) fail(400, $at . 'a result relates two different statements.');
+          if (!isset($red[$over])) fail(404, $at . 'unknown reduction.');
+          $f = ['type' => $rt, 'from' => $from, 'to' => $to, 'over' => $over,
+            'statements' => [$label($st[$from]), $label($st[$to])], 'reduction' => $red[$over]['name'] ?? $over];
+        } else fail(400, $at . 'type: implication, separation, equivalence or property.');
+        $src = is_array($r['source'] ?? null) ? $r['source'] : [];
+        $ref = (string) ($src['ref'] ?? ''); $cit = trim((string) ($src['citation'] ?? '')); $loc = trim((string) ($src['loc'] ?? ''));
+        $just = trim((string) ($r['justification'] ?? ''));
+        if ($ref !== '' && !isset($z['references'][$ref])) fail(404, $at . 'unknown paper (choose it from the list, or write the citation).');
+        if (mb_strlen($cit) > 500 || mb_strlen($loc) > 200 || mb_strlen($just) > 5000) fail(400, $at . 'citation (500), location (200) or justification (5000 characters) too long.');
+        if ($ref === '' && $cit === '' && $just === '') fail(400, $at . 'give a source (a paper and where in it) or a justification.');
+        $f['source'] = array_filter(['ref' => $ref, 'citation' => $cit, 'loc' => $loc], fn ($v) => $v !== '');
+        if ($just !== '') $f['justification'] = $just;
+        $facts[] = $f;
       }
     }
     $dir = data_dir() . '/feedback';
@@ -199,9 +219,51 @@ switch ($a) {
       'id' => $id, 'date' => gmdate('c'), 'kind' => $kind, 'target' => $target, 'text' => $text,
       'author' => $u, 'page' => mb_substr((string) ($b['page'] ?? ''), 0, 300), 'zooBuiltAt' => $z['builtAt'] ?? null,
     ];
-    if ($results !== null) { $rec['results'] = $results; $rec['sources'] = $sources; }
+    if ($facts !== null) $rec['facts'] = $facts;
     file_put_contents("$dir/$id.json", json_encode($rec, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
     json_out(['ok' => true, 'id' => $id]);
+  }
+
+  case 'mine': {
+    start_session();
+    $u = user();
+    if (!$u) fail(401, 'Sign in with ORCID first.');
+    $out = [];
+    foreach (glob(data_dir() . "/feedback/*-{$u['orcid']}-*.json") ?: [] as $f) {
+      $x = json_decode((string) file_get_contents($f), true);
+      if (is_array($x) && ($x['author']['orcid'] ?? '') === $u['orcid']) $out[] = $x;
+    }
+    usort($out, fn ($a, $b) => strcmp($b['date'], $a['date']));
+    json_out(['messages' => $out]);
+  }
+
+  case 'qcomment': {
+    start_session();
+    $u = require_user();
+    $b = body();
+    if (isset($b['delete'])) {
+      $cid = (string) $b['delete'];
+      $s = with_state(function (array $s) use ($u, $cid) {
+        $s['qcomments'] = array_values(array_filter($s['qcomments'], fn ($c) => !($c['id'] === $cid && $c['orcid'] === $u['orcid'])));
+        return prune_people($s);
+      });
+      json_out(['people' => (object) $s['people'], 'qcomments' => $s['qcomments']]);
+    }
+    $q = (string) ($b['question'] ?? '');
+    if (!in_array($q, array_column(zoo()['questions'] ?? [], 'id'), true)) fail(404, 'Unknown question (reload the page).');
+    $text = trim((string) ($b['text'] ?? ''));
+    if ($text === '' || mb_strlen($text) > 5000) fail(400, 'The comment must have between 1 and 5000 characters.');
+    $today = gmdate('Y-m-d');
+    $st0 = read_state();
+    $mine = array_filter(array_merge($st0['comments'], $st0['qcomments']), fn ($c) => $c['orcid'] === $u['orcid'] && $c['date'] === $today);
+    if (count($mine) >= cfg()['feedback_per_day']) fail(429, 'Too many comments today; please try again tomorrow.');
+    $s = with_state(function (array $s) use ($u, $q, $text, $today) {
+      $s['qcomments'][] = ['id' => 'q' . gmdate('Ymd\THis') . '-' . bin2hex(random_bytes(3)), 'question' => $q, 'orcid' => $u['orcid'], 'date' => $today, 'text' => $text];
+      $s['people'] = (array) ($s['people'] ?? []);
+      $s['people'][$u['orcid']] = ['name' => $u['name']];
+      return prune_people($s);
+    });
+    json_out(['people' => (object) $s['people'], 'qcomments' => $s['qcomments']]);
   }
 
   case 'uploads': {
@@ -306,7 +368,7 @@ switch ($a) {
     $s = read_state();
     $fb = [];
     foreach (glob(data_dir() . '/feedback/*.json') ?: [] as $f) $fb[] = json_decode((string) file_get_contents($f), true);
-    json_out(['people' => (object) ($s['people'] ?? []), 'endorsements' => $s['endorsements'] ?? [], 'reviews' => $s['reviews'], 'comments' => $s['comments'], 'feedback' => $fb]);
+    json_out(['people' => (object) ($s['people'] ?? []), 'endorsements' => $s['endorsements'] ?? [], 'reviews' => $s['reviews'], 'comments' => $s['comments'], 'qcomments' => $s['qcomments'], 'feedback' => $fb]);
   }
 
   default:

@@ -510,3 +510,36 @@ div.warn { color: var(--open); margin-top: .3em; }
 .q-ex { margin: 0; padding-left: 18px; } .q-ex code { font-size: .88rem; }
 header .search.has-q { transition: width .15s; }
 header .search.has-q:focus-within { width: min(560px, 52vw); }
+
+/* contributing facts: a modal box (contributeModal in app.js) */
+.modal-back { position: fixed; inset: 0; z-index: 60; background: rgba(0, 0, 0, .35); display: flex; align-items: flex-start;
+  justify-content: center; padding: 6vh 16px 16px; overflow: auto; }
+.modal { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 12px 40px rgba(0,0,0,.25);
+  width: min(760px, 100%); padding: 18px 22px 20px; }
+.modal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.modal-head h2 { margin: 0; }
+.modal textarea { width: 100%; box-sizing: border-box; font: inherit; padding: 8px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--bg); color: var(--ink); }
+.modal .ct-search { width: 100%; margin: 8px 0 2px; }
+.modal .ct-search input { font-size: 1rem; padding: 10px 12px; }
+.ct-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 8px; }
+.ct-chips .chip { cursor: pointer; font: inherit; font-size: .85rem; }
+.ct-fact { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin: 10px 0; background: var(--bg); }
+.ct-row { align-items: center; gap: 8px; }
+.ct-src { display: flex; gap: 8px; margin: 8px 0 4px; flex-wrap: wrap; }
+.ct-src .search { margin: 0; flex: 1 1 260px; width: auto; }
+.ct-src .ct-loc { flex: 0 1 180px; }
+.ct-fact textarea { margin-top: 6px; }
+.badge.st-yes { background: var(--yes-soft); color: var(--yes); }
+.badge.st-no { background: var(--no-soft); color: var(--no); }
+.badge.st-open { background: var(--open-soft); color: var(--open); }
+.badge.st-na { background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
+/* results used by the proofs of the pair panel, with endorsement buttons */
+.cited-results { list-style: none; padding: 0; margin: 6px 0; }
+.cited-results li { border-top: 1px solid var(--line); padding: 8px 0; }
+.cited-results .row { align-items: center; gap: 8px; }
+.btn.on { background: var(--yes-soft); color: var(--yes); border-color: var(--yes); }
+/* profile: contributions */
+.card.contrib { margin: 10px 0; padding: 10px 14px; }
+.contrib-facts, .contrib-msgs { margin: 6px 0; padding-left: 18px; }
+.contrib-facts li, .contrib-msgs li { margin: 6px 0; }

@@ -20,12 +20,17 @@ export function createCommunity(zoo) {
     byResult: new Map(), // result key → [{orcid, date}]
     byPerson: new Map(), // orcid → [{result, date}]
     byItem: null, // review item id → {votes: [{orcid, verdict, date}], comments: [{id, orcid, date, text}]} (live only)
+    reviewComments: [], // [{id, item, orcid, date, text}] public comments on the review page (live only)
+    // public comments on the open questions: the server's (live) or those committed in
+    // data/endorsements.yaml (static copy) — [{id, question, orcid, date, text}]
+    qcomments: (zoo.raw.endorsements?.discussions || []).map((x, i) => ({ id: `q-seed-${i}`, ...x })),
   };
   const indexReviews = (s) => {
     c.byItem = new Map();
     const at = (id) => { if (!c.byItem.has(id)) c.byItem.set(id, { votes: [], comments: [] }); return c.byItem.get(id); };
     for (const v of s.reviews || []) at(v.item).votes.push({ orcid: v.orcid, verdict: v.verdict, date: v.date });
     for (const x of s.comments || []) at(x.item).comments.push({ id: x.id, orcid: x.orcid, date: x.date, text: x.text });
+    c.reviewComments = s.comments || [];
     if (s.people) c.people = s.people;
   };
   const index = (people, list) => {
@@ -52,6 +57,7 @@ export function createCommunity(zoo) {
       c.csrf = s.csrf;
       index(s.people, s.endorsements);
       indexReviews(s);
+      if (Array.isArray(s.qcomments)) c.qcomments = s.qcomments;
     })
     .catch(() => {});
 
@@ -75,9 +81,22 @@ export function createCommunity(zoo) {
   };
   // kind: error | comment; target: {type: result|statement|reference|question|general, id}
   c.sendFeedback = (kind, target, text) => post('feedback', { kind, target, text, page: location.hash });
-  // results missing from the database: [{type, from, to, over}], their sources and an explanation
-  c.suggest = (results, sources, text, target = { type: 'general', id: '' }) =>
-    post('feedback', { kind: 'suggestion', target, results, sources, text, page: location.hash });
+  // facts missing from the database: [{type, from, to, over} | {type: property, statement, property, value},
+  // each with source {ref | citation, loc} and/or justification], and a message to the maintainer
+  c.suggest = (facts, text, target = { type: 'general', id: '' }) =>
+    post('feedback', { kind: 'suggestion', target, facts, text, page: location.hash });
+  // one's own messages and suggestions (private: only the signed-in person sees them)
+  c.mine = async () => {
+    const r = await fetch(`${API}?a=mine`, { credentials: 'same-origin', cache: 'no-store' });
+    const j = await r.json().catch(() => ({ error: `Server error ${r.status}` }));
+    if (!r.ok) throw new Error(j.error || `Server error ${r.status}`);
+    return j.messages || [];
+  };
+  // public discussion of the open questions
+  c.questionComments = (id) => c.qcomments.filter((x) => x.question === id);
+  const setQ = (s) => { c.qcomments = s.qcomments || []; if (s.people) c.people = s.people; };
+  c.addQComment = async (question, text) => setQ(await post('qcomment', { question, text }));
+  c.deleteQComment = async (id) => setQ(await post('qcomment', { delete: id }));
   // the review page: votes and comments of an item (live: the server's; static: committed)
   c.votes = (it) => (c.byItem ? c.byItem.get(it.id)?.votes || [] : it.votes || []);
   c.comments = (it) => (c.byItem ? c.byItem.get(it.id)?.comments || [] : (it.comments || []).map((x, i) => ({ id: `${it.id}-c${i}`, ...x })));

@@ -130,6 +130,12 @@ function seed_state(): array {
 // The votes and comments committed in data/review.yaml (via review.json), the first
 // time the server sees the review page (a state saved before it existed has none).
 function with_reviews(array $s): array {
+  // public comments on the open questions: those committed in data/endorsements.yaml (via zoo.json) the first time
+  if (!isset($s['qcomments'])) {
+    $s['qcomments'] = [];
+    foreach (zoo()['endorsements']['discussions'] ?? [] as $i => $c)
+      $s['qcomments'][] = ['id' => "q-seed-$i", 'question' => $c['question'], 'orcid' => $c['orcid'], 'date' => $c['date'], 'text' => $c['text']];
+  }
   if (isset($s['reviews'])) return $s;
   $s['reviews'] = [];
   $s['comments'] = [];
@@ -151,7 +157,7 @@ function review_items(): array {
 }
 // People are recorded while they have an endorsement, a vote or a comment.
 function prune_people(array $s): array {
-  $active = array_flip(array_merge(array_column($s['endorsements'] ?? [], 'orcid'), array_column($s['reviews'] ?? [], 'orcid'), array_column($s['comments'] ?? [], 'orcid')));
+  $active = array_flip(array_merge(array_column($s['endorsements'] ?? [], 'orcid'), array_column($s['reviews'] ?? [], 'orcid'), array_column($s['comments'] ?? [], 'orcid'), array_column($s['qcomments'] ?? [], 'orcid')));
   $s['people'] = array_intersect_key((array) ($s['people'] ?? []), $active);
   return $s;
 }

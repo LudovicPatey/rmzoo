@@ -10,7 +10,7 @@ import { layered, verticalSpline } from './layout.js';
 import { bibtex } from './bibtex.js';
 import { surname, fullName } from './names.js';
 import { relatedIndex, relatedStatements } from './related.js';
-import { queryIndex, tokenize, interpret, answer, complete, redText } from './query.js';
+import { queryIndex, tokenize, interpret, answer, complete, redText, stmtText } from './query.js';
 import { createCommunity } from './community.js';
 import { KINDS, STATUS_NAMES, reviewStatus, itemResult, resultKey } from './review.js';
 
@@ -544,6 +544,7 @@ function resultCite(ri, { open = false } = {}) {
   return `<div class="cite">${endorseMark(ri)}${refs}${res.folklore ? ' <span class="badge folk">folklore</span>' : ''}
     ${res.provenance === 'ai' ? ' <span class="badge ai" title="Not taken from the literature: derived by an AI assistant and to be checked">AI-derived</span>' : ''}
     ${res.provenance === 'direct' ? ' <span class="badge folk" title="An immediate consequence of a cited result: a specialization or a restriction of its instances">direct</span>' : ''}
+    ${res.provenance === 'contributed' ? ` <span class="badge folk" title="Contributed by ${esc(j?.by || 'a researcher')} with the argument below, and checked on the review page; no paper states it">contributed</span>` : ''}
     ${j?.by === 'ai' && res.provenance !== 'ai' ? ' <span class="badge ai" title="The justification below was written by an AI assistant">argument by AI</span>' : ''}
     ${res.status === 'needs-check' ? ' <span class="badge warn">needs check</span>' : ''}
     ${res._review ? ` <a class="badge yes" href="#/review/${esc(res._review)}" title="Proposed by the AI reader and validated on the review page; not yet committed to the database">validated on the review page</a>` : ''}</div>
@@ -588,10 +589,30 @@ function pairPanel(a, b, r = rIdx()) {
       <div class="two-col">${section(a, b)}${section(b, a)}</div>
       ${verdictText(a, b, rr)}${proofBlock(Z.status(rr, a, b) === 'separated' ? { t: 'N', r: rr, a, b } : { t: 'I', r: rr, a, b })}
       ${verdictText(b, a, rr)}${proofBlock(Z.status(rr, b, a) === 'separated' ? { t: 'N', r: rr, a: b, b: a } : { t: 'I', r: rr, a: b, b: a })}
+      ${citedResults([[a, b], [b, a]].map(([x, y]) => ({ t: Z.status(rr, x, y) === 'separated' ? 'N' : 'I', r: rr, a: x, b: y })))}
     `);
     $$('.pair-lattice [data-r]', drawer()).forEach((g) => g.addEventListener('click', () => render(+g.dataset.r)));
   };
   render(r);
+}
+
+// The published results the proofs rely on, each with its endorsements and, on the live
+// instance, a button to endorse it (or withdraw one's endorsement) in place.
+function citedResults(facts) {
+  const ris = [...new Set(facts.filter((f) => f.t === 'P' || ['implies', 'separated'].includes(Z.status(f.r, f.a, f.b))).flatMap((f) => Z.sources(f)))]
+    .filter((ri) => !Z.raw.results[ri]._review);
+  if (!ris.length) return '';
+  return `<h3>Results used</h3>
+    <p class="small muted">${C.live ? (C.user ? 'Endorse a result whose proof you have read and believe correct.' : `<a href="${C.loginUrl()}">Sign in with ORCID</a> to endorse the results whose proof you have read.`)
+      : 'Endorsements are collected on the live instance.'}</p>
+    <ul class="cited-results">${ris.map((ri) => `<li data-cited="${ri}">${citedRow(ri)}</li>`).join('')}</ul>`;
+}
+function citedRow(ri) {
+  const res = Z.raw.results[ri], key = res._key, n = C.endorsers(key).length, mine = C.endorsedByMe(key);
+  return `<div class="row"><span class="grow">${resultFact(res)}</span>
+      ${C.user ? `<button class="btn small ${mine ? 'on' : ''}" data-endorse-inline="${ri}" title="${mine ? 'Withdraw your endorsement' : ENDORSE_TEXT}">${mine ? '✓ Endorsed' : 'Endorse'}</button>` : ''}
+      ${endorseMark(ri)}</div>
+    <div class="small muted">${(res.refs || []).map(refLink).join('; ') || ({ ai: 'AI-derived', direct: 'direct consequence', contributed: 'contributed' }[res.provenance] || 'folklore')}${n ? ` · endorsed by ${n}` : ''}</div>`;
 }
 
 function propertyPanel(p, s) {
@@ -709,10 +730,9 @@ function viewQuestions(params, id) {
         <b>${st.status === 'resolved' ? 'Resolved' : `Partially answered${q.parts?.length ? ` (${qSubCount(q)})` : ''}`}</b>${q.answer ? ` — ${esc(q.answer)}` : ''}
         ${solvers.length ? `<div class="small" style="margin-top:4px">Answered in ${solvers.map((r) => `<a href="#/refs/${r.ref}">${esc(refShort(r.ref))}</a>${r.loc ? `, ${esc(r.loc)}` : ''}`).join('; ')}.</div>` : ''}</div>`
         : `<div class="verdict open"><b>Open.</b> ${qFormal(q).length ? 'None of its parts is settled by the results of the database.' : 'No answer is recorded.'}</div>`}
-      ${C.live ? `<div class="row" style="margin:10px 0">
-        <button class="btn" data-feedback="comment|question|${esc(q.id)}" title="A comment, an error, or a paper that answers it (signed in with ORCID)">Comment on this question</button>
-        ${st.status !== 'resolved' ? `<button class="btn" data-suggest="${esc((() => { const p = st.parts.find((x) => x.status === 'open'); return p ? `${S(p.a).id}|${S(p.b).id}|${Z.R[p.r].id}` : '||'; })())}" data-question="${esc(q.id)}"
-          title="The result that answers it, with its source (signed in with ORCID)">Suggest an answer</button>` : ''}</div>` : ''}
+      ${st.status !== 'resolved' ? `<div class="row" style="margin:10px 0">
+        <button class="btn primary" data-suggest="" data-question="${esc(q.id)}" title="The facts that answer it, with their sources (signed in with ORCID)">Answer with facts</button>
+        <button class="btn" data-scroll="q-discussion">Discussion (${C.questionComments(q.id).length})</button></div>` : ''}
       ${q.context ? `<h2>Context</h2><div class="context">${richCite(q.context)}</div>` : ''}
       ${st.parts.length ? `<h2>In the database</h2>
         <p class="small muted">The question as comparisons of the zoo. Click a row for the proof or the current state of knowledge.</p>
@@ -723,8 +743,12 @@ function viewQuestions(params, id) {
             <td class="c ${v[1]}"><b>${v[0]}</b></td></tr>`;
         }).join('')}</table>` : ''}
       ${stm.length ? `<h2>Statements</h2><div class="rel-list">${stm.map((s) => `<a class="chip" href="#/s/${s}" style="color:var(--ink)">${L(idx(s))}</a>`).join('')}</div>
-        <p><a class="btn small" href="#/diagram?s=${stm.join(',')}&r=${over}&sep=1&open=1">Diagram of these statements</a></p>` : ''}`;
+        <p><a class="btn small" href="#/diagram?s=${stm.join(',')}&r=${over}&sep=1&open=1">Diagram of these statements</a></p>` : ''}
+      <h2 id="q-discussion">Discussion</h2><div id="q-thread"></div>`;
+    drawThread(q);
     m.onclick = (e) => {
+      const sc = e.target.closest('[data-scroll]');
+      if (sc) { document.getElementById(sc.dataset.scroll)?.scrollIntoView({ behavior: 'smooth' }); return; }
       const t = e.target.closest('[data-pair]');
       if (t && !e.target.closest('a')) { const [a, b, r] = t.dataset.pair.split(',').map(Number); pairPanel(a, b, r); }
     };
@@ -820,7 +844,7 @@ function viewHome() {
     <h2>Recently added${lastDate ? ` <span class="small muted">· last update ${esc(lastDate)}</span>` : ''}</h2>
     <div class="recent">
       <div class="card"><h3><a href="#/results">Results</a></h3><ul>${recentRes.map(([ri, res]) =>
-        `<li>${resultFact(res)}<div class="small muted">${(res.refs || []).slice(0, 2).map(refLink).join('; ') || ({ ai: 'AI-derived', direct: 'direct consequence' }[res.provenance] || 'folklore')} · ${esc(res._date)}</div></li>`).join('')}</ul></div>
+        `<li>${resultFact(res)}<div class="small muted">${(res.refs || []).slice(0, 2).map(refLink).join('; ') || ({ ai: 'AI-derived', direct: 'direct consequence', contributed: 'contributed' }[res.provenance] || 'folklore')} · ${esc(res._date)}</div></li>`).join('')}</ul></div>
       <div class="card"><h3><a href="#/catalogue">Statements</a></h3><ul>${recentStmts.map(([i, s]) =>
         `<li>${sLink(i)} <span class="muted">${esc(S(i).name)}</span><div class="small muted">${esc(s._date)}</div></li>`).join('')}</ul></div>
       <div class="card"><h3><a href="#/refs">Papers</a></h3><ul>${recentRefs.map(([k, r]) =>
@@ -1016,7 +1040,7 @@ function viewStatement(id, params = new URLSearchParams()) {
       <span class="label">${L(i)}</span>
       <h1 style="margin:0" class="grow">${esc(s.name)}</h1>
       ${C.live ? `<button class="btn" data-feedback="comment|statement|${s.id}" title="Comment or report an error (signed in with ORCID)">Comment</button>
-        <button class="btn" data-suggest="${s.id}||" title="Suggest a result about ${esc(s.name)} that the database lacks (signed in with ORCID)">Suggest a result</button>` : ''}
+        <button class="btn" data-suggest="${s.id}||" title="Contribute facts about ${esc(s.name)} that the database lacks (signed in with ORCID)">Contribute facts</button>` : ''}
       <button class="btn sel-toggle ${isSel(s.id) ? 'on' : ''}" data-sel="${s.id}">${isSel(s.id) ? '✓ Selected' : '+ Select'}</button>
     </div>
     <div class="row" style="margin:6px 0 14px">
@@ -1717,13 +1741,13 @@ function viewResults(params) {
   m.className = '';
   m.innerHTML = `<h1>Results</h1>
     <p class="muted">The atomic facts of the database. Everything else in the zoo is derived from these.
-      A result is missing? <a href="#" data-suggest="||">Suggest it with its source</a>.</p>
+      A result is missing? <a href="#" data-suggest="">Contribute it with its source</a>.</p>
     <div class="filters">
       <input class="text" id="f-q" placeholder="Statement…" value="${esc(params.get('q') || '')}" style="width:200px">
       <select id="f-type"><option value="">All types</option><option>implication</option><option>equivalence</option><option>separation</option><option>property</option><option>conservation</option></select>
       <select id="f-r"><option value="">${MODE() ? `All reductions of the mode` : 'All reductions'}</option>${Z.R.filter((_, r) => rInMode(r)).map((R) => `<option value="${R.id}">${esc(R.name)}</option>`).join('')}</select>
       <select id="f-prov"><option value="">Any provenance</option><option value="lit">From the literature</option>
-        <option value="folk">Folklore</option><option value="direct">Direct consequences</option><option value="ai">AI-derived</option><option value="aiarg">Argument by AI</option>
+        <option value="folk">Folklore</option><option value="direct">Direct consequences</option><option value="contributed">Contributed by researchers</option><option value="ai">AI-derived</option><option value="aiarg">Argument by AI</option>
         <option value="endorsed">Endorsed by a reader</option><option value="endorsed2">Endorsed by several readers</option></select>
       <label class="toggle"><input type="checkbox" id="f-check"> Needs check only</label>
       ${bibButton('bib-res', 'BibTeX of cited papers')}
@@ -1736,6 +1760,7 @@ function viewResults(params) {
     const provOk = (res) => !prov
       || (prov === 'lit' && res.refs?.length && !res.folklore && !res.provenance)
       || (prov === 'direct' && res.provenance === 'direct')
+      || (prov === 'contributed' && res.provenance === 'contributed')
       || (prov === 'folk' && res.folklore)
       || (prov === 'ai' && res.provenance === 'ai')
       || (prov === 'aiarg' && res.justification?.by === 'ai')
@@ -1885,6 +1910,9 @@ function viewAbout(params) {
       (<a href="https://github.com/ericastor/rmzoo" target="_blank" rel="noopener">github.com/ericastor/rmzoo</a>), whose results file seeded this
       database. The references on Weihrauch complexity were seeded from Vasco Brattka's
       <a href="https://cca-net.de/publications/weibib.php" target="_blank" rel="noopener">Bibliography on Weihrauch Complexity</a>.
+      Manlio Valenti shared his own zoo of Weihrauch degrees, whose results were added to this database after being
+      checked against their sources, and suggested several laws of the inference engine (choice elimination,
+      continuous and arithmetic Weihrauch reducibility).
       Every result is credited to the papers that prove it.</p>
     <h2>How this site was made</h2>
     <p>The viewer, the inference engine and the tools that maintain the database were written entirely with
@@ -1934,8 +1962,11 @@ function viewAbout(params) {
       <b>endorse</b> a result, stating: “${ENDORSE_TEXT}” A result endorsed by one person carries a
       <span class="endorse e-one static">✓</span> green check, by several a <span class="endorse e-several static">✓<span>2</span></span> bronze one with their number;
       click a check to see who endorsed it. Endorsers are listed on their profile page with their name and ORCID iD, and can withdraw an
-      endorsement at any time. Signed-in readers can also report an error or comment on a result, a statement or a paper: messages go to the
-      maintainer and are not published. Endorsements are periodically committed to the database
+      endorsement at any time; the panel of a pair of the diagram lists the results its proofs use, each with an Endorse button.
+      Signed-in readers can also contribute facts (the “+ Facts” button: facts typed in the query language, with their sources or
+      justifications), which go to the review page; discuss the open questions on their pages (public comments); and report an error
+      or comment on a result, a statement or a paper (messages to the maintainer, not published). Their profile lists their endorsements
+      and contributions. Endorsements are periodically committed to the database
       (<code>data/endorsements.yaml</code>) with the rest of the data.</p>
     ${C.live ? '' : liveNote()}
     <h2>Review</h2>
@@ -2068,86 +2099,245 @@ function feedbackPanel(kind, type, id) {
     }
   });
 }
-// Suggesting results the database lacks: statements, relation and reduction for each, the sources
-// (papers and theorem numbers) and how the results follow from them when the papers do not state
-// them in these terms. Sent to the maintainer like a comment (kind suggestion, docs/ENDORSEMENTS.md).
-const REL = { implication: 'implies', separation: 'does not imply', equivalence: 'is equivalent to' };
-function suggestPanel(pre = {}) {
-  const title = `<h2 style="margin-top:0">${pre.question ? 'Suggest an answer' : 'Suggest a result'}</h2>`;
-  if (!C.live) { openDrawer(`${title}<p>Results missing from the database can be suggested, with their sources, on the live instance.</p>${liveNote()}`); return; }
-  if (!C.user) { openDrawer(`${title}${signInPrompt('suggest a result')}`); return; }
-  const resolve = (v) => { v = v.trim(); if (!v) return undefined; const i = idx(v); return i !== undefined ? i : search(v, 1)[0]; };
-  const red = Z.R.map((R, r) => ({ R, r })).filter(({ r }) => rInMode(r) || Z.R[r].id === pre.over);
-  const row = (p = {}) => `<div class="sg-row">
-      <span><input class="text sg-s" list="sg-stm" value="${esc(p.from || '')}" placeholder="Statement" required><span class="sg-l small"></span></span>
-      <select class="sg-t">${Object.entries(REL).map(([k, v]) => `<option value="${k}" ${k === (p.type || 'implication') ? 'selected' : ''}>${v}</option>`).join('')}</select>
-      <span><input class="text sg-s" list="sg-stm" value="${esc(p.to || '')}" placeholder="Statement" required><span class="sg-l small"></span></span>
-      <span class="small">over</span>
-      <select class="sg-r">${red.map(({ R }) => `<option value="${R.id}" ${R.id === (p.over || Z.R[rIdx()].id) ? 'selected' : ''}>${esc(R.short)}</option>`).join('')}</select>
-      <button type="button" class="btn small sg-del" title="Remove">✕</button></div>`;
+// ---- contributing facts ------------------------------------------------------------
+// A modal box: facts typed in the query language (query.js) are stacked in a list, each
+// with its source (a paper of the references and where in it, or a citation) and/or a
+// justification, then sent together. Each fact becomes, after the maintainer's sync, a
+// pending item of the review page (origin: contributed) where researchers check it; the
+// contributor follows them on the Contributions tab of their profile (docs/ENDORSEMENTS.md).
+const CONTRIB_DRAFT = 'rmzoo.contrib';
+// the facts a question states: le/lt/gt give the implication and, when strict, the separation
+function factsOfQuery(q) {
+  if (!q) return { error: 'Not understood: write a comparison or a property, e.g. “RT22 ≤c BRT32” or “Does RT12 admit cone avoidance?”.' };
+  if (q.type === 'prop') return { facts: [{ type: 'property', statement: S(q.s).id, property: Z.raw.properties[q.p].id, value: !q.neg }] };
+  if (q.type !== 'rel') return { error: 'A fact compares two statements or gives a property of one.' };
+  const R = Z.R[q.r].id, x = S(q.x).id, y = S(q.y).id;
+  const imp = (a, b) => ({ type: 'implication', from: a, to: b, over: R });
+  const sep = (a, b) => ({ type: 'separation', from: a, to: b, over: R });
+  if (q.kind === 'vs') return { error: 'Say which way: A → B, A ⇏ B, A ≤ B, A ≡ B…' };
+  if (q.kind === 'eq') return q.neg ? { error: '“Not equivalent” does not say which direction fails: write A ⇏ B or B ⇏ A.' } : { facts: [{ type: 'equivalence', from: x, to: y, over: R }] };
+  if (q.neg && (q.kind === 'lt' || q.kind === 'gt')) return { error: 'Write the non-implication itself: A ⇏ B.' };
+  const down = q.kind === 'le' || q.kind === 'lt'; // x ≤ y: y ⇒ x
+  const a = down ? y : x, b = down ? x : y; // a ⇒ b (b ≤ a)
+  if (q.neg) return { facts: [sep(a, b)] };
+  return { facts: q.kind === 'lt' || q.kind === 'gt' ? [imp(a, b), sep(b, a)] : [imp(a, b)] };
+}
+// what the database knows of a fact: known, contradicted or open
+function factState(f) {
+  if (f.type === 'property') {
+    const e = Z.prop(Z.pidx.get(f.property), idx(f.statement));
+    return !e ? 'open' : e.v === f.value ? 'known' : 'contradicts';
+  }
+  const r = Z.ridx.get(f.over), a = idx(f.from), b = idx(f.to);
+  const one = (s, want) => (s === want ? 'known' : s === 'open' ? 'open' : s === 'na' ? 'na' : 'contradicts');
+  if (f.type === 'implication') return one(Z.status(r, a, b), 'implies');
+  if (f.type === 'separation') return one(Z.status(r, a, b), 'separated');
+  const u = one(Z.status(r, a, b), 'implies'), v = one(Z.status(r, b, a), 'implies');
+  if (u === 'contradicts' || v === 'contradicts') return 'contradicts';
+  if (u === 'na' || v === 'na') return 'na';
+  return u === 'known' && v === 'known' ? 'known' : 'open';
+}
+const FACT_STATE = { known: ['yes', 'in the database'], open: ['open', 'not known to the database'], contradicts: ['no', 'contradicts the database'], na: ['na', 'not applicable to these statements'] };
+const factBadge = (f) => { const st = FACT_STATE[factState(f)]; return `<span class="badge st-${st[0]}">${st[1]}</span>`; };
+const factKey = (f) => JSON.stringify([f.type, f.from ?? f.statement, f.to ?? f.property, f.over ?? f.value]);
+
+function contributeModal(pre = {}) {
+  closeDrawer();
   const q = pre.question && (Z.raw.questions || []).find((x) => x.id === pre.question);
-  openDrawer(`${title}
-    ${q ? `<p>${q.question ? rich(q.question) : rich(q.parts[0].question)}</p>` : ''}
-    <form id="sg-form" class="fb-form">
-      <p class="small muted">One line per result. Choose the statements in the list (name, acronym or id).
-        Over a reduction, “A implies B” means that B reduces to A (B ≤ A).</p>
-      <datalist id="sg-stm">${Z.S.map((s, i) => `<option value="${esc(s.id)}">${esc(s.name)} · ${esc(hay[i].ascii)}</option>`).join('')}</datalist>
-      <div id="sg-rows">${row(pre)}</div>
-      <p><button type="button" class="btn small" id="sg-add">+ Another result</button></p>
-      <label class="small"><b>Sources</b>: papers and theorem numbers</label>
-      <textarea id="sg-src" rows="3" maxlength="5000" placeholder="e.g. Brattka, Gherardi, Marcone 2012, Proposition 10.9"></textarea>
-      <label class="small"><b>Explanation</b>: how the results follow from the sources when they are not stated in these terms (different names or definitions, a combination of results, an obvious reduction…)</label>
-      <textarea id="sg-text" rows="6" maxlength="10000"></textarea>
-      <p class="small muted">Sent to the maintainer of the zoo with your name and ORCID iD (${esc(C.user.name)}); not published.
-        The results are checked against the papers before they are entered.</p>
-      <div class="row"><button class="btn primary" type="submit">Send</button><span id="sg-msg" class="small"></span></div>
-    </form>`);
-  const form = $('#sg-form');
-  const preview = (inp) => { const i = resolve(inp.value); inp.nextElementSibling.innerHTML = i === undefined ? (inp.value.trim() ? '<span class="no">unknown</span>' : '') : `${L(i)}`; };
-  const wire = (el) => {
-    el.querySelectorAll('.sg-s').forEach((inp) => { inp.addEventListener('input', () => preview(inp)); preview(inp); });
-    el.querySelector('.sg-del').onclick = () => { if ($('#sg-rows').children.length > 1) el.remove(); };
+  let draft = store.get(CONTRIB_DRAFT, null);
+  if (!draft || !Array.isArray(draft.facts)) draft = { facts: [], text: '' };
+  const save = () => store.set(CONTRIB_DRAFT, draft);
+  const chips = q ? qInfo(q).parts.filter((p) => p.status === 'open')
+    .map((p) => `<button class="chip" data-ct-insert="${esc(`${stmtText(qx(), p.a)} → ${stmtText(qx(), p.b)} over ${redText(Z, p.r)}`)}">${L(p.a, p.r)} → ${L(p.b, p.r)} <span class="muted">over ${esc(Z.R[p.r].short)}</span></button>`).join('') : '';
+  const body = !C.live ? `<p>Facts are contributed on the live instance, by researchers signed in with ORCID.</p>${liveNote()}`
+    : !C.user ? signInPrompt('contribute facts to the database') : `
+    <p class="small muted">Type a fact as in the query mode of the search field, then press Enter to add it to the list:
+      <code>RT22 ≤c BRT32</code>, <code>SRT22 ⇏ COH over ω-models</code>, <code>ADS ≡ CAC over RCA0</code>,
+      <code>Does RT12 admit cone avoidance?</code>, <code>WKL &gt; WWKL over W</code> (the implication and the separation).</p>
+    <div class="search ct-search"><input id="ct-q" type="text" autocomplete="off" placeholder="A fact: RT22 → COH over W" value="${esc(pre.text || '')}"><div id="ct-pop" class="popover" hidden></div></div>
+    <div id="ct-err" class="small"></div>
+    ${chips ? `<p class="small muted">Open parts of the question (click to edit, then Enter):</p><div class="ct-chips">${chips}</div>` : ''}
+    <div id="ct-list"></div>
+    <label class="small"><b>Message to the maintainer</b> (optional)</label>
+    <textarea id="ct-text" rows="2" maxlength="10000" placeholder="Anything that applies to the whole list"></textarea>
+    <p class="small muted">Sent with your name and ORCID iD (${esc(C.user.name)}). Each fact is then put on the <a href="#/review">review page</a>,
+      where researchers check it against its source before it enters the database; follow them on the Contributions tab of
+      <a href="#/u/me?tab=contributions">your profile</a>.</p>
+    <div class="row"><button class="btn primary" id="ct-send">Send</button><span id="ct-msg" class="small"></span></div>`;
+  const box = openModal(`<div class="modal-head"><h2>${q ? 'Answer a question' : 'Contribute facts'}</h2><button class="btn small" data-close-modal>✕</button></div>
+    ${q ? `<p class="small">About <a href="#/questions/${esc(q.id)}">${q.question ? rich(q.question) : rich(qText(q))}</a></p>` : ''}${body}`);
+  if (!C.live || !C.user) return;
+  const input = $('#ct-q', box), pop = $('#ct-pop', box), err = $('#ct-err', box);
+  $('#ct-text', box).value = draft.text || '';
+  $('#ct-text', box).addEventListener('input', (e) => { draft.text = e.target.value; save(); });
+  const card = (f, k) => {
+    const src = f.source || {};
+    return `<div class="ct-fact" data-k="${k}">
+      <div class="row ct-row"><span class="grow">${k + 1}. ${resultFact(f)}</span>${factBadge(f)}<button class="btn small" data-ct-del="${k}" title="Remove this fact">✕</button></div>
+      <div class="ct-src">
+        <span class="search"><input class="text" data-ct-ref="${k}" placeholder="Source: a paper (title, author, year)…" value="${esc(src.ref ? refShort(src.ref) : src.citation || '')}" autocomplete="off"><div class="popover" hidden></div></span>
+        <input class="text ct-loc" data-ct-loc="${k}" placeholder="Where: Theorem 3.4" value="${esc(src.loc || '')}">
+      </div>
+      ${src.ref ? `<div class="small muted">${refFull(src.ref)}</div>` : src.citation ? '<div class="small muted">Not chosen in the references: kept as a citation.</div>' : ''}
+      <textarea data-ct-just="${k}" rows="2" maxlength="5000" placeholder="Justification: how it follows, when no paper states it in these terms (optional with a source)">${esc(f.justification || '')}</textarea>
+    </div>`;
   };
-  [...$('#sg-rows').children].forEach(wire);
-  $('#sg-add').onclick = () => {
-    if ($('#sg-rows').children.length >= 20) return;
-    $('#sg-rows').insertAdjacentHTML('beforeend', row({ over: $('#sg-rows').lastElementChild?.querySelector('.sg-r').value }));
-    wire($('#sg-rows').lastElementChild);
+  const drawList = () => {
+    $('#ct-list', box).innerHTML = draft.facts.length ? draft.facts.map(card).join('') : '<p class="muted small">No fact in the list yet.</p>';
+    const send = $('#ct-send', box);
+    send.textContent = draft.facts.length ? `Send ${draft.facts.length} fact${draft.facts.length === 1 ? '' : 's'}` : 'Send';
+    send.disabled = !draft.facts.length;
+    // source: a paper of the references (completion), or free text kept as a citation
+    $$('[data-ct-ref]', box).forEach((inp) => {
+      const k = +inp.dataset.ctRef, p = inp.nextElementSibling;
+      let hits = [];
+      const show = () => {
+        hits = searchPapers(inp.value, 6);
+        p.innerHTML = hits.map((h, i) => `<div class="opt paper" data-i="${i}"><span><i>${rich(h.r.title)}</i></span><span class="muted">${esc(refShort(h.k))}</span></div>`).join('');
+        p.hidden = !hits.length;
+      };
+      inp.addEventListener('input', () => {
+        const s = draft.facts[k].source || {};
+        draft.facts[k].source = { ...(s.loc ? { loc: s.loc } : {}), ...(inp.value.trim() ? { citation: inp.value.trim() } : {}) };
+        save(); show();
+      });
+      inp.addEventListener('blur', () => setTimeout(() => { p.hidden = true; }, 150));
+      p.addEventListener('mousedown', (e) => {
+        const o = e.target.closest('[data-i]');
+        if (!o) return;
+        e.preventDefault();
+        const s = draft.facts[k].source || {};
+        draft.facts[k].source = { ref: hits[+o.dataset.i].k, ...(s.loc ? { loc: s.loc } : {}) };
+        save(); drawList();
+      });
+    });
+    $$('[data-ct-loc]', box).forEach((inp) => inp.addEventListener('input', () => {
+      const k = +inp.dataset.ctLoc;
+      const s = { ...(draft.facts[k].source || {}), loc: inp.value.trim() };
+      if (!s.loc) delete s.loc;
+      draft.facts[k].source = s;
+      save();
+    }));
+    $$('[data-ct-just]', box).forEach((ta) => ta.addEventListener('input', () => { draft.facts[+ta.dataset.ctJust].justification = ta.value; save(); }));
   };
-  form.addEventListener('submit', async (e) => {
+  const addFrom = (text) => {
+    const r = factsOfQuery(text.trim() ? qParse(text) : null);
+    if (r.error) { err.className = 'small no'; err.textContent = r.error; return false; }
+    const have = new Set(draft.facts.map(factKey));
+    const fresh = r.facts.filter((f) => !have.has(factKey(f)));
+    if (!fresh.length) { err.className = 'small no'; err.textContent = 'Already in the list.'; return false; }
+    draft.facts.push(...fresh);
+    err.className = 'small muted';
+    err.textContent = fresh.some((f) => factState(f) === 'known') ? 'The database already has this fact; a new source or argument is still welcome.'
+      : fresh.some((f) => factState(f) === 'contradicts') ? 'This fact contradicts the database: say why in its justification.' : '';
+    save(); drawList();
+    return true;
+  };
+  // the fact being typed: completions of query.js; Enter adds it once it is a complete fact
+  let hl = 0, rows = [];
+  const parsed = () => { const q0 = input.value.trim() ? qParse(input.value) : null; return q0 && !factsOfQuery(q0).error ? factsOfQuery(q0).facts : null; };
+  const showC = () => {
+    if (!input.value.trim()) { rows = []; pop.hidden = true; return; }
+    // completions of the query mode, without the templates that open pages
+    rows = complete(qx(), input.value, { search, r: rIdx(), rInMode, inMode, cur: curStmt() }).items
+      .filter((it) => !(it.template && /^(Display|Compare|Diagram|Questions)/.test(it.insert.trim()))).slice(0, 8);
+    hl = Math.min(hl, Math.max(0, rows.length - 1));
+    const fs0 = parsed();
+    pop.innerHTML = (fs0 ? `<div class="opt q-answer" data-k="-1"><span class="grow">Add ${fs0.map(resultFact).join(' and ')}</span><span class="q-enter small muted">↵</span></div>` : '')
+      + rows.map((it, k) => `<div class="opt ${k === hl ? 'hl' : ''}" data-k="${k}"><span class="q-ins">${it.kind === 'stmt' ? L(it.i) : esc(it.insert.trim())}</span><span class="muted grow">${it.kind === 'stmt' ? esc(S(it.i).name) : ''}</span>${k === hl ? '<span class="q-enter small muted">Tab</span>' : ''}</div>`).join('');
+    pop.hidden = !pop.innerHTML;
+  };
+  const pickC = (k) => {
+    const it = rows[k];
+    if (!it) return;
+    input.value = input.value.slice(0, it.from) + it.insert;
+    input.focus(); hl = 0; showC();
+  };
+  const addTyped = () => { if (addFrom(input.value)) { input.value = ''; showC(); } };
+  input.addEventListener('input', () => { hl = 0; err.textContent = ''; showC(); });
+  input.addEventListener('focus', showC);
+  input.addEventListener('blur', () => setTimeout(() => { pop.hidden = true; }, 150));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' && rows.length) { hl = Math.min(hl + 1, rows.length - 1); showC(); e.preventDefault(); }
+    else if (e.key === 'ArrowUp' && rows.length) { hl = Math.max(hl - 1, 0); showC(); e.preventDefault(); }
+    else if (e.key === 'Tab' && rows.length) { pickC(hl); e.preventDefault(); }
+    else if (e.key === 'Enter') { e.preventDefault(); if (parsed() || !rows.length) addTyped(); else pickC(hl); }
+  });
+  pop.addEventListener('mousedown', (e) => {
+    const o = e.target.closest('[data-k]');
+    if (!o) return;
     e.preventDefault();
-    const msg = $('#sg-msg'), btn = form.querySelector('button[type=submit]');
-    const results = [];
-    for (const el of $('#sg-rows').children) {
-      const [a, b] = [...el.querySelectorAll('.sg-s')].map((inp) => resolve(inp.value));
-      if (a === undefined || b === undefined) { msg.textContent = 'Choose each statement in the list.'; return; }
-      if (a === b) { msg.textContent = 'A result relates two different statements.'; return; }
-      results.push({ type: el.querySelector('.sg-t').value, from: S(a).id, to: S(b).id, over: el.querySelector('.sg-r').value });
-    }
-    const sources = $('#sg-src').value.trim(), text = $('#sg-text').value.trim();
-    if (!sources && !text) { msg.textContent = 'Give the sources or an explanation.'; return; }
+    if (+o.dataset.k === -1) addTyped(); else pickC(+o.dataset.k);
+  });
+  box.addEventListener('click', (e) => {
+    const d = e.target.closest('[data-ct-del]');
+    if (d) { draft.facts.splice(+d.dataset.ctDel, 1); save(); drawList(); return; }
+    const ins = e.target.closest('[data-ct-insert]');
+    if (ins) { input.value = ins.dataset.ctInsert; input.focus(); showC(); }
+  });
+  $('#ct-send', box).addEventListener('click', async () => {
+    const msg = $('#ct-msg', box), btn = $('#ct-send', box);
+    const bad = draft.facts.findIndex((f) => !f.source?.ref && !f.source?.citation && !(f.justification || '').trim());
+    if (bad >= 0) { msg.textContent = `Fact ${bad + 1}: give a source (a paper and where in it) or a justification.`; return; }
     btn.disabled = true;
     try {
-      await C.suggest(results, sources, text, q ? { type: 'question', id: q.id } : { type: 'general', id: '' });
-      form.outerHTML = '<div class="verdict yes">Thank you: your suggestion was recorded. It will be checked against the papers and entered in the database.</div>';
-    } catch (err) {
-      msg.textContent = err.message;
-      btn.disabled = false;
-    }
+      await C.suggest(draft.facts.map((f) => ({ ...f, justification: (f.justification || '').trim() || undefined })), draft.text || '',
+        q ? { type: 'question', id: q.id } : { type: 'general', id: '' });
+      const n = draft.facts.length;
+      store.set(CONTRIB_DRAFT, null);
+      $('.modal-body', box).innerHTML = `<div class="modal-head"><h2>Thank you</h2><button class="btn small" data-close-modal>✕</button></div>
+        <div class="verdict yes">${n === 1 ? 'Your fact was' : `Your ${n} facts were`} recorded. ${n === 1 ? 'It' : 'They'} will be checked against the sources on the
+          review page; follow ${n === 1 ? 'it' : 'them'} on the Contributions tab of <a href="#/u/me?tab=contributions">your profile</a>.</div>`;
+    } catch (e2) { msg.textContent = e2.message; btn.disabled = false; }
   });
+  drawList();
+  input.focus();
+  if (pre.text) { input.setSelectionRange(input.value.length, input.value.length); showC(); }
 }
+// a modal box over the page (Escape, ✕, a link or a click outside closes it)
+function openModal(html) {
+  closeModal();
+  const back = document.createElement('div');
+  back.className = 'modal-back';
+  back.innerHTML = `<div class="modal" role="dialog" aria-modal="true"><div class="modal-body">${html}</div></div>`;
+  document.body.appendChild(back);
+  back.addEventListener('mousedown', (e) => { if (e.target === back) closeModal(); });
+  back.addEventListener('click', (e) => {
+    if (e.target.closest('[data-close-modal]') || (e.target.closest('a[href^="#"]') && !e.target.closest('.popover'))) closeModal();
+  });
+  return back;
+}
+function closeModal() { $$('.modal-back').forEach((m) => m.remove()); }
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && $('.modal-back')) closeModal(); });
 document.addEventListener('click', async (e) => {
   const sg = e.target.closest('[data-suggest]');
   if (sg) {
     e.preventDefault(); e.stopPropagation();
+    // data-suggest: "from|to|over" (an open pair: prefilled as an implication, to edit), "from||" or empty
     const [from, to, over] = sg.dataset.suggest.split('|');
-    suggestPanel({ from, to, over: over || undefined, question: sg.dataset.question });
+    const a = from ? idx(from) : undefined, b = to ? idx(to) : undefined, r = over ? Z.ridx.get(over) : undefined;
+    const text = a !== undefined && b !== undefined ? `${stmtText(qx(), a)} → ${stmtText(qx(), b)}${r !== undefined ? ` over ${redText(Z, r)}` : ''}`
+      : a !== undefined ? `${stmtText(qx(), a)} ` : '';
+    contributeModal({ text, question: sg.dataset.question });
     return;
   }
   const r = e.target.closest('[data-result]');
   if (r) { e.preventDefault(); e.stopPropagation(); resultPanel(+r.dataset.result); return; }
   const f = e.target.closest('[data-feedback]');
   if (f) { e.preventDefault(); const [kind, type, ...id] = f.dataset.feedback.split('|'); feedbackPanel(kind, type, id.join('|')); return; }
+  const ei = e.target.closest('[data-endorse-inline]');
+  if (ei) {
+    e.preventDefault(); e.stopPropagation();
+    const ri = +ei.dataset.endorseInline;
+    ei.disabled = true;
+    try {
+      await C.setEndorsement(Z.raw.results[ri]._key, !C.endorsedByMe(Z.raw.results[ri]._key));
+      const li = ei.closest('[data-cited]');
+      if (li) li.innerHTML = citedRow(ri);
+      refreshMarks();
+    } catch (err) { ei.disabled = false; alert(err.message); }
+    return;
+  }
   const en = e.target.closest('[data-endorse]');
   if (en) {
     const ri = +en.dataset.endorse;
@@ -2163,6 +2353,33 @@ document.addEventListener('click', async (e) => {
 function refreshMarks() {
   $$('#main .endorse[data-result]').forEach((b) => { b.outerHTML = endorseMark(+b.dataset.result); });
 }
+// public discussion of a question (comments stored by the server, committed in
+// data/endorsements.yaml by the sync): anyone reads, signed-in researchers write
+function drawThread(q) {
+  const el = $('#q-thread');
+  if (!el) return;
+  const list = C.questionComments(q.id);
+  el.innerHTML = `${list.length ? `<ul class="rv-comments">${list.map((c) => `<li><span class="small">${personLink(c.orcid)} <span class="muted">${esc(c.date)}</span>
+      ${C.user?.orcid === c.orcid && C.live ? ` <button class="btn small" data-qdel="${esc(c.id)}">Delete</button>` : ''}</span><div>${esc(c.text)}</div></li>`).join('')}</ul>`
+    : '<p class="muted small">No comment yet.</p>'}
+    ${!C.live ? liveNote() : !C.user ? signInPrompt('comment on this question')
+      : `<form id="q-form" class="fb-form"><textarea rows="3" maxlength="5000" required placeholder="Your comment (public, with your name): a partial answer, a related result, a reference…"></textarea>
+        <div class="row"><button class="btn primary" type="submit">Comment</button><span class="small muted">To enter facts that answer it, use <a href="#" data-suggest="" data-question="${esc(q.id)}">Answer with facts</a>.</span><span id="q-msg" class="small"></span></div></form>`}`;
+  el.onclick = async (e) => {
+    const d = e.target.closest('[data-qdel]');
+    if (!d) return;
+    d.disabled = true;
+    try { await C.deleteQComment(d.dataset.qdel); drawThread(q); } catch (err) { d.disabled = false; alert(err.message); }
+  };
+  const f = $('#q-form');
+  if (f) f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = f.querySelector('button[type=submit]');
+    btn.disabled = true;
+    try { await C.addQComment(q.id, f.querySelector('textarea').value); drawThread(q); } catch (err) { $('#q-msg').textContent = err.message; btn.disabled = false; }
+  });
+}
+
 function renderAccount() {
   const a = $('#account');
   if (!C.live) { a.innerHTML = ''; return; }
@@ -2170,7 +2387,8 @@ function renderAccount() {
   const bell = n ? `<a class="btn small bell" href="#/u/${C.user.orcid}?tab=texts" title="${n} of your papers ${n === 1 ? 'has' : 'have'} no full text in the zoo: share ${n === 1 ? 'it' : 'them'}, or say that you cannot">
       <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5.5-6.84V3.5a1.5 1.5 0 0 0-3 0v.66A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2Z"/></svg><span class="bell-count">${n}</span></a> ` : '';
   a.innerHTML = C.user
-    ? `${bell}<a class="btn small" href="#/u/${C.user.orcid}" title="Your profile: endorsements and full texts"><span class="orcid-dot"></span>${esc(C.user.name)}</a>`
+    ? `${bell}<button class="btn small" data-suggest="" title="Contribute facts to the database, with their sources">+ Facts</button>
+      <a class="btn small" href="#/u/${C.user.orcid}" title="Your profile: endorsements, contributions and full texts"><span class="orcid-dot"></span>${esc(C.user.name)}</a>`
     : `<a class="btn small" id="signin" href="${C.loginUrl()}"><span class="orcid-dot"></span>Sign in</a>`;
 }
 // the sign-in link returns to the page being viewed
@@ -2180,16 +2398,19 @@ function viewProfile(orcid, params = new URLSearchParams()) {
   const m = main();
   m.className = '';
   if (orcid === 'me') {
-    if (C.user) { location.replace(`#/u/${C.user.orcid}`); return; }
-    m.innerHTML = `<h1>Your profile</h1>${C.live ? signInPrompt('see your endorsements and the full texts you shared') : liveNote()}`;
+    if (C.user) { location.replace(`#/u/${C.user.orcid}${[...params].length ? `?${params}` : ''}`); return; }
+    m.innerHTML = `<h1>Your profile</h1>${C.live ? signInPrompt('see your endorsements, your contributions and the full texts you shared') : liveNote()}`;
     return;
   }
   const own = C.user?.orcid === orcid;
   const mine = (C.byPerson.get(orcid) || []).slice().sort((a, b) => b.date.localeCompare(a.date));
   const list = mine.map((e) => [Z.raw.results[resultIdx.get(e.result)], resultIdx.get(e.result), e.date]).filter(([res]) => res);
   const gone = mine.length - list.length;
-  // tabs: endorsements (anyone's), full texts (one's own only: uploads are private)
-  const TABS = [['endorsements', `Endorsements <span class="count">${list.length}</span>`], ...(own ? [['texts', 'Full texts']] : [])];
+  // tabs: endorsements and contributions (anyone's: public comments; one's own also shows the
+  // facts and messages sent, which are private), full texts (one's own only: uploads are private)
+  const pub = publicComments(orcid);
+  const TABS = [['endorsements', `Endorsements <span class="count">${list.length}</span>`],
+    ['contributions', `Contributions${own ? '' : ` <span class="count">${pub.length}</span>`}`], ...(own ? [['texts', 'Full texts']] : [])];
   const tab = TABS.some(([x]) => x === params.get('tab')) ? params.get('tab') : 'endorsements';
   const panel = (x) => `<section class="tab-panel" data-panel="${x}"${x === tab ? '' : ' hidden'}>`;
   m.innerHTML = `<h1>${esc(own ? C.user.name : C.name(orcid))}</h1>
@@ -2203,6 +2424,7 @@ function viewProfile(orcid, params = new URLSearchParams()) {
         empty: `<p class="muted">${own ? 'You have not endorsed any result yet: open a result (its ✓ mark) to endorse it.' : 'No endorsement.'}</p>` })}
     ${gone ? `<p class="small muted">${gone} endorsed result${gone === 1 ? ' has' : 's have'} since been changed in the database.</p>` : ''}
     </section>
+    ${panel('contributions')}<div id="contrib-root">${own ? '<p class="muted">Loading…</p>' : contributionsHtml(orcid, null)}</div></section>
     ${own ? `${panel('texts')}<div id="uploads-root"><p class="muted">Loading…</p></div></section>` : ''}`;
   m.onclick = (e) => {
     const tb = e.target.closest('[data-tab]');
@@ -2212,7 +2434,55 @@ function viewProfile(orcid, params = new URLSearchParams()) {
     m.querySelectorAll('[data-panel]').forEach((p) => { p.hidden = p.dataset.panel !== x; });
     history.replaceState(null, '', `#/u/${orcid}${x === 'endorsements' ? '' : `?tab=${x}`}`);
   };
-  if (own) loadUploads(params);
+  if (own) {
+    loadUploads(params);
+    C.mine().then((msgs) => { const el = $('#contrib-root'); if (el) el.innerHTML = contributionsHtml(orcid, msgs); })
+      .catch((err) => { const el = $('#contrib-root'); if (el) el.innerHTML = `<p class="no">${esc(err.message)}</p>${contributionsHtml(orcid, [])}`; });
+  }
+}
+// public comments of a person: on the open questions and on the review page
+function publicComments(orcid) {
+  const qs = C.qcomments.filter((c) => c.orcid === orcid).map((c) => ({ ...c, where: 'question' }));
+  const rv = (C.live ? C.reviewComments : (Z.raw.review?.items || []).flatMap((it) => (it.comments || []).map((c) => ({ ...c, item: it.id }))))
+    .filter((c) => c.orcid === orcid).map((c) => ({ ...c, where: 'review' }));
+  return [...qs, ...rv].sort((a, b) => b.date.localeCompare(a.date));
+}
+// the Contributions tab: msgs = one's own messages from the server (null on another's profile)
+function contributionsHtml(orcid, msgs) {
+  const own = msgs !== null;
+  const pub = publicComments(orcid);
+  const qLink = (id) => { const q = (Z.raw.questions || []).find((x) => x.id === id); return `<a href="#/questions/${esc(id)}">${q ? rich(qText(q)) : esc(id)}</a>`; };
+  const facts = own ? msgs.filter((m) => m.kind === 'suggestion') : [];
+  const others = own ? msgs.filter((m) => m.kind !== 'suggestion') : [];
+  const targetHtml = (tg) => {
+    if (!tg || tg.type === 'general') return 'the zoo';
+    if (tg.type === 'result') { const ri = resultIdx.get(tg.id); return ri !== undefined ? resultFact(Z.raw.results[ri]) : 'a result (since changed)'; }
+    if (tg.type === 'statement') return idx(tg.id) !== undefined ? sLink(idx(tg.id)) : esc(tg.id);
+    if (tg.type === 'reference') return `<a href="#/refs/${esc(tg.id)}">${esc(refShort(tg.id))}</a>`;
+    if (tg.type === 'question') return qLink(tg.id);
+    return esc(tg.id);
+  };
+  const factRow = (f) => {
+    const ok = [f.from, f.to, f.statement].filter(Boolean).every((id) => idx(id) !== undefined) && (!f.over || Z.ridx.has(f.over)) && (!f.property || Z.pidx.has(f.property));
+    const src = f.source || {};
+    return `<li>${ok ? `${resultFact(f)} ${factBadge(f)}` : esc(JSON.stringify([f.from ?? f.statement, f.to ?? f.property]))}
+      <div class="small muted">${src.ref ? refLink({ ref: src.ref, loc: src.loc }) : src.citation ? esc(`${src.citation}${src.loc ? `, ${src.loc}` : ''}`) : 'no paper'}${f.justification ? ` · ${esc(f.justification.length > 160 ? `${f.justification.slice(0, 160)}…` : f.justification)}` : ''}</div></li>`;
+  };
+  return `${own ? `<h2>Facts you contributed</h2>
+      <p class="small muted">Private to you. Each fact goes to the <a href="#/review">review page</a> once the maintainer has synchronized the site;
+        the badge says what the database knows of it now (“in the database” once accepted, or derived from other results).
+        <button class="btn small" data-suggest="">+ Contribute facts</button></p>
+      ${facts.length ? facts.map((m) => `<div class="card contrib"><div class="small muted">${esc(String(m.date).slice(0, 10))}${m.target?.type === 'question' ? ` · answering ${qLink(m.target.id)}` : ''}</div>
+          <ul class="contrib-facts">${(m.facts || m.results || []).map(factRow).join('')}</ul>${m.text ? `<p class="small">${esc(m.text)}</p>` : ''}</div>`).join('')
+        : '<p class="muted">No fact contributed yet.</p>'}
+      <h2>Your messages to the maintainer</h2>
+      ${others.length ? `<ul class="contrib-msgs">${others.map((m) => `<li><span class="badge ${m.kind === 'error' ? 'warn' : ''}">${m.kind === 'error' ? 'error report' : 'comment'}</span>
+          on ${targetHtml(m.target)} <span class="small muted">${esc(String(m.date).slice(0, 10))}</span><div class="small">${esc(m.text)}</div></li>`).join('')}</ul>`
+        : '<p class="muted">No message.</p>'}` : ''}
+    <h2>${own ? 'Your public comments' : 'Public comments'}</h2>
+    ${pub.length ? `<ul class="contrib-msgs">${pub.map((c) => `<li>on ${c.where === 'question' ? `the question ${qLink(c.question)}` : `the review item <a href="#/review/${esc(c.item)}">${esc(c.item)}</a>`}
+        <span class="small muted">${esc(c.date)}</span><div class="small">${esc(c.text)}</div></li>`).join('')}</ul>`
+      : `<p class="muted">${own ? 'You have not commented yet: discuss an open question on its page, or a proposal on the review page.' : 'No public comment.'}</p>`}`;
 }
 
 // ============================================================================
@@ -2495,7 +2765,7 @@ async function mergeValidated() {
   return true;
 }
 
-const ORIGINS = { stated: 'stated in the paper', cited: 'attributed by the paper to another work', 'special-case': 'special case of a result of the paper', deduced: 'deduced from the paper (not stated)' };
+const ORIGINS = { stated: 'stated in the paper', cited: 'attributed by the paper to another work', 'special-case': 'special case of a result of the paper', deduced: 'deduced from the paper (not stated)', contributed: 'contributed by a researcher' };
 const STATUS_CLS = { open: '', validated: 'yes', invalidated: 'no', disputed: 'warn' };
 // a proposed result: rendered like a result of the database when its ids are known
 function reviewFact(r) {
@@ -2512,7 +2782,12 @@ const passage = (t) => `<blockquote class="rv-quote">${esc(t)}</blockquote>`;
 function reviewBody(it) {
   const S0 = it.statement;
   switch (it.kind) {
-    case 'result': return `<p class="rv-fact">${reviewFact(it.result)}</p>
+    case 'result': if (it.origin === 'contributed') return `<p class="rv-fact">${reviewFact(it.result)}</p>
+      <p class="small">Contributed by ${it.contributor?.orcid ? personLink(it.contributor.orcid) : esc(it.contributor?.name || 'a researcher')}
+        ${it.ref ? ` · ${refLink({ ref: it.ref, loc: it.loc })}` : it.citation ? ` · source: ${esc(it.citation)}${it.loc ? `, ${esc(it.loc)}` : ''}` : ' · no paper given'}</p>
+      ${it.argument ? `<p class="small"><b>Justification.</b> ${rich(it.argument)}</p>` : ''}
+      <p class="small muted">Check the source (or the argument) before validating: a validated fact enters the database${it.ref ? ' with this citation' : ' with the contributor\'s argument'}.</p>`;
+      return `<p class="rv-fact">${reviewFact(it.result)}</p>
       <p class="small">${it.ref ? refLink({ ref: it.ref, loc: it.loc }) : ''} · ${esc(ORIGINS[it.origin] || it.origin)}${it.citedFrom ? ` (${esc(it.citedFrom)})` : ''}
         ${it.paperNotation ? ` · paper's notation: ${esc(it.paperNotation)}` : ''}${it.part ? ` · part ${esc(it.part)} of the text` : ''}</p>
       ${it.quote ? passage(it.quote) : ''}

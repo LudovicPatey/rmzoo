@@ -7,10 +7,28 @@ ORCID iD. Once signed in they can:
   correct”. A result endorsed by one person shows a green ✓, by several a bronze
   ✓ with the count; clicking it lists the endorsers. Endorsements can be
   withdrawn at any time;
+* endorse the results a proof relies on **from the diagram**: the panel of a pair
+  (click an edge, or answer a query) lists the results used, each with an
+  Endorse button;
 * **report an error** or **comment** on a result, a statement or a paper. Each
   message becomes one JSON file for the maintainer (not published);
-* see their **profile** page `#/u/<ORCID iD>`, which lists the results they
-  endorsed (every profile is public; `#/u/me` goes to one's own);
+* **contribute facts** (“+ Facts” in the header, “Contribute facts” on a
+  statement page, the link of an open pair, “Answer with facts” on an open
+  question): a modal box where facts are typed in the query language of the
+  search field (`RT22 ≤c BRT32`, `SRT22 ⇏ COH over ω-models`, `Does RT12 admit
+  cone avoidance?`), stacked in a list with the database's current status of
+  each, and given a source (a paper of the references and where in it, or a
+  citation) and/or a justification. The draft is kept in the browser until it is
+  sent. The suggestion is a private message to the maintainer; after the sync each
+  fact becomes a pending `result` item of the review page (origin `contributed`,
+  docs/REVIEW.md), where researchers check it publicly;
+* **discuss an open question** on its page: public comments, with name and ORCID
+  iD, that anyone can read (the author can delete them);
+* see their **profile** page `#/u/<ORCID iD>`: the results they endorsed and, on
+  the Contributions tab, their public comments (questions, review page) — and, on
+  their own profile only, the facts and messages they sent, with what the
+  database now knows of each fact (every profile is public; `#/u/me` goes to
+  one's own);
 * **validate, invalidate and comment** the proposals of the review page (public
   votes and comments, docs/REVIEW.md).
 
@@ -111,13 +129,18 @@ npm run check && npm run build && npm test
 git add data/endorsements.yaml && git commit -m "Endorsements"
 ```
 
-The sync takes the data lock, rewrites `data/endorsements.yaml`, copies the votes
-and comments of the review page into `data/review.yaml` (then run
-`node scripts/review.mjs apply`, docs/REVIEW.md) and saves each
-new comment or error report as `feedback/inbox/<id>.json` (git-ignored). Each
-file is self-contained for processing with an AI assistant: `kind` (error |
-comment), `target` (type, id and a copy of the result, statement or paper it is
-about), `text`, `author` (ORCID iD, name), `page`, `date`. Treat a report like
+The sync takes the data lock, rewrites `data/endorsements.yaml` (endorsements,
+people, and the public comments on the open questions under `discussions`),
+copies the votes and comments of the review page into `data/review.yaml` (then
+run `node scripts/review.mjs apply`, docs/REVIEW.md), adds each fact of a new
+suggestion to `data/review.yaml` as a pending `result` item (origin
+`contributed`, with `contributor`, `ref`/`loc` or `citation`, `argument`), and
+saves each new comment, error report or suggestion as
+`feedback/inbox/<id>.json` (git-ignored). Each file is self-contained for
+processing with an AI assistant: `kind` (error | comment | suggestion), `target`
+(type, id and a copy of the result, statement, paper or question it is about),
+`text`, `facts` (suggestions: each with a copy of its statements, its `source`
+and `justification`), `author` (ORCID iD, name), `page`, `date`. Treat a report like
 any lead (AGENTS.md §1: read the theorem in the paper before changing data),
 then move the file to `feedback/done/`; files in `inbox/` or `done/` are never
 downloaded again. `--dry-run` shows what would change.

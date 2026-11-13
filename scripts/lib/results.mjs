@@ -9,7 +9,10 @@
 // is appended to data/results/literature/<refkey>.yaml.
 // The special key "_ai" holds facts derived by an AI (provenance: ai, with a
 // justification, no refs): they go to data/results/ai-derived.yaml, and are
-// skipped when the same fact is already in the database.
+// skipped when the same fact is already in the database. The key "_contributed"
+// holds facts contributed by researchers with their argument (provenance: contributed,
+// from the review queue): they go to data/results/contributed.yaml, also skipped when
+// the database already has them.
 //
 // Returns { added, merged, skipped, changes, restore }: `changes` lists
 // {action: 'added'|'merged'|'unchanged'|'skipped', file, key, ref} ('unchanged':
@@ -21,6 +24,7 @@ import YAML from 'yaml';
 import { resultKey } from './schema.mjs';
 
 const AI_FILE = 'data/results/ai-derived.yaml';
+const CONTRIB_FILE = 'data/results/contributed.yaml';
 
 export function addResults(spec) {
   const walk = (d) => fs.readdirSync(d, { withFileTypes: true })
@@ -58,6 +62,12 @@ export function addResults(spec) {
       const { loc, ...fact } = r;
       const key = resultKey(fact);
       const hit = index.get(key);
+      if (ref === '_contributed') {
+        if (hit) { changes.push({ action: 'skipped', file: hit.f, key }); continue; }
+        append(CONTRIB_FILE, '# Facts contributed by researchers on the live instance, with their argument\n# (accepted from the review queue: scripts/review.mjs, docs/REVIEW.md)', fact, null);
+        changes.push({ action: 'added', file: CONTRIB_FILE, key });
+        continue;
+      }
       if (ref === '_ai') {
         if (hit) { changes.push({ action: 'skipped', file: hit.f, key }); continue; }
         const { justification, ...rest } = fact;
