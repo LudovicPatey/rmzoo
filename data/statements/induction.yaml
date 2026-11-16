@@ -40,7 +40,7 @@
   kind: sentence
   firstOrder: true
   tags: [ induction, first-order ]
-  aliases: [ ISigma2, sigma2 induction ]
+  aliases: [ ISigma2, sigma2 induction, Σ02-IND ]
   definition: The induction scheme restricted to $\Sigma^0_2$ formulas.
   refs:
     - { ref: pariskirby1978, role: rm }

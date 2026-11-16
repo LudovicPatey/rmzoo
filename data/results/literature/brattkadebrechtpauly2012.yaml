@@ -18,3 +18,4 @@
 - { type: property, statement: cnn, property: idempotent, value: true, refs: [ { ref: brattkadebrechtpauly2012, loc: Corollary 7.6 } ] }
 - { type: property, statement: cn, property: idempotent, value: true, refs: [ { ref: brattkadebrechtpauly2012, loc: Corollary 7.6 } ] }
 - { type: property, statement: wkl, property: idempotent, value: true, refs: [ { ref: brattkadebrechtpauly2012, loc: "Corollary 7.6 (C_{0,1}^ℕ ≡sW WKL)" } ] }
+- { type: property, statement: wkl, property: computable-det, value: true, refs: [ { ref: brattkadebrechtpauly2012, loc: "Corollary 5.2 (for C_{0,1}^ℕ ≡sW WKL)" } ] }

@@ -26,11 +26,13 @@ export const RULES = {
   'prop-base': 'A problem has this property exactly when the base system implies it over this reduction (e.g. computably true = holds in every ω-model)',
   refine: 'Separation at a coarser reduction',
   'base-lift': 'Over a weaker base theory, a statement implying the stronger base theory has all its consequences over that theory (over RCA₀*, a statement implying IΣ⁰₁ implies everything it implies over RCA₀)',
-  'op-base': 'Algebra of Weihrauch degrees: a problem is below its jump, its parallelization and its finite parallelization (strongly), and below products and compositional products in which it occurs; a product is below the compositional products of its two factors, in either order',
+  'op-base': 'Algebra of Weihrauch degrees: a problem is below its jump, its parallelization, its finite and its unbounded finite parallelization (strongly; P* ≤sW P^u* ≤W P̂: Soldà and Valenti, Proposition 5.2), and below products and compositional products in which it occurs; a product is below the compositional products of its two factors, in either order',
   'op-comm': 'The product of Weihrauch problems is commutative and associative, the compositional product is associative: products with the same factors are equivalent however ordered and bracketed, and so are compositional products of the same problems in the same order (Brattka and Pauly 2018, Proposition 4.2)',
-  'op-monotone': 'Algebra of Weihrauch degrees: parallelizations, finite parallelizations, products, compositional products and the diamond operator are monotone; jumps are monotone for strong Weihrauch reducibility',
+  'op-monotone': 'Algebra of Weihrauch degrees: parallelizations, finite and unbounded finite parallelizations, products, compositional products and the diamond operator are monotone; jumps are monotone for strong Weihrauch reducibility (unbounded finite parallelization: Soldà and Valenti, Theorem 5.5)',
   'op-arith-jump': 'Arithmetic Weihrauch reducibility: a jump is equivalent to the problem itself (P′ ≤sW P ∘ lim, and lim is arithmetic: Marcone and Valenti 2020, Proposition 5.4)',
   'op-diamond': 'Algebra of Weihrauch degrees: P⋄ is closed under products and compositional products (if Q, R ≤W P⋄ then Q × R ≤W P⋄ and Q ⋆ R ≤W P⋄)',
+  'op-part': 'First-order and deterministic parts: ¹P ≤W P and Det(P) ≤W P; both are monotone for ≤W, and Q ≤W P gives ¹Q ≤sW ¹P (Dzhafarov, Solomon and Yokoyama, Corollary 2.3; Goh, Pauly and Valenti 2021, Corollary 3.3)',
+  'op-part-max': 'First-order and deterministic parts are maximal: a first-order problem Weihrauch reducible to P is strongly Weihrauch reducible to ¹P (Dzhafarov, Solomon and Yokoyama, Theorem 2.2), and a single-valued function with codomain ℕ^ℕ Weihrauch reducible to P is Weihrauch reducible to Det(P) (Goh, Pauly and Valenti 2021, Theorem 3.2)',
   'weaken-left': 'Weakening the hypothesis',
   'strengthen-right': 'Strengthening the conclusion',
   conservation: 'Conservation: the conclusion has the right syntactic form and is not provable from the base',
@@ -210,15 +212,22 @@ export function buildZoo(raw) {
   // --- algebra of Weihrauch degrees --------------------------------------------
   // Operator statements (op: jump | par | fin | product | compose, args: [ids]).
   // Laws, for reductions marked `algebra` (strong / weak / arithmetic Weihrauch):
-  //   P ≤sW P', P ≤sW P̂, P ≤sW P*, P* ≤sW P̂;   P, Q ≤W P × Q ≤W P ⋆ Q, P, Q ≤W P ⋆ Q;
+  //   P ≤sW P', P ≤sW P̂, P ≤sW P*, P* ≤sW P̂; P* ≤sW P^u* ≤W P̂ (ufin: Soldà and Valenti,
+  //   Proposition 5.2; monotone for ≤W and ≤sW, Theorem 5.5);   P, Q ≤W P × Q ≤W P ⋆ Q, P, Q ≤W P ⋆ Q;
   //   P × Q ≡W Q × P, hence also P × Q ≤W Q ⋆ P;
   //   P ≤W P⋄, and P⋄ is closed under × and ⋆ (diamond: weak only);
   //   all operations are monotone for ≤W except the jump, which is monotone for ≤sW
 //   only (par and fin are monotone for both).
+  // The parts ¹P (op fop) and Det(P) (op det) are operators on Weihrauch degrees with
+  // their own laws, over ≤W only (seeded at w, inherited by the coarser reductions):
+  //   ¹P ≤W P, Det(P) ≤W P;  Q ≤W P gives ¹Q ≤sW ¹P and Det(Q) ≤W Det(P);
+  //   a first-order Q ≤W P is ≤sW ¹P, a single-valued Q ≤W P is ≤W Det(P) (maximality,
+  //   below, with the property values). ¹P is first-order; Det(P) is single-valued and
+  //   a cylinder (properties.yaml, opHas).
   // "X implies Y" means Y ≤ X, so P ≤ op(P) is the implication op(P) → P.
   const ops = [];
   S.forEach((s, i) => { if (s.op) ops.push({ i, op: s.op, args: (s.args || []).map((id) => sidx.get(id)) }); });
-  const unary = new Set(['jump', 'par', 'fin', 'diamond']);
+  const unary = new Set(['jump', 'par', 'fin', 'ufin', 'diamond']);
   const opsByArg = new Map();
   ops.forEach((o) => o.args.forEach((x) => { if (!opsByArg.has(x)) opsByArg.set(x, []); opsByArg.get(x).push(o); }));
   // products (compositional products) with the same factors as a multiset (as a
@@ -238,13 +247,17 @@ export function buildZoo(raw) {
     for (const g of groups.values()) if (g.length > 1) for (const i of g) sameShape.set(i, g.filter((j) => j !== i));
   }
   const strongOK = (o) => unary.has(o.op) && o.op !== 'diamond';
+  const PARTS = new Set(['fop', 'det']);
+  const W = ridx.get('w'), SW = ridx.get('sw');
   // arithmetic Weihrauch reducibility (≤aW): the laws of ≤W hold (it is coarser), but
   // only these operations are monotone: arithmetic functionals can be applied
   // componentwise (lim⁽ⁿ⁾ is parallelizable), and P′ ≡aW P. The compositional product
   // and the diamond would need an arithmetic step between the two problems.
-  const arithMono = new Set(['jump', 'par', 'fin', 'product']);
-  const algebraAt = (r, o) => R[r].algebra === 'weak' || R[r].algebra === 'arithmetic' || (R[r].algebra === 'strong' && strongOK(o));
+  const arithMono = new Set(['jump', 'par', 'fin', 'product']); // not ufin: its functional w is read by Φ_w
+  const algebraAt = (r, o) => !PARTS.has(o.op) && (R[r].algebra === 'weak' || R[r].algebra === 'arithmetic' || (R[r].algebra === 'strong' && strongOK(o)));
   const seedOps = () => {
+    // P → ¹P and P → Det(P): the part is below the problem
+    if (W !== undefined) for (const o of ops) if (PARTS.has(o.op) && o.args[0] !== undefined) addI(W, o.args[0], o.i, { rule: 'op-part' });
     for (let r = 0; r < R.length; r++) {
       if (!R[r].algebra) continue;
       for (const o of ops) {
@@ -257,7 +270,13 @@ export function buildZoo(raw) {
         }
         // P × Q ≡W Q × P, (P × Q) × R ≡W P × (Q × R), (P ⋆ Q) ⋆ R ≡W P ⋆ (Q ⋆ R)
         for (const q of sameShape.get(o.i) || []) addI(r, o.i, q, { rule: 'op-comm' });
-        if (o.op === 'par') { // P* ≤sW P̂
+        if (o.op === 'par') { // P* ≤sW P̂; P^u* ≤W P̂
+          const fin = ops.find((q) => q.op === 'fin' && q.args[0] === o.args[0]);
+          if (fin) addI(r, o.i, fin.i, { rule: 'op-base' });
+          const ufin = ops.find((q) => q.op === 'ufin' && q.args[0] === o.args[0]);
+          if (ufin && R[r].algebra !== 'strong') addI(r, o.i, ufin.i, { rule: 'op-base' });
+        }
+        if (o.op === 'ufin') { // P* ≤sW P^u*
           const fin = ops.find((q) => q.op === 'fin' && q.args[0] === o.args[0]);
           if (fin) addI(r, o.i, fin.i, { rule: 'op-base' });
         }
@@ -283,6 +302,11 @@ export function buildZoo(raw) {
   const monotone = (r, a, b) => {
     if (!R[r].algebra) return;
     diamondClosure(r, a, b);
+    if (r === W) for (const o of opsByArg.get(b) || []) { // b ≤W a: ¹b ≤sW ¹a, Det(b) ≤W Det(a)
+      if (!PARTS.has(o.op)) continue;
+      for (const o2 of opsByArg.get(a) || []) if (o2.op === o.op)
+        addI(o.op === 'fop' && SW !== undefined ? SW : W, o2.i, o.i, { rule: 'op-part', prem: [fI(W, a, b)] });
+    }
     for (const o of opsByArg.get(b) || []) { // o = op(..., b, ...); look for o2 = op(..., a, ...)
       if (!monoAt(r, o)) continue;
       for (const o2 of opsByArg.get(a) || []) {
@@ -498,7 +522,12 @@ export function buildZoo(raw) {
   // ω-model); the new implications are closed, and may give new values, until nothing
   // changes. This runs before the separations, which then see these implications.
   const bottomProps = raw.properties.map((prop, p) => ({ p, r: ridx.get(prop.bottomOf) })).filter((x) => x.r !== undefined);
-  for (let changed = bottomProps.length > 0; changed;) {
+  // maximality of the parts: s ≤W P with s first-order gives s ≤sW ¹P; with s
+  // single-valued (codomain ℕ^ℕ), s ≤W Det(P)
+  const partMax = W === undefined ? [] : ops.filter((o) => PARTS.has(o.op) && o.args[0] !== undefined)
+    .map((o) => ({ o, p: pidx.get(o.op === 'fop' ? 'first-order' : 'single-valued'), r: o.op === 'fop' && SW !== undefined ? SW : W }))
+    .filter((x) => x.p !== undefined);
+  for (let changed = bottomProps.length > 0 || partMax.length > 0; changed;) {
     changed = false;
     for (const { p, r, dom } of charProps)
       for (const b of basesAt(r).slice(0, 1))
@@ -509,6 +538,9 @@ export function buildZoo(raw) {
     for (const { p, r } of bottomProps)
       for (const [s, { v }] of P[p]) if (v && inDomain(r, s))
         for (let a = 0; a < n; a++) if (a !== s && !Ib[r][key(a, s)]) addI(r, a, s, { rule: 'prop-bottom', prem: [fP(p, s, true)] });
+    for (const { o, p, r } of partMax)
+      for (const s of out[W][o.args[0]]) if (s !== o.i && P[p].get(s)?.v && !Ib[r][key(o.i, s)] && inDomain(r, s))
+        addI(r, o.i, s, { rule: 'op-part-max', prem: [fI(W, o.args[0], s), fP(p, s, true)] });
     if (queue.length > before) { changed = true; drainI(); }
   }
 

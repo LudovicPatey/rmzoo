@@ -162,7 +162,9 @@
 - { type: property, statement: ucn, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solution is a natural number." } }
 - { type: property, statement: tcn, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are natural numbers." } }
 - { type: property, statement: accn, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are elements of a set A ⊆ ℕ." } }
+- { type: property, statement: acc3, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are elements of {0, 1, 2}." } }
 - { type: property, statement: sigma11-cn, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are elements of a set A ⊆ ℕ." } }
+- { type: property, statement: pi11-cn, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are elements of a set A ⊆ ℕ." } }
 - { type: property, statement: ert, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are numbers b." } }
 - { type: property, statement: ect, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are numbers b." } }
 - { type: property, statement: bwt2, property: first-order, value: true, folklore: true, justification: { kind: reduction, by: ai, text: "Its solutions are values 0 or 1 of the sequence." } }

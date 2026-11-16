@@ -78,6 +78,14 @@ test('properties', () => {
   assert.equal(answer(X, q).verdict, 'yes'); // Seetapun's theorem, for RT¹₂
 });
 
+test('first-order and deterministic parts', () => {
+  for (const t of ['Is the first-order part of WKL Weihrauch reducible to LPO?', 'fop(WKL) ≤W LPO', 'wkl.fop ≤W LPO'])
+    has(t, { type: 'rel', kind: 'le', x: 'wkl.fop', y: 'lpo', r: 'w' });
+  has('Is the deterministic part of DS equivalent to lim?', { kind: 'eq', x: 'ds.det', y: 'lim' }, 'w');
+  has('Det(DS) ≡W lim', { kind: 'eq', x: 'ds.det', y: 'lim', r: 'w' });
+  has('Display the first-order part of WKL', { type: 'display', ids: ['wkl.fop'] });
+});
+
 test('pages', () => {
   has('Display RT22', { type: 'display', ids: ['rt22'] });
   has('What is COH?', { type: 'display', ids: ['coh'] });

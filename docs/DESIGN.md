@@ -164,7 +164,9 @@ hold in every ω-model, so every statement ω-implies them.
 
 **Weihrauch operations.** Problems obtained from others by the operations of
 the Weihrauch algebra are statements with `op` (`jump`, `par` for the
-parallelization P̂, `fin` for the finite parallelization P*, `diamond` for P⋄,
+parallelization P̂, `fin` for the finite parallelization P*, `ufin` for the unbounded
+finite parallelization P^u* of Soldà and Valenti (Definition 5.1: the number of instances
+used is decided by a functional reading their solutions), `diamond` for P⋄,
 the closure under compositional product, `product` P × Q, `compose` for the
 compositional product P ⋆ Q) and `args`. Results may name them with dotted ids,
 created on the fly with their label, name and definition: `lpo.jump` (LPO′),
@@ -172,15 +174,34 @@ created on the fly with their label, name and definition: `lpo.jump` (LPO′),
 `tcn.star.tcn` (TC_ℕ ⋆ TC_ℕ); operators apply left to right and parentheses
 group: `cn.star.(lpo.jump)` is C_ℕ ⋆ LPO′. The engine knows the laws of the
 algebra for the reductions marked `algebra` in `data/reductions.yaml`:
-P ≤sW P′, P̂, P*; P* ≤sW P̂; P, Q ≤W P × Q ≤W P ⋆ Q; P × Q ≡W Q × P (so P × Q ≤W Q ⋆ P too); × and ⋆ are associative (Brattka and Pauly 2018, Proposition 4.2), so two products with the same factors, however ordered and bracketed, are equivalent, and so are two compositional products of the same problems in the same order (`(a.star.b).star.c` and `a.star.(b.star.c)`; rule op-comm); P ≤W P⋄, and P⋄ is closed
+P ≤sW P′, P̂, P*, P^u*; P* ≤sW P̂, P^u*; P^u* ≤W P̂ (Soldà and Valenti, Proposition 5.2); P, Q ≤W P × Q ≤W P ⋆ Q; P × Q ≡W Q × P (so P × Q ≤W Q ⋆ P too); × and ⋆ are associative (Brattka and Pauly 2018, Proposition 4.2), so two products with the same factors, however ordered and bracketed, are equivalent, and so are two compositional products of the same problems in the same order (`(a.star.b).star.c` and `a.star.(b.star.c)`; rule op-comm); P ≤W P⋄, and P⋄ is closed
 under × and ⋆; parallelizations, products, compositional products and ⋄ are
-monotone for ≤W (parallelizations also for ≤sW), but the jump is monotone for
+monotone for ≤W (parallelizations, finite or unbounded, also for ≤sW: Theorem 5.5 of
+Soldà and Valenti for ^u*), but the jump is monotone for
 ≤sW only: P ≤W Q does not give P′ ≤W Q′ (the identity is below every problem,
 its jump is lim). Over ≤cW (`algebra: weak`) the laws of ≤W hold, since they
 relativize. Over ≤aW (`algebra: arithmetic`) products, parallelizations and jumps are
 monotone and P′ ≡aW P (lim is arithmetic), but the engine applies no monotonicity of
 ⋆ and ⋄ nor the closure of P⋄ (they would need an arithmetic step between two
-problems). Papers on completions (C̄_ℕ, …) write them with overlines that text
+problems).
+
+**Parts of a problem.** Two operators on Weihrauch degrees are written the same
+way: `fop`, the first-order part ¹P (the strongest problem with solutions in ℕ
+Weihrauch below P: Dzhafarov, Solomon and Yokoyama, Definition 2.1 and Theorem
+2.2; Soldà and Valenti), and `det`, the deterministic part Det(P) (the strongest
+single-valued function with codomain ℕ^ℕ Weihrauch below P: Goh, Pauly and
+Valenti 2021, Definition 3.1 and Theorem 3.2): `wkl.fop` (¹WKL),
+`(wkl.jump).fop` or `wkl-j.fop` (¹(WKL′)), `ds.det` (Det(DS)). Their laws hold over
+≤W only and are seeded there (coarser reductions inherit them): ¹P ≤W P and
+Det(P) ≤W P (not strongly in general: ¹BWT_k ≰sW BWT_k); Q ≤W P gives ¹Q ≤sW ¹P
+and Det(Q) ≤W Det(P); a problem with the property `first-order` that is ≤W P is
+≤sW ¹P, and one with the property `single-valued` (codomain ℕ^ℕ) is ≤W Det(P)
+(rule op-part-max). ¹P is first-order and Det(P) single-valued and a cylinder
+(`opHas` of these properties). Equivalences found by the engine carry the parts
+along: once ¹WKL ≡sW C₂* is entered, ¹ of every problem Weihrauch equivalent to WKL
+is known, and the statement page of such a problem shows its parts. "The part is
+computable" is expressed by the properties `computable-fop` and `computable-det`
+(the zoo has no statement for the identity). Papers on completions (C̄_ℕ, …) write them with overlines that text
 extraction loses: check the rendered PDF before entering such results. These statements are hidden in
 the catalogue unless "Weihrauch operations" is checked.
 

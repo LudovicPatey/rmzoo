@@ -10,3 +10,7 @@
 - { type: equivalence, from: bs, to: cn.x.bs, over: w, refs: [ { ref: gohpaulyvalenti2024, loc: Proposition 9.4 } ] }
 - { type: equivalence, from: bs, to: bs.star.cn, over: w, refs: [ { ref: gohpaulyvalenti2024, loc: Proposition 9.4 } ] }
 - { type: separation, from: bs, to: sort.x.rt12, over: w, refs: [ { ref: gohpaulyvalenti2024, loc: Proposition 9.8 } ] }
+- { type: equivalence, from: bs.det, to: lim, over: w, refs: [ { ref: gohpaulyvalenti2024, loc: Corollary 5.5 } ] }
+- { type: equivalence, from: pi11bound.det, to: cn, over: w, refs: [ { ref: gohpaulyvalenti2024, loc: Proposition 5.8 } ] }
+- { type: equivalence, from: bs.fop.det, to: cn, over: w, refs: [ { ref: gohpaulyvalenti2024, loc: Proposition 5.8 } ] }
+- { type: separation, from: ds.fop, to: bs.fop, over: w, refs: [ { ref: gohpaulyvalenti2024, loc: Theorem 3.1 } ] }

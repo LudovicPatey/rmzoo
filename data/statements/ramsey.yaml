@@ -36,7 +36,7 @@
   name: Infinite pigeonhole principle (finitely many colors)
   kind: problem
   tags: [ ramsey ]
-  aliases: [ RT1, pigeonhole finitely many colors ]
+  aliases: [ RT1, pigeonhole finitely many colors, IPP, infinite pigeonhole principle ]
   definition: >
     For every $k$, every coloring $f : \mathbb{N} \to k$ has an infinite homogeneous set.
   instance: >

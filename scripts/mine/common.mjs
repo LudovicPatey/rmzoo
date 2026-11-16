@@ -41,9 +41,11 @@ for (const s of z.S) {
   for (let round = 0; round < 4; round++) for (const s of ops) {
     const a = (s.args || []).map((x) => forms.get(x) || []);
     if (a.some((x) => !x.length)) continue;
-    const f = { jump: () => a[0].flatMap((x) => [x + '′', x + "'"]), fin: () => a[0].flatMap((x) => [x + '∗', x + '*']), diamond: () => a[0].map((x) => x + '⋄'),
+    const f = { jump: () => a[0].flatMap((x) => [x + '′', x + "'"]), fin: () => a[0].flatMap((x) => [x + '∗', x + '*']), ufin: () => a[0].flatMap((x) => [x + 'u∗', x + 'u*', `(${x})u∗`]), diamond: () => a[0].map((x) => x + '⋄'),
       compose: () => a[0].flatMap((x) => a[1].flatMap((y) => [`${x} ∗ ${y}`, `${x} ⋆ ${y}`, `${x}∗${y}`, `${x}⋆${y}`, `${x} ∗${y}`])),
-      product: () => a[0].flatMap((x) => a[1].flatMap((y) => [`${x} × ${y}`, `${x}×${y}`])), par: () => [] }[s.op]?.() || [];
+      product: () => a[0].flatMap((x) => a[1].flatMap((y) => [`${x} × ${y}`, `${x}×${y}`])), par: () => [],
+      // the parts: Det(DS); the superscript of ¹WKL is often lost (read as "1 WKL", too ambiguous to match)
+      fop: () => a[0].flatMap((x) => [`¹${x}`, `¹(${x})`, `FOP(${x})`]), det: () => a[0].flatMap((x) => [`Det(${x})`, `Det (${x})`]) }[s.op]?.() || [];
     forms.set(s.id, [...new Set([...(forms.get(s.id) || []), ...f])]);
   }
   for (const s of ops) for (const t of forms.get(s.id) || []) put(t, s.id);

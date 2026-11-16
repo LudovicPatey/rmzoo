@@ -92,9 +92,14 @@ a separation over `omega`.
 
 * `from`, `to`, `statement`: catalogue ids exactly as listed. Operator
   statements are written with dotted ids: `lpo.jump` (jump), `cn.par`
-  (parallelization), `cn.fin` (finite parallelization), `wkl.diamond`, `cn.x.lpo`
-  (product), `tcn.star.tcn` (compositional product); nest with parentheses:
-  `(cn.x.lpo).jump`. Use them only when every component is in the catalogue.
+  (parallelization), `cn.fin` (finite parallelization), `chipi11.ufin` (unbounded finite
+  parallelization, written WF^u*), `wkl.diamond`, `cn.x.lpo`
+  (product), `tcn.star.tcn` (compositional product), `wkl.fop` (the first-order
+  part ¹WKL, also written 1WKL or FOP(WKL)), `ds.det` (the deterministic part
+  Det(DS)); nest with parentheses: `(cn.x.lpo).jump`, `(wkl.jump).fop`. Use them
+  only when every component is in the catalogue. "The first-order part of P is
+  computable" (uniformly computably true) is the property `computable-fop` of P,
+  and "Det(P) is computable" the property `computable-det` of P.
 * Theories made of several principles (RCA₀ + WKL + COH + FS, "WKL₀ + RT²₂",
   "COH and SRT²₂ together") are conjunctions: their catalogue ids sorted
   alphabetically and joined by "-", as `coh-fs-wkl` or `rt22-wkl` (RCA₀ itself is

@@ -147,7 +147,7 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
     }
   }
   // Operator statements of the Weihrauch algebra, named by dotted ids:
-  //   a.jump  a.par  a.fin  a.diamond  (postfix)   a.x.b  a.star.b  (binary)
+  //   a.jump  a.par  a.fin  a.ufin  a.diamond  a.fop  a.det  (postfix)   a.x.b  a.star.b  (binary)
   // applied left to right; parentheses group: cn.star.(lpo.jump) = C_N ⋆ LPO'.
   // e.g. lpo.jump = LPO', llpo.par = LLPO-hat, tcn.star.tcn = TC_N ⋆ TC_N.
   // They are created on the fly when results, questions or zoos mention them.
@@ -214,7 +214,11 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
     const a = s.args.map((x) => byId.get(x));
     if (a.some((x) => !x)) return null;
     for (const x of a) if (x.op && !x.label) fillOp(x);
+    // the parts: ¹(WKL′) as in Dzhafarov, Solomon and Yokoyama; Det(DS) as in Goh, Pauly and Valenti
+    const arg = (x) => (x.op ? `(${x.label})` : x.label);
     return { jump: () => `${wrap(a[0])}'`, par: () => `\\widehat{${a[0].label}}`, fin: () => `${wrap(a[0])}^{*}`, diamond: () => `${wrap(a[0])}^{\\diamond}`,
+      ufin: () => `${wrap(a[0])}^{u*}`,
+      fop: () => `{}^{1}${arg(a[0])}`, det: () => `\\mathsf{Det}(${a[0].label})`,
       product: () => `${wrap(a[0])} \\times ${wrap(a[1])}`, compose: () => `${wrap(a[0])} \\star ${wrap(a[1])}` }[s.op]?.();
   };
   // "Lesser limited principle…" → "lesser limited principle…" inside a name (acronyms unchanged)
@@ -224,14 +228,18 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
     if (a.some((x) => !x)) return;
     a.forEach((x) => { if (x.op && !x.label) fillOp(x); });
     s.label ||= opTex(s);
-    s.name ||= { jump: () => `Jump of ${plainName(a[0])}`, par: () => `Parallelization of ${plainName(a[0])}`, fin: () => `Finite parallelization of ${plainName(a[0])}`, diamond: () => `Diamond of ${plainName(a[0])}`,
+    s.name ||= { jump: () => `Jump of ${plainName(a[0])}`, par: () => `Parallelization of ${plainName(a[0])}`, fin: () => `Finite parallelization of ${plainName(a[0])}`, ufin: () => `Unbounded finite parallelization of ${plainName(a[0])}`, diamond: () => `Diamond of ${plainName(a[0])}`,
+      fop: () => `First-order part of ${plainName(a[0])}`, det: () => `Deterministic part of ${plainName(a[0])}`,
       product: () => `Product of ${plainName(a[0])} and ${plainName(a[1])}`, compose: () => `Compositional product of ${plainName(a[0])} and ${plainName(a[1])}` }[s.op]();
     const L = (x) => `$${x.label}$`;
     s.definition ||= {
       jump: () => `The jump of ${L(a[0])}: an instance is a sequence converging to an instance of ${L(a[0])} (in Baire space), with the same solutions.`,
       par: () => `The parallelization of ${L(a[0])}: given a sequence of instances of ${L(a[0])}, find a solution to each of them.`,
       fin: () => `The finite parallelization of ${L(a[0])}: given finitely many instances of ${L(a[0])}, find a solution to each of them.`,
+      ufin: () => `The unbounded finite parallelization of ${L(a[0])}: given a sequence of instances of ${L(a[0])} and a functional that, on (names of) solutions to them, tells how many of the solutions are needed, find that many solutions (Soldà and Valenti, Definition 5.1). Unlike the finite parallelization, the number of instances is not given in advance.`,
       diamond: () => `The diamond of ${L(a[0])}: the closure of ${L(a[0])} under compositional product, i.e. using ${L(a[0])} any finite number of times, adaptively, the number of uses being decided during the computation (Neumann and Pauly).`,
+      fop: () => `The first-order part of ${L(a[0])}: the strongest problem with solutions in $\\mathbb{N}$ that is Weihrauch reducible to ${L(a[0])} (Dzhafarov, Solomon and Yokoyama, Definition 2.1 and Theorem 2.2; Soldà and Valenti).`,
+      det: () => `The deterministic part of ${L(a[0])}: the strongest single-valued function with codomain $\\mathbb{N}^\\mathbb{N}$ that is Weihrauch reducible to ${L(a[0])} (Goh, Pauly and Valenti, Definition 3.1 and Theorem 3.2).`,
       product: () => `Given an instance of ${L(a[0])} and an instance of ${L(a[1])}, find a solution to each.`,
       compose: () => `The compositional product of ${L(a[0])} and ${L(a[1])}: the strongest problem obtained by first solving an instance of ${L(a[1])} and then, computably in the result, an instance of ${L(a[0])} (Brattka, Gherardi and Marcone).`,
     }[s.op]();
@@ -241,7 +249,15 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
       jump: () => [`A sequence converging (in Baire space) to an instance of ${L(a[0])}.`, `A solution of ${L(a[0])} to the limit instance.`],
       par: () => [`A sequence $(x_n)_n$ of instances of ${L(a[0])}.`, `A sequence $(y_n)_n$ with each $y_n$ a solution to $x_n$.`],
       fin: () => [`A finite sequence of instances of ${L(a[0])}.`, `A solution to each of them.`],
+      // Definition 5.1 of Soldà and Valenti
+      ufin: () => [`A pair $(w, (x_n)_n)$ of a sequence of instances of ${L(a[0])} and $w \\in \\mathbb{N}^\\mathbb{N}$ such that for every sequence $(q_n)_n$ of names of solutions to them, $\\Phi_w(\\langle q_i\\rangle_{i<k})(0)$ converges in $k$ steps for some $k$.`,
+        `A finite sequence $(q_n)_{n<k}$ of names of solutions to $x_0, \\dots, x_{k-1}$ such that $\\Phi_w(\\langle q_i\\rangle_{i<k})(0)$ converges in $k$ steps.`],
       product: () => [`A pair of an instance of ${L(a[0])} and an instance of ${L(a[1])}.`, `A solution to each of them.`],
+      // Definition 2.1 of Dzhafarov, Solomon and Yokoyama; Definition 3.1 of Goh, Pauly and Valenti
+      fop: () => [`A triple $\\langle f, \\Phi, \\Psi\\rangle$ of $f \\in \\omega^\\omega$ and Turing functionals such that $\\Phi(f)$ is an instance of ${L(a[0])} and $\\Psi(f, g)(0)$ converges for every solution $g$ of it.`,
+        `A number $y$ with $\\Psi(f, g)(0) = y$ for some solution $g$ of ${L(a[0])} to $\\Phi(f)$.`],
+      det: () => [`A pair $(p, y)$ of an instance $y$ of ${L(a[0])} and $p \\in \\mathbb{N}^\\mathbb{N}$ such that $\\Phi_p$ maps every name of every solution of $y$ to the same $x \\in \\mathbb{N}^\\mathbb{N}$.`,
+        `That $x$ (the solution is unique).`],
       // the representative (id × f) ∘ gᵗ of f ⋆ g (Brattka and Pauly, "On the algebraic structure of Weihrauch degrees", Section 3)
       compose: () => [`An instance $x$ of ${L(a[1])} together with a (name of a) continuous multi-valued map $h$ sending every solution of $x$ to a pair $(p, u)$ with $u$ an instance of ${L(a[0])}.`,
         `A pair $(p, v)$ such that $(p, u) \\in h(y)$ for some solution $y$ of $x$ and $v$ is a solution of ${L(a[0])} to $u$.`],
@@ -402,7 +418,9 @@ for (const p of raw.properties) {
   for (const o of [p.selfOp, ...(p.opHas || []), ...(p.opKeeps || [])].filter(Boolean))
     if (!OPERATIONS[o]) errors.push(`Property ${p.id}: unknown operation ${o}`);
   if ((p.selfOp || p.lift || p.eliminates) && p.direction !== 'equiv') errors.push(`Property ${p.id}: selfOp, lift and eliminates are for equiv (Weihrauch) properties`);
-  if ((p.opHas || p.opKeeps) && !['equiv', 'down'].includes(p.direction)) errors.push(`Property ${p.id}: operation laws are for equiv (Weihrauch) and down properties`);
+  // opHas is also allowed on a property kept by no reduction (first-order: ¹P is first-order)
+  if (p.opKeeps && !['equiv', 'down'].includes(p.direction)) errors.push(`Property ${p.id}: operation laws are for equiv (Weihrauch) and down properties`);
+  if (p.opHas && !['equiv', 'down'].includes(p.direction) && p.closedUnder) errors.push(`Property ${p.id}: opHas is for equiv (Weihrauch) and down properties, and for properties kept by no reduction`);
   if (p.eliminates) {
     const e = p.eliminates;
     if (!['left', 'right'].includes(e.side)) errors.push(`Property ${p.id}: eliminates.side must be left or right`);

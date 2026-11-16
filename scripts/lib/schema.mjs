@@ -73,7 +73,7 @@ export const SCHEMA = {
     minor: { doc: 'true for a statement studied in few papers or of secondary interest (a classical theorem equivalent to a Big Five system, a technical variant): hidden from the catalogue by default, not counted on the home page or in the implication counts, left out of related statements, listed as an equivalent statement on the pages of the statements equivalent to it', usedBy: ['build', 'viewer', 'related'] },
     conjunction: { doc: 'ids of the conjuncts (kind must be sentence)', usedBy: ['build', 'engine', 'viewer', 'mineCommon'] },
     form: { doc: 'syntactic class of the sentence (data/classes.yaml), used for conservation results', usedBy: ['build', 'engine', 'viewer'] },
-    op: { doc: 'Weihrauch operation: jump | par | fin | diamond | product | compose (normally created by the build from dotted ids)', usedBy: ['build', 'engine', 'viewer', 'mineCommon'] },
+    op: { doc: 'Weihrauch operation: jump | par | fin | ufin (unbounded finite parallelization) | diamond | product | compose | fop (first-order part) | det (deterministic part) (normally created by the build from dotted ids)', usedBy: ['build', 'engine', 'viewer', 'mineCommon'] },
     args: { doc: 'arguments of op (ids of problems)', usedBy: ['build', 'engine', 'viewer', 'mineCommon'] },
     omegaAbsolute: { doc: 'false for a problem whose instances or solutions are defined by a non-arithmetical (Σ¹₁/Π¹₁) condition — well-orders, trees with a path, uncountable closed sets — so that an ω-model can misjudge them. ω-implication reads statements inside the model; Weihrauch and computable reductions read true instances: for such a statement the engine does not turn one into the other, and properties defined through instances and preserved by ω-implication (cone avoidance, preservation) do not apply. Operator statements and conjunctions inherit it from their arguments', usedBy: ['build', 'engine', 'viewer', 'aiAnalyze'] },
     problemForm: { doc: 'false for a sentence that cannot be formulated as a problem (instances and solutions): properties with domain problems do not apply. First-order sentences are excluded without it', usedBy: ['build', 'engine'] },
@@ -326,9 +326,16 @@ export const OPERATIONS = {
   jump: { arity: 1, dotted: 'jump' },
   par: { arity: 1, dotted: 'par' },
   fin: { arity: 1, dotted: 'fin' },
+  // unbounded finite parallelization P^u* (Soldà and Valenti, Definition 5.1)
+  ufin: { arity: 1, dotted: 'ufin' },
   diamond: { arity: 1, dotted: 'diamond' },
   product: { arity: 2, dotted: 'x' },
   compose: { arity: 2, dotted: 'star' },
+  // first-order part ¹P (Dzhafarov, Solomon and Yokoyama, Definition 2.1) and deterministic
+  // part Det(P) (Goh, Pauly and Valenti 2021, Definition 3.1): operators on degrees, not
+  // constructions of the algebra; their laws hold for ≤W (engine: "parts of a problem")
+  fop: { arity: 1, dotted: 'fop' },
+  det: { arity: 1, dotted: 'det' },
 };
 
 // Other data files with a simple shape (not entity lists):

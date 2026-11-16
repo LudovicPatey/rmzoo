@@ -615,6 +615,29 @@ function citedRow(ri) {
     <div class="small muted">${(res.refs || []).map(refLink).join('; ') || ({ ai: 'AI-derived', direct: 'direct consequence', contributed: 'contributed' }[res.provenance] || 'folklore')}${n ? ` · endorsed by ${n}` : ''}</div>`;
 }
 
+// The first-order and deterministic parts of a problem, read off the operator statements
+// ¹Q and Det(Q) of the problems Q Weihrauch equivalent to it, and their known equivalents
+// (or the properties "computable first-order part" and "computable deterministic part").
+function partsHtml(i) {
+  const w = Z.ridx.get('w');
+  if (w === undefined || S(i).kind !== 'problem' || ['fop', 'det'].includes(S(i).op) || !Z.inDomain(w, i)) return '';
+  const eq = (a, b) => a === b || (Z.status(w, a, b) === 'implies' && Z.status(w, b, a) === 'implies');
+  const all = Z.S.map((_, j) => j);
+  const rows = [['fop', 'First-order part', 'computable-fop'], ['det', 'Deterministic part', 'computable-det']].map(([op, name, prop]) => {
+    const cands = all.filter((j) => S(j).op === op && idx(S(j).args?.[0]) !== undefined && eq(idx(S(j).args[0]), i));
+    const o = cands.find((j) => idx(S(j).args[0]) === i) ?? cands[0];
+    const p = Z.pidx.get(prop);
+    const computable = p !== undefined && Z.prop(p, i)?.v === true;
+    if (o === undefined) return computable ? `<li>${name}: computable</li>` : '';
+    const vals = all.filter((j) => j !== o && !['fop', 'det'].includes(S(j).op) && eq(o, j))
+      .sort((x, y) => (S(x).op ? 1 : 0) - (S(y).op ? 1 : 0) || S(x).label.length - S(y).label.length).slice(0, 3);
+    const via = idx(S(o).args[0]) === i ? '' : ` (${L(i)} ≡<sub>W</sub> ${sLink(idx(S(o).args[0]))})`;
+    if (!vals.length && !computable) return `<li>${name}: ${sLink(o)}${via}</li>`;
+    return `<li>${name}: ${sLink(o)} ${vals.length ? `≡<sub>W</sub> ${vals.map((j) => sLink(j)).join(' ≡<sub>W</sub> ')}` : ''}${computable ? `${vals.length ? ', ' : ''}computable` : ''}${via}</li>`;
+  }).filter(Boolean);
+  return rows.length ? `<ul class="small parts-list">${rows.join('')}</ul>` : '';
+}
+
 function propertyPanel(p, s) {
   const prop = Z.raw.properties[p];
   const e = Z.prop(p, s);
@@ -1060,8 +1083,9 @@ function viewStatement(id, params = new URLSearchParams()) {
     ${panel('overview')}
     ${s.formulationOf ? `<p>A formulation of ${sLink(mainI)} (the main formulation of this principle).</p>` : ''}
     ${s.minor ? `<p class="small muted">A minor statement: studied in few papers or of secondary interest, it is hidden from the catalogue by default and listed on the pages of the statements equivalent to it.</p>` : ''}
-    ${s.op ? `<p class="small">Weihrauch operation — ${{ jump: 'jump', par: 'parallelization', fin: 'finite parallelization', diamond: 'diamond (closure under compositional product)', product: 'product', compose: 'compositional product' }[s.op]} of
+    ${s.op ? `<p class="small">Weihrauch operation — ${{ jump: 'jump', par: 'parallelization', fin: 'finite parallelization', ufin: 'unbounded finite parallelization', diamond: 'diamond (closure under compositional product)', fop: 'first-order part', det: 'deterministic part', product: 'product', compose: 'compositional product' }[s.op]} of
       ${(s.args || []).map((x) => (idx(x) !== undefined ? sLink(idx(x)) : esc(x))).join(' and ')}. Such statements are hidden in the catalogue unless "Weihrauch operations" is checked.</p>` : ''}
+    ${partsHtml(i)}
     ${s.todo ? `<p><span class="badge warn">definition to be checked</span> <span class="small muted">The precise statement should be checked against the source paper.</span></p>` : ''}
     ${s.omegaAbsolute === false ? `<p class="small muted">Not ω-absolute: its instances or solutions are defined by a non-arithmetical condition, so an ω-model may judge them differently from the real world. Its ω-model results are read inside the model, and are not derived from Weihrauch or computable reductions (see the reductions on the About page).</p>` : ''}
     ${s.form || s.firstOrder ? `<p class="small muted">Syntactic form: ${classHtml(s.form || 'arith')} (used by conservation results).</p>` : ''}

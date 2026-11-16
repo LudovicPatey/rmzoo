@@ -256,6 +256,62 @@ test('diamond: P ≤W P⋄, closed under ⋆ and ×, monotone; not for ≤sW', (
   assert.equal(st('w', 'a.diamond', 'b.diamond'), 'implies');    // monotone
 });
 
+test('unbounded finite parallelization: P* ≤sW P^u* ≤W P̂, monotone for ≤sW', () => {
+  const zoo = buildZoo({
+    reductions: [
+      { id: 'sw', domain: 'problems', algebra: 'strong', finerThan: ['w'] },
+      { id: 'w', domain: 'problems', algebra: 'weak', finerThan: [] },
+    ],
+    properties: [],
+    statements: [
+      { id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' },
+      { id: 'a.fin', kind: 'problem', op: 'fin', args: ['a'] }, { id: 'a.ufin', kind: 'problem', op: 'ufin', args: ['a'] },
+      { id: 'a.par', kind: 'problem', op: 'par', args: ['a'] }, { id: 'b.ufin', kind: 'problem', op: 'ufin', args: ['b'] },
+    ],
+    results: [{ type: 'implication', from: 'a', to: 'b', over: 'sw', refs: [{ ref: 'x' }] }],
+  });
+  const st = (r, x, y) => zoo.status(zoo.ridx.get(r), zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('sw', 'a.ufin', 'a.fin'), 'implies');   // P* ≤sW P^u*
+  assert.equal(st('w', 'a.par', 'a.ufin'), 'implies');    // P^u* ≤W P̂
+  assert.equal(st('sw', 'a.par', 'a.ufin'), 'open');      // not strongly
+  assert.equal(st('sw', 'a.ufin', 'b.ufin'), 'implies');  // monotone for ≤sW
+});
+
+test('parts: ¹P, Det(P) ≤W P, monotone, maximal; ¹ strongly monotone; not ≤sW P', () => {
+  const zoo = buildZoo({
+    reductions: [
+      { id: 'sw', domain: 'problems', algebra: 'strong', finerThan: ['w'] },
+      { id: 'w', domain: 'problems', algebra: 'weak', finerThan: [] },
+    ],
+    properties: [
+      { id: 'first-order', domain: 'problems', opHas: ['fop'] },
+      { id: 'single-valued', closedUnder: 'w', direction: 'equiv', domain: 'problems', opHas: ['det'] },
+    ],
+    statements: [
+      { id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' }, { id: 'n', kind: 'problem' }, { id: 'f', kind: 'problem' }, { id: 'g', kind: 'problem' },
+      { id: 'a.fop', kind: 'problem', op: 'fop', args: ['a'] }, { id: 'b.fop', kind: 'problem', op: 'fop', args: ['b'] },
+      { id: 'a.det', kind: 'problem', op: 'det', args: ['a'] }, { id: 'b.det', kind: 'problem', op: 'det', args: ['b'] },
+    ],
+    results: [
+      { type: 'implication', from: 'a', to: 'b', over: 'w', refs: [{ ref: 'x' }] },
+      { type: 'implication', from: 'a', to: 'n', over: 'w', refs: [{ ref: 'x' }] },
+      { type: 'property', statement: 'n', property: 'first-order', value: true, refs: [{ ref: 'x' }] },
+      { type: 'implication', from: 'a', to: 'f', over: 'w', refs: [{ ref: 'x' }] },
+      { type: 'equivalence', from: 'f', to: 'g', over: 'w', refs: [{ ref: 'x' }] },
+      { type: 'property', statement: 'g', property: 'single-valued', value: true, refs: [{ ref: 'x' }] },
+    ],
+  });
+  const st = (r, x, y) => zoo.status(zoo.ridx.get(r), zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('w', 'a', 'a.fop'), 'implies');        // ¹a ≤W a
+  assert.equal(st('sw', 'a', 'a.fop'), 'open');
+  assert.equal(st('w', 'a', 'a.det'), 'implies');
+  assert.equal(st('sw', 'a.fop', 'b.fop'), 'implies');   // b ≤W a: ¹b ≤sW ¹a
+  assert.equal(st('w', 'a.det', 'b.det'), 'implies');
+  assert.equal(st('sw', 'a.fop', 'n'), 'implies');       // n first-order, n ≤W a: n ≤sW ¹a
+  assert.equal(st('w', 'a.det', 'f'), 'implies');        // f ≡W g single-valued, f ≤W a: f ≤W Det(a)
+  assert.equal(st('w', 'b.fop', 'n'), 'open');
+});
+
 // ---- properties characterized by the base (baseImplication) ----------------
 test('toy: computably true ⟺ the base implies it over ω-models', () => {
   const z = buildZoo({

@@ -138,6 +138,20 @@ export function queryIndex(Z, { related } = {}) {
       phrases.get(w).push([p, i]);
     }
   });
+  // the parts of a problem, named after their argument: "first-order part of WKL", "Det(DS)", "fop(WKL)"
+  S.forEach((s, i) => {
+    const a = (s.op === 'fop' || s.op === 'det') && Z.sidx.get(s.args?.[0]);
+    if (a === undefined || a === false) return;
+    for (const n of [S[a].id, ascii[a], ...(S[a].aliases || [])]) {
+      const x = normalize(String(n)).s.replace(/\s+/g, ' ').trim();
+      if (!x) continue;
+      const forms = s.op === 'fop' ? [`first order part of ${x}`, `first-order part of ${x}`, `the first order part of ${x}`, `the first-order part of ${x}`]
+        : [`deterministic part of ${x}`, `the deterministic part of ${x}`];
+      for (const p of forms) { const w = p.split(' ')[0]; if (!phrases.has(w)) phrases.set(w, []); phrases.get(w).push([p, i]); }
+      put(key(`${s.op}(${n})`), i);
+      if (s.op === 'det') put(key(`Det(${n})`), i);
+    }
+  });
   for (const l of phrases.values()) l.sort((a, b) => b[0].length - a[0].length);
   // properties: their names and the usual ways of saying them
   const props = [];

@@ -5,7 +5,7 @@
   name: Lesser limited principle of omniscience
   kind: problem
   tags: [ weihrauch ]
-  aliases: [ C_2, binary choice, LLPO ]
+  aliases: [ C_2, binary choice, LLPO, ACC_2, ACC2 ]
   definition: >
     Given $p \in 2^{\mathbb{N}}$ with at most one $1$, find $i \in \{0, 1\}$ such that $p(2n + i) = 0$ for all $n$. Equivalently (Weihrauch), choice from a nonempty co-c.e. subset of $\{0, 1\}$ ($\mathsf{C}_2$).
   instance: A sequence $p \in 2^{\mathbb{N}}$ with at most one $1$.
@@ -297,6 +297,21 @@
   solution: An element of $A$.
   refs: [ { ref: brattka2021, role: rm, loc: Fact 5.8 } ]
 
+- id: acc3
+  label: '\mathsf{ACC}_3'
+  name: All-or-co-unique choice on three points
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  aliases: [ ACC3, LLPO_3, LLPO3 ]
+  definition: >
+    Given an enumeration of the complement of a set $A \subseteq \{0, 1, 2\}$ missing at most one element, find an
+    element of $A$ (all-or-co-unique choice $\mathsf{ACC}_X$ for $X = \{0, 1, 2\}$). Strongly Weihrauch equivalent to
+    $\mathsf{LLPO}_3$; its parallelization is $\mathsf{DNC}_3$.
+  instance: An enumeration of the complement of a set $A \subseteq \{0, 1, 2\}$ with $|\{0, 1, 2\} \setminus A| \le 1$.
+  solution: An element of $A$.
+  refs: [ { ref: brattkahendtlasskreuzer2017, role: origin, loc: "Definition 3.2, Fact 3.4" } ]
+
 - id: non
   label: '\mathsf{NON}'
   name: Non-computability problem
@@ -431,7 +446,7 @@
   name: All-or-unique choice on [0,1]
   kind: problem
   tags: [ weihrauch, analysis ]
-  aliases: [ RDIV, robust division ]
+  aliases: [ RDIV, robust division, AoUC, 'AoUC_[0,1]', all-or-unique choice ]
   definition: >
     Closed choice on $[0,1]$ restricted to the whole interval and singletons. Strongly Weihrauch
     equivalent to robust division $\mathsf{RDIV}$, $(x, y) \mapsto x / \max(x, y)$ if $y \neq 0$, any point of $[0,1]$ otherwise (Pauly).
@@ -747,6 +762,40 @@
   refs:
     - { ref: kiharamarconepauly2020, role: origin, loc: "Section 3, after Definition 3.1" }
     - { ref: gohpaulyvalenti2021, role: rm, loc: Proposition 2.4 }
+
+- id: pi11-cn
+  omegaAbsolute: false
+  label: '\Pi^1_1\text{-}\mathsf{C}_{\mathbb{N}}'
+  name: Π¹₁ choice on the natural numbers
+  kind: problem
+  tags: [ weihrauch ]
+  aliases: [ Π11-CN ]
+  definition: >
+    Given a $\Pi^1_1$ code of a nonempty set $A \subseteq \mathbb{N}$, find an element of $A$. Weihrauch equivalent to
+    its restriction to singletons $\Pi^1_1\text{-}\mathsf{UC}_{\mathbb{N}}$ (effective uniformization), to
+    $\Sigma^1_1\text{-}\mathsf{UC}_{\mathbb{N}}$, $\Delta^1_1\text{-}\mathsf{C}_{\mathbb{N}}$ and
+    $\Delta^1_1\text{-}\mathsf{UC}_{\mathbb{N}}$, and to the first-order part of $\mathsf{UC}_{\mathbb{N}^\mathbb{N}}$; its
+    parallelization is Weihrauch equivalent to $\mathsf{UC}_{\mathbb{N}^\mathbb{N}}$.
+  instance: A $\Pi^1_1$ code of a nonempty $A \subseteq \mathbb{N}$.
+  solution: An element of $A$.
+  refs:
+    - { ref: ciprianimarconevalenti2022, role: origin, loc: "Section 2, before Proposition 2.16" }
+
+- id: pi02-cn
+  label: '\Pi^0_2\text{-}\mathsf{C}_{\mathbb{N}}'
+  name: Π⁰₂ choice on the natural numbers
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  aliases: [ Π02-CN ]
+  definition: >
+    Given a $\Pi^0_2$ code of a nonempty set $A \subseteq \mathbb{N}$, find an element of $A$. Weihrauch equivalent to
+    the jump $\mathsf{C}_{\mathbb{N}}'$ (and, for every $n > 0$, $\Pi^0_{n+1}\text{-}\mathsf{C}_\mathbb{N} \equiv_\mathrm{W}
+    (\Pi^0_n\text{-}\mathsf{C}_\mathbb{N})'$).
+  instance: A $\Pi^0_2$ code of a nonempty $A \subseteq \mathbb{N}$.
+  solution: An element of $A$.
+  refs:
+    - { ref: ciprianimarconevalenti2022, role: rm, loc: "Section 2, before Proposition 2.16" }
 
 - id: sigma11-wwkl
   omegaAbsolute: false

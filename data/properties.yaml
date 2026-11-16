@@ -355,10 +355,14 @@
   # the property (it is about the problem, not its degree).
   bottomOf: sc
   implies: [ computably-true ]
+  # the first-order part ¹P is first-order by its definition (Definition 2.1 of Dzhafarov,
+  # Solomon and Yokoyama)
+  opHas: [ fop ]
   description: >
     Every solution of every instance is a natural number (Definition 1.3 of Dzhafarov, Solomon and
-    Yokoyama): LPO, C_ℕ, lim_ℕ… In particular it is computably true and strongly computably reducible
-    to every problem.
+    Yokoyama): LPO, C_ℕ, lim_ℕ, every first-order part ¹P… In particular it is computably true and
+    strongly computably reducible to every problem. A first-order problem Weihrauch reducible to P is
+    strongly Weihrauch reducible to ¹P (Theorem 2.2).
 
 - id: cylinder
   name: Cylinder
@@ -366,13 +370,14 @@
   closedUnder: sw
   direction: equiv
   domain: problems
-  opHas: [ compose ]
+  opHas: [ compose, det ]
   opKeeps: [ jump ]
   lift: { from: w, to: sw }
   description: >
     id × P ≤sW P (Definition 3.4 of Brattka, Gherardi and Pauly). Equivalently, every problem Weihrauch
     reducible to P is strongly Weihrauch reducible to it (Proposition 3.5); compositional products are
-    cylinders (Proposition 5.4), and so are jumps of cylinders (Proposition 6.14).
+    cylinders (Proposition 5.4), and so are jumps of cylinders (Proposition 6.14) and deterministic
+    parts (Goh, Pauly and Valenti 2021, after Definition 3.1).
 
 - id: strongly-parallelizable
   name: Strongly parallelizable
@@ -493,15 +498,20 @@
   direction: equiv
   domain: problems
   opKeeps: [ product, par ]
+  opHas: [ det ]
   eliminates: { side: left, factor: wkl }
   description: >
-    Weihrauch equivalent to a single-valued problem f :⊆ X → Y into a computable metric space Y
-    (lim, LPO, UC_ℕ^ℕ; C_ℕ ≡W lim_ℕ). C_{2^ℕ} ≡sW WKL applied last adds nothing below it: P ≤W
-    C_{2^ℕ} ⋆ Q implies P ≤W Q (Brattka, Gherardi and Pauly, Theorem 7.25). Products and
-    parallelizations of single-valued maps are single-valued maps into the product spaces Y × Z and
-    Y^ℕ, again computable metric spaces (and both operations are monotone for ≤W). Jumps are not
-    covered by the law: they are not monotone for ≤W, so only problems that are themselves
-    single-valued pass the property to their jumps (Definition 6.9: the same map on a weaker input).
+    Weihrauch equivalent to a single-valued function f :⊆ X → ℕ^ℕ (or into a space computably embedded
+    in ℕ^ℕ: ℕ, 2^ℕ, {0, 1}): lim, LPO, UC_ℕ^ℕ; C_ℕ ≡W lim_ℕ. The codomain matters: there are
+    single-valued functions into ℝ equivalent to no function into ℕ^ℕ (Goh, Pauly and Valenti 2021,
+    Section 3.1), and the deterministic part Det(P) is the strongest single-valued function into ℕ^ℕ
+    below P (Theorem 3.2), so a problem with the property and Weihrauch reducible to P is reducible to
+    Det(P). C_{2^ℕ} ≡sW WKL applied last adds nothing below it: P ≤W C_{2^ℕ} ⋆ Q implies P ≤W Q
+    (Brattka, Gherardi and Pauly, Theorem 7.25, for single-valued maps into computable metric spaces).
+    Products and parallelizations of single-valued maps into ℕ^ℕ are single-valued maps into (ℕ^ℕ)² and
+    (ℕ^ℕ)^ℕ, homeomorphic to ℕ^ℕ (and both operations are monotone for ≤W). Jumps are not covered by
+    the law: they are not monotone for ≤W, so only problems that are themselves single-valued pass the
+    property to their jumps (Definition 6.9: the same map on a weaker input).
 
 - id: finite-codomain
   name: Reducible to a problem with finite codomain
@@ -523,9 +533,26 @@
   closedUnder: w
   direction: down
   domain: problems
+  # Det(P) ≤W the parallelization of ¹P (Goh, Pauly and Valenti 2021, Corollary 3.7)
+  implies: [ computable-det ]
   description: >
     Every problem with codomain ℕ Weihrauch reducible to it is computable (its first-order part, in the
     sense of Dzhafarov, Solomon and Yokoyama, is computable). Densely realized problems have it (Brattka
     and Pauly 2018, Proposition 6.3; Brattka, Gherardi and Pauly, Proposition 4.13): NON, NHA, MLR, COH
     (Soldà and Valenti 2022, Section 2). LLPO, a non-computable problem with codomain {0, 1}, fails it,
-    and so does every problem above LLPO.
+    and so does every problem above LLPO. It implies a computable deterministic part: Det(P) is
+    Weihrauch reducible to the parallelization of ¹P (Goh, Pauly and Valenti 2021, Corollary 3.7).
+
+- id: computable-det
+  name: Computable deterministic part
+  group: weihrauch
+  closedUnder: w
+  direction: down
+  domain: problems
+  description: >
+    Every single-valued function with codomain ℕ^ℕ Weihrauch reducible to it is computable: its
+    deterministic part Det(P) (Goh, Pauly and Valenti 2021, Definition 3.1) is computable. WKL has it
+    (Brattka, de Brecht and Pauly 2012, Corollary 5.2: every single-valued function into ℕ^ℕ below WKL
+    is computable), and so does every problem below WKL; so does every problem with a computable
+    first-order part (Corollary 3.7 of Goh, Pauly and Valenti: Det(P) ≤W the parallelization of ¹P).
+    LPO, a non-computable function into {0, 1}, fails it, and so does every problem above LPO.
