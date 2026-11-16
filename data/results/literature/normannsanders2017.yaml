@@ -1,3 +1,3 @@
 # Results from [normannsanders2017].
 
-[ { type: implication, from: muc, to: scf, over: rca0, refs: [ { ref: normannsanders2017, loc: Theorem 3.4 } ] }, { type: implication, from: scf, to: wkl, over: rca0, refs: [ { ref: normannsanders2017, loc: Theorem 3.4 and Definition 3.3; proof of Theorem 4.11 } ] } ]
+[ { type: implication, from: muc, to: scf, over: rca0, refs: [ { ref: normannsanders2017, loc: Theorem 3.4 } ] }, { type: implication, from: scf, to: wkl, over: rca0, refs: [ { ref: normannsanders2017, loc: Theorem 3.4 and Definition 3.3; proof of Theorem 4.11 } ] }, { type: separation, from: wff, to: scf, over: rca0, refs: [ { ref: normannsanders2017, loc: Theorem 3.15; proof of Theorem 4.11 } ] }, { type: equivalence, from: mu2-scf, to: scf-uatr, over: rca0, refs: [ { ref: normannsanders2017, loc: Corollary 6.12 } ] }, { type: separation, from: mu2, to: uatr, over: rca0, refs: [ { ref: normannsanders2017, loc: "Corollary 6.12, proof" } ] } ]

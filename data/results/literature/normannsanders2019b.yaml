@@ -1,0 +1,3 @@
+# Results from [normannsanders2019b].
+
+[ { type: implication, from: exists2, to: aca, over: rca0, refs: [ { ref: normannsanders2019b, loc: Proof of Theorem 3.3 } ] }, { type: implication, from: bootminus-exists2, to: atr, over: rca0, refs: [ { ref: normannsanders2019b, loc: Theorem 4.3 } ] }, { type: implication, from: suslin, to: pi11ca, over: rca0, refs: [ { ref: normannsanders2019b, loc: "Section 2.2, before (S²)" } ] }, { type: implication, from: mu2, to: aca, over: rca0, refs: [ { ref: normannsanders2019b, loc: "Section 2.2, before (µ²)" } ] } ]
