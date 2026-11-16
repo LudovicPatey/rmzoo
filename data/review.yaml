@@ -104322,7 +104322,7 @@
 - id: sanders2020b-42990944
   ref: sanders2020b
   date: 2026-11-16
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -104343,6 +104343,10 @@
     - "extractor confidence: medium"
     - "attributed by the paper to Normann and Sanders [36, Theorem 3.1]: cite the original"
   proposed: 3edb7bbe2b93
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Cited in sanders2020b (Section 3.2, after Theorem 3.6, as [36, Theorem 3.1]); read in normannsanders2020b.txt, where it is Theorem 3.2: Z2^omega + QF-AC^{0,1} cannot prove NIN (model P of Definition 2.24, under V=L), a separation over RCA0^omega a fortiori; not yet in the database."
 - id: sanders2020b-6a109857
   ref: sanders2020b
   date: 2026-11-16
@@ -104481,7 +104485,7 @@
 - id: sanders2022b-6d76bedd
   ref: sanders2022b
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -104501,6 +104505,10 @@
     - "extractor confidence: medium"
     - "attributed by the paper to [68] Sanders, On robust theorems due to Bolzano, Jordan, Weierstrass, and Cantor in Reverse Mathematics: cite the original"
   proposed: 82bbc8a70fca
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Footnote 15 is a passing citation of [68] and the Jordan decomposition theorem there is the third-order version for arbitrary BV functions, not the zoo's second-order coded `jordan`.
 - id: sanders2022b-3ab6af9d
   ref: sanders2022b
   date: 2026-11-16
@@ -104594,7 +104602,7 @@
 - id: sanders2023b-107eeff3
   ref: sanders2023b
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -104612,6 +104620,10 @@
   reasons:
     - "extractor confidence: medium"
   proposed: 61aaeb2b4d8e
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Footnote 8 is a passing remark (an injection is a height function), and NIN_alt -> NIN is already in the database from normannsanders2020b (Example A.24).
 - id: sanders2023b-e49fb5f7
   ref: sanders2023b
   date: 2026-11-16
@@ -104870,7 +104882,7 @@
 - id: dienerhedin2012-7cab6882
   ref: dienerhedin2012
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -104888,10 +104900,14 @@
   reasons:
     - "extractor confidence: medium"
   proposed: ba3247f2ccc6
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The paper's WWKL (Section 4) is the bar form (a decidable bar closed under extensions has non-bar proportion tending to 0), which follows from FAN_Delta, whereas the zoo's wwkl is the path form (a tree of positive measure has a path), which implies LLPO in BISH; these differ constructively and the zoo has no statement for the bar form.
 - id: dienerhedin2012-1171ef01
   ref: dienerhedin2012
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -104909,6 +104925,10 @@
   reasons:
     - "extractor confidence: low"
   proposed: 166b4abe8123
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Introductory remark, and the WWKL meant is the bar form of Section 4, not the zoo's path-form wwkl (which implies LLPO in BISH and so does not follow from FAN_Delta, consistent with INT).
 - id: dienerhedin2012-a50e7054
   ref: dienerhedin2012
   date: 2026-11-16
@@ -105044,3 +105064,695 @@
   reasons:
     - principle not in the catalogue
   proposed: 901077f2d2ac
+- id: sanders2015b-dda5e19e
+  ref: sanders2015b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Π¹₁-TRANS
+    name: Π¹₁-Transfer principle (nonstandard)
+    loc: Section 1.2, (Π11-TRANS)
+    definition: (∀st f^1)[(∀st g^1)(∃st x^0) f(gx) ≠ 0 ↔ (∀g^1)(∃x^0) f(gx) ≠ 0], the Transfer principle of Nelson-style nonstandard analysis limited to Π¹₁-formulas; Π⁰₁-TRANS is the analogue for Π⁰₁-formulas.
+    facts: Over RCA_0^Ω, Π⁰₁-TRANS is equivalent to (∃²) (Theorem 3, from van den Berg-Sanders), and Π¹₁-TRANS to (µ¹); over RCA†₀ + (STP2) + QF-AC^{1,1} it is equivalent to the Suslin functional (S²) and to (PB) (Theorem 11). All over nonstandard base systems, not RCA_0^ω.
+  reasons:
+    - principle not in the catalogue
+  proposed: ee372eb269c8
+- id: sanders2015b-5fb20226
+  ref: sanders2015b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (PB)
+    name: Stratified bounding principle for Π¹₁-formulas (search through the reals)
+    loc: Principle 10
+    definition: "There is h^0 ⊐ 0 such that for f ⊑ 0, h ≥ h0 and M ⊐ h: (∀st g)(∃st x)(f(gx) ≠ 0) ↔ (∀g ≤* hM)(∃x ≤ M)(f(gx) ≠ 0)."
+    facts: Equivalent to Π¹₁-TRANS and, with QF-AC^{1,1}, to the Suslin functional (S²), over RCA†₀ + (STP2) (Theorem 11).
+  reasons:
+    - principle not in the catalogue
+  proposed: 0fad7b9a6acb
+- id: sanders2015b-0fadebca
+  ref: sanders2015b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (TB), (SB)
+    name: Stratified bounding principles for Δ¹₁-formulas
+    loc: Principles 18 and 19
+    definition: Analogues of (PB) for formulas D(f,g) expressing that f, g give a Δ¹₁-formula, using the lexicographically least sequence P(k,h,M) of length M.
+    facts: Over RCA†₀ + (STP2) + QF-AC^{1,1}, (D²) ↔ (SB) ↔ (TB) ↔ Δ¹₁-TRANS (Theorem 20); here (D²) is the functional version of Δ¹₁-CA (not the catalogue's third-order Δ-CA).
+  reasons:
+    - principle not in the catalogue
+  proposed: 3e302feb9d64
+- id: sanders2015b-9a3eee5f
+  ref: sanders2015b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Δ¹₁-TRANS
+    name: Δ¹₁-Transfer principle (nonstandard)
+    loc: Section 3.2
+    definition: (∀f,g) D(f,g) → [D(f,g) ↔ (∃st h)(∀st x)(f(hx)=0)].
+    facts: Equivalent to the functional version (D²) of Δ¹₁-comprehension over RCA_0^Ω + (STP) + QF-AC^{1,1} (Theorem 16).
+  reasons:
+    - principle not in the catalogue
+  proposed: 0ef992cb975a
+- id: sanders2015b-1d5e1947
+  ref: sanders2015b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (STP), (STP2)
+    name: Standard Part principles
+    loc: Section 2.1 and Section 2.2
+    definition: "(STP): (∀X^1)(∃st Y^1)(∀st x)(x ∈ X ↔ x ∈ Y); (STP2): (∀X, z)(∃Y ⊑ z)(∀x ⊑ z)(x ∈ Y ↔ x ∈ X)."
+    facts: RCA_0^Ω + (STP) proves WKL (Theorem 4); (STP) is conservative over WKL_0 (cited from van den Berg-Briseid, Keisler). Nonstandard base, so not entered over rca0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 277ce0bb5317
+- id: kawai2026b-8b65ab3a
+  ref: kawai2026b
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: fandelta
+    to: posinf
+    over: bish
+  loc: Theorem 5.1
+  origin: stated
+  quote: The principles WKL!, MIN!, CIT!, FAN, and POS are all equiv-
+  paperNotation: FAN, POS
+  confidence: medium
+  concerns: Proved over EL0 (so valid in BISH). The paper's POS is for compact metric spaces; the catalogue's posinf is stated on [0,1] (a special case, but the catalogue notes equivalence with fandelta citing this theorem).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 3f145b342b87
+- id: kawai2026b-21de7d8a
+  ref: kawai2026b
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: wklu
+    to: fandelta
+    over: bish
+  loc: Theorem 5.1
+  origin: stated
+  quote: The principles WKL!, MIN!, CIT!, FAN, and POS are all equiv-
+  paperNotation: WKL!, FAN
+  confidence: high
+  concerns: Proved over EL0 (constructive base weaker than BISH); implications there hold in BISH. FAN is for detachable bars of binary sequences, matching fandelta.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: eabd60134c02
+- id: kohlenbach1998b-efd88626
+  ref: kohlenbach1998b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: lim sup / lim inf
+    name: Existence of the limit superior and inferior of a bounded sequence of reals
+    loc: Section 5.6, Definition 5.6.1
+    definition: Every bounded sequence of reals has a lim sup (and lim inf), defined by a in R is the lim sup of (x_n) iff for all k, m there is n>m with |a-x_n|<=1/(k+1), and there is l with x_j <= a+1/(k+1) for all j>l.
+    facts: The paper lists it among principles implying arithmetical comprehension (introduction, item 5); in Section 5.6 shows single instances reduce to an arithmetical Pi^0_5 principle with bound in the fragment T_1 of Goedel's T.
+  reasons:
+    - principle not in the catalogue
+  proposed: b0d835989f6d
+- id: kohlenbach1998b-698eb78d
+  ref: kohlenbach1998b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Sigma^0_1-UB
+    name: Principle of uniform Sigma^0_1-boundedness
+    loc: Section 1 (Introduction)
+    definition: For purely existential A, if for all y and all k, x<=y(k) there is z with A(x,y,k,z), then there is a type-1 functional bounding the witnesses uniformly (formula given in the introduction).
+    facts: Implied by the axiom F over G_2A^omega + AC^{1,0}-qf; used to prove uniform continuity, attainment of the maximum, Heine-Borel, Dini; not provable in G_nA^omega.
+  reasons:
+    - principle not in the catalogue
+  proposed: 856e1b0f8872
+- id: kohlenbach1998b-a02aba1e
+  ref: kohlenbach1998b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PCM_1
+    name: Convergence of bounded monotone sequences, Cauchy form without modulus
+    loc: Section 4
+    definition: For every decreasing sequence a of reals in R+, for all k there is n with |a(m)-a(n)|<=1/(k+1) for all m>n.
+    facts: The paper states PCM_1 is equivalent, relative to G_3A^omega (a weak base without quantifier-free choice), to second-order Sigma^0_1-induction.
+  reasons:
+    - principle not in the catalogue
+  proposed: 802ad2b4d9b8
+- id: sanders2014-c0307950
+  ref: sanders2014
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Π1-TRANS
+    name: Π1-transfer (nonstandard analysis)
+    loc: Principle 5
+    definition: "For all Δ0 formulas φ: (∀n ∈ N)φ(n) → (∀n ∈ *N)*φ(n), in the nonstandard base theory NSA (stratified nonstandard analysis, Definition 4 and Section 3)."
+    facts: "Theorem 11: over NSA, LPO (read with the paper's hyperconnectives: for Σ1 P, P hyper-or hyper-not P) is equivalent to Π1-TRANS. Theorem 15: over NSA, LPO (hyper-version) is equivalent to LPR (hyper-version). Theorem 18: over NSA, MCT (stated with hyperimplication) is equivalent to LPO (hyper-version). All are in the paper's hyperconnective reading, not the classical or constructive reading of these principles."
+  reasons:
+    - principle not in the catalogue
+  proposed: 7126a658ba56
+- id: sanders2014-d1e4110f
+  ref: sanders2014
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (Π1-TRANS)_1
+    name: Π1-transfer limited to N1
+    loc: Section 4.2, before Theorem 22
+    definition: "Π1-TRANS with *N replaced by N1 in (5): (∀n ∈ N)φ(n) → (∀n ∈ N1)φ(n) for Δ0 φ."
+    facts: "Theorem 22: over NSA, MP (hyper-version) is equivalent to MPR (hyper-version) and to (Π1-TRANS)_1. The text states MP is strictly weaker than LPO (hyper-versions) over NSA, with models only sketched."
+  reasons:
+    - principle not in the catalogue
+  proposed: 1b8ff0125695
+- id: dienerloeb2011-5c1ef9c2
+  ref: dienerloeb2011
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: ucont
+    to: antispecker
+    over: bish
+  loc: Section 3, implications after Proposition 18 (with Proposition 18)
+  origin: stated
+  quote: UCT =⇒ UDT =⇒ AS [0,1] .
+  paperNotation: UCT, AS_[0,1]
+  argument: UCT trivially implies UDT over BISH, and UDT implies AS[0,1] (Proposition 18); also UCT => BUCT[0,1] => AS[0,1] by Lemma 5.
+  confidence: medium
+  concerns: The paper's UCT is stated for compact metric spaces (equivalent to UCT[0,1] by [12]); catalogue ucont is the [0,1] version. Proofs use countable/dependent choice, allowed in bish.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: 5cf61768b80e
+- id: dienerloeb2011-6cac8681
+  ref: dienerloeb2011
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BUCT[0,1]
+    name: Uniform continuity theorem for bounded functions
+    loc: Section 2
+    definition: "Every bounded, continuous function f : [a,b] -> R is uniformly continuous (pointwise continuity, constructive)."
+    facts: "Lemma 5: BUCT[0,1] implies AS[0,1] (hence POS); Proposition 6: BUCT[0,1] implies UCT[a,b]; UCT => BUCT[a,b] => LUCT[a,b]; Proposition 7: LUCT[0,1] implies BUCT[0,1]; all over BISH."
+  reasons:
+    - principle not in the catalogue
+  proposed: b28243c8837b
+- id: dienerloeb2011-cf120f75
+  ref: dienerloeb2011
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LUCT
+    name: Locally uniform continuity theorem
+    loc: Section 2, Definitions 3 and 8
+    definition: Every continuous function of a compact metric space into a metric space is locally uniformly continuous.
+    facts: Equivalent to UCT (UCT => LUCT => LUCT[0,1] => UCT, Proposition 7 and Proposition 6); equivalent to Strong Picard's Theorem (Theorem 22), all over BISH.
+  reasons:
+    - principle not in the catalogue
+  proposed: 6b74e5a7d7be
+- id: dienerloeb2011-0253f202
+  ref: dienerloeb2011
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UDT
+    name: Uniform differentiation theorem
+    loc: Section 3, after Definition 16
+    definition: Every differentiable function on [0,1] is uniformly continuously differentiable.
+    facts: UCT => UDT => AS[0,1] (Proposition 18); whether the reverse implications hold is open.
+  reasons:
+    - principle not in the catalogue
+  proposed: 0bc26790e635
+- id: dienerloeb2011-fd9eaedd
+  ref: dienerloeb2011
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Strong Picard's Theorem
+    name: Strong Picard's Theorem (pointwise continuous defining function)
+    loc: Section 4
+    definition: Picard existence theorem for y'=f(x,y), f only continuous and Lipschitz in y, giving a unique uniformly continuously differentiable local solution.
+    facts: "Theorem 22: equivalent to LUCT over BISH, hence to UCT."
+  reasons:
+    - principle not in the catalogue
+  proposed: 566eebb0041b
+- id: dienerloeb2011-b5ecf2eb
+  ref: dienerloeb2011
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Peano's Theorem (uniformly continuous f)
+    name: Peano's Theorem with uniformly continuous right-hand side
+    loc: Section 5
+    definition: Peano existence theorem for f uniformly continuous on a rectangle, with a continuously differentiable solution on [x0-h,x0+h].
+    facts: Stated to be equivalent to LLPO over BISH, citing Beeson [4] and Bridges [10] (no number given); definition differs from catalogue peano-ode (continuous f), so not entered.
+  reasons:
+    - principle not in the catalogue
+  proposed: 034c069ca4e3
+- id: dienerloeb2011-0dff25d2
+  ref: dienerloeb2011
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Strong Peano's Theorem
+    name: Strong Peano's Theorem
+    loc: Section 5, before Theorem 27
+    definition: For f continuous, existence of an equicontinuous convergent sequence of approximate solutions iff existence of a uniformly continuously differentiable solution.
+    facts: "Theorem 27: equivalent to UCT over BISH."
+  reasons:
+    - principle not in the catalogue
+  proposed: 5aabb66aab47
+- id: sanders2018-cc9a210e
+  ref: sanders2018
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: STP
+    name: Standard Part (nonstandard compactness of Cantor space)
+    loc: Section 3.1, (STP)
+    definition: "(forall alpha <=_1 1)(exists^st beta <=_1 1)(alpha ≈_1 beta): every binary sequence is infinitely close to a standard one; formulated in the nonstandard system B0 (fragments of IST over E-EFA^omega + QF-AC^{1,0})."
+    facts: "Theorem 3.2: equivalent in B0^- to (3.1) and (3.2); B0^- proves (exists^st Theta)SCF(Theta) -> STP. Theorem 3.4: B0 + (FF) + QF-AC^{2,1} proves STP <-> (exists Theta)SCF(Theta), while B0^- + (exists^3) + QF-AC does not. Theorem 3.5: B0 + QF-AC^{2,1} proves STP <-> HBU <-> HBU^st, B0^- + (exists^3) + QF-AC does not. Corollary 3.7: B0^- proves LUB^st -> HBU^st -> STP. Theorem 3.10: in B0^- + WWKL, STP <-> LMP <-> STP^-. These are over nonstandard base theories with no catalogue id, so no fact was entered."
+  reasons:
+    - principle not in the catalogue
+  proposed: ef529a093d25
+- id: sanders2018-0a729e9d
+  ref: sanders2018
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LMP
+    name: Nonstandard counterpart of WWKL
+    loc: Section 3.3, (LMP)
+    definition: (forall T <=_1 1)(mu(T) >> 0 -> (exists^st beta <=_1 1)(forall^st m)(beta m in T)), where mu(T) >> 0 is [mu(T) >_R 0]^st.
+    facts: "Theorem 3.9: B0 + QF-AC^{2,1} proves LMP <-> MLR_ns <-> HBU_ml, and with (FF) also <-> (exists Lambda)WCF(Lambda). Theorem 3.10: in B0^- + WWKL, STP <-> LMP <-> STP^-. Nonstandard base, so no fact entered."
+  reasons:
+    - principle not in the catalogue
+  proposed: bf116ef6c26f
+- id: sanders2018-f6e054a6
+  ref: sanders2018
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WCF(Lambda)
+    name: Weak fan functional
+    loc: Definition 3.8
+    definition: (forall k, g^2, T <=_1 1)((forall alpha in Lambda(g,k)(2))(alpha g(alpha) not in T) -> (exists n <= Lambda(g,k)(1))(L_n(T) <= 1/k)), the functional arising from WWKL.
+    facts: Equivalent to LMP over B0 + (FF) + QF-AC^{2,1} (Theorem 3.9).
+  reasons:
+    - principle not in the catalogue
+  proposed: 28f384b175e5
+- id: sanders2018-86eaa545
+  ref: sanders2018
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HBU^st
+    name: Standard version of HBU
+    loc: Section 3.2, Theorem 3.5
+    definition: HBU with all quantifiers relative to st.
+    facts: B0 + QF-AC^{2,1} proves STP <-> HBU <-> HBU^st (Theorem 3.5); B0^- proves LUB^st -> HBU^st -> STP (Corollary 3.7).
+  reasons:
+    - principle not in the catalogue
+  proposed: 75c5698dd090
+- id: kohlenbach2005-eae8a995
+  ref: kohlenbach2005
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: exists2
+    to: muc
+    over: rca0
+  loc: Section 3, before Proposition 3.15
+  origin: deduced
+  quote: (MUC) is in onsistent with (92 ) but onsistent relative to RCA!0 .
+  paperNotation: (MUC), (∃²)
+  argument: RCA₀^ω + (∃²) proves the negation of MUC, and RCA₀^ω + (∃²) is consistent (conservative over PA, Theorem 3.2); hence (∃²) does not imply MUC over RCA₀^ω.
+  confidence: medium
+  concerns: Paper says only 'inconsistent with (∃²) but consistent relative to RCA₀^ω'.
+  reasons:
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: 04d7895f5853
+- id: kohlenbach2005-19fef85e
+  ref: kohlenbach2005
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: muc
+    to: exists2
+    over: rca0
+  loc: Section 3, before Proposition 3.15
+  origin: deduced
+  quote: (MUC) is in onsistent with (92 ) but onsistent relative to RCA!0 .
+  paperNotation: (MUC), (∃²)
+  argument: RCA₀^ω + MUC is consistent and proves the negation of (∃²) (inconsistent with it), so MUC does not imply (∃²) over RCA₀^ω.
+  confidence: medium
+  concerns: Paper says only 'inconsistent with (∃²) but consistent relative to RCA₀^ω'.
+  reasons:
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: 53e35655ab55
+- id: kohlenbach2005-888fdab1
+  ref: kohlenbach2005
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: exists2
+    to: discontr
+    over: rca0
+  loc: Proposition 3.12
+  origin: stated
+  quote: "Proposition 3.12. The following prin iples are pairwise equivalent relative to RCA!0 :"
+  paperNotation: "(∃²) and 'there exists a function F: R → R which is not everywhere sequentially continuous'"
+  confidence: high
+  concerns: Over RCA₀^ω (entered over rca0). Items 3 of the proposition; the paper's (∃²) is written '92' in the text.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 9bc5fddd7f21
+- id: kohlenbach2005-df3bfd0b
+  ref: kohlenbach2005
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: uniform IVT (Prop 3.14.2)
+    name: Uniform intermediate value theorem for functionals
+    loc: Proposition 3.14, item 2
+    definition: "∃F: C → [0,1] ∀f ∈ C f(F(f)) =_R 0, where C is the space of f ∈ C[0,1] with f(0) ≤ 0, f(1) ≥ 0 (given as type 1→1 functionals extensional w.r.t. =_R)."
+    facts: Equivalent to (∃²) over RCA₀^ω, also restricted to Lipschitz functions with constant 1 (item 3).
+  reasons:
+    - principle not in the catalogue
+  proposed: bca929bcd958
+- id: kohlenbach2005-0cfc8e27
+  ref: kohlenbach2005
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: uniform attainment of the maximum (Prop 3.14.4)
+    name: Uniform attainment of the maximum principle
+    loc: Proposition 3.14, item 4
+    definition: "∃F: C([0,1]^d) → [0,1]^d ∀f ∀y f(F(f)) ≥_R f(y)."
+    facts: Equivalent to (∃²) over RCA₀^ω, also restricted to Lipschitz functions with constant 1 (item 5).
+  reasons:
+    - principle not in the catalogue
+  proposed: 4641cc6d88c7
+- id: kohlenbach2005-92fff437
+  ref: kohlenbach2005
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: uniform Brouwer fixed point theorem (Prop 3.14.6)
+    name: Uniform Brouwer fixed point theorem
+    loc: Proposition 3.14, item 6
+    definition: "∃F: C([0,1]^d,[0,1]^d) → [0,1]^d ∀f f(F(f)) =_{R^d} F(f)."
+    facts: Equivalent to (∃²) over RCA₀^ω, also restricted to Lipschitz functions with constant 1 (item 7).
+  reasons:
+    - principle not in the catalogue
+  proposed: bd7aad2ae22f
+- id: kohlenbach2005-f3d97316
+  ref: kohlenbach2005
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: 2 (Definition 3.8.1)
+    name: Functional ∃φ² selecting a point with f(φ(f))=0
+    loc: Definition 3.8.1
+    definition: "(2): ∃²-existence together with a functional φ such that ∀f^1 (∃x f(x)=0 → f(φ(f))=0)."
+    facts: Equivalent to (∃²) and UWKL over RCA₀^ω (Proposition 3.9).
+  reasons:
+    - principle not in the catalogue
+  proposed: 6fcd70f123a7
+- id: kohlenbach2005-cb2a4d2a
+  ref: kohlenbach2005
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: existence of a not everywhere sequentially continuous functional (Prop 3.7)
+    name: Non-sequentially continuous functional of type 2 or 1→1
+    loc: Proposition 3.7
+    definition: There exists a functional of type 2 (or 1→1) which is not everywhere sequentially continuous (or not everywhere ε-δ-continuous).
+    facts: Equivalent to (∃²) over RCA₀^ω (Grilliot's trick).
+  reasons:
+    - principle not in the catalogue
+  proposed: 5600f0fbfb80
+- id: normannsanders2024-78c7bbea
+  ref: normannsanders2024
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: usco bounded above
+    name: Upper semi-continuous functions on [0,1] are bounded above
+    loc: Theorem 2.5(a)
+    definition: "A usco function f : [0,1] -> R (Definition 2.2) is bounded above."
+    facts: "Theorem 2.5: over RCA_0^omega equivalent to the Heine-Borel theorem for sequences of open sets, the Cantor intersection theorem, attainment of the supremum for usco functions, HBC_s; over RCA_0^omega + QF-AC^{0,1} equivalent to WKL_0 and HBC. Corollary 2.27: equivalent to WKL_0 and the Lebesgue number lemma over RCA_0^omega + QF-AC^{0,1} + B-Pi. Z_2^omega does not prove it."
+  reasons:
+    - principle not in the catalogue
+  proposed: b209de102dba
+- id: normannsanders2024-3b5ab00a
+  ref: normannsanders2024
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HBC_s
+    name: Heine-Borel theorem for closed sets and sequences of open sets
+    loc: Principle 2.4
+    definition: For closed C in [0,1] (third-order) and a sequence of open sets (O_n) covering C, finitely many O_n cover C. HBC is the restriction to basic open intervals.
+    facts: Item (f) of Theorem 2.5, equivalent over RCA_0^omega to usco functions being bounded above; HBC equivalent to WKL_0 over RCA_0^omega + QF-AC^{0,1}; Z_2^omega does not prove HBC.
+  reasons:
+    - principle not in the catalogue
+  proposed: b978cec5615a
+- id: normannsanders2024-feb98f5d
+  ref: normannsanders2024
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Sequential Cantor intersection theorem
+    name: Sequential Cantor intersection theorem
+    loc: Theorem 2.8(f)
+    definition: For a double sequence of non-empty closed sets C_{n,m} in [0,1] with C_{n+1,m} contained in C_{n,m}, there is a sequence (y_m) with y_m in the intersection over n of C_{n,m}.
+    facts: Equivalent to WKL_0 + ClC over RCA_0^omega (Theorem 2.8).
+  reasons:
+    - principle not in the catalogue
+  proposed: 632a17f8f02e
+- id: normannsanders2024-602ca31f
+  ref: normannsanders2024
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Lebesgue number lemma for sequences of open sets
+    name: Lebesgue number lemma (third-order open sets)
+    loc: Theorem 2.25
+    definition: For a sequence of open sets covering [0,1] there is k such that every interval of length below 2^-k lies in some O_n.
+    facts: Provable in ACA_0^omega + QF-AC^{0,1} (Theorem 2.25); equivalent to WKL_0 over RCA_0^omega + QF-AC^{0,1} + B-Pi (Corollary 2.27).
+  reasons:
+    - principle not in the catalogue
+  proposed: 64e114de0dca
+- id: sanders2024-65e5df50
+  ref: sanders2024
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: cocode0-exists2
+    to: atr
+    over: rca0
+  loc: Section 2.2, remark after Principle 2.5
+  origin: cited
+  quote: This principle is ‘explosive’ in that
+  paperNotation: ACA_0^omega + cocode_0 proves ATR_0
+  citedFrom: "[31, §4]"
+  confidence: medium
+  concerns: Principle 2.5 (cocode0) is stated for A ⊂ [0,1] with Y injective on A (third-order); the catalogue cocode0 uses the same formulation. Base ACA_0^omega is RCA_0^omega + (∃²), entered as the conjunct exists2. The text extraction garbles the line, so the quote only covers the beginning of the sentence.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to [31, §4]: cite the original"
+  proposed: 68bf5d2e16c0
+- id: sanders2024-1790c90e
+  ref: sanders2024
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: IND_1
+    name: Induction principle IND1 (finite choice for unique functions in Cantor space)
+    loc: Principle 2.1
+    definition: Let Y^2 satisfy (∀n)(∃!f ∈ 2^N)[Y(n,f)=0]. Then (∀n)(∃w^{1*})(|w|=n ∧ (∀i<n)(Y(i,w(i))=0)).
+    facts: A special case of finite choice; valid in the models of [24-30,32], so Z_2^omega + IND1 does not prove NBI. Used as an extra hypothesis in Theorem 2.2 (RCA_0^omega + IND1).
+  reasons:
+    - principle not in the catalogue
+  proposed: 94c0d4239f74
+- id: sanders2024-41e2fb1f
+  ref: sanders2024
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: items (a)-(t) of Theorem 2.2
+    name: Basic properties of continuous functions on unrepresented compact metric spaces (M,d), M a subset of R
+    loc: Theorem 2.2
+    definition: "Third-order statements such as: on a countably-compact (or sequentially compact) metric space a (sequentially) continuous F : M → R is bounded, uniformly continuous, has a supremum or a maximum; Dini's theorem; Pincherle's theorem; Ascoli-Arzela; equicontinuity implies uniform equicontinuity; sequentially compact implies strongly countably-compact, separable, sequential Cantor intersection property, limit point compact."
+    facts: Over RCA_0^omega + IND1, items (a)-(g) and (h)-(t) each imply NBI[0,1] (Theorem 2.2, with the replacements of countably-compact by compact, complete and totally bounded, or strongly countably-compact); items (h)-(l) are provable in Z_2^Omega. Over RCA_0^omega + QF-AC^{0,1}, items (h),(i),(m),(n),(o),(q),(s),(t) are provable (Theorem 2.4).
+  reasons:
+    - principle not in the catalogue
+  proposed: 17f9adef0b5c
+- id: sanders2024-41083211
+  ref: sanders2024
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (e.2), (f.2) of Theorem 2.3
+    name: Boundedness above of continuous functions / sequential compactness of weakly complete effectively totally bounded metric spaces M ⊂ [0,1]
+    loc: Theorem 2.3(e),(f)
+    definition: "(e.2): for any weakly complete and effectively totally bounded metric space (M,d) with M ⊂ [0,1], a continuous F : M → R is bounded above. (f.2): any such (M,d) is sequentially compact."
+    facts: Over RCA_0^omega, WKL_0 is equivalent to (e.1)-(e.3) (e.3 for sequentially continuous functions) and ACA_0 is equivalent to (f.2). Without 'effectively' (e.3) implies NBI[0,1].
+  reasons:
+    - principle not in the catalogue
+  proposed: a6436ebb64d1
+- id: sanders2024-76e7f554
+  ref: sanders2024
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Theorem 2.4, equivalences
+    name: Strong countable compactness of the unit interval; limit point compactness of weakly complete effectively totally bounded spaces
+    loc: Theorem 2.4
+    definition: The unit interval is strongly countably-compact (every sequence of open sets covering it has a finite subcover); a weakly complete and effectively totally bounded (M,d), M ⊂ [0,1], is limit point compact.
+    facts: "Over RCA_0^omega + QF-AC^{0,1}: WKL_0 is equivalent to the unit interval being strongly countably-compact (proof of the equivalence cited to [28, Theorem 4.1]), and ACA_0 is equivalent to limit point compactness of such spaces."
+  reasons:
+    - principle not in the catalogue
+  proposed: 7ad9077319b5
+- id: berger2009-267e6496
+  ref: berger2009
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wkl
+    to: llpo
+    over: bish
+  loc: Proposition 2 (proof of WKL → LLPO, via Lemma 1)
+  origin: stated
+  quote: By WKL, there exists an infinite path α of T. Set i = α(0).
+  paperNotation: WKL, LLPO
+  confidence: medium
+  concerns: The paper works in a function-based intuitionistic system (HA^omega); WKL is read for detachable infinite trees. The proof uses Lemma 1 (LLPO iff for infinite T, T0 or T1 is an infinite tree), which is proved constructively.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 264bfd4e361f
+- id: berger2009-fd3caf46
+  ref: berger2009
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wkl
+    to: fandelta
+    over: bish
+  loc: Final diagram (WKL → FAN), citing Ishihara [4]
+  origin: cited
+  quote: "‘Weak König’s Lemma Implies Brouwer’s Fan Theorem: A Direct Proof.’"
+  paperNotation: WKL -> FAN
+  citedFrom: Ishihara, Notre Dame J. Formal Logic 47 (2006)
+  confidence: medium
+  concerns: The paper only shows the implication as a vertical arrow in the closing diagram and cites Ishihara; FAN is the fan theorem for detachable bars (fandelta).
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+    - "attributed by the paper to Ishihara, Notre Dame J. Formal Logic 47 (2006): cite the original"
+  proposed: b3f61385bd91
