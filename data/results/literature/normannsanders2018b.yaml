@@ -1,0 +1,3 @@
+# Results from [normannsanders2018b].
+
+[ { type: implication, from: exists3, to: hbu, over: rca0, refs: [ { ref: normannsanders2018b, loc: Theorem 4.2 } ] }, { type: implication, from: hbu, to: hbuc, over: rca0, refs: [ { ref: normannsanders2018b, loc: Theorem 4.2 } ] }, { type: separation, from: suslin, to: whbu, over: rca0, refs: [ { ref: normannsanders2018b, loc: Theorem 4.3 (model M) and the remark after it } ] } ]

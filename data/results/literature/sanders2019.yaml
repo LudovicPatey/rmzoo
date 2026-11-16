@@ -1,0 +1,3 @@
+# Results from [sanders2019].
+
+[ { type: implication, from: mctnet, to: hbu, over: rca0, refs: [ { ref: sanders2019, loc: Theorem 3.2 } ] } ]

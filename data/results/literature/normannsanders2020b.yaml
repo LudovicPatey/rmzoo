@@ -1,0 +1,3 @@
+# Results from [normannsanders2020b].
+
+[ { type: implication, from: hbc0, to: nin, over: rca0, refs: [ { ref: normannsanders2020b, loc: Corollary 3.22 } ] }, { type: implication, from: bwc0fun-suslin, to: pi12ca, over: rca0, refs: [ { ref: normannsanders2020b, loc: Theorem 3.25 } ] } ]

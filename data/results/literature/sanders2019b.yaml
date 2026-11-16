@@ -1,0 +1,3 @@
+# Results from [sanders2019b].
+
+[ { type: implication, from: boot, to: mctnet, over: rca0, refs: [ { ref: sanders2019b, loc: "Corollary 3.14, proof" } ] }, { type: implication, from: mctnet-qfac01, to: boot, over: rca0, refs: [ { ref: sanders2019b, loc: Theorem 3.19 } ] }, { type: implication, from: boot-qfac01, to: hbu, over: rca0, refs: [ { ref: sanders2019b, loc: Theorem 4.21 } ] }, { type: implication, from: exists3, to: boot, over: rca0, refs: [ { ref: sanders2019b, loc: "Corollary 3.8, proof" } ] }, { type: implication, from: boot, to: aca, over: rca0, refs: [ { ref: sanders2019b, loc: "Theorem 3.2, proof" } ] } ]

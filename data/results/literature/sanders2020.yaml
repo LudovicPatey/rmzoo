@@ -1,0 +1,3 @@
+# Results from [sanders2020].
+
+[ { type: implication, from: cbn-cocode1, to: cocode0, over: rca0, refs: [ { ref: sanders2020, loc: "Theorem 3.16, (iv) <-> (v)" } ] }, { type: implication, from: cocode0, to: cbn, over: rca0, refs: [ { ref: sanders2020, loc: "Theorem 3.16, (iv) -> (v)" } ] }, { type: implication, from: cocode0-suslin, to: pi12ca, over: rca0, refs: [ { ref: sanders2020, loc: Corollary 3.17 } ] } ]

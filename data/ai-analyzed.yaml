@@ -2018,20 +2018,20 @@ diener2018#1:
   model: claude-sonnet-5-5 (chat)
   textHash: babdda575448c022
   part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
-  facts: 13
+  facts: 22
   added: 0
-  review: 32
-  dropped: 0
+  review: 31
+  dropped: 1
   cost: 0
 diener2018#2:
   date: 2026-11-16
   model: claude-sonnet-5-5 (chat)
   textHash: 77ca83bb2256ef60
   part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
-  facts: 2
+  facts: 29
   added: 0
-  review: 16
-  dropped: 0
+  review: 45
+  dropped: 1
   cost: 0
 dienerhedin2012:
   date: 2026-11-11
@@ -5767,20 +5767,20 @@ normannsanders2017b:
   date: 2026-11-16
   model: claude-sonnet-5-5 (chat)
   textHash: 8298cfaf2c48974c
-  facts: 1
+  facts: 8
   added: 0
-  review: 7
-  dropped: 1
+  review: 15
+  dropped: 0
   cost: 0
 normannsanders2018:
   date: 2026-11-16
   model: claude-sonnet-5-5 (chat)
   effort: high
   textHash: d201ed3c1662f8b8
-  facts: 13
+  facts: 6
   added: 0
-  review: 19
-  dropped: 7
+  review: 11
+  dropped: 0
   cost: 0.17
 normannsanders2018b:
   date: 2026-11-10
@@ -5795,10 +5795,10 @@ normannsanders2019:
   date: 2026-11-16
   model: claude-sonnet-5-5 (chat)
   textHash: dc96cae35c7ae915
-  facts: 2
+  facts: 7
   added: 0
-  review: 10
-  dropped: 2
+  review: 23
+  dropped: 0
   cost: 0
 normannsanders2019b:
   date: 2026-11-10
@@ -5832,10 +5832,10 @@ normannsanders2021:
   model: claude-sonnet-5-5 (chat)
   effort: high
   textHash: 8a4e448884965b55
-  facts: 1
+  facts: 24
   added: 0
-  review: 13
-  dropped: 0
+  review: 35
+  dropped: 2
   cost: 0.2
 normannsanders2021b:
   date: 2026-11-11
@@ -6692,10 +6692,10 @@ sanders2019b:
   model: claude-sonnet-5-5 (chat)
   effort: high
   textHash: 7ffbfff01874ae94
-  facts: 7
+  facts: 16
   added: 0
-  review: 16
-  dropped: 7
+  review: 38
+  dropped: 0
   cost: 0.19
 sanders2019c:
   date: 2026-11-10
@@ -7632,30 +7632,30 @@ veldman2011:
   model: claude-sonnet-5-5 (chat)
   effort: high
   textHash: 568597532cb9e7d9
-  facts: 4
+  facts: 12
   added: 0
-  review: 10
-  dropped: 1
+  review: 25
+  dropped: 0
   cost: 0.24
 veldman2014:
   date: 2026-11-16
   model: claude-sonnet-5-5 (chat)
   effort: high
   textHash: 9578824c0e5d5e26
-  facts: 3
+  facts: 10
   added: 0
-  review: 14
-  dropped: 2
+  review: 28
+  dropped: 0
   cost: 0.22
 veldman2025:
   date: 2026-11-16
   model: claude-sonnet-5-5 (chat)
   effort: high
   textHash: f0f8493e33ae7e8c
-  facts: 7
+  facts: 14
   added: 0
-  review: 14
-  dropped: 3
+  review: 35
+  dropped: 0
   cost: 0.26
 viale2021:
   date: 2026-11-11

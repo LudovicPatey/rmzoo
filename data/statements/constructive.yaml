@@ -29,7 +29,7 @@
   refs:
     - { ref: diener2018, role: rm, loc: "Section 1.3" }
 
-- id: excluded-middle
+- id: pem
   label: \mathsf{LEM}
   name: Law of excluded middle
   kind: sentence
@@ -119,7 +119,7 @@
       role: rm
       loc: Section 2.2
 
-- id: mp-or
+- id: mpor
   label: \mathsf{MP}^{\vee}
   name: Disjunctive Markov's principle
   kind: sentence
@@ -144,7 +144,7 @@
       role: rm
       loc: Section 2.3
 
-- id: bd-n
+- id: bdn
   label: \mathsf{BD}\text{-}\mathbb{N}
   name: Ishihara's boundedness principle
   kind: sentence
@@ -166,7 +166,7 @@
       role: rm
       loc: Section 1
 
-- id: fan-delta
+- id: fandelta
   label: \mathsf{FAN}_\Delta
   name: Fan theorem for decidable bars
   kind: sentence
@@ -191,7 +191,7 @@
     intuitionistic mathematics, refuted by Church's thesis (Kleene's alternative).
   caution: >
     The bare names FAN and FT vary: berger2009 and kawai2026b write FAN for this principle, veldman2011 writes FAN for
-    the full fan theorem over arbitrary fans ([[fan-full]]) and FT for this one, moschovakis2021b writes FT for the full
+    the full fan theorem over arbitrary fans ([[fanfull]]) and FT for this one, moschovakis2021b writes FT for the full
     fan theorem and FT_1 for this one.
   refs:
     - ref: diener2018
@@ -201,7 +201,7 @@
       role: rm
       loc: Subsection 2.2.4
 
-- id: fan-c
+- id: fanc
   label: \mathsf{FAN}_c
   name: Fan theorem for c-bars
   kind: sentence
@@ -219,14 +219,14 @@
   definition: >
     Every c-bar of Cantor space is uniform, where a bar $C \subseteq 2^{<\mathbb{N}}$ is a c-bar if there is a decidable
     $C' \subseteq 2^{<\mathbb{N}}$ with $u \in C \iff \forall w \in 2^{<\mathbb{N}}\, u * w \in C'$. Introduced by
-    Berger; equivalent to the anti-Specker property for $[0,1]$ ([[anti-specker]]) and to the uniform continuity of
+    Berger; equivalent to the anti-Specker property for $[0,1]$ ([[antispecker]]) and to the uniform continuity of
     point-wise continuous functions $2^\mathbb{N} \to \mathbb{N}$.
   refs:
     - ref: diener2018
       role: rm
       loc: Chapter 3, introduction (Fan theorems)
 
-- id: fan-pi01
+- id: fanpi01
   label: \mathsf{FAN}_{\Pi^0_1}
   name: Fan theorem for Π⁰₁-bars
   kind: sentence
@@ -244,7 +244,7 @@
   definition: >
     Every $\Pi^0_1$-bar of Cantor space is uniform, where a bar $B \subseteq 2^{<\mathbb{N}}$ is a $\Pi^0_1$-bar if $B =
     \bigcap_{n \geq 1} B_n$ for a sequence of decidable sets $B_n \subseteq 2^{<\mathbb{N}}$ closed under extension.
-    Between [[fan-full]] and [[fan-c]].
+    Between [[fanfull]] and [[fanc]].
   refs:
     - ref: diener2018
       role: rm
@@ -253,7 +253,7 @@
       role: rm
       loc: Section 2
 
-- id: fan-full
+- id: fanfull
   label: \mathsf{FAN}_{\mathrm{full}}
   name: Full fan theorem
   kind: sentence
@@ -278,7 +278,7 @@
       role: rm
       loc: Subsection 2.2.3
 
-- id: wc-n
+- id: wcn
   label: \mathsf{WC}\text{-}\mathsf{N}
   name: Weak continuity for numbers (Brouwer's continuity principle)
   kind: sentence
@@ -325,7 +325,7 @@
   definition: >
     For every relation $R \subseteq \mathbb{N}^\mathbb{N} \times \mathbb{N}$: if $\forall \alpha\, \exists n\, R(\alpha,
     n)$, then there is a continuous $\varphi : \mathbb{N}^\mathbb{N} \to \mathbb{N}$ with $\forall \alpha\, R(\alpha,
-    \varphi(\alpha))$. Strengthens [[wc-n]].
+    \varphi(\alpha))$. Strengthens [[wcn]].
   caution: "Not connected choice $\\mathsf{CC}_{[0,1]}$ ([[ivt]]): diener2018 writes CC for continuous choice (split into
     CC(1), every function $\\mathbb{N}^\\mathbb{N} \\to \\mathbb{N}$ is point-wise continuous, and CC(2), a choice
     function exists), Weihrauch papers write CC for connected choice."
@@ -372,7 +372,7 @@
     There is a decidable bar of Cantor space no finite part of which is a bar: $\exists \alpha\,
     [\mathrm{Bar}_{2^\mathbb{N}}(D_\alpha) \wedge \forall m\, \neg
     \mathrm{Bar}_{2^\mathbb{N}}(D_{\overline{\alpha}m})]$, where $D_\alpha = \{s : \alpha(s) \neq 0\}$ and
-    $D_{\overline{\alpha}m} = \{s < m : \alpha(s) \neq 0\}$. A strong negation of [[fan-delta]]; provable from Church's
+    $D_{\overline{\alpha}m} = \{s < m : \alpha(s) \neq 0\}$. A strong negation of [[fandelta]]; provable from Church's
     thesis (Kleene).
   caution: >
     Its tree form, the existence of a Kleene tree (an infinite decidable binary tree without infinite path), is labelled
@@ -401,7 +401,7 @@
     Every function $\alpha : \mathbb{N} \to \mathbb{N}$ is computable. In Veldman's cautious formulation: there are
     $\tau, \psi$ such that for every $\alpha$ there is $e$ with, for all $n$, $\alpha(n) = \psi(\mu i\,[\tau(e, n, i)
     \neq 0])$ (the $\mu$ being defined). The axiom of recursive constructive mathematics (RUSS); implies [[ka]], refutes
-    [[fan-delta]] and [[wc-n]].
+    [[fandelta]] and [[wcn]].
   caution: >
     Several non-equivalent forms: veldman2011 states the function form CT above; kajikawaetal2026 and moschovakis2021b
     use the arithmetical schemas CT_0 (every total relation has a computable choice function), CT_0!, CT_1; bauer2021 a
@@ -411,7 +411,7 @@
       role: rm
       loc: Subsection 2.2.7
 
-- id: anti-specker
+- id: antispecker
   label: \mathsf{AS}^{\mathbb{R}}_{[0,1]}
   name: Anti-Specker property of the unit interval
   kind: sentence
@@ -430,7 +430,7 @@
     from the whole of $[0,1]$; a sequence $(x_n)_n$ is eventually bounded away from a point $x$ (from a set $X$) if
     there is $N$ with $d(x_n, x) > 2^{-N}$ for all $n \geq N$ (and all $x \in X$). The general property
     $\mathsf{AS}^Y_X$ is stated for a subspace $X$ of a metric space $Y$. Fails in the presence of a Specker sequence;
-    equivalent to [[fan-c]] (diener2018, Proposition 3.4.1).
+    equivalent to [[fanc]] (diener2018, Proposition 3.4.1).
   refs:
     - ref: diener2018
       role: rm
@@ -439,7 +439,7 @@
       role: rm
       loc: Section 2
 
-- id: pos-inf
+- id: posinf
   label: \mathsf{POS}
   name: Positivity of the infimum
   kind: sentence
@@ -451,7 +451,7 @@
     - positivity property
   definition: >
     Every uniformly continuous, positive-valued function $f : [0,1] \to \mathbb{R}^+$ has a positive infimum. Equivalent
-    to [[fan-delta]] (diener2018, Proposition 3.3.3; for compact metric spaces, kawai2026b, Theorem 5.1).
+    to [[fandelta]] (diener2018, Proposition 3.3.3; for compact metric spaces, kawai2026b, Theorem 5.1).
   caution: Not [[pos]] (positive-measure classes are inhabited), a randomness principle with the same acronym.
   refs:
     - ref: diener2018
@@ -461,7 +461,7 @@
       role: rm
       loc: Section 2
 
-- id: wkl-unique
+- id: wklu
   label: \mathsf{WKL}!
   name: Weak König's lemma with a uniqueness condition
   kind: sentence
@@ -474,7 +474,7 @@
   definition: >
     Every infinite decidable binary tree with at most one infinite path has an infinite path, where "at most one path"
     is meant positively: any two distinct $\gamma, \delta \in 2^\mathbb{N}$ (that is, $\gamma \perp \delta$) leave the
-    tree at some finite stage. Equivalent to [[fan-delta]] (Berger and Ishihara; veldman2011, Theorems 2.6 and 2.7).
+    tree at some finite stage. Equivalent to [[fandelta]] (Berger and Ishihara; veldman2011, Theorems 2.6 and 2.7).
   refs:
     - ref: veldman2011
       role: rm
@@ -483,7 +483,7 @@
       role: rm
       loc: Section 5
 
-- id: pi01-ac-omega2
+- id: pi01acw2
   label: \Pi^0_1\text{-}\mathsf{AC}_{\omega,2}
   name: Π⁰₁ axiom of countable binary choice
   kind: sentence
@@ -516,7 +516,7 @@
     For every sequence $(\varphi_n)_n$ of continuous functions $[0,1] \to \mathbb{R}$, if each $\varphi_n$ has points
     $\gamma^0_n, \gamma^1_n \in [0,1]$ with $\varphi_n(\gamma^0_n) \leq 0 \leq \varphi_n(\gamma^1_n)$, then there is a
     sequence $(\gamma_n)_n$ in $[0,1]$ with $\varphi_n(\gamma_n) = 0$ for all $n$. A sequential IVT; equivalent to WKL
-    over RCA₀ (Simpson, Exercise IV.2.12), its contraposition equivalent to [[fan-delta]] over BIM.
+    over RCA₀ (Simpson, Exercise IV.2.12), its contraposition equivalent to [[fandelta]] over BIM.
   caution: sanders2015c uses UIVT for a different, higher-order statement (a functional producing zeros of all continuous
     functions).
   refs:
@@ -566,7 +566,7 @@
   definition: >
     In an explicit approximate fan, every thin bar is almost-finite: for every spread $F_\beta$ with a $\gamma$ such
     that for each $n$ the set $\{t \in \omega^n : \beta(t) = 0\}$ has at most $\gamma(n)$ members, every decidable thin
-    bar $D_\alpha$ of $F_\beta$ consisting of nodes of $F_\beta$ is almost-finite. Extends [[fan-delta]], implies
+    bar $D_\alpha$ of $F_\beta$ consisting of nodes of $F_\beta$ is almost-finite. Extends [[fandelta]], implies
     [[open-induction]] in BIM.
   refs:
     - ref: veldman2014
