@@ -2429,6 +2429,7 @@ loeb2008b:
   zbmath: "1143.03030"
   zbmathAuthors:
     - loeb.iris
+  read: pdf-oa
 medsalemtanaka2008:
   authors:
     - "Ould MedSalem, MedYahya"
@@ -3649,6 +3650,7 @@ diener2015:
   zbmath: "1362.03054"
   zbmathAuthors:
     - diener.hannes
+  read: pdf-oa
 corduangroszek2016:
   authors:
     - Jared Corduan

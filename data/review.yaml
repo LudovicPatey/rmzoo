@@ -114035,3 +114035,123 @@
     date: 2026-11-16
     by: claude
     note: Theorem 4.3 is proved in EL₀ for the standard simplices; the zoo's brouwer covers convex hulls of finitely many points, so only Brouwer → WKL (proved with the unit square) is entered, as for the BISH reading (kawai2026-a386ea31).
+- id: diener2015-7e3d93dd
+  ref: diener2015
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: bdn
+    to: riemannperm
+    over: bish
+  loc: Section 4.2
+  origin: stated
+  quote: but that under the assumption of Ishihara’s principle BD-N it can [5].
+  paperNotation: BD-N; the statement that if every rearrangement of a series converges then it is absolutely convergent
+  argument: The author says the statement can be proved under BD-N and sketches a proof (uses a complete-enough-space argument, LPO-free via Corollary 3.4, and BD-N to get pointwise continuity).
+  confidence: medium
+  concerns: Only a sketch of the proof is given; the full proof is in unpublished work [5]. Matching of the paper's statement to riemannperm is by its description.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: ed3e22075c2b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Section 4 (Riemann permutation theorem): BD-N proves that a series all of whose rearrangements converge is absolutely convergent; a sketch, the full proof being in [5] = Berger–Bridges–Diener–Schwichtenberg (bergeretal2025, Theorem 7, already entered)."
+- id: diener2015-70dcfcf2
+  ref: diener2015
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: strongly extensional bijection [0,1) → (0,1)
+    name: Existence of a strongly extensional bijection from [0,1) onto (0,1)
+    loc: Proposition 4.3
+    definition: "There exists a strongly extensional bijection f : [0,1) → (0,1) between constructive metric spaces."
+    facts: "Proposition 4.3: equivalent to LPO (in BISH)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 78655d4624e4
+  decision:
+    date: 2026-11-16
+    by: ludovic
+    note: "Used in a single cached paper (or, for UCT, the compact-metric-space version of ucont): not added for now."
+- id: loeb2008b-ce343693
+  ref: loeb2008b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CPL_cp
+    name: Continuity Principle for Limits on Compact Spaces
+    loc: Section 2
+    definition: Every pointwise convergent sequence of continuous functions from a compact metric space to a metric space has a continuous limit.
+    facts: "Corollary 1: over BISH, equivalent to every convergent sequence of continuous functions on a compact metric space being quasi-equicontinuous, and to its being quasi-uniformly convergent (Theorems 1 and 3). Theorem 5: UCT and CPL_cp together are equivalent over BISH to three statements on convergent sequences of continuous functions (uniform equicontinuity, uniformly continuous limit, uniform convergence). True intuitionistically (follows from CONT_cp)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 34abc963ab74
+  decision:
+    date: 2026-11-16
+    by: ludovic
+    note: "Used in a single cached paper (or, for UCT, the compact-metric-space version of ucont): not added for now."
+- id: loeb2008b-6261e223
+  ref: loeb2008b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CONT_cp
+    name: Continuity Principle for Compact Spaces
+    loc: Section 2
+    definition: Every function from a compact metric space to a metric space is continuous.
+    facts: "Theorem 6: UCT and CONT_cp together are equivalent over BISH to: every sequence of functions from a compact metric space to a metric space with totally bounded pointwise ranges is uniformly equicontinuous; and to: every convergent sequence of functions from a compact metric space to a metric space has a uniformly continuous limit. Theorem 7: UCT and CONT_cp imply over BISH that every convergent sequence of functions on a compact metric space converges uniformly. Implied by CONT_c and CONT_cs of Ishihara."
+  reasons:
+    - principle not in the catalogue
+  proposed: 732c90bd543d
+  decision:
+    date: 2026-11-16
+    by: ludovic
+    note: "Used in a single cached paper (or, for UCT, the compact-metric-space version of ucont): not added for now."
+- id: loeb2008b-d1b0e3bc
+  ref: loeb2008b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UCT (compact metric spaces)
+    name: Uniform Continuity Theorem for compact metric spaces
+    loc: Section 2
+    definition: Every continuous function from a compact metric space to a metric space is uniformly continuous. The catalogue entry ucont is the version on [0,1].
+    facts: "Theorem 4 (from Diener-Loeb, over BISH): UCT is equivalent to the statements on equicontinuous sequences of real-valued continuous functions on [0,1] (totally bounded ranges imply uniform equicontinuity; limit uniformly continuous; uniformly convergent). Theorems 5 and 6 give equivalents of UCT combined with CPL_cp or CONT_cp. Not entered, since the paper's statement concerns compact metric spaces and not [0,1]."
+  reasons:
+    - principle not in the catalogue
+  proposed: 088c2bb3a60c
+  decision:
+    date: 2026-11-16
+    by: ludovic
+    note: "Used in a single cached paper (or, for UCT, the compact-metric-space version of ucont): not added for now."
+- id: loeb2008b-f8d79390
+  ref: loeb2008b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Principle of Choice for Compact Spaces
+    name: Principle of Choice for Compact Spaces
+    loc: Section 2, before Theorem 2
+    definition: "For every compact metric space X, if P subset of X x N and for each x in X there is n with (x,n) in P, then there is f : X -> N with (x,f(x)) in P for all x."
+    facts: Follows from the Principle of Continuous Choice, hence intuitionistically valid, and classically valid by the Axiom of Choice. Used with the Heine-Borel Covering Lemma in Theorem 2 to show that quasi-uniform and finite-cover quasi-uniform convergence coincide on compact spaces.
+  reasons:
+    - principle not in the catalogue
+  proposed: 2fde743c50ff
+  decision:
+    date: 2026-11-16
+    by: ludovic
+    note: "Used in a single cached paper (or, for UCT, the compact-metric-space version of ucont): not added for now."

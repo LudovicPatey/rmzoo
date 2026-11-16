@@ -2004,6 +2004,15 @@ diamondstoneetal2016:
   review: 3
   dropped: 3
   cost: 0
+diener2015:
+  date: 2026-11-16
+  model: claude-sonnet-5-5 (chat)
+  textHash: 9a52ef00008773fb
+  facts: 1
+  added: 0
+  review: 2
+  dropped: 0
+  cost: 0
 diener2018:
   date: 2026-11-03
   model: claude-opus-5-5
@@ -5077,6 +5086,15 @@ liupatey2026b:
   added: 0
   review: 4
   dropped: 3
+  cost: 0
+loeb2008b:
+  date: 2026-11-16
+  model: claude-sonnet-5-5 (chat)
+  textHash: 1c9a0be23d7ec22d
+  facts: 0
+  added: 0
+  review: 4
+  dropped: 0
   cost: 0
 lubarsky2015:
   date: 2026-11-11
