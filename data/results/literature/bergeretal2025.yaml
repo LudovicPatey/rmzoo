@@ -1,0 +1,3 @@
+# Results from [bergeretal2025].
+
+[ { type: implication, from: bdn, to: riemannperm, over: bish, refs: [ { ref: bergeretal2025, loc: Theorem 7 } ] } ]

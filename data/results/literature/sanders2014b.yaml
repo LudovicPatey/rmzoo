@@ -1,0 +1,3 @@
+# Results from [sanders2014b].
+
+[ { type: equivalence, from: udnr, to: mu2, over: rca0, refs: [ { ref: sanders2014b, loc: Corollary 3.4 } ] }, { type: equivalence, from: udnr, to: exists2, over: rca0, refs: [ { ref: sanders2014b, loc: "Section 1 (UDNR ↔ (∃²) in RCA₀^ω, proved in Section 3, Corollary 3.4)" } ] } ]
