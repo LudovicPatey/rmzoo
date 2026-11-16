@@ -30,8 +30,15 @@
   conjunction: true
   finerThan: [omega]
   conservation: true
+  higherOrder: true
   phrase: 'RCA₀ ⊢ {a} → {b}'
-  description: Implication provable over the base system RCA₀.
+  shortHigher: 'RCA₀^ω'
+  description: >
+    Implication provable over the base system RCA₀. For third-order statements (higher-order reverse mathematics)
+    the base system is Kohlenbach's RCA₀^ω, which is conservative over RCA₀ for second-order sentences: both readings
+    agree on second-order statements, so a single relation covers both.
+  refs:
+    - { ref: kohlenbach2005, loc: "Section 2 (definition of RCA₀^ω) and Proposition 3.1 (conservativity)" }
 
 - id: omega
   name: ω-model implication
@@ -175,3 +182,18 @@
       loc: Definition 5.1
     - ref: goh2020b
       loc: "Definition 2.2 and the paragraph after it"
+
+- id: bish
+  name: Provability in constructive mathematics
+  short: BISH
+  tex: '\mathsf{BISH}'
+  domain: all
+  conjunction: true
+  finerThan: []
+  phrase: 'BISH ⊢ {a} → {b}'
+  description: >
+    Implication provable in Bishop-style constructive mathematics (intuitionistic logic, with countable and dependent
+    choice), the frame of constructive reverse mathematics. Classical results say nothing here (classical logic proves
+    LPO), and nothing proved here is carried to the classical frames: the engine relates BISH to no other reduction.
+  refs:
+    - { ref: diener2018, loc: "Section 0.4" }

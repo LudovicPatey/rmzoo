@@ -119,7 +119,8 @@ export function buildZoo(raw) {
     if (!progress) { errors.push('Cycle in reduction lattice'); break; }
   }
 
-  const inDomain = (r, a) => R[r].domain !== 'problems' || S[a].kind === 'problem';
+  // a third-order statement is compared only by the reductions marked higherOrder (RCA₀ read as RCA₀^ω)
+  const inDomain = (r, a) => (R[r].domain !== 'problems' || S[a].kind === 'problem') && (S[a].order !== 3 || !!R[r].higherOrder);
   const key = (a, b) => a * n + b;
 
   // ω-implication reads a statement inside the model; Weihrauch and computable

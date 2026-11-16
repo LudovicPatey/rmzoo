@@ -70,6 +70,19 @@ Kleene's instance of C_ℕᴺ, yet as sentences C_ℕᴺ holds in every ω-model
 two readings once derived "ATR₀ does not prove C_ℕᴺ". The viewer shows the
 reading on the About page (`warning` of the reductions) and on the statement page.
 
+**Higher-order and constructive frames.** Third-order statements (`order: 3`:
+functionals, arbitrary functions on the reals) are compared by `rca0`, read as
+Kohlenbach's RCA₀^ω; RCA₀^ω is conservative over RCA₀ for second-order sentences
+(Kohlenbach 2005, Proposition 3.1), so one relation covers both and implications chain
+through third-order statements. Reductions without `higherOrder` (ω-models, RCA₀*, the
+problem reductions) do not apply to them. `bish` is provability in Bishop-style
+constructive mathematics: no other reduction implies it or is implied by it. Principles
+already in the zoo (LPO, LLPO, WKL…) keep their statement and are read there as the
+corresponding axioms; constructive-only principles (WLPO, MP, FAN, BD-N…) are classically
+provable, recorded as folklore implications from RCA₀. The modes "Higher-order reverse
+mathematics" (`order: 3`) and "Constructive reverse mathematics" show them; the mode
+"Reverse mathematics" (`order: 2`) leaves out results involving third-order statements.
+
 ### 1.2 Statements and formulations
 
 A **statement** is one precise mathematical formulation — one node of the zoo.

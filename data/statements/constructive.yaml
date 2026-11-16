@@ -1,0 +1,30 @@
+# Constructive reverse mathematics: the base of the reduction bish (data/reductions.yaml).
+# Principles already in the zoo (LPO, LLPO, WKL, IVT…) keep their statement: over BISH
+# they are read as the corresponding axioms; principles specific to constructive
+# mathematics (WLPO, MP, FAN, BD-N…) get their own entries.
+
+- id: bish
+  label: '\mathsf{BISH}'
+  name: Bishop-style constructive mathematics
+  kind: sentence
+  base: [ bish ]
+  tags: [ constructive ]
+  aliases: [ BISH ]
+  definition: >
+    Mathematics with intuitionistic logic in the style of Bishop, worked informally (formalizable in several set- or
+    type-theoretic systems, or in restricted systems such as Veldman's BIM), with the axioms of countable and dependent
+    choice tacitly accepted. The base of constructive reverse mathematics: implied by every statement over BISH.
+  refs:
+    - { ref: diener2018, role: rm, loc: "Section 0.4" }
+
+- id: wlpo
+  label: '\mathsf{WLPO}'
+  name: Weak limited principle of omniscience
+  kind: sentence
+  tags: [ constructive ]
+  aliases: [ WLPO, ∀-PEM ]
+  definition: >
+    For every binary sequence $(a_n)_n$, either $\forall n\, a_n = 0$ or $\neg \forall n\, a_n = 0$. Provable in classical
+    logic; a principle of constructive reverse mathematics, between LPO and BISH.
+  refs:
+    - { ref: diener2018, role: rm, loc: "Section 1.3" }

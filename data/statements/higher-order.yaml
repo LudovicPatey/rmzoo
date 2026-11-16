@@ -1,0 +1,26 @@
+# Higher-order reverse mathematics: third-order statements (order: 3), compared over
+# Kohlenbach's RCA₀^ω (the reduction rca0 read in finite types; data/reductions.yaml).
+
+- id: exists2
+  label: '(\exists^2)'
+  name: Kleene's quantifier ∃²
+  kind: sentence
+  order: 3
+  tags: [ higher-order ]
+  aliases: [ '∃²', E2, '(∃2)' ]
+  definition: >
+    There is a functional $\varphi^2$ such that $\forall f^1\, (\varphi(f) = 0 \leftrightarrow \exists x^0\, f(x) = 0)$:
+    the existence of the Turing jump as a type-2 functional, the higher-order counterpart of $\mathsf{ACA}_0$.
+  refs:
+    - { ref: kohlenbach2005, role: origin, loc: "Section 1, (∃²)" }
+
+- id: discont-r
+  label: '\textsf{discontinuous function}'
+  name: Existence of a discontinuous function on the reals
+  kind: sentence
+  order: 3
+  tags: [ higher-order, analysis ]
+  definition: >
+    There exists a function $F : \mathbb{R} \to \mathbb{R}$ which is not everywhere sequentially continuous.
+  refs:
+    - { ref: kohlenbach2005, role: rm, loc: "Proposition 3.12(3)" }

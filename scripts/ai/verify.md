@@ -29,7 +29,7 @@ A conservation fact (statement S, base B, class Γ) means that B + S is (or is n
 nothing over RCA₀ + BΣ⁰₂ or RCA₀ + IΣ⁰₂, and conversely; reject a fact that passes
 from one base to another.
 
-Reduction ids: rca0star (provability over RCA₀*), rca0 (over RCA₀), omega
+Reduction ids: rca0star (provability over RCA₀*), rca0 (over RCA₀; over RCA₀^ω for third-order statements), bish (provability in constructive mathematics, BISH: never a classical result), omega
 (ω-models), sw (strong Weihrauch), w (Weihrauch), sc (strong computable),
 soc (strong omniscient computable: the instance of the stronger problem need not be
 computable from the given one), c (computable), gw (generalized Weihrauch),

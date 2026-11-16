@@ -312,6 +312,29 @@ test('parts: ¹P, Det(P) ≤W P, monotone, maximal; ¹ strongly monotone; not �
   assert.equal(st('w', 'b.fop', 'n'), 'open');
 });
 
+test('third-order statements: compared over RCA₀^ω (rca0, higherOrder) only; BISH isolated', () => {
+  const zoo = buildZoo({
+    reductions: [
+      { id: 'rca0', domain: 'all', higherOrder: true, finerThan: ['omega'] },
+      { id: 'omega', domain: 'all', omegaModels: true, finerThan: [] },
+      { id: 'bish', domain: 'all', finerThan: [] },
+    ],
+    properties: [],
+    statements: [
+      { id: 'a', kind: 'sentence' }, { id: 'b', kind: 'sentence' }, { id: 'h', kind: 'sentence', order: 3 },
+    ],
+    results: [
+      { type: 'implication', from: 'a', to: 'h', over: 'rca0', refs: [{ ref: 'x' }] },
+      { type: 'implication', from: 'h', to: 'b', over: 'rca0', refs: [{ ref: 'x' }] },
+    ],
+  });
+  const st = (r, x, y) => zoo.status(zoo.ridx.get(r), zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('rca0', 'a', 'b'), 'implies');   // through the third-order h (conservativity)
+  assert.equal(st('omega', 'a', 'b'), 'implies');  // a second-order consequence goes to ω-models
+  assert.equal(st('omega', 'a', 'h'), 'na');       // ω-models do not read third-order statements
+  assert.equal(st('bish', 'a', 'b'), 'open');      // nothing classical reaches BISH
+});
+
 // ---- properties characterized by the base (baseImplication) ----------------
 test('toy: computably true ⟺ the base implies it over ω-models', () => {
   const z = buildZoo({

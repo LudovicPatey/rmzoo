@@ -56,7 +56,8 @@ const plainLabel = (label) => String(label)
 // [pattern (on the normalized text), token]. Words match whole words; the longest match wins.
 const RED_FORMS = {
   rca0star: ['rca0\\*', 'rca0 star', 'rca0star', 'rca\\*'],
-  rca0: ['rca0', 'rca 0', 'rca'],
+  rca0: ['rca0', 'rca 0', 'rca', 'rca0\\^omega'],
+  bish: ['bish', 'constructive(?:ly)?(?: mathematics)?', 'intuitionistic(?:ally)?'],
   omega: ['omega models?', 'omega model implication', 'omega', 'w models?'],
   soc: ['soc', 'strong(?:ly)? omnisciently computabl[ey]', 'strong(?:ly)? omniscient computabl[ey]'],
   sc: ['sc', 'strong(?:ly)? computabl[ey]'],
@@ -67,7 +68,7 @@ const RED_FORMS = {
   w: ['w', 'weihrauch'],
   c: ['c', 'computabl[ey]'],
 };
-const SUB = '(?:\\s?\\(?(rca0\\*|rca0star|rca0|rca|omega|soc|sc|gw|cw|aw|arith|sw|w|c)\\)?(?![a-z0-9]))?';
+const SUB = '(?:\\s?\\(?(rca0\\*|rca0star|rca0|rca|omega|soc|sc|gw|cw|aw|arith|sw|w|c|bish)\\)?(?![a-z0-9]))?';
 const LEX = [
   // symbols (an optional reduction as subscript: ≤c, <=_W, ≤_{sW})
   ['!?(?:≤|⩽|≦|<=|=<|\\\\leq?)' + SUB, { role: 'op', kind: 'le' }],

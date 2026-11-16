@@ -340,6 +340,7 @@ const paramErrors = []; // reported with the other errors
     if (!s.label) s.label = parts.map((p) => p.label).join(' + ');
     if (!s.name) s.name = parts.map((p) => p.name).join(' + ');
     if (parts.every((p) => p.firstOrder)) s.firstOrder = true;
+    if (parts.some((p) => p.order === 3)) s.order = 3;
   }
   // a statement built from one that ω-models can misjudge (omegaAbsolute: false) inherits it
   for (let changed = true; changed;) {
@@ -572,6 +573,8 @@ for (const s of raw.statements) {
   if (!['problem', 'sentence'].includes(s.kind)) errors.push(`${where}: kind must be problem or sentence`);
   for (const t of s.tags || []) if (!tids.has(t)) errors.push(`${where}: unknown tag ${t}`);
   if (s.formulationOf && !sids.has(s.formulationOf)) errors.push(`${where}: unknown formulationOf ${s.formulationOf}`);
+  if (s.order !== undefined && s.order !== 3) errors.push(`${where}: order must be 3 (third-order) or absent`);
+  if (s.order === 3 && s.kind !== 'sentence') errors.push(`${where}: a third-order statement is a sentence`);
   for (const c of s.conjunction || []) if (!sids.has(c)) errors.push(`${where}: unknown conjunct ${c}`);
   if (s.conjunction && s.kind !== 'sentence') errors.push(`${where}: conjunctions must have kind sentence`);
   // a diamond is defined as a closure (any finite number of adaptive uses): it has no direct reading
@@ -767,7 +770,7 @@ const t0 = Date.now();
 // it — in that framework. Folklore and AI-derived results do not count.
 // studied: { rca0: [refs], rca0star: [refs], weihrauch: [refs] }
 {
-  const FRAME = { rca0: 'rca0', rca0star: 'rca0star', w: 'weihrauch', sw: 'weihrauch', cw: 'weihrauch', aw: 'weihrauch' };
+  const FRAME = { rca0: 'rca0', rca0star: 'rca0star', w: 'weihrauch', sw: 'weihrauch', cw: 'weihrauch', aw: 'weihrauch', bish: 'bish' };
   const byId = new Map(raw.statements.map((s) => [s.id, s]));
   const acc = new Map();
   for (const r of raw.results) {
@@ -805,8 +808,12 @@ const t0 = Date.now();
   const byId = new Map(raw.statements.map((s) => [s.id, s]));
   const groupOf = new Map(raw.properties.map((p) => [p.id, p.group]));
   for (const m of raw.modes) if (Array.isArray(m.properties)) for (const g of m.properties) if (!['computability', 'proof', 'weihrauch'].includes(g)) errors.push(`modes.yaml ${m.id}: unknown property group ${g}`);
-  const inMode = (m, r) => r.type === 'property' ? (m.properties === true || (m.properties || []).includes(groupOf.get(r.property))) : r.type === 'conservation' ? !!m.conservation
-    : [].concat(r.over || []).some((o) => m.reductions.includes(o));
+  // order 2 / 3: results between second-order statements only / involving a third-order one
+  const third = (r) => [r.from, r.to, r.statement, r.base].some((id) => byId.get(id)?.order === 3);
+  const orderOK = (m, r) => !m.order || (m.order === 3) === third(r);
+  for (const m of raw.modes) if (m.order !== undefined && ![2, 3].includes(m.order)) errors.push(`modes.yaml ${m.id}: order must be 2 or 3`);
+  const inMode = (m, r) => orderOK(m, r) && (r.type === 'property' ? (m.properties === true || (m.properties || []).includes(groupOf.get(r.property))) : r.type === 'conservation' ? !!m.conservation
+    : [].concat(r.over || []).some((o) => m.reductions.includes(o)));
   const add = (s, m) => { if (s && !(s._modes ||= []).includes(m.id)) s._modes.push(m.id); };
   for (const r of raw.results) {
     if (!(r.refs || []).length) continue;

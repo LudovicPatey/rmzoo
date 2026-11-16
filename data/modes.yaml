@@ -13,6 +13,24 @@
   default: rca0
   properties: [ computability, proof ]
   conservation: true
+  order: 2
+
+- id: hrm
+  name: Higher-order reverse mathematics
+  short: Higher-order RM
+  description: Third-order statements (about functionals and arbitrary functions on the reals) compared over RCA₀^ω, Kohlenbach's higher-order base system, which is conservative over RCA₀ for second-order sentences.
+  reductions: [ rca0 ]
+  default: rca0
+  properties: [ proof ]
+  conservation: true
+  order: 3
+
+- id: crm
+  name: Constructive reverse mathematics
+  short: Constructive RM
+  description: Implications provable in Bishop-style constructive mathematics (BISH), between omniscience principles, continuity and fan principles, and theorems of analysis.
+  reductions: [ bish ]
+  default: bish
 
 - id: wrm
   name: Weak reverse mathematics

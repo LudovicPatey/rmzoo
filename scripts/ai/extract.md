@@ -26,7 +26,14 @@ more than coverage. A missing fact is acceptable; a wrong fact is not.
   the other.
 
 Reductions are given by id (see the catalogue). In particular:
-* `rca0` provability over RCA₀; `rca0star` over RCA₀*; `omega` implication over
+* `rca0` provability over RCA₀, and for third-order statements (catalogue entries
+  marked third-order: functionals, arbitrary functions on the reals) over Kohlenbach's
+  RCA₀^ω, which is conservative over RCA₀: a result over RCA₀^ω (or RCA₀^ω +
+  QF-AC^{0,1}, written as a conjunction) is entered over `rca0`. Third-order statements
+  are compared over `rca0` only. `bish` is provability in Bishop-style constructive
+  mathematics (constructive reverse mathematics: LPO, WLPO, LLPO, MP, FAN, BD-N…): enter
+  there only what is proved constructively, never a classical result.
+* `rca0star` over RCA₀*; `omega` implication over
   ω-models (every ω-model, i.e. Turing ideal, of A is a model of B). Statements are
   read inside the model ("every instance has a solution", as the model judges
   instances and solutions). For a statement marked "not ω-absolute" in the catalogue

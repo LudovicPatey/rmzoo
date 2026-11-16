@@ -47,3 +47,9 @@
 - id: determinacy
   name: Determinacy & descriptive set theory
   description: Determinacy of games, Ramsey theorems with infinite exponent, perfect sets and separation principles.
+- id: higher-order
+  name: Higher-order reverse mathematics
+  description: Third-order statements, about functionals and arbitrary (not necessarily continuous) functions, compared over Kohlenbach's RCA₀^ω.
+- id: constructive
+  name: Constructive reverse mathematics
+  description: Omniscience, continuity and fan principles and the theorems of analysis they are equivalent to over Bishop-style constructive mathematics (BISH).

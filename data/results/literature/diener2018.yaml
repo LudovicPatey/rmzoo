@@ -1,0 +1,3 @@
+# Results from [diener2018].
+
+[ { type: equivalence, from: wkl, to: llpo, over: bish, refs: [ { ref: diener2018, loc: Proposition 1.4.5 } ] }, { type: equivalence, from: lpo, to: mct, over: bish, refs: [ { ref: diener2018, loc: Proposition 1.2.1(3) } ] } ]

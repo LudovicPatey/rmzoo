@@ -73,6 +73,8 @@ const resInMode = (res) => {
   const m = MODE();
   if (!m) return true;
   if (res.type === 'property') return groupShown(Z.raw.properties[Z.pidx.get(res.property)]?.group);
+  // order 2 / 3: second-order results only / results with a third-order statement
+  if (m.order && (m.order === 3) !== [res.from, res.to, res.statement, res.base].some((id) => id && idx(id) !== undefined && S(idx(id)).order === 3)) return false;
   if (res.type === 'conservation') return !!m.conservation;
   return [].concat(res.over || []).some((o) => m.reductions.includes(o));
 };
@@ -570,12 +572,15 @@ function proofBlock(f) {
     <p class="small muted">Relies on ${srcs.length} published result${srcs.length === 1 ? '' : 's'}.</p>`;
 }
 
+// the short name of a reduction, RCA₀^ω when one of the statements is third-order
+const rShort = (r, ...ids) => { const R = Z.R[r]; return R.shortHigher && ids.some((i) => i !== undefined && S(i).order === 3) ? R.shortHigher : R.short; };
 function verdictText(a, b, r) {
   const st = Z.status(r, a, b);
   const R = Z.R[r];
   const base = { implies: 'implies', separated: 'does not imply', open: 'is not known to imply', na: 'cannot be compared with', contradiction: 'CONTRADICTION:' }[st];
-  return `<div class="verdict ${st}">${L(a, r)} <b>${base}</b> ${L(b, r)} over <b>${esc(R.short)}</b>
-    ${st === 'na' ? `<div class="small muted">${esc(R.name)} only compares problems.</div>` : ''}</div>`;
+  const third = S(a).order === 3 || S(b).order === 3;
+  return `<div class="verdict ${st}">${L(a, r)} <b>${base}</b> ${L(b, r)} over <b>${esc(rShort(r, a, b))}</b>
+    ${st === 'na' ? `<div class="small muted">${third && !R.higherOrder ? `${esc(R.name)} does not apply to third-order statements, which are compared over RCA₀^ω only.` : `${esc(R.name)} only compares problems.`}</div>` : ''}</div>`;
 }
 
 function pairPanel(a, b, r = rIdx()) {
@@ -1373,7 +1378,7 @@ function resultFactCore(res) {
   const R = (id) => Z.R[Z.ridx.get(id)];
   const overs = [].concat(res.over || []);
   const r0 = Z.ridx.get(overs[0]);
-  const over = overs.map((o) => esc(R(o).short)).join(', ');
+  const over = overs.map((o) => esc(rShort(Z.ridx.get(o), idx(res.from), idx(res.to)))).join(', ');
   if (res.type === 'property') {
     const p = Z.raw.properties[Z.pidx.get(res.property)];
     return `${sLink(idx(res.statement))} ${res.value ? '<span class="yes">has</span>' : '<span class="no">fails</span>'} ${esc(p.name)}`;
