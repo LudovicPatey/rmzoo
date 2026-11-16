@@ -131,6 +131,7 @@ const catalogue = [
   '',
   '## Formula classes for conservation (id: notation)',
   ...raw.classes.map((c) => `- ${c.id}: ${c.notation}`),
+  '- any other level of the hierarchies: Pi0n / Sig0n (Π⁰ₙ / Σ⁰ₙ), Pi1n / Sig1n (Π¹ₙ / Σ¹ₙ), uPi0n (∀Π⁰ₙ), e.g. Pi13, Sig05',
   '',
   '## Statements (id | TeX label | name | kind | other names), then the definition',
   ...plain.map((s) => `- ${s.id} | ${s.label} | ${s.name || ''} | ${s.kind}${s.omegaAbsolute === false ? ' (not ω-absolute)' : ''}${s.aliases?.length ? ' | ' + s.aliases.join(', ') : ''}\n  ${squash(s.definition, 500)}${s.instance ? `\n  Instance: ${squash(s.instance, 200)} Solution: ${squash(s.solution, 200)}` : ''}${s.caution ? `\n  Caution: ${squash(s.caution.replace(/\[\[([^\]]+)\]\]/g, '$1'), 300)}` : ''}`),

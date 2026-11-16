@@ -6,6 +6,10 @@
 # equivalence in the base theory); the engine closes it transitively, so a
 # conservation result for a class applies to every sentence of a subclass.
 # `aliases` records other notations found in the literature.
+#
+# Other levels of the hierarchies need no entry: the build generates Pi0n, Sig0n,
+# Pi1n, Sig1n (Π⁰ₙ, Σ⁰ₙ, Π¹ₙ, Σ¹ₙ) and uPi0n (∀Π⁰ₙ) when a result or a `form` names
+# them, with their notation, definition and inclusions (scripts/build.mjs).
 
 - id: Pi02
   notation: '\Pi^0_2'

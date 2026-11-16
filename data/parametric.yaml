@@ -1,0 +1,70 @@
+# Results with parameters ("for all n ≥ 1, …"), as stated in the papers. The build
+# (scripts/build.mjs) generates every instance within `params` (inclusive ranges,
+# filtered by `where`) whose base statements exist in the zoo: a result citing `refs`
+# at "<loc> (n = 3)", marked `instanceOf`. An instance entered by hand is linked, not
+# duplicated. Fact templates are results without refs; expressions in braces are
+# evaluated: rt{n+1}2, llpo{rep('.jump', n)} (n jumps). Hovering an instance in the
+# viewer shows `text`. Fields: scripts/lib/schema.mjs (parametric).
+
+- id: moninpatey2022-rt-c
+  text: 'For all $n \ge 1$, $\mathsf{RT}^{n+1}_2 \not\le_\mathrm{c} \mathsf{RT}^n_2$.'
+  refs: [ { ref: moninpatey2022, loc: Proposition 25-2.19 } ]
+  params: { n: [1, 6] }
+  facts:
+    - { type: separation, from: 'rt{n}2', to: 'rt{n+1}2', over: c }
+
+- id: dsy-fop-wkl
+  text: 'For all $n$, ${}^1(\mathsf{WWKL}^{(n)}) \equiv_\mathrm{sW} {}^1(\mathsf{WKL}^{(n)}) \equiv_\mathrm{sW} (\mathsf{C}_2^*)^{(n)}$.'
+  refs: [ { ref: dzhafarovsolomonyokoyama2023, loc: Theorem 4.1 } ]
+  params: { n: [0, 3] }
+  facts:
+    - { type: equivalence, from: "wkl{rep('.jump', n)}.fop", to: "llpo.fin{rep('.jump', n)}", over: sw }
+    - { type: equivalence, from: "wwkl{rep('.jump', n)}.fop", to: "llpo.fin{rep('.jump', n)}", over: sw }
+
+- id: dsy-fop-tj
+  text: 'For all $n$, ${}^1(\mathsf{TJ}^{(n)}) \equiv_\mathrm{sW} \mathsf{C}_\mathbb{N}^{(n)}$.'
+  refs: [ { ref: dzhafarovsolomonyokoyama2023, loc: Theorem 4.2 } ]
+  params: { n: [0, 2] }
+  facts:
+    - { type: equivalence, from: "tj{rep('.jump', n)}.fop", to: "cn{rep('.jump', n)}", over: sw }
+
+- id: dsy-fop-rt1k
+  text: 'For all $k \ge 1$, ${}^1\mathsf{RT}^1_k \equiv_\mathrm{sW} {}^1\mathsf{BWT}_k \equiv_\mathrm{sW} \mathsf{C}_k''$.'
+  refs: [ { ref: dzhafarovsolomonyokoyama2023, loc: Corollary 2.7 } ]
+  params: { k: [2, 6] }
+  facts:
+    - { type: equivalence, from: 'rt1{k}.fop', to: 'llpo.jump', over: sw, where: 'k == 2' }
+    - { type: equivalence, from: 'rt1{k}.fop', to: 'c{k}.jump', over: sw, where: 'k > 2' }
+
+- id: sv-fop-lim
+  text: 'For all $n$, ${}^1(\lim^{(n)}) \equiv_\mathrm{sW} \mathsf{C}_\mathbb{N}^{(n)} \equiv_\mathrm{sW} (\mathsf{C}_\mathbb{N}^{(n)})^\diamond \equiv_\mathrm{sW} (\mathsf{LPO}^{(n)})^{u*} \equiv_\mathrm{sW} (\mathsf{LPO}^{(n)})^\diamond$.'
+  refs: [ { ref: soldavalenti2022, loc: Theorem 7.2 } ]
+  params: { n: [0, 2] }
+  facts:
+    - { type: equivalence, from: "lim{rep('.jump', n)}.fop", to: "cn{rep('.jump', n)}", over: sw }
+    - { type: equivalence, from: "lpo{rep('.jump', n)}.diamond", to: "cn{rep('.jump', n)}", over: sw }
+    - { type: equivalence, from: "lpo{rep('.jump', n)}.ufin", to: "cn{rep('.jump', n)}", over: sw }
+
+- id: sv-fop-rt
+  text: 'For all $n, k \ge 2$, $(\mathsf{C}_k)^{(n)} <_\mathrm{W} {}^1\mathsf{SRT}^n_k \le_\mathrm{W} {}^1\mathsf{RT}^n_k <_\mathrm{W} (\mathsf{C}_2^*)^{(n)}$.'
+  refs: [ { ref: soldavalenti2022, loc: Theorem 7.21 } ]
+  params: { n: [2, 4], k: [2, 4] }
+  facts:
+    - { type: implication, from: 'srt{n}{k}.fop', to: "llpo{rep('.jump', n)}", over: w, where: 'k == 2' }
+    - { type: implication, from: 'srt{n}{k}.fop', to: "c{k}{rep('.jump', n)}", over: w, where: 'k > 2' }
+    - { type: separation, from: "llpo{rep('.jump', n)}", to: 'srt{n}{k}.fop', over: w, where: 'k == 2' }
+    - { type: separation, from: "c{k}{rep('.jump', n)}", to: 'srt{n}{k}.fop', over: w, where: 'k > 2' }
+    - { type: implication, from: 'rt{n}{k}.fop', to: "llpo{rep('.jump', n)}", over: w, where: 'k == 2' }
+    - { type: implication, from: 'rt{n}{k}.fop', to: "c{k}{rep('.jump', n)}", over: w, where: 'k > 2' }
+    - { type: separation, from: "llpo{rep('.jump', n)}", to: 'rt{n}{k}.fop', over: w, where: 'k == 2' }
+    - { type: separation, from: "c{k}{rep('.jump', n)}", to: 'rt{n}{k}.fop', over: w, where: 'k > 2' }
+    - { type: implication, from: "llpo.fin{rep('.jump', n)}", to: 'rt{n}{k}.fop', over: w }
+    - { type: separation, from: 'rt{n}{k}.fop', to: "llpo.fin{rep('.jump', n)}", over: w }
+
+- id: cmv-pi11cn-lim
+  text: 'For all $n$, ${}^1(\lim^{(n)}) <_\mathrm{W} \Pi^1_1\text{-}\mathsf{C}_\mathbb{N} \equiv_\mathrm{W} {}^1\mathsf{UC}_{\mathbb{N}^\mathbb{N}}$.'
+  refs: [ { ref: ciprianimarconevalenti2022, loc: "Proposition 2.19(iii)" } ]
+  params: { n: [0, 2] }
+  facts:
+    - { type: implication, from: pi11-cn, to: "cn{rep('.jump', n)}", over: w }
+    - { type: separation, from: "cn{rep('.jump', n)}", to: pi11-cn, over: w }

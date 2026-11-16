@@ -409,7 +409,24 @@ statement refer to syntactic classes defined in `data/classes.yaml`: each class
 has a notation, a definition, older notations (`aliases`, e.g. Π̃⁰₃ for ∀Π⁰₃)
 and the classes it `includes`. The engine closes `includes` transitively, so a
 Π¹₁-conservation result also applies to ∀Π⁰₄, Π⁰₃, … sentences. The About page
-lists the classes with their definitions.
+lists the classes with their definitions. The levels of the hierarchies need no
+entry: a result or form naming `Pi0n`, `Sig0n`, `Pi1n`, `Sig1n` or `uPi0n` (Π¹₃,
+Σ⁰₅, ∀Π⁰₅…) gets a generated class with its notation, definition and inclusions
+(Π¹ₙ₊₁ ⊇ Π¹ₙ, Σ¹ₙ; Π¹₁ ⊇ arithmetical and ∀Π⁰ₙ; Π¹₂ ⊇ rΠ¹₂); the file keeps the
+special classes and hand-written definitions.
+
+### 1.5a Parametric results
+
+A theorem with parameters ("for all n ≥ 1, RTⁿ⁺¹₂ ≰c RTⁿ₂") is an entry of
+`data/parametric.yaml`: its statement in TeX (`text`), its source (`refs`), the
+ranges of its parameters (`params`, optionally restricted by `where`) and fact
+templates whose ids contain expressions in braces (`rt{n+1}2`,
+`llpo{rep('.jump', n)}` for n jumps; a template may have its own `where`). The
+build generates the instances whose base statements exist, citing the source at
+"Proposition 25-2.19 (n = 3)" and marked `instanceOf`; an instance entered by hand
+(written `wkl-j.fop` or `wkl.jump.fop`, `(lpo.jump).diamond` or `lpo.jump.diamond`)
+is linked instead of duplicated. In the viewer, hovering (or focusing) an instance
+shows the general statement and its source.
 
 ### 1.5c Open questions
 

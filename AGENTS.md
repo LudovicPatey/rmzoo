@@ -88,6 +88,9 @@ paper.
   containing `, ` or `: ` (`loc: "Section 1, (5)"`); unquoted, YAML splits it and
   the build reports an unknown field. Add results with
   `node scripts/add-results.mjs spec.json` (it merges citations of duplicates).
+  A theorem stated for all n (or n, k) goes to `data/parametric.yaml` with fact
+  templates (docs/DESIGN.md, 1.5a): the build generates its instances. Conservation
+  results may use any level of the hierarchies (`Pi13`, `Sig05`, `uPi05`).
 * After any data edit: `npm run check` (validation, contradictions, duplicates,
   question statuses), then `npm run build` and `npm test`.
 

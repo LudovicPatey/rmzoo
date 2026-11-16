@@ -50,6 +50,7 @@ const raw = {
   questions: readYaml(path.join(dataDir, 'questions.yaml')),
   concepts: fs.existsSync(path.join(dataDir, 'concepts.yaml')) ? readYaml(path.join(dataDir, 'concepts.yaml')) || [] : [],
   errata: fs.existsSync(path.join(dataDir, 'errata.yaml')) ? readYaml(path.join(dataDir, 'errata.yaml')) || [] : [],
+  parametric: fs.existsSync(path.join(dataDir, 'parametric.yaml')) ? readYaml(path.join(dataDir, 'parametric.yaml')) || [] : [],
 };
 const contexts = readYaml(path.join(dataDir, 'context.yaml')) || {};
 const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml(path.join(dataDir, 'abstracts.yaml')) || {} : {};
@@ -127,6 +128,72 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
     const byFile = new Map();
     for (const x of raw[dir]) { if (!byFile.has(x._file)) byFile.set(x._file, []); byFile.get(x._file).push(x); }
     for (const [f, items] of byFile) dated(f, items, mode);
+  }
+}
+
+// ---- parametric results (data/parametric.yaml) ------------------------------
+// A parametric result ("for all n ≥ 1, RT^{n+1}_2 ≰c RT^n_2") has fact templates whose
+// ids contain expressions in braces: `rt{n+1}2`, `llpo{rep('.jump', n)}`. Every
+// instance within the parameter ranges whose base statements all exist becomes a
+// result citing the source at "<loc> (n = 3)", marked `instanceOf`; an instance
+// already entered by hand is only linked (`instanceOf` added), never duplicated.
+const paramErrors = []; // reported with the other errors
+{
+  const errors = paramErrors;
+  const sids = new Set(raw.statements.map((s) => s.id));
+  const OPN = new Set(Object.values(OPERATIONS).map((o) => o.dotted));
+  // ids written differently for the same statement: parentheses around a postfix
+  // expression, and dotted ids that an explicit statement stands for (wkl.jump is wkl-j)
+  const explicit = raw.statements.filter((s) => s.op && (s.args || []).length === 1 && OPERATIONS[s.op]?.arity === 1)
+    .map((s) => [`${s.args[0]}.${OPERATIONS[s.op].dotted}`, s.id]);
+  const norm = (id) => {
+    if (typeof id !== 'string') return id;
+    let x = id, prev;
+    do {
+      prev = x;
+      x = x.replace(/\(([^()]*)\)/g, (m, inner) => (/\.(x|star)\./.test(inner) ? m : inner));
+      for (const [d, s] of explicit) x = x.replace(new RegExp(`(^|[(.])${d.replace(/[.]/g, '\\.')}(?=$|[.)])`, 'g'), `$1${s}`);
+    } while (x !== prev);
+    return x;
+  };
+  const nkey = (r) => resultKey({ ...r, from: norm(r.from), to: norm(r.to), statement: norm(r.statement), base: norm(r.base) });
+  const byKey = new Map(raw.results.map((r) => [nkey(r), r]));
+  const pids = new Set();
+  const calc = (expr, env, where) => {
+    const e = expr.replace(/rep\(\s*'([^']*)'\s*,\s*([^)]+)\)/g, (_, s, n) => s.repeat(Math.max(0, calc(n, env, where))));
+    if (e !== expr) return e;
+    if (!/^[\w\s+\-*()<>=!&|]+$/.test(e) || (e.match(/[A-Za-z_]\w*/g) || []).some((v) => !(v in env))) { errors.push(`${where}: bad expression {${expr}}`); return 0; }
+    return Function(...Object.keys(env), `return (${e});`)(...Object.values(env));
+  };
+  const subst = (s, env, where) => String(s).replace(/\{([^{}]+)\}/g, (_, e) => String(calc(e, env, where)));
+  const known = (id) => (id.match(/[A-Za-z0-9-]+/g) || []).every((t) => sids.has(t) || OPN.has(t));
+  for (const p of raw.parametric) {
+    const where = `Parametric result ${p.id}`;
+    if (!p.id || pids.has(p.id)) { errors.push(`${where}: missing or duplicate id`); continue; }
+    pids.add(p.id);
+    if (!p.text || !p.refs?.length || !p.facts?.length || !p.params) { errors.push(`${where}: text, refs, params and facts are required`); continue; }
+    const names = Object.keys(p.params);
+    let envs = [{}];
+    for (const n of names) {
+      const [lo, hi] = p.params[n];
+      envs = envs.flatMap((e) => Array.from({ length: Math.max(0, hi - lo + 1) }, (_, k) => ({ ...e, [n]: lo + k })));
+    }
+    if (p.where) envs = envs.filter((e) => calc(p.where, e, where));
+    p._instances = 0;
+    for (const env of envs) for (const t of p.facts) {
+      const { where: cond, ...fact } = t;
+      if (cond && !calc(cond, env, where)) continue;
+      for (const f of ['from', 'to', 'statement', 'base', 'property', 'class']) if (fact[f] !== undefined) fact[f] = subst(fact[f], env, where);
+      for (const f of ['from', 'to', 'statement', 'base']) if (fact[f] !== undefined) fact[f] = norm(fact[f]);
+      if (![fact.from, fact.to, fact.statement, fact.base].filter(Boolean).every(known)) continue;
+      const vals = names.map((n) => `${n} = ${env[n]}`).join(', ');
+      const hit = byKey.get(nkey(fact));
+      p._instances++;
+      if (hit) { hit.instanceOf ??= p.id; hit._params = vals; continue; }
+      const r = { ...fact, refs: p.refs.map((c) => ({ ...c, loc: `${c.loc ? `${c.loc} ` : ''}(${vals})` })), instanceOf: p.id, _params: vals, _file: 'parametric.yaml', _generated: true };
+      raw.results.push(r);
+      byKey.set(nkey(r), r);
+    }
   }
 }
 
@@ -344,6 +411,51 @@ const tids = uniq(raw.tags, 'tag');
     for (const [, k] of String(q.context || '').matchAll(/\[@([^\]]+)\]/g)) if (!raw.references[k]) errors.push(`${w}: context cites unknown reference ${k}`);
   }
 }
+// Formula classes of the arithmetical and analytical hierarchies are generated on
+// demand, like operator statements: a result or form may name Pi13, Sig05, uPi05
+// (∀Π⁰₅) without an entry in data/classes.yaml, which keeps the special classes and
+// the hand-written definitions (an entry there wins over the generated one).
+{
+  const byId = new Map(raw.classes.map((c) => [c.id, c]));
+  const SUP = (n) => String(n);
+  const gen = (id) => {
+    let m;
+    if ((m = /^(Pi|Sig)([01])(\d+)$/.exec(id))) {
+      const [, q, lvl, nn] = m, n = +nn, P = q === 'Pi' ? '\\Pi' : '\\Sigma';
+      if (n < 1) return null;
+      const notation = `${P}^${lvl}_{${SUP(n)}}`;
+      const prev = n > 1 ? [`Pi${lvl}${n - 1}`, `Sig${lvl}${n - 1}`] : lvl === '1' ? ['arith'] : [];
+      const definition = lvl === '0'
+        ? `Arithmetical sentences ${q === 'Pi' ? `$\\forall x\\, \\psi(x)$ with $\\psi$ a $\\Sigma^0_{${n - 1}}$ formula` : `$\\exists x\\, \\psi(x)$ with $\\psi$ a $\\Pi^0_{${n - 1}}$ formula`} (bounded when $n = 1$), without set parameters.`
+        : `Sentences of second-order arithmetic ${q === 'Pi' ? `$\\forall X\\, \\psi(X)$ with $\\psi$ a $\\Sigma^1_{${n - 1}}$ formula` : `$\\exists X\\, \\psi(X)$ with $\\psi$ a $\\Pi^1_{${n - 1}}$ formula`} (arithmetical when $n = 1$).`;
+      // restricted Π¹₂ sentences are Π¹₂
+      if (id === 'Pi12' && byId.has('rPi12')) prev.push('rPi12');
+      return { id, notation, definition, includes: prev, _generated: true };
+    }
+    if ((m = /^uPi0(\d+)$/.exec(id))) {
+      const n = +m[1];
+      if (n < 1) return null;
+      return { id, notation: `\\forall\\Pi^0_{${n}}`, definition: `Sentences $\\forall X\\, \\varphi(X)$ where $\\varphi$ is a $\\Pi^0_{${n}}$ formula whose only free variable is the set variable $X$.`,
+        includes: [`Pi0${n}`, ...(n > 1 ? [`uPi0${n - 1}`] : [])], _generated: true };
+    }
+    return null;
+  };
+  const ensure = (id) => {
+    if (byId.has(id)) return true;
+    const c = gen(id);
+    if (!c) return false;
+    byId.set(id, c);
+    raw.classes.push(c);
+    for (const d of c.includes) ensure(d);
+    // the arithmetical classes are in arith, the ∀Π⁰ₙ classes in Π¹₁
+    if (/^(Pi|Sig)0\d+$/.test(id) && byId.has('arith') && !byId.get('arith').includes.includes(id)) byId.get('arith').includes.push(id);
+    if (/^uPi0\d+$/.test(id) && byId.has('Pi11') && !byId.get('Pi11').includes.includes(id)) byId.get('Pi11').includes.push(id);
+    return true;
+  };
+  for (const s of raw.statements) if (s.form) ensure(s.form);
+  for (const r of raw.results) if (r.type === 'conservation' && r.class) ensure(r.class);
+  for (const p of raw.properties) if (p.fromConservation?.class) ensure(p.fromConservation.class);
+}
 {
   const cids = uniq(raw.classes, 'formula class');
   for (const c of raw.classes) {
@@ -477,6 +589,7 @@ raw.results.forEach((res, i) => {
   } else if (res.type === 'conservation') {
     for (const f of ['statement', 'base']) if (!sids.has(res[f])) errors.push(`${where}: unknown statement ${res[f]}`);
     if (!res.class) errors.push(`${where}: conservation needs a class`);
+    if (res.instanceOf && !raw.parametric.some((p) => p.id === res.instanceOf)) errors.push(`${where}: unknown parametric result ${res.instanceOf}`);
   } else if (res.type === 'property') {
     if (!sids.has(res.statement)) errors.push(`${where}: unknown statement ${res.statement}`);
     if (!pids.has(res.property)) errors.push(`${where}: unknown property ${res.property}`);

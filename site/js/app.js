@@ -1360,7 +1360,16 @@ function refFull(key) {
     ${readBadge(r)}`;
 }
 
+// A fact that is an instance of a parametric result: hovering it (or focusing it) shows
+// the general statement and its source (data/parametric.yaml).
 function resultFact(res) {
+  const core = resultFactCore(res);
+  const p = res.instanceOf && (Z.raw.parametric || []).find((x) => x.id === res.instanceOf);
+  if (!p) return core;
+  return `<span class="param-inst" tabindex="0">${core}<span class="param-pop" role="tooltip"><b>Instance${res._params ? ` (${esc(res._params)})` : ''} of:</b>
+    ${rich(p.text)}<span class="small muted"> — ${(p.refs || []).map(refLink).join('; ')}</span>${p.note ? `<span class="small"> ${rich(p.note)}</span>` : ''}</span></span>`;
+}
+function resultFactCore(res) {
   const R = (id) => Z.R[Z.ridx.get(id)];
   const overs = [].concat(res.over || []);
   const r0 = Z.ridx.get(overs[0]);
