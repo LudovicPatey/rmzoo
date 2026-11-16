@@ -1300,10 +1300,10 @@ kohlenbach2002b:
   year: 2002
   doi: 10.1016/S0168-0072(01)00077-X
   source: zbmath
-  read: pdf-zotero
   zbmath: "1001.03052"
   zbmathAuthors:
     - kohlenbach.ulrich-wilhelm
+  read: pdf-zotero
 escardostreicher2002:
   authors:
     - Martín Escardó

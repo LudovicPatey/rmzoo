@@ -839,3 +839,759 @@
     \mathsf{QF\text{-}AC}^{2,1}$.
   refs:
     - { ref: normannsanders2017b, role: rm, loc: Definition 2.4 }
+
+- id: indomega
+  label: \mathsf{IND}
+  name: Induction axiom for all formulas of L_ω
+  caution: Not $\mathsf{IND}_0$, $\mathsf{IND}_1$, $\mathsf{IND}_2$ ([[ind03]], [[ind13]], [[ind23]]), which are
+    finite-choice principles named after induction. normannsanders2019b writes $\mathsf{IND}_\omega$.
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - IND
+    - IND_ω
+    - INDω
+    - INDomega
+  definition: >
+    The induction axiom for all formulas of $\mathsf{L}_\omega$ (the language of higher-order arithmetic, with
+    parameters of any finite type). $\mathsf{RCA}_0^\omega + \mathsf{IND}$ has the first-order strength of Peano
+    arithmetic. Used as an extra base axiom, as in $\mathsf{RCA}_0^\omega + \mathsf{IND}$.
+  refs:
+    - ref: sanders2019b
+      role: rm
+      loc: Section 2.1, IND
+    - ref: normannsanders2018b
+      role: rm
+      loc: Section 4.2, IND (before Corollary 4.7)
+    - ref: normannsanders2019b
+      role: rm
+      loc: Section 2.1, IND_ω
+    - ref: sanders2020b
+      role: rm
+      loc: Section 3.3, IND (before Theorem 3.10)
+
+- id: sigmaind3
+  label: \Sigma\text{-}\mathsf{IND}
+  name: Third-order Σ-induction
+  caution: "Not $\\Sigma^0_1$- or $\\Sigma^1_1$-induction: the formulas have the form $(\\exists f \\in
+    \\mathbb{N}^\\mathbb{N})(Y(f,n) = 0)$ with a type-2 parameter $Y$ (the same class as in [[sigmasep3]])."
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - Σ-IND
+    - IND_Σ
+    - INDΣ
+  definition: >
+    The induction axiom for formulas $\varphi(n) \equiv (\exists f \in \mathbb{N}^\mathbb{N})(Y(f, n) = 0)$, for any
+    $Y^2$ ("Σ-formulas"). Used as an extra base axiom, as in $\mathsf{ACA}_0^\omega + \Sigma\text{-}\mathsf{IND}$.
+  refs:
+    - ref: sanderstaranovsky2026
+      role: rm
+      loc: Principle 1.4
+    - ref: sanders2024c
+      role: rm
+      loc: Principle 1.4
+    - ref: sanders2026b
+      role: rm
+      loc: Principle 1.5
+    - ref: sanders2020
+      role: rm
+      loc: Section 3.3.1, IND_Σ (before Corollary 3.22)
+
+- id: ind13
+  label: \mathsf{IND}_1
+  name: Finite choice for unique witnesses (IND₁)
+  caution: "The label $\\mathsf{IND}_1$ is not an induction scheme for a formula class (see [[ind03]]): sanders2024d
+    defines it as its $\\mathsf{IND}_2$ with $(\\exists f \\in 2^\\mathbb{N})$ restricted to $(\\exists! f \\in
+    2^\\mathbb{N})$, which is the same principle."
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - IND1
+  definition: >
+    Let $Y^2$ satisfy $(\forall n \in \mathbb{N})(\exists! f \in 2^\mathbb{N})[Y(n, f) = 0]$. Then $(\forall n \in
+    \mathbb{N})(\exists w^{1^*})\big[|w| = n \wedge (\forall i < n)(Y(i, w(i)) = 0)\big]$. A special case of finite
+    choice, trivial under $\neg(\exists^2)$.
+  refs:
+    - ref: normannsanders2021
+      role: rm
+      loc: Principle 2.3
+    - ref: sanders2024
+      role: rm
+      loc: Principle 2.1
+    - ref: sanders2024d
+      role: rm
+      loc: Section 2.1, after Principle 2.3
+
+- id: ind23
+  label: \mathsf{IND}_2
+  name: Finite choice for Σ-formulas (IND₂)
+  caution: "The label $\\mathsf{IND}_2$ is not an induction scheme for a formula class (see [[ind03]]). sanders2024d
+    (Principle 2.3) states it with the hypothesis for all $n$: if $(\\forall n)(\\exists f \\in 2^\\mathbb{N})[Y(n, f) =
+    0]$, then $(\\forall n)(\\exists w^{1^*})[|w| = n \\wedge (\\forall i < n)(Y(i, w(i)) = 0)]$."
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - IND2
+  definition: >
+    Let $Y^2, k^0$ satisfy $(\forall n \leq k)(\exists f \in 2^\mathbb{N})(Y(f, n) = 0)$. There is $w^{1^*}$ such that
+    $(\forall n \leq k)(\exists i < |w|)(Y(w(i), n) = 0)$. A fragment of the induction axiom that also follows from
+    $\mathsf{QF\text{-}AC}^{0,1}$.
+  refs:
+    - ref: normannsanders2022
+      role: rm
+      loc: Definition 2.18
+    - ref: normannsanders2021
+      role: rm
+      loc: Definition 3.32
+    - ref: sanders2024d
+      role: rm
+      loc: Principle 2.3
+
+- id: indr
+  label: \mathsf{IND}_{\mathbb{R}}
+  name: Finite comprehension for Σ-formulas over the reals (IND_ℝ)
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - IND_R
+    - INDR
+    - IND_ℝ
+  definition: >
+    For $F : (\mathbb{R} \times \mathbb{N}) \to \mathbb{N}$ and $k \in \mathbb{N}$, there is $X \subset \mathbb{N}$ such
+    that $(\forall n \leq k)\big[(\exists x \in \mathbb{R})(F(x, n) = 0) \leftrightarrow n \in X\big]$: bounded
+    comprehension for third-order Σ-formulas, provable from the induction axiom. Used as an extra base axiom, as in
+    $\mathsf{ACA}_0^\omega + \mathsf{IND}_{\mathbb{R}}$.
+  refs:
+    - ref: sanders2023
+      role: rm
+      loc: Principle 2.22
+    - ref: sanders2023b
+      role: rm
+      loc: Principle 3.13
+    - ref: normannsanders2024b
+      role: rm
+      loc: Principle 3.21
+
+- id: z2omega
+  label: \mathsf{Z}_2^\omega
+  name: Higher-order second-order arithmetic Z₂^ω (all functionals S²ₖ)
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - Z_2^ω
+    - Z2omega
+    - Z2^omega
+    - Zω2
+  definition: >
+    $\mathsf{Z}_2^\omega \equiv \cup_k \Pi^1_k\text{-}\mathsf{CA}_0^\omega$, where $\Pi^1_k\text{-}\mathsf{CA}_0^\omega
+    \equiv \mathsf{RCA}_0^\omega + (\mathsf{S}^2_k)$ and $(\mathsf{S}^2_k)$ expresses the existence of the functional
+    $\mathsf{S}^2_k$ deciding the truth of $\Sigma^1_k$-formulas in normal form (function parameters allowed, type-2
+    parameters not); as a statement, the conjunction of all $(\mathsf{S}^2_k)$, $k \geq 1$ ($(\mathsf{S}^2_1)$ is
+    [[suslin]]). Conservative over $\mathsf{Z}_2$, like $\mathsf{Z}_2^\Omega \equiv \mathsf{RCA}_0^\omega + (\exists^3)$
+    ([[exists3]]), but many third-order theorems provable in $\mathsf{Z}_2^\Omega$ are not provable in
+    $\mathsf{Z}_2^\omega$.
+  refs:
+    - ref: normannsanders2019
+      role: rm
+      loc: Section 2.1.4, Z₂^ω
+    - ref: normannsanders2017b
+      role: rm
+      loc: Section 1.3, Z₂^ω
+    - ref: sanders2018b
+      role: rm
+      loc: Section 2.2, Z₂^ω
+
+- id: mu1
+  label: (\mu_1)
+  name: Feferman's search operator μ₁
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - µ1
+    - (µ1)
+    - μ_1
+    - Feferman's second mu-operator
+  definition: >
+    $(\exists \mu_1^{1\to1})\big[(\forall f^1)\big((\exists g^1)(\forall x^0)(f(\overline{g}x) = 0) \rightarrow (\forall
+    x^0)(f(\overline{\mu_1(f)}x) = 0)\big)\big]$: $\mu_1$ selects a witness for every $\Sigma^1_1$-formula in normal
+    form that holds. normannsanders2018 takes $\Pi^1_1\text{-}\mathsf{CA}_0^\omega \equiv \mathsf{RCA}_0^\omega +
+    (\mu_1)$, a $\Pi^1_3$-conservative extension of $\Pi^1_1\text{-}\mathsf{CA}_0$.
+  refs:
+    - ref: bergsanders2014
+      role: rm
+      loc: Section 4.1.2, (μ₁)
+    - ref: normannsanders2018
+      role: rm
+      loc: Section 2.3, (μ₁)
+    - ref: normannsanders2017
+      role: rm
+      loc: Section 3.2, (μ₁)
+
+- id: ff
+  label: \mathsf{FF}
+  name: Tait's classical fan functional
+  caution: Not the intuitionistic fan functional [[muc]] ($\mathsf{MUC}$), which applies to all $Y^2$ and contradicts
+    $(\exists^2)$; $\mathsf{FF}$ only applies to continuous $Y^2$ and follows from $(\exists^2)$ (sanders2018b, Section
+    3.1). sanders2024b (Corollary 2.9) quantifies over $Y^2$ continuous on $2^\mathbb{N}$ instead of
+    $\mathbb{N}^\mathbb{N}$.
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - (FF)
+    - FF(Φ)
+    - Tait's fan functional
+    - classical fan functional
+  definition: >
+    $(\exists \Phi^3)(\forall Y^2 \in \mathsf{cont})(\forall f, g \in C)\big(\overline{f}\Phi(Y) = \overline{g}\Phi(Y)
+    \rightarrow Y(f) = Y(g)\big)$, where $Y \in \mathsf{cont}$ means that $Y$ is continuous on Baire space and $C =
+    2^\mathbb{N}$: $\Phi$ gives a modulus of uniform continuity on Cantor space for every continuous type-2 functional.
+  refs:
+    - ref: sanders2018b
+      role: rm
+      loc: Section 3.1, (FF)
+    - ref: normannsanders2018b
+      role: rm
+      loc: Section 4.2, (FF)
+    - ref: normannsanders2017
+      role: rm
+      loc: Section 3.1, FF(Φ)
+    - ref: sanders2024b
+      role: rm
+      loc: Corollary 2.9, (FF)
+
+- id: qfac20
+  label: \mathsf{QF\text{-}AC}^{2,0}
+  name: Quantifier-free choice from type-2 functionals to numbers
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - QF-AC^{2,0}
+    - QF-AC20
+    - QF-AC2,0
+  definition: >
+    $(\forall x^2)(\exists y^0)A(x, y) \to (\exists Y^{2\to0})(\forall x^2)A(x, Y(x))$ for quantifier-free $A$ (the
+    scheme $\mathsf{QF\text{-}AC}^{\sigma,\tau}$ with $\sigma = 2$, $\tau = 0$). Used as an extra base axiom, as in
+    $\mathsf{WKL}_0^\omega + \mathsf{QF\text{-}AC}^{2,0}$.
+  refs:
+    - ref: sanders2018b
+      role: rm
+      loc: Definition 2.2
+    - ref: bergsanders2014
+      role: rm
+      loc: Definition 2.2
+
+- id: nfp03
+  label: \mathsf{NFP}_0
+  name: Neighbourhood function principle without codes (NFP₀)
+  caution: sanders2019 restricts $\mathsf{NFP}_0$ to $\Pi^1_\infty$-formulas with a type-2 parameter; sanders2019b
+    (Section 5.3) defines it for all formulas of $\mathsf{L}_\omega$ (as [[nfp3]] with $(\exists \Phi^2)$ for $(\exists
+    \gamma \in K_0)$) and uses its fragment $\Sigma\vee\Pi\text{-}\mathsf{NFP}_0$; sanders2018d uses the fragment
+    $\mathsf{C}\text{-}\mathsf{NFP}_0$.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - NFP0
+    - NFP_0
+  definition: >
+    For any $\Pi^1_\infty$-formula $A$ with any type-2 parameter: $(\forall f^1)(\exists n^0)A(\overline{f}n)
+    \rightarrow (\exists \Phi^2)(\forall f^1)A(\overline{f}\Phi(f))$. The special case of the neighbourhood function
+    principle [[nfp3]] that gives a functional $\Phi$ instead of an RM code (associate) for it.
+  refs:
+    - ref: sanders2019
+      role: rm
+      loc: Definition 3.4
+    - ref: sanders2019b
+      role: rm
+      loc: Section 5.3, NFP₀
+
+- id: jordan3
+  label: \textsf{Jordan decomposition (third order)}
+  name: Jordan decomposition theorem for arbitrary functions of bounded variation
+  caution: "The third-order version, for arbitrary (uncoded) $f : [0,1] \\to \\mathbb{R}$; [[jordan]] ($\\mathsf{JD}$) is
+    the second-order version for codes, provable in $\\mathsf{ACA}_0$. sanders2024d (Definition 3.1, Theorem 3.2) states
+    it for functions with a total variation (item (b): the supremum exists), a different statement."
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - Jordan decomposition theorem (third-order)
+  definition: >
+    A function $f : [0,1] \to \mathbb{R}$ of bounded variation is the difference of two non-decreasing functions $g, h :
+    [0,1] \to \mathbb{R}$. Here $f$ has bounded variation if there is $k_0 \in \mathbb{N}$ such that $k_0 \geq
+    \sum_{i=0}^{n-1} |f(x_i) - f(x_{i+1})|$ for any partition $0 = x_0 < x_1 < \dots < x_n = 1$ (the supremum of these
+    sums need not exist).
+  refs:
+    - ref: normannsanders2022
+      role: rm
+      loc: Definition 1.3(a), Theorem 1.4
+    - ref: normannsanders2021
+      role: rm
+      loc: Definition 3.26(a), Theorem 3.27
+    - ref: normannsanders2024b
+      role: rm
+      loc: Theorem 2.9
+    - ref: sanders2022b
+      role: rm
+      loc: Definition 1.12(a), Theorem 1.13
+
+- id: udnr
+  label: \mathsf{UDNR}
+  name: Uniform diagonally non-recursive functions
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - UDNR
+  definition: >
+    $(\exists \Psi^{1 \to 1})(\forall A^1)(\forall e^0)\big(\Psi(A)(e) \neq \Phi^A_e(e)\big)$: the uniform version of
+    $\mathsf{DNR}$, where $\Psi$ produces, uniformly in $A$, a function that is diagonally non-recursive relative to
+    $A$. Explicitly equivalent to $(\mu^2)$, hence to $(\exists^2)$, over $\mathsf{RCA}_0^\omega$ (sanders2014b,
+    Corollary 3.4).
+  refs:
+    - ref: sanders2014b
+      role: rm
+      loc: Section 1, (UDNR); Section 3, Corollary 3.4
+    - ref: sanders2016
+      role: rm
+      loc: Section 1, (UDNR)
+    - ref: sanders2016b
+      role: rm
+      loc: Section 4.3, UDNR
+
+- id: kappa03
+  label: (\kappa_0^3)
+  name: Comprehension on Cantor space (κ₀³)
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - κ30
+    - (κ30)
+    - κ₀³
+  definition: >
+    $(\exists \kappa_0^3 \leq_3 1)(\forall Y^2)\big[\kappa_0(Y) = 0 \leftrightarrow (\exists f \in C)(Y(f) = 0)\big]$,
+    where $C = 2^\mathbb{N}$ is Cantor space (sanders2018b and sanders2018d write $Y(f) > 0$ instead of $Y(f) = 0$, an
+    inessential difference). $(\exists^3) \leftrightarrow [(\exists^2) + (\kappa_0^3)]$ (Kohlenbach).
+  refs:
+    - ref: normannsanders2018b
+      role: rm
+      loc: Section 2.3, (κ₀³)
+    - ref: sanders2018b
+      role: rm
+      loc: Section 3.1, (κ₀³)
+    - ref: normannsanders2017b
+      role: rm
+      loc: Section 4.1.2, (κ₀³)
+    - ref: normannsanders2020
+      role: rm
+      loc: Section 2.2, (κ₀³)
+
+- id: bootminusc
+  label: \mathsf{BOOT}^-_C
+  name: Bootstrap principle with unique witnesses, restricted to Cantor space
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - BOOT−C
+    - BOOT− C
+  definition: >
+    For all $Y^2$ such that $(\forall n^0)(\exists \text{ at most one } f \in 2^\mathbb{N})(Y(f, n) = 0)$, we have
+    $(\exists X \subset \mathbb{N})(\forall n \in \mathbb{N})\big(n \in X \leftrightarrow (\exists g \in
+    2^\mathbb{N})(Y(g, n) = 0)\big)$: $\mathsf{BOOT}^-$ with $\mathbb{N}^\mathbb{N}$ replaced by $2^\mathbb{N}$.
+  refs:
+    - ref: normannsanders2020b
+      role: rm
+      loc: Section 3.2.5, proof of Theorem 3.25, (3.4)
+    - ref: sanders2020
+      role: rm
+      loc: Section 2.2; Theorem 3.16(iii)
+
+- id: open
+  label: \mathsf{open}
+  name: Open sets of reals have countable codes (coding principle)
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    For every open set $Y \subseteq \mathbb{R}$ there is $X \subset \mathbb{N}$ such that $(\forall n \in \mathbb{N})(n
+    \in X \leftrightarrow B(q_n, r_n) \subseteq Y)$, where $(q_n, r_n)_{n}$ enumerates the basic open balls with
+    rational centre and radius. Here (Definition 1.2) $Y : \mathbb{R} \to \mathbb{R}$ represents the set $\{x : Y(x)
+    >_\mathbb{R} 0\}$, called open if every point of it has an open ball around it contained in it; thus $\mathsf{open}$
+    says that every open set given by a (third-order, possibly discontinuous) characteristic function is RM-open.
+  refs:
+    - ref: normannsanders2019b
+      role: rm
+      loc: Definition 4.1, Definition 1.2
+    - ref: sanderstaranovsky2026
+      role: rm
+      loc: Theorem 3.15(d)
+    - ref: sanders2024c
+      role: rm
+      loc: Remark 2.28
+    - ref: normannsanders2020b
+      role: rm
+      loc: Section 3.2.5, list after Theorem 3.25, item (d)
+
+- id: openminus
+  label: \mathsf{open}^-
+  name: Open sets with a radius function have countable codes
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - open−
+  definition: >
+    Every open set $O \subseteq [0,1]$ represented by $Y : [0,1] \to [0,1]$ with $O = \{x : Y(x) >_\mathbb{R} 0\}$ and
+    $(x - Y(x), x + Y(x)) \cap [0,1] \subseteq O$ whenever $Y(x) > 0$ (representation (R.2)) is a countable union
+    $\bigcup_{n} (a_n, b_n)$ of intervals with rational end-points (representation (R.4)). sanderstaranovsky2026 states
+    it on $\mathbb{R}$: every R2-open set ($Y : \mathbb{R} \to \mathbb{R}^+ \cup \{0\}$ with $x \in O \leftrightarrow
+    Y(x) > 0$ and $B(x, Y(x)) \subset O$) is RM-open. Provable in $\mathsf{RCA}_0^\omega + \mathsf{HBU} +
+    \mathsf{QF\text{-}AC}^{0,1}$ (normannsanders2019b, Theorem 7.8).
+  refs:
+    - ref: normannsanders2019b
+      role: rm
+      loc: Definition 7.7, Section 7 (R.2), (R.4)
+    - ref: sanderstaranovsky2026
+      role: rm
+      loc: Definitions 3.13, 3.14
+
+- id: openplus
+  label: \mathsf{open}^+
+  name: Open sets given as uncountable unions have countable codes
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - open+
+  definition: >
+    For every open set $Z \subseteq \mathbb{R}$ there is $X \subseteq \mathbb{N}$ with $(\forall n \in \mathbb{N})(n \in
+    X \leftrightarrow B(q_n, r_n) \subseteq Z)$, where open sets are given as uncountable unions (Definition 4.2): $\psi
+    : \mathbb{R} \to \mathbb{R}^2$ represents $O = \bigcup_{y \in \mathbb{R}} I^\psi_y$, with $I^\psi_y$ the open
+    interval $(\psi(y)(1), \psi(y)(1) + |\psi(y)(2)|)$ (empty if the end-points coincide). $[\mathsf{BOOT} +
+    \mathsf{ACA}_0] \leftrightarrow \mathsf{open}^+$ over $\mathsf{RCA}_0^\omega + \mathsf{QF\text{-}AC}^{0,1}$
+    (sanders2019b, Section 4.2.2).
+  refs:
+    - ref: sanders2019b
+      role: rm
+      loc: Definition 4.3, Definition 4.2
+    - ref: normannsanders2020
+      role: rm
+      loc: Definition 3.13, Definition 3.12, Theorem 3.14
+
+- id: ury
+  label: \mathsf{URY}
+  name: Urysohn's lemma for closed sets given by characteristic functions
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - URY
+  definition: >
+    For closed disjoint sets $C_0, C_1 \subseteq \mathbb{R}$, there is a continuous function $g : \mathbb{R} \to [0,1]$
+    such that $x \in C_i \leftrightarrow g(x) = i$ for any $x \in \mathbb{R}$ and $i \in \{0,1\}$; closed sets are
+    complements of open sets given by characteristic functions as in $\mathsf{open}$ (normannsanders2019b, Definition
+    1.2; normannsanders2020, Definition 3.4). $\mathsf{URY} \leftrightarrow \mathsf{open}$ over $\mathsf{ACA}_0^\omega$
+    (normannsanders2019b, Theorem 5.3).
+  refs:
+    - ref: normannsanders2019b
+      role: rm
+      loc: Definition 5.1, Theorem 5.3
+    - ref: normannsanders2020
+      role: rm
+      loc: Definition 3.9, Definition 3.4
+
+- id: tie
+  label: \mathsf{TIE}
+  name: Tietze extension theorem for closed sets given by characteristic functions
+  caution: Not the second-order Tietze extension theorem $\mathsf{TET}$ (id tietze) nor the strong Tietze theorems for codes.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - TIE
+  definition: >
+    For $f : \mathbb{R} \to \mathbb{R}$ continuous on the closed $D \subseteq [0,1]$, there is $g : \mathbb{R} \to
+    \mathbb{R}$, continuous on $[0,1]$, such that $f(x) =_\mathbb{R} g(x)$ for $x \in D$; closed sets are complements of
+    open sets given by characteristic functions (normannsanders2019b, Definition 1.2; normannsanders2020, Definition
+    3.4).
+  refs:
+    - ref: normannsanders2019b
+      role: rm
+      loc: Definition 5.5, Theorem 5.6
+    - ref: normannsanders2020
+      role: rm
+      loc: Definition 3.10, Definition 3.4
+
+- id: hbcs
+  label: \mathsf{HBC}_s
+  name: Heine–Borel theorem for countable coverings by open sets (closed sets without codes)
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+    - compactness
+  aliases:
+    - HBCs
+  definition: >
+    Let $C \subseteq [0,1]$ be closed and let $(O_n)_{n \in \mathbb{N}}$ be a sequence of open sets with $C \subseteq
+    \bigcup_{n} O_n$. Then $C \subseteq \bigcup_{n \leq n_0} O_n$ for some $n_0 \in \mathbb{N}$. Open and closed sets
+    are given by characteristic functions, without codes. Not provable in $\mathsf{Z}_2^\omega$, already for $C = [0,1]$
+    (normannsanders2019b, Theorem 3.15). Not $\mathsf{HBC}_0$ (coverings given as countable sets of intervals).
+  refs:
+    - ref: normannsanders2019b
+      role: rm
+      loc: Definition 3.14, Theorem 3.15
+    - ref: normannsanders2024
+      role: rm
+      loc: Principle 2.4
+
+- id: bct01
+  label: \mathsf{BCT}_{[0,1]}
+  name: Baire category theorem for open sets given by characteristic functions
+  caution: >
+    The acronym BCT also names Brattka–Gherardi's Weihrauch problems $\mathsf{BCT}_0$–$\mathsf{BCT}_3$ and Sanders'
+    "Brouwer continuity theorem" (sanders2015d, Section 6).
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - BCT[0,1]
+  definition: >
+    If $(O_n)_{n \in \mathbb{N}}$ is a (decreasing) sequence of dense open sets of reals in $[0,1]$, then $\bigcap_{n}
+    O_n$ is non-empty; sets are given by characteristic functions, without codes. sanders2023 and sanders2023b assume
+    $O_{n+1} \subseteq O_n$ to avoid induction; normannsanders2019b (called $\mathsf{BCT}$ there) and
+    normannsanders2024b state it for arbitrary sequences, normannsanders2019b over $\mathbb{R}$. Not provable in
+    $\mathsf{Z}_2^\omega + \mathsf{QF\text{-}AC}^{0,1}$ (normannsanders2019b, Theorem 6.16); provable in
+    $\mathsf{RCA}_0^\omega + \mathsf{BOOT}$.
+  refs:
+    - ref: sanders2023
+      role: rm
+      loc: Principle 2.1
+    - ref: normannsanders2019b
+      role: rm
+      loc: Section 6.2.2, (BCT), Theorems 6.14, 6.16
+    - ref: normannsanders2024b
+      role: rm
+      loc: Section 3.3.2, (BCT[0,1])
+    - ref: sanders2023b
+      role: rm
+      loc: Principle 3.16
+    - ref: sanderstaranovsky2026
+      role: rm
+      loc: Section 4.1, list
+
+- id: php01
+  label: \mathsf{PHP}_{[0,1]}
+  name: Tao's pigeonhole principle for measure (closed sets of reals)
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - PHP[0,1]
+  definition: >
+    If $(X_n)_{n \in \mathbb{N}}$ is an increasing sequence of measure zero closed sets of reals in $[0,1]$, then
+    $\bigcup_{n} X_n$ has measure zero. Sets are given by characteristic functions, without codes; $A$ has measure zero
+    if for every $\varepsilon > 0$ there is a sequence of open intervals $(I_n)_n$ covering $A$ with $\sum_n |I_n| <
+    \varepsilon$ (Definition 1.8), so no Lebesgue measure is needed.
+  refs:
+    - ref: sanders2023
+      role: rm
+      loc: Principle 3.5, Definition 1.8
+    - ref: sanders2023b
+      role: rm
+      loc: Principle 3.12
+    - ref: normannsanders2024b
+      role: rm
+      loc: Principle 3.22
+    - ref: sanderstaranovsky2026
+      role: rm
+      loc: Section 4.1, list
+
+- id: range3
+  label: \mathsf{RANGE}
+  name: Existence of the range of a type-two functional
+  caution: Not the Weihrauch problem $\mathsf{Range}$ (id range), the range of an injection $\mathbb{N} \to \mathbb{N}$.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - RANGE
+  definition: >
+    $(\forall G : \mathbb{N}^\mathbb{N} \to \mathbb{N})(\exists X \subset \mathbb{N})(\forall n \in \mathbb{N})\big(n
+    \in X \leftrightarrow (\exists f \in \mathbb{N}^\mathbb{N})(G(f) = n)\big)$. Equivalent to $\mathsf{BOOT}$ over
+    $\mathsf{RCA}_0^\omega$ (sanders2019c, Theorem 3.6).
+  refs:
+    - ref: sanders2019c
+      role: rm
+      loc: Theorem 3.6
+    - ref: sanders2019b
+      role: rm
+      loc: Theorem 3.17
+    - ref: sanders2024c
+      role: rm
+      loc: Theorem 2.2, proof
+    - ref: sanders2026
+      role: rm
+      loc: Theorem 2.3, proof
+
+- id: enum
+  label: \mathsf{enum}
+  name: Height-countable subsets of [0,1] can be enumerated
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - enum
+  definition: >
+    A height-countable set in $[0,1]$ can be enumerated, i.e. there is a sequence of reals that includes all its
+    elements. Here $A \subset \mathbb{R}$ is height-countable if there is a height function $H : \mathbb{R} \to
+    \mathbb{N}$ for $A$: for all $n \in \mathbb{N}$, $A_n := \{x \in A : H(x) < n\}$ is finite (Definition 1.8: there is
+    $N$ such that any $N+1$ distinct reals include one outside the set). Equivalently, a union over $\mathbb{N}$ of
+    finite sets can be enumerated (sanders2026b, Remark 3.9). Generalizes $\mathsf{cocode}_0$.
+  refs:
+    - ref: sanders2023b
+      role: rm
+      loc: Principle 3.6, Definitions 1.7, 1.8
+    - ref: normannsanders2024b
+      role: rm
+      loc: Principle 3.11
+    - ref: sanders2026b
+      role: rm
+      loc: Remark 3.9
+
+- id: ninc
+  label: \mathsf{NIN}_{2^\mathbb{N}}
+  name: No injection from Cantor space to ℕ
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - NIN2N
+    - NIN^C
+    - NINC
+  definition: >
+    There is no injection $Y : 2^\mathbb{N} \to \mathbb{N}$: for any $Y : 2^\mathbb{N} \to \mathbb{N}$ there are $f \neq
+    g$ in $2^\mathbb{N}$ with $Y(f) = Y(g)$. Equivalent to $\mathsf{NIN}$ over $\mathsf{ACA}_0^\omega$ (sanders2022,
+    Theorem 6, where it is written $\mathsf{NIN}^C$).
+  refs:
+    - ref: sanders2022
+      role: rm
+      loc: Section 2.1, Theorem 6
+    - ref: normannsanders2026
+      role: rm
+      loc: Theorem 2.9
+    - ref: sanders2026b
+      role: rm
+      loc: Section 3.2, proof of Theorem 3.12
+
+- id: mctnet1
+  label: \mathsf{MCT}^{\mathrm{net}}_1
+  name: Monotone convergence theorem for nets with strongly countable index sets, with modulus
+  caution: Not $\mathsf{MCT}^1_{\mathrm{net}}$ of sanders2019 (Appendix, Theorem A.3), for nets indexed by subsets of
+    $\mathbb{N}^\mathbb{N} \to \mathbb{N}$.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - MCTnet1
+  definition: >
+    $\mathsf{MCT}^{\mathrm{net}}_0$ restricted to strongly countable index sets and with a modulus of convergence in the
+    conclusion, where $\mathsf{MCT}^{\mathrm{net}}_0$ is the monotone convergence theorem for nets in $[0,1]$ whose
+    index set is $D = \{w : w$ a finite sequence without repetitions of elements of $A\}$ for a countable $A \subset
+    \mathbb{R}$, ordered by inclusion. Equivalent to $\mathsf{cocode}_1$ over $\mathsf{ACA}_0^\omega$ (sanders2020,
+    Theorem 3.21).
+  refs:
+    - ref: sanders2020
+      role: rm
+      loc: Section 3.3.1, (3.6), before Principle 3.20, Theorem 3.21
+    - ref: normannsanders2021
+      role: rm
+      loc: Section 2.2.1
+
+- id: pito2
+  label: \mathsf{PIT}'_o
+  name: Pincherle's theorem for Cantor space without a realiser for local boundedness
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - PIT′o
+    - PIT'o
+  definition: >
+    $(\forall F^2)\big[(\forall f \in C)(\exists n^0)(\forall g \in C)\big(g \in [\overline{f}n] \rightarrow F(g) \leq
+    n\big) \rightarrow (\exists m^0)(\forall h \in C)(F(h) \leq m)\big]$: $\mathsf{PIT}_o$ with the realiser $G$ for
+    local boundedness replaced by local boundedness itself. $\mathsf{PIT}_o \leftrightarrow \mathsf{PIT}'_o
+    \leftrightarrow \mathsf{WKL}$ over $\mathsf{RCA}_0^\omega + \mathsf{QF\text{-}AC}^{0,1}$ (normannsanders2018b);
+    $\mathsf{NCC}$ suffices instead of $\mathsf{QF\text{-}AC}^{0,1}$ (normannsanders2020, Corollary 3.3).
+  refs:
+    - ref: normannsanders2018b
+      role: rm
+      loc: Section 4, after Corollary 4.8
+    - ref: normannsanders2020
+      role: rm
+      loc: (3.3), Corollary 3.3

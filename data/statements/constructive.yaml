@@ -575,3 +575,186 @@
     - ref: veldman2011
       role: rm
       loc: Subsection 12.5
+
+- id: wwklbar
+  label: \mathsf{WWKL}_{\mathrm{bar}}
+  name: Weak weak König's lemma (bar form)
+  kind: sentence
+  tags:
+    - constructive
+    - compactness
+    - randomness
+  aliases:
+    - WWKL (constructive)
+    - constructive WWKL
+  definition: >
+    For every decidable bar $B \subseteq 2^{<\mathbb{N}}$ that is closed under extensions, $\lim_{n\to\infty} |\{u
+    \notin B : |u| = n\}| / 2^n = 0$. The constructive reading of weak weak König's lemma, as a weakening of
+    [[fandelta]] (the decidable bar need not be uniform, only the proportion of unbarred nodes tends to $0$); over BISH
+    equivalent to Vitali's covering theorem in finite form ([[vitalifin]]).
+  caution: >
+    Not [[wwkl]] (trees of positive measure have a path): this is its contraposition, called WWKL in constructive
+    reverse mathematics; the two are classically equivalent, not over BISH.
+  refs:
+    - ref: dienerhedin2012
+      role: rm
+      loc: Section 4
+    - ref: diener2018
+      role: rm
+      loc: Section 3.2
+
+- id: vitalifin
+  label: \textsf{Vitali}_{\mathrm{fin}}
+  name: Vitali covering theorem (finite form)
+  kind: sentence
+  minor: true
+  tags:
+    - constructive
+    - analysis
+    - randomness
+  aliases:
+    - VCT
+  definition: >
+    Let $\varepsilon > 0$. If $V$ is a countable Vitali cover of $[a,b]$ (for every $x \in [a,b]$ and $\delta > 0$ some
+    interval of $V$ contains $x$ and has length $< \delta$), then there are finitely many pairwise disjoint intervals
+    $I_1, \dots, I_m$ in $V$ with $\mu([a,b] \setminus \bigcup_{i \leq m} I_i) < \varepsilon$. Over BISH equivalent to
+    [[wwklbar]] (dienerhedin2012, Theorem 12 and the remark after it); fails in RUSS.
+  caution: >
+    Not [[vitali]] (Simpson's form: a disjoint sequence of intervals of the cover whose union has full measure);
+    classically equivalent.
+  refs:
+    - ref: dienerhedin2012
+      role: rm
+      loc: Theorem 12
+    - ref: diener2018
+      role: rm
+      loc: Proposition 3.2.1(2)
+
+- id: buct
+  label: \mathsf{BUCT}
+  name: Uniform continuity theorem for bounded functions
+  kind: sentence
+  minor: true
+  tags:
+    - constructive
+    - analysis
+    - compactness
+  aliases:
+    - BUCT
+    - BUCT[0,1]
+  definition: >
+    Every bounded, point-wise continuous function $f : [0,1] \to \mathbb{R}$ is uniformly continuous. Equivalent over
+    BISH to the uniform continuity theorem [[ucont]] (dienerloeb2011, Proposition 6; diener2018, Proposition 3.5.6).
+  refs:
+    - ref: dienerloeb2011
+      role: rm
+      loc: Section 2
+    - ref: diener2018
+      role: rm
+      loc: Proposition 3.5.6(1)
+
+- id: luct
+  label: \mathsf{LUCT}
+  name: Locally uniform continuity theorem
+  kind: sentence
+  minor: true
+  tags:
+    - constructive
+    - analysis
+    - compactness
+  aliases:
+    - LUCT
+    - LUCT[0,1]
+  definition: >
+    Every point-wise continuous function $f : [0,1] \to \mathbb{R}$ is locally uniformly continuous: for every $x \in
+    [0,1]$ there is $h > 0$ such that $f$ is uniformly continuous on $[x-h, x+h] \cap [0,1]$. Equivalent over BISH to
+    [[ucont]] and to its version for continuous maps from a compact metric space to a metric space (dienerloeb2011,
+    Section 2; diener2018, Proposition 3.5.6).
+  refs:
+    - ref: dienerloeb2011
+      role: rm
+      loc: Section 2, Definition 3
+    - ref: diener2018
+      role: rm
+      loc: Proposition 3.5.6(2)
+
+- id: minprinciple
+  label: \mathsf{MIN}
+  name: Minimum principle
+  kind: sentence
+  minor: true
+  tags:
+    - constructive
+    - analysis
+    - compactness
+  aliases:
+    - MIN
+    - minimum principle
+  phrases:
+    - minimum principle
+  definition: >
+    Every uniformly continuous function $f : X \to \mathbb{R}$ on a compact (complete and totally bounded) metric space
+    $X$ attains its minimum: there is $z \in X$ with $f(z) = \inf f$. Equivalent to [[wkl]] over BISH (Ishihara;
+    diener2018, Proposition 1.4.7) and over EL₀ (kawai2026b, Theorem 3.1).
+  refs:
+    - ref: kawai2026b
+      role: rm
+      loc: Section 1
+    - ref: diener2018
+      role: rm
+      loc: Proposition 1.4.7(2)
+    - ref: kawai2026
+      role: rm
+      loc: Section 3
+    - ref: ishihara2007
+      role: rm
+      loc: Section 1
+
+- id: minunique
+  label: \mathsf{MIN}!
+  name: Minimum principle with uniqueness
+  kind: sentence
+  minor: true
+  tags:
+    - constructive
+    - analysis
+    - compactness
+  aliases:
+    - MIN!
+  definition: >
+    Every uniformly continuous function $f : X \to \mathbb{R}$ on a compact metric space $X$ having at most one minimum
+    point ($x \neq y \Rightarrow f(x) > \inf f \vee f(y) > \inf f$) attains its minimum. Equivalent to [[fandelta]],
+    [[wklu]] and [[posinf]] over EL₀ (kawai2026b, Theorem 5.1).
+  refs:
+    - ref: kawai2026b
+      role: rm
+      loc: Section 5
+    - ref: ishihara2007
+      role: rm
+      loc: Section 1
+
+- id: riemannperm
+  label: \textsf{Riemann perm.}
+  name: Converse of the Riemann permutation theorem
+  kind: sentence
+  minor: true
+  tags:
+    - constructive
+    - analysis
+  aliases:
+    - Riemann permutation theorem
+    - Riemann-Troelstra theorem
+  phrases:
+    - permutably convergent series
+  definition: >
+    Every permutably convergent series of real numbers is absolutely convergent: if $\sum_n a_{\sigma(n)}$ converges for
+    every permutation $\sigma$ of $\mathbb{N}$, then $\sum_n |a_n|$ converges. Provable in classical mathematics and in
+    intuitionistic mathematics (Troelstra); implied by [[bdn]] over BISH (bergeretal2025, Theorem 7).
+  caution: Not [[riemann]] (Riemann integrability of continuous functions).
+  refs:
+    - ref: bergeretal2025
+      role: rm
+      loc: Section 1, Theorem 7
+    - ref: diener2018
+      role: rm
+      loc: Proposition 4.2.1(7)

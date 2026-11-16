@@ -4573,13 +4573,13 @@ kohlenbach2002:
   dropped: 0
   cost: 0.1
 kohlenbach2002b:
-  date: 2026-11-11
+  date: 2026-11-16
   model: claude-sonnet-5-5 (chat)
-  textHash: 3fd61166edb6bd69
-  facts: 0
+  textHash: 185da786f4df70b1
+  facts: 1
   added: 0
   review: 0
-  dropped: 0
+  dropped: 1
   cost: 0
 kohlenbach2005:
   date: 2026-11-16
