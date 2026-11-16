@@ -1,6 +1,22 @@
 # Higher-order reverse mathematics: third-order statements (order: 3), compared over
 # Kohlenbach's RCA₀^ω (the reduction rca0 read in finite types; data/reductions.yaml).
 
+- id: rca0omega
+  label: '\mathsf{RCA}_0^\omega'
+  name: Recursive comprehension in all finite types
+  kind: sentence
+  order: 3
+  base: [ rca0 ]
+  tags: [ higher-order ]
+  aliases: [ 'RCA₀^ω', RCA0omega, RCA0^omega ]
+  definition: >
+    Kohlenbach's base system of higher-order reverse mathematics, $\mathsf{E\text{-}PRA}^\omega + \mathsf{QF\text{-}AC}^{1,0}$:
+    extensional primitive recursive arithmetic in all finite types with quantifier-free choice from functions to numbers. It
+    is conservative over $\mathsf{RCA}_0$ for second-order sentences (Proposition 3.1), so third-order statements are
+    compared over it by the same relation as second-order ones over $\mathsf{RCA}_0$: every statement implies it.
+  refs:
+    - { ref: kohlenbach2005, role: origin, loc: "Section 2 and Proposition 3.1" }
+
 - id: exists2
   label: '(\exists^2)'
   name: Kleene's quantifier ∃²

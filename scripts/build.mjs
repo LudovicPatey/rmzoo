@@ -823,8 +823,9 @@ const t0 = Date.now();
         for (const c of byId.get(id)?.conjunction || []) add(byId.get(c), m);
       }
   }
+  // the base systems of the mode's reductions (RCA₀ in reverse mathematics, RCA₀^ω in the higher-order mode)
   for (const s of raw.statements) for (const m of raw.modes)
-    if (Array.isArray(s.base) && s.base.some((b) => m.reductions.includes(b))) add(s, m);
+    if (Array.isArray(s.base) && s.base.some((b) => m.reductions.includes(b)) && (!m.order || (m.order === 3) === (s.order === 3))) add(s, m);
 }
 
 const zoo = buildZoo(raw);

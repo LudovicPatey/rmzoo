@@ -72,7 +72,7 @@ reading on the About page (`warning` of the reductions) and on the statement pag
 
 **Higher-order and constructive frames.** Third-order statements (`order: 3`:
 functionals, arbitrary functions on the reals) are compared by `rca0`, read as
-Kohlenbach's RCA₀^ω; RCA₀^ω is conservative over RCA₀ for second-order sentences
+Kohlenbach's RCA₀^ω (the base statement `rca0omega`, bottom of `rca0` like `rca0`); RCA₀^ω is conservative over RCA₀ for second-order sentences
 (Kohlenbach 2005, Proposition 3.1), so one relation covers both and implications chain
 through third-order statements. Reductions without `higherOrder` (ω-models, RCA₀*, the
 problem reductions) do not apply to them. `bish` is provability in Bishop-style
