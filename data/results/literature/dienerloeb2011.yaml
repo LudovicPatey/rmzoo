@@ -1,0 +1,3 @@
+# Results from [dienerloeb2011].
+
+[ { type: implication, from: ucont, to: antispecker, over: bish, refs: [ { ref: dienerloeb2011, loc: "Section 2, Lemma 5 (with UCT => BUCT[0,1] stated before it)" } ] } ]
