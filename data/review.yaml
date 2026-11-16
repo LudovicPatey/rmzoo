@@ -105795,7 +105795,7 @@
 - id: normannsanders2026-5c8bd5a0
   ref: normannsanders2026
   date: 2026-11-16
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -105815,10 +105815,14 @@
     - "extractor confidence: medium"
     - "attributed by the paper to [20] Normann and Sanders, On the uncountability of R: cite the original"
   proposed: c77b77f5caa2
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "normannsanders2020b Theorem 3.2 (read): Z2^omega + QF-AC^{0,1} cannot prove NIN (model P). Z2^omega is the union of the Pi^1_k-CA0^omega = RCA0^omega + (S_k^2) (normannsanders2026 Section 1.2; 2020b Section 2), so it contains RCA0^omega + (S^2); a fortiori suslin-qfac01 does not imply nin. Also follows from the Theorem 2.12 item by weakening the premise."
 - id: normannsanders2026-a15067a2
   ref: normannsanders2026
   date: 2026-11-16
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -105837,10 +105841,14 @@
     - "extractor confidence: medium"
     - deduction, not stated in the paper
   proposed: 1b366bcbed6e
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 2.12 (read): Z2^omega + union_sigma QF-AC^{sigma,1} does not prove NIN[0,1]. Z2^omega = union_k Pi^1_k-CA0^omega contains (S^2) (Section 1.2), and QF-AC^{0,1}, QF-AC^{1,1}, QF-AC^{2,1} are instances of the scheme, so the conjunct premise is a subsystem: the separation holds for it."
 - id: normannsanders2026-b8e4137a
   ref: normannsanders2026
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -105861,10 +105869,14 @@
     - "extractor confidence: medium"
     - "attributed by the paper to [17] Normann and Sanders, Pincherle's theorem in reverse mathematics and computability theory: cite the original"
   proposed: 8893f8c7425e
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Duplicate: exists2-lindbaire -> pi11ca is already in the database (normannsanders2017b Corollary 4.17, normannsanders2018b Corollary 5.13, the original [17], whose LIND(N^N) is the zoo's lindbaire)."
 - id: normannsanders2026-af54be09
   ref: normannsanders2026
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -105884,10 +105896,14 @@
     - "extractor confidence: medium"
     - "attributed by the paper to [17] Normann and Sanders, Pincherle's theorem in reverse mathematics and computability theory: cite the original"
   proposed: d3fdda22e586
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Cited to [17] = normannsanders2018b, whose cached text does not state it: 2018b Section 5.2 only says (S^2) follows from (exists^2) plus a realiser Xi for LIND(N^N) (credited to [69] = normannsanders2017b, Theorem 4.13). Getting Xi from LIND needs QF-AC^{2,1} on a non-quantifier-free matrix; 2017b Theorem 4.10 does that only over Pi^1_1-CA0^omega (already containing S^2), Corollary 4.11 with kappa_0^3. No source states ACA0^omega + QF-AC^{2,1} + LIND(N^N) -> (S^2)."
 - id: normannsanders2026-6d76bedd
   ref: normannsanders2026
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -105907,6 +105923,10 @@
     - "extractor confidence: medium"
     - "attributed by the paper to [19] Normann and Sanders, On robust theorems due to Bolzano, Jordan, Weierstrass, and Cantor in Reverse Mathematics: cite the original"
   proposed: 85b3d7d19e3b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Wrong identification: the paper's Jordan decomposition theorem (from [19] = normannsanders2021) is the third-order one for arbitrary BV functions, while the zoo's jordan is the coded second-order version (no order 3), which with (S^2) gives nothing beyond Pi^1_1-CA0. No third-order Jordan statement in the zoo."
 - id: normannsanders2026-eeede312
   ref: normannsanders2026
   date: 2026-11-16
@@ -106030,7 +106050,7 @@
 - id: sanders2014b-5b217644
   ref: sanders2014b
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -106050,10 +106070,14 @@
     - "extractor confidence: medium"
     - "attributed by the paper to Kohlenbach [29]: cite the original"
   proposed: 39c33b82f0fe
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Duplicate: exists2 <-> uwkl is already in the database from the original, kohlenbach2005 Proposition 3.9."
 - id: sanders2014b-68745e0e
   ref: sanders2014b
   date: 2026-11-16
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -106073,10 +106097,14 @@
     - "extractor confidence: medium"
     - "attributed by the paper to Cholak-Giusto-Hirst-Jockusch [11]: cite the original"
   proposed: 6db9100b1f8e
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "The paper means FS(k) for fixed k (Corollary 4.14, k >= 2). The zoo's fs is FS for all exponents, which ACA0 does NOT prove (cholaketal2005, line after Lemma 3.2: ACA0 does not imply TS, hence not FS; Corollary 5.10: ACA0' implies FS). The original [11] = cholaketal2005 Corollary 5.6 states: for each k, ACA0 proves FS(k); entered for k = 2 (fs2). Reject instead if fs2 is already derivable and the citation is unwanted."
 - id: sanders2014b-7b423465
   ref: sanders2014b
   date: 2026-11-16
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -106094,6 +106122,10 @@
   reasons:
     - "extractor confidence: medium"
   proposed: c66223b135ad
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "The paper states ADS -> Pi^0_1-LEM over Ishihara's constructive base [26] (BISH): for h, the order of (4.2) gives, from an ascending sequence, (forall n) h(n)=0, from a descending one, not (forall n) h(n)=0. Pi^0_1-LEM is (forall n) h(n)=0 or not (forall n) h(n)=0, i.e. WLPO (zoo wlpo), not LPO (= Sigma^0_1-LEM, which would need a witness). A finite search along a descending sequence would also give the witness (hence LPO), but the paper does not state it; entered only WLPO. Sketch only in the paper, hence ai."
 - id: sanders2014b-86c5483b
   ref: sanders2014b
   date: 2026-11-16
@@ -106247,7 +106279,7 @@
 - id: kawai2026-a386ea31
   ref: kawai2026
   date: 2026-11-16
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -106265,10 +106297,14 @@
   reasons:
     - "extractor confidence: medium"
   proposed: a277e0bc6dac
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Theorem 4.3 (in EL0, contained in BISH) proves WKL <-> Brouwer for uniformly continuous f on the standard simplices Delta_n. The zoo's brouwer is for the convex hull of any finite set of points (continuous = uniformly continuous on compacts in BISH). Theorem 4.2's proof uses only the unit square instance, a convex hull of 4 points, so brouwer -> wkl holds over bish. The converse for arbitrary convex hulls is not stated (the paper proves it only for simplices), so only the implication is entered.
 - id: kawai2026-a50c160e
   ref: kawai2026
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -106290,6 +106326,10 @@
     - "extractor confidence: low"
     - "attributed by the paper to Hendtlass, Fixed point theorems in constructive mathematics (J. Log. Anal. 2012) [5]: cite the original"
   proposed: 99f9c0591a93
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Cited to Hendtlass 2012 [5], not in data/references, so not readable. The equivalence is the paper's background claim; brouwer -> llpo follows anyway from brouwer -> wkl (kawai2026 Theorem 4.2) and wkl <-> llpo over bish (diener2018 Proposition 1.4.5); the converse llpo -> brouwer needs Hendtlass.
 - id: kohlenbach1998-cacdbe33
   ref: kohlenbach1998
   date: 2026-11-16
@@ -106368,7 +106408,7 @@
 - id: sanders2024b-df50f8fa
   ref: sanders2024b
   date: 2026-11-16
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -106385,10 +106425,14 @@
   reasons:
     - "extractor confidence: medium"
   proposed: b63a2f204515
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 2.15 (read): ACA0^omega + BOOT proves Pi^1_1-CA0; ACA0^omega = RCA0^omega + (exists^2). Already in the database (sanders2019b Theorem 3.2); accepting adds the citation."
 - id: sanders2024b-ea0b3cbf
   ref: sanders2024b
   date: 2026-11-16
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -106405,6 +106449,10 @@
   reasons:
     - "extractor confidence: medium"
   proposed: "837e86191573"
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Stated: BOOT is third-order and weaker than (exists^3) (BOOT is the instance of exists^3 deciding Sigma-formulas). Already in the database (sanders2019b Corollary 3.8); accepting adds the citation. Only the implication is entered."
 - id: sanders2024b-9615b49a
   ref: sanders2024b
   date: 2026-11-16
@@ -106600,3 +106648,240 @@
   reasons:
     - principle not in the catalogue
   proposed: 8c7c52c29e7c
+- id: sanders2016-86c5483b
+  ref: sanders2016
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UDNR
+    name: Uniform DNR
+    loc: Section 1, (UDNR)
+    definition: "(∃Ψ^{1→1})(∀A^1)(∀e^0)(Ψ(A)(e) ≠ Φ_e^A(e)): a functional computing a DNR function uniformly from any set. Third-order."
+    facts: Equivalent to (µ²) (hence (∃²)) over RCA₀^ω, explicitly (Theorem 2.10, from [17, §3]).
+  reasons:
+    - principle not in the catalogue
+  proposed: a9a38c45f7dd
+- id: sanders2016-20be1b18
+  ref: sanders2016
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UΠ⁰₁G
+    name: Uniform Π⁰₁ genericity
+    loc: Principle 3.2
+    definition: There is Φ such that for all f,g, if g(i,τ) ⪰ τ and D_i^f(g(i,τ)) for all i,τ (uniformly Π⁰₁ dense predicates), then Φ(f,g)(1) is a generic meeting all D_i^f via Φ(f,g)(2)(i). Third-order.
+    facts: UΠ⁰₁G ↔ (µ²) over RCA₀^ω, explicitly (Theorem 3.3, Corollary 3.4); also over E-HA^{ω*} (Corollary 4.3); meta-reversal with its Herbrandisation (Theorem 4.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: a31fab9f7c91
+- id: sanders2016-40e5d0db
+  ref: sanders2016
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: U1G
+    name: Uniform 1-genericity
+    loc: Principle 3.7
+    definition: "There is Φ^{1→(1×2×2)} such that for all X,f: Φ(X)(1)Φ(X)(2)(f) ∈ S_f^X or no σ extending Φ(X)(1)Φ(X)(3)(f) is in S_f^X. Third-order."
+    facts: U1G ↔ (µ²) over RCA₀^ω, explicitly (Theorem 3.8).
+  reasons:
+    - principle not in the catalogue
+  proposed: ac37c4334ae4
+- id: sanders2016-6d3a8917
+  ref: sanders2016
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UFIP / UnIP
+    name: Uniform finite intersection principle (and uniform nIP, n ≥ 2)
+    loc: Remark 3.9
+    definition: Uniform versions of the finite intersection principle FIP and of nIP.
+    facts: Equivalent to (µ²) (Remark 3.9, from [7, Prop. 2.3]; not proved in detail).
+  reasons:
+    - principle not in the catalogue
+  proposed: c810b9f06678
+- id: sanders2016-8577f64c
+  ref: sanders2016
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UHYP / UOPT
+    name: Uniform hyperimmunity principle (uniform omitting partial types)
+    loc: Section 3.3, (UHYP)
+    definition: "There is Φ^{1→(1×1)} such that for all f, e, k, Φ(f)(2)(e,k) ≥ k and every value φ_{e,s}^f(Φ(f)(2)(e,k)) is below Φ(f)(1)(Φ(f)(2)(e,k)): a functional producing a function not dominated by any f-computable function. Third-order. UOPT is equivalent to UHYP (via [11, Thms 5.6-5.7], [10, 9.66-9.67])."
+    facts: UHYP ↔ (µ²) over RCA₀^ω, explicitly (Theorem 3.10); the uniform versions of AMT (and SADS, AST via the proof of SADS → AMT) are also equivalent to (µ²) (remarks after Theorem 3.10).
+  reasons:
+    - principle not in the catalogue
+  proposed: e86550df9641
+- id: sanders2016-cd502457
+  ref: sanders2016
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UNCS
+    name: Uniform existence of non-computable sets
+    loc: Section 3.4, (UNCS)
+    definition: There is Φ^{1→(1×1)} such that for all f,e,s, Φ(f)(1)(Φ(f)(2)(e)) ≠ φ_{e,s}^f(Φ(f)(2)(e)). Third-order; uniform version of NCS ≡ (∀X)(∃Y)(Y ≰_T X), which is equivalent to AST by [11, Theorem 6.3].
+    facts: UNCS ↔ (µ²) over RCA₀^ω, explicitly (Theorem 3.11); the uniform versions of AST and NCS are equivalent.
+  reasons:
+    - principle not in the catalogue
+  proposed: 535da45d10de
+- id: sanders2016-2534c564
+  ref: sanders2016
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UKPT
+    name: Uniform Kleene–Post theorem
+    loc: Section 3.4, after Theorem 3.11
+    definition: "Fully uniform version of KPT: (∀f)(∃g,h)(f ≤_T ⟨g,h⟩ ∧ g |_T h), all existential quantifiers replaced by functionals. Third-order."
+    facts: UKPT implies UNCS and UKPT ↔ (µ²) (stated as straightforward from [21, VI.1]).
+  reasons:
+    - principle not in the catalogue
+  proposed: c6301dcffe29
+- id: sanders2016-fe0e6bdd
+  ref: sanders2016
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: NCS
+    name: Existence of non-computable sets
+    loc: Section 3.4, (NCS)
+    definition: "(∀f^1)(∃g^1)(∀e)(∃n)(∀s)[g(n) ≠ φ_{e,s}^f(n)]: for every X there is Y with Y ≰_T X."
+    facts: Equivalent to AST (cited from [11, Theorem 6.3]).
+  reasons:
+    - principle not in the catalogue
+  proposed: 225d7254beb4
+- id: kawai2018-13c80445
+  ref: kawai2018
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: fanpi01
+    to: ucont
+    over: bish
+  loc: Section 1 (Introduction), citing Diener and Loeb [9, Theorem 2]
+  origin: cited
+  quote: It has been known that Π01 -FANM implies UCT [9, Theorem 2]; however since
+  paperNotation: Π01-FANM implies UCT (every pointwise continuous function from a compact metric space to a metric space is uniformly continuous)
+  argument: The paper's UCT is stated for all compact metric spaces; the catalogue's ucont is its instance for [0,1].
+  citedFrom: Diener and Loeb 2009, Theorem 2
+  confidence: medium
+  concerns: The paper's UCT covers all compact metric spaces, the catalogue statement is the case [0,1]; entered as a specialization.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Diener and Loeb 2009, Theorem 2: cite the original"
+  proposed: be2525d39e78
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Cited from Diener and Loeb 2009, Theorem 2 (dienerloeb2009), whose full text is not cached: the theorem was not read. Enter it from that paper."
+- id: kawai2018-e9a72728
+  ref: kawai2018
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SC
+    name: Strong continuity principle
+    loc: Section 1
+    definition: Every pointwise continuous function from a complete separable metric space to a metric space is strongly continuous (uniformly continuous near each compact image).
+    facts: Equivalent to Π01-FANM over BISH (Theorem 4.8).
+  reasons:
+    - principle not in the catalogue
+  proposed: ba64dd1c08f4
+- id: kawai2018-25247639
+  ref: kawai2018
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SC_B
+    name: Strong continuity principle for Baire space
+    loc: Section 4.2
+    definition: "Every pointwise continuous function f : N^N -> N is strongly continuous."
+    facts: Equivalent to Π01-FANM (Proposition 4.4, Theorem 4.8), and to the version with values in an arbitrary metric space (Proposition 4.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: 27efd48146b2
+- id: kawai2018-7c516c9c
+  ref: kawai2018
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: sc-FAN
+    name: Strong continuous fan theorem
+    loc: Section 3
+    definition: Every c-bar of the binary tree is uniform, where a c-set P satisfies P(a) <-> forall b D(a*b) for a decidable D (quantifier over all finite sequences).
+    facts: Equivalent to Π01-FANM (Proposition 3.3, Proposition 3.5, Theorem 4.8); stronger than Berger's c-FAN.
+  reasons:
+    - principle not in the catalogue
+  proposed: f7ae13bf2edf
+- id: dienerhendtlass2020-2592ccd0
+  ref: dienerhendtlass2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Convex differentiability
+    name: Every convex function [0,1] → R is differentiable at all points outside a sequence (and so on a dense set)
+    loc: Proposition 1, Corollary 6
+    definition: "If f : [0,1] → R is convex, there is a sequence (ξ_n) in [0,1] such that f is differentiable at every y distinct from each ξ_n; hence the differentiability points of f are dense."
+    facts: Proved in BISH (Proposition 1, Corollary 6).
+  reasons:
+    - principle not in the catalogue
+  proposed: 2d991f5d985c
+- id: dienerhendtlass2020-555b592b
+  ref: dienerhendtlass2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Increasing differentiability at a point
+    name: "Every (continuous) increasing function f : [a,b] → R is differentiable at some point"
+    loc: Proposition 7
+    definition: Every continuous increasing function [a,b] → R is differentiable at some point (a consequence of differentiability almost everywhere).
+    facts: Implies WLPO (Proposition 7), so it is not provable in BISH; hence Rademacher's theorem and the Alexandrov theorem (second derivative a.e. of convex functions) are not constructive.
+  reasons:
+    - principle not in the catalogue
+  proposed: 6e13d1c3ad8b
+- id: normannsanders2021b-b86cdff7
+  ref: normannsanders2021b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: NIN_BV
+    name: No injection from [0,1] to Q of bounded variation
+    loc: Section 3.4, after Theorem 3.14
+    definition: There is no injection from [0,1] to Q that has bounded variation (item (a) of Definition 3.1).
+    facts: The paper says NIN <-> NIN_BV is readily established over an unspecified weak system, following the proof of Theorem 3.15; no proof or base system is given, so no fact was entered.
+  reasons:
+    - principle not in the catalogue
+  proposed: 8c69fdb30e57
