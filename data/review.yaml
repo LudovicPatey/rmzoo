@@ -103157,7 +103157,7 @@
 - id: sanders2026b-65e5df50
   ref: sanders2026b
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103176,10 +103176,14 @@
     - "extractor confidence: medium"
     - "attributed by the paper to [32]: cite the original"
   proposed: 4483db33183f
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Only a citation inside the proof of Theorem 3.6 (fifth step) to [32] = normannsanders2021, which does not state ACA0^omega + cocode0 proves ATR0 as a result: it only remarks (Section 1, after BOOT^-_C, and proof of Theorem 2.33) that ACA0^omega + BOOT^-_C proves ATR0 by Simpson V.5.2, so the original statement for cocode0 is not found."
 - id: sanders2026b-ea0b3cbf
   ref: sanders2026b
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103196,6 +103200,10 @@
   reasons:
     - "extractor confidence: medium"
   proposed: c036beceb897
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Passing remark after Principle 2.2 without proof; exists3 -> boot over rca0 is already in the database (sanders2019b Corollary 3.8 proof, sanders2026 Section 1.2.2).
 - id: sanders2026b-41782008
   ref: sanders2026b
   date: 2026-11-16
@@ -103349,7 +103357,7 @@
 - id: normannsanders2024b-b9fe36a6
   ref: normannsanders2024b
   date: 2026-11-16
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103367,10 +103375,14 @@
   reasons:
     - "extractor confidence: medium"
   proposed: 6161be796e5b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Remark 2.7 states over RCA₀^ω that (∃²) → ACA₀ (already in the database from normannsanders2019b; this adds a citation).
 - id: normannsanders2024b-bfbe4107
   ref: normannsanders2024b
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103388,6 +103400,10 @@
   reasons:
     - "extractor confidence: low"
   proposed: 7a1449270293
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The sentence concerns the third-order Jordan decomposition theorem for arbitrary BV functions (Theorem 2.9), not the zoo's coded jordan; it also gives no base and only points to Theorem 3.12, whose Jordan item differs.
 - id: normannsanders2024b-11febc35
   ref: normannsanders2024b
   date: 2026-11-16
@@ -103421,7 +103437,7 @@
 - id: sanders2022-667f840d
   ref: sanders2022
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103438,10 +103454,14 @@
   reasons:
     - "extractor confidence: medium"
   proposed: 2d64c90577c1
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Theorem 21 concerns the third-order Jordan decomposition for arbitrary f:[0,1]->R of bounded variation, whereas the zoo's jordan (classical.yaml, niestriplettyokoyama2017) is the coded second-order version, which the paper notes is provable in ACA0; the fact would need a separate third-order statement.
 - id: sanders2022-199f4c4e
   ref: sanders2022
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103459,10 +103479,14 @@
   reasons:
     - "extractor confidence: medium"
   proposed: f8987cf1d6d8
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Weaker than facts already in the database: hbu -> whbu (normannsanders2019) and whbu -> nin (ai-derived) give hbu -> nin over rca0 without (exists2) or IND0."
 - id: sanders2022-f98fcd6b
   ref: sanders2022
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103482,6 +103506,10 @@
   reasons:
     - "verifier: not verified"
   proposed: d664130c7b74
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Background remark in Section 1.2.1 without proof; exists2 <-> mu2 over rca0 is already in the database (kohlenbach2005 Prop. 3.9, normannsanders2020b Section 2.1.4).
 - id: sanders2022-72d16ae0
   ref: sanders2022
   date: 2026-11-16
@@ -103710,7 +103738,7 @@
 - id: normannsanders2022-ee1732aa
   ref: normannsanders2022
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103728,10 +103756,14 @@
     - contradicts the database
     - "extractor confidence: medium"
   proposed: b3fa8cd27f85
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Theorem 2.14(xiii) is Cousin's lemma for third-order Baire 1 functions (pointwise limits of continuous functions), equivalent to WKL, whereas the zoo's cousin-b1 is the coded version of barrettdowneygreenberg2021 (equivalent to ACA); the paper itself stresses after the proof that the coding changes the strength, so the two statements differ.
 - id: normannsanders2022-6c384ba2
   ref: normannsanders2022
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103750,10 +103782,14 @@
     - "extractor confidence: medium"
     - "attributed by the paper to Normann–Sanders, [70]: cite the original"
   proposed: 5c43d866272f
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Deduced, not stated: normannsanders2017b Thm 3.1 says no Pi1k-CA0^omega proves HBU; WKL does not imply HBU follows and is already derived by the engine (suslin does not imply hbu, suslin implies wkl)."
 - id: normannsanders2022-43f92bd8
   ref: normannsanders2022
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103773,10 +103809,14 @@
     - "extractor confidence: medium"
     - "attributed by the paper to Normann–Sanders, [75]: cite the original"
   proposed: fcedf34a5ce7
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The cited result from [75] is about the third-order Jordan decomposition theorem for arbitrary BV functions (Theorem 1.4), not the zoo's second-order coded jordan (provable in ACA₀).
 - id: normannsanders2022-d94b8e25
   ref: normannsanders2022
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103795,10 +103835,14 @@
     - "extractor confidence: low"
     - "attributed by the paper to Normann–Sanders, [75]: cite the original"
   proposed: e360f498c063
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The cited result from [75] is about the third-order Jordan decomposition theorem for arbitrary BV functions (Theorem 1.4), not the zoo's second-order coded jordan.
 - id: normannsanders2022-6d76bedd
   ref: normannsanders2022
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103817,10 +103861,14 @@
     - "extractor confidence: medium"
     - "attributed by the paper to Normann–Sanders, [75–78]: cite the original"
   proposed: 766c1b688a78
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The 'explosive' remark concerns the third-order Jordan decomposition theorem for arbitrary BV functions, not the zoo's coded jordan (which with S² gives no more than Π¹₁-CA₀); it is also only a summary remark of [75–78].
 - id: normannsanders2022-199f4c4e
   ref: normannsanders2022
   date: 2026-11-16
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103838,10 +103886,14 @@
   reasons:
     - "extractor confidence: medium"
   proposed: 9afc553ed0b9
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Theorem 2.34 is over ACA₀^ω + IND₀ (ACA₀^ω = RCA₀^ω + (∃²), IND₀ = Definition 2.29 = the zoo's ind03) and item (iii), Cousin's lemma for usco Ψ, is a restriction of HBU; the proof uses Ψ(x) = 2^{-(Y(x)+5)} built from a putative injection Y.
 - id: normannsanders2022-54a7ca0a
   ref: normannsanders2022
   date: 2026-11-16
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103859,10 +103911,14 @@
   reasons:
     - "extractor confidence: medium"
   proposed: 60490f3120bc
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Corollary 2.35 (over ACA₀^ω + IND₀) derives NIN[0,1] from Vitali's principle for usco Ψ, which the paper words with the union 'having measure 1−ε' (Section 2.3.3) while the zoo's whbu says 'at least 1−ε'; the proof (union of measure at most 1/2 for an injection, against a cover of measure ≥ 1−ε for small ε) works verbatim for the zoo's version, which restricts to usco Ψ.
 - id: normannsanders2022-00fd4b52
   ref: normannsanders2022
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -103880,6 +103936,10 @@
   reasons:
     - "extractor confidence: medium"
   proposed: 4a756fe21f65
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Theorem 2.37 concerns the third-order Jordan decomposition theorem (Theorem 1.4) for usco BV functions, not the zoo's second-order coded jordan.
 - id: normannsanders2022-41aed2a5
   ref: normannsanders2022
   date: 2026-11-16
@@ -104063,7 +104123,7 @@
 - id: sanders2024c-b9fe36a6
   ref: sanders2024c
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -104080,6 +104140,10 @@
   reasons:
     - "extractor confidence: medium"
   proposed: 61c2144e1ffd
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Passing remark in Remark 2.1; exists2 -> aca over rca0 is already in the database (normannsanders2019b, proof of Theorem 3.3).
 - id: sanders2024c-063eb8cf
   ref: sanders2024c
   date: 2026-11-16
@@ -104218,7 +104282,7 @@
 - id: fujiwara2020-eb313b2d
   ref: fujiwara2020
   date: 2026-11-16
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -104236,6 +104300,10 @@
   reasons:
     - "extractor confidence: medium"
   proposed: a538270ebd28
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Already in the database (data/results/core.yaml: ivt computably-true, cited from dzhafarovmummert2022 and brattkagherardi2011b); Fujiwara's Remark 19 only mentions in passing, without proof or relativization, that computable IVT instances have computable solutions."
 - id: bauer2021-32a4e61a
   ref: bauer2021
   date: 2026-11-16
@@ -104251,3 +104319,728 @@
   reasons:
     - principle not in the catalogue
   proposed: 2f75790b991d
+- id: sanders2020b-42990944
+  ref: sanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: qfac01
+    to: nin
+    over: rca0
+  loc: Section 3.2, closing remarks (after Theorem 3.6)
+  origin: cited
+  quote: cannot prove NIN
+  paperNotation: Z_2^omega + QF-AC^{0,1} does not prove NIN
+  argument: The paper states the non-provability over the stronger system Z_2^omega + QF-AC^{0,1}; a fortiori RCA_0^omega + QF-AC^{0,1} does not prove NIN.
+  citedFrom: Normann and Sanders [36, Theorem 3.1]
+  confidence: medium
+  concerns: Stated over Z_2^omega (the union of the Pi^1_k-CA_0^omega), which contains RCA_0^omega; the separation over RCA_0^omega follows. Also repeated in Section 3.3 conclusion and Section 3.4.2.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+    - "attributed by the paper to Normann and Sanders [36, Theorem 3.1]: cite the original"
+  proposed: 3edb7bbe2b93
+- id: sanders2020b-6a109857
+  ref: sanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Baire
+    name: There is a function not in Baire class 2
+    loc: Principle 3.3
+    definition: "There is a function f : [0,1] -> R which is not the pointwise limit of Baire class 1 functions on [0,1] (Baire class 1 read as: a point of continuity of the induced function on each perfect set)."
+    facts: "Theorem 3.4: RCA_0^omega proves Baire -> NIN."
+  reasons:
+    - principle not in the catalogue
+  proposed: 140fd25c5c49
+- id: sanders2020b-b5e57458
+  ref: sanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Baire'
+    name: Sequential version of Baire's characterisation theorem for Baire class 1
+    loc: Principle 3.5
+    definition: For a sequence (f_n) of Baire class 1 functions with limit f there is a sequence (g_{m,n}) of continuous functions with lim_m g_{m,n} = f_n for each n (and lim_n lim_m g_{m,n} = f).
+    facts: "Theorem 3.6: RCA_0^omega + QF-AC^{0,1} proves Baire' -> NIN."
+  reasons:
+    - principle not in the catalogue
+  proposed: c3d34be09b09
+- id: sanders2020b-23aee7fe
+  ref: sanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SUM
+    name: Unordered sums with the Cauchy criterion are series
+    loc: Principle 3.9
+    definition: If (a_x)_{x in [0,1]} is Cauchy (Definition 3.8) and non-negative, there is a sequence of reals (y_i) in [0,1] such that a_y = 0 whenever y differs from every y_i.
+    facts: "Provable from BOOT + QF-AC^{0,1} (said readily proved, based on [43, 3.2]). Theorem 3.10: RCA_0^omega + IND proves SUM -> NIN. Corollary 3.11: RCA_0^omega + IND proves SUM -> cocode0."
+  reasons:
+    - principle not in the catalogue
+  proposed: 43260e74a205
+- id: sanders2020b-cdd77f29
+  ref: sanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SUM'
+    name: Unordered sums with summability are series
+    loc: Principle 3.12
+    definition: If (a_x)_{x in [0,1]} is summable (the net limit of finite sums exists, Definition 3.7) and non-negative, there is a sequence of reals (y_i) in [0,1] such that a_y = 0 whenever y differs from every y_i (assuming (exists^2)).
+    facts: "Theorem 3.13: ACA_0^omega + IND proves SUM' -> NBI, and ACA_0^omega proves QF-AC^{0,1} -> SUM'. Corollary 3.14: ACA_0^omega + IND proves SUM' -> cocode1."
+  reasons:
+    - principle not in the catalogue
+  proposed: f031b9d6a8f0
+- id: sanders2020b-c291bd35
+  ref: sanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: STS+
+    name: Countably compact metric subspaces of [0,1] are separable
+    loc: Principle 3.20
+    definition: For any M subset of [0,1], if (M,d) is a countably-compact metric space (Definitions 3.15, 3.16) then it is separable (Definition 3.17).
+    facts: "Theorem 3.21: RCA_0^omega proves STS+ -> cocode0. Corollary 3.22: Pi^1_1-CA_0^omega + STS+ proves Pi^1_2-CA_0."
+  reasons:
+    - principle not in the catalogue
+  proposed: 79bfe324e9dc
+- id: sanders2020b-d8d1588b
+  ref: sanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: sequential continuity implies continuity (metric spaces)
+    name: Local equivalence of sequential and epsilon-delta continuity in metric spaces
+    loc: Theorem 3.18
+    definition: "For a metric space (M,d) with M a subset of Baire space (modulo coding), for any x in M and F : M -> M, if F is sequentially continuous at x then F is continuous at x."
+    facts: "Theorem 3.18: RCA_0^omega proves that NBI follows from it; ACA_0^omega + QF-AC^{0,1} proves it. Corollary 3.19: the first part holds with net continuity in place of continuity."
+  reasons:
+    - principle not in the catalogue
+  proposed: 628a22826831
+- id: sanders2020b-46b5ef88
+  ref: sanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: IND
+    name: Induction axiom for all formulas of L_omega
+    loc: Section 3.3, before Theorem 3.10
+    definition: The induction axiom for all formulas of the language L_omega (used as an extra hypothesis in Theorems 3.10, 3.13).
+    facts: Used as additional axiom over RCA_0^omega and ACA_0^omega in Theorems 3.10, 3.13 and Corollaries 3.11, 3.14.
+  reasons:
+    - principle not in the catalogue
+  proposed: 8e084cb2c39f
+- id: ishiharaschuster2008-5e6a18bb
+  ref: ishiharaschuster2008
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WC-N′
+    name: Restricted weak continuity for numbers
+    loc: Section 1, after Baire's theorem for B (schemata WC-N′ and BT′)
+    definition: "WC-N restricted to formulas A(α,n) of the form ∀k (σ(α(k),n)=0) with σ: N* × N → N satisfying σ(a,m)=0 ∧ m≤n → σ(a,n)=0 (increasing sequence of closed sets X_n = Π⁰₁ subsets of Baire space): ∀α∃n A(α,n) → ∀α∃n∃m∀â∈α(m) A(â,n)."
+    facts: "Theorem 8: in Bishop's constructive mathematics (with countable choice, formalizable in EL or HAω with Π⁰₁-AC00) WC-N′ is equivalent to BT′ + ¬LPO and to BD-N + ¬LPO. Proposition 1: WC-N′ implies BT′ + ¬LPO. Theorem 7: BD-N + ¬LPO implies WC-N′. Not entered: the hypotheses involve ¬LPO, which has no catalogue id."
+  reasons:
+    - principle not in the catalogue
+  proposed: 197348661eb4
+- id: ishiharaschuster2008-bab1ee1f
+  ref: ishiharaschuster2008
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BT′
+    name: Restricted Baire theorem for Baire space
+    loc: Section 1, schemata WC-N and BT, restricted to increasing closed sequences
+    definition: "For A(α,n) ≡ ∀k (σ(α(k),n)=0) with σ increasing in n as in (1): ∀α∃n A(α,n) → ∃n∃a∀â∈a A(â,n) (if closed sets X_n cover B, some X_n has inhabited interior)."
+    facts: "Proposition 2: BT′ implies BD-N (constructively, using countable choice only in the ambient system). Not constructively provable since BD-N is not derivable in E-HA^ω + AC (Lietz); classically true. Part of Theorem 8: BT′ + ¬LPO is equivalent to BD-N + ¬LPO and to WC-N′. Not entered as a fact because BT′ is not in the catalogue."
+  reasons:
+    - principle not in the catalogue
+  proposed: a100bf0c76b9
+- id: sanders2022b-6d76bedd
+  ref: sanders2022b
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: jordan-suslin
+    to: pi12ca
+    over: rca0
+  loc: Footnote 15 (Section 3.4.4)
+  origin: cited
+  quote: The system Π1 -CAω plus the Jordan decomposition theorem can prove Π1 -CA ([68]).
+  paperNotation: Π¹₁-CA₀^ω + Jordan decomposition theorem proves Π¹₂-CA₀
+  argument: Π¹₁-CA₀^ω is RCA₀^ω + (S²) (Section 1.3.2), so the hypothesis is the conjunction of JD and the Suslin functional over RCA₀^ω.
+  citedFrom: "[68] Sanders, On robust theorems due to Bolzano, Jordan, Weierstrass, and Cantor in Reverse Mathematics"
+  confidence: medium
+  concerns: "A footnote remark attributed to [68], not proved here. Checked in the rendered PDF (page 26): the systems are Π¹₁-CA₀^ω and Π¹₂-CA₀. The Jordan decomposition theorem is the third-order statement for all BV functions on [0,1]."
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to [68] Sanders, On robust theorems due to Bolzano, Jordan, Weierstrass, and Cantor in Reverse Mathematics: cite the original"
+  proposed: 82bbc8a70fca
+- id: sanders2022b-3ab6af9d
+  ref: sanders2022b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: NIN'_alt
+    name: The unit interval is not height-width countable
+    loc: Principle 3.12, Definition 2.6
+    definition: "A set B ⊂ R is height-width countable if there are a height function H: R→N and a width function g: N→N such that B_n={x∈B: H(x)<n} is finite with size bound g(n); NIN'_alt says [0,1] is not height-width countable."
+    facts: "Theorem 3.20 (over ACA₀^ω + FIN): equivalent to many statements on BV functions (positive unordered sums with a bound or Cauchy modulus have a zero, BV and Waterman-BV functions have a continuity point, etc.). Theorem 3.15: implied by the Jordan decomposition theorem, HBU restricted to BV functions and WHBU restricted to BV functions (over ACA₀^ω + FIN). Theorem 3.22: equivalent to Fourier series of BV functions converging to f at some point. It is implied by NINalt."
+  reasons:
+    - principle not in the catalogue
+  proposed: 511615aa3043
+- id: sanders2022b-657a0227
+  ref: sanders2022b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FIN
+    name: Basic properties of finite sets (finite union theorem, enumeration of finite sets, finite axiom of choice)
+    loc: Principle 3.2
+    definition: Finite union theorem for sequences of finite sets (finite in the sense of Definition 1.2), every finite set of reals is included in a finite sequence of reals, and a finite axiom of choice for Y^2 on 2^N.
+    facts: Used as an extra axiom in the base of Theorems 3.6-3.9, 3.15, 3.20 and 3.22; derivable from a fragment of induction. Its own reverse mathematics is left open.
+  reasons:
+    - principle not in the catalogue
+  proposed: d89f5cc86f86
+- id: sanders2022b-9b76fa0d
+  ref: sanders2022b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Regulated-function statements (Volterra's theorem and corollary, point of continuity, Cf dense, Blumberg's theorem, Bourbaki's Riemann integral criterion, FTC for regulated functions, Darboux points)
+    name: Properties of regulated functions equivalent to NINalt
+    loc: Theorems 3.6, 3.7, 3.8, 3.9, 3.11
+    definition: "Third-order statements about regulated functions f: [0,1]→R (left and right limits everywhere), such as: f has a point of continuity; the set of continuity points is dense; there is no regulated function continuous exactly on Q∩[0,1]; Blumberg's theorem restricted to regulated functions."
+    facts: "Equivalent to NINalt over ACA₀^ω + QF-AC^{0,1} + FIN (also with restrictions to Baire 2, Baire 1*, usco, lsco, supremum functional, symmetric continuity, fragmented, B-measurable of class 1 functions). Section 3.5: with the extra condition Baire 1 they become provable in ACA₀^ω + FIN + QF-AC^{0,1}."
+  reasons:
+    - principle not in the catalogue
+  proposed: e303abdddb68
+- id: kohlenbach2019-8ceccc17
+  ref: kohlenbach2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: "Existence of a modulus of regularity (Lipschitz F: [0,1] -> R with a zero)"
+    name: Existence of moduli of regularity
+    loc: Theorem 4.4
+    definition: Every continuous F on a compact metric space with a zero has a modulus of regularity w.r.t. zer F (Definition 2.1).
+    facts: Provable in ACA0 (Theorem 4.4.1); already for Lipschitz F on [0,1] with a zero it implies ACA0 over RCA0 (Theorem 4.4.2).
+  reasons:
+    - principle not in the catalogue
+  proposed: 8bf194b03158
+- id: kohlenbach2019-ba9fc414
+  ref: kohlenbach2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Regularity of F w.r.t. zer F (forall-epsilon-exists-delta form)
+    name: Regularity of continuous functions with a zero
+    loc: Theorem 4.2
+    definition: "Every continuous F: X -> R on a compact metric space with a zero is regular w.r.t. zer F (Definition 2.1, without a modulus function)."
+    facts: Provable in WKL0 (Theorem 4.2.1); already for Lipschitz F on [0,1] it implies WKL0 over RCA0 (Theorem 4.2.2).
+  reasons:
+    - principle not in the catalogue
+  proposed: 3dca8b63f37f
+- id: kohlenbach2019-7c53985b
+  ref: kohlenbach2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Existence of a modulus of uniqueness / uniform uniqueness of the zero
+    name: Moduli of uniqueness and uniform uniqueness
+    loc: Theorem 4.1
+    definition: "Every continuous F: X -> R on a compact metric space with at most one zero has a modulus of uniqueness, form (*) (Definition 2.3)."
+    facts: Provable in WKL0 (Theorem 4.1.1); uniform uniqueness of the zero already for Lipschitz F on [0,1] with exactly one zero implies WKL0 over RCA0 (Theorem 4.1.2).
+  reasons:
+    - principle not in the catalogue
+  proposed: 03463c4877ea
+- id: sanders2023b-107eeff3
+  ref: sanders2023b
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: ninalt
+    to: nin
+    over: rca0
+  loc: Section 3.2, footnote 8
+  origin: stated
+  quote: Note that an injection is a special kind of height function
+  paperNotation: NIN_alt, NIN[0,1]
+  argument: "An injection from [0,1] to N is a height function for [0,1] (each set {x : H(x)<n} is finite in the sense of Definition 1.8), so non-height-countability of [0,1] yields that there is no injection."
+  confidence: medium
+  concerns: Footnote remark, no theorem number; base theory not stated for this remark (the paper works over ACA0^omega-type bases in this section).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 61aaeb2b4d8e
+- id: sanders2023b-e49fb5f7
+  ref: sanders2023b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: enum
+    name: Enumeration principle for height-countable sets
+    loc: Principle 3.6
+    definition: A height-countable set in [0,1] can be enumerated.
+    facts: "Theorem 3.8 (over ACA0^omega + QF-AC^{0,1}): equivalent to Bernstein-polynomial and discontinuity-set statements for regulated functions and to Jordan decomposition for BV on R; ACA0^omega + enum proves ATR0 (cited from [64])."
+  reasons:
+    - principle not in the catalogue
+  proposed: 7c52082dbc55
+- id: sanders2023b-22cf3db6
+  ref: sanders2023b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PHP[0,1]
+    name: Pigeonhole principle for measure
+    loc: Principle 3.12
+    definition: If (X_n) is an increasing sequence of measure zero closed sets of reals in [0,1], then the union has measure zero.
+    facts: "Theorem 3.15 (over ACA0^omega + INDR + QF-AC^{0,1}): equivalent to Vitali-Lebesgue and Bernstein convergence almost everywhere for Riemann integrable functions; Theorem 3.1: ACA0^omega + PHP[0,1] is Pi^1_2-conservative over ACA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: 513b91afef57
+- id: sanders2023b-f022ad25
+  ref: sanders2023b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BCT[0,1]
+    name: Baire category theorem for the unit interval (third-order)
+    loc: Principle 3.16
+    definition: If (O_n) is a decreasing sequence of dense open sets of reals in [0,1], then the intersection is non-empty.
+    facts: "Theorem 3.17 (over ACA0^omega): equivalent to C_f nonempty for usco functions and to B_f nonempty for usco or cliquish functions."
+  reasons:
+    - principle not in the catalogue
+  proposed: 08076389ad06
+- id: sanders2023b-9b340bb5
+  ref: sanders2023b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Helly (Principle 3.7)
+    name: Contraposed Helly selection principle
+    loc: Principle 3.7
+    definition: For a sequence of BV functions [0,1]->[0,1] with pointwise limit not in BV, there is unbounded g with g(n) <= V(f_n) <= g(n)+1.
+    facts: "Theorem 3.8(g): with Jordan decomposition for BV into non-decreasing functions on R it is equivalent to enum; Theorem 3.10: over ACA0^omega + Helly, NIN_alt is equivalent to statements on BV functions."
+  reasons:
+    - principle not in the catalogue
+  proposed: d11150d82014
+- id: sanders2023b-97a72841
+  ref: sanders2023b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Bernstein approximation (continuous)
+    name: Uniform Bernstein approximation of continuous functions
+    loc: Theorem 2.1
+    definition: For continuous f:[0,1]->R and x in (0,1), f(x) = lim B_n(f,x), the convergence being uniform.
+    facts: Equivalent to WKL0 over RCA0^omega (Theorem 2.1); the version for cadlag, U0-functions, and (with QF-AC^{0,1}) regulated or locally bounded functions, with limit (f(x+)+f(x-))/2, is also equivalent to WKL0 (Theorem 2.3); the existence of f and x with f(x) != lim B_n(f,x) is equivalent to (exists^2) (Theorem 2.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: c15bbd0daeef
+- id: sanders2023b-1c867f06
+  ref: sanders2023b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: NIN_alt equivalents
+    name: Bernstein/continuity statements for regulated functions
+    loc: Theorem 3.3
+    definition: E.g. for regulated f:[0,1]->R there is x in (0,1) where f is continuous (resp. f(x)=lim B_n(f,x)).
+    facts: Equivalent to NIN_alt over ACA0^omega + QF-AC^{0,1} (Theorem 3.3 and Corollary 3.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: f39fa3080c71
+- id: bergeretal2025-3e5f7555
+  ref: bergeretal2025
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Every permutably convergent series in R is absolutely convergent
+    name: Riemann permutation theorem for series (permutable convergence implies absolute convergence)
+    loc: Section 1 (introduction) and Theorem 7
+    definition: "A real series sum a_n is permutably convergent if every permutation of N+ gives a convergent series sum a_sigma(n). The statement: every permutably convergent series of real numbers is absolutely convergent (classically equivalent to Riemann's two series theorems)."
+    facts: "Theorem 7: in BISH + BD-N, every permutably convergent series of real numbers is absolutely convergent, i.e. BD-N implies it over BISH (stated as a consequence in the introduction and Section 5). Not equivalent to BD-N: by Diener and Lubarsky [8], topological models satisfy it without BD-N, and it is not provable in the Aczel-Rathjen formulation of BISH."
+  reasons:
+    - principle not in the catalogue
+  proposed: 6e73c74a311f
+- id: bergeretal2025-b9b2ed46
+  ref: bergeretal2025
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (*) Every weak-permutably convergent series in R is absolutely convergent
+    name: Absolute convergence of weak-permutably convergent series
+    loc: Section 2 (definition), Section 4, Theorem 8
+    definition: A series sum a_n is weak-permutably convergent if it is convergent and for each permutation sigma of N+ there exists a convergent bracketing (grouping of consecutive terms along a strictly increasing f with f(1)=1) of sum a_sigma(n). The statement (*) says every such series is absolutely convergent. Classically weak-permutable convergence and permutable convergence are equivalent.
+    facts: "Theorem 8: (*) implies BD-N over BISH (via Lemma 9, which builds from an inhabited countable pseudobounded S a weak-permutably convergent series whose convergence of sum a_n forces S bounded). Hence over BISH: (*) implies BD-N implies 'every permutably convergent series is absolutely convergent'; by the Diener-Lubarsky models neither implication reverses, so weak-permutable convergence is constructively strictly weaker than permutable convergence. Proposition 1: every convergent bracketing of a rearrangement of a weak-permutably convergent series with sum s converges to s."
+  reasons:
+    - principle not in the catalogue
+  proposed: 74805197d51d
+- id: sanders2015-7f98d890
+  ref: sanders2015
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: RC
+    name: Uniform continuity of RM-continuous (associate-coded) functions on Cantor space
+    loc: Section 4, (RC)
+    definition: "(forall alpha^1)[(forall beta <=_1 1)(exists N^0) alpha(beta N)>0 -> (exists k^0)(forall beta <=_1 1)(exists N<=k) alpha(beta N)>0]: every function on Cantor space given by an associate is uniformly continuous (Simpson IV.2.2 for Cantor space)."
+    facts: "Theorem 4.1: over RCA_0^omega + QF-AC^{2,1}, URC <-> RC <-> WKL; RC <-> WKL is straightforward (second-order, Simpson IV.2.2). Corollary 4.2: RC2, URC2, RB, URB are likewise equivalent to WKL over RCA_0^omega + QF-AC^{2,1}."
+  reasons:
+    - principle not in the catalogue
+  proposed: 07acb8927a14
+- id: sanders2015-2ace0430
+  ref: sanders2015
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: RC2, URC2, RB, URB
+    name: Generalisations of RC, URC to compact subspaces {beta <=_1 gamma} of Baire space, and boundedness versions
+    loc: Section 4, Corollary 4.2
+    definition: "RC2 and URC2: RC and URC with Cantor space replaced by {beta <=_1 gamma}; RB and URB: the corresponding statements that a function given by an associate is bounded on {beta <=_1 gamma} (uniformly via a type-3 functional for URB)."
+    facts: "Corollary 4.2: over RCA_0^omega + QF-AC^{2,1}, each of RC2, URC2, RB, URB is equivalent to WKL."
+  reasons:
+    - principle not in the catalogue
+  proposed: 5428945604f3
+- id: sanders2015-9793ba3a
+  ref: sanders2015
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UFAN(Phi) and UHB(Psi)
+    name: Explicit uniform fan theorem and uniform Heine-Borel lemma
+    loc: Section 5, before Theorem 5.2
+    definition: "UFAN(Phi): for all trees T <=_1 1 and g^2, if every beta <=_1 1 has beta g(beta) not in T then (forall beta <=_1 1)(exists i <= Phi(g)) beta i not in T. UHB(Psi) as above."
+    facts: "Theorem 5.2: terms s, t can be extracted from the proof of WKL <-> HB in RCA_0 witnessing the explicit equivalence FAN <-> HB in RCA_0^omega, i.e. forall Phi^3 [UFAN(Phi) -> UHB(s(Phi))] and forall Psi^3 [UHB(Psi) -> UFAN(t(Psi))]."
+  reasons:
+    - principle not in the catalogue
+  proposed: 43b8382fe509
+- id: sanders2015-5aaa13c5
+  ref: sanders2015
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: NC and MC
+    name: Nonstandard continuity of standard continuous functionals; existence of a modulus-of-continuity functional
+    loc: Section 3.2, (NC), (MC)
+    definition: "Statements in the nonstandard system RCA_0^Omega (with predicate st): NC says every standard continuous Phi^2 is nonstandard continuous; MC says there is a standard type-3 modulus-of-continuity functional Psi."
+    facts: "Theorem 3.4: NC <-> MC in RCA_0^Omega. RCA_0^omega does not prove the existence of such a modulus functional (cited from Kohlenbach and Troelstra)."
+  reasons:
+    - principle not in the catalogue
+  proposed: e2582456a738
+- id: sanders2016b-86c5483b
+  ref: sanders2016b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UDNR
+    name: Uniform diagonally non-recursive functions
+    loc: Section 4.3
+    definition: "(exists Psi^{1->1})(forall A^1)(forall e^0)(Psi(A)(e) != Phi_e^A(e)): a functional producing, from each A, a function DNR relative to A."
+    facts: "UDNR is equivalent to (exists^2), i.e. arithmetical comprehension (Theorems 4.6, 4.7: P proves UDNR+ <-> Pi01-TRANS, with an effective version relative to Feferman's mu^2)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 7fc45667885d
+- id: sanders2016b-2cb26247
+  ref: sanders2016b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: uniform MCT (MCT_ef)
+    name: Uniform monotone convergence theorem
+    loc: Section 4.2.1, (4.1)
+    definition: There is a functional t giving, for every bounded increasing sequence c of reals in [0,1] and k, a modulus of Cauchy convergence t(c)(k).
+    facts: "Theorem 4.1: uniform MCT is equivalent to Feferman's mu^2 (explicit terms extracted from the nonstandard equivalence MCT_ns <-> Pi01-TRANS)."
+  reasons:
+    - principle not in the catalogue
+  proposed: fd03ab6b9eab
+- id: sanders2016b-d7c6f1db
+  ref: sanders2016b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PST (uniform version PST_ef)
+    name: Perfect subtree theorem (every tree with uncountably many paths has a non-empty perfect subtree), uniform version
+    loc: Section 4.2.2, Theorems 4.2-4.4
+    definition: For all trees T, if T has uncountably many paths, t(T) is a non-empty perfect subtree of T (uniform functional t).
+    facts: "Theorem 4.4: the uniform version is equivalent to Feferman's mu^1 (the Suslin functional version), extracted from PST_ns <-> Pi11-TRANS; the non-uniform equivalence with Pi11-CA0 is attributed to Sakamoto-Yamazaki [32, Theorem 4.4]."
+  reasons:
+    - principle not in the catalogue
+  proposed: 180c9fd850b4
+- id: sanders2016b-18273283
+  ref: sanders2016b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Gamma (GH)
+    name: Gandy-Hyland functional
+    loc: Section 5.1, (GH)
+    definition: A type-3 functional with Gamma(Y,s) = Y(s*0*(lambda n)Gamma(Y,s*(n+1))) for continuous Y.
+    facts: "Corollary 5.2: expressible in terms of Feferman's mu^2 and the special fan functional (over E-PA^omega* + QF-AC^{1,0}); Corollary 5.3: also via a modulus-of-continuity functional."
+  reasons:
+    - principle not in the catalogue
+  proposed: 07df8355885a
+- id: sanders2016b-979012c6
+  ref: sanders2016b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SCF(Theta)
+    name: Special fan functional
+    loc: Section 5.2, (SCF(Theta)), Section 5.4
+    definition: A type-3 functional Theta such that for all g, binary tree T, if no alpha <= 1 in Theta(g)(2) has alpha g(alpha) in T then every beta <= 1 has beta i not in T for some i <= Theta(g)(1).
+    facts: "Theorem 5.6: computable from the intuitionistic fan functional; Theorem 5.7 (Normann): computable (S1-S9) from E^2-type xi; Theorem 5.8 (Normann): not S1-S9 computable in any type-2 functional."
+  reasons:
+    - principle not in the catalogue
+  proposed: c16fea0d20e6
+- id: dienerhedin2012-7cab6882
+  ref: dienerhedin2012
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: vitali
+    to: wwkl
+    over: bish
+  loc: Section 4, remark after Theorem 12 (with Proposition 10)
+  origin: stated
+  quote: Hence VCT is actually equivalent to WWKL.
+  paperNotation: VCT (Theorem 2/12, countable Vitali covers of [a,b])
+  argument: Theorem 12 proves WWKL implies VCT (via Corollary 11, Lemma 3, Proposition 10); the paper notes VCT implies Proposition 10(b), which is equivalent to WWKL in BISH.
+  confidence: medium
+  concerns: The paper's VCT is for countable Vitali covers of [a,b] with finite disjoint subfamily of measure complement < epsilon; proofs use countable choice (allowed in bish). The implication VCT -> (b) is only said to be easy to see.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: ba3247f2ccc6
+- id: dienerhedin2012-1171ef01
+  ref: dienerhedin2012
+  date: 2026-11-16
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: fandelta
+    to: wwkl
+    over: bish
+  loc: Section 1, Introduction
+  origin: stated
+  quote: since WWKL is easily seen to follow
+  paperNotation: Fan Theorem
+  argument: Intro remark; Section 4 says the Fan theorem for detachable bars suffices to refute singular covers.
+  confidence: low
+  concerns: Remark only, no proof; 'Fan Theorem' read as the fan theorem for decidable bars; stated in the context of intuitionism (INT), not BISH proper.
+  reasons:
+    - "extractor confidence: low"
+  proposed: 166b4abe8123
+- id: dienerhedin2012-a50e7054
+  ref: dienerhedin2012
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (b) of Proposition 10
+    name: Finite subfamily of an open cover of [0,1] with measure of union > 1 - epsilon
+    loc: Proposition 10(b)
+    definition: If (I_n) is a cover of [0,1] by open intervals, then for every epsilon > 0 there is N such that mu(I_1 ∪ ... ∪ I_N) > 1 - epsilon.
+    facts: Equivalent to WWKL in BISH (Proposition 10); implied by VCT.
+  reasons:
+    - principle not in the catalogue
+  proposed: 249b3191aa8d
+- id: dienerhedin2012-53fd193d
+  ref: dienerhedin2012
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Spatiality of the formal reals
+    name: Spatiality of the formal topology R of formal reals
+    loc: Definition 15, Proposition 17
+    definition: A formal topology is spatial if a C_Pt(A) U implies a C_A U (formal cover equals point-wise cover).
+    facts: Spatiality of R is equivalent to the Heine-Borel property for Pt(R) restricted to covers by rational intervals (Proposition 17); spatiality for Vitali covers implies spatiality (Lemma 22).
+  reasons:
+    - principle not in the catalogue
+  proposed: eefe5cb51981
+- id: sanders2015d-d19d36b2
+  ref: sanders2015d
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (MPC)
+    name: Modulus of pointwise continuity functional (fan functional for pointwise continuity)
+    loc: Section 5.1, (MPC)
+    definition: "(∃Δ³)(∀φ²)(∀f,g ≤₁ 1)[f̄Δ(φ,f) = ḡΔ(φ,f) → φ(f)=φ(g)]: a functional giving a modulus of pointwise continuity on Cantor space for every type-2 functional."
+    facts: "Theorem 5.1 (over RCA0^Omega): equivalent to nonstandard continuity principles (PC*), (PC). Theorem 6.1: over RCA0^omega, UFAN2 + (MPC) <-> (MUC); Theorem 6.3: over RCA0^omega + QF-AC^{2,0}, FAN + (MPC) <-> (MUC); Corollary 6.6 over RCA0^omega + (MPC) + QF-AC^{2,0}: FAN <-> UFAN2 <-> QF-FAN <-> (UQF) <-> (MUC). Not entered: (MPC) and QF-AC^{2,0} have no catalogue id."
+  reasons:
+    - principle not in the catalogue
+  proposed: d3d89f47e071
+- id: sanders2015d-e28e2875
+  ref: sanders2015d
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UFAN2
+    name: Uniform fan theorem (with g^2)
+    loc: Principle 3.12
+    definition: There is a functional Φ³ such that for T ≤₁ 1 and g², (∀α≤₁1)(ᾱg(α) ∉ T) → (∀α≤₁1)(∃n ≤ Φ(g,T))(ᾱn ∉ T).
+    facts: Implied by (MUC); with (MPC) equivalent to (MUC) (Theorem 6.1); over RCA0^omega + (MPC) + QF-AC^{2,0} equivalent to FAN (Corollary 6.4, 6.6). UFAN1 (without g) is equivalent to (exists^2).
+  reasons:
+    - principle not in the catalogue
+  proposed: 657be4f09ef1
+- id: sanders2015d-5df88046
+  ref: sanders2015d
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: QF-FAN
+    name: Quantifier-free fan theorem
+    loc: Section 3.3.1
+    definition: (∀f≤₁1)(∃n)A0(f,n) → (∃k)(∀f≤₁1)(∃n≤k)A0(f,n) for quantifier-free A0, and its uniform version (UQF).
+    facts: "Over RCA0^Omega + QF-AC^{2,0}: (MUC) <-> (UQF) <-> (UQF)^st <-> (Q) (Theorem 3.10); QF-FAN implies FAN; Corollary 6.5: QF-FAN + (MPC)_0 <-> (MUC) over RCA0^omega + QF-AC^{2,0}."
+  reasons:
+    - principle not in the catalogue
+  proposed: 1346d3b2d107
+- id: sanders2015d-6041ba73
+  ref: sanders2015d
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SUP
+    name: Supremum functional for type-2 functionals on Cantor space
+    loc: Section 3.2, (SUP)
+    definition: (∃G³)(∀φ²)[(∀f≤₁1)(φ(f) ≤ G(φ)) ∧ (∃g≤₁1)(G(φ)=φ(g))].
+    facts: Equivalent to (MUC) over RCA0^Omega + QF-AC^{2,0} (Theorem 3.8).
+  reasons:
+    - principle not in the catalogue
+  proposed: f2e9110d2790
+- id: sanders2015d-b25ed074
+  ref: sanders2015d
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (F), (UF), (UCO)
+    name: Kohlenbach's uniform boundedness principle F and its uniform versions
+    loc: Section 4, (F), (UF), (UCO)
+    definition: "(F): (∀Φ^{0→2},y^{0→1})(∃y'≤y)(∀k,z≤₁y(k)) Φ(k)(z) ≤ Φ(k)(y'(k)); (UF) its uniform version; (UCO) a uniform modulus of continuity on bounded domains for type 1→1 functionals."
+    facts: (UF) <-> (UCO) <-> nonstandard versions over RCA0^Omega + QF-AC^{2,0} (Theorem 4.2); (UF) <-> (USB) (uniform Σ01-UB) (Theorem 4.4). Not related to catalogue statements.
+  reasons:
+    - principle not in the catalogue
+  proposed: 65d1c6b527e8
+- id: sanders2015d-4d556052
+  ref: sanders2015d
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BCT
+    name: Brouwer's continuity theorem (every real function R→R is uniformly continuous on [0,1])
+    loc: Section 6.2, (6.3)
+    definition: "For every R→R function F (type 1→1 functional respecting equality of reals): (∀k)(∃N)(∀x,y∈[0,1])(|x−y|<1/N → |F(x)−F(y)|<1/k); UBCT adds a functional outputting N."
+    facts: "Theorem 6.7: over RCA0^Omega + (MPC) + QF-AC^{2,0}, (MUC) <-> BCT^st <-> UBCT^st <-> FAN^st <-> UFAN2^st <-> T^st <-> UT^st <-> T^* and other nonstandard principles; internal versions equivalent over RCA0^omega + (MPC) + QF-AC^{2,0}. Not entered: (MPC) and QF-AC^{2,0} have no catalogue id; BCT is about all functions R→R, not continuous ones, so it is not ucont."
+  reasons:
+    - principle not in the catalogue
+  proposed: 2dd1f0c8562a
+- id: sanders2015d-9e71bc3f
+  ref: sanders2015d
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (CONT), (UWC)
+    name: Modulus-of-continuity functional for type-2 functionals (Troelstra's C-N) and uniform weak continuity
+    loc: Section 5.2
+    definition: "(CONT): (∃Ψ³)(∀φ²,f,g)(f̄Ψ(φ,f) = ḡΨ(φ,g) → φ(f)=φ(g)); (UWC) the uniform version of WC-N."
+    facts: "Theorem 5.5: equivalent to nonstandard continuity principles over RCA0^Omega. Related to wcn but not the same statement."
+  reasons:
+    - principle not in the catalogue
+  proposed: 901077f2d2ac
