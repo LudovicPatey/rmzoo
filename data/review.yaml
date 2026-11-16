@@ -113872,3 +113872,166 @@
     date: 2026-11-16
     by: claude
     note: Cited from [17] = sanders2014b (Theorem 3.3 / Corollary 3.4). It duplicates sanders2014b-8b1d8c2d, which is accepted from the original.
+- id: kawai2026b-d33ef85f
+  ref: kawai2026b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: minunique
+    to: posinf
+    over: el0
+  loc: Theorem 5.1
+  origin: stated
+  quote: The principles WKL!, MIN!, CIT!, FAN, and POS are all equiv-
+  paperNotation: MIN!, POS
+  confidence: high
+  concerns: WKL is for infinite binary (detachable) trees; FAN is for detachable bars.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 322965e115f1
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Theorem 5.1 (in EL₀) proves MIN! ↔ POS for POS on compact metric spaces; the zoo's posinf is the case [0,1], so only MIN! → POS[0,1] follows (special case). The converse uses POS on a compact subset of 2^N × 2^N.
+- id: kawai2026b-46d1df4d
+  ref: kawai2026b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: minunique
+    to: fandelta
+    over: el0
+  loc: Theorem 5.1
+  origin: stated
+  quote: The principles WKL!, MIN!, CIT!, FAN, and POS are all equiv-
+  paperNotation: MIN!, FAN
+  confidence: high
+  concerns: WKL is for infinite binary (detachable) trees; FAN is for detachable bars.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: b8b8befdc246
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 5.1: the principles WKL!, MIN!, CIT!, FAN and POS are equivalent over EL₀; FAN is FAN_Δ (Section 5 definitions, checked for kawai2026b-21de7d8a)."
+- id: kawai2026b-cb058272
+  ref: kawai2026b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: minunique
+    to: wklu
+    over: el0
+  loc: Theorem 5.1
+  origin: stated
+  quote: The principles WKL!, MIN!, CIT!, FAN, and POS are all equiv-
+  paperNotation: MIN!, WKL!
+  confidence: high
+  concerns: WKL is for infinite binary (detachable) trees; FAN is for detachable bars.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 2ff1af9dcccf
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Theorem 5.1, over EL₀.
+- id: kawai2026b-c74b8313
+  ref: kawai2026b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: minprinciple
+    to: wkl
+    over: el0
+  loc: Theorem 3.1
+  origin: stated
+  quote: Theorem 3.1. The following are equivalent in EL0
+  paperNotation: MIN, WKL
+  confidence: high
+  concerns: WKL is for infinite binary (detachable) trees; FAN is for detachable bars.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: ff57ad3b5549
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 3.1: MIN and WKL are equivalent in EL₀."
+- id: kawai2026-ebf2b8ed
+  ref: kawai2026
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: wkl
+    to: minprinciple
+    over: el0
+  loc: Section 3, before Theorem 3.4
+  origin: cited
+  quote: For the equivalence between WKL and MIN in EL0 , the reader is referred to [10].
+  paperNotation: WKL, MIN
+  argument: Equivalence provable in EL0, as the paper states, citing [10].
+  citedFrom: T. Kawai, The strength of the minimum principle in constructive reverse mathematics [10]
+  confidence: medium
+  concerns: The paper only refers to [10] for this; the proof is not given here.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to T. Kawai, The strength of the minimum principle in constructive reverse mathematics [10]: cite the original"
+  proposed: ff7441191008
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Cited from [10] = kawai2026b Theorem 3.1, entered from the original (kawai2026b-c74b8313).
+- id: kawai2026-da7df2b1
+  ref: kawai2026
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: wkl
+    to: brouwer
+    over: el0
+  loc: Theorem 4.3 (with Theorems 3.4 and 4.2)
+  origin: stated
+  quote: Combining Theorem 3.4 and Theorem 4.2, we obtain the following equiva-
+  paperNotation: WKL, Brouwer's fixed-point theorem
+  argument: Theorem 3.4 (WKL implies Brouwer's fixed-point theorem, via Sperner's lemma and MIN) and Theorem 4.2 (converse) are proved in EL0; Theorem 4.3 states the equivalence in EL0.
+  confidence: high
+  concerns: "Brouwer's theorem is for uniformly continuous f : Delta^n -> Delta^n (all n); the converse direction uses only the two-dimensional instance on the unit square."
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 245b0b5ade21
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Theorem 4.3 is proved in EL₀ for the standard simplices; the zoo's brouwer covers convex hulls of finitely many points, so only Brouwer → WKL (proved with the unit square) is entered, as for the BISH reading (kawai2026-a386ea31).

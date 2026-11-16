@@ -106,6 +106,7 @@ export function relation(t) {
   else if (/≤ ?sc|strongly computabl/.test(t)) over = 'sc';
   else if (/≤ ?c\b|<c\b|≡c|computably reducib/.test(t)) over = 'c';
   else if (/RCA∗0|RCA\*0|RCA∗/.test(t)) over = 'rca0star';
+  else if (/\bEL ?0\b|\bEL₀|intuitionistic RCA/.test(t)) over = 'el0';
   else if (/\bBISH\b|constructive(?:ly)? (?:prov|equivalent|reverse)|intuitionistic(?:ally)? prov/i.test(t)) over = 'bish';
   return { neg, over };
 }

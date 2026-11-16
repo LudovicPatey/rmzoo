@@ -28,8 +28,8 @@
 - id: crm
   name: Constructive reverse mathematics
   short: Constructive RM
-  description: Implications provable in Bishop-style constructive mathematics (BISH), between omniscience principles, continuity and fan principles, and theorems of analysis.
-  reductions: [ bish ]
+  description: Implications provable in Bishop-style constructive mathematics (BISH) and in EL₀, the intuitionistic counterpart of RCA₀, between omniscience principles, continuity and fan principles, and theorems of analysis.
+  reductions: [ bish, el0 ]
   default: bish
 
 - id: wrm

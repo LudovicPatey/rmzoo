@@ -126,7 +126,7 @@ export const SCHEMA = {
 
   // data/reductions.yaml
   reduction: {
-    id: { req: true, doc: 'rca0star | rca0 | omega | sw | w | sc | soc | c | gw | cw | aw', usedBy: ['build', 'engine', 'viewer'] },
+    id: { req: true, doc: 'rca0star | rca0 | omega | sw | w | sc | soc | c | gw | cw | aw | bish | el0', usedBy: ['build', 'engine', 'viewer'] },
     name: { req: true, doc: 'name', usedBy: ['viewer'] },
     short: { doc: 'short name for chips and tables', usedBy: ['viewer'] },
     tex: { doc: 'TeX notation (documentation)', usedBy: [] },

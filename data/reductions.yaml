@@ -198,3 +198,21 @@
     LPO), and nothing proved here is carried to the classical frames: the engine relates BISH to no other reduction.
   refs:
     - { ref: diener2018, loc: "Section 0.4" }
+
+- id: el0
+  name: Provability over EL₀ (intuitionistic RCA₀)
+  short: EL₀
+  tex: '\mathsf{EL}_0'
+  domain: all
+  conjunction: true
+  finerThan: [ rca0, bish ]
+  phrase: 'EL₀ ⊢ {a} → {b}'
+  description: >
+    Implication provable in EL₀, the intuitionistic counterpart of RCA₀ (intuitionistic reverse mathematics in the
+    sense of Hirst–Mummert, Dorais, Fujiwara and Kuyper): elementary analysis with function variables, primitive
+    recursive terms, quantifier-free induction and QF-AC⁰,⁰, over intuitionistic logic. RCA₀ is EL₀ + LEM, and EL₀ is
+    contained in BISH, so an implication over EL₀ holds over RCA₀ and in BISH, and a separation over either holds over
+    EL₀. Third-order statements are not compared here.
+  refs:
+    - { ref: dorais2014, loc: "Section 2 (EL₀; RCA₀ = EL₀ + LEM)" }
+    - { ref: kuyper2017, loc: "Definition 2.2 and the paragraph after it" }

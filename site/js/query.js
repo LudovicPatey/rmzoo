@@ -57,6 +57,7 @@ const plainLabel = (label) => String(label)
 const RED_FORMS = {
   rca0star: ['rca0\\*', 'rca0 star', 'rca0star', 'rca\\*'],
   rca0: ['rca0', 'rca 0', 'rca', 'rca0\\^omega'],
+  el0: ['el0', 'el 0', 'intuitionistic rca0', 'irca0'],
   bish: ['bish', 'constructive(?:ly)?(?: mathematics)?', 'intuitionistic(?:ally)?'],
   omega: ['omega models?', 'omega model implication', 'omega', 'w models?'],
   soc: ['soc', 'strong(?:ly)? omnisciently computabl[ey]', 'strong(?:ly)? omniscient computabl[ey]'],
@@ -68,7 +69,7 @@ const RED_FORMS = {
   w: ['w', 'weihrauch'],
   c: ['c', 'computabl[ey]'],
 };
-const SUB = '(?:\\s?\\(?(rca0\\*|rca0star|rca0|rca|omega|soc|sc|gw|cw|aw|arith|sw|w|c|bish)\\)?(?![a-z0-9]))?';
+const SUB = '(?:\\s?\\(?(rca0\\*|rca0star|rca0|rca|omega|soc|sc|gw|cw|aw|arith|sw|w|c|bish|el0)\\)?(?![a-z0-9]))?';
 const LEX = [
   // symbols (an optional reduction as subscript: ≤c, <=_W, ≤_{sW})
   ['!?(?:≤|⩽|≦|<=|=<|\\\\leq?)' + SUB, { role: 'op', kind: 'le' }],

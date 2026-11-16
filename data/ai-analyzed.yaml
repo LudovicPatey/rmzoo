@@ -2134,12 +2134,12 @@ dorais2011b:
   dropped: 3
   cost: 0
 dorais2014:
-  date: 2026-11-10
+  date: 2026-11-16
   model: claude-sonnet-5-5 (chat)
   textHash: b2be3569ba863ebb
   facts: 0
   added: 0
-  review: 3
+  review: 0
   dropped: 0
   cost: 0
 doraishirstshafer2012:
@@ -3304,10 +3304,10 @@ fujiwara2020:
   date: 2026-11-16
   model: claude-sonnet-5-5 (chat)
   textHash: 4a2445050e3a3328
-  facts: 4
+  facts: 0
   added: 0
-  review: 2
-  dropped: 3
+  review: 0
+  dropped: 0
   cost: 0
 galeottinobrega2017:
   date: 2026-11-11
@@ -3951,12 +3951,12 @@ hirstmiller2012:
   dropped: 0
   cost: 0
 hirstmummert2010:
-  date: 2026-11-11
+  date: 2026-11-16
   model: claude-sonnet-5-5 (chat)
   textHash: e5a74f05ecec9999
   facts: 0
   added: 0
-  review: 4
+  review: 0
   dropped: 0
   cost: 0
 hirstmummert2017:
@@ -4309,10 +4309,10 @@ kawai2018:
   date: 2026-11-16
   model: claude-sonnet-5-5 (chat)
   textHash: 85ebb8fe91c6457d
-  facts: 2
+  facts: 0
   added: 0
-  review: 4
-  dropped: 1
+  review: 0
+  dropped: 0
   cost: 0
 kawai2026:
   date: 2026-11-16
@@ -4870,7 +4870,7 @@ kulshreshtha2024:
   dropped: 4
   cost: 0
 kuyper2017:
-  date: 2026-11-11
+  date: 2026-11-16
   model: claude-sonnet-5-5 (chat)
   textHash: 053c45597f39d84d
   facts: 0

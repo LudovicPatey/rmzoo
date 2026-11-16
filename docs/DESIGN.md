@@ -76,7 +76,10 @@ Kohlenbach's RCA₀^ω (the base statement `rca0omega`, bottom of `rca0` like `r
 (Kohlenbach 2005, Proposition 3.1), so one relation covers both and implications chain
 through third-order statements. Reductions without `higherOrder` (ω-models, RCA₀*, the
 problem reductions) do not apply to them. `bish` is provability in Bishop-style
-constructive mathematics: no other reduction implies it or is implied by it. Principles
+constructive mathematics: no classical reduction implies it or is implied by it. `el0` is
+provability in EL₀, the intuitionistic counterpart of RCA₀ (RCA₀ = EL₀ + LEM; EL₀ ⊆ BISH),
+finer than both `rca0` and `bish`: its implications hold in both, their separations hold
+over it, and nothing flows between `rca0` and `bish` through it. Principles
 already in the zoo (LPO, LLPO, WKL…) keep their statement and are read there as the
 corresponding axioms; constructive-only principles (WLPO, MP, FAN, BD-N…) are classically
 provable, recorded as folklore implications from RCA₀. The modes "Higher-order reverse

@@ -335,6 +335,31 @@ test('third-order statements: compared over RCA₀^ω (rca0, higherOrder) only; 
   assert.equal(st('bish', 'a', 'b'), 'open');      // nothing classical reaches BISH
 });
 
+test('EL₀: finer than RCA₀ and BISH; nothing flows between RCA₀ and BISH', () => {
+  const zoo = buildZoo({
+    reductions: [
+      { id: 'rca0', domain: 'all', finerThan: [] },
+      { id: 'bish', domain: 'all', finerThan: [] },
+      { id: 'el0', domain: 'all', finerThan: ['rca0', 'bish'] },
+    ],
+    properties: [],
+    statements: [
+      { id: 'a', kind: 'sentence' }, { id: 'b', kind: 'sentence' }, { id: 'c', kind: 'sentence' }, { id: 'd', kind: 'sentence' },
+    ],
+    results: [
+      { type: 'implication', from: 'a', to: 'b', over: 'el0', refs: [{ ref: 'x' }] },
+      { type: 'implication', from: 'c', to: 'd', over: 'rca0', refs: [{ ref: 'x' }] },
+      { type: 'separation', from: 'd', to: 'c', over: 'bish', refs: [{ ref: 'x' }] },
+    ],
+  });
+  const st = (r, x, y) => zoo.status(zoo.ridx.get(r), zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('rca0', 'a', 'b'), 'implies');    // EL₀ ⊢ a → b, so RCA₀ ⊢ a → b
+  assert.equal(st('bish', 'a', 'b'), 'implies');    // and BISH ⊢ a → b
+  assert.equal(st('el0', 'd', 'c'), 'separated');   // a separation in BISH holds over EL₀
+  assert.equal(st('el0', 'c', 'd'), 'open');        // a classical implication says nothing over EL₀
+  assert.equal(st('bish', 'c', 'd'), 'open');       // nor in BISH
+});
+
 // ---- properties characterized by the base (baseImplication) ----------------
 test('toy: computably true ⟺ the base implies it over ω-models', () => {
   const z = buildZoo({

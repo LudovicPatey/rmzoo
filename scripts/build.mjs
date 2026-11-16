@@ -667,6 +667,11 @@ raw.results.forEach((res, i) => {
     for (const [, k] of s.caution.matchAll(/\[@([^\]]+)\]/g)) if (!raw.references[k]) errors.push(`Statement ${s.id}: caution cites unknown reference ${k}`);
     for (const [, k] of s.caution.matchAll(/\[\[([^\]]+)\]\]/g)) if (!raw.statements.some((t) => t.id === k)) errors.push(`Statement ${s.id}: caution links unknown statement ${k}`);
   }
+  // [[id]] links in definitions (rendered as links by the viewer) must name statements
+  for (const s of raw.statements) {
+    for (const [, k] of String(s.definition || '').matchAll(/\[\[([^\]]+)\]\]/g)) if (!raw.statements.some((t) => t.id === k)) errors.push(`Statement ${s.id}: definition links unknown statement ${k}`);
+    for (const [, k] of String(s.definition || '').matchAll(/\[@([^\]]+)\]/g)) if (!raw.references[k]) errors.push(`Statement ${s.id}: definition cites unknown reference ${k}`);
+  }
   // the same name for two statements (an alias equal to another's alias or plain label) needs a caution on one of them
   {
     const flat = (l) => String(l || '').replace(/\\(?:mathsf|mathrm|mathbf|textsf|text)\{([^}]*)\}/g, '$1').replace(/[{}\s]/g, '').toLowerCase();
@@ -770,7 +775,7 @@ const t0 = Date.now();
 // it — in that framework. Folklore and AI-derived results do not count.
 // studied: { rca0: [refs], rca0star: [refs], weihrauch: [refs] }
 {
-  const FRAME = { rca0: 'rca0', rca0star: 'rca0star', w: 'weihrauch', sw: 'weihrauch', cw: 'weihrauch', aw: 'weihrauch', bish: 'bish' };
+  const FRAME = { rca0: 'rca0', rca0star: 'rca0star', w: 'weihrauch', sw: 'weihrauch', cw: 'weihrauch', aw: 'weihrauch', bish: 'bish', el0: 'bish' };
   const byId = new Map(raw.statements.map((s) => [s.id, s]));
   const acc = new Map();
   for (const r of raw.results) {

@@ -1,0 +1,3 @@
+# Results from [dorais2014].
+
+[ { type: equivalence, from: pem, to: rca0, over: el0, refs: [ { ref: dorais2014, loc: "Section 2 (RCA₀ is defined as EL₀ + LEM, equivalent to the set-based RCA₀)" } ] } ]

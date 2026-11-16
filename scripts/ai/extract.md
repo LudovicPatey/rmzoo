@@ -34,7 +34,13 @@ Reductions are given by id (see the catalogue). In particular:
   (`exists2`, `qfac01`, `qfac21`, `suslin`, `mu2`…), never dropped. Third-order statements
   are compared over `rca0` only. `bish` is provability in Bishop-style constructive
   mathematics (constructive reverse mathematics: LPO, WLPO, LLPO, MP, FAN, BD-N…): enter
-  there only what is proved constructively, never a classical result.
+  there only what is proved constructively, never a classical result. `el0` is provability in
+  EL₀ (intuitionistic RCA₀: QF-IA and QF-AC⁰,⁰ over intuitionistic logic; RCA₀ = EL₀ + LEM),
+  the base of intuitionistic reverse mathematics (Hirst–Mummert, Dorais, Fujiwara, Kuyper,
+  Kawai): enter there what is proved in EL₀ (or in EL₀ + MP, with `mp` as a conjunct of the
+  hypothesis); the engine carries it to `rca0` and `bish`. A result in EL (full induction),
+  E-HA^ω or Hirst–Mummert's I₀ (with the axiom of choice in all finite types) is not over
+  EL₀: leave it out unless the paper says it holds in EL₀.
 * `rca0star` over RCA₀*; `omega` implication over
   ω-models (every ω-model, i.e. Turing ideal, of A is a model of B). Statements are
   read inside the model ("every instance has a solution", as the model judges

@@ -1005,7 +1005,7 @@ const frameBadges = (s, link = true) => FRAMES.filter(([f]) => s.studied?.[f]).m
 function card(i, shown) {
   const s = S(i);
   const forms = Z.S.map((t, j) => [t, j]).filter(([t]) => t.formulationOf === s.id);
-  const def = s.conjunction ? `Conjunction of ${s.conjunction.map((c) => sLink(idx(c))).join(' and ')}.` : rich(s.definition);
+  const def = s.conjunction ? `Conjunction of ${s.conjunction.map((c) => sLink(idx(c))).join(' and ')}.` : richLinks(s.definition);
   return `<article class="card stmt-card">
     <div class="label">${sLink(i)}</div>
     <div>
@@ -1094,7 +1094,7 @@ function viewStatement(id, params = new URLSearchParams()) {
     ${s.todo ? `<p><span class="badge warn">definition to be checked</span> <span class="small muted">The precise statement should be checked against the source paper.</span></p>` : ''}
     ${s.omegaAbsolute === false ? `<p class="small muted">Not ω-absolute: its instances or solutions are defined by a non-arithmetical condition, so an ω-model may judge them differently from the real world. Its ω-model results are read inside the model, and are not derived from Weihrauch or computable reductions (see the reductions on the About page).</p>` : ''}
     ${s.form || s.firstOrder ? `<p class="small muted">Syntactic form: ${classHtml(s.form || 'arith')} (used by conservation results).</p>` : ''}
-    <div class="card def-box">${s.conjunction ? `Conjunction of ${s.conjunction.map((c) => sLink(idx(c))).join(' and ')}.` : rich(s.definition)}</div>
+    <div class="card def-box">${s.conjunction ? `Conjunction of ${s.conjunction.map((c) => sLink(idx(c))).join(' and ')}.` : richLinks(s.definition)}</div>
     ${s.kind === 'problem' && s.instance ? `<div class="io">
       <div class="card"><h3>Instances</h3>${rich(s.instance)}</div>
       <div class="card"><h3>Solutions</h3>${rich(s.solution)}</div></div>`
