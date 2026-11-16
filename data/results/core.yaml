@@ -176,3 +176,8 @@
 - { type: implication, from: ucnn, to: rt42, over: w, folklore: true, justification: { kind: personal-communication, by: Manlio Valenti, text: "RT⁴₂ ≤sW WKL⁽⁴⁾ (Corollary 4.15 of [@brattkarakotoniaina2017]), WKL⁽⁴⁾ ≤sW lim⁽⁴⁾ (WKL ≤sW lim and jumps are monotone for ≤sW), and lim⁽ⁿ⁾ <W UC_ℕℕ for every n (Proposition 7.50 of [@brattkagherardipauly2021])." } }
 # constructive principles are classically provable (excluded middle)
 - { type: implication, from: rca0, to: wlpo, over: rca0, folklore: true, justification: { kind: reduction, by: ai, text: "WLPO is an instance of the excluded middle: for a binary sequence, either every term is 0 or not." } }
+- { type: implication, from: rca0, to: excluded-middle, over: rca0, folklore: true, justification: { kind: reduction, by: ai, text: "Classical logic: every instance of the excluded middle is provable." } }
+- { type: implication, from: rca0, to: wlem, over: rca0, folklore: true, justification: { kind: reduction, by: ai, text: "Classical logic: ¬φ ∨ ¬¬φ is an instance of the excluded middle." } }
+- { type: implication, from: rca0, to: mp, over: rca0, folklore: true, justification: { kind: reduction, by: ai, text: "Classical logic: if a binary sequence is not all zero, some term is 1 (¬∀n α(n) = 0 → ∃n α(n) = 1)." } }
+- { type: implication, from: rca0, to: wmp, over: rca0, folklore: true, justification: { kind: reduction, by: ai, text: "Weak Markov's principle follows from Markov's principle, provable in classical logic." } }
+- { type: implication, from: rca0, to: mp-or, over: rca0, folklore: true, justification: { kind: reduction, by: ai, text: "The disjunctive Markov principle follows from Markov's principle, provable in classical logic." } }

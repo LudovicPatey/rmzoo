@@ -28,3 +28,550 @@
     logic; a principle of constructive reverse mathematics, between LPO and BISH.
   refs:
     - { ref: diener2018, role: rm, loc: "Section 1.3" }
+
+- id: excluded-middle
+  label: \mathsf{LEM}
+  name: Law of excluded middle
+  kind: sentence
+  tags:
+    - constructive
+  aliases:
+    - LEM
+    - PEM
+    - law of excluded middle
+    - principle of excluded middle
+    - tertium non datur
+  definition: >
+    For every statement $\varphi$, $\varphi \vee \neg\varphi$. Over intuitionistic logic equivalent to double negation
+    elimination $\neg\neg\varphi \Rightarrow \varphi$. The strongest omniscience principle: it implies every statement
+    provable in classical logic.
+  caution: Not [[lem]], whose id is lem but which is the long Erdős–Moser theorem $\ell\text{-}\mathsf{EM}$.
+  refs:
+    - ref: diener2018
+      role: rm
+      loc: Section 1.1
+
+- id: wlem
+  label: \mathsf{WLEM}
+  name: Weak law of excluded middle
+  kind: sentence
+  tags:
+    - constructive
+  aliases:
+    - WLEM
+    - WEM
+    - weak law of excluded middle
+    - weak excluded middle
+  phrases:
+    - weak law of excluded middle
+    - weak excluded middle
+  definition: >
+    For every statement $\varphi$, $\neg\varphi \vee \neg\neg\varphi$. Equivalent to De Morgan's law $\neg(\varphi
+    \wedge \psi) \Rightarrow \neg\varphi \vee \neg\psi$ (diener2018, Proposition 1.1.4).
+  refs:
+    - ref: diener2018
+      role: rm
+      loc: Section 1.1
+
+- id: mp
+  label: \mathsf{MP}
+  name: Markov's principle
+  kind: sentence
+  tags:
+    - constructive
+  aliases:
+    - MP
+    - MP1
+    - LPE
+    - Markov's principle
+  phrases:
+    - Markov's principle
+  definition: >
+    For every binary sequence $(a_n)_n$, if $\neg \forall n\, a_n = 0$ then $\exists n\, a_n = 1$; equivalently, every
+    almost positive real number is positive ($\neg\neg(0 < x) \Rightarrow 0 < x$). The principle of unbounded search,
+    accepted in recursive constructive mathematics (RUSS).
+  refs:
+    - ref: diener2018
+      role: rm
+      loc: Section 2.1, Proposition 2.1.1(1)
+    - ref: veldman2011
+      role: rm
+      loc: Subsection 2.2.16
+
+- id: wmp
+  label: \mathsf{WMP}
+  name: Weak Markov's principle
+  kind: sentence
+  tags:
+    - constructive
+  aliases:
+    - WMP
+    - WLPE
+    - ASP
+    - weak Markov's principle
+  phrases:
+    - weak Markov's principle
+  definition: >
+    Every pseudo-positive real number is positive: for every $x \in \mathbb{R}$, if $\forall y \in \mathbb{R}\,
+    (\neg\neg(0 < y) \vee \neg\neg(y < x))$, then $0 < x$. Together with $\mathsf{MP}_\vee$ equivalent to MP.
+  refs:
+    - ref: diener2018
+      role: rm
+      loc: Section 2.2
+
+- id: mp-or
+  label: \mathsf{MP}^{\vee}
+  name: Disjunctive Markov's principle
+  kind: sentence
+  tags:
+    - constructive
+  aliases:
+    - MP∨
+    - MP_or
+    - LLPE
+    - WLLPO
+    - disjunctive Markov's principle
+  phrases:
+    - disjunctive Markov's principle
+  definition: >
+    Every almost positive real number is pseudo-positive: for every $x \in \mathbb{R}$, if $\neg\neg(0 < x)$ then
+    $\forall y \in \mathbb{R}\, (\neg\neg(0 < y) \vee \neg\neg(y < x))$. Equivalently (diener2018, Proposition
+    2.3.1(1)): for every binary sequence $(a_n)_n$ with at most one $1$ and $\neg\forall n\, a_n = 0$, either $\forall
+    n\, a_{2n} = 0$ or $\forall n\, a_{2n+1} = 0$; also the De Morgan law for $\Pi^0_1$ formulas. Implied by LLPO and by
+    MP.
+  refs:
+    - ref: diener2018
+      role: rm
+      loc: Section 2.3
+
+- id: bd-n
+  label: \mathsf{BD}\text{-}\mathbb{N}
+  name: Ishihara's boundedness principle
+  kind: sentence
+  tags:
+    - constructive
+  aliases:
+    - BD-N
+    - BD-ℕ
+    - BDN
+  definition: >
+    Every inhabited, countable, pseudobounded subset of $\mathbb{N}$ is bounded, where $S \subseteq \mathbb{N}$ is
+    pseudobounded if $\lim_{n} s_n / n = 0$ (equivalently, $s_n < n$ eventually) for every sequence $(s_n)_{n \geq 1}$
+    in $S$. Holds in classical, intuitionistic and recursive mathematics but is not provable in BISH.
+  refs:
+    - ref: diener2018
+      role: rm
+      loc: Section 4.1
+    - ref: ishiharaschuster2008
+      role: rm
+      loc: Section 1
+
+- id: fan-delta
+  label: \mathsf{FAN}_\Delta
+  name: Fan theorem for decidable bars
+  kind: sentence
+  tags:
+    - constructive
+    - compactness
+  aliases:
+    - FAN_Δ
+    - FAN∆
+    - FT
+    - FT_1
+    - fan theorem for decidable bars
+    - fan theorem for detachable bars
+  phrases:
+    - fan theorem for decidable bars
+    - fan theorem for detachable bars
+  definition: >
+    Every decidable bar of Cantor space is uniform: if $B \subseteq 2^{<\mathbb{N}}$ is decidable and $\forall \alpha
+    \in 2^\mathbb{N}\, \exists n\, \overline{\alpha} n \in B$, then $\exists N\, \forall \alpha \in 2^\mathbb{N}\,
+    \exists n \leq N\, \overline{\alpha} n \in B$. Equivalently (Veldman's strict fan theorem FT), every decidable bar
+    of Cantor space has a finite subset that is still a bar. The constructive contraposition of WKL; true in
+    intuitionistic mathematics, refuted by Church's thesis (Kleene's alternative).
+  caution: >
+    The bare names FAN and FT vary: berger2009 and kawai2026b write FAN for this principle, veldman2011 writes FAN for
+    the full fan theorem over arbitrary fans ([[fan-full]]) and FT for this one, moschovakis2021b writes FT for the full
+    fan theorem and FT_1 for this one.
+  refs:
+    - ref: diener2018
+      role: rm
+      loc: Chapter 3, introduction (Fan theorems)
+    - ref: veldman2011
+      role: rm
+      loc: Subsection 2.2.4
+
+- id: fan-c
+  label: \mathsf{FAN}_c
+  name: Fan theorem for c-bars
+  kind: sentence
+  tags:
+    - constructive
+    - compactness
+  aliases:
+    - FANc
+    - FAN_c
+    - c-FAN
+    - c-FT
+    - fan theorem for c-bars
+  phrases:
+    - fan theorem for c-bars
+  definition: >
+    Every c-bar of Cantor space is uniform, where a bar $C \subseteq 2^{<\mathbb{N}}$ is a c-bar if there is a decidable
+    $C' \subseteq 2^{<\mathbb{N}}$ with $u \in C \iff \forall w \in 2^{<\mathbb{N}}\, u * w \in C'$. Introduced by
+    Berger; equivalent to the anti-Specker property for $[0,1]$ ([[anti-specker]]) and to the uniform continuity of
+    point-wise continuous functions $2^\mathbb{N} \to \mathbb{N}$.
+  refs:
+    - ref: diener2018
+      role: rm
+      loc: Chapter 3, introduction (Fan theorems)
+
+- id: fan-pi01
+  label: \mathsf{FAN}_{\Pi^0_1}
+  name: Fan theorem for Π⁰₁-bars
+  kind: sentence
+  tags:
+    - constructive
+    - compactness
+  aliases:
+    - FAN_Π01
+    - FANΠ01
+    - Π01-FAN
+    - Π01-FANM
+    - fan theorem for monotone Π01 bars
+  phrases:
+    - fan theorem for monotone Π01 bars
+  definition: >
+    Every $\Pi^0_1$-bar of Cantor space is uniform, where a bar $B \subseteq 2^{<\mathbb{N}}$ is a $\Pi^0_1$-bar if $B =
+    \bigcap_{n \geq 1} B_n$ for a sequence of decidable sets $B_n \subseteq 2^{<\mathbb{N}}$ closed under extension.
+    Between [[fan-full]] and [[fan-c]].
+  refs:
+    - ref: diener2018
+      role: rm
+      loc: Chapter 3, introduction (Fan theorems)
+    - ref: kawai2018
+      role: rm
+      loc: Section 2
+
+- id: fan-full
+  label: \mathsf{FAN}_{\mathrm{full}}
+  name: Full fan theorem
+  kind: sentence
+  tags:
+    - constructive
+    - compactness
+  aliases:
+    - FANfull
+    - FAN_full
+    - full fan theorem
+  phrases:
+    - full fan theorem
+  definition: >
+    Every bar of Cantor space is uniform, with no condition on the complexity of the bar $B \subseteq 2^{<\mathbb{N}}$.
+    Equivalent to the cover compactness of $2^\mathbb{N}$ (diener2018, Proposition 3.7.1). Veldman's scheme FAN states
+    it for arbitrary fans: every bar of a fan contains a finite subset that is a bar.
+  refs:
+    - ref: diener2018
+      role: rm
+      loc: Chapter 3, introduction (Fan theorems)
+    - ref: veldman2011
+      role: rm
+      loc: Subsection 2.2.3
+
+- id: wc-n
+  label: \mathsf{WC}\text{-}\mathsf{N}
+  name: Weak continuity for numbers (Brouwer's continuity principle)
+  kind: sentence
+  tags:
+    - constructive
+  aliases:
+    - WC-N
+    - WCN
+    - BCP
+    - Brouwer's continuity principle
+    - weak continuity for numbers
+  phrases:
+    - weak continuity for numbers
+    - Brouwer's continuity principle
+  definition: >
+    For every relation $R \subseteq \mathbb{N}^\mathbb{N} \times \mathbb{N}$: if $\forall \alpha\, \exists n\, R(\alpha,
+    n)$, then $\forall \alpha\, \exists m\, \exists n\, \forall \beta\, (\overline{\beta} m = \overline{\alpha} m
+    \Rightarrow R(\beta, n))$. An axiom of intuitionistic mathematics, inconsistent with Church's thesis; implies BD-N
+    and refutes LLPO (veldman2011, Theorem 2.8).
+  refs:
+    - ref: veldman2011
+      role: rm
+      loc: Subsection 2.2.9
+    - ref: ishiharaschuster2008
+      role: rm
+      loc: Section 1
+    - ref: diener2018
+      role: rm
+      loc: Section 4.1½
+
+- id: ac10
+  label: \mathsf{AC}_{1,0}
+  name: First axiom scheme of continuous choice
+  kind: sentence
+  minor: true
+  tags:
+    - constructive
+  aliases:
+    - AC1,0
+    - AC_{ω^ω,ω}
+    - continuous choice
+  phrases:
+    - axiom of continuous choice
+  definition: >
+    For every relation $R \subseteq \mathbb{N}^\mathbb{N} \times \mathbb{N}$: if $\forall \alpha\, \exists n\, R(\alpha,
+    n)$, then there is a continuous $\varphi : \mathbb{N}^\mathbb{N} \to \mathbb{N}$ with $\forall \alpha\, R(\alpha,
+    \varphi(\alpha))$. Strengthens [[wc-n]].
+  caution: "Not connected choice $\\mathsf{CC}_{[0,1]}$ ([[ivt]]): diener2018 writes CC for continuous choice (split into
+    CC(1), every function $\\mathbb{N}^\\mathbb{N} \\to \\mathbb{N}$ is point-wise continuous, and CC(2), a choice
+    function exists), Weihrauch papers write CC for connected choice."
+  refs:
+    - ref: veldman2011
+      role: rm
+      loc: Subsection 2.2.10
+
+- id: ks
+  label: \mathsf{KS}
+  name: Kripke's schema
+  kind: sentence
+  tags:
+    - constructive
+  aliases:
+    - KS
+    - Kripke's schema
+    - Kripke's scheme
+  phrases:
+    - Kripke's schema
+  definition: >
+    For every statement $\varphi$ there is a binary sequence $(a_n)_n$ such that $\varphi \iff \exists n\, a_n = 1$:
+    every statement is simply existential. Formalizes Brouwer's creating subject; refutes MP together with the failure
+    of LPO.
+  refs:
+    - ref: diener2018
+      role: rm
+      loc: Section 6.2
+
+- id: ka
+  label: \mathsf{KA}
+  name: Kleene's alternative (to the fan theorem)
+  kind: sentence
+  tags:
+    - constructive
+    - compactness
+  aliases:
+    - KA
+    - ¬!FT
+    - Kleene's alternative
+  phrases:
+    - Kleene's alternative
+  definition: >
+    There is a decidable bar of Cantor space no finite part of which is a bar: $\exists \alpha\,
+    [\mathrm{Bar}_{2^\mathbb{N}}(D_\alpha) \wedge \forall m\, \neg
+    \mathrm{Bar}_{2^\mathbb{N}}(D_{\overline{\alpha}m})]$, where $D_\alpha = \{s : \alpha(s) \neq 0\}$ and
+    $D_{\overline{\alpha}m} = \{s < m : \alpha(s) \neq 0\}$. A strong negation of [[fan-delta]]; provable from Church's
+    thesis (Kleene).
+  caution: >
+    Its tree form, the existence of a Kleene tree (an infinite decidable binary tree without infinite path), is labelled
+    KT in diener2018 (Section 5.3, also called Anti-FAN_Δ), which is not Kruskal's theorem [[kt]].
+  refs:
+    - ref: veldman2011
+      role: rm
+      loc: Subsection 2.2.8
+    - ref: diener2018
+      role: rm
+      loc: Section 5.3 (KT)
+
+- id: ct
+  label: \mathsf{CT}
+  name: Church's thesis
+  kind: sentence
+  tags:
+    - constructive
+    - computability
+  aliases:
+    - CT
+    - Church's thesis
+  phrases:
+    - Church's thesis
+  definition: >
+    Every function $\alpha : \mathbb{N} \to \mathbb{N}$ is computable. In Veldman's cautious formulation: there are
+    $\tau, \psi$ such that for every $\alpha$ there is $e$ with, for all $n$, $\alpha(n) = \psi(\mu i\,[\tau(e, n, i)
+    \neq 0])$ (the $\mu$ being defined). The axiom of recursive constructive mathematics (RUSS); implies [[ka]], refutes
+    [[fan-delta]] and [[wc-n]].
+  caution: >
+    Several non-equivalent forms: veldman2011 states the function form CT above; kajikawaetal2026 and moschovakis2021b
+    use the arithmetical schemas CT_0 (every total relation has a computable choice function), CT_0!, CT_1; bauer2021 a
+    realizability predicate. Check which form a paper uses before linking a result.
+  refs:
+    - ref: veldman2011
+      role: rm
+      loc: Subsection 2.2.7
+
+- id: anti-specker
+  label: \mathsf{AS}^{\mathbb{R}}_{[0,1]}
+  name: Anti-Specker property of the unit interval
+  kind: sentence
+  tags:
+    - constructive
+    - analysis
+    - compactness
+  aliases:
+    - AS
+    - AS_[0,1]
+    - anti-Specker property
+  phrases:
+    - anti-Specker property
+  definition: >
+    Every sequence of real numbers that is eventually bounded away from each point of $[0,1]$ is eventually bounded away
+    from the whole of $[0,1]$; a sequence $(x_n)_n$ is eventually bounded away from a point $x$ (from a set $X$) if
+    there is $N$ with $d(x_n, x) > 2^{-N}$ for all $n \geq N$ (and all $x \in X$). The general property
+    $\mathsf{AS}^Y_X$ is stated for a subspace $X$ of a metric space $Y$. Fails in the presence of a Specker sequence;
+    equivalent to [[fan-c]] (diener2018, Proposition 3.4.1).
+  refs:
+    - ref: diener2018
+      role: rm
+      loc: Chapter 3, introduction
+    - ref: dienerloeb2011
+      role: rm
+      loc: Section 2
+
+- id: pos-inf
+  label: \mathsf{POS}
+  name: Positivity of the infimum
+  kind: sentence
+  minor: true
+  tags:
+    - constructive
+    - analysis
+  aliases:
+    - positivity property
+  definition: >
+    Every uniformly continuous, positive-valued function $f : [0,1] \to \mathbb{R}^+$ has a positive infimum. Equivalent
+    to [[fan-delta]] (diener2018, Proposition 3.3.3; for compact metric spaces, kawai2026b, Theorem 5.1).
+  caution: Not [[pos]] (positive-measure classes are inhabited), a randomness principle with the same acronym.
+  refs:
+    - ref: diener2018
+      role: rm
+      loc: Proposition 3.3.3(1)
+    - ref: dienerloeb2011
+      role: rm
+      loc: Section 2
+
+- id: wkl-unique
+  label: \mathsf{WKL}!
+  name: Weak König's lemma with a uniqueness condition
+  kind: sentence
+  minor: true
+  tags:
+    - constructive
+    - compactness
+  aliases:
+    - WKL!
+  definition: >
+    Every infinite decidable binary tree with at most one infinite path has an infinite path, where "at most one path"
+    is meant positively: any two distinct $\gamma, \delta \in 2^\mathbb{N}$ (that is, $\gamma \perp \delta$) leave the
+    tree at some finite stage. Equivalent to [[fan-delta]] (Berger and Ishihara; veldman2011, Theorems 2.6 and 2.7).
+  refs:
+    - ref: veldman2011
+      role: rm
+      loc: Subsection 2.2.13
+    - ref: kawai2026b
+      role: rm
+      loc: Section 5
+
+- id: pi01-ac-omega2
+  label: \Pi^0_1\text{-}\mathsf{AC}_{\omega,2}
+  name: Π⁰₁ axiom of countable binary choice
+  kind: sentence
+  minor: true
+  tags:
+    - constructive
+  aliases:
+    - Π01-ACω,2
+    - Pi01-AC_{ω,2}
+  definition: >
+    For every enumerable $E \subseteq \mathbb{N} \times 2$: if $\forall n\, \exists m < 2\, (n, m) \notin E$, then there
+    is $\gamma \in 2^\mathbb{N}$ with $\forall n\, (n, \gamma(n)) \notin E$. Not provable in BIM; with LLPO equivalent
+    to WKL (veldman2011, Theorem 4.3).
+  refs:
+    - ref: veldman2011
+      role: rm
+      loc: Subsection 4.7
+
+- id: uivt
+  label: \mathsf{UIVT}
+  name: Uniform intermediate value theorem
+  kind: sentence
+  minor: true
+  tags:
+    - constructive
+    - analysis
+  aliases:
+    - UIVT
+  definition: >
+    For every sequence $(\varphi_n)_n$ of continuous functions $[0,1] \to \mathbb{R}$, if each $\varphi_n$ has points
+    $\gamma^0_n, \gamma^1_n \in [0,1]$ with $\varphi_n(\gamma^0_n) \leq 0 \leq \varphi_n(\gamma^1_n)$, then there is a
+    sequence $(\gamma_n)_n$ in $[0,1]$ with $\varphi_n(\gamma_n) = 0$ for all $n$. A sequential IVT; equivalent to WKL
+    over RCA₀ (Simpson, Exercise IV.2.12), its contraposition equivalent to [[fan-delta]] over BIM.
+  caution: sanders2015c uses UIVT for a different, higher-order statement (a functional producing zeros of all continuous
+    functions).
+  refs:
+    - ref: veldman2011
+      role: rm
+      loc: Subsection 10.4
+
+- id: almft
+  label: \mathsf{AlmFT}
+  name: Almost-fan theorem
+  kind: sentence
+  minor: true
+  tags:
+    - constructive
+    - compactness
+  aliases:
+    - AlmFT
+    - almost-fan theorem
+  phrases:
+    - almost-fan theorem
+  definition: >
+    In an almost-fan, every thin bar is almost-finite: for every spread $F_\beta$ in which each node has an
+    almost-finite set of immediate successors, every decidable thin bar $D_\alpha$ of $F_\beta$ (no element a proper
+    initial segment of another) consisting of nodes of $F_\beta$ is almost-finite, i.e. every strictly increasing $\zeta
+    \in [\omega]^\omega$ has some $n$ with $\zeta(n) \notin D_\alpha$. Implies [[appft]]; follows from bar induction.
+  refs:
+    - ref: veldman2014
+      role: rm
+      loc: Section 8.2, Definitions 23-24
+    - ref: veldman2011
+      role: rm
+      loc: Subsection 12.4
+
+- id: appft
+  label: \mathsf{AppFT}
+  name: Approximate-fan theorem
+  kind: sentence
+  minor: true
+  tags:
+    - constructive
+    - compactness
+  aliases:
+    - AppFT
+    - approximate-fan theorem
+  phrases:
+    - approximate-fan theorem
+  definition: >
+    In an explicit approximate fan, every thin bar is almost-finite: for every spread $F_\beta$ with a $\gamma$ such
+    that for each $n$ the set $\{t \in \omega^n : \beta(t) = 0\}$ has at most $\gamma(n)$ members, every decidable thin
+    bar $D_\alpha$ of $F_\beta$ consisting of nodes of $F_\beta$ is almost-finite. Extends [[fan-delta]], implies
+    [[open-induction]] in BIM.
+  refs:
+    - ref: veldman2014
+      role: rm
+      loc: Section 8.2, Definitions 23-24
+    - ref: veldman2011
+      role: rm
+      loc: Subsection 12.5

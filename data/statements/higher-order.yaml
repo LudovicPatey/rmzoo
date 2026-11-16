@@ -24,3 +24,760 @@
     There exists a function $F : \mathbb{R} \to \mathbb{R}$ which is not everywhere sequentially continuous.
   refs:
     - { ref: kohlenbach2005, role: rm, loc: "Proposition 3.12(3)" }
+
+- id: suslin
+  label: (\mathsf{S}^2)
+  name: Existence of the Suslin functional
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - S2
+    - (S2)
+    - Suslin functional
+  definition: >
+    $(\exists \mathbf{S}^2 \leq_2 1)(\forall f^1)\big[(\exists g^1)(\forall n^0)(f(\overline{g}n) = 0) \leftrightarrow
+    \mathbf{S}(f) = 0\big]$: the Suslin functional decides $\Sigma^1_1$-formulas in normal form.
+    $\Pi^1_1\text{-}\mathsf{CA}_0^\omega \equiv \mathsf{RCA}_0^\omega + (\mathsf{S}^2)$ proves the same
+    $\Pi^1_3$-sentences as $\Pi^1_1\text{-}\mathsf{CA}_0$.
+  refs:
+    - ref: normannsanders2019
+      role: rm
+      loc: Section 2.1.4, (S²)
+    - ref: normannsanders2017b
+      role: rm
+      loc: Section 2.4, (S²)
+
+- id: exists3
+  label: (\exists^3)
+  name: Kleene's quantifier ∃³
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - ∃³
+    - E3
+    - (∃3)
+  definition: >
+    $(\exists E^3 \leq_3 1)(\forall Y^2)\big[(\exists f^1)\, Y(f) = 0 \leftrightarrow E(Y) = 0\big]$.
+    $\mathsf{Z}_2^\Omega \equiv \mathsf{RCA}_0^\omega + (\exists^3)$ is a conservative extension of $\mathsf{Z}_2$.
+  refs:
+    - ref: normannsanders2019
+      role: rm
+      loc: Section 2.1.4, (∃³)
+    - ref: normannsanders2017b
+      role: rm
+      loc: Section 2.4, (∃³)
+
+- id: mu2
+  label: (\mu^2)
+  name: Feferman's search operator μ²
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - µ2
+    - (µ2)
+    - Feferman's mu
+  definition: >
+    $(\exists \mu^2)(\forall f^1)\big[(\exists n)(f(n) = 0) \rightarrow [f(\mu(f)) = 0 \wedge (\forall i < \mu(f))\,
+    f(i) \neq 0] \wedge [(\forall n)(f(n) \neq 0) \rightarrow \mu(f) = 0]\big]$. $\mathsf{ACA}_0^\omega \equiv
+    \mathsf{RCA}_0^\omega + (\mu^2)$; equivalent to $(\exists^2)$ over $\mathsf{RCA}_0^\omega$.
+  refs:
+    - ref: normannsanders2019
+      role: rm
+      loc: Section 2.1.4, (μ²)
+    - ref: kohlenbach2005
+      role: rm
+      loc: Definition 3.8(1), Proposition 3.9
+
+- id: uwkl
+  label: \mathsf{UWKL}
+  name: Uniform weak König's lemma
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  definition: >
+    $(\exists \Phi^{1\to 1})(\forall f^1)\big(T^1(f) \rightarrow (\forall x^0)\, f(\overline{\Phi(f)}x) = 0\big)$, where
+    $T^1(f)$ expresses that $f$ is (the characteristic function of) an infinite binary tree: a functional selecting a
+    path through every infinite binary tree. Equivalent to $(\exists^2)$ over $\mathsf{RCA}_0^\omega$.
+  refs:
+    - ref: kohlenbach2005
+      role: rm
+      loc: Definition 3.8(2), Proposition 3.9
+    - ref: sanders2015c
+      role: rm
+      loc: (UWKL)
+
+- id: muc
+  label: \mathsf{MUC}
+  name: Intuitionistic fan functional (modulus of uniform continuity)
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - (MUC)
+  definition: >
+    $(\exists \Omega^3)(\forall Y^2)(\forall f, g \leq_1 1)\big(\overline{f}\Omega(Y) = \overline{g}\Omega(Y)
+    \rightarrow Y(f) = Y(g)\big)$: $\Omega$ gives a modulus of uniform continuity on Cantor space for every type-2
+    functional. Inconsistent with $(\exists^2)$ but consistent relative to $\mathsf{RCA}_0^\omega$.
+  refs:
+    - ref: kohlenbach2005
+      role: rm
+      loc: Section 3, (MUC), Proposition 3.15
+    - ref: bergsanders2014
+      role: rm
+      loc: Section 4.2.6, (MUC)
+
+- id: uatr
+  label: \mathsf{UATR}
+  name: Trivially uniform arithmetical transfinite recursion
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  definition: >
+    $(\exists \Phi^{1\to 1})(\forall X^1, f^1)\big(\mathrm{WO}(X) \rightarrow H_f(X, \Phi(X, f))\big)$, where $H_f(X,Y)$
+    is $H_\theta(X,Y)$ (Simpson, V.2) with $\theta(n, Z)$ defined as $(\exists m^0)(f(n, m, \overline{Z}m) = 0)$.
+  refs:
+    - ref: normannsanders2017
+      role: rm
+      loc: Section 6.2, (UATR)
+    - ref: normannsanders2018
+      role: rm
+      loc: Section 2.3, (UATR)
+
+- id: boot
+  label: \mathsf{BOOT}
+  name: Bootstrap principle
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  definition: |
+    $(\forall Y^2)(\exists X^1)(\forall n^0)\big(n \in X \leftrightarrow (\exists f^1)(Y(f, n) = 0)\big)$.
+  refs:
+    - ref: sanders2019b
+      role: origin
+      loc: Definition 1.2, Definition 3.1
+    - ref: normannsanders2020b
+      role: rm
+      loc: Principle 2.9
+
+- id: boot-minus
+  label: \mathsf{BOOT}^-
+  name: Bootstrap principle with unique witnesses
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - BOOT−
+  definition: >
+    For $Y^2$ such that $(\forall n \in \mathbb{N})(\exists \text{ at most one } f^1)(Y(f, n) = 0)$, we have $(\exists X
+    \subset \mathbb{N})(\forall n \in \mathbb{N})\big(n \in X \leftrightarrow (\exists f^1)(Y(f, n) = 0)\big)$.
+  refs:
+    - ref: normannsanders2019b
+      role: origin
+      loc: Definition 4.2
+    - ref: normannsanders2021
+      role: rm
+      loc: Section 1.3.3, (1.1)
+
+- id: delta-ca-ho
+  label: \Delta\text{-}\mathsf{CA}
+  name: Third-order Δ-comprehension
+  caution: "Not $\\Delta^0_1$- or $\\Delta^1_1$-comprehension: the formulas have the form $(\\exists f \\in
+    \\mathbb{N}^\\mathbb{N})(Y(f,n) = 0)$ with a type-2 parameter $Y$ (the ECF-translation turns it into
+    $\\Delta^0_1$-comprehension)."
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - ∆-CA
+    - Δ-CA
+  definition: >
+    For $i = 0, 1$, $Y_i^2$, and $A_i(n) \equiv (\exists f \in \mathbb{N}^\mathbb{N})(Y_i(f, n) = 0)$: $(\forall n \in
+    \mathbb{N})(A_0(n) \leftrightarrow \neg A_1(n)) \rightarrow (\exists X \subset \mathbb{N})(\forall n \in
+    \mathbb{N})(n \in X \leftrightarrow A_0(n))$.
+  refs:
+    - ref: normannsanders2021
+      role: rm
+      loc: Principle 1.8
+    - ref: sanders2020
+      role: rm
+      loc: Principle 2.6
+    - ref: normannsanders2020b
+      role: rm
+      loc: Principle 3.34
+
+- id: sigma-sep-ho
+  label: \Sigma\text{-}\mathsf{SEP}
+  name: Third-order Σ-separation
+  caution: "Not $\\Sigma^0_1$- or $\\Sigma^1_1$-separation: the formulas have the form $(\\exists f^1)(Y(f,n) = 0)$ with a
+    type-2 parameter $Y$."
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - Σ-SEP
+  definition: >
+    For $\varphi_i(n) \equiv (\exists f_i^1)(Y_i(f_i, n) = 0)$ ($i = 0, 1$): $(\forall n^0)(\neg\varphi_0(n) \vee
+    \neg\varphi_1(n)) \rightarrow (\exists Z^1)(\forall n^0)\big[(\varphi_0(n) \rightarrow n \in Z) \wedge (\varphi_1(n)
+    \rightarrow n \notin Z)\big]$.
+  refs:
+    - ref: sanders2019b
+      role: origin
+      loc: Definition 4.22
+    - ref: normannsanders2021
+      role: rm
+      loc: Principle 3.6
+
+- id: ind0-ho
+  label: \mathsf{IND}_0
+  name: Finite comprehension for unique witnesses (IND₀)
+  caution: "The label $\\mathsf{IND}_0$ is not an induction scheme for a formula class. Normann and Sanders use
+    $\\mathsf{IND}_0$, $\\mathsf{IND}_1$, $\\mathsf{IND}_2$ for slightly different formulations in different papers
+    (e.g. sanders2024d derives $\\mathsf{IND}_0$ from its $\\mathsf{IND}_2$ by restricting the hypothesis): check the
+    definition in each paper."
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - IND0
+  definition: >
+    Let $Y^2$ satisfy $(\forall n \in \mathbb{N})(\exists \text{ at most one } f \in 2^\mathbb{N})(Y(f, n) = 0)$. For $k
+    \in \mathbb{N}$, there is $w^{1^*}$ with $|w| = k$ such that for $m \leq k$: $(w(m) \in 2^\mathbb{N} \wedge Y(w(m),
+    m) = 0) \leftrightarrow (\exists f \in 2^\mathbb{N})(Y(f, m) = 0)$.
+  refs:
+    - ref: normannsanders2021
+      role: origin
+      loc: Definition 2.9
+    - ref: normannsanders2022
+      role: rm
+      loc: Definition 2.29
+    - ref: sanders2023
+      role: rm
+      loc: Definition 1.7
+
+- id: nfp-ho
+  label: \mathsf{NFP}
+  name: Neighbourhood function principle
+  caution: In second-order reverse mathematics, NFP also names "Noetherian rings have finitely many prime ideals"
+    ([[nfp]]), an unrelated statement.
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  definition: >
+    The schema: for any formula $A(\sigma^{0^*})$ of $\mathsf{L}_\omega$, $(\forall f^1)(\exists n^0)A(\overline{f}n)
+    \rightarrow (\exists \gamma \in K_0)(\forall f^1)A(\overline{f}\gamma(f))$, where $\gamma \in K_0$ means that
+    $\gamma$ is a total associate on Baire space.
+  refs:
+    - ref: sanders2019b
+      role: rm
+      loc: Definition 5.1
+
+- id: a0
+  label: \mathsf{A}_0
+  name: Fragment A₀ of the neighbourhood function principle
+  caution: "The token A0 also denotes formulas, sets and parameters in many papers: the miners should not look for it as
+    an acronym."
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  definition: >
+    For $Y^2$ and $A(\sigma^{0^*}) \equiv (\exists f \in 2^\mathbb{N})(Y(f, \sigma) = 0)$: $(\forall f \in
+    \mathbb{N}^\mathbb{N})(\exists n \in \mathbb{N})A(\overline{f}n) \rightarrow (\exists \Phi^2)(\forall f \in
+    \mathbb{N}^\mathbb{N})A(\overline{f}\Phi(f))$.
+  refs:
+    - ref: sanders2019b
+      role: origin
+      loc: Definitions 5.2 and 5.3
+    - ref: normannsanders2021
+      role: rm
+      loc: Definition 3.9
+    - ref: sanders2021
+      role: rm
+      loc: Principle 1.7
+
+- id: ncc
+  label: \mathsf{NCC}
+  name: Weak countable choice NCC
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  definition: >
+    For $Y^2$ and $A(n, m) \equiv (\exists f \in 2^\mathbb{N})(Y(f, m, n) = 0)$: $(\forall n^0)(\exists m^0)A(n, m)
+    \rightarrow (\exists g^1)(\forall n^0)A(n, g(n))$.
+  refs:
+    - ref: normannsanders2020
+      role: origin
+      loc: Definition 1.1
+    - ref: normannsanders2020b
+      role: rm
+      loc: Principle 3.29
+    - ref: sanders2020
+      role: rm
+      loc: Principle 3.10
+
+- id: scf
+  label: (\exists \Theta)\,\mathsf{SCF}(\Theta)
+  name: Existence of a special fan functional
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - SCF(Θ)
+    - SFF(Θ)
+    - special fan functional
+  definition: >
+    There is $\Theta^{2 \to 1^*}$ with $(\forall G^2)(\forall f^1 \leq_1 1)(\exists g \in \Theta(G))(f \in
+    [\overline{g}G(g)])$, where $f \in [\overline{g}G(g)]$ is the quantifier-free formula $\overline{f}G(g) =_{0^*}
+    \overline{g}G(g)$: $\Theta(G)$ is a finite sub-cover of the canonical cover $\cup_{f \in 2^\mathbb{N}}
+    [\overline{f}G(f)]$ of Cantor space.
+  refs:
+    - ref: normannsanders2017b
+      role: rm
+      loc: Definition 2.7
+    - ref: normannsanders2018
+      role: rm
+      loc: Definition 2.1
+
+- id: wff
+  label: (\exists \Lambda)\,\mathsf{WFF}(\Lambda)
+  name: Existence of a weak fan functional
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - WFF(Λ)
+    - WCF(Λ)
+    - weak fan functional
+  definition: >
+    There is $\Lambda^{(2 \times 0) \to 1^*}$ with $(\forall G^2, k^0)\, \mathsf{m}(\{f \in 2^\mathbb{N} : (\exists g
+    \in \Lambda(G, k))(f \in [\overline{g}G(g)])\}) \geq 1 - \frac{1}{2^k}$, $\mathsf{m}$ the coin-toss measure on
+    $2^\mathbb{N}$.
+  refs:
+    - ref: normannsanders2018
+      role: rm
+      loc: Definition 2.2
+
+- id: hbu
+  label: \mathsf{HBU}
+  name: Heine–Borel theorem for uncountable coverings (Cousin's lemma)
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+    - compactness
+  aliases:
+    - Cousin's lemma
+  definition: >
+    $(\forall \Psi : \mathbb{R} \to \mathbb{R}^+)(\exists \langle y_1, \ldots, y_k \rangle)(\forall x \in I)(\exists i
+    \leq k)(x \in I^\Psi_{y_i})$, where $I = [0,1]$ and $I^\Psi_y = (y - \Psi(y), y + \Psi(y))$: the canonical cover
+    $\cup_{x \in I} I^\Psi_x$ has a finite sub-cover.
+  refs:
+    - ref: normannsanders2017b
+      role: origin
+      loc: Section 3.1, (HBU)
+    - ref: normannsanders2019
+      role: rm
+      loc: Principle 2.9
+    - ref: normannsanders2021
+      role: rm
+      loc: Principle 1.9
+
+- id: hbu-c
+  label: \mathsf{HBU}_{\mathsf{c}}
+  name: Heine–Borel theorem for uncountable coverings of Cantor space
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - compactness
+  aliases:
+    - HBUc
+  definition: >
+    $(\forall G^2)(\exists f_1, \ldots, f_k \in 2^\mathbb{N})(\forall f \in 2^\mathbb{N})(\exists i \leq k)(f \in
+    [\overline{f_i}G(f_i)])$.
+  refs:
+    - ref: normannsanders2021
+      role: rm
+      loc: Principle 1.10
+
+- id: hbt
+  label: \mathsf{HBT}
+  name: Heine–Borel theorem for generalised canonical coverings
+  caution: "The acronyms HB and HBT name the Heine–Borel covering lemma ([[heine-borel]]) and the Hahn–Banach theorem
+    ([[hb]]) in other papers: check the definition in each paper."
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+    - compactness
+  definition: >
+    $(\forall \psi : I \to \mathbb{R})\big(I \subset \cup_{x \in I} I^\psi_x \rightarrow (\exists y_1, \ldots, y_k \in
+    I)(I \subset \cup_{i \leq k} I^\psi_{y_i})\big)$, where $I^\psi_x = (x - \psi(x), x + \psi(x))$ may be empty, and $I
+    \subset \cup_{x \in I} I^\psi_x$ means $(\forall x \in I)(\exists y \in I)(x \in I^\psi_y)$.
+  refs:
+    - ref: sanders2018d
+      role: origin
+      loc: Section 3.1, (HBT)
+    - ref: normannsanders2021
+      role: rm
+      loc: Principle 1.11
+
+- id: whbu
+  label: \mathsf{WHBU}
+  name: Weak Heine–Borel theorem for uncountable coverings (Vitali covering theorem)
+  caution: "Formulations differ: sanders2018b states WHBU with the sum of the lengths of the intervals at least $1 -
+    2^{-k}$, normannsanders2020b (Principle 2.8) with pairwise distinct points and the lengths of the disjointified
+    intervals; this entry follows normannsanders2019."
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+    - analysis
+  definition: >
+    For $\Psi : [0,1] \to \mathbb{R}^+$ and $\varepsilon >_\mathbb{R} 0$, there are $y_0, \ldots, y_n \in [0,1]$ such
+    that the measure of $\cup_{i \leq n} I^\Psi_{y_i}$ is at least $1 - \varepsilon$, the measure being read in the
+    comparative ("virtual") sense of second-order reverse mathematics.
+  refs:
+    - ref: normannsanders2019
+      role: rm
+      loc: Principle 3.2, Remark 3.1
+    - ref: sanders2018b
+      role: rm
+      loc: Section 3.5.2, (WHBU)
+
+- id: hbc0
+  label: \mathsf{HBC}_0
+  name: Heine–Borel theorem for countable coverings given as countable sets
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+    - compactness
+  aliases:
+    - HBC0
+  definition: >
+    For countable $A \subset \mathbb{R}^2$ (Definition 1.4: there is $Y : \mathbb{R}^2 \to \mathbb{N}$ injective on $A$)
+    with $(\forall x \in [0,1])(\exists (a, b) \in A)(x \in (a, b))$, there are $(a_0, b_0), \ldots, (a_k, b_k) \in A$
+    with $(\forall x \in [0,1])(\exists i \leq k)(x \in (a_i, b_i))$.
+  refs:
+    - ref: normannsanders2021
+      role: rm
+      loc: Principle 3.1
+    - ref: sanders2021
+      role: rm
+      loc: Principle 2.7
+    - ref: normannsanders2020b
+      role: rm
+      loc: Principle 3.21
+
+- id: lind
+  label: \mathsf{LIND}
+  name: Lindelöf lemma for uncountable coverings of ℝ
+  caution: Also written LIN; but normannsanders2021 (Principle 3.4) uses LIN for a Lindelöf lemma for arbitrary subsets of
+    Baire space, a different statement.
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - LIN
+  definition: >
+    For every $\Psi : \mathbb{R} \to \mathbb{R}^+$, there is a sequence of open intervals $\cup_{n \in \mathbb{N}} (a_n,
+    b_n)$ covering $\mathbb{R}$ such that $(\forall n \in \mathbb{N})(\exists x \in \mathbb{R})[(a_n, b_n) = I^\Psi_x]$.
+  refs:
+    - ref: normannsanders2017b
+      role: origin
+      loc: Definition 3.10
+    - ref: sanders2018b
+      role: rm
+      loc: Definition 3.17
+    - ref: normannsanders2019
+      role: rm
+      loc: Principle 2.10
+
+- id: lind-baire
+  label: \mathsf{LIND}(\mathbb{N}^\mathbb{N})
+  name: Lindelöf lemma for canonical coverings of Baire space
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - LIND(NN)
+    - LIND4
+  definition: >
+    $(\forall \Psi^2)(\exists f_{(\cdot)}^{0 \to 1})(\forall g^1)(\exists n^0)\big(g \in
+    [\overline{f_n}\Psi(f_n)]\big)$: the canonical covering $\cup_{f \in \mathbb{N}^\mathbb{N}} [\overline{f}\Psi(f)]$
+    of Baire space has a countable sub-covering.
+  refs:
+    - ref: normannsanders2017b
+      role: origin
+      loc: Section 4.1.2, (LIND₄)
+    - ref: normannsanders2018b
+      role: rm
+      loc: Section 5, (LIND(ℕ^ℕ))
+    - ref: sanders2019b
+      role: rm
+      loc: Definition 5.5
+
+- id: pit-o
+  label: \mathsf{PIT}_o
+  name: Pincherle's theorem (original version) for Cantor space
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - PITo
+  definition: >
+    $(\forall F, G : 2^\mathbb{N} \to \mathbb{N})(\exists N \in \mathbb{N})\big(\mathrm{LOC}(F, G) \rightarrow (\forall
+    g \in 2^\mathbb{N})(F(g) \leq N)\big)$, where $\mathrm{LOC}(F, G) \equiv (\forall f, g \in 2^\mathbb{N})(g \in
+    [\overline{f}G(f)] \rightarrow F(g) \leq G(f))$ ($G$ bounds $F$ locally).
+  refs:
+    - ref: normannsanders2018b
+      role: origin
+      loc: Section 1.3.1, (PIT_o)
+
+- id: pit-u
+  label: \mathsf{PIT}_u
+  name: Uniform Pincherle's theorem for Cantor space
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - PITu
+  definition: >
+    $(\forall G : 2^\mathbb{N} \to \mathbb{N})(\exists N \in \mathbb{N})(\forall F : 2^\mathbb{N} \to
+    \mathbb{N})\big(\mathrm{LOC}(F, G) \rightarrow (\forall g \in 2^\mathbb{N})(F(g) \leq N)\big)$, with $\mathrm{LOC}$
+    as in $\mathsf{PIT}_o$.
+  refs:
+    - ref: normannsanders2018b
+      role: origin
+      loc: Section 1.3.1, (PIT_u)
+
+- id: bw-net
+  label: \mathsf{BW}_{\mathrm{net}}
+  name: Bolzano–Weierstrass theorem for nets
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - BWnet
+  definition: >
+    Every net in the unit interval has a convergent sub-net, where nets are restricted to index sets $D \subseteq
+    \mathbb{N}^\mathbb{N}$ (a directed set given by the characteristic function of its relation).
+  refs:
+    - ref: normannsanders2017b
+      role: origin
+      loc: Section 3.4, Definition 3.36, Theorem 3.37
+    - ref: sanders2019
+      role: rm
+      loc: Section 3.1.1, Definition 2.7
+
+- id: mct-net
+  label: \mathsf{MCT}_{\mathrm{net}}
+  name: Monotone convergence theorem for nets
+  caution: normannsanders2019 (Principle 3.36) uses MCT_net for a different statement about increasing nets of continuous
+    functions and their Riemann integrals; sanders2019b (Definition 3.6) uses MCT^C_net for Cantor space with the
+    lexicographic order.
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - MCTnet
+    - MCT0net
+  definition: |
+    Every increasing net in the unit interval converges, where nets are indexed by subsets of $\mathbb{N}^\mathbb{N}$.
+  refs:
+    - ref: sanders2019
+      role: rm
+      loc: Section 3.1.2
+    - ref: sanders2019c
+      role: rm
+      loc: Definition 3.4
+
+- id: nin
+  label: \mathsf{NIN}
+  name: No injection from [0,1] to ℕ
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - NIN[0,1]
+  definition: >
+    For any $Y : [0,1] \to \mathbb{N}$, there are $x, y \in [0,1]$ such that $x \neq_\mathbb{R} y$ and $Y(x)
+    =_\mathbb{N} Y(y)$.
+  refs:
+    - ref: normannsanders2020b
+      role: origin
+      loc: Principle 1.2
+    - ref: normannsanders2026
+      role: rm
+      loc: Principle 1.1
+
+- id: nbi
+  label: \mathsf{NBI}
+  name: No bijection from [0,1] to ℕ
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  definition: >
+    For any $Y : [0,1] \to \mathbb{N}$, either there are $x, y \in [0,1]$ such that $x \neq_\mathbb{R} y$ and $Y(x)
+    =_\mathbb{N} Y(y)$, or there is $N \in \mathbb{N}$ such that $(\forall x \in [0,1])(Y(x) \neq N)$.
+  refs:
+    - ref: normannsanders2020b
+      role: origin
+      loc: Principle 1.3
+
+- id: nin-alt
+  label: \mathsf{NIN}_{\mathrm{alt}}
+  name: The unit interval is not height countable
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - NINalt
+  definition: >
+    The unit interval is not height countable, where $A \subset \mathbb{R}$ is height countable if there is a height
+    function $H : \mathbb{R} \to \mathbb{N}$ for $A$, i.e. for all $n \in \mathbb{N}$, $A_n := \{x \in A : H(x) < n\}$
+    is finite (finite in the sense of Definition 1.2 of the paper).
+  refs:
+    - ref: sanders2022b
+      role: origin
+      loc: Section 1.1, Definitions 1.1 and 1.2
+    - ref: normannsanders2024b
+      role: rm
+      loc: Principle 3.5
+    - ref: sanders2023b
+      role: rm
+      loc: Principle 3.2
+
+- id: cocode0
+  label: \mathsf{cocode}_0
+  name: Countable subsets of [0,1] can be enumerated
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - cocode0
+  definition: >
+    For any non-empty countable set $A \subseteq [0,1]$, there is a sequence $(x_n)_{n \in \mathbb{N}}$ in $A$ such that
+    $(\forall x \in \mathbb{R})(x \in A \leftrightarrow (\exists n \in \mathbb{N})(x_n =_\mathbb{R} x))$; here $A
+    \subset \mathbb{R}$ is countable if there is $Y : \mathbb{R} \to \mathbb{N}$ with $(\forall x, y \in A)(Y(x) =_0
+    Y(y) \rightarrow x =_\mathbb{R} y)$.
+  refs:
+    - ref: normannsanders2021
+      role: rm
+      loc: Principle 1.6, Definition 1.4
+    - ref: sanders2019d
+      role: rm
+      loc: Principle 6.2
+
+- id: cocode1
+  label: \mathsf{cocode}_1
+  name: Strongly countable subsets of [0,1] can be enumerated
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - cocode1
+  definition: >
+    $\mathsf{cocode}_0$ restricted to strongly countable sets: for any non-empty strongly countable $A \subseteq [0,1]$
+    (there is $Y : \mathbb{R} \to \mathbb{N}$ injective on $A$ and surjective, $(\forall n \in \mathbb{N})(\exists x \in
+    A)(Y(x) = n)$), there is a sequence $(x_n)_{n \in \mathbb{N}}$ in $A$ such that $(\forall x \in \mathbb{R})(x \in A
+    \leftrightarrow (\exists n)(x_n =_\mathbb{R} x))$.
+  refs:
+    - ref: normannsanders2021
+      role: rm
+      loc: Section 2.2.1, Definition 1.4
+
+- id: cbn
+  label: \mathsf{CBN}
+  name: Cantor–Bernstein theorem for ℕ (countable subsets of ℝ)
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  definition: >
+    A countable set $A \subset \mathbb{R}$ is strongly countable if there exists a sequence $(x_n)_{n \in \mathbb{N}}$
+    of pairwise distinct reals such that $(\forall n \in \mathbb{N})(x_n \in A)$ (countable and strongly countable as in
+    $\mathsf{cocode}_0$, $\mathsf{cocode}_1$).
+  refs:
+    - ref: sanders2020
+      role: origin
+      loc: Principle 3.9
+    - ref: normannsanders2021
+      role: rm
+      loc: Principle 2.14
+
+- id: bwc0-fun
+  label: \mathsf{BW}^{\mathsf{C}}_0
+  name: Bolzano–Weierstrass theorem for countable subsets of Cantor space
+  caution: Normann and Sanders (normannsanders2021) write $\mathsf{BWC}^{\mathrm{fun}}_0$ for this statement and
+    $\mathsf{BWC}_0$ for the version without $F$ (sup A exists), while sanders2019d and normannsanders2020b call this
+    statement $\mathsf{BW}^{\mathsf{C}}_0$.
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - BWC0
+    - BWCfun0
+  definition: >
+    For any countable $A \subset 2^\mathbb{N}$ and $F : 2^\mathbb{N} \to 2^\mathbb{N}$, the supremum $\sup_{f \in A}
+    F(f)$ exists (lexicographic order; countable as in $\mathsf{cocode}_0$).
+  refs:
+    - ref: sanders2019d
+      role: rm
+      loc: Principle 6.3
+    - ref: normannsanders2020b
+      role: rm
+      loc: Principle 3.24
+    - ref: normannsanders2021
+      role: rm
+      loc: Principle 1.1 and the variants listed after it

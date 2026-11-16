@@ -26,8 +26,8 @@
 - id: ucont
   label: "\\textsf{Unif. cont.}_{[0,1]}"
   name: "Uniform continuity on [0,1]"
+  aliases: [ UCT, uniform continuity theorem ]
   kind: sentence
-  minor: true
   tags: ["compactness", "analysis"]
   definition: "Every continuous function on the closed interval $[0,1]$ is uniformly continuous."
   refs: [ { ref: simpson2009, role: rm, loc: "Theorem IV.2.3(2)" } ]

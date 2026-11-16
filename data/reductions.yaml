@@ -189,6 +189,7 @@
   tex: '\mathsf{BISH}'
   domain: all
   conjunction: true
+  higherOrder: true   # BISH speaks freely of functions on the reals (existence of a discontinuous function…)
   finerThan: []
   phrase: 'BISH ⊢ {a} → {b}'
   description: >

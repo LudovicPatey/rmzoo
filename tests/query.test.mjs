@@ -9,10 +9,11 @@ import { queryIndex, tokenize, interpret, answer, complete } from '../site/js/qu
 
 const Z = buildZoo(JSON.parse(fs.readFileSync(new URL('../site/data/zoo.json', import.meta.url))));
 const X = queryIndex(Z, { related: relatedIndex(Z) });
-// a plain substring search (the viewer passes its own, ranked one)
+// a plain substring search, ids starting with the query first (the viewer passes its own, ranked one)
 const search = (q, n) => {
   q = q.toLowerCase().replace(/\s+/g, '');
-  return Z.S.map((s, i) => [i, `${s.id} ${s.name}`.toLowerCase().replace(/\s+/g, '')]).filter(([, t]) => t.includes(q)).slice(0, n).map(([i]) => i);
+  return Z.S.map((s, i) => [i, `${s.id} ${s.name}`.toLowerCase().replace(/\s+/g, ''), s.id.toLowerCase().startsWith(q) ? 0 : 1]).filter(([, t]) => t.includes(q))
+    .sort((a, b) => a[2] - b[2]).slice(0, n).map(([i]) => i);
 };
 const ask = (text, r = 'rca0') => {
   const q = interpret(X, tokenize(X, text).toks, { search, r: Z.ridx.get(r) });

@@ -89742,3 +89742,2574 @@
     date: 2026-11-13
     by: ludovic
     note: Inferred from an exercise solution only (low confidence); contradicts the database, where RT²₂ (already SRT²₂) fails preservation of Δ⁰₂ definitions.
+- id: diener2018-a5666bc3
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: lpo
+    to: mct
+    over: bish
+  loc: Proposition 1.2.1(3)
+  origin: stated
+  quote: Every bounded monotone sequence of real numbers converges.
+  paperNotation: LPO, bounded monotone sequences converge
+  confidence: medium
+  concerns: Proved in the paper's informal Bishop-style constructive mathematics (BISH, with countable and dependent choice tacitly accepted), entered over bish; the catalogue gives LPO and LLPO as problems whereas the paper reads them as sentences. Paper says monotone, catalogue increasing (same up to sign).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 441f89d5e614
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: diener2018-58118559
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: lpo
+    to: seqcompact
+    over: bish
+  loc: Proposition 1.2.1(4)
+  origin: stated
+  quote: (Bolzano-Weierstraßtheorem) Every sequence in a compact (totally bounded and complete) set
+  paperNotation: LPO, Bolzano-Weierstrass theorem
+  confidence: medium
+  concerns: Proved in the paper's informal Bishop-style constructive mathematics (BISH, with countable and dependent choice tacitly accepted), entered over bish; the catalogue gives LPO and LLPO as problems whereas the paper reads them as sentences. Compact means totally bounded and complete; the paper cites the equivalence to [37].
+  reasons:
+    - "extractor confidence: medium"
+  proposed: bc06d182145a
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: diener2018-37ed8b0b
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: lpo
+    to: ascoli
+    over: bish
+  loc: Proposition 1.2.1(6)
+  origin: cited
+  quote: 6. Ascoli’s Lemma.
+  paperNotation: LPO, Ascoli's Lemma
+  citedFrom: "[53] of the paper"
+  confidence: low
+  concerns: The paper does not state Ascoli's Lemma; the equivalence is credited to [53]. Check that the formulation matches the catalogue's. Proved in the paper's informal Bishop-style constructive mathematics (BISH, with countable and dependent choice tacitly accepted), entered over bish; the catalogue gives LPO and LLPO as problems whereas the paper reads them as sentences.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: low"
+    - "attributed by the paper to [53] of the paper: cite the original"
+  proposed: 9d2e39e1d0eb
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Cited by Diener from his reference [53]: enter it from the original source."
+- id: diener2018-22a79fc4
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: lpo
+    to: rt1inf
+    over: bish
+  loc: Section 1.2.1, remark after Proposition 1.2.4
+  origin: stated
+  quote: The last proposition iterated finitely many times also shows that LPO is equivalent to the infinite
+  paperNotation: IPP
+  argument: "The infinite pigeonhole principle (for every f : N -> {1,...,k} there is an infinite A and K with f constant K on A) is obtained by iterating Proposition 1.2.4 finitely many times."
+  confidence: medium
+  concerns: Only sketched ('iterated finitely many times'); infinite means an injection of N into the set. Proved in the paper's informal Bishop-style constructive mathematics (BISH, with countable and dependent choice tacitly accepted), entered over bish; the catalogue gives LPO and LLPO as problems whereas the paper reads them as sentences.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: "0383e1534678"
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: diener2018-2ddee665
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wlpo
+    to: wkl
+    over: bish
+  loc: Remark 1.4.6(1)
+  origin: stated
+  quote: Analysing the above proof we can see that WLPO implies WKL, only assuming
+  paperNotation: WLPO, WKL
+  confidence: medium
+  concerns: Stated as a remark after analysing the proof of Proposition 1.4.5; it only needs unique choice. WLPO is a sentence in the catalogue, WKL a problem.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: b6891e697b35
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: diener2018-438ccdff
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: llpo
+    to: ivt
+    over: bish
+  loc: Proposition 1.4.2(2)
+  origin: stated
+  quote: "(The intermediate value theorem) For every non-discontinuous function f : [0, 1] → R with f (0) ⩽"
+  paperNotation: LLPO, intermediate value theorem
+  confidence: medium
+  concerns: The paper's IVT is for non-discontinuous functions with f(0) <= 0 <= f(1); the catalogue's ivt has continuous f with f(0)f(1)<0. Proved equivalent to LLPO (the text also says 'LLPO is equivalent to the intermediate value theorem' in Section 2.3). Cited as well-known (see [39]).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 7dbe3ea599c5
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Diener's IVT is for non-discontinuous functions with f(0) ≤ 0 ≤ f(1), a stronger statement than the zoo's IVT (continuous, f(0)·f(1) < 0).
+- id: diener2018-69501708
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wlpo
+    to: llpo
+    over: bish
+  loc: Proof of Proposition 1.3.4
+  origin: stated
+  quote: since WLPO implies LLPO which in turn implies that f is uniformly con-
+  paperNotation: WLPO, LLPO
+  confidence: medium
+  concerns: Used as a known fact in the proof of Proposition 1.3.4, not stated as a result.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 6cf96c6c67b6
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: diener2018-c04ef636
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wkl
+    to: ucont
+    over: bish
+  loc: Section 1.4.2, proof of Heuristic 1.4.9
+  origin: stated
+  quote: Since WKL also implies UCT (see Proposition
+  paperNotation: WKL, UCT
+  confidence: medium
+  concerns: The proof is in Proposition 6.1.3, which lies in the other part of the paper; UCT is the uniform continuity theorem for point-wise continuous functions [0,1] -> R (Section 3.5). Proved in Proposition 6.1.3 (other part).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: e8b58ffb7570
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: diener2018-d51659d8
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: wlpo
+    to: discont-r
+    over: bish
+  loc: Lemma after Proposition 1.3.1½ (X = Y = R)
+  origin: special-case
+  quote: "1. If there exists a discontinuous function f : X → Y , where X is complete, then WLPO holds."
+  paperNotation: WLPO, existence of a discontinuous function
+  argument: "The Lemma gives WLPO from a discontinuous function on any complete X (R is complete) and, conversely, a discontinuous function f : X -> Y from WLPO when X has an accumulation point and Y two distinct points (R has both); take X = Y = R."
+  confidence: medium
+  concerns: "The paper's discontinuous is strong: there are x_n -> x and epsilon > 0 with rho(f(x_n), f(x)) > epsilon for all n; the catalogue's 'not everywhere sequentially continuous' may be read more weakly. Proposition 1.3.1½ states the equivalence for functions [0,1] -> R, 2^N -> {0,1} and N^N -> N."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 84ffe21dcff2
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Special case, entered as a direct consequence.
+- id: diener2018-da433cbe
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: ucont
+    to: cont-bounded
+    over: bish
+  loc: Proposition 3.5.2(1)
+  origin: stated
+  quote: "Every point-wise continuous function f : [0, 1] → R is bounded."
+  paperNotation: UCT, point-wise continuous functions [0,1] -> R are bounded
+  confidence: medium
+  concerns: Continuous means point-wise continuous in the constructive sense of the paper; credited to [32].
+  reasons:
+    - "extractor confidence: medium"
+  proposed: d3f6101578ac
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: diener2018-9a7977eb
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: ucont
+    to: riemann
+    over: bish
+  loc: Proposition 3.5.2(3)
+  origin: stated
+  quote: Every point-wise continuous mapping of [0, 1] into R is integrable.
+  paperNotation: UCT, point-wise continuous maps [0,1] -> R are integrable
+  confidence: medium
+  concerns: Paper states it on [0,1] with 'integrable' not defined in this part; the catalogue states it on [a,b]. Credited to [32].
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 92a392c66a3d
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: diener2018-9152caa5
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: ucont
+    to: weierstrass
+    over: bish
+  loc: Proposition 3.5.3
+  origin: stated
+  quote: "Proposition 3.5.3. UCT is equivalent the statement that every point-wise continuous f : [0, 1] → R can"
+  paperNotation: UCT, uniform approximation by polynomials
+  confidence: medium
+  concerns: Called folklore; the paper's statement is approximation within every epsilon, the catalogue's within 1 (equivalent by scaling).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 7b9f94645d4b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: diener2018-6034175f
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: wkl
+    to: llpo
+    over: bish
+  loc: Proposition 1.4.5
+  origin: stated
+  quote: Proposition 1.4.5. WKL and LLPO are equivalent.
+  paperNotation: WKL, LLPO
+  confidence: high
+  concerns: The proof uses dependent choice (and countable choice for LLPO implies WKL); the paper's WKL is for decidable infinite binary trees. Proved in the paper's informal Bishop-style constructive mathematics (BISH, with countable and dependent choice tacitly accepted), entered over bish; the catalogue gives LPO and LLPO as problems whereas the paper reads them as sentences.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: e2ad6ac6845a
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: diener2018-69786931
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LEM
+    name: Law of excluded middle
+    loc: Section 1.1
+    definition: phi or not phi for every statement phi (not the catalogue's lem, the long Erdős–Moser theorem).
+    facts: LEM is equivalent to double negation elimination and to the other statements of Propositions 1.1.1, 1.1.2, 1.1.5, 1.1.6 (Peirce's law, linearity, ...).
+  reasons:
+    - principle not in the catalogue
+  proposed: f3bdce0e00db
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-2e7d070b
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WLEM
+    name: Weak law of excluded middle
+    loc: Section 1.1
+    definition: not phi or not not phi for every statement phi.
+    facts: "Proposition 1.1.3: equivalent to sup of not-not-S existing for bounded inhabited S, and to the existence of a point outside two disjoint inhabited open subsets of an interval. Proposition 1.1.4: equivalent to De Morgan's law DM1."
+  reasons:
+    - principle not in the catalogue
+  proposed: 4b80d188f9e6
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-42586a63
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MP∨
+    name: Disjunctive Markov's principle (LLPE, WLLPO)
+    loc: Section 2.3
+    definition: Every almost positive real number is pseudo-positive.
+    facts: "Proposition 2.3.1: equivalent to eight statements (e.g. LLPO restricted to sequences with not all terms 0, x≠0 implies x<=0 or 0<=x, De Morgan for Pi01 formulas). Remark 2.3.2: LLPO implies MP∨. Proposition 2.3.3: equivalent to the intermediate value theorem for non-discontinuous functions with at most one root. Proposition 2.3.4: equivalent to WKL!!!."
+  reasons:
+    - principle not in the catalogue
+  proposed: 440ea32b7a79
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-c85ded15
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: IIIa
+    name: Principle IIIa
+    loc: Section 2.4
+    definition: "for all binary sequences alpha, beta: (alpha ≠ 0 iff beta = 0) implies alpha ≠ 0 or alpha = 0."
+    facts: Proposition 2.4.1 and 2.4.2 give equivalent formulations; MP∨ implies IIIa and it is independent of WMP (results of [61], Corollary 7.2.19 in the other part).
+  reasons:
+    - principle not in the catalogue
+  proposed: 5e247aa0da8e
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-c80b9054
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WKL!!!
+    name: Weak König's lemma for trees with at most one path
+    loc: Section 2.3
+    definition: An infinite decidable tree with at most one path in the weak sense, for which it is impossible that an infinite subtree has no infinite path, has an infinite path.
+    facts: "Proposition 2.3.4: equivalent to MP∨ (needs only unique choice). Remark 2.3.5: condition (2) cannot be weakened (in the presence of a Kleene tree)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 5ee0001d7eb6
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-e1c6c806
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: EB_k
+    name: Erdős–de Bruijn theorem for k colours (countable graphs)
+    loc: Section 1.4.6
+    definition: If every finite subgraph of a countable graph G is k-colourable, then G is k-colourable.
+    facts: "Proposition 1.4.20: EB_k is equivalent to WKL for every k >= 2."
+  reasons:
+    - principle not in the catalogue
+  proposed: 167c3c5cd155
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-e9f57f0e
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WKL'(k)
+    name: Weak König's lemma for trees of density above k
+    loc: Section 1.4.7
+    definition: If T is a binary decidable tree with more than k·2^n elements of length n for each n, then T has an infinite path.
+    facts: "Proposition 1.4.21: WKL'(k) implies LLPO for every k <= 1/2 (so with countable choice it is equivalent to WKL for k < 1/2). WKL implies WKL'(k); open for k > 1/2 (Question 3)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 1e296326dd90
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-f3a45df3
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Compactness of propositional logic
+    name: Compactness theorem for propositional logic
+    loc: Section 1.4.8
+    definition: If every finite subset of a set Gamma of propositional formulas is satisfiable, then so is Gamma.
+    facts: "Proposition 1.4.22: equivalent to WKL."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9c44e44925bd
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-b5ab550f
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FAN∆
+    name: Fan theorem for decidable bars
+    loc: Chapter 3 introduction, Section 3.3
+    definition: Every decidable bar B ⊂ 2^* is uniform.
+    facts: "Proposition 3.3.3: equivalent to POS (uniformly continuous positive functions on [0,1] have a positive infimum), to Dini's theorem for uniformly continuous functions, to the Heine-Borel theorem for compact metric spaces and countable coverings by open balls and others. Proposition 3.3.4 (fixed-point sequence converges to 0), 3.3.5, 3.3.7, Corollary 3.3.11. FANfull ⇒ FANΠ01 ⇒ FANc ⇒ FAN∆; UCT implies it."
+  reasons:
+    - principle not in the catalogue
+  proposed: a7fdd9497b01
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-1d5273a3
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FANc
+    name: Fan theorem for c-bars
+    loc: Chapter 3 introduction, Section 3.4
+    definition: Every c-bar is uniform.
+    facts: "Proposition 3.4.1: equivalent to the anti-Specker principle and to uniform continuity of point-wise continuous functions 2^N -> N; Propositions 3.4.2, 3.4.3 (Dini's theorem for point-wise continuous functions). Proposition 3.0.1: reduces to Pi01-bars."
+  reasons:
+    - principle not in the catalogue
+  proposed: f69bf5ef00b3
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-630bf1dc
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FANΠ01
+    name: Fan theorem for Pi01-bars
+    loc: Chapter 3 introduction, Section 3.6
+    definition: Every Pi01-bar is uniform.
+    facts: "Propositions 3.6.2, 3.6.3, 3.6.5, 3.6.6: equivalences with equi-continuous/equi-positive sequences of functions, locally constant functions being uniformly locally constant, equi-continuous sequences [0,1] -> R being uniformly equi-continuous."
+  reasons:
+    - principle not in the catalogue
+  proposed: 1e752ad6033e
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-a18ebe24
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FANstable
+    name: Fan theorem for stable bars
+    loc: Section 3.6
+    definition: Every stable bar (complement of a countable set) is uniform.
+    facts: "FANfull ⇒ FANstable ⇒ FANΠ01; the converses are open. Proposition 3.6.1: a stable bar closed under extensions is a Pi01-bar."
+  reasons:
+    - principle not in the catalogue
+  proposed: 0dd9471287ec
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-ffdb649c
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FANfull
+    name: Full fan theorem
+    loc: Chapter 3 introduction, Section 3.7
+    definition: Every bar is uniform.
+    facts: "Proposition 3.7.1: equivalent to every compact metric space being cover compact and to 2^N being cover compact."
+  reasons:
+    - principle not in the catalogue
+  proposed: 6b1900ae5278
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-4e0da976
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WWKL (constructive form)
+    name: Weak weak König's lemma (contrapositive form for decidable bars)
+    loc: Section 3.2
+    definition: If B ⊂ 2^* is a decidable bar closed under extensions, then the proportion of u of length n not in B tends to 0. The catalogue's wwkl is the classical form (trees of positive measure); the paper's form is a weakening of FAN∆.
+    facts: "Proposition 3.2.1: equivalent to a measure statement about positive uniformly continuous functions and to Vitali's covering theorem. Proposition 3.2.2: WWKL(k) is equivalent to WWKL for every k > 0."
+  reasons:
+    - principle not in the catalogue
+  proposed: 148ed615cea5
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-8fd25b03
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: AS (anti-Specker property)
+    name: Anti-Specker property AS_X^Y
+    loc: Chapter 3 introduction
+    definition: Any sequence in Y that is eventually bounded away from every point of X is eventually bounded away from the whole of X.
+    facts: Equivalent to FANc for X = [0,1] (Proposition 3.4.1) and to FANΠ01 for AS^2_[0,1] (Proposition 3.6.6).
+  reasons:
+    - principle not in the catalogue
+  proposed: 62c4ff1b0475
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-d6a21250
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Sharkovskii's theorem
+    name: Sharkovskii's theorem (ST)
+    loc: Section 1.4.5
+    definition: If f has a k-periodic point and k ◁ l, then f has points of prime period l.
+    facts: "Corollary 1.4.19: equivalent to LLPO; Proposition 1.4.17 (interval covering [a,b] by the image of a subinterval) is equivalent to LLPO."
+  reasons:
+    - principle not in the catalogue
+  proposed: b61533413dba
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-74a0e414
+  ref: diener2018
+  part: 1/2 (chapters 0, 1, 2, 3, pages 1–74)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Greedy algorithm / minimum of finitely many reals
+    name: Existence of a minimal element among finitely many reals; the greedy algorithm for matroids
+    loc: Section 1.4.4
+    definition: "Proposition 1.4.15: for finitely many reals there is a smallest one; for a matroid with real weights there is a maximal independent set of minimal weight."
+    facts: "Proposition 1.4.15: both are equivalent to LLPO."
+  reasons:
+    - principle not in the catalogue
+  proposed: d7da8982a24e
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-bfe668e1
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: llpo
+    to: lpo
+    over: bish
+  loc: Section 7.2.4, text after Proposition 7.2.11 (Lubarsky–Hendtlass model X_U)
+  origin: cited
+  quote: ical model satisfying LLPO, but not LPO, which means that that model also does not satisfy WMP.
+  paperNotation: LLPO, LPO
+  argument: The topological model over the space X_U (N plus a point omega, with an ultrafilter neighbourhood base) validates LLPO but not LPO; topological models are models of BISH (IZF), so LLPO does not imply LPO constructively.
+  citedFrom: Hendtlass and Lubarsky [67]
+  confidence: medium
+  concerns: "Text fragment is cut by hyphenation (topolog-ical). The paper cites [67] (Hendtlass-Lubarsky) for the model; the statement is about the sequential/real versions, see Section 7.2.4 (LPO_sigma vs LPO_R): which version of LPO fails in X_U is not made explicit here."
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Hendtlass and Lubarsky [67]: cite the original"
+  proposed: ce3155a3f225
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Attributed by Diener to Hendtlass and Lubarsky (model X_U): enter it from that paper once it is in the references."
+- id: diener2018-c102b703
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wlpo
+    to: lpo
+    over: bish
+  loc: Proposition 7.2.12(2), Corollary 7.2.14 and the model X_U (Section 7.2.4)
+  origin: deduced
+  quote: Proof. Since WLEM =⇒ WLPO.
+  paperNotation: WLPO, LPO
+  argument: Proposition 7.2.12(2) states that X_U validates WLEM; WLEM implies WLPO (proof of Corollary 7.2.14), so X_U validates WLPO. The paper says the model X_U (Hendtlass-Lubarsky) does not satisfy LPO (and the Section 7.2.6 table lists WLPO true and LPO false for X_U). Topological models model BISH, hence WLPO does not imply LPO over BISH.
+  confidence: medium
+  concerns: The failure of LPO in X_U is read from the sentence on the model satisfying LLPO but not LPO and from the overview table, whose check marks are not reliable in the extracted text. Real vs sequential versions of the principles are distinguished in the paper.
+  reasons:
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: ad7bb6a12fa9
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Deduced from a model of Section 7.2.4, not stated: enter it from the source of the model."
+- id: diener2018-99545ee4
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BD
+    name: Ishihara's boundedness principle
+    loc: Section 4.1½
+    definition: Every inhabited pseudobounded subset of N is bounded (BD-N without countability).
+    facts: Equivalent to sequential continuity at a point implying point-wise continuity there (Prop. 4.1.7); WCN implies BD (Prop. 4.1.8); fails in Lubarsky's topological model.
+  reasons:
+    - principle not in the catalogue
+  proposed: 83b11d20e3b9
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-29c873b9
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WCN
+    name: Weak continuity for numbers
+    loc: Section 4.1½
+    definition: If for all alpha in 2^N there is i with A(alpha,i), then for all alpha there are i, j such that for all beta, A(alpha|i * beta, j).
+    facts: WCN implies BD (Prop. 4.1.8) and BD-N.
+  reasons:
+    - principle not in the catalogue
+  proposed: 8849f73fcd3d
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-a3dda44f
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: wBD-N
+    name: Weak BD-N
+    loc: Section 4.2
+    definition: Every sequentially continuous mapping 2^N -> N is point-wise continuous.
+    facts: Equivalent to every sequentially continuous 2^N -> N being locally bounded (Prop. 4.2.2); implies uniform sequentially continuous 2^N -> N maps are uniformly continuous (Prop. 4.2.4); implied by BD-N; relation to the consequences of BD-N unknown (Question 8).
+  reasons:
+    - principle not in the catalogue
+  proposed: 3fe806f27bad
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-1f8fc600
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Anti-FAN, KT, SS, SC, Anti-WWKL(k), KTs(k), iSS
+    name: Recursive counterexamples (Kleene tree, Specker sequence, singular cover, increasing Specker sequence)
+    loc: Sections 5.1-5.4, 8.4
+    definition: "KT: there is a decidable infinite binary tree with no infinite path (Kleene tree). SS: there is a sequence in [0,1] bounded away from every point of [0,1] (Specker sequence). SC: there is an alpha-singular cover of [0,1]. Anti-WWKL(k)/KTs(k): a decidable tree with no infinite path and at least k 2^n nodes at each level n. iSS: SS with an increasing sequence. (KT here is the Kleene tree principle, not Kruskal's theorem.)"
+    facts: Anti-WWKL(k) is independent of k (Cor. 5.2.2); KTs(k) equivalent to existence of singular covers (Prop. 5.2.4); KT implies iSS implies SS (Prop. 5.4.2); SC => KT => SS => not WLPO => not LPO; SS plus a monotone-subsequence property implies LPO (Prop. 8.4.2). Various equivalents of KT and SS (Props. 5.3.1, 5.3.2, 5.3.3, 5.4.3, 5.4.4).
+  reasons:
+    - principle not in the catalogue
+  proposed: 274db35c939e
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-99595121
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: KS, PFP, WPFP, co-PFP, co-WPFP
+    name: Kripke's schema and the principle of finite possibility
+    loc: Section 6.2
+    definition: "KS: every statement phi is equivalent to exists n a_n = 1 for some binary sequence. PFP: for every binary a there is binary b with (for all n a_n = 0) iff (exists n b_n = 1). WPFP: same with 'not for all n b_n = 0'."
+    facts: KS => PFP => WPFP. WPFP + MP <=> LPO (Prop. 6.2.1); WPFP + MP_or <=> WLPO (Prop. 6.2.3); WPFP + LLPO <=> WLPO is called almost obvious; WPFP implies that WLPO and LLPO are equivalent (Prop. 6.4.3); co-PFP <=> LPO and co-WPFP <=> WPFP (Prop. 6.2.5); KS <=> every inhabited subset of N is countable (Prop. 6.2.2).
+  reasons:
+    - principle not in the catalogue
+  proposed: eb8dd39c7c52
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-37ce18bd
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MP, WMP, MP_or, WLEM, LEM (constructive)
+    name: Markov's principle and variants (used, defined in Part 1)
+    loc: Sections 6.4, 7.2, 8.6
+    definition: Defined in the first part of the thesis; used here.
+    facts: WMP implies that LPO and WLPO are equivalent (Prop. 6.4.1); WMP holds in topological models over first countable spaces (Prop. 7.2.11); X_U fails MP_R and WMP_R (Prop. 7.2.12, Cor. 7.2.13); MP <=> MP_or and WMP.
+  reasons:
+    - principle not in the catalogue
+  proposed: 265a76ea5855
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-739c9ac4
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FAN_Delta, FAN_c, FAN_Pi01, FAN_stable, FAN_full, UCT
+    name: Versions of the fan theorem and uniform continuity theorem (defined in Part 1)
+    loc: Sections 6.1, 6.3, 7.2
+    definition: "Fan theorem for decidable, c-, Pi01-, stable and arbitrary bars; UCT: point-wise continuous 2^N -> R are bounded (defined in the first part)."
+    facts: "LLPO/WKL implies UCT (Prop. 6.1.3); WLPO implies FAN_stable; BD-N: FAN_c => FAN_Pi01 (Prop. 6.3.1); UCT <=> FAN_c + MC (Prop. 6.3.3); under CC or KS FAN_Delta => FAN_full (Props. 6.3.4, 6.3.5); under PFP FAN_Delta => FAN_stable (Prop. 6.3.6); FAN_full holds in every topological model (Prop. 7.2.16); OI_{2^N} implies FAN_full (Prop. 8.2.1); iAS => FAN_Delta (Prop. 8.4.1)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 5b2f01af9dc6
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-27a64c93
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MC
+    name: Majorised choice
+    loc: Section 6.3
+    definition: "Every point-wise continuous f : 2^N -> R has a point-wise continuous f~ : 2^N -> N with f <= f~."
+    facts: UCT <=> FAN_c + MC (Prop. 6.3.3); whether MC fails in some topological model is open (Question 11).
+  reasons:
+    - principle not in the catalogue
+  proposed: db4bf28e3947
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-aa27092a
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CC, CC(1), CC(2)
+    name: Continuous choice
+    loc: Section 6.3
+    definition: "CC(1): every function N^N -> N is point-wise continuous; CC(2): if for each alpha there is n with (alpha, n) in P, there is a function f with (alpha, f(alpha)) in P."
+    facts: CC implies FAN_Delta => FAN_full (Prop. 6.3.4); CC(1) implies BD-N (Prop. 6.4.4).
+  reasons:
+    - principle not in the catalogue
+  proposed: 353088bc1a36
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-2ab9f77d
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LLPO_n, LLPO'_n
+    name: Richman's n-ary weakening of LLPO
+    loc: Section 8.1
+    definition: "LLPO_n: if (P_i) is a partition of N into n pieces and a is a binary sequence with at most one 1, there is m with a_i = 0 for all i in P_m. LLPO'_n: for a with at most one 1 there is 0 <= m < n with a_{ni+m} = 0 for all i."
+    facts: LLPO_2 is LLPO; LLPO'_n implies LLPO_n (Prop. 8.1.1); LLPO_n <=> if x_1..x_n are reals with x_i x_j = 0 for i != j then some x_m = 0 (Prop. 8.1.2); LLPO_3 <=> if xyz = 0 then xy = 0 or yz = 0 or xz = 0 (Prop. 8.1.4); LLPO_n fails in the topological model over a metric space with an accumulation point (Prop. 8.1.5, Cor. 8.1.6). Not to be confused with ACC_3, which the catalogue also names LLPO_3.
+  reasons:
+    - principle not in the catalogue
+  proposed: da6993f60a85
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-b6164aaa
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: OI_X
+    name: Open induction
+    loc: Section 8.2
+    definition: If X is a strictly ordered set with order topology and minimum, every open progressive subset A of X equals X.
+    facts: OI_{2^N} implies FAN_full (Prop. 8.2.1); OI_X holds in BISH for decidable subsets of N and for N_infinity (Prop. 8.2.2); OI_{2^N}, OI_{[0,1]}, OI_{R+} are equivalent (Prop. 8.2.3).
+  reasons:
+    - principle not in the catalogue
+  proposed: 218ee79ddb34
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-2939a534
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: AS^L_X, POS^pw_X, iAS
+    name: Limited anti-Specker property, point-wise positivity-of-infimum, increasing anti-Specker
+    loc: Sections 8.3, 8.4
+    definition: "AS^L_X: anti-Specker for one-point extensions X u {omega}: a sequence eventually bounded away from each point of X has some x_n = omega. POS^pw_X: for point-wise continuous positive f on a metric space with inf f existing, inf f > 0. iAS: increasing sequences eventually bounded away from every point of [0,1] are eventually bounded away from the entire interval."
+    facts: AS^L_[0,1] <=> AS^L_{2^N} (Prop. 8.3.1); AS^L_[0,1] <=> POS^pw_[0,1] <=> point-wise continuous f with located image bounded (Cor. 8.3.3); FAN_c => AS^L_[0,1] => iAS => FAN_Delta (Section 8.4, Prop. 8.4.1); strictness open (Question 13).
+  reasons:
+    - principle not in the catalogue
+  proposed: 6bf34d56333a
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: diener2018-8295d0aa
+  ref: diener2018
+  part: 2/2 (chapters 4, 5, 6, 7, 8, pages 75–138)
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: DGP
+    name: Dirk Gently's principle (linearity)
+    loc: Section 8.5
+    definition: "For all statements phi, psi: (phi => psi) or (psi => phi)."
+    facts: "LEM => DGP => WLEM, both strict (Props. 8.5.1, 8.5.3); equivalent to schemata (8.3)-(8.5) (Prop. 8.5.2). Restricted versions (Prop. 8.6.1): Sigma01-DGP <=> LLPO, Pi01-DGP <=> LLPO, Sigma01-Pi01-DGP <=> WLPO. Also in Prop. 8.6.1: Sigma01-LEM is LPO, Pi01-LEM and Sigma01-WLEM, Pi01-WLEM are WLPO, Sigma01-stability is MP, Sigma01-DM1 is LLPO."
+  reasons:
+    - principle not in the catalogue
+  proposed: 8e8e00728f72
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2025-267e6496
+  ref: veldman2025
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wkl
+    to: llpo
+    over: bish
+  loc: Theorem 2.10
+  origin: stated
+  quote: BIM ⊢ WKL → LLPO.
+  paperNotation: WKL, LLPO
+  confidence: high
+  concerns: Proved in BIM (Veldman's constructive base, read as bish); the paper attributes the result to Ishihara [10]. Paper's WKL and LLPO are the sentence forms 2.2.12 and 2.2.14.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: 129f4c61ab1f
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: veldman2025-24345aad
+  ref: veldman2025
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: lpo
+    to: llpo
+    over: bish
+  loc: Theorem 2.11
+  origin: stated
+  quote: BIM ⊢ LPO → LLPO.
+  paperNotation: LPO, LLPO
+  confidence: high
+  concerns: Paper notes it is well known (Bishop, [21, Section 2.6], [1, Theorem 3.1]). Proved in BIM.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: ec0232fb08bd
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: veldman2025-f1a8ce58
+  ref: veldman2025
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: wkl
+    to: sep
+    over: bish
+  loc: Theorem 3.1
+  origin: stated
+  quote: BIM ⊢ WKL ↔ Σ01 -Sep.
+  paperNotation: Σ01-Sep
+  confidence: medium
+  concerns: "Paper's Σ01-Sep: for alpha with no n having both (n,0),(n,1) in E_alpha, there is gamma in 2^omega with (n,gamma(n)) not in E_alpha; this is separation of the two Sigma01 sets {n:(n,0) in E} and {n:(n,1) in E} (disjoint), matching the catalogue's sep up to coding."
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: 479a36005890
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: veldman2025-0632dc05
+  ref: veldman2025
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: ivt
+    to: llpo
+    over: bish
+  loc: Theorem 10.1
+  origin: stated
+  quote: BIM ⊢ IVT → LLPO.
+  paperNotation: IVT
+  argument: The proof builds phi with phi(0) = -1 and phi(1) = 1, so it only uses the instances f(0)f(1) < 0.
+  confidence: medium
+  concerns: The paper's IVT assumes phi(g0) <= 0 <= phi(g1) for some points g0, g1 of [0,1] (a stronger statement than the catalogue's ivt, which has f(0)f(1)<0), but the proof only uses the special case of the catalogue; the paper cites Bishop-Bridges [3, Ch. 3, Thm 2.4] and Toftdal [28].
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: 23d37ed8a687
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Veldman's IVT assumes f(0) ≤ 0 ≤ f(1) (Section 10.1), stronger than the zoo's IVT: IVT_Veldman → LLPO does not give the zoo's IVT → LLPO."
+- id: veldman2025-96c4e06f
+  ref: veldman2025
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: KA (¬!FT)
+    name: Kleene's Alternative, strong negation of the Fan Theorem
+    loc: Subsection 2.2.8
+    definition: There is alpha such that Bar_{2^omega}(D_alpha) and for no m is D_alpha^m a bar of Cantor space.
+    facts: BIM + CT proves KA (Thm 2.5, Kleene); KA is equivalent to strong negations of the contrapositions of countable choice, determinacy, UIVT and compactness (Thms 5.4, 5.6, 7.2, 9.10, 10.8, 11.3); BIM + KA + LLPO + Π01-AC_{ω,2} is inconsistent (Section 4.8.2).
+  reasons:
+    - principle not in the catalogue
+  proposed: e2afcfedf816
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2025-9e147efa
+  ref: veldman2025
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WKL!
+    name: Weak König's Lemma with a uniqueness condition
+    loc: Subsection 2.2.13
+    definition: WKL for trees given by alpha with no bar of Cantor space and such that distinct paths are separated at some finite stage, giving a path.
+    facts: WKL! ↔ FT in BIM (Theorems 2.7 and 2.8, result of Berger and Ishihara).
+  reasons:
+    - principle not in the catalogue
+  proposed: 22d5a7093f54
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2025-8f679140
+  ref: veldman2025
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Π01-AC_{ω,2}
+    name: Π01-Axiom of Countable Binary Choice
+    loc: Subsection 4.7
+    definition: For every alpha, if for all n there is m<2 with (n,m) not in E_alpha then there is gamma in 2^omega with (n,gamma(n)) not in E_alpha for all n.
+    facts: BIM ⊢ (Π01-AC_{ω,2} ∧ LLPO) ↔ WKL (Thm 4.3); not provable in BIM (Subsection 4.8); BIM + Π01-AC_{ω,2} ⊢ LLPO → IVT, so IVT ↔ LLPO ↔ WKL there (Thm 10.2, Cor 10.3); implied by WKL (Thm 4.3(ii)); Π01-AC_{ω,2ω} → Π01-AC_{ω,2} (Thm 6.4), Π01-AC_{ω,ωω} → Π01-AC_{ω,ω} (Thm 6.2).
+  reasons:
+    - principle not in the catalogue
+  proposed: f98834e1f468
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2025-781a1451
+  ref: veldman2025
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BCP
+    name: Brouwer's Continuity Principle
+    loc: Subsection 2.2.9
+    definition: For every alpha, if for all alpha there is n with alpha R n then each alpha has an initial segment forcing n.
+    facts: BIM ⊢ BCP → ¬LLPO (Thm 2.9).
+  reasons:
+    - principle not in the catalogue
+  proposed: 302c64a78cca
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2025-698d5a1a
+  ref: veldman2025
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MP
+    name: Markov's principle
+    loc: Subsection 2.2.16
+    definition: For all alpha, ¬¬∃n[alpha(n) ≠ 0] → ∃n[alpha(n) ≠ 0].
+    facts: "Only used in Subsection 12.1 (Lemma 12.2: BIM + MP proves not-infinite, not-not-finite and almost-finite coincide for decidable sets)."
+  reasons:
+    - principle not in the catalogue
+  proposed: d175a60b73a1
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2025-b3dfe79f
+  ref: veldman2025
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UIVT
+    name: Uniform Intermediate Value Theorem
+    loc: Subsection 10.4
+    definition: For every sequence of functions phi_n in R^[0,1], if each has a point with phi_n(gamma0) <= 0 <= phi_n(gamma1) then there is a sequence of zeros gamma_n.
+    facts: BIM ⊢ Uzero ↔ UIVT ↔ FT (Thm 10.8) and for the contrapositive form; recalls that RCA0 proves UIVT equivalent to WKL (Simpson [27, Exercise IV.2.12]).
+  reasons:
+    - principle not in the catalogue
+  proposed: 6cdf45c6234a
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2025-7aa6c2d2
+  ref: veldman2025
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Real / compactness for propositional logic
+    name: Realizable sets of propositional formulas (compactness theorem, contrapositive form)
+    loc: Section 11
+    definition: "Real(E_alpha): enumerable set of propositional formulas realized by some truth assignment; the compactness theorem says finite realizability implies realizability."
+    facts: BIM ⊢ WKL ↔ ∀α[∀n Real(E_α^n) → Real(E_α)] (Thm 11.3(iii)); FT ↔ ∀α[Unreal(E_α) → ∃n Unreal(E_α^n)] (Thm 11.3(i)).
+  reasons:
+    - principle not in the catalogue
+  proposed: 71a07819ea82
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2025-bcca5146
+  ref: veldman2025
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Det statements (Σ01-Det^I, Intuitionistic Determinacy Theorem)
+    name: Determinacy of games in the constructive (weak I-determinate) sense
+    loc: Sections 9.2-9.5
+    definition: X is I-determinate if every strategy of II being refuted by a play in X yields a strategy of I winning all plays in X; for games in 2 x omega, omega x 2, (omega x 2)^m, (omega x 2)^omega, 2^omega.
+    facts: BIM ⊢ ∀α Det^I_{2×ω}(D_α) ↔ LLPO (Thm 9.4); Det^II_{ω×ω}(E_α) and Det^I_{ω×2}(D_α) provable in BIM (Thms 9.5, 9.6); finite games are determinate (Thm 9.3); FT ↔ Intuitionistic Determinacy Theorem (Thm 9.10).
+  reasons:
+    - principle not in the catalogue
+  proposed: 8b3e989fca00
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2025-dea96377
+  ref: veldman2025
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Logical forms of LLPO and LPO
+    name: Model-theoretic reformulations of LLPO, LPO
+    loc: Theorems 8.8, 8.9
+    definition: LLPO ↔ (ω, D_α0, D_α1) ⊨ ∀x∀y[P(x) ∨ Q(y)] → (∀xP ∨ ∀yQ) for all α (Thm 8.8); LPO ↔ (ω, ...) ⊨ ∀x[P(x) ∨ Q(x)] → (∀x P(x) ∨ ∃x Q(x)) (Thm 8.9(ii)) and with a proposition A (Thm 8.9(iii)).
+    facts: Equivalences in BIM of LLPO and LPO with these model-theoretic statements; also LLPO ↔ ∀α LLPO^α (Lemma 8.1(i)) and LPO → ∀α LPO^α (Lemma 8.6(i)).
+  reasons:
+    - principle not in the catalogue
+  proposed: 62cdeef4eb0b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2011-24345aad
+  ref: veldman2011
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: lpo
+    to: llpo
+    over: bish
+  loc: Theorem 2.10
+  origin: stated
+  quote: Theorem 2.10. BIM ⊢ LPO → LLPO.
+  paperNotation: LPO, LLPO
+  confidence: medium
+  concerns: "The paper works in BIM (Basic Intuitionistic Mathematics: intuitionistic logic, full induction, function variables, no countable choice); entered over bish as a constructive frame. Statements are formulated with sequences (spreads), as in the catalogue's problem/sentence forms. Paper notes this is well known (Bishop; [20], [1])."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 2b0b82d3a291
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: veldman2011-f1a8ce58
+  ref: veldman2011
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: wkl
+    to: sep
+    over: bish
+  loc: Theorem 3.1
+  origin: stated
+  quote: Theorem 3.1. BIM ⊢ WKL ↔ Σ01 -Sep.
+  paperNotation: WKL, Σ01-Sep
+  confidence: medium
+  concerns: "The paper works in BIM (Basic Intuitionistic Mathematics: intuitionistic logic, full induction, function variables, no countable choice); entered over bish as a constructive frame. Statements are formulated with sequences (spreads), as in the catalogue's problem/sentence forms. The paper's Σ01-Sep: for α with no n such that both (n,0) and (n,1) lie in the enumerated set E_α, there is γ with (n,γ(n)) ∉ E_α for all n, i.e. separation of two disjoint Σ01 sets; matches the catalogue's Σ⁰₁-SEP up to coding."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 33c13cdd23b7
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: veldman2011-0632dc05
+  ref: veldman2011
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: ivt
+    to: llpo
+    over: bish
+  loc: Theorem 10.1
+  origin: deduced
+  quote: Theorem 10.1. BIM ⊢ IVT → LLPO.
+  paperNotation: IVT
+  argument: The paper's IVT (10.1) assumes ϕ(γ0) ≤ 0 ≤ ϕ(γ1) for some γ0,γ1 in [0,1] and concludes a zero. The proof builds, from β, a continuous piecewise-linear ϕ with ϕ(0) = -1 and ϕ(1) = 1 (so f(0)·f(1) < 0) and uses IVT to get a zero, hence LLPO. So the argument applies to the catalogue's IVT, whose instances have f(0)·f(1) < 0; the stated theorem is for the paper's slightly more general IVT.
+  confidence: low
+  concerns: "Paper's IVT is formulated for ϕ in R^[0,1] (continuous real functions coded in BIM) with non-strict endpoint hypothesis; the catalogue's IVT requires f(0)·f(1)<0. The implication for the catalogue's version follows from the proof (ϕ(0)=-1, ϕ(1)=1), not from the statement as printed. The paper works in BIM (Basic Intuitionistic Mathematics: intuitionistic logic, full induction, function variables, no countable choice); entered over bish as a constructive frame. Statements are formulated with sequences (spreads), as in the catalogue's problem/sentence forms."
+  reasons:
+    - "extractor confidence: low"
+    - deduction, not stated in the paper
+  proposed: d1422f5a4c47
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Veldman's IVT assumes f(0) ≤ 0 ≤ f(1) (Section 10.1), stronger than the zoo's IVT: IVT_Veldman → LLPO does not give the zoo's IVT → LLPO."
+- id: veldman2011-4a81b10b
+  ref: veldman2011
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: KA, ¬!FT
+    name: Kleene's Alternative to the Fan Theorem
+    loc: Subsection 2.2.8
+    definition: "∃α[Bar_C(D_α) ∧ ∀m[¬Bar_C(D_{α m})]]: there is a decidable bar of Cantor space with no finite sub-bar (strong negation of FT)."
+    facts: "Theorem 2.4 (Kleene): BIM + CT ⊢ KA. Equivalent to strong negations of the reverse choice, determinacy, UIVT and compactness statements (Theorems 5.4, 7.2, 9.9(ii), 10.8, 11.3(ii)); contradicts WKL."
+  reasons:
+    - principle not in the catalogue
+  proposed: 91eb9840860b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2011-698d5a1a
+  ref: veldman2011
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MP
+    name: Markov's principle
+    loc: Subsection 2.2.16
+    definition: ∀α[¬¬∃n[α(n)≠0] → ∃n[α(n)≠0]].
+    facts: Used only in Lemma 12.2 (equivalence of notions of finiteness).
+  reasons:
+    - principle not in the catalogue
+  proposed: b141da2f2ce5
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2011-8f679140
+  ref: veldman2011
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Π01-AC_{ω,2}
+    name: Π01-axiom of countable binary choice
+    loc: Subsection 4.7
+    definition: ∀α[∀n∃m<2[(n,m)∉E_α] → ∃γ∈C∀n[(n,γ(n))∉E_α]].
+    facts: "Theorem 4.3: BIM ⊢ (Π01-AC_{ω,2} ∧ LLPO) ↔ WKL. Not provable in BIM (Subsection 4.8). Corollary 10.3: BIM + Π01-AC_{ω,2} ⊢ IVT ↔ LLPO ↔ WKL (Theorem 10.2: BIM + Π01-AC_{ω,2} ⊢ LLPO → IVT)."
+  reasons:
+    - principle not in the catalogue
+  proposed: ea0eee762a68
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2011-9e147efa
+  ref: veldman2011
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WKL!
+    name: Weak König's Lemma with uniqueness
+    loc: Subsection 2.2.13
+    definition: For binary trees with no blocked level and in which any two distinct paths are eventually separated by a blocked node, there is a path.
+    facts: "Theorems 2.6, 2.7: BIM ⊢ FT ↔ WKL! (Berger and Ishihara)."
+  reasons:
+    - principle not in the catalogue
+  proposed: ff0742133c38
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2011-b3dfe79f
+  ref: veldman2011
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UIVT
+    name: Uniform Intermediate Value Theorem
+    loc: Subsection 10.4
+    definition: For every sequence ϕ^n of continuous functions [0,1]→R, if each has a point γ with ϕ^n(γ0) ≤ 0 ≤ ϕ^n(γ1), then there is a sequence γ^n of zeros.
+    facts: Equivalent to Π01-AC_{ω,[0,1]} (Theorem 10.6); its contraposition is equivalent to FT (Theorem 10.8).
+  reasons:
+    - principle not in the catalogue
+  proposed: 4a79b1f77a1a
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2011-781a1451
+  ref: veldman2011
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BCP
+    name: Brouwer's Continuity Principle
+    loc: Subsection 2.2.9
+    definition: ∀α∃n[αRn] → ∀α∃m∃n∀β[α m ⊏ β → βRn].
+    facts: "Theorem 2.8: BIM ⊢ BCP → ¬LLPO."
+  reasons:
+    - principle not in the catalogue
+  proposed: 16783b165d48
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: sanders2019b-e6fff890
+  ref: sanders2019b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: A_0, A_1, A_2
+    name: Fragments of NFP used as base axioms
+    loc: Definition 5.3
+    definition: "For any C_i-formula A (C_0: exists f in 2^N Y(f,n)=0; C_1: for all f in 2^N; C_2: disjunction), (for all f)(exists n)A(f n) -> (exists Phi^2)(for all f)A(f Phi(f))."
+    facts: "Theorem 5.17: RCA^ω_0+IND+A_0 proves Delta-comprehension; Corollary 5.10: RCA^ω_0+IND proves [WKL+BOOT_w] <-> [HBU+A_2]; Theorem 5.18: RCA^ω_0+A_0 proves HBU <-> CIT."
+  reasons:
+    - principle not in the catalogue
+  proposed: a5825a5d9bc5
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: sanders2019b-c66c246a
+  ref: sanders2019b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CIT
+    name: Cantor intersection theorem for closed sets (Definition 4.2)
+    loc: Definition 4.26
+    definition: For a decreasing sequence of nonempty closed sets C_n subset [0,1] (closed in the uncountable-union sense) the intersection is nonempty.
+    facts: "Theorem 4.27: RCA^ω_0+QF-AC^{1,1} proves HBU <-> CIT; Theorem 5.18: RCA^ω_0+A_0 proves HBU <-> CIT."
+  reasons:
+    - principle not in the catalogue
+  proposed: 1dfd0d780740
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: sanders2019b-e4501d9d
+  ref: sanders2019b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CBT, CBT', CBT''
+    name: Cantor-Bendixson theorem for closed sets in the sense of Definition 4.2
+    loc: Principles 4.9, 4.10, 4.12
+    definition: Every closed C subset of [0,1] is P union S with P perfect closed and S countable (a sequence of reals / an injection into N / with characteristic function).
+    facts: "Theorem 4.11: over RCA^ω_0+QF-AC^{0,1}, [ACA0+CBT] <-> [ACA0+CBT'] <-> [Pi^1_1-CA0+BOOT]; Corollary 4.13: [ACA0+CBT''] <-> [(exists^2)+BOOT]."
+  reasons:
+    - principle not in the catalogue
+  proposed: 2c91835a69fe
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: sanders2019b-92d5a95b
+  ref: sanders2019b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PST (uncountable-union closed sets)
+    name: Perfect set theorem for closed sets as in Definition 4.2
+    loc: Principle 4.16
+    definition: Every closed uncountable C subset of [0,1] has a perfect closed subset.
+    facts: "Theorem 4.17: over RCA^ω_0+QF-AC^{0,1}, [ACA0+PST] <-> [ATR0+BOOT]. (catalogue perfect-set is the second-order statement; this is a different formalisation.)"
+  reasons:
+    - principle not in the catalogue
+  proposed: f392e8e27475
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: sanders2019b-d9ea1c37
+  ref: sanders2019b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CLO, OLC
+    name: Separably closed sets are closed; closed sets are separably closed
+    loc: Principle 4.6, Principle 4.14
+    definition: "CLO: a separably closed set in R (given by a net indexed by a subset of N^N) is closed; OLC: a closed set in R is separably closed."
+    facts: "Theorem 4.7: RCA^ω_0+QF-AC^{0,1} proves CLO <-> BOOT; Corollary 4.15: OLC <-> [BOOT+Pi^1_1-CA0] over RCA^ω_0+QF-AC^{0,1}. Second-order versions: CLO <-> ACA0, OLC <-> Pi^1_1-CA0 (cited from Brown [13])."
+  reasons:
+    - principle not in the catalogue
+  proposed: 018c08eeb985
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: sanders2019b-7d4bcf39
+  ref: sanders2019b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: open^+
+    name: Coding principle for open sets
+    loc: Definition 4.3
+    definition: For every open set Z subset R (uncountable union of open intervals) there is X subset N with n in X <-> B(q_n,r_n) subset Z.
+    facts: "Theorem 4.4: open^+ + ACA0 is equivalent to BOOT, to located closed sets, to sup of closed sets, MCT^[0,1]_net, etc. over RCA^ω_0+QF-AC^{0,1}; Z^Ω_2 proves open^+ [64]."
+  reasons:
+    - principle not in the catalogue
+  proposed: 3a45affc48ec
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: sanders2019b-5e8a7fa3
+  ref: sanders2019b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LIND(N^N)
+    name: Lindelof lemma for Baire space
+    loc: Definition 5.5
+    definition: For every G^2 there is a sequence sigma_n covering N^N with (for all n)(exists f)(sigma_n = f G(f)).
+    facts: "Theorem 5.6: RCA^ω_0+A_0 proves LIND(N^N) <-> Sigma-NFP; Z^ω_2+QF-AC^{0,1} cannot prove LIND(N^N) while Z^Ω_2+QF-AC^{0,1} can."
+  reasons:
+    - principle not in the catalogue
+  proposed: cd952ad78107
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: sanders2019b-7c6b839c
+  ref: sanders2019b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Sigma-SEP, Sigma-TR, C_i-WKL, BOOT_w, BOOT^2, Delta-comprehension, RANGE, MUC
+    name: Further higher-order principles of the Plato hierarchy
+    loc: Definitions 4.18, 4.19, 4.22, 5.11-5.12; Theorems 3.17, 3.18, 5.4-5.17
+    definition: "Sigma-SEP: separation for Sigma-formulas (exists f^1)(Y(f,n)=0); Sigma-TR: arithmetical transfinite recursion for Sigma-formulas with continuous parameter; C_i-WKL: infinite binary C_i-trees have a path; BOOT_w: BOOT with quantifier restricted to 2^N; BOOT^2: Sigma^1_1-style version; Delta-comprehension: comprehension for Y,Z-defined Sigma/Pi equivalent formulas; RANGE: every type-two functional has a range; MUC: intuitionistic fan functional."
+    facts: "Theorem 4.17/Definition 4.19: [ATR0+BOOT] <-> Sigma-TR; Definition 4.18: BOOT^2 <-> [BOOT+Pi^1_1-CA0]; Theorem 3.18: RCA^ω_0+QF-AC^{0,1} proves Delta-comprehension; Theorem 5.13: RCA0 proves WKL <-> [C_i-WKL]^ECF; Theorem 5.14/Corollary 5.15: C_1-WKL -> HBU, HBU <-> C_1-WKL over RCA^ω_0+IND+A_0; Theorem 5.16: C_2-WKL <-> [WKL+BOOT_w]; Theorem 5.8: [ACA0+BOOT_w] <-> BOOT; Theorem 5.9: WKL0 proves [BOOT_w]^ECF; Remark 4.8: MUC -> MCT^-_net, ECF converts MUC to WKL."
+  reasons:
+    - principle not in the catalogue
+  proposed: eebadd73284e
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2021-566297a7
+  ref: normannsanders2021
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: jordan
+    to: exists2
+    over: rca0
+  loc: Remark 3.28
+  origin: stated
+  quote: sion of the Jordan decomposition theorem (Theorem 3.27) implies neither (∃2 ) nor
+  paperNotation: third-order Jordan decomposition theorem (Theorem 3.27); (∃^2)
+  confidence: medium
+  concerns: "The statement is for third-order BV-functions f:[0,1]->R (BV as in Definition 3.26(a): a bound on the variation sums), arbitrary discontinuous functions allowed; the paper works over RCA^omega_0 (so rca0 here). Proof sketch: the ECF-translation of the theorem is implied by the second-order Jordan_cont, provable in ACA0, while ECF sends (exists^2) to 0=1. Please check that the catalogue entry jordan (arbitrary functions of bounded variation) matches the paper's notion of BV."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 2f5448c1a744
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Remark 3.28 is about the third-order Jordan decomposition theorem (arbitrary BV functions, Theorem 3.27), not the zoo's jordan (coded functions).
+- id: normannsanders2021-b019646f
+  ref: normannsanders2021
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BWC_0
+    name: Bolzano-Weierstrass theorem for countable sets (third-order)
+    loc: Principle 1.1, Definition 1.4
+    definition: "For a countable set A of Cantor space 2^N (countable: there is an injection Y: R -> N on A, Definition 1.4), the supremum sup A exists (lexicographic order). BWC_1 is the same for strongly countable sets (bijection with N). Variants BWC^seq, BWC^fun, BWC^pwo add a sequence converging to the sup, arbitrary functionals F, or use the pointwise order."
+    facts: "Over ACA^omega_0 (= RCA^omega_0 + (exists^2)): BWC_0 <-> BWC_0^pwo <-> cocode_0 (Theorems 2.10, 2.11); [BWC_0 + IND_0] <-> cocode_0; BWC_1 <-> ... <-> cocode_1 (Theorem 2.5, with IND_1); BWC_0^fun <-> BWC_0^seq (EQ, Section 1.2); BWC_0 <-> accu <-> ccc <-> [CBN + BW_1] <-> [CWO_omega + IND_0] (EQ2, Section 2.4); equivalent to Jordan decomposition theorem given IND_2 + CUC_fin (Theorem 3.34); HBU + A_0 yields BWC_0 (Section 3.1.4); Z^omega_2 + QF-AC^{0,1} does not prove it."
+  reasons:
+    - principle not in the catalogue
+  proposed: 462922e51f35
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2021-ab83283f
+  ref: normannsanders2021
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: cocode_0, cocode_1
+    name: Enumerability of (strongly) countable sets
+    loc: Principle 1.6
+    definition: For any non-empty countable set A of [0,1] (injection into N) there is a sequence (x_n) in A with x in A iff x = x_n for some n. cocode_1 is the same for strongly countable sets (bijection with N).
+    facts: cocode_0 <-> BWC_0 over ACA^omega_0 (Theorem 2.10); cocode_1 <-> BWC_1 (Theorem 2.5); cocode_1 <-> Delta-CA^-_C (Theorem 2.7); cocode_0 <-> Sigma-SEP^-_C (Corollary 3.8); Sigma-SEP implies cocode_0 (Theorem 3.7); Pi-SEP implies cocode_1 (Theorem 3.14); cocode_0 equivalent to Jordan decomposition theorem under IND_2 + CUC_fin (Theorem 3.34).
+  reasons:
+    - principle not in the catalogue
+  proposed: 09daf858dccd
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2021-f1f28cfd
+  ref: normannsanders2021
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HBU, HBT (third-order)
+    name: Heine-Borel theorem for uncountable coverings (Cousin's lemma for arbitrary gauges / for arbitrary psi)
+    loc: Principles 1.9 and 1.11
+    definition: "HBU: for every Psi: R -> R+, finitely many y_0..y_k in [0,1] with the intervals (y_i - Psi(y_i), y_i + Psi(y_i)) covering [0,1]. HBT: the same for psi: [0,1] -> R whenever the (possibly empty) intervals cover [0,1]."
+    facts: "HBU <-> HBT over various base theories (Section 1.3.3, citing [90]); HBU is the higher-order counterpart of WKL_0; over ACA^omega_0 + A_0: [HBU + bounded-Sigma-SEP] <-> Sigma-SEP (Theorem 3.10) and [HBT + bounded-Sigma-SEP] <-> Sigma-SEP (Corollary 3.11); HBU implies BWC_0 with A_0; Z^omega_2 proves HBU but Z^omega_2 + QF-AC^{0,1} does not. Not the catalogue statement heine-borel (second-order, sequence of intervals)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 47d24604a123
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2021-d7b7c6c7
+  ref: normannsanders2021
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: accu, accu', ccc, cloq, cloq', CWO_omega
+    name: Cantor-style limit point / countable chain condition / order type theorems for countable and enumerable sets
+    loc: Principles 2.20-2.24, 2.28, 2.29
+    definition: "accu: a non-enumerable closed set of R has a limit point; accu': a non-enumerable set contains a limit point; ccc: a collection of disjoint open intervals is enumerable; cloq: a countable linear ordering is order-isomorphic to a subset of Q; cloq': a countable dense linear ordering without endpoints is isomorphic to Q; CWO_omega: countable well-orders are comparable."
+    facts: accu <-> accu' <-> ccc <-> BWC_0 <-> [CBN + BW_1] <-> [CWO_omega + IND_0] (EQ2, Section 2.4); cocode_0 <-> [cloq + IND_0] <-> [cloq' + IND_0]; accu also equivalent to CUC_fin + cocode_0 (Theorem 3.35(h)).
+  reasons:
+    - principle not in the catalogue
+  proposed: 4f6055770f02
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2021-e7ff1e01
+  ref: normannsanders2021
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Sigma-SEP, Pi-SEP, A_0, bounded-Sigma-SEP
+    name: Third-order Sigma^0_1 and Pi^0_1 separation principles and the neighbourhood-function fragment A_0
+    loc: Principles 3.6, 3.13, Definition 3.9
+    definition: "Sigma-SEP: for Y_0, Y_1 and phi_i(n) = exists f_i in N^N (Y_i(f_i,n)=0), if no n satisfies both then some Z subset of N separates them. Pi-SEP: same with universal quantifiers. A_0 is a fragment of the neighbourhood function principle."
+    facts: Sigma-SEP -> cocode_0 (Theorem 3.7); Pi-SEP -> cocode_1 (Theorem 3.14); Pi-SEP! <-> cocode_1 (Corollary 3.15); [HBU + bounded-Sigma-SEP] <-> Sigma-SEP over ACA^omega_0 + A_0 (Theorem 3.10); Pi^1_1-CA^omega_0 + Sigma-SEP proves Pi^1_2-CA_0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 12e36773db6c
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2021-eaca3905
+  ref: normannsanders2021
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CUC, CUC_fin, RUC, NF_sigma
+    name: Countable union theorems for R and finite-set version
+    loc: Principles 3.16, 3.17, 3.18, 3.25; Remark 3.24
+    definition: "CUC: a countable union of countable sets of R is countable (as in Principle 3.16); RUC: variant for the reals; NF_sigma: there is a subset of R that is not F_sigma; CUC_fin: the union of a sequence of finite sets (finite as in Definition 3.30) that is not countable is excluded, i.e. a countable union of finite sets is countable."
+    facts: "Section 3.2 and Corollary 3.20: natural versions of the countable union theorem are equivalent to BWC_i, i = 0,1; CUC_fin is needed with cocode_0 for Jordan decomposition (Theorem 3.34, Theorem 3.35(a))."
+  reasons:
+    - principle not in the catalogue
+  proposed: 0f07bc55f301
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2021-22cb8e0e
+  ref: normannsanders2021
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BOOT, BOOT^-_C, Delta-CA, Delta-CA^-_C, IND_0, IND_1, IND_2
+    name: Higher-order comprehension and induction fragments
+    loc: Section 1.3.3, Principles 1.8, 2.3; Definitions 2.9, 3.32
+    definition: "BOOT: (forall Y^2)(exists X subset N)(n in X iff exists f in N^N, Y(f,n)=0); BOOT^- with the at-most-one condition (1.1); BOOT^-_C restricted to 2^N; Delta-CA third-order Delta^0_1-comprehension analogue; IND_i fragments of induction/finite choice."
+    facts: ACA^omega_0 + BOOT^-_C proves ATR_0; BOOT^-_C <-> BWC_0^fun over RCA^omega_0 ([94, Theorem 3.12]); cocode_1 <-> Delta-CA^-_C (Theorem 2.7); cocode_1 -> IND_1 (Lemma 2.4); BOOT -> [HBU + A^-_0] -> cocode_0 -> A_0 over ACA^omega_0 (3.12).
+  reasons:
+    - principle not in the catalogue
+  proposed: b1d2d8f61ce3
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2021-31b83913
+  ref: normannsanders2021
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Jordan decomposition theorem for BV functions (third-order), regulated-function discontinuity enumeration
+    name: Third-order Jordan decomposition theorem and enumeration of discontinuities
+    loc: Theorem 3.27, Theorems 3.34, 3.35, 3.36
+    definition: "A BV-function (Definition 3.26(a)) f: [0,1] -> R is the difference of two non-decreasing functions; related: for a BV or regulated function there is a sequence enumerating all points of discontinuity; Sierpinski decomposition f = g o h."
+    facts: "Over ACA^omega_0 + IND_2 + CUC_fin: cocode_0 <-> Jordan decomposition <-> enumeration of discontinuities of BV functions (Theorem 3.34); with QF-AC^{0,1} also equivalent to enumeration for regulated functions and Sierpinski's theorem; Theorem 3.35 gives further equivalents with CUC_fin + cocode_0 (finite union theorems, Jordan on the half-line, accu); third-order Jordan implies neither (exists^2) nor anything of Z_2 not provable in ACA_0 (Remark 3.28). The catalogue entry jordan may coincide with this statement; only the separation from exists2 was entered as a fact."
+  reasons:
+    - principle not in the catalogue
+  proposed: ac173e717826
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2021-a2102c35
+  ref: normannsanders2021
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Theorem 3.37 items (i)-(x)
+    name: Existence of non-Riemann-integrable / non-regulated / non-Baire-1 / non-usco / non-quasi-continuous / non-cliquish functions
+    loc: Theorem 3.37
+    definition: Existence statements about functions [0,1] -> R (e.g. 'there exists a function that is not regulated', 'not Baire 1', 'not Riemann integrable', closure of the class under composition fails).
+    facts: Over RCA^omega_0 + WKL each of these ten statements is equivalent to (exists^2) (WKL only needed for the first two). Not entered as facts because the individual statements are not in the catalogue.
+  reasons:
+    - principle not in the catalogue
+  proposed: cd8aff1dbfbd
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2021-7a366f8a
+  ref: normannsanders2021
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Unordered sums (Theorem 3.43, Corollary 3.44)
+    name: Enumeration of the support of a positive bounded unordered sum
+    loc: Theorem 3.43, Corollary 3.44
+    definition: For (a_x)_{x in [0,1]} with a_x >= 0 and finite partial sums bounded (resp. convergent unordered sum), there is a sequence listing all y with a_y != 0.
+    facts: "Over ACA^omega_0: uniform enumeration of unions of finite sets with bounds <-> enumerability of the support of a positive bounded unordered sum; with QF-AC^{0,1} also equivalent to convergence of positive bounded unordered sums; over ACA^omega_0 + IND_1: QF-AC^{0,1} -> enumeration for convergent sums -> cocode_1 (Corollary 3.44)."
+  reasons:
+    - principle not in the catalogue
+  proposed: c671f52b3f31
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2017b-b681fa4a
+  ref: normannsanders2017b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LIND4 / LIND_seq
+    name: Lindelof lemma for Baire space (and sequential version)
+    loc: Section 4.1.2, Corollaries 4.16 and 4.17
+    definition: "Every open cover of Baire space given by a gauge G: N^N -> N has a countable sub-cover; LIND_seq is the version for sequences of covers."
+    facts: ACA_0^omega + LIND_seq proves Pi^1_1-CA_0 (Cor 4.16), and LIND_seq is equivalent to LIND4, so ACA_0^omega + LIND4 proves Pi^1_1-CA_0 (Cor 4.17), whereas RCA_0^omega + LIND4 is conservative-like (same L_2 sentences as RCA_0 via (exists Xi)LIN(Xi), Thm 4.12). Over Pi^1_1-CA_0^omega + QF-AC^{2,1}, LIND4 <-> (exists Xi)LIN(Xi) (Thm 4.10). Used to show Weyl-Feferman predicative mathematics has a compatibility problem (Remark 4.18).
+  reasons:
+    - principle not in the catalogue
+  proposed: 8eeedbd92ed8
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2017b-c234405c
+  ref: normannsanders2017b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BWnet
+    name: Bolzano-Weierstrass theorem for nets
+    loc: Section 3.4
+    definition: Every net in the unit interval (indexed by a subset of Baire space) has a convergent sub-net.
+    facts: RCA_0^omega + BWnet proves HBU (Thm 3.37).
+  reasons:
+    - principle not in the catalogue
+  proposed: 586793dab462
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2017b-979012c6
+  ref: normannsanders2017b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SCF(Theta)
+    name: Special fan functional
+    loc: Definition 2.7
+    definition: "Theta: type 2 -> finite sequences of binary sequences such that for every G^2 and f <= 1, f lies in [g G(g)] for some g in Theta(G); realiser of compactness of Cantor space for uncountable covers."
+    facts: Over ACA_0^omega + QF-AC^{2,1}, (exists Theta)SCF(Theta) <-> HBU (Thm 3.3). The superjump is computable in any Theta together with the Suslin functional (Thm 4.1). No type structure for Pi^1_k-CA_0^omega contains it (Thm 3.4).
+  reasons:
+    - principle not in the catalogue
+  proposed: ab4ad46a8ad3
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2017b-fdd92650
+  ref: normannsanders2017b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Suslin functional S, Feferman's mu, superjump
+    name: Higher-order comprehension functionals
+    loc: Section 2.3.2, Theorems 4.1 and 4.13
+    definition: S decides Sigma^1_1 formulas on Baire space; mu is Feferman's search operator; the superjump decides termination of S1-S9 computations with type 2 inputs.
+    facts: S is uniformly computable in mu and any Xi with LIN(Xi) (Thm 4.13); ACA_0^omega + (exists Xi)LIN(Xi) proves (S^2). The superjump is computable in mu and Xi (Cor 4.15).
+  reasons:
+    - principle not in the catalogue
+  proposed: 994964d735b8
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2017b-bec0d2e8
+  ref: normannsanders2017b
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FTC_strong
+    name: Strong fundamental theorem of calculus for the gauge integral
+    loc: Theorem 3.31
+    definition: "If F: R -> R is differentiable with a modulus on [0,1] with derivative F', then F' is strongly gauge integrable with the same modulus and F(1)-F(0) is its integral."
+    facts: RCA_0^omega proves HBU <-> FTC_strong (Thm 3.32).
+  reasons:
+    - principle not in the catalogue
+  proposed: d07363a876be
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2018-db2c96da
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: pi11ca
+    to: atr
+    over: rca0
+  loc: (2.15), Section 2.3
+  origin: stated
+  quote: Π11 -CA0 → ATR0 → ACA0 → WKL0 → WWKL0 → RCA0 .
+  paperNotation: Π11-CA0 → ATR0 → ACA0 → WKL0 → WWKL0
+  confidence: medium
+  concerns: Recalled background (strict implications of the Big Five and WWKL0 stated as known). ACA0 is mapped to catalogue id aca (a problem-form entry with alias ACA0); the paper means the axiom system ACA0.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 8ab1c3845801
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The classical chain (2.15), recalled from Simpson; in the database.
+- id: normannsanders2018-55fdeb3f
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: atr
+    to: pi11ca
+    over: rca0
+  loc: (2.15), Section 2.3
+  origin: stated
+  quote: Π11 -CA0 → ATR0 → ACA0 → WKL0 → WWKL0 → RCA0 .
+  paperNotation: strict implications
+  confidence: medium
+  concerns: Recalled background (strict implications of the Big Five and WWKL0 stated as known). ACA0 is mapped to catalogue id aca (a problem-form entry with alias ACA0); the paper means the axiom system ACA0. Non-reversal read from the word 'strict implications' in the text before (2.15).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 8e6085f110c9
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The classical chain (2.15), recalled from Simpson; in the database.
+- id: normannsanders2018-ccdc4364
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: atr
+    to: aca
+    over: rca0
+  loc: (2.15), Section 2.3
+  origin: stated
+  quote: Π11 -CA0 → ATR0 → ACA0 → WKL0 → WWKL0 → RCA0 .
+  paperNotation: Π11-CA0 → ATR0 → ACA0 → WKL0 → WWKL0
+  confidence: medium
+  concerns: Recalled background (strict implications of the Big Five and WWKL0 stated as known). ACA0 is mapped to catalogue id aca (a problem-form entry with alias ACA0); the paper means the axiom system ACA0.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: f08710d781ff
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The classical chain (2.15), recalled from Simpson; in the database.
+- id: normannsanders2018-1638d98b
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: aca
+    to: wkl
+    over: rca0
+  loc: (2.15), Section 2.3
+  origin: stated
+  quote: Π11 -CA0 → ATR0 → ACA0 → WKL0 → WWKL0 → RCA0 .
+  paperNotation: Π11-CA0 → ATR0 → ACA0 → WKL0 → WWKL0
+  confidence: medium
+  concerns: Recalled background (strict implications of the Big Five and WWKL0 stated as known). ACA0 is mapped to catalogue id aca (a problem-form entry with alias ACA0); the paper means the axiom system ACA0.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 4fc4f57d821c
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The classical chain (2.15), recalled from Simpson; in the database.
+- id: normannsanders2018-a3d59e87
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: done
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wkl
+    to: wwkl
+    over: rca0
+  loc: (2.15), Section 2.3
+  origin: stated
+  quote: Π11 -CA0 → ATR0 → ACA0 → WKL0 → WWKL0 → RCA0 .
+  paperNotation: Π11-CA0 → ATR0 → ACA0 → WKL0 → WWKL0
+  confidence: medium
+  concerns: Recalled background (strict implications of the Big Five and WWKL0 stated as known). ACA0 is mapped to catalogue id aca (a problem-form entry with alias ACA0); the paper means the axiom system ACA0.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: "70707e709485"
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The classical chain (2.15), recalled from Simpson; in the database.
+- id: normannsanders2018-746c1dfa
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: aca
+    to: ht
+    over: rca0
+  loc: Section 5.2 (ii)
+  origin: cited
+  quote: The latter is strictly between ACA0 and ATR0 .
+  paperNotation: Hindman's theorem
+  citedFrom: "[11, §10.3.5]"
+  confidence: low
+  concerns: Remark in open questions, cited from [11, §10.3.5] (reference [11] not identified in the extracted text); ACA0 mapped to aca.
+  reasons:
+    - "extractor confidence: low"
+    - "attributed by the paper to [11, §10.3.5]: cite the original"
+  proposed: 1d5071c9acdc
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Whether ACA₀ proves Hindman's theorem is open (HT lies between ACA₀ and ACA₀⁺); the passing remark cites another work.
+- id: normannsanders2018-6c334776
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Π01-TRANS, Π11-TRANS
+    name: Transfer restricted to Π01 / Π11 formulas
+    loc: Section 2.2
+    definition: Nonstandard counterparts of ACA0 and Π11-CA0.
+    facts: P+Π11-TRANS and P+Π01-TRANS do not prove STP or LMP (Thm 2.18, cited).
+  reasons:
+    - principle not in the catalogue
+  proposed: 284053eb8b9b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2018-8d7987b9
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (µ2), (∃2)
+    name: Feferman's search operator / Kleene's quantifier
+    loc: Section 2.3
+    definition: (∃µ)(∀f)((∃n)f(n)=0 → f(µ(f))=0); equivalent to (∃2) over RCA0^ω; ACA0^ω ≡ RCA0^ω+(µ2) is Π12-conservative over ACA0 (cited from [42, Thm 2.2]).
+    facts: Θ+µ2 does not compute S2 (Section 3.2); Θ+µ2 computes a realiser for ATR0 (Thm 3.13).
+  reasons:
+    - principle not in the catalogue
+  proposed: 10cdb2f4665a
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2018-66c8f18e
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (µ1), (S2)
+    name: Suslin functional and related µ1
+    loc: Section 2.3
+    definition: (S2) decides Π11 formulas; Π11-CA0^ω ≡ RCA0^ω+(µ1) is Π13-conservative over Π11-CA0 (cited from [42, Thm 2.2]).
+    facts: Not computable from Θ+µ2 (Cor 3.4).
+  reasons:
+    - principle not in the catalogue
+  proposed: 21334ec9be36
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2018-e8ba229d
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UATR
+    name: Trivially uniform ATR0
+    loc: Section 2.3
+    definition: (∃Φ)(∀X,f) WO(X) → H_f(X,Φ(X,f)).
+    facts: RCA0^ω+HBU+QF-AC^{2,1} proves (µ2)↔UATR (Thm 2.11).
+  reasons:
+    - principle not in the catalogue
+  proposed: 3206c1798ddd
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2018-1a45fc05
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ12-SEP
+    name: Σ12 separation
+    loc: Proof of Theorem 4.1
+    definition: For Σ12 formulas φ1, φ2 with (∀n)(¬φ1(n)∨¬φ2(n)), there is Z separating them (4.1).
+    facts: Equivalent to Π12-CA0 over ACA0 (cited from Simpson VII.6.14); Π12-CA0 also equivalent to Σ12-DC0 (cited VII.6.9).
+  reasons:
+    - principle not in the catalogue
+  proposed: 263cc5ad8752
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2018-1acf3461
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Δ12-CA0 / Π12-SEP
+    name: Δ12 comprehension / Π12 separation
+    loc: Proof of Corollary 4.4
+    definition: Π12-SEP is (4.1) for Π12 formulas; Π12-SEP ↔ Δ12-CA0 over ACA0 (cited Simpson VII.6.14).
+    facts: RCA0^ω+QF-AC^{2,1}+(µ1)+HBU proves Δ12-CA0 (Cor 4.4).
+  reasons:
+    - principle not in the catalogue
+  proposed: 7fad9a56ab1c
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2018-c4426028
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Π11-TR0
+    name: Transfinite recursion for Π11 formulas
+    loc: Corollary 4.5
+    definition: ATR_θ for θ∈Π11 (Simpson VI.7.1).
+    facts: Implied by Π12-CA0 (cited VII.7.12); RCA0^ω+(µ1)+(∃Θ)SFF(Θ) proves it (Cor 4.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: 07a8d18fbd89
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2018-309d1bd8
+  ref: normannsanders2018
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ21-SEP, SOT, STP2
+    name: Third-order separation and nonstandard axioms
+    loc: Section 4.2, Definition 4.9
+    definition: "Σ21-SEP: separation for Σ21 formulas by a functional Z^2; SOT and STP2 are Π01-TRANS and STP with types bumped up by one."
+    facts: P0+SOT+STP2 proves [Σ21-SEP]st (Thm 4.10); STP2 has the normal form (4.21) (Thm 4.11).
+  reasons:
+    - principle not in the catalogue
+  proposed: a7f960ddfa92
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2014-e656a5d5
+  ref: veldman2014
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: open-induction
+    to: heine-borel
+    over: bish
+  loc: Theorem 4.2
+  origin: stated
+  quote: Theorem 4.2. BIM ⊢ OI([0, 1]) → HB.
+  paperNotation: OI([0, 1]) → HB
+  confidence: medium
+  concerns: Proved in Veldman's system BIM (intuitionistic, with function variables and unrestricted induction), not literally Bishop-style mathematics; entered over bish as the closest constructive frame. HB here is for covers given by a decidable set D_alpha of rational segments; OI is for open sets H_alpha of reals (catalogue's open-induction is a single-statement form).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: fdaadd1da950
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Checked against the text.
+- id: veldman2014-481f5272
+  ref: veldman2014
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: OI(2^omega)
+    name: Principle of Open Induction on Cantor space
+    loc: Section 5.5, Definition 16
+    definition: For every open subset G of omega^omega, if G is progressive in 2^omega under lexicographic order then 2^omega is contained in G.
+    facts: BIM proves OI([0,1]) <-> OI(2^omega) <-> contrapositive of Dedekind (Ded) <-> its Baire space version <-> EnDec?! (Cor 5.7, 6.6); OI(2^omega) <-> <KB well-orders Below(D_alpha) for bars (Cor 7.3).
+  reasons:
+    - principle not in the catalogue
+  proposed: 64596fdfa0c1
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2014-d7ed8396
+  ref: veldman2014
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: AlmFT
+    name: Almost-Fan Theorem
+    loc: Section 8.2, Definition 24
+    definition: In an almost-fan every thin bar is almost-finite.
+    facts: BIM proves AlmFT -> AppFT; Pi11-BI -> AlmFT (Thm 8.4); BIM + MP1 + AppFT proves AlmFT (Thm 12.4(iv)).
+  reasons:
+    - principle not in the catalogue
+  proposed: 290d3d49916a
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2014-27b7f5eb
+  ref: veldman2014
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Ded (and its contraposition)
+    name: Dedekind's Theorem (bounded nondecreasing sequences converge) and its contrapositive
+    loc: Section 5.2-5.3, Definitions 12-13
+    definition: "Ded: every nondecreasing sequence of rationals bounded by 1 has a convergent subsequence; the contrapositive says a nondecreasing sequence that positively fails to converge grows beyond 1."
+    facts: BIM proves Ded -> LPO (Thm 5.2), so Ded is constructively false; the contrapositive is equivalent to OI([0,1]) (Thm 5.3).
+  reasons:
+    - principle not in the catalogue
+  proposed: 682f4df28a55
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2014-c3d09917
+  ref: veldman2014
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BW (and its contraposition)
+    name: Bolzano-Weierstrass Theorem for rational sequences in [-1,1] and its contrapositive
+    loc: Section 9.3, Definition 32
+    definition: "BW: every bounded sequence of rationals has a convergent subsequence; contrapositive: a sequence positively failing to have a convergent subsequence leaves [-1,1]."
+    facts: BW is constructively false (extends Ded); BIM proves the contrapositive equivalent to AppFT (Cor 9.8) and to the Baire space version; BW contrapositive -> Ded contrapositive.
+  reasons:
+    - principle not in the catalogue
+  proposed: 393b217bbf6f
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2014-718e08ab
+  ref: veldman2014
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Asc (and its contraposition)
+    name: Ascoli's Lemma for uniformly continuous functions with common modulus, and its contrapositive
+    loc: Section 10.3, Definition 37
+    definition: Every sequence of functions [0,1]->[0,1] with a common modulus of uniform continuity has a convergent subsequence.
+    facts: Asc implies BW so is constructively false; BIM proves the contrapositive equivalent to AppFT (Thm 10.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: 8c10a4ff3ded
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2014-a36b2b34
+  ref: veldman2014
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: EnDec?!
+    name: Enumerable sets positively failing to be decidable
+    loc: Section 6, Definition 18
+    definition: For every gamma, if every decidable subset of E_gamma surpassed by omega is surpassed by E_gamma, then E_gamma = omega.
+    facts: BIM proves OI(2^omega) -> EnDec?! (Thm 6.4), EnDec?! -> OI([0,1]) (Thm 6.5); EnDec?! contradicts Church's Thesis; AppFT <-> EnDec?! and IRT(2) (Thm 11.2(iv)).
+  reasons:
+    - principle not in the catalogue
+  proposed: 3d033adb0735
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2014-1c10430b
+  ref: veldman2014
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WFKB
+    name: Kleene-Brouwer ordering well-orders Below(D_alpha) for bars
+    loc: Section 7, Theorem 7.2
+    definition: For every decidable bar in omega^omega, the set of sequences below the bar is well-ordered by the Kleene-Brouwer ordering.
+    facts: Equivalent in BIM to OI(2^omega) and EnDec?! (Thm 7.2, Cor 7.3); implies transfinite induction up to epsilon_0 so BIM + FT does not prove it (Cor 7.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: a4ff73236695
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2014-c4baf8d2
+  ref: veldman2014
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: IRT(k) / IRT
+    name: Intuitionistic (infinite) Ramsey Theorem
+    loc: Section 11.1, Definition 38
+    definition: "IRT(k): the intersection of two decidable k-almost-full subsets of omega is k-almost-full. Not to be confused with Halin's infinite ray theorem (catalogue irt)."
+    facts: BIM proves AppFT <-> forall k IRT(k) <-> IRT(3) (Thm 11.2); IRT(k) <-> CRT(k) under X or not X (Thm 11.1(ii)); CRT(1) -> LPO (Thm 11.1(i)); BIM + forall k IRT(k) proves PH (Thm 11.5); BIM does not prove PH (Cor 11.6).
+  reasons:
+    - principle not in the catalogue
+  proposed: 075acb282b72
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2014-85254f20
+  ref: veldman2014
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MP1
+    name: Markov's Principle (function form) and Kuroda's DNS0
+    loc: Section 12, Definition 42
+    definition: "MP1: for every alpha, not-not-exists n alpha(n) != 0 implies exists n alpha(n) != 0."
+    facts: Over BIM + MP1, EnDec?! <-> Sigma01-ND <-> Sigma01-BI (Thm 12.1) and Sigma01-ND -> contrapositive of BW (Thm 12.3), so OI([0,1]) <-> AppFT <-> Sigma01-ND <-> AlmFT (Cor 12.5); MP1 <-> not-not-finite decidable sets are almost-finite (Thm 12.4(ii)).
+  reasons:
+    - principle not in the catalogue
+  proposed: eb0a8fd75414
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: veldman2014-33f751dd
+  ref: veldman2014
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Sigma01-ND
+    name: Every enumerable subset of omega is nearly-decidable
+    loc: Section 12, after Definition 42
+    definition: For all gamma, not-not exists beta with E_gamma = D_beta.
+    facts: Implies Sigma0n-ND and Pi0n-ND for all n (Thm 12.2, Solovay); equivalent to EnDec?! over BIM + MP1.
+  reasons:
+    - principle not in the catalogue
+  proposed: ae1b73b4f80a
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2019-171b110f
+  ref: normannsanders2019
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LUS
+    name: Lusin's theorem (approximation form)
+    loc: Principle 3.13
+    definition: "For measurable f: I -> R and eps > 0 there is a measurable E of measure at least 1 - eps with f restricted to E continuous."
+    facts: Equivalent to LUS_RM (E RM-closed) over ACA_0^omega and implies WHBU_m (Theorem 3.14); the variant LUS' (continuous g with {f != g} of measure < eps, Principle 3.15) also implies WHBU_m (Theorem 3.16).
+  reasons:
+    - principle not in the catalogue
+  proposed: 5e94693cdb28
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2019-82af4b7f
+  ref: normannsanders2019
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: EGO
+    name: Egorov's theorem
+    loc: Principle 3.17
+    definition: If measurable f_n converge almost everywhere to measurable f and eps > 0, there is measurable E of measure 1 - eps on which f_n converge uniformly to f.
+    facts: EGO- (convergence everywhere in the antecedent) equivalent to its RM-closed version and implies WHBU_m over ACA_0^omega (Theorem 3.18); provable in ACA_0^omega + (lambda-Lambda) (Theorem 3.27).
+  reasons:
+    - principle not in the catalogue
+  proposed: 7641d5e1f012
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2019-c1da8ea7
+  ref: normannsanders2019
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LLP
+    name: Fourth Littlewood-type principle (boundedness on a large set)
+    loc: Principle 3.19
+    definition: For measurable f and eps > 0 there is a measurable K in I with measure of I \ K below eps such that f is bounded on K.
+    facts: Equivalent to LLP_RM and implies WHBU_m over ACA_0^omega (Theorem 3.20).
+  reasons:
+    - principle not in the catalogue
+  proposed: 239e7c6a6aa6
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2019-6f83944c
+  ref: normannsanders2019
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WTE
+    name: Weak form of Egoroff's theorem (convergence in measure)
+    loc: Principle 3.21
+    definition: If measurable f_n converge to f almost everywhere on I then f_n converge to f in measure.
+    facts: Implies WHBU_m over ACA_0^omega (Theorem 3.22).
+  reasons:
+    - principle not in the catalogue
+  proposed: 6c747e19cad2
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2019-5ef0e359
+  ref: normannsanders2019
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LIN
+    name: Lindelof lemma for R
+    loc: Principle 2.10
+    definition: "For every Psi: R -> R+ there is a sequence (y_n) such that the intervals B(y_n, Psi(y_n)) cover R; third-order."
+    facts: Its version for general open coverings of R implies cocode_0 over ACA_0^omega (Theorem 3.5), as does the version for fixed radius coverings of closed sets (Theorem 3.11).
+  reasons:
+    - principle not in the catalogue
+  proposed: 2e3d5175520c
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2019-0b178c53
+  ref: normannsanders2019
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: cocode_0
+    name: Enumeration of countable subsets of [0,1]
+    loc: Principle 2.11
+    definition: Every countable A in [0,1] (injection into N) has a sequence (x_n) listing all its elements.
+    facts: Pi^1_1-CA_0^omega + cocode_0 proves Pi^1_2-CA_0 (cited [52,53]).
+  reasons:
+    - principle not in the catalogue
+  proposed: c9c47a86f09b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2019-ab5a7657
+  ref: normannsanders2019
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MCTnet
+    name: Monotone convergence theorem for nets (Riemann integral)
+    loc: Principle 3.36
+    definition: For continuous f_d forming an increasing net indexed by a subset of Baire space, with bounded continuous pointwise limit f, lim_d of the integral of |f - f_d| is 0.
+    facts: RCA_0^omega + WWKL + MCTnet proves WHBU (Theorem 3.37); its ECF-translation follows from WWKL.
+  reasons:
+    - principle not in the catalogue
+  proposed: 9be7355ccba7
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
+- id: normannsanders2019-b5c4fce7
+  ref: normannsanders2019
+  date: 2026-11-16
+  status: done
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Borel's lemma
+    name: Borel's covering lemma
+    loc: Section 3.2.1
+    definition: If 1 > sum |a_n - b_n| then the union of the intervals (a_n, b_n) does not cover [0,1].
+    facts: Stated to be equivalent to WWKL by Simpson [76, X.1.9] (cited); possibly the same as ACT in the catalogue but ACT is restricted to non-disjoint sequences of rational intervals.
+  reasons:
+    - principle not in the catalogue
+  proposed: cbd4c0107056
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Principles of this batch used in at least two cached papers were added after reading their definitions (data/statements/constructive.yaml, data/statements/higher-order.yaml); principles used in a single cached paper, and variants, were not added.
