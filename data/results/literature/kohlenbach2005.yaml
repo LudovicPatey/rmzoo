@@ -1,3 +1,3 @@
 # Results from [kohlenbach2005].
 
-[ { type: equivalence, from: exists2, to: discontr, over: rca0, refs: [ { ref: kohlenbach2005, loc: Proposition 3.12 (1 ↔ 3) } ] } ]
+[ { type: equivalence, from: exists2, to: discontr, over: rca0, refs: [ { ref: kohlenbach2005, loc: Proposition 3.12 (1 ↔ 3) } ] }, { type: equivalence, from: mu2, to: exists2, over: rca0, refs: [ { ref: kohlenbach2005, loc: Proposition 3.9 } ] } ]

@@ -97794,3 +97794,3581 @@
     date: 2026-11-16
     by: claude
     note: Statements of this field used in at least two cached papers were added from their definitions (constructive.yaml, higher-order.yaml); the others are not added for now.
+- id: normannsanders2018b-bf8d5817
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: exists3
+    to: hbu
+    over: rca0
+  loc: Theorem 4.2
+  origin: deduced
+  quote: (∃ ) → LUB → HBU → HBUc → PITu .
+  paperNotation: (∃3) → HBU
+  argument: Theorem 4.2 proves over RCA0^ω the chain (∃3) → LUB → HBU; composing the first two implications gives (∃3) → HBU. LUB is not in the catalogue.
+  confidence: high
+  concerns: "Notation lost in extraction: the superscript 3 of (∃3) is on the preceding line. Via LUB, which is not catalogued."
+  reasons:
+    - the quoted passage was not found in the text
+    - deduction, not stated in the paper
+  proposed: 1ca35b7fbef3
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Theorem 4.2 proves over RCA0^omega the chain (exists^3) -> LUB -> HBU (superscript 3 lost in extraction, clear from the proof), so (exists^3) -> HBU is the composition of two stated implications.
+- id: normannsanders2018b-995adad2
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: hbu
+    to: hbuc
+    over: rca0
+  loc: Theorem 4.2
+  origin: stated
+  quote: (∃ ) → LUB → HBU → HBUc → PITu .
+  paperNotation: HBU → HBUc
+  argument: "Stated in the chain of Theorem 4.2 (proof: excluded middle (∃2) or not (∃2))."
+  confidence: high
+  concerns: Paper's HBUc is the Cantor space version for canonical coverings by [f G(f)], matches the catalogue.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: cf932a0cfffc
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: HBU -> HBUc is a link of the chain of Theorem 4.2 over RCA0^omega (proved by excluded middle on (exists^2)); HBU and HBUc as in Section 2.3 match the catalogue.
+- id: normannsanders2018b-f68021f5
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: hbuc
+    to: pitu
+    over: rca0
+  loc: Theorem 4.2
+  origin: stated
+  quote: (∃ ) → LUB → HBU → HBUc → PITu .
+  paperNotation: HBUc → PITu
+  argument: Last implication of the chain in Theorem 4.2.
+  confidence: high
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: 375e9061d5b2
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: HBUc -> PITu is the last link of the chain of Theorem 4.2 over RCA0^omega.
+- id: normannsanders2018b-95b53d82
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: pitu
+    to: pito
+    over: rca0
+  loc: Section 1.3.1, definitions of PITo and PITu
+  origin: deduced
+  quote: "(∀G : C → N)(∃N ∈ N)(∀F : C → N) LOC(F, G) → (∀g ∈ C)(F (g) ≤ N ) (PITu )"
+  paperNotation: PITu → PITo
+  argument: PITu gives, for G, a bound N valid for every F with LOC(F,G); in particular for the given F, which is PITo for (F,G). Purely logical.
+  confidence: high
+  concerns: Not stated literally as an implication; immediate from the two displayed formulas.
+  reasons:
+    - deduction, not stated in the paper
+  proposed: e5b6ecee5244
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Purely logical from the two displayed formulas (PITu moves the existential bound before the quantifier over F), and the paper uses it explicitly in the proof of Corollary 4.8.
+- id: normannsanders2018b-1bfb5536
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: qfac01-suslin
+    to: pitu
+    over: rca0
+  loc: Theorem 4.3
+  origin: special-case
+  quote: 2 proves PITu , while no system Πk -CA0 + QF-AC
+  paperNotation: PIT_u not provable in Pi^1_k-CA_0^omega + QF-AC^{0,1}, k>=1
+  argument: "Theorem 4.3: no system Pi^1_k-CA0^omega + QF-AC^{0,1} (k >= 1) proves PITu. The case k = 1 gives Pi^1_1-CA0^omega = RCA0^omega + (S^2) (conjunct suslin) with QF-AC^{0,1}."
+  confidence: medium
+  concerns: Extraction garbled the statement (the second line of the theorem has the negation). The result is for every k>=1; only k=1 is catalogued. The proof builds a countable model under V=L.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 74aeb4996abb
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 4.3: no Pi^1_k-CA0^omega + QF-AC^{0,1} (k >= 1) proves PITu; k = 1 is RCA0^omega + (S^2) + QF-AC^{0,1} by the paper's Section 2.3 definition."
+- id: normannsanders2018b-e4bfd2e3
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: qfac01-wkl
+    to: pito
+    over: rca0
+  loc: Corollary 4.8
+  origin: stated
+  quote: proves WKL ↔ PITo .
+  paperNotation: WKL -> PITo over RCA0^omega + QF-AC^{0,1}
+  argument: "Corollary 4.8: RCA0^omega + QF-AC^{0,1} proves WKL <-> PITo; forward direction (uses countable choice)."
+  confidence: high
+  concerns: Forward direction proved by cases (exists2) or not, using Theorem 4.4 and Theorem 4.2.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: dd0b5720eb96
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Corollary 4.8: RCA0^omega + QF-AC^{0,1} proves WKL <-> PITo; forward direction."
+- id: normannsanders2018b-845d7a2e
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: pito-qfac01
+    to: wkl
+    over: rca0
+  loc: Corollary 4.8
+  origin: stated
+  quote: proves WKL ↔ PITo .
+  paperNotation: PITo -> WKL over RCA0^omega + QF-AC^{0,1}
+  argument: "Corollary 4.8: RCA0^omega + QF-AC^{0,1} proves WKL <-> PITo; reverse direction (PITo -> WKL), immediate by the first part of the proof of Corollary 4.6."
+  confidence: high
+  concerns: The proof of PITo -> WKL does not seem to use QF-AC^{0,1} (only QF-AC^{1,0}, part of the base), but the statement is entered as printed.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: 6415cc8c8ca3
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Reverse direction of Corollary 4.8 as printed (over RCA0^omega + QF-AC^{0,1}); the stronger PITo -> WKL over RCA0^omega alone is item 0e0b0821 (Corollary 4.13).
+- id: normannsanders2018b-52e37487
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: hbuc
+    to: hbu
+    over: rca0
+  loc: Corollary 4.6
+  origin: cited
+  quote: Finally, HBUc → HBU was proved over RCAω    0 in [69, Theorem 3.3].
+  paperNotation: HBUc -> HBU
+  argument: "Cited in the proof of Corollary 4.6: HBUc -> HBU over RCA0^omega."
+  citedFrom: "[69, Theorem 3.3]"
+  confidence: high
+  concerns: "[69] is the authors' paper on covering theorems (Cousin and Lindelof lemmas)."
+  reasons:
+    - "attributed by the paper to [69, Theorem 3.3]: cite the original"
+  proposed: 70438148d426
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Cited from [69, Theorem 3.3] = normannsanders2017b, but Theorem 3.3 of the cached text is over ACA0^omega + QF-AC^{2,1} and does not state HBUc -> HBU over RCA0^omega (it converts coverings using mu).
+- id: normannsanders2018b-4e1f7ecd
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: exists2-qfac01
+    to: pitu
+    over: rca0
+  loc: Theorem 3.16
+  origin: deduced
+  quote: ¬PITu , PITo , (∀Mo )¬WPR(Mo ), and (∀Mu )¬PR(Mu ).
+  paperNotation: Type structure M^H for normal H^2
+  argument: "Theorem 3.16: for every normal H^2 the type structure M^H (all functionals computable in H by S1-S9) is a model of QF-AC^{0,1} and of not-PITu. Taking H normal (computing exists^2), M^H satisfies RCA0^omega + (exists^2) + QF-AC^{0,1} (it is closed under S1-S9 computation in H) but not PITu."
+  confidence: medium
+  concerns: The paper does not state explicitly that M^H satisfies RCA0^omega + (exists^2); this is read from the definition of M^H (closure under Kleene computation in a normal H). The stronger fact with Pi^1_1-CA0^omega is Theorem 4.3.
+  reasons:
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: 8bee0c87532a
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Theorem 3.16 does not state that M^H satisfies RCA0^omega + (exists^2); the fact is in any case subsumed by the stated separation of Theorem 4.3 (item 1bfb5536, with (S^2) + QF-AC^{0,1}).
+- id: normannsanders2018b-0e0b0821
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: pito
+    to: wkl
+    over: rca0
+  loc: Corollary 4.6, proof (first forward implication)
+  origin: deduced
+  quote: has no path, i.e. (∀f ≤ 1)(∃n)(f n 6∈ T ), then using quantifier-free induction and
+  paperNotation: PITo -> WKL
+  argument: In the proof of Corollary 4.6, from a tree T with no path one builds, with QF-AC^{1,0} (part of RCA0^omega) and quantifier-free induction, H^2 continuous on Cantor space with itself as modulus, hence locally bounded; PITo makes H bounded, so T is finite. No QF-AC^{0,1} is used, so PITo -> WKL over RCA0^omega itself.
+  confidence: medium
+  concerns: The paper writes PITo (not PITu) in this proof though the corollary is about PITu; deduction relies on reading the proof, the printed theorem has QF-AC^{0,1} in the base.
+  reasons:
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: 9e8f95025608
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Corollary 4.13 states RCA0^omega proves WKL0 <-> [ACA0 or PITo], whose reverse direction gives PITo -> WKL over RCA0^omega; the argument in the proof of Corollary 4.6 uses only QF-AC^{1,0} and QF induction.
+- id: normannsanders2018b-b8e4137a
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: exists2-lindbaire
+    to: pi11ca
+    over: rca0
+  loc: Corollary 5.13
+  origin: stated
+  quote: LIND(NN ), combined with (∃2 ), implies Π11 -comprehension.
+  paperNotation: LIND(N^N) + (exists^2) proves Pi^1_1-CA0
+  argument: "Corollary 5.13 (announced in Remark 3.17(2)): RCA0^omega + (exists^2) + LIND(N^N) proves Pi^1_1-CA0 (via Theorem 5.12 with ACA0^omega + LIND_seq)."
+  confidence: high
+  concerns: Quote is the announcement in Remark 3.17(2); Corollary 5.13's own statement is garbled in the extraction. Pi^1_1-CA0 is a second-order sentence.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: c88a9f525ef6
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Corollary 5.13: RCA0^omega + (exists^2) + LIND(N^N) proves Pi^1_1-CA0 (via Theorem 5.12 and LIND_seq derivable from LIND(N^N)); LIND(N^N) matches the catalogue definition (same fact already cited from normannsanders2017b Cor. 4.17)."
+- id: normannsanders2018b-8d5e2b04
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: suslin
+    to: pito
+    over: rca0
+  loc: Theorem 4.9
+  origin: special-case
+  quote: 2 in which ¬PITo holds.
+  paperNotation: Z_2^omega does not prove PITo
+  argument: "Theorem 4.9: there is a model of Z_2^omega = union of the Pi^1_k-CA0^omega in which PITo fails. Such a model satisfies Pi^1_1-CA0^omega = RCA0^omega + (S^2), so (S^2) does not imply PITo. The model does not satisfy QF-AC^{0,1}."
+  confidence: high
+  concerns: Theorem 4.9 is stated for all of Z_2^omega (all Pi^1_k-CA0^omega at once); only the case k=1 (suslin) is catalogued. Quote is the second line of the theorem.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: fc18b96bd1ac
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 4.9 gives a model of Z2^omega = union of Pi^1_k-CA0^omega (proof: satisfies Pi^1_k-CA0 for all k) with not PITo, so RCA0^omega + (S^2) does not prove PITo."
+- id: normannsanders2018b-1c6c2b72
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: pitu-qfac01
+    to: hbuc
+    over: rca0
+  loc: Corollary 4.6
+  origin: stated
+  quote: proves PITu ↔ HBUc ↔ HBU.
+  paperNotation: PITu -> HBUc over RCA0^omega + QF-AC^{0,1}
+  argument: "Corollary 4.6: RCA0^omega + QF-AC^{0,1} proves PITu <-> HBUc <-> HBU. The forward direction PITu -> HBUc is proved by cases on (exists2) using QF-AC^{0,1}."
+  confidence: high
+  concerns: Reverse implications hold over RCA0^omega by Theorem 4.2.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: ee746f7f1c84
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Corollary 4.6: RCA0^omega + QF-AC^{0,1} proves PITu <-> HBUc <-> HBU; this is the forward implication PITu -> HBUc."
+- id: normannsanders2018b-212a2a3a
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: exists2-qfac01
+    to: pito
+    over: rca0
+  loc: Theorem 4.4
+  origin: stated
+  quote: Theorem 4.4. The system ACAω
+  paperNotation: ACA0^omega + QF-AC^{0,1} proves PITo
+  argument: Theorem 4.4. ACA0^omega is RCA0^omega + (mu^2), equivalent to RCA0^omega + (exists^2); entered with exists2.
+  confidence: high
+  concerns: ACA0^omega is defined in the paper as RCA0^omega + (mu^2); entered as exists2 since they are equivalent over RCA0^omega.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 9145a3b2624a
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 4.4: ACA0^omega + QF-AC^{0,1} proves PITo, with ACA0^omega = RCA0^omega + (mu^2) (Section 2.3), equivalent to (exists^2) as stated in Section 2.3."
+- id: normannsanders2018b-393a489b
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LUB
+    name: Least upper bound principle
+    loc: Principle 4.1
+    definition: For second-order phi(x^1) extensional on R with phi(0) and not phi(1), there is a least y in [0,1] such that phi(z) fails for all z in (y,1].
+    facts: "Theorem 4.2: RCA0^omega proves (exists^3) -> LUB -> HBU."
+  reasons:
+    - principle not in the catalogue
+  proposed: 85fe75fd3b47
+- id: normannsanders2018b-43f2396d
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UCTu
+    name: Uniform Heine's theorem for Cantor space
+    loc: Definition 1.3
+    definition: (forall G^2)(exists m^0)(forall F^2)[MPC(F,G) -> (forall f,g in C)(f m = g m -> F(f)=F(g))], where G is a modulus of pointwise continuity for F.
+    facts: "Theorem 4.23: RCA0^omega + QF-AC^{0,1} proves UCTu <-> HBUc (QF-AC^{0,1} removable in favour of IND); equivalent to HBU and PITu."
+  reasons:
+    - principle not in the catalogue
+  proposed: fe0069a1adae
+- id: normannsanders2018b-a5343ff0
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UCTRu
+    name: Uniform Heine's theorem for the unit interval
+    loc: Principle 4.24
+    definition: "For any eps > 0 and g : I x R -> R+, there is delta > 0 such that every f : I -> R with modulus of continuity g satisfies |x-y|<delta -> |f(x)-f(y)|<eps."
+    facts: "Theorem 4.27: RCA0^omega + WKL proves UCTRu <-> FEJu; Corollary 4.28: RCA0^omega + WKL + QF-AC^{0,1} proves UCTRu <-> FEJu <-> HBU."
+  reasons:
+    - principle not in the catalogue
+  proposed: 72971e1c6aac
+- id: normannsanders2018b-f8afc5a2
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FEJu
+    name: Uniform Fejer's theorem
+    loc: Principle 4.26
+    definition: "For any k and g : I_pi x R -> R+ there is N such that every f : I_pi -> R with modulus of continuity g and f(0)=0 has Cesaro means sigma_n(f,x) converging to f within 1/k uniformly for n>=N and |sigma_n(f,y)| <= nN."
+    facts: Theorem 4.27 and Corollary 4.28 (see UCTRu).
+  reasons:
+    - principle not in the catalogue
+  proposed: 37ce91402ce1
+- id: normannsanders2018b-7f88adb3
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PIT'o
+    name: Pincherle's theorem without a realiser for local boundedness
+    loc: Section 4.2, after Corollary 4.8
+    definition: (forall F^2)[(forall f in C)(exists n)(forall g in C)(g in [f n] -> F(g) <= n) -> (exists m)(forall h in C)(F(h) <= m)].
+    facts: PITo <-> PIT'o <-> WKL over RCA0^omega + QF-AC^{0,1}; Z_2^omega does not prove it (Corollary 4.12 remark); LGP implies it.
+  reasons:
+    - principle not in the catalogue
+  proposed: 9748f513ddc0
+- id: normannsanders2018b-f7834233
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PIT''o
+    name: Pincherle's theorem for sub-continuous functions
+    loc: Section 4.3, before Theorem 4.22
+    definition: A sub-continuous function on Cantor space is bounded.
+    facts: "Theorem 4.22: Z_2^omega cannot prove it, while RCA0^omega + QF-AC^{0,1} proves WKL <-> PIT''o."
+  reasons:
+    - principle not in the catalogue
+  proposed: 08f3a8b9eb91
+- id: normannsanders2018b-94e43ab6
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PITb
+    name: Pincherle's theorem for Baire space
+    loc: Remark 4.16
+    definition: (forall F^2,G^2)[LOCb(F,G) -> (exists H^2 in cont)(forall g^1)(F(g) <= H(g))].
+    facts: PITb + WKL implies PITo; PITb has no first-order strength; LIND(N^N) with (exists^2) proves PITb.
+  reasons:
+    - principle not in the catalogue
+  proposed: 7e5cb3553be0
+- id: normannsanders2018b-60c66038
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LGP
+    name: Local-to-global principle
+    loc: Definition 4.17
+    definition: "For L_2-formulas A(f,n) with type two parameters, increasing in n: (forall f in C)(exists n)(forall g in [f n])A(g,n) -> (exists m)(forall h in C)A(h,m)."
+    facts: "Theorem 4.18: RCA0^omega + LGP + IND proves HBU; LGP implies PIT'o; the variant LGP^- (no type two parameters) is provable in Z_2^omega + QF-AC^{0,1} (Corollary 4.19)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 64591cf37178
+- id: normannsanders2018b-76277a7c
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LIND^bs
+    name: Borel-Schoenflies Lindelof lemma for the reals
+    loc: Definition 5.1
+    definition: "For every open covering of R provided by Psi : C -> Q^2 there is Phi : N -> C with (forall x in R)(exists n)(x in J^Psi_{Phi(n)})."
+    facts: "Theorem 5.2: RCA0^omega + LINDbs proves WKL <-> PITo; Theorem 5.3: RCA0^omega + LINDbs proves QF-AC^{0,1}_R; Corollary 5.4: ZF does not prove it; Corollary 5.10: RCA0^omega proves LINDbs <-> [QF-AC^{0,1}_R + LINDbsw]; Corollary 5.11: RCA0^omega proves [HBUbs + QF-AC^{0,1}_R] <-> [LINDbs + WKL]."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9480b4aba222
+- id: normannsanders2018b-813e8d2c
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LIND^bs_w
+    name: Weak Borel-Schoenflies Lindelof lemma
+    loc: Definition 5.5
+    definition: "For every open covering of R provided by Psi : C -> Q^2 there is a sequence of intervals (a_n,b_n) covering R with each (a_n,b_n) equal to some J^Psi_x."
+    facts: "Theorem 5.7: Z_2^Omega proves it (and HBUbs); Corollary 5.8: RCA0^omega + (kappa^3_0) proves it."
+  reasons:
+    - principle not in the catalogue
+  proposed: 2a744bd30303
+- id: normannsanders2018b-58ae42b5
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HBU^bs
+    name: Borel-Schoenflies Heine-Borel theorem
+    loc: Definition 5.6
+    definition: "For every open covering of [0,1] provided by Psi : C -> Q^2 there is a finite sub-covering."
+    facts: "Theorem 5.7: Z_2^Omega proves it; Corollary 5.11 (see LINDbs)."
+  reasons:
+    - principle not in the catalogue
+  proposed: a9124dc17c69
+- id: normannsanders2018b-db44c732
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LIND_seq
+    name: Sequential Lindelof lemma for Baire space
+    loc: Section 5.2, display (LINDseq)
+    definition: (forall Psi_(.)^{0->2})(exists f_(.,.))(forall m)(forall g^1)(exists n)(g in [f_{n,m} Psi_m(f_{n,m})]).
+    facts: "Theorem 5.12: ACA0^omega + LINDseq proves Pi^1_1-CA0; equivalent to LIND(N^N) since N x N^N is homeomorphic to N^N."
+  reasons:
+    - principle not in the catalogue
+  proposed: 23a99a01cb98
+- id: normannsanders2018b-dab3b2d5
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WKLu
+    name: Uniform weak Konig's lemma
+    loc: Remark 4.30
+    definition: (forall G^2)(exists m)(forall T <=_1 1)[(forall alpha in C)(alpha G(alpha) not in T) -> (forall beta in C)(beta m not in T)].
+    facts: Stated to be 'fairly easy' equivalent to HBU by adapting the proof of Corollary 4.6 (no proof given). Not the catalogue's WKL! (unique paths).
+  reasons:
+    - principle not in the catalogue
+  proposed: 31b805618a54
+- id: normannsanders2018b-e24e5be2
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (exists Theta)SCF(Theta)
+    name: Existence of a special fan functional
+    loc: Section 2.3, after (HBUc)
+    definition: "(exists Theta^3)(forall G^2)(forall f^1 <=_1 1)(exists g in Theta(G))(f in [g G(g)]): a functional computing a finite sub-covering for the canonical covering of Cantor space."
+    facts: "Theorem 4.5: ACA0^omega + QF-AC^{2,1} proves HBUc <-> HBU <-> (exists Theta)SCF(Theta) <-> PITu <-> (exists M)PR(M); Corollary 4.14: RCA0^omega + FF + QF-AC^{2,1} proves HBUc <-> (exists Theta)SCF(Theta)."
+  reasons:
+    - principle not in the catalogue
+  proposed: f6f3cede4f40
+- id: normannsanders2018b-f58d8208
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (exists M)PR(M)
+    name: Existence of a Pincherle realiser
+    loc: Section 1.3.1, display PR(M)
+    definition: "(exists M^3)(forall F,G : C -> N)[LOC(F,G) -> (forall g in C)(F(g) <= M(G))]."
+    facts: "Theorem 4.5: equivalent to PITu over ACA0^omega + QF-AC^{2,1}. Theorems 3.1, 3.2: no PR is computable in a type two functional; Theorem 3.14: no weak Pincherle realiser either. Computability results, not catalogued as reductions."
+  reasons:
+    - principle not in the catalogue
+  proposed: 87d81b49a5bb
+- id: normannsanders2018b-c1500ce8
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FF
+    name: Fan functional
+    loc: Section 4.2, display (FF)
+    definition: (exists Phi^3)(forall Y^2 in cont)(forall f,g in C)(f Phi(Y) = g Phi(Y) -> Y(f)=Y(g)).
+    facts: "Corollary 4.14: RCA0^omega + FF + QF-AC^{2,1} proves HBUc <-> (exists Theta)SCF(Theta); the base is conservative over WKL0."
+  reasons:
+    - principle not in the catalogue
+  proposed: 60d9d07ffb20
+- id: normannsanders2018b-f635c738
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (kappa^3_0)
+    name: Comprehension on Cantor space
+    loc: Section 2.3, display (kappa^3_0)
+    definition: (exists kappa_0^3 <=_3 1)(forall Y^2)[kappa_0(Y)=0 <-> (exists f in C)Y(f)=0].
+    facts: (exists^3) <-> [(exists^2) + (kappa^3_0)] (cited from [67,88]); RCA0^omega + (kappa^3_0) proves LINDbsw (Corollary 5.8).
+  reasons:
+    - principle not in the catalogue
+  proposed: c630830b697d
+- id: normannsanders2018b-0dfcfcaa
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: QF-AC^{0,1}_R
+    name: Quantifier-free choice from numbers to reals
+    loc: Theorem 5.3, display (5.1)
+    definition: "For all F : R -> N: (forall n)(exists x in R)(F(x,n)=0) -> (exists Y^{0->1})(forall n)(F(Y(n),n)=0)."
+    facts: "Theorem 5.3: RCA0^omega + LINDbs proves it; Corollary 5.10: Z_2^Omega proves LINDbs <-> QF-AC^{0,1}_R; its consequence (epsilon-delta vs sequential continuity) is independent of ZF."
+  reasons:
+    - principle not in the catalogue
+  proposed: f49f1eff1760
+- id: normannsanders2018b-a0b9f82a
+  ref: normannsanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HBU+
+    name: HBU without extensionality of Psi
+    loc: Remark 4.15
+    definition: HBU generalised to any functional Psi^{1->1} such that Psi(f) is a positive real, without requiring (RE).
+    facts: "Remark 4.15: RCA0^omega proves HBU <-> HBU+."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9992f492e687
+- id: sanders2018b-bf228161
+  ref: sanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: hbuc
+    to: wkl
+    over: rca0
+  loc: Theorem 3.8, proof
+  origin: stated
+  quote: The reverse implication follows from HBUc → WKL and
+  paperNotation: HBU_c → WKL
+  confidence: medium
+  concerns: Proved over RCA0^omega; the paper does not give a proof of HBUc → WKL here.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 049e707ef54d
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: RCA0^omega proves WKL <-> [(E^2) v HBUc]; its reverse direction gives HBUc -> WKL, which the proof also names explicitly.
+- id: sanders2018b-7afe19ab
+  ref: sanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: exists2
+    to: wkl
+    over: rca0
+  loc: Theorem 3.8, proof
+  origin: stated
+  quote: (∃2 ) → ACA0 → WKL0
+  paperNotation: (∃^2) → ACA0 → WKL0
+  confidence: high
+  concerns: Over RCA0^omega; (∃^2) is the third-order functional, ACA0 and WKL0 the second-order systems.
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: 196d03273ea0
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: This is the special case of the reverse direction of WKL <-> [(E^2) v HBUc]; the proof says '(E^2) -> ACA0 -> WKL0'.
+- id: sanders2018b-2428fb94
+  ref: sanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: hbu
+    to: wkl
+    over: rca0
+  loc: Corollary 3.10, proof
+  origin: stated
+  quote: HBU → WKL → T1
+  paperNotation: HBU → WKL
+  argument: Also the reverse direction of Theorem 3.8, WKL <-> [X v HBU].
+  confidence: medium
+  concerns: Used as immediate in the proof; over RCA0^omega.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: f631029de44b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: WKL <-> [X v HBU] (Theorem 3.8) gives HBU -> WKL, and the proof of Corollary 3.10 states 'HBU -> WKL -> T1'; the fact is already recorded from normannsanders2017b.
+- id: sanders2018b-169e7145
+  ref: sanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: exists2
+    to: wwkl
+    over: rca0
+  loc: Theorem 3.20
+  origin: special-case
+  quote: WWKL ↔ [(∃2 ) ∨ WHBU] ↔ [X ∨ WHBU].
+  paperNotation: WWKL <-> [(∃^2) v WHBU]
+  argument: "Reverse direction of the equivalence: if (∃^2) holds then WWKL."
+  confidence: medium
+  concerns: Obtained from the reverse direction of a disjunction equivalence over RCA0^omega.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: 8c36d8d4fd46
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: This is the special case of the reverse direction of WWKL <-> [(E^2) v WHBU] over RCA0^omega, and it does not depend on how WHBU is formulated.
+- id: sanders2018b-ced2ddc0
+  ref: sanders2018b
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: whbu
+    to: wwkl
+    over: rca0
+  loc: Theorem 3.20
+  origin: special-case
+  quote: WWKL ↔ [(∃2 ) ∨ WHBU] ↔ [X ∨ WHBU].
+  paperNotation: WWKL <-> [(∃^2) v WHBU]
+  argument: "Reverse direction of the equivalence: if WHBU holds then WWKL."
+  confidence: medium
+  concerns: Obtained from the reverse direction of a disjunction equivalence over RCA0^omega.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: cbd74f74c542
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: sanders2018b's WHBU (Section 3.5.2) bounds the sum of the lengths of the intervals, not the measure of their union, so it is not the catalogue's WHBU (see the caution); the reverse direction is only called 'trivial' with [Simpson X.1.9].
+- id: sanders2018b-28ef6001
+  ref: sanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: muc
+    to: hbuc
+    over: rca0
+  loc: Section 2.2, after (HBUc)
+  origin: stated
+  quote: Note that MUC implies HBUc
+  paperNotation: MUC → HBU_c
+  confidence: medium
+  concerns: Stated without proof; base RCA0^omega assumed from the section.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: febd88ed8294
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "The text states 'MUC implies HBUc', and it is immediate: MUC bounds every G^2 on Cantor space via the modulus, which gives a finite subcover."
+- id: sanders2018b-97c47d42
+  ref: sanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: lind-qfac01-wkl
+    to: hbu
+    over: rca0
+  loc: Theorem 3.18, proof
+  origin: cited
+  quote: proves [LIN+WKL] ↔ HBU by [50, The-
+  paperNotation: "[LIN+WKL] <-> HBU"
+  citedFrom: Normann-Sanders [50], Theorem 3.13
+  confidence: medium
+  concerns: Base RCA0^omega + QF-AC^{0,1}.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Normann-Sanders [50], Theorem 3.13: cite the original"
+  proposed: 88dc204ae127
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The cited [50] is normannsanders2017b, whose Theorem 3.13 states that RCA0^omega + QF-AC^{0,1} proves [LIND + WKL] <-> HBU; its LIND (Definition 3.10) is the catalogue's.
+- id: sanders2018b-a78b3009
+  ref: sanders2018b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: hbu-qfac01
+    to: lind
+    over: rca0
+  loc: Theorem 3.18(a)
+  origin: special-case
+  quote: proves LIN ↔ [HBU ∨ ¬WKL] ↔ [HBU ∨ ¬X].
+  paperNotation: LIN <-> [HBU v ¬WKL]
+  argument: "Reverse direction of the equivalence: HBU gives LIN."
+  confidence: medium
+  concerns: Over RCA0^omega + QF-AC^{0,1}.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 9883d536b952
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: RCA0^omega + QF-AC^{0,1} proves LIN <-> [HBU v ~WKL], so HBU -> LIN; LIN (Definition 3.17) is the catalogue's lind.
+- id: sanders2018b-6a31deec
+  ref: sanders2018b
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: qfac01-whbu
+    to: lind
+    over: rca0
+  loc: Corollary 3.23
+  origin: special-case
+  quote: proves LIN ↔ [WHBU ∨ ¬WWKL] ↔ [WHBU ∨ ¬X].
+  paperNotation: LIN <-> [WHBU v ¬WWKL]
+  argument: "Reverse direction of the equivalence: WHBU gives LIN."
+  confidence: medium
+  concerns: Over RCA0^omega + QF-AC^{0,1}.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 644018092f3a
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Corollary 3.23 uses sanders2018b's WHBU (sum of the lengths of the intervals, Section 3.5.2), which is not the catalogue's measure-of-union WHBU, so the fact cannot be transferred.
+- id: sanders2018b-c0256311
+  ref: sanders2018b
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: exists2-hbu
+    to: atr
+    over: rca0
+  loc: Remark 4.1
+  origin: cited
+  quote: the combination implies ATR0 by [48, §6]; see also [50, §3].
+  paperNotation: (∃^2) + HBU → ATR0
+  citedFrom: Normann-Sanders [48, Section 6]; [50, Section 3]
+  confidence: medium
+  concerns: Base presumably RCA0^omega.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Normann-Sanders [48, Section 6]; [50, Section 3]: cite the original"
+  proposed: e81f14cc01fd
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "The cited sources reach ATR0 only with more: normannsanders2017 Corollary 6.7 uses the special fan functional, and normannsanders2017b Corollary 3.24 uses QF-AC^{2,1} (already recorded as exists2-hbu-qfac21 -> atr); I found no choice-free statement."
+- id: sanders2018b-4d7fa4ea
+  ref: sanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (κ^3_0)
+    name: Comprehension functional on Cantor space
+    loc: Section 2.2 and Section 3.1
+    definition: (∃κ)(∀Y^2)[κ(Y)=0 ↔ (∃f ∈ C)(Y(f)>0)]
+    facts: "Theorem 3.1: over WKL0^ω + QF-AC^{2,0}, (κ^3_0) ↔ (Z^3) + FF; Theorem 3.3 and Theorem 3.6 (splittings with MUC, (∃^3), WKL); (∃^3) ↔ (κ^3_0) + (∃^2)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 1ca9e4e7501a
+- id: sanders2018b-97e49117
+  ref: sanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (Z^3)
+    name: Functional testing continuity on Baire space
+    loc: Section 3.1
+    definition: (∃Z^3)(∀Y^2)[Z(Y)=0 ↔ (∀f)(∃N)(∀g)(f N = g N → Y(f)=Y(g))]
+    facts: "Corollary 3.2: RCA0^ω proves (∃^3) ↔ (∃^2) + (Z^3); Theorem 3.1; Theorem 3.7: (Z^3) ↔ [(∃^3) ∨ ¬(∃^2)]."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9f92bed10938
+- id: sanders2018b-00e6cc57
+  ref: sanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: T_0
+    name: Complete theory with a non-principal type and finitely many models up to isomorphism (contraposition of Belanger Theorem 2.28)
+    loc: Section 3.4, before Corollary 3.12
+    definition: "Contraposition of: there is a complete theory with a non-principal type and only finitely many models up to isomorphism; T_0 ↔ WKL0 + ¬ACA0."
+    facts: "Corollary 3.12: RCA0^ω proves T_0 ↔ [WKL0 + ¬ACA0] ↔ [HBU + ¬ACA0]; Corollary 3.13: WKL0 ↔ [ACA0 ∨ T_0], T_1 ↔ (T_0 ∨ Σ02-IND)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 6d35f4fe3e13
+- id: sanders2018b-a8e04731
+  ref: sanders2018b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: T_1
+    name: Powers of continuous maps on compact metric spaces (Friedman-Simpson-Yu Theorem 4.5.2)
+    loc: Section 3.4, before Corollary 3.10
+    definition: "For all k and all compact metric spaces X and continuous F: X → X, F^k is a continuous function from X into X; equivalent over RCA0 to WKL ∨ Σ02-IND."
+    facts: "Corollary 3.10: T_1 ↔ [HBU ∨ Σ02-IND] ↔ [WKL ∨ Σ02-IND] ↔ [FF ∨ HBU ∨ Σ02-IND]."
+  reasons:
+    - principle not in the catalogue
+  proposed: d944f2c5d3ab
+- id: normannsanders2020b-52cb457d
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: whbu
+    to: nin
+    over: rca0
+  loc: Theorem 3.4
+  origin: stated
+  quote: 0 proves WHBU → NIN ← BCT.
+  paperNotation: WHBU -> NIN
+  argument: Third-order statement over RCA0^omega, entered over rca0.
+  confidence: medium
+  concerns: "The paper's WHBU (Principle 2.8: pairwise distinct points, lengths of disjointified intervals) differs in formulation from the catalogue entry (which follows normannsanders2019); presumably equivalent."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: b4d33811993b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The proof of Theorem 3.4 of [@normannsanders2020b] (an injection Y gives the cover with radius 2^{-(Y(x)+3)}, of total measure at most 1/2) works verbatim for the zoo's WHBU (measure of the union), although the paper words WHBU differently (Principle 2.8).
+- id: normannsanders2020b-2281c077
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: bootminus
+    to: cocode0
+    over: rca0
+  loc: Theorem 3.19
+  origin: stated
+  quote: BOOT− → cocode0 → Harnack0 → Lebesgue0 → NIN,
+  paperNotation: BOOT^- -> cocode_0
+  argument: Third-order statement over RCA0^omega, entered over rca0. WKL is used only in the third implication of the chain, so it is not a hypothesis here.
+  confidence: medium
+  concerns: Theorem is stated over RCA0^omega + WKL; the paper says WKL is only used in the third implication. The proof of the first implication assumes (E^2) by excluded middle.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 67feb83f744e
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: RCA0^omega + WKL proves BOOT^- -> cocode0 -> ..., with WKL used only in the third implication, so BOOT^- -> cocode0 holds over RCA0^omega.
+- id: normannsanders2020b-b13451a7
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: bootminus
+    to: nin
+    over: rca0
+  loc: Theorem 3.19, proof
+  origin: stated
+  quote: First of all, we show BOOT− → NIN; repeating the proof with [0, 1] replaced by
+  paperNotation: BOOT^- -> NIN
+  argument: Third-order statement over RCA0^omega, entered over rca0.
+  confidence: medium
+  concerns: Proved inside the proof of Theorem 3.19 (whose statement is over RCA0^omega + WKL); the argument for BOOT^- -> NIN does not use WKL.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 798a957f2b5b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The proof explicitly shows BOOT^- -> NIN (interval halving with BOOT^- and [Simpson II.4.9]), without WKL.
+- id: normannsanders2020b-24d5f26d
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: cocode0-wkl
+    to: nin
+    over: rca0
+  loc: Theorem 3.19
+  origin: deduced
+  quote: BOOT− → cocode0 → Harnack0 → Lebesgue0 → NIN,
+  paperNotation: cocode_0 -> Harnack_0 -> Lebesgue_0 -> NIN over RCA0^omega + WKL
+  argument: Composition of the chain cocode0 -> Harnack0 -> Lebesgue0 -> NIN of Theorem 3.19, stated over RCA0^omega + WKL; Harnack0 and Lebesgue0 are not catalogue statements.
+  confidence: medium
+  concerns: The fact is also given without WKL by Corollary 3.20 (see the next fact).
+  reasons:
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: 0909c888a638
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Subsumed by cocode0 -> NIN over RCA0^omega without WKL (Corollary 3.20, item normannsanders2020b-2ba804fd); the WKL version adds nothing.
+- id: normannsanders2020b-2ba804fd
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: cocode0
+    to: nin
+    over: rca0
+  loc: Corollary 3.20
+  origin: deduced
+  quote: Corollary 3.20. The restriction of cocode0 , Harnack0 , Pohm, or Lebesgue0 to
+  paperNotation: cocode_0 restricted to RM-closed sets
+  argument: "Corollary 3.20: the restriction of cocode0 to RM-closed sets already implies NIN (proof: [0,1] is RM-closed and countable when Y is an injection, so cocode0 lists [0,1], contradicting [109, II.4.9]). cocode0 implies its restriction."
+  confidence: medium
+  concerns: The paper states the corollary for the restriction; the full cocode0 -> NIN is the immediate consequence.
+  reasons:
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: 461dddc03aee
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Corollary 3.20 shows that cocode0 restricted to RM-closed sets implies NIN (its proof uses only [Simpson II.4.9]); cocode0 implies this restriction, so this is a direct restriction.
+- id: normannsanders2020b-d0374aeb
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: hbc0
+    to: nin
+    over: rca0
+  loc: Corollary 3.22
+  origin: stated
+  quote: 0 proves HBC0 → NIN.
+  paperNotation: HBC_0 -> NIN
+  argument: Third-order statement over RCA0^omega, entered over rca0.
+  confidence: high
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: 7f75835accb2
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The text reads 'The system RCA0^omega proves HBC0 -> NIN' (the extraction split the line); HBC0 is Principle 3.21 with Definition 3.14, the same as the catalogue's; the fact is already recorded.
+- id: normannsanders2020b-cdaab797
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: bwc0fun-suslin
+    to: pi12ca
+    over: rca0
+  loc: Theorem 3.25
+  origin: stated
+  quote: Π21 -CA0 when combined with higher-order Π11 -CA0 , i.e. the Suslin functional (The-
+  paperNotation: Pi^1_1-CA_0^omega + BW^C_0 proves Pi^2_1-CA_0 (the paper's Pi^2_1 is Pi^1_2)
+  argument: Pi^1_1-CA_0^omega is RCA0^omega + (S^2), so the Suslin functional is a conjunct of the hypothesis.
+  confidence: medium
+  concerns: "Superscript/subscript run together in extraction: 'Π21 -CA0' read as Pi^1_2-CA_0 (the formulation in the abstract of the theorem, 'Π²₁'); the conclusion is a second-order sentence. BW^C_0 is Principle 3.24, matching the catalogue entry bwc0fun."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 14e7f9ce3a3b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "I checked the rendered PDF: Pi^1_1-CA_0^omega + BW^C_0 proves Pi^1_2-CA_0; BW^C_0 is Principle 3.24 (the bwc0fun entry); the fact is already recorded."
+- id: normannsanders2020b-74dfe401
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: nin
+    to: nbi
+    over: rca0
+  loc: Section 3.3.1, before Principle 3.29
+  origin: stated
+  quote: Since NIN implies NBI, there is a proof of the latter in ZF and much weaker
+  paperNotation: NIN -> NBI
+  argument: Stated in passing as an obvious fact (a bijection is an injection).
+  confidence: medium
+  concerns: Stated without a theorem number.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: dc461513416a
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "'Since NIN implies NBI' is stated, and it is immediate (NBI's first disjunct is NIN's conclusion)."
+- id: normannsanders2020b-077761ab
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: ncc
+    to: deltaca3
+    over: rca0
+  loc: Section 3.3.2, before Theorem 3.35
+  origin: cited
+  quote: As shown in [91, §3.1], NCC implies ∆-CA, but the following proof is interesting.
+  paperNotation: NCC -> ∆-CA
+  argument: Attributed to Normann and Sanders, The Axiom of Choice in Computability Theory and Reverse Mathematics.
+  citedFrom: "[91, Theorem 3.1]"
+  confidence: high
+  reasons:
+    - "attributed by the paper to [91, Theorem 3.1]: cite the original"
+  proposed: 8abe26654197
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: normannsanders2020 Theorem 3.1 states that RCA0^omega proves QF-AC^{0,1} -> NCC -> Delta-CA, with a proof; its Delta-CA is the same as the catalogue's.
+- id: normannsanders2020b-3ba7ceaa
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: qfac01
+    to: deltaca3
+    over: rca0
+  loc: Theorem 3.35, proof
+  origin: cited
+  quote: proves ∆-CA by [101, Theorem 3.5].
+  paperNotation: RCA0^omega + QF-AC^{0,1} proves ∆-CA
+  argument: "Attributed to Sanders, Lifting recursive counterexamples to higher-order arithmetic; proof: apply QF-AC to (forall n)(not A1(n) -> A0(n))."
+  citedFrom: "[101, Theorem 3.5]"
+  confidence: high
+  reasons:
+    - "attributed by the paper to [101, Theorem 3.5]: cite the original"
+  proposed: 712bb0d9b3a9
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The cited [101] (Sanders, Lifting recursive counterexamples) is not in the references, but normannsanders2020 Theorem 3.1 states RCA0^omega proves QF-AC^{0,1} -> NCC -> Delta-CA, and normannsanders2020b's proof of Theorem 3.35 gives the one-line argument.
+- id: normannsanders2020b-ab829717
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: cocode1
+    to: nbi
+    over: rca0
+  loc: Corollary 3.38
+  origin: deduced
+  quote: Corollary 3.38. The restriction of cocode1 or Harnack1 to RM-closed sets A ⊂ R
+  paperNotation: cocode_1 restricted to RM-closed sets
+  argument: "Corollary 3.38: the restriction of cocode1 to RM-closed sets implies NBI; cocode1 implies its restriction."
+  confidence: medium
+  concerns: The paper states the corollary for the restriction; the full cocode1 -> NBI is the immediate consequence.
+  reasons:
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: 2137cfe91e5b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Corollary 3.38: cocode1 restricted to RM-closed sets implies NBI (same proof as Corollary 3.20: under a bijection, [0,1] is strongly countable and RM-closed); full cocode1 implies the restriction."
+- id: normannsanders2020b-c9ce56c2
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: hbu
+    to: whbu
+    over: rca0
+  loc: Section 1.3.3, implications (P)
+  origin: stated
+  quote: ACA0 → WKL0 → WWKL0 → RCA0 and BOOT → HBU → WHBU → RCAω
+  paperNotation: HBU -> WHBU
+  argument: "The implication BOOT -> HBU -> WHBU -> RCA0^omega is listed as known (and used in the proof of Corollary 3.22: 'Since HBU → WHBU')."
+  confidence: medium
+  concerns: The paper's WHBU formulation (Principle 2.8) differs from the catalogue entry's.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: bd8109718227
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: HBU -> WHBU is only listed in (P) ('some of which are well-known') without proof, for the paper's own WHBU formulation; the fact is already recorded from normannsanders2019 for the catalogue's formulation.
+- id: normannsanders2020b-f98fcd6b
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: exists2
+    to: mu2
+    over: rca0
+  loc: Section 2.1.4
+  origin: stated
+  quote: We have (∃2 ) ↔ (µ2 ) over RCAω
+  paperNotation: (E^2) <-> (mu^2)
+  argument: Stated in passing as a known fact (Kohlenbach).
+  confidence: medium
+  concerns: Stated without citation in the text.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: b1b3d48dfa44
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The paper states '(E^2) <-> (mu^2) over RCA0^omega' explicitly; this is standard (Kohlenbach).
+- id: normannsanders2020b-107eeff3
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: ninalt
+    to: nin
+    over: rca0
+  loc: Example A.24
+  origin: stated
+  quote: "The following principles readily23 imply NIN:"
+  paperNotation: the unit interval is not weakly countable
+  argument: The paper's 'weakly countable' (a height function with finite level sets, Definition A.23) is the catalogue's 'height countable'.
+  confidence: low
+  concerns: Only a sketch ('readily' implies); the catalogue entry refers to another paper's Definition 1.2 of 'finite'; footnote 23 sketches the argument.
+  reasons:
+    - "extractor confidence: low"
+  proposed: d35143437565
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Definition A.23 (finite) and 'weakly countable' coincide with sanders2022b's Definition 1.2 and 'height countable'; footnote 23 gives the argument (an injection is a height function), which is valid in RCA0^omega.
+- id: normannsanders2020b-5e70739a
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: deltaca3
+    to: cocode1
+    over: rca0
+  loc: Corollary 3.36
+  origin: stated
+  quote: 0 proves ∆-CA → cocode1 and [cocode1 + WKL] → HBC1 .
+  paperNotation: ∆-CA -> cocode_1
+  argument: Third-order statement over RCA0^omega, entered over rca0.
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: be05854abee3
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: RCA0^omega proves Delta-CA -> cocode1 (cocode1 is cocode0 for strongly countable sets, Definition 3.32), as stated and proved.
+- id: normannsanders2020b-b46a08b8
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: deltaca3
+    to: nbi
+    over: rca0
+  loc: Theorem 3.35
+  origin: stated
+  quote: 0 proves ∆-CA → NBI, while Z2 + ∆-CA cannot prove NIN.
+  paperNotation: ∆-CA -> NBI
+  argument: Third-order statement over RCA0^omega, entered over rca0.
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: ea9e4a77cc85
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: RCA0^omega proves Delta-CA -> NBI, as stated and proved in the first part of the proof.
+- id: normannsanders2020b-605fbce6
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: ncc
+    to: nbi
+    over: rca0
+  loc: Theorem 3.30
+  origin: stated
+  quote: 0 + NCC proves NBI, while Z2 + NCC cannot prove NIN.
+  paperNotation: NCC -> NBI
+  argument: Third-order statement over RCA0^omega, entered over rca0.
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: a26a3e648e09
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: RCA0^omega + NCC proves NBI; NCC is Principle 3.29, the same as the catalogue's.
+- id: normannsanders2020b-a0b3bcc2
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: qfac01
+    to: nbi
+    over: rca0
+  loc: Theorem 3.28
+  origin: stated
+  quote: "Proof. For the first part, suppose Y : [0, 1] → N is a bijection. Apply QF-AC0,1 to"
+  paperNotation: RCA0^omega + QF-AC^{0,1} proves NBI
+  argument: Third-order statement over RCA0^omega, entered over rca0.
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: f1e777d7a96d
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: RCA0^omega + QF-AC^{0,1} proves NBI, as stated and proved.
+- id: normannsanders2020b-41077f4f
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: exists3-qfac01
+    to: nin
+    over: rca0
+  loc: Theorem 3.2
+  origin: stated
+  quote: Note that QF-AC0,1 applies to (3.1) (modulo ∃3 ) and let Φ0→1 be the resulting
+  paperNotation: Z^Omega_2 + QF-AC^{0,1} proves NIN
+  argument: Z^Omega_2 is RCA0^omega + (E^3); the extra axioms are the conjuncts.
+  confidence: high
+  concerns: Theorem 3.2 states that Z^Omega_2 + QF-AC^{0,1} can prove NIN; the printed theorem statement is split by the extraction, the quote is from the proof.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: e8a717739a2c
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Z_2^Omega + QF-AC^{0,1}, i.e. RCA0^omega + (E^3) + QF-AC^{0,1}, proves NIN (the positive part of Theorem 3.2).
+- id: normannsanders2020b-8060e8df
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BCT (Baire category theorem, open sets given by characteristic functions)
+    name: Third-order Baire category theorem for open dense sets given by characteristic functions
+    loc: Section 3.2.2, before Theorem 3.4 (defined as in [89, §6])
+    definition: For a sequence of dense open sets of [0,1], each given by a characteristic function, the intersection is nonempty.
+    facts: RCA0^omega proves BCT -> NIN (Theorem 3.4); remains valid for open sets with finitely many isolated points in the complement. No Baire realiser is computable in a type-two functional (Theorem 4.4).
+  reasons:
+    - principle not in the catalogue
+  proposed: dbe046af20d4
+- id: normannsanders2020b-de6f5ffe
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: STS
+    name: Countably-compact metric spaces on [0,1] are separable
+    loc: Principle 3.11 (Definitions 3.8-3.10)
+    definition: A countably-compact metric space ([0,1],d) is separable; unrelated to the stable thin set theorem.
+    facts: RCA0^omega proves STS -> NIN (Theorem 3.12); also with 'separable' replaced by total boundedness, Heine-Borel or Lindelof property for uncountable covers, Vitali covering property (Corollary 3.13).
+  reasons:
+    - principle not in the catalogue
+  proposed: 159a02616497
+- id: normannsanders2020b-e300a9bd
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Harnack_0
+    name: "Harnack: countable subsets of [0,1] have measure zero"
+    loc: Principle 3.16
+    definition: A countable set A of [0,1] (Definition 3.14) has measure zero.
+    facts: cocode0 -> Harnack0 -> Lebesgue0 -> NIN over RCA0^omega + WKL (Theorem 3.19); Pohm -> Harnack0 over ACA0^omega; the restriction to RM-closed sets still implies NIN (Corollary 3.20); Harnack1 (strongly countable sets) satisfies cocode1 -> Harnack1 -> NBI.
+  reasons:
+    - principle not in the catalogue
+  proposed: 7d446a439d7d
+- id: normannsanders2020b-0c35fdd0
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Pohm
+    name: Pigeonhole principle for measure (Tao)
+    loc: Principle 3.17
+    definition: For a sequence of sets E_n in [0,1], if the union has positive measure then some E_n has positive measure (assuming (E^2)).
+    facts: ACA0^omega proves Pohm -> Harnack0 (Theorem 3.19); the restriction to RM-closed sets implies NIN (Corollary 3.20).
+  reasons:
+    - principle not in the catalogue
+  proposed: 107374fdc45a
+- id: normannsanders2020b-061a8346
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Lebesgue_0
+    name: Lebesgue criterion for Riemann integrability for countable exceptional sets
+    loc: Principle 3.18
+    definition: A bounded function on [0,1] continuous outside a countable set is Riemann integrable.
+    facts: Harnack0 -> Lebesgue0 -> NIN over RCA0^omega + WKL (Theorem 3.19); the restriction to RM-closed sets implies NIN (Corollary 3.20).
+  reasons:
+    - principle not in the catalogue
+  proposed: 7a946e9acb76
+- id: normannsanders2020b-4feda5be
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HBC_1
+    name: Heine-Borel theorem for strongly countable coverings
+    loc: Theorem 3.33 (HBC0 restricted to strongly countable sets, Definition 3.32)
+    definition: HBC0 restricted to strongly countable sets A of R^2.
+    facts: RCA0^omega proves HBC1 -> NBI (Theorem 3.33); [cocode1 + WKL] -> HBC1 over RCA0^omega (Corollary 3.36); Z^omega_2 + HBC1 cannot prove NIN.
+  reasons:
+    - principle not in the catalogue
+  proposed: 445f87b0d99e
+- id: normannsanders2020b-e1361d38
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BW_0
+    name: Bolzano-Weierstrass theorem for countable subsets of [0,1]
+    loc: Section 3.2.4, item (viii) and after Corollary 3.22
+    definition: A countable set in [0,1] has a supremum.
+    facts: BW0 -> HBC0 by the usual proof; Z^omega_2 + QF-AC^{0,1} cannot prove HBC0 or BW0 (Corollary 3.23); ACA0 -> BW1 given Delta-CA.
+  reasons:
+    - principle not in the catalogue
+  proposed: 1ffb2c0f959d
+- id: normannsanders2020b-da828937
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: NCC_w
+    name: NCC with only an upper bound
+    loc: Corollary 3.31
+    definition: NCC where g only provides an upper bound on the m-variable.
+    facts: RCA0^omega + NCC_w proves NBI (Corollary 3.31).
+  reasons:
+    - principle not in the catalogue
+  proposed: c48255c4950e
+- id: normannsanders2020b-23549c43
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Sigma-NFP
+    name: Sigma neighbourhood function principle
+    loc: Footnote 21 of Section 3.3.1
+    definition: "For A(sigma) = (exists g in 2^N)(Y(g,sigma)=0): (forall f)(exists n)A(fn) -> (exists g in K_0)(forall f)A(f g(f)); fragment of NFP."
+    facts: Implies NCC, and HBU together with WKL, as shown in [100, §5].
+  reasons:
+    - principle not in the catalogue
+  proposed: 7d20be06719f
+- id: normannsanders2020b-1057065a
+  ref: normannsanders2020b
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BOOT^-_C
+    name: BOOT^- restricted to Cantor space
+    loc: Proof of Theorem 3.25
+    definition: "For Y^2 with at most one f in 2^N such that Y(f,n)=0, the set {n : exists g in 2^N Y(g,n)=0} exists."
+    facts: BW^C_0 -> BOOT^-_C; Pi^1_1-CA_0^omega + BOOT^-_C proves Pi^1_2-CA_0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 51f32591304d
+- id: sanders2020-1d222cbe
+  ref: sanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: cocode0
+    to: cbn-cocode1
+    over: rca0
+  loc: Theorem 3.16, items (iv) and (v)
+  origin: stated
+  quote: "(iv) cocode0 : a countable set in [0, 1] can be listed as a sequence,"
+  paperNotation: cocode0 ↔ CBN + cocode1
+  argument: "Theorem 3.16: over ACA0^ω items (i)-(v) are equivalent; omitting item (ii) the equivalences go through over RCA0^ω, which is entered over rca0."
+  confidence: medium
+  concerns: Paper's CBN is Principle 3.9 (catalogue cbn matches). The statement of the theorem lists (v) as CBN + cocode1; the quote is only item (iv) because the extracted lines are split.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: b833fae418ec
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Theorem 3.16 states that items (i) and (iii)-(v), with (iv) cocode0 and (v) CBN + cocode1, are equivalent over RCA0^ω; this duplicates the two existing directions in sanders2020.yaml.
+- id: sanders2020-f719a497
+  ref: sanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: cocode0-suslin
+    to: pi12ca
+    over: rca0
+  loc: Corollary 3.17
+  origin: stated
+  quote: Corollary 3.17. Let X be any item among (i)-(v) from the theorem. The system
+  paperNotation: Π11-CA0^ω + X proves Π12-CA0 (X = cocode0)
+  argument: Item (iv) of Theorem 3.16 is cocode0; Π11-CA0^ω is RCA0^ω + (S2), so the Suslin functional is a conjunct of the hypothesis.
+  confidence: medium
+  concerns: "Statement continues on the next lines ('Π11-CAω0 + X proves Π12-CA0'), lost in extraction. Conjunction id sorted alphabetically: cocode0-suslin."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 3d1eaec3d716
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Corollary 3.17: Π11-CA0^ω + X proves Π12-CA0 for X any item of Theorem 3.16, including (iv) cocode0; Π11-CA0^ω = RCA0^ω + (S2); this duplicates an existing entry."
+- id: sanders2020-2ba804fd
+  ref: sanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: cocode0
+    to: nin
+    over: rca0
+  loc: Proof of Corollary 3.18
+  origin: cited
+  quote: cocode0 → NIN. For the remaining part
+  paperNotation: cocode0 → NIN
+  argument: Stated in the proof of Corollary 3.18 as a result of [64].
+  citedFrom: "[64] Normann–Sanders, §3"
+  confidence: medium
+  concerns: Base system not made explicit in the sentence (RCA0^ω assumed).
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to [64] Normann–Sanders, §3: cite the original"
+  proposed: 7c2f13dc34d9
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The cited source [64] = normannsanders2020b proves cocode0 -> Harnack0 -> Lebesgue0 -> NIN over RCA0^ω + WKL, with WKL used in Harnack0 -> Lebesgue0, so as stated the composite needs WKL.
+- id: sanders2020-3ba7ceaa
+  ref: sanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: qfac01
+    to: deltaca3
+    over: rca0
+  loc: Proof of Corollary 3.34
+  origin: cited
+  quote: Proof. It is show in [64, §3] that QF-AC0,1 → ∆-CA → cocode1 over RCAω
+  paperNotation: QF-AC^{0,1} → ∆-CA
+  argument: Cited in the proof of Corollary 3.34, over RCA0^ω.
+  citedFrom: "[64] Normann–Sanders, §3"
+  confidence: high
+  reasons:
+    - "attributed by the paper to [64] Normann–Sanders, §3: cite the original"
+  proposed: 4f1ecc05c6f2
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "normannsanders2020 Theorem 3.1 (second item): RCA0^ω proves QF-AC^{0,1} -> NCC -> Δ-CA, with a proof; normannsanders2020b Theorem 3.35 repeats it citing another paper."
+- id: sanders2020-5e70739a
+  ref: sanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: deltaca3
+    to: cocode1
+    over: rca0
+  loc: Proof of Corollary 3.34
+  origin: cited
+  quote: Proof. It is show in [64, §3] that QF-AC0,1 → ∆-CA → cocode1 over RCAω
+  paperNotation: ∆-CA → cocode1
+  argument: Cited in the proof of Corollary 3.34, over RCA0^ω.
+  citedFrom: "[64] Normann–Sanders, §3"
+  confidence: high
+  reasons:
+    - "attributed by the paper to [64] Normann–Sanders, §3: cite the original"
+  proposed: 35c0e249eb48
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "normannsanders2020b Corollary 3.36: RCA0^ω proves Δ-CA -> cocode1 (proof adapts Theorem 3.35)."
+- id: sanders2020-077761ab
+  ref: sanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: ncc
+    to: deltaca3
+    over: rca0
+  loc: Proof of Corollary 3.23
+  origin: cited
+  quote: CBN follows from Theorem 3.16 as NCC → ∆-CA → cocode1 where the latter
+  paperNotation: NCC → ∆-CA
+  argument: The proof of Corollary 3.23 uses NCC → ∆-CA → cocode1, the latter implications taken from [63, §3.1] and [64, Cor. 3.33].
+  citedFrom: "[63, §3.1] (Normann–Sanders on NCC)"
+  confidence: medium
+  concerns: Text says the implications are from [63, §3.1] and [64, Cor. 3.33]; which one gives NCC → ∆-CA is not specified.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to [63, §3.1] (Normann–Sanders on NCC): cite the original"
+  proposed: 243aa31b83aa
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "normannsanders2020 Theorem 3.1: RCA0^ω proves NCC -> Δ-CA (Δ-CA written there as (∃f)Y(f,n)=0 ↔ (∀g)Z(g,n)=0, equivalent to Principle 2.6 of sanders2020)."
+- id: sanders2020-fc975cb6
+  ref: sanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: hbc0
+    to: wkl
+    over: rca0
+  loc: Theorem 3.38
+  origin: stated
+  quote: imply WKL0 over RCA0 , and the same for any sentence not provable in RCA0 .
+  paperNotation: HBC0 does not imply WKL0 over RCA0^ω
+  argument: "Theorem 3.38: HBC0 does not imply WKL0 over RCA0^ω; proof: under ECF HBC0 becomes vacuously true."
+  confidence: medium
+  concerns: "Quote is the second line of the theorem (first part: 'the latter does not' on the previous line); extraction interleaves symbols."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 57313d7b6d9c
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "The rendered PDF confirms Theorem 3.38: HBC0 does not imply WKL0 over RCA0^ω (ECF makes HBC0 vacuous)."
+- id: sanders2020-83977612
+  ref: sanders2020
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: boot
+    to: mctnet
+    over: rca0
+  loc: Theorem 3.26, items (ii) and (iii)
+  origin: stated
+  quote: First of all, (ii) ↔ (iii) immediately follows from [78, Theorem 3.7].
+  paperNotation: MCT^net (index set N^N) ↔ BOOT
+  argument: "Theorem 3.26 over RCA0^ω: (ii) monotone convergence theorem for nets with index set N^N is equivalent to (iii) BOOT; the proof cites [78, Theorem 3.7]."
+  confidence: medium
+  concerns: Definition of nets indexed by N^N is in [77,78], not in this paper; check catalogue mctnet matches it.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 211f88f1696d
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Theorem 3.26 states BOOT ↔ MCT_net over RCA0^omega, but its proof cites only the Cantor-space version (sanders2019b Thm 3.7); for [0,1], MCT_net → BOOT is proved only with IND or QF-AC^{0,1} (sanders2019b Cor 3.9, Thm 3.19), already recorded with qfac01.
+- id: sanders2020-2ead68ce
+  ref: sanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: boot-suslin
+    to: pi12ca
+    over: rca0
+  loc: Remark 2.7
+  origin: special-case
+  quote: readily proves Π1k+1 -CA0 .
+  paperNotation: Π1k-CA0^ω + BOOT proves Π1k+1-CA0 (k = 1)
+  argument: Remark 2.7 says Π1k-CA0^ω + BOOT readily proves Π1k+1-CA0; for k = 1, Π11-CA0^ω is RCA0^ω + (S2).
+  confidence: medium
+  concerns: Stated informally ('readily proves'); general k, here the case k = 1.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 20ff9def7b28
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: sanders2019b Theorem 3.2 proves that Π1k-CA0^ω + BOOT proves Π1k+1-CA0; this is the case k = 1, with Π11-CA0^ω = RCA0^ω + (S2); sanders2020 Remark 2.7 restates it informally.
+- id: sanders2020-df50f8fa
+  ref: sanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: boot-exists2
+    to: pi11ca
+    over: rca0
+  loc: Remark 2.7
+  origin: special-case
+  quote: readily proves Π1k+1 -CA0 .
+  paperNotation: Π1k-CA0^ω + BOOT proves Π1k+1-CA0 (k = 0)
+  argument: "Remark 2.7 for k = 0: with the paper's identification of ACA0^ω with Π10-CA0^ω (Section 2.2), ACA0^ω + BOOT proves Π11-CA0; ACA0^ω is RCA0^ω + (∃2)."
+  confidence: medium
+  concerns: Stated informally; the paper identifies (∃2) with (S2_0), ACA0^ω with Π1k-CA0^ω for k = 0.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 8fd810255f1b
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: sanders2019b Theorem 3.2 is stated for k ≥ 0, and that paper identifies Π10-CA0^ω with ACA0^ω = RCA0^ω + (∃2), so ACA0^ω + BOOT proves Π11-CA0 (also restated in sanders2020 Remark 2.7).
+- id: sanders2020-97e220c1
+  ref: sanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: mu2
+    to: exists2
+    over: rca0
+  loc: Section 2.2, after (µ2)
+  origin: cited
+  quote: "in fact, (µ2 ) is equivalent to the existence of F : R → R"
+  paperNotation: (µ2) ↔ (∃2)
+  argument: The paper states (µ2) is equivalent to the existence of a discontinuous F and to (∃2), citing Kohlenbach.
+  citedFrom: "[46, §3] Kohlenbach"
+  confidence: medium
+  concerns: The equivalence to (∃2) is on the next line of the text (formula (∃2)); quote is the preceding part.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to [46, §3] Kohlenbach: cite the original"
+  proposed: e0d9c4fae3cd
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "The rendered PDF confirms kohlenbach2005 Proposition 3.9: (∃2), (µ2) and UWKL are pairwise equivalent over RCA0^ω."
+- id: sanders2020-0c281b1e
+  ref: sanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BW_0^{[0,1]}
+    name: Bolzano–Weierstrass theorem for countable sets in [0,1]
+    loc: Principle 3.15
+    definition: "For countable A ⊂ [0,1] and F : [0,1] → [0,1], the supremum sup_{x∈A} F(x) exists."
+    facts: "Theorem 3.16: equivalent to cocode0, BOOT^-_C, CBN + cocode1 over RCA0^ω (and to MCT0^net over ACA0^ω); Cor. 3.17: with the Suslin functional it yields Π12-CA0; Cor. 3.18: not provable in Z2^ω + QF-AC^{0,1}, adds no L2-sentence beyond RCA0. Close to catalogue bwc0fun (Cantor space version, equivalent given (∃2))."
+  reasons:
+    - principle not in the catalogue
+  proposed: ec7ae80acca9
+- id: sanders2020-4fecdeb8
+  ref: sanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MCT_0^net
+    name: Monotone convergence theorem for nets with countable index sets
+    loc: Section 3.3.1, before Theorem 3.16
+    definition: Every increasing net in [0,1] indexed by finite sequences without repetitions of a countable set A (ordered by inclusion) converges.
+    facts: "Theorem 3.16 (over ACA0^ω): equivalent to BW_0^{[0,1]}, BOOT^-_C, cocode0, CBN + cocode1; Theorem 3.21: MCT_0^net ↔ [MCT_1^net + CBN] over ACA0^ω."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9aa21c46ab40
+- id: sanders2020-1057065a
+  ref: sanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BOOT^-_C
+    name: Bootstrap principle with unique witnesses on Cantor space
+    loc: Section 2.2
+    definition: "BOOT^- with N^N replaced by 2^N: for Y with at most one f ∈ 2^N with Y(f,n)=0 for each n, {n : ∃f Y(f,n)=0} exists."
+    facts: Equivalent to cocode0 and BW_0^{[0,1]} (Theorem 3.16); BOOT^-_C → cocode0 from [64, Thm 3.16].
+  reasons:
+    - principle not in the catalogue
+  proposed: 751433a9a76b
+- id: sanders2020-08c0458a
+  ref: sanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BW_1^{[0,1]}
+    name: Bolzano–Weierstrass theorem for strongly countable sets
+    loc: Principle 3.20
+    definition: For a strongly countable set A ⊂ [0,1] there is a sequence in A converging to the supremum of A.
+    facts: "Corollary 3.22: over RCA0^ω + IND_Σ, BW_1^{[0,1]} ↔ cocode1; not explosive."
+  reasons:
+    - principle not in the catalogue
+  proposed: fe512387c25b
+- id: sanders2020-e9160d8f
+  ref: sanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MCT_1^net
+    name: Monotone convergence theorem for nets with strongly countable index sets with modulus of convergence
+    loc: Section 3.3.1, before Principle 3.20
+    definition: MCT_0^net restricted to strongly countable index sets and upgraded with a modulus of convergence.
+    facts: "Theorem 3.21: over ACA0^ω, MCT_1^net ↔ cocode1 ↔ !QF-AC^{0,1}."
+  reasons:
+    - principle not in the catalogue
+  proposed: 623a8cf1e497
+- id: sanders2020-76e4142d
+  ref: sanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: "!QF-AC^{0,1}"
+    name: Quantifier-free choice with unique existence
+    loc: Section 3.3.1, before Theorem 3.21
+    definition: QF-AC^{0,1} restricted to unique existence.
+    facts: "Theorem 3.21: equivalent to cocode1 and MCT_1^net over ACA0^ω."
+  reasons:
+    - principle not in the catalogue
+  proposed: 4e099c643626
+- id: sanders2020-7fcc1964
+  ref: sanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CBN'
+    name: Naive Cantor–Bernstein theorem
+    loc: Section 3.2.3
+    definition: "CBN with condition (ii) replaced by: there is an injection from N to A."
+    facts: "Corollary 3.23: over RCA0^ω + NCC, cocode0 ↔ CBN' ↔ [CBN' + fin0]; with Korg0 and ADS0 splittings (Cor. 3.33, 3.44)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 6cc747dc5632
+- id: sanders2020-19255641
+  ref: sanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: fin0
+    name: Finite sets can be listed by sequences
+    loc: Principle 3.8
+    definition: "cocode0 restricted: for A ⊂ [0,1] and Y injective and bounded on A, there is a sequence listing A."
+    facts: "Used in Corollaries 3.23, 3.33, 3.44: cocode0 ↔ [CBN' + fin0] over RCA0^ω + NCC."
+  reasons:
+    - principle not in the catalogue
+  proposed: 067b613294a3
+- id: sanders2020-0d81fe0d
+  ref: sanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: IND_Σ
+    name: Induction for Σ-formulas
+    loc: Section 3.3.1, before Corollary 3.22
+    definition: Induction axiom for formulas ϕ(n) ≡ (∃f ∈ N^N)(Z(f,n) = 0).
+    facts: Extra base axiom in Corollary 3.22 and Theorem 3.42.
+  reasons:
+    - principle not in the catalogue
+  proposed: 913e800bd745
+- id: sanders2020-287fe393
+  ref: sanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Korg0, Korg1, Korg2
+    name: König's infinity lemma for graphs/sets with countable vertex sets
+    loc: Principles 3.31, 3.35
+    definition: "Korg0: for a graph with countable vertex set V = ∪Vn, each Vn non-empty finite and each vertex of Vn+1 adjacent to one of Vn, there is a path (vn) with vn ∈ Vn; Korg1: restricted to strongly countable V; Korg2: the set version with a binary relation on reals."
+    facts: "Theorem 3.32: Korg1 → NBI over RCA0^ω; Cor. 3.33: Korg1 ↔ cocode1, cocode0 ↔ [Korg0 + CBN]; Cor. 3.34: Δ-CA proves Korg1, RCA0^ω + Korg1 does not prove ACA0; Theorem 3.36: Korg2 → cocode1, and RCA0^ω + ACA0^ω + Π12-IND + QF-AC^{0,1} proves Korg2."
+  reasons:
+    - principle not in the catalogue
+  proposed: b13676336572
+- id: sanders2020-f2541f44
+  ref: sanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ADS_0, ADS_1, SADS_0
+    name: ADS for countable (strongly countable) linear orders of reals
+    loc: Principle 3.41
+    definition: "ADS_0: every countable infinite linear order has an infinite ascending or descending sequence; ADS_1 for strongly countable; SADS_0 for stable orders."
+    facts: "Theorem 3.42: over RCA0^ω + IND_Σ, ADS_0 → NBI; Cor. 3.43: ADS_0 → cocode1, ADS_0 does not imply ADS; Cor. 3.44: cocode0 ↔ [ADS_0 + CBN] over RCA0^ω + IND_Σ; Cor. 3.45 for SADS_0; Cor. 3.46 under MUC. Similar remarks for CAC and RT^2_2 (Section 3.5)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 078a0e625de0
+- id: sanders2020-ac2e85a3
+  ref: sanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SUBNET_0
+    name: Monotone nets indexed by N^N have monotone subnets with countable index set
+    loc: before Corollary 3.27
+    definition: A monotone net in [0,1] indexed by N^N has a monotone sub-net with a countable index set.
+    facts: "Corollary 3.27: over ACA0^ω, [BOOT + QF-AC^{0,1}] ↔ [BOOT^-_C + SUBNET_0]."
+  reasons:
+    - principle not in the catalogue
+  proposed: e86f676a6424
+- id: sanders2020-841ced92
+  ref: sanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Theorem 3.5 principles
+    name: Third-order countability statements equivalent to (∃2)
+    loc: Theorem 3.5
+    definition: Any sequence of reals is a countable set; the unit interval is first-countable; (∃Y^2)(∀f,g ∈ N∞)(Y(f)=Y(g) → f=g) (with surjectivity); the unit interval second-countable.
+    facts: "Theorem 3.5: over RCA0^ω each of the first four is equivalent to (∃2); (∃2) follows from second-countability; Cor. 3.6: (ii) → (i) over RCA0^ω + WKL."
+  reasons:
+    - principle not in the catalogue
+  proposed: b6bfd0998232
+- id: normannsanders2020-e82051ff
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: a0
+    to: ncc
+    over: rca0
+  loc: Section 3.1, remark after Theorem 3.1
+  origin: stated
+  quote: We also note that the axiom A0 from [40, §5] trivially implies NCC.
+  paperNotation: A_0 -> NCC
+  confidence: medium
+  concerns: A0 is defined in [40], not in this paper; check the catalogue definition matches (the catalogue states it with Y(f,sigma)). Stated as trivial, no proof.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 4f45299c970c
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The paper states that A0 from [40, Section 5] trivially implies NCC; with the catalogue's A0 (Y(f,sigma) with f in Cantor space) the reduction is immediate (apply A0 to sigma -> A(sigma(0), |sigma|-1)).
+- id: normannsanders2020-605fbce6
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: ncc
+    to: nbi
+    over: rca0
+  loc: Section 3.1, last paragraph
+  origin: cited
+  quote: NCC implies the principle NBI
+  paperNotation: NCC -> NBI
+  citedFrom: "[31, §3.2]"
+  confidence: medium
+  concerns: Base not stated explicitly; presumably RCA0^omega.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to [31, §3.2]: cite the original"
+  proposed: 67c37278f825
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Original: normannsanders2020b Theorem 3.30, RCA0^omega + NCC proves NBI (NCC as Principle 3.29, identical to the catalogue)."
+- id: normannsanders2020-cfe25ac9
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: ncc
+    to: nin
+    over: rca0
+  loc: Section 3.1, last paragraph
+  origin: cited
+  quote: cannot prove NIN, that there is no injection from [0, 1] to N, even when combined
+  paperNotation: NCC does not imply NIN
+  argument: The paper says NCC cannot prove NIN even when combined with Z_2^omega; a fortiori NCC alone does not prove it.
+  citedFrom: "[31, §3.2]"
+  confidence: medium
+  concerns: Stated even for NCC + Z_2^omega (no catalogue id for that); the weaker separation from NCC is entered.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to [31, §3.2]: cite the original"
+  proposed: ab4f58b3e30f
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Original: normannsanders2020b Theorem 3.30, Z2^omega + NCC cannot prove NIN, hence RCA0^omega + NCC does not prove NIN."
+- id: normannsanders2020-0e0b0821
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: pito
+    to: wkl
+    over: rca0
+  loc: Theorem 3.2, proof
+  origin: cited
+  quote: The reverse implication is proved in [29, Cor. 4.8]
+  paperNotation: PIT_o -> WKL
+  citedFrom: "[29, Cor. 4.8]"
+  confidence: high
+  concerns: Over RCA0^omega.
+  reasons:
+    - "attributed by the paper to [29, Cor. 4.8]: cite the original"
+  proposed: 78cadc7b20a1
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Original normannsanders2018b: Corollary 4.8 itself is over + QF-AC^{0,1}, but Corollary 4.13 states over RCA0^omega that PITo implies WKL0 (reverse direction 'immediate')."
+- id: normannsanders2020-e4bfd2e3
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: qfac01-wkl
+    to: pito
+    over: rca0
+  loc: Section 1.2.2, item (I)
+  origin: cited
+  quote: theorem is equivalent to weak
+  paperNotation: RCA0^omega + QF-AC^{0,1} proves WKL <-> PIT_o
+  citedFrom: "[29]"
+  confidence: medium
+  concerns: Text extraction scrambled item (I); Section 1.2 states RCA0^omega + QF-AC^{0,1} proves WKL <-> PIT_o.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to [29]: cite the original"
+  proposed: a7420421dcf0
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Original: normannsanders2018b Corollary 4.8, RCA0^omega + QF-AC^{0,1} proves WKL <-> PITo (forward direction)."
+- id: normannsanders2020-3fcf400d
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: hbu
+    to: hbuc
+    over: rca0
+  loc: Section 2.2, fifth item
+  origin: cited
+  quote: HBU is equivalent to the
+  paperNotation: HBU <-> HBU_c
+  citedFrom: "[27, Theorem 3.3]"
+  confidence: medium
+  concerns: Base presumably RCA0^omega; not stated explicitly in this paper.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to [27, Theorem 3.3]: cite the original"
+  proposed: ba9fca1b78fc
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Cited from [27, Theorem 3.3] = normannsanders2017b, whose Theorem 3.3 (cached text) is over ACA0^omega + QF-AC^{2,1} and does not state HBU <-> HBUc over RCA0^omega; HBU -> HBUc is already covered by normannsanders2018b Theorem 4.2.
+- id: normannsanders2020-f98fcd6b
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: exists2
+    to: mu2
+    over: rca0
+  loc: Proof of Theorem 4.5
+  origin: cited
+  quote: immediate in light of (∃2 ) ↔ (µ2 )
+  paperNotation: (∃2) <-> (µ2)
+  citedFrom: "[20]"
+  confidence: high
+  concerns: Over RCA0^omega.
+  reasons:
+    - "attributed by the paper to [20]: cite the original"
+  proposed: 22593b6670fe
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Cited from [20] = kohlenbach2002b, but the cached text cache/fulltext/kohlenbach2002b.txt is a different document (lecture notes on WKL by T. L. Wong), so the original could not be read.
+- id: normannsanders2020-9b5f76cc
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: ncc-wkl
+    to: pito
+    over: rca0
+  loc: Theorem 3.2
+  origin: stated
+  quote: 0 + NCC proves WKL ↔ PITo .
+  paperNotation: WKL <-> PIT_o over RCA0^omega + NCC
+  confidence: high
+  concerns: Equivalence over RCA0^omega + NCC; the forward direction WKL -> PIT_o is entered with NCC as conjunct, the reverse holds over RCA0^omega alone (next fact).
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: d920c3735e73
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 3.2: RCA0^omega + NCC proves WKL <-> PITo; forward direction WKL -> PITo with NCC."
+- id: normannsanders2020-d7169f4b
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: boot
+    to: ncc
+    over: rca0
+  loc: Theorem 3.1
+  origin: stated
+  quote: The first item is trivial as
+  paperNotation: BOOT -> NCC
+  confidence: high
+  concerns: "Proof: RCA0^omega includes QF-AC^{0,0}. Over RCA0^omega, entered over rca0."
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: ff6561cf3d6e
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 3.1, first item: RCA0^omega + BOOT proves NCC (BOOT matches the catalogue)."
+- id: normannsanders2020-077761ab
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: ncc
+    to: deltaca3
+    over: rca0
+  loc: Theorem 3.1
+  origin: stated
+  quote: consider Y 2 , Z 2 that satisfy the antecedent of ∆-CA
+  paperNotation: NCC -> Δ-CA
+  confidence: high
+  concerns: Over RCA0^omega, entered over rca0.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: a923068ddcaa
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 3.1, second item: RCA0^omega proves NCC -> Delta-CA; the paper's Delta-CA (with (forall g) Z(g,n)=0 on the right) matches the catalogue's up to the trivial change of Z."
+- id: normannsanders2020-582c810f
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: qfac01
+    to: ncc
+    over: rca0
+  loc: Theorem 3.1
+  origin: stated
+  quote: Proof. The first item is trivial as RCAω  0 includes QF-AC
+  paperNotation: QF-AC^{0,1} -> NCC
+  confidence: high
+  concerns: Over RCA0^omega, entered over rca0.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 5942b83566bb
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 3.1, second item: RCA0^omega proves QF-AC^{0,1} -> NCC."
+- id: normannsanders2020-373dcc64
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HBC_rm
+    name: HBC for RM-codes
+    loc: Section 3.3.2
+    definition: HBC with C ⊆ [0,1] represented by RM-codes; equivalent to WKL ([3, Lemma 3.13]).
+    facts: Used in the proof of Theorem 3.6.
+  reasons:
+    - principle not in the catalogue
+  proposed: "187e54614918"
+- id: normannsanders2020-d9f30761
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PIT'_o
+    name: Pincherle's theorem with weakened antecedent
+    loc: (3.3), before Corollary 3.3
+    definition: PIT_o with LOC(F,G) replaced by (∀f∈C)(∃n)(∀g∈C)(g∈[f n] → F(g) ≤ n).
+    facts: "Corollary 3.3: RCA0^omega + NCC proves WKL <-> PIT'_o."
+  reasons:
+    - principle not in the catalogue
+  proposed: b9738e3725a2
+- id: normannsanders2020-ec2509eb
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: URY
+    name: Urysohn lemma for closed sets in the sense of Definition 3.4
+    loc: Definition 3.9
+    definition: "For closed disjoint C0, C1 ⊆ R there is a continuous g: R→[0,1] with x∈Ci ↔ g(x)=i."
+    facts: "Theorem 3.11: RCA0^omega + NCC + coco proves TIE <-> URY (URY -> TIE over RCA0^omega, cited from [30, §5])."
+  reasons:
+    - principle not in the catalogue
+  proposed: 38df6e6bc683
+- id: normannsanders2020-a370e511
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: TIE
+    name: Tietze extension theorem (Definition 3.10, sets as in Definition 3.4)
+    loc: Definition 3.10
+    definition: "For f: R→R continuous on the closed D ⊂ [0,1] there is g continuous on [0,1] with f=g on D. Differs from catalogue tietze (moduli of uniform continuity)."
+    facts: See URY.
+  reasons:
+    - principle not in the catalogue
+  proposed: 2bfa2c6f2052
+- id: normannsanders2020-8179db69
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: coco
+    name: "Every continuous Y: R→R has an RM-code"
+    loc: Section 3.3.3
+    definition: Every continuous function R→R has an RM-code (as in [18, §4]); its ECF-interpretation is a tautology.
+    facts: Used as extra hypothesis in Theorem 3.11.
+  reasons:
+    - principle not in the catalogue
+  proposed: 2e88293c9c2a
+- id: normannsanders2020-a45bc896
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: open+
+    name: Coding principle open+
+    loc: Definition 3.13
+    definition: For every open set Z ⊆ R (Definition 3.12) there is X ⊆ N with n∈X ↔ B(q_n,r_n) ⊆ Z.
+    facts: "Theorem 3.14: RCA0^omega + NCC proves BOOT <-> [open+ + ACA0]. Cited [40, §4.2]: BOOT + ACA0 <-> open+ using QF-AC^{0,1}."
+  reasons:
+    - principle not in the catalogue
+  proposed: 1ae774797327
+- id: normannsanders2020-6f5e2465
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CBT
+    name: Cantor-Bendixson theorem for closed sets of [0,1] (third-order)
+    loc: Principle 3.15
+    definition: Any closed set C ⊆ [0,1] is P ∪ S with P perfect closed and S a sequence of reals. Differs from catalogue cb (second-order).
+    facts: "Cited [40, §4]: [ACA0 + CBT] <-> [Pi11-CA0 + BOOT] over RCA0^omega + QF-AC^{0,1}; the paper says it holds with NCC instead (not proved)."
+  reasons:
+    - principle not in the catalogue
+  proposed: e8ec69acdf05
+- id: normannsanders2020-a0f64e30
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MCC
+    name: Universal-quantifier version of NCC
+    loc: Definition 3.8
+    definition: "For Y^2, A(n,m) ≡ (∀g∈2^N)(Y(g,m,n)=0): (∀n)(∃m)A(n,m) → (∃h)(∀n)A(n,h(n))."
+    facts: "Used for the Baire category theorem; realisers: Corollary 4.7, RCA0^omega proves (∃ϑ)MCC(ϑ) <-> (∃^3)."
+  reasons:
+    - principle not in the catalogue
+  proposed: c67d7d99cacb
+- id: normannsanders2020-dab95d81
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (∃ζ)NCC(ζ)
+    name: Existence of a total realiser for NCC
+    loc: Definition 4.1
+    definition: "There is a functional ζ^{2→1} with NCC(ζ): (∀n)(∃m)A(n,m) → (∀n)A(n,ζ(Y)(n))."
+    facts: "Theorem 4.5: RCA0^omega proves (∃ζ)NCC(ζ) <-> (∃^3). Lemmas 4.3, 4.4: it implies (κ^3_0) and (∃^2)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 4e63d8950548
+- id: normannsanders2020-737102f9
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (∃ζw)NCCw(ζw)
+    name: Existence of a weak total realiser for NCC
+    loc: Definition 4.8
+    definition: ζw with (∀n)(∃m)A(n,m) → (∀n)(∃m ≤ ζw(n))A(n,m).
+    facts: "Theorem 4.11: RCA0^omega proves (∃ζw)NCCw(ζw) <-> (∃^3) (Lemmas 4.9, 4.10)."
+  reasons:
+    - principle not in the catalogue
+  proposed: d5dbcb2f890a
+- id: normannsanders2020-4d7fa4ea
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (κ^3_0)
+    name: Comprehension on Cantor space
+    loc: (2.3) in Section 2.2
+    definition: (∃κ ≤_3 1)(∀Y^2)(κ(Y)=0 ↔ (∃f∈C)(Y(f)=0)).
+    facts: "Cited [25, 43]: (∃^3) <-> [(∃^2) + (κ^3_0)]."
+  reasons:
+    - principle not in the catalogue
+  proposed: 0481463b4de2
+- id: normannsanders2020-b6547a1c
+  ref: normannsanders2020
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Partial NCC-realisers / CH
+    name: Existence of a countably based partial realiser for NCC
+    loc: Theorem 4.19
+    definition: Partial functional ζp with ζp(Y) a choice function whenever the hypothesis of NCC holds, countably based as in Definition 2.6.
+    facts: "Theorem 4.19: over ZFC equivalent to the Continuum Hypothesis; no partial NCC-realiser is computable in a type 2 functional (Corollary 4.16)."
+  reasons:
+    - principle not in the catalogue
+  proposed: e634b6cf2d11
+- id: kohlenbach2002-8ca52b04
+  ref: kohlenbach2002
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: uwkl
+    to: mu2
+    over: rca0
+  loc: Concluding remarks, 2)
+  origin: cited
+  quote: Relative to RCAω0 , the uniform weak König’s lemma UWKL and the existence
+  paperNotation: UWKL; existence of Feferman's µ-operator
+  citedFrom: Kohlenbach, On the uniform weak König's lemma (preprint 1999), [30]
+  confidence: medium
+  concerns: The paper defines RCA0^omega := E-PRA^omega + QF-AC^{1,0} and refers to [30] for the result; UWKL is not defined in this paper, so the match with the catalogue definition rests on the catalogue entry.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Kohlenbach, On the uniform weak König's lemma (preprint 1999), [30]: cite the original"
+  proposed: bec2fc2d44cf
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Only quoted in the concluding remarks from Kohlenbach's UWKL preprint [30] (= kohlenbach2002b, Prop. 3.9 of kohlenbach2005 also cites it); the cached text for kohlenbach2002b is a wrong file (Tin Lok Wong's lecture notes on WKL), so the original was not read.
+- id: kohlenbach2002-584ed690
+  ref: kohlenbach2002
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Φn-WKL, Ψn-WKL
+    name: Generalizations of weak König's lemma to Φn-/Ψn-trees
+    loc: Definition 5.4
+    definition: WKL for trees given by formulas ∀f1≤1 s1 ∃f2≤1 s2 … ∀x A0 (Φn) or starting with ∃ (Ψn), with bounded function quantifiers and arbitrary-type parameters; Φ∞-WKL is the union over n.
+    facts: "Proposition 5.7: over E-Gk A^ω (k≥3), E-PRA^ω or E-PA^ω, WKL, Φ0-WKL, Ψ0-WKL and Φ_m^-/Ψ_n^- -WKL (parameters of type ≤1) are all equivalent. Proposition 5.11: E-PA^ω + Φ_{n+1}-WKL proves Π^{1,b}_n-CA. Proposition 5.13: E-PA^ω+QF-AC^{1,0}+QF-AC^{0,1}+µ does not prove Φ1-WKL (so with µ the hierarchy is non-collapsing; Φn-WKL, Ψn-WKL underivable for n≥2)."
+  reasons:
+    - principle not in the catalogue
+  proposed: f2d74cbb6122
+- id: kohlenbach2002-f0978d4d
+  ref: kohlenbach2002
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Φn-WKL+, Ψn-WKL+
+    name: Uniform strengthenings of Φn-WKL
+    loc: Definition 5.15
+    definition: ∀h ∃a ∃f≤1 1 ∀ñ≤h(a) A(a,fñ) → ∃a ∃f≤1 1 ∀n A(a,fn), for A in Φn (resp. Ψn).
+    facts: "Proposition 5.17: Φ0-WKL ↔ Φ0-WKL+ over T+QF-AC^{0,0}. Proposition 6.1: T+QF-AC^{1,0}+F^- proves Φ∞-WKL+. Theorem 7.2: E-PRA^ω+QF-AC^{1,0}+QF-AC^{0,1}+Φ∞-WKL+ is Π^0_2-conservative over PRA (E-PA^ω version conservative over PA). Ψ1-WKL+ suffices for a modulus of uniform continuity of continuous functionals on {f≤1}."
+  reasons:
+    - principle not in the catalogue
+  proposed: 60707f49b862
+- id: kohlenbach2002-85e8d25b
+  ref: kohlenbach2002
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ01-UB
+    name: Uniform Σ⁰₁-boundedness
+    loc: Definition 3.1
+    definition: ∀y^{1(0)}(∀k∀x≤1 yk ∃z A(x,y,k,z) → ∃χ ∀k ∀x≤1 yk ∃z≤χk A(x,y,k,z)) for A Σ⁰₁ with arbitrary-type parameters; non-standard (false in the full set-theoretic model).
+    facts: "Proposition 3.2: T+QF-AC^{1,0}+F proves it; Proposition 3.3: E-G3A^ω+Σ01-UB proves WKL; Theorem 7.1: T+QF-AC^{1,0}+QF-AC^{0,1}+Σ01-UB is Π^0_2-conservative over EA/PRA and conservative over PA; it implies Φ∞-WKL+."
+  reasons:
+    - principle not in the catalogue
+  proposed: ecb2dc105cab
+- id: sanderstaranovsky2026-c0256311
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: exists2-hbu
+    to: atr
+    over: rca0
+  loc: Remark 4.1 (Foundational musings)
+  origin: stated
+  quote: can lead to what we call explosive results, like ACAω  0 + HBU implying ATR0
+  paperNotation: ACA0^ω + HBU implying ATR0
+  confidence: medium
+  concerns: Informal remark without a numbered theorem or proof in this paper; base is RCA0^ω, extra axiom (∃²) given as conjunct.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: fbd7a791f123
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: This is an informal aside in Remark 4.1 with no proof and no QF-AC^{2,1}; the proved fact exists2-hbu-qfac21 -> atr is already in the database from normannsanders2017b, and this paper does not state it.
+- id: sanderstaranovsky2026-b93b834c
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ENC^ω
+    name: Exact numerical choice with higher-order parameters
+    loc: Section 2.1, after Principle 2.2
+    definition: ENC with type-2 (higher-order) parameters allowed in the Π-formula φ.
+    facts: ACA0^ω + ENC^ω proves ATR0 (Theorem 2.5(b)); over ACA0^ω+Σ-IND, ENC^ω ↔ [BNC^ω + Φ1-KL] (Theorem 3.9) and ↔ [BNC^ω + Φ1-WKL] ↔ [BNC^ω + HBT]; with open†, implies open (Theorem 3.15).
+  reasons:
+    - principle not in the catalogue
+  proposed: 47f064c1fdc8
+- id: sanderstaranovsky2026-23fbab54
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BNC^ω
+    name: Bounding numerical choice with higher-order parameters
+    loc: Section 2.1, after Principle 2.2
+    definition: BNC with higher-order parameters allowed in the Π-formula φ.
+    facts: "Over ACA0^ω+QF-AC^{0,1}, equivalent to: sub-continuous / everywhere Riemann integrable f:R→R is dominated by a continuous function, existence of a modulus of Riemann integration, etc. (Theorem 2.7); over ACA0^ω+QF-AC^{0,1}+Σ-IND equivalent to boundedness properties of sequentially compact metric spaces, Dini, uniform size bounds of cuf sets (Theorem 2.13); ACA0^ω + BNC proves NIN[0,1] (Theorem 2.5(d))."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9890840d2025
+- id: sanderstaranovsky2026-4e64e55c
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (RB)
+    name: Riemann integrable functions on R are dominated by a continuous function
+    loc: Section 1.1
+    definition: For f:R→R Riemann integrable on every [-a,a], there is continuous g:R→R with f(x) ≤ g(x) for all x.
+    facts: Equivalent to BNC^ω over ACA0^ω+QF-AC^{0,1} (Theorem 2.7(c)); implies ATR0 (Theorem 2.3(e)).
+  reasons:
+    - principle not in the catalogue
+  proposed: 488cd5bb0ffa
+- id: sanderstaranovsky2026-b62115a0
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Φ1-WKL
+    name: Kohlenbach's weak lemma (WKL for Π-formula trees)
+    loc: Principle 3.4
+    definition: "For A(σ) of the form (∀g∈2^N)B(g,σ), B arithmetical: (∀n)(∃f∈2^N)(∀m≤n)A(f m) → (∃f∈2^N)(∀n)A(f n)."
+    facts: "Over ACA0^ω+Σ-IND: HBT ↔ Φ1-WKL ↔ [HBU + A0] (Theorem 3.6); not provable in Z2^ω+QF-AC^{0,1} (Corollary 3.7); implies cocode0-type enumeration of countable sets of reals; ENC^ω_b ↔ Φ1-WKL."
+  reasons:
+    - principle not in the catalogue
+  proposed: 5244872986cb
+- id: sanderstaranovsky2026-76d833af
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Φ1-KL
+    name: Kohlenbach's lemma (finitely branching version)
+    loc: Principle 3.8
+    definition: Φ1-WKL for finitely branching Π-class trees over N^N.
+    facts: ENC^ω ↔ [BNC^ω + Φ1-KL] over ACA0^ω+Σ-IND (Theorem 3.9); equivalent to Ramsey's theorem for Π-classes (Remark 3.12).
+  reasons:
+    - principle not in the catalogue
+  proposed: 69e2dc51b1e2
+- id: sanderstaranovsky2026-51e6fc24
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Ψ1-WKL
+    name: Kohlenbach's Ψ1-WKL (Σ-formula trees)
+    loc: Section 3.4 before Theorem 3.11
+    definition: Φ1-WKL with ∀g replaced by ∃g.
+    facts: Provable in ACA0^ω + QF-AC^{0,1} (Theorem 3.11).
+  reasons:
+    - principle not in the catalogue
+  proposed: 690cc8330502
+- id: sanderstaranovsky2026-1ed66619
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ-IND
+    name: Induction for Σ-formulas
+    loc: Principle 1.4
+    definition: Induction axiom for formulas (∃f∈N^N)(Y(f,n)=0) with Y of type 2.
+    facts: Used as extra hypothesis in Theorems 1.9, 2.13, 2.15, 3.3, 3.6, 3.9.
+  reasons:
+    - principle not in the catalogue
+  proposed: 6ea0f4c95b88
+- id: sanderstaranovsky2026-35ff74ae
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: open
+    name: Open sets of reals are RM-open (coding principle)
+    loc: Section 1.2.1 and Section 3.5
+    definition: Every open set O ⊂ R is RM-open (union of countably many open intervals).
+    facts: Equivalent to item (c) of Theorem 3.15 over ACA0^ω+QF-AC^{0,1}; ENC^ω + open† implies open; open + open† relates to Lindelöf and OC0,0 (Theorem 3.18).
+  reasons:
+    - principle not in the catalogue
+  proposed: 9243a164103c
+- id: sanderstaranovsky2026-56960f36
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: open†
+    name: Open sets of reals are Fσ
+    loc: Definition 3.14
+    definition: "An open set O ⊂ R is Fσ: O = ∪ C_n for increasing closed C_n."
+    facts: Does not imply NIN[0,1]; BNC^ω + open† implies BCT[0,1] over ACA0^ω (Corollary 3.16).
+  reasons:
+    - principle not in the catalogue
+  proposed: ae755442d137
+- id: sanderstaranovsky2026-588ea4de
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: open−
+    name: R2-open sets are RM-open
+    loc: Definition 3.14
+    definition: An R2-open set O ⊂ R is RM-open.
+    facts: Part of Theorem 3.15 (b),(c); follows from HBU.
+  reasons:
+    - principle not in the catalogue
+  proposed: 6ffbc4e77a62
+- id: sanderstaranovsky2026-120d1f8d
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: OC0,0
+    name: Open choice
+    loc: Principle 3.17
+    definition: For increasing open sets (On) of R with (∀n)(∃m)([-n,n]⊂Om), there is g with (∀n)([-n,n]⊂O_g(n)).
+    facts: "Follows from BNC^ω; Theorem 3.18(c): Lindelöf + OC0,0 ↔ open over ACA0^ω+QF-AC^{0,1}."
+  reasons:
+    - principle not in the catalogue
+  proposed: e2e86e4addd7
+- id: sanderstaranovsky2026-f022ad25
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BCT[0,1]
+    name: Baire category theorem for the unit interval (third-order)
+    loc: Corollary 3.16
+    definition: For a decreasing sequence of dense open sets in [0,1], the intersection is non-empty.
+    facts: BNC^ω + open† implies BCT[0,1] over ACA0^ω (Corollary 3.16).
+  reasons:
+    - principle not in the catalogue
+  proposed: 735f3fc5f81b
+- id: sanderstaranovsky2026-22cf3db6
+  ref: sanderstaranovsky2026
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PHP[0,1]
+    name: Tao's pigeon hole principle for measure
+    loc: Section 4.2
+    definition: For a sequence of closed sets of reals of measure zero, the union has measure zero.
+    facts: Implied by ENC^ω (Remark 2.9); shown in Figure 1.
+  reasons:
+    - principle not in the catalogue
+  proposed: c06b0ef4c38f
+- id: sanders2019-d651b714
+  ref: sanders2019
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: bwnet
+    to: mctnet
+    over: rca0
+  loc: Section 3.1.2, remark before Definition 3.8
+  origin: stated
+  quote: Finally, BWnet implies MCT0net
+  paperNotation: BW_net, MCT^0_net
+  confidence: medium
+  concerns: Stated in passing without proof or number.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: eb9c8c88242c
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The paper states that BW_net implies MCT0_net; it follows directly, since an increasing net converges to the limit of any convergent sub-net (the argument used in the proof of Theorem 3.1).
+- id: sanders2019-ea4052cc
+  ref: sanders2019
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: hbu
+    to: bwnet
+    over: rca0
+  loc: Section 3.1.1, remark after Theorem 3.1
+  origin: stated
+  quote: We cannot expect a reversal in the previous theorem, as BWnet implies ACA0 ,
+  paperNotation: HBU, BW_net
+  argument: BW_net implies ACA0 (via MCT for sequences), while RCA_0^omega + HBU is conservative over WKL0, which does not prove ACA0.
+  confidence: medium
+  concerns: The non-reversal is argued, not stated as a numbered theorem.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: d82a9b763cad
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The paper argues that BW_net implies ACA0 while RCA0^ω + HBU is conservative over WKL0 (ECF), so HBU does not imply BW_net over RCA0^ω.
+- id: sanders2019-02487acb
+  ref: sanders2019
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: hbu
+    to: lind-wkl
+    over: rca0
+  loc: Section 4.2, after Definition 4.1
+  origin: cited
+  quote: By [83, Theorem 3.13], HBU is equivalent to [LIN + WKL]
+  paperNotation: LIN + WKL; HBU
+  citedFrom: "[83, Theorem 3.13]"
+  confidence: medium
+  concerns: LIN is the Lindelof lemma for R of Definition 4.1 (catalogue lind). The base theory is not stated at this point (presumably RCA_0^omega).
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to [83, Theorem 3.13]: cite the original"
+  proposed: 1ea7e38fcdf3
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: The cited source [83] = normannsanders2017b Theorem 3.13 proves [LIND + WKL] <-> HBU over RCA0^ω + QF-AC^{0,1}, not over RCA0^ω alone.
+- id: sanders2019-53c87c72
+  ref: sanders2019
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: mctnet
+    to: hbu
+    over: rca0
+  loc: Theorem 3.2
+  origin: stated
+  quote: 0 + MCTnet proves HBU.
+  paperNotation: MCT^0_net, HBU; RCA_0^omega
+  confidence: high
+  concerns: MCT^0_net is the paper's monotone convergence theorem for nets indexed by subsets of Baire space (the superscript 0 is lost in extraction).
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: eb516494544d
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 3.2: RCA0^ω + MCT0_net proves HBU, where MCT0_net is for increasing nets in [0,1] indexed by subsets of Baire space (= mctnet); this duplicates an existing entry."
+- id: sanders2019-46d81065
+  ref: sanders2019
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: bwnet
+    to: hbu
+    over: rca0
+  loc: Theorem 3.1
+  origin: stated
+  quote: 0 + BWnet proves HBU.
+  paperNotation: BWnet, HBU; RCA_0^omega
+  confidence: high
+  concerns: Third-order statements over RCA0^omega (entered over rca0). The proof splits on (exists2) or not (law of excluded middle), no extra axiom in the hypothesis.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 37714c128abe
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 3.1: RCA0^ω + BW_net proves HBU (the proof uses only QF-AC^{1,0}, which is in RCA0^ω); this duplicates normannsanders2017b Theorem 3.37."
+- id: sanders2019-266e1c7b
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: AS^-_net
+    name: Anti-Specker property for nets with a bounded-away modulus
+    loc: Section 3.1.3, before Theorem 3.15
+    definition: "AS_net where the antecedent supplies F : R -> R giving the bound delta at each x."
+    facts: RCA_0^omega + IND proves HBU <-> AS^-_net (Theorem 3.15).
+  reasons:
+    - principle not in the catalogue
+  proposed: 151f08339326
+- id: sanders2019-facb1dbc
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CAU_net
+    name: Cauchy nets in [0,1] converge
+    loc: Definition 3.18
+    definition: A Cauchy net in [0,1] converges to a limit.
+    facts: RCA_0^omega + IND + CAU_net proves HBU (Theorem 3.20); a realiser for CAU_net together with exists2 computes exists3 and vice versa (Corollary 3.22).
+  reasons:
+    - principle not in the catalogue
+  proposed: d570dd5bf48d
+- id: sanders2019-209e95d0
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CAU'_net
+    name: Increasing nets in [0,1] are Cauchy
+    loc: Definition 3.19
+    definition: An increasing net in [0,1] is a Cauchy net.
+    facts: RCA_0^omega + IND proves CAU'_net; a realiser for it together with exists2 computes exists3 (Corollary 3.21).
+  reasons:
+    - principle not in the catalogue
+  proposed: 835f86d9bc17
+- id: sanders2019-f9087334
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: COH_net
+    name: Cauchy sub-nets
+    loc: Section 3.1.4, after Corollary 3.21
+    definition: Any net in the unit interval contains a Cauchy sub-net.
+    facts: A realiser for COH_net computes exists3 (by Corollary 3.21); needed to derive BW_net from CAU_net.
+  reasons:
+    - principle not in the catalogue
+  proposed: 04b9b8e4d6a5
+- id: sanders2019-2ef9e403
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ADS_net
+    name: Monotone sub-nets
+    loc: Definition 3.8
+    definition: A net in R has a monotone sub-net.
+    facts: BW_net is said to imply MCT_net but the reversal seems to need ADS_net; conjectured not to follow from MCT_net; [(exists3) + QF-AC^{1,1}] -> ADS_net.
+  reasons:
+    - principle not in the catalogue
+  proposed: 0981c9ce8c41
+- id: sanders2019-7a5fadd9
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: NFP_0
+    name: Neighbourhood function principle without codes
+    loc: Definition 3.4
+    definition: "For any Pi^1_infinity formula A with a type-two parameter: (forall f)(exists n) A(fn) -> (exists Phi^2)(forall f) A(f Phi(f))."
+    facts: RCA_0^omega + IND + NFP_0 + HBU proves MCT^0_net (Theorem 3.5), so HBU <-> MCT^0_net over RCA_0^omega + IND + NFP_0 (Corollary 3.6). Differs from the catalogue's nfp3 (associates).
+  reasons:
+    - principle not in the catalogue
+  proposed: edf9db15e2a3
+- id: sanders2019-cd1a2701
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PERM
+    name: Unordered sums (permutation theorem)
+    loc: Definition 3.23
+    definition: "For D subset of Baire space and a_d : D -> R, if the net of finite partial sums is Cauchy it converges."
+    facts: A realiser for PERM computes exists2 and a realiser for ATR_0 (Theorem 3.24).
+  reasons:
+    - principle not in the catalogue
+  proposed: 0152c7893ec4
+- id: sanders2019-cfa2e40d
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SUB
+    name: Sequentialisation of nets of functions
+    loc: Definition 4.2
+    definition: "For an increasing net of continuous functions f_d converging to continuous f, there is Phi : N -> D with f_Phi(n) increasing and converging to f."
+    facts: RCA_0^omega + SUB proves LIN (Theorem 4.3), where LIN is the catalogue's lind.
+  reasons:
+    - principle not in the catalogue
+  proposed: 3ecc4e649a4c
+- id: sanders2019-9cd53d01
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SUB_0
+    name: Sequentialisation of increasing nets in [0,1]
+    loc: Definition 4.4
+    definition: "For an increasing net x_d in I converging to x, there is Phi : N -> D with x_Phi(n) increasing and converging to x."
+    facts: RCA_0^omega + IND proves SUB_0 -> QF-AC^{0,1} (Theorem 4.5); RCA_0^omega + IND + ADS proves SUB_0 <-> QF-AC^{0,1} (Corollary 4.6).
+  reasons:
+    - principle not in the catalogue
+  proposed: 436fded01c1b
+- id: sanders2019-61ae02bf
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ADS_2
+    name: ADS for uncountable linear orders
+    loc: Definition 4.7
+    definition: For an infinite linear order (D, <=_D) with D subset of Baire space there is an ascending or descending sequence.
+    facts: RCA_0^omega + IND + ADS_2 proves QF-AC^{0,1} (Theorem 4.8); ZF cannot prove ADS_2 (Corollary 4.9).
+  reasons:
+    - principle not in the catalogue
+  proposed: ba8bc0ee993c
+- id: sanders2019-29792e21
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Net-continuity
+    name: Net-continuity equals epsilon-delta continuity (local)
+    loc: Definition 4.10, Theorem 4.11
+    definition: "f : R -> R is net-continuous at x if f(x_d) converges to f(x) for every net x_d converging to x."
+    facts: RCA_0^omega proves net-continuity at x <-> epsilon-delta continuity at x (Theorem 4.11), without choice; ZF cannot prove the local equivalence of net-continuity and sequential continuity (Corollary 4.12).
+  reasons:
+    - principle not in the catalogue
+  proposed: c69f715dd889
+- id: sanders2019-f9ba80cd
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Net-closed sets are closed
+    name: Net-closed sets in R are closed; R is a sequential space
+    loc: Theorems 4.14 and 4.15
+    definition: A set F is net-closed if limits of nets in F lie in F; sequentially closed likewise with sequences.
+    facts: RCA_0^omega proves every net-closed set in R is closed (Theorem 4.15); RCA_0^omega + QF-AC^{0,1} proves R is a sequential space (Theorem 4.14).
+  reasons:
+    - principle not in the catalogue
+  proposed: 036e63d097c3
+- id: sanders2019-dac8e3cc
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Sub-continuity
+    name: Sub-continuous functions are locally bounded
+    loc: Definition 4.16, Theorem 4.17
+    definition: "f : R -> R is sub-continuous if f(x_d) has a convergent sub-net whenever x_d converges to x."
+    facts: RCA_0^omega proves sub-continuous functions are locally bounded (Theorem 4.17).
+  reasons:
+    - principle not in the catalogue
+  proposed: 71676d3feff0
+- id: sanders2019-9617a3a3
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MCT^1_net
+    name: Monotone convergence for nets indexed by subsets of N^N -> N
+    loc: Appendix A.2
+    definition: "Any increasing net x_e : E -> [0,1] indexed by a subset E of (N^N -> N) converges."
+    facts: A realiser for MCT^1_net computes exists4 and vice versa (Theorem A.3).
+  reasons:
+    - principle not in the catalogue
+  proposed: 580d8e4da0d5
+- id: sanders2019-acf7b1b1
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MCT^S_net
+    name: Monotone convergence for nets defined arithmetically
+    loc: Theorem A.4
+    definition: MCT^0_net restricted to directed sets and nets defined by arithmetical formulas.
+    facts: A realiser computes S^2 via a term of Goedel's T and vice versa (Theorem A.4); with type-two parameters it computes the superjump S^3 (Corollary A.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: 3dc291c3c058
+- id: sanders2019-2e802f81
+  ref: sanders2019
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SUB_1
+    name: Sequentialisation for nets indexed by subsets of N^N -> N
+    loc: Definition A.6
+    definition: "As SUB_0 for increasing nets x_e : E -> I with E subset of (N^N -> N)."
+    facts: ACA_0^omega + IND proves SUB_1 -> QF-AC^{0,2} (Theorem A.7); ACA_0^omega + IND + ADS proves SUB_1 <-> QF-AC^{0,2} (Corollary A.8).
+  reasons:
+    - principle not in the catalogue
+  proposed: d348baabf29d
+- id: sanders2015c-2c31ead5
+  ref: sanders2015c
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: uwkl
+    to: exists2
+    over: rca0
+  loc: Corollary 3.2
+  origin: cited
+  quote: Immediate from [36, Prop. 3.9] and [5, Cor. 14].
+  paperNotation: UWKL, (∃2)
+  citedFrom: Kohlenbach [36, Prop. 3.9]; van den Berg-Sanders [5, Cor. 14]
+  confidence: medium
+  concerns: Stated over RCA0^Omega (nonstandard extension, conservative over RCA0^omega), together with WKL* and Pi01-TRANS; the equivalence UWKL <-> (exists2) itself is internal, cited from Kohlenbach.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Kohlenbach [36, Prop. 3.9]; van den Berg-Sanders [5, Cor. 14]: cite the original"
+  proposed: ebcf7da9d719
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: Corollary 3.2 is over the nonstandard RCA0^Omega and its proof just cites [36, Prop. 3.9] (kohlenbach2005, itself citing kohlenbach2002b); the original kohlenbach2002b could not be read (cached text is a wrong file).
+- id: sanders2015c-97e220c1
+  ref: sanders2015c
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: mu2
+    to: exists2
+    over: rca0
+  loc: Section 3.1, after Theorem 3.3
+  origin: cited
+  quote: This axiom is equivalent to (∃2 ) over RCAω
+  paperNotation: (µ2), (∃2)
+  citedFrom: Kohlenbach [38]
+  confidence: medium
+  concerns: Text extraction garbles the sentence ("RCAω 0 (See [38])"); the base is RCA0^omega.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Kohlenbach [38]: cite the original"
+  proposed: cdc6542d1813
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: A passing remark citing [38] = kohlenbach2002b, whose cached text is a wrong file so the original was not read; sanders2015c's (mu2) also omits the minimality clause of the catalogue's mu2.
+- id: sanders2015c-10f4263d
+  ref: sanders2015c
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: "UWKL-like uniform principles: UIVT, UWEIMAX"
+    name: Uniform intermediate value theorem / uniform Weierstrass maximum theorem
+    loc: Section 3.3 (UIVT), Section 3.4 (UWEIMAX)
+    definition: "UIVT: there is a functional Phi^{(1->1)->1} with f(Phi(f))=0 for every continuous f on [0,1] with f(0)>=0, f(1)<=0. UWEIMAX: a functional giving a maximiser of every continuous f on [0,1]."
+    facts: Each is equivalent to (exists2) (Kohlenbach [36, Prop. 3.14]; Corollary 3.11, Theorem 3.13), over RCA0^Omega with nonstandard equivalents.
+  reasons:
+    - principle not in the catalogue
+  proposed: e4571f016be1
+- id: sanders2015c-9ed0057f
+  ref: sanders2015c
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UFAN_1, UFAN_2
+    name: Uniform fan theorems
+    loc: Principles 5.1 and 5.2
+    definition: "UFAN_1: functional Phi^2 bounding the height of every binary tree without path. UFAN_2: functional Phi(T,g) bounding the height of a binary tree T for which g witnesses that T has no path."
+    facts: UFAN_1 is equivalent to (exists2) relative to st (Theorem 5.3); UFAN_2 relative to st is equivalent to FAN^st; over RCA0^omega+QF-AC^{2,0}, FAN <-> UFAN_2 (Corollary 5.5, the paper states it over RCA0^Omega).
+  reasons:
+    - principle not in the catalogue
+  proposed: 8bfeb6a401ef
+- id: sanders2015c-696cd2cf
+  ref: sanders2015c
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UHB, USUP, UINT
+    name: Uniform Heine-Borel lemma, supremum and Riemann integral functionals
+    loc: Section 5.2
+    definition: Functionals giving a finite subcover bound (given a witness g), the supremum, resp. the integral of a continuous function.
+    facts: "Equivalent to FAN^st (and over QF-AC^{2,0} to the fan theorem) in RCA0^Omega: Corollaries 5.7, 5.13, 5.14."
+  reasons:
+    - principle not in the catalogue
+  proposed: 11b96fb35740
+- id: sanders2015c-1df81777
+  ref: sanders2015c
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MUC(C), MUC(CC), MUC(M), MUC(Crm)
+    name: Fan functional restricted to continuous functionals
+    loc: Section 5.2.2, (5.7), Definition 5.10
+    definition: Existence of a modulus of uniform continuity functional for type-2 functionals continuous in a given sense on Cantor space.
+    facts: Over RCA0^omega + QF-AC^{2,0}, FAN <-> MUC(CC) (Theorem 5.8); relative to st, FAN^st <-> MUC(Crm)^st (Theorem 5.11).
+  reasons:
+    - principle not in the catalogue
+  proposed: 36e5dd93096d
+- id: sanders2015c-97db5fea
+  ref: sanders2015c
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ATR_o, UATR_o
+    name: Functional form of ATR0 and its uniform version
+    loc: Section 6, (ATRo), (UATRo)
+    definition: "ATR_o: for all f,X, WO(X) implies exists Y H_f(X,Y) with theta(n,Y) = forall k f(k,n,Yk)=0 (Pi01 form, unlike the catalogue uatr which is Sigma01 and omits no parameter). UATR_o: a functional Phi(f,X) giving Y."
+    facts: "Corollary 6.2: over RCA0^omega + QF-AC^{1,1}, [ATR_o + (exists2)] <-> UATR_o. Not entered because UATR_o differs in form from the catalogue uatr (Pi vs Sigma)."
+  reasons:
+    - principle not in the catalogue
+  proposed: b5c8ac09f1c8
+- id: sanders2015c-10376fc0
+  ref: sanders2015c
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UPST_1, UPST_2
+    name: Uniform perfect set theorem
+    loc: Principles 6.3 and 6.4
+    definition: "UPST_1: a functional Phi(T) giving a nonempty perfect subtree of any tree with uncountably many paths. UPST_2: Phi(T,g) where g witnesses the uncountability."
+    facts: "Theorem 6.5: over RCA0^omega, UPST_1 <-> (S^2) (cited from Normann-Sanders-type result [46, Theorem 4.4]); over RCA0^omega + (exists2) + QF-AC^{1,1}, UPST_2 <-> ATR_o."
+  reasons:
+    - principle not in the catalogue
+  proposed: ed87b8ef30e8
+- id: sanders2015c-5a1d6a18
+  ref: sanders2015c
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Pi01-TRANS, Pi11-TRANS, WKL*, FAN*, Omega-CA, STP
+    name: Nonstandard transfer and standard-part principles
+    loc: Sections 2 and 3
+    definition: Nelson-style nonstandard principles over RCA0^Omega (language with standardness predicate st).
+    facts: Pi01-TRANS <-> (exists2) <-> WKL* in RCA0^Omega (Theorem 3.1, Theorem 2.3); Pi11-TRANS <-> (S^2) ([5, Cor. 14]). Not expressible in the catalogue (nonstandard framework).
+  reasons:
+    - principle not in the catalogue
+  proposed: 36c3fb7ac038
+- id: sanders2018d-8b54464f
+  ref: sanders2018d
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: hbu-qfac11
+    to: hbt
+    over: rca0
+  loc: Theorem 3.15
+  origin: stated
+  quote: Proof. The reverse direction is immediate.
+  paperNotation: HBU -> HBT
+  argument: Theorem 3.15 proves HBU <-> HBT over RCA0^omega + QF-AC^{1,1}; this is the forward direction (HBU to HBT), proved with (exists^2) and QF-AC^{1,1} (or WKL when (exists^2) fails).
+  confidence: medium
+  concerns: "Third-order, over RCA0^omega + QF-AC^{1,1}: QF-AC^{1,1} entered as conjunct. HBT is the paper's generalised-cover version (psi: I -> R, intervals may be empty). The quote is the proof's first sentence; the theorem statement is split across lines in the extracted text."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: a773bbcbf3df
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 3.15: RCA0^omega + QF-AC^{1,1} proves HBU -> HBT (forward direction, proved by cases on (exists^2))."
+- id: sanders2018d-7c18973e
+  ref: sanders2018d
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: hbt-qfac11
+    to: hbu
+    over: rca0
+  loc: Theorem 3.15
+  origin: stated
+  quote: Proof. The reverse direction is immediate.
+  paperNotation: HBT -> HBU
+  argument: Reverse direction of Theorem 3.15 (HBT to HBU), called immediate by the paper, over RCA0^omega + QF-AC^{1,1}.
+  confidence: medium
+  concerns: Stated over RCA0^omega + QF-AC^{1,1}; QF-AC^{1,1} kept as conjunct (it is probably not needed for this direction, but the paper does not say so).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: b185941634d7
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Theorem 3.15: RCA0^omega + QF-AC^{1,1} proves HBT -> HBU (reverse direction, called immediate); kept with QF-AC^{1,1} as the paper states it."
+- id: sanders2018d-c84cde49
+  ref: sanders2018d
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: hbt-qfac11
+    to: wkl
+    over: rca0
+  loc: Proof of Corollary 3.6
+  origin: stated
+  quote: note that HBT → HBU → WKL.
+  paperNotation: HBT -> HBU -> WKL
+  argument: In the reverse direction of Corollary 3.6 (over RCA0^omega + QF-AC^{1,1}) the paper notes that HBT implies HBU, which implies WKL.
+  confidence: medium
+  concerns: Over RCA0^omega + QF-AC^{1,1} (conjunct kept). The step HBU -> WKL is attributed implicitly to earlier work and to the proof of Corollary 3.6.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: a9e4e4926cdb
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: A passing remark in the proof of Corollary 3.6; HBU -> WKL is not proved in this paper (it is already in the database from normannsanders2017b), so the fact follows from Theorem 3.15 by inference.
+- id: sanders2018d-3fcf400d
+  ref: sanders2018d
+  date: 2026-11-16
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: hbu
+    to: hbuc
+    over: rca0
+  loc: Section 2.2, before (HBUc)
+  origin: cited
+  quote: By [42, Theorem 3.3], HBU is
+  paperNotation: HBU <-> HBU_c
+  argument: HBUc is the compactness property for Cantor space with canonical covers given by G^2.
+  citedFrom: "[42, Theorem 3.3]"
+  confidence: medium
+  concerns: The base is RCA0^omega presumably, but the paper does not state it explicitly; the quote is cut across lines.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to [42, Theorem 3.3]: cite the original"
+  proposed: b5cf435eea79
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "Only a remark in the proof of Theorem 3.3 of normannsanders2017b (stated over ACA0^omega + QF-AC^{2,1}, without HBU_c): not entered from a proof remark."
+- id: sanders2018d-c1451f3a
+  ref: sanders2018d
+  date: 2026-11-16
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: hbu-qfac01
+    to: lind-qfac01-wkl
+    over: rca0
+  loc: Section 2.2, after (LIN)
+  origin: cited
+  quote: while the latter implies HBU ↔ [WKL + LIN]
+  paperNotation: HBU <-> [WKL + LIN]
+  argument: "Over RCA0^omega + QF-AC^{0,1}, HBU is equivalent to WKL + LIN (LIN: Lindelof lemma for canonical covers of R)."
+  citedFrom: "[42, 43]"
+  confidence: low
+  concerns: "The referent of 'the latter' is ambiguous (QF-AC^{0,1}); read as: over RCA0^omega + QF-AC^{0,1}, HBU <-> WKL + LIN. QF-AC^{0,1} kept on both sides."
+  reasons:
+    - "extractor confidence: low"
+    - "attributed by the paper to [42, 43]: cite the original"
+  proposed: 83624efab7e9
+  decision:
+    date: 2026-11-16
+    by: claude
+    note: "normannsanders2017b Theorem 3.13 (checked in the rendered PDF): RCA0^omega + QF-AC^{0,1} proves [LIND + WKL] <-> HBU, with LIND as in Definition 3.10 (the catalogue's lind)."
+- id: sanders2018d-46e4df2a
+  ref: sanders2018d
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: dim([0,1]) <= 1 / dim(I) = 1
+    name: Topological (covering) dimension statements
+    loc: Definition 3.4, Section 3.2
+    definition: "Every open cover (generated by psi: I -> R) has a refinement of order at most m+1, for the unit interval with m=1; dim(R)<=1 likewise for R."
+    facts: "Theorem 3.5: ACA0^omega + QF-AC^{1,1} + [dim([0,1])<=1] proves HBT. Corollary 3.6: over RCA0^omega + QF-AC^{1,1}, WKL + [dim(I)=1] <-> HBT. Corollary 3.18: over RCA0^omega + QF-AC^{1,1}, LIL <-> [dim(R)<=1] <-> R is paracompact. Corollary 3.20 over RCA0^omega + IND + (kappa_0^3): [dim(R)<=1] + QF-AC^{0,1} <-> [R paracompact] + QF-AC^{0,1} <-> LIL."
+  reasons:
+    - principle not in the catalogue
+  proposed: 240f7dd6fb01
+- id: sanders2018d-ff8aa642
+  ref: sanders2018d
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Urysohn identity for [0,1]
+    name: Urysohn identity dim X = ind X = Ind X for the unit interval
+    loc: Section 3.2, after Definition 3.7
+    definition: The topological dimension, small and large inductive dimension of [0,1] coincide.
+    facts: "Corollary 3.8: over RCA0^omega + QF-AC^{1,1}, HBT <-> WKL + Urysohn identity for the unit interval."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9fb41c78c82c
+- id: sanders2018d-d033afa1
+  ref: sanders2018d
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: "[0,1] is paracompact"
+    name: Paracompactness of the unit interval (higher-order)
+    loc: Definition 3.10, Section 3.3
+    definition: "Every open cover (generated by psi: I -> R) has a locally finite open refinement covering [0,1]; similarly for R."
+    facts: "Theorem 3.11: ACA0^omega + QF-AC^{1,1} + [0,1] paracompact proves HBT. Corollary 3.12: over RCA0^omega + QF-AC^{1,1}, WKL + [0,1] paracompact <-> HBT. Corollary 3.18 for R (see above). Remark 3.13: not provable in the union of Pi^1_k-CA0^omega. Theorem 3.24: effective paracompactness of R."
+  reasons:
+    - principle not in the catalogue
+  proposed: ba345566289c
+- id: sanders2018d-037467c6
+  ref: sanders2018d
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LIL
+    name: "Lindelof lemma, strong version for covers psi: R -> R^2"
+    loc: (LIL), Section 3.4.2
+    definition: "For every psi: R -> R^2 with R contained in the union of the intervals J_x^psi (possibly empty), there is f: N -> R with R contained in the union of J^psi_{f(n)}."
+    facts: "Theorem 3.17: over RCA0^omega + QF-AC^{1,1}, LIN <-> LIL; HBT <-> WKL + LIL over the same base. Theorem 3.19: over RCA0^omega + (kappa_0^3) + IND, [LIN + QF-AC^{0,1}] <-> LIL."
+  reasons:
+    - principle not in the catalogue
+  proposed: d1d1d9e6101b
+- id: sanders2018d-4f284b24
+  ref: sanders2018d
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PUNI(I), PUNI(R)
+    name: Existence of partitions of unity dominated by covers
+    loc: Definition 3.21 and Section 3.4.3
+    definition: "For any cover generated by psi: I -> R (resp. psi: R -> R^2) there is a partition of unity dominated by it."
+    facts: "Theorem 3.22: over RCA0^omega + (kappa_0^3) + IND, [WKL + PUNI(I)] <-> HBT. Theorem 3.24: [PUNI(R) + QF-AC^{0,1}] <-> LIL <-> [R effectively paracompact + QF-AC^{0,1}] over the same base."
+  reasons:
+    - principle not in the catalogue
+  proposed: dee4ad2f0d6c
+- id: sanders2018d-6779033c
+  ref: sanders2018d
+  date: 2026-11-16
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (kappa_0^3), C-NFP_0, IND
+    name: Comprehension for Cantor space functional; C-formula neighbourhood function principle; full induction
+    loc: Section 2.2, Definition 3.26
+    definition: "(kappa_0^3): kappa(Y)=0 iff (exists f in C)(Y(f)>0). C-NFP_0: for C-formulas A, (forall f)(exists n)A(fn) -> (exists Phi^2)(forall f)A(f Phi(f)). IND: induction for all formulas of L_omega."
+    facts: "Used as base theory extras: HBU <-> HBT over RCA0^omega + IND + (kappa_0^3) (Theorem 3.16) and over RCA0^omega + IND + C-NFP_0 (Corollary 3.27). C-NFP_0 is a generalisation of the catalogued A_0 (formulas are Boolean combinations of basic C-formulas), not the same statement."
+  reasons:
+    - principle not in the catalogue
+  proposed: 01599b0265ea

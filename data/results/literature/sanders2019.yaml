@@ -1,3 +1,3 @@
 # Results from [sanders2019].
 
-[ { type: implication, from: mctnet, to: hbu, over: rca0, refs: [ { ref: sanders2019, loc: Theorem 3.2 } ] } ]
+[ { type: implication, from: mctnet, to: hbu, over: rca0, refs: [ { ref: sanders2019, loc: Theorem 3.2 } ] }, { type: implication, from: bwnet, to: mctnet, over: rca0, refs: [ { ref: sanders2019, loc: "Section 3.1.2, paragraph before Definition 3.8" } ] }, { type: separation, from: hbu, to: bwnet, over: rca0, refs: [ { ref: sanders2019, loc: "Section 3.1.1, paragraph after Theorem 3.1" } ] } ]

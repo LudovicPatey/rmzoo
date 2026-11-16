@@ -1,0 +1,3 @@
+# Results from [sanders2018b].
+
+[ { type: implication, from: hbuc, to: wkl, over: rca0, refs: [ { ref: sanders2018b, loc: Theorem 3.8 } ] }, { type: implication, from: exists2, to: wkl, over: rca0, refs: [ { ref: sanders2018b, loc: Theorem 3.8 and its proof } ] }, { type: implication, from: muc, to: hbuc, over: rca0, refs: [ { ref: sanders2018b, loc: "Section 2.2, after (HBUc)" } ] } ]
