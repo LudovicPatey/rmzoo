@@ -160,6 +160,7 @@ giustosimpson2000:
   zbmathAuthors:
     - giusto.mariagnese
     - simpson.stephen-g
+  read: pdf-oa
 cholakjockuschslaman2001:
   authors:
     - Peter A. Cholak
@@ -447,3 +448,4 @@ erdosmoser1964:
   zbmathAuthors:
     - erdos.pal
     - moser.leo
+  read: pdf-oa

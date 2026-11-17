@@ -51,6 +51,8 @@ const save = () => {
 };
 const today = new Date().toISOString().slice(0, 10);
 const EXCLUDE = fs.existsSync('data/fulltext-exclude.yaml') ? YAML.parse(fs.readFileSync('data/fulltext-exclude.yaml', 'utf8')) || {} : {};
+// a URL not to use for a reference (`url` may be one URL or a list)
+const excludedUrl = (key, url) => [].concat(EXCLUDE[key]?.url ?? []).includes(url);
 const okText = (f) => fs.existsSync(f) && fs.statSync(f).size > 2000;
 // Text of a PDF: its text layer, else OCR. Returns false (and leaves no text) when
 // neither gives a usable text, 'ocr' when the text comes from OCR, true otherwise.
@@ -222,7 +224,7 @@ const candidates = async (e) => {
       await sleep(3000); // arXiv asks for one request every 3 s
     } catch { /* none */ }
   }
-  return out.filter((c, i) => out.findIndex((d) => d.url === c.url) === i && EXCLUDE[e.key]?.url !== c.url);
+  return out.filter((c, i) => out.findIndex((d) => d.url === c.url) === i && !excludedUrl(e.key, c.url));
 };
 if (flag('--download')) {
   let ok = 0, ko = 0;
@@ -321,7 +323,7 @@ if (flag('--author-pages')) {
     }
     for (const e of missing) {
       if (words(e.r.title).length < 3 || otherVersion(e)) continue; // a short title cannot be checked on the first page
-      const cands = links.map((l) => ({ l, s: score(e.r.title, l.ctx) })).filter((c) => c.s >= 0.6 && !used.has(c.l.href) && EXCLUDE[e.key]?.url !== c.l.href)
+      const cands = links.map((l) => ({ l, s: score(e.r.title, l.ctx) })).filter((c) => c.s >= 0.6 && !used.has(c.l.href) && !excludedUrl(e.key, c.l.href))
         .sort((a, b) => b.s - a.s).filter((c, i, a) => a.findIndex((d) => d.l.href === c.l.href) === i).slice(0, 3);
       for (const { l } of cands) {
         try {

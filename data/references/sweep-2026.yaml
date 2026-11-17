@@ -211,6 +211,7 @@ buchholz1987:
   zbmath: "0636.03052"
   zbmathAuthors:
     - buchholz.wilfried
+  read: pdf-oa
 marcone1988:
   authors:
     - Alberto Marcone
@@ -674,6 +675,7 @@ ferreira1994:
   zbmath: "0808.03043"
   zbmathAuthors:
     - ferreira.fernando
+  read: pdf-oa
 hatzikiriakou1994:
   authors:
     - Kostas Hatzikiriakou
@@ -707,6 +709,7 @@ marcone1995:
   zbmath: "0834.03014"
   zbmathAuthors:
     - marcone.alberto
+  read: pdf-oa
 yang1995:
   authors:
     - Yue Yang
@@ -796,6 +799,7 @@ avigad1996b:
   zbmath: "0858.03052"
   zbmathAuthors:
     - avigad.jeremy
+  read: pdf-oa
 tanaka1997:
   authors:
     - Kazuyuki Tanaka
@@ -878,6 +882,7 @@ solomon1998:
   zbmath: "0973.03076"
   zbmathAuthors:
     - solomon.reed
+  read: pdf-oa
 simpsonrao1998:
   authors:
     - S. G. Simpson
@@ -912,6 +917,7 @@ avigad1998:
   zbmath: "0909.03040"
   zbmathAuthors:
     - avigad.jeremy
+  read: pdf-oa
 kohlenbach1998:
   authors:
     - Ulrich Kohlenbach
@@ -994,6 +1000,7 @@ solomon1999:
   zbmath: "0922.03078"
   zbmathAuthors:
     - solomon.reed
+  read: pdf-oa
 hirst1999b:
   authors:
     - Jeffry L. Hirst
@@ -1090,6 +1097,7 @@ hirst2000:
   zbmath: "0968.03070"
   zbmathAuthors:
     - hirst.jeffry-l
+  read: pdf-oa
 jagerstrahm2000:
   authors:
     - Gerhard Jäger
@@ -1103,6 +1111,7 @@ jagerstrahm2000:
   zbmathAuthors:
     - jager.gerhard
     - strahm.thomas
+  read: pdf-oa
 cenzerjockusch2000:
   authors:
     - Douglas Cenzer
@@ -1185,6 +1194,7 @@ solomon2001:
   zbmath: "0981.03060"
   zbmathAuthors:
     - solomon.reed
+  read: pdf-oa
 hardinvelleman2001:
   authors:
     - Christopher S. Hardin
@@ -1248,6 +1258,7 @@ simpson2002:
   zbmath: "1019.03038"
   zbmathAuthors:
     - simpson.stephen-g
+  read: pdf-oa
 simpsontanakayamazaki2002:
   authors:
     - Stephen G. Simpson
@@ -1281,6 +1292,7 @@ lemppetal2002:
     - mccoy.charles-f-d
     - morozov.andrei-sergeevich
     - solomon.reed
+  read: pdf-oa
 fernandes2002:
   authors:
     - António Marques Fernandes
@@ -1317,6 +1329,7 @@ escardostreicher2002:
   zbmathAuthors:
     - hotzel-escardo.martin
     - streicher.thomas
+  read: pdf-oa
 giusto2003:
   authors:
     - Mariagnese Giusto
@@ -1357,6 +1370,7 @@ avigad2003:
   zbmath: "1050.03005"
   zbmathAuthors:
     - avigad.jeremy
+  read: pdf-oa
 hemmerling2003:
   authors:
     - Armin Hemmerling
@@ -1591,6 +1605,7 @@ downeysolomon2005:
   zbmathAuthors:
     - downey.rodney-graham
     - solomon.reed
+  read: pdf-oa
 hirst2005c:
   authors:
     - Jeffry L. Hirst
@@ -1665,6 +1680,7 @@ cenzerremmel2005:
   zbmathAuthors:
     - cenzer.douglas
     - remmel.jeffrey-b
+  read: pdf-oa
 brown2005:
   authors:
     - Douglas K. Brown
@@ -1687,6 +1703,7 @@ simpson2005:
   zbmath: "1106.03051"
   zbmathAuthors:
     - simpson.stephen-g
+  read: pdf-oa
 bridges2005:
   authors:
     - Douglas Bridges
@@ -1757,6 +1774,7 @@ hertling2005:
   zbmath: "1120.68061"
   zbmathAuthors:
     - hertling.peter-h
+  read: pdf-oa
 kossak2005:
   authors:
     - Roman Kossak
@@ -1779,6 +1797,7 @@ keisler2006:
   zbmath: "1101.03040"
   zbmathAuthors:
     - keisler.h-jerome
+  read: pdf-oa
 hirst2006:
   authors:
     - Jeffry L. Hirst
@@ -1790,6 +1809,7 @@ hirst2006:
   zbmath: "1090.03032"
   zbmathAuthors:
     - hirst.jeffry-l
+  read: pdf-oa
 shore2006:
   authors:
     - Richard A. Shore
@@ -1815,6 +1835,7 @@ lemppmummert2006:
   zbmathAuthors:
     - lempp.steffen
     - mummert.carl
+  read: pdf-oa
 mummert2006:
   authors:
     - Carl Mummert
@@ -1839,6 +1860,7 @@ avigadsimic2006:
   zbmathAuthors:
     - avigad.jeremy
     - simic.ksenija
+  read: pdf-oa
 montalban2006:
   authors:
     - Antonio Montalbán
@@ -1901,6 +1923,7 @@ steinerstrahm2006:
   zbmathAuthors:
     - steiner.david
     - strahm.thomas
+  read: pdf-oa
 bergerbridgesschuster2006:
   authors:
     - Josef Berger
@@ -1990,6 +2013,7 @@ jaegerescardosantini2006:
     - de-jaeger.frederic
     - hotzel-escardo.martin
     - santini.gabriele
+  read: pdf-oa
 ghasemimoniri2006:
   authors:
     - Mehdi Ghasemi
@@ -2071,6 +2095,7 @@ heinatsch2007:
   zbmath: "1171.03033"
   zbmathAuthors:
     - heinatsch.christoph
+  read: pdf-oa
 heinatschmollerfeld2007:
   authors:
     - Christoph Heinatsch
@@ -2343,6 +2368,7 @@ mileti2008:
   zbmath: "1135.03014"
   zbmathAuthors:
     - mileti.joseph-r
+  read: pdf-oa
 blanck2008:
   authors:
     - Jens Blanck
@@ -2365,6 +2391,7 @@ bosserhoff2008:
   zbmath: "1262.03077"
   zbmathAuthors:
     - bosserhoff.volker
+  read: pdf-oa
 bergerbridges2008:
   authors:
     - Josef Berger
@@ -2527,6 +2554,7 @@ afsharirathjen2009:
   zbmathAuthors:
     - afshari.bahareh
     - rathjen.michael
+  read: pdf-oa
 kjoshanssen2009:
   authors:
     - Bjørn Kjos-Hanssen
@@ -2598,6 +2626,7 @@ marcone2009:
   zbmath: "1186.03020"
   zbmathAuthors:
     - marcone.alberto
+  read: pdf-oa
 marconemontalban2009b:
   authors:
     - Alberto Marcone
@@ -2677,6 +2706,7 @@ fennergasarchpostow2009:
     - fenner.stephen-a
     - gasarch.william-i
     - postow.brian
+  read: pdf-oa
 ardeshirramezanian2009:
   authors:
     - Mohammad Ardeshir
@@ -2790,6 +2820,7 @@ keisler2010:
   zbmath: "1230.03092"
   zbmathAuthors:
     - keisler.h-jerome
+  read: pdf-oa
 simpson2010:
   authors:
     - Stephen G. Simpson
@@ -2875,6 +2906,7 @@ gordeevweiermann2010:
   zbmathAuthors:
     - gordeev.lev
     - weiermann.andreas
+  read: pdf-oa
 conidis2010b:
   authors:
     - Chris J. Conidis
@@ -2926,6 +2958,7 @@ rathjen2010:
   zbmath: "1227.03077"
   zbmathAuthors:
     - rathjen.michael
+  read: pdf-oa
 weihrauch2010:
   authors:
     - Klaus Weihrauch
@@ -2937,6 +2970,7 @@ weihrauch2010:
   zbmath: "1219.03043"
   zbmathAuthors:
     - weihrauch.klaus
+  read: pdf-oa
 bridgesloeb2010:
   authors:
     - Douglas S. Bridges
@@ -3098,6 +3132,7 @@ kachlermansolomon2012:
     - kach.asher-m
     - lerman.manuel
     - solomon.reed
+  read: pdf-oa
 moschovakis2012:
   authors:
     - Joan Rand Moschovakis
@@ -3109,6 +3144,7 @@ moschovakis2012:
   zbmath: "1306.03027"
   zbmathAuthors:
     - moschovakis.joan-rand
+  read: pdf-oa
 doraishirstshafer2012b:
   authors:
     - François G. Dorais
@@ -3229,6 +3265,7 @@ bergerishiharaschuster2012:
     - berger.josef
     - ishihara.hajime
     - schuster.peter-michael
+  read: pdf-oa
 berger2012:
   authors:
     - Josef Berger
@@ -3303,6 +3340,7 @@ moschovakisvafeiadou2012:
   zbmathAuthors:
     - moschovakis.joan-rand
     - vafeiadou.garyfallia
+  read: pdf-oa
 pauly2012:
   authors:
     - Arno Pauly
@@ -3325,6 +3363,7 @@ ishihara2012:
   zbmath: "1251.03087"
   zbmathAuthors:
     - ishihara.hajime
+  read: pdf-oa
 simpsonyokoyama2013:
   authors:
     - Stephen G. Simpson
@@ -3400,6 +3439,7 @@ sanders2013:
   zbmath: "1317.03019"
   zbmathAuthors:
     - sanders.sam
+  read: pdf-oa
 loeb2013:
   authors:
     - Iris Loeb
@@ -3487,6 +3527,7 @@ belanger2014:
   zbmath: "1353.03006"
   zbmathAuthors:
     - belanger.david-r
+  read: pdf-oa
 solomon2014:
   authors:
     - Reed Solomon
@@ -3498,6 +3539,7 @@ solomon2014:
   zbmath: "1358.03024"
   zbmathAuthors:
     - solomon.reed
+  read: pdf-oa
 horihatayokoyama2014:
   authors:
     - Yoshihiro Horihata
@@ -3511,6 +3553,7 @@ horihatayokoyama2014:
   zbmathAuthors:
     - horihata.yoshihiro
     - yokoyama.keita
+  read: pdf-oa
 sato2014:
   authors:
     - Takashi Sato
@@ -3549,6 +3592,7 @@ juralevinmarkkanen2014:
     - jura.matthew
     - levin.oscar
     - markkanen.tyler
+  read: pdf-oa
 hirst2014:
   authors:
     - Jeffry L. Hirst
@@ -3560,6 +3604,7 @@ hirst2014:
   zbmath: "1358.03020"
   zbmathAuthors:
     - hirst.jeffry-l
+  read: pdf-oa
 bridgesdentmckubrejordens2014:
   authors:
     - Douglas Bridges
@@ -3590,6 +3635,7 @@ holzljainstephan2015:
     - holzl.rupert
     - jain.sanjay
     - stephan.frank
+  read: pdf-oa
 hirsthughes2015:
   authors:
     - Jeffry L. Hirst
@@ -3626,6 +3672,7 @@ belanger2015:
   zbmath: "1369.03099"
   zbmathAuthors:
     - belanger.david-r
+  read: pdf-oa
 kreuzer2015b:
   authors:
     - Alexander P. Kreuzer
@@ -3714,6 +3761,7 @@ kachapova2016:
   zbmath: "1396.03111"
   zbmathAuthors:
     - kachapova.farida
+  read: pdf-oa
 espindola2016:
   authors:
     - Christian Espíndola
@@ -3738,6 +3786,7 @@ bergersvindland2016:
   zbmathAuthors:
     - berger.josef
     - svindland.gregor
+  read: pdf-oa
 kreuzeryokoyama2016:
   authors:
     - Alexander P. Kreuzer
@@ -3882,6 +3931,7 @@ holzletal2017:
     - raghavan.dilip
     - stephan.frank
     - zhang.jing.128
+  read: pdf-oa
 frittaion2017:
   authors:
     - Emanuele Frittaion
@@ -4214,6 +4264,7 @@ chong2020:
   zbmath: "1505.03026"
   zbmathAuthors:
     - chong.chi-tat
+  read: pdf-oa
 ferreira2020:
   authors:
     - Fernando Ferreira
@@ -4571,6 +4622,7 @@ sanders2022c:
   zbmath: "1518.03014"
   zbmathAuthors:
     - sanders.sam
+  read: pdf-oa
 carluccitavernelli2022:
   authors:
     - Lorenzo Carlucci
@@ -4647,6 +4699,7 @@ andrewsetal2023:
     - cai.mingzhong
     - diamondstone.david-e
     - schweber.noah-david
+  read: pdf-oa
 cordonfrancolaramartinloureiro2023:
   authors:
     - Andrés Cordón-Franco
@@ -4662,6 +4715,7 @@ cordonfrancolaramartinloureiro2023:
     - cordon-franco.andres
     - lara-martin.francisco-felix
     - loureiro.manuel-j-s.1
+  read: pdf-oa
 nemoto2023:
   authors:
     - Takako Nemoto
@@ -4708,6 +4762,7 @@ rathjen2023:
   zbmath: "1536.03006"
   zbmathAuthors:
     - rathjen.michael
+  read: pdf-oa
 towsnerweisshaarwestrick2023:
   authors:
     - Henry Towsner
@@ -4781,6 +4836,7 @@ chenlioliveira2024:
   year: 2024
   doi: 10.1109/FOCS61266.2024.00040
   source: zbmath
+  read: pdf-oa
 sanders2024d:
   authors:
     - Sam Sanders
@@ -4806,6 +4862,7 @@ cordonfrancolaramartinloureiro2024:
     - cordon-franco.andres
     - lara-martin.francisco-felix
     - loureiro.manuel-j-s.1
+  read: pdf-oa
 wu2024b:
   authors:
     - Huishan Wu
@@ -4814,6 +4871,7 @@ wu2024b:
   year: 2024
   doi: 10.4467/20842589RM.24.001.20696
   source: zbmath
+  read: pdf-oa
 dauriacetal2024:
   authors:
     - "Anglès d'Auriac, Paul-Elliot"
@@ -5029,6 +5087,7 @@ carluccietal2020:
     - kolodziejczyk.leszek-aleksander
     - lepore.francesco
     - zdanowski.konrad
+  read: pdf-arxiv
 liupatey2026b:
   authors:
     - Lu Liu

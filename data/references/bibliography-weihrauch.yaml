@@ -13,7 +13,7 @@ ackermanetal2022:
   venue: Proceedings of the 37th Annual ACM/IEEE Symposium on Logic in Computer Science
   doi: 10.1145/3531130.3533330
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-oa
   zbmath: "1553.68127"
   zbmathAuthors:
     - ackerman.nathanael-leedom
@@ -456,7 +456,7 @@ bochepohl2019:
   venue: 2019 13th International conference on Sampling Theory and Applications (SampTA), 1–4
   doi: 10.1109/SampTA45681.2019.9030934
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-oa
 brechtpaulyschroder2020:
   authors:
     - "de Brecht, Matthew"
@@ -506,6 +506,7 @@ brattka2005:
   zbmath: "1059.03074"
   zbmathAuthors:
     - brattka.vasco
+  read: pdf-oa
 brattka2003:
   authors:
     - Vasco Brattka
@@ -837,6 +838,7 @@ nobrega2013:
   year: 2013
   venue: MSc in Logic at the Universiteit van Amsterdam
   source: weihrauch-bibliography
+  read: pdf-oa
 dzhafarovhirschfeldtreitzes2020:
   authors:
     - Damir D. Dzhafarov
@@ -948,7 +950,7 @@ fujiwarahiguchikihara2014:
   venue: Mathematical Logic Quarterly, 60(3), 136–153
   doi: 10.1002/malq.201300021
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-oa
   zbmath: "1331.03015"
   zbmathAuthors:
     - fujiwara.makoto
@@ -988,11 +990,13 @@ fioricaronesmarcone2021:
   zbmathAuthors:
     - fiori-carones.marta
     - marcone.alberto
-beckmannoitavemmanea2025:
+franklinetal2025:
   authors:
-    - Arnold Beckmann
-    - Isabel Oitavem
-    - Florin Manea
+    - Johanna Franklin
+    - Eike Neumann
+    - Arno Pauly
+    - Cécilia Pradic
+    - Manlio Valenti
   title: Represented Spaces of Represented Spaces
   year: 2025
   venue: "Crossroads of Computability and Logic: Insights, Inspirations, and Innovations, 15764, 47–61"
@@ -1088,7 +1092,7 @@ greenbergkuyperturetsky2019:
   venue: Computability, 8(3, 4), 305–346
   doi: 10.3233/COM-180219
   source: weihrauch-bibliography
-  read: abstract
+  read: pdf-oa
   zbmath: "1480.03043"
   zbmathAuthors:
     - greenberg.noam
@@ -1360,6 +1364,7 @@ hoyrup2017:
   zbmath: "1366.68056"
   zbmathAuthors:
     - hoyrup.mathieu
+  read: pdf-oa
 hoyrup2023:
   authors:
     - Mathieu Hoyrup
@@ -1367,6 +1372,7 @@ hoyrup2023:
   year: 2023
   venue: Laboratoire Lorrain de Recherche en Informatique et ses Applications
   source: weihrauch-bibliography
+  read: pdf-oa
 hoyrup2023b:
   authors:
     - Mathieu Hoyrup
@@ -1644,6 +1650,7 @@ kiharapauly2019:
   zbmathAuthors:
     - kihara.takayuki
     - pauly.arno-m
+  read: pdf-oa
 kreuzer2012c:
   authors:
     - Alexander P. Kreuzer
@@ -1801,6 +1808,7 @@ lutz2023:
   year: 2023
   venue: arXiv 2301.07259
   source: weihrauch-bibliography
+  read: pdf-oa
 marconeosso2024:
   authors:
     - Alberto Marcone
@@ -2226,6 +2234,7 @@ solomon2016:
   zbmath: "1476.03006"
   zbmathAuthors:
     - solomon.reed
+  read: pdf-oa
 sovine2017:
   authors:
     - Sean Sovine
@@ -2274,6 +2283,7 @@ thies2018:
   year: 2018
   venue: Graduate School of Arts and Sciences, University of Tokyo
   source: weihrauch-bibliography
+  read: pdf-oa
 trottavalentipaiva2022:
   authors:
     - Davide Trotta
@@ -2345,7 +2355,7 @@ weihrauch2019:
   venue: Computability, 8(3, 4), 399–415
   doi: 10.3233/COM-180102
   source: weihrauch-bibliography
-  read: screened
+  read: pdf-oa
   zbmath: "1480.03034"
   zbmathAuthors:
     - weihrauch.klaus

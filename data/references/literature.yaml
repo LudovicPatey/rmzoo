@@ -439,6 +439,7 @@ hirst2012:
   zbmath: "1239.03038"
   zbmathAuthors:
     - hirst.jeffry-l
+  read: pdf-oa
 gherardimarcone2009:
   authors: [ Guido Gherardi, Alberto Marcone ]
   title: How incomputable is the separable Hahn–Banach theorem?

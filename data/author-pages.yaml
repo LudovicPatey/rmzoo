@@ -2,8 +2,10 @@
 # missing full texts that the authors post themselves. Each entry: the surname as written
 # in the references (matched in any position of the author list), the page, and `base` when
 # the page's relative links resolve against another directory.
-# Pages found unreachable or without usable links (2026-11-05): Solomon (UConn), Jockusch,
-# Rathjen, Dzhafarov, Mummert, Kreuzer, Tanaka (no PDF links), Loeb (page gone).
+# Pages found unreachable or without usable links (2026-11-05): Jockusch, Rathjen, Dzhafarov,
+# Mummert, Kreuzer, Tanaka (no PDF links), Loeb (page gone); (2026-11-17) Wu (BLCU, no PDF
+# links), Goh (links to publishers only). Hirst's appstate.edu page answers 403 to scripts:
+# his GitHub mirror is used instead.
 - { author: Simpson, url: "https://sgslogic.net/t20/papers/" }
 - { author: Brattka, url: "http://cca-net.de/vasco/publications/" }
 - { author: Marcone, url: "https://users.dimi.uniud.it/~alberto.marcone/publications.html" }
@@ -17,8 +19,21 @@
 - { author: Friedman, url: "https://u.osu.edu/friedman.8/foundational-adventures/downloadable-manuscripts/" }
 - { author: Kihara, url: "https://www.math.mi.i.nagoya-u.ac.jp/~kihara/" }
 - { author: Ferreira, url: "https://webpages.ciencias.ulisboa.pt/~fjferreira/index_english.html" }
-- { author: Hirst, url: "https://www.appstate.edu/~hirstjl/bib/bib.html" }
+- { author: Hirst, url: "https://hirstjl.github.io/bib/bib.html" }
 - { author: Conidis, url: "https://www.math.csi.cuny.edu/~conidis/Chris_J._Conidis/Publications.html" }
 - { author: Diener, url: "https://www.math.canterbury.ac.nz/~h.diener/publications.html" }
 - { author: Berardi, url: "http://www.di.unito.it/~stefano/Web-Research.htm" }
 - { author: Ferreira, url: "https://webpages.ciencias.ulisboa.pt/~fjferreira/logica_english.html" }
+- { author: Solomon, url: "https://www2.math.uconn.edu/~solomon/papers2.html" }
+- { author: Keisler, url: "https://people.math.wisc.edu/~keisler/" }
+- { author: Lempp, url: "https://people.math.wisc.edu/~slempp/papers/" }
+- { author: Chong, url: "https://blog.nus.edu.sg/chongct/publications" }
+- { author: Mileti, url: "https://joemileti.github.io/" }
+- { author: Escardó, url: "https://martinescardo.github.io/papers/" }
+- { author: Strahm, url: "https://home.inf.unibe.ch/ltg/publications/" }
+- { author: Moschovakis, url: "https://www.math.ucla.edu/~joan" }
+- { author: Levin, url: "https://oscarlevin.github.io/papers/" }
+- { author: Hoyrup, url: "https://members.loria.fr/MHoyrup/publications-english.html" }
+- { author: Cenzer, url: "https://people.clas.ufl.edu/cenzer/publications/" }
+- { author: Fenner, url: "https://www.cse.sc.edu/~fenner/papers/" }
+- { author: Svindland, url: "https://www.mathematik.uni-muenchen.de/~svindla/publications/" }

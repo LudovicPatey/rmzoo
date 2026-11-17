@@ -368,7 +368,7 @@ export const OPERATIONS = {
 
 // Other data files with a simple shape (not entity lists):
 //   data/context.yaml          statement id → background text ([@key] citations)
-//   data/fulltext-exclude.yaml reference key → {zotero | url, reason}: Zotero items or URLs not to use
+//   data/fulltext-exclude.yaml reference key → {zotero | url (one or a list), reason}: Zotero items or URLs not to use
 //   data/author-pages.yaml     [{author, url, base?}]: publication pages read by fulltext.mjs --author-pages
 //   data/authors.yaml          zbMATH author code → {name, orcid?}: written by scripts/zbmath.mjs, used by the viewer's bell
 //   data/screened.yaml         {facts, questions, resolutions}: leads already examined
