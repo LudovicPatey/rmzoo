@@ -1,3 +1,3 @@
 # Results from [bovykinweiermann2017].
 
-[ { type: implication, from: cac-em, to: rt22, over: rca0star, refs: [ { ref: bovykinweiermann2017, loc: Theorem 8 } ] } ]
+[ { type: implication, from: cac-em, to: rt22, over: rca0star, refs: [ { ref: bovykinweiermann2017, loc: Theorem 8 } ] }, { type: equivalence, from: rt22, to: cac-em, over: rca0, refs: [ { ref: bovykinweiermann2017, loc: Theorem 8 and the remark before it } ] } ]

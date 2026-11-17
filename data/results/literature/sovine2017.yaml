@@ -1,0 +1,3 @@
+# Results from [sovine2017].
+
+[ { type: equivalence, from: sep, to: wkl, over: sw, refs: [ { ref: sovine2017, loc: Lemma 3.2.7 } ] } ]

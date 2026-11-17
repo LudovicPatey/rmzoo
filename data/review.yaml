@@ -114155,3 +114155,2896 @@
     date: 2026-11-16
     by: ludovic
     note: "Used in a single cached paper (or, for UCT, the compact-metric-space version of ucont): not added for now."
+- id: horihatayokoyama2014-03a1a62d
+  ref: horihatayokoyama2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: RMT for Jordan regions
+    name: Riemann's mapping theorem for Jordan regions
+    loc: Theorem 4.4(3)
+    definition: "Every Jordan region Int(J), the interior of a Jordan curve J : [0,1] -> C, is conformally equivalent to the open unit disk B(0;1)."
+    facts: "Theorem 4.4: over RCA0, WKL0 is equivalent to (2) for any Jordan curve J, Int(J) is a non-empty bounded connected open set, and to (3) every Jordan region is conformally equivalent to B(0;1)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 42f6e00b4b6e
+- id: horihatayokoyama2014-1aca981e
+  ref: horihatayokoyama2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: RMT for simply connected open sets
+    name: Riemann's mapping theorem
+    loc: Theorem 4.6
+    definition: Every simply connected open subset U of C with U not equal to C is conformally equivalent to B(0;1).
+    facts: "Theorem 4.6 (Theorem 4.13 of Yokoyama's earlier paper [16]): over WKL0, ACA0 is equivalent to Riemann's mapping theorem for simply connected open sets. The paper gives a new nonstandard proof of ACA0 -> RMT."
+  reasons:
+    - principle not in the catalogue
+  proposed: 657b5a388f40
+- id: horihatayokoyama2014-1772c19e
+  ref: horihatayokoyama2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: RMT for polygonal domains
+    name: Weak Riemann's mapping theorem (semi-polygons)
+    loc: Theorem 3.10
+    definition: For a simple semi-polygon gamma with interior D and c0 in D, D is conformally equivalent to B(0;1) via a biholomorphic uniformly continuous f with f(c0) = 0.
+    facts: Provable in RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 779908b1d620
+- id: horihatayokoyama2014-bc162df7
+  ref: horihatayokoyama2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Cauchy's integral theorem for triangles
+    name: Cauchy's integral theorem for triangles
+    loc: Theorem 3.3
+    definition: If f is holomorphic on an open subset D of C, then for every triangle abc inside D, the integral of f over the boundary of the triangle exists and equals 0.
+    facts: "Theorem 3.3: equivalent to WKL0 over RCA0 (2 -> 1 is cited from [15])."
+  reasons:
+    - principle not in the catalogue
+  proposed: 31b5ceb891bd
+- id: horihatayokoyama2014-5a58a6b6
+  ref: horihatayokoyama2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Effective integrability of continuous functions on open sets of C
+    name: Effective line integrability of continuous complex functions
+    loc: Theorem 3.1
+    definition: "Every continuous function on an open D in C is effectively integrable: along every line or circular arc there is a modulus of integrability of the Riemann sums."
+    facts: "Theorem 3.1: equivalent to WKL0 over RCA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: 7821af456715
+- id: kreuzer2012b-879d1683
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: rt22-wkl
+    base: isig2
+    class: Pi03
+    value: true
+  loc: Corollary 3.26
+  origin: stated
+  quote: WKLω0 + Σ02 -IA + RT22 is conservative over RCAω0 + Σ02 -IA
+  paperNotation: WKL^ω_0 + Σ^0_2-IA + RT^2_2 over RCA^ω_0 + Σ^0_2-IA
+  confidence: medium
+  concerns: Stated for the third-order systems WKL^ω_0 and RCA^ω_0 + Σ02-IA, for sentences of the form ∀x ∃y A_qf, hence Π03 (the paper notes the Π03 consequence after the corollary). Proof-theoretic with term extraction.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: d0f1606df46f
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Corollary 3.26 is proved for RCA₀^ω + Σ⁰₂-IA; carrying it to second-order RCA₀ + IΣ⁰₂ needs a conservation result the thesis does not state.
+- id: kreuzer2012b-542f556b
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: amt-bsig2-coh-wkl
+    base: rca0
+    class: Pi03
+    value: true
+  loc: Corollary 2.29
+  origin: stated
+  quote: Further WKLω0 + Π01 -CP + COH + AMT is Π03 -conservative over RCAω0 .
+  paperNotation: WKL^ω_0 + Π^0_1-CP + COH + AMT
+  confidence: medium
+  concerns: Π01-CP (Π01-bounded collection) is identified with BΣ02 (equivalent to RT^1_{<∞} over RCA0, see Proposition 2.1); the third-order systems WKL^ω_0 and RCA^ω_0 are used.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: af9011b1601b
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Stated: WKL^ω_0 + Π01-CP + COH + AMT is Π03-conservative over RCA^ω_0. Π01-CP (Π01 bounded collection) is BΣ02 (equivalent to RT1<∞, cf. Introduction). RCA^ω_0 is conservative over RCA0 for L2 sentences (Section 1.1.5, [65]), so the second-order form holds."
+- id: kreuzer2012b-aceb5025
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: cac-wkl
+    base: rca0
+    class: Pi03
+    value: true
+  loc: Theorem 4.19
+  origin: stated
+  quote: is conservative for sentences of the from ∀x1 ∃y 0 Aqf (x, y) and a fortiori Π03 -conserva-
+  paperNotation: WKL^ω_0 + CAC over RCA^ω_0
+  confidence: medium
+  concerns: Third-order systems WKL^ω_0 and RCA^ω_0; primitive recursive term extraction. The quote is the end of the theorem, whose first lines read WKL^ω_0 + CAC.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 48696ddbaa90
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Stated: WKL^ω_0 + CAC is conservative for ∀x¹∃y⁰A_qf sentences and a fortiori Π03-conservative over RCA^ω_0, hence (conservativity of RCA^ω_0 over RCA0) WKL0 + CAC is Π03-conservative over RCA0."
+- id: kreuzer2012b-9e54c6d1
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: coh
+    base: rca0
+    class: Pi11
+    value: true
+  loc: Theorem 6.2
+  origin: cited
+  quote: Theorem 6.2. COH is Π11 -conservative over RCA0 , RCA0 + Π01 -CP, RCA0 + Σ02 -IA.
+  paperNotation: COH
+  citedFrom: Cholak, Jockusch, Slaman [16] (over RCA0 and RCA0 + Σ02-IA); Chong, Slaman, Yang [20] (over RCA0 + Π01-CP)
+  confidence: high
+  reasons:
+    - "attributed by the paper to Cholak, Jockusch, Slaman [16] (over RCA0 and RCA0 + Σ02-IA); Chong, Slaman, Yang [20] (over RCA0 + Π01-CP): cite the original"
+  proposed: f34814df1a06
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Cited by Kreuzer (Theorem 6.2) from CJS [16]; CJS Theorem 9.1 states RCA0 + COH is Π11-conservative over RCA0. Duplicate of an existing result (citation merge).
+- id: kreuzer2012b-90d5710c
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: coh
+    base: bsig2
+    class: Pi11
+    value: true
+  loc: Theorem 6.2
+  origin: cited
+  quote: Theorem 6.2. COH is Π11 -conservative over RCA0 , RCA0 + Π01 -CP, RCA0 + Σ02 -IA.
+  paperNotation: COH over RCA0 + Π01-CP
+  citedFrom: Chong, Slaman, Yang [20]
+  confidence: medium
+  concerns: Π01-CP identified with BΣ02.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Chong, Slaman, Yang [20]: cite the original"
+  proposed: 53e19d25a59d
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Cited by Kreuzer from Chong–Slaman–Yang [20] (Π01-conservation of combinatorial principles weaker than RT22, Adv. Math.) = chongslamanyang2012, whose Corollary 3.1 states RCA0 + COH + BΣ02 is Π11-conservative over RCA0 + BΣ02. Π01-CP = BΣ02.
+- id: kreuzer2012b-3cb6d00c
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: coh
+    base: isig2
+    class: Pi11
+    value: true
+  loc: Theorem 6.2
+  origin: cited
+  quote: Theorem 6.2. COH is Π11 -conservative over RCA0 , RCA0 + Π01 -CP, RCA0 + Σ02 -IA.
+  paperNotation: COH over RCA0 + Σ02-IA
+  citedFrom: Cholak, Jockusch, Slaman [16]
+  confidence: high
+  reasons:
+    - "attributed by the paper to Cholak, Jockusch, Slaman [16]: cite the original"
+  proposed: f141eac1a118
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Cited from CJS [16]; CJS state after Lemma 9.5 that Lemma 9.5 and Lemma 6.6 give WKL0 + COH + IΣ2 Π11-conservative over RCA0 + IΣ2; COH alone follows. Matches the existing coh-isig2-wkl entry's citation.
+- id: kreuzer2012b-1d726eb8
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: rt22
+    base: isig2
+    class: Pi11
+    value: true
+  loc: Chapter 1 (Introduction to Ramsey's theorem for pairs), historical overview
+  origin: cited
+  quote: Cholak, Jockusch and Slaman showed along
+  paperNotation: RT^2_2
+  citedFrom: Cholak, Jockusch, Slaman [16]
+  confidence: medium
+  concerns: The quote is the beginning of the sentence 'Cholak, Jockusch and Slaman showed along their recursion theoretic proof that RT22 is Π11 -conservative over RCA0 + Σ02 -IA.' (printed on two lines).
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Cholak, Jockusch, Slaman [16]: cite the original"
+  proposed: 9412b742a798
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Cited from CJS [16] in the introduction; CJS Theorem 10.2: RT22 + RCA0 + IΣ2 is Π11-conservative over RCA0 + IΣ2. Existing result (citation merge)."
+- id: kreuzer2012b-9da3f13d
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: pending
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: cac
+    base: bsig2
+    class: Pi11
+    value: true
+  loc: Chapter 1, comparison to conservation results by syntactic forcing
+  origin: cited
+  quote: the fact that CAC is Π11 -conservative over RCA0 + Π01 -CP
+  paperNotation: CAC over RCA0 + Π01-CP
+  citedFrom: Chong, Slaman, Yang [20]
+  confidence: medium
+  concerns: Π01-CP identified with BΣ02.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Chong, Slaman, Yang [20]: cite the original"
+  proposed: 8103e7e48f79
+- id: kreuzer2012b-31771c76
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: rt22
+    to: cac-em
+    over: rca0
+  loc: Introduction, Chapter 1 (end of the historical overview)
+  origin: cited
+  quote: RCA0 ` RT22 ↔ CAC ∧ EM
+  paperNotation: RT^2_2 ↔ CAC ∧ EM
+  citedFrom: Bovykin and Weiermann [12]
+  confidence: high
+  reasons:
+    - the quoted passage was not found in the text
+    - "attributed by the paper to Bovykin and Weiermann [12]: cite the original"
+  proposed: 14650105a922
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Cited by Kreuzer from Bovykin–Weiermann [12]; their text says RT22 proves CAC and EM, and Theorem 8 gives RCA0* + EM + CAC ⊢ RT22 (RCA0* is weaker than RCA0). EM is the tournament principle in both. Equivalence over RCA0 holds.
+- id: kreuzer2012b-8b418431
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: stcoh
+    to: bsig2-coh
+    over: rca0
+  loc: Proposition 2.1(iii)
+  origin: cited
+  quote: StCOH ↔ COH ∧ Π01 -CP
+  paperNotation: StCOH ↔ COH ∧ Π^0_1-CP
+  citedFrom: Hirst / Hirschfeldt–Shore [39, 4.4]
+  confidence: medium
+  concerns: Printed over the third-order system G3A^ω, not literally over RCA0; Π01-CP identified with BΣ02.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+    - "attributed by the paper to Hirst / Hirschfeldt–Shore [39, 4.4]: cite the original"
+  proposed: a9ebbce1bfc0
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Kreuzer's StCOH is the STRONG cohesive principle (G strongly cohesive: ∀n ∃s ∀i<n …, Section 2.1), not the zoo's stcoh (stable cohesiveness, COH restricted to stable sequences). Different principle; also a cited fact ([39, 4.4]) proved over G3A^ω."
+- id: kreuzer2012b-2e102ded
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: pi01g
+    to: amt
+    over: rca0
+  loc: Proposition 2.12(i)
+  origin: cited
+  quote: (i) Π01 G → AMT,
+  paperNotation: Π^0_1G → AMT
+  citedFrom: Hirschfeldt–Shore–Slaman [40], Conidis [21]
+  confidence: high
+  concerns: Π01G is defined as a sentence about uniformly Π01 dense collections (Definition 2.7); catalogue pi01g is its problem form.
+  reasons:
+    - the quoted passage was not found in the text
+    - "attributed by the paper to Hirschfeldt–Shore–Slaman [40], Conidis [21]: cite the original"
+  proposed: a4acd1943f72
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Cited by Kreuzer (Proposition 2.12(i)) from [40,21]; HSS 2009 state after Corollary 4.5 'Thus Π01G implies AMT' (Henkin tree argument, over RCA0). Same Π01G as the zoo's pi01g. Duplicate of the existing entry (citation merge).
+- id: kreuzer2012b-51369897
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: bwt-weak-l2
+    to: lim.jump
+    over: sw
+  loc: Remark 7.14
+  origin: stated
+  quote: BWTweak-`2 ≡sW lim(2) .
+  paperNotation: BWT_{weak-ℓ2} ≡sW lim^{(2)}
+  confidence: medium
+  concerns: lim(2) read as lim ∘ lim, i.e. the jump of lim (the paper uses lim ◦ lim ≡sW lim ⋆s L1,1); the jump identification lim.jump is a judgement. BWT_{weak-ℓ2} is the problem 'bounded sequence in ℓ2 ↦ weak cluster point'; the text extraction may have lost hats or primes.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: fae450183c90
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Remark 7.14 (checked on the rendered page 114) states BWT_{weak-ℓ2} ≡sW lim^(2), where lim^(2) ≡W LPÔ∘LPÔ and the upper-bound chain ends ≡sW lim∘lim, so lim^(2) is lim∘lim; lim′ ≡sW lim∘lim is Example 5.3(6) of brattkagherardimarcone2012. Hence BWT_{weak-ℓ2} ≡sW lim′ (lim.jump). Doubtful point: the displayed lower bound is only ≥W; the sW equivalence relies on the thesis's remark that all these problems are cylinders."
+- id: kreuzer2012b-5845d1f4
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: bwt-weak-l2
+    to: bwt
+    over: sw
+  loc: Remark 7.14
+  origin: stated
+  quote: BWTweak-`2 >sW BWTR .
+  paperNotation: BWT_{weak-ℓ2} >sW BWT_R
+  confidence: medium
+  concerns: "Strict reduction: gives BWT_R ≤sW BWT_{weak-ℓ2} and BWT_{weak-ℓ2} ≰sW BWT_R. BWT_R is the problem of finding a cluster point of a bounded sequence of reals; check the notation BWTR."
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: 7fff301dc05b
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Remark 7.14 last line: BWT_{weak-ℓ2} >sW BWT_R (rendered page checked). BWT_R is the zoo's bwt. Duplicate of the kreuzer2012c Remark 14 entry (citation merge)."
+- id: kreuzer2012b-119040a0
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: bwt
+    to: bwt-weak-l2
+    over: sw
+  loc: Remark 7.14
+  origin: stated
+  quote: BWTweak-`2 >sW BWTR .
+  paperNotation: BWT_{weak-ℓ2} >sW BWT_R
+  confidence: medium
+  concerns: The strict part of the inequality; see the corresponding implication.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: 66c9c3e597bd
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Strict part of BWT_{weak-ℓ2} >sW BWT_R (Remark 7.14); duplicate of the kreuzer2012c Remark 14 separation (citation merge).
+- id: kreuzer2012b-de44b6e6
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: em
+    property: low-basis
+    value: false
+  loc: Proposition 5.2
+  origin: stated
+  quote: Proposition 5.2. There exists a computable tournament hN, →i that has no low
+  paperNotation: EM (tournaments)
+  confidence: high
+  concerns: Proof relies on a computable stable 2-coloring without low homogeneous set [25], and on Theorem 2.11 of [39].
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 7285480ebea2
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Proposition 5.2: a computable tournament with no low infinite transitive subtournament (proof given). Already in data/results/properties.yaml with this exact citation."
+- id: kreuzer2012b-7122fb92
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BW_weak
+    name: Bolzano–Weierstrass principle (weak form, Cauchy subsequence)
+    loc: Section 6.2
+    definition: "Every sequence of rationals in [0,1] has a (not necessarily fast) Cauchy subsequence: ∀(y_i) ∃f strictly monotone ∀n ∃s ∀v,w ≥ s |y_f(v) − y_f(w)| < 2^{-n}."
+    facts: "Corollary 6.6: RCA0 ⊢ StCOH ↔ BW_weak (instance-wise equivalent, Theorem 6.5). Theorem 6.7: Π11-conservative over RCA0 + Π01-CP and over RCA0 + Σ02-IA; RCA0 + BW_weak is Π02-conservative over PRA. Theorem 6.9: every bounded recursive sequence of reals has a low2 Cauchy subsequence, some has no computable one, some has no convergent subsequence computable in 0'. Close to the catalogue's sbwt but with sequences of rationals in [0,1]."
+  reasons:
+    - principle not in the catalogue
+  proposed: ed07a166d7e7
+- id: kreuzer2012b-8e1b51af
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BW
+    name: Bolzano–Weierstrass principle (fast converging subsequence)
+    loc: Section 6.2
+    definition: Every sequence of rationals in [0,1] has a subsequence converging with rate 2^{-n}.
+    facts: "Theorem 6.4: over RCA0 instance-wise equivalent to Σ01-WKL, hence equivalent to ACA0 (cited [86, Theorem I.9.1])."
+  reasons:
+    - principle not in the catalogue
+  proposed: 17b241b76986
+- id: kreuzer2012b-95c1e2fe
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ01-WKL
+    name: Weak König's lemma for Σ01 trees
+    loc: Section 6.3 (Theorem 6.4)
+    definition: Every infinite Σ01 0/1-tree has an infinite path.
+    facts: RCA0 ⊢ Σ01-WKL ↔ Π01-CA; instance-wise equivalent to Σ02-separation and to BW (Theorem 6.4).
+  reasons:
+    - principle not in the catalogue
+  proposed: 061944392d97
+- id: kreuzer2012b-777bdb59
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Π02-CA
+    name: Π02 comprehension
+    loc: Chapter 7
+    definition: For every Π02 formula ∀x∃y h(x,y,n)=0 the set {n | ∀x∃y h(x,y,n)=0} exists.
+    facts: "Theorems 7.8 and 7.12: over RCA0^ω, each instance of weak compactness in ℓ2 (weak-BW) is uniformly equivalent to an instance of Π02-CA; Corollary 7.13: degrees computing a weak cluster point of each computable bounded sequence in ℓ2 are exactly those ≥ 0''."
+  reasons:
+    - principle not in the catalogue
+  proposed: 987a9c9657a5
+- id: kreuzer2012b-b9144c5e
+  ref: kreuzer2012b
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: GBCC
+    name: Generalized Banach contraction conjecture
+    loc: Definition 9.1
+    definition: Every (m,γ)-g-contraction T on a presentable complete separable metric space has a fixed point; GBCC_m for fixed m, GBCC^cont for continuous T.
+    facts: "Theorem 9.2: WE-PA^ω1 + QF-AC^{0,0} ⊢ RT22 → GBCC_m for each m; RT2_{<∞} → GBCC^cont; RT2_{<∞} ∧ Σ03-IA → GBCC (over a third-order system, not RCA0)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 59c50a070b7d
+- id: keisler2006-ef04299a
+  ref: keisler2006
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: wkl
+    base: rca0
+    class: arith
+    value: true
+  loc: Corollary 2.7
+  origin: cited
+  quote: Corollary 2.7. WKL0 is conservative with respect to ΣPA.
+  paperNotation: WKL0 conservative over ΣPA (= IΣ1, first order part of RCA0)
+  argument: Sentences of L1 are the first-order (arithmetical) sentences; ΣPA = IΣ1 is the first-order part of RCA0 (Proposition 2.5(i)), so WKL0 proves no new arithmetical sentence over RCA0.
+  citedFrom: Friedman–Harrington, Simpson [Si1999] Chapter IX (Proposition 2.5, Corollary 2.7)
+  confidence: medium
+  concerns: Paper states conservation over the first-order theory ΣPA for sentences of L1, recorded as arith-conservativity over RCA0.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Friedman–Harrington, Simpson [Si1999] Chapter IX (Proposition 2.5, Corollary 2.7): cite the original"
+  proposed: ba63f29c6e3a
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Keisler attributes the fact to Friedman–Harrington via [Si1999] Ch. IX; simpson2009 Corollary IX.2.7 states the first-order part of WKL0 equals that of RCA0 (Σ01-PA), i.e. arithmetical conservativity of WKL0 over RCA0. Weaker than the existing Π11 result.
+- id: keisler2006-d605a424
+  ref: keisler2006
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: sigma11dc
+    to: atr
+    over: rca0
+  loc: Section 9, paragraph before Definition 9.8
+  origin: cited
+  quote: The theory Σ11 -DC0 implies ACA0 and is incomparable with ATR0 (H.
+  paperNotation: Σ11-DC0, ATR0
+  citedFrom: H. Friedman; Simpson [Si1999], Section VIII.5
+  confidence: medium
+  concerns: '"Incomparable" gives both non-implications over RCA0.'
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to H. Friedman; Simpson [Si1999], Section VIII.5: cite the original"
+  proposed: 868efb5e2eb5
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Keisler cites H. Friedman / [Si1999] for Σ11-DC0 and ATR0 being incomparable. simpson2009 Corollary VIII.4.22: a Π01 sentence provable in ATR0 but not in Σ11-DC0 (even with full induction), so Σ11-DC0 does not imply ATR0 over RCA0. (Corollary VIII.4.17 and HYP give the ω-model version as well.)"
+- id: giustosimpson2000-473d18d4
+  ref: giustosimpson2000
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: stietze-closed
+    to: dnr
+    over: rca0
+  loc: Section 1, after Theorem 1.3 (proved as Lemma 6.17)
+  origin: stated
+  quote: "strong Tietze theorem for closed sets implies the DNR axiom: for all"
+  paperNotation: strong Tietze theorem for closed sets (Conjecture 6.15(4), X = [0,1])
+  confidence: medium
+  concerns: Lemma 6.17 itself is proved for closed and separably closed sets in [0,1]; the closed-set version in the introduction follows because every instance of the csc version is an instance of the closed version.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 1a53c83be6e8
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Section 1 states that the strong Tietze theorem for closed sets (with modulus of uniform continuity, as in stietze-closed) implies the DNR axiom ∀A∃f∈DNR^A (= dnr as a sentence). Lemma 6.17 (RCA0) proves it for closed, separably closed sets in [0,1], and the closed version restricts to that one. Duplicate of the friedmansimpson2000 result: the citation will be merged."
+- id: giustosimpson2000-86c75213
+  ref: giustosimpson2000
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wkl
+    to: stietze-csc
+    over: rca0
+  loc: Section 6, remark after Conjecture 6.15
+  origin: deduced
+  quote: it is immediate to prove (1) =⇒ (2) =⇒ (3) =⇒ (4) =⇒ (5) in conjec-
+  paperNotation: "Conjecture 6.15(5): strong Tietze for closed and separably closed sets in [0,1]"
+  argument: The paper says WKL0 implies items (2)-(5) of Conjecture 6.15 are immediate; (5) is the csc version on [0,1]. Also follows from wkl -> stietze-closed (Theorem 1.3) by restriction to sets that are also separably closed.
+  confidence: medium
+  reasons:
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: 1c3c1a2f8d0c
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: The remark after Conjecture 6.15 says outright that (1) WKL0 ⇒ (2) ⇒ (3) ⇒ (4) ⇒ (5) is immediate. (5) is the strong Tietze theorem for closed, separably closed sets in [0,1] (= stietze-csc). So the paper states it; it is not just deduced.
+- id: giustosimpson2000-e0c342b5
+  ref: giustosimpson2000
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wkl
+    to: stietze-closed
+    over: rca0
+  loc: Theorem 1.3 (final remark), from Lemma 5.4 and Theorem 6.4
+  origin: stated
+  quote: In particular, WKL0 proves the strong Tietze theorem for closed sets.
+  paperNotation: WKL0 proves strong Tietze theorem for closed sets
+  confidence: high
+  concerns: "Proof: WKL0 makes every closed set weakly located (Lemma 5.4), then Theorem 6.4 (weakly located closed set, uniformly continuous f with modulus and uniform code; the code is uniform automatically for total functions, Lemma 6.3)."
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 2947e82851c3
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 1.3 states: 'In particular, WKL0 proves the strong Tietze theorem for closed sets'. That is K ⊆ [0,1] or a compact X, with C(K) the functions with a modulus of uniform continuity, which matches stietze-closed."
+- id: giustosimpson2000-216e9148
+  ref: giustosimpson2000
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wwkl
+    to: dnr
+    over: rca0
+  loc: Lemma 6.18
+  origin: stated
+  quote: Lemma 6.18. The DNR axiom can be proved in WWKL0 .
+  paperNotation: WWKL0 proves the DNR axiom
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: a80e7d595b3c
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Lemma 6.18 says the DNR axiom (∀A∃f DNR relative to A) is provable in WWKL0. The paper's WWKL0 is Yu–Simpson's, which matches wwkl. Over rca0.
+- id: giustosimpson2000-1d4f889d
+  ref: giustosimpson2000
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: stietze-csc
+    to: dnr
+    over: rca0
+  loc: Lemma 6.17
+  origin: stated
+  quote: Lemma 6.17 (RCA0 ). The strong Tietze theorem for closed and sep-
+  paperNotation: "strong Tietze theorem for closed and separably closed sets in [0,1] (Theorem 6.15(5)); DNR axiom: for all A there is f DNR relative to A"
+  confidence: high
+  concerns: Quote breaks at a hyphenation ("sep-arably closed sets in [0,1] ... implies the DNR axiom"). The DNR axiom is the sentence forall A exists f in DNR^A, matched with catalogue dnr. Tietze statement is for functions with a modulus of uniform continuity, on closed K that is also separably closed.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 311412cdd5b0
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Lemma 6.17 (RCA0): the strong Tietze theorem for closed, separably closed sets in [0,1] (Conjecture 6.15(5)) implies the DNR axiom. The ids match. Duplicate of the friedmansimpson2000 result: the citation will be merged."
+- id: giustosimpson2000-e6febb28
+  ref: giustosimpson2000
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: closed => located (in compact complete separable metric spaces, or in [0,1])
+    name: Every closed set is located
+    loc: Theorem 3.8, Definition 3.6
+    definition: "Located: the distance function d(x,C) exists as a continuous real-valued function. In a compact complete separable metric space (equivalently [0,1]) every closed set is located."
+    facts: "Equivalent to ACA0 over RCA0 (Theorem 3.8). Same for: closed => separably closed, separably closed => closed (Theorem 4.2, citing Brown), separably closed => located / weakly located (Theorem 5.10), closed + weakly located => located (Remark 5.3), closed + weakly located => separably closed (Theorem 5.11)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 4caf42dab23d
+- id: giustosimpson2000-91a3368f
+  ref: giustosimpson2000
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: closed and separably closed => located / weakly located
+    name: Closed and separably closed sets are located
+    loc: Theorems 4.6 and 5.8
+    definition: 'In a compact complete separable metric space (or [0,1], or 2^N) every set which is both closed and separably closed is located (resp. weakly located). Weakly located: the predicate "exists eps>0 B(a, r+eps) intersect C empty" is Sigma^0_1.'
+    facts: Equivalent to WKL0 over RCA0 (Theorem 4.6, Theorem 5.8, together with "every closed set is weakly located"). Also, WKL0 proves every closed set in a compact space is weakly located (Lemma 5.4); separably closed + weakly located => located and closed in RCA0 (Theorem 5.5); for separably closed sets located iff weakly located in RCA0 (Theorem 5.7); closed + located => separably closed in RCA0 (Theorem 4.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: 23a0d8964424
+- id: giustosimpson2000-5a19e610
+  ref: giustosimpson2000
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: strong Tietze theorem for separably closed sets (with modulus of uniform continuity)
+    name: Strong Tietze theorem for separably closed sets
+    loc: Theorem 6.14 and Theorem 1.3(5)
+    definition: "For X compact complete separable metric (or [0,1]), C a separably closed subset and f: C -> R uniformly continuous with modulus of uniform continuity, there is F in C(X) extending f."
+    facts: Equivalent to WKL0 over RCA0 (Theorem 6.14).
+  reasons:
+    - principle not in the catalogue
+  proposed: c2eda48eddd1
+- id: giustosimpson2000-9c3a08ba
+  ref: giustosimpson2000
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Tietze extension theorem for separably closed sets and continuous f (no modulus)
+    name: Tietze extension for separably closed sets, continuous functions
+    loc: Theorem 6.9
+    definition: "For X compact complete separable metric (or [0,1]), C separably closed and f: C -> R continuous, there is a continuous F with F restricted to C equal to f."
+    facts: Equivalent to ACA0 over RCA0 (Theorem 6.9).
+  reasons:
+    - principle not in the catalogue
+  proposed: 116c0b496c3d
+- id: giustosimpson2000-13cdf930
+  ref: giustosimpson2000
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Strong Tietze for weakly located closed sets (Theorem 6.4)
+    name: Strong Tietze theorem for weakly located closed sets
+    loc: Theorem 6.4
+    definition: "X compact complete separable metric space, C a weakly located closed subset, f: C -> R uniformly continuous with modulus and uniform code: then f extends to F in C(X)."
+    facts: Provable in RCA0 (Theorem 6.4); fails in REC without weak locatedness (Lemma 6.16).
+  reasons:
+    - principle not in the catalogue
+  proposed: 14425f3c5e3b
+- id: simpson2005-156b9242
+  ref: simpson2005
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ⁰₁-PA scheme / definability scheme
+    name: WKL0 plus 'if exactly one Z satisfies φ(X,Z) then it is computable in X'
+    loc: Corollary 7.9
+    definition: ∀X (if (∃ exactly one Z) φ(X,Z) then (∃Z)(Z ≤_T X and φ(X,Z))) for L2-formulas φ with no other free set variables.
+    facts: WKL0 plus this scheme has first order part Σ⁰₁-PA, the same as WKL0 (Corollary 7.9, from Theorem 7.8).
+  reasons:
+    - principle not in the catalogue
+  proposed: bc3cf705dab5
+- id: simpson2005-8ccd64dd
+  ref: simpson2005
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ψ̃(X)
+    name: Π⁰₁ formula with finitely different solutions
+    loc: Theorem 10.7
+    definition: A Π⁰₁ formula ψ̃(X) built from Kučera's pair (Lemma 10.1) and a Π⁰₁ sentence provable in Σ⁰₂-PA but not Σ⁰₁-PA.
+    facts: WKL0 proves ∃Xψ̃(X); RCA0 proves any two solutions differ finitely; WKL0 does not prove (∃ recursive X)ψ̃(X); RCA0 does not prove ∃Xψ̃(X). Refutes Tanaka's conjecture that WKL0 is conservative over RCA0 for sentences '∃ countably many X φ(X)' (Remark 10.9).
+  reasons:
+    - principle not in the catalogue
+  proposed: e05ec0c484ad
+- id: rathjen2010-628f68e1
+  ref: rathjen2010
+  date: 2026-11-17
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: pi11ca
+    to: sigma11ac
+    over: rca0
+  loc: Theorem 5.11(i)
+  origin: cited
+  quote: Σ11 -AC0 ⊆ Π11 -CA0 .
+  paperNotation: Σ¹₁-AC₀ ⊆ Π¹₁-CA₀ (theory inclusion, over ACA₀)
+  argument: "Inclusion of theories: every theorem of ACA₀ + Σ¹₁-AC is a theorem of ACA₀ + Π¹₁-CA, i.e. Π¹₁-CA₀ proves Σ¹₁-AC. Since Π¹₁-CA₀ proves arithmetical comprehension, the implication holds over RCA₀."
+  citedFrom: Feferman and Sieg, Iterated inductive definitions and subsystems of analysis, Theorem 2.3.1
+  confidence: medium
+  concerns: Stated as inclusion of theories over base ACA₀ (set induction only), not as an implication between statements; the paper cites it as well known and gives no proof.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+    - "attributed by the paper to Feferman and Sieg, Iterated inductive definitions and subsystems of analysis, Theorem 2.3.1: cite the original"
+  proposed: f19fd7fac7dd
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Cited as well known from Feferman–Sieg [18, Theorem 2.3.1], which is not in data/references (no cached text); Rathjen gives no proof. The implication Π11-CA0 → Σ11-AC0 is already derivable in the zoo (pi11ca → sigma11dc → sigma11ac, simpson2009 VII.6.6/VII.6.9).
+- id: holzletal2017-a70254ef
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: meet
+    to: hyp
+    over: rca0
+  loc: Theorem 38
+  origin: stated
+  quote: Theorem 38. Over RCA0 , MEET and HI are equivalent.
+  paperNotation: MEET, HI
+  confidence: medium
+  concerns: HI is the paper's Hyperimmunity Principle for weakly represented families, identified with catalogue hyp; the paper does not define it relative to a single set X. The paper's MEET asks for infinitely many agreements with each f in F, the catalogue MEET for one agreement with each p-computable r.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 06427c965215
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 38 states MEET and HI equivalent over RCA0. HI (Statement 13: g exceeds each f of the family infinitely often) is exactly 'g not dominated by any X-computable function' (zoo hyp); weakly represented families represented by A are families of total A-computable functions and the total A-computable functions form one, so the family and set formulations agree over RCA0. Zoo meet asks for one agreement per p-computable r, the paper's MEET for infinitely many; they are equivalent over RCA0 (if q meets every X-computable r once, it meets r beyond any k, by applying it to r modified below k to differ from q there, a finite modification). The zoo entry meet says it is the Hoelzl-Raghavan-Stephan-Zhang principle. (Entered as an AI derivation: the paper’s MEET asks for infinitely many agreements with each function of a weakly represented family, the zoo’s meet for one agreement with each X-computable function. They are equivalent over RCA₀ by a finite modification: if q meets every X-computable r once, apply this to r changed below k to differ from q there, giving agreements above every k.)"
+- id: holzletal2017-acdc7afe
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: hyp
+    to: avoid
+    over: omega
+  loc: Theorem 42
+  origin: stated
+  quote: Theorem 42. HI does not imply AVOID.
+  paperNotation: HI
+  confidence: medium
+  concerns: HI is the paper's Hyperimmunity Principle for weakly represented families, identified with catalogue hyp; the paper does not define it relative to a single set X. The statement does not say "ω-models" but the proof exhibits an ω-model M satisfying HI and not AVOID.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 764ff789cd94
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 42: HI does not imply AVOID; the proof uses the omega-model M of Theorem 35 (downward closure of non-high 1-generics), which satisfies HI and not AVOID. HI = zoo hyp (see Theorem 38 item). Omega-model separation."
+- id: holzletal2017-335ac6dd
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: meet
+    base: rca0
+    class: rPi12
+    value: true
+  loc: Corollary 54(b)
+  origin: stated
+  quote: Corollary 54. The following are restricted Π12 -conservative over RCA0 .
+  confidence: medium
+  concerns: Catalogue MEET is stated for p-computable r and agreement at one n; the paper's MEET is for weakly represented families, infinitely many agreements.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 44e0ccd4cf7b
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 54(b): MEET is restricted Pi^1_2-conservative over RCA0 (from Theorem 52 and DOM implies MEET). Zoo meet is equivalent over RCA0 to the paper's MEET (single vs infinitely many agreements equivalent by finite modification; families vs X-computable functions equivalent). (Entered as an AI derivation: the paper’s MEET asks for infinitely many agreements with each function of a weakly represented family, the zoo’s meet for one agreement with each X-computable function. They are equivalent over RCA₀ by a finite modification: if q meets every X-computable r once, apply this to r changed below k to differ from q there, giving agreements above every k.)"
+- id: holzletal2017-825f8aa1
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: dom
+    to: meet
+    over: rca0
+  loc: Section 9, before Corollary 54
+  origin: stated
+  quote: Furthermore, as DOM implies AVOID,
+  confidence: medium
+  concerns: Stated without proof as an observation; MEET identification as in Theorem 38.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: "789287319253"
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Stated: 'as DOM implies AVOID, MEET and BI'. Also follows from DOM implies HI (noted after Statement 13) and Theorem 38 (HI <-> MEET over RCA0). (Entered as an AI derivation: the paper’s MEET asks for infinitely many agreements with each function of a weakly represented family, the zoo’s meet for one agreement with each X-computable function. They are equivalent over RCA₀ by a finite modification: if q meets every X-computable r once, apply this to r changed below k to differ from q there, giving agreements above every k.)"
+- id: holzletal2017-90d5710c
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: coh
+    base: bsig2
+    class: Pi11
+    value: true
+  loc: Section 9, after Theorem 53
+  origin: cited
+  quote: COH is Π11 -conservative over RCA0 + BΣ2 .
+  citedFrom: Chong, Slaman and Yang [7]
+  confidence: high
+  reasons:
+    - "attributed by the paper to Chong, Slaman and Yang [7]: cite the original"
+  proposed: a975fc77b042
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Cited from Chong, Slaman and Yang [7] (Adv. Math. 2012, = chongslamanyang2012). Its Corollary 3.1: RCA0 + COH + BSigma2 is Pi^1_1-conservative over RCA0 + BSigma2. Already in the zoo (chongliyang2014 file, with this citation); add-results merges."
+- id: holzletal2017-32137f60
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: dom
+    to: avoid
+    over: rca0
+  loc: Section 4 (discussion before Theorem 41)
+  origin: stated
+  quote: Indeed, DOM implies AVOID
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 24058019c74f
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Stated 'DOM implies AVOID by definition' (and again in Section 9): a dominating g is eventually greater than, hence eventually different from, each f. Duplicate of the belangeretal2024 result; citation merged."
+- id: holzletal2017-be25de40
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: bi
+    base: rca0
+    class: rPi12
+    value: true
+  loc: Corollary 54(c)
+  origin: stated
+  quote: Corollary 54. The following are restricted Π12 -conservative over RCA0 .
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 4c00046585de
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 54(c): BI is restricted Pi^1_2-conservative over RCA0. Statement 20 (no member A of the family with A subset of B or of its complement; the overline is lost in the text) matches zoo bi."
+- id: holzletal2017-88749899
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: avoid
+    base: rca0
+    class: rPi12
+    value: true
+  loc: Corollary 54(a)
+  origin: stated
+  quote: Corollary 54. The following are restricted Π12 -conservative over RCA0 .
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: bdad73a0c4c8
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 54(a): AVOID is restricted Pi^1_2-conservative over RCA0. Statement 16 matches zoo avoid."
+- id: holzletal2017-52cb73a5
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: dom
+    base: bsig2
+    class: Pi11
+    value: false
+  loc: Theorem 53
+  origin: stated
+  quote: Theorem 53. DOM is not Π11 -conservative over RCA0 + BΣ2 .
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: d08518e2dd0c
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 53: DOM is not Pi^1_1-conservative over RCA0 + BSigma2 (RCA0 + BSigma2 + DOM proves ISigma2, by Hoelzl-Jain-Stephan, Theorem 20, used in the proof)."
+- id: holzletal2017-1ae6b5ee
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: dom
+    base: rca0
+    class: rPi12
+    value: true
+  loc: Theorem 52
+  origin: stated
+  quote: Theorem 52. DOM is restricted Π12 -conservative over RCA0 .
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: f10dd0151c18
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 52: DOM is restricted Pi^1_2-conservative over RCA0 (via Hirschfeldt's criterion, Proposition 7.16). Strengthens the existing Pi^1_1-conservation of dom."
+- id: holzletal2017-f9db3b40
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: dom
+    to: srt22
+    over: omega
+  loc: Theorem 49
+  origin: stated
+  quote: Theorem 49. DOM does not imply SRT22 .
+  paperNotation: SRT^2_2
+  confidence: high
+  concerns: The proof builds an ω-model of DOM + not SRT22.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 39fbfac2aea3
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 49: DOM does not imply SRT^2_2; the proof constructs an omega-model of DOM + not SRT^2_2 (via D^2_2 and Lemma 48). Omega-model separation."
+- id: holzletal2017-f5647b84
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: dom
+    to: cads
+    over: rca0
+  loc: Theorem 47
+  origin: stated
+  quote: Theorem 47. Over RCA0 , DOM implies CADS.
+  confidence: high
+  concerns: CADS is defined in the paper before Theorem 47 as the cohesive ADS principle (Hirschfeldt), matching the catalogue entry.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 28ba2532fbb9
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 47: over RCA0, DOM implies CADS. The paper's CADS (before Theorem 47: an infinite A such that each element is eventually below or eventually above the elements of A) is the zoo's stable suborder formulation."
+- id: holzletal2017-12495701
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: bsig2-dom
+    to: coh
+    over: rca0
+  loc: Theorem 44
+  origin: stated
+  quote: Theorem 44. Over RCA0 + BΣ2 , DOM implies COH.
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 9c487687afa9
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 44: over RCA0 + BSigma2, DOM implies COH. Base axiom BSigma2 entered as conjunct (bsig2-dom, sorted)."
+- id: holzletal2017-deca826d
+  ref: holzletal2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: coh
+    to: avoid
+    over: omega
+  loc: Theorem 35
+  origin: stated
+  quote: Theorem 35. COH does not imply AVOID. This even holds for ω-models.
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: e608b706562d
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 35: COH does not imply AVOID, even for omega-models; the omega-model of non-high 1-generics satisfies COH and no set in it avoids all recursive functions."
+- id: holzletal2017-1bda48e2
+  ref: holzletal2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: COHW
+    name: Cohesion for weakly represented families
+    loc: Statement 11
+    definition: "For every weakly represented family F of sets there exists an F-cohesive set. (Weakly represented families: Definitions 4-6.)"
+    facts: "COHW implies COH trivially (Remark 8). Theorem 29: over RCA0, COH does not imply COHW, even for ω-models. Theorem 37: COHW implies AVOID for ω-models; not in all non-ω-models. Theorem 43: COHW implies HI. Corollary 45: over RCA0 + BΣ2, DOM implies COHW. Proposition 46: over RCA0 + DOM, COH implies COHW; also over RCA0 + WKL0, COH ↔ COHW."
+  reasons:
+    - principle not in the catalogue
+  proposed: a9be205c66a9
+- id: holzletal2017-de35b529
+  ref: holzletal2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MAD
+    name: Maximal almost disjoint family principle
+    loc: Statement 18
+    definition: There exists a weakly represented infinite family of infinite sets, pairwise almost disjoint, such that every infinite set in S meets some member in an infinite set.
+    facts: "Theorem 55: an ω-model satisfies MAD iff it does not satisfy DOM."
+  reasons:
+    - principle not in the catalogue
+  proposed: b35ee6d31cd3
+- id: holzletal2017-7b765573
+  ref: holzletal2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MIND
+    name: Maximal independent family principle
+    loc: Statement 19
+    definition: There exists a weakly represented family of infinite sets that is maximal independent.
+    facts: "Theorem 56: an ω-model satisfies MIND iff it does not satisfy BI."
+  reasons:
+    - principle not in the catalogue
+  proposed: 664450ef05e4
+- id: sovine2017-c75afdbd
+  ref: sovine2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: sep
+    to: wkl
+    over: sw
+  loc: Lemma 3.2.7
+  origin: stated
+  quote: Lemma 3.2.7. SEP is strongly Weihrauch equivalent to WKLW
+  paperNotation: SEP, WKL_W
+  confidence: high
+  concerns: SEP is defined (Definition 3.2.1) on pairs of functions f,g with disjoint ranges, returning a separating set; the proof reads them as disjoint r.e. sets (enumerations), matching the catalogue sep. WKL_W takes an infinite binary tree, as wkl.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 9a6eae3d7bff
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Lemma 3.2.7: SEP ≡sW WKL_W, both directions proved with identity/strong post-processing (a path of T is the characteristic function of a separating set; a path is computed from C alone). SEP (Def 3.2.1) takes two functions with disjoint ranges = enumerations of disjoint c.e. sets, as zoo sep (the paper's instances have nonempty ranges, a harmless restriction for equivalence); WKL_W (Def 3.2.3) = infinite binary tree to path, as zoo wkl. Strengthens the existing w equivalence (brattkahendtlasskreuzer2017)."
+- id: sovine2017-53c98eee
+  ref: sovine2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: DM / WDM
+    name: Decomposition (weak decomposition) of an e-matroid into 1-dimensional subspaces
+    loc: Definition 2.2.1
+    definition: "Given an e-matroid (M,D), produce f: M→N with f(n)=0 iff n is zero element, and f(n)=f(m) iff {n,m} dependent (weak version: only the last condition)."
+    facts: "Theorem 2.2.2: WDM ≡sW DM ≡sW LPO^ (parallelization of LPO). Theorem 2.3.1: reverse-mathematics versions DM and WDM are equivalent to ACA0 over RCA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: 197c19ede80d
+- id: sovine2017-5edc98e6
+  ref: sovine2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: DEP_W
+    name: Characteristic function of the finite dependent sets of an e-matroid
+    loc: Definition 2.2.2
+    definition: Input an e-matroid (M,D), output the characteristic function of range(D).
+    facts: "Theorem 2.2.1: DEP_W ≡sW LPO^."
+  reasons:
+    - principle not in the catalogue
+  proposed: 338c16b6fed0
+- id: sovine2017-18da5615
+  ref: sovine2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: e-matroid
+    name: Enumerated matroid
+    loc: Definition 2.1.7
+    definition: "Pair (M,D), M ⊆ N, D: N→[N]^<N enumerating the finite dependent sets of a matroid."
+    facts: Computably obtained from countable vector spaces and graphs with enumerated edges (Lemmas 2.1.4, 3.2.1).
+  reasons:
+    - principle not in the catalogue
+  proposed: 54ef4de4c318
+- id: sovine2017-7cd45de5
+  ref: sovine2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: L_W / L
+    name: Existence of a 1-dimensional subspace of a countable vector space of dimension > 1
+    loc: Definition 3.1.3
+    definition: Given a countable vector space of dimension greater than 1, return a 1-dimensional subspace.
+    facts: "Theorem 3.1.1: PS_W ≤sW L_W and L implies PS over RCA0. Theorem 3.2.2: L_W ≤sW LPO^. Theorem 3.3.1: L ↔ ACA0 over RCA0 (using DHKLMM for the lower bound)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 828836483f3f
+- id: sovine2017-6db3335b
+  ref: sovine2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PS_W
+    name: Nontrivial proper subspace of a countable vector space (Weihrauch problem)
+    loc: Definition 3.1.2
+    definition: Given a countable vector space of dimension > 1, return a nontrivial proper subspace.
+    facts: "Theorem 3.2.6: SEP ≤W PS_W; Theorem 3.2.8: PS_W ≤W WKL_W ⋆ C_N; Corollary 3.2.9: WKL ≤W PS_W ≤W WKL ⋆ C_N. Exact degree open (Chapter 6). PS_W is the problem form of the catalogue sentence nps (PS)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 42eb7704ef63
+- id: sovine2017-efb7d6b3
+  ref: sovine2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PS^{<N}_W
+    name: Finite-dimensional nontrivial proper subspace of a countable vector space (Weihrauch)
+    loc: Definition 5.1.1
+    definition: Pairs (V,S) with V a countable vector space of dimension > 1 and S a finite-dimensional nontrivial proper subspace.
+    facts: PS^{<N}_W ≤sW L_W by definition; open whether LPO^ ≤W PS^{<N}_W (Chapter 6).
+  reasons:
+    - principle not in the catalogue
+  proposed: fd3e0a661ced
+- id: sovine2017-ea22b9a0
+  ref: sovine2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PSG^{<N}_W (and PSG^{<N*}_W)
+    name: Nonempty finite-dimensional saturated subgraph (finite union of connected components)
+    loc: Definition 4.1.2
+    definition: Given a graph G, return a nonempty union of finitely many connected components; the starred version restricts to graphs with at least one edge.
+    facts: "Theorem 4.1.2: PSG^{<N}_W ≡sW LPO^; Corollary 4.1.3: the starred version ≡sW LPO^."
+  reasons:
+    - principle not in the catalogue
+  proposed: df708251e83f
+- id: sovine2017-7ac25502
+  ref: sovine2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PSM_W
+    name: Nontrivial finite-dimensional subspace of a nontrivial e-matroid
+    loc: Corollary 4.1.4
+    definition: Given a nontrivial e-matroid, return a nontrivial finite-dimensional subspace.
+    facts: "Corollary 4.1.4: PSM_W ≡sW LPO^."
+  reasons:
+    - principle not in the catalogue
+  proposed: 4950e9aa448a
+- id: sovine2017-a96abc97
+  ref: sovine2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PSG_W
+    name: Nontrivial proper saturated subgraph
+    loc: Definition 4.2.1
+    definition: Given a countable graph with at least two connected components, return a nonempty union of connected components that is not the whole graph.
+    facts: "Theorem 4.2.1: C_N ≤sW PSG_W; Theorem 4.2.2: WKL_W ≤W PSG_W; Corollary 4.2.3: PSG_W ≰W WKL_W; Theorem 4.2.4: PSG_W ≤W WKL_W ⋆ C_N."
+  reasons:
+    - principle not in the catalogue
+  proposed: 45a02f708210
+- id: sovine2017-db94f06d
+  ref: sovine2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: DV
+    name: Decomposition of a countable vector space into 1-dimensional subspaces
+    loc: Theorem 5.1.1
+    definition: Every countable vector space has a decomposition into 1-dimensional subspaces (analogue of Definition 2.3.1).
+    facts: "Theorem 5.1.1: DV ↔ ACA0 over RCA0. DV ≤W LPO^ (Chapter 5, from Theorem 2.1.1); whether DV ≡W LPO^ is open."
+  reasons:
+    - principle not in the catalogue
+  proposed: fac1c494062b
+- id: bienvenukuyper2017-0bd17c6c
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: ran1
+    property: compose-closed
+    value: true
+  loc: Proposition 2.7
+  origin: special-case
+  quote: n−Ran ⋆ n−Ran ≡W n−Ran.
+  paperNotation: n-Ran with n = 1
+  argument: Proposition 2.7 holds for every positive n; n = 1 gives 1-Ran ⋆ 1-Ran ≡W 1-Ran. n-Ran is the multi-valued function sending X to the n-randoms relative to X, i.e. ML-random relative to X^(n-1).
+  confidence: high
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: 279a5286eda1
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Proposition 2.7 states n-Ran ⋆ n-Ran ≡W n-Ran for every positive n (Def 2.2: n-Ran sends X to the reals ML-random relative to X^(n-1)); n = 1 is zoo ran1 (ML-random relative to X). Instance n = 1. Already in the database from brattkagherardipauly2021 Prop 8.18; adds a citation."
+- id: bienvenukuyper2017-a6c4397c
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: ran2
+    property: compose-closed
+    value: true
+  loc: Proposition 2.7
+  origin: special-case
+  quote: n−Ran ⋆ n−Ran ≡W n−Ran.
+  paperNotation: n-Ran with n = 2
+  argument: Proposition 2.7 holds for every positive n; n = 2 gives 2-Ran ⋆ 2-Ran ≡W 2-Ran.
+  confidence: high
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: 389670fbd8bc
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Proposition 2.7 for n = 2: 2-Ran sends X to the reals ML-random relative to X′, i.e. 2-random relative to X, as zoo ran2. 2-Ran ⋆ 2-Ran ≡W 2-Ran gives compose-closed (P ⋆ P ≤W P)."
+- id: bienvenukuyper2017-dd5ce4d5
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: wwkl
+    property: compose-closed
+    value: true
+  loc: Introduction (result of Brattka, Gherardi and Hölzl)
+  origin: cited
+  quote: PCX ⋆ PCX ≡W PCX .
+  paperNotation: PC_{2^ω} ⋆ PC_{2^ω} ≡W PC_{2^ω}
+  argument: WWKL = PC_{2^ω}; take X = 2^ω.
+  citedFrom: Brattka, Gherardi and Hölzl [3]
+  confidence: medium
+  concerns: Stated in the introduction for a general space X among those studied, attributed to [3]; X = 2^ω gives WWKL.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+    - "attributed by the paper to Brattka, Gherardi and Hölzl [3]: cite the original"
+  proposed: b74ec6402ccc
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Cited in the introduction from Brattka, Gherardi and Hölzl [3] = brattkagherardiholzl2015, whose cached text states Corollary 8.3: WWKL ∗ WWKL ≡W WWKL (with WWKL ≡sW PC_{2^N}, Prop 8.2). Gives compose-closed for wwkl."
+- id: bienvenukuyper2017-7ea3813a
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: (wkl.jump).star.(wkl.jump)
+    to: (wkl.jump).jump
+    over: w
+  loc: Introduction (result of Brattka, Gherardi and Marcone)
+  origin: cited
+  quote: WKL′ ⋆ WKL′ ≡W WKL′′ .
+  paperNotation: WKL′ ⋆ WKL′ ≡W WKL′′
+  citedFrom: Brattka, Gherardi and Marcone [4]
+  confidence: high
+  reasons:
+    - the quoted passage was not found in the text
+    - "attributed by the paper to Brattka, Gherardi and Marcone [4]: cite the original"
+  proposed: 2c7444e07a77
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Cited from Brattka, Gherardi and Marcone [4] (brattkagherardimarcone2012), but its cached text does not state WKL′ ⋆ WKL′ ≡W WKL′′ explicitly (it has f′ ≡W f ∗ lim for cylinders, Section 5, and WKL-related compositional products, from which it follows by a short argument but not literally). Not stated in the original as a theorem I could locate; leave out or enter as a derived fact with the argument.
+- id: bienvenukuyper2017-02bc41bc
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wwkl.jump
+    to: (wwkl.jump).star.(wwkl.jump)
+    over: w
+  loc: Corollary 6.9
+  origin: stated
+  quote: WWKL′ <W WWKL′ ⋆ WWKL′ .
+  paperNotation: WWKL′ <W WWKL′ ⋆ WWKL′
+  confidence: high
+  concerns: Also in Corollary 4.9. The reverse reduction WWKL′ ≤W WWKL′ ⋆ WWKL′ is trivial (f ≤W f ⋆ f).
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: be3c1c218b20
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 6.9 (also Corollary 4.9): WWKL′ <W WWKL′ ⋆ WWKL′, so WWKL′ ⋆ WWKL′ ≰W WWKL′: separation from wwkl.jump to (wwkl.jump).star.(wwkl.jump). The jump is the BGM jump (Def 3.5), as in the zoo."
+- id: bienvenukuyper2017-e2eacaf0
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wwkl.jump
+    to: lpo.star.(wwkl.jump)
+    over: w
+  loc: Theorem 6.8
+  origin: stated
+  quote: LPO ⋆ WWKL′ 6≤W WWKL′ .
+  paperNotation: LPO ⋆ WWKL′ ≰W WWKL′
+  confidence: high
+  concerns: '"6≤" read as ≰, confirmed by the proof by contradiction ("Suppose for the sake of contradiction that LPO ⋆ WWKL′ ≤W WWKL′").'
+  reasons:
+    - the quoted passage was not found in the text
+  proposed: 8593a5f04c2b
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 6.8: LPO ⋆ WWKL′ ≰W WWKL′ (printed '6≤W'; the proof begins 'Suppose for the sake of contradiction that LPO ⋆ WWKL′ ≤W WWKL′'). LPO as in the zoo (decide whether X = 0^ω)."
+- id: bienvenukuyper2017-0e407c7d
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: cn.star.(wwkl.jump)
+    to: cn.jump
+    over: w
+  loc: Lemma 6.4
+  origin: cited
+  quote: C′ω ≤W Cω ⋆ WWKL′
+  paperNotation: C′_ω ≤W C_ω ⋆ WWKL′
+  citedFrom: Brattka and Hölzl [private communication]
+  confidence: medium
+  concerns: C_ω (find an element not in the range of a non-surjective function) is read as C_N; the paper says it is strongly Weihrauch equivalent to the definition of Brattka, Gherardi and Hölzl. Lemma proved in the paper but credited to Brattka and Hölzl.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+    - "attributed by the paper to Brattka and Hölzl [private communication]: cite the original"
+  proposed: 12fabd19a0d8
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Lemma 6.4: C′_ω ≤W C_ω ⋆ WWKL′, i.e. cn.star.(wwkl.jump) implies cn.jump over w. C_ω (non-surjective f, find an element outside its range) is strongly Weihrauch equivalent to C_N (footnote 1), so the jumps are sw-equivalent too. Credited to Brattka and Hölzl as a private communication, but the proof is given in this paper, which is its only published source; cited to bienvenukuyper2017 with the credit recorded here."
+- id: bienvenukuyper2017-82fef636
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wwkl.jump
+    to: cn.jump
+    over: w
+  loc: Proposition 4.7
+  origin: stated
+  quote: C′ω 6≤W WWKL′
+  paperNotation: C′_ω ≰W WWKL′
+  confidence: medium
+  concerns: "C_ω read as C_N (instances: non-surjective functions, solutions: elements outside the range; the paper notes strong equivalence to the definition of BGH). The paper notes it also follows from [4, Corollary 12.3]."
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: e9dbc21778f2
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Proposition 4.7, proof: C′_ω ≰W WWKL′ (printed '6≤W', direct proof by contradiction via recursion theorem; the paper notes it also follows from [4, Corollary 12.3]). C_ω ≡sW C_N (footnote 1), so C′_N ≰W WWKL′: separation from wwkl.jump to cn.jump."
+- id: bienvenukuyper2017-01dc9ca8
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: (wwkl.jump).star.(wwkl.jump)
+    to: lpo.star.(wwkl.jump)
+    over: w
+  loc: Corollary 6.7
+  origin: stated
+  quote: LPO ⋆ WWKL′ ≤W WWKL′ ⋆ WWKL′ .
+  paperNotation: LPO ⋆ WWKL′ ≤W WWKL′ ⋆ WWKL′
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 2741f31ede4f
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 6.7: LPO ⋆ WWKL′ ≤W WWKL′ ⋆ WWKL′ (from LPO ≤W PC_{ω×2^ω} ≤W WWKL′)."
+- id: bienvenukuyper2017-477badfc
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: (wwkl.jump).star.wwkl
+    to: wwkl.jump
+    over: w
+  loc: Theorem 6.2
+  origin: stated
+  quote: WWKL′ ⋆ PCω×2ω ≡W WWKL′ ⋆ WWKL ≡W WWKL′ .
+  paperNotation: WWKL′ ⋆ WWKL ≡W WWKL′
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 29d6c12c3d5d
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 6.2: WWKL′ ⋆ PC_{ω×2^ω} ≡W WWKL′ ⋆ WWKL ≡W WWKL′. Order of ⋆ as in the paper and the zoo (a.star.b = a ⋆ b, b applied first)."
+- id: bienvenukuyper2017-1ceaa93c
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: wwkl.star.(wwkl.jump)
+    to: wwkl.jump
+    over: w
+  loc: Proposition 6.1
+  origin: stated
+  quote: First, let us show that WWKL ⋆ WWKL′ ≡W WWKL′ .
+  paperNotation: WWKL ⋆ WWKL′ ≡W WWKL′
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 5a88d545f09e
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Proposition 6.1: WWKL ⋆ WWKL′ ≡W WWKL′ (the proof shows WWKL ⋆ WWKL′ ≤W WWKL′; the converse f ≤W g ⋆ f is immediate, as noted in the proof of Proposition 2.7)."
+- id: bienvenukuyper2017-dfac92bc
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: (wwkl.jump).star.(wwkl.jump)
+    to: (wwkl.jump).jump
+    over: w
+  loc: Corollary 4.9
+  origin: stated
+  quote: WWKL′ <W WWKL′ ⋆ WWKL′ <W WWKL′′ .
+  paperNotation: WWKL′ ⋆ WWKL′ <W WWKL′′
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: ffa290ec149e
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 4.9: WWKL′ ⋆ WWKL′ <W WWKL′′ (via Theorem 4.6 WWKL′_{2-Ran} ≡W WWKL′ ⋆ WWKL′ and Proposition 4.8 WWKL′′ ≰W WWKL′_{2-Ran}). Separation: WWKL′′ ≰W WWKL′ ⋆ WWKL′."
+- id: bienvenukuyper2017-26a8bbfc
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: (wwkl.jump).jump
+    to: (wwkl.jump).star.(wwkl.jump)
+    over: w
+  loc: Corollary 4.9
+  origin: stated
+  quote: WWKL′ <W WWKL′ ⋆ WWKL′ <W WWKL′′ .
+  paperNotation: WWKL′ ⋆ WWKL′ <W WWKL′′
+  confidence: high
+  concerns: Proved via Theorem 4.6 (WWKL′_{2-Ran} ≡W WWKL′ ⋆ WWKL′) and Proposition 4.8.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: a65d39c1f9e7
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 4.9: WWKL′ ⋆ WWKL′ <W WWKL′′, the ≤W part (Theorem 4.6 and Proposition 4.8, which even gives ≤sW for WWKL′_{2-Ran})."
+- id: bienvenukuyper2017-925ff741
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: (wwkl.jump).star.(wwkl.jump)
+    to: wwkl.jump
+    over: w
+  loc: Corollary 4.9
+  origin: stated
+  quote: WWKL′ <W WWKL′ ⋆ WWKL′ <W WWKL′′ .
+  paperNotation: WWKL′ <W WWKL′ ⋆ WWKL′
+  argument: Non-strict part of the strict inequality WWKL′ <W WWKL′ ⋆ WWKL′ (f ≤W f ⋆ f).
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: e16ff97d9778
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 4.9: WWKL′ <W WWKL′ ⋆ WWKL′, the ≤W part (f ≤W f ⋆ f, as noted in the proof of Proposition 2.7)."
+- id: bienvenukuyper2017-55ca0f00
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wwkl
+    to: ran1
+    over: sw
+  loc: Proposition 3.4
+  origin: stated
+  quote: We have 1−Ran ≤sW PC2ω but PC2ω 6≤W 1−Ran.
+  paperNotation: 1-Ran ≤sW PC_{2^ω}
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 01e169ef3f73
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Proposition 3.4: 1-Ran ≤sW PC_{2^ω}, and PC_{2^ω} = WWKL (Def 3.3); 1-Ran = zoo ran1 (ML-random relative to X). Proof gives K = X ↦ T^X, H = identity."
+- id: bienvenukuyper2017-8d2f7be5
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PC_{ω×2^ω}
+    name: Probabilistic choice on ω×2^ω
+    loc: Definition 3.3
+    definition: Multi-valued function sending a tree T of positive measure (w.r.t. the measure on ω×2^ω with first value n of probability 2^{-n-1}, then fair bits) to its set of infinite paths [T].
+    facts: PC_{ω×2^ω} ≡sW PC_{ω^ω} (Theorem 5.2); PC_{ω×2^ω} ≡sW WWKL_{≠0^ω} ≡sW WWKL_{1-Ran} (Theorem 5.1); WWKL <W PC_{ω×2^ω} <W WWKL′ (Brattka–Pauly [7]); LPO ≤W PC_{ω×2^ω} (Prop. 6.6); Cω × WWKL ≡sW PC_{ω×2^ω} (Brattka–Gherardi–Hölzl).
+  reasons:
+    - principle not in the catalogue
+  proposed: 6c1223a4ce80
+- id: bienvenukuyper2017-9c0f856d
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PC_{ω^ω}
+    name: Probabilistic choice on Baire space
+    loc: Definition 3.3
+    definition: Multi-valued function sending a tree in ω^{<ω} of positive measure (product measure with value n of probability 2^{-n-1}) to its set of infinite paths.
+    facts: PC_{ω^ω} ≡sW PC_{ω×2^ω} (Theorem 5.2), PC′_{ω^ω} ≡sW PC′_{ω×2^ω} (Corollary 5.3); answers negatively whether WWKL′ ≤W PC_{ω^ω}.
+  reasons:
+    - principle not in the catalogue
+  proposed: abb529a3c352
+- id: bienvenukuyper2017-d6afe527
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PC′_{ω×2^ω}
+    name: Jump of probabilistic choice on ω×2^ω
+    loc: Section 3 (after Proposition 3.7) and Section 4
+    definition: Input a sequence of trees converging pointwise to a tree of positive measure; output a path of the limit tree.
+    facts: WWKL′ ⋆ WWKL′ ≡W PC′_{ω×2^ω} (Theorem 4.5/4.6); PC′_{ω×2^ω} ⋆ PC′_{ω×2^ω} ≡W PC′_{ω×2^ω} (Theorem 4.5); WWKL′ ≤sW PC′_{ω×2^ω} but PC′_{ω×2^ω} ≰W WWKL′ (Prop. 4.7); PC_{ω×2^ω} ⋆ WWKL′ ≡W PC′_{ω×2^ω} (Prop. 6.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: e5d4a246f067
+- id: bienvenukuyper2017-497a165a
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WWKL′_{2-Ran}
+    name: Jump of WWKL returning a 2-random path
+    loc: Definition 4.2
+    definition: Sends (T_i) in limtree^{>0}_{2^ω} to a path of T_∞ which is 2-random relative to (T_i).
+    facts: WWKL′_{2-Ran} ≡W WWKL′ ⋆ WWKL′ (Theorem 4.6); ≡sW PC′_{ω×2^ω} (Theorem 4.3); WWKL′_{2-Ran} ≤sW WWKL′′ and WWKL′′ ≰W WWKL′_{2-Ran} (Prop. 4.8).
+  reasons:
+    - principle not in the catalogue
+  proposed: 8d5a6f9b445a
+- id: bienvenukuyper2017-017f2b3b
+  ref: bienvenukuyper2017
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Id_Fin
+    name: Identity on sequences with finitely many ones
+    loc: Lemma 6.3
+    definition: Identity function restricted to the binary sequences with only finitely many ones.
+    facts: Id_Fin ≤sW WWKL (Lemma 6.3, Brattka and Hölzl).
+  reasons:
+    - principle not in the catalogue
+  proposed: d74676a5400f
+- id: carluccietal2020-1bda44d2
+  ref: carluccietal2020
+  date: 2026-11-17
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: bsig2-ht-le22
+    to: srt22
+    over: rca0
+  loc: Section 3, introduction
+  origin: cited
+  quote: Ramsey’s Theorem SRT22 over the slightly stronger base theory RCA0 + BΣ02 or, equivalently,
+  paperNotation: HT^{≤2}_2 implies SRT^2_2 over RCA0 + BΣ^0_2
+  citedFrom: dzhafarovjockuschsolomonwestrick2016 ([15]), Corollaries 2.3 and 3.4
+  confidence: medium
+  concerns: 'Base RCA0 + BΣ^0_2 entered as a conjunct of the hypothesis. The sentence begins on the previous line: "showing, respectively, that HT≤2 2 implies the Stable".'
+  reasons:
+    - statement "bsig2-ht-le22" is not in the catalogue
+    - "extractor confidence: medium"
+    - "attributed by the paper to dzhafarovjockuschsolomonwestrick2016 ([15]), Corollaries 2.3 and 3.4: cite the original"
+  proposed: c6341634adcf
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Cited fact. The original (dzhafarovetal2017a, cached arXiv version) proves the stronger RCA0 |- HT^{<=2}_2 -> SRT^2_2 (Corollary 2.5, via D^2_2 and Chong-Lempp-Yang), already in the zoo; its Corollaries 2.3 and 3.4 are different statements (HT^{<=2}_2 not provable in RCA0; HT^{<=3}_3 -> ACA0), so the BSigma2 version and the location given by Carlucci et al. are not found in the cached original. The weaker fact adds nothing.
+- id: carluccietal2020-09a7cec4
+  ref: carluccietal2020
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HT^{≤2}_2 with apartness (= FUT^{≤2}_2); also HT^{≤n}_k with t-apartness
+    name: Bounded Hindman theorem with apartness condition
+    loc: Definitions 2.1 and 2.2, Proposition 2
+    definition: "HT^{≤n}_k: every k-coloring of N has an infinite H with FS^{≤n}(H) monochromatic; with t-apartness H must satisfy μ_t(x)<λ_t(x′) for x<x′ in H (largest exponent below least exponent in base t)."
+    facts: Equivalent over RCA0 (and mutually strongly computably reducible) to FUT^{≤n}_k, any t (Prop. 2, Cor. 3). HT^{≤n}_{2k} implies HT^{≤n}_k with apartness by sc reduction (Lemma 4). HT^{≤2}_2 with apartness implies ACA0 over RCA0 (Prop. 5); HT^{≤2}_4 implies ACA0 over RCA0 (Thm 6); IPT^2_2 ≤sc HT^{≤2}_4 (Cor. 11), also ≤sc FUT^{≤2}_2. Open whether ACA0 implies HT^{≤2}_2.
+  reasons:
+    - principle not in the catalogue
+  proposed: d3112d79d340
+- id: carluccietal2020-a35f4f59
+  ref: carluccietal2020
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HT^{=n}_k with apartness (= FUT^{=n}_k), HT^{=3}_2 with apartness
+    name: Hindman theorem for sums of exactly n terms with apartness
+    loc: Definition 2.1, Theorems 7, 10, Propositions 8, 9
+    definition: Every k-coloring of N has an infinite 2-apart H with FS^{=n}(H) monochromatic.
+    facts: HT^{=3}_2 with apartness is equivalent to RT^3_2 (so to ACA0) over RCA0 (Thm 7); for n>=3, k>1 HT^{=n}_k with apartness is equivalent to HT^{=3}_2 with apartness (Prop. 8); HT^{=n}_k ≤sc RT^n_k; IPT^2_2 ≤sc HT^{=2}_2 with apartness (Thm 10); HT^{=n}_k ≤sc HT^{=m}_k when n divides m (Prop. 9); no lower bounds are known without apartness.
+  reasons:
+    - principle not in the catalogue
+  proposed: 1328a2a86b53
+- id: carluccietal2020-ecbdef9f
+  ref: carluccietal2020
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HT^{∃{a<b}}_2 and HT^{∃{a≥3}}_2 with apartness
+    name: Hindman-type principles with some pair of sum lengths
+    loc: Definition 5.1, Theorem 12, Definition 5.2, Theorem 13
+    definition: For every 2-coloring of N there are an infinite H and a<b (resp. some a>=3) such that FS^{{a,b}}(H) (resp. FS^{{a}}(H)) is monochromatic.
+    facts: With apartness each is equivalent to ACA0 over RCA0 (Thms 12, 13); HT^{∃{a<b}}_2 with apartness ≤sc RT^3_8.
+  reasons:
+    - principle not in the catalogue
+  proposed: 4585239a4d88
+- id: carluccietal2020-0a581c23
+  ref: carluccietal2020
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: IPHT^2_2 with apartness
+    name: Increasing polarized Hindman theorem for pairs
+    loc: Definition 5.3, Theorem 14, Proposition 16
+    definition: For every 2-coloring f of N there are infinite H_1,H_2 (union apart) and a color k with f(x_1+x_2)=k for all increasing (x_1,x_2) in H_1 x H_2.
+    facts: IPT^2_2 and IPHT^2_2 with apartness are equivalent over RCA0, and IPT^2_2 ≤sc IPHT^2_2 with apartness (Thm 14); IPHT^2_2 with apartness ≤sc HT^{!ω}_2 with apartness (Prop. 16).
+  reasons:
+    - principle not in the catalogue
+  proposed: 7275628308d9
+- id: carluccietal2020-8ec0475a
+  ref: carluccietal2020
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: HT^{!ω}_2
+    name: Hindman theorem for exactly large sums
+    loc: Definition 5.5, Propositions 15, 16
+    definition: For every 2-coloring f of N there is an infinite H such that all sums of exactly large subsets of H (|S| = min S + 1) have the same color.
+    facts: Follows from RT^{!ω}_2 by a strong computable reduction (obvious); HT^{!ω}_2 with 2-apartness implies ACA0 over RCA0 (Prop. 15).
+  reasons:
+    - principle not in the catalogue
+  proposed: 0e450bfaefd1
+- id: carluccietal2020-687d90f6
+  ref: carluccietal2020
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FUT^{≤n}_k, FUT^{=n}_k
+    name: Bounded Finite Unions Theorem
+    loc: Definition 2.3, Proposition 2
+    definition: Block-sequence version of Hindman theorem with unions of at most (exactly) n blocks.
+    facts: Equivalent to HT^{≤n}_k (resp. HT^{=n}_k) with t-apartness over RCA0, mutually strongly computably reducible (Prop. 2).
+  reasons:
+    - principle not in the catalogue
+  proposed: 035f75d7854c
+- id: cordonfrancolaramartinloureiro2023-d7da5760
+  ref: cordonfrancolaramartinloureiro2023
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Δ⁰₁-Det*_L
+    name: Clopen Lipschitz determinacy in the Cantor space
+    loc: Section 2.1 (definition), Theorem 3.11
+    definition: Every Lipschitz game G_L(A,B) on 2^N with Δ⁰₁ payoff sets A and B is determined (player I wins iff not(A(f) <-> B(g)); II wins iff A(f) <-> B(g)).
+    facts: "Theorem 3.11: over RCA0, Δ⁰₁-Det*_L is equivalent to WKL0 (Proposition 3.9(1): WKL0 proves it). Theorem 1.3(2): also equivalent over RCA0 to (Δ⁰₁,Σ⁰₁)-Det*_L and (Σ⁰₁,Δ⁰₁)-Det*_L (Proposition 3.12). Answers Problem 4.17 of Loureiro's thesis; strengthens Chan's result for (Σ⁰₁∧Π⁰₁,Δ⁰₁)-Det*_L."
+  reasons:
+    - principle not in the catalogue
+  proposed: 645824f78ed0
+- id: cordonfrancolaramartinloureiro2023-da274094
+  ref: cordonfrancolaramartinloureiro2023
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Δ⁰₁-Det*_W, (Δ⁰₁,Σ⁰ₙ)-Det*_W
+    name: Clopen Wadge determinacy in the Cantor space
+    loc: Proposition 3.9(2), Theorem 1.3(1)
+    definition: Determinacy of Wadge games on 2^N with Δ⁰₁ payoff set for player I (and Σ⁰ₙ for player II).
+    facts: "Proposition 3.9(2): RCA0 proves (Δ⁰₁,Σ⁰ₙ)-Det*_W for every n>0; also (Δ⁰₁,Σ⁰ₙ)-SLO*_W and (Σ⁰ₙ,Δ⁰₁)-SLO*_W (Corollary 5.3(1))."
+  reasons:
+    - principle not in the catalogue
+  proposed: ff26c60a2bac
+- id: cordonfrancolaramartinloureiro2023-9c39fb04
+  ref: cordonfrancolaramartinloureiro2023
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ⁰₁-Det*_L, Σ⁰₁-Det*_W, (Σ⁰₁,Σ⁰₁∧Π⁰₁)-Det*_{L/W}
+    name: Open Lipschitz/Wadge determinacy in the Cantor space
+    loc: Section 4, Theorems 4.4, 5.5, 5.7
+    definition: Determinacy of Lipschitz (resp. Wadge) games on 2^N whose payoff sets are Σ⁰₁ (resp. Σ⁰₁ for I and Σ⁰₁∧Π⁰₁ for II).
+    facts: "Corollary 4.5: ACA0 proves Σ⁰₁-Det*_L and Σ⁰₁-Det*_W. Theorem 5.5: over RCA0, ACA0, Σ⁰₁-Det*_L, WKL0 + Σ⁰₁-Det*_W and WKL0 + Σ⁰₁-SLO*_{L/W} are pairwise equivalent. Theorem 5.7: over RCA0, ACA0, (Σ⁰₁,Σ⁰₁∧Π⁰₁)-Det*_{L/W} and (Σ⁰₁,Σ⁰₁∧Π⁰₁)-SLO*_{L/W} are pairwise equivalent. Open: whether Σ⁰₁-Det*_W implies ACA0 (Problem 3)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 88e3b338cff7
+- id: cordonfrancolaramartinloureiro2023-f168f2b0
+  ref: cordonfrancolaramartinloureiro2023
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Γ-SLO*_{L/W}
+    name: Lipschitz/Wadge semi-linear ordering principle in the Cantor space
+    loc: Section 5, definition before Lemma 5.2
+    definition: For all payoff sets A in Γ1 and B in Γ2, either A is Lipschitz (Wadge) reducible to B or the complement of B is reducible to A, formalized in second-order arithmetic.
+    facts: "Proposition 5.4: over WKL0, Σ⁰₁-SLO*_W implies ACA0; Proposition 5.6: over RCA0, (Σ⁰₁,Σ⁰₁∧Π⁰₁)-SLO*_W implies ACA0. Open Problems 2 to 6 (Section 6): is Δ⁰₁-SLO*_L equivalent to WKL0; is Σ⁰₁-SLO*_L or Σ⁰₁-SLO*_W equivalent to ACA0; does Σ⁰₁-SLO*_W imply WKL0."
+  reasons:
+    - principle not in the catalogue
+  proposed: 7dd8c159f25e
+- id: cordonfrancolaramartinloureiro2023-c5b5fc87
+  ref: cordonfrancolaramartinloureiro2023
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (DP)
+    name: Closed non-open sets of the Cantor space have nonempty boundary
+    loc: Section 4, before Theorem 4.4; Theorem 4.7
+    definition: Every closed and not open set in the Cantor space has nonempty boundary (combinatorial version of a result of Shafer).
+    facts: "Theorem 4.7: over RCA0, ACA0, (DP) and 'each infinite binary tree has a leftmost path' are equivalent. RCA0 + (DP) extends WKL0 (proof of Theorem 4.4). The leftmost-path statement here is for infinite binary trees, not for trees on N<N."
+  reasons:
+    - principle not in the catalogue
+  proposed: 114381d850d9
+- id: heinatsch2007-3a8ff889
+  ref: heinatsch2007
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ11-RT
+    name: Ramsey property of Σ¹₁ sets
+    loc: Section 1.2, Theorem 1.2.6
+    definition: Every Σ¹₁ set of reals has the property of Ramsey (a homogeneous infinite set accepting or avoiding it).
+    facts: ACA0 proves that Σ11-MI0 is equivalent to Σ11-RT (Tanaka [Tan89]).
+  reasons:
+    - principle not in the catalogue
+  proposed: 5ed55ae217e6
+- id: heinatsch2007-56bf1696
+  ref: heinatsch2007
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Δ11-RT
+    name: Ramsey property of Δ¹₁ sets
+    loc: Section 1.2, Theorem 1.2.5
+    definition: Every Δ¹₁ set of reals has the property of Ramsey.
+    facts: ACA0 proves that Π11-TR is equivalent to Δ11-RT (Tanaka [Tan89]).
+  reasons:
+    - principle not in the catalogue
+  proposed: 46ec23bca3c7
+- id: heinatsch2007-cbac270e
+  ref: heinatsch2007
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Π11-TR
+    name: Π¹₁ transfinite recursion
+    loc: Section 1.2, Theorem 1.2.5
+    definition: Transfinite recursion along well-orderings for Π¹₁ formulas.
+    facts: Equivalent to Δ11-RT over ACA0 (Tanaka).
+  reasons:
+    - principle not in the catalogue
+  proposed: af5eecca11ec
+- id: heinatsch2007-5bab596b
+  ref: heinatsch2007
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ11-MI0
+    name: Σ¹₁ monotone inductive definitions
+    loc: Section 1.2, before Theorem 1.2.6
+    definition: "ACA0 plus: every Σ¹₁-definable monotone operator has a smallest fixed point."
+    facts: Equivalent to Σ11-RT over ACA0 (Tanaka); much weaker than Π12-CA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: d6afc2313326
+- id: heinatsch2007-644db2db
+  ref: heinatsch2007
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: R-calculus
+    name: System of autonomous iterated Ramseyness
+    loc: Definition 1.3.2
+    definition: "ACA0 in the language with set terms R_x X phi(x,X) giving, for first-order phi, a set which after removing an initial segment is homogeneous for {X : phi(x,X)}."
+    facts: "Theorem 1.3.4 (main theorem): the R-calculus and Π12-CA0 prove the same Π11-sentences of L2."
+  reasons:
+    - principle not in the catalogue
+  proposed: 498736a5ced8
+- id: heinatsch2007-ae0bbf2b
+  ref: heinatsch2007
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: aame
+    name: Möllerfeld theory aame (comprehension for game quantifiers)
+    loc: Section 2.3
+    definition: Subsystem of second order arithmetic with comprehension for first-order formulas containing game quantifiers.
+    facts: Proves the same Π11-sentences as Π12-CA0 (Möllerfeld [Möl02]).
+  reasons:
+    - principle not in the catalogue
+  proposed: 1b089173a28c
+- id: heinatsch2007-e37510f3
+  ref: heinatsch2007
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: σ-calculus, σ+-calculus, µ-calculus
+    name: Calculi of iterated (non)monotone inductive definitions
+    loc: Chapter 2
+    definition: "µ-calculus: iterated monotone inductive definitions; σ-calculus: nonmonotone analogue; σ+-calculus: σ-calculus with additional transfinite induction."
+    facts: µ-calculus, σ-calculus and aame prove the same L2-sentences and the same Π11-sentences as Π12-CA0 (Möllerfeld); the paper shows the σ+-calculus proves the same Π11-sentences as Π12-CA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 330b060ba190
+- id: sanders2022c-b84d19ec
+  ref: sanders2022c
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: deltaca3-mctnet-mu2
+    to: boot
+    over: rca0
+  loc: Theorem 3.7
+  origin: stated
+  quote: Theorem 3.7. The system ACAω
+  paperNotation: ACA_0^ω + ∆-CA proves MCT^{[0,1]}_net → BOOT
+  confidence: medium
+  concerns: "ACA_0^ω is RCA_0^ω + (μ^2), entered as the conjunct mu2 (equivalent to exists2). Text extraction cuts the statement over several lines; MCT_net is indexed by subsets of Baire space (Definition 3.4), which should match mctnet. The conjunction is the hypothesis: MCT_net together with ∆-CA and (μ^2) implies BOOT."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: bd24572c8a49
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 3.7: ACA0^ω + Δ-CA proves MCT_net^[0,1] → BOOT. The paper defines ACA0^ω explicitly as RCA0^ω + (μ²) (Section 2.1), so the conjunct mu2 is correct. MCT_net (Definition 3.4) uses nets indexed by subsets of N^N (Section 3.1.1), which matches mctnet. Exact duplicate of the sanders2019c result (the arXiv preprint of the same work), so the citation will be merged."
+- id: sanders2022c-2fabf9c8
+  ref: sanders2022c
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: sigmasep3
+    to: deltaca3
+    over: rca0
+  loc: Theorem 3.29
+  origin: stated
+  quote: Theorem 3.29. The system RCAω
+  paperNotation: SEP^1 → ∆-CA
+  confidence: medium
+  concerns: SEP^1 is stated with Y(f) ≠ Z(g) for all f, g (disjoint ranges of type-2 functionals) and conclusion a set X with Y(g) in X and Z(g) not in X; it is matched to sigmasep3 (Σ-SEP, separation of disjoint Σ-formulas ∃f Y(f,n)=0), which is equivalent by a trivial coding but whose formulation differs. Statement header cut by extraction.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: f04fd40e120e
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 3.29 (RCA0^ω) proves SEP^1 → Δ-CA. SEP^1 separates the ranges of two type-2 functionals Y, Z with Y(f)≠Z(g). Σ-SEP (sigmasep3) implies SEP^1 in one line: take φ_0(n) ≡ ∃f(Y(f)=n) and φ_1(n) ≡ ∃g(Z(g)=n), which are of the form ∃f Y_0(f,n)=0, then separate. So sigmasep3 → SEP^1 → deltaca3 over rca0. The paper's principle is SEP^1, not literally Σ-SEP, hence ai: true."
+- id: sanders2022c-f2e6cd90
+  ref: sanders2022c
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: boot
+    to: range3
+    over: rca0
+  loc: Theorem 3.6
+  origin: stated
+  quote: Theorem 3.6. The system RCAω0 proves that BOOT is equivalent to
+  paperNotation: BOOT ↔ RANGE
+  confidence: high
+  concerns: Quote is the statement header; RANGE is displayed on the next lines. The paper credits [45, Theorem 3.19] for first proof.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 6d71a9e85ffb
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 3.6: RCA0^ω proves BOOT ↔ RANGE. RANGE (∀G²)(∃X)(∀n)(n∈X ↔ ∃f G(f)=n) matches range3, and BOOT matches Definition 2.6. The paper notes it was first proved in [45, Theorem 3.19] and proves it again here."
+- id: sanders2022c-3ba7ceaa
+  ref: sanders2022c
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: qfac01
+    to: deltaca3
+    over: rca0
+  loc: Theorem 3.5
+  origin: stated
+  quote: A snippet of countable choice suffices to prove ∆-comprehension, as follows.
+  paperNotation: QF-AC^{0,1} → ∆-CA
+  confidence: high
+  concerns: Proved over RCA0^omega (the base system), entered over rca0.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 8417f40d67d9
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 3.5: RCA0^ω + QF-AC^{0,1} proves Δ-CA. The paper's Δ-CA has the hypothesis (∃f)Y(f,n)=0 ↔ (∀g)Z(g,n)=0. This is trivially equivalent to the zoo's form, which uses two complementary Σ-formulas."
+- id: sanders2022c-232b8c19
+  ref: sanders2022c
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MCT^N_net, RANGE^1
+    name: Monotone convergence theorem for nets indexed by N (type 2 functionals) and range of type-three functionals
+    loc: Definition 3.8 and (RANGE^1), Section 3.1.2
+    definition: "MCT^N_net: every increasing net in [0,1] indexed by N ≡ N^N → N converges. RANGE^1: (∀G^3)(∃X^1)(∀n^0)(n ∈ X ↔ (∃Y^2)(G(Y) = n))."
+    facts: "Corollary 3.9: Z_2^Ω + QF-AC^{0,2} proves MCT^N_net → RANGE^1 (via Theorems 3.5 and 3.7 lifted one type up). RANGE^1 first introduced in [45, §3.7]."
+  reasons:
+    - principle not in the catalogue
+  proposed: eb77d9f726b3
+- id: sanders2022c-c94bbc11
+  ref: sanders2022c
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (a) Heine-Borel compact complete metric space over N^N is totally bounded
+    name: Effective total boundedness of Heine-Borel compact complete metric spaces over Baire space
+    loc: Definitions 3.10-3.12, Theorem 3.13
+    definition: "Complete metric space D over N^N (Def 3.10); Heine-Borel compact: every cover by balls B(e,Y(e)), Y: D -> R+, has a finite subcover (Def 3.11); totally bounded: a sequence of finite sequences of points approximating every point (Def 3.12). Items (b) countable Heine-Borel compactness, (c) sequential compactness instead."
+    facts: "Theorem 3.13: ACA_0^ω + IND proves that each of (a), (b), (c) implies BOOT. Corollary 3.14: ACA_0^ω + IND proves (a) → QF-AC^{0,1}. Corollaries 3.15, 3.16: Z_2^Ω proves the type-N analogue (d) implies RANGE^1 and QF-AC^{0,2}."
+  reasons:
+    - principle not in the catalogue
+  proposed: f635a592c9c0
+- id: sanders2022c-f15aa5ac
+  ref: sanders2022c
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CLO
+    name: Separably closed sets (given by nets) in R are RM-closed
+    loc: Definition 3.17, Theorem 3.18
+    definition: "A separably closed set in R is given by a net x_d: D -> Q with D subset of N^N; x in S iff (∀k)(∃d ∈ D)(|x - x_d| ≤ 1/2^k). CLO: such a set is RM-closed (complement of an RM-open set, Π^0_1 definable)."
+    facts: 'Theorem 3.19: ACA_0^ω + ∆-CA proves CLO → RANGE. Corollary 3.20: the same holds with "RM-closed" replaced by "located".'
+  reasons:
+    - principle not in the catalogue
+  proposed: 3343c9cf8834
+- id: sanders2022c-046d365c
+  ref: sanders2022c
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Rado(N^N)
+    name: Rado selection lemma for collections indexed by Baire space
+    loc: Definition 3.22
+    definition: For a collection of finite sets A_i indexed by N^N and choice functions F_J for A_j, j in J, for each finite J, there is a choice function F for the whole collection such that for all finite J there is a finite K ⊇ J with F(j) = F_K(j) for j in J.
+    facts: "Theorem 3.23: RCA_0^ω proves Rado(N^N) → BOOT (without countable choice or ∆-CA)."
+  reasons:
+    - principle not in the catalogue
+  proposed: f567a162e0ff
+- id: sanders2022c-d063428b
+  ref: sanders2022c
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ORD
+    name: Formally real fields over Baire space are orderable
+    loc: Definitions 3.24-3.27
+    definition: "Fields K over N^N (|K| subset of N^N with equivalence relation and operations); formally real: no sum of squares equals 0; ORD: every formally real field over N^N is orderable."
+    facts: "Theorem 3.28: ACA_0^ω + ∆-CA proves ORD → SEP^1. The field built is countable, so ORD restricted to countable fields already gives SEP^1."
+  reasons:
+    - principle not in the catalogue
+  proposed: 3dd0c9b3f3a1
+- id: sanders2022c-a3b8cb0a
+  ref: sanders2022c
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ALCL
+    name: Every field over Baire space embeds in an algebraically closed field over Baire space
+    loc: Definition 3.30
+    definition: Every field over N^N is isomorphic to a sub-field of an algebraically closed field over N^N.
+    facts: "Theorem 3.31: ACA_0^ω + ∆-CA proves ALCL → BOOT."
+  reasons:
+    - principle not in the catalogue
+  proposed: 69f4469459ba
+- id: sanders2022c-0e6bc454
+  ref: sanders2022c
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: UACL
+    name: Unique algebraic closure for fields over Baire space
+    loc: Definition 3.32
+    definition: "A field over N^N has a unique algebraic closure: for two algebraic closures H_i: K -> K_i there is an isomorphism H: K_1 -> K_2 with H∘H_1 = H_2 on K."
+    facts: "Theorem 3.33: ACA_0^ω + QF-AC^{0,1} proves UACL → SEP^1."
+  reasons:
+    - principle not in the catalogue
+  proposed: b7de87b3f92e
+- id: sanders2022c-6afe91cf
+  ref: sanders2022c
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: AUTO
+    name: Extension of automorphisms of F(α) to the algebraic closure, for fields over Baire space
+    loc: Definition 3.34
+    definition: "F a field over N^N with algebraic closure, α in the closure, φ an F-automorphism of F(α): φ extends to an F-automorphism of the algebraic closure."
+    facts: "Theorem 3.38: ACA_0^ω proves AUTO → SEP^1."
+  reasons:
+    - principle not in the catalogue
+  proposed: 5e5d1fca6022
+- id: sanders2022c-2d029242
+  ref: sanders2022c
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (a) commutative ring / (b) integral domain over N^N has a maximal ideal
+    name: Existence of maximal ideals for rings over Baire space
+    loc: Definitions 3.39, 3.40, Theorem 3.41
+    definition: Commutative ring (resp. integral domain) R with |R| subset of N^N; ideal M maximal if for all r not in M there is s with r×s - 1 in M.
+    facts: "Theorem 3.41: over ACA_0^ω, either (a) or (b) implies BOOT."
+  reasons:
+    - principle not in the catalogue
+  proposed: 0c5cac46e803
+- id: avigadsimic2006-d3418a44
+  ref: avigadsimic2006
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: leftmost-path
+    to: pi11ca
+    over: rca0
+  loc: Lemma 3.3
+  origin: stated
+  quote: every tree T on ω, if T has a path, it has a leftmost path.
+  paperNotation: Π¹₁ comprehension (Π11-CA); 'for every tree T on ω, if T has a path, it has a leftmost path'
+  confidence: high
+  concerns: The paper credits a slightly different proof to Marcone, Theorem 6.5. The paper's leftmost path is lexicographically least among paths of a tree on omega, as in the catalogue.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 6c1a79148cc2
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Lemma 3.3 (RCA0): Π¹₁-CA is equivalent to 'every tree on ω with a path has a leftmost path'. The paper proves both directions itself and notes that Marcone [18, Thm 6.5] has a different proof. Exact duplicate of the marcone1994 equivalence, so the citation will be merged."
+- id: avigadsimic2006-eaba7cc6
+  ref: avigadsimic2006
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: leftmost path for binary trees
+    name: Every infinite tree on {0,1} has a leftmost path
+    loc: Lemma 3.1
+    definition: Every infinite tree T on {0,1} has a path which is least in the lexicographic order.
+    facts: Equivalent to ACA0 over RCA0 (Lemma 3.1).
+  reasons:
+    - principle not in the catalogue
+  proposed: e685fc0d4f5d
+- id: avigadsimic2006-528cc69c
+  ref: avigadsimic2006
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Riesz representation (Hilbert space, representability of bounded linear functionals)
+    name: Every bounded linear functional on a Hilbert space is representable by an inner product
+    loc: Theorem 13.4(6)
+    definition: For every bounded linear functional f on a (separable) Hilbert space H there is y in H with f(x) = <x,y> for all x. Close to the catalogue's Weihrauch problem frr, but stated here as a sentence for arbitrary Hilbert spaces, so not matched.
+    facts: "Equivalent over RCA0 to ACA0; the reversal uses l2. Equivalent over RCA0 to: every bounded linear functional on a Banach or Hilbert space has a norm; its kernel is located (Theorems 13.2-13.4)."
+  reasons:
+    - principle not in the catalogue
+  proposed: c53547b0c54e
+- id: avigadsimic2006-60761d8e
+  ref: avigadsimic2006
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Mean ergodic theorem for Hilbert spaces
+    name: Von Neumann's mean ergodic theorem (nonexpansive operators or isometries on a Hilbert space)
+    loc: Theorem 14.1
+    definition: For every Hilbert space H, nonexpansive linear operator (or isometry) T and point x, the averages S_n x = (x + Tx + ... + T^{n-1}x)/n converge.
+    facts: Equivalent to ACA0 over RCA0, for both nonexpansive operators and isometries (Theorems 14.1 and 15.3). Even assuming P_M x exists and equals 0, convergence needs ACA0 (Theorem 15.3). Over RCA0 the existence of P_N x, the decomposition x = x_M + x_N and the convergence of S_n x are equivalent (Theorem 14.2).
+  reasons:
+    - principle not in the catalogue
+  proposed: 596ab6993d11
+- id: avigadsimic2006-a725eb73
+  ref: avigadsimic2006
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: closed / separably closed / located closed sets in complete separable metric spaces
+    name: Notions of closed subsets and their relations
+    loc: Theorems 5.1-5.4 and 6.1, 7.1, 7.2
+    definition: Closed (complement of an open set), separably closed (closure of a countable sequence) and located (with a continuous distance function) subsets of complete separable metric spaces.
+    facts: "Closed and located is the same as separably closed and located over RCA0 (Theorem 5.1). Over RCA0, ACA0 is equivalent to: in a compact space every closed set is separably closed; in [0,1] every separably closed set is closed; every closed set in [0,1] is located; every open set has a closure; d(x,C) exists for closed C in compact spaces. Pi11-CA0 is equivalent to: in Baire space every closed set is separably closed; every closed set in Baire space is located; for Gδ sets S of [0,1] the distance d(0,S) exists; every analytic set has a closure (Theorems 5.3, 5.4, 6.1, 7.1, 7.2). Several of these are credited to Brown, Giusto-Simpson, Giusto-Marcone, Hirst."
+  reasons:
+    - principle not in the catalogue
+  proposed: 42280feb9fd9
+- id: avigadsimic2006-1c9ef69b
+  ref: avigadsimic2006
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: closed subspace vs closed linear set, location and projections in Hilbert spaces
+    name: Closed subspaces, closed linear sets, locating functions and projections
+    loc: Theorem 11.1, Theorems 12.3-12.6, Corollary 15.2
+    definition: "Three notions of closed subspace of a Hilbert or Banach space: closed linear set, closed subspace (separably closed linear set), located closed subspace."
+    facts: "Over RCA0, ACA0 is equivalent to: every closed subspace is a closed linear set; every closed subspace is located; for every closed subspace and point the projection or distance exists (Theorems 11.1, 12.5). The corresponding statements for closed linear sets are implied by Pi11-CA0 and imply ACA0 (Theorems 11.1, 12.6); their exact strength is left open (Section 16)."
+  reasons:
+    - principle not in the catalogue
+  proposed: f2a9aee402bc
+- id: avigadsimic2006-e96df228
+  ref: avigadsimic2006
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: bases and independent generating sequences in Hilbert and Banach spaces
+    name: Existence of orthonormal bases and independent generating sequences
+    loc: Theorems 10.9, 10.10, Lemma 10.7
+    definition: Every Hilbert space has an orthonormal basis; every Banach space has an independent generating sequence (linearly independent elements with dense linear span).
+    facts: Every Hilbert space has an orthonormal basis, and every infinite dimensional Banach space has an independent generating sequence, in RCA0. Every Banach space has an independent generating sequence in RCA0 plus the disjunction of WKL and Sigma2 induction (Theorem 10.10); whether this is provable in RCA0 alone is left open (Section 16).
+  reasons:
+    - principle not in the catalogue
+  proposed: 8fef2cc4cdb7
+- id: belanger2015-55942f86
+  ref: belanger2015
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: bsig2
+    to: pi01ga
+    over: rca0
+  loc: Theorem 2.15(i)
+  origin: cited
+  quote: (i) RCA0 + BΣ02 6` Π01 GA
+  paperNotation: RCA0 + BΣ02 6` Π01 GA
+  citedFrom: Hirschfeldt, Lange, Shore [9]
+  confidence: high
+  concerns: 6` is the extraction of the non-provability symbol.
+  reasons:
+    - "attributed by the paper to Hirschfeldt, Lange, Shore [9]: cite the original"
+  proposed: 552082e3b6c5
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: RCA₀ + BΣ⁰₂ + Π⁰₁GA proves IΣ⁰₂ (Theorem 3.3 of Hirschfeldt–Lange–Shore 2017, cited as Theorem 2.15 in Belanger 2015), and BΣ⁰₂ does not prove IΣ⁰₂; so BΣ⁰₂ does not prove Π⁰₁GA.
+- id: belanger2015-65ddd80a
+  ref: belanger2015
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: pi01g
+    to: pi01ga
+    over: rca0
+  loc: Proof of Theorem 2.16
+  origin: stated
+  quote: and from the fact that Π01 G implies Π01 GA.
+  paperNotation: Π01 G, Π01 GA
+  confidence: medium
+  concerns: Stated in passing in a proof, without a theorem number or citation; pi01g is a problem in the catalogue while the paper uses the principle as an axiom scheme of [9, 10].
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 1fcd2af4933d
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Belanger states 'Π01 G implies Π01 GA' as a fact. HLS 2017 also says 'Of course, Π01 G implies Π01 GA' (Section 3), and the zoo already has that result from hirschfeldtlangeshore2017, so this citation will be merged. pi01g (a problem) read as a sentence over rca0 is the Π⁰₁G axiom.
+- id: belanger2015-09bacca8
+  ref: belanger2015
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: pi01g
+    base: rca0
+    class: rPi12
+    value: true
+  loc: Proof of Theorem 2.16
+  origin: cited
+  quote: that Π01 G is restricted Π12 conservative
+  paperNotation: Π01 G is restricted Π12 conservative over RCA0
+  citedFrom: Hirschfeldt, Shore, Slaman [10, section 4]
+  confidence: medium
+  concerns: The class restricted Pi^1_2 is defined in [10], not in this paper; checked only against the catalogue name rPi12.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Hirschfeldt, Shore, Slaman [10, section 4]: cite the original"
+  proposed: f179cd22c857
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Cited by Belanger from [10] = hirschfeldtshoreslaman2009, which is cached. Section 4 says Π⁰₁G is 'r-Π12 conservative over both IΣ1 and IΣ2' (after Theorem 4.3) and 'also r-Π12 conservative over RCA0 by Theorem 3.13' (after Theorem 4.4). The class rPi12 (∀X[θ arithmetical → ∃Y Σ⁰₃]) is HSS's definition.
+- id: belanger2015-719d2f28
+  ref: belanger2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Compactness Theorem for first-order logic
+    name: Compactness theorem for first-order logic
+    loc: Lemma 1.5(ii)
+    definition: If T is a set of first-order sentences and every finite subset of T is satisfiable, then T is satisfiable.
+    facts: Equivalent to WKL0 over RCA0 (Lemma 1.5, citing Simpson IV.3.3).
+  reasons:
+    - principle not in the catalogue
+  proposed: f67b9cb016df
+- id: belanger2015-c69ee4a0
+  ref: belanger2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: 1-point homogeneous / 1-homogeneous / strongly 1-homogeneous model existence
+    name: Existence of 1-point homogeneous, 1-homogeneous, strongly 1-homogeneous models of complete consistent theories
+    loc: Definition 1.1 and Theorem 2.3
+    definition: Every complete consistent theory has a model that is 1-point homogeneous (resp. 1-homogeneous, strongly 1-homogeneous) in the sense of Definition 1.1.
+    facts: Each is equivalent to WKL0 over RCA0 (Theorems 2.2 (Lange), 2.3, Prop. 3.2). Restricted to theories with only principal types the strongly 1-homogeneous version is still equivalent to WKL0 (Theorem 2.4, Prop. 5.6).
+  reasons:
+    - principle not in the catalogue
+  proposed: ce0a1b6d7f0c
+- id: belanger2015-59f044e7
+  ref: belanger2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Homogeneous model existence (Definition 1.1(6))
+    name: Every complete consistent theory has a homogeneous model
+    loc: Question 2.5
+    definition: Every complete consistent theory has a homogeneous model in the sense of Definition 1.1(6).
+    facts: "Provable from RCA0 + BΣ02; exact strength asked in Question 2.5 (open: is it equivalent to RCA0 + BΣ02?)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 737397e3dbc7
+- id: belanger2015-266d81f2
+  ref: belanger2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Saturated model existence (countably many types)
+    name: Every complete consistent theory with countably many types has a saturated model
+    loc: Theorem 2.10
+    definition: Every complete consistent theory with a coded sequence of all its types has a saturated model (Definition 1.1(7)).
+    facts: Equivalent to WKL0 over RCA0 (Theorem 2.10, Cor. 3.4, Prop. 6.5). The ∅-saturated version is provable in WKL0 (Prop. 3.3).
+  reasons:
+    - principle not in the catalogue
+  proposed: 82860332b4e3
+- id: belanger2015-7fa7d580
+  ref: belanger2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Saturated model existence with pairwise full amalgamation
+    name: Every complete consistent theory with countably many types whose types have the pairwise full amalgamation property has a saturated model
+    loc: Proposition 2.13, Theorem 2.14
+    definition: A complete consistent theory with countably many types whose sequence of all types has the pairwise full amalgamation property (Definition 2.11) has a saturated model.
+    facts: "Provable in RCA0 + (WKL0 v IΣ02) (Prop. 2.13); equivalent to WKL0 v IΣ02 over RCA0 + BΣ02 (Theorem 2.14, Prop. 7.17); not implying WKL0 v IΣ02 over RCA0 alone (Cor. 2.19); provable from WKL0 v Π01GA (Cor. 2.18). Open: equivalent to WKL0 v Π01GA over RCA0 (Question 2.20)?"
+  reasons:
+    - principle not in the catalogue
+  proposed: 996b345516f9
+- id: belanger2015-63aae1e1
+  ref: belanger2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: 1PT FREE, 1PT FULL, PW FREE, PW FULL, FIN FREE, FIN FULL
+    name: Type amalgamation properties of the sequence of all types
+    loc: Definitions 2.11 and 2.21, Theorems 2.22-2.24, Figure 1
+    definition: Six properties of a sequence X of all types of a complete consistent theory (1-point, pairwise, finite; free or full amalgamation).
+    facts: For each pair A, B the statement (forall X)[A(X) -> B(X)] is equivalent over RCA0 to WKL0 or to WKL0 v IΣ02 according to Figure 1 (Theorem 2.24); e.g. (FIN FREE -> 1PT FULL) implies WKL0 (Theorem 2.23(iii), Prop. 6.4); WKL0 proves 1PT FREE -> FIN FULL (Theorem 2.22(i)); RCA0 + IΣ02 proves 1PT FREE -> FIN FREE and 1PT FULL -> FIN FULL (Theorem 2.22(ii),(iii)).
+  reasons:
+    - principle not in the catalogue
+  proposed: 6d18a5e2287b
+- id: belanger2015-1c3b3360
+  ref: belanger2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Elementary embedding of a countable sequence of models; universal models
+    name: Existence of a model into which every model of a sequence embeds elementarily; universal models
+    loc: Theorem 2.25, Corollary 2.26, Theorem 2.27
+    definition: For a complete theory T and a sequence of models of T there is a model of T into which each embeds elementarily; consequently universal models exist when all models are listed, or when the number of n-types is bounded by a function f.
+    facts: Provable in WKL0 (Theorems 2.25, 2.27, Cor. 2.26); reversals not claimed.
+  reasons:
+    - principle not in the catalogue
+  proposed: ea66a9a109a7
+- id: belanger2015-f33a2744
+  ref: belanger2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Embedding of partial orders into the preorder of models
+    name: Every partial order embeds into the preorder of models of a theory with infinitely many n-types under elementary embedding
+    loc: Theorem 2.28(ii), Proposition 3.6
+    definition: If T has infinitely many n-types for some n, every partial order embeds into the preorder of models of T under elementary embeddability.
+    facts: Equivalent over RCA0 to WKL0 + not-ACA0 (Theorem 2.28).
+  reasons:
+    - principle not in the catalogue
+  proposed: 3c9d6779b7fa
+- id: belanger2015-c15ed8be
+  ref: belanger2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Existence of models with a sequence of indiscernibles
+    name: Every complete consistent theory has a model with a sequence of indiscernibles
+    loc: Definition 2.29, Theorems 2.30, 2.32, Proposition 4.7
+    definition: Every complete consistent countable theory has a model with a sequence of indiscernibles (Definition 2.29).
+    facts: Equivalent to WKL0 over RCA0 (Theorem 2.32); even the order-indiscernibles version implies WKL0 (Prop. 4.7).
+  reasons:
+    - principle not in the catalogue
+  proposed: 7961e659ad45
+- id: belanger2014-fb811102
+  ref: belanger2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Los–Vaught test
+    name: Los–Vaught theorem (a theory with exactly one countable model is complete)
+    loc: Theorem 1.5
+    definition: If T has only one countable model then for every sentence φ, T ⊢ φ or T ⊢ ¬φ.
+    facts: "Part (ii): over RCA0, every deductively-closed theory with exactly one model up to isomorphism is complete. Part (iii): the statement of part (i) is equivalent to WKL0 over RCA0 (proof of the reversal: if WKL0 fails, a theory built from a consistent theory with no models and DLO has one model but does not decide the 0-ary sentence R)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 5443ccefa651
+- id: belanger2014-4dda5c7e
+  ref: belanger2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Weak Completeness Theorem
+    name: Every deductively-closed consistent theory is satisfiable
+    loc: Theorem 1.3
+    definition: Every deductively-closed consistent theory is satisfiable; every consistent complete theory is satisfiable and every deductively-closed consistent theory extends to a complete consistent one.
+    facts: Provable in RCA0 (Simpson, Thm II.8.4); contrasted with Theorem 1.4 (full completeness is equivalent to WKL0).
+  reasons:
+    - principle not in the catalogue
+  proposed: 8a032fad6d7b
+- id: belanger2014-2f6fd03f
+  ref: belanger2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Type Omitting Theorem
+    name: Type omitting theorem for complete theories and nonprincipal types
+    loc: Theorem 1.9
+    definition: If T is a complete theory and p(x̄) a nonprincipal type, then T has a model omitting p.
+    facts: Provable in RCA0 (Harizanov, Thm 6.1; easy Henkin-style construction).
+  reasons:
+    - principle not in the catalogue
+  proposed: da2c50696644
+- id: belanger2014-57152cf8
+  ref: belanger2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (S1)–(S5)
+    name: Engeler–Ryll-Nardzewski–Svenonius conditions on a complete theory T
+    loc: Theorem 2.1 and the definitions around Theorem 2.6
+    definition: "S1: T has exactly f(n) n-types for a function f; S2: at most f(n) n-types; S3: finitely many n-types for each n; S4: T is aleph0-categorical; S5: all types of T are principal. Variants S3': for each n there is k such that any k+1 n-ary formulas contain two T-equivalent ones; S5': every model realizes only principal types; S5'': an atomic model realizes all types."
+    facts: "Over RCA0: (S1→S2), (S2→S3), (S3→S5), (S1→S4), (S4→S5) are provable (Theorem 2.3); (S2→S1) (Prop 6.11), (S2→S4) (Cor 6.14), (S3→S2) (Prop 6.12), (S5→S3) (Prop 4.5), (S5→S4) (Prop 4.6) each imply ACA0; (S4→S3) is equivalent to WKL0 (Props 3.5 and 5.6); (S4→S1) and (S4→S2) each imply WKL0 and are provable in ACA0, exact strength open (Question 2.5). RCA0 proves S3↔S3', S5↔S5', S5↔S5'' (Theorem 2.6). Table of all equivalences in Theorem 2.4. These are statements about theories, not in the catalogue."
+  reasons:
+    - principle not in the catalogue
+  proposed: a77587abd5f6
+- id: belanger2014-987af6fe
+  ref: belanger2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (S2 → ‘T has a prime model’)
+    name: Finite bound on n-types implies existence of a prime model
+    loc: Proposition 6.13
+    definition: "For complete T: if T has at most f(n) n-types for some function f, then T has a prime model."
+    facts: Over RCA0 this implication implies ACA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 81900a7f5d9e
+- id: belanger2014-b653c48b
+  ref: belanger2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Vaught's theorem
+    name: No complete theory has exactly two models up to isomorphism
+    loc: Theorem 2.8
+    definition: There is no complete theory with exactly two models up to isomorphism.
+    facts: Provable in ACA0 (Chang–Keisler Thm 2.3.15); implies WKL0 over RCA0 (Corollary 2.11(ii)).
+  reasons:
+    - principle not in the catalogue
+  proposed: abab94510630
+- id: belanger2014-0f72292c
+  ref: belanger2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Ehrenfeucht's theorem
+    name: For every n ≥ 3 there is a complete theory with exactly n models
+    loc: Theorem 2.7
+    definition: For every n ≥ 3 there is a complete theory T with exactly n models up to isomorphism.
+    facts: "Provable in ACA0; over RCA0 it is implied by ¬WKL0 (Theorem 2.10, Corollary 2.11(i)). Theorem 2.10: in RCA0 + ¬WKL0, for every n ≥ 1 there is a complete theory with exactly n models (n=1 via Prop 3.5, n ≥ 2 via Millar's construction and an inseparable Σ01 pair)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 41ee7e61b833
+- id: belanger2014-05e060aa
+  ref: belanger2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: finitely many models with a nonprincipal type
+    name: Complete theory with a nonprincipal type (or infinitely many n-types) and finitely many models
+    loc: Theorem 2.12 and Proposition 5.7
+    definition: (ii) There is a complete theory with a nonprincipal type and only finitely many models; (iii) a complete theory with infinitely many n-types for some n and only finitely many models.
+    facts: Over RCA0, (i) (¬WKL0) ∨ ACA0, (ii) and (iii) are equivalent (Theorem 2.12); over WKL0, ACA0, (ii), (iii) are equivalent (Proposition 5.7). Their negation is equivalent to WKL0 + ¬ACA0. Question 2.13 on the values n possible in WKL0 + ¬ACA0 is open.
+  reasons:
+    - principle not in the catalogue
+  proposed: 5567d12e48af
+- id: belanger2014-c570e5ce
+  ref: belanger2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: elementary-universal model
+    name: Existence of an elementary-universal model of T implies finitely many n-types
+    loc: Lemma 5.4 and Lemma 5.5
+    definition: A model A of T is elementary-universal if every model of T embeds elementarily into A.
+    facts: WKL0 + ¬ACA0 proves ('T has an elementary-universal model' → S3) and (S4 → S3); hence WKL0 proves (S4 → S3) (Proposition 5.6).
+  reasons:
+    - principle not in the catalogue
+  proposed: f32c4f69080d
+- id: belanger2014-c6c37656
+  ref: belanger2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Σ01 separation (no inseparable Σ01 pair)
+    name: Σ01 separation principle in sentence form
+    loc: Definition 7.1 and Lemma 7.2
+    definition: "There is no inseparable disjoint Σ01 pair: every disjoint pair of approximations ⟨Us,Vs⟩ has a separating set C with Us ⊆ C ⊆ M−Vs."
+    facts: Equivalent to WKL0 over RCA0 (Lemma 7.2, from Simpson IV.4.4); recorded as the fact sep ↔ wkl, the sentence form being close to the catalogue problem sep.
+  reasons:
+    - principle not in the catalogue
+  proposed: df46afb13c63

@@ -1,0 +1,3 @@
+# Results from [giustosimpson2000].
+
+[ { type: implication, from: wkl, to: stietze-closed, over: rca0, refs: [ { ref: giustosimpson2000, loc: Theorem 1.3 (final remark) } ] } ]

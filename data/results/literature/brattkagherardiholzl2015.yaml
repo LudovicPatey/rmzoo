@@ -32,3 +32,4 @@
 - { type: property, statement: auc, property: idempotent, value: false, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 17.7 } ] }
 - { type: property, statement: pcc, property: idempotent, value: false, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 17.7 } ] }
 - { type: separation, from: llpo.fin, to: pcc, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: "Section 10, after Proposition 10.9" } ] }
+- { type: property, statement: wwkl, property: compose-closed, value: true, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 8.3 } ] }

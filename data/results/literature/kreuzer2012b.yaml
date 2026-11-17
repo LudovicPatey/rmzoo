@@ -1,0 +1,3 @@
+# Results from [kreuzer2012b].
+
+[ { type: conservation, statement: amt-bsig2-coh-wkl, base: rca0, class: Pi03, value: true, refs: [ { ref: kreuzer2012b, loc: Corollary 2.29 } ] }, { type: conservation, statement: cac-wkl, base: rca0, class: Pi03, value: true, refs: [ { ref: kreuzer2012b, loc: Theorem 4.19 } ] } ]
