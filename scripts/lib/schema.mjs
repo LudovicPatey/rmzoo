@@ -68,7 +68,7 @@ export const SCHEMA = {
     priority: { doc: 'ranking boost in search results', usedBy: ['engine'] },
     firstOrder: { doc: 'true for first-order (arithmetical) sentences: they hold in every ω-model', usedBy: ['build', 'engine', 'viewer'] },
     formulationOf: { doc: 'id of the main formulation this statement is a variant of', usedBy: ['build', 'engine', 'viewer'] },
-    _modes: { doc: '(build) the modes the statement belongs to (data/modes.yaml)', usedBy: ['build', 'viewer'] },
+    _bases: { doc: '(build) the bases the statement belongs to (data/bases.yaml): a cited result about it lives there, or it is the base system', usedBy: ['build', 'viewer'] },
     _concepts: { doc: '(build) ids of the concepts (data/concepts.yaml) its definition, instance or solution mentions', usedBy: ['build', 'viewer'] },
     minor: { doc: 'true for a statement studied in few papers or of secondary interest (a classical theorem equivalent to a Big Five system, a technical variant): hidden from the catalogue by default, not counted on the home page or in the implication counts, left out of related statements, listed as an equivalent statement on the pages of the statements equivalent to it', usedBy: ['build', 'viewer', 'related'] },
     conjunction: { doc: 'ids of the conjuncts (kind must be sentence)', usedBy: ['build', 'engine', 'viewer', 'mineCommon'] },
@@ -186,18 +186,30 @@ export const SCHEMA = {
     refs: { doc: 'sources of the correction [{ref, loc}]', usedBy: ['build', 'viewer'], items: 'resultRef' },
     date: { doc: 'when it was entered', usedBy: ['viewer'] },
   },
-  // data/modes.yaml — lenses of the viewer: what a reader of one framework sees
+  // data/modes.yaml — frameworks: presets of the diagram of bases
   mode: {
-    id: { req: true, doc: 'mode id (also the value of ?mode= in links)', usedBy: ['build', 'viewer'] },
+    id: { req: true, doc: 'framework id (also the value of ?mode= in links)', usedBy: ['build', 'viewer'] },
     name: { req: true, doc: 'name', usedBy: ['viewer'] },
-    short: { req: true, doc: 'short name for the header switch', usedBy: ['viewer'] },
-    description: { doc: 'one sentence for the mode bar and the about page', usedBy: ['viewer'] },
-    reductions: { req: true, doc: 'reduction ids shown in this mode', usedBy: ['build', 'viewer'] },
-    default: { req: true, doc: 'the reduction selected when the mode is switched on', usedBy: ['build', 'viewer'] },
-    properties: { doc: 'the property groups shown (computability, proof, weihrauch; data/properties.yaml), or true for all', usedBy: ['build', 'viewer'] },
-    conservation: { doc: 'true to show conservation results', usedBy: ['build', 'viewer'] },
-    order: { doc: '2: only results between second-order statements; 3: only results involving a third-order statement (higher-order reverse mathematics); absent: both', usedBy: ['build', 'viewer'] },
+    short: { req: true, doc: 'short name', usedBy: ['viewer'] },
+    description: { doc: 'one sentence for the front page and the about page', usedBy: ['viewer'] },
+    bases: { req: true, doc: 'the bases it selects (data/bases.yaml)', usedBy: ['build', 'viewer'] },
+    default: { req: true, doc: 'the reduction selected when the framework is chosen (a reduction of one of its bases)', usedBy: ['build', 'viewer'] },
   },
+  // data/bases.yaml — the bases the reader selects (front page, "Base" in the header): what is shown
+  base: {
+    id: { req: true, doc: 'base id (the reduction id, or another id for a second reading of a reduction: rca0omega)', usedBy: ['build', 'viewer'] },
+    reduction: { doc: 'the reduction (default: the id)', usedBy: ['build', 'viewer'] },
+    order: { doc: '2: only results between second-order statements; 3: only results involving a third-order statement; absent: both', usedBy: ['build', 'viewer'] },
+    main: { doc: 'true when selected by default', usedBy: ['viewer'] },
+    properties: { doc: 'the property groups shown with this base (computability, proof, weihrauch)', usedBy: ['build', 'viewer'] },
+    conservation: { doc: 'true when conservation results are shown with this base', usedBy: ['build', 'viewer'] },
+    beside: { doc: 'drawn next to this base in the diagram (a base on the same reduction)', usedBy: ['build', 'viewer'] },
+    name: { doc: 'name (default: the reduction\'s)', usedBy: ['viewer'] },
+    short: { doc: 'short name (default: the reduction\'s)', usedBy: ['viewer'] },
+    tex: { doc: 'TeX label (default: the reduction\'s)', usedBy: ['viewer'] },
+    description: { doc: 'description (default: the reduction\'s)', usedBy: ['viewer'] },
+  },
+
   zoo: {
     id: { req: true, doc: 'preset id', usedBy: ['build', 'viewer'] },
     name: { req: true, doc: 'name', usedBy: ['viewer'] },
@@ -362,7 +374,8 @@ export const OPERATIONS = {
 //   data/screened.yaml         {facts, questions, resolutions}: leads already examined
 //   data/acronyms-ignored.yaml acronym → reason: not proposed as missing statements
 //   data/review.yaml           entity review above; data/ai-analyzed.yaml: aiAnalyzed
-//   data/modes.yaml            entity mode above: the frameworks of the viewer's mode switch
+//   data/modes.yaml            entity mode above: the frameworks (presets of bases)
+//   data/bases.yaml            entity base above: the bases selected in the viewer
 //   data/errata.yaml           entity erratum above: wrong statements of papers, on the paper's page
 //   data/parametric.yaml       entity parametric above: results with parameters, instances generated by the build
 //   data/concepts.yaml         entity concept above: definitions of the words used in statements

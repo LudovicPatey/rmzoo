@@ -7,6 +7,7 @@ const classHtml = (id) => {
   return `<a class="cls" href="#/about?class=${id}" title="${esc(c.name || '')}${c.aliases ? ` (also written ${esc(c.aliases.join(', '))})` : ''}">${tex(c.notation)}</a>`;
 };
 import { layered, verticalSpline } from './layout.js';
+import { fillBases, resultBases } from './bases.js';
 import { bibtex } from './bibtex.js';
 import { surname, fullName } from './names.js';
 import { relatedIndex, relatedStatements } from './related.js';
@@ -51,33 +52,49 @@ const state = {
   r: store.get('rmzoo.r', 'rca0'),
   sep: store.get('rmzoo.sep', true),
   open: store.get('rmzoo.open', false),
-  mode: store.get('rmzoo.mode', ''), // '' = all reductions (data/modes.yaml)
+  bases: store.get('rmzoo.bases', null), // the selected bases (data/bases.yaml); null: the main ones (set at load)
 };
 const saveState = () => {
   store.set('rmzoo.sel', state.sel); store.set('rmzoo.r', state.r);
   store.set('rmzoo.sep', state.sep); store.set('rmzoo.open', state.open);
-  store.set('rmzoo.mode', state.mode);
+  store.set('rmzoo.bases', state.bases);
 };
 
-// ---- modes (data/modes.yaml, docs/DESIGN.md "Modes") ---------------------------------
-// A mode is a lens: it keeps the statements, reductions and results of one framework.
-// The inference always uses all results; only what is shown changes.
-const MODE = () => (state.mode && Z.raw.modes?.find((m) => m.id === state.mode)) || null;
-const inMode = (i) => !MODE() || (S(i)._modes || []).includes(MODE().id);
+// ---- bases (data/bases.yaml, docs/DESIGN.md "Bases") ---------------------------------
+// The reader selects bases in the diagram of bases (front page, "Base" in the header);
+// the frameworks of data/modes.yaml are presets. The viewer then keeps the statements,
+// reductions and results of the selected bases. The inference always uses all results.
+let BASES = []; // fillBases(data/bases.yaml), at load
+const sameSet = (a, b) => a.length === b.length && a.every((x) => b.includes(x));
+const mainBases = () => BASES.filter((b) => b.main).map((b) => b.id);
+let modeCache;
+// the selection as a lens: null when every base is selected (nothing filtered)
+const MODE = () => {
+  const key = state.bases.join(',');
+  if (modeCache?.key === key) return modeCache.m;
+  const sel = BASES.filter((b) => state.bases.includes(b.id));
+  let m = null;
+  if (sel.length && sel.length < BASES.length) {
+    const preset = (Z.raw.modes || []).find((x) => sameSet(x.bases, state.bases));
+    const reds = [...new Set(sel.map((b) => b.reduction))];
+    m = { id: preset?.id || '', preset, bases: sel.map((b) => b.id), reductions: reds,
+      name: preset?.name || (sameSet(state.bases, mainBases()) ? 'the main bases' : sel.map((b) => b.short).join(', ')),
+      description: preset?.description || '',
+      default: preset?.default || (reds.includes('rca0') ? 'rca0' : reds[0]),
+      properties: [...new Set(sel.flatMap((b) => b.properties))], conservation: sel.some((b) => b.conservation) };
+  }
+  modeCache = { key, m };
+  return m;
+};
+const inMode = (i) => !MODE() || (S(i)._bases || []).some((b) => MODE().bases.includes(b));
 const rInMode = (r) => !MODE() || MODE().reductions.includes(Z.R[r].id);
 // property groups (data/properties.yaml `group`), in the order of the properties tab
 const PGROUPS = [['computability', 'Computability-theoretic properties'], ['proof', 'Proof-theoretic properties'], ['weihrauch', 'Weihrauch properties']];
 const groupShown = (g) => { const m = MODE(); return !m || m.properties === true || (Array.isArray(m.properties) && m.properties.includes(g)); };
 const propShown = (pi) => groupShown(Z.raw.properties[pi].group);
-const resInMode = (res) => {
-  const m = MODE();
-  if (!m) return true;
-  if (res.type === 'property') return groupShown(Z.raw.properties[Z.pidx.get(res.property)]?.group);
-  // order 2 / 3: second-order results only / results with a third-order statement
-  if (m.order && (m.order === 3) !== [res.from, res.to, res.statement, res.base].some((id) => id && idx(id) !== undefined && S(idx(id)).order === 3)) return false;
-  if (res.type === 'conservation') return !!m.conservation;
-  return [].concat(res.over || []).some((o) => m.reductions.includes(o));
-};
+const stmtOrder = (id) => { const i = idx(id); return i === undefined ? 2 : S(i).order || 2; };
+const resBases = (res) => (res._b ||= resultBases(res, BASES, stmtOrder, (p) => Z.raw.properties[Z.pidx.get(p)]?.group));
+const resInMode = (res) => !MODE() || resBases(res).some((b) => MODE().bases.includes(b));
 // a question's comparisons (its own, or those of its sub-questions) and its text
 const qFormal = (q) => (q.parts?.length ? q.parts.flatMap((p) => p.formal || []) : q.formal || []);
 const qText = (q) => [q.question, ...(q.parts || []).map((p) => p.question)].filter(Boolean).join(' ');
@@ -85,34 +102,115 @@ const qText = (q) => [q.question, ...(q.parts || []).map((p) => p.question)].fil
 // formal parts) when one of its statements does
 const qInMode = (q) => !MODE() || (qFormal(q).length ? qFormal(q).some((f) => MODE().reductions.includes(f.over))
   : (q.statements || []).some((id) => idx(id) !== undefined && inMode(idx(id))));
-function setMode(id) {
-  state.mode = id || '';
+// select bases without redrawing the page (the router draws it)
+function setBasesQuiet(list) {
+  state.bases = BASES.map((b) => b.id).filter((id) => list.includes(id));
+  if (!state.bases.length) state.bases = mainBases();
   const m = MODE();
   if (m && !m.reductions.includes(state.r)) state.r = m.default;
   saveState();
   renderModeSwitch();
+}
+function setBases(list) {
+  setBasesQuiet(list);
   const y = window.scrollY;
   route();
   window.scrollTo(0, y);
 }
+const setMode = (id) => setBases(id ? Z.raw.modes.find((m) => m.id === id)?.bases || mainBases() : BASES.map((b) => b.id));
+
+// the diagram of bases: the reductions ordered by "finer than" (finer above), RCA₀^ω beside RCA₀
+let basesGeom;
+function basesLayout() {
+  if (basesGeom) return basesGeom;
+  const at = new Map(BASES.map((b, i) => [b.id, i]));
+  const primary = new Map(BASES.filter((b) => !b.beside).map((b) => [b.reduction, at.get(b.id)]));
+  const nodes = BASES.map((b) => ({ w: Math.max(40, b.short.replace(/\^/g, '').length * 8.2 + 22), h: 26 }));
+  const edges = [], layout = [];
+  BASES.forEach((b, i) => {
+    const R = Z.R[Z.ridx.get(b.reduction)];
+    for (const c of R.finerThan || []) {
+      const j = primary.get(c);
+      if (j === undefined) continue;
+      (b.beside ? layout : edges).push([i, j]); // a base beside another is laid out like it, its edges not drawn
+    }
+  });
+  const besides = BASES.map((b, i) => [i, at.get(b.beside)]).filter(([, j]) => j !== undefined);
+  // and on the row of its partner: the partner's incoming edges too
+  for (const [i, j] of besides) for (const [u, v] of edges) if (v === j) layout.push([u, i]);
+  const g = layered(nodes, [...edges, ...layout], { hgap: 16, vgap: 30 });
+  return (basesGeom = { ...g, edgeList: edges, besides });
+}
+const baseText = (s) => esc(s).replace(/\^(\S+)/, '<tspan baseline-shift="super" font-size="75%">$1</tspan>');
+function basesSvg() {
+  const g = basesLayout();
+  const pad = 4, w = g.width + 2 * pad, h = g.height + 2 * pad;
+  const on = new Set(state.bases);
+  const principle = (s) => !s.conjunction && !s.op && !s.minor && !s.formulationOf;
+  const count = (b) => Z.S.filter((s) => principle(s) && (s._bases || []).includes(b.id)).length;
+  return `<svg class="lattice bases" width="${w}" height="${h}" viewBox="${-pad} ${-pad} ${w} ${h}" role="group" aria-label="Bases">
+    ${g.edgeList.map(([a, b]) => `<path class="edge" d="${verticalSpline([[g.nodes[a].x, g.nodes[a].y + 13], [g.nodes[b].x, g.nodes[b].y - 13]])}"/>`).join('')}
+    ${g.besides.map(([a, b]) => `<path class="edge beside" d="M${g.nodes[a].x} ${g.nodes[a].y}L${g.nodes[b].x} ${g.nodes[b].y}"/>`).join('')}
+    ${g.nodes.map((nd, i) => {
+      const b = BASES[i];
+      return `<g class="node pick${on.has(b.id) ? ' on' : ''}${b.main ? ' main' : ''}" data-base="${b.id}" tabindex="0" role="checkbox" aria-checked="${on.has(b.id)}">
+        <title>${esc(b.name)}: ${count(b)} principles${b.main ? ' (a main base)' : ''}. Click to ${on.has(b.id) ? 'remove' : 'add'} it.</title>
+        <rect x="${nd.x - nd.w / 2}" y="${nd.y - nd.h / 2}" width="${nd.w}" height="${nd.h}" rx="7"/>
+        <text x="${nd.x}" y="${nd.y + 4}" text-anchor="middle">${baseText(b.short)}</text></g>`;
+    }).join('')}
+  </svg>`;
+}
+// the panel: diagram, frameworks (presets), all / main
+function basesPanel() {
+  const all = BASES.map((b) => b.id);
+  const is = (list) => sameSet(state.bases, list);
+  return `<div class="bases-panel">
+    ${basesSvg()}
+    <div class="bases-presets">
+      <button class="chip${is(mainBases()) ? ' on' : ''}" data-bases="${mainBases()}" title="${esc(BASES.filter((b) => b.main).map((b) => b.short).join(', '))}">Main bases</button>
+      <button class="chip${is(all) ? ' on' : ''}" data-bases="${all}" title="Every base: nothing is filtered">All</button>
+      ${(Z.raw.modes || []).map((x) => `<button class="chip${is(x.bases) ? ' on' : ''}" data-bases="${x.bases}" title="${esc(x.description || '')}">${esc(x.name)}</button>`).join('')}
+    </div>
+    <p class="small muted">Finer bases are higher: an implication over a base holds over the bases below it. Click a base to add or remove it; the viewer shows the statements, reductions and results of the selected bases.</p>
+  </div>`;
+}
 function renderModeSwitch() {
   const m = MODE();
   const sw = $('#mode-switch');
-  if (sw) sw.innerHTML = `<select id="mode-select" aria-label="Mode" title="Show only one framework: its statements, reductions and results">
-      <option value="">All frameworks</option>${(Z.raw.modes || []).map((x) => `<option value="${x.id}" ${m?.id === x.id ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}</select>`;
+  const n = state.bases.length;
+  if (sw) {
+    const open = sw.classList.contains('open');
+    sw.className = `mode-switch base-switch${open ? ' open' : ''}`;
+    sw.innerHTML = `<button class="btn small base-btn" type="button" aria-haspopup="true" title="Select the base systems shown">Base <span class="muted">${
+      !m ? 'all' : m.preset ? esc(m.preset.short) : sameSet(state.bases, mainBases()) ? 'main' : `${n}/${BASES.length}`}</span> ▾</button>
+      <div class="popover base-pop">${basesPanel()}</div>`;
+  }
   const bar = $('#mode-bar');
   if (!bar) return;
-  bar.hidden = !m;
-  if (!m) { bar.innerHTML = ''; return; }
+  // the bar tells when the selection is not the default one
+  bar.hidden = !m || sameSet(state.bases, mainBases());
+  if (bar.hidden) { bar.innerHTML = ''; return; }
   const principle = (s) => !s.conjunction && !s.op && !s.minor && !s.formulationOf; // as counted on the front page
-  const n = Z.S.filter((s, i) => inMode(i) && principle(s)).length;
-  bar.innerHTML = `<b>${esc(m.name)}</b> <span class="muted">· ${m.reductions.map((r) => esc(Z.R[Z.ridx.get(r)].short)).join(', ')}
-    · ${n} of ${Z.S.filter(principle).length} principles</span>
+  const k = Z.S.filter((s, i) => inMode(i) && principle(s)).length;
+  bar.innerHTML = `<b>${esc(m.preset?.name || 'Bases')}</b> <span class="muted">· ${BASES.filter((b) => state.bases.includes(b.id)).map((b) => tex(b.tex || b.short)).join(', ')}
+    · ${k} of ${Z.S.filter(principle).length} principles</span>
     <span class="grow"></span><span class="small muted mode-desc">${esc(m.description || '')}</span>
-    <button class="btn small" id="mode-off">Show all frameworks</button>`;
+    <button class="btn small" data-bases="${mainBases()}">Main bases</button> <button class="btn small" id="mode-off">Show all bases</button>`;
 }
-document.addEventListener('change', (e) => { if (e.target.id === 'mode-select') setMode(e.target.value); });
-document.addEventListener('click', (e) => { if (e.target.id === 'mode-off') setMode(''); });
+document.addEventListener('click', (e) => {
+  if (e.target.id === 'mode-off') return setMode('');
+  const preset = e.target.closest?.('[data-bases]');
+  if (preset) return setBases(preset.dataset.bases.split(','));
+  const node = e.target.closest?.('[data-base]');
+  if (node) { const id = node.dataset.base; return setBases(state.bases.includes(id) ? state.bases.filter((x) => x !== id) : [...state.bases, id]); }
+  const sw = $('#mode-switch');
+  if (e.target.closest?.('.base-btn')) sw.classList.toggle('open'); // touch screens: no hover
+  else if (sw && !sw.contains(e.target)) sw.classList.remove('open');
+});
+document.addEventListener('keydown', (e) => {
+  const node = e.target.closest?.('[data-base]');
+  if (node && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); node.dispatchEvent(new MouseEvent('click', { bubbles: true })); }
+});
 
 const S = (i) => Z.S[i];
 const idx = (id) => Z.sidx.get(id);
@@ -284,7 +382,7 @@ function attachSearch(input, pop, onPick, opts = {}) {
           <span><i>${rich(r.title)}</i></span><span class="muted">${esc(refShort(it.paper))}</span></div>`;
       }
       return `<div class="opt ${k === hl ? 'hl' : ''}" data-k="${k}">
-      <span>${L(it)}</span><span class="muted">${esc(S(it).name)}</span>${inMode(it) ? '' : '<span class="badge other-mode" title="Not studied in the current mode">other framework</span>'}</div>`;
+      <span>${L(it)}</span><span class="muted">${esc(S(it).name)}</span>${inMode(it) ? '' : '<span class="badge other-mode" title="Not studied over the selected bases">other bases</span>'}</div>`;
     }).join('');
     pop.hidden = false;
   };
@@ -844,9 +942,10 @@ function viewHome() {
       <div class="search big"><input id="home-q" type="search" placeholder="Search a statement or a paper — RT22, WKL, Ramsey, induction, Hirst…" autocomplete="off" autofocus>
         <div id="home-pop" class="popover" hidden></div></div>
       <div class="chips hero-tags">${Z.raw.tags.map((t) => `<a class="chip" href="#/catalogue?tags=${t.id}">${esc(t.name)}</a>`).join('')}</div>
-      <div class="hero-modes"><span class="small muted">Frameworks:</span>
-        <a class="chip ${!MODE() ? 'on' : ''}" href="#/?mode=" title="Every reduction">All</a>
-        ${(Z.raw.modes || []).map((x) => `<a class="chip ${MODE()?.id === x.id ? 'on' : ''}" href="#/?mode=${x.id}" title="${esc(x.description || '')}">${esc(x.name)}</a>`).join('')}</div>
+    </section>
+    <section class="home-bases card">
+      <div class="row"><h2 class="grow">Base systems</h2><span class="small muted">${state.bases.length} of ${BASES.length} selected</span></div>
+      ${basesPanel()}
     </section>
 
     <div class="stats">
@@ -1082,7 +1181,7 @@ function viewStatement(id, params = new URLSearchParams()) {
       ? `${L(i)} is a second-order sentence: the reductions of <b>${esc(MODE().name)}</b> compare problems only and do not apply to it.`
       : `${L(i)} is not studied in <b>${esc(MODE().name)}</b>: no cited result about it uses
       ${MODE().reductions.map((x) => esc(Z.R[Z.ridx.get(x)].short)).join(', ')}. Its relations there are those the database derives.`}
-      <button class="btn small" id="mode-off">Show all frameworks</button></p>` : ''}
+      <button class="btn small" id="mode-off">Show all bases</button></p>` : ''}
     <nav class="tabs" role="tablist">${tabs.map(([t, label]) => `<button role="tab" data-tab="${t}" aria-selected="${t === tab}">${label}${count[t] ? ` <span class="count">${count[t]}</span>` : ''}</button>`).join('')}</nav>
 
     ${panel('overview')}
@@ -1168,7 +1267,7 @@ function viewStatement(id, params = new URLSearchParams()) {
 
     ${panel('results')}
     <p class="small muted">Results of the database that mention ${L(i)} (the others are derived from them).${hiddenResults
-      ? ` ${hiddenResults} more concern other frameworks (<button class="linkish" id="mode-off">show all frameworks</button>).` : ''}</p>
+      ? ` ${hiddenResults} more concern other bases (<button class="linkish" id="mode-off">show all bases</button>).` : ''}</p>
     ${resultGroups(directResults)}
     </section>
   `;
@@ -1783,7 +1882,7 @@ function viewResults(params) {
     <div class="filters">
       <input class="text" id="f-q" placeholder="Statement…" value="${esc(params.get('q') || '')}" style="width:200px">
       <select id="f-type"><option value="">All types</option><option>implication</option><option>equivalence</option><option>separation</option><option>property</option><option>conservation</option></select>
-      <select id="f-r"><option value="">${MODE() ? `All reductions of the mode` : 'All reductions'}</option>${Z.R.filter((_, r) => rInMode(r)).map((R) => `<option value="${R.id}">${esc(R.name)}</option>`).join('')}</select>
+      <select id="f-r"><option value="">${MODE() ? `All reductions of the selected bases` : 'All reductions'}</option>${Z.R.filter((_, r) => rInMode(r)).map((R) => `<option value="${R.id}">${esc(R.name)}</option>`).join('')}</select>
       <select id="f-prov"><option value="">Any provenance</option><option value="lit">From the literature</option>
         <option value="folk">Folklore</option><option value="direct">Direct consequences</option><option value="contributed">Contributed by researchers</option><option value="ai">AI-derived</option><option value="aiarg">Argument by AI</option>
         <option value="endorsed">Endorsed by a reader</option><option value="endorsed2">Endorsed by several readers</option></select>
@@ -1862,7 +1961,7 @@ function viewRefs(key) {
       })()}
       <h2>Results</h2>${(() => {
         const other = Z.raw.results.filter((res) => !resInMode(res) && (res.refs || []).some((x) => x.ref === key)).length;
-        return other ? `<p class="small muted">${other} more result${other === 1 ? '' : 's'} of this paper concern other frameworks (<button class="linkish" id="mode-off">show all frameworks</button>).</p>` : '';
+        return other ? `<p class="small muted">${other} more result${other === 1 ? '' : 's'} of this paper concern other bases (<button class="linkish" id="mode-off">show all bases</button>).</p>` : '';
       })()}${resultsTable(uses(key))}`;
     $('#bib-ref').addEventListener('click', () => downloadBib([key], key));
     if (r.hasAbstract) loadAbstracts().then((a) => {
@@ -2049,15 +2148,18 @@ const classesHtml = () => `<h2 id="classes">Formula classes</h2>
         <td>${c.name ? `<b>${esc(c.name)}.</b> ` : ''}${rich(c.definition)}
         ${members.length ? `<div class="small muted">Contains: ${members.map((d) => tex(classOf(d)?.notation || d)).join(', ')}</div>` : ''}</td></tr>`;
     }).join('')}</table>`;
-const frameworksHtml = () => `<h2>Frameworks</h2>
-    <p>The zoo gathers several frameworks. The switch in the header (or the chips on the front page) restricts the viewer to one of them:
-      the catalogue, the diagrams, the results, the literature and the questions then show only the statements studied there, the reductions
-      of the framework and the results stated with them. The inference itself always uses every result. A link with <code>?mode=…</code>
-      opens the viewer in a framework.</p>
-    <table class="grid"><tr><th>Framework</th><th>Reductions</th><th>Also shown</th></tr>${(Z.raw.modes || []).map((x) => `<tr><td><a href="#/?mode=${x.id}">${esc(x.name)}</a><div class="small muted">${esc(x.description || '')}</div></td>
-      <td>${x.reductions.map((r) => esc(Z.R[Z.ridx.get(r)].name)).join(', ')}</td>
-      <td class="small">${[...PGROUPS.filter(([g]) => x.properties === true || (x.properties || []).includes(g)).map(([, t]) => t.toLowerCase()), x.conservation && 'conservation results'].filter(Boolean).join(', ') || '—'}</td></tr>`).join('')}</table>
-    <p class="small muted">A statement belongs to a framework when a cited result about it is stated there, or when it is the base system of one of its reductions.</p>`;
+const frameworksHtml = () => `<h2>Base systems and frameworks</h2>
+    <p>The zoo gathers several base systems. The diagram of bases (on the front page, and under “Base” in the header) selects those shown:
+      the catalogue, the diagrams, the results, the literature and the questions then show only the statements studied over the selected
+      bases, their reductions and the results stated with them. The main bases are selected at first. The inference itself always uses
+      every result. A link with <code>?bases=rca0,omega</code> opens the viewer with these bases, <code>?mode=…</code> with a framework.</p>
+    <table class="grid"><tr><th>Base</th><th>Reduction</th><th>Also shown</th></tr>${BASES.map((b) => `<tr><td><b>${tex(b.tex || b.short)}</b>${b.main ? ' <span class="badge">main</span>' : ''}<div class="small muted">${esc(b.name || '')}</div></td>
+      <td>${esc(Z.R[Z.ridx.get(b.reduction)].name)}${b.order === 3 ? ', results with a third-order statement' : b.order === 2 ? ', results between second-order statements' : ''}</td>
+      <td class="small">${[...PGROUPS.filter(([g]) => b.properties.includes(g)).map(([, t]) => t.toLowerCase()), b.conservation && 'conservation results'].filter(Boolean).join(', ') || '—'}</td></tr>`).join('')}</table>
+    <p>The frameworks are presets of the diagram:</p>
+    <table class="grid"><tr><th>Framework</th><th>Bases</th></tr>${(Z.raw.modes || []).map((x) => `<tr><td><a href="#/?mode=${x.id}">${esc(x.name)}</a><div class="small muted">${esc(x.description || '')}</div></td>
+      <td>${x.bases.map((id) => esc(BASES.find((b) => b.id === id)?.short || id)).join(', ')}</td></tr>`).join('')}</table>
+    <p class="small muted">A statement belongs to a base when a cited result about it is stated there, or when it is the base system of its reduction.</p>`;
 
 
 // ============================================================================
@@ -3047,16 +3149,12 @@ function route() {
   const params = new URLSearchParams(qs || '');
   const p = path.split('/').filter(Boolean);
   const name = currentRoute();
-  if (params.has('mode')) {
-    const v = params.get('mode');
-    if (v !== state.mode && (v === '' || (Z.raw.modes || []).some((m) => m.id === v))) {
-      state.mode = v;
-      if (MODE() && !MODE().reductions.includes(state.r)) state.r = MODE().default;
-      saveState();
-      renderModeSwitch();
-    }
-    // the mode is applied once: later switches must not be undone by the URL
-    params.delete('mode');
+  // ?mode=<framework> (a preset, '' for all) or ?bases=a,b: applied once, later switches must not be undone by the URL
+  if (params.has('mode') || params.has('bases')) {
+    const v = params.get('mode'), list = params.get('bases');
+    if (list) setBasesQuiet(list.split(','));
+    else if (v === '' || (Z.raw.modes || []).some((m) => m.id === v)) setBasesQuiet(v ? Z.raw.modes.find((m) => m.id === v).bases : BASES.map((b) => b.id));
+    params.delete('mode'); params.delete('bases');
     const rest = params.toString();
     history.replaceState(null, '', `#${path}${rest ? `?${rest}` : ''}`);
   }
@@ -3157,7 +3255,16 @@ async function boot() {
   await paint();
   Z = buildZoo(raw);
   Z.raw.results.forEach((r, ri) => resultIdx.set(r._key, ri));
-  if (state.mode && !MODE()) state.mode = ''; // a mode that no longer exists
+  BASES = fillBases(Z.raw.bases, Z.raw.reductions);
+  {
+    // first visit: the main bases, or those of the framework chosen before bases existed
+    const legacy = store.get('rmzoo.mode', '');
+    if (!Array.isArray(state.bases)) state.bases = legacy ? Z.raw.modes.find((m) => m.id === legacy)?.bases || mainBases() : mainBases();
+    state.bases = BASES.map((b) => b.id).filter((id) => state.bases.includes(id)); // bases that no longer exist
+    if (!state.bases.length) state.bases = mainBases();
+    if (MODE() && !MODE().reductions.includes(state.r)) state.r = MODE().default;
+    saveState();
+  }
   renderModeSwitch();
   C = createCommunity(Z);
   // the live state (server) may differ from the committed endorsements and votes: redraw

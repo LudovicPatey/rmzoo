@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import YAML from 'yaml';
 import { execFileSync } from 'node:child_process';
 import { buildZoo, questionStatus } from '../site/js/engine.js';
+import { fillBases, resultBases } from '../site/js/bases.js';
 import { KINDS, screenKey, reviewStatus } from '../site/js/review.js';
 import { cli } from './lib/cli.mjs';
 import { dataHash } from './lib/data-hash.mjs';
@@ -46,6 +47,7 @@ const raw = {
   results: readDir('results'),
   zoos: readYaml(path.join(dataDir, 'zoos.yaml')),
   modes: fs.existsSync(path.join(dataDir, 'modes.yaml')) ? readYaml(path.join(dataDir, 'modes.yaml')) || [] : [],
+  bases: fs.existsSync(path.join(dataDir, 'bases.yaml')) ? readYaml(path.join(dataDir, 'bases.yaml')) || [] : [],
   classes: readYaml(path.join(dataDir, 'classes.yaml')),
   questions: readYaml(path.join(dataDir, 'questions.yaml')),
   concepts: fs.existsSync(path.join(dataDir, 'concepts.yaml')) ? readYaml(path.join(dataDir, 'concepts.yaml')) || [] : [],
@@ -70,7 +72,7 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
   for (const x of raw.statements) errs.push(...unknownFields(x, 'statement', `Statement ${x.id} (${x._file})`));
   raw.results.forEach((x, i) => errs.push(...unknownFields(x, 'result', `Result #${i} (${x._file}: ${x.from ?? x.statement} ${x.type} ${x.to ?? x.property ?? x.base ?? ''})`)));
   for (const [k, x] of Object.entries(raw.references)) errs.push(...unknownFields(x, 'reference', `Reference ${k}`));
-  for (const [list, entity] of [['reductions', 'reduction'], ['tags', 'tag'], ['properties', 'property'], ['zoos', 'zoo'], ['modes', 'mode'], ['classes', 'class'], ['questions', 'question'], ['concepts', 'concept']])
+  for (const [list, entity] of [['reductions', 'reduction'], ['tags', 'tag'], ['properties', 'property'], ['zoos', 'zoo'], ['modes', 'mode'], ['bases', 'base'], ['classes', 'class'], ['questions', 'question'], ['concepts', 'concept']])
     for (const x of raw[list] || []) errs.push(...unknownFields(x, entity, `${entity} ${x.id} (data/${list}.yaml)`));
   for (const [k, x] of Object.entries(abstracts)) errs.push(...unknownFields(x, 'abstract', `abstracts.yaml ${k}`));
   raw.errata.forEach((x, i) => errs.push(...unknownFields(x, 'erratum', `errata.yaml #${i} (${x.ref} ${x.loc})`)));
@@ -800,37 +802,41 @@ const t0 = Date.now();
   }
 }
 
-// ---- modes (data/modes.yaml): which statements each lens shows ------------------
-// a statement belongs to a mode when a cited result about it lives there, or when
-// it is the base system of one of the mode's reductions
+// ---- bases (data/bases.yaml) and frameworks (data/modes.yaml) -----------------------
+// a statement belongs to a base when a cited result about it lives there (site/js/bases.js),
+// or when it is the base system of the base's reduction (RCA₀ for rca0, RCA₀^ω for rca0omega)
 {
   const rids = new Set(raw.reductions.map((r) => r.id));
-  for (const m of raw.modes) {
-    for (const r of m.reductions || []) if (!rids.has(r)) errors.push(`modes.yaml ${m.id}: unknown reduction ${r}`);
-    if (!(m.reductions || []).includes(m.default)) errors.push(`modes.yaml ${m.id}: the default reduction ${m.default} is not one of its reductions`);
+  uniq(raw.bases, 'base');
+  for (const b of raw.bases) {
+    if (!rids.has(b.reduction || b.id)) errors.push(`bases.yaml ${b.id}: unknown reduction ${b.reduction || b.id}`);
+    if (b.order !== undefined && ![2, 3].includes(b.order)) errors.push(`bases.yaml ${b.id}: order must be 2 or 3`);
+    for (const g of b.properties || []) if (!['computability', 'proof', 'weihrauch'].includes(g)) errors.push(`bases.yaml ${b.id}: unknown property group ${g}`);
+    if (b.beside && !raw.bases.some((x) => x.id === b.beside)) errors.push(`bases.yaml ${b.id}: beside an unknown base ${b.beside}`);
   }
+  // every reduction can be selected
+  for (const r of raw.reductions) if (!raw.bases.some((b) => (b.reduction || b.id) === r.id)) errors.push(`Reduction ${r.id} is no base of data/bases.yaml`);
+  const bases = fillBases(raw.bases, raw.reductions);
+  const bids = new Set(bases.map((b) => b.id));
   uniq(raw.modes, 'mode');
+  for (const m of raw.modes) {
+    for (const b of m.bases || []) if (!bids.has(b)) errors.push(`modes.yaml ${m.id}: unknown base ${b}`);
+    if (!bases.some((b) => (m.bases || []).includes(b.id) && b.reduction === m.default)) errors.push(`modes.yaml ${m.id}: the default reduction ${m.default} is not one of its bases`);
+  }
   const byId = new Map(raw.statements.map((s) => [s.id, s]));
   const groupOf = new Map(raw.properties.map((p) => [p.id, p.group]));
-  for (const m of raw.modes) if (Array.isArray(m.properties)) for (const g of m.properties) if (!['computability', 'proof', 'weihrauch'].includes(g)) errors.push(`modes.yaml ${m.id}: unknown property group ${g}`);
-  // order 2 / 3: results between second-order statements only / involving a third-order one
-  const third = (r) => [r.from, r.to, r.statement, r.base].some((id) => byId.get(id)?.order === 3);
-  const orderOK = (m, r) => !m.order || (m.order === 3) === third(r);
-  for (const m of raw.modes) if (m.order !== undefined && ![2, 3].includes(m.order)) errors.push(`modes.yaml ${m.id}: order must be 2 or 3`);
-  const inMode = (m, r) => orderOK(m, r) && (r.type === 'property' ? (m.properties === true || (m.properties || []).includes(groupOf.get(r.property))) : r.type === 'conservation' ? !!m.conservation
-    : [].concat(r.over || []).some((o) => m.reductions.includes(o)));
-  const add = (s, m) => { if (s && !(s._modes ||= []).includes(m.id)) s._modes.push(m.id); };
+  const order = (id) => byId.get(id)?.order || 2;
+  const add = (s, b) => { if (s && !(s._bases ||= []).includes(b)) s._bases.push(b); };
   for (const r of raw.results) {
     if (!(r.refs || []).length) continue;
-    for (const m of raw.modes) if (inMode(m, r))
+    for (const b of resultBases(r, bases, order, (p) => groupOf.get(p)))
       for (const id of [r.from, r.to, r.statement, r.base].filter(Boolean)) {
-        add(byId.get(id), m);
-        for (const c of byId.get(id)?.conjunction || []) add(byId.get(c), m);
+        add(byId.get(id), b);
+        for (const c of byId.get(id)?.conjunction || []) add(byId.get(c), b);
       }
   }
-  // the base systems of the mode's reductions (RCA₀ in reverse mathematics, RCA₀^ω in the higher-order mode)
-  for (const s of raw.statements) for (const m of raw.modes)
-    if (Array.isArray(s.base) && s.base.some((b) => m.reductions.includes(b)) && (!m.order || (m.order === 3) === (s.order === 3))) add(s, m);
+  for (const s of raw.statements) for (const b of bases)
+    if (Array.isArray(s.base) && s.base.includes(b.reduction) && (!b.order || (b.order === 3) === (s.order === 3))) add(s, b.id);
 }
 
 const zoo = buildZoo(raw);

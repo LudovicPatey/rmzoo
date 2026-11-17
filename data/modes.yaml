@@ -1,56 +1,45 @@
-# Modes of the viewer (docs/DESIGN.md, "Modes"): lenses for readers interested in
-# one framework. A mode only filters what is shown; the inference always uses all
-# results. A statement belongs to a mode when a cited result about it lives there
-# (a comparison over one of the reductions, or a property or conservation result
-# when the mode shows them), or when it is the base system of one of the reductions.
-# The default view (no mode) shows everything. Fields: scripts/lib/schema.mjs (mode).
+# Frameworks of the viewer (docs/DESIGN.md, "Bases"): presets of the diagram of bases
+# (data/bases.yaml). Choosing one selects its bases; the reader can then add or remove
+# bases. Fields: scripts/lib/schema.mjs (mode).
 
 - id: rm
   name: Reverse mathematics
   short: Reverse math.
   description: Provability over RCA₀ and implication over ω-models, with conservation results and the computability-theoretic properties that separate statements over ω-models.
-  reductions: [ rca0, omega ]
+  bases: [ rca0, omega ]
   default: rca0
-  properties: [ computability, proof ]
-  conservation: true
-  order: 2
 
 - id: hrm
   name: Higher-order reverse mathematics
   short: Higher-order RM
   description: Third-order statements (about functionals and arbitrary functions on the reals) compared over RCA₀^ω, Kohlenbach's higher-order base system, which is conservative over RCA₀ for second-order sentences.
-  reductions: [ rca0 ]
+  bases: [ rca0omega ]
   default: rca0
-  properties: [ proof ]
-  conservation: true
-  order: 3
 
 - id: crm
   name: Constructive reverse mathematics
   short: Constructive RM
   description: Implications provable in Bishop-style constructive mathematics (BISH) and in EL₀, the intuitionistic counterpart of RCA₀, between omniscience principles, continuity and fan principles, and theorems of analysis.
-  reductions: [ bish, el0 ]
+  bases: [ bish, el0 ]
   default: bish
 
 - id: wrm
   name: Weak reverse mathematics
   short: Weak RM
   description: Provability over RCA₀*, where only Δ⁰₁-induction is available and IΣ⁰₁ becomes a statement like the others.
-  reductions: [ rca0star ]
+  bases: [ rca0star ]
   default: rca0star
 
 - id: computable
   name: Computable reducibility
   short: Computable
   description: Computable, strongly computable and ω-model reducibility between problems, with the computability-theoretic properties (cone avoidance, basis theorems, preservation properties).
-  reductions: [ c, sc, soc, omega ]
+  bases: [ c, sc, soc, omega ]
   default: c
-  properties: [ computability ]
 
 - id: weihrauch
   name: Weihrauch complexity
   short: Weihrauch
   description: Strong, plain, generalized, continuous and arithmetic Weihrauch reducibility between problems, the operations of the Weihrauch lattice and the properties of Weihrauch degrees (cylinders, idempotency, parallelizability…).
-  reductions: [ sw, w, gw, cw, aw ]
+  bases: [ sw, w, gw, cw, aw ]
   default: w
-  properties: [ weihrauch ]

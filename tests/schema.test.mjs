@@ -61,17 +61,28 @@ test('a dotted id never duplicates an explicit operator statement (wkl.jump is w
   }
 });
 
-test('modes: valid reductions, and membership follows the cited results', () => {
+test('bases and frameworks: valid, and membership follows the cited results', async () => {
   const zoo = JSON.parse(fs.readFileSync('site/data/zoo.json', 'utf8'));
+  const { fillBases, resultBases } = await import('../site/js/bases.js');
   const st = (id) => zoo.statements.find((s) => s.id === id);
-  const rids = new Set(zoo.reductions.map((r) => r.id));
+  const bases = fillBases(zoo.bases, zoo.reductions);
+  const bids = new Set(bases.map((b) => b.id));
+  for (const r of zoo.reductions) assert.ok(bases.some((b) => b.reduction === r.id), `reduction ${r.id} is a base`);
   for (const m of zoo.modes) {
-    assert.ok(m.reductions.every((r) => rids.has(r)) && m.reductions.includes(m.default), m.id);
+    assert.ok(m.bases.every((b) => bids.has(b)), m.id);
+    assert.ok(bases.some((b) => m.bases.includes(b.id) && b.reduction === m.default), m.id);
   }
-  assert.ok(st('rca0')._modes.includes('rm'), 'a base system belongs to the modes of its reductions');
-  assert.ok(st('lim')._modes.includes('weihrauch'));
-  assert.ok(!(st('atr')._modes || []).includes('weihrauch'), 'a sentence has no Weihrauch results');
-  assert.ok(st('lrt22')._modes.includes('wrm'));
+  assert.ok(bases.some((b) => b.main), 'some bases are selected by default');
+  assert.ok(st('rca0')._bases.includes('rca0'), 'a base system belongs to its base');
+  assert.ok(st('rca0omega')._bases.includes('rca0omega') && !st('rca0omega')._bases.includes('rca0'), 'RCA₀^ω: the third-order base');
+  assert.ok(st('lim')._bases.includes('w'));
+  assert.ok(!(st('atr')._bases || []).some((b) => ['w', 'sw'].includes(b)), 'a sentence has no Weihrauch results');
+  assert.ok(st('lrt22')._bases.includes('rca0star'));
+  // a result over rca0 goes to RCA₀ or RCA₀^ω by the order of its statements
+  const order = (id) => st(id)?.order || 2;
+  const group = (p) => zoo.properties.find((x) => x.id === p)?.group;
+  assert.deepEqual(resultBases({ type: 'implication', from: 'wkl', to: 'wwkl', over: 'rca0' }, bases, order, group), ['rca0']);
+  assert.deepEqual(resultBases({ type: 'implication', from: 'exists2', to: 'rca0omega', over: 'rca0' }, bases, order, group), ['rca0omega']);
 });
 
 test('concepts (data/concepts.yaml) have a source and are used by some statement', () => {

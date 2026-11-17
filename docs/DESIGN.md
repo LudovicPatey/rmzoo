@@ -82,9 +82,9 @@ finer than both `rca0` and `bish`: its implications hold in both, their separati
 over it, and nothing flows between `rca0` and `bish` through it. Principles
 already in the zoo (LPO, LLPO, WKL…) keep their statement and are read there as the
 corresponding axioms; constructive-only principles (WLPO, MP, FAN, BD-N…) are classically
-provable, recorded as folklore implications from RCA₀. The modes "Higher-order reverse
-mathematics" (`order: 3`) and "Constructive reverse mathematics" show them; the mode
-"Reverse mathematics" (`order: 2`) leaves out results involving third-order statements.
+provable, recorded as folklore implications from RCA₀. The bases RCA₀^ω
+(`order: 3`) and BISH, EL₀ show them; the base RCA₀ (`order: 2`) leaves out results
+involving third-order statements.
 
 ### 1.2 Statements and formulations
 
@@ -108,29 +108,35 @@ the results database, so the viewer can show *exactly at which reductions*
 two formulations coincide, and the claim "they are equivalent" can never get
 out of sync with the literature.
 
-**Modes** (`data/modes.yaml`). Readers often care about one framework only:
-reverse mathematics (provability over RCA₀ and ω-models), weak reverse
-mathematics (RCA₀*), computable reducibility (c, sc, soc, ω) or Weihrauch complexity
-(sW, W, gW). A mode is a lens, not a change of the mathematics: the inference
-always uses every result (a Weihrauch reduction still gives the computable one,
-a provability result the ω-model one), and the mode only selects what is shown.
-Each mode lists its reductions, its default reduction, and whether it shows the
-computability-theoretic properties and the conservation results. A statement
-belongs to a mode when a cited result about it is stated with one of the mode's
-reductions (or is a property or conservation result the mode shows), or when it
-is the base system of one of those reductions; the build stores this as
-`_modes`. In a mode, the viewer shows only:
-* the statements of the mode: catalogue, related statements, the relations of the
+**Bases** (`data/bases.yaml`, `data/modes.yaml`). Readers often care about some
+base systems only: RCA₀ and ω-models, RCA₀^ω (third-order statements), RCA₀*,
+BISH and EL₀, computable reducibility (c, sc, soc) or Weihrauch reducibility (sW,
+W, gW, cW, aW). The front page draws the diagram of all bases (finer above, as the
+reductions), and "Base" in the header shows the same diagram on hover: the reader
+selects the bases of interest, the main ones (`main: true`) being selected at
+first. Each reduction is a base; RCA₀^ω is a second base on the reduction `rca0`
+(`order: 3`: the results involving a third-order statement; the base `rca0` has
+`order: 2`). A selection is a lens, not a change of the mathematics: the inference
+always uses every result (a Weihrauch reduction still gives the computable one, a
+provability result the ω-model one), and the selection only chooses what is shown.
+Each base gives its property groups and whether it shows conservation results. A
+result belongs to the bases of its reductions (`resultBases` in `site/js/bases.js`,
+shared by the build and the viewer); a statement belongs to a base when a cited
+result about it lives there, or when it is the base system of its reduction; the
+build stores this as `_bases`. The frameworks of `data/modes.yaml` (reverse
+mathematics, higher-order, constructive, weak, computable, Weihrauch) are presets
+of the diagram. When not every base is selected, the viewer shows only:
+* the statements of the selected bases: catalogue, related statements, the relations of the
   Position tab, the summary lines, search results first (others are marked), the
   front page counts and recent items;
 * its reductions: the reduction pickers (the others are dimmed), the columns of
   the Formulations table, the mini-lattices of Compare, the preset zoos;
 * its results: the Results tab and the Results page, the papers of the Literature
   page and their results, the questions (formal parts over its reductions, or,
-  without formal parts, a statement of the mode).
-The page of a statement outside the mode says so. The mode is chosen in the
-header, remembered in the browser, and set by `?mode=<id>` in a link. The default
-view (no mode) shows everything.
+  without formal parts, a statement of the selected bases).
+The page of a statement outside the selection says so. The selection is
+remembered in the browser, and set by `?bases=a,b` or `?mode=<framework>` in a
+link. Selecting every base shows everything.
 
 **Minor statements** (`minor: true`). The zoo aims to record every principle
 studied in the literature, but a statement studied in a single paper, or of

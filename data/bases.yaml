@@ -1,0 +1,75 @@
+# Base systems of the viewer (docs/DESIGN.md, "Bases"): what a reader selects in the
+# diagram of bases (front page, "Base" in the header). Each reduction of
+# data/reductions.yaml is a base; RCA₀^ω is a second base on the reduction rca0, its
+# reading for third-order statements (higher-order reverse mathematics). Selecting
+# bases only filters what is shown; the inference always uses all results.
+#
+#   reduction:    the reduction (default: the id)
+#   order:        2 or 3: the base keeps only the results between second-order
+#                 statements / involving a third-order statement (absent: both)
+#   main:         selected by default
+#   properties:   the property groups shown with this base (data/properties.yaml)
+#   conservation: true when conservation results are shown with this base
+#   beside:       drawn next to this base (a base on the same reduction)
+#   name, short, tex, description: default from the reduction
+# Fields: scripts/lib/schema.mjs (base).
+
+- id: rca0
+  order: 2
+  main: true
+  properties: [ proof ]
+  conservation: true
+
+- id: rca0omega
+  reduction: rca0
+  order: 3
+  main: true
+  name: Provability over RCA₀^ω (third-order statements)
+  short: RCA₀^ω
+  tex: '\mathsf{RCA}_0^\omega'
+  properties: [ proof ]
+  conservation: true
+  beside: rca0
+  description: >
+    Third-order statements (functionals, arbitrary functions on the reals) compared over Kohlenbach's RCA₀^ω, which
+    is conservative over RCA₀ for second-order sentences: the same relation as RCA₀, restricted to the results that
+    involve a third-order statement.
+
+- id: rca0star
+  properties: [ proof ]
+
+- id: omega
+  main: true
+  properties: [ computability ]
+
+- id: c
+  main: true
+  properties: [ computability ]
+
+- id: sc
+  properties: [ computability ]
+
+- id: soc
+  properties: [ computability ]
+
+- id: w
+  main: true
+  properties: [ weihrauch ]
+
+- id: sw
+  main: true
+  properties: [ weihrauch ]
+
+- id: gw
+  properties: [ weihrauch ]
+
+- id: cw
+  properties: [ weihrauch ]
+
+- id: aw
+  properties: [ weihrauch ]
+
+- id: bish
+  main: true
+
+- id: el0
