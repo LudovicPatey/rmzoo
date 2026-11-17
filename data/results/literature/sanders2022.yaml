@@ -1,3 +1,3 @@
 # Results from [sanders2022].
 
-[ { type: implication, from: exists2-jordan3, to: nin, over: rca0, refs: [ { ref: sanders2022, loc: Theorem 21 } ] }, { type: implication, from: exists2-ninc, to: nin, over: rca0, refs: [ { ref: sanders2022, loc: Theorem 6 } ] }, { type: implication, from: exists2-nin, to: ninc, over: rca0, refs: [ { ref: sanders2022, loc: Theorem 6 } ] } ]
+[ { type: implication, from: exists2-jordan3, to: nin, over: rca0, refs: [ { ref: sanders2022, loc: Theorem 21 } ] }, { type: implication, from: exists2-ninc, to: nin, over: rca0, refs: [ { ref: sanders2022, loc: Theorem 6 }, { ref: sanders2026c, loc: Theorem D.2.2 } ] }, { type: implication, from: exists2-nin, to: ninc, over: rca0, refs: [ { ref: sanders2022, loc: Theorem 6 }, { ref: sanders2026c, loc: Theorem D.2.2 } ] } ]

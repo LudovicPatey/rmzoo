@@ -7539,6 +7539,76 @@ sanders2026b:
   review: 1
   dropped: 0
   cost: 0
+sanders2026c#1:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: f8bd9c2c01f9f11a
+  part: 1/7 (pages 1–89)
+  facts: 15
+  added: 0
+  review: 16
+  dropped: 9
+  cost: 0
+sanders2026c#2:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: da04ec8387d7d932
+  part: 2/7 (pages 90–162)
+  facts: 19
+  added: 0
+  review: 23
+  dropped: 10
+  cost: 0
+sanders2026c#3:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 29abb55f11e15c19
+  part: 3/7 (pages 163–234)
+  facts: 17
+  added: 0
+  review: 37
+  dropped: 5
+  cost: 0
+sanders2026c#4:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 5835d05989cca2b7
+  part: 4/7 (pages 235–308)
+  facts: 11
+  added: 0
+  review: 31
+  dropped: 2
+  cost: 0
+sanders2026c#5:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 94c642d63b3a728b
+  part: 5/7 (pages 309–384)
+  facts: 24
+  added: 0
+  review: 46
+  dropped: 5
+  cost: 0
+sanders2026c#6:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 9546c17951798a5f
+  part: 6/7 (pages 385–441)
+  facts: 16
+  added: 0
+  review: 28
+  dropped: 3
+  cost: 0
+sanders2026c#7:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: c719dffc2289c241
+  part: 7/7 (chapter I, pages 442–508)
+  facts: 15
+  added: 0
+  review: 25
+  dropped: 2
+  cost: 0
 sanderstaranovsky2026:
   date: 2026-11-16
   model: claude-sonnet-5-5 (chat)
