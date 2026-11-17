@@ -325,6 +325,15 @@ avigad1996:
   review: 2
   dropped: 0
   cost: 0
+avigad1998:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 3f476cd2fb8626d4
+  facts: 1
+  added: 0
+  review: 0
+  dropped: 1
+  cost: 0
 avigad2003:
   date: 2026-11-17
   model: claude-sonnet-5-5 (chat)
@@ -620,6 +629,24 @@ bergerishiharaschuster2012:
   review: 12
   dropped: 2
   cost: 0
+bergerschuster2006:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: a62457800ba75882
+  facts: 0
+  added: 0
+  review: 2
+  dropped: 0
+  cost: 0
+bergersvindland2016:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: b99e6e6383daf9e2
+  facts: 0
+  added: 0
+  review: 3
+  dropped: 0
+  cost: 0
 bergotten2023:
   date: 2026-11-11
   model: claude-sonnet-5-5 (chat)
@@ -733,6 +760,15 @@ bochebockdeppe2020:
   date: 2026-11-11
   model: claude-sonnet-5-5 (chat)
   textHash: 19c3ba84f6bfc354
+  facts: 0
+  added: 0
+  review: 0
+  dropped: 0
+  cost: 0
+bochepohl2019:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 705b9076b1832b32
   facts: 0
   added: 0
   review: 0
@@ -1461,6 +1497,15 @@ chenetal2026#2:
   model: claude-sonnet-5-5 (chat)
   textHash: 949ab06e96ea015b
   part: 2/2 (pages 55–105)
+  facts: 0
+  added: 0
+  review: 0
+  dropped: 0
+  cost: 0
+chenlioliveira2024:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 1a797600c968a011
   facts: 0
   added: 0
   review: 0
@@ -2899,6 +2944,15 @@ erhard2013:
   review: 4
   dropped: 1
   cost: 0
+escardostreicher2002:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: e63db80bf64354a1
+  facts: 0
+  added: 0
+  review: 0
+  dropped: 0
+  cost: 0
 fernandesferreira2005:
   date: 2026-11-11
   model: claude-sonnet-5-5 (chat)
@@ -3950,6 +4004,15 @@ herbelinkoleilat2024:
   review: 0
   dropped: 0
   cost: 0
+hertling2005:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: c37cc2f5468f6cc5
+  facts: 0
+  added: 0
+  review: 0
+  dropped: 0
+  cost: 0
 higuchikihara2014:
   date: 2026-11-11
   model: claude-sonnet-5-5 (chat)
@@ -4112,6 +4175,15 @@ hirst1994:
   review: 7
   dropped: 2
   cost: 0
+hirst2000:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 59d21c9dda54df91
+  facts: 4
+  added: 0
+  review: 4
+  dropped: 4
+  cost: 0
 hirst2004:
   date: 2026-11-11
   model: claude-sonnet-5-5 (chat)
@@ -4149,6 +4221,15 @@ hirst2005c:
   review: 2
   dropped: 0
   cost: 0
+hirst2006:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 7c78a990152112d8
+  facts: 0
+  added: 0
+  review: 2
+  dropped: 0
+  cost: 0
 hirst2007:
   date: 2026-11-09
   model: claude-sonnet-5-5
@@ -4159,6 +4240,15 @@ hirst2007:
   review: 6
   dropped: 0
   cost: 0.07
+hirst2012:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 8cf8652b6d40bb4c
+  facts: 2
+  added: 0
+  review: 1
+  dropped: 1
+  cost: 0
 hirst2014:
   date: 2026-11-17
   model: claude-sonnet-5-5 (chat)
@@ -4441,6 +4531,15 @@ ishiharaschuster2008:
   review: 2
   dropped: 0
   cost: 0
+jaegerescardosantini2006:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: dfdada49cdb39ea0
+  facts: 0
+  added: 0
+  review: 0
+  dropped: 0
+  cost: 0
 jager2021:
   date: 2026-11-11
   model: claude-sonnet-5-5 (chat)
@@ -4458,6 +4557,15 @@ jagerrathjen2022:
   added: 0
   review: 2
   dropped: 0
+  cost: 0
+jagerstrahm2000:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 16dd6d807ead47e9
+  facts: 1
+  added: 0
+  review: 0
+  dropped: 1
   cost: 0
 jech1992:
   date: 2026-11-11
@@ -4566,6 +4674,15 @@ kachapova2015:
   added: 0
   review: 0
   dropped: 0
+  cost: 0
+kachlermansolomon2012:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 9976fd80bc7faae0
+  facts: 4
+  added: 0
+  review: 1
+  dropped: 3
   cost: 0
 kajikawaetal2026:
   date: 2026-11-16
@@ -5249,6 +5366,15 @@ lehoueroupateyyokoyama2024:
     - "added: conservation|bsig2|isig1|uPi04|false"
     - "added: conservation|rt22|isig1|uPi04|false"
   cost: 0.27
+lemppetal2002:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: adaea02acc69451d
+  facts: 0
+  added: 0
+  review: 3
+  dropped: 0
+  cost: 0
 lemppetal2023:
   date: 2026-11-11
   model: claude-sonnet-5-5 (chat)
@@ -5460,6 +5586,15 @@ marcone1994:
   review: 6
   dropped: 5
   cost: 0.2
+marcone1995:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 3963afcb0dab7229
+  facts: 0
+  added: 0
+  review: 1
+  dropped: 0
+  cost: 0
 marcone2005:
   date: 2026-11-06
   model: claude-sonnet-5-5
@@ -7764,6 +7899,15 @@ solomon2001:
   review: 5
   dropped: 0
   cost: 0
+solomon2014:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: 71a2382937d40741
+  facts: 0
+  added: 0
+  review: 4
+  dropped: 0
+  cost: 0
 solomon2016:
   date: 2026-11-17
   model: claude-sonnet-5-5 (chat)
@@ -8266,6 +8410,15 @@ weihrauch2009:
   review: 0
   dropped: 0
   cost: 0
+weihrauch2019:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: fbf616980844f09d
+  facts: 0
+  added: 0
+  review: 1
+  dropped: 0
+  cost: 0
 weihrauchjafarikhah2014:
   date: 2026-11-11
   model: claude-sonnet-5-5 (chat)
@@ -8302,6 +8455,15 @@ westrick2020b:
   review: 4
   dropped: 1
   cost: 0
+wong2016:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: cbc77ab33cdfff97
+  facts: 1
+  added: 0
+  review: 2
+  dropped: 0
+  cost: 0
 wong2017:
   date: 2026-11-10
   model: claude-sonnet-5-5 (chat)
@@ -8318,6 +8480,15 @@ wu2024b:
   facts: 0
   added: 0
   review: 0
+  dropped: 0
+  cost: 0
+yamazaki2001:
+  date: 2026-11-17
+  model: claude-sonnet-5-5 (chat)
+  textHash: f15e01e8d7ac13a5
+  facts: 0
+  added: 0
+  review: 3
   dropped: 0
   cost: 0
 yokoyama2010:

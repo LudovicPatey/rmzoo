@@ -120367,3 +120367,438 @@
   reasons:
     - principle not in the catalogue
   proposed: 67c6d679c686
+- id: marcone1995-752c3bfd
+  ref: marcone1995
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Pouzet's theorem
+    name: Pouzet's theorem on better binary relations
+    loc: Theorem 2.13
+    definition: For every binary relation R on a countable set Q there is a partial ordering contained in R which is bqo if and only if R is a better binary relation (every Q-array is good with respect to R); the map R to the ordering is continuous.
+    facts: Proved in the paper with Simpson's Borel-array definition of bqo, using the minimal bad array lemma (Theorem 2.12) and Galvin-Prikry (Theorem 2.4). Used to reduce bbr to bqo in the proof that BQO is Pi^1_2-complete. Not a reverse-mathematics fact (no base system is considered).
+  reasons:
+    - principle not in the catalogue
+  proposed: 824e6ea50e2a
+- id: wong2016-ef04299a
+  ref: wong2016
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: wkl
+    base: rca0
+    class: arith
+    value: true
+  loc: Theorem 1 (Hájek, Avigad) and the sentence introducing it
+  origin: stated
+  quote: The following theorem shows that WKL0 is conservative
+  paperNotation: WKL0 = WKL*0 + IΣ01 over IΣ1; LI sentences are first-order arithmetical sentences
+  argument: Theorem 1 says every model of IΣ1 expands to a model of WKL0; hence every first-order (LI) sentence provable in WKL0 is provable in IΣ1. RCA0 and IΣ1 prove the same LI sentences, so this is arithmetical conservation of WKL over RCA0.
+  citedFrom: Hájek 1993; Avigad 1996 (new proof by the author)
+  confidence: medium
+  concerns: The paper states conservativity over the first-order theory IΣ1 for LI sentences (all arithmetical sentences), not over RCA0 as such; the identification with base rca0 and class arith rests on RCA0 being conservative over IΣ1. The paper's WKL0 is WKL*0 + IΣ01 (with Δ01 comprehension), i.e. RCA0 + WKL.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: a999326d818b
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Theorem 1 (credited to Hájek and Avigad, but proved in the paper with a new argument) says every model of IΣ1 expands to a model of WKL0, where the paper's WKL0 = IΣ00 + exp + Δ01-CA + WKL + IΣ01, i.e. RCA0 + WKL. The paper concludes that every first-order sentence provable in WKL0 is provable in IΣ1. Since RCA0 proves IΣ1, WKL is arithmetically conservative over RCA0 (one line). This is an exact duplicate of the existing hajek1993 / simpson2009 result, so only the citation is merged.
+- id: wong2016-7a1443b9
+  ref: wong2016
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WKL*0
+    name: Weak König's lemma over the weak base IΣ00 + exp
+    loc: Page 4022, paragraph before Theorem 1
+    definition: The theory consisting of IΣ00 + exp, Δ01 comprehension and Weak König's Lemma (the base RCA*0 plus WKL).
+    facts: "Corollary 3: there is an interpretation of WKL*0 in IΔ0 + exp. Also cited (Simpson-Smith, Theorem 4.6): every countable model of BΣ1 + exp expands to a model of WKL*0; it is open whether there is an omega-interpretation of WKL*0 in BΣ1 + exp, and whether WKL*0 has at most polynomial speed-up over IΔ0 + exp."
+  reasons:
+    - principle not in the catalogue
+  proposed: 93509cab5fc0
+- id: solomon2014-859ad996
+  ref: solomon2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Free product of f.o. groups is fully orderable
+    name: Free products of fully ordered groups are fully orderable
+    loc: Theorem 5 (restated as Theorem 16)
+    definition: The free product A * B of two fully ordered (f.o.) countable groups A and B is fully orderable.
+    facts: "Provable in RCA0 (Theorem 5 and Theorem 16). Corollary 17: RCA0 proves the free group on two generators is fully orderable; Proposition 21: RCA0 proves the free group on countably many generators is fully orderable."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9ed6a0f6a721
+- id: solomon2014-e1cff73c
+  ref: solomon2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Every countable f.o. group is an o-epimorphic image of an f.o. free group
+    name: Fully ordered groups are quotients of fully ordered free groups
+    loc: Theorem 4 (restated as Theorem 22)
+    definition: Every countable f.o. group is the o-epimorphic image of a fully ordered free group; equivalently it is o-isomorphic to F/N for a fully ordered free group F and a convex normal subgroup N.
+    facts: Provable in RCA0 (Theorem 4 and Theorem 22), via Theorem 16 and a technique of Revesz.
+  reasons:
+    - principle not in the catalogue
+  proposed: c07abb7bc4da
+- id: solomon2014-cd09297e
+  ref: solomon2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Infinite direct product of f.o. groups is fully orderable
+    name: Fully orderability of infinite direct products of fully orderable groups
+    loc: Section 1, paragraph after Definition 6 and Theorem 7
+    definition: The restricted direct product of an infinite (not uniformly ordered) sequence of fully orderable groups is fully orderable.
+    facts: Stated in Section 1 (citing Solomon [9]) to be equivalent to WKL0 over RCA0 in general; with a uniform sequence of orders RCA0 suffices to order it lexicographically. Not a result proved in this paper.
+  reasons:
+    - principle not in the catalogue
+  proposed: 9712eab484c1
+- id: solomon2014-a6b50ab5
+  ref: solomon2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Induced order on G/H for p.o. group G and convex normal H
+    name: Existence of the induced order on a quotient group
+    loc: Section 1, before Theorem 2; Theorem 2
+    definition: For a convex normal subgroup H of an ordered group G, the induced order on G/H exists.
+    facts: For p.o. groups, ACA0 is required (cited from Solomon [9]); for f.o. groups RCA0 suffices (Theorem 2).
+  reasons:
+    - principle not in the catalogue
+  proposed: 9d0954d9ea70
+- id: yamazaki2001-30b25bc8
+  ref: yamazaki2001
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Saturation lemma for intuitionistic predicate logic
+    name: Saturation lemma for intuitionistic logic (predicate and propositional with countably many atoms)
+    loc: Definition 2.1 and Lemma 2.2
+    definition: If a sentence sigma_0 is not intuitionistically deducible from a theory Gamma and C is an infinite set of new constants, then there is a C-saturated theory Gamma' in L(C) (not intuitionistically proving falsum, deductively closed, with the disjunction property and the existence property with witnesses in C) containing Gamma and not deducing sigma_0.
+    facts: "Theorem 2.3: over RCA_0, WKL_0 is equivalent to the saturation lemma for intuitionistic predicate logic and to the saturation lemma for intuitionistic propositional logic with countably many atoms. The proof is analogous to the one for the completeness theorem of classical logic in Simpson's book, Section 4.3. Neither principle is in the catalogue as such (the catalogue's completeness entry is Goedel's theorem for classical logic)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 38febea81267
+- id: yamazaki2001-18b31ab1
+  ref: yamazaki2001
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Strong completeness theorem for intuitionistic predicate logic
+    name: Strong completeness theorem for intuitionistic logic (predicate and propositional with countably many atoms)
+    loc: Definition 3.1 and Lemma 3.6
+    definition: For every intuitionistically consistent countable theory Gamma there is a Kripke model (K, <=_K, forcing) coded as a set such that for every sentence sigma, Gamma proves sigma intuitionistically iff every world of K forces sigma (the theory is characterized by a single Kripke model).
+    facts: "Theorem 3.7: over RCA_0, ACA_0 is equivalent to the strong completeness theorem for intuitionistic predicate logic and to the strong completeness theorem for intuitionistic propositional logic with countably many atoms; the reversal derives Sigma^0_1 comprehension from the propositional version. Not in the catalogue."
+  reasons:
+    - principle not in the catalogue
+  proposed: e4754faa3e36
+- id: yamazaki2001-76382eaf
+  ref: yamazaki2001
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: L-maximal theory with respect to sigma_0; Lemma 3.3
+    name: Existence of maximal extensions for intuitionistic theories
+    loc: Definition 3.2, Lemma 3.3, Lemma 3.5
+    definition: If sigma_0 is not intuitionistically deducible from Gamma, there is an L(C)-maximal theory Gamma' with respect to sigma_0 extending Gamma (consistent with sigma_0, deductively closed, disjunction and existence properties, and containing every sentence sigma with Gamma' + sigma not proving sigma_0).
+    facts: Lemma 3.3 and its refinement Lemma 3.5 are proved in ACA_0 (auxiliary lemmas, used for the strong completeness theorem; no reversal stated for them).
+  reasons:
+    - principle not in the catalogue
+  proposed: b583b88aa7f5
+- id: hirst2012-80707834
+  ref: hirst2012
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: hilbert
+    to: rt1inf
+    over: rca0
+  loc: Theorem 1
+  origin: stated
+  quote: "Theorem 1 (RCA0 ) The following are equivalent:"
+  paperNotation: HIL and RT(1)
+  confidence: medium
+  concerns: "HIL is the paper's statement: for every finite coloring of the finite subsets of N there are infinitely many distinct finite sets and a color with every finite union (the paper says every finite set F) of them of that color; matches catalogue hilbert up to the nonemptiness of F (the proof only uses nonempty F). RT(1) is the infinite pigeonhole principle with k part of the statement, matched to rt1inf."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: d8468144a35b
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 1 (RCA0): HIL is equivalent to RT(1) (for every k and f: N -> k there is a color c < k with an infinite colour class). RT(1) is rt1inf, with k part of the statement. HIL matches the zoo's hilbert: the paper writes 'every finite set F', but its proof (the union over F of [0,n_i] is [0,n_max(F)]) assumes F is nonempty, as the zoo's definition does. Exact duplicate of data/results/literature/hirst2012.yaml, which has no loc; this adds loc Theorem 1. Side note: the zoo's hilbert definition has a todo saying the full text is unavailable, but it is now cached, and its definition (p. 1) agrees."
+- id: hirst2006-c613613d
+  ref: hirst2006
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Every non-empty closed subset of a compact complete separable metric space is separably closed
+    name: Closed subsets of compact complete separable metric spaces are separably closed
+    loc: Theorem 1(2)
+    definition: Closed sets are complements of unions of open balls (coded by the codes of their complements); separably closed sets are closures of countable sets of points. The statement says every non-empty closed subset of a compact (Simpson, Definition III.2.3) complete separable metric space is separably closed.
+    facts: "Theorem 1: over RCA0, equivalent to ACA0 (and to statement (3) below). (1) implies (2) is Theorem 3.2 of Brown [2]; the paper gives the corrected proof that (3) implies (1) via the monotone convergence theorem for sequences of rationals in (0,1)."
+  reasons:
+    - principle not in the catalogue
+  proposed: c69d1a81f013
+- id: hirst2006-fd593963
+  ref: hirst2006
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Every non-empty closed subset of [0,1] is separably closed
+    name: Closed subsets of [0,1] are separably closed
+    loc: Theorem 1(3)
+    definition: "Special case of the previous statement for the compact complete separable metric space [0,1]: every non-empty closed subset of [0,1] (coded by the codes of its complement) is the closure of a countable sequence of points."
+    facts: "Theorem 1: over RCA0, equivalent to ACA0 and to statement (2); (2) implies (3) because RCA0 proves [0,1] is a compact complete separable metric space; the reversal (3) implies ACA0 is proved (corrected proof) through the monotone convergence theorem for increasing sequences of rationals in (0,1), using closed set [0, lim a_n]."
+  reasons:
+    - principle not in the catalogue
+  proposed: a7924a273847
+- id: lemppetal2002-b934f73b
+  ref: lemppetal2002
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Divisibility of Aut(Q)
+    name: Every automorphism of a countable dense linear order without endpoints has k-th roots (Property 1 of Theorem 1.6)
+    loc: Theorem 1.6(1); Section 2; Theorem 4.1
+    definition: For every automorphism f of Q and every k >= 1 there is an automorphism g with g^k = f.
+    facts: Provable in ACA0 (classical proof defining automorphisms uniformly on orbitals, Section 2); not provable in RCA0 because Theorem 4.1 gives a computable f with no computable k-th root for any k >= 2. Whether WKL0 suffices and whether there is a reversal to WKL0 or ACA0 is left open.
+  reasons:
+    - principle not in the catalogue
+  proposed: d025d0a64e77
+- id: lemppetal2002-ece4fc50
+  ref: lemppetal2002
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Every automorphism of Q is a commutator [f,g] of itself with some g (Property 2 of Theorem 1.6)
+    name: Stronger commutator property of Aut(Q)
+    loc: Theorem 1.6(2); Section 2; Theorem 5.5
+    definition: For every automorphism f of Q there is an automorphism g with f = [f,g].
+    facts: Provable in ACA0 via Property 3; not provable in RCA0 (Theorem 5.5 gives a computable f with f != [f,h] for all computable h). WKL0 status open, no known reversals.
+  reasons:
+    - principle not in the catalogue
+  proposed: 8f915237831a
+- id: lemppetal2002-8e848d66
+  ref: lemppetal2002
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Conjugacy iff isomorphic orbital structures (Property 3 of Theorem 1.6)
+    name: Conjugacy of automorphisms of Q by orbital structure
+    loc: Theorem 1.6(3); Theorem 5.1; Corollary 5.9, 5.10
+    definition: Two automorphisms of Q are conjugate iff their orbital structures are isomorphic.
+    facts: Provable in ACA0 (uses orbital equivalence, which is arithmetical); fails for computable automorphisms (Corollary 5.10), hence not provable in RCA0. Also, every element of Aut_c(Q) is a commutator, provable in RCA0 (Theorem 5.4).
+  reasons:
+    - principle not in the catalogue
+  proposed: 7967da76842e
+- id: kachlermansolomon2012-95e0304a
+  ref: kachlermansolomon2012
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: srt22
+    property: delta2-basis
+    value: true
+  loc: Section 1 (Introduction), third paragraph
+  origin: stated
+  quote: instance of SRT22 must have a ∆02 solution (unlike computable instances
+  paperNotation: SRT22
+  confidence: medium
+  concerns: Stated in passing in the introduction, with no theorem number and no proof or citation (it is the standard fact that a computable stable coloring has a Delta^0_2 limit, hence a Delta^0_2 homogeneous set).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: e0c0b32dd2e5
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: The introduction states that every computable instance of SRT22 has a Δ02 solution (a standard fact, relativizing to give the delta2-basis property). It is stated as background with no proof or citation. It duplicates the existing srt22 delta2-basis result (hirschfeldtshore2007 and others), which are cited from similar remarks, so only the citation is merged.
+- id: weihrauch2019-142f1296
+  ref: weihrauch2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: IP1
+    name: Intersection point problem for an injective path
+    loc: Section 6, final paragraph (after Theorem 6.1)
+    definition: "The operator which, given continuous paths f, g : [0;1] -> [0;1]^2 satisfying (3) and (4) of Theorem 1.4 with f injective, finds a point of intersection of range(f) and range(g) (the uniform problem of Theorem 6.1)."
+    facts: The paper states, citing Brattka, Gherardi and Pauly (Theorem 7.34 of arXiv:1707.03202), that CC_[0;1] (connected choice, catalogue ivt/ci) is strongly Weihrauch equivalent to IVP (intermediate value problem, catalogue ivt) and to IP1. The paper itself proves no Weihrauch fact; Theorem 1.3 and Theorem 1.4 are computability results (computable paths have a computable point of intersection) and the degree of the general intersection operator is stated to be not yet located in the Weihrauch lattice.
+  reasons:
+    - principle not in the catalogue
+  proposed: 8a7b11fe7340
+- id: bergerschuster2006-6e639c5d
+  ref: bergerschuster2006
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: DT_X
+    name: Dini's theorem (for a metric space X; DT for all compact metric spaces, DT_{0,1}^N, DT_[0,1])
+    loc: Section 2, DT_X (before Remark 2.1)
+    definition: If a monotone sequence (f_n) of continuous functions on X converges simply to a continuous function f on X, then (f_n) converges uniformly to f. Continuity on a compact metric space includes a modulus of uniform continuity (Bishop).
+    facts: "Theorem 4.8: over Bishop-style constructive mathematics (within EL + AC00), the following are equivalent: the fan theorem for detachable bars FT (catalogue fandelta), DT for the Cantor space, DT for all compact metric spaces, DT for [0,1] (Corollary 4.5, Propositions 4.2, 4.4, 4.6, 4.7). FT already follows from DT on Cantor space for functions with values in {0,1}. Theorem 5.2: over RCA0, DT_X for all compact metric spaces X is equivalent to WKL. The constructive equivalences are proved in EL + AC00 (full induction), not in EL0, so they are not entered over el0 or bish."
+  reasons:
+    - principle not in the catalogue
+  proposed: 398a132f4c2a
+- id: bergerschuster2006-e208358a
+  ref: bergerschuster2006
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WKL¬
+    name: Classical contrapositive of weak Konig's lemma (every tree without infinite path is finite)
+    loc: Section 5, before Lemma 5.1
+    definition: "Every (detachable binary) tree without infinite path is finite: forall alpha exists n (alpha|n not in T) implies exists N forall alpha (alpha|N not in T)."
+    facts: "Lemma 5.1: WKL¬ and FT are equivalent (constructively, within EL + AC00). The paper also recalls (citing Ishihara, reference [8]) that WKL implies FT over EL."
+  reasons:
+    - principle not in the catalogue
+  proposed: 16b67d9466f8
+- id: bergersvindland2016-e9215e37
+  ref: bergersvindland2016
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SEP
+    name: Separating hyperplane theorem for a convex closed located set and a convex hull of finitely many vectors (Hilbert space)
+    loc: Section 1, statement of SEP (before Proposition 2)
+    definition: Let (H, <,>) be a Hilbert space and C a convex, closed, located subset of H. If x_1,...,x_n are in H and C is disjoint from the convex hull C(x_1,...,x_n), then there are eps > 0 and p in H with <p, x - c> >= eps for all x in C(x_1,...,x_n) and c in C. Constructive statement.
+    facts: "Proposition 2: SEP, FTAP and MP are equivalent in constructive mathematics (over BISH). Remark 2: the authors claim SEP and FTAP are provable in RCA0, since no non-constructive choice is used and MP holds classically (an informal claim, not a theorem). Remark 1: SEP and FTAP are true in recursive constructive mathematics. The paper notes that the Hahn-Banach theorem implies SEP (Hahn-Banach is classified into WKL by Brown-Simpson)."
+  reasons:
+    - principle not in the catalogue
+  proposed: ec15d42d1ea3
+- id: bergersvindland2016-7a75ca60
+  ref: bergersvindland2016
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FTAP
+    name: Fundamental theorem of asset pricing (non-trivial direction, finite market)
+    loc: Section 1, statement of FTAP (before Proposition 2)
+    definition: "For every real m x n matrix A with linearly independent rows: if {xi . A : xi in R^m} intersected with Y_n is empty (no arbitrage; Y_n = nonnegative vectors with positive sum), then there is p in P_n (strictly positive coordinates summing to 1) with A . p = 0 (an equivalent martingale measure)."
+    facts: "Proposition 2: FTAP is equivalent to SEP and to Markov's principle MP in constructive mathematics. Corollary 3: constructive version with the hypothesis d(xi . A, x) > 0 for all xi, x in X_n. Remark 2: claimed provable in RCA0 (informal)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 14e63d3d74af
+- id: bergersvindland2016-5471d2b7
+  ref: bergersvindland2016
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: convex positivity of infimum (Proposition 1 / Corollary 1)
+    name: Uniformly continuous convex positive-valued functions on convex hulls of finitely many vectors have positive infimum
+    loc: Proposition 1 and Corollary 1
+    definition: "Every uniformly continuous convex function f : X_m -> R+ (X_m the standard simplex), or more generally f : C(A_1,...,A_m) -> R+ on the convex hull of finitely many points of a normed space, has inf f > 0. A constructive strengthening for convex functions of the fan-theorem-type principle FAN (every uniformly continuous f : [0,1] -> R+ has positive infimum; the catalogue's posinf)."
+    facts: Proved constructively (Proposition 1, by induction on m) with no omniscience principle; it is used to derive MP -> SEP. The paper notes that FAN can be deduced from LLPO (citing Ishihara) and that the Hahn-Banach theorem is equivalent to LLPO (citing Ishihara 1990).
+  reasons:
+    - principle not in the catalogue
+  proposed: c25eb84e1523
+- id: hirst2000-78f80d54
+  ref: hirst2000
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: rank function existence (every countable well founded directed graph has a rank function)
+    name: Existence of rank functions for well founded directed graphs
+    loc: Definition before Theorem 1; Theorem 5; Theorem 7
+    definition: A rank function for a directed acyclic graph G is a pair <f, alpha>, alpha well ordering, f maps V onto alpha, (u,v) in E implies f(u)<f(v), and for x<f(v) there is u with (u,v) in E and x<=f(u). G is well founded if no infinite sequence has (v_{j+1},v_j) an edge for all j.
+    facts: "Theorem 5: ATR0 proves it; Theorem 7: equivalent to ATR0 over RCA0; Theorem 1: RCA0 proves it for finite directed acyclic graphs; Theorem 2: RCA0 proves a graph with a rank function is well founded."
+  reasons:
+    - principle not in the catalogue
+  proposed: 97efbda54cd5
+- id: hirst2000-a794d2e1
+  ref: hirst2000
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: rank functions for arbitrary directed graphs (value infinity)
+    name: Cantor-Bendixson style rank function for all directed graphs
+    loc: Theorem 8
+    definition: For every directed graph G there is <f, alpha> with alpha a well ordering, f:V -> alpha U {infinity}, f a rank function on the preimage of alpha, and every vertex with f(u)=infinity has a predecessor v with f(v)=infinity.
+    facts: "Theorem 8: equivalent to Pi^1_1-CA0 over RCA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: e4bbf60c05cc
+- id: hirst2000-95830c4b
+  ref: hirst2000
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: uniqueness of rank functions
+    name: Uniqueness of rank functions
+    loc: Lemma 9, Corollary 10, Theorems 11 and 12
+    definition: Any two rank functions of the same countable graph induce the same order and equalities on vertices; their well orderings are isomorphic via a unique order preserving bijection h with h(f(v))=g(v).
+    facts: All provable in RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 4b04a48c6827
+- id: hirst2000-accf21e2
+  ref: hirst2000
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: path bounded graphs and rank functions bounded by N (or by n)
+    name: Bounded rank functions
+    loc: Lemma 13, Theorem 14
+    definition: G is path bounded if for each pair of vertices v,u the paths from v to u have length at most some integer; uniformly path bounded if one integer works for all pairs. A rank function is bounded by beta if its ordering is an initial segment of beta.
+    facts: "Theorem 14: over RCA0, ACA0 is equivalent to 'G is path bounded iff G has a rank function bounded by N' and to the uniform version with some n in N."
+  reasons:
+    - principle not in the catalogue
+  proposed: bb7f899f6422
