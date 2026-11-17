@@ -138,17 +138,17 @@ function basesLayout() {
   const besides = BASES.map((b, i) => [i, at.get(b.beside)]).filter(([, j]) => j !== undefined);
   // and on the row of its partner: the partner's incoming edges too
   for (const [i, j] of besides) for (const [u, v] of edges) if (v === j) layout.push([u, i]);
-  const g = layered(nodes, [...edges, ...layout], { hgap: 16, vgap: 30 });
+  const g = layered(nodes, [...edges, ...layout], { hgap: 22, vgap: 38 });
   return (basesGeom = { ...g, edgeList: edges, besides });
 }
 const baseText = (s) => esc(s).replace(/\^(\S+)/, '<tspan baseline-shift="super" font-size="75%">$1</tspan>');
-function basesSvg() {
+function basesSvg(scale = 1) {
   const g = basesLayout();
   const pad = 4, w = g.width + 2 * pad, h = g.height + 2 * pad;
   const on = new Set(state.bases);
   const principle = (s) => !s.conjunction && !s.op && !s.minor && !s.formulationOf;
   const count = (b) => Z.S.filter((s) => principle(s) && (s._bases || []).includes(b.id)).length;
-  return `<svg class="lattice bases" width="${w}" height="${h}" viewBox="${-pad} ${-pad} ${w} ${h}" role="group" aria-label="Bases">
+  return `<svg class="lattice bases" width="${Math.round(w * scale)}" height="${Math.round(h * scale)}" viewBox="${-pad} ${-pad} ${w} ${h}" role="group" aria-label="Bases">
     ${g.edgeList.map(([a, b]) => `<path class="edge" d="${verticalSpline([[g.nodes[a].x, g.nodes[a].y + 13], [g.nodes[b].x, g.nodes[b].y - 13]])}"/>`).join('')}
     ${g.besides.map(([a, b]) => `<path class="edge beside" d="M${g.nodes[a].x} ${g.nodes[a].y}L${g.nodes[b].x} ${g.nodes[b].y}"/>`).join('')}
     ${g.nodes.map((nd, i) => {
@@ -161,11 +161,11 @@ function basesSvg() {
   </svg>`;
 }
 // the panel: diagram, frameworks (presets), all / main
-function basesPanel() {
+function basesPanel(scale = 1) {
   const all = BASES.map((b) => b.id);
   const is = (list) => sameSet(state.bases, list);
   return `<div class="bases-panel">
-    ${basesSvg()}
+    ${basesSvg(scale)}
     <div class="bases-presets">
       <button class="chip${is(mainBases()) ? ' on' : ''}" data-bases="${mainBases()}" title="${esc(BASES.filter((b) => b.main).map((b) => b.short).join(', '))}">Main bases</button>
       <button class="chip${is(all) ? ' on' : ''}" data-bases="${all}" title="Every base: nothing is filtered">All</button>
@@ -181,8 +181,8 @@ function renderModeSwitch() {
   if (sw) {
     const open = sw.classList.contains('open');
     sw.className = `mode-switch base-switch${open ? ' open' : ''}`;
-    sw.innerHTML = `<button class="btn small base-btn" type="button" aria-haspopup="true" title="Select the base systems shown">Base <span class="muted">${
-      !m ? 'all' : m.preset ? esc(m.preset.short) : sameSet(state.bases, mainBases()) ? 'main' : `${n}/${BASES.length}`}</span> ▾</button>
+    sw.innerHTML = `<button class="base-btn" type="button" aria-haspopup="true" title="Select the base systems shown">Base<span class="base-cur">${
+      !m ? 'all' : m.preset ? esc(m.preset.short) : sameSet(state.bases, mainBases()) ? 'main' : `${n}/${BASES.length}`}</span><span class="caret">▾</span></button>
       <div class="popover base-pop">${basesPanel()}</div>`;
   }
   const bar = $('#mode-bar');
@@ -945,7 +945,7 @@ function viewHome() {
     </section>
     <section class="home-bases card">
       <div class="row"><h2 class="grow">Base systems</h2><span class="small muted">${state.bases.length} of ${BASES.length} selected</span></div>
-      ${basesPanel()}
+      ${basesPanel(1.4)}
     </section>
 
     <div class="stats">

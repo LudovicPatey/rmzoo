@@ -293,7 +293,7 @@ details.bib pre { background: var(--panel, rgba(127,127,127,.08)); border: 1px s
   padding: 10px 12px; overflow-x: auto; font-size: .78rem; line-height: 1.45; margin: 8px 0; white-space: pre; }
 
 /* front page */
-.hero { text-align: center; padding: 28px 0 8px; }
+.hero { text-align: center; padding: 24px 0 28px; }
 .hero h1 { font-size: 2.1rem; margin: 0 0 6px; }
 .hero > p { max-width: 640px; margin: 0 auto 18px; }
 .search.big { max-width: 640px; margin: 0 auto; position: relative; width: 100%; }
@@ -425,17 +425,26 @@ table.related td { vertical-align: middle; }
 
 /* bases (data/bases.yaml): header switch (diagram on hover) and front page */
 .base-switch { position: relative; }
-.base-btn { white-space: nowrap; }
-.base-btn .muted { font-weight: 500; margin-left: 2px; }
+.base-btn { white-space: nowrap; font: inherit; font-weight: 500; color: var(--muted); background: none; border: 0;
+  padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+/* "Base" reads as the last nav item: the nav keeps its width on wide screens (the search shrinks), Base sits 4px after it */
+.topbar > .search { width: auto; flex: 0 1 340px; min-width: 150px; }
+@media (min-width: 1200px) { nav { flex-shrink: 0; } .topbar > .base-switch { margin-left: -20px; } }
+@media (min-width: 1000px) and (max-width: 1199px) { nav { flex-shrink: 0; } .topbar > .base-switch { margin-left: -10px; } }
+@media (min-width: 701px) and (max-width: 1199px) { .topbar { gap: 12px; } .topbar > .search { flex-basis: 150px; min-width: 130px; } nav a, .base-btn { padding: 6px 6px; } nav { gap: 2px; } .base-btn .base-cur { display: none; } }
+@media (max-width: 960px) { nav a, .base-btn { padding: 6px 7px; } }
+.base-btn:hover, .base-switch:focus-within .base-btn, .base-switch.open .base-btn { background: var(--bg); color: var(--ink); }
+.base-btn .base-cur { color: var(--accent); margin-left: 3px; }
+.base-btn .caret { font-size: .7em; margin-left: 3px; opacity: .7; }
 .base-switch .base-pop { display: none; left: auto; right: 0; width: max-content; max-width: min(560px, 92vw); max-height: none; padding: 12px 14px; top: 100%; }
 .base-switch .base-pop::before { content: ''; position: absolute; left: 0; right: 0; top: -8px; height: 8px; } /* hover bridge */
 .base-switch:hover .base-pop, .base-switch:focus-within .base-pop, .base-switch.open .base-pop { display: block; }
 @media (hover: none) { .base-switch:hover:not(.open) .base-pop { display: none; } }
 @media (max-width: 700px) { .base-switch .base-pop { position: fixed; left: 16px; right: 16px; top: 56px; width: auto; max-width: none; max-height: 80vh; overflow: auto; } }
-.bases-panel { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.bases-panel { display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .bases-panel p { margin: 0; max-width: 34rem; text-align: center; }
 .bases-presets { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
-.bases-presets .chip { font: inherit; font-size: .85rem; cursor: pointer; }
+.bases-presets .chip { font: inherit; font-size: .85rem; padding: 3px 11px; cursor: pointer; }
 svg.bases text { font-size: 12px; }
 .lattice.bases .node rect { fill: var(--bg); stroke: var(--line); }
 .lattice.bases .node text { fill: var(--muted); }
@@ -445,11 +454,15 @@ svg.bases text { font-size: 12px; }
 .lattice.bases .node:focus { outline: none; }
 .lattice.bases .node:focus-visible rect { stroke: var(--ink); stroke-width: 2; }
 .lattice .edge.beside { stroke-dasharray: 4 3; }
-.home-bases { max-width: 760px; margin: 0 auto 28px; }
+.home-bases { margin: 0 0 20px; padding: 16px 20px 20px; }
+.home-bases > .row { margin-bottom: 12px; align-items: baseline; }
 .home-bases h2 { margin: 0; font-size: 1.05rem; }
 .mode-bar { display: flex; align-items: center; gap: 10px; padding: 6px 24px; font-size: .88rem;
   background: var(--accent-soft); border-bottom: 1px solid var(--line); }
 .mode-bar b { color: var(--accent); }
+.home .stats { margin: 0 0 8px; }
+.home > h2 { margin: 36px 0 6px; }
+.home > h2 + p.small { margin: 0 0 14px; }
 .mode-bar .mode-desc { max-width: 46rem; text-align: right; }
 @media (max-width: 900px) { .mode-bar .mode-desc { display: none; } }
 .mode-note { background: var(--open-soft); padding: 8px 12px; border-radius: 8px; font-size: .9rem; }
