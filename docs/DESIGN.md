@@ -559,7 +559,9 @@ Everything not derivable is **open**. The viewer distinguishes "open" from
   bibliography with what each paper contributes.
 
 The state (selection, reduction, toggles) is in the URL, so diagrams can be
-shared by link.
+shared by link. On the live instance, a signed-in researcher can also save the
+current diagram under a name (the same state: statements, reduction, toggles)
+and reopen it later (docs/ENDORSEMENTS.md, "Saved diagrams").
 
 ## 4. Why not Graphviz?
 

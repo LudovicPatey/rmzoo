@@ -184,3 +184,43 @@ test('suggestions of facts, own messages and comments on questions', { skip }, a
   const ex = await (await fetch(`${B}?a=export`, { headers: { Authorization: `Bearer ${TOKEN}` } })).json();
   assert.ok(Array.isArray(ex.qcomments));
 });
+
+// saved diagrams: private to their owner, replaced by name, validated against zoo.json
+test('saved diagrams', { skip }, async () => {
+  const s = session();
+  let st = await (await s.req(`${B}?a=state`)).json();
+  assert.equal((await s.req(`${B}?a=diagrams`)).status, 401);
+  assert.equal((await post(s, 'diagram', { name: 'x', s: ['rt22'], r: 'rca0' }, st.csrf)).status, 401);
+  await s.req(`${B}?a=devlogin&orcid=${ME}&name=Josiah%20Carberry`);
+  st = await (await s.req(`${B}?a=state`)).json();
+  const d = { name: 'Ramsey', s: ['rt22', 'coh', 'srt22', 'coh'], r: 'rca0', sep: true, open: false };
+  assert.equal((await post(s, 'diagram', d)).status, 403); // no CSRF token
+  assert.equal((await post(s, 'diagram', { ...d, name: ' ' }, st.csrf)).status, 400);
+  assert.equal((await post(s, 'diagram', { ...d, s: [] }, st.csrf)).status, 400);
+  assert.equal((await post(s, 'diagram', { ...d, s: ['no-such-statement'] }, st.csrf)).status, 404);
+  assert.equal((await post(s, 'diagram', { ...d, r: 'nope' }, st.csrf)).status, 404);
+  let r = await (await post(s, 'diagram', d, st.csrf)).json();
+  assert.equal(r.diagrams.length, 1);
+  const [saved] = r.diagrams;
+  assert.deepEqual([saved.name, saved.s, saved.r, saved.sep, saved.open], ['Ramsey', ['rt22', 'coh', 'srt22'], 'rca0', true, false]);
+  // the same name (ignoring case) replaces it and keeps its id; another name adds one
+  r = await (await post(s, 'diagram', { ...d, name: 'ramsey', r: 'sw' }, st.csrf)).json();
+  assert.equal(r.diagrams.length, 1);
+  assert.equal(r.diagrams[0].id, saved.id);
+  assert.equal(r.diagrams[0].r, 'sw');
+  r = await (await post(s, 'diagram', { ...d, name: 'Choice' }, st.csrf)).json();
+  assert.equal(r.diagrams.length, 2);
+  assert.deepEqual((await (await s.req(`${B}?a=diagrams`)).json()).diagrams.map((x) => x.name).sort(), ['Choice', 'ramsey']);
+  // private: another person sees none of them and cannot delete them
+  const o = session();
+  await o.req(`${B}?a=devlogin&orcid=0000-0001-2345-6789&name=Ada`);
+  const ost = await (await o.req(`${B}?a=state`)).json();
+  assert.deepEqual((await (await o.req(`${B}?a=diagrams`)).json()).diagrams, []);
+  assert.equal((await post(o, 'diagram', { delete: saved.id }, ost.csrf)).status, 404);
+  assert.ok(!JSON.stringify(await (await fetch(`${B}?a=state`)).json()).includes('Ramsey'));
+  // deleting
+  r = await (await post(s, 'diagram', { delete: saved.id }, st.csrf)).json();
+  assert.deepEqual(r.diagrams.map((x) => x.name), ['Choice']);
+  r = await (await post(s, 'diagram', { delete: r.diagrams[0].id }, st.csrf)).json();
+  assert.deepEqual(r.diagrams, []);
+});

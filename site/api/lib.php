@@ -19,6 +19,7 @@ function cfg(): array {
     'feedback_per_day' => 30,
     'upload_max_mb' => 40,      // largest PDF accepted (PHP's upload_max_filesize must allow it too)
     'uploads_per_day' => 50,    // uploads (new or replaced files) per person and day
+    'diagrams_max' => 200,      // saved diagrams per person
   ];
   return $c;
 }
@@ -244,3 +245,39 @@ function with_dismissed(callable $fn) {
   }
 }
 
+
+// ---- saved diagrams (docs/ENDORSEMENTS.md, "Saved diagrams") ----------------------
+// data_dir/diagrams/<orcid>.json  [{id, name, s: [statement ids], r: reduction id, sep, open, date, updated?}]
+//   (date, updated: UTC times, 2026-11-16T10:00:00Z)
+// Private: only their owner lists them (a diagram is shared by its link, #/diagram?…).
+// Run $fn(list) under the lock of that person's file; if it returns an array, save it.
+function with_diagrams(string $orcid, callable $fn) {
+  if (!orcid_valid($orcid)) fail(400, 'Invalid ORCID iD.');
+  $dir = data_dir() . '/diagrams';
+  if (!is_dir($dir) && !@mkdir($dir, 0700, true)) fail(500, 'Cannot create the diagrams directory.');
+  $lock = fopen("$dir/.lock", 'c');
+  flock($lock, LOCK_EX);
+  try {
+    $file = "$dir/$orcid.json";
+    $list = is_file($file) ? json_decode((string) file_get_contents($file), true) : [];
+    if (!is_array($list)) fail(500, 'Corrupted diagrams file.');
+    $out = $fn($list);
+    if (is_array($out)) {
+      $out = array_values($out);
+      if ($out) {
+        file_put_contents("$file.tmp", json_encode($out, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+        rename("$file.tmp", $file);
+      } elseif (is_file($file)) unlink($file);
+      return $out;
+    }
+    return $list;
+  } finally {
+    flock($lock, LOCK_UN);
+    fclose($lock);
+  }
+}
+// Newest first.
+function sorted_diagrams(array $list): array {
+  usort($list, fn ($a, $b) => strcmp($b['updated'] ?? $b['date'], $a['updated'] ?? $a['date']));
+  return $list;
+}

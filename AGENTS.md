@@ -114,7 +114,7 @@ paper.
 | review queue: AI proposals and consolidation candidates, votes of the review page (`docs/REVIEW.md`) | `scripts/review.mjs`, `scripts/lib/review-queue.mjs`, `site/js/review.js` | `data/review.yaml`, `site/data/review.json` |
 | long texts read in parts by the AI reader | `scripts/lib/split-text.mjs` | cached texts |
 | adding results | `scripts/add-results.mjs` → `scripts/lib/results.mjs` | results |
-| endorsements and comments: server (PHP), viewer, download | `site/api/*.php`, `site/js/community.js`, `scripts/endorsements-sync.mjs` | `zoo.json` (results' `_key`), `data/endorsements.yaml` |
+| endorsements and comments: server (PHP), viewer, download; saved diagrams (private, server only) | `site/api/*.php`, `site/js/community.js`, `scripts/endorsements-sync.mjs` | `zoo.json` (results' `_key`, statement and reduction ids), `data/endorsements.yaml` |
 | full texts uploaded by researchers (`docs/UPLOADS.md`): server, viewer, import | `site/api/*.php`, `site/js/community.js`, `viewUploads` in `site/js/app.js`, `scripts/uploads-sync.mjs` | `zoo.json` (references), the server's uploads |
 | upload to the live instance (explicit file list, never deletes) | `scripts/deploy.mjs` → `scripts/lib/deploy.mjs` | `site/`, `cache/deploy.json` |
 | one-off imports (kept for provenance, not maintained) | `scripts/import/` | — |

@@ -18,6 +18,9 @@
 //   POST ?a=unupload   {id} removes one's own upload
 //   POST ?a=dismiss    {ref, reason: not-author|not-allowed|null}: a paper of one's own without a
 //                      full text that one is not an author of or may not share (null: undo)
+//   GET  ?a=diagrams   the signed-in person's saved diagrams (private to them)
+//   POST ?a=diagram    {name, s: [statement ids], r: reduction id, sep, open} saves one (a diagram of the same
+//                      name is replaced); {delete: <diagram id>} removes one; both answer {diagrams}
 //   GET  ?a=export     (admin token) endorsements, votes, comments (review items, questions) and all feedback, for scripts/endorsements-sync.mjs
 //   GET  ?a=uploads-export        (admin token) the index of all uploads, for scripts/uploads-sync.mjs
 //   GET  ?a=upload-file&id=<id>   (admin token) one uploaded file
@@ -344,6 +347,56 @@ switch ($a) {
       return $keep;
     });
     json_out(['uploads' => my_uploads($list, $u['orcid'])]);
+  }
+
+  case 'diagrams': {
+    start_session();
+    $u = user();
+    if (!$u) fail(401, 'Sign in with ORCID first.');
+    json_out(['diagrams' => sorted_diagrams(with_diagrams($u['orcid'], fn ($l) => null))]);
+  }
+
+  case 'diagram': {
+    start_session();
+    $u = require_user();
+    $b = body();
+    if (isset($b['delete'])) {
+      $id = (string) $b['delete'];
+      $list = with_diagrams($u['orcid'], function (array $list) use ($id) {
+        $keep = array_filter($list, fn ($d) => $d['id'] !== $id);
+        if (count($keep) === count($list)) fail(404, 'Unknown diagram (reload the page).');
+        return $keep;
+      });
+      json_out(['diagrams' => sorted_diagrams($list)]);
+    }
+    $name = trim(preg_replace('/\s+/u', ' ', (string) ($b['name'] ?? '')));
+    if ($name === '' || mb_strlen($name) > 100) fail(400, 'The name must have between 1 and 100 characters.');
+    $sel = $b['s'] ?? null;
+    if (!is_array($sel) || !$sel || count($sel) > 500) fail(400, 'A diagram has between 1 and 500 statements.');
+    $z = zoo();
+    $known = array_flip(array_column($z['statements'], 'id'));
+    $s = [];
+    foreach ($sel as $id) {
+      $id = (string) $id;
+      if (!isset($known[$id])) fail(404, 'Unknown statement ' . mb_substr($id, 0, 60) . ' (reload the page).');
+      if (!in_array($id, $s, true)) $s[] = $id;
+    }
+    $r = (string) ($b['r'] ?? '');
+    if (!in_array($r, array_column($z['reductions'], 'id'), true)) fail(404, 'Unknown reduction.');
+    $d = ['name' => $name, 's' => $s, 'r' => $r, 'sep' => !empty($b['sep']), 'open' => !empty($b['open'])];
+    $list = with_diagrams($u['orcid'], function (array $list) use ($d) {
+      $today = gmdate('Y-m-d\TH:i:s\Z');
+      foreach ($list as $k => $x) {
+        if (mb_strtolower($x['name']) === mb_strtolower($d['name'])) { // same name: replace it, keep its id
+          $list[$k] = ['id' => $x['id']] + $d + ['date' => $x['date'], 'updated' => $today];
+          return $list;
+        }
+      }
+      if (count($list) >= cfg()['diagrams_max']) fail(429, 'You have saved ' . cfg()['diagrams_max'] . ' diagrams: delete some first.');
+      $list[] = ['id' => gmdate('Ymd\THis') . '-' . bin2hex(random_bytes(3))] + $d + ['date' => $today];
+      return $list;
+    });
+    json_out(['diagrams' => sorted_diagrams($list)]);
   }
 
   case 'uploads-export':

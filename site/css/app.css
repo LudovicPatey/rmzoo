@@ -179,6 +179,9 @@ svg.lattice { max-width: 100%; height: auto; }
 .sel-item:hover { background: var(--bg); }
 .sel-item .x { margin-left: auto; cursor: pointer; color: var(--muted); border: 0; background: none; font-size: 1rem; }
 .sel-item .x:hover { color: var(--no); }
+.saved-diagram.current { background: var(--bg); box-shadow: inset 3px 0 0 var(--accent); }
+.saved-diagram .dg-main { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.saved-diagram .dg-main > * { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .toggle { display: flex; align-items: center; gap: 8px; font-size: .9rem; cursor: pointer; margin-bottom: 6px; }
 .legend { display: grid; gap: 6px; font-size: .85rem; }
 .legend svg { vertical-align: middle; }
@@ -457,12 +460,12 @@ svg.bases text { font-size: 12px; }
 .home-bases { margin: 0 0 20px; padding: 16px 20px 20px; }
 .home-bases > .row { margin-bottom: 12px; align-items: baseline; }
 .home-bases h2 { margin: 0; font-size: 1.05rem; }
-.mode-bar { display: flex; align-items: center; gap: 10px; padding: 6px 24px; font-size: .88rem;
-  background: var(--accent-soft); border-bottom: 1px solid var(--line); }
-.mode-bar b { color: var(--accent); }
 .home .stats { margin: 0 0 8px; }
 .home > h2 { margin: 36px 0 6px; }
 .home > h2 + p.small { margin: 0 0 14px; }
+.mode-bar { display: flex; align-items: center; gap: 10px; padding: 6px 24px; font-size: .88rem;
+  background: var(--accent-soft); border-bottom: 1px solid var(--line); }
+.mode-bar b { color: var(--accent); }
 .mode-bar .mode-desc { max-width: 46rem; text-align: right; }
 @media (max-width: 900px) { .mode-bar .mode-desc { display: none; } }
 .mode-note { background: var(--open-soft); padding: 8px 12px; border-radius: 8px; font-size: .9rem; }

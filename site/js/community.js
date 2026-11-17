@@ -1,4 +1,4 @@
-// Endorsements and comments (docs/ENDORSEMENTS.md).
+// Endorsements and comments (docs/ENDORSEMENTS.md), and the diagrams one saves.
 //
 // On the live instance, the PHP server in site/api/ answers api/index.php?a=state:
 // who is signed in (ORCID), the CSRF token and the current endorsements. On a
@@ -137,6 +137,17 @@ export function createCommunity(zoo) {
     x.send(fd);
   });
   c.removeUpload = async (id) => (c.uploads = (await post('unupload', { id })).uploads);
+  // saved diagrams (private to their owner): [{id, name, s, r, sep, open, date, updated?}], newest first
+  c.diagrams = null;
+  c.listDiagrams = async () => {
+    const r = await fetch(`${API}?a=diagrams`, { credentials: 'same-origin', cache: 'no-store' });
+    const j = await r.json().catch(() => ({ error: `Server error ${r.status}` }));
+    if (!r.ok) throw new Error(j.error || `Server error ${r.status}`);
+    return (c.diagrams = j.diagrams || []);
+  };
+  // d: {name, s, r, sep, open}; a diagram of the same name (ignoring case) is replaced
+  c.saveDiagram = async (d) => (c.diagrams = (await post('diagram', d)).diagrams);
+  c.deleteDiagram = async (id) => (c.diagrams = (await post('diagram', { delete: id })).diagrams);
   c.loginUrl = () => `${API}?a=login&back=${encodeURIComponent(location.hash.slice(1) || '/')}`;
   c.logoutUrl = () => `${API}?a=logout&back=${encodeURIComponent('/')}`;
   return c;

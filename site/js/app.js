@@ -1565,6 +1565,7 @@ function viewDiagram(params) {
       </div>
       <h3>Share</h3>
       <div class="row"><button class="btn small" id="copy-link">Copy link</button><button class="btn small" id="export-svg">Export SVG</button></div>
+      ${C.live ? '<h3>My diagrams</h3><div id="my-diagrams"></div>' : ''}
     </aside>
     <div class="viewport" id="vp"><div class="stage" id="stage"></div>
       <div class="zoombar"><button class="btn small" id="z-in">+</button><button class="btn small" id="z-out">−</button><button class="btn small" id="z-fit">Fit</button></div>
@@ -1575,6 +1576,7 @@ function viewDiagram(params) {
     $('#rpick').replaceChildren(reductionPicker(redraw));
     drawSelList();
     drawDiagram();
+    drawMyDiagrams();
   };
   const drawSelList = () => {
     $('#sel-list').innerHTML = state.sel.map((id) => `<div class="sel-item"><a href="#/s/${id}">${L(idx(id))}</a>
@@ -1602,6 +1604,7 @@ function viewDiagram(params) {
     setTimeout(() => (e.target.textContent = 'Copy link'), 1500);
   };
   $('#export-svg').onclick = exportSvg;
+  setupMyDiagrams();
   setupPanZoom();
   redraw();
 }
@@ -1613,6 +1616,65 @@ const diagramParams = () => {
   p.set('open', state.open ? '1' : '0');
   return p.toString().replace(/%2C/g, ',');
 };
+
+
+// ---- saved diagrams (live instance, signed in: docs/ENDORSEMENTS.md "Saved diagrams") ----
+// A saved diagram is what its link holds: the statements (in order), the reduction and
+// the two toggles. It is private to its owner; it is shared by its link (Copy link).
+const diagramHref = (d) => `#/diagram?s=${d.s.join(',')}&r=${d.r}&sep=${d.sep ? 1 : 0}&open=${d.open ? 1 : 0}`;
+const isCurrentDiagram = (d) => d.r === state.r && !!d.sep === state.sep && !!d.open === state.open
+  && d.s.filter((id) => idx(id) !== undefined).join(',') === state.sel.join(',');
+function diagramRows(list, { current = false } = {}) {
+  return list.map((d) => {
+    const n = d.s.filter((id) => idx(id) !== undefined).length;
+    const red = Z.ridx.has(d.r) ? Z.R[Z.ridx.get(d.r)].short : d.r;
+    const on = current && isCurrentDiagram(d);
+    return `<div class="sel-item saved-diagram${on ? ' current' : ''}"><div class="dg-main"><a href="${diagramHref(d)}" title="Open this diagram (it replaces your current selection)">${esc(d.name)}</a>
+      <span class="small muted">${n} statement${n === 1 ? '' : 's'} · ${esc(red)}${n < d.s.length ? ` · ${d.s.length - n} no longer in the zoo` : ''} · ${esc(String(d.updated || d.date).slice(0, 10))}</span></div>
+      <button class="x" data-dg-del="${esc(d.id)}" title="Delete this diagram">×</button></div>`;
+  }).join('');
+}
+function drawMyDiagrams() {
+  const el = $('#my-diagrams');
+  if (!el) return;
+  if (!C.user) { el.innerHTML = `<p class="small"><a href="${C.loginUrl()}">Sign in with ORCID</a> <span class="muted">to save your diagrams.</span></p>`; return; }
+  if (C.diagrams === null) {
+    el.innerHTML = '<p class="small muted">Loading…</p>';
+    C.listDiagrams().then(drawMyDiagrams).catch((e) => { el.innerHTML = `<p class="small no">${esc(e.message)}</p>`; });
+    return;
+  }
+  const cur = C.diagrams.find(isCurrentDiagram);
+  const name = $('#dg-name')?.value ?? cur?.name ?? '';
+  el.innerHTML = `<form class="row" id="dg-save" style="margin-bottom:8px">
+      <input id="dg-name" type="text" maxlength="100" placeholder="Name of this diagram" value="${esc(name)}" style="flex:1;min-width:0" required>
+      <button class="btn small primary" type="submit" ${state.sel.length ? '' : 'disabled'}>Save</button></form>
+    <div id="dg-msg" class="small"></div>
+    <div class="sel-list">${diagramRows(C.diagrams, { current: true }) || '<span class="small muted">No saved diagram yet. Saved diagrams are private: share one with Copy link.</span>'}</div>`;
+}
+function setupMyDiagrams() {
+  const el = $('#my-diagrams');
+  if (!el) return;
+  const msg = (t, cls = 'muted') => { const m = $('#dg-msg'); if (m) m.innerHTML = t ? `<span class="${cls}">${esc(t)}</span>` : ''; };
+  el.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = $('#dg-name').value.trim();
+    if (!name) return;
+    const same = C.diagrams.find((d) => d.name.toLowerCase() === name.toLowerCase());
+    if (same && !isCurrentDiagram(same) && !confirm(`Replace your saved diagram “${same.name}”?`)) return;
+    try {
+      await C.saveDiagram({ name, s: state.sel, r: state.r, sep: state.sep, open: state.open });
+      drawMyDiagrams();
+      msg(same ? 'Replaced.' : 'Saved.', 'yes');
+    } catch (err) { msg(err.message, 'no'); }
+  });
+  el.addEventListener('click', async (e) => {
+    const b = e.target.closest('[data-dg-del]');
+    if (!b) return;
+    const d = C.diagrams.find((x) => x.id === b.dataset.dgDel);
+    if (!d || !confirm(`Delete your saved diagram “${d.name}”?`)) return;
+    try { await C.deleteDiagram(d.id); drawMyDiagrams(); } catch (err) { msg(err.message, 'no'); }
+  });
+}
 
 let lastDiagram;
 function drawDiagram() {
@@ -2528,7 +2590,7 @@ function renderAccount() {
       <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5.5-6.84V3.5a1.5 1.5 0 0 0-3 0v.66A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2Z"/></svg><span class="bell-count">${n}</span></a> ` : '';
   a.innerHTML = C.user
     ? `${bell}<button class="btn small" data-suggest="" title="Contribute facts to the database, with their sources">+ Facts</button>
-      <a class="btn small" href="#/u/${C.user.orcid}" title="Your profile: endorsements, contributions and full texts"><span class="orcid-dot"></span>${esc(C.user.name)}</a>`
+      <a class="btn small" href="#/u/${C.user.orcid}" title="Your profile: endorsements, contributions, diagrams and full texts"><span class="orcid-dot"></span>${esc(C.user.name)}</a>`
     : `<a class="btn small" id="signin" href="${C.loginUrl()}"><span class="orcid-dot"></span>Sign in</a>`;
 }
 // the sign-in link returns to the page being viewed
@@ -2550,7 +2612,7 @@ function viewProfile(orcid, params = new URLSearchParams()) {
   // facts and messages sent, which are private), full texts (one's own only: uploads are private)
   const pub = publicComments(orcid);
   const TABS = [['endorsements', `Endorsements <span class="count">${list.length}</span>`],
-    ['contributions', `Contributions${own ? '' : ` <span class="count">${pub.length}</span>`}`], ...(own ? [['texts', 'Full texts']] : [])];
+    ['contributions', `Contributions${own ? '' : ` <span class="count">${pub.length}</span>`}`], ...(own ? [['diagrams', 'Diagrams'], ['texts', 'Full texts']] : [])];
   const tab = TABS.some(([x]) => x === params.get('tab')) ? params.get('tab') : 'endorsements';
   const panel = (x) => `<section class="tab-panel" data-panel="${x}"${x === tab ? '' : ' hidden'}>`;
   m.innerHTML = `<h1>${esc(own ? C.user.name : C.name(orcid))}</h1>
@@ -2565,8 +2627,22 @@ function viewProfile(orcid, params = new URLSearchParams()) {
     ${gone ? `<p class="small muted">${gone} endorsed result${gone === 1 ? ' has' : 's have'} since been changed in the database.</p>` : ''}
     </section>
     ${panel('contributions')}<div id="contrib-root">${own ? '<p class="muted">Loading…</p>' : contributionsHtml(orcid, null)}</div></section>
+    ${own ? `${panel('diagrams')}<p class="small muted">The diagrams you saved (on the diagram page, “My diagrams”). They are private: share one by its link.</p>
+      <div id="diagrams-root" class="sel-list"><p class="muted">Loading…</p></div></section>` : ''}
     ${own ? `${panel('texts')}<div id="uploads-root"><p class="muted">Loading…</p></div></section>` : ''}`;
-  m.onclick = (e) => {
+  const drawDiagrams = () => {
+    const el = $('#diagrams-root');
+    if (el) el.innerHTML = diagramRows(C.diagrams || []) || '<p class="muted">No saved diagram yet: open a <a href="#/diagram">diagram</a> and save it under a name.</p>';
+  };
+  m.onclick = async (e) => {
+    const del = e.target.closest('[data-dg-del]');
+    if (del) {
+      const d = (C.diagrams || []).find((x) => x.id === del.dataset.dgDel);
+      if (d && confirm(`Delete your saved diagram “${d.name}”?`)) {
+        try { await C.deleteDiagram(d.id); drawDiagrams(); } catch (err) { alert(err.message); }
+      }
+      return;
+    }
     const tb = e.target.closest('[data-tab]');
     if (!tb) return;
     const x = tb.dataset.tab;
@@ -2575,6 +2651,7 @@ function viewProfile(orcid, params = new URLSearchParams()) {
     history.replaceState(null, '', `#/u/${orcid}${x === 'endorsements' ? '' : `?tab=${x}`}`);
   };
   if (own) {
+    C.listDiagrams().then(drawDiagrams).catch((err) => { const el = $('#diagrams-root'); if (el) el.innerHTML = `<p class="no">${esc(err.message)}</p>`; });
     loadUploads(params);
     C.mine().then((msgs) => { const el = $('#contrib-root'); if (el) el.innerHTML = contributionsHtml(orcid, msgs); })
       .catch((err) => { const el = $('#contrib-root'); if (el) el.innerHTML = `<p class="no">${esc(err.message)}</p>${contributionsHtml(orcid, [])}`; });

@@ -30,7 +30,10 @@ ORCID iD. Once signed in they can:
   database now knows of each fact (every profile is public; `#/u/me` goes to
   one's own);
 * **validate, invalidate and comment** the proposals of the review page (public
-  votes and comments, docs/REVIEW.md).
+  votes and comments, docs/REVIEW.md);
+* **save diagrams** (“My diagrams” on the diagram page): the current diagram
+  under a name, to reopen or delete later, also listed on the Diagrams tab of
+  their own profile. Saved diagrams are private (below).
 
 The static copy of the zoo (GitHub, `scripts/serve.mjs`) shows the endorsements
 committed in `data/endorsements.yaml` and offers no sign-in.
@@ -42,6 +45,7 @@ committed in `data/endorsements.yaml` and offers no sign-in.
 | server (PHP 7.4+, no dependencies, runs on OVH shared hosting) | `site/api/index.php` (actions), `callback.php` (ORCID redirect), `lib.php` |
 | server configuration (on the server only, never committed) | `site/api/config.php`, from `config.example.php` |
 | viewer: state, marks, result panel, comment form, profile | `site/js/community.js`, `site/js/app.js` (section "endorsements and comments") |
+| saved diagrams: viewer | `site/js/community.js` (`listDiagrams`, `saveDiagram`, `deleteDiagram`), `site/js/app.js` (“My diagrams”, after `viewDiagram`; the Diagrams tab of `viewProfile`) |
 | committed endorsements | `data/endorsements.yaml` (validated by the build, copied into `zoo.json`) |
 | download from the server | `scripts/endorsements-sync.mjs` |
 | tests | `tests/api.test.mjs` (runs the PHP server locally) |
@@ -67,6 +71,31 @@ committed in `data/endorsements.yaml` and offers no sign-in.
   limited to 10,000 characters and 30 per person and day (`feedback_per_day`).
   The export of all data needs the admin token. `<data_dir>` must be outside the
   web root (the default is two levels above `api/`).
+
+## Saved diagrams
+
+A saved diagram is exactly what the diagram's link holds: the statements in
+the order of the selection, the reduction and the two toggles (separations,
+open questions); not the zoom, nor the bases selected in the header. The server keeps
+them in `<data_dir>/diagrams/<ORCID iD>.json`
+(`[{id, name, s, r, sep, open, date, updated?}]`, `with_diagrams` in
+`lib.php`), one file per person, deleted with their last diagram.
+
+* `GET ?a=diagrams` lists one's own, newest first; `POST ?a=diagram`
+  `{name, s, r, sep, open}` saves the current one (a diagram with the same name,
+  ignoring case, is replaced and keeps its id; the viewer asks first), and
+  `{delete: id}` removes one. Both answer the new list. Writes need the session
+  and its CSRF token, as for endorsements.
+* The statements and the reduction must exist in `zoo.json` (a page older than
+  the last deploy is told to reload); names have at most 100 characters, a
+  diagram at most 500 statements, a person at most 200 diagrams
+  (`diagrams_max` in the configuration).
+* **Private**: only their owner lists them; they are not in `?a=state` nor in
+  the admin export, and `endorsements-sync.mjs` does not download them. A
+  diagram is shared by its link (“Copy link”). Saving one does not record the
+  person among the endorsers.
+* A statement later removed from the database is skipped when the diagram is
+  opened (the list says how many are no longer in the zoo).
 
 ## Setting up the live instance
 
