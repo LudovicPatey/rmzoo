@@ -103,6 +103,7 @@ amir2023:
   title: Computability of Topological Spaces
   year: 2023
   source: weihrauch-bibliography
+  read: pdf-oa
 alaevselivanov2025:
   authors:
     - Pavel Alaev
@@ -368,6 +369,7 @@ bienvenukuyper2017:
   zbmathAuthors:
     - bienvenu.laurent
     - kuyper.rutger
+  read: pdf-oa
 brattkaetal2016:
   authors:
     - Vasco Brattka
@@ -1905,6 +1907,7 @@ mylatz1992:
   year: 1992
   venue: Fachbereich Informatik, FernUniversität Hagen
   source: weihrauch-bibliography
+  read: pdf-oa
 neumann2014:
   authors:
     - Eike Neumann
@@ -2242,6 +2245,7 @@ sovine2017:
   year: 2017
   venue: Marshall University, Huntington
   source: weihrauch-bibliography
+  read: pdf-oa
 stein1989:
   authors:
     - "von Stein, Thorsten"
