@@ -3,3 +3,4 @@
 - { type: "equivalence", from: "wop-eps", to: "aca-plus", over: "rca0", refs: [ { ref: marconemontalban2009, loc: Theorem 1.7 } ] }
 - { type: equivalence, from: wop-omega-n, to: aca-prime, over: rca0, refs: [ { ref: marconemontalban2009, loc: Theorem 5.22 (Theorem 1.5) } ] }
 - { type: equivalence, from: wop-veblen, to: atr, over: rca0, refs: [ { ref: marconemontalban2009, loc: Theorem 6.17 (Friedman's Theorem 1.2) } ] }
+- { type: equivalence, from: atr, to: wop-veblen, over: rca0, refs: [ { ref: marconemontalban2009, loc: Theorem 6.17 (Friedman's Theorem 1.2) } ] }
