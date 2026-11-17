@@ -114412,7 +114412,7 @@
 - id: kreuzer2012b-9da3f13d
   ref: kreuzer2012b
   date: 2026-11-17
-  status: pending
+  status: accepted
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -114432,6 +114432,10 @@
     - "extractor confidence: medium"
     - "attributed by the paper to Chong, Slaman, Yang [20]: cite the original"
   proposed: 8103e7e48f79
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Kreuzer cites Chong-Slaman-Yang [20] (= chongslamanyang2012, Adv. Math.) for CAC Π¹₁-conservative over RCA0 + Π⁰₁-CP; Π⁰₁ bounded collection is BΣ⁰₂. Corollary 5.2 of chongslamanyang2012 states: RCA0 + CAC + BΣ⁰₂ is Π¹₁-conservative over RCA0 + BΣ⁰₂."
 - id: kreuzer2012b-31771c76
   ref: kreuzer2012b
   date: 2026-11-17
@@ -117048,3 +117052,2170 @@
   reasons:
     - principle not in the catalogue
   proposed: df46afb13c63
+- id: hirst2014-4e7f343f
+  ref: hirst2014
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: isig2
+    to: tt1
+    over: rca0
+  loc: Theorem 1
+  origin: stated
+  quote: THEOREM 1. (RCA0 ) Σ02 − IND implies TT(1).
+  paperNotation: Σ02-IND, TT(1)
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 1f0816b5f587
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 1: (RCA0) Σ⁰₂-IND implies TT(1), with proof; TT(1) is for every n and f: 2^<N -> n, matching tt1 (TT¹_<∞). Duplicate of chubbhirstmcnicholl2009 Theorem 1.2; citation merges."
+- id: hirst2014-84360b18
+  ref: hirst2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ECT(2^{<N})
+    name: Eventually constant tails for trees
+    loc: Section 1
+    definition: "If f : 2^{<N} -> n then there is a node sigma such that for all tau, alpha extending sigma there is beta properly extending alpha with f(tau)=f(beta)."
+    facts: Equivalent to ECT(N) and to Sigma^0_2 induction over RCA0 (Lemmas 3, 4, 5, Theorem 6); implies TT(1) via the standard tree.
+  reasons:
+    - principle not in the catalogue
+  proposed: b1532ab46df8
+- id: hirst2014-18fe1b56
+  ref: hirst2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: L and L+
+    name: Limit principles
+    loc: Section 2, before Lemma 8
+    definition: "L: given f : N^2 -> a such that lim_n f(x,n) exists for every x, there is a least b such that lim_n f(x,n)=b for some x. L+: the same with 'every' replaced by 'some' in the hypothesis."
+    facts: Sigma^0_2 induction implies L+ implies L (Lemma 8); L implies TT(1) (Lemma 9); L and L+ are equivalent to Sigma^0_2 induction over RCA0 (Corollary 10).
+  reasons:
+    - principle not in the catalogue
+  proposed: 1679ba34e5b6
+- id: hirst2014-5ee2f59f
+  ref: hirst2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Standard tree principle
+    name: Existence of a node whose standard tree is isomorphic to 2^{<N}
+    loc: Theorem 11
+    definition: "If f : 2^{<N} -> a then there is a node sigma such that the standard tree of color f(sigma) based at sigma is isomorphic to 2^{<N}."
+    facts: Equivalent to Sigma^0_2 induction over RCA0 (Theorem 11).
+  reasons:
+    - principle not in the catalogue
+  proposed: 54b5bc0f38a5
+- id: hirst2014-9dd9dab4
+  ref: hirst2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Null stable colorings principle
+    name: Common zero node for null stable colorings
+    loc: Theorem 12
+    definition: "For every finite sequence of null stable colorings f_i : 2^{<N} -> 2 (above every node there is a node above which f_i is constantly 0) there is sigma with f_i(sigma)=0 for all i<n."
+    facts: Equivalent to Sigma^0_2 induction over RCA0 (Theorem 12).
+  reasons:
+    - principle not in the catalogue
+  proposed: 46672aa07124
+- id: hirst2014-0a948c56
+  ref: hirst2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Simultaneous TT(1) for 2-colorings
+    name: Simultaneous pigeonhole for trees
+    loc: Theorem 13
+    definition: "For each i<n and f_i : 2^{<N} -> 2 there is a subtree S isomorphic to 2^{<N} on which every f_i is constant (also restricted to null stable f_i)."
+    facts: Equivalent to TT(1) over RCA0, also in the restriction to null stable colorings (Theorem 13).
+  reasons:
+    - principle not in the catalogue
+  proposed: dc32c748b7b8
+- id: hirst2014-91595b6f
+  ref: hirst2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: S^3 TT^2_2
+    name: Tree theorem for pairs restricted to 3-stable colorings
+    loc: Section 3, before Theorem 14
+    definition: Every 3-stable 2-coloring of comparable pairs of 2^{<N} has a monochromatic subtree isomorphic to 2^{<N}; f is 3-stable if for each sigma there is c<k such that for every sigma' extending sigma there is tau properly extending sigma' with f(sigma,rho)=c for all rho extending tau.
+    facts: Implies TT(1) over RCA0 (Theorem 14); open whether it implies Sigma^0_2 induction. It is a Pi^1_2 sentence. Possibly differs from the catalogue's stt22 (notion of stability).
+  reasons:
+    - principle not in the catalogue
+  proposed: be74a2dcf120
+- id: greenbergkuyperturetsky2019-8344e6fe
+  ref: greenbergkuyperturetsky2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Dom
+    name: Domination problem (instance f in omega^omega, solution g dominating f)
+    loc: Example 2.2
+    definition: "Instance: a function f; solution: a function g with g >=* f. Different from the catalogue's DOM (instance a set C)."
+    facts: "Cichon diagram of effective morphisms: Capture(M) -> Dom (Prop. 3.3), Dom -> Supset(M) (Prop. 3.6), Split -> Dom (Lemma 2.17), AEDiff -> Dom (Prop. 4.13), Dom -> Trace, Dom -> Supset(E) (Prop. 7.10); H(Dom) = high degrees, NL(Dom) = hyperimmune degrees."
+  reasons:
+    - principle not in the catalogue
+  proposed: dc7c65b45749
+- id: greenbergkuyperturetsky2019-31b20928
+  ref: greenbergkuyperturetsky2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Esc
+    name: Escaping problem (dual of Dom)
+    loc: Example 2.15
+    definition: "Instance: a function g; solution: a function not dominated by g. NL(Esc) = high degrees, H(Esc) = hyperimmune degrees."
+    facts: Esc -> Dom; Esc <-> EscDom (Lemma 7.17); Esc <-> GapEsc (Lemma 7.21); Esc -> Supset(E,N) (Prop. 7.14).
+  reasons:
+    - principle not in the catalogue
+  proposed: e985d7365258
+- id: greenbergkuyperturetsky2019-c9378dfb
+  ref: greenbergkuyperturetsky2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Capture(M), Pass(M), Supset(M), Spill(M)
+    name: Problems associated with the meagre ideal
+    loc: Section 3.1
+    definition: "Capture(M): given y find a Sigma^0_2 meagre set containing y; Pass(M): given a meagre set find a point outside it (H = weakly 1-generic); Supset(M): given a meagre set find a meagre superset; Spill(M): dual of Supset(M)."
+    facts: "Capture(M) -> Dom (Prop. 3.3); Pass(M) -> Supset(M) (Prop. 3.4); Dom -> Supset(M) (Prop. 3.6); Capture(M) -> Pass(N) (Prop. 3.12); Supset(M) -> Pass(M)*Dom (Prop. 4.9); Supset(M) -> Supset(N) (Thm 3.18); Corollary 4.15: weakly meagre engulfing iff high or DNR; not low for meagre sets iff hyperimmune or DNR."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9afa03ca11c6
+- id: greenbergkuyperturetsky2019-8748ee81
+  ref: greenbergkuyperturetsky2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Capture(N), Pass(N), Supset(N), Spill(N)
+    name: Problems associated with the null ideal (Schnorr tests)
+    loc: Section 3.3
+    definition: Same as for M with Pi^0_2 null sets given as Schnorr tests (with measures); H(Pass(N)) = oracles computing a Schnorr random.
+    facts: "Capture(N), Pass(N) -> Supset(N) (Prop. 3.9); Trace <-> Supset(N) (Thm 3.14); Cor. 3.16: strongly null engulfing iff high; Cor. 3.17: low for Schnorr tests iff computably traceable."
+  reasons:
+    - principle not in the catalogue
+  proposed: 55208439f0b9
+- id: greenbergkuyperturetsky2019-472a8a1f
+  ref: greenbergkuyperturetsky2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: h-Trace
+    name: Tracing problem
+    loc: Section 3.5
+    definition: "Instance: f in omega^omega; solution: an h-trace (slalom with |T(n)|<=h(n)) tracing f almost everywhere; equivalent for all order functions h (Lemma 3.13)."
+    facts: Dom -> Trace; H(Trace) = high degrees; NL(Trace) = not computably traceable; Trace <-> Trace^omega (Lemma 3.21); Supset(CND,M) -> Trace (Prop. 3.22).
+  reasons:
+    - principle not in the catalogue
+  proposed: aabb156f158d
+- id: greenbergkuyperturetsky2019-759b1732
+  ref: greenbergkuyperturetsky2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: IOE, AEDiff
+    name: Infinitely often equal / almost everywhere different problems
+    loc: Section 4.4
+    definition: "AEDiff: given f find g eventually different from f; IOE is its dual: given g find f agreeing with g infinitely often."
+    facts: NL(IOE) = high or DNR (Prop. 4.11, Kjos-Hanssen, Merkle, Stephan); Capture(M) -> AEDiff -> Dom (Props 4.12, 4.13); Pass(M) -> IOE*IOE (Prop. 4.14); Supset(E,N) <-> IOE (Prop. 7.8).
+  reasons:
+    - principle not in the catalogue
+  proposed: 988b261ad370
+- id: greenbergkuyperturetsky2019-e4cd64b1
+  ref: greenbergkuyperturetsky2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Split
+    name: Splitting problem
+    loc: Example 2.16
+    definition: "Instance: infinite subset a of omega; solution: infinite b splitting a. H(Split) = oracles computing a bi-immune set; NL(Split) = oracles computing r-cohesive sets."
+    facts: "Split -> Dom (Lemma 2.17): every high degree computes a bi-immune set; every r-cohesive set has hyperimmune degree."
+  reasons:
+    - principle not in the catalogue
+  proposed: 54f5c22dbe8d
+- id: greenbergkuyperturetsky2019-fdbb42e7
+  ref: greenbergkuyperturetsky2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Supset(E), Supset(E,N), Supset(KN)
+    name: Problems for the ideal generated by compact null sets (Kurtz)
+    loc: Section 7
+    definition: "Supset(E): given a null Sigma^0_2 set find a null Sigma^0_2 superset; Supset(E,N): superset required only to be null."
+    facts: "Supset(E) <-> Supset(M) up to finite sequential composition (Thm 7.1); Thm 7.3: low for Sigma^0_2 null sets iff hyperimmune-free and not DNR; Thm 7.6 (Greenberg-Miller): low for Kurtz tests iff low for Kurtz randomness iff hyperimmune-free and not DNR."
+  reasons:
+    - principle not in the catalogue
+  proposed: f57e9b0dafd5
+- id: greenbergkuyperturetsky2019-c26b6427
+  ref: greenbergkuyperturetsky2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Close(p), Far(p), IOE(h)
+    name: Besicovitch-distance and bounded IOE problems
+    loc: Section 6.2, 6.3
+    definition: "Close(p): given x find y with Besicovitch distance < p; Far(p) its dual; IOE(h) is IOE restricted to functions bounded by h."
+    facts: "Theorem 6.15 (Monin-Nies): for computable p in (1/2,1), Far(p) is equivalent (in the weakened morphism order) to IOE(2^{2^n}); yields Monin's theorem 6.16 (Gamma(d)<1/2 implies Gamma(d)=0)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 2679b27a3754
+- id: fujiwarahiguchikihara2014-ad8bf32c
+  ref: fujiwarahiguchikihara2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: B(·)H(·)G(·)-M (24 variants, e.g. B′′H′G′′-M, B′H′′G′-M, BH′′G′′-M)
+    name: Marriage theorems with smallness and Hall conditions
+    loc: Section 1.3
+    definition: If a bipartite graph R(B,G) satisfies the smallness conditions on boys (none, locally finite B′, highly recursive B′′) and girls (G, G′, G′′) and a Hall condition (H, expanding H′, computable expanding H′′), then it has an injective selection (matching).
+    facts: "Table 1, Theorems 2.13 and 2.15: variants with B′′ (boys highly recursive) are equivalent to WKL over RCA0 (Lemma 2.1, Lemma 2.4, Hirst); variants with B′ or B (not B′′) and not G′′+H′′ are equivalent to ACA over RCA0 (Lemma 2.3, Lemma 2.6, Proposition 2.14); B′′H′′G′′-M is provable in RCA0 (Kierstead) and BH′′G′′-M in RCA0 + Σ03-IND (Theorem 2.7). Theorem 4.2: Weihrauch degrees KL, Lim_{N^N}, WKL, id for the respective groups."
+  reasons:
+    - principle not in the catalogue
+  proposed: 83e3b2bae994
+- id: fujiwarahiguchikihara2014-383bae85
+  ref: fujiwarahiguchikihara2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: B′H_cb G-M etc. (constant bounded Hall condition H_cb)
+    name: Marriage theorems with constant bounded Hall condition
+    loc: Section 1.3 and Section 3.1
+    definition: There is k such that |X| ≤ |R[X]| ≤ |X|+k for all finite X ⊆ B.
+    facts: "Theorem 3.1: B′H_cb G-M provable in RCA0. Theorem 4.3: B′H_cb G-M and B′H_cb G′-M are Weihrauch equivalent to Lim_N; B′H_cb G′′-M and B′′H_cb G′′-M to id. Theorem 4.4: WKL_{<ω} ≤W B′′H_cb G′-M ≤W B′′H_cb G-M ≤W inf(Lim_N, WKL)."
+  reasons:
+    - principle not in the catalogue
+  proposed: a36085da6887
+- id: fujiwarahiguchikihara2014-e0726d23
+  ref: fujiwarahiguchikihara2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Seq(τ)
+    name: Sequential version of a marriage theorem
+    loc: Section 3.2.1
+    definition: "Sequential version: for every sequence of instances there is a sequence of solutions."
+    facts: "Theorems 3.2, 3.3: Seq(B′H_cb G-M), Seq(B′H_cb G′-M) equivalent to ACA over RCA0; Seq(B′′H_cb G-M), Seq(B′′H_cb G′-M) equivalent to WKL over RCA0 (Theorem 3.3); Seq(B′H_cb G′′-M) and Seq(B′′H_cb G′′-M) provable in RCA0 (Theorem 3.5, Corollary 3.7)."
+  reasons:
+    - principle not in the catalogue
+  proposed: f4f30716bb73
+- id: fujiwarahiguchikihara2014-a56d9384
+  ref: fujiwarahiguchikihara2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WKL_{<ω}, WKL_n (with a star/question mark lost in extraction)
+    name: Weak König lemma for trees with finitely many branching nodes
+    loc: Section 4.3
+    definition: WKL restricted to infinite binary trees with finitely many (resp. fewer than n) branching nodes.
+    facts: "LLPO ≤W WKL_2; every WKL_n is reducible to an iterated use of LLPO; Theorem 4.4: WKL_{<ω} ≤W B′′H_cb G′-M."
+  reasons:
+    - principle not in the catalogue
+  proposed: f00e41eff798
+- id: bergerishiharaschuster2012-267e6496
+  ref: bergerishiharaschuster2012
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wkl
+    to: llpo
+    over: bish
+  loc: Corollary 20
+  origin: stated
+  quote: Corollary 20. WKL implies LLPO.
+  paperNotation: WKL, LLPO (sentences, for trees / simply existential assertions)
+  confidence: medium
+  concerns: The paper's WKL (every infinite detachable binary tree has an infinite path) and LLPO (not (A0 and A1) implies not A0 or not A1 for simply existential A0, A1) are constructive sentences; the catalogue lists wkl and llpo as problems. Proved in Bishop-style mathematics without dependent choice.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 61af4cf280ed
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 20 (p. 75): WKL implies LLPO, proved via Proposition 19 and Lemma 18 in Bishop-style mathematics without countable choice (Section 1), hence over bish. The paper's WKL (every infinite detachable binary tree has an infinite path) and LLPO (¬(A0∧A1) ⇒ ¬A0∨¬A1 for simply existential A0, A1) are the zoo's wkl and llpo read as sentences, as in the existing bish results (veldman2025 Theorem 2.10, diener2018 Proposition 1.4.5): duplicate, adds a citation."
+- id: bergerishiharaschuster2012-69501708
+  ref: bergerishiharaschuster2012
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wlpo
+    to: llpo
+    over: bish
+  loc: Lemma 17
+  origin: stated
+  quote: Lemma 17. WLPO implies LLPO.
+  paperNotation: WLPO, LLPO
+  confidence: medium
+  concerns: The paper attributes the result to Bridges-Richman [8, Chapter 1, Problem 1] and gives a proof. LLPO is catalogued as a problem; the paper's is the constructive sentence.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: a2b2e0a14f8c
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Lemma 17 (p. 74), with proof in the paper (also Bridges–Richman, Chapter 1, Problem 1). WLPO (¬A∨¬¬A for simply existential A) and LLPO for simply existential assertions are the sequence forms of the zoo's wlpo and llpo. Intuitionistic logic only: over bish."
+- id: bergerishiharaschuster2012-cc23a3b7
+  ref: bergerishiharaschuster2012
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: llpo
+    to: mpor
+    over: bish
+  loc: Corollary 23
+  origin: stated
+  quote: Corollary 23. Each of LLPO and MP implies WLLPO.
+  paperNotation: WLLPO (called MP-or in Ishihara 1993 and LLPE in Mandelkern)
+  confidence: medium
+  concerns: WLLPO is the Pi01 De Morgan law; identified with catalogue mpor (alias WLLPO, definition says it is the De Morgan law for Pi01 formulas and implied by LLPO and MP). Result also cited from [20] and [14].
+  reasons:
+    - "extractor confidence: medium"
+  proposed: f389815f0d99
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 23 (p. 78): LLPO implies WLLPO, via LLPO′ and WLLPO′ (Lemma 22). WLLPO = ¬(¬A0∧¬A1) ⇒ ¬¬A0∨¬¬A1, which the paper identifies with Ishihara's MP∨ and Mandelkern's LLPE; WLLPO′ is the form of the zoo's mpor definition (sequence with at most one 1, ¬∀n a_n=0 ⇒ one parity all zero). Over bish."
+- id: bergerishiharaschuster2012-089bc9f0
+  ref: bergerishiharaschuster2012
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: mp
+    to: mpor
+    over: bish
+  loc: Corollary 23
+  origin: stated
+  quote: Corollary 23. Each of LLPO and MP implies WLLPO.
+  paperNotation: WLLPO
+  confidence: medium
+  concerns: Same identification of WLLPO with mpor as for the other half of Corollary 23.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: aecf3519b81e
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 23 (p. 78): MP implies WLLPO (= MP∨, zoo mpor), via MP′ and WLLPO′ (Lemma 22). Duplicate of an existing ai-derived bish fact (from diener2018); adds a paper citation."
+- id: bergerishiharaschuster2012-e371dedf
+  ref: bergerishiharaschuster2012
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: lpo
+    to: mp-wlpo
+    over: bish
+  loc: Section 3, remark after the definitions of LPO, WLPO, MP
+  origin: stated
+  quote: It is plain that LPO is equivalent to the conjunction of WLPO and MP.
+  paperNotation: LPO, WLPO, MP
+  confidence: medium
+  concerns: Stated as plain, no numbered proof. LPO is catalogued as a problem; the paper's LPO is the constructive sentence (A or not A for simply existential A).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 1c6627f191b9
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Stated on p. 68: 'It is plain that LPO is equivalent to the conjunction of WLPO and MP' (immediate: given A simply existential, WLPO gives ¬A or ¬¬A, and MP turns ¬¬A into A; conversely LPO gives both). Sentence forms of the zoo's lpo, wlpo, mp; conjunction id mp-wlpo (sorted). Over bish."
+- id: bergerishiharaschuster2012-13ac5390
+  ref: bergerishiharaschuster2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Pi01-DC-or
+    name: Dependent choice for disjunctions of simply universal assertions
+    loc: Section 2 (definition of DC-or) and Section 6, Theorem 26
+    definition: "DC-or: for all u (A0(u) or A1(u)) implies there is a binary sequence alpha with A_{alpha(n)}(alpha|n) for all n; Pi01-DC-or restricts to simply universal A0, A1 (Pi01 assertions)."
+    facts: "Theorem 26: WKL implies Pi01-DC-or. Theorem 27 / Corollary 28: WKL is equivalent to LLPO + Pi01-DC-or (unwinding of [15, 16.5], without coding). Corollary 2: Gamma-DC-or implies Gamma-CC-or for Gamma = Delta0, Sigma01, Pi01; Corollary 5: converse. Proposition 3: Delta0-DC-or and Delta0-CC-or provable."
+  reasons:
+    - principle not in the catalogue
+  proposed: 7c0fdc6bff36
+- id: bergerishiharaschuster2012-aff27822
+  ref: bergerishiharaschuster2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CC-or / DC-or
+    name: Countable choice and dependent choice for disjunctions
+    loc: Section 2
+    definition: "CC-or: for all n (A0(n) or A1(n)) implies there is alpha with A_{alpha(n)}(n) for all n. DC-or as above."
+    facts: "Proposition 1: DC-or implies CC-or. Proposition 4: CC-or implies DC-or (using CODE and Delta0-DC-or)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 6ee33bb4779f
+- id: bergerishiharaschuster2012-40946881
+  ref: bergerishiharaschuster2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: 1-Konig
+    name: 1-Kőnig
+    loc: Section 5, formula (4)
+    definition: "For decidable D0, D1: for all n0 n1 (D0(n0) or D1(n1)) implies (for all n0 D0(n0)) or (for all n1 D1(n1))."
+    facts: "Proposition 21: LLPO and 1-Kőnig are equivalent (LLPO to 1-Kőnig indicated in Akama et al.)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 977226527ad5
+- id: bergerishiharaschuster2012-906d65ef
+  ref: bergerishiharaschuster2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WSL
+    name: Weak spread lemma
+    loc: Section 6
+    definition: Every spread (tree in which every node has an immediate successor in the tree) has an infinite path.
+    facts: "WKL implies WSL; Proposition 29: WSL is provable constructively; WSL is equivalent to Delta0-DC-or."
+  reasons:
+    - principle not in the catalogue
+  proposed: 6464adfe9db8
+- id: bergerishiharaschuster2012-ea3a686b
+  ref: bergerishiharaschuster2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WKL' and FAN'
+    name: Contrapositives of WKL and FAN
+    loc: Section 4
+    definition: "WKL': if a tree has no infinite path, then it is not infinite. FAN': if a tree is infinite, then it is not well-founded."
+    facts: "Corollary 12: WKL' + MP, FAN + MP and FAN' + MP are equivalent, and equivalent to: if a tree has no infinite path then it is finite. Proposition 14: WKL iff WKL' + (§); WKL' iff FAN' + (flat); WKL iff FAN' + (dagger). Corollary 15: WKL iff FAN + (dagger); under (dagger), WKL, WKL', FAN', FAN are equivalent."
+  reasons:
+    - principle not in the catalogue
+  proposed: 36ae8841b523
+- id: bergerishiharaschuster2012-5eff07b3
+  ref: bergerishiharaschuster2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: tree-forms of LPO, WLPO, MP, LLPO, WLLPO
+    name: Omniscience principles for binary trees
+    loc: Proposition 8, Proposition 10, Proposition 19
+    definition: "LPO: every tree is finite or infinite. WLPO: every tree is infinite or not infinite. MP: if a tree is not infinite it is finite; equivalently (*): a tree with no infinite path is well-founded. LLPO: T infinite implies T0 infinite or T1 infinite."
+    facts: Proposition 8 (items 1-3), Proposition 10 (MP iff (*)), Proposition 19 (LLPO iff (3)); WLLPO restated as WLLPO0 equivalent (Lemma 22) and equivalent to Proposition 24 variants; MP equivalent to variants in Proposition 25.
+  reasons:
+    - principle not in the catalogue
+  proposed: c95244dace1e
+- id: bergerishiharaschuster2012-d0c68d36
+  ref: bergerishiharaschuster2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: P(Gamma, Delta)
+    name: Uniform formulation of omniscience principles
+    loc: Section 7, Lemma 30, Corollary 31, Proposition 32
+    definition: "P(Gamma, Delta): (C implies D) implies (not C or D) for C in Gamma, D in Delta; Gamma-LEM, Gamma-DML restrictions of excluded middle and De Morgan."
+    facts: LPO, WLPO, LLPO, WLLPO are Sigma01-LEM, Pi01-LEM, Sigma01-DML, Pi01-DML; LLPO iff P(Sigma01, Pi01); WLLPO iff P(Pi01, Xi01); WLPO iff P(Sigma01, Psi) iff P(Sigma01, Xi01).
+  reasons:
+    - principle not in the catalogue
+  proposed: 4207ac9fa500
+- id: juralevinmarkkanen2014-9c07d3d2
+  ref: juralevinmarkkanen2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Domatic 3-partitions (sequence form)
+    name: Existence of the set of indices of graphs having a domatic 3-partition
+    loc: Corollary 5.2
+    definition: "For every sequence of graphs <G_i : i in N> there is a set Z such that for all i, i in Z iff G_i has a domatic 3-partition (a function f: V -> 3 such that every vertex is adjacent to a vertex of each other class, all classes nonempty, Definition 2.3)."
+    facts: "Corollary 5.2: over RCA0 this is equivalent to Pi^1_1 comprehension (pi11ca). Proved from Simpson's Theorem 5.1 (Lemma VI.1.1) via the tree-to-graph construction of Theorem 4.5; the paper only sketches the derivation. Analogue of Gasarch-Hirst Theorem 20 for Hamilton paths."
+  reasons:
+    - principle not in the catalogue
+  proposed: d244b89d9225
+- id: juralevinmarkkanen2014-b10e2d0b
+  ref: juralevinmarkkanen2014
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (2) of Theorem 5.1
+    name: Existence of the set of indices of trees having a path
+    loc: Theorem 5.1 (Simpson, Lemma VI.1.1)
+    definition: "For any sequence of trees <T_k : k in N>, T_k subset of N^{<N}, there exists a set X such that for all k, k in X iff T_k has a path."
+    facts: "Cited from Simpson [9]: equivalent to Pi^1_1 comprehension (pi11ca) over RCA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: bb22c6737bf8
+- id: brattka2005-db5b396c
+  ref: brattka2005
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: C_k
+    name: Complete Σ⁰_{k+1}-computable function on Baire space (Tarski–Kuratowski)
+    loc: Definition 5.3
+    definition: C_k(p)(n) = 0 iff (exists n_k)(forall n_{k-1})... <p<n,n_1,...,n_k>> = 0, else 1; the map NN -> NN.
+    facts: "Theorem 5.5: F <=_c C_k iff F is Sigma^0_{k+1}-computable (and <=_t iff measurable); Theorem 7.6 extends this to functions on computable metric spaces under realizer reducibility. Lemma 5.9: C_{k+1} = C_1 o F_k. Proposition 8.5: C_1 <=_c c_{k+1} <_c C_{k+1}."
+  reasons:
+    - principle not in the catalogue
+  proposed: 16eceb6beea1
+- id: brattka2005-76439623
+  ref: brattka2005
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: c_k
+    name: Characteristic function of a Wadge-complete Sigma^0_k set (small counterpart of C_k)
+    loc: Definition 8.4
+    definition: c_k(p) = 0 iff (exists n_k)(forall n_{k-1})... <p<n_1,...,n_k>> = 0, else 1; a point (0 or 1), corresponds to LPO-type principles in constructive mathematics.
+    facts: "Sigma^0_{k+1}-computable; Proposition 8.5: C_1 <=_c c_{k+1} <_c C_{k+1} and C_k <_c (C_k, c_{k+1}) <_c C_{k+1}. Remark after Prop. 8.5: the c_k correspond to the LPO-principles of constructive mathematics."
+  reasons:
+    - principle not in the catalogue
+  proposed: 757c060d23e5
+- id: amir2023-9ff20113
+  ref: amir2023
+  part: 1/2 (pages 1–100)
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SCT_{(X,A)}
+    name: Strong computable type problem of a compact pair (X, A)
+    loc: Definition 4.4.4
+    definition: "For a compact pair (X, A) (compact metrizable X with compact A subset of X) in the Hilbert cube Q: the function taking a copy (Y, B) of (X, A) in Q, given in the upper Vietoris topology (i.e. as a semicomputable pair), and outputting Y in the Vietoris topology (i.e. as a computable compact set). Measures the non-uniformity of 'semicomputable implies computable'."
+    facts: "Theorem 4.4.1: if X is not a singleton, C_N <=^t_sW SCT_(X,A) (strong Weihrauch reducibility relative to some oracle), and C_N <=_sW SCT_(X,A) if (X,A) has a semicomputable copy. Theorem 4.4.2: if (X,A) is minimal for some Sigma^0_2 invariant (in the upper Vietoris topology) then SCT_(X,A) <=_W C_N. Whether SCT_(X,A) <=_W C_N for every pair with strong computable type is left open (Question 6.8.2, stated in the other part). Remark in the text: sW reduction SCT <=_sW C_N is impossible since C_N has countably many possible outputs while SCT has uncountably many. The paper's C_N is closed choice on N (Definition 4.4.5), matching catalogue cn, but SCT is not in the catalogue so no fact is entered."
+  reasons:
+    - principle not in the catalogue
+  proposed: 3727b2472a6b
+- id: amir2023-fc9e64de
+  ref: amir2023
+  part: 1/2 (pages 1–100)
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Max
+    name: Maximum of a finite subset of N
+    loc: Proof of Theorem 4.4.1 (cited from Brattka-Gherardi-Pauly [15], Theorem 7.13)
+    definition: The problem sending a non-empty finite subset of N, represented by its characteristic function, to its maximal element.
+    facts: "Cited: Max is strongly Weihrauch equivalent to C_N (Theorem 7.13 of [15], used in the proof of Theorem 4.4.1). Max is not in the catalogue."
+  reasons:
+    - principle not in the catalogue
+  proposed: 3677bf56630d
+- id: solomon2001-49d9e168
+  ref: solomon2001
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Mal'tsev's Theorem
+    name: Order types of countable ordered groups (Mal'tsev)
+    loc: Theorem 3.6(2)
+    definition: Every countable (fully) ordered group G has order type Z^alpha Q^epsilon for some well order alpha and epsilon in {0,1}.
+    facts: "Equivalent over RCA0 to Pi11-CA0 (Theorem 3.6), and so is its restriction to ordered abelian groups (statement (3)); Lemma 4.9: the abelian version implies ACA0 over RCA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: ce5310a846d0
+- id: solomon2001-6142d8e1
+  ref: solomon2001
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Mal'tsev's Theorem for abelian groups
+    name: Order types of countable ordered abelian groups
+    loc: Theorem 3.6(3)
+    definition: Every countable ordered abelian group has order type Z^alpha Q^epsilon for a well order alpha and epsilon in {0,1}.
+    facts: Equivalent to Pi11-CA0 over RCA0 (Theorem 3.6); implies ACA0 over RCA0 (Lemma 4.9) and the existence of W(X) for every linear order (Proposition 4.4).
+  reasons:
+    - principle not in the catalogue
+  proposed: 5a14d5cd03e6
+- id: solomon2001-e16f2f2d
+  ref: solomon2001
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: W(X) exists
+    name: Existence of the well ordered initial segment of every linear order
+    loc: Definition 3.2, Proposition 4.4
+    definition: For every linear order X, the set W(X) of elements x with no infinite descending sequence starting at x exists.
+    facts: Provable in Pi11-CA0; implied over RCA0 by Mal'tsev's theorem for abelian ordered groups (Proposition 4.4).
+  reasons:
+    - principle not in the catalogue
+  proposed: 9a656e1a3c8c
+- id: solomon2001-ce4a3ceb
+  ref: solomon2001
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Theorem 2.2(2)
+    name: Path-existence set for a sequence of trees
+    loc: Theorem 2.2
+    definition: For any sequence of trees <T_k>, there is a set X such that k in X iff T_k has a path.
+    facts: Equivalent to Pi11-CA0 over RCA0 (cited from Simpson 1999).
+  reasons:
+    - principle not in the catalogue
+  proposed: d1cf53493f49
+- id: solomon2001-ed3d7e8e
+  ref: solomon2001
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Theorem 4.8(2)
+    name: Strong comparison of well orders implies alpha+1 <=s beta
+    loc: Theorem 4.8 (Hirst 1999)
+    definition: If alpha, beta are well orders with alpha <=s beta and beta not <=s alpha then alpha+1 <=s beta.
+    facts: Equivalent to ACA0 over RCA0 (Hirst 1999, cited).
+  reasons:
+    - principle not in the catalogue
+  proposed: 8621fd062150
+- id: valenti2026-a3dffc6b
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: lim.x.(cn.jump)
+    to: ep
+    over: w
+  loc: Theorem 3.4
+  origin: stated
+  quote: EP ≡W DEP ≡W lim × C′N
+  paperNotation: EP ≤W lim × C′N
+  confidence: medium
+  concerns: Upper bound proved in Theorem 3.4 via lim * C′N ≡W lim × C′N (Lemma 3.3).
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: e1c74c4e401f
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Theorem 3.4 states EP ≡W DEP ≡W lim × C′N (quote is a paraphrase of it); upper bound EP ≤W lim × C′N. lim.x.(cn.jump) is the product of lim and the jump of C_N, as in the paper. Already in the database as part of an equivalence (duplicate).
+- id: valenti2026-8d5de3fb
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: lim.x.(cn.jump)
+    to: dep
+    over: w
+  loc: Theorem 3.4
+  origin: stated
+  quote: EP ≡W DEP ≡W lim × C′N
+  paperNotation: DEP ≤W lim × C′N
+  confidence: medium
+  concerns: As above.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+  proposed: 93fd6b87d1e3
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 3.4: DEP ≡W lim × C′N, so DEP ≤W lim × C′N. Duplicate of existing equivalences."
+- id: valenti2026-49dba3b3
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: ep
+    property: idempotent
+    value: true
+  loc: Corollary 3.6
+  origin: stated
+  quote: Corollary 3.6. Both EP and DEP are closed under parallel product, but not parallelizable nor closed
+  paperNotation: closed under parallel product
+  confidence: medium
+  concerns: Closed under parallel product read as P × P ≤W P, i.e. idempotent.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 1e4b48c157a5
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 3.6: EP closed under parallel product (EP × EP ≤W EP) = idempotent. Duplicate."
+- id: valenti2026-0c77f914
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: dep
+    property: idempotent
+    value: true
+  loc: Corollary 3.6
+  origin: stated
+  quote: Corollary 3.6. Both EP and DEP are closed under parallel product, but not parallelizable nor closed
+  paperNotation: closed under parallel product
+  confidence: medium
+  concerns: As for EP.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 7ac423d20791
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 3.6: DEP closed under parallel product = idempotent. Duplicate."
+- id: valenti2026-764f9c3c
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: orientep
+    to: c3
+    over: w
+  loc: Section 4, remark after Theorem 4.5
+  origin: stated
+  quote: we obtain e.g. that C3 ̸≤W OrientEP, since C3 ̸≤W C′2 [6, Prop. 7.4].
+  paperNotation: C3 ≰W OrientEP
+  confidence: medium
+  concerns: Symbol ≰ garbled in extraction; direction clear from the argument via C3 ≰W C′2.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 2e43281e643c
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Paper states C3 ≰W OrientEP as a corollary of Theorem 4.5 (OrientEP ≤W C′2) and C3 ≰W C′2 [6, Prop. 7.4]; the direction is forced by the argument. Loc aligned with the existing entry (duplicate).
+- id: valenti2026-85ff5bb5
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: orientep
+    to: llpo-j-meet-sort
+    over: w
+  loc: Theorem 4.11
+  origin: stated
+  quote: Theorem 4.11. OrientEP <W C′2 ⊓ Sort2 .
+  paperNotation: C'_2 ⊓ Sort_2 ≰W OrientEP
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: af57efbc5744
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 4.11: OrientEP <W C′2 ⊓ Sort2; the proof (suppose C′2 ⊓ Sort2 ≤W OrientEP towards a contradiction) gives the strict part. llpo-j-meet-sort is the zoo meet C2′ ⊓ Sort2 (paper Section 2.1). Duplicate."
+- id: valenti2026-0dc8d371
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: llpo-j-meet-sort
+    to: orientep
+    over: w
+  loc: Theorem 4.11
+  origin: stated
+  quote: Theorem 4.11. OrientEP <W C′2 ⊓ Sort2 .
+  paperNotation: OrientEP <W C'_2 ⊓ Sort_2
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 18b5500b973b
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Theorem 4.11, reduction part OrientEP ≤W C′2 ⊓ Sort2. Duplicate.
+- id: valenti2026-661b22d3
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: sort
+    to: orientep
+    over: w
+  loc: Theorem 4.8
+  origin: stated
+  quote: Theorem 4.8. OrientEP ≤W Sort2 .
+  paperNotation: OrientEP ≤W Sort_2
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: b0342f4f0781
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 4.8: OrientEP ≤W Sort2; the paper Sort2 (0^n1^ω if exactly n zeros, else 0^ω) is the zoo sort (SORT). Duplicate."
+- id: valenti2026-399d2e5e
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: llpo.jump
+    to: orientep
+    over: w
+  loc: Theorem 4.5
+  origin: stated
+  quote: Theorem 4.5. OrientEP ≤W C′2 .
+  paperNotation: OrientEP ≤W C'_2
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 1fd9b2690511
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 4.5: OrientEP ≤W C′2; C2 ≡sW LLPO, so C′2 ≡W llpo.jump. Duplicate."
+- id: valenti2026-fff29a65
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: cn
+    to: orientep
+    over: w
+  loc: Proposition 4.3
+  origin: stated
+  quote: Proposition 4.3. OrientEP ̸≤W CN .
+  paperNotation: OrientEP ≰W C_N
+  confidence: high
+  concerns: Symbol ≰ garbled; proof assumes OrientEP ≤W C_N towards a contradiction.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 4fd0b9b0eb14
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Proposition 4.3: OrientEP ≰W C_N (≰ checked on the rendered page 11; proof by contradiction). Duplicate."
+- id: valenti2026-3b010922
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: orientep
+    to: lim2
+    over: w
+  loc: Proposition 4.2
+  origin: stated
+  quote: Proposition 4.2. lim2 ≤W OrientEP.
+  paperNotation: lim2 ≤W OrientEP
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: d113f5c9610e
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Proposition 4.2: lim2 ≤W OrientEP (checked on page 11). Duplicate."
+- id: valenti2026-57b13f56
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: dep
+    property: compose-closed
+    value: false
+  loc: Corollary 3.6
+  origin: stated
+  quote: Corollary 3.6. Both EP and DEP are closed under parallel product, but not parallelizable nor closed
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 647f51ff10a7
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 3.6: DEP not closed under compositional product (proof: Ĉ′N ≡W lim′ ≡W lim ∗ lim, and lim′ ≰W DEP by Cor. 3.5). Duplicate."
+- id: valenti2026-077898e0
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: ep
+    property: compose-closed
+    value: false
+  loc: Corollary 3.6
+  origin: stated
+  quote: Corollary 3.6. Both EP and DEP are closed under parallel product, but not parallelizable nor closed
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 22f712cbb2d4
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 3.6: EP not closed under compositional product. Duplicate."
+- id: valenti2026-77cb5301
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: dep
+    property: parallelizable
+    value: false
+  loc: Corollary 3.6
+  origin: stated
+  quote: Corollary 3.6. Both EP and DEP are closed under parallel product, but not parallelizable nor closed
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 5c992a24667c
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 3.6: DEP not parallelizable (hat on Ĉ′N checked on the rendered page). Duplicate."
+- id: valenti2026-5ab76f4d
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: ep
+    property: parallelizable
+    value: false
+  loc: Corollary 3.6
+  origin: stated
+  quote: Corollary 3.6. Both EP and DEP are closed under parallel product, but not parallelizable nor closed
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: c7ab61810089
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 3.6: EP not parallelizable. Duplicate."
+- id: valenti2026-fe4e5b24
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: dep
+    to: lim.jump
+    over: w
+  loc: Corollary 3.5
+  origin: stated
+  quote: Corollary 3.5. lim′ ̸≤W EP and lim′ ̸≤W DEP.
+  paperNotation: lim' ≰W DEP
+  confidence: high
+  concerns: As above.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 2293cfff3dc9
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 3.5: lim′ ≰W DEP (≰ checked on rendered page 11; proof: computable lim′ instance with solution ∅″ vs Δ⁰₂ solutions). Duplicate."
+- id: valenti2026-b1550178
+  ref: valenti2026
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: ep
+    to: lim.jump
+    over: w
+  loc: Corollary 3.5
+  origin: stated
+  quote: Corollary 3.5. lim′ ̸≤W EP and lim′ ̸≤W DEP.
+  paperNotation: lim' ≰W EP
+  confidence: high
+  concerns: The symbol is garbled as a stray character before ≤W; the proof (computable instance of lim′ with solution ∅′′ versus Δ⁰₂ solutions) confirms non-reducibility.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 45361db054f0
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 3.5: lim′ ≰W EP (≰ checked on rendered page 11). Duplicate."
+- id: valenti2026-3c2717ae
+  ref: valenti2026
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: EPstart, DEPstart
+    name: Eulerian path with prescribed start vertex (undirected, directed)
+    loc: Theorem 3.2
+    definition: Input (G, v) with G a countable (directed) graph having a one-way Eulerian path starting from v; output such a path starting from v.
+    facts: EPstart ≡W DEPstart ≡W lim (Theorem 3.2).
+  reasons:
+    - principle not in the catalogue
+  proposed: 841a314dcc7a
+- id: valenti2026-c09d4156
+  ref: valenti2026
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: EP restricted to locally finite graphs
+    name: One-way Eulerian paths in locally finite graphs
+    loc: Corollary 2.6
+    definition: The restriction of EP to locally finite graphs.
+    facts: Weihrauch equivalent to lim (Corollary 2.6); the directed version too (remark after the corollary).
+  reasons:
+    - principle not in the catalogue
+  proposed: 86a10a056520
+- id: valenti2026-a0179ec9
+  ref: valenti2026
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Deg, DegLF
+    name: Degree function of a graph vertex (general, locally finite)
+    loc: Section 2.2, before Proposition 2.5
+    definition: Deg takes a graph G and a vertex v and returns deg_G(v) in N ∪ {∞}; DegLF is its restriction to locally finite graphs.
+    facts: DegLF ≡W C_N <W Deg ≡W sTC_N (Proposition 2.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: fa3066578916
+- id: valenti2026-12eb5469
+  ref: valenti2026
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: OrientEP2
+    name: Orienting the edges of a graph with a two-way Eulerian path
+    loc: Definition 5.5
+    definition: Given an undirected graph G in dom(EP2), return an orientation D in dom(DEP2) (the map (v,w) -> {v,w} a computable bijection from arcs onto edges).
+    facts: OrientEP2 is computable (Theorem 5.6).
+  reasons:
+    - principle not in the catalogue
+  proposed: a421dacfc379
+- id: valenti2026-c5610218
+  ref: valenti2026
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: lim_N
+    name: Limit on the natural numbers
+    loc: Section 2.1
+    definition: limit of a convergent sequence in the discrete space N.
+    facts: lim_2 <W lim_N <W lim and C_N ≡W lim_N, cited from [4] and [5].
+  reasons:
+    - principle not in the catalogue
+  proposed: c1f520999cd2
+- id: chong2020-f5cb25bf
+  ref: chong2020
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: bsig2-rt22
+    to: bsig2-coh-srt22
+    over: rca0
+  loc: Proposition 1.3
+  origin: cited
+  quote: Over RCA0 + B Σ02 , RT22 is equivalent to SRT22 + COH.
+  paperNotation: RT^2_2 <-> SRT^2_2 + COH over RCA0 + BΣ^0_2
+  citedFrom: Cholak, Jockusch and Slaman [3]
+  confidence: medium
+  concerns: The equivalence is over RCA0 + BΣ^0_2, so BΣ^0_2 is a conjunct on both sides.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Cholak, Jockusch and Slaman [3]: cite the original"
+  proposed: e4f81d8b086d
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Chong's Proposition 1.3 cites CJS [3]. CJS Lemma 7.11 states RCA0 ⊢ RT²₂ ↔ (COH & SRT²₂); the version over RCA0 + BΣ⁰₂ (BΣ⁰₂ conjunct on both sides) is weaker. Conjunction ids sorted.
+- id: chong2020-4e7f343f
+  ref: chong2020
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: isig2
+    to: tt1
+    over: rca0
+  loc: Section 5, Example 1
+  origin: stated
+  quote: TT1 holds in any structure of
+  paperNotation: TT^1
+  confidence: medium
+  concerns: "TT^1: any finite coloring of the full binary tree has a homogeneous subtree isomorphic to it (tt1, TT^1_{<infty})."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: f169cd7774ac
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Survey states 'TT1 holds in any structure of RCA0 + IΣ⁰₂, as can be easily verified' (also repeated after Question 4); TT1 = any finite coloring of 2^<M, i.e. tt1. Duplicate of existing isig2 -> tt1 (chubbhirstmcnicholl2009); citation merges.
+- id: chong2020-95e0304a
+  ref: chong2020
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: srt22
+    property: delta2-basis
+    value: true
+  loc: Section 3, fact (II)
+  origin: stated
+  quote: every stable two-coloring of pairs has a ∆02 -solution.
+  paperNotation: SRT^2_2
+  confidence: medium
+  concerns: The text is a bare remark in the introduction of Section 3, uncited; quote truncated at line break.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 99cb4bbfea2a
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Section 3 fact (II): every stable two-coloring of pairs has a Δ⁰₂-solution (stated as a known fact in the survey, as in existing entries citing hirschfeldtshore2007 etc.). Duplicate; citation merges."
+- id: chong2020-0edfb585
+  ref: chong2020
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: wkl
+    base: rca0
+    class: Pi11
+    value: true
+  loc: Section 1, paragraph after the definition of Γ-conservative
+  origin: cited
+  quote: Harrington states that WKL0 is Π11 -conservative over RCA0 (see [3]).
+  paperNotation: WKL0
+  citedFrom: Harrington (see [3])
+  confidence: high
+  reasons:
+    - "attributed by the paper to Harrington (see [3]): cite the original"
+  proposed: b6c0a946c713
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Chong attributes it to Harrington 'see [3]' = Cholak-Jockusch-Slaman 2001; Harrington's work is unpublished, CJS Corollary 8.4 (Harrington) states and proves WKL0 is Π¹₁-conservative over RCA0.
+- id: chong2020-bb8bc4e2
+  ref: chong2020
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: rt22-wkl
+    base: rca0
+    class: uPi03
+    value: true
+  loc: Theorem 4.5
+  origin: cited
+  quote: RCA0 +RT22 +WKL0 is ∀X Π03 -conservative
+  paperNotation: RCA0 + RT^2_2 + WKL0, ∀XΠ^0_3
+  citedFrom: Patey and Yokoyama [36], Kolodziejczyk and Yokoyama [27]
+  confidence: high
+  concerns: Class ∀XΠ^0_3 = sentences ∀X∀x∃y∀z φ0 with φ0 bounded, matching uPi03; the quote is cut at a line break ("over RCA0").
+  reasons:
+    - "attributed by the paper to Patey and Yokoyama [36], Kolodziejczyk and Yokoyama [27]: cite the original"
+  proposed: 91ff9c2f9252
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Chong's Theorem 4.5 cites Patey-Yokoyama [36] and Kołodziejczyk-Yokoyama [27]. pateyyokoyama2018 Theorem 7.4: WKL0 + RT²₂ is a Π̃⁰₃-conservative extension of IΣ⁰₁, where Π̃⁰₃ = ∀X Π⁰₃ (= uPi03); same base as the existing entry from that theorem (rca0)."
+- id: chong2020-90d5710c
+  ref: chong2020
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: coh
+    base: bsig2
+    class: Pi11
+    value: true
+  loc: Proof of Theorem 3.6
+  origin: cited
+  quote: This implies that RCA0 + COH + B Σ02 is Π11 -conservative over
+  paperNotation: COH
+  citedFrom: Chong, Slaman and Yang [10]
+  confidence: high
+  reasons:
+    - "attributed by the paper to Chong, Slaman and Yang [10]: cite the original"
+  proposed: d1fd9624f34a
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Chong cites CSY [10] = chongslamanyang2012; Corollary 3.1 there: RCA0 + COH + BΣ⁰₂ is Π¹₁-conservative over RCA0 + BΣ⁰₂. Duplicate of existing entry; citation merges."
+- id: chong2020-2d6f58fd
+  ref: chong2020
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: ads
+    base: bsig2
+    class: Pi11
+    value: true
+  loc: Section 5
+  origin: cited
+  quote: for Π11 -conservation of these principles over RCA0 + B Σ02 ).
+  paperNotation: ADS, CAC
+  citedFrom: Chong, Slaman and Yang [10]
+  confidence: medium
+  concerns: '"these principles" refers to ADS and CAC in the same sentence.'
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Chong, Slaman and Yang [10]: cite the original"
+  proposed: 5ba8baa5f25e
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Chong cites CSY [10] for ADS and CAC; chongslamanyang2012 Corollary 4.4: RCA0 + ADS + BΣ⁰₂ is Π¹₁-conservative over RCA0 + BΣ⁰₂."
+- id: chong2020-9da3f13d
+  ref: chong2020
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: cac
+    base: bsig2
+    class: Pi11
+    value: true
+  loc: Section 5
+  origin: cited
+  quote: for Π11 -conservation of these principles over RCA0 + B Σ02 ).
+  paperNotation: ADS, CAC
+  citedFrom: Chong, Slaman and Yang [10]
+  confidence: medium
+  concerns: '"these principles" refers to ADS and CAC in the same sentence.'
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Chong, Slaman and Yang [10]: cite the original"
+  proposed: 31ef42d980af
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Chong cites CSY [10]; chongslamanyang2012 Corollary 5.2: RCA0 + CAC + BΣ⁰₂ is Π¹₁-conservative over RCA0 + BΣ⁰₂."
+- id: chong2020-5dfe2789
+  ref: chong2020
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: rt22
+    base: rca0
+    class: uPi03
+    value: true
+  loc: Theorem 4.5
+  origin: special-case
+  quote: RCA0 +RT22 +WKL0 is ∀X Π03 -conservative
+  paperNotation: RCA0 + RT^2_2 + WKL0, ∀XΠ^0_3
+  argument: Whatever RCA0 + RT^2_2 proves is provable in RCA0 + RT^2_2 + WKL0, hence in RCA0 when it is a ∀XΠ^0_3 sentence.
+  citedFrom: Patey and Yokoyama [36], Kolodziejczyk and Yokoyama [27]
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 913434c8d91d
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Restriction: pateyyokoyama2018 Theorem 7.4 gives WKL0 + RT²₂ ∀Π⁰₃-conservative over IΣ⁰₁ (RCA0); RCA0 + RT²₂ is a subtheory, so it is ∀Π⁰₃-conservative too. Duplicate of an existing ai-derived entry."
+- id: chong2020-55b367dc
+  ref: chong2020
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: conservation
+    statement: aca
+    base: rca0
+    class: Pi03
+    value: false
+  loc: Section 1, paragraph after the definition of Γ-conservative
+  origin: stated
+  quote: ACA0 is not even Π03 -
+  paperNotation: ACA0
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: aadb3820c97a
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Survey states 'ACA0 is not even Π⁰₃-conservative over RCA0' (true: ACA0 proves IΣ⁰₂, hence e.g. totality of the Ackermann function, a Π⁰₂ sentence RCA0 does not prove)."
+- id: chong2020-1cb3a83e
+  ref: chong2020
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: srt22
+    to: isig2
+    over: rca0
+  loc: Corollary 3.4
+  origin: stated
+  quote: Corollary 3.4. RCA0 + SRT22 6` I Σ02 .
+  paperNotation: SRT^2_2, IΣ^0_2
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: b1cbb0301a8a
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 3.4: RCA0 + SRT²₂ ⊬ IΣ⁰₂ ('6`' is ⊬), derived from Theorem 3.2 (CSY's model of RCA0 + SRT²₂ + BME1 + BΣ⁰₂, not IΣ⁰₂). Duplicate of chongslamanyang2014 Corollary 2.6; citation merges."
+- id: chong2020-f2342ca6
+  ref: chong2020
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BME_1
+    name: Bounded monotone enumeration principle
+    loc: Definition 3.1
+    definition: "For M0 a model of RCA0 + BΣ^0_2: for every b, every Σ^0_1 relation P(E,E′) with parameters whose image sets P′(E) are M0-finite, and every M0-finite E, there is s* such that the union over v ≤ b of P^v_s(E) stabilises for s > s* (so the union of the iterates P^v(E), v ≤ b, is M0-finite)."
+    facts: Fails in some models of BΣ^0_2 + ¬IΣ^0_2; follows from IΣ^0_2; is a Π^0_3 sentence; equivalent over RCA0 to PΣ^0_1 and to totality of the Ackermann function (Kreuzer and Yokoyama [26]); RCA0 + BME1 + BΣ^0_2 is the ground-model setting for the proof of Theorem 3.2; RCA0 does not prove BME1 (Remark 3.7); TT^1 is Π^1_1-conservative over BME1 + BΣ^0_2 (Chong, Li, Wang and Yang [8]).
+  reasons:
+    - principle not in the catalogue
+  proposed: f099ee40b0c8
+- id: moschovakis2012-8b6020c8
+  ref: moschovakis2012
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: fandelta
+    to: wklu
+    over: bish
+  loc: Proposition 2 (with Lemma 1)
+  origin: stated
+  quote: Proposition 2. FTd constructively entails WKL!
+  paperNotation: FTd (fan theorem for detachable bars on the binary fan) -> WKL!
+  confidence: medium
+  concerns: "Proved informally in the minimal intuitionistic system M (two-sorted, function comprehension AC00!, full induction, no countable choice), which is stronger than EL0 in induction; entered over bish as a constructive proof without countable choice. The paper's WKL! (uniqueness: any two distinct paths leave the tree) matches wklu."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: c616cce0bcdd
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Proposition 2: FTd constructively entails WKL!, proved in Kleene's minimal system M (intuitionistic two-sorted arithmetic with full induction and only AC00!, no countable choice), which is contained in BISH: valid over bish (not over el0, M has full induction). FTd (fan theorem for detachable bars on the binary fan) is fandelta; the paper's WKL! (infinite detachable tree with: any two distinct sequences, one of them leaves the tree) is wklu. Consistent with the existing equivalences fandelta ↔ wklu via minunique (kawai2026b)."
+- id: moschovakis2012-282e52b8
+  ref: moschovakis2012
+  date: 2026-11-17
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: fandelta
+    to: mpor
+    over: bish
+  loc: Proof of Corollary 6
+  origin: stated
+  quote: But MP∨ is not G realizable, as we now show using notation and results from [7].
+  paperNotation: FTd does not prove MP∨
+  argument: Every theorem of FIM, a fortiori of M + FTd, is G realizable, but MP∨ is not G realizable (the proof uses that the realizer would give a continuous function F with F(0,0) depending on finitely many values).
+  confidence: medium
+  concerns: "The non-provability is in M + FTd (indeed in Kleene-Vesley's FIM, which has continuity axioms), established by a realizability argument; it shows the failure of the implication over M, entered over bish. Not a purely Bishop-style independence proof: FIM is intuitionistic analysis."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 046ef0c9c91c
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: The separation comes from G-realizability of FIM; the bish frame includes dependent choice, and the paper does not state that the realizability model satisfies it.
+- id: moschovakis2012-3d255b7d
+  ref: moschovakis2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WKL!!
+    name: Weak König's lemma with the hypothesis that any two infinite paths agree
+    loc: Section 3
+    definition: "For a detachable subtree of the binary fan coded by rho: if for every y there is a binary sequence alpha with rho(alpha(x)) = 0 for all x <= y, and any two infinite paths alpha, beta (forall x rho(alpha(x))=0 and rho(beta(x))=0) are equal, then there is an infinite path. Obtained from WKL by adding the hypothesis that any two paths agree; weaker uniqueness hypothesis than WKL!."
+    facts: WKL constructively entails WKL!!, and WKL!! constructively entails WKL! and hence FTd (Section 3). WKL!! entails MP∨ (Theorem 3) and ¬¬WKL (Theorem 4, provable in M); conversely WKL!! is a constructive consequence of MP∨ + ¬¬WKL (Theorem 5), so WKL!! is interderivable over M with MP∨ + ¬¬WKL (Section 4). M + FTd does not prove WKL!! (Corollary 6, via G realizability and the non-realizability of MP∨), so WKL!! is not a consequence of WKL! or FTd; M + WKL!! does not prove WKL (Corollary 7, via Kleene function realizability). So WKL!! lies strictly between WKL! and WKL.
+  reasons:
+    - principle not in the catalogue
+  proposed: 45b9fca492af
+- id: moschovakis2012-47338460
+  ref: moschovakis2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ¬¬WKL
+    name: Double negation of weak König's lemma
+    loc: Section 4
+    definition: "The double negation of the open axiom WKL: forall y exists alpha in 2^N forall x <= y rho(alpha(x)) = 0 implies not not exists alpha in 2^N forall x rho(alpha(x)) = 0."
+    facts: WKL!! -> ¬¬WKL is provable in M (Theorem 4); WKL!! is a constructive consequence of MP∨ and ¬¬WKL (Theorem 5).
+  reasons:
+    - principle not in the catalogue
+  proposed: 371502c5d874
+- id: moschovakis2012-a62498dc
+  ref: moschovakis2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SP
+    name: Separation principle for detachable bars
+    loc: Lemma 1
+    definition: For all alpha, beta in 2^N, if exists x rho(alpha(x)) != 0 or exists x sigma(beta(x)) != 0 (for all alpha, beta), then either every alpha in 2^N has an x with rho(alpha(x)) != 0, or every beta in 2^N has an x with sigma(beta(x)) != 0.
+    facts: FTd constructively entails SP (Lemma 1); SP is used in the proof that FTd entails WKL! (Proposition 2).
+  reasons:
+    - principle not in the catalogue
+  proposed: 6d36862caa7b
+- id: moschovakis2012-797e9df4
+  ref: moschovakis2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FT
+    name: Full fan theorem
+    loc: Section 1
+    definition: For all R, if for every alpha in 2^N there is x with R(alpha(x)), then there is y such that for every alpha in 2^N there is x <= y with R(alpha(x)); no restriction on the predicate R.
+    facts: Accepted in intuitionistic mathematics; classically (not constructively) FT and FTd are interderivable with the restriction KL of König's lemma to the binary fan.
+  reasons:
+    - principle not in the catalogue
+  proposed: e47a15b3b905
+- id: kiharapauly2019-f67a6480
+  ref: kiharapauly2019
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: ci
+    to: llpo.x.auc
+    over: w
+  loc: Theorem 12
+  origin: stated
+  quote: Theorem 12. C2 × AoUC ≰W XC1
+  paperNotation: C2 × AoUC ≰W XC1 (XC1 is convex choice in dimension one, i.e. interval choice C_I)
+  confidence: medium
+  concerns: XC1 is identified with interval choice ci through Definition 5 and the remark after it (XC1 = CC1 = CI). C2 is closed choice on {0,1}, entered as llpo; AoUC is auc.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 8c924f610300
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 12 (p. 6, rendered page checked: ≰W): C2 × AoUC ≰W XC1. XC1 = restriction of C_[0,1] to convex sets = interval choice C_I (Definition 5 and remark) = ci; C2 = llpo (alias C_2); AoUC is the same degree for [0,1] (Definition 7 and remark) = auc. Fixed only the order of the product id to the existing canonical auc.x.llpo (products are commutative, engine law op-comm), to avoid a duplicate node."
+- id: kiharapauly2019-ea245319
+  ref: kiharapauly2019
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: sort
+    to: llpo.x.ci
+    over: w
+  loc: Corollary 16 (case n = 1)
+  origin: special-case
+  quote: Corollary 16. C2 × XCn1 ≰W Sortn+1
+  paperNotation: "C2 × XC1^n ≰W Sort_{n+1}, n = 1: C2 × XC1 ≰W Sort2"
+  argument: Corollary 16 holds for every n, where XC_1^n is the n-fold product of XC_1. For n = 1 this reads C2 × XC1 ≰W Sort_2 = Sort.
+  confidence: low
+  concerns: The superscript n in 'XCn1' of the extracted text is read as the n-fold power of XC1 (it is the notation f^k for the k-fold product from Section 2); check the PDF. Corollary 16 is displayed without a period and may be printed as Corollary 16 in the paper.
+  reasons:
+    - "extractor confidence: low"
+  proposed: 617c51f7bfee
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Corollary 16 (p. 7, rendered page checked): C2 × XC_1^n ≰W Sort_{n+1}, where XC_1^n is the n-fold product (notation f^k, Section 2). For n = 1: C2 × XC1 ≰W Sort_2, and Sort_2 is Sort (Definition 6: 0^{c0}1^ω if finitely many 0s, 0^ω otherwise), the zoo's sort; XC1 = ci, C2 = llpo. Special case n = 1 of the stated corollary. Product id reordered to the existing canonical ci.x.llpo."
+- id: kiharapauly2019-20e50803
+  ref: kiharapauly2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Sort_d (d >= 3)
+    name: Sorting infinite sequences over an alphabet of size d
+    loc: Definition 6
+    definition: "Sort_d : d^omega -> d^omega maps p to 0^{c_0} 1^{c_1} ... k^infinity, where c_i is the number of occurrences of i in p and k is the least letter occurring infinitely often. Sort = Sort_2."
+    facts: XC_n <=W Sort_{n+1} (Theorem 18); Sort_{k+1} is not <=W Sort_k (Corollary 17, alternative proof of a result of Neumann and Pauly); C_{#<=k+1} is not <=W Sort_k (Theorem 20); C_2 x f <=W Sort_{k+1} implies f <=W Sort_k x C_N (Proposition 13); Sort_{n+1} equivalent to a finite product of Sort (from Pauly and Tsuiki) and Sort^* equivalent to the coproduct of the Sort_d (Section 3).
+  reasons:
+    - principle not in the catalogue
+  proposed: f32697f38a97
+- id: kiharapauly2019-4e6c7071
+  ref: kiharapauly2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: XC_n (n >= 2)
+    name: Closed choice for convex sets in [0,1]^n (convex choice in dimension n)
+    loc: Definition 5
+    definition: The restriction of C_{[0,1]^n} to convex closed sets. XC_1 is interval choice C_I (connected choice CC_1).
+    facts: XC_n <=W Sort_{n+1} (Theorem 18); XC_2 restricted to closed triangles is not <=W XC_1 x XC_1 (Theorem 28); XC_1 * AoUC is not <=W XC_k for any k (Theorem 32); C_2 x XC_1^n is not <=W Sort_{n+1} (Corollary 16); C_2 x AoUC is not <=W XC_1 (Theorem 12).
+  reasons:
+    - principle not in the catalogue
+  proposed: a7051ee7f569
+- id: kiharapauly2019-9c51c4f7
+  ref: kiharapauly2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: C_{#=n}, C_{#<=n}
+    name: Finite choice with exactly n, respectively at most n, elements
+    loc: Definition 4
+    definition: C_{X,#=n} is closed choice on X restricted to closed sets with exactly n points, C_{X,#<=n} restricted to sets with between 1 and n points; for computably compact computably rich X they are equivalent to the versions on {0,1}^N (Le Roux and Pauly).
+    facts: C_{#<=k+1} is not <=W Sort_k (Theorem 20); C_{#<=k} <=W C_{#<=n_0} x ... x C_{#<=n_l} iff Player 2 wins the comparison game (Theorem 24); the comparison game with all n_i = 2 is won by Player 2 if k+1 <= l and by Player 1 if k+1 >= 2^l - 1 (Proposition 25, the exact bound in the extracted text is unclear).
+  reasons:
+    - principle not in the catalogue
+  proposed: 0b2632f2aa83
+- id: kiharapauly2019-f735a8cd
+  ref: kiharapauly2019
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FCC
+    name: Finding a connected component of a countable graph with finitely many components (with a bound on their number)
+    loc: Section 5.3
+    definition: Given the characteristic functions of V and E and a bound on the number of connected components, produce the characteristic function of a connected component. Studied in reverse mathematics by Gura, Hirst and Mummert, where it is equivalent to Sigma^0_2 induction.
+    facts: FCC is Weihrauch equivalent to Sort^*, the finite parallelization of Sort, and FCC x FCC <=W FCC (Theorem 19).
+  reasons:
+    - principle not in the catalogue
+  proposed: 66ef20d2c7fb
+- id: keisler2010-9a922d98
+  ref: keisler2010
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: "*RCA0' (BNA + STP + Special Sigma^S_1 Induction + Special Delta^S_1 Comprehension)"
+    name: Nonstandard counterpart of RCA0 with the full Standard Part Principle
+    loc: Definition 3.2
+    definition: Theory in the language L2 + *L1 (standard integers, hyperintegers, sets coded by prime divisors) with the axioms of BNA, Special Sigma^S_1 Induction, Special Delta^S_1 Comprehension and the Standard Part Principle STP (every set is coded by a hyperinteger and conversely).
+    facts: "Theorem 3.4: *RCA0' implies RCA0. Theorem 3.5: *RCA0' + forall-Transfer is conservative over RCA0 (every L2 sentence provable is provable in RCA0). Proposition 3.3: *WKL0 implies *RCA0'. Proposition 6.7: Downward Shadow Principle is provable in *RCA0' + forall-T. Proposition 6.9: the Upward Shadow Principle is not provable in *RCA0' + forall-T."
+  reasons:
+    - principle not in the catalogue
+  proposed: f3f7c7b78f62
+- id: keisler2010-03fac19f
+  ref: keisler2010
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BNA
+    name: Basic Nonstandard Arithmetic
+    loc: Definition 2.1
+    definition: Axioms of IΣ1 in L1, < a strict linear order, and the Proper Initial Segment Axioms in the two-sorted language *L1.
+    facts: "BNA + STP alone says little about sets: it does not even imply the existence of infinite sets (Section 3 remark)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 0d2084b3d24b
+- id: keisler2010-caefeb2d
+  ref: keisler2010
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Overspill, Internal Induction, Transfer for Pi^0_1 sentences (over T0 = RCA0 + BNA + STP)
+    name: Nonstandard principles in the language *L1
+    loc: Proposition 6.11
+    definition: Transfer for Pi^0_1 sentences; Internal Induction for Delta^S_0 formulas; Overspill for Delta^S_0 formulas.
+    facts: "Proposition 6.11: over T0, Transfer for Pi^0_1 sentences implies Internal Induction, which implies Overspill, which implies WKL0. Hence *RCA0' plus any of them is not conservative over RCA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9dad9d172f7f
+- id: keisler2010-a4003f13
+  ref: keisler2010
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Delta^S_0-CA (T1 = T0 + Delta^S_0-CA)
+    name: Delta^S_0 comprehension in nonstandard arithmetic
+    loc: Proposition 6.14
+    definition: "Scheme: exists z forall m [(p_m | z) <-> phi(m, u)] for Delta^S_0 formulas phi."
+    facts: "Proposition 6.14: T1 implies WKL0; any model of T1 where Overspill fails satisfies S-ACA and ACA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: f39a67b4093d
+- id: keisler2010-6b89f5be
+  ref: keisler2010
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: RCA0(PR) + forall-T(PR) + BNA + STP
+    name: Nonstandard arithmetic with primitive recursive function symbols
+    loc: Proposition 6.17
+    definition: RCA0 with symbols for all primitive recursive functions, Transfer for universal sentences of L1(PR), BNA and STP.
+    facts: "Proposition 6.17: it implies Overspill and WKL0, so it is not conservative over RCA0 (Remark 6.18: it is conservative over WKL0)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 06c647e91f14
+- id: solomon1998-c1d3dfba
+  ref: solomon1998
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Every torsion free abelian group is an O-group
+    name: Orderability of torsion free abelian groups
+    loc: Theorem 3.1 / Theorem 3.3
+    definition: Every torsion free abelian group admits a full (linear, translation invariant) order.
+    facts: "Theorem 3.3 (Hatzikiriakou and Simpson 1990, cited): equivalent to WKL0 over RCA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: 73b4754eb104
+- id: solomon1998-1469c032
+  ref: solomon1998
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Every torsion free nilpotent group is an O-group
+    name: Orderability of torsion free nilpotent groups
+    loc: Theorem 3.4 / Theorem 3.12
+    definition: Every torsion free nilpotent group (given with a code for its upper central series) is fully orderable.
+    facts: "Theorem 3.12: equivalent to WKL0 over RCA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: e0c642860468
+- id: solomon1998-ff74cc21
+  ref: solomon1998
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Product of O-groups
+    name: Restricted countable direct product of O-groups is an O-group
+    loc: "Theorem 4.6 (finite products: Theorem 4.3)"
+    definition: If every Ai of a sequence of groups is fully orderable, the restricted direct product of the Ai is fully orderable.
+    facts: "Theorem 4.6: equivalent to WKL0 over RCA0. Theorem 4.3: provable in RCA0 for finite products."
+  reasons:
+    - principle not in the catalogue
+  proposed: bf2b6e519047
+- id: solomon1998-f3d2006a
+  ref: solomon1998
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Existence of the center
+    name: Every group has a center
+    loc: Theorem 5.3
+    definition: "For every group G the set C(G) = {g : forall x (gx = xg)} exists."
+    facts: Equivalent to ACA0 over RCA0, already for 2 step nilpotent groups (free 2 step nilpotent group construction).
+  reasons:
+    - principle not in the catalogue
+  proposed: 2d70b2d59744
+- id: solomon1998-5e308b35
+  ref: solomon1998
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Induced order on G/H
+    name: Existence of the induced order on a quotient of a p.o. group by a convex normal subgroup
+    loc: Theorem 2.18 (Theorem 2.14 for fully ordered groups)
+    definition: For every partially ordered group (G, <=) and convex normal subgroup H, the induced order on G/H exists.
+    facts: "Theorem 2.18: equivalent to ACA0 over RCA0. Theorem 2.14: for fully ordered groups it is provable in RCA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: f0c2d7990a90
+- id: solomon1998-daf2d758
+  ref: solomon1998
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Theorems 6.7, 6.8, 6.9 (semigroup conditions for orderability)
+    name: Fuchs, Los-Ohnishi and Lorenzen semigroup conditions for full orderability
+    loc: Theorems 6.7, 6.8, 6.9, 6.10
+    definition: "Equations (2), (3), (4): conditions on normal semigroups generated by sequences of elements characterizing extendability of a partial order to a full order, and full orderability."
+    facts: Each is provable in WKL0 and each is equivalent to WKL0 over RCA0 (Theorem 6.10).
+  reasons:
+    - principle not in the catalogue
+  proposed: f864dab0cf24
+- id: solomon1998-8762a7ad
+  ref: solomon1998
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Hoelder's Theorem
+    name: Archimedean fully ordered groups embed in (R,+)
+    loc: Section 7, Hoelder's Theorem
+    definition: Every nontrivial Archimedean fully ordered group is order isomorphic to a nontrivial subgroup of the additive reals.
+    facts: Provable in RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 9fc9bacf8500
+- id: solomon1998-df4bf71f
+  ref: solomon1998
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Unique divisible closure of an abelian group
+    name: Uniqueness of divisible closures
+    loc: Theorem 8.4
+    definition: Every abelian group has a unique divisible closure.
+    facts: "Theorem 8.4 (Friedman, Simpson and Smith 1983, cited): existence of a divisible closure is provable in RCA0; uniqueness is equivalent to ACA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: d656af6d51dd
+- id: solomon1998-16452c75
+  ref: solomon1998
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Strong divisible closure
+    name: Existence of strong divisible closures (also f.o. version for Archimedean groups)
+    loc: Theorem 8.7
+    definition: "Every abelian group has a divisible closure h: A -> D which is an isomorphism of A onto a subgroup of D (a strong divisible closure); for Archimedean fully ordered groups, an order preserving one."
+    facts: "Theorem 8.7: both versions are equivalent to ACA0 over RCA0."
+  reasons:
+    - principle not in the catalogue
+  proposed: e3cad7d882cc
+- id: mileti2008-d7481df1
+  ref: mileti2008
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wkl
+    to: rt22
+    over: rca0
+  loc: Section 2, remark after Corollary 2.17
+  origin: stated
+  quote: Using the Low Basis Theorem and Theorem 2.11, one can show that for each p ≥ 2, RT2p is not provable
+  paperNotation: WKL0, RT^2_p
+  argument: "The paper only states the conclusion, from the Low Basis Theorem and Theorem 2.11: RT^2_p is not provable from WKL0."
+  confidence: medium
+  concerns: Stated without proof as a remark; sentence continues "from WKL0, hence RT^2_p is not equivalent to any of the standard systems".
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 7af73932d05e
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Paper states that by the Low Basis Theorem and Theorem 2.11 (Jockusch: computable coloring with no Σ⁰₂ homogeneous set) RT²_p is not provable from WKL0 for each p ≥ 2; p = 2 gives WKL0 ⊬ RT²₂ (the ω-model of low sets). Duplicate of existing results."
+- id: mileti2008-60afc1a6
+  ref: mileti2008
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: canrt2
+    property: pi2-basis
+    value: true
+  loc: Theorem 5.1
+  origin: stated
+  quote: There exists a Π02 set C ⊆ B canonical for f .
+  paperNotation: "CRT^2; f : [B]^2 → ω × p with p = 1 (Remark 3.3)"
+  confidence: high
+  concerns: "Stated for f : [B]^2 → ω × p, computable B; taking B = ω, p = 1 gives colorings into ω."
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 82b48bb661c3
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 5.1: for computable infinite B and computable f: [B]² → ω × p there is a Π⁰₂ set C ⊆ B canonical for f. With B = ω, p = 1 and Remark 3.3 (f identified with f* = (f, 0), same canonical sets), every computable instance of canRT² has a Π⁰₂ solution (the finite set S is a parameter). Duplicate of mileti2004 Theorem 3.3.1."
+- id: mileti2008-355c6666
+  ref: mileti2008
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CRT^n
+    name: Canonical Ramsey theorem for exponent n
+    loc: Definition 8.1(4); Theorem 1.7
+    definition: "Every f : [N]^n → N has a canonical set, i.e. an infinite C and u ⊆ n with f(x1) = f(x2) iff x1|u = x2|u for x1, x2 in [C]^n (Definition 1.6)."
+    facts: Over RCA0, CRT^n is equivalent to ACA0 for each fixed n ≥ 2 (Proposition 8.2) and CRT^1 is equivalent to BΣ^0_2 (Proposition 8.5); computable instances have Π^0_{2n-2} canonical sets (Theorem 5.5), and for n = 2 sharp (no Σ^0_2); upper Turing bound a ≫ 0^(2n-3) for n ≥ 2 (Theorem 4.5), conjectured sharp for n ≥ 3 (Conjectures 7.15, 7.16). Only n = 2 (canrt2) is in the catalogue.
+  reasons:
+    - principle not in the catalogue
+  proposed: 376214e62c2d
+- id: mileti2008-3610b154
+  ref: mileti2008
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CRT
+    name: Canonical Ramsey theorem (all exponents)
+    loc: Definition 8.1(5)
+    definition: "For all n ≥ 1, every f : [N]^n → N has a canonical set."
+    facts: Equivalent over RCA0 to ACA0' (all finite jumps), REG and RT (Proposition 8.4).
+  reasons:
+    - principle not in the catalogue
+  proposed: 57f8de4b4e5f
+- id: mileti2008-163ebb87
+  ref: mileti2008
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: REG^n
+    name: Regressive function theorem for exponent n (Kanamori–McAloon)
+    loc: Definition 8.1(6); Theorem 1.10
+    definition: "Every regressive f : [N]^n → N has a minhomogeneous set M (infinite, f(x) = f(y) for x, y in [M]^n with min x = min y)."
+    facts: Over RCA0, REG^n is equivalent to ACA0 for each fixed n ≥ 2 (Proposition 8.2); computable regressive instances have Π^0_n minhomogeneous sets (Theorem 6.6) and Turing bound a ≫ 0^(n-1) (Theorem 6.5), both sharp (Theorem 7.6, Corollaries 7.7, 7.9). Only n = 2 (regrt2) is in the catalogue.
+  reasons:
+    - principle not in the catalogue
+  proposed: e61a43d18796
+- id: mileti2008-7fd0c8b9
+  ref: mileti2008
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: REG
+    name: Regressive function theorem (all exponents)
+    loc: Definition 8.1(7)
+    definition: "For all n ≥ 1, every regressive f : [N]^n → N has a minhomogeneous set."
+    facts: Equivalent over RCA0 to ACA0', CRT and RT (Proposition 8.4).
+  reasons:
+    - principle not in the catalogue
+  proposed: b2c2edfd3a82
+- id: mileti2008-df9fbbdd
+  ref: mileti2008
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: h-regressive REG^2
+    name: Minhomogeneous sets for h-regressive functions
+    loc: Remark 8.3; Definition 7.1
+    definition: "For h : ω → ω, f is h-regressive if f(x) < h(min x) when h(min x) > 0; every such f : [N]^2 → N has a minhomogeneous set."
+    facts: "Hirst (thesis): this statement implies ACA0 over RCA0 (stated in Remark 8.3, cited). Not entered since the statement is not in the catalogue."
+  reasons:
+    - principle not in the catalogue
+  proposed: 9af80fac5ba5
+- id: andrewsetal2023-a9ca03b6
+  ref: andrewsetal2023
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: separation
+    from: wkl
+    to: aca
+    over: omega
+  loc: Remark 2.4 (after Proposition 2.3)
+  origin: stated
+  quote: that δU (0) consists entirely of ∆04 sets, and so is not arithmetically closed.
+  paperNotation: WKL0, ACA0
+  argument: "By Proposition 2.3, for every ultrafilter U the set δU(0) is a Scott set, hence (as a Turing ideal closed under paths through infinite binary trees) an omega-model of WKL0. Choosing U with {e : We in U} Delta^0_4 makes all members of δU(0) Delta^0_4, so the ideal is not arithmetically closed and is not a model of ACA0. The remark presents this as an alternate proof that WKL0 is strictly weaker than ACA0."
+  confidence: medium
+  concerns: The paper only says this yields a proof of the classical result WKL0 < ACA0; the omega-model separation is read off from the sketched argument. The catalogue entries wkl and aca are problems, whereas the paper speaks of the theories WKL0 and ACA0.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 0a993452e329
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Remark 2.4: by Proposition 2.3 δ_U(0) is a Scott set (ω-model of WKL0); choosing U with {e : W_e ∈ U} Δ⁰₄ makes it consist of Δ⁰₄ sets, hence not arithmetically closed (not a model of ACA0). The paper presents this as a proof that WKL0 is strictly weaker than ACA0; the model is an ω-model, so the omega separation is what is proved. Duplicate of friedman1975 entry."
+- id: nobrega2013-5e0a268a
+  ref: nobrega2013
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: C_{2,3}
+    name: Complete choice principle for the class Λ2,3
+    loc: Section 3.2.6, A complete choice principle for Λ2,3
+    definition: "C_{2,3}(x) = lim_n (skip0[(info(x))_n] - 1): from x take the unique component (x)_n carrying infinitely many nonzero entries, extract it as a sequence of finite words, and take the limit of this sequence (domain: such x for which the limit exists)."
+    facts: "Proposition 3.65: C_{2,3} is in Λ2,3. Theorem 3.66: a function f between represented spaces is Λ2,3 iff f ≤t C_{2,3} (Weihrauch complete for Λ2,3), proved from Semmes's game G_{2,3}."
+  reasons:
+    - principle not in the catalogue
+  proposed: d47ea2bd2ed6
+- id: nobrega2013-03335c68
+  ref: nobrega2013
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: C_{3,3}
+    name: Complete choice principle for the class Λ3,3
+    loc: Section 3.2.6, A complete choice principle for Λ3,3
+    definition: "C_{3,3}(x) = skip0(info(x)) - 1 with domain the x for which exactly one component (x)_n has infinitely many nonzero entries: decode the unique sequence encoded by x that contains infinite information."
+    facts: "Proposition 3.67: C_{3,3} is in Λ3,3. Theorem 3.68: f is Λ3,3 iff f ≤t C_{3,3} (Weihrauch complete for Λ3,3, the functions preserving Δ⁰₃ under preimages), via the multitape game."
+  reasons:
+    - principle not in the catalogue
+  proposed: ccf974aa2c81
+- id: nobrega2013-e2139ce8
+  ref: nobrega2013
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: C_0
+    name: Continuous choice (the flip function)
+    loc: Definition 3.44
+    definition: "C_0(x)(n) = 0 if x(n) ≠ 0 and 1 otherwise: a continuous function flipping nonzero values to 0 and 0 to 1."
+    facts: "Theorem 3.45: f is continuous iff f ≤t C_0 (Weihrauch complete for the continuous functions)."
+  reasons:
+    - principle not in the catalogue
+  proposed: e9013c768635
+- id: nobrega2013-16955cc3
+  ref: nobrega2013
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: C_k (k-countable choice)
+    name: k-countable choice
+    loc: Definition 3.59
+    definition: C_k(x)(n) = 0 iff ∃n_{k-1} ∀n_{k-2} ... Q n_0 x(⟨n, n_{k-1}, ..., n_0⟩) ≠ 0 (alternating quantifiers), and 1 otherwise; C_1 is countable choice C.
+    facts: "Proposition 3.60: C_k is of Baire class k. Theorem 3.61 (cited from Brattka 2005): f ∈ Λ1,k+1 iff f ≤t C_k, so C_k is Weihrauch complete for the Baire class k functions."
+  reasons:
+    - principle not in the catalogue
+  proposed: fcce46c39859
+- id: nobrega2013-a6be427f
+  ref: nobrega2013
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: C_ω (discrete choice)
+    name: Discrete choice on omega
+    loc: Definition 3.46
+    definition: "C_ω(x) = ω \\ ran x with domain {x : ran x ≠ ω}: given a sequence omitting some natural number, return a number outside its range. Closely related to the catalogue's C_N (closed choice on N), but coded without a placeholder for the empty enumeration."
+    facts: "Proposition 3.47: C_ω ∈ Λ2,2. Theorem 3.48 (Brattka, de Brecht, Pauly): f ∈ Λ2,2 iff f ≤t C_ω, with a new game proof (backtrack game). Proposition 3.49: lim_Δ ≤t C_ω, where lim_Δ is the discrete limit representation."
+  reasons:
+    - principle not in the catalogue
+  proposed: db9b1322c1b3

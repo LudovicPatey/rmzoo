@@ -1,0 +1,3 @@
+# Results from [kiharapauly2019].
+
+[ { type: separation, from: ci, to: auc.x.llpo, over: w, refs: [ { ref: kiharapauly2019, loc: Theorem 12 } ] } ]
