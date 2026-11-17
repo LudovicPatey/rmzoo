@@ -1,0 +1,3 @@
+# Results from [downeysolomon2005].
+
+[ { type: equivalence, from: archrep, to: aca, over: rca0, refs: [ { ref: downeysolomon2005, loc: Theorem 3.3 } ] }, { type: equivalence, from: hahn, to: aca, over: rca0, refs: [ { ref: downeysolomon2005, loc: Theorem 4.4 } ] } ]

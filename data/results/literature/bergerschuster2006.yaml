@@ -1,0 +1,3 @@
+# Results from [bergerschuster2006].
+
+[ { type: equivalence, from: fandelta, to: dini, over: bish, refs: [ { ref: bergerschuster2006, loc: Theorem 4.8 (in EL + AC00) } ] }, { type: equivalence, from: wkl, to: dini, over: rca0, refs: [ { ref: bergerschuster2006, loc: Theorem 5.2 } ] } ]

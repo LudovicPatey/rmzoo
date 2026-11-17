@@ -1,0 +1,3 @@
+# Results from [horihatayokoyama2014].
+
+[ { type: equivalence, from: wkl, to: riemannmapj, over: rca0, refs: [ { ref: horihatayokoyama2014, loc: Theorem 4.4 (1 ↔ 3; the step 2 → 1 is cited from Sakamoto and Yokoyama) } ] }, { type: implication, from: aca, to: riemannmap, over: rca0, refs: [ { ref: horihatayokoyama2014, loc: Theorem 4.6 (1 → 2) } ] }, { type: equivalence, from: wkl, to: cauchytri, over: rca0, refs: [ { ref: horihatayokoyama2014, loc: Theorem 3.3 (2 → 1 cited from Yokoyama 2007) } ] }, { type: equivalence, from: wkl, to: effint, over: rca0, refs: [ { ref: horihatayokoyama2014, loc: Theorem 3.1 } ] } ]

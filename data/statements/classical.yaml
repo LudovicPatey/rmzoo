@@ -644,3 +644,431 @@
   refs:
     - { ref: towsner2011, role: rm, loc: "Definition 7.13, Theorem 7.14" }
     - { ref: shafer2012, role: rm, loc: Theorem 4.4 }
+
+# Statement pass of November 2026 (proposals of the AI readers; definitions read in the sources)
+
+- id: cousinb2
+  label: \mathsf{CL}_{\mathrm{B2}}
+  name: Cousin's lemma for Baire class 2 gauges
+  kind: sentence
+  tags:
+    - analysis
+  definition: >
+    Cousin's lemma for gauges of Baire class 2 (given by codes): every $\delta : [0,1] \to \mathbb{R}^+$ of Baire class
+    2 has a $\delta$-fine cover (tagged partition) (barrettdowneygreenberg2021, Definition 2.3 and Section 6;
+    sanders2026c, Theorem I.4.22).
+  refs:
+    - ref: barrettdowneygreenberg2021
+      role: rm
+      loc: Definition 2.3, Theorem 6.5
+    - ref: sanders2026c
+      role: rm
+      loc: Lemma I.4.21, Theorem I.4.22
+
+- id: riemannmapj
+  label: \textsf{Riemann mapping}_{\mathrm{Jordan}}
+  name: Riemann mapping theorem for Jordan regions
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  phrases:
+    - Riemann's mapping theorem for Jordan regions
+    - Riemann mapping theorem for Jordan regions
+  definition: >
+    Every Jordan region is conformally equivalent to the open unit disk $B(0;1)$: for every Jordan curve $J : [0,1] \to
+    \mathbb{C}$ ($J(x) = J(y) \leftrightarrow |x - y| \in \{0, 1\}$), its interior $\mathrm{Int}(J)$ (the points of
+    $\mathbb{C} \setminus \mathrm{Im}(J)$ from which every continuous path avoiding $\mathrm{Im}(J)$ stays bounded)
+    admits holomorphic maps $h_0 : \mathrm{Int}(J) \to B(0;1)$ and $h_1 : B(0;1) \to \mathrm{Int}(J)$ that are inverse
+    to each other (Theorem 4.4(3); Jordan curves and their interiors as defined before Lemma 4.3; holomorphic functions
+    as in Definition 3.2).
+  refs:
+    - ref: horihatayokoyama2014
+      role: origin
+      loc: Theorem 4.4(3), definitions before Lemma 4.3
+
+- id: riemannmap
+  label: \textsf{Riemann mapping}
+  name: Riemann mapping theorem for simply connected open sets
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  phrases:
+    - Riemann's mapping theorem
+    - Riemann mapping theorem
+  definition: >
+    Every simply connected open set $U \subsetneq \mathbb{C}$ is conformally equivalent to the open unit disk $B(0;1)$
+    (Theorem 4.6(2)). An open set $D$ is simply connected if it is path connected and the interior of every semi-polygon
+    in $D$ is included in $D$ (Definition 4.1).
+  refs:
+    - ref: horihatayokoyama2014
+      role: rm
+      loc: Theorem 4.6, Definition 4.1
+    - ref: yokoyama2007b
+      role: origin
+      loc: Theorem 4.13
+
+- id: cauchytri
+  label: \textsf{Cauchy integral}_{\triangle}
+  name: Cauchy's integral theorem for triangles
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  phrases:
+    - Cauchy's integral theorem for triangles
+  definition: >
+    If $f$ is a holomorphic function on an open set $D \subseteq \mathbb{C}$ (a pair $(f, f')$ of continuous functions
+    with $\lim_{w \to z} (f(w) - f(z))/(w - z) = f'(z)$ for all $z \in D$, Definition 3.2), then for every triangle
+    $\triangle abc \subseteq D$ the line integral $\int_{\partial \triangle abc} f(z)\,dz$ exists and equals $0$
+    (Theorem 3.3(2); line integrals as limits of Riemann sums, Definition 3.4).
+  refs:
+    - ref: horihatayokoyama2014
+      role: rm
+      loc: Theorem 3.3(2)
+    - ref: yokoyama2007
+      role: origin
+
+- id: effint
+  label: \textsf{Eff. integrability}_{\mathbb{C}}
+  name: Effective line integrability of continuous complex functions
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  definition: >
+    Every continuous function $f$ on an open set $D \subseteq \mathbb{C}$ is effectively integrable: for every arc
+    $\gamma : [0,1] \to D$ which is a line or an arc of a circle there is a modulus of integrability along $\gamma$, a
+    function $h_\gamma : \mathbb{N} \to \mathbb{N}$ such that $|S^\Delta_\gamma(f) - S^{\Delta'}_\gamma(f)| < 2^{-n+1}$
+    for all partitions $\Delta, \Delta'$ of $[0,1]$ of mesh $< 2^{-h_\gamma(n)}$, where $S^\Delta_\gamma(f)$ is the
+    Riemann sum of $f$ along $\gamma$ (Definition 3.5, Theorem 3.1(2)).
+  refs:
+    - ref: horihatayokoyama2014
+      role: rm
+      loc: Definition 3.5, Theorem 3.1(2)
+
+- id: closedloc
+  label: \textsf{Closed} \Rightarrow \textsf{located}
+  name: Closed subsets of compact spaces are located
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  definition: >
+    Every closed subset $C$ (the complement of a sequence of open balls) of a compact complete separable metric space
+    $X$ is located: the distance function $x \mapsto d(x, C) = \inf \{ d(x, y) : y \in C \}$ exists as (a code for) a
+    continuous function $X \to \mathbb{R}$ (giustosimpson2000, Definition 3.6 and Theorem 3.8(2)). Equivalent over RCA₀
+    to the special case $X = [0,1]$ (Theorem 3.8(3)).
+  refs:
+    - ref: giustosimpson2000
+      role: origin
+      loc: Definition 3.6, Theorem 3.8
+    - ref: avigadsimic2006
+      role: rm
+      loc: Theorem 5.4(2), (3)
+
+- id: cscloc
+  label: \textsf{Closed, sep. closed} \Rightarrow \textsf{located}
+  name: Closed and separably closed subsets of compact spaces are located
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  definition: >
+    In a compact complete separable metric space $X$, every set $C$ which is both closed (the complement of a sequence
+    of open balls) and separably closed (the closure of a sequence of points, Definition 4.1) is located: the distance
+    function $x \mapsto d(x, C)$ exists as a continuous function on $X$ (Definition 3.6; Theorem 4.6(2)). Equivalent
+    over RCA₀ to the special case $X = [0,1]$ (Theorem 4.6(3)) and to the same statements with "weakly located" (the
+    predicate $\exists \varepsilon > 0\, B(a, r + \varepsilon) \cap C = \emptyset$ is $\Sigma^0_1$, Definition 5.1) in
+    place of "located" (Theorem 5.8).
+  refs:
+    - ref: giustosimpson2000
+      role: origin
+      loc: Theorems 4.6 and 5.8
+
+- id: stietzesc
+  label: \textsf{Strong Tietze}_{\mathrm{sc}}
+  name: Strong Tietze extension theorem for separably closed sets
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  phrases:
+    - strong Tietze theorem for separably closed sets
+    - strong Tietze extension theorem for separably closed sets
+  definition: >
+    Let $X$ be a compact complete separable metric space, $C$ a separably closed subset of $X$ (the closure of a
+    sequence of points) and $f : C \to \mathbb{R}$ a uniformly continuous function with a modulus of uniform continuity.
+    Then $f$ extends to some $F \in C(X)$, a continuous function on $X$ with a modulus of uniform continuity
+    (giustosimpson2000, Theorem 6.14(2)). Equivalent over RCA₀ to the special case $X = [0,1]$ (Theorem 6.14(3)).
+  refs:
+    - ref: giustosimpson2000
+      role: origin
+      loc: Theorem 6.14, Theorem 1.3(5)
+    - ref: friedmansimpson2000
+      role: rm
+      loc: Section 5, statement (2)
+    - ref: shafer2016
+      role: rm
+      loc: Section 1 (list of known results and table)
+
+- id: tietzesc
+  label: \textsf{Tietze}_{\mathrm{sc}}
+  name: Tietze extension theorem for separably closed sets
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  phrases:
+    - Tietze extension theorem for separably closed sets
+  definition: >
+    Let $X$ be a compact complete separable metric space, $C$ a separably closed subset of $X$ and $f : C \to
+    \mathbb{R}$ a continuous function (no modulus of uniform continuity required). Then there is a continuous $F : X \to
+    \mathbb{R}$ with $F \restriction C = f$ (giustosimpson2000, Theorem 6.9(2)). Equivalent over RCA₀ to the special
+    case $X = [0,1]$ (Theorem 6.9(3)).
+  refs:
+    - ref: giustosimpson2000
+      role: origin
+      loc: Theorem 6.9
+    - ref: shafer2016
+      role: rm
+      loc: Section 1 (list of known results and table)
+
+- id: rieszhilb
+  label: \textsf{Riesz representation}_{\mathcal{H}}
+  name: Riesz representation theorem for Hilbert spaces
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  phrases:
+    - Riesz representation theorem
+  definition: >
+    Every bounded linear functional $f$ on a (separable) Hilbert space $H$ is representable: there is $y \in H$ with
+    $f(x) = \langle x, y \rangle$ for every $x \in H$ (avigadsimic2006, Theorem 13.4(6); Hilbert spaces as in Definition
+    9.3).
+  caution: >
+    The second-order sentence for arbitrary separable Hilbert spaces, not the Weihrauch problem [[frr]] on $\ell_2$, nor
+    the Riesz representation theorem for measures.
+  refs:
+    - ref: avigadsimic2006
+      role: rm
+      loc: Theorem 13.4(6)
+
+- id: met
+  label: \textsf{Mean ergodic}
+  name: Von Neumann's mean ergodic theorem
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  phrases:
+    - mean ergodic theorem
+  definition: >
+    For every (separable) Hilbert space $H$, nonexpansive linear operator $T$ on $H$ and point $x \in H$, the sequence
+    of partial averages $S_n x = \frac{1}{n}(x + Tx + \dots + T^{n-1}x)$ converges (avigadsimic2006, Theorem 14.1(1));
+    equivalent over RCA₀ to the special case of isometries $T$ (Theorem 14.1(2)).
+  refs:
+    - ref: avigadsimic2006
+      role: rm
+      loc: Theorem 14.1
+
+- id: isat
+  label: \textsf{Saturation}_{\mathrm{int}}
+  name: Saturation lemma for intuitionistic logic
+  kind: sentence
+  minor: true
+  tags:
+    - compactness
+  phrases:
+    - saturation lemma for intuitionistic predicate logic
+    - saturation lemma for intuitionistic logic
+  definition: >
+    If a sentence $\sigma_0$ is not intuitionistically deducible from a theory $\Gamma$ and $C$ is an infinite set of
+    constants not in the language $L$ of $\Gamma$, then there is a $C$-saturated set $\Gamma' \supseteq \Gamma$ of
+    $L(C)$-sentences with $\Gamma' \nvdash_i \sigma_0$; $C$-saturated means $\Gamma' \nvdash_i \bot$, deductively
+    closed, with the disjunction property and witnesses in $C$ for its existential sentences (yamazaki2001, Definition
+    2.1, Lemma 2.2, Theorem 2.3(2)). Equivalent over RCA₀ to the version for intuitionistic propositional logic with
+    countably many atoms (Theorem 2.3(3)).
+  refs:
+    - ref: yamazaki2001
+      role: origin
+      loc: Definition 2.1, Lemma 2.2, Theorem 2.3
+
+- id: iscompl
+  label: \textsf{Strong completeness}_{\mathrm{int}}
+  name: Strong completeness theorem for intuitionistic logic (Kripke models)
+  kind: sentence
+  minor: true
+  tags:
+    - compactness
+  phrases:
+    - strong completeness theorem for intuitionistic predicate logic
+    - strong completeness theorem for intuitionistic logic
+  definition: >
+    For every intuitionistically consistent theory $\Gamma$ there is (a code for) a Kripke model $(K, \leq_K, D,
+    \Vdash)$ such that for every sentence $\sigma$, $\Gamma \vdash_i \sigma$ if and only if every world of $K$ forces
+    $\sigma$ (yamazaki2001, Definition 3.1, Lemma 3.6, Theorem 3.7(2)). Equivalent over RCA₀ to the version for
+    intuitionistic propositional logic with countably many atoms (Theorem 3.7(3)).
+  caution: Not [[completeness]] (Gödel's completeness theorem for classical logic, equivalent to WKL₀).
+  refs:
+    - ref: yamazaki2001
+      role: origin
+      loc: Definition 3.1, Lemma 3.6, Theorem 3.7
+
+- id: fp
+  label: \mathsf{FP}
+  name: Fixed points of positive arithmetic operators
+  kind: sentence
+  minor: true
+  tags:
+    - well-orders
+  aliases:
+    - FP
+    - FP0
+    - FP₀
+  phrases:
+    - fixed points of positive arithmetic operators
+  definition: >
+    For every arithmetic formula $\varphi(x, Y)$ (with number and set parameters) in which $Y$ occurs only positively,
+    there is a set $Y$ with $\forall x\, (x \in Y \leftrightarrow \varphi(x, Y))$ (avigad1996b, Section 2, schema (FP)).
+    $\mathsf{FP}_0$ is (FP) with the basic axioms of PA and $\Sigma^0_1$ induction.
+  refs:
+    - ref: avigad1996b
+      role: origin
+      loc: Section 2, schema (FP); Theorem 3.1
+
+- id: sepclosed
+  label: \textsf{Closed sets are separably closed}
+  name: Closed subsets of compact complete separable metric spaces are separably closed
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  definition: >
+    Every non-empty closed subset (coded by its complement, a union of open balls) of a compact complete separable
+    metric space (compactness in the sense of Simpson, Definition III.2.3) is separably closed, that is, the closure of
+    a countable sequence of points (Hirst, Theorem 1 (2)).
+  refs:
+    - ref: hirst2006
+      role: rm
+      loc: Theorem 1 (2)
+
+- id: sepclosed01
+  label: \textsf{Closed sets are separably closed}_{[0,1]}
+  name: Closed subsets of [0,1] are separably closed
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  definition: >
+    Every non-empty closed subset of $[0, 1]$ (coded by its complement) is separably closed, that is, the closure of a
+    countable sequence of points (Hirst, Theorem 1 (3)).
+  refs:
+    - ref: hirst2006
+      role: rm
+      loc: Theorem 1 (3)
+
+- id: gdeltarp
+  label: G_\delta\text{-}\mathsf{RT}_{\infty}
+  name: G_δ sets have the Ramsey property
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+    - ramsey
+  definition: >
+    For every $G_\delta$ set $P \subseteq [\mathbb{N}]^\mathbb{N}$ there is an infinite $H$ such that $[H]^\mathbb{N}
+    \subseteq P$ or $[H]^\mathbb{N} \cap P = \emptyset$ (Simpson, Theorem I.9.4 (5); between the $\Delta^0_2$ and the
+    $\Sigma^0_\infty$ Ramsey theorems of Theorem VI.6.4).
+  refs:
+    - ref: simpson2009
+      role: rm
+      loc: Theorem I.9.4 (5), Section VI.6
+    - ref: marcone2009
+      role: survey
+      loc: Teorema 4 (viii)
+
+- id: pi11tr
+  label: \Pi^1_1\text{-}\mathsf{TR}
+  name: Π¹₁ transfinite recursion
+  kind: sentence
+  tags:
+    - well-orders
+  aliases:
+    - Π11-TR0
+    - Pi11-TR0
+    - Π11-TR
+    - Pi11-TR
+  phrases:
+    - Π11 transfinite recursion
+  definition: >
+    The scheme $\forall X\,(\mathrm{WO}(X) \to \exists Y\, H_\theta(X, Y))$ for every $\Pi^1_1$ formula $\theta(n, Y)$:
+    every $\Pi^1_1$ operator can be iterated along every countable well-ordering (Definition VI.7.1 of [@simpson2009],
+    with $H_\theta$ as in Definition V.2.2). $\Pi^1_1\text{-}\mathsf{TR}_0$ is $\mathsf{ACA}_0$ plus this scheme.
+  refs:
+    - ref: simpson2009
+      role: rm
+      loc: Definition VI.7.1, Theorem VI.7.3
+    - ref: heinatsch2007
+      role: rm
+      loc: Section 1.2, Theorem 1.2.5
+    - ref: rathjen2010
+      role: rm
+
+- id: pi1inftyti
+  label: \Pi^1_\infty\text{-}\mathsf{TI}
+  name: Transfinite induction for all formulas (bar induction)
+  kind: sentence
+  tags:
+    - well-orders
+    - induction
+  aliases:
+    - Π1∞-TI0
+    - Pi1infty-TI0
+    - Π1∞-TI
+    - bar induction
+  phrases:
+    - transfinite induction axiom
+  caution: "[[bi]] is the bi-immunity principle; bar induction is this statement (Buchholz [@buchholz1987] writes it BI)."
+  definition: >
+    Transfinite induction along every countable well-ordering for every formula of $\mathrm{L}_2$: the scheme $\forall
+    X\,(\mathrm{WO}(X) \to \mathrm{TI}(X, \psi))$, where $\mathrm{TI}(X, \psi)$ is $\forall j\,(\forall i\,(i <_X j \to
+    \psi(i)) \to \psi(j)) \to \forall j\, \psi(j)$ and $\psi(j)$ is any $\mathrm{L}_2$ formula (Definition VII.2.14 of
+    [@simpson2009]). $\Pi^1_\infty\text{-}\mathsf{TI}_0$ is $\mathsf{ACA}_0$ plus this scheme. Its restriction to
+    $\Pi^1_1$ formulas is [[pi11-ti]].
+  refs:
+    - ref: simpson2009
+      role: rm
+      loc: Definition VII.2.14, Corollary VII.2.19
+    - ref: simpson2002
+      role: survey
+      loc: Section 3
+
+- id: bhydra
+  label: \textsf{Buchholz hydra}
+  name: Buchholz's hydra game terminates (Π⁰₂ form)
+  kind: sentence
+  minor: true
+  firstOrder: true
+  tags:
+    - first-order
+    - well-orders
+  phrases:
+    - Buchholz hydra
+    - Buchholz's hydra
+  definition: >
+    A hydra is a finite labeled tree whose root has label $+$, whose other nodes are labeled by ordinals $\nu \le
+    \omega$, and whose nodes immediately above the root have label $0$; $A(n)$ is the hydra obtained by chopping off the
+    rightmost head of $A$ with parameter $n$, by Buchholz's three rules (label $0$: replicate $n$ times the subtree
+    below, as for Kirby–Paris hydras; label $u + 1$: copy the subtree at the first node below of label $\le u$; label
+    $\omega$: replace it by $n + 1$). The statement is the $\Pi^0_2$ sentence $\forall n\, \exists k\,
+    A^n(1)(2)\cdots(k) = \oplus$, where $A^n$ is the hydra made of the root, a node labeled $0$ and above it a chain of
+    $n$ nodes labeled $\omega$, and $\oplus$ is the hydra reduced to its root (Introduction, Theorem III, of
+    [@buchholz1987]). It is true (Theorem I: every hydra dies when the rightmost head is always chopped, for any
+    sequence of parameters).
+  refs:
+    - ref: buchholz1987
+      role: origin
+      loc: Introduction, Theorems I and III

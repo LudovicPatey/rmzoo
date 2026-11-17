@@ -8,3 +8,11 @@
 - { type: implication, from: d2, to: sadc, over: sw, refs: [ { ref: astoretal2017, loc: Proposition 2.4(1) } ] }
 - { type: implication, from: adc, to: coh, over: sw, refs: [ { ref: astoretal2017, loc: Proof of Corollary 2.10 } ] }
 - { type: separation, from: d2, to: sads, over: w, refs: [ { ref: astoretal2017, loc: Theorem 2.6 } ] }
+- { type: implication, from: srt2, to: gsads, over: sw, refs: [ { ref: astoretal2017, loc: Proposition 2.4(1) } ] }
+- { type: implication, from: ads, to: gsads, over: sw, refs: [ { ref: astoretal2017, loc: Proposition 2.4(2) }, { ref: solomon2016, loc: "Section 3, after Definition 16" } ] }
+- { type: implication, from: gsads, to: sads, over: sw, refs: [ { ref: astoretal2017, loc: Proposition 2.4(3) }, { ref: solomon2016, loc: "Section 3, after Definition 16" } ] }
+- { type: implication, from: sadc, to: sadcw, over: sw, refs: [ { ref: astoretal2017, loc: Proposition 2.4(3) }, { ref: solomon2016, loc: "Section 3, after Definition 16" } ] }
+- { type: implication, from: sads, to: sadcw, over: sw, refs: [ { ref: astoretal2017, loc: Proposition 2.4(4) }, { ref: solomon2016, loc: "Section 3, after Definition 16" } ] }
+- { type: implication, from: gsads, to: sadc, over: sw, refs: [ { ref: astoretal2017, loc: Proposition 2.4(4) }, { ref: solomon2016, loc: "Section 3, after Definition 16" } ] }
+- { type: implication, from: sadcw, to: gsads, over: c, refs: [ { ref: astoretal2017, loc: Proposition 2.4(5) } ] }
+- { type: separation, from: gsads, to: adc, over: w, refs: [ { ref: astoretal2017, loc: Corollary 2.10 }, { ref: solomon2016, loc: Theorem 17(3) } ] }

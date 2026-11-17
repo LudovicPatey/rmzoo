@@ -1,0 +1,3 @@
+# Results from [hirst2000].
+
+[ { type: equivalence, from: rankwf, to: atr, over: rca0, refs: [ { ref: hirst2000, loc: Theorem 7 } ] }, { type: equivalence, from: rankcb, to: pi11ca, over: rca0, refs: [ { ref: hirst2000, loc: Theorem 8 } ] }, { type: equivalence, from: rankbd, to: aca, over: rca0, refs: [ { ref: hirst2000, loc: Theorem 14 } ] } ]

@@ -604,3 +604,60 @@
   instance: 'A barrier $B$ and a 2-bounded function $f : B \to \mathbb{N}$.'
   solution: 'An infinite $Y \subseteq \mathrm{base}(B)$ such that $f$ is injective on $B|Y$.'
   refs: [ { ref: carluccigjetaj2026, role: rm, loc: "Definition (Barrier Rainbow Ramsey Theorem)" } ]
+
+# Statement pass of November 2026 (proposals of the AI readers; definitions read in the sources)
+
+- id: delta11rt
+  label: \Delta^1_1\text{-}\mathsf{RT}_{\infty}
+  name: Δ¹₁ Ramsey theorem (infinite exponent)
+  kind: sentence
+  minor: true
+  tags:
+    - ramsey
+    - determinacy
+  aliases:
+    - Δ11-RT
+    - Delta11-RT
+  phrases:
+    - Δ11 Ramsey theorem
+    - Delta11 Ramsey theorem
+  definition: >
+    Every $\Delta^1_1$ subset of $[\mathbb{N}]^\mathbb{N}$ has the Ramsey property: the scheme $\forall h\,(\varphi(h)
+    \leftrightarrow \psi(h)) \to \exists f\,(\forall g\, \varphi(f \cdot g) \vee \forall g\, \neg\varphi(f \cdot g))$
+    for $\Sigma^1_1$ formulas $\varphi$ and $\Pi^1_1$ formulas $\psi$ (with parameters), where $f, g, h$ range over
+    $[\mathbb{N}]^\mathbb{N}$ (Definition V.9.1 of [@simpson2009], with $\Delta^1_1$ in place of $\Delta^0_1$). Simpson
+    calls it the Borel Ramsey theorem, or Galvin–Prikry theorem (Remark VI.7.6).
+  refs:
+    - ref: simpson2009
+      role: rm
+      loc: Definition V.9.1, Theorem VI.7.3
+    - ref: heinatsch2007
+      role: rm
+      loc: Section 1.2, Theorem 1.2.5
+
+- id: sigma11rt
+  label: \Sigma^1_1\text{-}\mathsf{RT}_{\infty}
+  name: Σ¹₁ Ramsey theorem (infinite exponent)
+  kind: sentence
+  minor: true
+  tags:
+    - ramsey
+    - determinacy
+  aliases:
+    - Σ11-RT
+    - Sigma11-RT
+  phrases:
+    - Σ11 Ramsey theorem
+    - Sigma11 Ramsey theorem
+  definition: >
+    Every $\Sigma^1_1$ subset of $[\mathbb{N}]^\mathbb{N}$ has the Ramsey property: the scheme $\exists f\,(\forall g\,
+    \varphi(f \cdot g) \vee \forall g\, \neg\varphi(f \cdot g))$ for $\Sigma^1_1$ formulas $\varphi$ (with parameters),
+    where $f, g$ range over $[\mathbb{N}]^\mathbb{N}$ (Definition V.9.1 of [@simpson2009], with $\Sigma^1_1$ in place of
+    $\Sigma^0_1$).
+  refs:
+    - ref: simpson2009
+      role: rm
+      loc: Definition V.9.1, Theorem VI.7.5
+    - ref: heinatsch2007
+      role: rm
+      loc: Section 1.2, Theorem 1.2.6

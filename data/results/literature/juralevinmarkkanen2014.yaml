@@ -1,0 +1,3 @@
+# Results from [juralevinmarkkanen2014].
+
+[ { type: equivalence, from: domatic3, to: pi11ca, over: rca0, refs: [ { ref: juralevinmarkkanen2014, loc: Corollary 5.2 } ] } ]

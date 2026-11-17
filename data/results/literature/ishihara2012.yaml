@@ -1,0 +1,3 @@
+# Results from [ishihara2012].
+
+[ { type: equivalence, from: bdn, to: ubt, over: bish, refs: [ { ref: ishihara2012, loc: Theorem 7 (1 ↔ 2) } ] }, { type: equivalence, from: bdn, to: bslim, over: bish, refs: [ { ref: ishihara2012, loc: Theorem 7 (1 ↔ 3) } ] } ]

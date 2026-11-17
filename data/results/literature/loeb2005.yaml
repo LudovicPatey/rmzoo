@@ -1,0 +1,3 @@
+# Results from [loeb2005].
+
+[ { type: equivalence, from: fandelta, to: lindenb, over: bish, refs: [ { ref: loeb2005, loc: Theorem 6.5 (in WKV) } ] }, { type: equivalence, from: fandelta, to: pcompl, over: bish, refs: [ { ref: loeb2005, loc: Theorem 6.5 (in WKV) } ] }, { type: equivalence, from: fandelta, to: pcompact, over: bish, refs: [ { ref: loeb2005, loc: Theorem 6.5 (in WKV) } ] } ]

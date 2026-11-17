@@ -1,0 +1,3 @@
+# Results from [moschovakisvafeiadou2012].
+
+[ { type: implication, from: bid, to: fandelta, over: bish, refs: [ { ref: moschovakisvafeiadou2012, loc: Section 5.1 } ] } ]

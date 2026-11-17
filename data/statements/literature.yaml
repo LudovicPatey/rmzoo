@@ -2439,3 +2439,2152 @@
   instance: A countable undirected graph that has a one-way Eulerian path.
   solution: An orientation of its edges that has a one-way directed Eulerian path.
   refs: [ { ref: valenti2026, role: origin, loc: Definition 4.1 } ]
+
+# Statement pass of November 2026 (proposals of the AI readers; definitions read in the sources)
+
+- id: ccomp
+  label: \textsf{countable comprehension}
+  name: Countable comprehension (Σ¹₁ comprehension for unique witnesses)
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  phrases:
+    - countable comprehension
+  definition: >
+    For arithmetical $\varphi$ such that $(\forall n \in \mathbb{N})(\exists \text{ at most one } X \subset
+    \mathbb{N})\varphi(X, n)$, there is $Z \subset \mathbb{N}$ such that $(\forall n \in \mathbb{N})\big((\exists X
+    \subset \mathbb{N})\varphi(X, n) \leftrightarrow n \in Z\big)$ (sanders2026c, Principle A.2.7; simpson2009, Theorem
+    V.5.2, item 2). Equivalent to $\mathsf{ATR}_0$ over $\mathsf{RCA}_0$.
+  refs:
+    - ref: simpson2009
+      role: rm
+      loc: Theorem V.5.2(2)
+    - ref: sanders2026c
+      role: rm
+      loc: Principle A.2.7
+
+- id: enc
+  label: \mathsf{ENC}
+  name: Exact numerical choice for Π¹₁ formulas
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - ENC
+  phrases:
+    - exact numerical choice
+  definition: >
+    For any formula $\varphi \in \Pi^1_1$, $(\forall n \in \mathbb{N})(\exists m \in \mathbb{N})\varphi(n, m)
+    \rightarrow (\exists g \in \mathbb{N}^\mathbb{N})(\forall n \in \mathbb{N})\varphi(n, g(n))$ (sanderstaranovsky2026,
+    Principle 2.2; sanders2026c, Principles D.4.6 and I.4.15). Equivalent to $\mathsf{ATR}_0$ over $\mathsf{RCA}_0$
+    (Taranovsky).
+  refs:
+    - ref: sanderstaranovsky2026
+      role: origin
+      loc: Principle 2.2, Theorem 2.3
+    - ref: sanders2026c
+      role: rm
+      loc: Principle D.4.6; Principle I.4.15, Theorem I.4.16
+
+- id: widthsigma11ac
+  label: \textsf{width-}\Sigma^1_1\textsf{-AC}_0
+  name: Σ¹₁ axiom of finite choice with a width function
+  kind: sentence
+  minor: true
+  tags:
+    - big-five
+  aliases:
+    - width-Σ11-AC0
+    - height-Σ11-AC0
+    - width-Sigma11-AC0
+    - height-Sigma11-AC0
+  caution: Called height-Σ¹₁-AC₀ in sanders2024d (Section 1.2) and width-Σ¹₁-AC₀ in sanders2026c (Section E.1.2); same
+    principle.
+  definition: >
+    $\textsf{finite-}\Sigma^1_1\textsf{-AC}_0$ where one additionally assumes $g \in \mathbb{N}^\mathbb{N}$ to be given
+    such that for all $n$, $g(n) \geq k+1$, where $k+1$ is the length of the non-empty sequence $(X_0, \dots, X_k)$
+    listing all $X \subset \mathbb{N}$ with $\varphi(n, X)$: for arithmetical $\varphi$, if for every $n$ there are
+    nonzero finitely many $X$ with $\varphi(n, X)$, at most $g(n)$ of them, then there is $(X_n)_n$ with $\varphi(n,
+    X_n)$ for all $n$ (sanders2024d, after Principle 1.3; sanders2026c, after Principle E.1.5). A theory of
+    hyperarithmetic analysis.
+  refs:
+    - ref: sanders2024d
+      role: origin
+      loc: Section 1.2, after Principle 1.3 (height-Σ¹₁-AC₀)
+    - ref: sanders2026c
+      role: rm
+      loc: Section E.1.2, after Principle E.1.5
+
+- id: bnc
+  label: \mathsf{BNC}
+  name: Bounded numerical choice for Π¹₁ formulas
+  kind: sentence
+  minor: true
+  tags:
+    - big-five
+  aliases:
+    - BNC
+  phrases:
+    - bounded numerical choice
+    - bounding numerical choice
+  definition: >
+    For any formula $\varphi \in \Pi^1_1$ (of second-order arithmetic): $(\forall n \in \mathbb{N})(\exists m \in
+    \mathbb{N})\varphi(n, m) \rightarrow (\exists g \in \mathbb{N}^\mathbb{N})(\forall n \in \mathbb{N})(\exists m \leq
+    g(n))\varphi(n, m)$ (sanderstaranovsky2026, Principle 2.1; sanders2026c, Principles E.5.14, I.4.14). Equivalent to
+    $\mathsf{ATR}_0$ over $\mathsf{RCA}_0$ (result of Taranovsky).
+  refs:
+    - ref: sanderstaranovsky2026
+      role: origin
+      loc: Principle 2.1, Theorem 2.3
+    - ref: sanders2026c
+      role: rm
+      loc: Principles E.5.14, I.4.14; Theorem I.4.16
+
+- id: openarith
+  label: \mathsf{open}_{\mathrm{arith}}
+  name: Arithmetically definable open sets of reals have codes
+  kind: sentence
+  minor: true
+  tags:
+    - big-five
+    - analysis
+  aliases:
+    - openarith
+  definition: >
+    Let $\varphi \in \mathsf{L}_2$ be an arithmetical formula such that for all $x, y \in \mathbb{R}$, $x =_\mathbb{R}
+    y$ implies $\varphi(x) \leftrightarrow \varphi(y)$, and for all $x \in \mathbb{R}$, if $\varphi(x)$ then $(\exists N
+    \in \mathbb{N})(\forall y \in B(x, \frac{1}{2^N}))\varphi(y)$. Then there are sequences of reals $(a_n)_n$ and
+    $(b_n)_n$ such that for all $x \in \mathbb{R}$, $\varphi(x) \leftrightarrow (\exists n \in \mathbb{N})(a_n < x <
+    b_n)$ (sanders2026c, Principles I.2.12 and G.3.40). Second-order version of $\mathsf{open}$; equivalent to
+    $\mathsf{ATR}_0$ over $\mathsf{ACA}_0$.
+  refs:
+    - ref: sanders2026c
+      role: origin
+      loc: Principles G.3.40, I.2.12; Theorem I.2.13
+
+- id: bctarith
+  label: \mathsf{BCT}^{\mathrm{arith}}_{[0,1]}
+  name: Arithmetical Baire category theorem
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  aliases:
+    - BCTarith[0,1]
+    - BCTarith
+  definition: >
+    Let $\varphi \in \mathsf{L}_2$ be an arithmetical formula such that for all $x, y \in \mathbb{R}$ and $n \in
+    \mathbb{N}$, $x =_\mathbb{R} y$ implies $\varphi(x, n) \leftrightarrow \varphi(y, n)$; for all $x$ and $n$, if
+    $\varphi(x, n)$ then $(\exists N)(\forall y \in B(x, \frac{1}{2^N}))\varphi(y, n)$; and for all $x \in \mathbb{R}$
+    and $k, n \in \mathbb{N}$ there is $y$ with $|x - y| < \frac{1}{2^k}$ and $\varphi(y, n)$. Then there is $z \in
+    \mathbb{R}$ such that $(\forall n \in \mathbb{N})\varphi(z, n)$ (sanders2026c, Principle I.2.14). Over
+    $\mathsf{RCA}_0$, equivalent to the existence, for every $n$ and $Z$, of a $\Sigma^0_n(Z)$-generic element of Cantor
+    space (Theorem I.2.15).
+  refs:
+    - ref: sanders2026c
+      role: origin
+      loc: Principle I.2.14; Theorems I.2.15, I.2.16
+
+- id: lpbin
+  label: \textsf{leftmost path}_{2}
+  name: Existence of leftmost paths through infinite binary trees
+  kind: sentence
+  minor: true
+  tags:
+    - compactness
+  definition: >
+    Every infinite tree $T \subseteq 2^{<\mathbb{N}}$ has a leftmost path: an infinite path which is least in the
+    lexicographic order among the paths of $T$ (avigadsimic2006, Lemma 3.1).
+  caution: Not [[leftmost-path]], the version for non-well-founded trees on $\mathbb{N}$, which is equivalent to
+    $\Pi^1_1$-comprehension.
+  refs:
+    - ref: avigadsimic2006
+      role: rm
+      loc: Lemma 3.1
+
+- id: bphgm
+  label: \mathsf{B}^{\prime}\mathsf{H}\mathsf{G}\text{-}\mathsf{M}
+  name: Marriage theorem for bipartite graphs locally finite for boys
+  kind: problem
+  minor: true
+  tags:
+    - graphs
+  aliases:
+    - B'HG-M
+    - B′HG-M
+  definition: >
+    If a bipartite graph $R(B, G)$ is $B$-locally finite ($R(b)$ is finite for every $b \in B$) and satisfies the Hall
+    condition ($|R[X]| \geq |X|$ for every finite $X \subseteq B$), then it has a solution: an injection $M : B \to G$
+    with $M(b) \in R(b)$ for every $b$ (fujiwarahiguchikihara2014, Section 1.3). Hirst's marriage theorem.
+  instance: A $B$-locally finite bipartite graph $R(B, G)$ satisfying the Hall condition.
+  solution: "An injection $M : B \\to G$ with $M(b) \\in R(b)$ for all $b \\in B$."
+  caution: Not [[hall-lf]] (Hall condition on both sides and a perfect matching) nor [[marriage]] (regular graphs).
+  refs:
+    - ref: fujiwarahiguchikihara2014
+      role: rm
+      loc: Section 1.3, Theorems 2.15 and 4.2(1)
+    - ref: hirst1990
+      role: origin
+
+- id: bpphgm
+  label: \mathsf{B}^{\prime\prime}\mathsf{H}\mathsf{G}\text{-}\mathsf{M}
+  name: Marriage theorem for bipartite graphs highly recursive for boys
+  kind: problem
+  minor: true
+  tags:
+    - graphs
+  aliases:
+    - B''HG-M
+    - B′′HG-M
+  definition: >
+    If a bipartite graph $R(B, G)$ is $B$-highly recursive (there is a function $f : B \to \mathbb{N}$ with $f(b) =
+    |R(b)|$ for all $b \in B$) and satisfies the Hall condition ($|R[X]| \geq |X|$ for every finite $X \subseteq B$),
+    then it has an injection $M : B \to G$ with $M(b) \in R(b)$ for every $b$ (fujiwarahiguchikihara2014, Section 1.3).
+  instance: A bipartite graph $R(B, G)$ with a function $f$ giving $|R(b)|$ for each $b \in B$, satisfying the Hall condition.
+  solution: "An injection $M : B \\to G$ with $M(b) \\in R(b)$ for all $b \\in B$."
+  refs:
+    - ref: fujiwarahiguchikihara2014
+      role: rm
+      loc: Section 1.3, Theorems 2.13 and 4.2(3)
+    - ref: hirst1990
+      role: origin
+
+- id: dmat
+  label: \mathsf{DM}
+  name: Decomposition of e-matroids into 1-dimensional subspaces
+  kind: problem
+  minor: true
+  tags:
+    - algebra
+    - graphs
+  aliases:
+    - DM
+    - e-matroid decomposition
+  caution: DM is Sovine's acronym for this principle; in the literature on linear orders DM usually abbreviates the
+    Dushnik–Miller theorem [[dm]].
+  definition: >
+    Given an e-matroid $(M, D)$ (Definition 2.1.7: $M \subseteq \mathbb{N}$ and $D : \mathbb{N} \to
+    [\mathbb{N}]^{<\mathbb{N}}$ enumerates the finite dependent sets of a matroid on $M$), find a decomposition of $(M,
+    D)$ into 1-dimensional subspaces: a function $f : M \to \mathbb{N}$ such that $f(n) = 0$ if and only if $n \in Z$,
+    where $Z = \{m \in M : \{m\} \text{ is dependent}\}$ is the set of zero elements, and, for distinct $n, m \in M
+    \setminus Z$, $f(n) = f(m)$ if and only if $\{n, m\}$ is dependent (Definitions 2.2.1 and 2.3.1).
+  instance: An e-matroid $(M, D)$.
+  solution: "A decomposition $f : M \\to \\mathbb{N}$ of $(M, D)$ into 1-dimensional subspaces."
+  refs:
+    - ref: sovine2017
+      role: origin
+      loc: Definitions 2.2.1, 2.3.1
+
+- id: wdmat
+  label: \mathsf{WDM}
+  name: Weak decomposition of e-matroids into 1-dimensional subspaces
+  kind: problem
+  minor: true
+  tags:
+    - algebra
+    - graphs
+  aliases:
+    - WDM
+  definition: >
+    Given an e-matroid $(M, D)$, find a weak decomposition of $(M, D)$ into 1-dimensional subspaces: a function $f : M
+    \to \mathbb{N}$ such that, for distinct non-zero elements $n, m \in M \setminus Z$, $f(n) = f(m)$ if and only if
+    $\{n, m\}$ is dependent (only the last condition of [[dmat]]; Definitions 2.2.1 and 2.3.1).
+  instance: An e-matroid $(M, D)$.
+  solution: "A weak decomposition $f : M \\to \\mathbb{N}$ of $(M, D)$ into 1-dimensional subspaces."
+  refs:
+    - ref: sovine2017
+      role: origin
+      loc: Definitions 2.2.1, 2.3.1
+
+- id: depw
+  label: \mathsf{DEP}_{\mathrm{W}}
+  name: Dependent sets of an e-matroid
+  kind: problem
+  minor: true
+  tags:
+    - algebra
+  aliases:
+    - DEPW
+    - DEP_W
+  definition: >
+    Given an e-matroid $(M, D)$, output the characteristic function $\chi_{\mathrm{range}(D)}$ of its set of finite
+    dependent sets (Definition 2.2.2).
+  instance: An e-matroid $(M, D)$.
+  solution: The characteristic function of $\mathrm{range}(D)$.
+  refs:
+    - ref: sovine2017
+      role: origin
+      loc: Definition 2.2.2
+
+- id: lvs
+  label: \textsf{1-dimensional subspace}
+  name: Existence of 1-dimensional subspaces of countable vector spaces
+  kind: problem
+  minor: true
+  tags:
+    - algebra
+  aliases:
+    - L_W
+  definition: >
+    Every countable vector space over an infinite computable field (Definition 3.1.1) of dimension greater than 1 (there
+    are two linearly independent vectors) has a 1-dimensional subspace (Sovine's $\mathsf{L}$ and
+    $\mathsf{L}_{\mathrm{W}}$, Definition 3.1.3).
+  instance: A countable vector space $V$ of dimension greater than 1.
+  solution: A 1-dimensional subspace of $V$.
+  refs:
+    - ref: sovine2017
+      role: origin
+      loc: Definition 3.1.3
+
+- id: psgfin
+  label: \mathsf{PSG}^{<\mathbb{N}}
+  name: Nonempty finite-dimensional saturated subgraphs
+  kind: problem
+  minor: true
+  tags:
+    - graphs
+  aliases:
+    - PSG<N
+    - PSG^{<N}_W
+  definition: >
+    Given a countable graph $G = (V, E)$, find a nonempty set $S \subseteq V$ which is the union of finitely many
+    connected components of $G$ (Definition 4.1.2). The restriction to graphs with at least one edge has the same strong
+    Weihrauch degree (Corollary 4.1.3).
+  instance: A countable graph $G = (V, E)$.
+  solution: A nonempty union of finitely many connected components of $G$.
+  refs:
+    - ref: sovine2017
+      role: origin
+      loc: Definition 4.1.2, Corollary 4.1.3
+
+- id: psm
+  label: \mathsf{PSM}
+  name: Nontrivial finite-dimensional subspaces of e-matroids
+  kind: problem
+  minor: true
+  tags:
+    - algebra
+  aliases:
+    - PSM_W
+  definition: >
+    Given a nontrivial e-matroid $(M, D)$ (one with a non-zero element), find a nontrivial finite-dimensional subspace:
+    a subspace $S$ containing a non-zero element and having a finite basis (Definition 4.1.3, Corollary 4.1.4).
+  instance: An e-matroid with at least one non-zero element.
+  solution: A nontrivial finite-dimensional subspace of it.
+  refs:
+    - ref: sovine2017
+      role: origin
+      loc: Definition 4.1.3, Corollary 4.1.4
+
+- id: psg
+  label: \mathsf{PSG}
+  name: Nontrivial proper saturated subgraphs
+  kind: problem
+  minor: true
+  tags:
+    - graphs
+  aliases:
+    - PSG_W
+  definition: >
+    Given a countable graph with at least two connected components, find a nontrivial proper saturated subgraph: a
+    nonempty union of connected components which is not the whole vertex set (Definition 4.2.1).
+  instance: A countable graph with at least two connected components.
+  solution: A nonempty union of connected components of $G$ other than $G$.
+  refs:
+    - ref: sovine2017
+      role: origin
+      loc: Definition 4.2.1
+
+- id: dv
+  label: \mathsf{DV}
+  name: Decomposition of countable vector spaces into 1-dimensional subspaces
+  kind: problem
+  minor: true
+  tags:
+    - algebra
+  aliases:
+    - DV
+  definition: >
+    Every countable vector space has a decomposition into 1-dimensional subspaces, defined as for e-matroids ([[dmat]],
+    Definition 2.3.1): a function $f : V \to \mathbb{N}$ with $f(v) = 0$ if and only if $v$ is the zero vector, and, for
+    distinct non-zero $v, w$, $f(v) = f(w)$ if and only if $\{v, w\}$ is linearly dependent (Theorem 5.1.1).
+  instance: A countable vector space $V$.
+  solution: A decomposition of $V$ into 1-dimensional subspaces.
+  refs:
+    - ref: sovine2017
+      role: origin
+      loc: Theorem 5.1.1
+
+- id: hom1pt
+  label: \textsf{1-point homogeneous models}
+  name: Existence of 1-point homogeneous models
+  kind: sentence
+  minor: true
+  tags:
+    - compactness
+  definition: >
+    Every complete consistent theory $T$ has a 1-point homogeneous model $\mathcal{A}$: for all tuples $\bar a, \bar b$
+    with $\mathrm{tp}^{\mathcal{A}}(\bar a) = \mathrm{tp}^{\mathcal{A}}(\bar b)$ and every element $u$ there is an
+    element $v$ with $\mathrm{tp}^{\mathcal{A}}(\bar a u) = \mathrm{tp}^{\mathcal{A}}(\bar b v)$ (Definition 1.1(3)).
+    Over $\mathsf{RCA}_0$ it is equivalent to the existence of 1-homogeneous and of strongly 1-homogeneous models
+    (Definition 1.1(4), (5); Theorem 2.3). For homogeneous models in the sense of Definition 1.1(6) the strength is open
+    (Question 2.5).
+  refs:
+    - ref: belanger2015
+      role: rm
+      loc: Definition 1.1, Theorems 2.2, 2.3
+    - ref: hirschfeldtlangeshore2017
+      role: rm
+      loc: Section 1
+
+- id: satmodel
+  label: \textsf{Saturated model existence}
+  name: Theories with countably many types have saturated models
+  kind: sentence
+  minor: true
+  tags:
+    - compactness
+  definition: >
+    Every complete consistent theory with countably many types (that is, with a coded sequence of all its types,
+    Definition 2.9) has a saturated model: a model $\mathcal{A}$ such that for every tuple $\bar a$ from its domain,
+    $(\mathcal{A}, \bar a)$ realizes every type of the theory $\mathrm{tp}^{\mathcal{A}}(\bar a)$ (Definition 1.1(7)).
+  refs:
+    - ref: belanger2015
+      role: rm
+      loc: Definitions 1.1, 2.9, Theorem 2.10
+
+- id: satpfa
+  label: \textsf{Saturated models with pairwise full amalgamation}
+  name: Saturated models of theories whose types have the pairwise full amalgamation property
+  kind: sentence
+  minor: true
+  tags: []
+  definition: >
+    Every complete consistent theory $T$ with countably many types whose types have the pairwise full amalgamation
+    property has a saturated model. A sequence $X$ of types of $T$ has the pairwise full amalgamation property if, for
+    every type $p(\bar x)$ and every pair $q_i(\bar x, \bar y)$, $q_j(\bar x, \bar z)$ of types in $X$ extending $p$,
+    there is a type $r(\bar x, \bar y, \bar z)$ in $X$ extending both (Definition 2.11). Over $\mathsf{RCA}_0 +
+    \mathsf{B}\Sigma^0_2$ it is equivalent to $\mathsf{WKL}_0 \vee \mathsf{I}\Sigma^0_2$ (Theorem 2.14), but not over
+    $\mathsf{RCA}_0$ (Corollary 2.19).
+  refs:
+    - ref: belanger2015
+      role: origin
+      loc: Definition 2.11, Proposition 2.13, Theorem 2.14
+
+- id: indisc
+  label: \textsf{Indiscernibles}
+  name: Existence of models with a sequence of indiscernibles
+  kind: sentence
+  minor: true
+  tags:
+    - compactness
+  definition: >
+    Every complete consistent theory has a model $\mathcal{A}$ with a sequence of indiscernibles: distinct elements
+    $a_0, a_1, \dots$ such that for every strictly increasing tuple $i_0 < \dots < i_{n-1}$ and every $n$-ary formula
+    $\varphi$, $\mathcal{A} \models \varphi(a_0, \dots, a_{n-1})$ if and only if $\mathcal{A} \models \varphi(a_{i_0},
+    \dots, a_{i_{n-1}})$ (Definition 2.29). Already the version with order indiscernibles implies $\mathsf{WKL}_0$
+    (Proposition 4.7).
+  refs:
+    - ref: belanger2015
+      role: rm
+      loc: Definition 2.29, Theorem 2.32
+
+- id: losvaught
+  label: \textsf{Łoś–Vaught test}
+  name: Łoś–Vaught test
+  kind: sentence
+  minor: true
+  tags:
+    - compactness
+  aliases:
+    - Los-Vaught test
+  phrases:
+    - Łoś–Vaught test
+    - Los–Vaught test
+  definition: >
+    If $T$ is an $L$-theory with only one countable model up to isomorphism, then for every $L$-sentence $\varphi$, $T
+    \vdash \varphi$ or $T \vdash \neg\varphi$ (Theorem 1.5(i)). For deductively closed theories the statement is
+    provable in $\mathsf{RCA}_0$ (Theorem 1.5(ii)).
+  refs:
+    - ref: belanger2014
+      role: rm
+      loc: Theorem 1.5
+
+- id: vaught
+  label: \textsf{Vaught's theorem}
+  name: Vaught's theorem (no complete theory has exactly two models)
+  kind: sentence
+  minor: true
+  tags: []
+  phrases:
+    - Vaught's theorem
+  caution: Not to be confused with the Łoś–Vaught test [[losvaught]].
+  definition: |
+    There is no complete theory with exactly two (countable) models up to isomorphism (Theorem 2.8).
+  refs:
+    - ref: belanger2014
+      role: rm
+      loc: Theorem 2.8, Corollary 2.11
+
+- id: ehrenfeucht
+  label: \textsf{Ehrenfeucht's theorem}
+  name: Ehrenfeucht's theorem on theories with exactly n models
+  kind: sentence
+  minor: true
+  tags: []
+  definition: |
+    For every $n \ge 3$ there is a complete theory with exactly $n$ (countable) models up to isomorphism (Theorem 2.7).
+  refs:
+    - ref: belanger2014
+      role: rm
+      loc: Theorem 2.7, Corollary 2.11
+
+- id: fmnp
+  label: \textsf{Finitely many models with a nonprincipal type}
+  name: A complete theory with a nonprincipal type and finitely many models
+  kind: sentence
+  minor: true
+  tags: []
+  definition: >
+    There is a complete theory with a nonprincipal type and only finitely many models up to isomorphism (Theorem
+    2.12(ii)). Over $\mathsf{RCA}_0$ it is equivalent to the same statement with "infinitely many $n$-types for some
+    $n$" in place of "a nonprincipal type" (Theorem 2.12(iii)), and to $(\neg\mathsf{WKL}_0) \vee \mathsf{ACA}_0$
+    (Theorem 2.12(i)).
+  refs:
+    - ref: belanger2014
+      role: origin
+      loc: Theorem 2.12, Proposition 5.7
+
+- id: tfabord
+  label: \textsf{Torsion-free abelian groups are orderable}
+  name: Orderability of torsion-free abelian groups
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+    - compactness
+  phrases:
+    - torsion free abelian groups are orderable
+  definition: >
+    Every torsion-free abelian group is an O-group: it admits a full order, a linear order $\le$ such that $a \le b$
+    implies $ac \le bc$ and $ca \le cb$ (Theorem 3.1 and Definition 3.1 of [@solomon1999]).
+  refs:
+    - ref: solomon1998
+      role: rm
+      loc: Theorems 3.1, 3.3
+    - ref: solomon1999
+      role: rm
+      loc: Definition 3.1, Theorem 4.1
+    - ref: downeysolomon2005
+      role: rm
+      loc: Theorem 1.2
+
+- id: tfnilord
+  label: \textsf{Torsion-free nilpotent groups are orderable}
+  name: Orderability of torsion-free nilpotent groups
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+    - compactness
+  definition: >
+    Every torsion-free nilpotent group is an O-group. A group $G$ is nilpotent if it has a code $(N, n)$ giving its
+    upper central series: $N_0 = \langle 1_G \rangle$, $N_1 = C(G)$, $N_n = G$, and $N_{i+1} = \pi^{-1}(C(G/N_i))$ for
+    $i < n$, where $\pi : G \to G/N_i$ is the projection (Definition 3.9).
+  refs:
+    - ref: solomon1998
+      role: origin
+      loc: Definition 3.9, Theorem 3.12
+    - ref: solomon1999
+      role: rm
+      loc: Definition 4.4, Theorem 4.5
+
+- id: prodord
+  label: \textsf{Products of O-groups}
+  name: Countable direct products of orderable groups are orderable
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+    - compactness
+  definition: >
+    If every group $A_i$ of a sequence $(A_i)_{i \in \mathbb{N}}$ is an O-group, then the restricted direct product
+    $\prod_{i \in \mathbb{N}} A_i$ (finite sequences, Definition 4.5) is an O-group; the orders of the $A_i$ are not
+    given. For finite products, and for a uniformly given sequence of orders, it is provable in $\mathsf{RCA}_0$
+    (Theorem 4.3).
+  refs:
+    - ref: solomon1998
+      role: origin
+      loc: Definition 4.5, Theorem 4.6
+    - ref: solomon1999
+      role: rm
+      loc: Theorem 4.6
+    - ref: solomon2014
+      role: rm
+      loc: Section 1
+
+- id: center
+  label: \textsf{Center of a group}
+  name: Existence of the center of a group
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+  definition: >
+    For every group $G$ the center $C(G) = \{g \in G : \forall x \in G\, (gx = xg)\}$ exists (Definition 3.5, Theorem
+    5.3). The reversal already uses 2-step nilpotent groups.
+  refs:
+    - ref: solomon1998
+      role: origin
+      loc: Definition 3.5, Theorem 5.3
+    - ref: solomon1999
+      role: rm
+      loc: Theorem 4.2
+
+- id: quotord
+  label: \textsf{Induced order on quotients}
+  name: Induced orders on quotients of partially ordered groups
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+  definition: >
+    For every partially ordered group $(G, \le_G)$ and every convex normal subgroup $H$, the induced order on $G/H$, $aH
+    \le bH$ if and only if $\exists h \in H\, (a \le_G bh)$, exists (Definition 2.13, Theorem 2.18). For fully ordered
+    groups it is provable in $\mathsf{RCA}_0$ (Theorem 2.14).
+  refs:
+    - ref: solomon1998
+      role: origin
+      loc: Definition 2.13, Theorem 2.18
+    - ref: solomon1999
+      role: rm
+      loc: Definition 3.7, Theorem 3.9
+    - ref: solomon2014
+      role: rm
+      loc: Section 1
+
+- id: fuchs
+  label: \textsf{Fuchs' theorem}
+  name: Fuchs' semigroup condition for extending partial orders of groups
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+    - compactness
+  definition: >
+    A partial order on a group $G$ with positive cone $P$ can be extended to a full order if and only if for every
+    finite sequence $A = (a_1, \dots, a_n)$ of non-identity elements there are signs $\varepsilon_i = \pm 1$ such that
+    $P \cap S(a_1^{\varepsilon_1}, \dots, a_n^{\varepsilon_n}) = \emptyset$, where $S(\dots)$ is the normal semigroup
+    generated by these elements, handled through the function $s(A, n, m, x)$ enumerating it (Theorems 6.1 and 6.7).
+  refs:
+    - ref: solomon1998
+      role: rm
+      loc: Theorems 6.1, 6.7, 6.10
+    - ref: solomon1999
+      role: rm
+      loc: Theorem 4.7
+
+- id: losohnishi
+  label: \textsf{Łoś–Ohnishi theorem}
+  name: Łoś–Ohnishi semigroup condition for orderability of groups
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+    - compactness
+  aliases:
+    - Los-Ohnishi theorem
+  definition: >
+    A group $G$ is an O-group if and only if for every finite sequence $a_1, \dots, a_n$ of non-identity elements there
+    are signs $\varepsilon_i = \pm 1$ with $1_G \notin S(a_1^{\varepsilon_1}, \dots, a_n^{\varepsilon_n})$, the normal
+    semigroup generated by these elements, handled through the function $s(A, n, m, x)$ (Theorems 6.2 and 6.8).
+  refs:
+    - ref: solomon1998
+      role: rm
+      loc: Theorems 6.2, 6.8, 6.10
+    - ref: solomon1999
+      role: rm
+      loc: Theorem 4.8
+
+- id: lorenzen
+  label: \textsf{Lorenzen's theorem}
+  name: Lorenzen's semigroup condition for orderability of groups
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+    - compactness
+  definition: >
+    A group $G$ is an O-group if and only if for every finite sequence $a_1, \dots, a_n$ of non-identity elements,
+    $\bigcap_{\varepsilon} S(a_1^{\varepsilon_1}, \dots, a_n^{\varepsilon_n}) = \emptyset$, the intersection ranging
+    over all sign sequences $\varepsilon_i = \pm 1$ (formally: for every $x$ some sign sequence $\varepsilon$ with $x
+    \notin S(a_1^{\varepsilon_1}, \dots, a_n^{\varepsilon_n})$; Theorems 6.3 and 6.9).
+  refs:
+    - ref: solomon1998
+      role: rm
+      loc: Theorems 6.3, 6.9, 6.10
+    - ref: solomon1999
+      role: rm
+      loc: Theorem 4.9
+
+- id: divcluniq
+  label: \textsf{Unique divisible closure}
+  name: Uniqueness of divisible closures of abelian groups
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+  definition: >
+    The divisible closure of a countable abelian group is unique (up to isomorphism over the group). A divisible closure
+    of $A$ is a divisible abelian group $D$ with a monomorphism $h : A \to D$ such that every non-zero $d \in D$ has a
+    multiple $nd = h(a)$ with $a \neq 0$ (Definition III.6.3); its existence is provable in $\mathsf{RCA}_0$ (Theorem
+    III.6.4).
+  refs:
+    - ref: simpson2009
+      role: rm
+      loc: Definition III.6.3, Theorem III.6.5
+    - ref: solomon1998
+      role: rm
+      loc: Theorem 8.4
+    - ref: solomon1999
+      role: rm
+      loc: Theorem 7.5
+    - ref: marcone2009
+      role: survey
+      loc: Teorema 2 (xi)
+
+- id: strongdivcl
+  label: \textsf{Strong divisible closure}
+  name: Existence of strong divisible closures
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+  definition: >
+    Every abelian group $A$ has a strong divisible closure: a divisible closure $h : A \to D$ such that $h$ is an
+    isomorphism of $A$ onto a subgroup of $D$ (Definition 8.6). Equivalent over $\mathsf{RCA}_0$ to the existence of
+    order-preserving strong divisible closures of fully ordered Archimedean groups (Theorem 8.7(3)).
+  refs:
+    - ref: solomon1998
+      role: origin
+      loc: Definition 8.6, Theorem 8.7
+    - ref: solomon1999
+      role: rm
+      loc: Definition 7.7, Theorem 7.8
+
+- id: strongrealcl
+  label: \textsf{Strong real closure}
+  name: Existence of strong real closures
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+  definition: >
+    Every countable ordered field has a strong real closure, that is, a real closure whose embedding has a range
+    (equivalently, every countable ordered field is isomorphic to a subfield of a countable real closed ordered field).
+    Existence and uniqueness of real closures are provable in $\mathsf{RCA}_0$ (Theorem II.9.7).
+  refs:
+    - ref: simpson2009
+      role: rm
+      loc: Theorem III.3.2(4)
+    - ref: solomon1999
+      role: rm
+      loc: Theorem 7.2(3)
+
+- id: maltsev
+  label: \textsf{Mal'tsev's theorem}
+  name: Mal'tsev's theorem on order types of countable ordered groups
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+    - well-orders
+  aliases:
+    - Maltsev theorem
+  phrases:
+    - Mal'tsev's theorem
+    - Maltsev's theorem
+  definition: >
+    For every countable (fully) ordered group $G$ there are a well order $\alpha$ and $\varepsilon \in \{0, 1\}$ such
+    that $\mathbb{Z}^\alpha \mathbb{Q}^\varepsilon$ is the order type of $G$ (an order-preserving bijection onto it;
+    $\mathbb{Z}^\alpha$ is the lexicographically ordered group of finitely supported functions $\alpha \to \mathbb{Z}$,
+    Definitions 3.4, 3.5). The restriction to abelian groups is also equivalent to $\Pi^1_1\text{-}\mathsf{CA}_0$
+    (Theorem 3.6(3)).
+  refs:
+    - ref: solomon2001
+      role: rm
+      loc: Definitions 3.4, 3.5, Theorem 3.6
+    - ref: solomon1999
+      role: rm
+      loc: Theorem 6.3
+
+- id: wiseg
+  label: \textsf{Well-ordered initial segments}
+  name: Existence of the well-ordered initial segment of a linear order
+  kind: sentence
+  minor: true
+  tags:
+    - well-orders
+    - orders
+  definition: >
+    For every linear order $X$, its well ordered initial segment $W(X) = \{x \in X : \text{there is no } f : \mathbb{N}
+    \to X \text{ with } f(0) = x \text{ and } f(i+1) <_X f(i) \text{ for all } i\}$ exists (Definition 3.2).
+  refs:
+    - ref: solomon2001
+      role: rm
+      loc: Definition 3.2, Proposition 4.4
+
+- id: archrep
+  label: \textsf{Archimedean representatives}
+  name: Sets of Archimedean representatives of ordered abelian groups
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+  definition: >
+    Every ordered abelian group $G$ has a set of Archimedean representatives: a set $X \subseteq G$ such that every $g
+    \in G$ is Archimedean equivalent to some $x \in X$ and distinct elements of $X$ are not Archimedean equivalent
+    (Definition 3.1); equivalently over $\mathsf{RCA}_0$, the set of pairs $\langle g, h \rangle$ with $g \approx h$
+    exists (Lemma 3.2). Here $a, b$ are Archimedean equivalent if $|a| \le |nb|$ and $|b| \le |ma|$ for some $n, m > 0$.
+  refs:
+    - ref: downeysolomon2005
+      role: origin
+      loc: Definition 3.1, Theorem 3.3
+
+- id: hahn
+  label: \textsf{Hahn embedding theorem}
+  name: Hahn's embedding theorem for ordered abelian groups
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+  phrases:
+    - Hahn's embedding theorem
+    - Hahn embedding theorem
+  caution: Not to be confused with the Hahn–Banach theorem [[hb]].
+  definition: >
+    For every ordered abelian group $G$ there are a linear order $T$ and a sequence $(K_t)_{t \in T}$ of Archimedean
+    ordered subgroups of $G$ such that $G$ is order isomorphic to a Hahn subgroup of $\sum_T K_t$ (a subgroup of
+    functions $T \to \bigcup_t K_t$ with well-ordered supports, closed under cuts, ordered reverse-lexicographically;
+    Definitions 4.1, 4.2).
+  refs:
+    - ref: downeysolomon2005
+      role: rm
+      loc: Definitions 4.1, 4.2, Theorem 4.4
+
+- id: gsads
+  label: \mathsf{General}\text{-}\mathsf{SADS}
+  name: Generalized stable ascending or descending sequence
+  kind: problem
+  tags:
+    - orders
+    - stable
+  aliases:
+    - General-SADS
+    - General-ADS
+  definition: >
+    Every stable linear order (every element is small, with finitely many predecessors, or large, with finitely many
+    successors; the order type is $\omega + k$, $k + \omega^*$ or $\omega + \omega^*$) has an infinite ascending or
+    descending sequence. Unlike [[sads]], orders of type $\omega + k$ and $k + \omega^*$ are allowed.
+  instance: A stable linear order $L$.
+  solution: An infinite ascending or descending sequence in $L$.
+  refs:
+    - ref: astoretal2017
+      role: origin
+      loc: Definition 2.3, Section 2 (Generalized SADS)
+    - ref: solomon2016
+      role: rm
+      loc: Definitions 15, 16 (General-ADS)
+
+- id: sadcw
+  label: \mathsf{SADC}_{\omega+\omega^*}
+  name: Stable ascending or descending chain for orders of type ω+ω*
+  kind: problem
+  tags:
+    - orders
+    - stable
+  caution: Astor, Dzhafarov, Solomon and Suggs [@astoretal2017] and Solomon [@solomon2016] call this principle SADC and
+    call [[sadc]] (all stable linear orders) General-SADC or General-ADC; Soldà [@solda2021] uses SADC for [[sadc]].
+  definition: >
+    Every stable linear order with infinitely many small and infinitely many large elements (that is, of type $\omega +
+    \omega^*$) has an infinite ascending chain or descending chain (a chain need not be enumerated in the order of
+    $\mathbb{N}$).
+  instance: A stable linear order $L$ of type $\omega + \omega^*$.
+  solution: An infinite ascending chain or descending chain of $L$.
+  refs:
+    - ref: astoretal2017
+      role: origin
+      loc: Section 2 (SADC)
+    - ref: solomon2016
+      role: rm
+      loc: Definition 16
+
+- id: autqdiv
+  label: \textsf{Divisibility of }\mathrm{Aut}(\mathbb{Q})
+  name: The automorphism group of the rationals is divisible
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+    - orders
+  definition: >
+    The group $\mathrm{Aut}(\mathbb{Q})$ of order-automorphisms of $(\mathbb{Q}, <)$ is divisible: for every $f \in
+    \mathrm{Aut}(\mathbb{Q})$ and every $n \ge 1$ there is $g \in \mathrm{Aut}(\mathbb{Q})$ with $g^n = f$ (Theorem
+    1.6(1)).
+  refs:
+    - ref: lemppetal2002
+      role: rm
+      loc: Theorem 1.6(1), Section 2, Theorem 4.1
+
+- id: autqcomm
+  label: \textsf{Commutators in }\mathrm{Aut}(\mathbb{Q})
+  name: Every automorphism of the rationals is a commutator [f, g] with itself
+  kind: sentence
+  minor: true
+  tags:
+    - algebra
+    - orders
+  definition: >
+    For every $f \in \mathrm{Aut}(\mathbb{Q})$ there is $g \in \mathrm{Aut}(\mathbb{Q})$ with $f = [f, g] =
+    f^{-1}g^{-1}fg$ (Theorem 1.6(2)). The weaker statement that every element of $\mathrm{Aut}(\mathbb{Q})$ is a
+    commutator holds already for computable automorphisms (Theorem 5.4).
+  refs:
+    - ref: lemppetal2002
+      role: rm
+      loc: Theorem 1.6(2), Section 2, Theorem 5.5
+
+- id: htle22ap
+  label: \mathsf{HT}^{\le 2}_2[\mathsf{ap}]
+  name: Hindman's theorem for sums of at most 2 elements (2 colors), with apartness
+  kind: problem
+  minor: true
+  tags:
+    - ramsey
+  aliases:
+    - HT≤2_2 with apartness
+    - HT^{≤2}_2 with apartness
+    - FUT≤2_2
+    - FUT^{≤2}_2
+  definition: >
+    For every coloring $f : \mathbb{N} \to 2$ there is an infinite set $H \subseteq \mathbb{N}$ satisfying the apartness
+    condition (for $x < x'$ in $H$, the greatest exponent of $x$ in base 2 is smaller than the least exponent of $x'$ in
+    base 2) such that $FS^{\le 2}(H)$, the set of sums of one or two distinct elements of $H$, is monochromatic for $f$
+    (Definitions 2.1 and 2.2 of Carlucci, Kołodziejczyk, Lepore and Zdanowski). By their Proposition 2 and Corollary 3
+    it is equivalent over $\mathsf{RCA}_0$, and mutually strongly computably reducible, to the bounded finite unions
+    theorem $\mathsf{FUT}^{\le 2}_2$ and to the same principle with $t$-apartness for any base $t \ge 2$.
+  instance: "A coloring $f : \\mathbb{N} \\to 2$."
+  solution: An infinite apart set $H$ such that $FS^{\le 2}(H)$ is monochromatic.
+  refs:
+    - ref: carluccietal2020
+      role: origin
+      loc: Definitions 2.1, 2.2; Proposition 2
+    - ref: dzhafarovmummert2022
+      role: rm
+      loc: Definition 9.9.27, Theorem 9.9.33
+
+- id: htle24
+  label: \mathsf{HT}^{\le 2}_4
+  name: Hindman's theorem for sums of at most 2 elements (4 colors)
+  kind: problem
+  minor: true
+  tags:
+    - ramsey
+  aliases:
+    - HT≤2_4
+    - HT^{≤2}_4
+  definition: >
+    For every coloring $f : \mathbb{N} \to 4$ there is an infinite set $H \subseteq \mathbb{N}$ such that $FS^{\le
+    2}(H)$, the set of sums of one or two distinct elements of $H$, is monochromatic for $f$ (the case $n = 2$, $k = 4$
+    of Definition 2.1 of Carlucci, Kołodziejczyk, Lepore and Zdanowski; no apartness condition).
+  instance: "A coloring $f : \\mathbb{N} \\to 4$."
+  solution: An infinite set $H$ such that $FS^{\le 2}(H)$ is monochromatic.
+  refs:
+    - ref: carluccietal2020
+      role: rm
+      loc: Definition 2.1; Theorem 6, Corollary 11
+    - ref: dzhafarovmummert2022
+      role: rm
+      loc: Definition 9.9.27, Theorem 9.9.33
+
+- id: hteq22ap
+  label: \mathsf{HT}^{=2}_2[\mathsf{ap}]
+  name: Hindman's theorem for sums of exactly 2 elements (2 colors), with apartness
+  kind: problem
+  minor: true
+  tags:
+    - ramsey
+  aliases:
+    - HT=2_2 with apartness
+    - HT^{=2}_2 with apartness
+    - FUT=2_2
+    - FUT^{=2}_2
+  definition: >
+    For every coloring $f : \mathbb{N} \to 2$ there is an infinite set $H \subseteq \mathbb{N}$ satisfying the apartness
+    condition (for $x < x'$ in $H$, the greatest base-2 exponent of $x$ is smaller than the least base-2 exponent of
+    $x'$) such that $FS^{=2}(H)$, the set of sums of exactly two distinct elements of $H$, is monochromatic for $f$
+    (Definitions 2.1 and 2.2 of Carlucci, Kołodziejczyk, Lepore and Zdanowski; equivalent to $\mathsf{FUT}^{=2}_2$ by
+    their Proposition 2).
+  instance: "A coloring $f : \\mathbb{N} \\to 2$."
+  solution: An infinite apart set $H$ such that $FS^{=2}(H)$ is monochromatic.
+  refs:
+    - ref: carluccietal2020
+      role: origin
+      loc: Definitions 2.1, 2.2; Theorem 10
+    - ref: dzhafarovmummert2022
+      role: rm
+      loc: Definition 9.9.27, Theorem 9.9.36
+
+- id: hteq32ap
+  label: \mathsf{HT}^{=3}_2[\mathsf{ap}]
+  name: Hindman's theorem for sums of exactly 3 elements (2 colors), with apartness
+  kind: problem
+  minor: true
+  tags:
+    - ramsey
+  aliases:
+    - HT=3_2 with apartness
+    - HT^{=3}_2 with apartness
+    - FUT=3_2
+    - FUT^{=3}_2
+  definition: >
+    For every coloring $f : \mathbb{N} \to 2$ there is an infinite set $H \subseteq \mathbb{N}$ satisfying the apartness
+    condition (base 2) such that $FS^{=3}(H)$, the set of sums of exactly three distinct elements of $H$, is
+    monochromatic for $f$ (Definitions 2.1 and 2.2 of Carlucci, Kołodziejczyk, Lepore and Zdanowski).
+  instance: "A coloring $f : \\mathbb{N} \\to 2$."
+  solution: An infinite apart set $H$ such that $FS^{=3}(H)$ is monochromatic.
+  refs:
+    - ref: carluccietal2020
+      role: origin
+      loc: Definitions 2.1, 2.2; Theorem 7
+    - ref: dzhafarovmummert2022
+      role: rm
+      loc: Definition 9.9.27, Theorem 9.9.32
+
+- id: htexabap
+  label: \mathsf{HT}^{\exists\{a<b\}}_2[\mathsf{ap}]
+  name: Hindman's theorem for some two sum lengths (2 colors), with apartness
+  kind: problem
+  minor: true
+  tags:
+    - ramsey
+  aliases:
+    - HT^{∃{a<b}}_2 with apartness
+  definition: >
+    For every coloring $f : \mathbb{N} \to 2$ there are an infinite set $H \subseteq \mathbb{N}$ satisfying the
+    apartness condition (base 2) and positive integers $a < b$ such that $FS^{\{a,b\}}(H)$, the set of sums of exactly
+    $a$ or exactly $b$ distinct elements of $H$, is monochromatic for $f$ (Definition 5.1 of Carlucci, Kołodziejczyk,
+    Lepore and Zdanowski, with the apartness condition of their Definition 2.2).
+  instance: "A coloring $f : \\mathbb{N} \\to 2$."
+  solution: An infinite apart set $H$ and $a < b$ such that $FS^{\{a,b\}}(H)$ is monochromatic.
+  refs:
+    - ref: carluccietal2020
+      role: origin
+      loc: Definition 5.1, Theorem 12
+
+- id: htexa3ap
+  label: \mathsf{HT}^{\exists\{a\ge 3\}}_2[\mathsf{ap}]
+  name: Hindman's theorem for some sum length at least 3 (2 colors), with apartness
+  kind: problem
+  minor: true
+  tags:
+    - ramsey
+  aliases:
+    - HT^{∃{a≥3}}_2 with apartness
+  definition: >
+    For every coloring $f : \mathbb{N} \to 2$ there are an infinite set $H \subseteq \mathbb{N}$ satisfying the
+    apartness condition (base 2) and a number $a \ge 3$ such that $FS^{\{a\}}(H)$, the set of sums of exactly $a$
+    distinct elements of $H$, is monochromatic for $f$ (Definition 5.2 of Carlucci, Kołodziejczyk, Lepore and Zdanowski,
+    with the apartness condition of their Definition 2.2).
+  instance: "A coloring $f : \\mathbb{N} \\to 2$."
+  solution: An infinite apart set $H$ and $a \ge 3$ such that $FS^{\{a\}}(H)$ is monochromatic.
+  refs:
+    - ref: carluccietal2020
+      role: origin
+      loc: Definition 5.2, Theorem 13
+
+- id: ipht22ap
+  label: \mathsf{IPHT}^2_2[\mathsf{ap}]
+  name: Increasing polarized Hindman's theorem for pairs (2 colors), with apartness
+  kind: problem
+  minor: true
+  tags:
+    - ramsey
+  aliases:
+    - IPHT22 with apartness
+    - IPHT^2_2 with apartness
+  definition: >
+    For every coloring $f : \mathbb{N} \to 2$ there are infinite sets $H_1, H_2$ whose union satisfies the apartness
+    condition (base 2) and a color $k < 2$ such that $f(x_1 + x_2) = k$ for every increasing pair $x_1 < x_2$ with $x_1
+    \in H_1$ and $x_2 \in H_2$ (Definition 5.3 of Carlucci, Kołodziejczyk, Lepore and Zdanowski, $n = 2$, with the
+    apartness condition on $H_1 \cup H_2$ stated after it).
+  instance: "A coloring $f : \\mathbb{N} \\to 2$."
+  solution: Infinite sets $H_1, H_2$ with $H_1 \cup H_2$ apart such that $f(x_1 + x_2)$ is constant on increasing pairs of
+    $H_1 \times H_2$.
+  refs:
+    - ref: carluccietal2020
+      role: origin
+      loc: Definition 5.3, Theorem 14, Proposition 16
+
+- id: htlargeap
+  label: \mathsf{HT}^{!\omega}_2[\mathsf{ap}]
+  name: Hindman's theorem for exactly large sums (2 colors), with apartness
+  kind: problem
+  minor: true
+  tags:
+    - ramsey
+  aliases:
+    - HT!ω_2 with apartness
+    - HT^{!ω}_2 with apartness
+  definition: >
+    For every coloring $f : \mathbb{N} \to 2$ there is an infinite set $H \subseteq \mathbb{N}$ satisfying the
+    2-apartness condition such that $FS^{!\omega}(H)$, the set of sums of the exactly large subsets of $H$ (finite $S$
+    with $|S| = \min S + 1$), is monochromatic for $f$ (Definition 5.5 of Carlucci, Kołodziejczyk, Lepore and Zdanowski,
+    with the 2-apartness condition; the authors note that the base of the apartness condition might matter here).
+  instance: "A coloring $f : \\mathbb{N} \\to 2$."
+  solution: An infinite 2-apart set $H$ such that $FS^{!\omega}(H)$ is monochromatic.
+  refs:
+    - ref: carluccietal2020
+      role: origin
+      loc: Definition 5.5, Propositions 15, 16
+
+- id: ecttree
+  label: \mathsf{ECT}(2^{<\mathbb{N}})
+  name: Eventually constant tails for colorings of the binary tree
+  kind: sentence
+  minor: true
+  tags:
+    - induction
+    - ramsey
+  aliases:
+    - ECT(2<N)
+    - ECT(2^{<N})
+  definition: >
+    For every coloring $f : 2^{<\mathbb{N}} \to n$ there is a node $\sigma$ such that for all $\tau, \alpha \supseteq
+    \sigma$ there is $\beta \supsetneq \alpha$ with $f(\tau) = f(\beta)$: above $\sigma$, the set of colors appearing
+    above any node is the same (Hirst, Section 1; the tree version of [[ect]]).
+  refs:
+    - ref: hirst2014
+      role: origin
+      loc: Section 1, Theorem 6
+
+- id: lprin
+  label: \mathsf{L}
+  name: Least limit principle (Hirst)
+  kind: sentence
+  minor: true
+  tags:
+    - induction
+  caution: The letter L also names other principles, e.g. the low computation problem $\mathfrak{L}$ ([[jinv-lim]]) in the
+    Weihrauch literature.
+  definition: >
+    Given $a$ and $f : \mathbb{N}^2 \to a$ such that $\lim_n f(x, n)$ exists for every $x \in \mathbb{N}$, there is a
+    least $b$ such that $\lim_n f(x, n) = b$ for some $x$ (Hirst, Section 2).
+  refs:
+    - ref: hirst2014
+      role: origin
+      loc: Section 2 (before Lemma 8), Corollary 10
+
+- id: lplusprin
+  label: \mathsf{L}^+
+  name: Strong least limit principle (Hirst)
+  kind: sentence
+  minor: true
+  tags:
+    - induction
+  definition: >
+    Given $a$ and $f : \mathbb{N}^2 \to a$ such that $\lim_n f(x, n)$ exists for some $x \in \mathbb{N}$, there is a
+    least $b$ such that $\lim_n f(x, n) = b$ for some $x$ (Hirst, Section 2: [[lprin]] with "every" replaced by "some"
+    in the hypothesis).
+  refs:
+    - ref: hirst2014
+      role: origin
+      loc: Section 2 (before Lemma 8), Corollary 10
+
+- id: nullstable
+  label: \textsf{Null stable colorings}
+  name: Common zero node for finitely many null stable colorings of the binary tree
+  kind: sentence
+  minor: true
+  tags:
+    - induction
+    - ramsey
+  definition: >
+    For every finite sequence $\langle f_i : i < n \rangle$ of null stable colorings $f_i : 2^{<\mathbb{N}} \to 2$ there
+    is $\sigma \in 2^{<\mathbb{N}}$ with $f_i(\sigma) = 0$ for every $i < n$. A coloring $f$ is null stable if for every
+    $\sigma$ there is $\sigma' \supseteq \sigma$ such that $f(\tau) = 0$ for every $\tau \supseteq \sigma'$ (Hirst,
+    Section 3, Theorem 12 (2)).
+  refs:
+    - ref: hirst2014
+      role: origin
+      loc: Section 3, Theorem 12
+
+- id: tt1simul
+  label: \textsf{Simultaneous }\mathsf{TT}^1_2
+  name: Simultaneous tree pigeonhole principle for finitely many 2-colorings
+  kind: sentence
+  minor: true
+  tags:
+    - ramsey
+  definition: >
+    For every $n$ and colorings $f_i : 2^{<\mathbb{N}} \to 2$ for $i < n$, there is a subtree $S \subseteq
+    2^{<\mathbb{N}}$ order isomorphic to $2^{<\mathbb{N}}$ on which every $f_i$ is constant (Hirst, Theorem 13 (2); by
+    Theorem 13 (3), restricting to null stable $f_i$ gives an equivalent statement).
+  refs:
+    - ref: hirst2014
+      role: origin
+      loc: Theorem 13
+
+- id: s3tt22
+  label: \mathsf{S}_3\mathsf{TT}^2_2
+  name: Tree theorem for pairs restricted to 3-stable colorings (2 colors)
+  kind: problem
+  minor: true
+  tags:
+    - ramsey
+    - stable
+  aliases:
+    - S3TT22
+    - S3 TT22
+    - S^3TT^2_2
+  caution: Not the stable tree theorem [[stt22]], which uses the stronger notion of stability called 1-stable by
+    Dzhafarov, Hirst and Lakins.
+  definition: >
+    Every 3-stable coloring $f : [2^{<\mathbb{N}}]^2 \to 2$ of the comparable pairs of $2^{<\mathbb{N}}$ has a
+    homogeneous subtree isomorphic to $2^{<\mathbb{N}}$. A coloring $f : [2^{<\mathbb{N}}]^2 \to k$ is 3-stable if for
+    each $\sigma$ there is $c < k$ such that for every $\sigma' \supseteq \sigma$ there is $\tau \supsetneq \sigma'$
+    with $f(\sigma, \rho) = c$ for all $\rho \supseteq \tau$ (Dzhafarov, Hirst and Lakins, Definitions 3.2 (3) and 3.8).
+  instance: "A 3-stable coloring $f : [2^{<\\mathbb{N}}]^2 \\to 2$."
+  solution: An $f$-homogeneous subtree isomorphic to $2^{<\mathbb{N}}$.
+  refs:
+    - ref: dzhafarovhirstlakins2010
+      role: origin
+      loc: Definitions 3.2 (3), 3.8; Corollary 3.9
+    - ref: hirst2014
+      role: rm
+      loc: Section 3, Theorem 14
+
+- id: domatic3
+  label: \textsf{Domatic 3-partition sets}
+  name: Existence of the set of indices of graphs with a domatic 3-partition
+  kind: sentence
+  minor: true
+  tags:
+    - graphs
+  definition: >
+    For every sequence $\langle G_i : i \in \mathbb{N} \rangle$ of graphs there is a set $Z \subseteq \mathbb{N}$ such
+    that $i \in Z$ if and only if $G_i$ has a domatic 3-partition: a function $f : V \to 3$ taking every value such that
+    whenever $f(v_1) \ne f(v_2)$ there is $v_3$ adjacent to $v_1$ with $f(v_3) = f(v_2)$ (Jura, Levin and Markkanen,
+    Definition 2.3 and Corollary 5.2 (2)).
+  refs:
+    - ref: juralevinmarkkanen2014
+      role: origin
+      loc: Definition 2.3, Corollary 5.2
+
+- id: canrt1
+  label: \mathsf{canRT}^1
+  name: Canonical Ramsey theorem for singletons
+  kind: problem
+  minor: true
+  tags:
+    - ramsey
+    - induction
+  aliases:
+    - CRT1
+    - CRT^1
+    - canRT1
+  definition: >
+    Every $f : \mathbb{N} \to \mathbb{N}$ has a canonical set: an infinite set $C$ on which $f$ is constant or injective
+    (Mileti, Definitions 1.6 and 8.1 (4), $n = 1$).
+  instance: "A function $f : \\mathbb{N} \\to \\mathbb{N}$."
+  solution: An infinite set on which $f$ is constant or injective.
+  refs:
+    - ref: mileti2008
+      role: rm
+      loc: Definitions 1.6, 8.1 (4); Proposition 8.5
+
+- id: canrt
+  label: \mathsf{canRT}
+  name: Canonical Ramsey theorem for all exponents (Erdős–Rado)
+  kind: problem
+  minor: true
+  tags:
+    - ramsey
+  aliases:
+    - CRT (canonical)
+    - canRT
+  caution: Mileti writes this CRT; in the reverse mathematics of Ramsey theory CRT²₂ ([[crt22]]) is the cohesive Ramsey
+    theorem, unrelated.
+  definition: >
+    For every $n \ge 1$ and every $f : [\mathbb{N}]^n \to \mathbb{N}$ there are an infinite set $C$ and $u \subseteq n$
+    such that for all $x_1, x_2 \in [C]^n$, $f(x_1) = f(x_2)$ if and only if $x_1$ and $x_2$ agree on the positions in
+    $u$ (Mileti, Definitions 1.6 and 8.1 (5)).
+  instance: "A number $n \\ge 1$ and $f : [\\mathbb{N}]^n \\to \\mathbb{N}$."
+  solution: An infinite canonical set for $f$.
+  refs:
+    - ref: mileti2008
+      role: rm
+      loc: Definitions 1.6, 8.1 (5); Proposition 8.4
+
+- id: regrt
+  label: \mathsf{regRT}
+  name: Regressive Ramsey theorem for all exponents (Kanamori–McAloon)
+  kind: problem
+  minor: true
+  tags:
+    - ramsey
+  aliases:
+    - REG
+    - regRT
+  definition: >
+    For every $n \ge 1$ and every regressive $f : [\mathbb{N}]^n \to \mathbb{N}$ ($f(x) < \min x$ when $\min x > 0$, and
+    $f(x) = 0$ when $\min x = 0$) there is an infinite min-homogeneous set $M$: $f(x) = f(y)$ for all $x, y \in [M]^n$
+    with $\min x = \min y$ (Mileti, Definitions 1.9 and 8.1 (7)).
+  instance: "A number $n \\ge 1$ and a regressive $f : [\\mathbb{N}]^n \\to \\mathbb{N}$."
+  solution: An infinite min-homogeneous set for $f$.
+  refs:
+    - ref: mileti2008
+      role: rm
+      loc: Definitions 1.9, 8.1 (7); Proposition 8.4
+
+- id: hregrt2
+  label: h\text{-}\mathsf{regRT}^2
+  name: Min-homogeneous sets for h-regressive colorings of pairs
+  kind: problem
+  minor: true
+  tags:
+    - ramsey
+  aliases:
+    - h-regressive REG2
+  definition: >
+    For every $h : \mathbb{N} \to \mathbb{N}$ and every $f : [\mathbb{N}]^2 \to \mathbb{N}$ which is $h$-regressive,
+    that is $f(S) < h(\min S)$ for every $S \in [\mathbb{N}]^2$, there is an infinite min-homogeneous set for $f$
+    (Hirst's thesis, Section 6.3 and Theorem 6.14 (iii); quoted by Mileti, Remark 8.3).
+  instance: "A function $h : \\mathbb{N} \\to \\mathbb{N}$ and an $h$-regressive $f : [\\mathbb{N}]^2 \\to \\mathbb{N}$."
+  solution: An infinite min-homogeneous set for $f$.
+  refs:
+    - ref: hirst1987
+      role: origin
+      loc: Section 6.3, Theorem 6.14
+    - ref: mileti2008
+      role: rm
+      loc: Remark 8.3
+
+- id: smarriage
+  label: \textsf{Stable marriage}_{\mathbb{N}}
+  name: Stable marriage theorem for N-listed instances
+  kind: sentence
+  minor: true
+  tags:
+    - graphs
+  definition: >
+    Every N-listed instance of the stable marriage problem has a solution. An instance consists of countably many boys
+    $B$ and girls $G$ ($B, G \subseteq \mathbb{N}$), a preference order of each boy on $G$ and of each girl on $B$,
+    given uniformly; it is N-listed if all these orders have order type $\omega$. A solution (stable matching) is a
+    one-to-one map $B \to G$ or $G \to B$ with no blocking pair (Cenzer and Remmel, Section 2 and Theorem 2.6).
+  refs:
+    - ref: cenzerremmel2005
+      role: origin
+      loc: Section 2, Theorem 2.6
+
+- id: smarriageord
+  label: \textsf{Stable marriage}_{\mathrm{ord}}
+  name: Stable marriage theorem for ordered instances
+  kind: sentence
+  minor: true
+  tags:
+    - graphs
+    - well-orders
+  definition: >
+    Every ordered instance of the stable marriage problem has a stable matching: $B, G \subseteq \mathbb{N}$, all boys
+    have the same preference order on $G$, which is a well ordering, and all girls have the same preference order on
+    $B$, which is a well ordering (Cenzer and Remmel, Section 2 and Theorem 2.7 (iii); the instances with levels of
+    their Theorem 2.7 (ii) give an equivalent statement).
+  refs:
+    - ref: cenzerremmel2005
+      role: origin
+      loc: Section 2, Theorem 2.7
+
+- id: smarriagebd
+  label: \textsf{Stable marriage}_{B\text{-}\mathrm{bd}}
+  name: Stable matchings with domain B for B-bounded N-listed instances
+  kind: sentence
+  minor: true
+  tags:
+    - graphs
+  definition: >
+    Every B-bounded N-listed instance of the stable marriage problem has a stable matching with domain $B$. The instance
+    is B-bounded if for each boy $b$ there are finite sets $B(b) \ni b$ of boys and $G(b)$ of girls, both of size $n$,
+    such that $B(b)$ is the set of the $n$ most preferred boys of every girl of $G(b)$ (Cenzer and Remmel, Condition
+    1(a) and Theorem 2.8 (2); the symmetric version (3) for bounded instances is equivalent).
+  refs:
+    - ref: cenzerremmel2005
+      role: origin
+      loc: Condition 1(a), Theorem 2.8
+
+- id: smarriagehb
+  label: \textsf{Stable marriage}_{\mathrm{hB}\text{-}\mathrm{bd}}
+  name: Stable matchings with domain B for highly B-bounded effectively N-listed instances
+  kind: sentence
+  minor: true
+  tags:
+    - graphs
+    - compactness
+  definition: >
+    Every highly B-bounded, effectively N-listed instance of the stable marriage problem has a stable matching with
+    domain $B$: the finite sets $B(b), G(b)$ of the B-boundedness condition are given by a function of $b$, and the
+    preference orders are given by functions listing them in order type $\omega$ (Cenzer and Remmel, Section 2 and
+    Theorem 2.9 (2); the symmetric version (3) for highly bounded instances is equivalent).
+  refs:
+    - ref: cenzerremmel2005
+      role: origin
+      loc: Section 2, Theorem 2.9
+
+- id: marriage2
+  label: \textsf{Symmetric marriage}_{\le 2}
+  name: Symmetric marriages of degree at most 2 societies
+  kind: sentence
+  minor: true
+  tags:
+    - graphs
+    - compactness
+  definition: >
+    For every society $S = (B, G, K)$ with $B, G \subseteq \mathbb{N}$ and $K \subseteq B \times G$ in which every boy
+    knows at most two girls and every girl at most two boys, given with functions $K_B, K_G$ listing whom each boy and
+    each girl knows, and satisfying Hall's condition on both sides (every finite set of boys knows at least as many
+    girls, and every finite set of girls at least as many boys), there is a symmetric marriage: a bijection $M : B \to
+    G$ with $(b, M(b)) \in K$ for all $b$ (Cenzer and Remmel, Section 3, Problem 2 and Theorem 3.2 (3)).
+  refs:
+    - ref: cenzerremmel2005
+      role: origin
+      loc: Section 3, Problem 2, Theorem 3.2
+
+- id: rankwf
+  label: \textsf{Rank functions}
+  name: Every countable well founded directed graph has a rank function
+  kind: sentence
+  minor: true
+  tags:
+    - graphs
+    - well-orders
+  definition: >
+    Every countable well founded directed graph $G = (V, E)$ (no sequence $\langle v_j \rangle$ with $(v_{j+1}, v_j) \in
+    E$ for all $j$) has a rank function: a pair $\langle f, \alpha \rangle$ where $\alpha$ is a well ordering, $f$ maps
+    $V$ onto $\alpha$, $(u, v) \in E$ implies $f(u) < f(v)$, and whenever $x < f(v)$ there is $u$ with $(u, v) \in E$
+    and $x \le f(u)$ (Hirst, Definition in the introduction and Theorem 7 (2)).
+  refs:
+    - ref: hirst2000
+      role: origin
+      loc: Definition (introduction), Theorem 7
+
+- id: rankcb
+  label: \textsf{Rank functions}_{\infty}
+  name: Cantor–Bendixson rank functions for countable directed graphs
+  kind: sentence
+  minor: true
+  tags:
+    - graphs
+    - well-orders
+  definition: >
+    For every countable directed graph $G$ with vertex set $V$ there are a well ordering $\alpha$ and $f : V \to \alpha
+    \cup \{\infty\}$ such that $f$ is a rank function on the preimage of $\alpha$, and every $u$ with $f(u) = \infty$
+    has an edge $(v, u)$ with $f(v) = \infty$ (Hirst, Theorem 8 (2)).
+  refs:
+    - ref: hirst2000
+      role: origin
+      loc: Theorem 8
+
+- id: rankbd
+  label: \textsf{Bounded rank functions}
+  name: Path bounded graphs are those with a rank function bounded by N
+  kind: sentence
+  minor: true
+  tags:
+    - graphs
+  definition: >
+    A countable directed graph $G$ is path bounded (for all vertices $v, u$ there is $n$ bounding the lengths of all
+    paths from $v$ to $u$) if and only if it has a rank function bounded by $\mathbb{N}$ (whose well ordering is an
+    initial segment of $\mathbb{N}$) (Hirst, Section 4 and Theorem 14 (2); the uniform version (3), with a rank function
+    bounded by some $n$, is equivalent).
+  refs:
+    - ref: hirst2000
+      role: origin
+      loc: Section 4, Theorem 14
+
+- id: woexp
+  label: \mathsf{WOP}(\alpha, \beta \mapsto \alpha^\beta)
+  name: Well-ordering principle for ordinal exponentiation
+  kind: sentence
+  minor: true
+  tags:
+    - well-orders
+  definition: >
+    If $\alpha$ and $\beta$ are countable well orderings then $\alpha^\beta$ is a well ordering, where $\alpha^\beta$ is
+    the lexicographic ordering of the finite decreasing sequences of pairs (exponent in $\beta$, nonzero coefficient in
+    $\alpha$) (Hirst, Definitions 2.1, 2.2 and Theorem 2.6 (ii)).
+  refs:
+    - ref: hirst1994
+      role: rm
+      loc: Definitions 2.1, 2.2, Theorem 2.6 (ii)
+    - ref: marcone2009
+      role: survey
+      loc: Teorema 2 (xiii)
+
+- id: cohw
+  label: \mathsf{COHW}
+  name: Cohesion for weakly represented families
+  kind: sentence
+  tags:
+    - computability
+    - cohesive
+  aliases:
+    - COHW
+    - COH_W
+  definition: >
+    For every weakly represented family $\mathcal{F}$ of sets there is an $\mathcal{F}$-cohesive set $G$, i.e. $G
+    \subseteq^* A$ or $G \subseteq^* \overline{A}$ for every $A \in \mathcal{F}$ (Statement 11, with weakly represented
+    families of sets as in Definitions 4–6 and cohesiveness as in Definition 9). The cohesive set is meant to be
+    infinite, as for [[coh]] (Definition 9 does not say so, but a finite set would trivially do). Every uniform family
+    of sets is weakly represented (Remark 8), so it implies $\mathsf{COH}$; in ω-models it says that every set $C$ has a
+    set cohesive for all $C$-computable sets (an $r$-cohesive set relative to $C$).
+  refs:
+    - ref: holzletal2017
+      role: origin
+      loc: Statement 11, Definitions 4–6 and 9
+
+- id: learnwr
+  label: \textsf{Angluin learnability (weakly represented)}
+  name: Learnability of weakly represented families satisfying Angluin's condition
+  kind: sentence
+  minor: true
+  tags:
+    - computability
+  phrases:
+    - Angluin's condition
+    - Angluin's tell-tale condition
+  definition: >
+    Every weakly represented family of sets $\{A_e\}_{e \in D}$ satisfying Angluin's tell-tale condition in general (for
+    each $e \in D$ there is a bound $b_e$ such that no $d \in D$ has $A_e \cap \{0, \dots, b_e\} \subseteq A_d
+    \subsetneq A_e$) can be learnt in the limit from texts (positive data) by a learner in the model (Theorem 5(5),
+    Definitions 2 and 3). By Theorem 5, the variants with the bound given effectively ($b_e = g(e)$ for a function $g$,
+    item 3) or in the limit (item 4) are also equivalent to $\mathsf{DOM}$ over $\mathsf{RCA}_0$.
+  refs:
+    - ref: holzljainstephan2015
+      role: origin
+      loc: Theorem 5(3–5), Definitions 2 and 3
+
+- id: learnur
+  label: \textsf{Angluin learnability (uniformly represented, general bound)}
+  name: Learnability of uniformly represented families satisfying Angluin's condition with a general bound
+  kind: sentence
+  minor: true
+  tags:
+    - computability
+  definition: >
+    Every uniformly represented family of sets satisfying Angluin's tell-tale condition with a general bound (for each
+    member $A_e$ there is a bound $b_e$ such that no member $A_d$ has $A_e \cap \{0, \dots, b_e\} \subseteq A_d
+    \subsetneq A_e$, with no function computing $b_e$ from $e$) is learnable in the limit (Theorem 7, Definitions 2 and
+    3). By Theorem 6, $\mathsf{RCA}_0$ proves that a uniformly represented family is learnable in the limit if and only
+    if it satisfies Angluin's condition in the limit.
+  refs:
+    - ref: holzljainstephan2015
+      role: origin
+      loc: Theorem 7, Definitions 2 and 3
+
+- id: conslearn
+  label: \textsf{Conservative Angluin learnability}
+  name: Conservative learnability of families satisfying Angluin's condition with a general bound
+  kind: sentence
+  minor: true
+  tags:
+    - computability
+  definition: >
+    Every uniformly represented family of sets satisfying Angluin's tell-tale condition with a general bound is
+    conservatively learnable: learnable in the limit by a learner that never changes its hypothesis $e_n$ unless $e_n$
+    is not a valid index of the hypothesis space or some datum seen so far lies outside the conjectured set (Corollary
+    9(2), Definitions 2 and 3). The same statement for weakly represented families (Corollary 9(3)) is also equivalent
+    to $\mathsf{ACA}_0$ over $\mathsf{RCA}_0$.
+  refs:
+    - ref: holzljainstephan2015
+      role: origin
+      loc: Corollary 9, Definitions 2 and 3
+
+- id: learnft
+  label: \textsf{Finite thickness learnability}
+  name: Learnability of weakly represented families of finite thickness
+  kind: sentence
+  minor: true
+  tags:
+    - computability
+  phrases:
+    - finite thickness
+  definition: >
+    Every weakly represented family $\{A_e\}_{e \in D}$ of finite thickness is learnable in the limit, where finite
+    thickness means: for every $x$ there is a bound $b$ such that for all $e > b$, either $e \notin D$, or $x \notin
+    A_e$, or $A_e = A_d$ for some $d \leq b$ (Theorem 10(2)). For uniformly represented families it is provable in
+    $\mathsf{RCA}_0$ (Theorem 10(1)).
+  refs:
+    - ref: holzljainstephan2015
+      role: origin
+      loc: Theorem 10
+
+- id: learnfe
+  label: \textsf{Finite elasticity learnability}
+  name: Learnability of weakly represented families of finite elasticity
+  kind: sentence
+  minor: true
+  tags:
+    - computability
+  phrases:
+    - finite elasticity
+  definition: >
+    Every weakly represented family $\{A_e\}_{e \in D}$ of finite elasticity is learnable in the limit, where finite
+    elasticity means: for every $T : M \to M \cup \{\#\}$ in the model there is a prefix $\sigma \preceq T$ such that
+    for all $e \in D$, $\mathrm{range}(\sigma) \subseteq A_e$ implies $\mathrm{range}(T) \subseteq A_e$ (Theorem 11(2)).
+    For uniformly represented families it is provable in $\mathsf{RCA}_0$ (Theorem 11(1)).
+  refs:
+    - ref: holzljainstephan2015
+      role: origin
+      loc: Theorem 11
+
+- id: learncs
+  label: \textsf{Characteristic subsets learnability}
+  name: Learnability of weakly represented families admitting characteristic subsets
+  kind: sentence
+  minor: true
+  tags:
+    - computability
+  phrases:
+    - characteristic subsets
+  definition: >
+    Every weakly represented family $\{A_e\}_{e \in D}$ admitting characteristic subsets is learnable in the limit,
+    where admitting characteristic subsets means: for all $e \in D$ there is $b$ such that for all $d \in D$, $A_e \cap
+    \{0, \dots, b\} \subseteq A_d$ implies $A_e \subseteq A_d$ (Theorem 12(2), after Kobayashi). For uniformly
+    represented families it is provable in $\mathsf{RCA}_0$ (Theorem 12(1)).
+  refs:
+    - ref: holzljainstephan2015
+      role: origin
+      loc: Theorem 12
+
+- id: fcc
+  label: \mathsf{FCC}
+  name: Connected components of graphs with boundedly many components
+  kind: problem
+  tags:
+    - graphs
+    - weihrauch
+    - induction
+  aliases:
+    - FCC
+  definition: >
+    If $G = (V, E)$ is a countable graph and there is some $n$ such that every collection of $n$ vertices includes at
+    least one path connected pair (so $G$ has fewer than $n$ connected components), then $G$ has a connected component
+    (Gura, Hirst and Mummert, Theorem 3.2(3)). As a problem (Kihara and Pauly, Section 5.3): given the characteristic
+    functions of $V$ and $E$ and an upper bound on the number of connected components, produce the characteristic
+    function of a connected component. With a finite set $V_0$ of vertices meeting every component in place of the
+    bound, it is provable in $\mathsf{RCA}_0$ (Gura, Hirst and Mummert, Theorem 3.1).
+  instance: A countable graph $G = (V, E)$ and a bound on the number of its connected components.
+  solution: The characteristic function of a connected component of $G$.
+  refs:
+    - ref: gurahirstmummert2015
+      role: origin
+      loc: Theorem 3.2(3)
+    - ref: kiharapauly2019
+      role: rm
+      loc: Section 5.3, Theorem 19
+
+- id: epstart
+  label: \mathsf{EP}_{\mathrm{start}}
+  name: One-way Eulerian paths with a prescribed starting vertex
+  kind: problem
+  minor: true
+  tags:
+    - graphs
+    - weihrauch
+  aliases:
+    - EPstart
+    - EP_start
+  definition: >
+    Given a countable undirected graph $G = (V, E)$ and a vertex $v \in V$ such that $G$ admits a one-way Eulerian path
+    starting from $v$, find a one-way Eulerian path through $G$ starting from $v$ (Theorem 3.2).
+  instance: A countable undirected graph $G$ and a vertex $v$ such that $G$ has a one-way Eulerian path starting from $v$.
+  solution: A one-way Eulerian path through $G$ starting from $v$.
+  refs:
+    - ref: valenti2026
+      role: origin
+      loc: Theorem 3.2
+
+- id: depstart
+  label: \mathsf{DEP}_{\mathrm{start}}
+  name: One-way directed Eulerian paths with a prescribed starting vertex
+  kind: problem
+  minor: true
+  tags:
+    - graphs
+    - weihrauch
+  aliases:
+    - DEPstart
+    - DEP_start
+  definition: >
+    Given a countable directed graph $D = (V, A)$ and a vertex $v \in V$ such that $D$ admits a one-way directed
+    Eulerian path starting from $v$, find a one-way directed Eulerian path through $D$ starting from $v$ (Theorem 3.2).
+  instance: A countable directed graph $D$ and a vertex $v$ such that $D$ has a one-way directed Eulerian path starting from $v$.
+  solution: A one-way directed Eulerian path through $D$ starting from $v$.
+  refs:
+    - ref: valenti2026
+      role: origin
+      loc: Theorem 3.2
+
+- id: eplf
+  label: \mathsf{EP}_{\mathrm{LF}}
+  name: One-way Eulerian paths in locally finite graphs
+  kind: problem
+  minor: true
+  tags:
+    - graphs
+    - weihrauch
+  aliases:
+    - EP_LF
+  definition: >
+    The restriction of $\mathsf{EP}$ ([[ep]]) to locally finite graphs: given a countable locally finite undirected
+    graph that has a one-way Eulerian path, find one (Corollary 2.6). The label is ours; the paper names it only in
+    words.
+  instance: A countable locally finite undirected graph that has a one-way Eulerian path.
+  solution: A one-way Eulerian path through it.
+  refs:
+    - ref: valenti2026
+      role: origin
+      loc: Corollary 2.6
+
+- id: deg
+  label: \mathsf{Deg}
+  name: Degree of a vertex in a countable graph
+  kind: problem
+  minor: true
+  tags:
+    - graphs
+    - weihrauch
+  aliases:
+    - Deg
+  definition: >
+    Given a countable graph $G = (V, E)$ and a vertex $v \in V$, return its degree $\deg_G(v) \in \mathbb{N} \cup
+    \{\infty\}$ (Section 2.2, before Proposition 2.5).
+  instance: A countable graph $G = (V, E)$ and a vertex $v \in V$.
+  solution: $\deg_G(v) \in \mathbb{N} \cup \{\infty\}$.
+  refs:
+    - ref: valenti2026
+      role: origin
+      loc: Section 2.2, Proposition 2.5
+
+- id: deglf
+  label: \mathsf{Deg}_{\mathrm{LF}}
+  name: Degree of a vertex in a locally finite graph
+  kind: problem
+  minor: true
+  tags:
+    - graphs
+    - weihrauch
+  aliases:
+    - DegLF
+    - Deg_LF
+  definition: >
+    The restriction of $\mathsf{Deg}$ to locally finite graphs: given a countable locally finite graph $G$ and a vertex
+    $v$, return $\deg_G(v) \in \mathbb{N}$ (Section 2.2, before Proposition 2.5).
+  instance: A countable locally finite graph $G = (V, E)$ and a vertex $v \in V$.
+  solution: $\deg_G(v) \in \mathbb{N}$.
+  refs:
+    - ref: valenti2026
+      role: origin
+      loc: Section 2.2, Proposition 2.5
+
+- id: detlclopen2
+  label: \Delta^0_1\text{-}\mathsf{Det}^*_L
+  name: Clopen Lipschitz determinacy in the Cantor space
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - Δ01-Det*_L
+    - Delta01-Det*_L
+    - Δ01-DetL*
+  phrases:
+    - clopen Lipschitz determinacy
+  definition: >
+    Every Lipschitz game $G_L(A, B)$ in the Cantor space with clopen pay-off sets is determined. In the Lipschitz game
+    players I and II alternately play bits $x_0, y_0, x_1, y_1, \ldots$, forming $f = (x_i)$ and $g = (y_i)$ in
+    $2^\mathbb{N}$; player II wins iff $A(f) \leftrightarrow B(g)$. The scheme consists of the axioms $(\forall f\,(A(f)
+    \leftrightarrow C(f)) \wedge \forall g\,(B(g) \leftrightarrow D(g))) \to \mathrm{Det}_L(A, B)$ for $\Sigma^0_1$
+    formulas $A, B$ and $\Pi^0_1$ formulas $C, D$ (with parameters), where $\mathrm{Det}_L(A, B)$ says that player I or
+    player II has a winning strategy (Definition 2.1(2) of [@cordonfrancolaramartinloureiro2023], with $X = \{0, 1\}$).
+  refs:
+    - ref: cordonfrancolaramartinloureiro2023
+      role: origin
+      loc: Definition 2.1, Theorem 3.11
+
+- id: detwclopen2
+  label: \Delta^0_1\text{-}\mathsf{Det}^*_W
+  name: Clopen Wadge determinacy in the Cantor space
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - Δ01-Det*_W
+    - Delta01-Det*_W
+  phrases:
+    - clopen Wadge determinacy
+  definition: >
+    Every Wadge game $G_W(A, B)$ in the Cantor space with clopen ($\Delta^0_1$, given by a $\Sigma^0_1$ and an
+    equivalent $\Pi^0_1$ formula) pay-off sets is determined. The Wadge game is the Lipschitz game in which player II
+    may also pass at any turn, but must play infinitely often: player II wins iff she plays infinitely often and $A(f)
+    \leftrightarrow B(g)$, where $f, g \in 2^\mathbb{N}$ are the bits played by I and II; strategies are coherent with
+    the coding of passes (Section 2.2 and Definition 2.2 of [@cordonfrancolaramartinloureiro2023]). Provable in
+    $\mathsf{RCA}_0$, unlike its Lipschitz counterpart [[detlclopen2]].
+  refs:
+    - ref: cordonfrancolaramartinloureiro2023
+      role: origin
+      loc: Definition 2.2, Proposition 3.9(2)
+
+- id: detlopen2
+  label: \Sigma^0_1\text{-}\mathsf{Det}^*_L
+  name: Open Lipschitz determinacy in the Cantor space
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - Σ01-Det*_L
+    - Sigma01-Det*_L
+    - Π01-Det*_L
+  phrases:
+    - open Lipschitz determinacy
+  definition: >
+    Every Lipschitz game $G_L(A, B)$ in the Cantor space (see [[detlclopen2]]) whose pay-off sets $A$ and $B$ are
+    defined by $\Sigma^0_1$ formulas (with parameters) is determined (Definition 2.1 of
+    [@cordonfrancolaramartinloureiro2023]). Equivalent over $\mathsf{RCA}_0$ to the same scheme for $\Pi^0_1$ formulas
+    (closed Lipschitz determinacy, Remark 2.3), since $G_L(A, B)$ and $G_L(\neg A, \neg B)$ are the same game.
+  refs:
+    - ref: cordonfrancolaramartinloureiro2023
+      role: origin
+      loc: Definition 2.1, Theorem 5.5
+
+- id: detwopen2
+  label: \Sigma^0_1\text{-}\mathsf{Det}^*_W
+  name: Open Wadge determinacy in the Cantor space
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - Σ01-Det*_W
+    - Sigma01-Det*_W
+  phrases:
+    - open Wadge determinacy
+  definition: >
+    Every Wadge game $G_W(A, B)$ in the Cantor space (see [[detwclopen2]]) whose pay-off sets $A$ and $B$ are defined by
+    $\Sigma^0_1$ formulas (with parameters) is determined (Definition 2.2 of [@cordonfrancolaramartinloureiro2023]).
+    Provable in $\mathsf{ACA}_0$ and equivalent to it over $\mathsf{WKL}_0$; whether it implies $\mathsf{ACA}_0$ over
+    $\mathsf{RCA}_0$ is Problem 3 of the paper.
+  refs:
+    - ref: cordonfrancolaramartinloureiro2023
+      role: origin
+      loc: Definition 2.2, Corollary 4.5, Theorem 5.5
+
+- id: slolclopen2
+  label: \Delta^0_1\text{-}\mathsf{SLO}^*_L
+  name: Clopen Lipschitz semi-linear ordering principle in the Cantor space
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - Δ01-SLO*_L
+    - Delta01-SLO*_L
+  definition: >
+    For all clopen sets $A, B$ of the Cantor space (each given by a $\Sigma^0_1$ formula and an equivalent $\Pi^0_1$
+    formula, with parameters), $A$ is Lipschitz reducible to $B$ or the complement of $B$ is Lipschitz reducible to $A$:
+    $\mathrm{Red}_L(A, B) \vee \mathrm{Red}_L(\neg B, A)$, where $\mathrm{Red}_L(A, B)$ says that player II has a
+    winning strategy in the Lipschitz game $G_L(A, B)$ (see [[detlclopen2]]) (Definition 5.1 of
+    [@cordonfrancolaramartinloureiro2023]). Provable in $\mathsf{WKL}_0$; whether it is equivalent to $\mathsf{WKL}_0$
+    is Problem 2 of the paper.
+  refs:
+    - ref: cordonfrancolaramartinloureiro2023
+      role: origin
+      loc: Definition 5.1, Corollary 5.3(2)
+
+- id: slolopen2
+  label: \Sigma^0_1\text{-}\mathsf{SLO}^*_L
+  name: Open Lipschitz semi-linear ordering principle in the Cantor space
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - Σ01-SLO*_L
+    - Sigma01-SLO*_L
+  definition: >
+    For all sets $A, B$ of the Cantor space defined by $\Sigma^0_1$ formulas (with parameters), $\mathrm{Red}_L(A, B)
+    \vee \mathrm{Red}_L(\neg B, A)$: $A$ is Lipschitz reducible to $B$ or the complement of $B$ is Lipschitz reducible
+    to $A$, where $\mathrm{Red}_L(A, B)$ says that player II has a winning strategy in the Lipschitz game $G_L(A, B)$
+    (Definition 5.1 of [@cordonfrancolaramartinloureiro2023]). Provable in $\mathsf{ACA}_0$ and equivalent to it over
+    $\mathsf{WKL}_0$; whether it implies $\mathsf{ACA}_0$ over $\mathsf{RCA}_0$ is Problem 4 of the paper.
+  refs:
+    - ref: cordonfrancolaramartinloureiro2023
+      role: origin
+      loc: Definition 5.1, Theorem 5.5
+
+- id: slowopen2
+  label: \Sigma^0_1\text{-}\mathsf{SLO}^*_W
+  name: Open Wadge semi-linear ordering principle in the Cantor space
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - Σ01-SLO*_W
+    - Sigma01-SLO*_W
+  definition: >
+    For all sets $A, B$ of the Cantor space defined by $\Sigma^0_1$ formulas (with parameters), $\mathrm{Red}_W(A, B)
+    \vee \mathrm{Red}_W(\neg B, A)$, where $\mathrm{Red}_W(A, B)$ says that player II has a winning strategy in the
+    Wadge game $G_W(A, B)$ (see [[detwclopen2]]) (Definition 5.1 of [@cordonfrancolaramartinloureiro2023]). Provable in
+    $\mathsf{ACA}_0$ and equivalent to it over $\mathsf{WKL}_0$; whether it implies $\mathsf{ACA}_0$, or even
+    $\mathsf{WKL}_0$, over $\mathsf{RCA}_0$ are Problems 5 and 6 of the paper.
+  refs:
+    - ref: cordonfrancolaramartinloureiro2023
+      role: origin
+      loc: Definition 5.1, Proposition 5.4, Theorem 5.5
+
+- id: slowdiff2
+  label: (\Sigma^0_1, \Sigma^0_1 \wedge \Pi^0_1)\text{-}\mathsf{SLO}^*_W
+  name: Wadge semi-linear ordering for open and difference-of-open sets in the Cantor space
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - (Σ01,Σ01∧Π01)-SLO*_W
+  definition: >
+    For every set $A$ of the Cantor space defined by a $\Sigma^0_1$ formula and every set $B$ defined by the conjunction
+    of a $\Sigma^0_1$ and a $\Pi^0_1$ formula (with parameters), $\mathrm{Red}_W(A, B) \vee \mathrm{Red}_W(\neg B, A)$,
+    where $\mathrm{Red}_W(A, B)$ says that player II has a winning strategy in the Wadge game $G_W(A, B)$ (Definition
+    5.1 of [@cordonfrancolaramartinloureiro2023]). The weakest of the principles that Theorem 5.7 shows equivalent to
+    $\mathsf{ACA}_0$ (with the corresponding Lipschitz semi-linear ordering principle and Lipschitz and Wadge
+    determinacy for the same classes).
+  refs:
+    - ref: cordonfrancolaramartinloureiro2023
+      role: origin
+      loc: Definition 5.1, Proposition 5.6, Theorem 5.7
+
+- id: dp2
+  label: (\mathsf{DP})
+  name: Boundary dichotomy for closed sets of the Cantor space
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  aliases:
+    - (DP)
+  definition: >
+    For every binary tree $T$, either $T$ defines a true closed set — there is $f \in [T]$ such that $\forall k\,
+    \exists s\,(f[k] \subseteq s \wedge s \notin T)$, a boundary point of $[T]$ — or $T$ properly defines a finitely
+    decidable set: $\exists k\, \forall f \in 2^\mathbb{N}\,(f \in [T] \leftrightarrow f[k] \in T)$ (Definitions 3.2,
+    4.1 and 4.3 of [@cordonfrancolaramartinloureiro2023]). A combinatorial version of "every closed and not open subset
+    of the Cantor space has nonempty boundary" (Shafer).
+  refs:
+    - ref: cordonfrancolaramartinloureiro2023
+      role: origin
+      loc: Definition 4.3, Theorem 4.7
+
+- id: detlclopen
+  label: \Delta^0_1\text{-}\mathsf{Det}_L
+  name: Clopen Lipschitz determinacy (Baire space)
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - Δ01-DetL
+    - Delta01-DetL
+    - Δ01-Det_L
+  definition: >
+    Every Lipschitz game $G_L(A, B)$ in the Baire space with clopen pay-off sets is determined: players I and II
+    alternately play natural numbers, forming $f, g \in \mathbb{N}^\mathbb{N}$, and player II wins iff $A(f)
+    \leftrightarrow B(g)$; the scheme consists of the axioms $(\forall f\,(A(f) \leftrightarrow C(f)) \wedge \forall
+    g\,(B(g) \leftrightarrow D(g))) \to \mathrm{Det}_L(A, B)$ for $\Sigma^0_1$ formulas $A, B$ and $\Pi^0_1$ formulas
+    $C, D$ (with parameters) (Section 2 of [@cordonfrancolaramartinloureiro2024]; Definition 2.1 of
+    [@cordonfrancolaramartinloureiro2023] with $X = \mathbb{N}$). The Cantor-space version is [[detlclopen2]].
+  refs:
+    - ref: cordonfrancolaramartinloureiro2024
+      role: rm
+      loc: Section 2, Theorem 2
+    - ref: cordonfrancolaramartinloureiro2023
+      role: origin
+      loc: Definition 2.1
+
+- id: slolclopen
+  label: \Delta^0_1\text{-}\mathsf{SLO}_L
+  name: Clopen Lipschitz semi-linear ordering principle (Baire space)
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - Δ01-SLOL
+    - Delta01-SLOL
+    - Δ01-SLO_L
+  definition: >
+    For all clopen sets $A, B$ of the Baire space (each given by a $\Sigma^0_1$ formula and an equivalent $\Pi^0_1$
+    formula, with parameters), $\mathrm{Red}_L(A, B) \vee \mathrm{Red}_L(\neg B, A)$, where $\mathrm{Red}_L(A, B)$ says
+    that player II has a winning strategy in the Lipschitz game $G_L(A, B)$ (see [[detlclopen]]): $A$ is Lipschitz
+    reducible to $B$ or the complement of $B$ is Lipschitz reducible to $A$ (Section 2 of
+    [@cordonfrancolaramartinloureiro2024]; Definition 5.1 of [@cordonfrancolaramartinloureiro2023]).
+  refs:
+    - ref: cordonfrancolaramartinloureiro2024
+      role: rm
+      loc: Section 2, Theorem 2
+    - ref: cordonfrancolaramartinloureiro2023
+      role: origin
+      loc: Definition 5.1
+
+- id: detlclosed
+  label: \Pi^0_1\text{-}\mathsf{Det}_L
+  name: Closed Lipschitz determinacy (Baire space)
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - Π01-DetL
+    - Pi01-DetL
+    - Σ01-DetL
+    - Sigma01-DetL
+  phrases:
+    - closed Lipschitz determinacy
+  definition: >
+    Every Lipschitz game $G_L(A, B)$ in the Baire space (see [[detlclopen]]) whose pay-off sets $A$ and $B$ are defined
+    by $\Pi^0_1$ formulas (with parameters) is determined (Section 2 of [@cordonfrancolaramartinloureiro2024]).
+    Equivalent over $\mathsf{RCA}_0$ to open Lipschitz determinacy $\Sigma^0_1\text{-}\mathsf{Det}_L$, since $G_L(A, B)$
+    and $G_L(\neg A, \neg B)$ are the same game (Remark 1).
+  refs:
+    - ref: cordonfrancolaramartinloureiro2024
+      role: rm
+      loc: Section 2, Theorem 5
+    - ref: cordonfrancolaramartinloureiro2023
+      role: origin
+      loc: Definition 2.1
+
+- id: detlclopenclosed
+  label: (\Delta^0_1, \Pi^0_1)\text{-}\mathsf{Det}_L
+  name: Lipschitz determinacy for a clopen and a closed pay-off set (Baire space)
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - (Δ01,Π01)-DetL
+  definition: >
+    Every Lipschitz game $G_L(A, B)$ in the Baire space (see [[detlclopen]]) in which player I's pay-off set $A$ is
+    clopen (given by a $\Sigma^0_1$ formula and an equivalent $\Pi^0_1$ formula) and player II's pay-off set $B$ is
+    defined by a $\Pi^0_1$ formula (with parameters) is determined (Section 2 of [@cordonfrancolaramartinloureiro2024]).
+  refs:
+    - ref: cordonfrancolaramartinloureiro2024
+      role: origin
+      loc: Section 2, Theorem 5
+
+- id: slolclopendiff
+  label: (\Delta^0_1, \Sigma^0_1 \wedge \Pi^0_1)\text{-}\mathsf{SLO}_L
+  name: Lipschitz semi-linear ordering for a clopen and a difference-of-open set (Baire space)
+  kind: sentence
+  minor: true
+  tags:
+    - determinacy
+  aliases:
+    - (Δ01,Σ01∧Π01)-SLOL
+  definition: >
+    For every clopen set $A$ of the Baire space (given by a $\Sigma^0_1$ formula and an equivalent $\Pi^0_1$ formula)
+    and every set $B$ defined by the conjunction of a $\Sigma^0_1$ and a $\Pi^0_1$ formula (with parameters),
+    $\mathrm{Red}_L(A, B) \vee \mathrm{Red}_L(\neg B, A)$ (see [[slolclopen]]) (Section 2 of
+    [@cordonfrancolaramartinloureiro2024]).
+  refs:
+    - ref: cordonfrancolaramartinloureiro2024
+      role: origin
+      loc: Section 2, Theorem 5
+
+- id: weakcwo
+  label: \mathsf{WCWO}
+  name: Weak comparability of countable well-orderings
+  kind: sentence
+  minor: true
+  tags:
+    - well-orders
+  aliases:
+    - weak comparability of well orderings
+  phrases:
+    - weak comparability of well orderings
+    - weak comparability of well-orderings
+  caution: The Weihrauch problem WCWO of Goh, Pauly and Valenti is [[wcwow]] (and its two-sided version [[wcwo2]]);
+    comparability with embeddings onto initial segments is [[cwo]].
+  definition: >
+    For any two countable well-orderings $\alpha, \beta$, $\alpha \le_w \beta$ or $\beta \le_w \alpha$, where $\alpha
+    \le_w \beta$ means that there is an order-preserving injection of $\mathrm{field}(\alpha)$ into
+    $\mathrm{field}(\beta)$ (Definition 2 of [@cordonfrancolaramartinloureiro2024]; the weak form of Theorem 1.1 of
+    [@hirst1994]).
+  refs:
+    - ref: cordonfrancolaramartinloureiro2024
+      role: rm
+      loc: Definition 2, Theorem 3
+    - ref: hirst1994
+      role: rm
+      loc: Section 1, Theorem 1.1
+    - ref: greenbergmontalban2008
+      role: rm
+      loc: Section 1.3.3 (COMP(On)), Theorem 1.4
+
+- id: rkwft
+  label: \mathsf{RK}(\mathsf{WFT})
+  name: Every well-founded tree is ranked
+  kind: sentence
+  minor: true
+  tags:
+    - well-orders
+  aliases:
+    - RK(WFT)
+  definition: >
+    Every well-founded tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$ has a rank function: a pair $(\mathrm{rk}, \alpha)$
+    where $\alpha$ is a countable well-ordering and $\mathrm{rk}\colon T \to \mathrm{field}(\alpha)$ satisfies $\alpha =
+    \mathrm{rk}(\langle\rangle) + 1$ and $\mathrm{rk}(t) = \sup\{\mathrm{rk}(s) + 1 : t \subset s, |s| = |t| + 1\}$ for
+    every $t \in T$ (Definition 4 of [@cordonfrancolaramartinloureiro2024]; Definition 3.1 of
+    [@greenbergmontalban2008]). The version for well-founded directed graphs is due to Hirst [@hirst2000].
+  refs:
+    - ref: greenbergmontalban2008
+      role: rm
+      loc: Definition 3.1, Propositions 3.5 and 3.18
+    - ref: cordonfrancolaramartinloureiro2024
+      role: rm
+      loc: Definition 4, Theorem 4
+
+- id: boreldomain
+  label: \textsf{Borel domain}
+  name: The domain of a single-valued Borel set in the plane is Borel
+  kind: sentence
+  minor: true
+  tags:
+    - analysis
+  phrases:
+    - Borel domain theorem
+  definition: >
+    For every Borel code $C$ such that $\forall X\,(\exists \text{ at most one } Y)\, C(X, Y)$ (where $C(X, Y)$ means $X
+    \oplus Y \in C$), there is a Borel code $B$ such that $\forall X\,(X \in B \leftrightarrow \exists Y\, C(X, Y))$
+    (Theorem V.3.11 of [@simpson2009]).
+  refs:
+    - ref: simpson2009
+      role: rm
+      loc: Theorem I.11.5(5), Theorem V.3.11, Section V.5
+    - ref: simpson2002
+      role: survey
+      loc: Theorem 2(3)
+    - ref: marcone2009
+      role: survey
+      loc: Teorema 3 (iii)

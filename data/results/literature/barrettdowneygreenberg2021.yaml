@@ -2,3 +2,4 @@
 
 - { type: "equivalence", from: "cousin-c", to: "wkl", over: "rca0", refs: [ { ref: barrettdowneygreenberg2021, loc: Theorem 4.2 }, { ref: barrett2020, loc: Theorem 6.4.5 } ] }
 - { type: "equivalence", from: "cousin-b1", to: "aca", over: "rca0", refs: [ { ref: barrettdowneygreenberg2021, loc: Theorem 5.5 } ] }
+- { type: implication, from: cousinb2, to: atr, over: rca0, refs: [ { ref: barrettdowneygreenberg2021, loc: Theorem 6.5 } ] }

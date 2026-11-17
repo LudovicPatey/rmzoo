@@ -1,0 +1,3 @@
+# Results from [greenbergmontalban2008].
+
+[ { type: implication, from: rkwft, to: atr, over: rca0, refs: [ { ref: greenbergmontalban2008, loc: Proposition 3.18 } ] }, { type: implication, from: atr, to: rkwft, over: rca0, refs: [ { ref: greenbergmontalban2008, loc: Proposition 3.5 } ] } ]

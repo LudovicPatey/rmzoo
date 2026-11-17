@@ -284,3 +284,21 @@
     has arbitrarily long approximations (finite sequences $s$ such that $F(x) \le (s)_{i+1}$ for every $x \le (s)_i$
     in the domain of $F$).
   refs: [ { ref: hajekpudlak1998, role: rm, loc: "Chapter I, 2.21 and 2.22; Chapter IV, 1.26" } ]
+
+# Statement pass of November 2026 (proposals of the AI readers; definitions read in the sources)
+
+- id: minindex
+  label: \textsf{Minimal index principle}
+  name: Minimal indices in weakly represented families
+  kind: sentence
+  minor: true
+  tags:
+    - computability
+    - induction
+  definition: >
+    In every weakly represented family $\{A_e\}_{e \in D}$, every member has a minimal index: for every $e \in D$ there
+    is a least $d \in D$ with $A_d = A_e$ (Proposition 16).
+  refs:
+    - ref: holzljainstephan2015
+      role: origin
+      loc: Proposition 16, Theorem 15

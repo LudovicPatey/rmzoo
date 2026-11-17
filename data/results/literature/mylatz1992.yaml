@@ -1,0 +1,3 @@
+# Results from [mylatz1992].
+
+[ { type: implication, from: minrange, to: lpo, over: cw, note: The thesis's reducibility ≤₂ uses continuous forward and backward functions (continuous Weihrauch reducibility); the reduction given is computable., refs: [ { ref: mylatz1992, loc: Satz 2.7 } ] }, { type: separation, from: lpo, to: minrange, over: cw, refs: [ { ref: mylatz1992, loc: Satz 2.8 } ] } ]

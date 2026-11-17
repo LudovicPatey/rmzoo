@@ -33,3 +33,5 @@
 - { type: property, statement: pcc, property: idempotent, value: false, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 17.7 } ] }
 - { type: separation, from: llpo.fin, to: pcc, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: "Section 10, after Proposition 10.9" } ] }
 - { type: property, statement: wwkl, property: compose-closed, value: true, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 8.3 } ] }
+- { type: equivalence, from: pcr, to: pcn2, over: sw, refs: [ { ref: brattkagherardiholzl2015, loc: Proposition 7.4 } ] }
+- { type: equivalence, from: pcn2, to: wwkl.x.cn, over: w, refs: [ { ref: brattkagherardiholzl2015, loc: Corollary 6.4 } ] }

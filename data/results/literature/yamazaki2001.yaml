@@ -1,0 +1,3 @@
+# Results from [yamazaki2001].
+
+[ { type: equivalence, from: wkl, to: isat, over: rca0, refs: [ { ref: yamazaki2001, loc: Theorem 2.3 } ] }, { type: equivalence, from: aca, to: iscompl, over: rca0, refs: [ { ref: yamazaki2001, loc: Theorem 3.7 } ] } ]

@@ -1,0 +1,3 @@
+# Results from [solomon1999].
+
+[ { type: equivalence, from: maltsev, to: pi11ca, over: rca0, refs: [ { ref: solomon1999, loc: Theorem 6.3 }, { ref: solomon2001, loc: Theorem 3.6 } ] } ]

@@ -161,3 +161,127 @@
     proper interval orders the characterization is provable in $\mathsf{RCA}_0$ (Theorem 1.3).
   refs:
     - { ref: marcone2006, role: rm, loc: "Definitions 6.1 and 6.2, Theorem 1.4(iii)" }
+
+# Statement pass of November 2026 (proposals of the AI readers; definitions read in the sources)
+
+- id: dilworth
+  label: \textsf{Dilworth}
+  name: Dilworth's theorem for countable posets of finite width
+  kind: sentence
+  minor: true
+  tags:
+    - orders
+    - compactness
+  aliases:
+    - Dilworth's theorem
+  caution: Not the chain–antichain principle [[cac]], which is sometimes also called Dilworth's theorem (infinite version).
+  definition: >
+    Every countable partial order of width at most $n$ (no antichain with $n + 1$ elements) can be partitioned into $n$
+    chains (Hirst, Theorem 3.23 (iv); Cenzer and Remmel, Theorem 3.3).
+  refs:
+    - ref: hirst1987
+      role: rm
+      loc: Theorem 3.23 (iv)
+    - ref: cenzerremmel2005
+      role: rm
+      loc: Theorem 3.3
+
+- id: dualdilworth
+  label: \textsf{Dual Dilworth}
+  name: Dual Dilworth theorem for countable posets of finite height
+  kind: sentence
+  minor: true
+  tags:
+    - orders
+    - compactness
+  definition: >
+    Every countable partial order of height at most $n$ (no chain with $n + 1$ elements) can be partitioned into $n$
+    antichains (Hirst, Theorem 3.24 (iv); Cenzer and Remmel, Theorem 3.4).
+  refs:
+    - ref: hirst1987
+      role: rm
+      loc: Theorem 3.24 (iv)
+    - ref: cenzerremmel2005
+      role: rm
+      loc: Theorem 3.4
+
+- id: localdim
+  label: \textsf{Local dimension}
+  name: Posets of local dimension at most d have dimension at most d
+  kind: sentence
+  minor: true
+  tags:
+    - orders
+    - compactness
+  definition: >
+    Every partial order $(\mathbb{N}, \le_A)$ whose restriction to $\{0, \dots, n\}$ has dimension at most $d$ for every
+    $n$ has dimension at most $d$, that is, is the intersection of $d$ linear orders (Cenzer and Remmel, Section 3 and
+    Theorem 3.5).
+  refs:
+    - ref: cenzerremmel2005
+      role: origin
+      loc: Section 3, Theorem 3.5
+
+- id: maxfilter
+  label: \textsf{Maximal filters}
+  name: Every countable poset has a maximal filter
+  kind: sentence
+  minor: true
+  tags:
+    - orders
+  definition: >
+    Every countable poset has a maximal filter: a filter (upward closed, any two elements have a common lower bound in
+    it) not strictly contained in another filter (Lempp and Mummert, Section 1 and Corollary 2.4).
+  refs:
+    - ref: lemppmummert2006
+      role: origin
+      loc: Section 1, Corollary 2.4
+
+- id: unbfilter
+  label: \textsf{Unbounded filters}
+  name: Every countable poset has an unbounded filter
+  kind: sentence
+  minor: true
+  tags:
+    - orders
+  definition: >
+    Every countable poset has an unbounded filter: a filter $F$ such that no $p \notin F$ is below every element of $F$
+    (Lempp and Mummert, Section 3 and Corollary 3.3).
+  refs:
+    - ref: lemppmummert2006
+      role: origin
+      loc: Section 3, Corollary 3.3
+
+- id: unbfilterseq
+  label: \textsf{Unbounded enumerated filters (sequences)}
+  name: Sequences of enumerated filters extend to unbounded enumerated filters
+  kind: sentence
+  minor: true
+  tags:
+    - orders
+  definition: >
+    For every sequence $\langle P_i \rangle$ of countable posets and every sequence $\langle F_i \rangle$ such that each
+    $F_i$ is an enumerated filter on $P_i$ (a function from $\mathbb{N}$ to $P_i$ whose range is a filter), there is a
+    sequence $\langle G_i \rangle$ such that each $G_i$ is an unbounded enumerated filter on $P_i$ extending $F_i$
+    (Lempp and Mummert, Section 3 and Theorem 3.6 (2); the single-poset version is provable in $\mathsf{RCA}_0$ by their
+    Theorem 3.5).
+  refs:
+    - ref: lemppmummert2006
+      role: origin
+      loc: Section 3, Theorem 3.6
+
+- id: upclosure
+  label: \textsf{Upward closures}
+  name: Every subset of a countable poset has an upward closure
+  kind: sentence
+  minor: true
+  tags:
+    - orders
+  definition: >
+    For every countable poset $P$ and every $F \subseteq P$, the upward closure $\{q \in P : \exists p \in F\, (p
+    \preceq q)\}$ exists (Lempp and Mummert, Section 4 and Corollary 4.2 (2); restricting to linearly ordered $F$ gives
+    the equivalent statement (3)).
+  refs:
+    - ref: lemppmummert2006
+      role: origin
+      loc: Section 4, Corollary 4.2

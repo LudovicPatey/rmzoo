@@ -1,0 +1,3 @@
+# Results from [buchholz1987].
+
+[ { type: separation, from: pi11ca-pi1inftyti, to: bhydra, over: rca0, refs: [ { ref: buchholz1987, loc: Theorem III (Π¹₁-CA + BI does not prove it) } ] } ]

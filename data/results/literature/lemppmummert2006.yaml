@@ -1,0 +1,3 @@
+# Results from [lemppmummert2006].
+
+[ { type: equivalence, from: maxfilter, to: aca, over: rca0, refs: [ { ref: lemppmummert2006, loc: Corollary 2.4 } ] }, { type: equivalence, from: unbfilter, to: aca, over: rca0, refs: [ { ref: lemppmummert2006, loc: Corollary 3.3 } ] }, { type: equivalence, from: unbfilterseq, to: aca, over: rca0, refs: [ { ref: lemppmummert2006, loc: Theorem 3.6 } ] }, { type: equivalence, from: upclosure, to: aca, over: rca0, refs: [ { ref: lemppmummert2006, loc: Corollary 4.2 } ] } ]

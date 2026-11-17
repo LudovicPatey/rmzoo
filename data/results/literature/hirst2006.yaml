@@ -1,0 +1,3 @@
+# Results from [hirst2006].
+
+[ { type: equivalence, from: sepclosed, to: aca, over: rca0, refs: [ { ref: hirst2006, loc: Theorem 1 } ] }, { type: equivalence, from: sepclosed01, to: aca, over: rca0, refs: [ { ref: hirst2006, loc: Theorem 1 } ] } ]

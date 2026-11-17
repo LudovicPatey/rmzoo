@@ -1,0 +1,3 @@
+# Results from [mileti2008].
+
+[ { type: equivalence, from: canrt, to: aca-prime, over: rca0, refs: [ { ref: mileti2008, loc: Proposition 8.4 } ] }, { type: equivalence, from: regrt, to: aca-prime, over: rca0, refs: [ { ref: mileti2008, loc: Proposition 8.4 } ] }, { type: equivalence, from: canrt1, to: bsig2, over: rca0, refs: [ { ref: mileti2008, loc: Proposition 8.5 } ] } ]

@@ -1,0 +1,3 @@
+# Results from [bergersvindland2016].
+
+[ { type: equivalence, from: mp, to: sephyp, over: bish, refs: [ { ref: bergersvindland2016, loc: Proposition 2 } ] }, { type: equivalence, from: mp, to: ftap, over: bish, refs: [ { ref: bergersvindland2016, loc: Proposition 2 } ] } ]

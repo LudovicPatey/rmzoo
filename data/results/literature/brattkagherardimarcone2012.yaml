@@ -25,3 +25,6 @@
 - { type: equivalence, from: cln, to: cn.jump, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 9.4 (X = ℕ) } ] }
 - { type: implication, from: lim2, to: lpo, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: "Proposition 13.7 (lim_2 = UBWT_2, Proposition 11.21)" } ] }
 - { type: separation, from: lpo, to: lim2, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: "Proposition 13.7 (lim_2 = UBWT_2, Proposition 11.21)" } ] }
+- { type: equivalence, from: limn, to: cn, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: Proposition 3.8 } ] }
+- { type: separation, from: lim2, to: limn, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 13.5 } ] }
+- { type: separation, from: limn, to: lim, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: Example 5.3 } ] }

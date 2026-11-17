@@ -1,0 +1,3 @@
+# Results from [solomon2001].
+
+[ { type: implication, from: maltsev, to: wiseg, over: rca0, note: Proposition 4.4 derives W(X) already from the abelian case of Mal'tsev's theorem., refs: [ { ref: solomon2001, loc: Proposition 4.4 } ] }, { type: implication, from: pi11ca, to: wiseg, over: rca0, refs: [ { ref: solomon2001, loc: "Section 3, after Definition 3.2" } ] } ]

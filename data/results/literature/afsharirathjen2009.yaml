@@ -1,0 +1,3 @@
+# Results from [afsharirathjen2009].
+
+[ { type: implication, from: wop-eps, to: aca-plus, over: rca0, refs: [ { ref: afsharirathjen2009, loc: Theorem 4.1 with Lemma 3.4 } ] } ]

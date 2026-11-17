@@ -1,3 +1,3 @@
 # Results from [kiharapauly2019].
 
-[ { type: separation, from: ci, to: auc.x.llpo, over: w, refs: [ { ref: kiharapauly2019, loc: Theorem 12 } ] } ]
+[ { type: separation, from: ci, to: auc.x.llpo, over: w, refs: [ { ref: kiharapauly2019, loc: Theorem 12 } ] }, { type: equivalence, from: fcc, to: sort.fin, over: w, refs: [ { ref: kiharapauly2019, loc: Theorem 19 } ] }, { type: property, statement: fcc, property: idempotent, value: true, refs: [ { ref: kiharapauly2019, loc: Theorem 19 } ] } ]

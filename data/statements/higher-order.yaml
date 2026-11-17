@@ -1595,3 +1595,1393 @@
     - ref: normannsanders2020
       role: rm
       loc: (3.3), Corollary 3.3
+
+# Statement pass of November 2026 (proposals of the AI readers; definitions read in the sources)
+
+- id: hbtotbd
+  label: \textsf{Heine–Borel compact metric spaces over Baire space are totally bounded}
+  name: Heine–Borel compact complete metric spaces over Baire space are totally bounded
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+    - compactness
+  definition: >
+    A Heine–Borel compact complete metric space over $\mathbb{N}^\mathbb{N}$ is totally bounded (Theorem 3.13(a)). A
+    complete metric space $\tilde D$ over $\mathbb{N}^\mathbb{N}$ (Definition 3.10) is $D \subseteq
+    \mathbb{N}^\mathbb{N}$ with an equivalence relation $=_D$ and a metric $d : D \times D \to \mathbb{R}$ in which
+    every Cauchy sequence converges; it is Heine–Borel compact (Definition 3.11) if for any $Y : D \to \mathbb{R}^+$ the
+    cover $\bigcup_{e \in D} B(e, Y(e))$ has a finite sub-cover, and totally bounded (Definition 3.12) if there is a
+    sequence of finite sequences $(x_n)_n$ of points such that every $x \in D$ satisfies $d(x, x_n(i)) < 2^{-n}$ for
+    some $n$ and $i < |x_n|$. The higher-order lifting of the second-order theorem equivalent to $\mathsf{ACA}_0$.
+  refs:
+    - ref: sanders2019c
+      role: origin
+      loc: Definitions 3.10-3.12, Theorem 3.13(a)
+    - ref: sanders2022c
+      role: rm
+      loc: Definitions 3.10-3.12, Theorem 3.13(a)
+
+- id: clo
+  label: \mathsf{CLO}
+  name: Separably closed sets of reals given by nets are RM-closed
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - CLO
+  definition: >
+    A separably closed set in $\mathbb{R}$ is RM-closed (Theorem 3.18), where a separably closed set $S$ is given by a
+    net $x_d : D \to \mathbb{Q}$ with $D \subseteq \mathbb{N}^\mathbb{N}$, and $x \in S$ means $(\forall k^0)(\exists d
+    \in D)(|x - x_d| \leq 2^{-k})$ (Definition 3.17); RM-closed means the complement of an RM-open set (a countable
+    union of open intervals).
+  refs:
+    - ref: sanders2019c
+      role: origin
+      loc: Definition 3.17, Theorem 3.18
+    - ref: sanders2022c
+      role: rm
+      loc: Definition 3.17, Theorem 3.18
+
+- id: radonn
+  label: \mathsf{Rado}(\mathbb{N}^\mathbb{N})
+  name: Rado selection lemma for collections indexed by Baire space
+  caution: Not the countable Radó selection lemma [[rado]] (Simpson, Theorem III.7.8).
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - Rado(NN)
+    - Rado(N^N)
+  definition: >
+    Let $(A_i)_{i \in \mathbb{N}^\mathbb{N}}$ be a collection of finite sets indexed by $\mathbb{N}^\mathbb{N}$ and, for
+    every finite $J \subset \mathbb{N}^\mathbb{N}$, let $F_J^2$ be a choice function for $(A_j)_{j \in J}$. Then there
+    is a choice function $F^2$ for the whole collection such that for every finite $J \subset \mathbb{N}^\mathbb{N}$
+    there is a finite $K \supseteq J$ with $F(j) = F_K(j)$ for $j \in J$ (Definition 3.22).
+  refs:
+    - ref: sanders2019c
+      role: origin
+      loc: Definition 3.22
+    - ref: sanders2022c
+      role: rm
+      loc: Definition 3.22
+
+- id: sep1
+  label: \mathsf{SEP}^1
+  name: Separation of disjoint ranges of type-two functionals
+  caution: Not [[sigmasep3]] (separation of two disjoint Σ-formulas with type-2 parameters), although closely related.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - SEP1
+    - SEP^1
+  definition: >
+    $(\forall Y^2, Z^2)\big[(\forall f^1, g^1)(Y(f) \neq Z(g)) \rightarrow (\exists X^1)(\forall g^1)(Y(g) \in X \wedge
+    Z(g) \notin X)\big]$: the higher-order generalisation of the separation of the disjoint ranges of two injections
+    (Section 3.5, before Definition 3.24).
+  refs:
+    - ref: sanders2019c
+      role: origin
+      loc: Section 3.5, (SEP¹)
+    - ref: sanders2022c
+      role: rm
+      loc: Section 3.5, (SEP¹)
+
+- id: ord
+  label: \mathsf{ORD}
+  name: Formally real fields over Baire space are orderable
+  caution: Not [[formally-real]], the second-order statement for countable fields.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - algebra
+  aliases:
+    - ORD
+  definition: >
+    A formally real field over $\mathbb{N}^\mathbb{N}$ is orderable (Definition 3.27). A field over Baire space
+    (Definition 3.24) is a set $|K| \subseteq \mathbb{N}^\mathbb{N}$ with $0_K, 1_K$, an equivalence relation $=_K$ and
+    operations satisfying the field axioms; it is formally real if no finite sum of squares $\sum_{i \leq n} c_i^2$
+    equals $0_K$ (Definition 3.25) and orderable if some binary relation $<_K$ satisfies the axioms of an ordered field
+    (Definition 3.26).
+  refs:
+    - ref: sanders2019c
+      role: origin
+      loc: Definitions 3.24-3.27
+    - ref: sanders2022c
+      role: rm
+      loc: Definitions 3.24-3.27
+
+- id: alcl
+  label: \mathsf{ALCL}
+  name: Fields over Baire space embed into algebraically closed fields over Baire space
+  caution: Not [[strong-alg-closure]], the second-order statement for countable fields.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - algebra
+  aliases:
+    - ALCL
+  definition: >
+    Every field over Baire space (Definition 3.24) is isomorphic to a sub-field of an algebraically closed field over
+    Baire space (Definition 3.30).
+  refs:
+    - ref: sanders2019c
+      role: origin
+      loc: Definition 3.30
+    - ref: sanders2022c
+      role: rm
+      loc: Definition 3.30
+
+- id: uacl
+  label: \mathsf{UACL}
+  name: Uniqueness of algebraic closures of fields over Baire space
+  caution: Not [[alg-closure-unique]], the second-order statement for countable fields.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - algebra
+  aliases:
+    - UACL
+  definition: >
+    A field $K$ over $\mathbb{N}^\mathbb{N}$ has a unique algebraic closure: if $H_i : K \to K_i$ ($i = 1, 2$) are two
+    algebraic closures, there is an isomorphism $H : K_1 \to K_2$ with $H \circ H_1 = H_2$ on $K$ (Definition 3.32).
+  refs:
+    - ref: sanders2019c
+      role: origin
+      loc: Definition 3.32
+    - ref: sanders2022c
+      role: rm
+      loc: Definition 3.32
+
+- id: auto
+  label: \mathsf{AUTO}
+  name: Extension of automorphisms to the algebraic closure, for fields over Baire space
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - algebra
+  aliases:
+    - AUTO
+  definition: >
+    Let $F$ be a field over $\mathbb{N}^\mathbb{N}$ with an algebraic closure $\overline{F}$. If $\alpha \in
+    \overline{F}$ and $\varphi : F(\alpha) \to F(\alpha)$ is an $F$-automorphism of $F(\alpha)$, then $\varphi$ extends
+    to an $F$-automorphism of $\overline{F}$ (Definition 3.34; algebraic extensions, $F$-embeddings and extensions of
+    maps as in Definitions 3.35-3.37). The lifting of a theorem of Dorais, Hirst and Shafer equivalent to
+    $\mathsf{WKL}_0$ for countable fields.
+  refs:
+    - ref: sanders2019c
+      role: origin
+      loc: Definitions 3.34-3.37
+    - ref: sanders2022c
+      role: rm
+      loc: Definitions 3.34-3.37
+
+- id: maxidnn
+  label: \textsf{Maximal ideal (rings over Baire space)}
+  name: Commutative rings over Baire space have maximal ideals
+  caution: Not [[max-ideal]], the second-order statement for countable rings.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - algebra
+  definition: >
+    A commutative ring over $\mathbb{N}^\mathbb{N}$ has a maximal ideal (Theorem 3.41(a)). A commutative ring over
+    $\mathbb{N}^\mathbb{N}$ (Definition 3.39) is a set $|R| \subseteq \mathbb{N}^\mathbb{N}$ with $0_R \neq_R 1_R$, an
+    equivalence relation $=_R$ and operations satisfying the ring axioms; an ideal $M$ is maximal if $(\forall r \in
+    R)(r \notin M \rightarrow (\exists s \in R)((r \times_R s) -_R 1 \in M))$ (Definition 3.40). Item (b) of Theorem
+    3.41 restricts it to integral domains.
+  refs:
+    - ref: sanders2019c
+      role: origin
+      loc: Definitions 3.39, 3.40, Theorem 3.41(a)
+    - ref: sanders2022c
+      role: rm
+      loc: Definitions 3.39, 3.40, Theorem 3.41(a)
+
+- id: umct
+  label: \textsf{uniform MCT}
+  name: Uniform monotone convergence theorem
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  phrases:
+    - uniform monotone convergence theorem
+  definition: >
+    There exists $\Phi : (\mathbb{N} \to \mathbb{R}) \to \mathbb{R}$ such that for any increasing sequence $(x_n)_{n \in
+    \mathbb{N}}$ in $[0,1]$, the real $\Phi(\lambda n.x_n)$ is the limit of $(x_n)_{n \in \mathbb{N}}$ (Theorem
+    B.4.1(d)).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Theorem B.4.1(d)
+
+- id: uivtf
+  label: \textsf{uniform IVT (functional)}
+  name: Uniform intermediate value theorem given by a functional
+  caution: Not [[uivt]], the constructive uniform intermediate value theorem.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    There is $\Phi : (\mathbb{R} \to \mathbb{R}) \to \mathbb{R}$ such that for continuous $f : [0,1] \to \mathbb{R}$
+    with $f(0) \leq 0 \leq f(1)$, we have $f(\Phi(f)) = 0$ (Theorem B.4.6, first item; the second item restricts it to
+    Lipschitz continuous $f$, with the same strength).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Theorem B.4.6
+
+- id: nonbaire1
+  label: \textsf{non-Baire 1 function}
+  name: Existence of a function on [0,1] that is not Baire 1
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    There is a function $f : [0,1] \to \mathbb{R}$ that is not Baire 1, i.e. not the pointwise limit of a sequence of
+    continuous functions (Theorem B.4.7, second item; Definition B.6.11).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Theorem B.4.7
+
+- id: bdry
+  label: \textsf{boundary existence}
+  name: Boundaries of closed sets of reals exist
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    For any closed $C \subset \mathbb{R}$, the boundary $\partial C = \overline{C} \setminus \mathrm{int}(C)$ exists (as
+    a set given by a characteristic function) (Theorem B.4.8(a)). Items (b) (open sets) and (c) (a functional mapping
+    closed sets to their boundaries) have the same strength.
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Theorem B.4.8(a)
+
+- id: heaviside
+  label: \textsf{Heaviside function}
+  name: Existence of the Heaviside function
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    The function $H : \mathbb{R} \to \mathbb{R}$ with $H(x) = 1$ if $x >_\mathbb{R} 0$ and $H(x) = 0$ otherwise exists
+    (Theorem B.4.4(a), (B.24)).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Theorem B.4.4(a)
+
+- id: pit01
+  label: \textsf{Pincherle (unit interval)}
+  name: Pincherle's theorem for the unit interval
+  caution: Not [[pito]], [[pito2]] or [[pitu]], the versions for Cantor space with or without a realiser.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+    - compactness
+  definition: >
+    A locally bounded $f : [0,1] \to \mathbb{R}$ is bounded, where $f$ is locally bounded if every point of the domain
+    has a ball around it on which $f$ is bounded (Section B.5.2 and footnote 8; Theorem C.2.15(b)). The original example
+    of the "Pincherle phenomenon": equivalent to $\mathsf{WKL}_0$ given $\mathsf{QF\text{-}AC}^{0,1}$, not provable in
+    $\mathsf{Z}_2^\omega$.
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Section B.5.2; Theorem C.2.15(b); Corollary I.3.33
+
+- id: regbd
+  label: \textsf{regulated functions are bounded}
+  name: Regulated functions on the unit interval are bounded
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    A regulated $f : [0,1] \to \mathbb{R}$ is bounded, where $f$ is regulated if the left and right limits $f(x-)$ and
+    $f(x+)$ exist at every point (sanders2026c, Theorem C.2.15(a), Definition B.6.11; normannsanders2022, Theorem
+    2.9(i)).
+  refs:
+    - ref: normannsanders2022
+      role: rm
+      loc: Theorem 2.9(i)
+    - ref: sanders2026c
+      role: rm
+      loc: Theorem C.2.15(a), Definition B.6.11
+
+- id: uscobd
+  label: \textsf{usco functions are bounded above}
+  name: Upper semi-continuous functions on the unit interval are bounded above
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+    - compactness
+  definition: >
+    A usco (upper semi-continuous at every point, Definition B.6.11) function $f : [0,1] \to \mathbb{R}$ is bounded
+    above (sanders2026c, Theorems C.2.15(f), C.2.24(a); normannsanders2024, Theorem 2.5(a); normannsanders2022, Theorem
+    2.9(v)). Equivalent over $\mathsf{RCA}_0^\omega$ to [[hbcs]].
+  refs:
+    - ref: normannsanders2024
+      role: rm
+      loc: Theorem 2.5(a)
+    - ref: normannsanders2022
+      role: rm
+      loc: Theorem 2.9(v)
+    - ref: sanders2026c
+      role: rm
+      loc: Theorems C.2.15(f), C.2.24(a)
+
+- id: cadbd
+  label: \textsf{cadlag functions are bounded}
+  name: Càdlàg functions on the unit interval are bounded
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    A càdlàg $f : [0,1] \to \mathbb{R}$ (regulated with $f(x) = f(x+)$ everywhere, Definition B.6.11) is bounded
+    (sanders2026c, Theorem B.4.22, Theorem C.2.15(v); normannsanders2022, Theorem 2.9(xxi)).
+  refs:
+    - ref: normannsanders2022
+      role: rm
+      loc: Theorem 2.9(xxi)
+    - ref: sanders2026c
+      role: rm
+      loc: Theorem B.4.22; Theorem C.2.15(v)
+
+- id: hbc
+  label: \mathsf{HBC}
+  name: Heine–Borel theorem for closed sets and sequences of basic open intervals
+  caution: Not [[hbc0]] (coverings given as countable sets of intervals) nor [[hbcs]] (sequences of arbitrary open sets).
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+    - compactness
+  aliases:
+    - HBC
+  definition: >
+    [[hbcs]] restricted to sequences of basic open intervals: if $C \subseteq [0,1]$ is closed (given by a
+    characteristic function, without code) and $C \subseteq \bigcup_n (a_n, b_n)$, then $C \subseteq \bigcup_{n \leq
+    n_0} (a_n, b_n)$ for some $n_0$ (sanders2026c, after Principle C.2.23; normannsanders2024, after Principle 2.4).
+  refs:
+    - ref: normannsanders2024
+      role: rm
+      loc: Section 2.2, after Principle 2.4; Theorem 2.5(i)
+    - ref: sanders2026c
+      role: rm
+      loc: Section C.2.4, after Principle C.2.23
+
+- id: vitalicont
+  label: \textsf{Vitali principle for continuous functions}
+  name: Vitali's principle (WHBU) restricted to continuous functions
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+    - randomness
+  definition: >
+    Vitali's principle (Principle C.2.47, the principle [[whbu]]) for continuous $\Psi$: for continuous $\Psi : [0,1]
+    \to \mathbb{R}^+$ and $\varepsilon > 0$, there are $x_0, \ldots, x_k \in [0,1]$ such that $\bigcup_{i \leq k} B(x_i,
+    \Psi(x_i))$ has measure $1 - \varepsilon$ (Theorem C.2.48(b)). Items (c)-(n) of Theorem C.2.48 (lsco, cadlag, Baire
+    1 $\Psi$…) have the same strength.
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Principle C.2.47, Theorem C.2.48(b)
+
+- id: bernstein
+  label: \textsf{Bernstein approximation}
+  name: Uniform convergence of Bernstein polynomials of continuous functions
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    For continuous $f : [0,1] \to \mathbb{R}$ (third-order, without code) and $x \in [0,1]$, $f(x) = \lim_{n \to \infty}
+    B_n(f, x)$ where the convergence is uniform, $B_n(f, \cdot)$ being the $n$-th Bernstein polynomial of $f$ (Theorem
+    C.2.28, (C.23)).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Theorem C.2.28
+
+- id: ftc
+  label: \textsf{FTC (continuous functions)}
+  name: Fundamental theorem of calculus for continuous functions
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    For continuous $f : [0,1] \to \mathbb{R}$ (third-order, without code), $F(x) := \lambda x.\int_0^x f(t)\,dt$ exists
+    and satisfies $F'(x) = f(x)$ everywhere (Theorem C.2.42(a)).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Theorem C.2.42(a)
+
+- id: supeb2
+  label: \textsf{supremum principle (effectively Baire 2)}
+  name: Supremum principle for effectively Baire 2 functions
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    A bounded effectively Baire 2 $f : [0,1] \to \mathbb{R}$ has a supremum (Theorem C.4.5(b)), where $f$ is effectively
+    Baire 2 if there is a double sequence $(f_{m,n})$ of continuous functions with $f(x) = \lim_{m \to \infty} \lim_{n
+    \to \infty} f_{m,n}(x)$ for all $x \in [0,1]$ (Definition B.6.11).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Theorem C.4.5(b), Definition B.6.11
+
+- id: mctnetfin
+  label: \mathsf{MCT}_{\mathrm{net}}((\mathbb{N}^\mathbb{N})^*)
+  name: Monotone convergence theorem for nets indexed by finite sequences of Baire space
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    An increasing net $(x_w)_{w \in \mathcal{N}}$ in $[0,1]$ converges to a limit, where $\mathcal{N}$ is the set of
+    finite sequences $w^{1^*}$ of elements of Baire space, directed by inclusion $w \preceq v \equiv |w| \leq |v| \wedge
+    (\forall i < |w|)(\exists j < |v|)(w(i) =_1 v(j))$ (Principle C.4.13 and proof of Theorem C.4.14). A special case of
+    [[mctnet]].
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Principle C.4.13, Corollary C.4.15
+
+- id: arz
+  label: \mathsf{Arz}
+  name: Arzelà's convergence theorem for the Riemann integral
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - Arz
+  phrases:
+    - Arzelà's convergence theorem
+  definition: >
+    Let $f$ and $(f_n)_{n \in \mathbb{N}}$ be Riemann integrable on $[0,1]$ with $\lim_{n} f_n(x) = f(x)$ for all $x \in
+    [0,1]$. If there is $M \in \mathbb{N}$ with $|f_n(x)| \leq M + 1$ for all $n$ and $x$, then $\lim_{n} \int_0^1
+    f_n(x)\,dx = \int_0^1 f(x)\,dx$ (Principle D.2.5).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Principle D.2.5
+
+- id: ninr
+  label: \mathsf{NIN}_{\mathbb{R}}
+  name: No injection from ℝ to ℕ
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - NINR
+    - NIN_R
+  definition: |
+    There is no injection $Y : \mathbb{R} \to \mathbb{N}$ (Section D.2.2.1, $\mathsf{NIN}_X$ for $X = \mathbb{R}$).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Section D.2.2.1, Theorem D.2.2
+
+- id: ninbaire
+  label: \mathsf{NIN}_{\mathbb{N}^\mathbb{N}}
+  name: No injection from Baire space to ℕ
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - NINNN
+    - NIN_N^N
+  definition: >
+    There is no injection $Y : \mathbb{N}^\mathbb{N} \to \mathbb{N}$ (Section D.2.2.1, $\mathsf{NIN}_X$ for $X =
+    \mathbb{N}^\mathbb{N}$).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Section D.2.2.1, Theorem D.2.2
+
+- id: nccw
+  label: \mathsf{NCC}_w
+  name: Weak countable choice NCC with bounding functions
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - NCCw
+    - NCC_w
+  definition: >
+    [[ncc]] with the function $g$ only providing an upper bound on the $m$-variable: for $Y^2$ and $A(n, m) \equiv
+    (\exists f \in 2^\mathbb{N})(Y(f, m, n) = 0)$, $(\forall n^0)(\exists m^0)A(n, m) \rightarrow (\exists g^1)(\forall
+    n^0)(\exists m \leq g(n))A(n, m)$ (normannsanders2020b, before Corollary 3.31, with NCC as in Principle 3.29;
+    normannsanders2020, Definition 4.8, gives its realiser form). sanders2026c (before Corollary D.2.44) states it for
+    the book's NCC (Principle B.5.5, with $f \in \mathbb{N}^\mathbb{N}$ and $\varphi$ quantifier-free).
+  refs:
+    - ref: normannsanders2020b
+      role: origin
+      loc: Section 3.3.1, before Corollary 3.31
+    - ref: normannsanders2020
+      role: rm
+      loc: Definition 4.8
+    - ref: sanders2026c
+      role: rm
+      loc: Section D.2.3.1, before Corollary D.2.44
+
+- id: ninalthw
+  label: \mathsf{NIN}'_{\mathrm{alt}}
+  name: The unit interval is not height-width countable
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - NIN'alt
+    - NIN′alt
+  definition: >
+    The unit interval is not height-width countable (Principle D.2.66), where $B \subset \mathbb{R}$ is height-width
+    countable if there are a height function $H : \mathbb{R} \to \mathbb{N}$ and a width function $g : \mathbb{N} \to
+    \mathbb{N}$ such that for all $n$ the set $B_n := \{x \in B : H(x) < n\}$ is finite with size bound $g(n)$
+    (Definition D.2.65). A weakening of [[ninalt]].
+  refs:
+    - ref: sanders2026c
+      role: origin
+      loc: Definition D.2.65, Principle D.2.66
+
+- id: range0
+  label: \mathsf{range}_0
+  name: The range of a function injective on a set of reals exists
+  caution: Not [[range3]] (RANGE, the range of a type-two functional) nor the Weihrauch problem Range.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - range0
+  definition: >
+    For any $A \subset [0,1]$ and $Y : [0,1] \to \mathbb{N}$ injective on $A$, there is $B \subset \mathbb{N}$ such that
+    $n \in B \leftrightarrow (\exists x \in A)(Y(x) = n)$ for $n \in \mathbb{N}$ (Principle D.3.3).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Principle D.3.3, Theorem D.3.6
+
+- id: cwoomega
+  label: \mathsf{CWO}^\omega
+  name: Comparability of height-countable well-orders on sets of reals
+  caution: Not [[cwo]], the comparability of countable (coded) well-orderings.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - well-orders
+  aliases:
+    - CWOω
+    - CWO^omega
+  definition: >
+    For height-countable well-orders $(X, \preceq_X)$, $(Y, \preceq_Y)$ with $X, Y \subset \mathbb{R}$, the former order
+    is order-isomorphic to the latter or to an initial segment of it, or vice versa (Principle D.3.28); a set is
+    height-countable if it has a height function (see [[enum]]).
+  refs:
+    - ref: sanders2026c
+      role: origin
+      loc: Principle D.3.28
+
+- id: opend
+  label: \mathsf{open}^D
+  name: D-open sets of reals have RM-codes
+  caution: Not [[open]], the coding principle for all open sets.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - openD
+  definition: >
+    For every D-open $O \subset \mathbb{R}$ there is an RM-code (Theorem D.3.39(b)), where $O$ is D-open if $O =
+    \bigcup_n J_n$ for a sequence $(J_n)_n$ such that each $J_n$ is an open interval or the union of two open intervals:
+    $(\forall n)(\exists a, b, c, d \in \mathbb{R})(\forall x \in \mathbb{R})(x \in J_n \leftrightarrow x \in (a, b)
+    \cup (c, d))$ (Definition D.3.36).
+  refs:
+    - ref: sanders2026c
+      role: origin
+      loc: Definition D.3.36, Theorem D.3.39(b)
+
+- id: bctr2
+  label: \mathsf{BCT}_{[0,1]}(\textsf{R2-open})
+  name: Baire category theorem for open sets with an R2-representation
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    [[bct01]] restricted to R2-open sets: if $(O_n)_n$ is a decreasing sequence of dense open sets in $[0,1]$, each
+    given with an R2-representation $Y_n : \mathbb{R} \to \mathbb{R}$ ($x \in O_n \leftrightarrow Y_n(x) > 0$ and $x \in
+    O_n \rightarrow B(x, Y_n(x)) \subset O_n$, Definition B.3.22), then $\bigcap_n O_n \neq \emptyset$ (Theorem D.4.3).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Definition B.3.22, Theorem D.4.3
+
+- id: uscocont
+  label: \textsf{usco continuity point}
+  name: Usco functions on the unit interval have a point of continuity
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    For usco $f : [0,1] \to \mathbb{R}$, there is a point $x \in [0,1]$ where $f$ is continuous (Theorem D.4.9(b));
+    equivalent over $\mathsf{ACA}_0^\omega$ to [[bct01]] and to the variants (c)-(g) of Theorem D.4.9 (with an
+    oscillation function, bounded below on some interval…).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Theorem D.4.9(b)
+
+- id: uscobaire1
+  label: \textsf{usco functions are Baire 1}
+  name: Usco functions on the unit interval are Baire 1
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    Any usco function $f : [0,1] \to \mathbb{R}$ is Baire 1, i.e. the pointwise limit of a sequence of continuous
+    functions (Corollary D.4.16).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Corollary D.4.16
+
+- id: ubplsco
+  label: \textsf{uniform boundedness (lsco)}
+  name: Uniform boundedness principle for lower semi-continuous functions
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    A sequence of lsco functions $(f_n)_n$ that is pointwise bounded on $[0,1]$ ($(\forall x)(\exists N)(\forall
+    n)(f_n(x) \leq N)$) is uniformly bounded on some non-degenerate $(c, d) \subset [0,1]$ (Theorem D.4.24(b),
+    Definition D.4.23).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Definition D.4.23, Theorem D.4.24(b)
+
+- id: bernusco
+  label: \textsf{Bernstein convergence point (usco)}
+  name: Bernstein polynomials of a usco function converge at some point
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    For usco $f : [0,1] \to \mathbb{R}$, the set $B_f := \{x \in [0,1] : f(x) = \lim_n B_n(f, x)\}$ is non-empty, $B_n$
+    being the Bernstein polynomials (Theorem D.4.38(b), (C.42)).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Theorem D.4.38(b)
+
+- id: wbct
+  label: \mathsf{WBCT}_{[0,1]}
+  name: Weak Baire category theorem (measure one open sets)
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+    - randomness
+  aliases:
+    - WBCT[0,1]
+    - WBCT
+  definition: >
+    [[bct01]] restricted to measure one sets: if $(O_n)_n$ is a decreasing sequence of measure one open sets of reals in
+    $[0,1]$ (given by characteristic functions), then $\bigcap_n O_n$ is non-empty (sanders2026c, Principle D.5.1;
+    sanders2023, Principle 3.2).
+  refs:
+    - ref: sanders2023
+      role: origin
+      loc: Principle 3.2
+    - ref: sanders2026c
+      role: rm
+      loc: Principle D.5.1
+
+- id: finchoice
+  label: \textsf{Finite Choice}
+  name: Choice for sequences of non-empty finite sets of reals
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  phrases:
+    - Finite Choice
+  definition: >
+    Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of non-empty finite sets in $[0,1]$. Then there is $(x_n)_{n \in
+    \mathbb{N}}$ such that $x_n \in X_n$ for all $n \in \mathbb{N}$. Sets of reals are given by characteristic
+    functions, and $A \subset \mathbb{R}$ is finite if there is $N \in \mathbb{N}$ such that for any finite sequence
+    $x_0, \dots, x_N$ of (distinct) reals, some $x_i \notin A$ (sanders2024d, Definition 1.2 and Principle 2.4;
+    sanders2026c, Definition B.3.22 and Principle E.2.1). Intermediate between $\mathsf{QF\text{-}AC}^{0,1}$ and
+    $\textsf{finite-}\Sigma^1_1\textsf{-AC}_0$ over $\mathsf{ACA}_0^\omega$ (with $\mathsf{IND}_2$).
+  refs:
+    - ref: sanders2024d
+      role: origin
+      loc: Principle 2.4
+    - ref: sanders2026c
+      role: rm
+      loc: Principle E.2.1
+
+- id: finchoicep
+  label: \textsf{Finite Choice}′
+  name: Finite Choice with a bound on the size of the sets
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - Finite Choice′
+    - Finite Choice'
+  definition: >
+    Let $(X_n)_{n \in \mathbb{N}}$ be a sequence of non-empty finite sets in $[0,1]$ and let $g \in
+    \mathbb{N}^\mathbb{N}$ be such that $|X_n| \leq g(n)$. Then there is a sequence $(x_n)_{n \in \mathbb{N}}$ such that
+    $x_n \in X_n$ for all $n \in \mathbb{N}$ (sanders2024d, Corollary 3.8 (iii); sanders2026c, Corollary E.3.3 (c)).
+    Finiteness as in $\textsf{Finite Choice}$.
+  refs:
+    - ref: sanders2024d
+      role: origin
+      loc: Corollary 3.8 (iii)
+    - ref: sanders2026c
+      role: rm
+      loc: Corollary E.3.3 (c)
+
+- id: clc
+  label: \mathsf{ClC}
+  name: Countable choice for non-empty closed sets in the unit interval
+  caution: "Closed sets are given by characteristic functions (complements of open sets without codes): not closed choice
+    $\\mathsf{C}_{[0,1]}$ or $\\mathsf{C}_\\mathbb{R}$ of the Weihrauch lattice, whose closed sets are coded. For codes,
+    $\\mathsf{WKL}_0$ proves the statement (Simpson, IV.1.8)."
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - ClC
+  definition: >
+    Let $(C_n)_{n \in \mathbb{N}}$ be a sequence of non-empty closed sets in $[0,1]$. There is a sequence $(x_n)_{n \in
+    \mathbb{N}}$ such that $x_n \in C_n$ for all $n \in \mathbb{N}$; closed sets are complements of open sets given by
+    characteristic functions (normannsanders2024, Principle 2.6; sanders2026c, Principle E.5.1 = G.5.2).
+  refs:
+    - ref: normannsanders2024
+      role: origin
+      loc: Principle 2.6
+    - ref: sanders2026c
+      role: rm
+      loc: Principles B.5.7 (closed sets of reals), E.5.1, G.5.2
+
+- id: clcseq
+  label: \mathsf{ClC}_{\mathrm{seq}}
+  name: Countable choice for decreasing sequences of sequentially closed sets
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - ClCseq
+  definition: >
+    $\mathsf{ClC}$ for sequences $(C_n)_{n \in \mathbb{N}}$ of non-empty sequentially closed sets in $[0,1]$ with
+    $C_{n+1} \subset C_n$: there is $(x_n)_n$ with $x_n \in C_n$ for all $n$ (sanders2026c, after Principle E.5.1). Over
+    $\mathsf{ACA}_0^\omega + \mathsf{IND}_2$ it is equivalent to the statement that $\mathbb{R}$ is a sequential space
+    (Theorem E.5.2).
+  refs:
+    - ref: sanders2026c
+      role: origin
+      loc: Section E.5.2, after Principle E.5.1
+
+- id: qfdc11
+  label: \mathsf{QF\text{-}DC}^{1,1}
+  name: Quantifier-free dependent choice for functions
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - QF-DC^{1,1}
+    - QF-DC11
+    - QF-DC1,1
+  definition: >
+    For quantifier-free $\varphi$ (of $\mathsf{L}_\omega$, with higher-order parameters): $(\forall n \in
+    \mathbb{N})(\forall f \in \mathbb{N}^\mathbb{N})(\exists g \in \mathbb{N}^\mathbb{N})\varphi(n, f, g) \rightarrow
+    (\exists (f_n)_{n \in \mathbb{N}})(\forall n \in \mathbb{N})\varphi(n, f_n, f_{n+1})$ (sanders2026c, Definition
+    E.1.1; normannsanders2026, Principle 2.14).
+  refs:
+    - ref: sanders2026c
+      role: rm
+      loc: Definition E.1.1
+    - ref: normannsanders2026
+      role: rm
+      loc: Principle 2.14
+
+- id: bncomega
+  label: \mathsf{BNC}^\omega
+  name: Bounded numerical choice with higher-order parameters
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - BNCω
+    - BNC^ω
+    - BNComega
+  definition: >
+    $\mathsf{BNC}$ with higher-order parameters allowed in the formula $\varphi$: for $\varphi$ of the form $(\forall f
+    \in \mathbb{N}^\mathbb{N})\psi(n, m, f)$ with $\psi$ arithmetical in type-two (and higher) parameters, $(\forall n
+    \in \mathbb{N})(\exists m \in \mathbb{N})\varphi(n, m) \rightarrow (\exists g \in \mathbb{N}^\mathbb{N})(\forall n
+    \in \mathbb{N})(\exists m \leq g(n))\varphi(n, m)$ (sanderstaranovsky2026, Section 2.1; sanders2026c, after
+    Principle E.5.14).
+  refs:
+    - ref: sanderstaranovsky2026
+      role: origin
+      loc: Section 2.1, after Principle 2.2
+    - ref: sanders2026c
+      role: rm
+      loc: Section E.5.4, after Principle E.5.14; Theorem E.5.15
+
+- id: encomega
+  label: \mathsf{ENC}^\omega
+  name: Exact numerical choice with higher-order parameters
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - ENCω
+    - ENC^ω
+    - ENComega
+    - ENC^omega
+  definition: >
+    $\mathsf{ENC}$ (for $\varphi \in \Pi^1_1$: $(\forall n \in \mathbb{N})(\exists m \in \mathbb{N})\varphi(n, m)
+    \rightarrow (\exists g \in \mathbb{N}^\mathbb{N})(\forall n \in \mathbb{N})\varphi(n, g(n))$) with higher-order
+    parameters allowed in the formula $\varphi$ (sanderstaranovsky2026, Principle 2.2 and Section 2.1; sanders2026c,
+    after Principle D.4.6). $\mathsf{ACA}_0^\omega + \mathsf{ENC}^\omega + \mathsf{QF\text{-}AC}^{0,1}$ is conservative
+    over $\mathsf{ATR}_0$ (sanderstaranovsky2026, Theorem 2.4).
+  refs:
+    - ref: sanderstaranovsky2026
+      role: origin
+      loc: Principle 2.2 and Section 2.1
+    - ref: sanders2026c
+      role: rm
+      loc: Section D.4, after Principle D.4.6; Theorems G.4.16, G.4.42
+
+- id: korg0
+  label: \mathsf{Korg}_0
+  name: Kőnig's infinity lemma in its original form (countable vertex sets of reals)
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - compactness
+  aliases:
+    - Korg0
+  definition: >
+    Let $G = (V, E)$ be a graph where $V = \cup_{n \in \mathbb{N}} V_n \subset \mathbb{R}$ and (a) the vertex set $V$ is
+    countable (there is $Y : \mathbb{R} \to \mathbb{N}$ injective on $V$), (b) each $V_n$ is non-empty and finite, (c)
+    each vertex in $V_{n+1}$ is connected to a vertex in $V_n$ via an edge in $E$. Then there is a sequence $(v_n)_{n
+    \in \mathbb{N}}$ such that $v_n \in V_n$ and $(v_n, v_{n+1}) \in E$ for $n \in \mathbb{N}$ (sanders2020, Principle
+    3.31; sanders2026c, Principle E.6.1). sanders2020 reads 'finite' as: there is $Y : \mathbb{R} \to \mathbb{N}$
+    injective and bounded on the set; sanders2026c uses Definition B.3.22 (at most $N$ distinct elements).
+  refs:
+    - ref: sanders2020
+      role: origin
+      loc: Principle 3.31
+    - ref: sanders2026c
+      role: rm
+      loc: Principle E.6.1
+
+- id: korg1
+  label: \mathsf{Korg}_1
+  name: Kőnig's infinity lemma in its original form for strongly countable vertex sets
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - compactness
+  aliases:
+    - Korg1
+  definition: >
+    $\mathsf{Korg}_0$ restricted to strongly countable vertex sets $V$, i.e. there is $Y : \mathbb{R} \to \mathbb{N}$
+    injective and surjective on $V$ (sanders2020, after Principle 3.31; sanders2026c, after Principle E.6.1).
+  refs:
+    - ref: sanders2020
+      role: origin
+      loc: Section 3.4, after Principle 3.31
+    - ref: sanders2026c
+      role: rm
+      loc: Section E.6.1, after Principle E.6.1
+
+- id: korg2
+  label: \mathsf{Korg}_2
+  name: Kőnig's infinity lemma for sequences of finite sets of reals with a relation
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - compactness
+  aliases:
+    - Korg2
+  definition: >
+    Let $(E_n)_{n \in \mathbb{N}}$ be a sequence of sets in $\mathbb{R}$ and let $R$ be a binary relation on reals
+    (given by a characteristic function) such that for all $n$: $E_n$ is finite and non-empty, and for any $x \in
+    E_{n+1}$ there is at least one $y \in E_n$ such that $yRx$. Then there is a sequence $(x_n)_{n \in \mathbb{N}}$ such
+    that for all $n$, $x_n \in E_n$ and $x_n R x_{n+1}$ (sanders2026c, Principle E.6.4; finiteness as in Definition
+    B.3.22).
+  refs:
+    - ref: sanders2026c
+      role: origin
+      loc: Principle E.6.4
+
+- id: korg3
+  label: \mathsf{Korg}_3
+  name: Kőnig's infinity lemma over subsets of Baire space with an equivalence relation
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - compactness
+  aliases:
+    - Korg3
+  definition: >
+    For a set $X \subset \mathbb{N}^\mathbb{N}$ with an equivalence relation $=_X$: let $(E_n)_{n \in \mathbb{N}}$ be a
+    sequence of sets in $(X, =_X)$ and $R$ a binary relation such that for all $n$, $E_n$ is finite and non-empty, and
+    for any $x \in E_{n+1}$ there is at least one $y \in E_n$ with $yRx$. Then there is a sequence $(x_n)_{n \in
+    \mathbb{N}}$ with $x_n \in E_n$ and $x_n R x_{n+1}$ for all $n$. Here $A$ is finite if there is $N$ such that among
+    any $x_0, \dots, x_N \in X$ pairwise different for $=_X$, some $x_j \notin A$ (sanders2026c, Definition H.3.23 and
+    Principle H.3.24).
+  refs:
+    - ref: sanders2026c
+      role: origin
+      loc: Definition H.3.23, Principle H.3.24
+
+- id: boot2
+  label: \mathsf{BOOT}_2
+  name: Bootstrap principle for Σ-formulas with two function quantifiers
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - BOOT2
+    - BOOT_2
+  definition: >
+    For $Y : (\mathbb{N}^\mathbb{N} \times \mathbb{N}^\mathbb{N}) \to \mathbb{N}$, there is $X \subset \mathbb{N}$ with
+    $(\forall n \in \mathbb{N})\big[n \in X \leftrightarrow (\exists f \in \mathbb{N}^\mathbb{N})(\forall g \in
+    \mathbb{N}^\mathbb{N})(Y(f, g, n) = 0)\big]$ (sanders2024b, Principle 2.18; sanders2024c, Principle 2.15;
+    sanders2026c, Principle F.2.19). $\mathsf{BOOT}_k$ ($k \geq 3$) is the generalisation to $k-1$ quantifier
+    alternations.
+  refs:
+    - ref: sanders2024b
+      role: origin
+      loc: Principle 2.18
+    - ref: sanders2024c
+      role: rm
+      loc: Principle 2.15
+    - ref: sanders2026c
+      role: rm
+      loc: Principle F.2.19
+
+- id: opendagger
+  label: \mathsf{open}^\dagger
+  name: Open sets of reals are F-sigma
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - analysis
+  aliases:
+    - open†
+    - open^†
+  definition: >
+    An open set $O \subset \mathbb{R}$ (given by a characteristic function) is $F_\sigma$: there is an increasing
+    sequence $(C_n)_{n \in \mathbb{N}}$ of closed sets (without codes) such that $O = \cup_{n \in \mathbb{N}} C_n$
+    (sanderstaranovsky2026, Section 3.5; sanders2026c, Principle G.3.7). A weak fragment of $\mathsf{open}$.
+  refs:
+    - ref: sanderstaranovsky2026
+      role: origin
+      loc: Section 3.5, after Definition 3.14
+    - ref: sanders2026c
+      role: rm
+      loc: Principle G.3.7; Theorems G.3.8, G.3.22, G.4.42
+
+- id: lingen
+  label: \mathsf{LIN}
+  name: Lindelöf lemma for arbitrary subsets of Baire space
+  caution: "Not $\\mathsf{LIND}$ (id lind, also written LIN in some papers: canonical coverings of $\\mathbb{R}$) nor
+    $\\mathsf{LIND}(\\mathbb{N}^\\mathbb{N})$ (id lindbaire, the case $D = \\mathbb{N}^\\mathbb{N}$, written
+    $\\mathsf{LIN}(\\mathbb{N}^\\mathbb{N})$ in sanders2026c)."
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - compactness
+  definition: >
+    For any $G^2$ and non-empty $D \subseteq \mathbb{N}^\mathbb{N}$ (given by a characteristic function), there is a
+    sequence $(f_n)_{n \in \mathbb{N}}$ in $D$ such that $\cup_{n \in \mathbb{N}} [\overline{f_n}G(f_n)]$ covers $D$
+    (normannsanders2021, Principle 3.4; sanders2026c, Principle G.4.5).
+  refs:
+    - ref: normannsanders2021
+      role: origin
+      loc: Principle 3.4, Theorem 3.5
+    - ref: sanders2026c
+      role: rm
+      loc: Principle G.4.5, Theorem G.4.6
+
+- id: linr
+  label: \mathsf{LIN}(\mathbb{R})
+  name: Lindelöf lemma for closed sets of reals
+  caution: Not $\mathsf{LIND}$ (id lind) nor $\mathsf{LIN}_\mathbb{R}$ of sanders2026c (Definition G.6.18), which are
+    about the covering of $\mathbb{R}$ itself.
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - compactness
+  aliases:
+    - LIN(R)
+  definition: >
+    For closed $C \subset \mathbb{R}$ (complement of an open set given by a characteristic function) and $\Psi :
+    \mathbb{R} \to \mathbb{R}^+$, there is a sequence $(x_n)_{n \in \mathbb{N}}$ in $C$ such that $\cup_{n \in
+    \mathbb{N}} B(x_n, \Psi(x_n))$ covers $C$ (sanders2026c, Principle G.3.31; sanderstaranovsky2026, Theorem 3.18 (c)).
+  refs:
+    - ref: sanders2026c
+      role: origin
+      loc: Principle G.3.31; Theorem G.3.33, Corollary G.3.35
+    - ref: sanderstaranovsky2026
+      role: rm
+      loc: Theorem 3.18 (c)
+
+- id: oc00
+  label: \mathsf{OC}^{0,0}
+  name: Numerical choice for increasing sequences of open sets covering the reals
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - OC^{0,0}
+    - OC00
+    - OC0,0
+    - OC_{0,0}
+  definition: >
+    For any increasing sequence of open sets $(O_n)_{n \in \mathbb{N}}$ in $\mathbb{R}$ (given by characteristic
+    functions): $(\forall n \in \mathbb{N})(\exists m \in \mathbb{N})([-n, n] \subset O_m) \rightarrow (\exists g \in
+    \mathbb{N}^\mathbb{N})(\forall n \in \mathbb{N})([-n, n] \subset O_{g(n)})$ (normannsanders2024, Principle 2.11;
+    sanders2026c, Principles G.3.32, G.5.6; sanderstaranovsky2026, Principle 3.17).
+  refs:
+    - ref: normannsanders2024
+      role: origin
+      loc: Principle 2.11, Theorem 2.13
+    - ref: sanders2026c
+      role: rm
+      loc: Principles G.3.32, G.5.6; Theorems G.5.8, I.3.22
+    - ref: sanderstaranovsky2026
+      role: rm
+      loc: Principle 3.17
+
+- id: a1
+  label: \mathsf{A}_1
+  name: Fragment A₁ of the neighbourhood function principle
+  caution: "The token A1 also denotes formulas, sets and parameters in many papers: the miners should not look for it as
+    an acronym."
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  definition: >
+    For $Y^2$ and $A(\sigma^{0^*}) \equiv (\forall f \in 2^\mathbb{N})(Y(f, \sigma) = 0)$: $(\forall f \in
+    \mathbb{N}^\mathbb{N})(\exists n \in \mathbb{N})A(\overline{f}n) \rightarrow (\exists \Phi^2)(\forall f \in
+    \mathbb{N}^\mathbb{N})A(\overline{f}\Phi(f))$ (sanders2019b, Definitions 5.2 and 5.3, $\mathsf{C}_1$-formulas;
+    sanders2026c, Definition G.4.24). The universal counterpart of $\mathsf{A}_0$.
+  refs:
+    - ref: sanders2019b
+      role: origin
+      loc: Definitions 5.2 and 5.3
+    - ref: sanders2026c
+      role: rm
+      loc: Definition G.4.24; Theorems G.4.25-G.4.28
+
+- id: wklunif
+  label: \mathsf{WKL}^{\mathrm{u}}
+  name: Uniform weak König's lemma (bound depending only on a realiser)
+  caution: Not $\mathsf{UWKL}$ (id uwkl, a functional selecting paths, equivalent to $(\exists^2)$) nor $\mathsf{WKL}!$
+    (id wklu).
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - compactness
+  aliases:
+    - WKLu
+    - WKL^u
+  phrases:
+    - uniform weak König's lemma
+  definition: >
+    $(\forall G^2)(\exists m \in \mathbb{N})(\forall T \subset 2^{<\mathbb{N}})\big[(\forall f \in
+    2^\mathbb{N})(\overline{f}G(f) \notin T) \rightarrow (\forall g \in 2^\mathbb{N})(\overline{g}m \notin T)\big]$: a
+    binary tree with no paths is finite, with a bound depending only on a witness $G$ of 'T has no paths' (sanders2019b,
+    Section 5, (WKLu); sanders2026c, Example G.4.48).
+  refs:
+    - ref: sanders2019b
+      role: origin
+      loc: Section 5, (WKLu)
+    - ref: normannsanders2018b
+      role: rm
+      loc: Section 5, (WKLu)
+    - ref: sanders2026c
+      role: rm
+      loc: Example G.4.48, Theorem G.4.50
+
+- id: whbuplus
+  label: \mathsf{WHBU}^+
+  name: Weak Heine–Borel theorem for uncountable coverings of arbitrary sets
+  caution: "sanders2021 (Principle 2.8) uses WHBU⁺ for a different principle: for $\\Psi : [0,1] \\to \\mathbb{R}^+$ there
+    is $(y_n)_n$ such that $[0,1] \\setminus \\cup_n I^\\Psi_{y_n}$ is countable."
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - randomness
+  aliases:
+    - WHBU+
+  definition: >
+    For $\Psi : [0,1] \to \mathbb{R}^+$, $\varepsilon > 0$, and non-empty $E \subset [0,1]$ with measure $e \in [0,1]$,
+    there are $x_0, \dots, x_k \in E$ such that the measure of $\cup_{i \leq k} B(x_i, \Psi(x_i))$ is at least $e -
+    \varepsilon$ (normannsanders2019, Principle 3.8; sanders2026c, Principle G.4.59).
+  refs:
+    - ref: normannsanders2019
+      role: origin
+      loc: Principle 3.8, Theorem 3.9
+    - ref: sanders2026c
+      role: rm
+      loc: Principle G.4.59, Theorem G.4.60
+
+- id: z3
+  label: (\mathsf{Z}^3)
+  name: Existence of a continuity-testing functional on Baire space
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+  aliases:
+    - (Z3)
+    - Z^3
+  definition: >
+    $(\exists Z^3)(\forall Y^2)\big[Z(Y) = 0 \leftrightarrow (\forall f^1)(\exists N^0)(\forall g^1)(\overline{f}N =
+    \overline{g}N \rightarrow Y(f) = Y(g))\big]$: a functional deciding whether a type-two functional is continuous on
+    Baire space (sanders2018b, Section 3.1, (Z³); sanders2026c, Section G.6.2.1).
+  refs:
+    - ref: sanders2018b
+      role: origin
+      loc: Section 3.1, (Z³); Theorem 3.1, Corollary 3.2
+    - ref: sanders2026c
+      role: rm
+      loc: Section G.6.2.1; Theorem G.6.2, Corollary G.6.3
+
+- id: wnmi0
+  label: \mathsf{WNMI}_0
+  name: Weak non-monotone inductive definitions (WNMI₀)
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - WNMI0
+  definition: >
+    For $Y^2$ and $F : 2^\mathbb{N} \to 2^\mathbb{N}$ defined by $F(A) := A \cup \{Y(A)\}$, we have $(\exists B \subset
+    \mathbb{N})\big[F(B) \subseteq B \wedge (\forall n \in B)(\exists A \subsetneq B)(Y(A) = n)\big]$ (sanders2026c,
+    Principle G.8.2).
+  refs:
+    - ref: sanders2026c
+      role: origin
+      loc: Principle G.8.2, Theorem G.8.3
+
+- id: wnmi1
+  label: \mathsf{WNMI}_1
+  name: Weak non-monotone inductive definitions (WNMI₁)
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+  aliases:
+    - WNMI1
+  definition: >
+    $(\forall F : 2^\mathbb{N} \to 2^\mathbb{N})(\exists B \subseteq \mathbb{N})\big[F(B) \subseteq B \wedge (\forall n
+    \in B)(\exists A \subsetneq B)(n \in F(A))\big]$ (sanders2026c, Principle G.8.5). A generalisation of
+    $\mathsf{WNMI}_0$.
+  refs:
+    - ref: sanders2026c
+      role: origin
+      loc: Principle G.8.5, Theorem G.8.6
+
+- id: hcnull
+  label: \textsf{Height-countable sets are null}
+  name: Height-countable subsets of the unit interval have measure zero (Harnack)
+  kind: sentence
+  order: 3
+  minor: true
+  tags:
+    - higher-order
+    - analysis
+  definition: >
+    A height-countable set $A \subset [0,1]$ has measure zero (sanders2026c, Principle G.10.2): if there is $H : [0,1]
+    \to \mathbb{N}$ such that each $\{x \in A : H(x) < n\}$ is finite, then for every $\varepsilon > 0$ there is a
+    sequence of open intervals covering $A$ with total length below $\varepsilon$ (Definition B.3.22).
+  refs:
+    - ref: sanders2026c
+      role: origin
+      loc: Principle G.10.2, Theorem G.10.3
+
+- id: cbt3
+  label: \mathsf{CBT}
+  name: Cantor–Bendixson theorem for closed sets of reals (countable = injection to ℕ)
+  caution: Not the second-order Cantor–Bendixson theorem for codes (id cb, equivalent to Π¹₁-CA₀), nor the CBT of
+    normannsanders2019b (Principle 4.7) and normannsanders2020 (Principle 3.15), where the countable part is given as a
+    sequence of reals.
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - determinacy
+  aliases:
+    - CBT
+  definition: >
+    A closed $C \subset \mathbb{R}$ (complement of an open set given by a characteristic function) is the disjoint union
+    of a perfect closed set $P$ and a countable set $S$, where countable means that there is $Y : \mathbb{R} \to
+    \mathbb{N}$ injective on $S$ (sanders2026b, Principle 3.13; sanders2026c, Principle H.3.5).
+  refs:
+    - ref: sanders2026b
+      role: origin
+      loc: Principle 3.13, Theorem 3.15
+    - ref: sanders2026c
+      role: rm
+      loc: Principle H.3.5, Theorem H.3.7
+
+- id: pst3
+  label: \mathsf{PST}
+  name: Perfect set theorem for closed sets of reals (countable = injection to ℕ)
+  caution: Not the second-order perfect set theorem (id perfect-set), the Weihrauch problem PST (id pst), nor the PST of
+    normannsanders2019b (Principle 4.10), where uncountable means that no sequence lists the elements.
+  kind: sentence
+  order: 3
+  tags:
+    - higher-order
+    - determinacy
+  definition: >
+    For any uncountable closed set $C \subset \mathbb{R}$, there exists a perfect set $P \subseteq C$; closed sets are
+    complements of open sets given by characteristic functions, and a set is countable if some $Y : \mathbb{R} \to
+    \mathbb{N}$ is injective on it (sanders2026b, Principle 3.14; sanders2026c, Principle H.3.6).
+  refs:
+    - ref: sanders2026b
+      role: origin
+      loc: Principle 3.14, Theorem 3.15
+    - ref: sanders2026c
+      role: rm
+      loc: Principle H.3.6, Theorem H.3.7
