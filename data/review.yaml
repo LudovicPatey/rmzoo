@@ -120802,3 +120802,1314 @@
   reasons:
     - principle not in the catalogue
   proposed: bb7f899f6422
+- id: gordeevweiermann2010-c94e859d
+  ref: gordeevweiermann2010
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SWP(C, a)
+    name: Slow well-partial-ordering assertion (finite miniaturization of WPO(C) with logarithmic weight growth)
+    loc: Section 2.2
+    definition: "For a class C of iterated finite sequences or ordered trees with weight |.| and the iterated homeomorphic embedding with symmetric gap condition E: for every K there is M such that every x_0..x_M in C with |x_i| < K + log_a(i+1) for all i has i<j with x_i E x_j."
+    facts: "Phase transitions (Theorem 1, Corollary 2): for the triples (PA, S^2, 1/2), (Delta11-CA, S^3, 1/3), (Pi01-CA_{<phi^(d)(0)}, S^{d+1}, 1/(d+1)), (Pi11-CA0, TS^1=TT^1, (sqrt17-1)/8), (Delta12-CA, TS^2, (sqrt5-1)/4), (Pi11-CA_{<phi^(d)(0)}, TS^d, (sqrt(d^2+16)-d)/8) and (Pi11-CA0^(d), TT^d, (sqrt17-1)/8): SWP(C,1/r) is provable in T for r<t and unprovable for r>t. Limit versions for ATR0 and Pi11-TR0. The paper only treats provability of arithmetical (miniaturized) sentences in theories T (proof theory), not comparisons among catalogue statements."
+  reasons:
+    - principle not in the catalogue
+  proposed: d593882a5719
+- id: lutz2023-36493899
+  ref: lutz2023
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Solecki dichotomy
+    name: Solecki dichotomy (Theorem 1.4, weaker versions 1.6 and 1.8)
+    loc: Theorem 1.4, Theorem 1.6, Theorem 1.8
+    definition: "For every Borel function f : omega^omega -> omega^omega, either f is sigma-continuous (a countable union of partial continuous functions) or the Turing jump J reduces to f (topologically embeds in Thm 1.4; reducible via partial continuous phi, psi with f = psi(g(phi(x))) in Thm 1.6; weakly reducible, i.e. continuous Weihrauch reducible J <=_w f where psi may also use x, in Thm 1.8)."
+    facts: "Theorem 1.8 (weak version) is shown equivalent to the cone version of the Posner-Robinson theorem (Theorem 1.12): Posner-Robinson + Borel determinacy implies Theorem 1.8 (Section 2); Theorem 1.8 + Pi^1_1-determinacy implies Theorem 1.12 (Section 3). Generalised version for alpha-th jump (Theorems 4.2, 4.5) behaves the same."
+  reasons:
+    - principle not in the catalogue
+  proposed: 508937ec8849
+- id: lutz2023-bac3e88d
+  ref: lutz2023
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Posner-Robinson theorem
+    name: Posner-Robinson theorem (Theorems 1.9, 1.10, cone version 1.12)
+    loc: Theorem 1.9, Theorem 1.10, Theorem 1.12
+    definition: "For every real x, either x is computable or there is y with x (+) y >=_T y'. Relativized: for all z, x, either x <=_T z or some y has x (+) y (+) z >=_T (y (+) z)'. Cone version: there is a cone of Turing degrees C such that the relativized statement holds for every z in C."
+    facts: Equivalent, in the sense above, to the weak Solecki dichotomy (Theorem 1.8), using Borel determinacy in one direction and Pi^1_1-determinacy in the other; generalized to higher jumps (Theorems 4.3, 4.4, 4.6).
+  reasons:
+    - principle not in the catalogue
+  proposed: 1041455b1bf8
+- id: lutz2023-7f390fad
+  ref: lutz2023
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Borel determinacy / analytic determinacy / AD
+    name: Determinacy principles (Theorems 1.13, 1.14)
+    loc: Theorem 1.13, Theorem 1.14, Theorem 1.15
+    definition: "Borel determinacy: G(A) is determined for Borel A; analytic (Pi^1_1) determinacy follows from a measurable cardinal; AD for all sets. Used as set-theoretic tools only (ZFC and large cardinals), not studied in reverse mathematics."
+    facts: No reverse-mathematics or Weihrauch results about them in the paper.
+  reasons:
+    - principle not in the catalogue
+  proposed: 6b2e9064c0d2
+- id: moschovakisvafeiadou2012-15e4d2cd
+  ref: moschovakisvafeiadou2012
+  date: 2026-11-17
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: fanc
+    to: fandelta
+    over: bish
+  loc: Section 5.2
+  origin: stated
+  quote: of FTc , which is a constructive consequence of FTΠ01
+  paperNotation: FTc and FTd
+  confidence: medium
+  concerns: The paper works over Moschovakis's minimal system M (IA1 + AC00!), not over EL0 or BISH as such; M is a subsystem of BISH (countable and dependent choice, full induction), so a derivation in M gives provability in constructive mathematics, but the paper itself does not phrase it over BISH. FTc is the fan theorem for c-bars (hypothesis stated in the paper as a single axiom with free sequence variable).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 1bdc57777235
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Background remark without proof ('FTd is a constructive consequence of FTc'), attributed to the work of Bishop constructivists (Bridges [3], Diener-Loeb [5]); the original (dienerloeb2009) has no cached text. The fact is already in the database (diener2018, Chapter 3 introduction).
+- id: moschovakisvafeiadou2012-57e1f57d
+  ref: moschovakisvafeiadou2012
+  date: 2026-11-17
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: fanpi01
+    to: fanc
+    over: bish
+  loc: Section 5.2
+  origin: stated
+  quote: of FTc , which is a constructive consequence of FTΠ01
+  paperNotation: FT_{Pi01} and FTc
+  confidence: medium
+  concerns: The paper works over Moschovakis's minimal system M (IA1 + AC00!), not over EL0 or BISH as such; M is a subsystem of BISH (countable and dependent choice, full induction), so a derivation in M gives provability in constructive mathematics, but the paper itself does not phrase it over BISH. Stated as a background remark; the paper gives no proof.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 9561d4f57eb5
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Background remark without proof ('FTc ... is a constructive consequence of FTΠ01'), from the Bishop-constructivist literature (Bridges [3], Diener-Loeb [5]); the original (dienerloeb2009) has no cached text. Already in the database (diener2018, Chapter 3 introduction; Proposition 3.0.1).
+- id: moschovakisvafeiadou2012-3d255b7d
+  ref: moschovakisvafeiadou2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WKL!!
+    name: Weak Konig's lemma with weak uniqueness hypothesis
+    loc: Section 5.4
+    definition: "For detachable subtrees of the binary fan: if for every y there is a path of length y in the tree, and any two infinite paths of the tree are equal (the weak form of at most one path: forall alpha,beta in the tree, alpha = beta), then the tree has an infinite path."
+    facts: WKL entails WKL!! which entails WKL! (equivalent to FTd), hence FTd; M + FTd does not prove WKL!! (Proposition 19), because WKL!! is constructively equivalent to MP-or plus not-not-WKL and every theorem of M + FTd is G-realizable while MP-or is not (cited [14]); M + BId does not prove WKL!!, and M + BId + WKL!! does not prove WKL (announced).
+  reasons:
+    - principle not in the catalogue
+  proposed: 06e1e9afeb3e
+- id: moschovakisvafeiadou2012-7e63b9a8
+  ref: moschovakisvafeiadou2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BId
+    name: Bar induction with decidable bar
+    loc: Section 4.1
+    definition: "Kleene's bar induction schema: forall alpha exists x R(alpha-bar(x)) and R decidable and R implies A and (forall s A(w*<s>)) implies A(w) give A(<>). Interderivable with the variants BI!, BImu and BIf over IA1 or M."
+    facts: FTd is a constructive consequence of BId, but not conversely (the arithmetical functions are a realizability model of M + FTd but not of M + BId, Section 5.1); BImon (monotone bar) entails BI! over M.
+  reasons:
+    - principle not in the catalogue
+  proposed: eb56d09b5c59
+- id: moschovakisvafeiadou2012-28c98d57
+  ref: moschovakisvafeiadou2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: AC00!
+    name: Countable function comprehension (unique choice)
+    loc: Section 2.2
+    definition: forall x exists! y A(x,y) implies exists alpha forall x A(x, alpha(x)); the axiom added to IA1 to get Kleene's minimal system M.
+    facts: Equivalent over IA1 to AC01! and to the least-number form ACmu00; IA1 + CFd does not prove AC00! (Theorem 1); over IA1 + CFd, QF-AC00 entails AC00! (Proposition 3); EL + CFd proves AC00! (Proposition 5).
+  reasons:
+    - principle not in the catalogue
+  proposed: 7cc514234d6e
+- id: moschovakisvafeiadou2012-ed3534ad
+  ref: moschovakisvafeiadou2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: CFd
+    name: Characteristic function principle for decidable predicates
+    loc: Section 2.5
+    definition: forall x (B(x) or not B(x)) implies there is beta with beta(x) <= 1 and (beta(x) = 0 iff B(x)).
+    facts: Consequence of AC00! over IA1; IA1 + QF-AC00 does not prove CFd (Theorem 4); EL does not prove CFd (Proposition 6); IA1 + BC00 proves CFd (Proposition 10); M = IA1 + CFd + QF-AC00.
+  reasons:
+    - principle not in the catalogue
+  proposed: efd796a92b76
+- id: moschovakisvafeiadou2012-2e20f25b
+  ref: moschovakisvafeiadou2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: AB00 / ACm00 / BC00
+    name: Bounding axiom, monotone countable choice, bounded countable choice
+    loc: Section 3
+    definition: "AB00: forall x exists y A(x,y) implies exists beta forall x exists y <= beta(x) A(x,y). ACm00: countable choice for predicates monotone in y. BC00: forall x exists y <= beta(x) A(x,y) implies exists alpha forall x A(x, alpha(x))."
+    facts: ACm00 and AB00 are equivalent over IA1 (Proposition 13); AC00 is equivalent to AB00 + BC00; IA1 + AB00 proves QF-AC00 (Proposition 12); M does not prove BC00 (Theorem 14); IA1 + BC00 does not prove AB00 or QF-AC00 (Proposition 11).
+  reasons:
+    - principle not in the catalogue
+  proposed: 0b9b507d7aa7
+- id: moschovakisvafeiadou2012-7df0682f
+  ref: moschovakisvafeiadou2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: AC^2_{1/2,0}
+    name: Choice axiom for the binary fan
+    loc: Section 5.3
+    definition: forall alpha in 2^N exists y R(alpha-bar(y)) implies exists sigma [forall alpha in 2^N exists! x sigma(alpha-bar(x)) = 0 and forall v in 2^* (sigma(v)=0 implies R(v))].
+    facts: M + FT proves it (Proposition 18); FT and this schema are interderivable over M + FTd; FT is constructively equivalent over M to FTd + AB^2_{1/2,0} (Theorem 17).
+  reasons:
+    - principle not in the catalogue
+  proposed: b3a365fd715d
+- id: moschovakisvafeiadou2012-7ab5b2d9
+  ref: moschovakisvafeiadou2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: M
+    name: Kleene's minimal system of two-sorted intuitionistic analysis
+    loc: Section 2.2
+    definition: IA1 (two-sorted intuitionistic arithmetic with full induction) plus AC00!.
+    facts: Conservative over IA0 (Proposition 9); EL + CFd and M coincide up to translation (Theorem 7); M is strictly stronger than EL and than IA1 + QF-AC00 or IA1 + CFd.
+  reasons:
+    - principle not in the catalogue
+  proposed: a13dc9cef21e
+- id: simpson2002-bedfd765
+  ref: simpson2002
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: IR
+    name: Feferman's system IR of predicative provability
+    loc: Section 2, definition 1
+    definition: Delta^1_1 Comprehension Rule, Hierarchy Rule and Transfinite Induction Rule (inference rules, not axioms).
+    facts: IR and ATR0 have the same proof-theoretic ordinal Gamma_0 and prove the same Pi^1_1 sentences; minimum omega-model of IR is HYP(Gamma_0).
+  reasons:
+    - principle not in the catalogue
+  proposed: 6f9ab7502dfd
+- id: simpson2002-8966f955
+  ref: simpson2002
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: domain of a single-valued Borel set in the plane is Borel
+    name: Borel domain of single-valued Borel sets
+    loc: Theorem 2, item 3
+    definition: The domain of a single-valued Borel set in the plane is Borel.
+    facts: Equivalent to ATR0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 97f8f283c2a0
+- id: simpson2002-726e3acd
+  ref: simpson2002
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Pi^1_infty-TI0
+    name: Transfinite induction axiom (bar induction)
+    loc: Section 3
+    definition: Transfinite induction along every well ordering for all formulas.
+    facts: Includes IR and ATR0, stronger proof-theoretically (Howard ordinal); Sigma^1_1-TI0 = ATR0 + Sigma^1_1-IND.
+  reasons:
+    - principle not in the catalogue
+  proposed: 62003156b566
+- id: mylatz1992-4e99de06
+  ref: mylatz1992
+  date: 2026-11-17
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: tj
+    to: lpo
+    over: w
+  loc: Satz 2.6 and Satz 2.7
+  origin: deduced
+  quote: "Satz 2.7: Ω≤2MIN."
+  paperNotation: Ω ≤2 MIN ≤2 C
+  argument: Satz 2.6 gives MIN ≤2 C and Satz 2.7 gives Ω ≤2 MIN, hence Ω ≤2 C by transitivity of ≤2. With Ω = LPO and C = jump (tj) this is lpo ≤W tj. The paper does not state this composite explicitly.
+  confidence: medium
+  concerns: Relies on identifying Ω with lpo and C with tj (Weihrauch equivalent to the Turing jump); neither identification is made in the paper. MIN is not a catalogue problem (minprinciple in the catalogue is a sentence).
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+    - deduction, not stated in the paper
+  proposed: 9b8aeee6c0cd
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Composite of Satz 2.6 (MIN ≤2 C) and Satz 2.7 (Ω ≤2 MIN), not stated in the paper. The paper's ≤2 uses continuous (stetige) A, B, i.e. a continuous Weihrauch reduction, not ≤W (the witnesses happen to be computable, but that is not what is stated). C is the characteristic function of the range of p (minus 1), not identified with the jump in the paper. Ω = LPO matches, but lpo ≤W tj already follows from lim ≡sW tj (brattkagherardipauly2021 Theorem 6.7).
+- id: mylatz1992-95505644
+  ref: mylatz1992
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MIN
+    name: "Minimum of the range of a sequence (MIN: ℕ^ℕ → ℕ, MIN(p) = min{p(i)})"
+    loc: Definition 2.5
+    definition: Total function ℕ^ℕ → ℕ giving the minimum of the values of p. Not the sentence minprinciple of the catalogue.
+    facts: "Satz 2.6: MIN ≤2 C. Satz 2.7: Ω ≤2 MIN. Satz 2.8: MIN is not ≤2 Ω. Satz 2.19: MIN is C∞-stetig (needs n = p(0) calls of C). Satz 2.20: MIN is not Cn-stetig for any n. The reduction ≤2 is Weihrauch reducibility on total functions."
+  reasons:
+    - principle not in the catalogue
+  proposed: 2ae900662d25
+- id: mylatz1992-a295b66b
+  ref: mylatz1992
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SORT (Mylatz)
+    name: Total sorting of a sequence of natural numbers
+    loc: Definition 3.1 and Satz 3.2
+    definition: "SORT: ℕ^ℕ → ℕ^ℕ lists the elements of p in increasing order with their multiplicities, dropping larger numbers when a smaller number occurs infinitely often. Differs from the catalogue's sort (binary sorting) and sort-nat (restricted domain)."
+    facts: "Satz 3.2: SORT ≡2 C (Weihrauch equivalent to the characteristic function of the range, i.e. to the jump)."
+  reasons:
+    - principle not in the catalogue
+  proposed: eecd54259c50
+- id: mylatz1992-c2e8c0cc
+  ref: mylatz1992
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: C
+    name: Characteristic function of the range of a sequence (Stein's C)
+    loc: Section 'C-stetige Funktionen' (Chapter I) and Chapter II
+    definition: C(p)(n) = 0 iff n+1 occurs in p, else 1. Weihrauch equivalent to the Turing jump, so probably the catalogue's tj, but the paper does not say so.
+    facts: "Defines the C-hierarchy: Γ is Cn+1-stetig iff Γ = A∘C∘B∘Σ with Σ Cn-stetig. Satz 2.17: Cn+1 is not ≤2 Cn (finite parallel versions of C). Satz 2.21: C is not C∞-stetig. C is not ≤2 Ω (cited from Stein)."
+  reasons:
+    - principle not in the catalogue
+  proposed: b2f28ba40e05
+- id: mylatz1992-2b1c3983
+  ref: mylatz1992
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: U, KON, KON2, MAX, MAX2, KB
+    name: Infinite range, convergence, limit, existence of maximum, point of convergence of a sequence of naturals
+    loc: "Chapter IV: Definition 4.1 to Satz 4.11 (U defined in Chapter I)"
+    definition: U(p)=0 iff the range of p is infinite; KON(p)=0 iff p converges; KON2(p)=m+1 if p converges to m and 0 otherwise; MAX(p)=0 iff p has a maximum; MAX2(p)=max+1 or 0; KB(p) = index from which p is constant, +1, or 0.
+    facts: U ≡2 KON (Satz 4.2), U ≡2 MAX (Satz 4.7), MAX2 ≡2 KON2 (Satz 4.9), KON2 ≤2 L (Satz 4.4), KB ≤2 MAX2 and U ≤2 KB (Satz 4.11). All are C2-stetig and not C-stetig, i.e. strictly between C and C2 in the paper's hierarchy; U ≤2 KON2 (Satz 4.5).
+  reasons:
+    - principle not in the catalogue
+  proposed: 78295478297a
+- id: mylatz1992-49d6a566
+  ref: mylatz1992
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: RAT, DICHT
+    name: Rationality of a real, density of a rational sequence
+    loc: Satz 4.13, 4.14, 4.17
+    definition: RAT(p)=0 iff ρ(p) is rational. DICHT(p)=0 iff the rationals enumerated by p are dense in ℝ.
+    facts: Both are C2-stetig (reduce to N, the test for M_p = ℕ) and neither is C-stetig (U ≤2 RAT, U ≤2 DICHT).
+  reasons:
+    - principle not in the catalogue
+  proposed: 4f4a6ce52df4
+- id: mylatz1992-c3f74b86
+  ref: mylatz1992
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: T, QKON, TQKON, RKON, TRKON
+    name: Existence of a constant subsequence, convergence of sequences of rationals or reals, existence of a convergent subsequence
+    loc: Satz 5.6, 5.7, 5.9, 5.10, 5.12, 5.13, 5.15, 5.16, 5.18, 5.19
+    definition: T(p)=0 iff p has a constant subsequence; QKON (RKON) tests convergence of a sequence of rationals (reals); TQKON (TRKON) tests existence of a convergent subsequence of a sequence of rationals (reals).
+    facts: T ≡2 QKON ≡2 RKON ≡2 TQKON ≡2 TRKON (Satz 5.9, 5.10, 5.12, 5.13, 5.15, 5.16, 5.18, 5.19). All are C3-stetig; T and QKON are not C2-stetig (Satz 5.7 via the self-application problem Kψ¹).
+  reasons:
+    - principle not in the catalogue
+  proposed: 53c145ca252b
+- id: mylatz1992-5acc4bff
+  ref: mylatz1992
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: TRANS_rs
+    name: Translation of r-adic into s-adic representation of reals in [0,1]
+    loc: Satz 3.23 to 3.28
+    definition: Function sending an r-adic expansion to the canonical s-adic expansion of the same real.
+    facts: "Satz 3.24: TRANS_rs is continuous iff every prime divisor of s divides r. Otherwise Ω ≤2 TRANS_rs (Satz 3.23) and TRANS_rs is not ≤2 Ω (Satz 3.26); TRANS_rs is C-stetig (Satz 3.25) and C is not ≤2 TRANS_rs (Satz 3.28)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 250d0e9ac13b
+- id: mylatz1992-0487a1bf
+  ref: mylatz1992
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FSP, FS
+    name: "Continuation problem: partial function on sequences with infinitely many 1s, and its total extension"
+    loc: Definition 3.31 to Satz 3.38, Definition 3.40, Satz 3.41
+    definition: FSP(p)(i) is the parity of the position of the (i+1)-st 1 in p, defined only when p has infinitely many 1s. FS is a total extension with value 2 when undefined.
+    facts: FSP has no continuous total extension (Satz 3.32); no total extension is ≤2 Ω (Satz 3.33); Ω ≤2 every total extension (Satz 3.37); FS is C-stetig (Satz 3.35) and C is not ≤2 FS (Satz 3.38); another extension FS2 satisfies C ≤2 FS2 (Satz 3.41).
+  reasons:
+    - principle not in the catalogue
+  proposed: e2d4bb333641
+- id: ishihara2006-fd3caf46
+  ref: ishihara2006
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: wkl
+    to: fandelta
+    over: bish
+  loc: Theorem 3
+  origin: stated
+  quote: we directly prove, in constructive mathematics formalized in EL (see Kreisel and
+  paperNotation: WKL -> FAN_1 (detachable bars)
+  confidence: medium
+  concerns: Proved in EL (full induction, no Markov principle), not EL0, so entered over bish only. WKL here is for detachable trees (decidable), FAN_1 is the fan theorem for detachable bars; matches fandelta. The paper says it was proved indirectly in Ishihara 1990.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: f11c02adcc4c
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 3: EL ⊢ WKL → FAN1. WKL is for detachable binary trees ('infinite' = nodes at every length), FAN1 is the fan theorem for detachable bars of the binary fan = fandelta. EL (with QF-AC00) is a subsystem of BISH with countable choice, so over bish. Duplicate of veldman2011 Theorem 2.5; citation merges."
+- id: ishihara2006-ae0b2630
+  ref: ishihara2006
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: LPL
+    name: Longest path lemma
+    loc: Section 1, before Proposition 2
+    definition: "Every (detachable binary) tree T has a longest path: an infinite binary sequence alpha such that for all finite binary a, a in T implies alpha|a in T."
+    facts: "Proposition 2: LPL is equivalent to WKL over EL (full induction, not EL0). Used to prove WKL -> FAN_Delta (Theorem 3) over EL without Markov's principle. LPL is not in the catalogue."
+  reasons:
+    - principle not in the catalogue
+  proposed: "961392e03357"
+- id: ishihara2006-0434c4c3
+  ref: ishihara2006
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FAN^0_1
+    name: Fan theorem for detachable upward-closed bars (uniform form)
+    loc: Section 1, before Lemma 1
+    definition: For every detachable upset B (not containing the empty sequence) which is a bar of Cantor space, there is n such that every binary sequence of length n lies in B.
+    facts: "Lemma 1: equivalent to FAN_Delta (the paper's FAN_1) over EL. Theorem 3 proves WKL -> FAN_Delta over EL. All over EL (full induction), so left out of the facts (EL0 is the catalogue base); WKL -> FAN_Delta over EL + MP is also stated and also not over EL0."
+  reasons:
+    - principle not in the catalogue
+  proposed: 142feb3cd03e
+- id: fennergasarchpostow2009-173e2b92
+  ref: fennergasarchpostow2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: There exists a function f that, given an index of a total 0-1 valued Turing machine M, outputs a DFA for SUBSEQ(L(M))
+    name: Effective Higman's theorem for decidable languages (DFA for SUBSEQ)
+    loc: Section 9, before Theorem 9.1
+    definition: There exists a function f that, when given as input an index of a total 0-1 valued Turing machine M, outputs the code for a DFA for SUBSEQ(L(M)), where SUBSEQ(A) is the set of subsequences of strings of A.
+    facts: "Theorem 9.1: not provable in RCA0 (false in the model of recursive sets, since the paper shows by Section 4 that any such function computes the double jump of the empty set). Not equivalent to WKL0: any omega-model of the statement contains the double jump of the empty set, while some omega-model of WKL0 does not (remark attributed to an anonymous referee). Not equivalent to any usual system other than RCA0, since {X : X <=_T emptyset''} is an omega-model of it. Whether 'for any A, SUBSEQ(A) is regular' (Higman's theorem H, catalogue id higman) has a given strength is not answered by the paper."
+  reasons:
+    - principle not in the catalogue
+  proposed: 7cfa5d3fc64e
+- id: avigad1996b-ccdc4364
+  ref: avigad1996b
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: atr
+    to: aca
+    over: rca0
+  loc: Section 2, remark on the choice of base theory
+  origin: stated
+  quote: (AT R) easily proves arithmetic comprehension,
+  paperNotation: (ATR) schema, arithmetic comprehension
+  confidence: medium
+  concerns: Stated in passing without proof. The catalogue entry aca is the problem form of ACA0, whose sentence form is equivalent over RCA0.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 61c9702dc71f
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Stated by the author: 'over RCA0 (ATR) easily proves arithmetic comprehension'. Standard (ATR0 ⊇ ACA0); the problem form aca is equivalent to ACA0 over RCA0. Duplicate of a known fact."
+- id: avigad1996b-bbdc8bba
+  ref: avigad1996b
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: FP
+    name: Fixed points of positive arithmetic operators
+    loc: Section 2, definition of (FP)
+    definition: "The second-order schema (FP): for every arithmetic formula phi(x, Y) in which Y occurs only positively (number and set parameters allowed), there is a set Y with forall x (x in Y <-> phi(x, Y)). FP0 is the system consisting of (FP), the basic quantifier-free axioms of PA and Sigma^0_1 induction."
+    facts: "Theorem 3.1: ATR0 and FP0 are equivalent (the proof derives (ATR) from (FP) by taking a fixed point of a positive formula coding the hierarchy, and (FP) from ATR0 by pseudohierarchies). Theorem 4.1: ATR0 is conservative over ID^<omega (iterated inductive definitions, a first-order theory) for arithmetic sentences, via cut elimination. Theorem 5.3: ATR0 has polynomial-length proofs of Con(ID_{2_n}) (speedup over ID^<omega)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 2c892f570eff
+- id: avigad1996b-3a330b37
+  ref: avigad1996b
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ID^_<omega
+    name: Theory of finitely iterated inductive definitions (fixed points, non-least)
+    loc: Section 2
+    definition: The union of the first-order theories ID^_n in the language of Peano arithmetic with a predicate P_phi for each positive arithmetic operator phi, with axioms forall x (P_phi(x) <-> phi(x, P_phi)) and induction extended to the new language; ID^_{n+1} adds fixed-point constants for positive operators of the language of ID^_n.
+    facts: Proof-theoretic ordinal Gamma_0 (Feferman); ATR0 is conservative over it for arithmetic sentences (Theorem 4.1); ATR0 proves Con(ID^_{2_n}) with short proofs (Theorem 5.3). It is a first-order theory, not a principle of the catalogue.
+  reasons:
+    - principle not in the catalogue
+  proposed: ada637b5e7a4
+- id: marcone2009-73883d87
+  ref: marcone2009
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: wkl
+    to: hb
+    over: rca0
+  loc: Teorema 1 (viii)
+  origin: stated
+  quote: "Il teorema di Hahn-Banach per spazi di Banach separabili:"
+  paperNotation: Hahn-Banach theorem for separable Banach spaces
+  confidence: medium
+  concerns: "Survey: the theorem is stated without proof (the source is Simpson, Subsystems of second order arithmetic, ref. [22]); statement given in words, matched to the catalogue statement. The catalogue entry hb is a problem; the paper states a sentence."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: ca704e30f455
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Survey (Teorema 1 (viii): in RCA0, WKL0 is equivalent to Hahn-Banach for separable Banach spaces), taken from Simpson's book [22]. Original cited: simpson2009 Theorems IV.9.3 (WKL0 proves HB) and IV.9.4 (reversal), checked in the cached text; the same fact is already in the database with these locations. Over rca0 the problem hb is read as its sentence."
+- id: marcone2009-83d4256d
+  ref: marcone2009
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: aca
+    to: kl
+    over: rca0
+  loc: Teorema 2 (xiv)
+  origin: stated
+  quote: "Il lemma di KoÈnig: ogni albero infinito e finitamente generato"
+  paperNotation: Koenig's lemma
+  confidence: medium
+  concerns: "Survey: the theorem is stated without proof (the source is Simpson, Subsystems of second order arithmetic, ref. [22]); statement given in words, matched to the catalogue statement. The catalogue kl is a problem; the paper states a sentence."
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 3a813f94168a
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Survey (Teorema 2 (xiv): in RCA0, ACA0 is equivalent to König's lemma for infinite finitely branching trees), taken from Simpson's book. Original cited: simpson2009 Theorem III.7.2 (items 1, 2), checked in the cached text. kl = König's lemma for finitely branching subtrees of N^<N; aca problem form equivalent to ACA0 over RCA0."
+- id: marcone2009-0ac9b653
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: unique-sets
+    name: Countable closed subsets of the circle are sets of uniqueness
+    loc: Teorema 2 (iv) and Section 5.5
+    definition: "Every closed countable C subset of S^1 is a set of uniqueness: the only trigonometric series vanishing on the complement of C has all coefficients 0."
+    facts: Equivalent to ACA0 over RCA0 (Teorema 2 (iv)); the paper attributes the analysis to Humphreys [12] (Section 5.5). Humphreys also shows that the existence of the objects used in Cantor's original proof is equivalent to ATR0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 4f988c9fca61
+- id: marcone2009-4a1a0b70
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: open-measurable
+    name: Every open subset of R is Lebesgue measurable
+    loc: Teorema 2 (v)
+    definition: Every open subset of R is Lebesgue measurable.
+    facts: Equivalent to ACA0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: c6e6b1a59a88
+- id: marcone2009-ba2ea4c3
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: DCT[0,1]
+    name: Lebesgue dominated convergence theorem for Lebesgue measure on [0,1]
+    loc: Teorema 2 (vi)
+    definition: Dominated convergence theorem for Lebesgue measure on [0,1].
+    facts: Equivalent to ACA0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 8d6d6f61fb4b
+- id: marcone2009-28d7b249
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Riesz
+    name: Riesz representation theorem for positive linear functionals on [0,1]
+    loc: Teorema 2 (vii)
+    definition: Riesz representation theorem for positive linear functionals on [0,1].
+    facts: Equivalent to ACA0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 6ed7348dfffe
+- id: marcone2009-555f5788
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: divisible-closure
+    name: Unique divisible closure of countable abelian groups
+    loc: Teorema 2 (xi)
+    definition: Every countable abelian group has a unique divisible closure.
+    facts: Equivalent to ACA0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 54f541a4c883
+- id: marcone2009-8fa928d6
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Hahn-embedding
+    name: Hahn embedding theorem for ordered abelian groups
+    loc: Teorema 2 (xii)
+    definition: Every ordered abelian group embeds into a product of copies of (R, +, <) (Hahn).
+    facts: Equivalent to ACA0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 65703c4c79b0
+- id: marcone2009-e2d63f04
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: alpha-beta WO
+    name: Exponentiation of countable well-orderings
+    loc: Teorema 2 (xiii)
+    definition: If a and b are countable well-orderings then a^b is a well-ordering (the line of the text shows "ab", exponent lost in extraction).
+    facts: Equivalent to ACA0 over RCA0 (Girard; check the rendered PDF).
+  reasons:
+    - principle not in the catalogue
+  proposed: 5980e04255dd
+- id: marcone2009-b63d74d9
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: real-closure-unique
+    name: Unique real closure of countable formally real fields
+    loc: Teorema 1 (xiii)
+    definition: Every countable formally real field has a unique real closure.
+    facts: Equivalent to WKL0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: bfef65f30940
+- id: marcone2009-e64d245f
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Levi
+    name: Levi's theorem on torsion-free abelian groups
+    loc: Teorema 1 (xiv)
+    definition: Every countable torsion-free abelian group is orderable.
+    facts: Equivalent to WKL0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: b11e1f38f9d5
+- id: marcone2009-86229ccc
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: orderable-product
+    name: Countable products of countable orderable groups are orderable
+    loc: Teorema 1 (xv)
+    definition: The countable product of countable orderable groups is orderable.
+    facts: Equivalent to WKL0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: f12574a4bffc
+- id: marcone2009-fc08f38d
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Borel-domain
+    name: Domain of a Borel partial function is Borel
+    loc: Teorema 3 (iii)
+    definition: The domain of a Borel subset of R^2 with at most one value for each element is Borel.
+    facts: Equivalent to ATR0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 3e817ef5a86b
+- id: marcone2009-a9a10872
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: wo-sup
+    name: Well-ordered sequences of countable well-orderings have a supremum
+    loc: Teorema 3 (vii)
+    definition: Every countable well-ordered sequence of countable well-orderings has a supremum.
+    facts: Equivalent to ATR0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: dc8964a5255c
+- id: marcone2009-5824adc0
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Silver-Borel
+    name: Silver's theorem for Borel equivalence relations
+    loc: Teorema 4 (ii)
+    definition: Every Borel equivalence relation on R with uncountably many classes has a perfect set of pairwise inequivalent elements.
+    facts: Equivalent to Pi11-CA0 over RCA0. The catalogue silver is stated for coanalytic relations.
+  reasons:
+    - principle not in the catalogue
+  proposed: fe900b68a057
+- id: marcone2009-f4bce97b
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: l1-c0 weak closure
+    name: Norm-closed subspaces of l1 + c0 have a weak-closure
+    loc: Teorema 4 (iv)
+    definition: Every norm-closed subspace of l_1 (+) c_0 (symbols partly lost) has a closure in the weak topology.
+    facts: Equivalent to Pi11-CA0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 114185f832d6
+- id: marcone2009-cc64a629
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Maltsev
+    name: Mal'tsev's theorem on ordered groups
+    loc: Teorema 4 (vi)
+    definition: Every countable ordered group has order type Z^a (+) Q^e with a a countable ordinal and e in {0,1} (symbols lost in extraction).
+    facts: Equivalent to Pi11-CA0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 1dec5c5f8f7b
+- id: marcone2009-159ee921
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: union-open-closed-det
+    name: Determinacy of games with payoff a union of an open and a closed set
+    loc: Teorema 4 (vii)
+    definition: Games whose payoff set is the union of an open and a closed set are determined.
+    facts: Equivalent to Pi11-CA0 over RCA0. Related to the catalogue sigma01-pi01-det (intersection of open and closed) by taking complements, not identical.
+  reasons:
+    - principle not in the catalogue
+  proposed: 837ccd032eab
+- id: marcone2009-16d65cf9
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Gdelta-Ramsey
+    name: G_delta sets have the Ramsey property
+    loc: Teorema 4 (viii)
+    definition: G_delta sets (countable intersections of open sets) have the Ramsey property.
+    facts: Equivalent to Pi11-CA0 over RCA0.
+  reasons:
+    - principle not in the catalogue
+  proposed: 3571ea8b324a
+- id: marcone2009-cd23c9d4
+  ref: marcone2009
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: WWKL0, RCA0 + omega^omega well ordered, ACA0', ACA0+, Pi11-TR0, Pi12-CA0
+    name: The remaining systems among the eleven of Section 4
+    loc: Section 4
+    definition: The paper lists the eleven systems RCA0, WWKL0, WKL0, RCA0 + "w^w well-ordered", ACA0, ACA0', ACA0+, ATR0, Pi11-CA0, Pi11-TR0, Pi12-CA0 in a (nearly) linear hierarchy; it says the first theorem equivalent to Pi12-CA0 was found recently (Mummert-Simpson [17]), and that WWKL0 is equivalent to several basic theorems of measure theory (note 12).
+    facts: "No theorem is stated about them besides these remarks; also Section 6: WKL0 is Pi02-conservative over PRA (Friedman, Sieg) and ATR0 proves the same arithmetical statements as the predicative theory IR (no loc given beyond Section 6). Not in the catalogue (conservation over PRA is not expressible with the base ids)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 6a75a49cb87c
+- id: holzljainstephan2015-66133ca6
+  ref: holzljainstephan2015
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: implication
+    from: dom-isig2
+    to: coh
+    over: rca0
+  loc: Section 3, remark after Theorem 5 (result of Raghavan, Stephan and Zhang)
+  origin: cited
+  quote: under RCA0 and IΣ2 , DOM implies COH but not vice versa.
+  paperNotation: DOM, COH, IΣ2
+  citedFrom: Raghavan, Stephan and Zhang [18], Weakly represented families in reverse mathematics
+  confidence: medium
+  concerns: DOM here is the domination axiom for weakly represented families of functions (catalogue dom); COH is the sentence form over RCA0.
+  reasons:
+    - "extractor confidence: medium"
+    - "attributed by the paper to Raghavan, Stephan and Zhang [18], Weakly represented families in reverse mathematics: cite the original"
+  proposed: 98071bb06c50
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Cited from Raghavan, Stephan, Zhang [18] = holzletal2017 (Hölzl, Raghavan, Stephan, Zhang, 'Weakly represented families in reverse mathematics'). Its Theorem 44 states the stronger 'Over RCA0 + BΣ2, DOM implies COH' (IΣ2 implies BΣ2), so the premise is bsig2-dom; DOM is Statement 12 there (weakly represented families), the zoo's dom. Exact duplicate of an existing result; the citation merges.
+- id: holzljainstephan2015-1b883413
+  ref: holzljainstephan2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Every weakly represented family satisfying Angluin's condition (effectively / in the limit / generally) can be learnt in the limit
+    name: Learnability of weakly represented families with Angluin's tell-tale condition
+    loc: Theorem 5
+    definition: "Statements 3-5 of Theorem 5: every weakly represented family satisfying Angluin's condition effectively (resp. in the limit, resp. generally) is learnable in the limit."
+    facts: "Each is equivalent to DOM over RCA0 (Theorem 5); DOM is also equivalent to: the index set of every weakly represented family can be approximated in the limit."
+  reasons:
+    - principle not in the catalogue
+  proposed: 5faac2293c6f
+- id: holzljainstephan2015-63b95d4c
+  ref: holzljainstephan2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Every uniformly represented family satisfying Angluin's condition with a general bound is learnable in the limit
+    name: Learnability of uniformly represented families with a general Angluin bound
+    loc: Theorem 7
+    definition: Every uniformly represented family satisfying Angluin's tell-tale condition with a general bound is learnable in the limit.
+    facts: "Equivalent to DOM over RCA0 (Theorem 7). Theorem 6: over RCA0 a uniformly represented family is learnable in the limit iff it satisfies Angluin's condition in the limit."
+  reasons:
+    - principle not in the catalogue
+  proposed: eed5c445ea9d
+- id: holzljainstephan2015-3f93ccea
+  ref: holzljainstephan2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Every uniformly (weakly) represented family satisfying Angluin's tell-tale condition with a general bound is conservatively learnable
+    name: Conservative learnability under Angluin's general bound
+    loc: Corollary 9
+    definition: "Statements 2 and 3 of Corollary 9: every uniformly (resp. weakly) represented family satisfying Angluin's tell-tale condition with a general bound is conservatively learnable."
+    facts: Equivalent to ACA0 over RCA0 (Corollary 9).
+  reasons:
+    - principle not in the catalogue
+  proposed: be8f4fac2c31
+- id: holzljainstephan2015-bea30846
+  ref: holzljainstephan2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Every weakly represented family with finite thickness (finite elasticity, characteristic subsets) is learnable in the limit
+    name: "Learnability criteria: finite thickness, finite elasticity, characteristic subsets"
+    loc: Theorems 10, 11, 12
+    definition: Every weakly represented family which has finite thickness (resp. finite elasticity, resp. admits characteristic subsets) is learnable in the limit.
+    facts: Each is equivalent to DOM over RCA0 (item 2 of Theorems 10, 11, 12); the uniformly represented case is provable in RCA0 (item 1).
+  reasons:
+    - principle not in the catalogue
+  proposed: b8f0767c48a2
+- id: holzljainstephan2015-1f3e9279
+  ref: holzljainstephan2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Every member of a weakly represented family has a minimal index
+    name: Minimal index principle for weakly represented families
+    loc: Proposition 16
+    definition: In every weakly represented family, all its members have a minimal index.
+    facts: Equivalent to IΣ2 over RCA0 (Proposition 16).
+  reasons:
+    - principle not in the catalogue
+  proposed: 60df3be403ec
+- id: holzljainstephan2015-de35b529
+  ref: holzljainstephan2015
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: MAD
+    name: Existence of a maximal almost disjoint family
+    loc: Section 3, remark after Theorem 5
+    definition: There exists a weakly represented family of sets, pairwise almost disjoint, such that every infinite set B in S meets some member in an infinite set.
+    facts: For omega-models, DOM is true iff MAD is false (attributed to [18]).
+  reasons:
+    - principle not in the catalogue
+  proposed: 86ebf9b6e721
+- id: buchholz1987-6c52a891
+  ref: buchholz1987
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Hydra termination (extended Kirby-Paris hydra with ordinal labels <= omega)
+    name: Termination of the rightmost-head hydra game for hydras labelled by ordinals up to omega
+    loc: Introduction, Theorems I-III
+    definition: For every hydra A (finite labelled tree with root label +, other labels <= omega, nodes above the root labelled 0) and every sequence (n_i), there is k with A(n_0)(n_1)...(n_k) = ES, where A(n) results from chopping off the rightmost head.
+    facts: "Theorem I: true (proved by infinitary trees, Section 1). Theorem II: for each fixed hydra A the statement is provable in (Pi11-CA)+BI (Theorem 2.3). Theorem III: the Pi02 sentence 'for all n exists k A^n(1)...(k)=ES' is not provable in (Pi11-CA)+BI (via ID_omega, Theorem 4.0 and corollary)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 497260eb9eb2
+- id: buchholz1987-512f9112
+  ref: buchholz1987
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: (Pi11-CA)+BI
+    name: Pi11 comprehension plus bar induction
+    loc: Introduction and Section 4
+    definition: The second-order theory Pi11-CA together with the bar induction scheme BI; BI is not a catalogue statement (only Pi11 transfinite induction is).
+    facts: The paper states it proves the same arithmetic sentences as ID_omega and contains ID_omega; it does not prove the hydra sentence of Theorem III.
+  reasons:
+    - principle not in the catalogue
+  proposed: 0533b3070a8a
+- id: buchholz1987-d2f67ade
+  ref: buchholz1987
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: ID_nu (nu <= omega)
+    name: Theory of nu-times iterated inductive definitions
+    loc: Section 4, Preliminaries
+    definition: Extension of Peano Arithmetic by predicates P^A_u for positive operator forms, with closure and induction axioms for u < nu.
+    facts: "ID_omega is contained in (Pi11-CA)+BI and proves the same arithmetic sentences; Theorem 2.2: 'a in W_0' is provable in ID_nu for terms a without symbols D_v, v > nu; Theorem 4.0 bounds provably total functions of ID_nu; Appendix: proof-theoretic ordinal of ID_nu equals sup of rk(D_0 D_nu^k 0)."
+  reasons:
+    - principle not in the catalogue
+  proposed: fd80a2352722
+- id: loeb2005-9bf361ea
+  ref: loeb2005
+  date: 2026-11-17
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: fandelta
+    to: cont-bounded
+    over: bish
+  loc: Theorem 5.1
+  origin: stated
+  quote: "The following assertions are pairwise equivalent over WKV:"
+  paperNotation: Fan Theorem; every continuous function from [0,1] to R is bounded (items 1, 3)
+  argument: Items 1 and 3 of Theorem 5.1.
+  confidence: medium
+  concerns: WKV is intuitionistic second-order arithmetic (full induction, unique choice, sequence variables), entered over bish as it is weaker than BISH with countable and dependent choice. The paper's Fan Theorem (Def. 2.2) is for arbitrary fans with decidable bars; Prop. 2.3 (cited from Troelstra) gives equivalence with the binary-fan version, matched to fandelta. Continuity is the paper's Definition 3.1 (approximation-based).
+  reasons:
+    - "extractor confidence: medium"
+  proposed: e58944d8a07b
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Loeb's 'continuous function' (Definition 3.1) is a coded functor on the fan representation σ[0,1] (a Kleene-Vesley style code with a built-in modulus), while the zoo's cont-bounded/ucont over bish are the CRM principles for point-wise continuous functions (diener2018 Proposition 3.5.2), equivalent to UCT, which implies FANc (diener2018 Proposition 6.3.3). Entering fandelta ↔ cont-bounded over bish would give FANΔ → FANc, which Berger refuted over EL (moschovakisvafeiadou2012 Section 5.2). No zoo statement for the coded version.
+- id: loeb2005-d57903d4
+  ref: loeb2005
+  date: 2026-11-17
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: fandelta
+    to: ucont
+    over: bish
+  loc: Theorem 5.2
+  origin: stated
+  quote: "The following assertions are pairwise equivalent over WKV:"
+  paperNotation: Fan Theorem; every continuous function from [0,1] to R is uniformly continuous (items 1, 2)
+  argument: Items 1 and 2 of Theorem 5.2 (proof 1 -> 2 given; 2 -> 3 -> 4 -> 1 via 5.1).
+  confidence: medium
+  concerns: WKV is intuitionistic second-order arithmetic (full induction, unique choice, sequence variables), entered over bish as it is weaker than BISH with countable and dependent choice. The paper's Fan Theorem (Def. 2.2) is for arbitrary fans with decidable bars; Prop. 2.3 (cited from Troelstra) gives equivalence with the binary-fan version, matched to fandelta. Continuity and uniform continuity per Definitions 3.1-3.2.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: af32515209fc
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Same mismatch: Loeb's continuity (Definition 3.1, coded functions on σ[0,1]) is not the point-wise continuity of the zoo's ucont over bish (UCT of diener2018), and UCT implies FANc, so fandelta → ucont over bish would wrongly give FANΔ → FANc (refuted over EL by Berger)."
+- id: loeb2005-8f3256c8
+  ref: loeb2005
+  date: 2026-11-17
+  status: rejected
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: fandelta
+    to: riemann
+    over: bish
+  loc: Theorem 5.2
+  origin: stated
+  quote: "The following assertions are pairwise equivalent over WKV:"
+  paperNotation: Fan Theorem; every continuous function from [0,1] to R is Riemann integrable (items 1, 3)
+  argument: Items 1 and 3 of Theorem 5.2.
+  confidence: medium
+  concerns: WKV is intuitionistic second-order arithmetic (full induction, unique choice, sequence variables), entered over bish as it is weaker than BISH with countable and dependent choice. The paper's Fan Theorem (Def. 2.2) is for arbitrary fans with decidable bars; Prop. 2.3 (cited from Troelstra) gives equivalence with the binary-fan version, matched to fandelta. Riemann integrability is the paper's Definition 3.3 (finite covers of the graph by blocks of small total area), which may differ from the catalogue's integral-exists formulation.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: ef10e6b3a275
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Same mismatch of continuity notions (Definition 3.1 coded functions vs point-wise continuous functions of the zoo's riemann over bish, equivalent to UCT by diener2018 Proposition 3.5.2(3)); Riemann integrability is also Loeb's own Definition 3.3. Entering it would give FANΔ → FANc over bish.
+- id: loeb2005-43fa93f1
+  ref: loeb2005
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: fandelta
+    to: heine-borel
+    over: bish
+  loc: Theorem 5.4
+  origin: stated
+  quote: "The following assertions are equivalent over WKV:"
+  paperNotation: Fan Theorem; Heine-Borel Theorem for [0,1] (Definition 5.3)
+  argument: Items 1 and 2 of Theorem 5.4.
+  confidence: medium
+  concerns: WKV is intuitionistic second-order arithmetic (full induction, unique choice, sequence variables), entered over bish as it is weaker than BISH with countable and dependent choice. The paper's Fan Theorem (Def. 2.2) is for arbitrary fans with decidable bars; Prop. 2.3 (cited from Troelstra) gives equivalence with the binary-fan version, matched to fandelta. Covering by a sequence of pairs of reals as open intervals, as in the catalogue; finite subcover quantified over points of the fan representation sigma[0,1].
+  reasons:
+    - "extractor confidence: medium"
+  proposed: 9c6bf0c8abdf
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Theorem 5.4: over WKV (intuitionistic second-order arithmetic with induction and unique choice only, a subsystem of BISH), the Fan Theorem (Definition 2.2, equivalent to the binary decidable-bar version by Proposition 2.3 = fandelta) is equivalent to Heine-Borel for [0,1] (Definition 5.3: covering by a sequence of open intervals with real endpoints has a finite subcovering), matching heine-borel. Duplicate of veldman2014 Theorem 3.5; citation merges."
+- id: loeb2005-7c181bc9
+  ref: loeb2005
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Lindenbaum's Lemma (decidable sets of propositional formulas)
+    name: Lindenbaum's lemma for classical propositional calculus, intuitionistic version
+    loc: Theorem 6.5(2)
+    definition: "For every decidable set Γ of formulas: if for every α in the binary fan some initial segment αn is inconsistent, incomplete, does not contain Γ, or is open (Definitions 6.1-6.4), then Γ is contradictory."
+    facts: Equivalent to the Fan Theorem, to propositional Completeness (every lying decidable set is contradictory) and to propositional Compactness (every lying decidable set has a finite lying subset), pairwise over WKV (Theorem 6.5). WKV is an intuitionistic second-order system (Kleene-Vesley without continuity and bar induction, full induction, unique choice, variables over sequences), not EL0 nor BISH, so these equivalences are not entered over a catalogue reduction.
+  reasons:
+    - principle not in the catalogue
+  proposed: ea0fe69b20c9
+- id: loeb2005-a23f8c61
+  ref: loeb2005
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Completeness / Compactness for decidable sets of propositional formulas
+    name: Propositional completeness and compactness (decidable sets, lying = unrealizable)
+    loc: Theorem 6.5(3),(4)
+    definition: "Completeness: for every decidable set Γ of formulas, if Γ is lying (no valuation makes all of Γ true) then Γ is contradictory (proves A0 and not A0). Compactness: if Γ is lying then some finite subset of Γ is lying."
+    facts: Each equivalent to the Fan Theorem over WKV (Theorem 6.5). Related to the catalogue entry completeness (a classical, second-order reverse mathematics statement) but the intuitionistic formulation here differs.
+  reasons:
+    - principle not in the catalogue
+  proposed: 5bbe82517423
+- id: loeb2005-ab9dabdd
+  ref: loeb2005
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Fan Theorem (arbitrary fans, decidable bars)
+    name: Fan Theorem for arbitrary fans, shown equivalent to the Fan Theorem on the binary fan
+    loc: Definition 2.2, Proposition 2.3
+    definition: For every fan beta and decidable bar gamma of beta there is m such that every path of beta meets gamma before m.
+    facts: "Proposition 2.3: equivalent in WKV to the binary-fan version (cited from Troelstra [7]). In the catalogue only the Cantor space versions fandelta and fanfull appear."
+  reasons:
+    - principle not in the catalogue
+  proposed: ea6658bcde8e
+- id: ackermanetal2022-d1c3153c
+  ref: ackermanetal2022
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: equivalence
+    from: lim
+    to: tj
+    over: sw
+  loc: Lemma 3.15
+  origin: cited
+  quote: limNN ⌘sW J.
+  paperNotation: lim_{N^N} and J (Turing jump map on Baire space)
+  citedFrom: Brattka, Gherardi, Pauly, Weihrauch Complexity in Computable Analysis, Theorem 11.6.7
+  confidence: medium
+  concerns: "The paper's J is the Turing jump on Baire space f -> f' (characteristic function of the halting set relative to f); the catalogue's tj is on sets. lim is lim_{N^N}: the symbol is limNN in the extracted text."
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+    - "attributed by the paper to Brattka, Gherardi, Pauly, Weihrauch Complexity in Computable Analysis, Theorem 11.6.7: cite the original"
+  proposed: a570bd830f23
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: Lemma 3.15 cites [6, Theorem 11.6.7] = brattkagherardipauly2021 (handbook chapter 11); its cached text states lim ≡sW J (Theorem 6.7). The zoo's tj is the jump map J (its definition says so). Exact duplicate of the existing result.
+- id: ackermanetal2022-9da7f5aa
+  ref: ackermanetal2022
+  date: 2026-11-17
+  status: accepted
+  kind: result
+  model: claude-sonnet-5-5 (chat)
+  result:
+    type: property
+    statement: lim
+    property: strongly-parallelizable
+    value: true
+  loc: Lemma 3.17
+  origin: cited
+  quote: limNN ⌘sW limNN
+  paperNotation: parallelization of lim_{N^N}, hat lost in extraction
+  citedFrom: Brattka, Gherardi, Pauly, Weihrauch Complexity in Computable Analysis, Theorem 11.6.6
+  confidence: medium
+  concerns: The hat of the parallelization is lost in the extracted text; the statement is read as the parallelization of lim_{N^N} being strongly Weihrauch equivalent to lim_{N^N}, which is what is used in the proof of Corollary 5.2.
+  reasons:
+    - the quoted passage was not found in the text
+    - "extractor confidence: medium"
+    - "attributed by the paper to Brattka, Gherardi, Pauly, Weihrauch Complexity in Computable Analysis, Theorem 11.6.6: cite the original"
+  proposed: a435c7adca7a
+  decision:
+    date: 2026-11-17
+    by: claude
+    note: "Lemma 3.17 cites [6, Theorem 11.6.6] = brattkagherardipauly2021: Proposition 6.6 in the cached text states lim is strongly parallelizable (lim ≡sW lim-hat). Duplicate of the existing property."
+- id: kachapova2016-e63ca69d
+  ref: kachapova2016
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SA
+    name: Multi-sorted second order arithmetic SA
+    loc: Section 2.1
+    definition: First-order theory with countably many sorts of set variables, Peano axioms, full induction, k-simple predicative comprehension and a choice axiom from sort k to sort k+1; SA_s is the fragment with sorts at most s (SA_0 is PA).
+    facts: Mutually interpretable with PATr (Corollaries 4.2, 4.5); SA_{s+1} proves Con(SA_s) (Theorem 5.2). Metamathematical, no statement about catalogue principles.
+  reasons:
+    - principle not in the catalogue
+  proposed: a338a164e435
+- id: kachapova2016-222b1b6e
+  ref: kachapova2016
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: SAR
+    name: Multi-sorted second order arithmetic with restricted induction SAR
+    loc: Section 2.2
+    definition: SA with the induction axiom restricted to formulas of the form n in x; the paper says SAR_1 is the same as ACA_0.
+    facts: "Corollary 4.3: SAR_s is interpretable in PATr_s. The identification SAR_1 = ACA_0 is only asserted informally in Section 3, so not recorded as a fact."
+  reasons:
+    - principle not in the catalogue
+  proposed: 102c137c298b
+- id: kachapova2016-cdd56b69
+  ref: kachapova2016
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: PATr
+    name: Peano arithmetic with truth predicates PATr
+    loc: Section 2.3
+    definition: PA extended with truth predicates Tr_k for formulas of the language of PATr_{k-1}, k = 1, 2, ...; PATr_s keeps only Tr_1..Tr_s.
+    facts: Mutually interpretable with SA, fragmentwise equiconsistent with SA_s (Section 5); PATr_{s+1} proves Con(PATr_s) (Lemma 5.1).
+  reasons:
+    - principle not in the catalogue
+  proposed: 8b2bff3d06c8
+- id: ishihara2012-38359e3a
+  ref: ishihara2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: The Uniform Boundedness Theorem (for topological vector spaces)
+    name: Uniform boundedness theorem (Banach-Steinhaus) for sequences of continuous linear maps from an F-space into a topological vector space, in Bishop-style constructive mathematics
+    loc: Section 1 (Introduction) and Theorem 6
+    definition: If (T_m)_m is a sequence of continuous linear mappings from an F-space E into a topological vector space F such that {T_m x | m in N} is bounded in F for each x in E, then (T_m)_m is equicontinuous. The paper proves the version for a separable F-space E and a separated topological vector space F (Theorem 6, assuming BD-N).
+    facts: "Theorem 7: over Bishop-style constructive mathematics (BISH), BD-N is equivalent to the uniform boundedness theorem for sequences of continuous linear mappings from a separable F-space into a separated topological vector space (item 2), and to the statement that the pointwise limit T of such a sequence is continuous (item 3: if Tx = lim T_m x exists for each x then T is continuous). Theorem 6 gives BD-N implies item 2. Remark 8: BD-N already follows from the restriction to sequences of compact self-adjoint operators on l2. Theorem 1 (no BD-N needed): if a bounded sequence (x_n) in an F-space E has {T_n x_n} unbounded in a separated TVS F, then {T_n x} is unbounded for some x in E (constructive contrapositive form, via the constructive Baire category theorem)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 4aaa3cc61ad2
+- id: ishihara2012-ba7bb8e2
+  ref: ishihara2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Pointwise limit of continuous linear maps is continuous (Banach-Steinhaus corollary)
+    name: Continuity of the pointwise limit of a sequence of continuous linear mappings on a separable F-space
+    loc: Theorem 7, item 3
+    definition: If (T_m)_m is a sequence of continuous linear mappings from a separable F-space E into a separated topological vector space F such that T x = lim_m T_m x exists for each x in E, then T is continuous.
+    facts: "Theorem 7: equivalent to BD-N (and to the uniform boundedness theorem, item 2) in Bishop-style constructive mathematics."
+  reasons:
+    - principle not in the catalogue
+  proposed: 99042249e3af
+- id: ishihara2012-d56eb2c9
+  ref: ishihara2012
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: Separated topological vector space
+    name: Separated topological vector space (constructive notion)
+    loc: Section 2, first paragraph
+    definition: A topological vector space E is separated if for each neighbourhood U of 0 there exist a neighbourhood V of 0 and an open set W such that E = U union W and V intersect W is empty.
+    facts: Every TVS whose open base is compatible with a family of pseudometrics is separated. The reals R with the discrete topology being separated is equivalent to WLPO, so it cannot be shown constructively that R with the discrete topology is separated (Section 2, remark before Theorem 1).
+  reasons:
+    - principle not in the catalogue
+  proposed: 9b39c999f13a
+- id: espindola2016-31817326
+  ref: espindola2016
+  date: 2026-11-17
+  status: pending
+  kind: statement
+  model: claude-sonnet-5-5 (chat)
+  statement:
+    notation: BPI
+    name: Boolean prime ideal theorem
+    loc: Introduction and Theorem 3
+    definition: Every nontrivial Boolean algebra (equivalently, every nontrivial distributive lattice) has a prime ideal / prime filter. Studied over ZF, not over RCA0.
+    facts: "Theorem 3: over ZF, BPI is equivalent to every consistent first-order theory having a complete semantic structure; Corollary 6: over ZF, BPI is equivalent to every consistent first-order theory having a nonempty Kripke model; Corollary 9: over IZF, completeness of Kripke semantics is equivalent to LEM + BPI. These are set-theoretic (ZF/IZF) results and fit no reduction of the catalogue, so no fact was entered."
+  reasons:
+    - principle not in the catalogue
+  proposed: e63d578b9269
