@@ -129,6 +129,33 @@ test('operator statements: P below its jump, parallelization; monotonicity', () 
   assert.equal(st('w', 'b.jump', 'a.jump'), 'open');
 });
 
+test('joint property laws: a parallelizable cylinder is strongly parallelizable', () => {
+  const zoo = buildZoo({
+    reductions: [
+      { id: 'sw', domain: 'problems', algebra: 'strong', finerThan: ['w'] },
+      { id: 'w', domain: 'problems', algebra: 'weak', finerThan: [] },
+    ],
+    properties: [
+      { id: 'cyl', closedUnder: 'sw', direction: 'equiv', domain: 'problems' },
+      { id: 'par', closedUnder: 'w', direction: 'equiv', domain: 'problems' },
+      { id: 'spar', closedUnder: 'sw', direction: 'equiv', domain: 'problems', implies: ['par'], jointly: [['par', 'cyl']] },
+    ],
+    statements: [{ id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' }, { id: 'c', kind: 'problem' }],
+    results: [
+      { type: 'property', statement: 'a', property: 'par', value: true, refs: [{ ref: 'x' }] },
+      { type: 'property', statement: 'a', property: 'cyl', value: true, refs: [{ ref: 'x' }] },
+      { type: 'property', statement: 'b', property: 'spar', value: false, refs: [{ ref: 'x' }] },
+      { type: 'property', statement: 'b', property: 'cyl', value: true, refs: [{ ref: 'x' }] },
+      { type: 'property', statement: 'c', property: 'par', value: true, refs: [{ ref: 'x' }] },
+    ],
+  });
+  const v = (p, s) => zoo.prop(zoo.pidx.get(p), zoo.sidx.get(s))?.v;
+  assert.equal(v('spar', 'a'), true);   // par + cyl
+  assert.equal(v('par', 'b'), false);   // not spar, cyl ⇒ not par
+  assert.equal(v('spar', 'c'), undefined);
+  assert.equal(zoo.contradictions.length, 0);
+});
+
 test('continuous and arithmetic Weihrauch reductions: coarser than W, their own laws', () => {
   const zoo = buildZoo({
     reductions: [

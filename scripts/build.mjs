@@ -528,6 +528,7 @@ for (const p of raw.properties) {
   if (p.baseImplication && !rids.has(p.baseImplication)) errors.push(`Property ${p.id}: unknown baseImplication ${p.baseImplication}`);
   if (p.domain !== undefined && p.domain !== 'problems') errors.push(`Property ${p.id}: domain must be problems`);
   for (const q of p.implies || []) if (!pids.has(q) || q === p.id) errors.push(`Property ${p.id}: implies unknown property ${q}`);
+  for (const set of p.jointly || []) if (!Array.isArray(set) || set.length < 2 || set.some((q) => !pids.has(q) || q === p.id)) errors.push(`Property ${p.id}: jointly needs lists of two or more other properties`);
   if (!['computability', 'proof', 'weihrauch'].includes(p.group)) errors.push(`Property ${p.id}: group must be computability, proof or weihrauch`);
   if (p.direction !== undefined && !['down', 'up', 'equiv'].includes(p.direction)) errors.push(`Property ${p.id}: direction must be down, up or equiv`);
   for (const o of [p.selfOp, ...(p.opHas || []), ...(p.opKeeps || [])].filter(Boolean))

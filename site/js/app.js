@@ -1561,6 +1561,7 @@ function viewDiagram(params) {
         <div><svg width="44" height="10"><path d="M2 5H34" stroke="var(--ink)" stroke-width="1.6"/><path d="M34 1L42 5L34 9z" fill="var(--ink)"/></svg> implies (Hasse edge)</div>
         <div><svg width="44" height="10"><path d="M2 5H34" stroke="var(--no)" stroke-width="1.4" stroke-dasharray="6 4"/><path d="M34 1L42 5L34 9z" fill="var(--no)"/></svg> does not imply</div>
         <div><svg width="44" height="10"><path d="M2 5H34" stroke="var(--open)" stroke-width="1.4" stroke-dasharray="2 4"/><path d="M34 1L42 5L34 9z" fill="var(--open)"/></svg> open</div>
+        <div><span class="endorse e-one static">✓</span> <span class="endorse e-several static">✓</span> every result of the proof endorsed (by someone, by several readers)</div>
         <div class="small muted">Stronger statements are higher. Equivalent statements share a node. Separations and open questions are reduced to the strongest ones (strongest hypothesis, weakest conclusion). Hover a node to see what it implies; click an arrow for its proof.</div>
       </div>
       <h3>Share</h3>
@@ -1741,6 +1742,18 @@ function drawDiagram() {
   lastDiagram = { v, g, all, W, H, r };
   // interactions
   const svg = $('svg.edges', stage);
+  // endorsed arrows: a check at the middle of an arrow whose proof uses only endorsed
+  // results (green: each by someone, bronze: each by several, like the marks of results)
+  all.forEach((e, k) => {
+    const lvl = arrowEndorsement(e.kind, v.reps[e.a], v.reps[e.b], r);
+    if (!lvl) return;
+    const path = $(`path.${e.kind}[data-e="${k}"]`, svg);
+    const pt = path.getPointAtLength(path.getTotalLength() / 2);
+    const [fill, line] = lvl >= 2 ? ['#b0703a', '#8f5a2b'] : ['#2f9e44', '#2b8a3e'];
+    const title = lvl >= 2 ? 'Every result of this proof is endorsed by several readers' : 'Every result of this proof is endorsed';
+    svg.insertAdjacentHTML('beforeend', `<g class="eb" data-e="${k}" transform="translate(${pt.x.toFixed(1)},${pt.y.toFixed(1)})"><title>${title}</title>
+      <circle r="7" fill="${fill}" stroke="${line}" stroke-width="1"/><path d="M-3.2,0.2 L-1,2.6 L3.4,-2.4" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></g>`);
+  });
   const less = (x, y) => x !== y && Z.I[r].has(v.reps[x] * Z.n + v.reps[y]);
   els.forEach((el, ci) => {
     el.addEventListener('mouseenter', () => {
@@ -1772,6 +1785,16 @@ function drawDiagram() {
     pairPanel(v.reps[ed.a], v.reps[ed.b], r);
   });
   fit();
+}
+
+// endorsement of an arrow of the diagram (kind imp or sepa, a → b over r): 0 when some
+// result of its proof is not endorsed (or it uses none), 1 when each is endorsed, 2 when
+// each is endorsed by several readers
+function arrowEndorsement(kind, a, b, r) {
+  if (kind !== 'imp' && kind !== 'sepa') return 0;
+  const rs = Z.sources({ t: kind === 'imp' ? 'I' : 'N', r, a, b });
+  if (!rs.length) return 0;
+  return Math.min(...rs.map((ri) => Math.min(2, C.endorsers(Z.raw.results[ri]._key).length)));
 }
 
 function nodePanel(v, ci, r) {
@@ -1854,6 +1877,7 @@ function exportSvg() {
   const svg = $('svg.edges', stage).cloneNode(true);
   $$('path.hit', svg).forEach((p) => p.remove());
   $$('path', svg).forEach((p) => {
+    if (p.closest('.eb')) return;
     const c = getComputedStyle($(`path[data-e="${p.dataset.e}"].${p.classList[0]}`, stage) || p);
     p.setAttribute('stroke', c.stroke); p.setAttribute('stroke-width', c.strokeWidth);
     p.setAttribute('stroke-dasharray', c.strokeDasharray === 'none' ? '' : c.strokeDasharray); p.setAttribute('fill', 'none');
@@ -2161,7 +2185,7 @@ function viewAbout(params) {
       <b>endorse</b> a result, stating: “${ENDORSE_TEXT}” A result endorsed by one person carries a
       <span class="endorse e-one static">✓</span> green check, by several a <span class="endorse e-several static">✓<span>2</span></span> bronze one with their number;
       click a check to see who endorsed it. Endorsers are listed on their profile page with their name and ORCID iD, and can withdraw an
-      endorsement at any time; the panel of a pair of the diagram lists the results its proofs use, each with an Endorse button.
+      endorsement at any time; the panel of a pair of the diagram lists the results its proofs use, each with an Endorse button, and an arrow of the diagram whose proof uses only endorsed results carries the same check.
       Signed-in readers can also contribute facts (the “+ Facts” button: facts typed in the query language, with their sources or
       justifications), which go to the review page; discuss the open questions on their pages (public comments); and report an error
       or comment on a result, a statement or a paper (messages to the maintainer, not published). Their profile lists their endorsements

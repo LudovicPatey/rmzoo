@@ -209,6 +209,8 @@ path.imp { stroke: var(--ink); stroke-width: 1.6; fill: none; opacity: .75; curs
 path.imp.hl { stroke: var(--accent); opacity: 1; stroke-width: 2.2; }
 path.sepa { stroke: var(--no); stroke-width: 1.4; fill: none; stroke-dasharray: 6 4; cursor: pointer; }
 path.opn { stroke: var(--open); stroke-width: 1.4; fill: none; stroke-dasharray: 2 4; cursor: pointer; }
+.eb { cursor: pointer; }
+.dim .eb { opacity: .3; }
 path.hit { stroke: transparent; stroke-width: 12; fill: none; cursor: pointer; }
 .zoombar { position: absolute; right: 14px; bottom: 14px; display: flex; gap: 6px; z-index: 5; }
 .empty-hint { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); text-align: center; padding: 40px; }

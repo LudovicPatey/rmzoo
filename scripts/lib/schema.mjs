@@ -164,6 +164,7 @@ export const SCHEMA = {
     bottomOf: { doc: 'reduction r such that a problem with the property is below every problem of the domain of r (computably true: c, assuming every problem has an instance computable from any set)', usedBy: ['build', 'engine'] },
     baseImplication: { doc: 'reduction r such that a problem has the property exactly when the bottom of r implies it over r (computably true: omega)', usedBy: ['build', 'engine'] },
     domain: { doc: 'problems: defined through instances and solutions, so it only applies to statements formulated as problems (see statement.problemForm)', usedBy: ['build', 'engine', 'aiAnalyze'] },
+    jointly: { doc: 'lists of properties that together imply this one (parallelizable and cylinder: strongly parallelizable, since P̂ ≤W P gives P̂ ≤sW P for a cylinder); having all but one of them while failing this one means failing the last', usedBy: ['build', 'engine'] },
     implies: { doc: 'properties every statement having this one also has (low basis ⇒ weakly low basis); failing one of them means failing this one; no cycles. Statement pages list only the extremal properties (engine salientProps)', usedBy: ['build', 'engine'] },
     optional: { doc: 'member of an infinite family (low_n, Σ⁰_n basis…): listed for a statement only when it is an extremal known property, or an extremal open one between a property it has and one it fails (engine salientProps)', usedBy: ['engine'] },
   },

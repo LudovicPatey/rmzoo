@@ -388,8 +388,11 @@
   selfOp: par
   opHas: [ par ]
   implies: [ parallelizable ]
+  # a parallelizable cylinder: P̂ ≤W P, hence P̂ ≤sW P (Proposition 3.5)
+  jointly: [ [ parallelizable, cylinder ] ]
   description: >
-    P̂ ≡sW P (Definition 4.2 of Brattka, Gherardi and Pauly).
+    P̂ ≡sW P (Definition 4.2 of Brattka, Gherardi and Pauly). A parallelizable cylinder is strongly
+    parallelizable: P̂ ≤W P gives P̂ ≤sW P (Proposition 3.5).
 
 - id: parallelizable
   name: Parallelizable

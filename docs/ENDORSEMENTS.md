@@ -9,7 +9,8 @@ ORCID iD. Once signed in they can:
   withdrawn at any time;
 * endorse the results a proof relies on **from the diagram**: the panel of a pair
   (click an edge, or answer a query) lists the results used, each with an
-  Endorse button;
+  Endorse button. An arrow whose proof uses only endorsed results carries a check
+  at its middle (green: each endorsed, bronze: each by several readers);
 * **report an error** or **comment** on a result, a statement or a paper. Each
   message becomes one JSON file for the maintainer (not published);
 * **contribute facts** (“+ Facts” in the header, “Contribute facts” on a

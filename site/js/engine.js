@@ -39,6 +39,7 @@ export const RULES = {
   'cons-base': 'A base system is conservative over itself',
   'prop-equiv': 'A Weihrauch property is invariant under equivalence (the same Weihrauch degree, or strong degree for strong properties)',
   'prop-self': 'A problem has this property exactly when it is above the corresponding operation applied to itself (idempotent: P × P ≤W P; parallelizable: P̂ ≤W P; closed under compositional product: P ⋆ P ≤W P)',
+  'prop-joint': 'Properties that together imply another (a parallelizable cylinder is strongly parallelizable: P̂ ≤W P gives P̂ ≤sW P, Brattka, Gherardi and Pauly, Proposition 3.5)',
   'prop-op': 'Weihrauch operations produce problems with this property (P̂ is parallelizable, P* idempotent, P⋄ closed under compositional product, P ⋆ Q a cylinder; a jump P′ is finitely tolerant and a fractal, and the jump of a cylinder is a cylinder)',
   'prop-elim': 'Choice elimination: a problem with this property below a compositional product with a factor below the eliminated problem is below the other factor (a total fractal below g ⋆ C_ℕ is below g: Brattka, Gherardi and Pauly, Theorem 7.15; a single-valued problem below C_{2^ℕ} ⋆ g is below g: Theorem 7.25)',
   'prop-lift': 'For a cylinder, Weihrauch reductions to it are strong Weihrauch reductions (Brattka, Gherardi and Pauly, Proposition 3.5)',
@@ -442,6 +443,11 @@ export function buildZoo(raw) {
     return seen;
   });
 
+  // `jointly`: properties that together imply another (parallelizable + cylinder ⇒
+  // strongly parallelizable); failing the target with all parts but one gives the last
+  const joints = raw.properties.flatMap((prop, t) => (prop.jointly || []).map((ids) => ({ t, parts: ids.map((id) => pidx.get(id)) })))
+    .filter((j) => j.parts.every((q) => q !== undefined));
+  const jointsOf = raw.properties.map((_, p) => joints.filter((j) => j.t === p || j.parts.includes(p)));
   const P = raw.properties.map(() => new Map()); // s -> {v, just}
   const contradictions = [];
   const pqueue = [];
@@ -465,6 +471,13 @@ export function buildZoo(raw) {
       const { v } = P[p].get(s);
       const prop = raw.properties[p];
       const r = ridx.get(prop.closedUnder); // undefined: preserved by no reduction (Σ⁰ₙ basis)
+      for (const { t, parts } of jointsOf[p]) {
+        const val = (q) => P[q].get(s)?.v;
+        if (parts.every((q) => val(q) === true)) setP(t, s, true, { rule: 'prop-joint', prem: parts.map((q) => fP(q, s, true)) });
+        const open = parts.filter((q) => val(q) !== true);
+        if (val(t) === false && open.length === 1)
+          setP(open[0], s, false, { rule: 'prop-joint', prem: [fP(t, s, false), ...parts.filter((q) => q !== open[0]).map((q) => fP(q, s, true))] });
+      }
       if (v) for (const o of opsByArg.get(s) || []) if (opLaw[p].keeps.has(o.op) && o.args.every((x) => P[p].get(x)?.v))
         setP(p, o.i, true, { rule: 'prop-op', prem: o.args.map((x) => fP(p, x, true)) });
       if (prop.direction === 'equiv') { // invariant under equivalence over r (Weihrauch properties)
