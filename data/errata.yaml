@@ -152,3 +152,18 @@
   refs:
     - { ref: binnskjoshanssen2014, loc: "Corollary 4.8 (bracketed remark) and proof of Theorem 4.9" }
   date: 2026-11-11
+
+- ref: dzhafarovmummert2022
+  loc: Proposition 5.8.15(1)
+  kind: error
+  claim: $\Delta^1_1\text{-}\mathsf{CA}_0 \vdash \mathsf{ACA}^+_0$.
+  correction: >
+    False. The proof applies "arithmetical induction" to the equivalence of a Σ¹₁ and a Π¹₁ formula, which is not
+    arithmetical. Σ¹₁-AC₀, hence [[delta11ca]], is Π¹₂-conservative over ACA₀ (Theorem IX.4.4 of [@simpson2009],
+    due to Barwise and Schlipf; see also [@enayatschmerl2019]), and ACA₀⁺ is a Π¹₂ sentence that ACA₀ does not prove, so
+    Δ¹₁-CA₀ does not prove ACA₀⁺. The implication holds over ω-models (where the induction is available), and over
+    RCA₀ once Σ¹₁ induction is added. Reported by Benedict Eastaugh.
+  refs:
+    - { ref: simpson2009, loc: Theorem IX.4.4 }
+    - { ref: enayatschmerl2019 }
+  date: 2026-11-18

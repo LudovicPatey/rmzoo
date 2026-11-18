@@ -156,6 +156,30 @@ test('joint property laws: a parallelizable cylinder is strongly parallelizable'
   assert.equal(zoo.contradictions.length, 0);
 });
 
+test('closure laws: a problem closed under compositional product lies above P⋄ when it lies above P', () => {
+  const zoo = buildZoo({
+    reductions: [
+      { id: 'sw', domain: 'problems', algebra: 'strong', finerThan: ['w'] },
+      { id: 'w', domain: 'problems', algebra: 'weak', finerThan: [] },
+    ],
+    properties: [{ id: 'cc', closedUnder: 'w', direction: 'equiv', domain: 'problems', selfOp: 'compose', closure: 'diamond' }],
+    statements: [
+      { id: 'u', kind: 'problem' }, { id: 'l', kind: 'problem' }, { id: 'm', kind: 'problem' },
+      { id: 'l.diamond', kind: 'problem', op: 'diamond', args: ['l'] },
+      { id: 'm.diamond', kind: 'problem', op: 'diamond', args: ['m'] },
+    ],
+    results: [
+      { type: 'property', statement: 'u', property: 'cc', value: true, refs: [{ ref: 'x' }] },
+      { type: 'implication', from: 'u', to: 'l', over: 'w', refs: [{ ref: 'x' }] },
+      { type: 'implication', from: 'l', to: 'm', over: 'w', refs: [{ ref: 'x' }] },
+    ],
+  });
+  const st = (r, x, y) => zoo.status(zoo.ridx.get(r), zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('w', 'u', 'l.diamond'), 'implies');
+  assert.equal(st('w', 'u', 'm.diamond'), 'implies'); // through l
+  assert.equal(st('w', 'l', 'm.diamond'), 'open');    // l is not known closed under ⋆
+});
+
 test('continuous and arithmetic Weihrauch reductions: coarser than W, their own laws', () => {
   const zoo = buildZoo({
     reductions: [

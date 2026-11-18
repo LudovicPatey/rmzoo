@@ -209,6 +209,7 @@ path.imp { stroke: var(--ink); stroke-width: 1.6; fill: none; opacity: .75; curs
 path.imp.hl { stroke: var(--accent); opacity: 1; stroke-width: 2.2; }
 path.sepa { stroke: var(--no); stroke-width: 1.4; fill: none; stroke-dasharray: 6 4; cursor: pointer; }
 path.opn { stroke: var(--open); stroke-width: 1.4; fill: none; stroke-dasharray: 2 4; cursor: pointer; }
+.answer { margin: 6px 0 2px 12px; padding: 6px 10px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 6px 6px 0; }
 .eb { cursor: pointer; }
 .dim .eb { opacity: .3; }
 path.hit { stroke: transparent; stroke-width: 12; fill: none; cursor: pointer; }

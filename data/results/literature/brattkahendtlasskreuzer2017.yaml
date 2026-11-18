@@ -70,3 +70,5 @@
 - { type: separation, from: acc3, to: llpo, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Fact 3.4 } ] }
 - { type: implication, from: acc3, to: accn, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Fact 3.4 } ] }
 - { type: separation, from: accn, to: acc3, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Fact 3.4 } ] }
+- { type: implication, from: padeg, to: non, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: after Proposition 6.3 } ] }
+- { type: separation, from: non, to: padeg, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: after Proposition 6.3 } ] }

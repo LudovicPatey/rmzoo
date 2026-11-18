@@ -16,3 +16,5 @@
 - { type: equivalence, from: nmaj.par, to: hyp, over: sw, refs: [ { ref: brattka2021, loc: Proposition 6.3 } ] }
 - { type: equivalence, from: meet, to: hyp, over: w, refs: [ { ref: brattka2021, loc: Proposition 6.6 } ] }
 - { type: implication, from: meet, to: hyp, over: sw, refs: [ { ref: brattka2021, loc: "Proposition 6.6, proof" } ] }
+- { type: implication, from: llpo, to: dis, over: sw, refs: [ { ref: brattka2021, loc: Theorem 1.12 (DIS ≡sW stashing of LLPO) with Proposition 2.2(1) } ] }
+- { type: implication, from: accn, to: dis, over: sw, refs: [ { ref: brattka2021, loc: Theorem 1.12 (DIS ≡sW stashing of ACC_ℕ) with Proposition 2.2(1) } ] }

@@ -101,6 +101,25 @@ test('comments are stored with the object they are about, and exported with the 
   assert.equal(ex.feedback.find((f) => f.kind === 'comment').target.statement.id, 'coh');
 });
 
+test('answers to messages: admin token only, shown to the author, kept once', { skip }, async () => {
+  const s = session();
+  await s.req(`${B}?a=devlogin&orcid=0000-0001-2345-6789&name=Ada`);
+  const { csrf } = await (await s.req(`${B}?a=state`)).json();
+  const { id } = await (await post(s, 'feedback', { kind: 'comment', target: { type: 'statement', id: 'coh' }, text: 'A question.' }, csrf)).json();
+  const answer = (body, token = TOKEN) => fetch(`${B}?a=answer`, { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  assert.equal((await answer({ id, text: 'x' }, 'wrong-token-wrong-token-wrong')).status, 403);
+  assert.equal((await post(s, 'answer', { id, text: 'x' }, csrf)).status, 403, 'a signed-in user cannot answer');
+  assert.equal((await answer({ id: '../endorsements', text: 'x' })).status, 400);
+  assert.equal((await answer({ id, text: '' })).status, 400);
+  assert.equal((await answer({ id, text: 'Thanks.', by: 'robot' })).status, 400);
+  assert.equal((await answer({ id, text: 'Thanks: see [[coh]].', by: 'ai' })).status, 200);
+  assert.equal((await answer({ id, text: 'Thanks: see [[coh]].', by: 'ai' })).status, 200);
+  const { messages } = await (await s.req(`${B}?a=mine`)).json();
+  const m = messages.find((x) => x.id === id);
+  assert.equal(m.answers.length, 1);
+  assert.equal(m.answers[0].by, 'ai');
+});
+
 // PHP's opcache may keep a rewritten config.php for up to 2 s (revalidate_freq): wait
 const settle = () => new Promise((r) => setTimeout(r, 2100));
 test('the development sign-in is off unless configured', { skip }, async () => {

@@ -355,6 +355,11 @@
   # the property (it is about the problem, not its degree).
   bottomOf: sc
   implies: [ computably-true ]
+  # P ≤c F with F first-order: an instance X of P computes an instance of F, whose
+  # solution, a number, gives with X a solution of P. So P is computably true on its
+  # true instances, even when F is not ω-absolute (Σ¹₁-C_ℕ), which `implies` does not
+  # cover: a problem that is not computably true is not ≤c (hence not ≤W) F
+  below: { property: computably-true, over: c }
   # the first-order part ¹P is first-order by its definition (Definition 2.1 of Dzhafarov,
   # Solomon and Yokoyama)
   opHas: [ fop ]
@@ -387,6 +392,8 @@
   domain: problems
   selfOp: par
   opHas: [ par ]
+  # P̂ ≤sW Q̂ ≡sW Q when P ≤sW Q
+  closure: par
   implies: [ parallelizable ]
   # a parallelizable cylinder: P̂ ≤W P, hence P̂ ≤sW P (Proposition 3.5)
   jointly: [ [ parallelizable, cylinder ] ]
@@ -402,6 +409,8 @@
   domain: problems
   selfOp: par
   opHas: [ par ]
+  # P̂ ≤W Q̂ ≡W Q when P ≤W Q
+  closure: par
   implies: [ idempotent ]
   description: >
     P̂ ≡W P (Definition 4.2 of Brattka, Gherardi and Pauly). A parallelizable problem is idempotent
@@ -415,6 +424,9 @@
   domain: problems
   selfOp: compose
   opHas: [ diamond ]
+  # P⋄ ≤W Q when P ≤W Q: id ≤W Q (every problem of the zoo has a computable instance)
+  # and Q ⋆ Q ≤W Q iterated
+  closure: diamond
   implies: [ idempotent ]
   description: >
     P ⋆ P ≤W P. Then P × P ≤W P ⋆ P ≤W P, so P is idempotent; P⋄ is the least problem above P closed
@@ -428,6 +440,8 @@
   domain: problems
   selfOp: product
   opHas: [ fin ]
+  # P* ≤W Q when P ≤W Q: id ≤W Q, and Q × Q ≤W Q iterated uniformly gives Pⁿ ≤W Q
+  closure: fin
   description: >
     P × P ≡W P (Definition 4.2 of Brattka, Gherardi and Pauly).
 

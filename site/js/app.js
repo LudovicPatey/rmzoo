@@ -2609,13 +2609,30 @@ function drawThread(q) {
 function renderAccount() {
   const a = $('#account');
   if (!C.live) { a.innerHTML = ''; return; }
-  const n = C.user && C.uploads ? myMissingPapers().length : 0;
-  const bell = n ? `<a class="btn small bell" href="#/u/${C.user.orcid}?tab=texts" title="${n} of your papers ${n === 1 ? 'has' : 'have'} no full text in the zoo: share ${n === 1 ? 'it' : 'them'}, or say that you cannot">
+  const np = C.user && C.uploads ? myMissingPapers().length : 0;
+  const na = C.user ? unreadAnswers() : 0;
+  const n = np + na;
+  const title = [na ? `${na} new ${na === 1 ? 'answer' : 'answers'} of the maintainer to your messages` : '',
+    np ? `${np} of your papers ${np === 1 ? 'has' : 'have'} no full text in the zoo: share ${np === 1 ? 'it' : 'them'}, or say that you cannot` : ''].filter(Boolean).join('; ');
+  const bell = n ? `<a class="btn small bell" href="#/u/${C.user.orcid}?tab=${na ? 'contributions' : 'texts'}" title="${esc(title)}">
       <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5.5-6.84V3.5a1.5 1.5 0 0 0-3 0v.66A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2Z"/></svg><span class="bell-count">${n}</span></a> ` : '';
   a.innerHTML = C.user
     ? `${bell}<button class="btn small" data-suggest="" title="Contribute facts to the database, with their sources">+ Facts</button>
       <a class="btn small" href="#/u/${C.user.orcid}" title="Your profile: endorsements, contributions, diagrams and full texts"><span class="orcid-dot"></span>${esc(C.user.name)}</a>`
     : `<a class="btn small" id="signin" href="${C.loginUrl()}"><span class="orcid-dot"></span>Sign in</a>`;
+}
+// answers of the maintainer to one's messages not seen yet (the Contributions tab marks them seen)
+const ANSWERS_SEEN = 'rmzoo.answersSeen';
+function unreadAnswers() {
+  let seen = '';
+  try { seen = localStorage.getItem(ANSWERS_SEEN) || ''; } catch { /* private mode */ }
+  return (C.myMessages || []).flatMap((m) => m.answers || []).filter((a) => String(a.date) > seen).length;
+}
+function markAnswersSeen() {
+  const last = (C.myMessages || []).flatMap((m) => m.answers || []).map((a) => String(a.date)).sort().pop();
+  if (!last) return;
+  try { localStorage.setItem(ANSWERS_SEEN, last); } catch { /* private mode */ }
+  renderAccount();
 }
 // the sign-in link returns to the page being viewed
 window.addEventListener('hashchange', () => { const s = $('#signin'); if (s) s.href = C.loginUrl(); });
@@ -2673,11 +2690,17 @@ function viewProfile(orcid, params = new URLSearchParams()) {
     m.querySelectorAll('[data-tab]').forEach((b) => b.setAttribute('aria-selected', b === tb));
     m.querySelectorAll('[data-panel]').forEach((p) => { p.hidden = p.dataset.panel !== x; });
     history.replaceState(null, '', `#/u/${orcid}${x === 'endorsements' ? '' : `?tab=${x}`}`);
+    if (x === 'contributions' && own && C.myMessages) markAnswersSeen();
   };
   if (own) {
     C.listDiagrams().then(drawDiagrams).catch((err) => { const el = $('#diagrams-root'); if (el) el.innerHTML = `<p class="no">${esc(err.message)}</p>`; });
     loadUploads(params);
-    C.mine().then((msgs) => { const el = $('#contrib-root'); if (el) el.innerHTML = contributionsHtml(orcid, msgs); })
+    C.mine().then((msgs) => {
+      C.myMessages = msgs;
+      const el = $('#contrib-root');
+      if (el) el.innerHTML = contributionsHtml(orcid, msgs);
+      if (el && (params.get('tab') || 'endorsements') === 'contributions') markAnswersSeen();
+    })
       .catch((err) => { const el = $('#contrib-root'); if (el) el.innerHTML = `<p class="no">${esc(err.message)}</p>${contributionsHtml(orcid, [])}`; });
   }
 }
@@ -2703,6 +2726,10 @@ function contributionsHtml(orcid, msgs) {
     if (tg.type === 'question') return qLink(tg.id);
     return esc(tg.id);
   };
+  // the maintainer's answers to a message (scripts/feedback-answer.mjs)
+  const answersHtml = (m) => (m.answers || []).map((a) => `<div class="answer"><div class="small muted">Answer of the maintainer · ${esc(String(a.date).slice(0, 10))}${a.by === 'ai'
+      ? ' · <span title="Written by an AI assistant from the papers of the zoo, read and sent by the maintainer">drafted by an AI assistant</span>' : ''}</div>
+      <div class="small">${richLinks(a.text)}</div></div>`).join('');
   const factRow = (f) => {
     const ok = [f.from, f.to, f.statement].filter(Boolean).every((id) => idx(id) !== undefined) && (!f.over || Z.ridx.has(f.over)) && (!f.property || Z.pidx.has(f.property));
     const src = f.source || {};
@@ -2714,11 +2741,11 @@ function contributionsHtml(orcid, msgs) {
         the badge says what the database knows of it now (“in the database” once accepted, or derived from other results).
         <button class="btn small" data-suggest="">+ Contribute facts</button></p>
       ${facts.length ? facts.map((m) => `<div class="card contrib"><div class="small muted">${esc(String(m.date).slice(0, 10))}${m.target?.type === 'question' ? ` · answering ${qLink(m.target.id)}` : ''}</div>
-          <ul class="contrib-facts">${(m.facts || m.results || []).map(factRow).join('')}</ul>${m.text ? `<p class="small">${esc(m.text)}</p>` : ''}</div>`).join('')
+          <ul class="contrib-facts">${(m.facts || m.results || []).map(factRow).join('')}</ul>${m.text ? `<p class="small">${esc(m.text)}</p>` : ''}${answersHtml(m)}</div>`).join('')
         : '<p class="muted">No fact contributed yet.</p>'}
       <h2>Your messages to the maintainer</h2>
       ${others.length ? `<ul class="contrib-msgs">${others.map((m) => `<li><span class="badge ${m.kind === 'error' ? 'warn' : ''}">${m.kind === 'error' ? 'error report' : 'comment'}</span>
-          on ${targetHtml(m.target)} <span class="small muted">${esc(String(m.date).slice(0, 10))}</span><div class="small">${esc(m.text)}</div></li>`).join('')}</ul>`
+          on ${targetHtml(m.target)} <span class="small muted">${esc(String(m.date).slice(0, 10))}</span><div class="small">${esc(m.text)}</div>${answersHtml(m)}</li>`).join('')}</ul>`
         : '<p class="muted">No message.</p>'}` : ''}
     <h2>${own ? 'Your public comments' : 'Public comments'}</h2>
     ${pub.length ? `<ul class="contrib-msgs">${pub.map((c) => `<li>on ${c.where === 'question' ? `the question ${qLink(c.question)}` : `the review item <a href="#/review/${esc(c.item)}">${esc(c.item)}</a>`}
@@ -3373,6 +3400,7 @@ async function boot() {
   C.ready.then(async () => {
     renderAccount();
     if (C.user) C.listUploads().then(renderAccount).catch(() => {}); // the bell
+    if (C.user) C.mine().then((msgs) => { C.myMessages = msgs; renderAccount(); }).catch(() => {}); // answers to one's messages
     const added = await mergeValidated();
     if (C.live || added) { const y = window.scrollY; route(); window.scrollTo(0, y); }
   });

@@ -49,6 +49,7 @@ committed in `data/endorsements.yaml` and offers no sign-in.
 | saved diagrams: viewer | `site/js/community.js` (`listDiagrams`, `saveDiagram`, `deleteDiagram`), `site/js/app.js` (“My diagrams”, after `viewDiagram`; the Diagrams tab of `viewProfile`) |
 | committed endorsements | `data/endorsements.yaml` (validated by the build, copied into `zoo.json`) |
 | download from the server | `scripts/endorsements-sync.mjs` |
+| answers to messages | `scripts/feedback-answer.mjs` (server: `?a=answer`; viewer: `contributionsHtml`, the bell of `renderAccount`) |
 | tests | `tests/api.test.mjs` (runs the PHP server locally) |
 
 * **Identity of a result**: endorsements refer to `resultKey` (type, statements,
@@ -174,6 +175,32 @@ and `justification`), `author` (ORCID iD, name), `page`, `date`. Treat a report 
 any lead (AGENTS.md §1: read the theorem in the paper before changing data),
 then move the file to `feedback/done/`; files in `inbox/` or `done/` are never
 downloaded again. `--dry-run` shows what would change.
+
+### Answers
+
+The author of a message sees its answers under it, on the Contributions tab of
+their profile; the bell of the header counts the answers they have not seen. An
+answer is drafted in the message's file, as
+`"reply": {"text": "…", "by": "ai" | "maintainer"}` (`by: ai` when an AI
+assistant wrote it: the viewer says so). The text may use `$…$` TeX and `[[id]]`
+links to statements. The maintainer reads the drafts, then sends them:
+
+```bash
+node scripts/feedback-answer.mjs --dry-run     # what would be sent
+node scripts/feedback-answer.mjs               # send (admin token as for the sync)
+```
+
+The server (`?a=answer`, admin token) appends the answer to the message's file
+(`answers: [{date, text, by}]`; the same text twice is kept once), and the script
+records `replied` in the local file, so an answer is never sent twice. Like the
+messages, answers are private to their author and never committed.
+
+### What is in git
+
+The endorsements and the public comments on the open questions are committed in
+`data/endorsements.yaml`; the votes and public comments of the review page in
+`data/review.yaml`. The private messages (comments, error reports, suggestions)
+and their answers stay on the server and in `feedback/` (git-ignored).
 
 ## Local development
 

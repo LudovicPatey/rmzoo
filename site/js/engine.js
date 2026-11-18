@@ -39,6 +39,8 @@ export const RULES = {
   'cons-base': 'A base system is conservative over itself',
   'prop-equiv': 'A Weihrauch property is invariant under equivalence (the same Weihrauch degree, or strong degree for strong properties)',
   'prop-self': 'A problem has this property exactly when it is above the corresponding operation applied to itself (idempotent: P × P ≤W P; parallelizable: P̂ ≤W P; closed under compositional product: P ⋆ P ≤W P)',
+  'prop-below': 'A problem reducible to one with this property has a weaker one (a problem computably reducible to a first-order problem has solutions computable from its instances): a problem failing the weaker one is not reducible to it',
+  'prop-closure': 'A problem with a closure property lies above the closure of every problem below it (UC_ℕ^ℕ is closed under compositional product and lim ≤W UC_ℕ^ℕ, so lim⋄ ≤W UC_ℕ^ℕ; a parallelizable problem lies above P̂ when it lies above P)',
   'prop-joint': 'Properties that together imply another (a parallelizable cylinder is strongly parallelizable: P̂ ≤W P gives P̂ ≤sW P, Brattka, Gherardi and Pauly, Proposition 3.5)',
   'prop-op': 'Weihrauch operations produce problems with this property (P̂ is parallelizable, P* idempotent, P⋄ closed under compositional product, P ⋆ Q a cylinder; a jump P′ is finitely tolerant and a fractal, and the jump of a cylinder is a cylinder)',
   'prop-elim': 'Choice elimination: a problem with this property below a compositional product with a factor below the eliminated problem is below the other factor (a total fractal below g ⋆ C_ℕ is below g: Brattka, Gherardi and Pauly, Theorem 7.15; a single-valued problem below C_{2^ℕ} ⋆ g is below g: Theorem 7.25)',
@@ -341,6 +343,12 @@ export function buildZoo(raw) {
   raw.properties.forEach((prop, p) => {
     if (prop.lift) lifting.push({ p, from: ridx.get(prop.lift.from), to: ridx.get(prop.lift.to), has: citedHas(p) });
   });
+  // closure laws (`closure: op`): op(P) is the least problem with the property above P
+  // (P⋄ for closure under ⋆, P̂ for parallelizability, P* for idempotence), so a statement
+  // with the property that implies P implies op(P), over closedUnder. Like the lift, it
+  // uses the cited values and the laws on operations.
+  const closures = raw.properties.flatMap((prop, p) => (prop.closure
+    ? [{ p, r: ridx.get(prop.closedUnder), op: prop.closure, has: citedHas(p) }] : []));
   // choice elimination (`eliminates: {side, factor}`): if s has the property and
   // s ≤ g ⋆ h with h ≤ factor (side right: h is applied first) — or s ≤ h ⋆ g
   // (side left) — then s ≤ g, over closedUnder. `keep` is the index of g in the
@@ -389,6 +397,9 @@ export function buildZoo(raw) {
       if (ops.length) monotone(r, a, b);
       for (const l of lifting) if (l.from === r && l.has.has(a)) addI(l.to, a, b, { rule: 'prop-lift', prem: [fI(r, a, b)] });
       if (elims.length) elimI(r, a, b);
+      for (const c of closures) if (c.r === r && c.has.has(a))
+        for (const o of opsByArg.get(b) || []) if (o.op === c.op && o.args.length === 1)
+          addI(r, a, o.i, { rule: 'prop-closure', prop: c.p, prem: [fP(c.p, a, true), fI(r, a, b)] });
       for (const { fine, B } of liftsCoarse[r]) // a → b over the coarse frame
         if (I[fine].has(key(a, B))) addI(fine, a, b, { rule: 'base-lift', prem: [fI(fine, a, B), fI(r, a, b)] });
       for (const { coarse, B } of liftsFine[r]) // a → B over the fine frame
@@ -541,7 +552,7 @@ export function buildZoo(raw) {
   const partMax = W === undefined ? [] : ops.filter((o) => PARTS.has(o.op) && o.args[0] !== undefined)
     .map((o) => ({ o, p: pidx.get(o.op === 'fop' ? 'first-order' : 'single-valued'), r: o.op === 'fop' && SW !== undefined ? SW : W }))
     .filter((x) => x.p !== undefined);
-  for (let changed = bottomProps.length > 0 || partMax.length > 0; changed;) {
+  for (let changed = bottomProps.length > 0 || partMax.length > 0 || closures.length > 0; changed;) {
     changed = false;
     for (const { p, r, dom } of charProps)
       for (const b of basesAt(r).slice(0, 1))
@@ -555,6 +566,12 @@ export function buildZoo(raw) {
     for (const { o, p, r } of partMax)
       for (const s of out[W][o.args[0]]) if (s !== o.i && P[p].get(s)?.v && !Ib[r][key(o.i, s)] && inDomain(r, s))
         addI(r, o.i, s, { rule: 'op-part-max', prem: [fI(W, o.args[0], s), fP(p, s, true)] });
+    // closure laws with the derived values (the implication loop used the cited ones)
+    for (const c of closures)
+      for (const [a, { v }] of P[c.p]) if (v && inDomain(c.r, a))
+        for (const b of [...out[c.r][a]]) for (const o of opsByArg.get(b) || [])
+          if (o.op === c.op && o.args.length === 1 && !Ib[c.r][key(a, o.i)])
+            addI(c.r, a, o.i, { rule: 'prop-closure', prop: c.p, prem: [fP(c.p, a, true), fI(c.r, a, b)] });
     if (queue.length > before) { changed = true; drainI(); }
   }
 
@@ -606,6 +623,19 @@ export function buildZoo(raw) {
       const [strong, weak] = down ? [pos, neg] : [neg, pos];
       for (const a of strong) for (const b of weak)
         addN(a, b, { rule: 'prop-sep', prop: p, prem: [fP(p, a, down), fP(p, b, !down)] });
+    });
+    // `below: {property: q, over: r}`: what is r-reducible to a problem with p has q on
+    // its true instances (a problem c-reducible to a first-order one has solutions
+    // computable from its instances, even when the first-order problem is not
+    // ω-absolute and so not read as computably true). An ω-absolute t failing q is
+    // therefore not r-reducible to s.
+    raw.properties.forEach((prop, p) => {
+      if (!prop.below || ridx.get(prop.below.over) !== r) return;
+      const q = pidx.get(prop.below.property);
+      const pos = [...P[p]].filter(([, x]) => x.v).map(([s]) => s).filter((s) => inDomain(r, s));
+      const neg = [...P[q]].filter(([, x]) => !x.v).map(([t]) => t).filter((t) => absolute[t] && inDomain(r, t));
+      for (const s of pos) for (const t of neg)
+        if (s !== t) addN(s, t, { rule: 'prop-below', prop: p, prem: [fP(p, s, true), fP(q, t, false)] });
     });
     for (const r2 of coarserAll[r]) {
       for (const k of N[r2].keys()) {

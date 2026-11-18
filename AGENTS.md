@@ -114,7 +114,7 @@ paper.
 | review queue: AI proposals and consolidation candidates, votes of the review page (`docs/REVIEW.md`) | `scripts/review.mjs`, `scripts/lib/review-queue.mjs`, `site/js/review.js` | `data/review.yaml`, `site/data/review.json` |
 | long texts read in parts by the AI reader | `scripts/lib/split-text.mjs` | cached texts |
 | adding results | `scripts/add-results.mjs` → `scripts/lib/results.mjs` | results |
-| endorsements and comments: server (PHP), viewer, download; saved diagrams (private, server only) | `site/api/*.php`, `site/js/community.js`, `scripts/endorsements-sync.mjs` | `zoo.json` (results' `_key`, statement and reduction ids), `data/endorsements.yaml` |
+| endorsements and comments: server (PHP), viewer, download, answers to messages; saved diagrams (private, server only) | `site/api/*.php`, `site/js/community.js`, `scripts/endorsements-sync.mjs`, `scripts/feedback-answer.mjs` | `zoo.json` (results' `_key`, statement and reduction ids), `data/endorsements.yaml` |
 | full texts uploaded by researchers (`docs/UPLOADS.md`): server, viewer, import | `site/api/*.php`, `site/js/community.js`, `viewUploads` in `site/js/app.js`, `scripts/uploads-sync.mjs` | `zoo.json` (references), the server's uploads |
 | upload to the live instance (explicit file list, never deletes) | `scripts/deploy.mjs` → `scripts/lib/deploy.mjs` | `site/`, `cache/deploy.json` |
 | one-off imports (kept for provenance, not maintained) | `scripts/import/` | — |
@@ -235,8 +235,12 @@ Never delete items.
 authoritative: never edit it by hand) and saves new messages in
 `feedback/inbox/`. A report of an error is a lead like any other: read the
 theorem in the paper (section 1) before changing data, then move the file to
-`feedback/done/`. Never put messages, `site/api/config.php` or the admin token
-in git.
+`feedback/done/`. Draft an answer to each message in its file
+(`"reply": {"text", "by": "ai"}`: what was changed, with the theorem read, or why
+nothing was; `docs/ENDORSEMENTS.md`, "Answers"). Sending is the maintainer's:
+show them `node scripts/feedback-answer.mjs --dry-run`, and run it without
+`--dry-run` only when they say so. Never put messages, `site/api/config.php` or
+the admin token in git.
 
 ### Full texts uploaded by researchers
 

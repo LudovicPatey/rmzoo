@@ -21,6 +21,8 @@
 //   GET  ?a=diagrams   the signed-in person's saved diagrams (private to them)
 //   POST ?a=diagram    {name, s: [statement ids], r: reduction id, sep, open} saves one (a diagram of the same
 //                      name is replaced); {delete: <diagram id>} removes one; both answer {diagrams}
+//   POST ?a=answer     (admin token) {id: <message id>, text, by: ai|maintainer} adds an answer to a message,
+//                      shown to its author (scripts/feedback-answer.mjs); the same text twice is kept once
 //   GET  ?a=export     (admin token) endorsements, votes, comments (review items, questions) and all feedback, for scripts/endorsements-sync.mjs
 //   GET  ?a=uploads-export        (admin token) the index of all uploads, for scripts/uploads-sync.mjs
 //   GET  ?a=upload-file&id=<id>   (admin token) one uploaded file
@@ -412,6 +414,28 @@ switch ($a) {
     header('Cache-Control: no-store');
     readfile(uploads_dir() . "/$id.pdf");
     exit;
+  }
+
+  case 'answer': {
+    $tok = cfg()['admin_token'] ?? '';
+    $auth = $_SERVER['HTTP_AUTHORIZATION'] ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? '';
+    if (strlen($tok) < 20 || !hash_equals('Bearer ' . $tok, $auth)) fail(403, 'Forbidden.');
+    $b = body();
+    $id = (string) ($b['id'] ?? '');
+    if (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{6}Z-[0-9X-]{19}-[0-9a-f]{6}$/', $id)) fail(400, 'Bad message id.');
+    $file = data_dir() . "/feedback/$id.json";
+    if (!is_file($file)) fail(404, 'Unknown message.');
+    $text = trim((string) ($b['text'] ?? ''));
+    if ($text === '' || mb_strlen($text) > 10000) fail(400, 'The answer must have between 1 and 10000 characters.');
+    $by = $b['by'] ?? 'maintainer';
+    if (!in_array($by, ['ai', 'maintainer'], true)) fail(400, 'by: ai or maintainer.');
+    $x = json_decode((string) file_get_contents($file), true);
+    if (!is_array($x)) fail(500, 'Unreadable message.');
+    $x['answers'] = $x['answers'] ?? [];
+    foreach ($x['answers'] as $a) if (($a['text'] ?? '') === $text) json_out(['ok' => true, 'answers' => $x['answers']]);
+    $x['answers'][] = ['date' => gmdate('c'), 'text' => $text, 'by' => $by];
+    file_put_contents($file, json_encode($x, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), LOCK_EX);
+    json_out(['ok' => true, 'answers' => $x['answers']]);
   }
 
   case 'export': {

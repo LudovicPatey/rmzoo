@@ -127581,3 +127581,110 @@
     date: 2026-11-17
     by: claude
     note: "Already in the catalogue as [[opendagger]]. Overview of Section I.5: open† is drafted as opendagger; WBCT[0,1] is group A (Principle D.5.1); HBU_usco is a restriction of HBU not added."
+- id: contrib-00-0003-0351-3058-faf933-1
+  kind: result
+  status: done
+  date: 2026-11-13
+  origin: contributed
+  result:
+    type: implication
+    from: accn
+    to: dis
+    over: w
+  ref: brattka2021
+  loc: Thm 1.12
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-13T120338Z-0000-0003-0351-3058-faf933
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: 27c8dbae2d79
+  decision:
+    date: 2026-11-18
+    by: ludovic
+    note: "Entered from brattka2021, Theorem 1.12 with Proposition 2.2(1) (stashing is below the problem): DIS ≤sW ACC_N, and also DIS ≤sW LLPO and DIS ≤sW LPO."
+- id: contrib-00-0003-0351-3058-1eb6aa-1
+  kind: result
+  status: done
+  date: 2026-11-13
+  origin: contributed
+  result:
+    type: separation
+    from: sigma11-cn
+    to: padeg
+    over: w
+  argument: Sigma11-CN is first-order, hence computably true
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-13T122205Z-0000-0003-0351-3058-1eb6aa
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: 946a4b3a07f1
+  decision:
+    date: 2026-11-18
+    by: ludovic
+    note: "Now derived: Σ¹₁-C_N is recorded as first-order (its solutions are natural numbers), hence computably true, and PA is not."
+- id: contrib-00-0003-0351-3058-3419d8-1
+  kind: result
+  status: pending
+  date: 2026-11-16
+  origin: contributed
+  result:
+    type: implication
+    from: kpt
+    to: non
+    over: w
+  argument: "Trivial: by definition, the output of KPT is non-computable in the input"
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-16T114924Z-0000-0003-0351-3058-3419d8
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: 005e4c90c3fd
+- id: contrib-00-0003-0351-3058-59351f-1
+  kind: result
+  status: done
+  date: 2026-11-18
+  origin: contributed
+  result:
+    type: implication
+    from: padeg
+    to: non
+    over: w
+  argument: trivial, PA degrees are non computable
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-18T103610Z-0000-0003-0351-3058-59351f
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: f0ea012ecc0c
+  decision:
+    date: 2026-11-18
+    by: ludovic
+    note: "Entered from the paper: NON ≤sW PA is stated after Proposition 6.3 of brattkahendtlasskreuzer2017 (with PA ≰W NON and ACC_N ≰W PA)."
+- id: contrib-00-0003-0351-3058-9232ec-1
+  kind: result
+  status: done
+  date: 2026-11-18
+  origin: contributed
+  result:
+    type: implication
+    from: ucnn
+    to: lim.diamond
+    over: w
+  argument: follows from the fact that UCBaire is closed under composition and computes lim (both facts are already in the database)
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-18T123232Z-0000-0003-0351-3058-9232ec
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: 4ec57cfe11a9
+  decision:
+    date: 2026-11-18
+    by: ludovic
+    note: "Now derived by a new engine law (closure: diamond): UC_Baire is closed under compositional product (BGP 2021) and lim ≤W UC_Baire, so lim⋄ ≤W UC_Baire."
