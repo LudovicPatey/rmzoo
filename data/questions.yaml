@@ -635,7 +635,7 @@
 - id: ivt-rt22
   question: Is the intermediate value theorem Weihrauch reducible to $\mathsf{RT}^2_2$?
   asked:
-    - {ref: brattkarakotoniaina2017, loc: Question 5.21}
+    - {ref: brattkarakotoniaina2017, loc: "arXiv v1 (1508.00471v1), Question 5.21"}
   statements: [ivt, rt22]
   formal:
     - {from: rt22, to: ivt, over: w}

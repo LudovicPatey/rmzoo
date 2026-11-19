@@ -40,7 +40,7 @@ export const RULES = {
   'prop-equiv': 'A Weihrauch property is invariant under equivalence (the same Weihrauch degree, or strong degree for strong properties)',
   'prop-self': 'A problem has this property exactly when it is above the corresponding operation applied to itself (idempotent: P × P ≤W P; parallelizable: P̂ ≤W P; closed under compositional product: P ⋆ P ≤W P)',
   'prop-below': 'A problem reducible to one with this property has a weaker one (a problem computably reducible to a first-order problem has solutions computable from its instances): a problem failing the weaker one is not reducible to it',
-  'prop-closure': 'A problem with a closure property lies above the closure of every problem below it (UC_ℕ^ℕ is closed under compositional product and lim ≤W UC_ℕ^ℕ, so lim⋄ ≤W UC_ℕ^ℕ; a parallelizable problem lies above P̂ when it lies above P)',
+  'prop-closure': 'A problem with a closure property lies above the closure of every problem below it (UC_ℕ^ℕ is closed under compositional product and lim ≤W UC_ℕ^ℕ, so lim⋄ ≤W UC_ℕ^ℕ; a parallelizable problem lies above P̂ when it lies above P; an idempotent problem lies above P × R when it lies above P and R)',
   'prop-joint': 'Properties that together imply another (a parallelizable cylinder is strongly parallelizable: P̂ ≤W P gives P̂ ≤sW P, Brattka, Gherardi and Pauly, Proposition 3.5)',
   'prop-op': 'Weihrauch operations produce problems with this property (P̂ is parallelizable, P* idempotent, P⋄ closed under compositional product, P ⋆ Q a cylinder; a jump P′ is finitely tolerant and a fractal, and the jump of a cylinder is a cylinder)',
   'prop-elim': 'Choice elimination: a problem with this property below a compositional product with a factor below the eliminated problem is below the other factor (a total fractal below g ⋆ C_ℕ is below g: Brattka, Gherardi and Pauly, Theorem 7.15; a single-valued problem below C_{2^ℕ} ⋆ g is below g: Theorem 7.25)',
@@ -343,12 +343,22 @@ export function buildZoo(raw) {
   raw.properties.forEach((prop, p) => {
     if (prop.lift) lifting.push({ p, from: ridx.get(prop.lift.from), to: ridx.get(prop.lift.to), has: citedHas(p) });
   });
-  // closure laws (`closure: op`): op(P) is the least problem with the property above P
-  // (P⋄ for closure under ⋆, P̂ for parallelizability, P* for idempotence), so a statement
-  // with the property that implies P implies op(P), over closedUnder. Like the lift, it
-  // uses the cited values and the laws on operations.
+  // closure laws (`closure: [ops]`): a statement Q with the property that implies every
+  // argument of op(P…) implies op(P…), over closedUnder: P⋄ and P ⋆ R for closure under ⋆,
+  // P̂ for parallelizability, P* and P × R for idempotence (Q × Q ≤ Q, products are
+  // monotone). Like the lift, the implication loop uses the cited values and the laws on
+  // operations; the loop of derived properties below uses every value.
   const closures = raw.properties.flatMap((prop, p) => (prop.closure
-    ? [{ p, r: ridx.get(prop.closedUnder), op: prop.closure, has: citedHas(p) }] : []));
+    ? [{ p, r: ridx.get(prop.closedUnder), ops: new Set([].concat(prop.closure)), has: citedHas(p) }] : []));
+  // the operator statements o (of an op of c) with b among their arguments that a implies
+  // argumentwise: a implies o
+  const closeOver = (c, a, b, I1) => {
+    for (const o of opsByArg.get(b) || []) {
+      if (!c.ops.has(o.op) || !o.args.length || o.args.includes(undefined) || I1[c.r][key(a, o.i)]) continue;
+      if (o.args.every((x) => x === a || I1[c.r][key(a, x)]))
+        addI(c.r, a, o.i, { rule: 'prop-closure', prop: c.p, prem: [fP(c.p, a, true), ...[...new Set(o.args)].filter((x) => x !== a).map((x) => fI(c.r, a, x))] });
+    }
+  };
   // choice elimination (`eliminates: {side, factor}`): if s has the property and
   // s ≤ g ⋆ h with h ≤ factor (side right: h is applied first) — or s ≤ h ⋆ g
   // (side left) — then s ≤ g, over closedUnder. `keep` is the index of g in the
@@ -397,9 +407,7 @@ export function buildZoo(raw) {
       if (ops.length) monotone(r, a, b);
       for (const l of lifting) if (l.from === r && l.has.has(a)) addI(l.to, a, b, { rule: 'prop-lift', prem: [fI(r, a, b)] });
       if (elims.length) elimI(r, a, b);
-      for (const c of closures) if (c.r === r && c.has.has(a))
-        for (const o of opsByArg.get(b) || []) if (o.op === c.op && o.args.length === 1)
-          addI(r, a, o.i, { rule: 'prop-closure', prop: c.p, prem: [fP(c.p, a, true), fI(r, a, b)] });
+      for (const c of closures) if (c.r === r && c.has.has(a)) closeOver(c, a, b, Ib);
       for (const { fine, B } of liftsCoarse[r]) // a → b over the coarse frame
         if (I[fine].has(key(a, B))) addI(fine, a, b, { rule: 'base-lift', prem: [fI(fine, a, B), fI(r, a, b)] });
       for (const { coarse, B } of liftsFine[r]) // a → B over the fine frame
@@ -569,9 +577,7 @@ export function buildZoo(raw) {
     // closure laws with the derived values (the implication loop used the cited ones)
     for (const c of closures)
       for (const [a, { v }] of P[c.p]) if (v && inDomain(c.r, a))
-        for (const b of [...out[c.r][a]]) for (const o of opsByArg.get(b) || [])
-          if (o.op === c.op && o.args.length === 1 && !Ib[c.r][key(a, o.i)])
-            addI(c.r, a, o.i, { rule: 'prop-closure', prop: c.p, prem: [fP(c.p, a, true), fI(c.r, a, b)] });
+        for (const b of [...out[c.r][a]]) closeOver(c, a, b, Ib);
     if (queue.length > before) { changed = true; drainI(); }
   }
 

@@ -14,3 +14,6 @@ kohlenbach2002b:
 nobrega2018:
   url: https://www.cambridge.org/core/services/aop-cambridge-core/content/view/05B5BDB842A2C56243D98D4A8BC780EF/S1079898619000490a.pdf/div-class-title-games-for-functions-baire-classes-weihrauch-degrees-transfinite-computations-and-ranks-div.pdf
   reason: The thesis abstract printed in the Bulletin of Symbolic Logic (with other abstracts), not the thesis.
+brattkarakotoniaina2017:
+  zotero: 6W39XVSW
+  reason: In the maintainer's Zotero library this item has arXiv v1 (2015) attached, whose numbering differs from the published version; arXiv v5 (the published version, 2017) is cached instead.

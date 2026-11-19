@@ -12,7 +12,7 @@
   over: w
   refs:
     - ref: brattkarakotoniaina2017
-      loc: "Theorem 4.21 (n = 1, k = 2)"
+      loc: "Theorem 4.22 (n = 1, k = 2)"
     - ref: ddhms2016
   note: RT¹ₖ₊₁ is not Weihrauch reducible to RT¹ₖ.
 

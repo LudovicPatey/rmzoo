@@ -192,7 +192,11 @@ node scripts/feedback-answer.mjs               # send (admin token as for the sy
 
 The server (`?a=answer`, admin token) appends the answer to the message's file
 (`answers: [{date, text, by}]`; the same text twice is kept once), and the script
-records `replied` in the local file, so an answer is never sent twice. Like the
+copies the answers into the local file, so an answer is never sent twice; to answer
+the same message again, replace its `reply`. Under an answered message the author
+finds a Reply box: the reply is a new comment with `replyTo: <message id>` (only on
+one's own messages), downloaded by the sync like any message and answered the same
+way; the profile shows the thread. Like the
 messages, answers are private to their author and never committed.
 
 ### What is in git

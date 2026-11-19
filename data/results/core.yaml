@@ -60,6 +60,7 @@
 
 # ---- Randomness ------------------------------------------------------------
 
+- { type: implication, from: ran1, to: non, over: sw, folklore: true, justification: { kind: reduction, by: ai, text: "A set Martin-Löf random relative to X is not computable from X (an X-computable set is covered by an X-computable Martin-Löf test), so the identity maps a solution of MLR(X) to a solution of NON(X)." } }
 - { type: implication, from: wkl, to: wwkl, over: [ sw, rca0star ], folklore: true, justification: { kind: restriction, text: WWKL is WKL restricted to trees of positive measure., by: ai } }
 
 # ---- Induction and bounding ------------------------------------------------

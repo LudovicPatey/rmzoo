@@ -4,7 +4,8 @@
 // an answer is drafted in it as
 //   "reply": { "text": "…", "by": "ai" | "maintainer" }
 // (by: ai when an AI assistant wrote it; the maintainer reads it before sending).
-// This script posts every drafted reply not sent yet, records "replied": <date> in the
+// This script posts every drafted reply not sent yet (not among the file's `answers`: to
+// answer again, replace `reply`), records "replied": <date> and the answers in the
 // file, and the author sees the answer under the message on their profile (the bell
 // signals it). --dry-run lists what would be sent; --only <id> sends one.
 //
@@ -27,7 +28,8 @@ const files = ['feedback/inbox', 'feedback/done'].filter((d) => fs.existsSync(d)
 const todo = [];
 for (const f of files) {
   const m = JSON.parse(fs.readFileSync(f, 'utf8'));
-  if (!m.reply?.text || m.replied || (only && m.id !== only)) continue;
+  // a reply not yet among the message's answers (a later answer replaces `reply`)
+  if (!m.reply?.text || (m.answers || []).some((a) => a.text === m.reply.text) || (only && m.id !== only)) continue;
   if (!['ai', 'maintainer'].includes(m.reply.by || 'maintainer')) { console.error(`${f}: reply.by must be ai or maintainer`); process.exit(1); }
   todo.push({ f, m });
 }

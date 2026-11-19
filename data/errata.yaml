@@ -11,12 +11,12 @@
   kind: error
   claim: For k = ℕ, $\mathsf{C}'_k \equiv_W \mathsf{RT}^1_k$ (and $\mathrm{lim}_k \equiv_W \mathsf{SRT}^1_k$, which holds).
   correction: >
-    False for k = ℕ. The proof cites $\mathsf{C}'_k \equiv_W \mathsf{BWT}_k$, which holds only for finite k (Fact 2.1(1) of
+    False for k = ℕ. The proof cites $\mathsf{C}'_k \equiv_W \mathsf{BWT}_k$, which holds only for finite k (Fact 2.3(1) of
     [@brattkarakotoniaina2017]). For k = ℕ, [[rt1n]] ≡W BWT_ℕ (Proposition 3.4 of [@brattkarakotoniaina2017]) and
     BWT_ℕ ≡sW K′_ℕ (Theorem 11.2 of [@brattkagherardimarcone2012]), which is strictly below C′_ℕ. The paper's own Lemma 7.31
     (LPO′ ≰W RT¹_ℕ) agrees with the corrected statement.
   refs:
-    - { ref: brattkarakotoniaina2017, loc: "Fact 2.1(1), Proposition 3.4" }
+    - { ref: brattkarakotoniaina2017, loc: "Fact 2.3(1), Proposition 3.4" }
     - { ref: brattkagherardimarcone2012, loc: "Theorems 11.2 and 12.10" }
   date: 2026-11-05
 

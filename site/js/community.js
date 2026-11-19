@@ -80,7 +80,7 @@ export function createCommunity(zoo) {
     index(s.people, s.endorsements);
   };
   // kind: error | comment; target: {type: result|statement|reference|question|general, id}
-  c.sendFeedback = (kind, target, text) => post('feedback', { kind, target, text, page: location.hash });
+  c.sendFeedback = (kind, target, text, replyTo) => post('feedback', { kind, target, text, page: location.hash, ...(replyTo ? { replyTo } : {}) });
   // facts missing from the database: [{type, from, to, over} | {type: property, statement, property, value},
   // each with source {ref | citation, loc} and/or justification], and a message to the maintainer
   c.suggest = (facts, text, target = { type: 'general', id: '' }) =>

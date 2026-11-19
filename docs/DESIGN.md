@@ -289,10 +289,11 @@ one also has (computably true ⇒ cone avoidance, low basis, …; low basis ⇒ 
 low basis), and the engine propagates values both ways (failing the low₂ basis
 means failing the low basis). `jointly` lists sets of properties that together
 imply this one (a parallelizable cylinder is strongly parallelizable: P̂ ≤W P gives
-P̂ ≤sW P); failing it with all the parts but one means failing the last. `closure: op`
-says that op(P) is the least problem with the property above P (P⋄ for closure
-under ⋆, P̂ for parallelizability, P* for idempotence): a problem with it that lies
-above P lies above op(P). `below: {property: q, over: R}` says that what is
+P̂ ≤sW P); failing it with all the parts but one means failing the last. `closure: [ops]`
+lists operations under which the problems with the property are closed from below:
+a problem with it that lies above every argument of op(P…) lies above op(P…) (P⋄
+and P ⋆ R for closure under ⋆, P̂ for parallelizability, P* and P × R for
+idempotence). `below: {property: q, over: R}` says that what is
 R-reducible to a problem with the property has q on its true instances: a problem
 c-reducible to a first-order one is computably true, even when the first-order
 problem is not ω-absolute (Σ¹₁-C_ℕ). The **lowness hierarchy**
@@ -507,7 +508,7 @@ over R), and `Has(p,s)` / `Lacks(p,s)`. Rules:
 | prop-self | `I(Rp,a,op(a))` / `N(Rp,a,op(a))`, p with `selfOp` op | `Has(p,a)` / `Lacks(p,a)`; a cited value gives the `I` or `N` |
 | prop-op | o = op(a…), op in `opHas` (or in `opKeeps` and the arguments have p) | `Has(p,o)` |
 | prop-below | `Has(p,a)`, `Lacks(q,b)`, b ω-absolute, p with `below: {property: q, over: R}` | `N(R,a,b)` |
-| prop-closure | `Has(p,a)`, `I(Rp,a,b)`, p with `closure: op` | `I(Rp,a,op(b))` |
+| prop-closure | `Has(p,a)`, `I(Rp,a,b)` for every argument b of o = op(b…), op in p's `closure` | `I(Rp,a,o)` |
 | prop-joint | `Has(q,a)` for every q of a set in p's `jointly` | `Has(p,a)`; and `Lacks(p,a)` with all but one q gives `Lacks` of the last |
 | prop-lift | `I(R,a,b)`, a has p with `lift: {from: R, to: R'}` (cylinder) | `I(R',a,b)` |
 | prop-elim | `I(Rp,g⋆h,a)`, `Has(p,a)`, `I(Rp,F,h)`, p with `eliminates: {side: right, factor: F}` (side left: `h⋆g`) | `I(Rp,g,a)`; from `N(Rp,g,a)`: `N(Rp,g⋆h,a)` |

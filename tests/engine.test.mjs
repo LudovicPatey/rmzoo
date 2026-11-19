@@ -180,6 +180,29 @@ test('closure laws: a problem closed under compositional product lies above P⋄
   assert.equal(st('w', 'l', 'm.diamond'), 'open');    // l is not known closed under ⋆
 });
 
+test('closure laws: an idempotent problem lies above P × R when it lies above P and R', () => {
+  const zoo = buildZoo({
+    reductions: [{ id: 'w', domain: 'problems', algebra: 'weak', finerThan: [] }],
+    properties: [
+      { id: 'par', closedUnder: 'w', direction: 'equiv', domain: 'problems', selfOp: 'par', implies: ['idem'], closure: ['par'] },
+      { id: 'idem', closedUnder: 'w', direction: 'equiv', domain: 'problems', selfOp: 'product', closure: ['fin', 'product'] },
+    ],
+    statements: [
+      { id: 'q', kind: 'problem' }, { id: 'a', kind: 'problem' }, { id: 'b', kind: 'problem' }, { id: 'c', kind: 'problem' },
+      { id: 'a.x.b', kind: 'problem', op: 'product', args: ['a', 'b'] },
+      { id: 'a.x.c', kind: 'problem', op: 'product', args: ['a', 'c'] },
+    ],
+    results: [
+      { type: 'property', statement: 'q', property: 'par', value: true, refs: [{ ref: 'x' }] },
+      { type: 'implication', from: 'q', to: 'a', over: 'w', refs: [{ ref: 'x' }] },
+      { type: 'implication', from: 'q', to: 'b', over: 'w', refs: [{ ref: 'x' }] },
+    ],
+  });
+  const st = (x, y) => zoo.status(zoo.ridx.get('w'), zoo.sidx.get(x), zoo.sidx.get(y));
+  assert.equal(st('q', 'a.x.b'), 'implies'); // parallelizable ⇒ idempotent, a, b ≤ q
+  assert.equal(st('q', 'a.x.c'), 'open');    // c is not known below q
+});
+
 test('continuous and arithmetic Weihrauch reductions: coarser than W, their own laws', () => {
   const zoo = buildZoo({
     reductions: [

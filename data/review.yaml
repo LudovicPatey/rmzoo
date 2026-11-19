@@ -127628,7 +127628,7 @@
     note: "Now derived: Σ¹₁-C_N is recorded as first-order (its solutions are natural numbers), hence computably true, and PA is not."
 - id: contrib-00-0003-0351-3058-3419d8-1
   kind: result
-  status: pending
+  status: rejected
   date: 2026-11-16
   origin: contributed
   result:
@@ -127644,6 +127644,10 @@
   reasons:
     - "contributed by a researcher: check the source before accepting"
   proposed: 005e4c90c3fd
+  decision:
+    date: 2026-11-19
+    by: ludovic
+    note: "False with Definition 10.2 of brattkahendtlasskreuzer2017 (only the join is above r: for r = ∅′ a Sacks splitting gives a solution ≤T ∅′); the contributor agreed (email of 2026-11-19)."
 - id: contrib-00-0003-0351-3058-59351f-1
   kind: result
   status: done

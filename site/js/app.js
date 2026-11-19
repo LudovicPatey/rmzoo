@@ -2695,6 +2695,19 @@ function viewProfile(orcid, params = new URLSearchParams()) {
   if (own) {
     C.listDiagrams().then(drawDiagrams).catch((err) => { const el = $('#diagrams-root'); if (el) el.innerHTML = `<p class="no">${esc(err.message)}</p>`; });
     loadUploads(params);
+    $('#contrib-root')?.addEventListener('submit', async (e) => {
+      const f = e.target.closest('.reply-form');
+      if (!f) return;
+      e.preventDefault();
+      const btn = f.querySelector('button'), out = f.querySelector('.reply-msg');
+      btn.disabled = true;
+      try {
+        await C.sendFeedback('comment', { type: f.dataset.type, id: f.dataset.id }, f.querySelector('textarea').value, f.dataset.reply);
+        const msgs = await C.mine();
+        C.myMessages = msgs;
+        $('#contrib-root').innerHTML = contributionsHtml(orcid, msgs);
+      } catch (err) { out.textContent = err.message; btn.disabled = false; }
+    });
     C.mine().then((msgs) => {
       C.myMessages = msgs;
       const el = $('#contrib-root');
@@ -2716,8 +2729,12 @@ function contributionsHtml(orcid, msgs) {
   const own = msgs !== null;
   const pub = publicComments(orcid);
   const qLink = (id) => { const q = (Z.raw.questions || []).find((x) => x.id === id); return `<a href="#/questions/${esc(id)}">${q ? rich(qText(q)) : esc(id)}</a>`; };
-  const facts = own ? msgs.filter((m) => m.kind === 'suggestion') : [];
-  const others = own ? msgs.filter((m) => m.kind !== 'suggestion') : [];
+  // replies to one's own messages are shown in the thread of the message they answer
+  const replies = new Map();
+  if (own) for (const m of msgs) if (m.replyTo) { if (!replies.has(m.replyTo)) replies.set(m.replyTo, []); replies.get(m.replyTo).push(m); }
+  const top = own ? msgs.filter((m) => !m.replyTo) : [];
+  const facts = top.filter((m) => m.kind === 'suggestion');
+  const others = top.filter((m) => m.kind !== 'suggestion');
   const targetHtml = (tg) => {
     if (!tg || tg.type === 'general') return 'the zoo';
     if (tg.type === 'result') { const ri = resultIdx.get(tg.id); return ri !== undefined ? resultFact(Z.raw.results[ri]) : 'a result (since changed)'; }
@@ -2730,6 +2747,16 @@ function contributionsHtml(orcid, msgs) {
   const answersHtml = (m) => (m.answers || []).map((a) => `<div class="answer"><div class="small muted">Answer of the maintainer · ${esc(String(a.date).slice(0, 10))}${a.by === 'ai'
       ? ' · <span title="Written by an AI assistant from the papers of the zoo, read and sent by the maintainer">drafted by an AI assistant</span>' : ''}</div>
       <div class="small">${richLinks(a.text)}</div></div>`).join('');
+  // the rest of a thread: one's replies (oldest first) with their answers, then a reply
+  // form once the maintainer has answered
+  const threadHtml = (m) => {
+    const rs = (replies.get(m.id) || []).slice().sort((a, b) => String(a.date).localeCompare(String(b.date)));
+    const answered = (m.answers || []).length || rs.some((r) => (r.answers || []).length);
+    return `${rs.map((r) => `<div class="reply"><div class="small muted">Your reply · ${esc(String(r.date).slice(0, 10))}</div><div class="small">${esc(r.text)}</div>${answersHtml(r)}</div>`).join('')}
+      ${answered ? `<details class="reply-box"><summary class="small">Reply</summary><form class="reply-form" data-reply="${esc(m.id)}" data-type="${esc(m.target?.type || 'general')}" data-id="${esc(m.target?.id || '')}">
+        <textarea rows="3" maxlength="10000" required placeholder="Your reply to the maintainer (private)"></textarea>
+        <div class="row"><button class="btn small primary" type="submit">Send</button><span class="small muted reply-msg"></span></div></form></details>` : ''}`;
+  };
   const factRow = (f) => {
     const ok = [f.from, f.to, f.statement].filter(Boolean).every((id) => idx(id) !== undefined) && (!f.over || Z.ridx.has(f.over)) && (!f.property || Z.pidx.has(f.property));
     const src = f.source || {};
@@ -2741,11 +2768,11 @@ function contributionsHtml(orcid, msgs) {
         the badge says what the database knows of it now (“in the database” once accepted, or derived from other results).
         <button class="btn small" data-suggest="">+ Contribute facts</button></p>
       ${facts.length ? facts.map((m) => `<div class="card contrib"><div class="small muted">${esc(String(m.date).slice(0, 10))}${m.target?.type === 'question' ? ` · answering ${qLink(m.target.id)}` : ''}</div>
-          <ul class="contrib-facts">${(m.facts || m.results || []).map(factRow).join('')}</ul>${m.text ? `<p class="small">${esc(m.text)}</p>` : ''}${answersHtml(m)}</div>`).join('')
+          <ul class="contrib-facts">${(m.facts || m.results || []).map(factRow).join('')}</ul>${m.text ? `<p class="small">${esc(m.text)}</p>` : ''}${answersHtml(m)}${threadHtml(m)}</div>`).join('')
         : '<p class="muted">No fact contributed yet.</p>'}
       <h2>Your messages to the maintainer</h2>
       ${others.length ? `<ul class="contrib-msgs">${others.map((m) => `<li><span class="badge ${m.kind === 'error' ? 'warn' : ''}">${m.kind === 'error' ? 'error report' : 'comment'}</span>
-          on ${targetHtml(m.target)} <span class="small muted">${esc(String(m.date).slice(0, 10))}</span><div class="small">${esc(m.text)}</div>${answersHtml(m)}</li>`).join('')}</ul>`
+          on ${targetHtml(m.target)} <span class="small muted">${esc(String(m.date).slice(0, 10))}</span><div class="small">${esc(m.text)}</div>${answersHtml(m)}${threadHtml(m)}</li>`).join('')}</ul>`
         : '<p class="muted">No message.</p>'}` : ''}
     <h2>${own ? 'Your public comments' : 'Public comments'}</h2>
     ${pub.length ? `<ul class="contrib-msgs">${pub.map((c) => `<li>on ${c.where === 'question' ? `the question ${qLink(c.question)}` : `the review item <a href="#/review/${esc(c.item)}">${esc(c.item)}</a>`}

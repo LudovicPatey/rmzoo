@@ -118,6 +118,16 @@ test('answers to messages: admin token only, shown to the author, kept once', { 
   const m = messages.find((x) => x.id === id);
   assert.equal(m.answers.length, 1);
   assert.equal(m.answers[0].by, 'ai');
+  // the author replies in the thread; nobody else can
+  const reply = (sess, tok, replyTo) => post(sess, 'feedback', { kind: 'comment', target: { type: 'statement', id: 'coh' }, text: 'Thanks, but…', replyTo }, tok);
+  assert.equal((await reply(s, csrf, '../x')).status, 400);
+  assert.equal((await reply(s, csrf, id)).status, 200);
+  const o = session();
+  await o.req(`${B}?a=devlogin&orcid=0000-0002-1825-0097&name=Bob`);
+  const { csrf: c2 } = await (await o.req(`${B}?a=state`)).json();
+  assert.equal((await reply(o, c2, id)).status, 404, 'a reply to someone else\'s message');
+  const mine = (await (await s.req(`${B}?a=mine`)).json()).messages;
+  assert.equal(mine.filter((x) => x.replyTo === id).length, 1);
 });
 
 // PHP's opcache may keep a rewritten config.php for up to 2 s (revalidate_freq): wait

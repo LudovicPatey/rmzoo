@@ -209,6 +209,9 @@ path.imp { stroke: var(--ink); stroke-width: 1.6; fill: none; opacity: .75; curs
 path.imp.hl { stroke: var(--accent); opacity: 1; stroke-width: 2.2; }
 path.sepa { stroke: var(--no); stroke-width: 1.4; fill: none; stroke-dasharray: 6 4; cursor: pointer; }
 path.opn { stroke: var(--open); stroke-width: 1.4; fill: none; stroke-dasharray: 2 4; cursor: pointer; }
+.reply { margin: 6px 0 2px 12px; padding: 4px 10px; border-left: 3px solid var(--line); }
+.reply-box { margin: 6px 0 0 12px; }
+.reply-form textarea { width: 100%; margin: 6px 0; }
 .answer { margin: 6px 0 2px 12px; padding: 6px 10px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 6px 6px 0; }
 .eb { cursor: pointer; }
 .dim .eb { opacity: .3; }

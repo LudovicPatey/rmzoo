@@ -4,7 +4,7 @@
 //   GET  ?a=login      redirect to ORCID (back: the page to return to, a #/… route)
 //   GET  ?a=logout     sign out, back to the site
 //   POST ?a=endorse    {result: <resultKey>, endorse: true|false}
-//   POST ?a=feedback   {kind: error|comment, target: {type, id}, text, page}
+//   POST ?a=feedback   {kind: error|comment, target: {type, id}, text, page, replyTo?: <id of one's own message>}
 //                      {kind: suggestion, facts: [fact], text, target, page}: facts missing from the database
 //                      (target: general, or the question they answer); fact: {type: implication|separation|
 //                      equivalence, from, to, over} or {type: property, statement, property, value}, with
@@ -225,6 +225,14 @@ switch ($a) {
       'author' => $u, 'page' => mb_substr((string) ($b['page'] ?? ''), 0, 300), 'zooBuiltAt' => $z['builtAt'] ?? null,
     ];
     if ($facts !== null) $rec['facts'] = $facts;
+    // a reply to one of one's own messages (to continue after an answer)
+    $rt = (string) ($b['replyTo'] ?? '');
+    if ($rt !== '') {
+      if ($kind !== 'comment' || !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{6}Z-[0-9X-]{19}-[0-9a-f]{6}$/', $rt)) fail(400, 'Bad reply.');
+      $parent = json_decode((string) @file_get_contents("$dir/$rt.json"), true);
+      if (!is_array($parent) || ($parent['author']['orcid'] ?? '') !== $u['orcid']) fail(404, 'Unknown message.');
+      $rec['replyTo'] = $rt;
+    }
     file_put_contents("$dir/$id.json", json_encode($rec, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
     json_out(['ok' => true, 'id' => $id]);
   }
