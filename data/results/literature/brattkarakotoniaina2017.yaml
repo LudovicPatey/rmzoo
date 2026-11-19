@@ -24,7 +24,10 @@
 - { type: implication, from: rt22.star.wkl-j, to: rt32, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: "Corollary 4.14 (n = 2, k = 2)" } ] }
 - { type: separation, from: rt12.jump.x.lim, to: rt22, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.2 } ] }
 - { type: separation, from: rt22, to: rt12.jump.x.lim, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 5.2 } ] }
-- { type: implication, from: srt22.star.srt22, to: kn.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: "arXiv v1 (1508.00471v1), Corollary 7.5; not in the published version" } ] }
+# Not entered: K_N' <=W SRT22 * SRT22 (arXiv v1, Corollary 7.5). It is absent from the published
+# version, and the v1 proof assumes the case distinction of the RCA0 proof of SRT22 -> RT1<inf is
+# decidable by LPO'. Deciding whether the coloring is stable is Pi03, though, and finding a color that
+# recurs infinitely often takes C_N', which already solves K_N' (maintainer, 2026-11-19).
 - { type: separation, from: rt12.jump, to: llpo.jump.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Theorem 6.8 and Corollary 6.10 (BWT′₂ = LLPO″) } ] }
 - { type: separation, from: llpo.jump.jump, to: rt12.jump, over: w, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 6.10 } ] }
 - { type: property, statement: rt12, property: parallelizable, value: false, refs: [ { ref: brattkarakotoniaina2017, loc: Corollary 3.10 } ] }
