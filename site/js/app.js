@@ -2330,7 +2330,7 @@ function feedbackPanel(kind, type, id) {
 // with its source (a paper of the references and where in it, or a citation) and/or a
 // justification, then sent together. Each fact becomes, after the maintainer's sync, a
 // pending item of the review page (origin: contributed) where researchers check it; the
-// contributor follows them on the Contributions tab of their profile (docs/ENDORSEMENTS.md).
+// contributor follows them in the Messages section of their profile (docs/ENDORSEMENTS.md).
 const CONTRIB_DRAFT = 'rmzoo.contrib';
 // the facts a question states: le/lt/gt give the implication and, when strict, the separation
 function factsOfQuery(q) {
@@ -2387,8 +2387,8 @@ function contributeModal(pre = {}) {
     <label class="small"><b>Message to the maintainer</b> (optional)</label>
     <textarea id="ct-text" rows="2" maxlength="10000" placeholder="Anything that applies to the whole list"></textarea>
     <p class="small muted">Sent with your name and ORCID iD (${esc(C.user.name)}). Each fact is then put on the <a href="#/review">review page</a>,
-      where researchers check it against its source before it enters the database; follow them on the Contributions tab of
-      <a href="#/u/me?tab=contributions">your profile</a>.</p>
+      where researchers check it against its source before it enters the database; follow them in the Messages section of
+      <a href="#/u/me?tab=messages">your profile</a>.</p>
     <div class="row"><button class="btn primary" id="ct-send">Send</button><span id="ct-msg" class="small"></span></div>`;
   const box = openModal(`<div class="modal-head"><h2>${q ? 'Answer a question' : 'Contribute facts'}</h2><button class="btn small" data-close-modal>✕</button></div>
     ${q ? `<p class="small">About <a href="#/questions/${esc(q.id)}">${q.question ? rich(q.question) : rich(qText(q))}</a></p>` : ''}${body}`);
@@ -2513,7 +2513,7 @@ function contributeModal(pre = {}) {
       store.set(CONTRIB_DRAFT, null);
       $('.modal-body', box).innerHTML = `<div class="modal-head"><h2>Thank you</h2><button class="btn small" data-close-modal>✕</button></div>
         <div class="verdict yes">${n === 1 ? 'Your fact was' : `Your ${n} facts were`} recorded. ${n === 1 ? 'It' : 'They'} will be checked against the sources on the
-          review page; follow ${n === 1 ? 'it' : 'them'} on the Contributions tab of <a href="#/u/me?tab=contributions">your profile</a>.</div>`;
+          review page; follow ${n === 1 ? 'it' : 'them'} in the Messages section of <a href="#/u/me?tab=messages">your profile</a>.</div>`;
     } catch (e2) { msg.textContent = e2.message; btn.disabled = false; }
   });
   drawList();
@@ -2610,71 +2610,282 @@ function renderAccount() {
   const a = $('#account');
   if (!C.live) { a.innerHTML = ''; return; }
   const np = C.user && C.uploads ? myMissingPapers().length : 0;
-  const na = C.user ? unreadAnswers() : 0;
+  const threads = C.user ? myThreads() : [];
+  const na = threads.reduce((n, t) => n + t.unread, 0);
   const n = np + na;
   const title = [na ? `${na} new ${na === 1 ? 'answer' : 'answers'} of the maintainer to your messages` : '',
     np ? `${np} of your papers ${np === 1 ? 'has' : 'have'} no full text in the zoo: share ${np === 1 ? 'it' : 'them'}, or say that you cannot` : ''].filter(Boolean).join('; ');
-  const bell = n ? `<a class="btn small bell" href="#/u/${C.user.orcid}?tab=${na ? 'contributions' : 'texts'}" title="${esc(title)}">
+  const first = threads.find((t) => t.unread);
+  const href = na ? `#/u/${C.user.orcid}?tab=messages${first ? `&thread=${encodeURIComponent(first.id)}` : ''}` : `#/u/${C.user?.orcid}?tab=texts`;
+  const bell = n ? `<a class="btn small bell" href="${href}" title="${esc(title)}">
       <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5.5-6.84V3.5a1.5 1.5 0 0 0-3 0v.66A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2Z"/></svg><span class="bell-count">${n}</span></a> ` : '';
   a.innerHTML = C.user
     ? `${bell}<button class="btn small" data-suggest="" title="Contribute facts to the database, with their sources">+ Facts</button>
-      <a class="btn small" href="#/u/${C.user.orcid}" title="Your profile: endorsements, contributions, diagrams and full texts"><span class="orcid-dot"></span>${esc(C.user.name)}</a>`
+      <a class="btn small" href="#/u/${C.user.orcid}" title="Your profile: messages, endorsements, diagrams and full texts"><span class="orcid-dot"></span>${esc(C.user.name)}</a>`
     : `<a class="btn small" id="signin" href="${C.loginUrl()}"><span class="orcid-dot"></span>Sign in</a>`;
-}
-// answers of the maintainer to one's messages not seen yet (the Contributions tab marks them seen)
-const ANSWERS_SEEN = 'rmzoo.answersSeen';
-function unreadAnswers() {
-  let seen = '';
-  try { seen = localStorage.getItem(ANSWERS_SEEN) || ''; } catch { /* private mode */ }
-  return (C.myMessages || []).flatMap((m) => m.answers || []).filter((a) => String(a.date) > seen).length;
-}
-function markAnswersSeen() {
-  const last = (C.myMessages || []).flatMap((m) => m.answers || []).map((a) => String(a.date)).sort().pop();
-  if (!last) return;
-  try { localStorage.setItem(ANSWERS_SEEN, last); } catch { /* private mode */ }
-  renderAccount();
 }
 // the sign-in link returns to the page being viewed
 window.addEventListener('hashchange', () => { const s = $('#signin'); if (s) s.href = C.loginUrl(); });
 
+// ============================================================================
+// messages to the maintainer as threads (docs/ENDORSEMENTS.md, "Answers"): a message, the
+// maintainer's answers and one's replies (comments with replyTo), oldest first. Read state
+// per thread in localStorage: the date of the last answer seen.
+// ============================================================================
+const THREADS_SEEN = 'rmzoo.threadsSeen';
+const ANSWERS_SEEN = 'rmzoo.answersSeen'; // former global mark: answers up to it count as seen
+const seenThreads = () => { try { return JSON.parse(localStorage.getItem(THREADS_SEEN) || '{}') || {}; } catch { return {}; } };
+const seenBefore = () => { try { return localStorage.getItem(ANSWERS_SEEN) || ''; } catch { return ''; } };
+function myThreads(msgs = C.myMessages || []) {
+  const byId = new Map(msgs.map((m) => [m.id, m]));
+  const root = (m) => { let x = m; for (let k = 0; x.replyTo && byId.has(x.replyTo) && k < 100; k++) x = byId.get(x.replyTo); return x; };
+  const T = new Map();
+  for (const m of msgs) {
+    const r = root(m);
+    if (!T.has(r.id)) T.set(r.id, { id: r.id, root: r, msgs: [] });
+    T.get(r.id).msgs.push(m);
+  }
+  const seen = seenThreads(), old = seenBefore();
+  return [...T.values()].map((t) => {
+    const items = t.msgs.flatMap((m) => [{ who: 'me', date: String(m.date), m },
+      ...(m.answers || []).map((a) => ({ who: 'maintainer', date: String(a.date), a, m }))]).sort((x, y) => x.date.localeCompare(y.date));
+    const last = items[items.length - 1];
+    const s = seen[t.id] || old;
+    const unread = items.filter((i) => i.who === 'maintainer' && i.date > s).length;
+    return { ...t, items, last, lastDate: last.date, answered: items.some((i) => i.who === 'maintainer'), awaiting: last.who === 'me', unread };
+  }).sort((a, b) => b.lastDate.localeCompare(a.lastDate));
+}
+function markThreadSeen(t) {
+  const last = t.items.filter((i) => i.who === 'maintainer').pop();
+  if (!last) return;
+  const s = seenThreads();
+  if (s[t.id] === last.date) return;
+  s[t.id] = last.date;
+  try { localStorage.setItem(THREADS_SEEN, JSON.stringify(s)); } catch { /* private mode */ }
+  renderAccount();
+}
+const msgPlain = (s) => String(s || '').replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (m, id, lab) => lab || (idx(id) !== undefined ? plain(S(idx(id)).label) : id))
+  .replace(/\$([^$]*)\$/g, (m, x) => plain(x)).replace(/\s+/g, ' ').trim();
+const KIND_LABEL = { comment: 'Comment', error: 'Error report', suggestion: 'Facts' };
+function fmtWhen(d) {
+  // a bare date (YYYY-MM-DD) is a day, not UTC midnight
+  const day = /^\d{4}-\d{2}-\d{2}$/.test(String(d));
+  const t = day ? new Date(`${d}T12:00:00`) : new Date(d);
+  if (Number.isNaN(+t)) return esc(String(d).slice(0, 10));
+  const now = new Date();
+  const sameDay = t.toDateString() === now.toDateString();
+  if (day && sameDay) return 'today';
+  return esc(sameDay ? t.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })
+    : t.toLocaleDateString(undefined, { year: t.getFullYear() === now.getFullYear() ? undefined : 'numeric', month: 'short', day: 'numeric' }));
+}
+const fmtFull = (d) => { const t = new Date(d); return Number.isNaN(+t) ? esc(String(d)) : esc(t.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })); };
+const qLinkOf = (id) => { const q = (Z.raw.questions || []).find((x) => x.id === id); return `<a href="#/questions/${esc(id)}">${q ? rich(qText(q)) : esc(id)}</a>`; };
+// what a message is about, with links (reading pane) or as a label (thread list)
+function msgTarget(tg) {
+  if (!tg || tg.type === 'general') return 'the zoo';
+  if (tg.type === 'result') { const ri = resultIdx.get(tg.id); return ri !== undefined ? resultFact(Z.raw.results[ri]) : 'a result (since changed)'; }
+  if (tg.type === 'statement') return idx(tg.id) !== undefined ? sLink(idx(tg.id)) : esc(tg.id);
+  if (tg.type === 'reference') return `<a href="#/refs/${esc(tg.id)}">${esc(refShort(tg.id))}</a>`;
+  if (tg.type === 'question') return qLinkOf(tg.id);
+  return esc(tg.id);
+}
+function factRow(f) {
+  const ok = [f.from, f.to, f.statement].filter(Boolean).every((id) => idx(id) !== undefined) && (!f.over || Z.ridx.has(f.over)) && (!f.property || Z.pidx.has(f.property));
+  const src = f.source || {};
+  return `<li>${ok ? `${resultFact(f)} ${factBadge(f)}` : esc(JSON.stringify([f.from ?? f.statement, f.to ?? f.property]))}
+    <div class="small muted">${src.ref ? refLink({ ref: src.ref, loc: src.loc }) : src.citation ? esc(`${src.citation}${src.loc ? `, ${src.loc}` : ''}`) : 'no paper'}${f.justification ? ` · ${esc(f.justification.length > 200 ? `${f.justification.slice(0, 200)}…` : f.justification)}` : ''}</div></li>`;
+}
+function threadSubject(t) {
+  const r = t.root;
+  if (r.kind === 'suggestion') {
+    const fs = r.facts || r.results || [];
+    const f = fs[0];
+    const ok = f && [f.from, f.to, f.statement].filter(Boolean).every((id) => idx(id) !== undefined);
+    return `${ok ? resultFact(f) : `${fs.length} fact${fs.length === 1 ? '' : 's'}`}${fs.length > 1 && ok ? ` <span class="muted">+${fs.length - 1}</span>` : ''}`;
+  }
+  return !r.target || r.target.type === 'general' ? 'General message' : `On ${msgTarget(r.target)}`;
+}
+
+// the mail box: state kept while the page lives
+const mailbox = { folder: 'all', kind: '', q: '', open: '' };
+function mailHtml() {
+  const threads = myThreads();
+  const n = { all: threads.length, unread: threads.filter((t) => t.unread).length, awaiting: threads.filter((t) => t.awaiting).length, answered: threads.filter((t) => t.answered && !t.awaiting).length };
+  const FOLDERS = [['all', 'All'], ['unread', 'Unread'], ['awaiting', 'Awaiting answer'], ['answered', 'Answered']];
+  return `<div class="mail${mailbox.open ? ' has-open' : ''}">
+    <div class="mail-list-pane">
+      <div class="mail-tools">
+        <button class="btn small primary" data-mail-new title="Write to the maintainer">✎ New message</button>
+        <button class="btn small" data-suggest="" title="Contribute facts to the database, with their sources">+ Facts</button>
+        <input type="search" class="mail-search" placeholder="Search your messages…" value="${esc(mailbox.q)}" aria-label="Search your messages">
+      </div>
+      <div class="mail-folders" role="tablist">${FOLDERS.map(([f, label]) => `<button class="chip${mailbox.folder === f ? ' on' : ''}" data-folder="${f}">${label} <span class="count">${n[f]}</span></button>`).join('')}
+        <select class="mail-kind" aria-label="Kind of message"><option value="">Every kind</option>${Object.entries(KIND_LABEL).map(([k, l]) => `<option value="${k}"${mailbox.kind === k ? ' selected' : ''}>${l === 'Facts' ? 'Contributed facts' : `${l}s`}</option>`).join('')}</select></div>
+      <div class="mail-list" role="list">${threads.length ? threads.map((t) => threadRow(t)).join('') : '<p class="muted mail-empty">No message yet. Write to the maintainer with “New message”, or from the comment button of a result, a statement or a paper.</p>'}</div>
+      <p class="small muted mail-note">Private: only you and the maintainer read these messages. Answers are drafted by an AI assistant from the papers of the zoo, and read by the maintainer before they are sent.</p>
+    </div>
+    <div class="mail-read-pane" aria-live="polite">${mailbox.open === 'new' ? composeHtml() : mailbox.open ? threadHtml(threads.find((t) => t.id === mailbox.open)) : '<div class="mail-placeholder muted">Select a conversation, or write a new message.</div>'}</div>
+  </div>`;
+}
+function threadRow(t) {
+  const r = t.root;
+  const text = msgPlain(t.last.who === 'me' ? t.last.m.text || (t.last.m.facts ? `${t.last.m.facts.length} fact(s)` : '') : t.last.a.text);
+  const hay = [r.kind, KIND_LABEL[r.kind], msgPlain(JSON.stringify(r.target || {})), ...t.items.map((i) => msgPlain(i.who === 'me' ? i.m.text : i.a.text)),
+    ...(r.facts || []).flatMap((f) => [f.from, f.to, f.statement, f.property].filter(Boolean).map((id) => idx(id) !== undefined ? `${id} ${plain(S(idx(id)).label)} ${S(idx(id)).name}` : id))].join(' ').toLowerCase();
+  const status = t.unread ? `<span class="badge q-partial">${t.unread} new</span>` : t.awaiting ? '<span class="badge st-open">awaiting answer</span>' : '<span class="badge st-yes">answered</span>';
+  return `<div class="thread-row${t.unread ? ' unread' : ''}${mailbox.open === t.id ? ' on' : ''}" role="listitem" tabindex="0" data-thread="${esc(t.id)}"
+      data-folder-unread="${t.unread ? 1 : 0}" data-folder-awaiting="${t.awaiting ? 1 : 0}" data-folder-answered="${t.answered && !t.awaiting ? 1 : 0}" data-kind="${esc(r.kind)}" data-hay="${esc(hay)}">
+    <div class="tr-top"><span class="tr-kind kind-${esc(r.kind)}">${KIND_LABEL[r.kind] || esc(r.kind)}</span><span class="tr-date">${fmtWhen(t.lastDate)}</span></div>
+    <div class="tr-subject">${threadSubject(t)}</div>
+    <div class="tr-snippet"><span class="muted">${t.last.who === 'me' ? 'You: ' : 'Maintainer: '}</span>${esc(text.length > 140 ? `${text.slice(0, 140)}…` : text)}</div>
+    <div class="tr-bottom">${status}${t.items.length > 1 ? `<span class="small muted">${t.items.length} messages</span>` : ''}</div>
+  </div>`;
+}
+function threadHtml(t) {
+  if (!t) return '<div class="mail-placeholder muted">This conversation is no longer available.</div>';
+  const r = t.root;
+  const bubble = (i) => i.who === 'me'
+    ? `<article class="bubble me"><header><b>You</b>${i.m === r ? ` · ${KIND_LABEL[r.kind] || r.kind}` : ''}<time title="${fmtFull(i.date)}">${fmtWhen(i.date)}</time></header>
+        ${i.m.facts?.length ? `<ul class="contrib-facts">${i.m.facts.map(factRow).join('')}</ul>` : ''}
+        ${i.m.text ? `<div class="bubble-text">${esc(i.m.text)}</div>` : ''}</article>`
+    : `<article class="bubble maintainer"><header><b>Maintainer</b>${i.a.by === 'ai' ? ' <span class="badge ai" title="Written by an AI assistant from the papers of the zoo, read and sent by the maintainer">drafted by AI</span>' : ''}<time title="${fmtFull(i.date)}">${fmtWhen(i.date)}</time></header>
+        <div class="bubble-text">${richLinks(i.a.text)}</div></article>`;
+  return `<div class="mail-head">
+      <button class="btn small mail-back" data-mail-back aria-label="Back to the list">← Back</button>
+      <div class="mail-subject">${threadSubject(t)}</div>
+      <div class="small muted">${KIND_LABEL[r.kind] || esc(r.kind)} on ${msgTarget(r.target)}${r.target?.type === 'question' && r.kind === 'suggestion' ? ' (answering the question)' : ''} · started ${fmtFull(r.date)}
+        ${r.kind === 'suggestion' ? ' · the facts go to the <a href="#/review">review page</a> once the maintainer has synchronized the site' : ''}</div>
+    </div>
+    <div class="mail-convo">${t.items.map(bubble).join('')}</div>
+    <form class="mail-composer" data-reply="${esc(r.id)}" data-type="${esc(r.target?.type || 'general')}" data-id="${esc(r.target?.id || '')}">
+      <textarea rows="3" maxlength="10000" required placeholder="${t.awaiting ? 'Add to your message…' : 'Reply to the maintainer…'}"></textarea>
+      <div class="row"><span class="small muted">Private, like the rest of this conversation.</span><span class="mail-msg small"></span>
+        <button class="btn primary" type="submit">Send</button></div>
+    </form>`;
+}
+function composeHtml() {
+  return `<div class="mail-head"><button class="btn small mail-back" data-mail-back aria-label="Back to the list">← Back</button>
+      <div class="mail-subject">New message to the maintainer</div>
+      <div class="small muted">About the zoo in general. To write about a result, a statement or a paper, use the comment button on its page: the message then carries it.</div></div>
+    <form class="mail-composer new" data-new>
+      <label class="small">Kind <select name="kind"><option value="comment">Comment or question</option><option value="error">Error report</option></select></label>
+      <textarea name="text" rows="8" maxlength="10000" required placeholder="Your message (private: only the maintainer reads it)"></textarea>
+      <div class="row"><span class="mail-msg small"></span><button class="btn primary" type="submit">Send</button></div>
+    </form>`;
+}
+// show the rows of the list that match the folder, the kind and the search
+function filterMail(root) {
+  const q = mailbox.q.toLowerCase().split(/\s+/).filter(Boolean);
+  let shown = 0;
+  for (const row of $$('.thread-row', root)) {
+    const ok = (mailbox.folder === 'all' || row.dataset[`folder${mailbox.folder[0].toUpperCase()}${mailbox.folder.slice(1)}`] === '1')
+      && (!mailbox.kind || row.dataset.kind === mailbox.kind) && q.every((w) => row.dataset.hay.includes(w));
+    row.hidden = !ok;
+    if (ok) shown++;
+  }
+  const list = $('.mail-list', root);
+  let none = $('.mail-none', root);
+  if (!shown && $$('.thread-row', root).length) { if (!none) list.insertAdjacentHTML('beforeend', '<p class="muted mail-none">No conversation matches.</p>'); }
+  else none?.remove();
+}
+
+// ============================================================================
+// the profile page (#/u/<orcid>): sections in a side menu. Anyone's endorsements and public
+// comments; one's own profile also has an overview, the messages to the maintainer, the
+// saved diagrams and the shared full texts (all private).
+// ============================================================================
 function viewProfile(orcid, params = new URLSearchParams()) {
   const m = main();
-  m.className = '';
+  m.className = 'wide';
+  // until the server says who is signed in, one's own profile would show as anyone's
+  if (!C.settled) { m.innerHTML = '<p class="muted">Loading…</p>'; C.ready.then(() => { if (location.hash.startsWith(`#/u/${orcid}`)) viewProfile(orcid, params); }); return; }
   if (orcid === 'me') {
     if (C.user) { location.replace(`#/u/${C.user.orcid}${[...params].length ? `?${params}` : ''}`); return; }
-    m.innerHTML = `<h1>Your profile</h1>${C.live ? signInPrompt('see your endorsements, your contributions and the full texts you shared') : liveNote()}`;
+    m.className = '';
+    m.innerHTML = `<h1>Your profile</h1>${C.live ? signInPrompt('see your endorsements, your messages and the full texts you shared') : liveNote()}`;
     return;
   }
   const own = C.user?.orcid === orcid;
-  const mine = (C.byPerson.get(orcid) || []).slice().sort((a, b) => b.date.localeCompare(a.date));
-  const list = mine.map((e) => [Z.raw.results[resultIdx.get(e.result)], resultIdx.get(e.result), e.date]).filter(([res]) => res);
-  const gone = mine.length - list.length;
-  // tabs: endorsements and contributions (anyone's: public comments; one's own also shows the
-  // facts and messages sent, which are private), full texts (one's own only: uploads are private)
+  const ends = (C.byPerson.get(orcid) || []).slice().sort((a, b) => b.date.localeCompare(a.date));
+  const list = ends.map((e) => [Z.raw.results[resultIdx.get(e.result)], resultIdx.get(e.result), e.date]).filter(([res]) => res);
+  const gone = ends.length - list.length;
   const pub = publicComments(orcid);
-  const TABS = [['endorsements', `Endorsements <span class="count">${list.length}</span>`],
-    ['contributions', `Contributions${own ? '' : ` <span class="count">${pub.length}</span>`}`], ...(own ? [['diagrams', 'Diagrams'], ['texts', 'Full texts']] : [])];
-  const tab = TABS.some(([x]) => x === params.get('tab')) ? params.get('tab') : 'endorsements';
+  const SECTIONS = own
+    ? [['overview', 'Overview', '◎'], ['messages', 'Messages', '✉'], ['endorsements', 'Endorsements', '✓'], ['comments', 'Public comments', '❝'], ['diagrams', 'Diagrams', '◇'], ['texts', 'Full texts', '▤']]
+    : [['endorsements', 'Endorsements', '✓'], ['comments', 'Public comments', '❝']];
+  const alias = { contributions: own ? 'messages' : 'comments' };
+  let tab = alias[params.get('tab')] || params.get('tab');
+  if (!SECTIONS.some(([x]) => x === tab)) tab = SECTIONS[0][0];
+  mailbox.open = params.get('thread') || (tab === 'messages' ? mailbox.open : '');
+  if (mailbox.open && mailbox.open !== 'new') mailbox.folder = 'all';
+  const counts = () => ({
+    endorsements: list.length, comments: pub.length,
+    messages: own && C.myMessages ? (() => { const u = myThreads().reduce((n, t) => n + t.unread, 0); return u ? `<span class="nav-badge">${u}</span>` : myThreads().length; })() : '',
+    diagrams: own && C.diagrams ? C.diagrams.length : '',
+    texts: own && C.uploads ? (() => { const n = myMissingPapers().length; return n ? `<span class="nav-badge" title="papers without a full text">${n}</span>` : C.uploads.length; })() : '',
+  });
+  const nav = () => SECTIONS.map(([x, label, ic]) => `<button class="pnav-item${x === tab ? ' on' : ''}" data-tab="${x}" aria-current="${x === tab ? 'page' : 'false'}"><span class="pnav-ic" aria-hidden="true">${ic}</span>${label}<span class="pnav-count">${counts()[x] ?? ''}</span></button>`).join('');
   const panel = (x) => `<section class="tab-panel" data-panel="${x}"${x === tab ? '' : ' hidden'}>`;
-  m.innerHTML = `<h1>${esc(own ? C.user.name : C.name(orcid))}</h1>
-    <p><a href="https://orcid.org/${esc(orcid)}" target="_blank" rel="noopener"><span class="orcid-dot"></span>orcid.org/${esc(orcid)}</a>
-      ${own ? ` · <a href="${C.logoutUrl()}">Sign out</a>` : ''}</p>
-    ${TABS.length > 1 ? `<nav class="tabs" role="tablist">${TABS.map(([x, label]) => `<button role="tab" data-tab="${x}" aria-selected="${x === tab}">${label}</button>`).join('')}</nav>` : ''}
-    ${panel('endorsements')}
-    <p class="small muted">Results whose proof ${own ? 'you have' : 'this researcher has'} read and believe${own ? '' : 's'} correct.${own ? ' Open a result to withdraw your endorsement.' : ''}</p>
-    ${lazy(list, ([res, ri, date]) => `<tr><td>${resultFact(res)}</td><td>${resultCite(ri)}</td><td class="small muted">${esc(date)}</td></tr>`,
-      { size: 50, wrap: 'table', head: '<thead><tr><th>Result</th><th>Source</th><th>Endorsed</th></tr></thead>', noun: 'results',
-        empty: `<p class="muted">${own ? 'You have not endorsed any result yet: open a result (its ✓ mark) to endorse it.' : 'No endorsement.'}</p>` })}
-    ${gone ? `<p class="small muted">${gone} endorsed result${gone === 1 ? ' has' : 's have'} since been changed in the database.</p>` : ''}
-    </section>
-    ${panel('contributions')}<div id="contrib-root">${own ? '<p class="muted">Loading…</p>' : contributionsHtml(orcid, null)}</div></section>
-    ${own ? `${panel('diagrams')}<p class="small muted">The diagrams you saved (on the diagram page, “My diagrams”). They are private: share one by its link.</p>
-      <div id="diagrams-root" class="sel-list"><p class="muted">Loading…</p></div></section>` : ''}
-    ${own ? `${panel('texts')}<div id="uploads-root"><p class="muted">Loading…</p></div></section>` : ''}`;
+  m.innerHTML = `<div class="profile">
+    <aside class="profile-side">
+      <div class="profile-id"><div class="avatar" aria-hidden="true">${esc(initials(own ? C.user.name : C.name(orcid)))}</div>
+        <div><div class="profile-name">${esc(own ? C.user.name : C.name(orcid))}</div>
+        <a class="small" href="https://orcid.org/${esc(orcid)}" target="_blank" rel="noopener"><span class="orcid-dot"></span>${esc(orcid)}</a></div></div>
+      <nav class="pnav" aria-label="Sections of the profile">${nav()}</nav>
+      ${own ? `<a class="small muted signout" href="${C.logoutUrl()}">Sign out</a>` : ''}
+    </aside>
+    <div class="profile-main">
+      ${own ? `${panel('overview')}<div id="overview-root"></div></section>` : ''}
+      ${own ? `${panel('messages')}<div id="mail-root"><p class="muted">Loading…</p></div></section>` : ''}
+      ${panel('endorsements')}<h2>Endorsements</h2>
+        <p class="small muted">Results whose proof ${own ? 'you have' : 'this researcher has'} read and believe${own ? '' : 's'} correct.${own ? ' Open a result to withdraw your endorsement.' : ''}</p>
+        ${lazy(list, ([res, ri, date]) => `<tr><td>${resultFact(res)}</td><td>${resultCite(ri)}</td><td class="small muted">${esc(date)}</td></tr>`,
+          { size: 50, wrap: 'table', head: '<thead><tr><th>Result</th><th>Source</th><th>Endorsed</th></tr></thead>', noun: 'results',
+            empty: `<p class="muted">${own ? 'You have not endorsed any result yet: open a result (its ✓ mark) to endorse it.' : 'No endorsement.'}</p>` })}
+        ${gone ? `<p class="small muted">${gone} endorsed result${gone === 1 ? ' has' : 's have'} since been changed in the database.</p>` : ''}
+      </section>
+      ${panel('comments')}<h2>${own ? 'Your public comments' : 'Public comments'}</h2>
+        ${pub.length ? `<div class="pc-list">${pub.map((c) => `<article class="pc-item"><div class="small muted">on ${c.where === 'question' ? `the question ${qLinkOf(c.question)}` : `the review item <a href="#/review/${esc(c.item)}">${esc(c.item)}</a>`} · ${fmtWhen(c.date)}</div>
+          <div class="bubble-text">${esc(c.text)}</div></article>`).join('')}</div>`
+          : `<p class="muted">${own ? 'You have not commented yet: discuss an open question on its page, or a proposal on the review page.' : 'No public comment.'}</p>`}
+      </section>
+      ${own ? `${panel('diagrams')}<h2>Saved diagrams</h2><p class="small muted">The diagrams you saved (on the diagram page, “My diagrams”). They are private: share one by its link.</p>
+        <div id="diagrams-root" class="dg-grid"><p class="muted">Loading…</p></div></section>` : ''}
+      ${own ? `${panel('texts')}<h2>Full texts</h2><div id="uploads-root"><p class="muted">Loading…</p></div></section>` : ''}
+    </div></div>`;
+  const refreshNav = () => { const n = $('.pnav', m); if (n) n.innerHTML = nav(); };
+  const drawOverview = () => { const el = $('#overview-root'); if (el) el.innerHTML = overviewHtml(list.length, pub.length); };
+  refreshProfile = () => { if ($('.pnav', m)) { refreshNav(); drawOverview(); } };
+  const drawMail = () => {
+    const el = $('#mail-root');
+    if (!el || !C.myMessages) return;
+    const t = myThreads().find((x) => x.id === mailbox.open);
+    if (t && tab === 'messages') markThreadSeen(t); // before drawing: the list shows it read
+    el.innerHTML = mailHtml();
+    filterMail(el);
+    refreshNav();
+    drawOverview();
+  };
   const drawDiagrams = () => {
     const el = $('#diagrams-root');
     if (el) el.innerHTML = diagramRows(C.diagrams || []) || '<p class="muted">No saved diagram yet: open a <a href="#/diagram">diagram</a> and save it under a name.</p>';
+    refreshNav();
+    drawOverview();
   };
+  const setUrl = () => {
+    const p = new URLSearchParams();
+    if (tab !== SECTIONS[0][0]) p.set('tab', tab);
+    if (tab === 'messages' && mailbox.open) p.set('thread', mailbox.open);
+    history.replaceState(null, '', `#/u/${orcid}${[...p].length ? `?${p}` : ''}`);
+  };
+  const go = (x) => {
+    tab = x;
+    $$('[data-panel]', m).forEach((p) => { p.hidden = p.dataset.panel !== x; });
+    refreshNav();
+    if (x === 'messages') drawMail();
+    setUrl();
+  };
+  const openThread = (id) => { mailbox.open = id; drawMail(); setUrl(); $('.mail-read-pane textarea')?.focus({ preventScroll: true }); };
   m.onclick = async (e) => {
     const del = e.target.closest('[data-dg-del]');
     if (del) {
@@ -2685,37 +2896,70 @@ function viewProfile(orcid, params = new URLSearchParams()) {
       return;
     }
     const tb = e.target.closest('[data-tab]');
-    if (!tb) return;
-    const x = tb.dataset.tab;
-    m.querySelectorAll('[data-tab]').forEach((b) => b.setAttribute('aria-selected', b === tb));
-    m.querySelectorAll('[data-panel]').forEach((p) => { p.hidden = p.dataset.panel !== x; });
-    history.replaceState(null, '', `#/u/${orcid}${x === 'endorsements' ? '' : `?tab=${x}`}`);
-    if (x === 'contributions' && own && C.myMessages) markAnswersSeen();
+    if (tb) { e.preventDefault(); go(tb.dataset.tab); return; }
+    if (!own) return;
+    const row = e.target.closest('.thread-row');
+    if (row) { e.preventDefault(); openThread(row.dataset.thread); return; }
+    if (e.target.closest('[data-mail-new]')) { openThread('new'); return; }
+    if (e.target.closest('[data-mail-back]')) { mailbox.open = ''; drawMail(); setUrl(); return; }
+    const fb = e.target.closest('[data-folder]');
+    if (fb) { mailbox.folder = fb.dataset.folder; $$('[data-folder]', m).forEach((b) => b.classList.toggle('on', b === fb)); filterMail($('#mail-root')); }
   };
-  if (own) {
-    C.listDiagrams().then(drawDiagrams).catch((err) => { const el = $('#diagrams-root'); if (el) el.innerHTML = `<p class="no">${esc(err.message)}</p>`; });
-    loadUploads(params);
-    $('#contrib-root')?.addEventListener('submit', async (e) => {
-      const f = e.target.closest('.reply-form');
-      if (!f) return;
-      e.preventDefault();
-      const btn = f.querySelector('button'), out = f.querySelector('.reply-msg');
-      btn.disabled = true;
-      try {
-        await C.sendFeedback('comment', { type: f.dataset.type, id: f.dataset.id }, f.querySelector('textarea').value, f.dataset.reply);
-        const msgs = await C.mine();
-        C.myMessages = msgs;
-        $('#contrib-root').innerHTML = contributionsHtml(orcid, msgs);
-      } catch (err) { out.textContent = err.message; btn.disabled = false; }
-    });
-    C.mine().then((msgs) => {
-      C.myMessages = msgs;
-      const el = $('#contrib-root');
-      if (el) el.innerHTML = contributionsHtml(orcid, msgs);
-      if (el && (params.get('tab') || 'endorsements') === 'contributions') markAnswersSeen();
-    })
-      .catch((err) => { const el = $('#contrib-root'); if (el) el.innerHTML = `<p class="no">${esc(err.message)}</p>${contributionsHtml(orcid, [])}`; });
-  }
+  m.onkeydown = (e) => {
+    const row = e.target.closest?.('.thread-row');
+    if (row && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openThread(row.dataset.thread); }
+  };
+  m.oninput = m.onchange = null;
+  if (!own) return;
+  m.oninput = (e) => { if (e.target.classList.contains('mail-search')) { mailbox.q = e.target.value; filterMail($('#mail-root')); } };
+  m.onchange = (e) => { if (e.target.classList.contains('mail-kind')) { mailbox.kind = e.target.value; filterMail($('#mail-root')); } };
+  $('#mail-root').addEventListener('submit', async (e) => {
+    const f = e.target.closest('.mail-composer');
+    if (!f) return;
+    e.preventDefault();
+    const btn = f.querySelector('button[type=submit]'), out = f.querySelector('.mail-msg');
+    btn.disabled = true;
+    out.textContent = 'Sending…';
+    try {
+      let id;
+      if (f.dataset.new !== undefined) id = (await C.sendFeedback(f.elements.kind.value, { type: 'general', id: '' }, f.elements.text.value)).id;
+      else { await C.sendFeedback('comment', { type: f.dataset.type, id: f.dataset.id }, f.querySelector('textarea').value, f.dataset.reply); id = f.dataset.reply; }
+      C.myMessages = await C.mine();
+      mailbox.open = id || '';
+      drawMail();
+      setUrl();
+    } catch (err) { out.textContent = err.message; btn.disabled = false; }
+  });
+  drawOverview();
+  C.listDiagrams().then(drawDiagrams).catch((err) => { const el = $('#diagrams-root'); if (el) el.innerHTML = `<p class="no">${esc(err.message)}</p>`; });
+  loadUploads(params).then(() => { refreshNav(); drawOverview(); });
+  C.mine().then((msgs) => { C.myMessages = msgs; drawMail(); renderAccount(); })
+    .catch((err) => { const el = $('#mail-root'); if (el) el.innerHTML = `<p class="no">${esc(err.message)}</p>`; });
+}
+// redraws the side menu and the overview of the profile page being shown (set by viewProfile)
+let refreshProfile = () => {};
+const initials = (name) => /^[\d-]+X?$/.test(String(name)) ? '?' : String(name || '?').split(/\s+/).filter(Boolean).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
+// the overview of one's own profile: what waits, and the numbers of each section
+function overviewHtml(nEnd, nPub) {
+  const threads = C.myMessages ? myThreads() : null;
+  const unread = threads ? threads.filter((t) => t.unread) : [];
+  const missing = C.uploads ? myMissingPapers() : null;
+  const card = (tab, n, label, extra = '') => `<button class="ov-card" data-tab="${tab}"><span class="ov-n">${n ?? '…'}</span><span class="ov-label">${label}</span>${extra}</button>`;
+  const todo = [
+    ...unread.map((t) => `<li><a href="#/u/${esc(C.user.orcid)}?tab=messages&thread=${encodeURIComponent(t.id)}"><b>New answer</b></a> to your ${(KIND_LABEL[t.root.kind] || '').toLowerCase()} ${threadSubject(t).replace(/^On /, 'on ')}</li>`),
+    ...(missing || []).slice(0, 5).map(([k, r]) => `<li><b>Full text missing</b>: <a href="#/refs/${esc(k)}">${rich(r.title)}</a> <span class="small muted">(${r.year})</span></li>`),
+  ];
+  return `<h2>Overview</h2>
+    <div class="ov-grid">
+      ${card('messages', threads ? threads.length : null, 'conversations', unread.length ? `<span class="ov-sub">${unread.length} unread</span>` : threads?.some((t) => t.awaiting) ? `<span class="ov-sub">${threads.filter((t) => t.awaiting).length} awaiting an answer</span>` : '')}
+      ${card('endorsements', nEnd, 'endorsements')}
+      ${card('comments', nPub, 'public comments')}
+      ${card('diagrams', C.diagrams ? C.diagrams.length : null, 'saved diagrams')}
+      ${card('texts', C.uploads ? C.uploads.length : null, 'full texts shared', missing?.length ? `<span class="ov-sub">${missing.length} of your papers without a text</span>` : '')}
+    </div>
+    <h3>To do</h3>
+    ${todo.length ? `<ul class="ov-todo">${todo.join('')}</ul>${(missing || []).length > 5 ? `<p class="small"><a href="#/u/${esc(C.user.orcid)}?tab=texts">All your papers without a full text</a></p>` : ''}` : '<p class="muted">Nothing waits for you.</p>'}
+    <p class="small muted">Everything here is private except your endorsements and public comments, which appear on your public profile.</p>`;
 }
 // public comments of a person: on the open questions and on the review page
 function publicComments(orcid) {
@@ -2723,61 +2967,6 @@ function publicComments(orcid) {
   const rv = (C.live ? C.reviewComments : (Z.raw.review?.items || []).flatMap((it) => (it.comments || []).map((c) => ({ ...c, item: it.id }))))
     .filter((c) => c.orcid === orcid).map((c) => ({ ...c, where: 'review' }));
   return [...qs, ...rv].sort((a, b) => b.date.localeCompare(a.date));
-}
-// the Contributions tab: msgs = one's own messages from the server (null on another's profile)
-function contributionsHtml(orcid, msgs) {
-  const own = msgs !== null;
-  const pub = publicComments(orcid);
-  const qLink = (id) => { const q = (Z.raw.questions || []).find((x) => x.id === id); return `<a href="#/questions/${esc(id)}">${q ? rich(qText(q)) : esc(id)}</a>`; };
-  // replies to one's own messages are shown in the thread of the message they answer
-  const replies = new Map();
-  if (own) for (const m of msgs) if (m.replyTo) { if (!replies.has(m.replyTo)) replies.set(m.replyTo, []); replies.get(m.replyTo).push(m); }
-  const top = own ? msgs.filter((m) => !m.replyTo) : [];
-  const facts = top.filter((m) => m.kind === 'suggestion');
-  const others = top.filter((m) => m.kind !== 'suggestion');
-  const targetHtml = (tg) => {
-    if (!tg || tg.type === 'general') return 'the zoo';
-    if (tg.type === 'result') { const ri = resultIdx.get(tg.id); return ri !== undefined ? resultFact(Z.raw.results[ri]) : 'a result (since changed)'; }
-    if (tg.type === 'statement') return idx(tg.id) !== undefined ? sLink(idx(tg.id)) : esc(tg.id);
-    if (tg.type === 'reference') return `<a href="#/refs/${esc(tg.id)}">${esc(refShort(tg.id))}</a>`;
-    if (tg.type === 'question') return qLink(tg.id);
-    return esc(tg.id);
-  };
-  // the maintainer's answers to a message (scripts/feedback-answer.mjs)
-  const answersHtml = (m) => (m.answers || []).map((a) => `<div class="answer"><div class="small muted">Answer of the maintainer · ${esc(String(a.date).slice(0, 10))}${a.by === 'ai'
-      ? ' · <span title="Written by an AI assistant from the papers of the zoo, read and sent by the maintainer">drafted by an AI assistant</span>' : ''}</div>
-      <div class="small">${richLinks(a.text)}</div></div>`).join('');
-  // the rest of a thread: one's replies (oldest first) with their answers, then a reply
-  // form once the maintainer has answered
-  const threadHtml = (m) => {
-    const rs = (replies.get(m.id) || []).slice().sort((a, b) => String(a.date).localeCompare(String(b.date)));
-    const answered = (m.answers || []).length || rs.some((r) => (r.answers || []).length);
-    return `${rs.map((r) => `<div class="reply"><div class="small muted">Your reply · ${esc(String(r.date).slice(0, 10))}</div><div class="small">${esc(r.text)}</div>${answersHtml(r)}</div>`).join('')}
-      ${answered ? `<details class="reply-box"><summary class="small">Reply</summary><form class="reply-form" data-reply="${esc(m.id)}" data-type="${esc(m.target?.type || 'general')}" data-id="${esc(m.target?.id || '')}">
-        <textarea rows="3" maxlength="10000" required placeholder="Your reply to the maintainer (private)"></textarea>
-        <div class="row"><button class="btn small primary" type="submit">Send</button><span class="small muted reply-msg"></span></div></form></details>` : ''}`;
-  };
-  const factRow = (f) => {
-    const ok = [f.from, f.to, f.statement].filter(Boolean).every((id) => idx(id) !== undefined) && (!f.over || Z.ridx.has(f.over)) && (!f.property || Z.pidx.has(f.property));
-    const src = f.source || {};
-    return `<li>${ok ? `${resultFact(f)} ${factBadge(f)}` : esc(JSON.stringify([f.from ?? f.statement, f.to ?? f.property]))}
-      <div class="small muted">${src.ref ? refLink({ ref: src.ref, loc: src.loc }) : src.citation ? esc(`${src.citation}${src.loc ? `, ${src.loc}` : ''}`) : 'no paper'}${f.justification ? ` · ${esc(f.justification.length > 160 ? `${f.justification.slice(0, 160)}…` : f.justification)}` : ''}</div></li>`;
-  };
-  return `${own ? `<h2>Facts you contributed</h2>
-      <p class="small muted">Private to you. Each fact goes to the <a href="#/review">review page</a> once the maintainer has synchronized the site;
-        the badge says what the database knows of it now (“in the database” once accepted, or derived from other results).
-        <button class="btn small" data-suggest="">+ Contribute facts</button></p>
-      ${facts.length ? facts.map((m) => `<div class="card contrib"><div class="small muted">${esc(String(m.date).slice(0, 10))}${m.target?.type === 'question' ? ` · answering ${qLink(m.target.id)}` : ''}</div>
-          <ul class="contrib-facts">${(m.facts || m.results || []).map(factRow).join('')}</ul>${m.text ? `<p class="small">${esc(m.text)}</p>` : ''}${answersHtml(m)}${threadHtml(m)}</div>`).join('')
-        : '<p class="muted">No fact contributed yet.</p>'}
-      <h2>Your messages to the maintainer</h2>
-      ${others.length ? `<ul class="contrib-msgs">${others.map((m) => `<li><span class="badge ${m.kind === 'error' ? 'warn' : ''}">${m.kind === 'error' ? 'error report' : 'comment'}</span>
-          on ${targetHtml(m.target)} <span class="small muted">${esc(String(m.date).slice(0, 10))}</span><div class="small">${esc(m.text)}</div>${answersHtml(m)}${threadHtml(m)}</li>`).join('')}</ul>`
-        : '<p class="muted">No message.</p>'}` : ''}
-    <h2>${own ? 'Your public comments' : 'Public comments'}</h2>
-    ${pub.length ? `<ul class="contrib-msgs">${pub.map((c) => `<li>on ${c.where === 'question' ? `the question ${qLink(c.question)}` : `the review item <a href="#/review/${esc(c.item)}">${esc(c.item)}</a>`}
-        <span class="small muted">${esc(c.date)}</span><div class="small">${esc(c.text)}</div></li>`).join('')}</ul>`
-      : `<p class="muted">${own ? 'You have not commented yet: discuss an open question on its page, or a proposal on the review page.' : 'No public comment.'}</p>`}`;
 }
 
 // ============================================================================
@@ -2856,7 +3045,7 @@ function refOptions() {
 const refFromLabel = (label) => Object.keys(Z.raw.references).find((k) => refLabel(k) === label) || '';
 
 let uploadsState = { list: null, pending: [], error: '' };
-// #/uploads: the "Full texts" tab of one's profile
+// #/uploads: the "Full texts" section of one's profile
 async function viewUploads(params) {
   const m = main();
   m.className = '';
@@ -2871,59 +3060,111 @@ async function loadUploads(params) {
   try { uploadsState.list = await C.listUploads(); } catch (e) { uploadsState.error = e.message; }
   renderUploads();
 }
+// the file manager of the Full texts section: one table of one's shared files, of one's
+// papers without a full text and of the papers set aside, with filters, a search, sorting
+// and a drop target (the whole panel); the files waiting to be sent above it
+function fileRows() {
+  const S = uploadsState;
+  const R = Z.raw.references;
+  const WHY = { 'not-author': 'not my paper', 'not-allowed': 'not allowed to share' };
+  const paper = (k, citation) => (k && R[k]
+    ? { title: R[k].title, sub: `${R[k].authors.map(fullName).join(', ')}, ${R[k].year}`, year: R[k].year, link: `#/refs/${k}` }
+    : { title: '', citation: citation || k || '', sub: 'not in the database', year: 0 });
+  const rows = [];
+  for (const u of S.list || []) {
+    const p = paper(u.ref, u.citation);
+    const inZoo = u.ref && R[u.ref]?.read;
+    rows.push({ kind: 'shared', key: `u:${u.id}`, ...p, u, date: String(u.replaced || u.date || ''),
+      status: inZoo ? ['st-yes', 'in the zoo', 'The maintainer has imported its text'] : ['st-open', 'awaiting import', 'Shared with the maintainer, not imported yet'] });
+  }
+  for (const [k] of myMissingPapers()) rows.push({ kind: 'missing', key: `m:${k}`, ref: k, ...paper(k), date: '', status: ['st-no', 'no full text', 'The zoo does not have its text'] });
+  for (const [k, d] of Object.entries(C.dismissed)) if (R[k]) rows.push({ kind: 'aside', key: `a:${k}`, ref: k, ...paper(k), date: String(d.date || ''), status: ['st-na', WHY[d.reason] || d.reason, 'Set aside: it does not appear in the bell'] });
+  return rows;
+}
 function renderUploads() {
   renderAccount(); // the bell's count follows uploads and dismissals
+  refreshProfile(); // and so do the side menu and the overview
   const m = uploadsRoot();
   if (!m) return; // the profile page was left
   const S = uploadsState;
-  const missing = myMissingPapers();
-  const hidden = Object.entries(C.dismissed).filter(([k]) => Z.raw.references[k]);
-  const WHY = { 'not-author': 'not my paper', 'not-allowed': 'not allowed to share' };
-  m.innerHTML = `<p>Share the PDF of papers you wrote (or that you are allowed to share) so that their results can be analyzed for the zoo.
-      <b>The files are private</b>: they are not published, only the maintainer reads them, and you can remove them at any time.</p>
+  S.view = S.view || { filter: 'all', q: '', sort: 'recent' };
+  const V = S.view;
+  const rows = fileRows();
+  const n = { all: rows.length, shared: rows.filter((r) => r.kind === 'shared').length, missing: rows.filter((r) => r.kind === 'missing').length, aside: rows.filter((r) => r.kind === 'aside').length };
+  const bytes = (S.list || []).reduce((s, u) => s + (u.size || 0), 0);
+  const FILTERS = [['all', 'All'], ['shared', 'Shared'], ['missing', 'Without a full text'], ['aside', 'Set aside']];
+  const sorted = rows.slice().sort(V.sort === 'title' ? (a, b) => titleText(a.title || a.citation).localeCompare(titleText(b.title || b.citation))
+    : V.sort === 'year' ? (a, b) => b.year - a.year
+      : (a, b) => ({ missing: 0, shared: 1, aside: 2 }[a.kind] - { missing: 0, shared: 1, aside: 2 }[b.kind]) || b.date.localeCompare(a.date) || b.year - a.year);
+  const actions = (r) => r.kind === 'shared'
+    ? `<label class="btn small" title="Choose a new PDF, or drop it on this row">Replace<input type="file" data-replace="${esc(r.u.id)}" accept="application/pdf,.pdf" hidden></label>
+       <button class="btn small" data-remove="${esc(r.u.id)}">Remove</button>`
+    : r.kind === 'missing'
+      ? `<label class="btn small primary" title="Choose its PDF, or drop it on this row">Upload<input type="file" data-for="${esc(r.ref)}" accept="application/pdf,.pdf" hidden></label>
+         <button class="btn small" data-dismiss="${esc(r.ref)}|not-author" title="It is not one of my papers">Not mine</button>
+         <button class="btn small" data-dismiss="${esc(r.ref)}|not-allowed" title="I may not share its text">Can't share</button>`
+      : `<button class="btn small" data-dismiss="${esc(r.ref)}|" title="Put it back in the list of papers without a full text">Undo</button>`;
+  m.innerHTML = `<div class="fm" id="fm">
+    <div class="fm-drop-overlay" aria-hidden="true"><div>Drop PDF files to share them</div></div>
+    <p class="small muted">Share the PDF of papers you wrote, or that you are allowed to share, so that their results can be analyzed for the zoo.
+      <b>The files are private</b>: only the maintainer reads them, and you can remove them at any time.</p>
     ${refOptions()}
-    <div class="dropzone" id="dropzone" tabindex="0">
-      <p><b>Drop PDF files here</b> or <label class="btn small">choose files<input type="file" id="pick" accept="application/pdf,.pdf" multiple hidden></label></p>
-      <p class="small muted">PDF only. Each file is attached to a paper of the database, or described if the paper is not in the database.</p>
+    <div class="fm-stats">
+      <span><b>${n.shared}</b> shared${bytes ? ` <span class="muted">(${fmtSize(bytes)})</span>` : ''}</span>
+      <span><b>${rows.filter((r) => r.kind === 'shared' && r.status[0] === 'st-yes').length}</b> in the zoo</span>
+      <span class="${n.missing ? 'warn-text' : ''}"><b>${n.missing}</b> of your papers without a full text</span>
+      ${n.aside ? `<span><b>${n.aside}</b> set aside</span>` : ''}
     </div>
-    ${S.pending.length ? `<h2>To upload</h2><table class="grid uploads">
+    <div class="fm-toolbar">
+      <div class="seg" role="tablist">${FILTERS.map(([f, l]) => `<button class="seg-btn${V.filter === f ? ' on' : ''}" data-fm-filter="${f}">${l} <span class="count">${n[f]}</span></button>`).join('')}</div>
+      <input type="search" class="fm-search" placeholder="Search titles, authors, files…" value="${esc(V.q)}" aria-label="Search the files">
+      <select class="fm-sort" aria-label="Sort">${[['recent', 'To do first'], ['title', 'Title'], ['year', 'Year']].map(([v, l]) => `<option value="${v}"${V.sort === v ? ' selected' : ''}>${l}</option>`).join('')}</select>
+      <label class="btn primary" id="dropzone" tabindex="0" title="Or drop PDF files anywhere on this panel">⇪ Upload PDFs<input type="file" id="pick" accept="application/pdf,.pdf" multiple hidden></label>
+    </div>
+    ${S.pending.length ? `<div class="card fm-queue"><h3>Ready to send <span class="muted small">${S.pending.length}</span></h3>
+      <table class="grid uploads">
       <thead><tr><th>File</th><th>Paper</th><th></th></tr></thead>
       ${S.pending.map((p) => `<tr data-pending="${p.id}">
-        <td>${p.file ? `${esc(p.file.name)}<div class="small muted">${fmtSize(p.file.size)}</div>` : `<label class="btn small">choose the PDF<input type="file" data-choose="${p.id}" accept="application/pdf,.pdf" hidden></label>`}</td>
+        <td>${p.file ? `<span class="fm-file"><span class="fm-ic" aria-hidden="true">PDF</span>${esc(p.file.name)}</span><div class="small muted">${fmtSize(p.file.size)}</div>` : `<label class="btn small">choose the PDF<input type="file" data-choose="${p.id}" accept="application/pdf,.pdf" hidden></label>`}</td>
         <td>${refPicker(p.id, p.ref)}
           <details${p.ref ? '' : ' open'}><summary class="small">Not in the database?</summary>
             <textarea data-citation="${p.id}" rows="2" placeholder="Title, authors, year, DOI or arXiv id" style="width:100%">${esc(p.citation || '')}</textarea></details>
-          ${p.progress != null ? `<progress max="1" value="${p.progress}"></progress>` : ''}${p.error ? `<div class="small" style="color:var(--bad, #c33)">${esc(p.error)}</div>` : ''}</td>
-        <td style="white-space:nowrap"><button class="btn small primary" data-send="${p.id}"${p.file ? '' : ' disabled'}>Upload</button>
+          ${p.progress != null ? `<progress max="1" value="${p.progress}"></progress>` : ''}${p.error ? `<div class="small" style="color:var(--no)">${esc(p.error)}</div>` : ''}</td>
+        <td style="white-space:nowrap"><button class="btn small primary" data-send="${p.id}"${p.file ? '' : ' disabled'}>Send</button>
           <button class="btn small" data-drop="${p.id}" title="Remove from this list">✕</button></td></tr>`).join('')}
       </table>
       <p><label><input type="checkbox" id="rights"${S.rights ? ' checked' : ''}> I am an author of these papers, or I am otherwise allowed to share these files with the
         maintainer of the zoo for the analysis of their results. They will not be published.</label></p>
-      <p><button class="btn primary" id="send-all">Upload all</button></p>` : ''}
-    <h2>Your uploads <span class="muted small">${S.list ? S.list.length : ''}</span></h2>
-    ${S.error ? `<p class="small" style="color:var(--bad, #c33)">${esc(S.error)}</p>` : ''}
-    ${!S.list ? '<p class="muted">Loading…</p>' : !S.list.length ? '<p class="muted">You have not uploaded any file yet.</p>' : `<table class="grid uploads">
-      <thead><tr><th>Paper</th><th>File</th><th>Date</th><th></th></tr></thead>
-      ${S.list.slice().sort((a, b) => (b.replaced || b.date).localeCompare(a.replaced || a.date)).map((u) => `<tr data-upload="${esc(u.id)}" class="drop-target">
-        <td>${u.ref && Z.raw.references[u.ref] ? `<a href="#/refs/${esc(u.ref)}">${rich(Z.raw.references[u.ref].title)}</a> ${readBadge(Z.raw.references[u.ref])}` : `<span class="muted">Not in the database:</span> ${esc(u.citation || u.ref || '')}`}</td>
-        <td>${esc(u.filename)}<div class="small muted">${fmtSize(u.size)}</div></td>
-        <td class="small muted">${esc(u.date)}${u.replaced ? `<br>replaced ${esc(u.replaced)}` : ''}</td>
-        <td style="white-space:nowrap"><label class="btn small" title="Choose a new PDF, or drop it on this row">Replace<input type="file" data-replace="${esc(u.id)}" accept="application/pdf,.pdf" hidden></label>
-          <button class="btn small" data-remove="${esc(u.id)}">Remove</button></td></tr>`).join('')}</table>
-      <p class="small muted">To replace a file, drop the new PDF on its row. A paper is marked “read” once the maintainer has imported its text.</p>`}
-    ${missing.length ? `<h2>Your papers without a full text <span class="muted small">${missing.length}</span></h2>
-      <p class="small muted">Papers of the database whose text the zoo does not have, of which you are an author: by your ORCID iD on
-        <a href="https://zbmath.org" target="_blank" rel="noopener">zbMATH Open</a> when the paper and your profile are there, otherwise by your name.
-        If one is not yours, or if you may not share it, say so: it leaves this list and the bell.</p>
-      <table class="grid">${missing.map(([k, r]) => `<tr><td><a href="#/refs/${esc(k)}">${rich(r.title)}</a> <span class="small muted">${esc(r.authors.map(fullName).join(', '))}, ${r.year}</span></td>
-        <td style="white-space:nowrap"><button class="btn small primary" data-add="${esc(k)}">Upload its PDF</button>
-          <button class="btn small" data-dismiss="${esc(k)}|not-author">Not my paper</button>
-          <button class="btn small" data-dismiss="${esc(k)}|not-allowed">Not allowed to share</button></td></tr>`).join('')}</table>` : ''}
-    ${hidden.length ? `<details class="hidden-papers"><summary class="small muted">Papers you set aside (${hidden.length})</summary>
-      <table class="grid">${hidden.map(([k, d]) => `<tr><td><a href="#/refs/${esc(k)}">${rich(Z.raw.references[k].title)}</a>
-        <span class="small muted">${esc(WHY[d.reason] || d.reason)}, ${esc(d.date || '')}</span></td>
-        <td style="white-space:nowrap"><button class="btn small" data-dismiss="${esc(k)}|">Undo</button></td></tr>`).join('')}</table></details>` : ''}`;
+      <p><button class="btn primary" id="send-all">Send all</button></p></div>` : ''}
+    ${S.error ? `<p class="small" style="color:var(--no)">${esc(S.error)}</p>` : ''}
+    ${!S.list ? '<p class="muted">Loading…</p>' : !rows.length ? '<div class="fm-empty muted">No file yet. Drop the PDF of one of your papers here, or use “Upload PDFs”.</div>' : `<table class="grid fm-table">
+      <thead><tr><th>Paper</th><th>Status</th><th>File</th><th>Date</th><th></th></tr></thead>
+      <tbody>${sorted.map((r) => `<tr class="fm-row drop-target" data-kind="${r.kind}" ${r.kind === 'shared' ? `data-upload="${esc(r.u.id)}"` : `data-ref="${esc(r.ref)}"`}
+          data-hay="${esc(`${titleText(r.title || r.citation)} ${r.sub} ${r.u?.filename || ''}`.toLowerCase())}">
+        <td class="fm-paper">${r.link ? `<a href="${r.link}">${rich(r.title)}</a>` : `<span>${esc(r.citation)}</span>`}<div class="small muted">${esc(r.sub)}</div></td>
+        <td><span class="badge ${r.status[0]}" title="${esc(r.status[2])}">${esc(r.status[1])}</span></td>
+        <td${r.u ? '' : ' class="fm-empty-cell"'}>${r.u ? `<span class="fm-file"><span class="fm-ic" aria-hidden="true">PDF</span>${esc(r.u.filename)}</span><div class="small muted">${fmtSize(r.u.size)}</div>` : '<span class="muted">—</span>'}</td>
+        <td class="small muted${r.u || r.date ? '' : ' fm-empty-cell'}">${r.u ? `${fmtWhen(r.u.date)}${r.u.replaced ? `<br>replaced ${fmtWhen(r.u.replaced)}` : ''}` : r.date ? fmtWhen(r.date) : ''}</td>
+        <td class="fm-actions">${actions(r)}</td></tr>`).join('')}</tbody></table>
+      <p class="small muted fm-foot">Drop a PDF on a row to attach it to that paper (or replace its file). Your papers are found by your ORCID iD on
+        <a href="https://zbmath.org" target="_blank" rel="noopener">zbMATH Open</a> when the paper and your profile are there, otherwise by your name.</p>`}
+  </div>`;
+  filterFiles();
   wireUploads();
+}
+function filterFiles() {
+  const V = uploadsState.view;
+  const q = V.q.toLowerCase().split(/\s+/).filter(Boolean);
+  let shown = 0;
+  for (const tr of $$('.fm-row')) {
+    const ok = (V.filter === 'all' || tr.dataset.kind === V.filter) && q.every((w) => tr.dataset.hay.includes(w));
+    tr.hidden = !ok;
+    if (ok) shown++;
+  }
+  const tb = $('.fm-table tbody');
+  const none = $('.fm-none');
+  if (tb && !shown) { if (!none) tb.insertAdjacentHTML('beforeend', '<tr class="fm-none"><td colspan="5" class="muted">No file matches.</td></tr>'); }
+  else none?.remove();
 }
 function addFiles(files, ref) {
   for (const f of files) {
@@ -2956,33 +3197,51 @@ async function replaceUpload(id, file) {
 }
 function wireUploads() {
   const S = uploadsState;
-  const dz = $('#dropzone');
+  const fm = $('#fm');
   const stop = (e) => { e.preventDefault(); e.stopPropagation(); };
-  ['dragenter', 'dragover'].forEach((t) => dz.addEventListener(t, (e) => { stop(e); dz.classList.add('over'); }));
-  ['dragleave', 'drop'].forEach((t) => dz.addEventListener(t, (e) => { stop(e); dz.classList.remove('over'); }));
-  dz.addEventListener('drop', (e) => addFiles([...e.dataTransfer.files]));
-  $('#pick').onchange = (e) => addFiles([...e.target.files]);
-  $$('tr[data-upload]').forEach((tr) => {
-    ['dragenter', 'dragover'].forEach((t) => tr.addEventListener(t, (e) => { stop(e); tr.classList.add('over'); }));
-    tr.addEventListener('dragleave', (e) => { stop(e); tr.classList.remove('over'); });
-    tr.addEventListener('drop', (e) => { stop(e); tr.classList.remove('over'); const f = e.dataTransfer.files[0]; if (f) replaceUpload(tr.dataset.upload, f); });
+  const hasFiles = (e) => [...(e.dataTransfer?.types || [])].includes('Files');
+  // the whole panel takes dropped files; a row takes them for its paper
+  let depth = 0;
+  fm.addEventListener('dragenter', (e) => { if (!hasFiles(e)) return; stop(e); depth++; fm.classList.add('over'); });
+  fm.addEventListener('dragover', (e) => { if (hasFiles(e)) stop(e); });
+  fm.addEventListener('dragleave', (e) => { if (!hasFiles(e)) return; stop(e); if (--depth <= 0) { depth = 0; fm.classList.remove('over'); } });
+  fm.addEventListener('drop', (e) => {
+    stop(e); depth = 0; fm.classList.remove('over');
+    const tr = e.target.closest('tr.fm-row');
+    const files = [...e.dataTransfer.files];
+    if (!files.length) return;
+    if (tr?.dataset.upload) replaceUpload(tr.dataset.upload, files[0]);
+    else if (tr?.dataset.ref && tr.dataset.kind !== 'aside') addFiles(files.slice(0, 1), tr.dataset.ref);
+    else addFiles(files);
   });
+  $$('tr.fm-row', fm).forEach((tr) => {
+    tr.addEventListener('dragenter', (e) => { if (hasFiles(e)) tr.classList.add('over'); });
+    tr.addEventListener('dragleave', () => tr.classList.remove('over'));
+    tr.addEventListener('drop', () => tr.classList.remove('over'));
+  });
+  $('#pick').onchange = (e) => addFiles([...e.target.files]);
   const m = uploadsRoot();
   m.onchange = (e) => {
     const t = e.target;
     if (t.dataset.replace && t.files[0]) replaceUpload(t.dataset.replace, t.files[0]);
+    if (t.dataset.for && t.files[0]) addFiles([t.files[0]], t.dataset.for);
     if (t.dataset.choose && t.files[0]) { const p = S.pending.find((q) => q.id === t.dataset.choose); p.file = t.files[0]; renderUploads(); }
     if (t.id === 'rights') S.rights = t.checked;
+    if (t.classList.contains('fm-sort')) { S.view.sort = t.value; renderUploads(); }
     if (t.classList.contains('ref-pick')) { const p = S.pending.find((q) => q.id === t.dataset.row); p.ref = refFromLabel(t.value); if (t.value && !p.ref) p.error = 'Choose a paper from the list, or describe it below.'; else p.error = ''; renderUploads(); }
   };
-  m.oninput = (e) => { const t = e.target; if (t.dataset.citation) { const p = S.pending.find((q) => q.id === t.dataset.citation); p.citation = t.value; } };
+  m.oninput = (e) => {
+    const t = e.target;
+    if (t.dataset.citation) { const p = S.pending.find((q) => q.id === t.dataset.citation); p.citation = t.value; }
+    if (t.classList.contains('fm-search')) { S.view.q = t.value; filterFiles(); }
+  };
   m.onclick = async (e) => {
     const b = e.target.closest('button');
     if (!b) return;
+    if (b.dataset.fmFilter) { S.view.filter = b.dataset.fmFilter; $$('[data-fm-filter]', m).forEach((x) => x.classList.toggle('on', x === b)); filterFiles(); return; }
     if (b.dataset.drop) { S.pending = S.pending.filter((q) => q.id !== b.dataset.drop); renderUploads(); }
     if (b.dataset.send) { const p = S.pending.find((q) => q.id === b.dataset.send); if (p) await sendPending(p); }
     if (b.id === 'send-all') for (const p of S.pending.slice()) if (p.file && !(await sendPending(p))) break;
-    if (b.dataset.add) { S.pending.push({ id: Math.random().toString(36).slice(2), ref: b.dataset.add, file: null }); renderUploads(); }
     if (b.dataset.dismiss) {
       const [ref, reason] = b.dataset.dismiss.split('|');
       try { S.error = ''; await C.dismiss(ref, reason || null); } catch (err) { S.error = err.message; }

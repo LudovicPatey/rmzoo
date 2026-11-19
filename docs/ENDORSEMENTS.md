@@ -25,11 +25,19 @@ ORCID iD. Once signed in they can:
   docs/REVIEW.md), where researchers check it publicly;
 * **discuss an open question** on its page: public comments, with name and ORCID
   iD, that anyone can read (the author can delete them);
-* see their **profile** page `#/u/<ORCID iD>`: the results they endorsed and, on
-  the Contributions tab, their public comments (questions, review page) — and, on
-  their own profile only, the facts and messages they sent, with what the
-  database now knows of each fact (every profile is public; `#/u/me` goes to
-  one's own);
+* see their **profile** page `#/u/<ORCID iD>`, with a side menu of sections:
+  Endorsements and Public comments (questions, review page) on every profile
+  (every profile is public; `#/u/me` goes to one's own); on one's own profile
+  also an Overview (what waits: new answers, papers without a full text),
+  Messages, Diagrams and Full texts (docs/UPLOADS.md), all private. Messages is a
+  mail box: one conversation per message (the message, the maintainer's answers
+  and one's replies, oldest first; a contributed fact shows what the database
+  now knows of it), folders All / Unread / Awaiting answer / Answered, a filter
+  by kind, a search, a composer under each conversation and “New message” for a
+  message about the zoo in general. Read state is kept per conversation in the
+  browser (`rmzoo.threadsSeen`). Sections and conversations have their own
+  links: `?tab=messages&thread=<message id>` (`?tab=contributions`, the former
+  name, still works);
 * **validate, invalidate and comment** the proposals of the review page (public
   votes and comments, docs/REVIEW.md);
 * **save diagrams** (“My diagrams” on the diagram page): the current diagram
@@ -49,7 +57,7 @@ committed in `data/endorsements.yaml` and offers no sign-in.
 | saved diagrams: viewer | `site/js/community.js` (`listDiagrams`, `saveDiagram`, `deleteDiagram`), `site/js/app.js` (“My diagrams”, after `viewDiagram`; the Diagrams tab of `viewProfile`) |
 | committed endorsements | `data/endorsements.yaml` (validated by the build, copied into `zoo.json`) |
 | download from the server | `scripts/endorsements-sync.mjs` |
-| answers to messages | `scripts/feedback-answer.mjs` (server: `?a=answer`; viewer: `contributionsHtml`, the bell of `renderAccount`) |
+| answers to messages | `scripts/feedback-answer.mjs` (server: `?a=answer`; viewer: `myThreads`, `mailHtml`, `threadHtml` in `site/js/app.js`, the bell of `renderAccount`) |
 | tests | `tests/api.test.mjs` (runs the PHP server locally) |
 
 * **Identity of a result**: endorsements refer to `resultKey` (type, statements,
@@ -178,8 +186,9 @@ downloaded again. `--dry-run` shows what would change.
 
 ### Answers
 
-The author of a message sees its answers under it, on the Contributions tab of
-their profile; the bell of the header counts the answers they have not seen. An
+The author of a message sees its answers in the conversation of the message, in
+the Messages section of their profile; the bell of the header counts the answers
+they have not seen and opens the first unread conversation. An
 answer is drafted in the message's file, as
 `"reply": {"text": "…", "by": "ai" | "maintainer"}` (`by: ai` when an AI
 assistant wrote it: the viewer says so). The text may use `$…$` TeX and `[[id]]`
@@ -193,10 +202,10 @@ node scripts/feedback-answer.mjs               # send (admin token as for the sy
 The server (`?a=answer`, admin token) appends the answer to the message's file
 (`answers: [{date, text, by}]`; the same text twice is kept once), and the script
 copies the answers into the local file, so an answer is never sent twice; to answer
-the same message again, replace its `reply`. Under an answered message the author
-finds a Reply box: the reply is a new comment with `replyTo: <message id>` (only on
+the same message again, replace its `reply`. Under each conversation the author
+finds a composer: the reply is a new comment with `replyTo: <message id>` (only on
 one's own messages), downloaded by the sync like any message and answered the same
-way; the profile shows the thread. Like the
+way; the profile shows it in the conversation. Like the
 messages, answers are private to their author and never committed.
 
 ### What is in git

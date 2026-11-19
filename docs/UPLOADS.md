@@ -30,10 +30,15 @@ for this purpose, and can remove them at any time.
   paper** or **not allowed to share**: it then leaves the list (a collapsed list of the papers
   set aside allows to undo).
 * A **bell** next to the account button counts these papers (not yet uploaded nor set aside)
-  and opens the Full texts tab.
+  and opens the Full texts section.
+* The Full texts section is a file manager: one table of the shared files (status: in the
+  zoo once imported, otherwise awaiting import), of one's papers without a full text and of
+  the papers set aside, with filters, a search and sorting. PDF files dropped anywhere on
+  it are queued (a file dropped on a paper's row is attached to that paper, or replaces its
+  file); the queue asks for the paper of each file and the right to share before sending.
 * The page of a paper without a full text shows a drop zone for its PDF to signed-in
   researchers.
-* The code: `viewProfile`, `loadUploads`, `paperUploadPanel` in `site/js/app.js`; `listUploads`, `upload`,
+* The code: `viewProfile`, `loadUploads`, `renderUploads`, `fileRows`, `paperUploadPanel` in `site/js/app.js`; `listUploads`, `upload`,
   `removeUpload` in `site/js/community.js`.
 
 ## On the server (`site/api/`)

@@ -59,7 +59,8 @@ export function createCommunity(zoo) {
       indexReviews(s);
       if (Array.isArray(s.qcomments)) c.qcomments = s.qcomments;
     })
-    .catch(() => {});
+    .catch(() => {})
+    .finally(() => { c.settled = true; });
 
   const post = async (action, body) => {
     const r = await fetch(`${API}?a=${action}`, {
