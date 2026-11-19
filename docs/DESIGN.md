@@ -261,7 +261,12 @@ A property may be **characterized by the base system**
 the bottom of that reduction implies it (RCA₀ ⇒ P over ω-models, i.e. P holds in
 every Turing ideal). The engine then derives the property from that comparison
 (RCA₀ ⇏ NON over ω gives "NON is not computably true") and conversely (a
-published "computably true" gives RCA₀ ⇒ P over ω).
+published "computably true" gives RCA₀ ⇒ P over ω). The characterization holds for ω-absolute
+statements only: for a statement with `omegaAbsolute: false` the ω-model comparison
+reads instances inside the model and the property reads the true ones, so neither
+gives the other (its value comes from the other rules). Values read back from the
+separations reach the finer reductions at once: "NON is not computably true", from
+an ω-model separation, gives the ≤c separations from first-order problems.
 
 A question that asks several things is split into **sub-questions** (`parts` in
 `data/questions.yaml`), each with its own comparisons or status. The viewer numbers

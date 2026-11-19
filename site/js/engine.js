@@ -194,12 +194,16 @@ export function buildZoo(raw) {
   // s has p  ⟺  the bottom of r implies s over r (for statements in the domain of p)
   const charProps = raw.properties.map((prop, p) => ({ p, r: ridx.get(prop.baseImplication), dom: ridx.get(prop.closedUnder) }))
     .filter((c) => c.r !== undefined);
+  // the characterization through ω-models holds only for ω-absolute statements: an
+  // ω-model reads a non-absolute instance inside the model (Σ¹₁ conditions may fail
+  // there), while the property reads the true instances
+  const charIn = (r, dom, s) => s !== undefined && inDomain(dom, s) && (absolute[s] || !R[r].omegaModels);
   // bottoms of r, most specific first (RCA₀ = [rca0, omega] before RCA₀* = [rca0star, rca0, omega])
   const basesAt = (r) => S.map((_, i) => i).filter((i) => isBaseAt(i, r))
     .sort((a, b) => (Array.isArray(S[a].base) ? S[a].base.length : 99) - (Array.isArray(S[b].base) ? S[b].base.length : 99));
   // a published property value gives the implication (true) or separation (false) from the base
   const charSeeds = (v) => charProps.flatMap(({ p, r, dom }) => directResults.flatMap((res, ri) =>
-    res.type === 'property' && pidx.get(res.property) === p && !!res.value === v && inDomain(dom, sidx.get(res.statement))
+    res.type === 'property' && pidx.get(res.property) === p && !!res.value === v && charIn(r, dom, sidx.get(res.statement))
       ? basesAt(r).map((b) => ({ r, b, s: sidx.get(res.statement), ri })) : []));
   for (const { r, b, s, ri } of charSeeds(true)) addI(r, b, s, { rule: 'prop-base', result: ri });
   for (let r = 0; r < R.length; r++) {
@@ -484,8 +488,11 @@ export function buildZoo(raw) {
   // what it implies has; fails ⇒ what implies it fails; up: dual), and along the
   // implications between properties. Implications are transitively closed, so
   // one step along the reduction suffices.
-  function drainP() {
-    for (let h = 0; h < pqueue.length;) {
+  // `restart`: from the first value again, along the implications derived since
+  let ph = 0;
+  function drainP(restart = true) {
+    let h = restart ? 0 : ph;
+    for (; h < pqueue.length;) {
       const p = pqueue[h++], s = pqueue[h++];
       const { v } = P[p].get(s);
       const prop = raw.properties[p];
@@ -514,6 +521,7 @@ export function buildZoo(raw) {
       }
       for (const q of v ? impliesP[p] : impliedByP[p]) setP(q, s, v, { rule: 'prop-implies', prem: [fP(p, s, v)] });
     }
+    ph = h;
   }
   directResults.forEach((res, ri) => {
     if (res.type !== 'property') return;
@@ -560,12 +568,13 @@ export function buildZoo(raw) {
   const partMax = W === undefined ? [] : ops.filter((o) => PARTS.has(o.op) && o.args[0] !== undefined)
     .map((o) => ({ o, p: pidx.get(o.op === 'fop' ? 'first-order' : 'single-valued'), r: o.op === 'fop' && SW !== undefined ? SW : W }))
     .filter((x) => x.p !== undefined);
-  for (let changed = bottomProps.length > 0 || partMax.length > 0 || closures.length > 0; changed;) {
+  for (let changed = true; changed;) {
     changed = false;
+    const pbefore = pqueue.length;
     for (const { p, r, dom } of charProps)
       for (const b of basesAt(r).slice(0, 1))
         for (let s = 0; s < n; s++)
-          if (inDomain(dom, s) && !P[p].has(s) && I[r].has(key(b, s))) setP(p, s, true, { rule: 'prop-base', prem: [fI(r, b, s)] });
+          if (charIn(r, dom, s) && !P[p].has(s) && I[r].has(key(b, s))) setP(p, s, true, { rule: 'prop-base', prem: [fI(r, b, s)] });
     drainP();
     const before = queue.length;
     for (const { p, r } of bottomProps)
@@ -574,139 +583,185 @@ export function buildZoo(raw) {
     for (const { o, p, r } of partMax)
       for (const s of out[W][o.args[0]]) if (s !== o.i && P[p].get(s)?.v && !Ib[r][key(o.i, s)] && inDomain(r, s))
         addI(r, o.i, s, { rule: 'op-part-max', prem: [fI(W, o.args[0], s), fP(p, s, true)] });
-    // closure laws with the derived values (the implication loop used the cited ones)
+    // the lift, closure and elimination laws with the derived values (the implication
+    // loop started with the cited ones): a new member gets the law on the implications
+    // known so far, and drainI applies it to the later ones
+    for (const l of lifting)
+      for (const [s, { v }] of P[l.p]) if (v && !l.has.has(s)) {
+        l.has.add(s);
+        for (const b of [...out[l.from][s]]) addI(l.to, s, b, { rule: 'prop-lift', prem: [fI(l.from, s, b)] });
+      }
     for (const c of closures)
-      for (const [a, { v }] of P[c.p]) if (v && inDomain(c.r, a))
+      for (const [a, { v }] of P[c.p]) if (v && !c.has.has(a) && inDomain(c.r, a)) {
+        c.has.add(a);
         for (const b of [...out[c.r][a]]) closeOver(c, a, b, Ib);
+      }
+    for (const e of elims)
+      for (const [s, { v }] of P[e.p]) if (v && !e.has.has(s)) {
+        e.has.add(s);
+        for (const a of [...inn[e.r][s]]) elimI(e.r, a, s);
+      }
+    // properties defined by an operation: a derived value gives the implication
+    // s → op(s, s), and a derived implication gives the value
+    raw.properties.forEach((prop, p) => {
+      if (!prop.selfOp) return;
+      const r = ridx.get(prop.closedUnder);
+      for (const [s, { v }] of P[p]) if (v) {
+        const o = selfOpOf(p, s);
+        if (o) addI(r, s, o.i, { rule: 'prop-self', prem: [fP(p, s, true)] });
+      }
+      for (const o of ops) if (o.op === prop.selfOp && o.args.length && o.args.every((x) => x === o.args[0]) && I[r].has(key(o.args[0], o.i)))
+        setP(p, o.args[0], true, { rule: 'prop-self', prem: [fI(r, o.args[0], o.i)] });
+    });
     if (queue.length > before) { changed = true; drainI(); }
+    else if (pqueue.length > pbefore) changed = true;
   }
 
   // --- non-implications ----------------------------------------------------
   const N = R.map(() => new Map());
   const Nb = R.map(() => new Uint8Array(n * n));
   const fN = (r, a, b) => ({ t: 'N', r, a, b });
-  for (const r of order) {
-    const q = [];
-    let h = 0;
-    const addN = (a, b, just) => {
-      if (!inDomain(r, a) || !inDomain(r, b)) return;
-      const k = key(a, b);
-      if (Nb[r][k]) return;
-      Nb[r][k] = 1;
-      N[r].set(k, just);
-      q.push(a, b);
-    };
-    directResults.forEach((res, ri) => {
-      if (res.type !== 'separation' || ![].concat(res.over).some((o) => ridx.get(o) === r)) return;
-      const a = sidx.get(res.from), b = sidx.get(res.to);
-      if (!inDomain(r, a) || !inDomain(r, b)) {
-        errors.push(`Result #${ri} (${res.from} ⇏ ${res.to} over ${res.over}): statement outside the domain of the reduction`);
-        return;
-      }
-      addN(a, b, { rule: 'direct', result: ri });
-    });
-    // a cited failure of a property defined by an operation: P does not imply op(P)
-    directResults.forEach((res, ri) => {
-      if (res.type !== 'property' || res.value) return;
-      const p = pidx.get(res.property), s = sidx.get(res.statement);
-      if (p === undefined || !raw.properties[p].selfOp || ridx.get(raw.properties[p].closedUnder) !== r) return;
-      const o = selfOpOf(p, s);
-      if (o) addN(s, o.i, { rule: 'prop-self', result: ri });
-    });
-    for (const x of charSeeds(false)) if (x.r === r) addN(x.b, x.s, { rule: 'prop-base', result: x.ri });
-    // derived failures of a characterized property (failing cone avoidance ⇒ not
-    // computably true) give the separation from the base too
-    for (const { p, r: cr, dom } of charProps) {
-      if (cr !== r) continue;
-      for (const [x, { v, just: j }] of P[p])
-        if (!v && j.rule !== 'direct' && inDomain(dom, x)) for (const b of basesAt(r)) addN(b, x, { rule: 'prop-base', prem: [fP(p, x, false)] });
-    }
-    raw.properties.forEach((prop, p) => {
-      if (ridx.get(prop.closedUnder) !== r || prop.direction === 'equiv') return;
-      const down = prop.direction !== 'up';
-      const pos = [], neg = [];
-      for (const [s, { v }] of P[p]) (v ? pos : neg).push(s);
-      const [strong, weak] = down ? [pos, neg] : [neg, pos];
-      for (const a of strong) for (const b of weak)
-        addN(a, b, { rule: 'prop-sep', prop: p, prem: [fP(p, a, down), fP(p, b, !down)] });
-    });
-    // `below: {property: q, over: r}`: what is r-reducible to a problem with p has q on
-    // its true instances (a problem c-reducible to a first-order one has solutions
-    // computable from its instances, even when the first-order problem is not
-    // ω-absolute and so not read as computably true). An ω-absolute t failing q is
-    // therefore not r-reducible to s.
-    raw.properties.forEach((prop, p) => {
-      if (!prop.below || ridx.get(prop.below.over) !== r) return;
-      const q = pidx.get(prop.below.property);
-      const pos = [...P[p]].filter(([, x]) => x.v).map(([s]) => s).filter((s) => inDomain(r, s));
-      const neg = [...P[q]].filter(([, x]) => !x.v).map(([t]) => t).filter((t) => absolute[t] && inDomain(r, t));
-      for (const s of pos) for (const t of neg)
-        if (s !== t) addN(s, t, { rule: 'prop-below', prop: p, prem: [fP(p, s, true), fP(q, t, false)] });
-    });
-    for (const r2 of coarserAll[r]) {
-      for (const k of N[r2].keys()) {
-        const a = Math.floor(k / n), b = k % n;
-        if (bridge(r, r2, a, b)) addN(a, b, { rule: 'refine', prem: [fN(r2, a, b)] });
-      }
-    }
-    const conservationHere = R[r].conservation;
-    while (h < q.length) {
-      const a = q[h++], c = q[h++];
-      if (conservationHere && consByBase.has(a)) {
-        const f = formOf(c);
-        if (f) for (const { x, cls, ri } of consByBase.get(a))
-          if ((CLASS_MEMBERS[cls] || []).includes(f))
-            addN(x, c, { rule: 'conservation', result: ri, prem: [fN(r, a, c)] });
-      }
-      // choice elimination, contrapositive: c ≰ a and c has p give c ≰ a ⋆ h (h ≤ factor)
-      for (const e of elims) {
-        if (e.r !== r || e.F === undefined || !P[e.p].get(c)?.v) continue;
-        for (const o of opsByArg.get(a) || []) {
-          if (o.op !== 'compose' || o.args[e.keep] !== a || o.args.includes(undefined)) continue;
-          const h = o.args[1 - e.keep];
-          if (I[r].has(key(e.F, h))) addN(o.i, c, { rule: 'prop-elim', prop: e.p, prem: [fN(r, a, c), fP(e.p, c, true), fI(r, e.F, h)] });
+  // The separations of each reduction, coarse to fine. Values read back from them
+  // (characterized properties, properties defined by an operation) are propagated at
+  // once, so the finer reductions see them (failing computable truth by an ω-model
+  // separation gives the ≤c separations of `below`); the whole phase runs again while
+  // new values appear, for the reductions already done.
+  const NQ = R.map(() => []), NH = R.map(() => 0);
+  const addN = (r, a, b, just) => {
+    if (!inDomain(r, a) || !inDomain(r, b)) return;
+    const k = key(a, b);
+    if (Nb[r][k]) return;
+    Nb[r][k] = 1;
+    N[r].set(k, just);
+    NQ[r].push(a, b);
+  };
+  const sepPass = (first) => {
+    for (const r of order) {
+      if (first) directResults.forEach((res, ri) => {
+        if (res.type !== 'separation' || ![].concat(res.over).some((o) => ridx.get(o) === r)) return;
+        const a = sidx.get(res.from), b = sidx.get(res.to);
+        if (!inDomain(r, a) || !inDomain(r, b)) {
+          errors.push(`Result #${ri} (${res.from} ⇏ ${res.to} over ${res.over}): statement outside the domain of the reduction`);
+          return;
         }
-      }
-      // check before building the justification: most candidates are already known
-      const Nr = Nb[r], oa = out[r][a], ic = inn[r][c];
-      for (let i = 0, len = oa.length; i < len; i++) {
-        const b = oa[i];
-        if (b !== a && !Nr[key(b, c)]) addN(b, c, { rule: 'weaken-left', prem: [fN(r, a, c), fI(r, a, b)] });
-      }
-      for (let i = 0, len = ic.length; i < len; i++) {
-        const d = ic[i];
-        if (d !== c && !Nr[key(a, d)]) addN(a, d, { rule: 'strengthen-right', prem: [fN(r, a, c), fI(r, d, c)] });
+        addN(r, a, b, { rule: 'direct', result: ri });
+      });
+      if (first) for (const x of charSeeds(false)) if (x.r === r) addN(r, x.b, x.s, { rule: 'prop-base', result: x.ri });
+      for (;;) {
+        // a failure of a property defined by an operation: P does not imply op(P)
+        raw.properties.forEach((prop, p) => {
+          if (!prop.selfOp || ridx.get(prop.closedUnder) !== r) return;
+          for (const [s, { v, just: j }] of P[p]) if (!v) {
+            const o = selfOpOf(p, s);
+            if (o) addN(r, s, o.i, j.rule === 'direct' ? { rule: 'prop-self', result: j.result } : { rule: 'prop-self', prem: [fP(p, s, false)] });
+          }
+        });
+        // derived failures of a characterized property (failing cone avoidance ⇒ not
+        // computably true) give the separation from the base too
+        for (const { p, r: cr, dom } of charProps) {
+          if (cr !== r) continue;
+          for (const [x, { v, just: j }] of P[p])
+            if (!v && j.rule !== 'direct' && charIn(cr, dom, x)) for (const b of basesAt(r)) addN(r, b, x, { rule: 'prop-base', prem: [fP(p, x, false)] });
+        }
+        raw.properties.forEach((prop, p) => {
+          if (ridx.get(prop.closedUnder) !== r || prop.direction === 'equiv') return;
+          const down = prop.direction !== 'up';
+          const pos = [], neg = [];
+          for (const [s, { v }] of P[p]) (v ? pos : neg).push(s);
+          const [strong, weak] = down ? [pos, neg] : [neg, pos];
+          for (const a of strong) for (const b of weak)
+            addN(r, a, b, { rule: 'prop-sep', prop: p, prem: [fP(p, a, down), fP(p, b, !down)] });
+        });
+        // `below: {property: q, over: r}`: what is r-reducible to a problem with p has q on
+        // its true instances (a problem c-reducible to a first-order one has solutions
+        // computable from its instances, even when the first-order problem is not
+        // ω-absolute and so not read as computably true). An ω-absolute t failing q is
+        // therefore not r-reducible to s.
+        raw.properties.forEach((prop, p) => {
+          if (!prop.below || ridx.get(prop.below.over) !== r) return;
+          const q = pidx.get(prop.below.property);
+          const pos = [...P[p]].filter(([, x]) => x.v).map(([s]) => s).filter((s) => inDomain(r, s));
+          const neg = [...P[q]].filter(([, x]) => !x.v).map(([t]) => t).filter((t) => absolute[t] && inDomain(r, t));
+          for (const s of pos) for (const t of neg)
+            if (s !== t) addN(r, s, t, { rule: 'prop-below', prop: p, prem: [fP(p, s, true), fP(q, t, false)] });
+        });
+        for (const r2 of coarserAll[r]) {
+          for (const k of N[r2].keys()) {
+            if (Nb[r][k]) continue;
+            const a = Math.floor(k / n), b = k % n;
+            if (bridge(r, r2, a, b)) addN(r, a, b, { rule: 'refine', prem: [fN(r2, a, b)] });
+          }
+        }
+        const q = NQ[r];
+        if (NH[r] === q.length) break;
+        const conservationHere = R[r].conservation;
+        while (NH[r] < q.length) {
+          const a = q[NH[r]++], c = q[NH[r]++];
+          if (conservationHere && consByBase.has(a)) {
+            const f = formOf(c);
+            if (f) for (const { x, cls, ri } of consByBase.get(a))
+              if ((CLASS_MEMBERS[cls] || []).includes(f))
+                addN(r, x, c, { rule: 'conservation', result: ri, prem: [fN(r, a, c)] });
+          }
+          // choice elimination, contrapositive: c ≰ a and c has p give c ≰ a ⋆ h (h ≤ factor)
+          for (const e of elims) {
+            if (e.r !== r || e.F === undefined || !P[e.p].get(c)?.v) continue;
+            for (const o of opsByArg.get(a) || []) {
+              if (o.op !== 'compose' || o.args[e.keep] !== a || o.args.includes(undefined)) continue;
+              const h = o.args[1 - e.keep];
+              if (I[r].has(key(e.F, h))) addN(r, o.i, c, { rule: 'prop-elim', prop: e.p, prem: [fN(r, a, c), fP(e.p, c, true), fI(r, e.F, h)] });
+            }
+          }
+          // check before building the justification: most candidates are already known
+          const Nr = Nb[r], oa = out[r][a], ic = inn[r][c];
+          for (let i = 0, len = oa.length; i < len; i++) {
+            const b = oa[i];
+            if (b !== a && !Nr[key(b, c)]) addN(r, b, c, { rule: 'weaken-left', prem: [fN(r, a, c), fI(r, a, b)] });
+          }
+          for (let i = 0, len = ic.length; i < len; i++) {
+            const d = ic[i];
+            if (d !== c && !Nr[key(a, d)]) addN(r, a, d, { rule: 'strengthen-right', prem: [fN(r, a, c), fI(r, d, c)] });
+          }
+        }
+        // values read back from the separations of r: characterized properties (from
+        // the base), properties defined by an operation (Det_Σ × Det_Σ ≰W Det_Σ: Det_Σ
+        // is not idempotent); then their consequences, and again while r gets more
+        const before = pqueue.length;
+        for (const { p, r: cr, dom } of charProps) {
+          if (cr !== r) continue;
+          const b = basesAt(r)[0];
+          if (b !== undefined) for (let s = 0; s < n; s++)
+            if (charIn(r, dom, s) && !P[p].has(s) && N[r].has(key(b, s))) setP(p, s, false, { rule: 'prop-base', prem: [fN(r, b, s)] });
+        }
+        raw.properties.forEach((prop, p) => {
+          if (!prop.selfOp || ridx.get(prop.closedUnder) !== r) return;
+          for (const o of ops) if (o.op === prop.selfOp && o.args.length && o.args.every((x) => x === o.args[0]) && N[r].has(key(o.args[0], o.i)))
+            setP(p, o.args[0], false, { rule: 'prop-self', prem: [fN(r, o.args[0], o.i)] });
+        });
+        drainP(false);
+        if (pqueue.length === before) break;
       }
     }
+  };
+  for (let first = true; ; first = false) {
+    const before = pqueue.length;
+    sepPass(first);
+    if (pqueue.length === before) break;
+  }
+  for (let r = 0; r < R.length; r++)
     for (const k of N[r].keys()) {
       if (I[r].has(k)) {
         const a = Math.floor(k / n), b = k % n;
         contradictions.push({ kind: 'implication', r, a, b, facts: [fI(r, a, b), fN(r, a, b)] });
       }
     }
-  }
-
-  // characterized properties, read back from the implications and separations
-  // from the base (no further propagation is needed: the reduction of the property
-  // is finer than r, so the inherited values already follow through r)
+  // characterized properties with a value from the implications only (the separations
+  // gave theirs above)
   for (const { p, r, dom } of charProps)
     for (const b of basesAt(r).slice(0, 1))
-      for (let s = 0; s < n; s++) {
-        if (!inDomain(dom, s) || P[p].has(s)) continue;
-        if (I[r].has(key(b, s))) setP(p, s, true, { rule: 'prop-base', prem: [fI(r, b, s)] });
-        else if (N[r].has(key(b, s))) setP(p, s, false, { rule: 'prop-base', prem: [fN(r, b, s)] });
-      }
-  // properties defined by an operation fail when the statement does not imply the
-  // operation applied to itself (Det_Σ × Det_Σ ≰W Det_Σ: Det_Σ is not idempotent)
-  raw.properties.forEach((prop, p) => {
-    if (!prop.selfOp) return;
-    const r = ridx.get(prop.closedUnder);
-    for (const o of ops) if (o.op === prop.selfOp && o.args.length && o.args.every((x) => x === o.args[0]) && N[r].has(key(o.args[0], o.i)))
-      setP(p, o.args[0], false, { rule: 'prop-self', prem: [fN(r, o.args[0], o.i)] });
-  });
-  // values of the properties they imply (computably true ⇒ cone avoidance…); the
-  // separations these could give already follow from the base comparison
-  drainP();
+      for (let s = 0; s < n; s++)
+        if (charIn(r, dom, s) && !P[p].has(s) && I[r].has(key(b, s))) setP(p, s, true, { rule: 'prop-base', prem: [fI(r, b, s)] });
+  drainP(false);
 
   // --- queries -------------------------------------------------------------
   function just(f) {
