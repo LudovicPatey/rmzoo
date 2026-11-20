@@ -24,7 +24,11 @@ export function createCommunity(zoo) {
     // public comments on the open questions: the server's (live) or those committed in
     // data/endorsements.yaml (static copy) — [{id, question, orcid, date, text}]
     qcomments: (zoo.raw.endorsements?.discussions || []).map((x, i) => ({ id: `q-seed-${i}`, ...x })),
+    // orcid → number of full texts shared (live only: the server's count; the files stay private)
+    uploadCounts: null,
   };
+  // names of the researchers credited in data/credits.yaml, for those the server does not list
+  const creditNames = new Map((zoo.raw.credits || []).map((x) => [x.orcid, x.name]));
   const indexReviews = (s) => {
     c.byItem = new Map();
     const at = (id) => { if (!c.byItem.has(id)) c.byItem.set(id, { votes: [], comments: [] }); return c.byItem.get(id); };
@@ -58,6 +62,7 @@ export function createCommunity(zoo) {
       index(s.people, s.endorsements);
       indexReviews(s);
       if (Array.isArray(s.qcomments)) c.qcomments = s.qcomments;
+      if (s.uploadCounts && typeof s.uploadCounts === 'object') c.uploadCounts = s.uploadCounts;
     })
     .catch(() => {})
     .finally(() => { c.settled = true; });
@@ -74,7 +79,7 @@ export function createCommunity(zoo) {
   };
 
   c.endorsers = (key) => c.byResult.get(key) || [];
-  c.name = (orcid) => c.people[orcid]?.name || orcid;
+  c.name = (orcid) => c.people[orcid]?.name || creditNames.get(orcid) || orcid;
   c.endorsedByMe = (key) => !!c.user && c.endorsers(key).some((e) => e.orcid === c.user.orcid);
   c.setEndorsement = async (key, on) => {
     const s = await post('endorse', { result: key, endorse: on });

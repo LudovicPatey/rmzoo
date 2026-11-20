@@ -144,6 +144,7 @@
 - { type: property, statement: tj, property: delta2-basis, value: true, folklore: true, justification: { kind: reduction, text: "The solution X′ of a computable instance X is computable in ∅′ (indeed Σ⁰₁).", by: ai } }
 - { type: implication, from: aca, to: aca-prime, over: sw, folklore: true, justification: { kind: reduction, text: "Given (X, n), the arithmetical formula defining X^(n) from X is computable from n, and the solution of ACA on it is X^(n).", by: ai } }
 - { type: implication, from: aca-prime, to: aca, over: w, folklore: true, justification: { kind: reduction, text: "Given (X, φ) with φ a Σ⁰ₙ formula, {k : φ(k, X)} is computable from X^(n) uniformly in φ (with X and φ available, as Weihrauch reducibility allows).", by: ai } }
+- { type: implication, from: aca-plus, to: aca-prime, over: w, folklore: true, justification: { kind: reduction, by: ai, text: "Given (X, n), X⁽ⁿ⁾ is computable from X^(ω) uniformly in n." } }
 - { type: property, statement: aca-prime, property: sigma4-basis, value: false, folklore: true, justification: { kind: reduction, text: "The computable instance (∅, 5) has the single solution ∅⁽⁵⁾, which is not Σ⁰₄; likewise (∅, n + 1) has no Σ⁰ₙ solution for any n.", by: ai } }
 
 # ℓ-COH and ℓ-EM (data/statements/ramsey.yaml), like the other long versions.

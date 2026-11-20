@@ -145,6 +145,8 @@ messages), and it never deletes a file on the server: the server's
 `api/config.php` and `rmzoo-data/` (endorsements, comments, sessions) are left
 alone. It refuses to run when `data/` changed after the last build, and warns
 about uncommitted changes (the live site would then differ from GitHub).
+`rmzoo-data/` and `api/config.php` exist only on the server: back them up with
+`node scripts/backup.mjs` (docs/BACKUP.md), which also restores them.
 
 Settings in `cache/deploy.json` (git-ignored), from the OVH control panel
 (Web hosting → FTP-SSH):
@@ -208,11 +210,40 @@ one's own messages), downloaded by the sync like any message and answered the sa
 way; the profile shows it in the conversation. Like the
 messages, answers are private to their author and never committed.
 
+### Badges
+
+Hovering (or focusing) a researcher's name anywhere in the viewer shows a card with
+their badges, which are also shown under their name on their profile:
+
+| badge | counted from |
+|-------|--------------|
+| facts entered | `data/credits.yaml`, kind `fact` (its `count`, default 1) |
+| errors fixed | `data/credits.yaml`, kind `fix`: a wrong fact, citation, numbering or label corrected on their report |
+| sources added | `data/credits.yaml`, kind `source`: a better or earlier source, or a simpler justification, on their remark |
+| endorsements | their endorsements (server, or `data/endorsements.yaml`) |
+| public comments | their comments on open questions and on the review page |
+| full texts shared | the server's count of their uploads (`uploadCounts` in `?a=state`; live instance only, the files stay private) |
+
+Only nonzero badges are shown. A profile with credits also has a Contributions
+section listing each credit's note.
+
+`data/credits.yaml` is public and committed: one entry per message and kind,
+`{orcid, name, kind, date, note, message?, count?}` (entity `credit` in
+`scripts/lib/schema.mjs`; the build validates it). Its `note` says what changed
+in the database, in a sentence; it never quotes the private message.
+- When a message is treated and changes the database, add its entry.
+- `node scripts/review.mjs accept` adds one itself for a contributed fact; a
+  second fact of the same message raises its `count`.
+- The code is in `site/js/badges.js` (the counts), `badgesHtml` and
+  `showUserCard` in `site/js/app.js`, and `scripts/lib/credits.mjs` (writing
+  entries). It is tested in `tests/badges.test.mjs`.
+
 ### What is in git
 
 The endorsements and the public comments on the open questions are committed in
 `data/endorsements.yaml`; the votes and public comments of the review page in
-`data/review.yaml`. The private messages (comments, error reports, suggestions)
+`data/review.yaml`; what messages changed in the database (badges) in
+`data/credits.yaml`. The private messages (comments, error reports, suggestions)
 and their answers stay on the server and in `feedback/` (git-ignored).
 
 ## Local development

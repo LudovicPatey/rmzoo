@@ -1756,6 +1756,7 @@ lemppmarconevalenti2024:
   source: weihrauch-bibliography
   read: pdf-arxiv
   arxiv: "2411.07792"
+  doi: 10.1017/jsl.2026.10214
 rouxpauly2013:
   authors:
     - "Le Roux, Stéphane"

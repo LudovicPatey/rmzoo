@@ -13,6 +13,8 @@ paper.
 
 * What the data means: [docs/DESIGN.md](docs/DESIGN.md).
 * Layout, commands, adding results, full texts, abstracts: [README.md](README.md).
+* Backups of the untracked files and the server data: [docs/BACKUP.md](docs/BACKUP.md).
+  Restoring (`--restore`) is the maintainer's to run, like deploying.
 * Keeping the database up to date: [docs/CONSOLIDATION.md](docs/CONSOLIDATION.md).
 * Every allowed data field, its meaning and the code that reads it:
   [scripts/lib/schema.mjs](scripts/lib/schema.mjs).
@@ -114,9 +116,10 @@ paper.
 | review queue: AI proposals and consolidation candidates, votes of the review page (`docs/REVIEW.md`) | `scripts/review.mjs`, `scripts/lib/review-queue.mjs`, `site/js/review.js` | `data/review.yaml`, `site/data/review.json` |
 | long texts read in parts by the AI reader | `scripts/lib/split-text.mjs` | cached texts |
 | adding results | `scripts/add-results.mjs` → `scripts/lib/results.mjs` | results |
-| endorsements and comments: server (PHP), viewer, download, answers to messages; saved diagrams (private, server only) | `site/api/*.php`, `site/js/community.js`, `scripts/endorsements-sync.mjs`, `scripts/feedback-answer.mjs` | `zoo.json` (results' `_key`, statement and reduction ids), `data/endorsements.yaml` |
+| endorsements and comments: server (PHP), viewer, download, answers to messages; saved diagrams (private, server only); badges of researchers (hover card, profile) | `site/api/*.php`, `site/js/community.js`, `site/js/badges.js`, `scripts/endorsements-sync.mjs`, `scripts/feedback-answer.mjs`, `scripts/lib/credits.mjs` | `zoo.json` (results' `_key`, statement and reduction ids, `credits`), `data/endorsements.yaml`, `data/credits.yaml` |
 | full texts uploaded by researchers (`docs/UPLOADS.md`): server, viewer, import | `site/api/*.php`, `site/js/community.js`, `viewUploads` in `site/js/app.js`, `scripts/uploads-sync.mjs` | `zoo.json` (references), the server's uploads |
 | upload to the live instance (explicit file list, never deletes) | `scripts/deploy.mjs` → `scripts/lib/deploy.mjs` | `site/`, `cache/deploy.json` |
+| backups of what git does not hold (untracked files, server data), restoration (docs/BACKUP.md) | `scripts/backup.mjs` → `scripts/lib/backup.mjs` | `git ls-files --others`, `cache/backup.json`, `cache/deploy.json`, the server's `rmzoo-data/` |
 | one-off imports (kept for provenance, not maintained) | `scripts/import/` | — |
 | tests | `tests/*.test.mjs` | engine, data, schema |
 
@@ -237,7 +240,10 @@ authoritative: never edit it by hand) and saves new messages in
 theorem in the paper (section 1) before changing data, then move the file to
 `feedback/done/`. Draft an answer to each message in its file
 (`"reply": {"text", "by": "ai"}`: what was changed, with the theorem read, or why
-nothing was; `docs/ENDORSEMENTS.md`, "Answers"). Sending is the maintainer's:
+nothing was; `docs/ENDORSEMENTS.md`, "Answers"). When a message changed the
+database (a fact entered, an error fixed, a source added), credit its author in
+`data/credits.yaml` (one entry per message and kind, with a public note of what
+changed: `docs/ENDORSEMENTS.md`, "Badges"). Sending is the maintainer's:
 show them `node scripts/feedback-answer.mjs --dry-run`, and run it without
 `--dry-run` only when they say so. Never put messages, `site/api/config.php` or
 the admin token in git.

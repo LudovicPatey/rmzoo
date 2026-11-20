@@ -59,6 +59,8 @@ const abstracts = fs.existsSync(path.join(dataDir, 'abstracts.yaml')) ? readYaml
 // endorsements by researchers (live instance, docs/ENDORSEMENTS.md)
 const endorsed = fs.existsSync(path.join(dataDir, 'endorsements.yaml')) ? readYaml(path.join(dataDir, 'endorsements.yaml')) || {} : {};
 raw.endorsements = { people: endorsed.people || {}, endorsements: endorsed.endorsements || [], discussions: endorsed.discussions || [] };
+// what researchers' messages changed in the database, for their badges (site/js/badges.js)
+raw.credits = fs.existsSync(path.join(dataDir, 'credits.yaml')) ? readYaml(path.join(dataDir, 'credits.yaml')) || [] : [];
 // zbMATH author profiles of the authors of the references (scripts/zbmath.mjs): code → {name, orcid}
 const zbAuthors = fs.existsSync(path.join(dataDir, 'authors.yaml')) ? readYaml(path.join(dataDir, 'authors.yaml')) || {} : {};
 // the review queue (docs/REVIEW.md): not part of the database; the open items go to
@@ -84,6 +86,7 @@ const screened = fs.existsSync(path.join(dataDir, 'screened.yaml')) ? readYaml(p
   for (const [k, x] of Object.entries(raw.endorsements.people)) errs.push(...unknownFields(x, 'person', `endorsements.yaml person ${k}`));
   raw.endorsements.endorsements.forEach((x, i) => errs.push(...unknownFields(x, 'endorsement', `endorsements.yaml #${i}`)));
   raw.endorsements.discussions.forEach((x, i) => errs.push(...unknownFields(x, 'discussion', `endorsements.yaml discussion #${i}`)));
+  raw.credits.forEach((x, i) => errs.push(...unknownFields(x, 'credit', `credits.yaml #${i}`)));
   if (errs.length) { errs.forEach((e) => console.error('✗ ' + e)); process.exit(1); }
 }
 
@@ -735,6 +738,24 @@ raw.results.forEach((res, i) => {
       if (!raw.endorsements.people[c.orcid]) errors.push(`endorsements.yaml: comment on ${c.question} by unknown person ${c.orcid}`);
       if (!qids.has(c.question)) warnings.push(`endorsements.yaml: comment on unknown question ${c.question}`);
     }
+  }
+  // credits (badges): valid ORCID iDs, known kinds, a name, a date, a public note; one
+  // entry per message and kind
+  {
+    const seen = new Set();
+    raw.credits.forEach((c, i) => {
+      const at = `credits.yaml #${i}`;
+      if (!orcidValid(String(c.orcid))) errors.push(`${at}: invalid ORCID iD ${c.orcid}`);
+      if (!['fact', 'fix', 'source'].includes(c.kind)) errors.push(`${at}: kind must be fact, fix or source (not ${c.kind})`);
+      if (!c.name) errors.push(`${at}: no name`);
+      if (!c.note) errors.push(`${at}: no note (what changed)`);
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(String(c.date))) errors.push(`${at}: date ${c.date} is not YYYY-MM-DD`);
+      if (c.count !== undefined && !(Number.isInteger(c.count) && c.count >= 1 && c.kind === 'fact')) errors.push(`${at}: count is a number ≥ 1, for kind fact only`);
+      if (c.message) {
+        if (seen.has(`${c.message}#${c.kind}`)) errors.push(`${at}: message ${c.message} credited twice as ${c.kind}`);
+        seen.add(`${c.message}#${c.kind}`);
+      }
+    });
   }
   // review queue: unique ids, known kinds and statuses, votes and comments by known people
   {

@@ -716,3 +716,17 @@ header .search.has-q:focus-within { width: min(560px, 52vw); }
   .fm-table td.fm-actions { grid-column: 1 / -1; text-align: left; white-space: normal; }
 }
 .fm-sort, .mail-kind { width: auto; flex: none; }
+
+/* badges of a person (site/js/badges.js): hover card of a name, profile */
+.ubadges { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 5px; }
+.ubadge { font-size: .76rem; padding: 2px 8px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.ubadge b { color: var(--ink); font-weight: 650; }
+.ubadge .ub-ic { margin-right: 3px; }
+.ubadge.ub-facts, .ubadge.ub-fixes { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
+.ubadge.ub-facts b, .ubadge.ub-fixes b { color: var(--accent); }
+.ucard { position: absolute; z-index: 60; width: max-content; max-width: min(320px, calc(100vw - 16px)); background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); padding: 10px 12px; pointer-events: none; }
+.ucard-head { display: flex; gap: 10px; align-items: center; }
+.ucard .avatar { width: 34px; height: 34px; font-size: .85rem; }
+.ucard p { margin: 8px 0 0; }
+.profile-side .ubadges { margin: 10px 0 4px; }
+.profile-main td.nowrap { white-space: nowrap; }

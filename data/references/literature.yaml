@@ -612,6 +612,9 @@ gill2023b:
   venue: arXiv preprint
   arxiv: "2310.20097"
   read: pdf-arxiv
+  zbmath: arXiv:2310.20097
+  zbmathAuthors:
+    - gill.kenneth
 erhard2013:
   authors: [ Julia Christina Erhard ]
   title: The Carlson-Simpson Lemma in Reverse Mathematics

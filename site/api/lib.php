@@ -223,6 +223,18 @@ function my_uploads(array $list, string $orcid): array {
     array_filter($list, fn ($u) => $u['orcid'] === $orcid)));
 }
 // Papers a person marked as not theirs or not shareable (the bell of the viewer):
+// Number of full texts shared by each person (a file replaced in place counts once),
+// for the badges of the viewer (site/js/badges.js). Only counts: the files stay private.
+function upload_counts(): object {
+  $n = [];
+  $file = data_dir() . '/uploads/index.json';
+  $list = is_file($file) ? json_decode((string) file_get_contents($file), true) : [];
+  foreach (is_array($list) ? $list : [] as $u) {
+    if (empty($u['orcid'])) continue;
+    $n[$u['orcid']] = ($n[$u['orcid']] ?? 0) + 1;
+  }
+  return (object) $n;
+}
 // data_dir/uploads/dismissed.json  {orcid: {refkey: {reason: not-author|not-allowed, date}}}
 function with_dismissed(callable $fn) {
   $dir = uploads_dir();

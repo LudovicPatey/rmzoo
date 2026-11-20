@@ -54,3 +54,21 @@ endorsements:
   - { result: implication|cn|cr.det|w|, orcid: 0000-0003-0351-3058, date: 2026-11-18 }
   - { result: implication|sigma11-cn|cn|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-18 }
   - { result: separation|kn|cn|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-18 }
+  - { result: implication|accn|dis|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: implication|chipi11|sigma11-c2|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: implication|cn|lim2|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: implication|cr|pcr|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: implication|d2|d22|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: "implication|dnr|non|sw,rca0star|", orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: implication|lbt|wkl|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: implication|lim2|lpo|w|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: implication|llpo|accn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: implication|non|dis|w|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: implication|ran1|non|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: "implication|rt13|rt12|sw,rca0star|", orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: implication|rt1inf|rt15|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: implication|tcn|cn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: implication|tt22|rt22|rca0|, orcid: 0000-0002-0304-7926, date: 2026-11-19 }
+  - { result: implication|ucnn|tcnn.par.det|w|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: property|ucnn|parallelizable||true, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: separation|cn|tcn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }

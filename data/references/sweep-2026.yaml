@@ -606,6 +606,7 @@ hirst1993b:
   zbmath: "0785.03040"
   zbmathAuthors:
     - hirst.jeffry-l
+  read: pdf-oa
 murawski1993b:
   authors:
     - Roman Murawski
@@ -975,6 +976,7 @@ simpson1999:
   zbmath: "0909.03048"
   zbmathAuthors:
     - simpson.stephen-g
+  read: pdf-oa
 humphreyssimpson1999:
   authors:
     - A. James Humphreys
@@ -1316,7 +1318,7 @@ kohlenbach2002b:
   zbmath: "1001.03052"
   zbmathAuthors:
     - kohlenbach.ulrich-wilhelm
-  read: pdf-zotero
+  read: pdf-oa
 escardostreicher2002:
   authors:
     - Martín Escardó
@@ -5130,6 +5132,12 @@ bienvenuetal2026:
   arxiv: "2611.06439"
   source: arxiv
   read: pdf-arxiv
+  zbmath: arXiv:2611.06439
+  zbmathAuthors:
+    - bienvenu.laurent
+    - greenberg.noam
+    - patey.ludovic
+    - turetsky.daniel-d
 simpson1985b:
   authors:
     - Stephen G. Simpson
@@ -5148,6 +5156,11 @@ friedmanrobertsonseymour1987:
   venue: "Logic and Combinatorics (S. G. Simpson, ed.), Contemporary Mathematics 65, 229–261"
   doi: 10.1090/conm/065/891251
   read: pdf-local
+  zbmath: "0635.03060"
+  zbmathAuthors:
+    - friedman.harvey-m
+    - robertson.neil
+    - seymour.paul-d
 valenti2026:
   authors:
     - Manlio Valenti
@@ -5155,4 +5168,20 @@ valenti2026:
   year: 2026
   venue: arXiv preprint
   arxiv: "2611.00818"
+  read: pdf-arxiv
+  zbmath: arXiv:2611.00818
+  zbmathAuthors:
+    - valenti.manlio
+cintioli2026:
+  authors:
+    - Patrizio Cintioli
+  title: 1-Genericity Is Not Weihrauch Reducible to the Finite Intersection Principle
+  venue: Preprint, arXiv:2611.01576 [math.LO] (2026)
+  year: 2026
+  source: zbmath
+  arxiv: "2611.01576"
+  url: https://zbmath.org/?q=an:arXiv:2611.01576
+  zbmath: arXiv:2611.01576
+  zbmathAuthors:
+    - cintioli.patrizio
   read: pdf-arxiv

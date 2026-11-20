@@ -1,3 +1,3 @@
 # Results from [mummertsimpson2005].
 
-[ { type: implication, from: pi12ca, to: mfmt, over: rca0, note: "Theorem 1: MFMT implies Π¹₂-CA₀ over Π¹₁-CA₀ (base not expressible here).", refs: [ { ref: mummertsimpson2005, loc: Lemma 1 } ] } ]
+[ { type: implication, from: pi12ca, to: mfmt, over: rca0, refs: [ { ref: mummertsimpson2005, loc: Lemma 1 } ] }, { type: implication, from: mfmt-pi11ca, to: pi12ca, over: rca0, refs: [ { ref: mummertsimpson2005, loc: Theorem 1 (over Π¹₁-CA₀) } ] } ]

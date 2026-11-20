@@ -12,6 +12,11 @@ facts:
   - 'astoretal2026|Theorem 4.17'
   - 'astoretal2026|Theorem 5.10'
   - 'astoretal2026|Theorem 5.9'
+  - 'barnesgohshore2022|Theorem 3.15'
+  - belanger2014|Corollary 2.11
+  - bergerishiharaschuster2012|Proposition 14
+  - bienvenukuyper2017|Corollary 4.9
+  - bienvenukuyper2017|Corollary 6.7
   - 'brattka2021|Corollary 4.7'
   - 'brattka2021|Corollary 7.9'
   - 'brattka2021|Fact 3.4'
@@ -37,6 +42,12 @@ facts:
   - 'brattkadebrechtpauly2012|Corollary 8.12'
   - 'brattkadebrechtpauly2012|Lemma 8.6'
   - 'brattkadebrechtpauly2012|Proposition 8.11'
+  - brattkagherardi2011b|Corollary 4.10
+  - brattkagherardi2011b|Corollary 4.11
+  - brattkagherardi2011b|Corollary 4.2
+  - brattkagherardi2011b|Proposition 3.6
+  - brattkagherardi2011b|Proposition 4.5
+  - brattkagherardi2011b|Proposition 4.6
   - 'brattkagherardi2019|Corollary 30'
   - 'brattkagherardi2019|Corollary 7.7'
   - 'brattkagherardi2019|Corollary 8.10'
@@ -94,11 +105,20 @@ facts:
   - 'brattkarakotoniaina2017|Proposition 5.1'
   - 'brattkarakotoniaina2017|Theorem 6.5'
   - 'brattkarakotoniaina2017|Theorem 6.82'
+  - 'carluccicelli2025|Lemma 2'
+  - 'carluccicelli2025|Lemma 3'
+  - 'carluccicelli2025|Theorem 1'
   - 'carluccietal2024|Corollary 3.5'
   - 'carluccietal2024|Proposition 3.11'
   - 'carluccietal2024|Theorem 3.4'
   - 'carluccimainardi2022|Proposition 7'
   - 'carluccimainardi2022|Theorem 5'
+  - 'conidis2012|Corollary 3.19'
+  - 'conidis2012|Lemma 2.2'
+  - 'conidis2012|Theorem 2.1'
+  - 'conidis2012|Theorem 2.4'
+  - dauriacetal2024|Corollary 4.16
+  - dauriacetal2024|Corollary 4.9
   - 'davisetal2020|Lemma 4'
   - 'davisetal2020|Theorem 10'
   - 'ddhms2016|Theorem 8.2'
@@ -107,6 +127,7 @@ facts:
   - 'dzhafarovetal2018|Proposition 2.10'
   - 'dzhafarovetal2018|Theorem 2.6'
   - 'dzhafarovsolomonyokoyama2023|Corollary 4.3'
+  - 'fernandesferreiraferreira2017|Theorem 5'
   - 'fernandezduque2015|Corollary 5'
   - 'fernandezduque2015|Theorem 13'
   - 'fernandezduque2015|Theorem 6'
@@ -116,6 +137,15 @@ facts:
   - 'fioricaronesshafersolda2022|Theorem 3.5'
   - 'freund2024b|Proposition 2.1'
   - 'gherardimarconepauly2018|Proposition 5.5'
+  - 'goh2020b|Corollary 6.4'
+  - 'goh2020b|Corollary 8.5'
+  - 'goh2020b|Corollary 8.7'
+  - 'goh2020b|Lemma 8.6'
+  - goh2020b|Proposition 9.3
+  - 'goh2020b|Theorem 7.1'
+  - 'goh2020b|Theorem 7.2'
+  - 'goh2020b|Theorem 9.25'
+  - 'goh2020b|Theorem 9.27'
   - 'gohpaulyvalenti2021|Corollary 4.21'
   - 'gohpaulyvalenti2021|Corollary 5.20'
   - 'gohpaulyvalenti2021|Corollary 5.9'
@@ -138,9 +168,15 @@ facts:
   - 'gohpaulyvalenti2024|Proposition 9.4'
   - 'gohpaulyvalenti2024|Theorem 4.3'
   - 'hayashi2024|Lemma 4.14'
+  - 'hirschfeldtlangeshore2017|Proposition 4.5'
   - 'hirschfeldtreitzes2022|Corollary 3.8'
   - 'hirschfeldtreitzes2022|Theorem 3.10'
   - 'hirschfeldtreitzes2022|Theorem 3.11'
+  - holzletal2017|Corollary 45
+  - holzletal2017|Proposition 46
+  - holzletal2017|Theorem 44
+  - keisler2006|Theorem 8.5
+  - keisler2010|Proposition 6.14
   - 'kihara2020|Fact 5.11'
   - 'kowalik2025|Lemma 4.10'
   - 'kowalik2025|Lemma 4.12'
@@ -158,6 +194,11 @@ facts:
   - 'liupatey2022|Proposition 3.3'
   - 'liupatey2022|Theorem 1.6'
   - 'mimounipatey2025|Corollary 7.6'
+  - 'montalban2006b|Corollary 3.11'
+  - 'montalban2006b|Theorem 4.2'
+  - 'montalbanshore2018|Proposition 2.13'
+  - 'montalbanshore2018|Theorem 4.16'
+  - mummertsimpson2005|Theorem 1
   - 'niesshafer2020|Proposition 5.3'
   - 'patey2016c|Corollary 10.0.22'
   - 'patey2016c|Corollary 10.3.6'
@@ -180,33 +221,23 @@ facts:
   - 'pateyshafer2026|Theorem 1.7'
   - 'pateyshafer2026|Theorem 1.8'
   - 'pauly2020|Theorem 5'
+  - rathjen2010|Lemma 13.2
+  - rathjen2010|Theorem 4.6
+  - shafer2012|Theorem 2.4
+  - shore2026|Lemma 5.19
+  - shore2026|Proposition 6.7
+  - shore2026|Theorem 5.18
   - 'soldavalenti2022|Proposition 7.24'
   - 'soldavalenti2022|Proposition 7.26'
   - 'soldavalenti2022|Proposition 7.29'
   - 'soldavalenti2022|Theorem 7.2'
   - 'sorg2026c|Lemma 7.1'
-  - 'conidis2012|Theorem 2.1'
-  - 'conidis2012|Lemma 2.2'
-  - 'conidis2012|Theorem 2.4'
-  - 'conidis2012|Corollary 3.19'
-  - 'hirschfeldtlangeshore2017|Proposition 4.5'
-  - 'montalbanshore2018|Proposition 2.13'
-  - 'montalbanshore2018|Theorem 4.16'
-  - 'barnesgohshore2022|Theorem 3.15'
-  - 'montalban2006b|Corollary 3.11'
-  - 'montalban2006b|Theorem 4.2'
-  - 'fernandesferreiraferreira2017|Theorem 5'
-  - 'carluccicelli2025|Theorem 1'
-  - 'carluccicelli2025|Lemma 2'
-  - 'carluccicelli2025|Lemma 3'
-  - 'goh2020b|Corollary 6.4'
-  - 'goh2020b|Theorem 7.1'
-  - 'goh2020b|Theorem 7.2'
-  - 'goh2020b|Corollary 8.5'
-  - 'goh2020b|Lemma 8.6'
-  - 'goh2020b|Corollary 8.7'
-  - 'goh2020b|Theorem 9.25'
-  - 'goh2020b|Theorem 9.27'
+  - valenti2026|Corollary 3.6
+  - valenti2026|Lemma 4.10
+  - valenti2026|Lemma 4.4
+  - yokoyama2023|Proposition 3.1
+  - yokoyama2023|Theorem 2.3
+  - yokoyama2023|Theorem 3.5
 questions:
   - 'andrewssorbi2018|Question 1'
   - 'andrewssorbi2018|Question 2'
@@ -223,6 +254,7 @@ questions:
   - 'bazhenovetal2021|Question 9.25'
   - 'bazhenovetal2021|Question 9.26'
   - 'binnsetal2014|Conjecture 1.4'
+  - 'brattkapauly2010|Problem 24'
   - 'brodheadetal2014|Question 2.11'
   - 'carluccimainardi2022|Question 1'
   - 'carluccimainardi2022|Question 2'
@@ -241,6 +273,10 @@ questions:
   - 'clemenscoskeykrakoff2020|Question 4'
   - 'clemenscoskeykrakoff2020|Question 5'
   - 'clemenscoskeykrakoff2020|Question 6'
+  - 'conidis2012|Question 1.10'
+  - 'conidis2012|Question 1.7'
+  - 'conidis2014|Question 8.4'
+  - 'conidisgreenbergturetsky2013|Question 1.21'
   - 'corduandorais2011|Question 4.2'
   - 'corduandorais2011|Question 4.3'
   - 'corduandorais2011|Question 4.4'
@@ -264,6 +300,11 @@ questions:
   - 'dorais2011|Question 10.1'
   - 'dorais2011|Question 10.2'
   - 'doraishirstshafer2012|Question 12'
+  - 'doraishirstshafer2014|Question 5.10'
+  - 'doraishirstshafer2014|Question 5.11'
+  - 'doraishirstshafer2014|Question 5.9'
+  - 'downeykach2011|Conjecture 4.3'
+  - 'downeykach2011|Question 4.1'
   - 'dzhafarov2010|Question 1.6'
   - 'dzhafarov2015b|Question 1.6'
   - 'dzhafarov2015b|Question 6.1'
@@ -282,6 +323,7 @@ questions:
   - 'friedmangitmankanovei2018|Question 12.2'
   - 'frittaionetal2017|Question 1.2'
   - 'frittaionetal2017|Question 6.1'
+  - 'greenbergmontalban2008|Question 4.13'
   - 'harrisontrainorliulutz2023|Conjecture 6.15'
   - 'harrisontrainorliulutz2023|Conjecture 6.16'
   - 'harrisontrainorliulutz2023|Conjecture 6.17'
@@ -296,6 +338,14 @@ questions:
   - 'hirschfeldtcarlgjockuschschupp2021|Question 9.7'
   - 'hirschfeldtcarlgjockuschschupp2021|Question 9.8'
   - 'hirschfeldtcarlgjockuschschupp2021|Question 9.9'
+  - 'hirschfeldtlangeshore2017|Question 8.1'
+  - 'hirschfeldtlangeshore2017|Question 8.2'
+  - 'hirschfeldtlangeshore2017|Question 8.3'
+  - 'hirschfeldtlangeshore2017|Question 8.4'
+  - 'hirschfeldtlangeshore2017|Question 8.5'
+  - 'hirschfeldtlangeshore2017|Question 8.6'
+  - 'hirschfeldtlangeshore2017|Question 8.7'
+  - 'hirschfeldtlangeshore2017|Question 8.8'
   - 'hirschfeldtreitzes2022|Question 4.1'
   - 'hirschfeldtreitzes2022|Question 4.2'
   - 'hirschfeldtreitzes2022|Question 4.3'
@@ -338,6 +388,14 @@ questions:
   - 'rathjen2020|Conjecture 6.6'
   - 'sanders2015c|Conjecture 3.17'
   - 'schrittesser2021|Question 3.1'
+  - 'shore2013|Problem 3.8'
+  - 'shore2013|Problem 5.1'
+  - 'shore2026|Question 7.1'
+  - 'shore2026|Question 7.2'
+  - 'shore2026|Question 7.3'
+  - 'shore2026|Question 7.4'
+  - 'simpson2007|Question 7.6'
+  - 'simpson2007|Question 8.13'
   - 'simpsonyokoyama2021|Question 3.2'
   - 'steilayokoyama2015|Question 10.1'
   - 'steilayokoyama2015|Question 10.2'
@@ -359,33 +417,6 @@ questions:
   - 'ziegler2006|Conjecture 16'
   - 'ziegler2006|Problem 35'
   - 'ziegler2006|Problem 36'
-  - 'conidis2012|Question 1.7'
-  - 'conidis2012|Question 1.10'
-  - 'conidisgreenbergturetsky2013|Question 1.21'
-  - 'conidis2014|Question 8.4'
-  - 'simpson2007|Question 7.6'
-  - 'simpson2007|Question 8.13'
-  - 'shore2013|Problem 3.8'
-  - 'shore2013|Problem 5.1'
-  - 'hirschfeldtlangeshore2017|Question 8.1'
-  - 'hirschfeldtlangeshore2017|Question 8.2'
-  - 'hirschfeldtlangeshore2017|Question 8.3'
-  - 'hirschfeldtlangeshore2017|Question 8.4'
-  - 'hirschfeldtlangeshore2017|Question 8.5'
-  - 'hirschfeldtlangeshore2017|Question 8.6'
-  - 'hirschfeldtlangeshore2017|Question 8.7'
-  - 'hirschfeldtlangeshore2017|Question 8.8'
-  - 'shore2026|Question 7.1'
-  - 'shore2026|Question 7.2'
-  - 'shore2026|Question 7.3'
-  - 'shore2026|Question 7.4'
-  - 'downeykach2011|Question 4.1'
-  - 'downeykach2011|Conjecture 4.3'
-  - 'greenbergmontalban2008|Question 4.13'
-  - 'doraishirstshafer2014|Question 5.9'
-  - 'doraishirstshafer2014|Question 5.10'
-  - 'doraishirstshafer2014|Question 5.11'
-  - 'brattkapauly2010|Problem 24'
 resolutions:
   - 'amt-d2ip|cervellegaudelierpatey2022'
   - 'amt-d2ip|cervellegaudelierpatey2024'
@@ -400,6 +431,22 @@ resolutions:
   - 'asram-sram|dzhafarovetal2017b'
   - 'asram-sram|hirschfeldtjockusch2016'
   - 'asram-sram|pauly2024'
+  - auslander-ellis|cholakmarconesolomon2004
+  - auslander-ellis|escardostreicher2002
+  - auslander-ellis|friedman2009
+  - auslander-ellis|friedmansimpson2000
+  - auslander-ellis|jagerstrahm2000
+  - auslander-ellis|marcone2005
+  - auslander-ellis|marcone2009
+  - auslander-ellis|marconemontalban2009b
+  - auslander-ellis|millersolomon2004
+  - auslander-ellis|sanders2013
+  - auslander-ellis|sanders2026c
+  - auslander-ellis|shafer2012
+  - auslander-ellis|simpson2007
+  - auslander-ellis|simpson2009b
+  - auslander-ellis|simpson2010
+  - cads-coh|barnesgohshore2022
   - 'cads-coh|cervellegaudelierpatey2022'
   - 'cads-coh|cervellegaudelierpatey2024'
   - 'cads-coh|dzhafarov2015b'
@@ -416,6 +463,7 @@ resolutions:
   - 'cads-coh|pauly2024'
   - 'cads-coh|shore2010'
   - 'cads-coh|towsnerweisshaarwestrick2023'
+  - coh-amt|barnesgohshore2022
   - 'coh-amt|cholaketal2020'
   - 'coh-amt|chongwangyang2021'
   - 'coh-amt|dzhafarov2015b'
@@ -430,6 +478,25 @@ resolutions:
   - 'coh-amt|patey2017b'
   - 'coh-amt|shore2010'
   - 'd22-p22|bienvenupateyshafer2017'
+  - extomega-aca|barnesgohshore2022
+  - fraisse-atr|carluccietal2020
+  - fraisse-atr|cholakmarconesolomon2004
+  - fraisse-atr|escardostreicher2002
+  - fraisse-atr|friedman2009
+  - fraisse-atr|friedmansimpson2000
+  - fraisse-atr|goh2020b
+  - fraisse-atr|jagerstrahm2000
+  - fraisse-atr|marcone2005
+  - fraisse-atr|marcone2009
+  - fraisse-atr|marconemontalban2009b
+  - fraisse-atr|millersolomon2004
+  - fraisse-atr|sanders2013
+  - fraisse-atr|sanders2026c
+  - fraisse-atr|shafer2012
+  - fraisse-atr|shore2010
+  - fraisse-atr|simpson2007
+  - fraisse-atr|simpson2009b
+  - fraisse-atr|simpson2010
   - 'fs2-cac-rt22|cervellegaudelierpatey2024'
   - 'fs2-cac-rt22|hirschfeldtshore2007'
   - 'fs2-cac-rt22|liupatey2022'
@@ -448,6 +515,24 @@ resolutions:
   - 'fs2-rt22|patey2016c'
   - 'fs2-rt22|shore2010'
   - 'fs2-rt22|towsnerweisshaarwestrick2023'
+  - gen1-fip-w|cintioli2026
+  - hindman-aca|cholakmarconesolomon2004
+  - hindman-aca|escardostreicher2002
+  - hindman-aca|friedman2009
+  - hindman-aca|friedmansimpson2000
+  - hindman-aca|jagerstrahm2000
+  - hindman-aca|marcone2005
+  - hindman-aca|marcone2009
+  - hindman-aca|marconemontalban2009b
+  - hindman-aca|millersolomon2004
+  - hindman-aca|sanders2013
+  - hindman-aca|sanders2026c
+  - hindman-aca|shafer2012
+  - hindman-aca|shore2010
+  - hindman-aca|simpson2007
+  - hindman-aca|simpson2009b
+  - hindman-aca|simpson2010
+  - hyp-wgen-strong|bienvenukuyper2017
   - 'ipt22-rt22|cervellegaudelierpatey2024'
   - 'ipt22-rt22|dzhafarovetal2017b'
   - 'ipt22-rt22|hirschfeldtjockusch2016'
@@ -473,6 +558,9 @@ resolutions:
   - 'rt22-bsig2-conservation|moninpatey2021'
   - 'rt22-bsig2-conservation|patey2016'
   - 'rt22-bsig2-conservation|patey2016c'
+  - three-bqo|goh2020b
+  - three-bqo|shore2010
+  - weak-principles-conservation|barnesgohshore2022
   - 'weak-principles-conservation|dzhafarov2015b'
   - 'weak-principles-conservation|dzhafarov2016'
   - 'weak-principles-conservation|dzhafarovetal2017b'

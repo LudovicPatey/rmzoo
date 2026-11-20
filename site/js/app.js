@@ -13,6 +13,7 @@ import { surname, fullName } from './names.js';
 import { relatedIndex, relatedStatements } from './related.js';
 import { queryIndex, tokenize, interpret, answer, complete, redText, stmtText } from './query.js';
 import { createCommunity } from './community.js';
+import { personBadges, personCredits } from './badges.js';
 import { KINDS, STATUS_NAMES, reviewStatus, itemResult, resultKey } from './review.js';
 
 // ============================================================================
@@ -2267,6 +2268,46 @@ function endorseMark(ri) {
   return `<button class="endorse ${cls}" data-result="${ri}" title="${esc(title)}" aria-label="${esc(title)}">✓${ends.length >= 2 ? `<span>${ends.length}</span>` : ''}</button>`;
 }
 const personLink = (orcid) => `<a href="#/u/${orcid}">${esc(C.name(orcid))}</a>`;
+// badges of a person (site/js/badges.js): credits of the database, endorsements, public
+// comments and, on the live instance, the full texts they shared
+const badgesOf = (orcid) => personBadges({
+  credits: Z.raw.credits, orcid, endorsements: (C.byPerson.get(orcid) || []).length,
+  comments: publicComments(orcid).length, uploads: C.uploadCounts?.[orcid],
+});
+const badgesHtml = (orcid, { empty = '' } = {}) => {
+  const b = badgesOf(orcid);
+  return b.length ? `<ul class="ubadges">${b.map((x) => `<li class="ubadge ub-${x.key}" title="${esc(x.title)}"><span class="ub-ic" aria-hidden="true">${x.icon}</span><b>${x.count}</b> ${esc(x.label)}</li>`).join('')}</ul>` : empty;
+};
+// hover card of a person: hovering (or focusing) a link to a profile shows their badges
+const ucard = { el: null, timer: 0, for: null };
+function showUserCard(a) {
+  const orcid = decodeURIComponent(a.getAttribute('href').slice(4).split('?')[0]);
+  if (!/^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$/.test(orcid)) return;
+  if (!ucard.el) { ucard.el = document.createElement('div'); ucard.el.className = 'ucard'; ucard.el.setAttribute('role', 'tooltip'); document.body.append(ucard.el); }
+  const el = ucard.el;
+  el.innerHTML = `<div class="ucard-head"><div class="avatar" aria-hidden="true">${esc(initials(C.name(orcid)))}</div>
+    <div><div class="profile-name">${esc(C.name(orcid))}</div><div class="small muted"><span class="orcid-dot"></span>${esc(orcid)}</div></div></div>
+    ${badgesHtml(orcid, { empty: '<p class="small muted">No contribution yet.</p>' })}`;
+  el.hidden = false;
+  const r = a.getBoundingClientRect(), w = el.offsetWidth, h = el.offsetHeight;
+  const left = Math.max(8, Math.min(r.left + window.scrollX, window.scrollX + document.documentElement.clientWidth - w - 8));
+  const below = r.bottom + h + 8 <= window.innerHeight;
+  el.style.left = `${left}px`;
+  el.style.top = `${(below ? r.bottom + 6 : r.top - h - 6) + window.scrollY}px`;
+  ucard.for = a;
+}
+const hideUserCard = () => { clearTimeout(ucard.timer); if (ucard.el) ucard.el.hidden = true; ucard.for = null; };
+const profileLink = (t) => t?.closest?.('a[href^="#/u/"]');
+document.addEventListener('mouseover', (e) => {
+  const a = profileLink(e.target);
+  if (!a || a === ucard.for || a.closest('.ucard, .pnav')) return;
+  clearTimeout(ucard.timer);
+  ucard.timer = setTimeout(() => showUserCard(a), 350);
+});
+document.addEventListener('mouseout', (e) => { const a = profileLink(e.target); if (a && !a.contains(e.relatedTarget)) hideUserCard(); });
+document.addEventListener('focusin', (e) => { const a = profileLink(e.target); if (a && !a.closest('.ucard, .pnav')) showUserCard(a); });
+document.addEventListener('focusout', (e) => { if (profileLink(e.target)) hideUserCard(); });
+window.addEventListener('hashchange', hideUserCard);
 const ENDORSE_TEXT = 'I have read the proof of this result and believe it is correct.';
 const liveNote = () => `<p class="small muted">Endorsements and comments are collected on the live instance,
   <a href="https://rmzoo.ludovicpatey.com/" target="_blank" rel="noopener">rmzoo.ludovicpatey.com</a>, by researchers signed in with ORCID.</p>`;
@@ -2810,16 +2851,18 @@ function viewProfile(orcid, params = new URLSearchParams()) {
   const list = ends.map((e) => [Z.raw.results[resultIdx.get(e.result)], resultIdx.get(e.result), e.date]).filter(([res]) => res);
   const gone = ends.length - list.length;
   const pub = publicComments(orcid);
-  const SECTIONS = own
-    ? [['overview', 'Overview', '◎'], ['messages', 'Messages', '✉'], ['endorsements', 'Endorsements', '✓'], ['comments', 'Public comments', '❝'], ['diagrams', 'Diagrams', '◇'], ['texts', 'Full texts', '▤']]
-    : [['endorsements', 'Endorsements', '✓'], ['comments', 'Public comments', '❝']];
+  const credits = personCredits(Z.raw.credits, orcid);
+  const SECTIONS = (own
+    ? [['overview', 'Overview', '◎'], ['messages', 'Messages', '✉'], ['credits', 'Contributions', '★'], ['endorsements', 'Endorsements', '✓'], ['comments', 'Public comments', '❝'], ['diagrams', 'Diagrams', '◇'], ['texts', 'Full texts', '▤']]
+    : [['credits', 'Contributions', '★'], ['endorsements', 'Endorsements', '✓'], ['comments', 'Public comments', '❝']])
+    .filter(([x]) => x !== 'credits' || credits.length);
   const alias = { contributions: own ? 'messages' : 'comments' };
   let tab = alias[params.get('tab')] || params.get('tab');
   if (!SECTIONS.some(([x]) => x === tab)) tab = SECTIONS[0][0];
   mailbox.open = params.get('thread') || (tab === 'messages' ? mailbox.open : '');
   if (mailbox.open && mailbox.open !== 'new') mailbox.folder = 'all';
   const counts = () => ({
-    endorsements: list.length, comments: pub.length,
+    endorsements: list.length, comments: pub.length, credits: credits.length,
     messages: own && C.myMessages ? (() => { const u = myThreads().reduce((n, t) => n + t.unread, 0); return u ? `<span class="nav-badge">${u}</span>` : myThreads().length; })() : '',
     diagrams: own && C.diagrams ? C.diagrams.length : '',
     texts: own && C.uploads ? (() => { const n = myMissingPapers().length; return n ? `<span class="nav-badge" title="papers without a full text">${n}</span>` : C.uploads.length; })() : '',
@@ -2831,12 +2874,17 @@ function viewProfile(orcid, params = new URLSearchParams()) {
       <div class="profile-id"><div class="avatar" aria-hidden="true">${esc(initials(own ? C.user.name : C.name(orcid)))}</div>
         <div><div class="profile-name">${esc(own ? C.user.name : C.name(orcid))}</div>
         <a class="small" href="https://orcid.org/${esc(orcid)}" target="_blank" rel="noopener"><span class="orcid-dot"></span>${esc(orcid)}</a></div></div>
+      ${badgesHtml(orcid)}
       <nav class="pnav" aria-label="Sections of the profile">${nav()}</nav>
       ${own ? `<a class="small muted signout" href="${C.logoutUrl()}">Sign out</a>` : ''}
     </aside>
     <div class="profile-main">
       ${own ? `${panel('overview')}<div id="overview-root"></div></section>` : ''}
       ${own ? `${panel('messages')}<div id="mail-root"><p class="muted">Loading…</p></div></section>` : ''}
+      ${credits.length ? `${panel('credits')}<h2>Contributions to the database</h2>
+        <p class="small muted">What ${own ? 'your messages' : 'the messages of this researcher'} changed in the database: facts entered on ${own ? 'your' : 'their'} suggestion, errors corrected on ${own ? 'your' : 'their'} report, sources added on ${own ? 'your' : 'their'} remark.</p>
+        <table class="grid"><thead><tr><th>Contribution</th><th>What changed</th><th>Date</th></tr></thead><tbody>${credits.map((c) => `<tr><td class="nowrap">${esc({ fact: c.count > 1 ? `${c.count} facts entered` : 'Fact entered', fix: 'Error fixed', source: 'Source added' }[c.kind])}</td><td>${esc(c.note)}</td><td class="small muted nowrap">${esc(c.date)}</td></tr>`).join('')}</tbody></table>
+      </section>` : ''}
       ${panel('endorsements')}<h2>Endorsements</h2>
         <p class="small muted">Results whose proof ${own ? 'you have' : 'this researcher has'} read and believe${own ? '' : 's'} correct.${own ? ' Open a result to withdraw your endorsement.' : ''}</p>
         ${lazy(list, ([res, ri, date]) => `<tr><td>${resultFact(res)}</td><td>${resultCite(ri)}</td><td class="small muted">${esc(date)}</td></tr>`,

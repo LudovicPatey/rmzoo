@@ -841,9 +841,12 @@
   statements: [gen1, fip]
   formal:
     - {from: fip, to: gen1, over: w}
+  resolvedBy:
+    - {ref: cintioli2026, loc: Corollary 6}
   context: >-
     FIP is equivalent to 1-GEN over RCA₀ [@dzhafarovmummert2022]; the question asks
-    whether the equivalence is uniform.
+    whether the equivalence is uniform. Cintioli answered it negatively: no single
+    functional extracts a 1-generic from the solutions of a fixed computable instance.
 
 - id: coh-isig1-rcastar
   question: Over $\mathsf{RCA}_0^*$, does $\mathsf{COH}$ imply $\mathsf{I}\Sigma^0_1$?

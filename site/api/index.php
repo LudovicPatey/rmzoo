@@ -41,7 +41,7 @@ switch ($a) {
     start_session();
     $s = read_state();
     json_out(['user' => user(), 'csrf' => $_SESSION['csrf'], 'people' => (object) ($s['people'] ?? []), 'endorsements' => $s['endorsements'] ?? [],
-      'reviews' => $s['reviews'], 'comments' => $s['comments'], 'qcomments' => $s['qcomments']]);
+      'reviews' => $s['reviews'], 'comments' => $s['comments'], 'qcomments' => $s['qcomments'], 'uploadCounts' => upload_counts()]);
   }
 
   case 'login': {

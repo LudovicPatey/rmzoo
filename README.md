@@ -28,6 +28,10 @@ Then open http://localhost:8080.
   rmzoo.ludovicpatey.com (an explicit list of files from `site/`, over SFTP;
   never deletes anything; `--dry-run` lists them; settings in
   `cache/deploy.json`, see `docs/ENDORSEMENTS.md`)
+* `node scripts/backup.mjs` — snapshot what GitHub does not hold (untracked
+  files: `cache/`, `feedback/`, config; the server's `rmzoo-data/` and
+  `api/config.php`) to a disk outside the repository; `--list`, `--verify`,
+  `--restore` (see `docs/BACKUP.md`)
 * `npm run consolidate` — search for new papers, publication updates, texts, candidate
   results and questions, and write a report to work through (see `docs/CONSOLIDATION.md`)
 
@@ -61,6 +65,7 @@ data/
   acronyms-ignored.yaml  acronyms examined and deliberately not added as statements
   ai-analyzed.yaml       papers already read by the AI reader (scripts/ai-analyze.mjs)
   review.yaml            the review queue: AI proposals and consolidation candidates awaiting a decision (docs/REVIEW.md)
+  credits.yaml           what researchers' messages changed in the database, for the badges of their name (docs/ENDORSEMENTS.md)
 scripts/             build (YAML → JSON + validation), consolidation, dev server
   lib/schema.mjs     the data model: every allowed field, its meaning, its readers
   lib/lock.mjs       one writer at a time on data/
@@ -69,6 +74,7 @@ scripts/             build (YAML → JSON + validation), consolidation, dev serv
   lib/ai-facts.mjs   checks deciding which AI-proposed facts are published
   lib/ai-models.mjs  models of the AI reader, prices, cost estimates, the --upgrade selection
   lib/data-hash.mjs  hash of data/ stored in zoo.json by the build, checked by deploy
+  backup.mjs         snapshots and restoration of the untracked files and the server data (lib/backup.mjs)
   mine/              candidate results and questions from the full texts (regexes)
   ai-analyze.mjs     AI reading of each full text, once (Claude API)
   review.mjs         the review queue: list, accept / reject, apply the votes of the review page
@@ -79,11 +85,13 @@ site/                the viewer (vanilla JS, KaTeX, no build step)
   js/bibtex.js       BibTeX export
   js/related.js      related statements (statement page)
   js/community.js    endorsements, comments and saved diagrams (live instance)
+  js/badges.js       badges of a researcher (hover card of a name, profile)
   api/               endorsement server (PHP, ORCID sign-in): docs/ENDORSEMENTS.md
 cache/fulltext/      local full texts of the papers (git-ignored)
 docs/DESIGN.md       data model and design rationale
 docs/ENDORSEMENTS.md endorsements, comments, saved diagrams: server set-up, sync, privacy
 docs/UPLOADS.md      full texts uploaded by researchers: viewer, server, import
+docs/BACKUP.md       backups of the untracked files and the server data, restoration
 docs/REVIEW.md      the review queue and the review page (votes, apply)
 feedback/            comments and error reports downloaded from the server (git-ignored)
 docs/CONSOLIDATION.md  keeping the database up to date

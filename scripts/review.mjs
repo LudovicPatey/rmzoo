@@ -43,6 +43,7 @@ import { unknownFields } from './lib/schema.mjs';
 import { readQueue, writeQueue, closeRepeats, QUEUE } from './lib/review-queue.mjs';
 import { reviewStatus, screenKey, KINDS, contributedResult } from '../site/js/review.js';
 import { surname } from '../site/js/names.js';
+import { creditFactInFile, describeResult, plainLabel } from './lib/credits.mjs';
 
 const USAGE = 'node scripts/review.mjs list [--all] [--ref key] [--kind k] [--voted] | show <id> | apply [--dry-run] | accept <id> [--ref key] [--loc text] [--note text] | reject <id> --note text | done <id> --note text | repeats [--dry-run]';
 const args = cli(USAGE, { '--all': 0, '--ref': 1, '--kind': 1, '--voted': 0, '--loc': 1, '--note': 1, '--dry-run': 0 });
@@ -54,6 +55,12 @@ const errs = items.flatMap((it, i) => unknownFields(it, 'review', `${QUEUE}[${i}
 if (errs.length) { errs.forEach((e) => console.error('✗ ' + e)); process.exit(1); }
 const people = (fs.existsSync('data/endorsements.yaml') ? YAML.parse(fs.readFileSync('data/endorsements.yaml', 'utf8')) : {})?.people || {};
 const who = (orcid) => people[orcid]?.name || orcid;
+// statement labels in plain text, from the built site (for the notes of data/credits.yaml)
+let labels = null;
+const stmtLabel = (id) => {
+  if (!labels) { try { labels = new Map(JSON.parse(fs.readFileSync('site/data/zoo.json', 'utf8')).statements.map((s) => [s.id, s.label])); } catch { labels = new Map(); } }
+  return labels.has(id) ? plainLabel(labels.get(id)) : id;
+};
 
 const what = (it) => ({
   result: () => `${JSON.stringify(it.result)} at ${it.loc} [${it.origin}, ${it.confidence}]`,
@@ -141,6 +148,11 @@ function accept(i, { ref, loc } = {}) {
     res.restore();
     throw new Error(`the build check fails with this fact.\n${String(err.stdout || '')}${String(err.stderr || '')}`);
   }
+  // a contributed fact is credited to its contributor (data/credits.yaml: badges)
+  if (it.origin === 'contributed' && it.contributor?.orcid) creditFactInFile({
+    orcid: it.contributor.orcid, name: it.contributor.name || it.contributor.orcid, date: String(it.date),
+    message: it.contribution, note: `${describeResult(it.result, stmtLabel)}.`,
+  });
   return res.changes.map((c) => `${c.action}: ${c.key} (${c.file})`).join('; ');
 }
 const pending = (i) => {

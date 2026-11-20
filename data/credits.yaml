@@ -1,0 +1,43 @@
+# What researchers' messages on the live instance changed in the database, counted
+# in the badges of their name (hover card, profile; site/js/badges.js). Public: the
+# note describes the change, never quotes a private message. Entity `credit` in
+# scripts/lib/schema.mjs.
+#   kind: fact    facts entered on their suggestion (count: how many, default 1)
+#         fix     an error of the database corrected on their report (wrong fact,
+#                 citation, numbering or label)
+#         source  a better or earlier source, or a simpler justification, on their remark
+#   message: id of the message (feedback/), so that it is credited once per kind
+# Added when a message is treated (AGENTS.md, "Endorsements and comments"); accepting a
+# contributed fact with scripts/review.mjs adds its entry.
+
+# Lu Liu
+- { orcid: 0000-0001-6670-8325, name: Lu Liu, kind: fix, date: 2026-11-06, message: 2026-11-06T131336Z-0000-0001-6670-8325-b3ea7b, note: "Goh's Proposition 5.5 on products of RT¹ₖ gives Weihrauch reductions (colors as solutions), not strong ones: those facts were weakened from ≤sW to ≤W." }
+- { orcid: 0000-0001-6670-8325, name: Lu Liu, kind: fix, date: 2026-11-06, message: 2026-11-06T133544Z-0000-0001-6670-8325-2086d8, note: "Immediate specializations of cited results were labelled AI-derived: 142 results now have the provenance “direct consequence”." }
+
+# Benedict Eastaugh
+- { orcid: 0000-0002-6629-3032, name: Benedict Eastaugh, kind: fix, date: 2026-11-13, message: 2026-11-13T162158Z-0000-0002-6629-3032-b9daaa, note: "Δ¹₁-CA₀ does not prove ACA₀⁺: the implication (Dzhafarov–Mummert, Proposition 5.8.15(1)) was removed over RCA₀, with an erratum; the non-implication is now derived." }
+
+# Manlio Valenti
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: source, date: 2026-11-13, message: 2026-11-13T102002Z-0000-0003-0351-3058-208f56, note: "TC_ℕᴺ ≤sW C_ℕᴺ cited from Kihara, Marcone and Pauly, Proposition 8.2(1)." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: source, date: 2026-11-13, message: 2026-11-13T102431Z-0000-0003-0351-3058-b7927e, note: "C_ℕᴺ′ ≡sW C_ℕᴺ cited from Brattka, de Brecht and Marcone 2012, Theorem 9.16." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: source, date: 2026-11-13, message: 2026-11-13T102719Z-0000-0003-0351-3058-914bb2, note: "UC_ℕᴺ <W C_ℕᴺ cited from Kihara, Marcone and Pauly, Corollary 3.7." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: source, date: 2026-11-13, message: 2026-11-13T104503Z-0000-0003-0351-3058-eec8b8, note: "The compositions with C_ℕᴺ derived from its closure under composition (Brattka, de Brecht and Pauly 2012, Corollary 7.6)." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fact, date: 2026-11-13, message: 2026-11-13T105720Z-0000-0003-0351-3058-146f2a, note: "χ_Π¹₁ ≥sW Σ¹₁-C₂ (folklore, with his argument)." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fact, date: 2026-11-13, message: 2026-11-13T111233Z-0000-0003-0351-3058-fce7f8, note: "RT⁴₂ ≤W UC_ℕᴺ (folklore, with his argument)." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fact, date: 2026-11-13, message: 2026-11-13T120338Z-0000-0003-0351-3058-faf933, note: "DIS ≤sW ACC_ℕ (Brattka, stashing, Theorem 1.12)." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fact, date: 2026-11-13, message: 2026-11-13T122205Z-0000-0003-0351-3058-1eb6aa, note: "PA ≰W Σ¹₁-C_ℕ, now derived by a new rule of the engine (computably reducible to a first-order problem)." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: source, date: 2026-11-16, message: 2026-11-16T105339Z-0000-0003-0351-3058-b39a75, note: "DIS ≤sW LPO cited from Brattka's Theorem 1.12 (stashing of LLPO)." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fact, date: 2026-11-16, message: 2026-11-16T105827Z-0000-0003-0351-3058-efac35, note: "DIS ≤sW LLPO (Brattka, stashing, Theorem 1.12)." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: source, date: 2026-11-18, message: 2026-11-18T100621Z-0000-0003-0351-3058-79564b, note: "C_ℕ ≡W LPO⋄ cited from Neumann and Pauly, Proposition 10." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fact, count: 3, date: 2026-11-18, message: 2026-11-18T103610Z-0000-0003-0351-3058-59351f, note: "NON ≤sW PA, PA ≰W NON and ACC_ℕ ≰W PA (Brattka, Hendtlass and Kreuzer, after Proposition 6.3)." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fact, date: 2026-11-18, message: 2026-11-18T123232Z-0000-0003-0351-3058-9232ec, note: "lim⋄ ≤W UC_ℕᴺ, now derived by a new law of the engine (closure under compositional product)." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fix, date: 2026-11-18, message: 2026-11-18T145534Z-0000-0003-0351-3058-de5e9c, note: "Brattka and Rakotoniaina were read in an old arXiv version: every citation was checked against the published numbering and 12 were renumbered." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: source, date: 2026-11-18, message: 2026-11-18T145534Z-0000-0003-0351-3058-de5e9c, note: "K_ℕ <sW C_ℕ cited from Brattka and Rakotoniaina, Proposition 7.2." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: source, date: 2026-11-13, message: 2026-11-13T104017Z-0000-0003-0351-3058-17b1bd, note: "Π¹₁-CA₀ ↔ existence of leftmost paths cited from Marcone 1994, Theorem 6.5." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: source, date: 2026-11-13, message: 2026-11-13T105052Z-0000-0003-0351-3058-4ed770, note: "χ_Π¹₁ ≰W C_ℕᴺ cited from Kihara, Marcone and Pauly, Section 7." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: source, date: 2026-11-19, message: 2026-11-19T130338Z-0000-0003-0351-3058-c86ae2, note: "UC_ℕᴺ is parallelizable: now derived from Kihara, Marcone and Pauly (UC_ℕᴺ^ ≡W UC_ℕᴺ, proofs of Theorems 3.11 and 8.5) instead of an AI argument." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fact, count: 2, date: 2026-11-19, message: 2026-11-19T130920Z-0000-0003-0351-3058-518844, note: "ACA⁺ <W UC_ℕᴺ (Brattka 2025, Proposition 4.10(2), for J^(ω)), hence ACA′ ≤W UC_ℕᴺ." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: source, date: 2026-11-19, message: 2026-11-19T161020Z-0000-0003-0351-3058-62320b, note: "C_ℝ ≥sW PC_ℝ justified as a restriction." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fact, date: 2026-11-19, message: 2026-11-19T164557Z-0000-0003-0351-3058-3a7bf4, note: "NON ≤sW EM (uniform relativization of Bovykin and Weiermann, Theorem 9)." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: source, date: 2026-11-19, message: 2026-11-19T173355Z-0000-0003-0351-3058-201c92, note: "RT¹_{<∞} ≥sW RT¹₅ justified as a restriction." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fact, date: 2026-11-19, message: 2026-11-19T175519Z-0000-0003-0351-3058-47762a, note: "LBT ≤sW 𝔏 (Brattka, Hendtlass and Kreuzer, Proposition 8.2)." }

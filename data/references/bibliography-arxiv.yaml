@@ -4973,7 +4973,7 @@ marconeosso2026b:
     - Gian Marco Osso
   title: Computable aspects of the Laver partition theorem
   year: 2026
-  venue: arXiv preprint
+  venue: The Journal of Symbolic Logic, 1-21
   arxiv: "2608.24716"
   source: arxiv
   read: pdf-arxiv
@@ -4981,6 +4981,7 @@ marconeosso2026b:
   zbmathAuthors:
     - marcone.alberto
     - osso.gian-marco
+  doi: 10.1017/jsl.2026.10275
 miyatayokoyama2026:
   authors:
     - Yamato Miyata
