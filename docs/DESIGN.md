@@ -496,7 +496,20 @@ every result citing it.
 ## 2. The inference engine (`site/js/engine.js`)
 
 Facts are `I(R,a,b)` (a implies b over R), `N(R,a,b)` (a does not imply b
-over R), and `Has(p,s)` / `Lacks(p,s)`. Rules:
+over R), and `Has(p,s)` / `Lacks(p,s)`.
+
+**Storage.** The engine runs in the browser at every launch and derives millions of facts,
+so each implication and separation is stored compactly (`FactTable` in the engine). It
+keeps a one-byte rule code and one number: the middle statement of a transitivity step,
+the other reduction of a coarsening or refinement, the property of a separation. These are
+held in arrays indexed by the statements in the domain of the reduction, together with
+bit sets by row and by column. Transitivity and the weakening rules compare those bit sets
+32 statements at a time. Only the rare facts with richer proofs keep a justification
+object, and `get` rebuilds the justification object of every other fact when a proof is
+shown. With 1619 statements, the derivation takes about 4 s in Node (20 s before) and
+330 MB of memory (1.5 GB before).
+
+Rules:
 
 | rule | from | derive |
 |------|------|--------|

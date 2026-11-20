@@ -82,6 +82,75 @@ export const CLASS_NAMES = {
   arith: 'arithmetical', Pi11: 'Π¹₁', rPi12: 'restricted Π¹₂',
 };
 
+// --- compact storage of derived facts -----------------------------------------
+// Millions of implications and separations are derived. Each is stored as a rule code
+// (one byte) and one number (the middle statement of a transitivity step, the other
+// reduction of a coarsening, the property of a separation…), in arrays indexed by the
+// statements in the domain of the reduction; the rare facts with richer proofs keep
+// their justification object. `get` rebuilds the justification object of the old
+// representation, so proofs read the same. Keys are a * n + b, as before.
+const CODES = ['', 'obj', 'direct', 'refl', 'base', 'omega-fo', 'conj-elim', 'op-base', 'op-part', 'op-comm', 'op-arith-jump',
+  'trans', 'coarsen', 'prop-bottom', 'prop-base', 'refine', 'weaken-left', 'strengthen-right', 'prop-sep'];
+const C = Object.fromEntries(CODES.map((x, i) => [x, i]));
+class FactTable {
+  constructor(n, inDom, wide, decode) {
+    this.n = n;
+    this.loc = new Int32Array(n).fill(-1); // statement → index in the domain (−1: outside)
+    let d = 0;
+    for (let s = 0; s < n; s++) if (inDom(s)) this.loc[s] = d++;
+    this.d = d;
+    this.glob = new Int32Array(d); // index in the domain → statement
+    for (let s = 0; s < n; s++) if (this.loc[s] >= 0) this.glob[this.loc[s]] = s;
+    // the same facts as bit sets, by row (a: its b) and by column (b: its a), 32 per word,
+    // so that the closure finds the new facts of a step a word at a time
+    this.W = (d + 31) >>> 5;
+    this.row = new Uint32Array(d * this.W);
+    this.col = new Uint32Array(d * this.W);
+    this.rule = new Uint8Array(d * d);
+    this.aux = wide ? new Int32Array(d * d) : new Uint16Array(d * d);
+    this.list = new Int32Array(1 << 12); // keys in the order of derivation
+    this.size = 0;
+    this.obj = new Map(); // key → justification object (code 'obj')
+    this.decode = decode; // (a, b, code, aux) → justification object
+  }
+  idx(k) {
+    const a = Math.floor(k / this.n), la = this.loc[a], lb = this.loc[k - a * this.n];
+    return la < 0 || lb < 0 ? -1 : la * this.d + lb;
+  }
+  has(k) { const i = this.idx(k); return i >= 0 && this.rule[i] !== 0; }
+  hasAB(a, b) { const la = this.loc[a], lb = this.loc[b]; return la >= 0 && lb >= 0 && this.rule[la * this.d + lb] !== 0; }
+  get(k) {
+    const i = this.idx(k);
+    if (i < 0 || !this.rule[i]) return undefined;
+    if (this.rule[i] === 1) return this.obj.get(k);
+    const a = Math.floor(k / this.n);
+    return this.decode(a, k - a * this.n, this.rule[i], this.aux[i]);
+  }
+  // stores the fact (a, b) at index i of the domain arrays; the caller checked it is new
+  put(i, k, code, aux, obj) {
+    this.rule[i] = code;
+    const la = Math.floor(i / this.d), lb = i - la * this.d;
+    this.row[la * this.W + (lb >>> 5)] |= 1 << (lb & 31);
+    this.col[lb * this.W + (la >>> 5)] |= 1 << (la & 31);
+    if (code === 1) this.obj.set(k, obj); else this.aux[i] = aux;
+    if (this.size === this.list.length) { const l = new Int32Array(this.list.length * 2); l.set(this.list); this.list = l; }
+    this.list[this.size++] = k;
+  }
+  *keys() { for (let i = 0; i < this.size; i++) yield this.list[i]; }
+}
+// calls f(statement) for each bit of x[xi…] & ~y[yi…] (W words): the statements in the
+// first set and not in the second
+function eachNew(x, xi, y, yi, W, glob, f) {
+  for (let w = 0; w < W; w++) {
+    let m = x[xi + w] & ~y[yi + w];
+    while (m) {
+      const low = m & -m;
+      f(glob[(w << 5) + 31 - Math.clz32(low)]);
+      m ^= low;
+    }
+  }
+}
+
 export function buildZoo(raw) {
   const S = raw.statements;
   const R = raw.reductions;
@@ -151,9 +220,18 @@ export function buildZoo(raw) {
   });
 
   // --- implications --------------------------------------------------------
-  const I = R.map(() => new Map());
-  // membership of I (and N below) as byte arrays: the hot loops test them millions of times
-  const Ib = R.map(() => new Uint8Array(n * n));
+  // auxiliary numbers fit in 16 bits while statements, results and properties are few
+  const wide = Math.max(n, raw.results.length, raw.properties.length) >= 65535;
+  const decodeI = (r) => (a, b, c, x) => {
+    switch (c) {
+      case C.trans: return { rule: 'trans', prem: [fI(r, a, x), fI(r, x, b)] };
+      case C.coarsen: return { rule: 'coarsen', prem: [fI(x, a, b)] };
+      case C['prop-bottom']: return { rule: 'prop-bottom', prem: [fP(x, b, true)] };
+      case C.direct: case C['prop-base']: return { rule: CODES[c], result: x };
+      default: return { rule: CODES[c] };
+    }
+  };
+  const I = R.map((_, r) => new FactTable(n, (s) => inDomain(r, s), wide, decodeI(r)));
   const out = R.map(() => S.map(() => []));
   const inn = R.map(() => S.map(() => []));
   const queue = [];
@@ -161,12 +239,23 @@ export function buildZoo(raw) {
 
   const fI = (r, a, b) => ({ t: 'I', r, a, b });
   const fP = (p, s, v) => ({ t: 'P', p, s, v });
+  // a new implication a → b over r: its rule code and number, or a justification object
+  function addIc(r, a, b, code, aux) {
+    const T = I[r], la = T.loc[a], lb = T.loc[b];
+    if (la < 0 || lb < 0) return;
+    const i = la * T.d + lb;
+    if (T.rule[i]) return;
+    T.put(i, a * n + b, code, aux);
+    out[r][a].push(b);
+    inn[r][b].push(a);
+    queue.push(r, a, b);
+  }
   function addI(r, a, b, just) {
-    if (!inDomain(r, a) || !inDomain(r, b)) return;
-    const k = key(a, b);
-    if (Ib[r][k]) return;
-    Ib[r][k] = 1;
-    I[r].set(k, just);
+    const T = I[r], la = T.loc[a], lb = T.loc[b];
+    if (la < 0 || lb < 0) return;
+    const i = la * T.d + lb;
+    if (T.rule[i]) return;
+    T.put(i, a * n + b, 1, 0, just);
     out[r][a].push(b);
     inn[r][b].push(a);
     queue.push(r, a, b);
@@ -183,8 +272,8 @@ export function buildZoo(raw) {
         errors.push(`Result #${ri} (${res.from} → ${res.to} over ${over}): statement outside the domain of the reduction`);
         continue;
       }
-      addI(r, a, b, { rule: 'direct', result: ri });
-      if (res.type === 'equivalence') addI(r, b, a, { rule: 'direct', result: ri });
+      addIc(r, a, b, C.direct, ri);
+      if (res.type === 'equivalence') addIc(r, b, a, C.direct, ri);
     }
   });
 
@@ -205,16 +294,16 @@ export function buildZoo(raw) {
   const charSeeds = (v) => charProps.flatMap(({ p, r, dom }) => directResults.flatMap((res, ri) =>
     res.type === 'property' && pidx.get(res.property) === p && !!res.value === v && charIn(r, dom, sidx.get(res.statement))
       ? basesAt(r).map((b) => ({ r, b, s: sidx.get(res.statement), ri })) : []));
-  for (const { r, b, s, ri } of charSeeds(true)) addI(r, b, s, { rule: 'prop-base', result: ri });
+  for (const { r, b, s, ri } of charSeeds(true)) addIc(r, b, s, C['prop-base'], ri);
   for (let r = 0; r < R.length; r++) {
-    for (let a = 0; a < n; a++) addI(r, a, a, { rule: 'refl' });
+    for (let a = 0; a < n; a++) addIc(r, a, a, C.refl, 0);
     for (let b = 0; b < n; b++)
-      if (isBaseAt(b, r)) for (let a = 0; a < n; a++) addI(r, a, b, { rule: 'base' });
+      if (isBaseAt(b, r)) for (let a = 0; a < n; a++) addIc(r, a, b, C.base, 0);
     if (R[r].omegaModels)
       for (let b = 0; b < n; b++)
-        if (S[b].firstOrder) for (let a = 0; a < n; a++) addI(r, a, b, { rule: 'omega-fo' });
+        if (S[b].firstOrder) for (let a = 0; a < n; a++) addIc(r, a, b, C['omega-fo'], 0);
     if (R[r].conjunction)
-      conjParts.forEach((parts, k) => parts.forEach((p) => addI(r, k, p, { rule: 'conj-elim' })));
+      conjParts.forEach((parts, k) => parts.forEach((p) => addIc(r, k, p, C['conj-elim'], 0)));
   }
 
   // --- algebra of Weihrauch degrees --------------------------------------------
@@ -265,28 +354,28 @@ export function buildZoo(raw) {
   const algebraAt = (r, o) => !PARTS.has(o.op) && (R[r].algebra === 'weak' || R[r].algebra === 'arithmetic' || (R[r].algebra === 'strong' && strongOK(o)));
   const seedOps = () => {
     // P → ¹P and P → Det(P): the part is below the problem
-    if (W !== undefined) for (const o of ops) if (PARTS.has(o.op) && o.args[0] !== undefined) addI(W, o.args[0], o.i, { rule: 'op-part' });
+    if (W !== undefined) for (const o of ops) if (PARTS.has(o.op) && o.args[0] !== undefined) addIc(W, o.args[0], o.i, C['op-part'], 0);
     for (let r = 0; r < R.length; r++) {
       if (!R[r].algebra) continue;
       for (const o of ops) {
         if (!algebraAt(r, o) || o.args.some((x) => x === undefined)) continue;
-        for (const x of o.args) addI(r, o.i, x, { rule: 'op-base' });
-        if (o.op === 'jump' && R[r].algebra === 'arithmetic') addI(r, o.args[0], o.i, { rule: 'op-arith-jump' });
+        for (const x of o.args) addIc(r, o.i, x, C['op-base'], 0);
+        if (o.op === 'jump' && R[r].algebra === 'arithmetic') addIc(r, o.args[0], o.i, C['op-arith-jump'], 0);
         const [x0, x1] = o.args;
         if (o.op === 'compose') { // P × Q ≤W P ⋆ Q, and Q × P ≤W P ⋆ Q since × is commutative
-          for (const q of ops) if (q.op === 'product' && ((q.args[0] === x0 && q.args[1] === x1) || (q.args[0] === x1 && q.args[1] === x0))) addI(r, o.i, q.i, { rule: 'op-base' });
+          for (const q of ops) if (q.op === 'product' && ((q.args[0] === x0 && q.args[1] === x1) || (q.args[0] === x1 && q.args[1] === x0))) addIc(r, o.i, q.i, C['op-base'], 0);
         }
         // P × Q ≡W Q × P, (P × Q) × R ≡W P × (Q × R), (P ⋆ Q) ⋆ R ≡W P ⋆ (Q ⋆ R)
-        for (const q of sameShape.get(o.i) || []) addI(r, o.i, q, { rule: 'op-comm' });
+        for (const q of sameShape.get(o.i) || []) addIc(r, o.i, q, C['op-comm'], 0);
         if (o.op === 'par') { // P* ≤sW P̂; P^u* ≤W P̂
           const fin = ops.find((q) => q.op === 'fin' && q.args[0] === o.args[0]);
-          if (fin) addI(r, o.i, fin.i, { rule: 'op-base' });
+          if (fin) addIc(r, o.i, fin.i, C['op-base'], 0);
           const ufin = ops.find((q) => q.op === 'ufin' && q.args[0] === o.args[0]);
-          if (ufin && R[r].algebra !== 'strong') addI(r, o.i, ufin.i, { rule: 'op-base' });
+          if (ufin && R[r].algebra !== 'strong') addIc(r, o.i, ufin.i, C['op-base'], 0);
         }
         if (o.op === 'ufin') { // P* ≤sW P^u*
           const fin = ops.find((q) => q.op === 'fin' && q.args[0] === o.args[0]);
-          if (fin) addI(r, o.i, fin.i, { rule: 'op-base' });
+          if (fin) addIc(r, o.i, fin.i, C['op-base'], 0);
         }
       }
     }
@@ -356,10 +445,10 @@ export function buildZoo(raw) {
     ? [{ p, r: ridx.get(prop.closedUnder), ops: new Set([].concat(prop.closure)), has: citedHas(p) }] : []));
   // the operator statements o (of an op of c) with b among their arguments that a implies
   // argumentwise: a implies o
-  const closeOver = (c, a, b, I1) => {
+  const closeOver = (c, a, b) => {
     for (const o of opsByArg.get(b) || []) {
-      if (!c.ops.has(o.op) || !o.args.length || o.args.includes(undefined) || I1[c.r][key(a, o.i)]) continue;
-      if (o.args.every((x) => x === a || I1[c.r][key(a, x)]))
+      if (!c.ops.has(o.op) || !o.args.length || o.args.includes(undefined) || I[c.r].hasAB(a, o.i)) continue;
+      if (o.args.every((x) => x === a || I[c.r].hasAB(a, x)))
         addI(c.r, a, o.i, { rule: 'prop-closure', prop: c.p, prem: [fP(c.p, a, true), ...[...new Set(o.args)].filter((x) => x !== a).map((x) => fI(c.r, a, x))] });
     }
   };
@@ -377,7 +466,7 @@ export function buildZoo(raw) {
       const c = opOf.get(a);
       if (c && c.op === 'compose' && e.has.has(b) && !c.args.includes(undefined)) {
         const g = c.args[e.keep], h = c.args[1 - e.keep];
-        if (Ib[r][key(e.F, h)]) addI(r, g, b, { rule: 'prop-elim', prop: e.p, prem: [fI(r, a, b), fP(e.p, b, true), fI(r, e.F, h)] });
+        if (I[r].hasAB(e.F, h)) addI(r, g, b, { rule: 'prop-elim', prop: e.p, prem: [fI(r, a, b), fP(e.p, b, true), fI(r, e.F, h)] });
       }
       if (a === e.F) for (const o of opsByArg.get(b) || []) {
         if (o.op !== 'compose' || o.args[1 - e.keep] !== b) continue;
@@ -411,22 +500,17 @@ export function buildZoo(raw) {
       if (ops.length) monotone(r, a, b);
       for (const l of lifting) if (l.from === r && l.has.has(a)) addI(l.to, a, b, { rule: 'prop-lift', prem: [fI(r, a, b)] });
       if (elims.length) elimI(r, a, b);
-      for (const c of closures) if (c.r === r && c.has.has(a)) closeOver(c, a, b, Ib);
+      for (const c of closures) if (c.r === r && c.has.has(a)) closeOver(c, a, b);
       for (const { fine, B } of liftsCoarse[r]) // a → b over the coarse frame
         if (I[fine].has(key(a, B))) addI(fine, a, b, { rule: 'base-lift', prem: [fI(fine, a, B), fI(r, a, b)] });
       for (const { coarse, B } of liftsFine[r]) // a → B over the fine frame
         if (b === B) for (const c of [...out[coarse][a]]) addI(r, a, c, { rule: 'base-lift', prem: [fI(r, a, B), fI(coarse, a, c)] });
-      const ob = out[r][b];
-      for (let i = 0, len = ob.length; i < len; i++) {
-        const c = ob[i];
-        if (!Ib[r][key(a, c)]) addI(r, a, c, { rule: 'trans', prem: [fI(r, a, b), fI(r, b, c)] });
-      }
-      const ia = inn[r][a];
-      for (let i = 0, len = ia.length; i < len; i++) {
-        const z = ia[i];
-        if (!Ib[r][key(z, b)]) addI(r, z, b, { rule: 'trans', prem: [fI(r, z, a), fI(r, a, b)] });
-      }
-      for (const r2 of coarserDirect[r]) if (bridge(r, r2, a, b)) addI(r2, a, b, { rule: 'coarsen', prem: [fI(r, a, b)] });
+      // transitivity, the code keeping the middle statement: a → c for the c that b
+      // implies and a does not yet, z → b for the z that imply a and not yet b
+      const T = I[r], W = T.W, la = T.loc[a], lb = T.loc[b];
+      eachNew(T.row, lb * W, T.row, la * W, W, T.glob, (c) => addIc(r, a, c, C.trans, b));
+      eachNew(T.col, la * W, T.col, lb * W, W, T.glob, (z) => addIc(r, z, b, C.trans, a));
+      for (const r2 of coarserDirect[r]) if (bridge(r, r2, a, b)) addIc(r2, a, b, C.coarsen, r);
       if (R[r].conjunction) {
         for (const k of conjOf[b]) {
           const parts = conjParts[k];
@@ -507,15 +591,16 @@ export function buildZoo(raw) {
       if (v) for (const o of opsByArg.get(s) || []) if (opLaw[p].keeps.has(o.op) && o.args.every((x) => P[p].get(x)?.v))
         setP(p, o.i, true, { rule: 'prop-op', prem: o.args.map((x) => fP(p, x, true)) });
       if (prop.direction === 'equiv') { // invariant under equivalence over r (Weihrauch properties)
-        for (const t of out[r][s]) if (t !== s && I[r].has(key(t, s)))
+        for (const t of out[r][s]) if (t !== s && P[p].get(t)?.v !== v && I[r].has(key(t, s)))
           setP(p, t, v, { rule: 'prop-equiv', prem: [fP(p, s, v), fI(r, s, t), fI(r, t, s)] });
         for (const q of v ? impliesP[p] : impliedByP[p]) setP(q, s, v, { rule: 'prop-implies', prem: [fP(p, s, v)] });
         continue;
       }
       const down = prop.direction !== 'up';
       const toSucc = down ? v : !v;
+      const Pp = P[p];
       for (const t of r === undefined ? [] : toSucc ? out[r][s] : inn[r][s]) {
-        if (t === s) continue;
+        if (t === s || Pp.get(t)?.v === v) continue; // already known: no justification to build
         const prem = toSucc ? [fP(p, s, v), fI(r, s, t)] : [fP(p, s, v), fI(r, t, s)];
         setP(p, t, v, { rule: v === down ? 'prop-down' : 'prop-up', prem });
       }
@@ -579,9 +664,9 @@ export function buildZoo(raw) {
     const before = queue.length;
     for (const { p, r } of bottomProps)
       for (const [s, { v }] of P[p]) if (v && inDomain(r, s))
-        for (let a = 0; a < n; a++) if (a !== s && !Ib[r][key(a, s)]) addI(r, a, s, { rule: 'prop-bottom', prem: [fP(p, s, true)] });
+        for (let a = 0; a < n; a++) if (a !== s) addIc(r, a, s, C['prop-bottom'], p);
     for (const { o, p, r } of partMax)
-      for (const s of out[W][o.args[0]]) if (s !== o.i && P[p].get(s)?.v && !Ib[r][key(o.i, s)] && inDomain(r, s))
+      for (const s of out[W][o.args[0]]) if (s !== o.i && P[p].get(s)?.v && !I[r].hasAB(o.i, s) && inDomain(r, s))
         addI(r, o.i, s, { rule: 'op-part-max', prem: [fI(W, o.args[0], s), fP(p, s, true)] });
     // the lift, closure and elimination laws with the derived values (the implication
     // loop started with the cited ones): a new member gets the law on the implications
@@ -594,7 +679,7 @@ export function buildZoo(raw) {
     for (const c of closures)
       for (const [a, { v }] of P[c.p]) if (v && !c.has.has(a) && inDomain(c.r, a)) {
         c.has.add(a);
-        for (const b of [...out[c.r][a]]) closeOver(c, a, b, Ib);
+        for (const b of [...out[c.r][a]]) closeOver(c, a, b);
       }
     for (const e of elims)
       for (const [s, { v }] of P[e.p]) if (v && !e.has.has(s)) {
@@ -618,23 +703,38 @@ export function buildZoo(raw) {
   }
 
   // --- non-implications ----------------------------------------------------
-  const N = R.map(() => new Map());
-  const Nb = R.map(() => new Uint8Array(n * n));
   const fN = (r, a, b) => ({ t: 'N', r, a, b });
+  const sepDown = raw.properties.map((prop) => prop.direction !== 'up');
+  const decodeN = (r) => (a, b, c, x) => {
+    switch (c) {
+      case C.refine: return { rule: 'refine', prem: [fN(x, a, b)] };
+      case C['weaken-left']: return { rule: 'weaken-left', prem: [fN(r, x, b), fI(r, x, a)] };
+      case C['strengthen-right']: return { rule: 'strengthen-right', prem: [fN(r, a, x), fI(r, b, x)] };
+      case C['prop-sep']: return { rule: 'prop-sep', prop: x, prem: [fP(x, a, sepDown[x]), fP(x, b, !sepDown[x])] };
+      case C.direct: case C['prop-base']: return { rule: CODES[c], result: x };
+      default: return { rule: CODES[c] };
+    }
+  };
+  const N = R.map((_, r) => new FactTable(n, (s) => inDomain(r, s), wide, decodeN(r)));
   // The separations of each reduction, coarse to fine. Values read back from them
   // (characterized properties, properties defined by an operation) are propagated at
   // once, so the finer reductions see them (failing computable truth by an ω-model
   // separation gives the ≤c separations of `below`); the whole phase runs again while
   // new values appear, for the reductions already done.
   const NQ = R.map(() => []), NH = R.map(() => 0);
-  const addN = (r, a, b, just) => {
-    if (!inDomain(r, a) || !inDomain(r, b)) return;
-    const k = key(a, b);
-    if (Nb[r][k]) return;
-    Nb[r][k] = 1;
-    N[r].set(k, just);
+  // a new separation a ⇏ b over r: its rule code and number, or (code 1) a justification object
+  const addNc = (r, a, b, code, aux, just) => {
+    const T = N[r], la = T.loc[a], lb = T.loc[b];
+    if (la < 0 || lb < 0) return;
+    const i = la * T.d + lb;
+    if (T.rule[i]) return;
+    T.put(i, a * n + b, code, aux, just);
     NQ[r].push(a, b);
   };
+  const addN = (r, a, b, just) => addNc(r, a, b, 1, 0, just);
+  // refinement reads each separation of a coarser reduction once: refDone[r][r2] is
+  // where it stopped in the list of N[r2]
+  const refDone = R.map(() => new Map());
   const sepPass = (first) => {
     for (const r of order) {
       if (first) directResults.forEach((res, ri) => {
@@ -644,9 +744,9 @@ export function buildZoo(raw) {
           errors.push(`Result #${ri} (${res.from} ⇏ ${res.to} over ${res.over}): statement outside the domain of the reduction`);
           return;
         }
-        addN(r, a, b, { rule: 'direct', result: ri });
+        addNc(r, a, b, C.direct, ri);
       });
-      if (first) for (const x of charSeeds(false)) if (x.r === r) addN(r, x.b, x.s, { rule: 'prop-base', result: x.ri });
+      if (first) for (const x of charSeeds(false)) if (x.r === r) addNc(r, x.b, x.s, C['prop-base'], x.ri);
       for (;;) {
         // a failure of a property defined by an operation: P does not imply op(P)
         raw.properties.forEach((prop, p) => {
@@ -669,8 +769,7 @@ export function buildZoo(raw) {
           const pos = [], neg = [];
           for (const [s, { v }] of P[p]) (v ? pos : neg).push(s);
           const [strong, weak] = down ? [pos, neg] : [neg, pos];
-          for (const a of strong) for (const b of weak)
-            addN(r, a, b, { rule: 'prop-sep', prop: p, prem: [fP(p, a, down), fP(p, b, !down)] });
+          for (const a of strong) for (const b of weak) addNc(r, a, b, C['prop-sep'], p);
         });
         // `below: {property: q, over: r}`: what is r-reducible to a problem with p has q on
         // its true instances (a problem c-reducible to a first-order one has solutions
@@ -686,11 +785,14 @@ export function buildZoo(raw) {
             if (s !== t) addN(r, s, t, { rule: 'prop-below', prop: p, prem: [fP(p, s, true), fP(q, t, false)] });
         });
         for (const r2 of coarserAll[r]) {
-          for (const k of N[r2].keys()) {
-            if (Nb[r][k]) continue;
-            const a = Math.floor(k / n), b = k % n;
-            if (bridge(r, r2, a, b)) addN(r, a, b, { rule: 'refine', prem: [fN(r2, a, b)] });
+          const T2 = N[r2], T = N[r];
+          for (let j = refDone[r].get(r2) || 0; j < T2.size; j++) {
+            const k = T2.list[j];
+            if (T.has(k)) continue;
+            const a = Math.floor(k / n), b = k - a * n;
+            if (bridge(r, r2, a, b)) addNc(r, a, b, C.refine, r2);
           }
+          refDone[r].set(r2, T2.size);
         }
         const q = NQ[r];
         if (NH[r] === q.length) break;
@@ -713,15 +815,11 @@ export function buildZoo(raw) {
             }
           }
           // check before building the justification: most candidates are already known
-          const Nr = Nb[r], oa = out[r][a], ic = inn[r][c];
-          for (let i = 0, len = oa.length; i < len; i++) {
-            const b = oa[i];
-            if (b !== a && !Nr[key(b, c)]) addN(r, b, c, { rule: 'weaken-left', prem: [fN(r, a, c), fI(r, a, b)] });
-          }
-          for (let i = 0, len = ic.length; i < len; i++) {
-            const d = ic[i];
-            if (d !== c && !Nr[key(a, d)]) addN(r, a, d, { rule: 'strengthen-right', prem: [fN(r, a, c), fI(r, d, c)] });
-          }
+          // b ⇏ c for the b that a implies, a ⇏ d for the d that imply c (I and N of r
+          // share the indices of the domain of r)
+          const T = N[r], TI = I[r], W = T.W, la = T.loc[a], lc = T.loc[c];
+          eachNew(TI.row, la * W, T.col, lc * W, W, T.glob, (b) => addNc(r, b, c, C['weaken-left'], a));
+          eachNew(TI.col, lc * W, T.row, la * W, W, T.glob, (d) => addNc(r, a, d, C['strengthen-right'], c));
         }
         // values read back from the separations of r: characterized properties (from
         // the base), properties defined by an operation (Det_Σ × Det_Σ ≰W Det_Σ: Det_Σ
