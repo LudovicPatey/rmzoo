@@ -136614,3 +136614,69 @@
     date: 2026-11-20
     by: ludovic
     note: Entered as LBT ≤sW L from Brattka–Hendtlass–Kreuzer 2017, Proposition 8.2 (strong).
+- id: contrib-00-0003-0351-3058-fc6f87-1
+  kind: result
+  status: accepted
+  date: 2026-11-21
+  origin: contributed
+  result:
+    type: implication
+    from: sigma11-c2
+    to: llpo.jump
+    over: w
+  argument: folklore. For every n, LLPO^{(n)} is Weihrauch reducible to \Sigma^1_1-C_2. This is because LLPO^{(n)} = \Pi^0_{n+1}-C_2, and a \Pi^0_{n+1} code can uniformly be turned into a Sigma^1_1 code for the same set
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-21T090843Z-0000-0003-0351-3058-fc6f87
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: 7e657089e4c2
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: "Checked: Π⁰ₙ₊₁ codes turn uniformly into Σ¹₁ codes."
+- id: contrib-00-0003-0351-3058-9f044b-1
+  kind: result
+  status: accepted
+  date: 2026-11-23
+  origin: contributed
+  result:
+    type: implication
+    from: cnn
+    to: rspo
+    over: w
+  argument: "Straightforward: the set of solutions of RSpo is Pi^0_2 relative to the input, hence C_Baire can be used to obtain a solution."
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-23T130430Z-0000-0003-0351-3058-9f044b
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: b5d70000afc7
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: "Checked: the solutions are Π⁰₂ relative to the input."
+- id: contrib-00-0003-0351-3058-2fd82a-1
+  kind: result
+  status: done
+  date: 2026-11-23
+  origin: contributed
+  result:
+    type: separation
+    from: chipi11
+    to: c3
+    over: cw
+  argument: "Straightforward diagonalization: we build the input A for C_3 by enumerating elements outside of it. Test the backward functional on both possible answers for WF. If it does commit to a C_3-answer n when executed with input i (and the code of A), we enumerate n outside of A. By continuity, 1-i must be the correct answer for WF. Repeat the process and rule out 1-i as possible WF answer."
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-23T132126Z-0000-0003-0351-3058-2fd82a
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: 331789676f89
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: Entered with the diagonalization written out in steps (contributed).

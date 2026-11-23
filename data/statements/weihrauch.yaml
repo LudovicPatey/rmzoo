@@ -847,10 +847,9 @@
   kind: problem
   minor: true
   tags: [ weihrauch ]
-  aliases: [ wList ]
   definition: >
     Given a countable closed set $A \subseteq \mathbb{N}^\mathbb{N}$, enumerate its elements, together with its cardinality
-    (the weak version $\mathsf{wList}$, without the cardinality, is equivalent).
+    (the weak version, without the cardinality, is equivalent: [[wlist-baire]]).
   instance: A countable closed set $A \subseteq \mathbb{N}^\mathbb{N}$.
   solution: 'A pair $n\langle p_0, p_1, \dots \rangle$: if $n = 0$ the $p_i$ are distinct and $A = \{p_i : i \in \mathbb{N}\}$, otherwise $|A| = n - 1$ and $A = \{p_i : i < n - 1\}$.'
   refs: [ { ref: kiharamarconepauly2020, role: origin, loc: Definition 6.1 } ]
@@ -1865,3 +1864,244 @@
     - ref: valenti2026
       role: rm
       loc: Section 2.1
+
+- id: pk-tree
+  omegaAbsolute: false
+  label: '\mathsf{PK}'
+  name: 'Perfect kernel of a tree'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$, compute its perfect kernel, as a tree. Strongly equivalent to the parallelization of $\mathsf{WF}$.'
+  instance: 'A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$.'
+  solution: 'The perfect kernel of $T$.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.1" } ]
+
+- id: pk-baire
+  omegaAbsolute: false
+  label: '\mathsf{PK}_{\mathbb{N}^\mathbb{N}}'
+  name: 'Perfect kernel of a closed subset of Baire space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a closed set $A \subseteq \mathbb{N}^\mathbb{N}$ (by a tree with body $A$), compute its perfect kernel as a closed set, that is, a tree whose body is the kernel; the tree need not be pruned.'
+  instance: 'A closed set $A \subseteq \mathbb{N}^\mathbb{N}$.'
+  solution: 'A name of the perfect kernel of $A$ as a closed set.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.1" } ]
+
+- id: wsclist-baire
+  omegaAbsolute: false
+  label: '\mathsf{wScList}_{\mathbb{N}^\mathbb{N}}'
+  name: 'Weak list of the scattered part of a closed subset of Baire space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a closed set $A \subseteq \mathbb{N}^\mathbb{N}$, list its scattered part $A \setminus \mathsf{PK}(A)$: a sequence $(b_i, x_i)_i$ with $A \setminus \mathsf{PK}(A) = \{x_i : b_i = 1\}$.'
+  instance: 'A closed set $A \subseteq \mathbb{N}^\mathbb{N}$.'
+  solution: 'A sequence $(b_i, x_i)_i$ in $2 \times X$ with $\{x_i : b_i = 1\}$ the scattered part of $A$.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.15" } ]
+
+- id: sclist-baire
+  omegaAbsolute: false
+  label: '\mathsf{ScList}_{\mathbb{N}^\mathbb{N}}'
+  name: 'List of the scattered part of a closed subset of Baire space, with its size'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: '$\mathsf{wScList}_{\mathbb{N}^\mathbb{N}}$ together with the size of the scattered part: $0$ if it is infinite, its cardinality plus $1$ otherwise.'
+  instance: 'A closed set $A \subseteq \mathbb{N}^\mathbb{N}$.'
+  solution: 'A list of the scattered part of $A$ and its size code.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.15" } ]
+
+- id: wcb-baire
+  omegaAbsolute: false
+  label: '\mathsf{wCB}_{\mathbb{N}^\mathbb{N}}'
+  name: 'Weak Cantor–Bendixson problem on Baire space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a closed set $A \subseteq \mathbb{N}^\mathbb{N}$, compute its perfect kernel and a weak list of its scattered part: $\mathsf{PK}_{\mathbb{N}^\mathbb{N}} \times \mathsf{wScList}_{\mathbb{N}^\mathbb{N}}$ on the same input.'
+  instance: 'A closed set $A \subseteq \mathbb{N}^\mathbb{N}$.'
+  solution: 'The perfect kernel of $A$ and a weak list of its scattered part.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.33" } ]
+
+- id: cb-baire
+  omegaAbsolute: false
+  label: '\mathsf{CB}_{\mathbb{N}^\mathbb{N}}'
+  name: 'Cantor–Bendixson problem on Baire space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a closed set $A \subseteq \mathbb{N}^\mathbb{N}$, compute its perfect kernel and a list of its scattered part with its size: $\mathsf{PK}_{\mathbb{N}^\mathbb{N}} \times \mathsf{ScList}_{\mathbb{N}^\mathbb{N}}$ on the same input.'
+  instance: 'A closed set $A \subseteq \mathbb{N}^\mathbb{N}$.'
+  solution: 'The perfect kernel of $A$ and a list of its scattered part with its size.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.33" } ]
+
+- id: pk-cantor
+  omegaAbsolute: false
+  label: '\mathsf{PK}_{2^\mathbb{N}}'
+  name: 'Perfect kernel of a closed subset of Cantor space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a closed set $A \subseteq 2^\mathbb{N}$ (by a tree with body $A$), compute its perfect kernel as a closed set, that is, a tree whose body is the kernel; the tree need not be pruned.'
+  instance: 'A closed set $A \subseteq 2^\mathbb{N}$.'
+  solution: 'A name of the perfect kernel of $A$ as a closed set.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.1" } ]
+
+- id: wsclist-cantor
+  omegaAbsolute: false
+  label: '\mathsf{wScList}_{2^\mathbb{N}}'
+  name: 'Weak list of the scattered part of a closed subset of Cantor space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a closed set $A \subseteq 2^\mathbb{N}$, list its scattered part $A \setminus \mathsf{PK}(A)$: a sequence $(b_i, x_i)_i$ with $A \setminus \mathsf{PK}(A) = \{x_i : b_i = 1\}$.'
+  instance: 'A closed set $A \subseteq 2^\mathbb{N}$.'
+  solution: 'A sequence $(b_i, x_i)_i$ in $2 \times X$ with $\{x_i : b_i = 1\}$ the scattered part of $A$.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.15" } ]
+
+- id: sclist-cantor
+  omegaAbsolute: false
+  label: '\mathsf{ScList}_{2^\mathbb{N}}'
+  name: 'List of the scattered part of a closed subset of Cantor space, with its size'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: '$\mathsf{wScList}_{2^\mathbb{N}}$ together with the size of the scattered part: $0$ if it is infinite, its cardinality plus $1$ otherwise.'
+  instance: 'A closed set $A \subseteq 2^\mathbb{N}$.'
+  solution: 'A list of the scattered part of $A$ and its size code.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.15" } ]
+
+- id: wcb-cantor
+  omegaAbsolute: false
+  label: '\mathsf{wCB}_{2^\mathbb{N}}'
+  name: 'Weak Cantor–Bendixson problem on Cantor space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a closed set $A \subseteq 2^\mathbb{N}$, compute its perfect kernel and a weak list of its scattered part: $\mathsf{PK}_{2^\mathbb{N}} \times \mathsf{wScList}_{2^\mathbb{N}}$ on the same input.'
+  instance: 'A closed set $A \subseteq 2^\mathbb{N}$.'
+  solution: 'The perfect kernel of $A$ and a weak list of its scattered part.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.33" } ]
+
+- id: cb-cantor
+  omegaAbsolute: false
+  label: '\mathsf{CB}_{2^\mathbb{N}}'
+  name: 'Cantor–Bendixson problem on Cantor space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a closed set $A \subseteq 2^\mathbb{N}$, compute its perfect kernel and a list of its scattered part with its size: $\mathsf{PK}_{2^\mathbb{N}} \times \mathsf{ScList}_{2^\mathbb{N}}$ on the same input.'
+  instance: 'A closed set $A \subseteq 2^\mathbb{N}$.'
+  solution: 'The perfect kernel of $A$ and a list of its scattered part with its size.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.33" } ]
+
+- id: sccount-baire
+  omegaAbsolute: false
+  label: '\mathsf{ScCount}_{\mathbb{N}^\mathbb{N}}'
+  name: 'Size of the scattered part of a closed subset of Baire space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a closed set $A \subseteq \mathbb{N}^\mathbb{N}$, output $0$ if its scattered part is infinite, and its cardinality plus $1$ otherwise.'
+  instance: 'A closed set $A \subseteq \mathbb{N}^\mathbb{N}$.'
+  solution: 'The size code of the scattered part of $A$.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.15" } ]
+
+- id: wcb-tree
+  omegaAbsolute: false
+  label: '\mathsf{wCB}'
+  name: 'Weak Cantor–Bendixson problem on trees'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a tree $T$, compute its perfect kernel as a tree and a weak list of the scattered part of $[T]$.'
+  instance: 'A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$.'
+  solution: 'The perfect kernel of $T$ and a weak list of the scattered part of $[T]$.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.33" } ]
+
+- id: cb-tree
+  omegaAbsolute: false
+  label: '\mathsf{CB}'
+  name: 'Cantor–Bendixson problem on trees'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a tree $T$, compute its perfect kernel as a tree and a list of the scattered part of $[T]$ with its size.'
+  instance: 'A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$.'
+  solution: 'The perfect kernel of $T$ and a list of the scattered part of $[T]$ with its size.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.33" } ]
+
+- id: wlist-baire
+  omegaAbsolute: false
+  label: '\mathsf{wList}_{\mathbb{N}^\mathbb{N}}'
+  name: 'Weak listing of countable closed subsets of Baire space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  aliases: [ "wList" ]
+  definition: 'Given a countable closed set $A \subseteq \mathbb{N}^\mathbb{N}$, compute $(b_i, x_i)_i$ with $A = \{x_i : b_i = 1\}$.'
+  instance: 'A countable closed set $A \subseteq \mathbb{N}^\mathbb{N}$.'
+  solution: 'A sequence $(b_i, x_i)_i$ with $A = \{x_i : b_i = 1\}$.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 3.7" } ]
+
+- id: wlist-cantor
+  omegaAbsolute: false
+  label: '\mathsf{wList}_{2^\mathbb{N}}'
+  name: 'Weak listing of countable closed subsets of Cantor space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a countable closed set $A \subseteq 2^\mathbb{N}$, compute $(b_i, x_i)_i$ with $A = \{x_i : b_i = 1\}$.'
+  instance: 'A countable closed set $A \subseteq 2^\mathbb{N}$.'
+  solution: 'A sequence $(b_i, x_i)_i$ with $A = \{x_i : b_i = 1\}$.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 3.7" } ]
+
+- id: list-cantor
+  omegaAbsolute: false
+  label: '\mathsf{List}_{2^\mathbb{N}}'
+  name: 'Listing countable closed subsets of Cantor space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: '$\mathsf{wList}_{2^\mathbb{N}}$ together with the cardinality: $n = 0$ if $A$ is infinite, $n = |A| + 1$ otherwise.'
+  instance: 'A countable closed set $A \subseteq 2^\mathbb{N}$.'
+  solution: 'A pair $(n, (b_i, x_i)_i)$ as above.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 3.7" } ]
+
+- id: list-cantor-fin
+  omegaAbsolute: false
+  label: '\mathsf{List}_{2^\mathbb{N}, <\omega}'
+  name: 'Listing finite closed subsets of Cantor space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a finite closed set $A \subseteq 2^\mathbb{N}$, compute a finite sequence $(p_i)_{i<n}$ with $A = \{p_i : i < n\}$.'
+  instance: 'A finite closed set $A \subseteq 2^\mathbb{N}$.'
+  solution: 'A finite sequence listing $A$.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 3.9" } ]
+
+- id: wlist-cantor-le
+  omegaAbsolute: false
+  label: '\mathsf{wList}_{2^\mathbb{N}, \leq\omega}'
+  name: 'Listing nonempty countable closed subsets of Cantor space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a nonempty countable closed set $A \subseteq 2^\mathbb{N}$, compute a sequence $(p_i)_{i \in \mathbb{N}}$ with $A = \{p_i : i \in \mathbb{N}\}$.'
+  instance: 'A nonempty countable closed set $A \subseteq 2^\mathbb{N}$.'
+  solution: 'A sequence with range $A$.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 3.9" } ]
+
+- id: wfs
+  omegaAbsolute: false
+  label: '\mathsf{WF}_\mathbb{S}'
+  name: 'Well-foundedness with an answer in Sierpiński space'
+  kind: problem
+  minor: true
+  tags: [ weihrauch ]
+  definition: 'Given a tree $T$, output a name of $1_\mathbb{S}$ (a nonzero sequence) if $T$ is well-founded, and of $0_\mathbb{S}$ (the zero sequence) if it is ill-founded.'
+  instance: 'A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$.'
+  solution: 'A name in Sierpiński space of whether $T$ is well-founded.'
+  refs: [ { ref: ciprianimarconevalenti2022, role: origin, loc: "Definition 4.7" } ]

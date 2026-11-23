@@ -14,7 +14,7 @@ export function plainLabel(tex) {
   const SUB = { 0: '₀', 1: '₁', 2: '₂', 3: '₃', 4: '₄', 5: '₅', 6: '₆', 7: '₇', 8: '₈', 9: '₉', n: 'ₙ', k: 'ₖ' };
   const map = (s, t) => ([...s].every((ch) => t[ch]) ? [...s].map((ch) => t[ch]).join('') : null);
   let s = String(tex)
-    .replace(/\\mathbb\{N\}/g, 'ℕ').replace(/\\mathbb\{R\}/g, 'ℝ')
+    .replace(/\\Sigma/g, 'Σ').replace(/\\Pi/g, 'Π').replace(/\\Delta/g, 'Δ').replace(/\\mathbb\{N\}/g, 'ℕ').replace(/\\mathbb\{R\}/g, 'ℝ')
     .replace(/\\(?:mathsf|mathrm|textsf|text|mathit|mathfrak)\{([^{}]*)\}/g, '$1')
     .replace(/\\(?:leq|le)\b/g, '≤').replace(/\\diamond\b/g, '⋄').replace(/\\star\b/g, '⋆').replace(/\\times\b/g, '×')
     .replace(/\\prime\b|'/g, '′').replace(/\\infty\b/g, '∞').replace(/\\omega\b/g, 'ω');

@@ -99,7 +99,7 @@
 # ---- Weihrauch landmarks seen as statements over RCA0 -----------------------
 
 - { type: equivalence, from: hb, to: wkl, over: rca0, refs: [ { ref: simpson2009, loc: Theorem IV.9.3 } ] }
-- { type: equivalence, from: lim, to: tj, over: sw, refs: [ { ref: brattkagherardipauly2021, loc: Theorem 6.7 }, { ref: solda2021, loc: "Proposition 2.4.6, proof" } ], note: "lim is strongly Weihrauch equivalent to the Turing jump." }
+- { type: equivalence, from: lim, to: tj, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: "Fact 5.5 (for F = J and F = lim)" }, { ref: brattkagherardipauly2021, loc: Theorem 6.7 }, { ref: solda2021, loc: "Proposition 2.4.6, proof" } ], note: "lim is strongly Weihrauch equivalent to the Turing jump." }
 - { type: equivalence, from: lim, to: aca, over: rca0star, folklore: true, justification: { kind: classical, text: "lim is the problem form of the Turing jump; over RCA₀*, ACA is equivalent to the statement that every set has a jump.", by: ai } }
 - { type: equivalence, from: bwt, to: aca, over: rca0, refs: [ { ref: simpson2009, loc: Theorem III.2.7 }, { ref: dzhafarovmummert2022, loc: Theorem 10.2.3 (1)↔(4) } ] }
 - { type: implication, from: rca0, to: ivt, over: rca0, refs: [ { ref: simpson2009, loc: Theorem II.6.6 } ] }

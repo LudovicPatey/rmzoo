@@ -72,3 +72,28 @@ endorsements:
   - { result: implication|ucnn|tcnn.par.det|w|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
   - { result: property|ucnn|parallelizable||true, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
   - { result: separation|cn|tcn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-19 }
+  - { result: implication|jinv-lim|cr|w|, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: implication|jinv-lim|lbt|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: implication|lim|jinv-lim|w|, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: implication|lim|sort|w|, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: implication|padeg|non|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: implication|sort|cn|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: implication|sort|cn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: implication|sort|llpo-j-meet-sort|w|, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: property|jinv-lim|idempotent||false, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: separation|cn|jinv-lim|w|, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: separation|cr|jinv-lim|w|, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: separation|jinv-lim|lim|w|, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: separation|non|padeg|w|, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: separation|sort|sort.par|w|, orcid: 0000-0003-0351-3058, date: 2026-11-20 }
+  - { result: equivalence|lim|tj|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-21 }
+  - { result: implication|sigma11-c2|llpo|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-21 }
+  - { result: implication|sigma11-cn|sigma11-c2|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-21 }
+  - { result: implication|stcn|tcn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-21 }
+  - { result: implication|tcnn|cnn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-21 }
+  - { result: property|chipi11|first-order||true, orcid: 0000-0003-0351-3058, date: 2026-11-21 }
+  - { result: separation|chipi11|lpo.x.lpo|w|, orcid: 0000-0003-0351-3058, date: 2026-11-21 }
+  - { result: separation|cnn|chipi11|w|, orcid: 0000-0003-0351-3058, date: 2026-11-21 }
+  - { result: separation|tcnn.par|chipi11|w|, orcid: 0000-0003-0351-3058, date: 2026-11-21 }
+  - { result: implication|lim|gen1|w|, orcid: 0000-0003-0351-3058, date: 2026-11-22 }
+  - { result: equivalence|sort.par|lim|w|, orcid: 0000-0003-0351-3058, date: 2026-11-23 }

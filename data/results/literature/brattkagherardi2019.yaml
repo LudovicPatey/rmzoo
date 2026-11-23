@@ -1,5 +1,5 @@
 # Results from [brattkagherardi2019].
-- { type: implication, from: tcn, to: cn, over: w, refs: [ { ref: brattkagherardi2019, loc: Corollary 8.3 } ] }
+- { type: implication, from: tcn, to: cn, over: w, folklore: true, justification: { kind: restriction, by: ai, text: "$\\mathsf{C}_\\mathbb{N}$ is the restriction of $\\mathsf{TC}_\\mathbb{N}$ to nonempty sets: every problem is a restriction of its total continuation, by definition." } }
 - { type: separation, from: cn, to: tcn, over: w, refs: [ { ref: brattkagherardi2019, loc: Corollary 8.3 } ] }
 - { type: separation, from: lim, to: lpo.jump, over: w, refs: [ { ref: brattkagherardi2019, loc: Lemma 4.24 }, { ref: dzhafarovetal2018, loc: "Corollary 4.13, proof" } ] }
 - { type: separation, from: tcn, to: lpo.jump, over: w, refs: [ { ref: brattkagherardi2019, loc: Corollary 8.11(1) } ] }

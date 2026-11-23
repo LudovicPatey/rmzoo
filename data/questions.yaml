@@ -1538,3 +1538,39 @@
     - {ref: shore2026, loc: Question 7.3}
   statements: [mrsf, pi11ca]
   context: 'Each of MRSF and MCSF implies $\Pi^1_1\text{-}\mathsf{CA}_0$ over $\mathsf{RCA}_0$ (Theorem 5.18 of [@shore2026]), and MRSF does not imply $\Delta^1_2\text{-}\mathsf{CA}_0$.'
+
+- id: pk-lim-pk
+  question: 'Is $\mathsf{PK} \equiv_{\mathrm{W}} \lim * \mathsf{PK}_{\mathbb{N}^\mathbb{N}}$?'
+  asked:
+    - {ref: ciprianimarconevalenti2022, loc: Problem 6.1}
+  statements: [pk-tree, pk-baire, lim]
+  formal:
+    - {from: pk-tree, to: lim.star.pk-baire, over: w}
+  context: >-
+    $\mathsf{PK}_{\mathbb{N}^\mathbb{N}} <_{\mathrm{W}} \mathsf{PK} \leq_{\mathrm{W}} \lim * \mathsf{PK}_{\mathbb{N}^\mathbb{N}}$
+    (Theorem 4.11). The question is attributed to Linda Westrick.
+
+- id: sccount-degree
+  question: 'What is the Weihrauch degree of $\mathsf{ScCount}_{\mathbb{N}^\mathbb{N}}$?'
+  asked:
+    - {ref: ciprianimarconevalenti2022, loc: Problem 6.2}
+  statements: [sccount-baire]
+  status: open
+
+- id: cb-sclist-baire
+  question: 'Is $\mathsf{CB}_{\mathbb{N}^\mathbb{N}} \leq_{\mathrm{W}} \mathsf{ScList}_{\mathbb{N}^\mathbb{N}}$?'
+  asked:
+    - {ref: ciprianimarconevalenti2022, loc: Problem 6.3}
+  statements: [cb-baire, sclist-baire]
+  formal:
+    - {from: sclist-baire, to: cb-baire, over: w}
+
+- id: cnn-cb-sclist
+  parts:
+    - question: 'Is $\mathsf{C}_{\mathbb{N}^\mathbb{N}} \leq_{\mathrm{W}} \mathsf{CB}_{\mathbb{N}^\mathbb{N}}$?'
+      formal: [{from: cb-baire, to: cnn, over: w}]
+    - question: 'Is $\mathsf{C}_{\mathbb{N}^\mathbb{N}} \leq_{\mathrm{W}} \mathsf{ScList}_{\mathbb{N}^\mathbb{N}}$?'
+      formal: [{from: sclist-baire, to: cnn, over: w}]
+  asked:
+    - {ref: ciprianimarconevalenti2022, loc: Problem 6.4}
+  statements: [cnn, cb-baire, sclist-baire]
