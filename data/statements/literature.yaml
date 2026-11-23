@@ -2222,6 +2222,31 @@
     $C(a, b) \le C(b, c)$ (coordinatewise order on $\mathbb{N}^r$).
   refs: [ { ref: pelupessy2016c, role: rm, loc: "Definition 6, Theorem 7" } ]
 
+- id: bctc
+  label: "\\mathsf{BCTC}"
+  name: Baire category theorem for closed sets of Cantor space
+  kind: sentence
+  minor: true
+  tags: [ analysis ]
+  definition: >
+    Let $F \subseteq 2^{\mathbb{N}}$ be a closed set coded by a tree (not necessarily pruned), and $(U_n)_n$ a sequence
+    of nonempty open sets of $2^{\mathbb{N}}$, each dense in $F$: every cylinder meeting $F$ contains a point of
+    $F \cap U_n$. Then $\bigcap_n U_n$ is dense in $F$. This is the version BCTC-I; for separably closed or pruned
+    closed $F$ the statement is provable in RCA₀ (Proposition 3.3).
+  refs: [ { ref: grunerreimann2026, role: rm, loc: "Section 3.1, BCTC-I" } ]
+
+- id: bes
+  label: "\\mathsf{BES}"
+  name: Besicovitch's theorem on subsets of finite Hausdorff measure, in Cantor space
+  kind: sentence
+  minor: true
+  tags: [ analysis ]
+  definition: >
+    Let $F \subseteq 2^{\mathbb{N}}$ be a nontrivial closed set coded by a tree, and $c \ge 0$, $s > 0$ reals with
+    $c \le \lim_n H^s_{2^{-n}}(F)$. Then there is a nontrivial closed set $E \subseteq F$, coded by a tree, whose
+    $s$-dimensional Hausdorff measure, computed from its tree code as $\lim_n H^s_n(Z_E)$, equals $c$.
+  refs: [ { ref: grunerreimann2026, role: rm, loc: "Section 4.2, Besicovitch's Theorem (BES)" } ]
+
 - id: heine-borel-q
   label: "\\textsf{Heine–Borel}_{\\mathbb{Q}}"
   name: Heine/Borel compactness of closed sets of rationals in [0,1]

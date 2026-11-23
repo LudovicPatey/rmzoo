@@ -9,7 +9,7 @@ full text read by Claude (step 4b).
 
 | step | automatic | for a reader |
 |------|-----------|--------------|
-| 1. New papers (`scripts/sweep.mjs`) | zbMATH Open and arXiv are searched for documents since the last run; those whose title is clearly about reverse mathematics or Weihrauch reducibility are added to `data/references/sweep-<year>.yaml` | borderline papers, to add by hand if relevant |
+| 1. New papers (`scripts/sweep.mjs`) | zbMATH Open and arXiv (phrase searches and the whole math.LO category, since abstracts writing `\mathsf{RCA}_0` escape phrase searches) are searched for documents since the last run; those whose title is clearly about reverse mathematics or Weihrauch reducibility are added to `data/references/sweep-<year>.yaml` | borderline papers, to add by hand if relevant |
 | 2. Publication status (`scripts/pubstatus.mjs`, `scripts/zbmath.mjs`) | preprints that have been published get their venue, DOI and year (arXiv journal references; Crossref exact-title matches); references get their zbMATH identifier and authors' zbMATH codes, and the new authors their ORCID iD (`data/authors.yaml`) | — |
 | 3. Texts (`abstracts.mjs`, `fulltext.mjs`, `pdf-abstracts.mjs`) | abstracts (arXiv TeX, else from the PDF, else OpenAlex), full texts (Zotero; open sources: arXiv by id or title, OpenAlex, Crossref, Unpaywall with `UNPAYWALL_EMAIL`, Semantic Scholar; the authors' pages of `data/author-pages.yaml`) cached in `cache/fulltext/` | cached texts that do not match their title |
 | 4. Mining (`scripts/mine/facts.mjs`, `scripts/mine/questions.mjs`) | — | theorems of new texts mentioning statements whose relation is open (by acronym, or by the names in words of statements' `phrases`); numbered questions not yet recorded |

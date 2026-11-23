@@ -848,6 +848,19 @@
     whether the equivalence is uniform. Cintioli answered it negatively: no single
     functional extracts a 1-generic from the solutions of a fixed computable instance.
 
+- id: bes-strength
+  parts:
+    - question: 'Is Besicovitch''s theorem $\mathsf{BES}$ equivalent to $\mathsf{ACA}_0$ over $\mathsf{RCA}_0$?'
+      formal: [{from: bes, to: aca, over: rca0}]
+    - question: 'Is $\mathsf{BES}$ provable in $\mathsf{WKL}_0$?'
+      formal: [{from: wkl, to: bes, over: rca0}]
+  asked:
+    - {ref: grunerreimann2026, loc: "Section 1 and end of Section 4"}
+  statements: [bes, aca, wkl]
+  context: >-
+    Gruner and Reimann prove BES in ACA₀ through a Baire category theorem for closed sets
+    that is equivalent to ACA₀, and show that BES implies WWKL₀.
+
 - id: coh-isig1-rcastar
   question: Over $\mathsf{RCA}_0^*$, does $\mathsf{COH}$ imply $\mathsf{I}\Sigma^0_1$?
   asked:

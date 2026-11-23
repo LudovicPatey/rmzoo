@@ -1782,6 +1782,24 @@ chubbhirstmcnicholl2009:
   review: 8
   dropped: 5
   cost: 0
+cintioli2026:
+  date: 2026-11-23
+  model: claude-opus-5-5 (chat)
+  textHash: 2e3a83613db596d4
+  facts: 2
+  added: 0
+  review: 1
+  dropped: 1
+  cost: 0
+cintioli2026b:
+  date: 2026-11-23
+  model: claude-opus-5-5 (chat)
+  textHash: 41b7a2104fa7337a
+  facts: 2
+  added: 0
+  review: 3
+  dropped: 0
+  cost: 0
 cipriani2023:
   date: 2026-11-11
   model: claude-sonnet-5-5 (chat)
@@ -3081,6 +3099,15 @@ fernandezduqueshaferyokoyama2019:
   review: 6
   dropped: 2
   cost: 0.15
+fernandezduqueweiermann2026:
+  date: 2026-11-23
+  model: claude-opus-5-5 (chat)
+  textHash: f20db73214f98475
+  facts: 0
+  added: 0
+  review: 1
+  dropped: 0
+  cost: 0
 ferreira1994:
   date: 2026-11-17
   model: claude-sonnet-5-5 (chat)
@@ -3545,6 +3572,15 @@ frittaionetal2017:
   review: 2
   dropped: 1
   cost: 0
+frittaiongenovesi2026:
+  date: 2026-11-23
+  model: claude-opus-5-5 (chat)
+  textHash: d6b81232f563c8fe
+  facts: 0
+  added: 0
+  review: 1
+  dropped: 0
+  cost: 0
 frittaionmarcone2012:
   date: 2026-11-10
   model: claude-sonnet-5-5 (chat)
@@ -3926,6 +3962,15 @@ greenbergmontalban2008:
   review: 5
   dropped: 3
   cost: 0.47
+grunerreimann2026:
+  date: 2026-11-23
+  model: claude-opus-5-5 (chat)
+  textHash: 96e23753657343e7
+  facts: 3
+  added: 0
+  review: 5
+  dropped: 0
+  cost: 0
 gurahirstmummert2015:
   date: 2026-11-10
   model: claude-sonnet-5-5 (chat)
@@ -6137,13 +6182,13 @@ montalbanshore2012:
   dropped: 2
   cost: 0
 montalbanshore2014:
-  date: 2026-11-11
-  model: claude-sonnet-5-5 (chat)
-  textHash: 006319da7681b431
-  facts: 2
+  date: 2026-11-23
+  model: claude-opus-5-5 (chat)
+  textHash: 6a8d2bf6ff0c3b46
+  facts: 0
   added: 0
-  review: 0
-  dropped: 2
+  review: 1
+  dropped: 0
   cost: 0
 montalbanshore2016:
   date: 2026-11-10
@@ -6582,6 +6627,15 @@ pakhomov2026:
   review: 3
   dropped: 0
   cost: 0.11
+pakhomovlazar2026:
+  date: 2026-11-23
+  model: claude-opus-5-5 (chat)
+  textHash: ce13a6b7c977dff0
+  facts: 0
+  added: 0
+  review: 1
+  dropped: 0
+  cost: 0
 pakhomovsolda2024:
   date: 2026-11-10
   model: claude-sonnet-5-5 (chat)

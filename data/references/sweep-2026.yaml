@@ -606,7 +606,6 @@ hirst1993b:
   zbmath: "0785.03040"
   zbmathAuthors:
     - hirst.jeffry-l
-  read: pdf-oa
 murawski1993b:
   authors:
     - Roman Murawski
@@ -976,7 +975,6 @@ simpson1999:
   zbmath: "0909.03048"
   zbmathAuthors:
     - simpson.stephen-g
-  read: pdf-oa
 humphreyssimpson1999:
   authors:
     - A. James Humphreys
@@ -3490,11 +3488,11 @@ montalbanshore2014:
   year: 2014
   doi: 10.1007/s11856-014-1117-9
   source: zbmath
-  read: pdf-oa
   zbmath: "1371.03096"
   zbmathAuthors:
     - montalban.antonio
     - shore.richard-a
+  read: pdf-oa
 dorais2014:
   authors:
     - François G. Dorais
@@ -5172,6 +5170,53 @@ valenti2026:
   zbmath: arXiv:2611.00818
   zbmathAuthors:
     - valenti.manlio
+frittaiongenovesi2026:
+  authors:
+    - Emanuele Frittaion
+    - Giorgio G. Genovesi
+  title: "Axiom Beta Implies Elementary Transfinite Recursion"
+  venue: Preprint, arXiv:2603.13913 [math.LO] (2026)
+  year: 2026
+  arxiv: "2603.13913"
+  read: pdf-arxiv
+pakhomovlazar2026:
+  authors:
+    - Fedor Pakhomov
+    - Vlad Lazar
+  title: "A Reflection Calculus for Bar Induction and the Linearity of Consistency Strength Ordering"
+  venue: Preprint, arXiv:2610.20115 [math.LO] (2026)
+  year: 2026
+  arxiv: "2610.20115"
+  read: pdf-arxiv
+fernandezduqueweiermann2026:
+  authors:
+    - David Fernández-Duque
+    - Andreas Weiermann
+  title: "A Walk with Goodstein and Ackermann"
+  venue: Preprint, arXiv:2608.04773 [math.LO] (2026)
+  year: 2026
+  arxiv: "2608.04773"
+  read: pdf-arxiv
+grunerreimann2026:
+  authors:
+    - Emma Gruner
+    - Jan Reimann
+  title: "A Baire Category Approach to Besicovitch's Theorem and Measure Regularity"
+  venue: Preprint, arXiv:2602.00940 [math.LO] (2026)
+  year: 2026
+  arxiv: "2602.00940"
+  read: pdf-arxiv
+cintioli2026b:
+  authors:
+    - Patrizio Cintioli
+  title: $\mathsf{RCA}_0$ Proves the Collapse of the Intersection Principles Hierarchy
+  venue: Preprint, arXiv:2611.01571 [math.LO] (2026)
+  year: 2026
+  arxiv: "2611.01571"
+  read: pdf-arxiv
+  zbmath: arXiv:2611.01571
+  zbmathAuthors:
+    - cintioli.patrizio
 cintioli2026:
   authors:
     - Patrizio Cintioli

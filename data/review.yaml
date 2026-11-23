@@ -136680,3 +136680,373 @@
     date: 2026-11-23
     by: ludovic
     note: Entered with the diagonalization written out in steps (contributed).
+- id: cintioli2026b-da5d160b
+  ref: cintioli2026b
+  date: 2026-11-23
+  status: accepted
+  kind: result
+  model: claude-opus-5-5 (chat)
+  result:
+    type: equivalence
+    from: fip
+    to: nd2ip
+    over: rca0
+  loc: Theorem 1.1
+  origin: stated
+  quote: and finite intersection principles are equivalent already over RCA0
+  paperNotation: FIP, 2IP
+  confidence: high
+  concerns: Unrefereed preprint.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 31f6a1fc4d59
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: Read Theorem 1.1 in the full text.
+- id: cintioli2026b-b2041c38
+  ref: cintioli2026b
+  date: 2026-11-23
+  status: accepted
+  kind: result
+  model: claude-opus-5-5 (chat)
+  result:
+    type: implication
+    from: nd2ip
+    to: gen1
+    over: rca0
+  loc: Theorem 1.1
+  origin: stated
+  quote: the pairwise intersection principle (2IP) implies, over RCA0
+  paperNotation: 2IP
+  confidence: high
+  concerns: Unrefereed preprint; its acknowledgments say the result was found by an AI system. The catalogue definition uses distinct sets; the paper notes that its constructed family consists of nonempty pairwise distinct sets, so the formulations agree on it.
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: e10c7208521f
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: Read Theorem 1.1 and its proof in the full text; 2IP is the catalogue's nd2ip.
+- id: cintioli2026b-3ba112b1
+  ref: cintioli2026b
+  date: 2026-11-23
+  status: pending
+  kind: statement
+  model: claude-opus-5-5 (chat)
+  statement:
+    notation: nIP
+    name: n-intersection principle, fixed n ≥ 3
+    loc: Section 1
+    definition: Every nontrivial countable family of subsets of N has a maximal subfamily in which every collection of exactly n distinct members has nonempty intersection.
+    facts: "Corollary 8.2: for each fixed n ≥ 2, RCA0 proves that nIP, 2IP, FIP and 1-GEN are equivalent."
+  reasons:
+    - principle not in the catalogue
+  proposed: 1f0325fd3f0b
+- id: cintioli2026-ed58b1a0
+  ref: cintioli2026
+  date: 2026-11-23
+  status: accepted
+  kind: result
+  model: claude-opus-5-5 (chat)
+  result:
+    type: separation
+    from: fip
+    to: gen1
+    over: w
+  loc: Corollary 6
+  origin: stated
+  quote: is not Weihrauch reducible to the finite intersection principle (FIP)
+  paperNotation: 1-GEN, FIP
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: 1a5d49e1115e
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: Read Corollary 6 in the full text; already entered, citation kept.
+- id: answer-d9cfcdd6
+  kind: answer
+  status: done
+  date: 2026-11-23
+  question: fs2-rt22
+  ref: cintioli2026b
+  text: …RCA0 , the existence of a Cohen 1-generic real relative to every given set. Together with the known implications, this yields the equivalence over RCA0 of the finite intersection principle (FIP), 2IP, and 1-GEN. In fact, FIP is equivalent to nIP for every fixed n ≥ 2. These results give affirmative answers to Questions 1 and 2 of Cholak, Downey, and Igusa, and to Question 9.10.26 of Dzhafarov and Mummert. The proof uses cumulative, nested supports satisfying a finite arXiv:2611.01571v1 [math.LO] 1 Nov 2026 Helly property and a decoding argument based on a least selected label. Neither Σ02 induction nor Σ02 bounding is required. 1. Introduction and conventions The finite intersection principle (FIP), studied in reverse mathematics by Dzhafarov and Mummert [4], asserts that every nontrivial …
+  reasons:
+    - the passage cites Cholak's paper next to a question word
+  proposed: e2eaa2917ea1
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: "False match: the passage answers Questions 1 and 2 of Cholak, Downey and Igusa 2017, not this question."
+- id: answer-4d822513
+  kind: answer
+  status: done
+  date: 2026-11-23
+  question: fs2-cac-rt22
+  ref: cintioli2026b
+  text: …RCA0 , the existence of a Cohen 1-generic real relative to every given set. Together with the known implications, this yields the equivalence over RCA0 of the finite intersection principle (FIP), 2IP, and 1-GEN. In fact, FIP is equivalent to nIP for every fixed n ≥ 2. These results give affirmative answers to Questions 1 and 2 of Cholak, Downey, and Igusa, and to Question 9.10.26 of Dzhafarov and Mummert. The proof uses cumulative, nested supports satisfying a finite arXiv:2611.01571v1 [math.LO] 1 Nov 2026 Helly property and a decoding argument based on a least selected label. Neither Σ02 induction nor Σ02 bounding is required. 1. Introduction and conventions The finite intersection principle (FIP), studied in reverse mathematics by Dzhafarov and Mummert [4], asserts that every nontrivial …
+  reasons:
+    - the passage cites Cholak's paper next to a question word
+  proposed: 62ded0da7a85
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: "False match: the passage answers Questions 1 and 2 of Cholak, Downey and Igusa 2017, not this question."
+- id: answer-7a861e79
+  kind: answer
+  status: done
+  date: 2026-11-23
+  question: cads-coh
+  ref: cintioli2026b
+  text: …RCA0 , the existence of a Cohen 1-generic real relative to every given set. Together with the known implications, this yields the equivalence over RCA0 of the finite intersection principle (FIP), 2IP, and 1-GEN. In fact, FIP is equivalent to nIP for every fixed n ≥ 2. These results give affirmative answers to Questions 1 and 2 of Cholak, Downey, and Igusa, and to Question 9.10.26 of Dzhafarov and Mummert. The proof uses cumulative, nested supports satisfying a finite arXiv:2611.01571v1 [math.LO] 1 Nov 2026 Helly property and a decoding argument based on a least selected label. Neither Σ02 induction nor Σ02 bounding is required. 1. Introduction and conventions The finite intersection principle (FIP), studied in reverse mathematics by Dzhafarov and Mummert [4], asserts that every nontrivial …
+  reasons:
+    - the passage cites Cholak's paper next to a question word
+  proposed: f87b4e46c94b
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: "False match: the passage answers Questions 1 and 2 of Cholak, Downey and Igusa 2017, not this question."
+- id: answer-e41f5c9d
+  kind: answer
+  status: done
+  date: 2026-11-23
+  question: ipt22-rt22
+  ref: cintioli2026b
+  text: …RCA0 , the existence of a Cohen 1-generic real relative to every given set. Together with the known implications, this yields the equivalence over RCA0 of the finite intersection principle (FIP), 2IP, and 1-GEN. In fact, FIP is equivalent to nIP for every fixed n ≥ 2. These results give affirmative answers to Questions 1 and 2 of Cholak, Downey, and Igusa, and to Question 9.10.26 of Dzhafarov and Mummert. The proof uses cumulative, nested supports satisfying a finite arXiv:2611.01571v1 [math.LO] 1 Nov 2026 Helly property and a decoding argument based on a least selected label. Neither Σ02 induction nor Σ02 bounding is required. 1. Introduction and conventions The finite intersection principle (FIP), studied in reverse mathematics by Dzhafarov and Mummert [4], asserts that every nontrivial …
+  reasons:
+    - the passage cites Cholak's paper next to a question word
+  proposed: 850ac87b9143
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: "False match: the passage answers Questions 1 and 2 of Cholak, Downey and Igusa 2017, not this question."
+- id: answer-e467e49a
+  kind: answer
+  status: done
+  date: 2026-11-23
+  question: hindman-aca
+  ref: cintioli2026b
+  text: …RCA0 , the existence of a Cohen 1-generic real relative to every given set. Together with the known implications, this yields the equivalence over RCA0 of the finite intersection principle (FIP), 2IP, and 1-GEN. In fact, FIP is equivalent to nIP for every fixed n ≥ 2. These results give affirmative answers to Questions 1 and 2 of Cholak, Downey, and Igusa, and to Question 9.10.26 of Dzhafarov and Mummert. The proof uses cumulative, nested supports satisfying a finite arXiv:2611.01571v1 [math.LO] 1 Nov 2026 Helly property and a decoding argument based on a least selected label. Neither Σ02 induction nor Σ02 bounding is required. 1. Introduction and conventions The finite intersection principle (FIP), studied in reverse mathematics by Dzhafarov and Mummert [4], asserts that every nontrivial …
+  reasons:
+    - the passage cites Cholak's paper next to a question word
+  proposed: 6ba2dd868b4e
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: "False match: the passage answers Questions 1 and 2 of Cholak, Downey and Igusa 2017, not this question."
+- id: answer-4d542a55
+  kind: answer
+  status: done
+  date: 2026-11-23
+  question: fraisse-atr
+  ref: cintioli2026b
+  text: …RCA0 , the existence of a Cohen 1-generic real relative to every given set. Together with the known implications, this yields the equivalence over RCA0 of the finite intersection principle (FIP), 2IP, and 1-GEN. In fact, FIP is equivalent to nIP for every fixed n ≥ 2. These results give affirmative answers to Questions 1 and 2 of Cholak, Downey, and Igusa, and to Question 9.10.26 of Dzhafarov and Mummert. The proof uses cumulative, nested supports satisfying a finite arXiv:2611.01571v1 [math.LO] 1 Nov 2026 Helly property and a decoding argument based on a least selected label. Neither Σ02 induction nor Σ02 bounding is required. 1. Introduction and conventions The finite intersection principle (FIP), studied in reverse mathematics by Dzhafarov and Mummert [4], asserts that every nontrivial …
+  reasons:
+    - the passage cites Cholak's paper next to a question word
+  proposed: a03800896e49
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: "False match: the passage answers Questions 1 and 2 of Cholak, Downey and Igusa 2017, not this question."
+- id: answer-3f311adf
+  kind: answer
+  status: done
+  date: 2026-11-23
+  question: three-bqo
+  ref: cintioli2026b
+  text: …RCA0 , the existence of a Cohen 1-generic real relative to every given set. Together with the known implications, this yields the equivalence over RCA0 of the finite intersection principle (FIP), 2IP, and 1-GEN. In fact, FIP is equivalent to nIP for every fixed n ≥ 2. These results give affirmative answers to Questions 1 and 2 of Cholak, Downey, and Igusa, and to Question 9.10.26 of Dzhafarov and Mummert. The proof uses cumulative, nested supports satisfying a finite arXiv:2611.01571v1 [math.LO] 1 Nov 2026 Helly property and a decoding argument based on a least selected label. Neither Σ02 induction nor Σ02 bounding is required. 1. Introduction and conventions The finite intersection principle (FIP), studied in reverse mathematics by Dzhafarov and Mummert [4], asserts that every nontrivial …
+  reasons:
+    - the passage cites Cholak's paper next to a question word
+  proposed: 9acfe867a7b9
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: "False match: the passage answers Questions 1 and 2 of Cholak, Downey and Igusa 2017, not this question."
+- id: answer-4926c213
+  kind: answer
+  status: done
+  date: 2026-11-23
+  question: coh-oc-rt1
+  ref: cintioli2026b
+  text: …RCA0 , the existence of a Cohen 1-generic real relative to every given set. Together with the known implications, this yields the equivalence over RCA0 of the finite intersection principle (FIP), 2IP, and 1-GEN. In fact, FIP is equivalent to nIP for every fixed n ≥ 2. These results give affirmative answers to Questions 1 and 2 of Cholak, Downey, and Igusa, and to Question 9.10.26 of Dzhafarov and Mummert. The proof uses cumulative, nested supports satisfying a finite arXiv:2611.01571v1 [math.LO] 1 Nov 2026 Helly property and a decoding argument based on a least selected label. Neither Σ02 induction nor Σ02 bounding is required. 1. Introduction and conventions The finite intersection principle (FIP), studied in reverse mathematics by Dzhafarov and Mummert [4], asserts that every nontrivial …
+  reasons:
+    - the passage cites Cholak's paper next to a question word
+  proposed: 8d0a1fcd36cc
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: "False match: the passage answers Questions 1 and 2 of Cholak, Downey and Igusa 2017, not this question."
+- id: grunerreimann2026-b8d6e2f6
+  ref: grunerreimann2026
+  date: 2026-11-23
+  status: accepted
+  kind: result
+  model: claude-opus-5-5 (chat)
+  result:
+    type: implication
+    from: bes
+    to: wwkl
+    over: omega
+  loc: Proposition 4.21
+  origin: stated
+  quote: Besicovitch’s Theorem implies WWKL0
+  confidence: medium
+  concerns: The proposition says over RCA0, but its proof reuses the reversal of Proposition 4.9, which is stated only for ω-models (≤ω). Entered over omega.
+  reasons:
+    - "extractor confidence: medium"
+  proposed: f65414f40308
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: "Proposition 4.21 says over RCA0, but its proof reuses reversals of Proposition 4.9 stated only for omega-models: entered over omega."
+- id: grunerreimann2026-39661cbf
+  ref: grunerreimann2026
+  date: 2026-11-23
+  status: accepted
+  kind: result
+  model: claude-opus-5-5 (chat)
+  result:
+    type: implication
+    from: aca
+    to: bes
+    over: rca0
+  loc: Theorem 4.20
+  origin: stated
+  quote: Besicovitch’s Theorem (BES) is provable in ACA0
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: afde013f2281
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: Read Theorem 4.20 and the formulation BES.
+- id: grunerreimann2026-95a2297c
+  ref: grunerreimann2026
+  date: 2026-11-23
+  status: accepted
+  kind: result
+  model: claude-opus-5-5 (chat)
+  result:
+    type: equivalence
+    from: bctc
+    to: aca
+    over: rca0
+  loc: Theorem 3.6
+  origin: stated
+  quote: BCTC is equivalent to ACA0
+  confidence: high
+  verifier:
+    verdict: not verified
+    reason: not verified independently (--no-verify)
+  reasons:
+    - "verifier: not verified"
+  proposed: aac4add9a2b2
+  decision:
+    date: 2026-11-23
+    by: ludovic
+    note: Read Theorem 3.6 and its proof; BCTC is BCTC-I.
+- id: grunerreimann2026-381cb9a8
+  ref: grunerreimann2026
+  date: 2026-11-23
+  status: pending
+  kind: statement
+  model: claude-opus-5-5 (chat)
+  statement:
+    notation: DMMin
+    name: Dense monotone minimum principle
+    loc: Section 3.2
+    definition: A monotone function on a closed set that is dense above its infimum realizes it.
+    facts: Equivalent over RCA0 to BCTC-N (Theorem 3.13), provable in ACA0 (Corollary 3.15).
+  reasons:
+    - principle not in the catalogue
+  proposed: 287ebe92277a
+- id: grunerreimann2026-de90c154
+  ref: grunerreimann2026
+  date: 2026-11-23
+  status: pending
+  kind: statement
+  model: claude-opus-5-5 (chat)
+  statement:
+    notation: Reg-S, Reg-SP, Reg-P, Reg-PS
+    name: Regularity of Hausdorff δ-measures on closed sets
+    loc: Section 4.1
+    definition: Closed subsets of prescribed δ-measure, for standard or pruned codes.
+    facts: Provable in ACA0 (Proposition 4.7); WKL0 ≤ω Reg-SP, WWKL0 ≤ω Reg-S and Reg-P (Proposition 4.9).
+  reasons:
+    - principle not in the catalogue
+  proposed: 266c323cca4a
+- id: pakhomovlazar2026-e055f77c
+  ref: pakhomovlazar2026
+  date: 2026-11-23
+  status: pending
+  kind: statement
+  model: claude-opus-5-5 (chat)
+  statement:
+    notation: RC_BI
+    name: Reflection calculus for bar induction
+    loc: Section 2
+    definition: A modal calculus for extensions of ACA0 generated by reflection principles, whose union is the theory BI.
+    facts: Linearity of the Π11 consistency-strength ordering on its closed formulas (Theorem 1.1) and an ordinal analysis of BI.
+  reasons:
+    - principle not in the catalogue
+  proposed: 531913d6850e
+- id: fernandezduqueweiermann2026-caaaf948
+  ref: fernandezduqueweiermann2026
+  date: 2026-11-23
+  status: pending
+  kind: statement
+  model: claude-opus-5-5 (chat)
+  statement:
+    notation: Ackermannian Goodstein principles
+    name: Termination of Goodstein processes based on the Ackermann function
+    loc: Theorem 5.2
+    definition: Goodstein processes for several normal forms of the Ackermann function.
+    facts: "Theorem 5.2: their termination is provable in ACA0′ but not ACA0, in ACA0+ but not ACA0′, or in ATR0 but not ACA0+, according to the normal form; every Ackermannian Goodstein walk is finite (Theorem 9.1)."
+  reasons:
+    - principle not in the catalogue
+  proposed: 1e10ba4874fc
+- id: frittaiongenovesi2026-c2e8c0cc
+  ref: frittaiongenovesi2026
+  date: 2026-11-23
+  status: pending
+  kind: statement
+  model: claude-opus-5-5 (chat)
+  statement:
+    notation: C
+    name: Weak set theory with Axiom Beta
+    loc: Introduction
+    definition: A weak theory of sets with Axiom Beta.
+    facts: C proves Δ0 transfinite recursion (Theorem 4.1); these are set-theoretic systems, not catalogue statements.
+  reasons:
+    - principle not in the catalogue
+  proposed: 850a16a3d523
+- id: montalbanshore2014-b034df1d
+  ref: montalbanshore2014
+  date: 2026-11-23
+  status: pending
+  kind: statement
+  model: claude-opus-5-5 (chat)
+  statement:
+    notation: n-Π03-DET, ω-Π03-DET
+    name: Determinacy for the finite difference hierarchy over Π03
+    loc: Definitions 1.1 and 1.2
+    definition: Determinacy of games on 2^ω whose winning set is an n-fold difference of Π03 sets; ω-Π03-DET is the union over n.
+    facts: "Theorem 1.10: Π1n+2-CA0 proves n-Π03-DET, and n-Π03-DET proves β(Δ1n+2-CA0), none reversible. Corollary 1.12: over RCA0, ω-Π03-DET is equivalent to: for every n and X there is a β-model of Π1n-CA0 containing X."
+  reasons:
+    - principle not in the catalogue
+  proposed: 258bf6b8a7cc

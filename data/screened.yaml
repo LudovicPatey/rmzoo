@@ -449,6 +449,7 @@ resolutions:
   - cads-coh|barnesgohshore2022
   - 'cads-coh|cervellegaudelierpatey2022'
   - 'cads-coh|cervellegaudelierpatey2024'
+  - cads-coh|cintioli2026b
   - 'cads-coh|dzhafarov2015b'
   - 'cads-coh|dzhafarov2016'
   - 'cads-coh|dzhafarovetal2017b'
@@ -477,10 +478,12 @@ resolutions:
   - 'coh-amt|patey2016c'
   - 'coh-amt|patey2017b'
   - 'coh-amt|shore2010'
+  - coh-oc-rt1|cintioli2026b
   - 'd22-p22|bienvenupateyshafer2017'
   - extomega-aca|barnesgohshore2022
   - fraisse-atr|carluccietal2020
   - fraisse-atr|cholakmarconesolomon2004
+  - fraisse-atr|cintioli2026b
   - fraisse-atr|escardostreicher2002
   - fraisse-atr|friedman2009
   - fraisse-atr|friedmansimpson2000
@@ -498,6 +501,7 @@ resolutions:
   - fraisse-atr|simpson2009b
   - fraisse-atr|simpson2010
   - 'fs2-cac-rt22|cervellegaudelierpatey2024'
+  - fs2-cac-rt22|cintioli2026b
   - 'fs2-cac-rt22|hirschfeldtshore2007'
   - 'fs2-cac-rt22|liupatey2022'
   - 'fs2-cac-rt22|liupatey2026'
@@ -506,6 +510,7 @@ resolutions:
   - 'fs2-cac-rt22|patey2016c'
   - 'fs2-cac-rt22|shore2010'
   - 'fs2-rt22|cervellegaudelierpatey2024'
+  - fs2-rt22|cintioli2026b
   - 'fs2-rt22|gonzalez2024'
   - 'fs2-rt22|hirschfeldtshore2007'
   - 'fs2-rt22|liupatey2022'
@@ -517,6 +522,7 @@ resolutions:
   - 'fs2-rt22|towsnerweisshaarwestrick2023'
   - gen1-fip-w|cintioli2026
   - hindman-aca|cholakmarconesolomon2004
+  - hindman-aca|cintioli2026b
   - hindman-aca|escardostreicher2002
   - hindman-aca|friedman2009
   - hindman-aca|friedmansimpson2000
@@ -534,6 +540,7 @@ resolutions:
   - hindman-aca|simpson2010
   - hyp-wgen-strong|bienvenukuyper2017
   - 'ipt22-rt22|cervellegaudelierpatey2024'
+  - ipt22-rt22|cintioli2026b
   - 'ipt22-rt22|dzhafarovetal2017b'
   - 'ipt22-rt22|hirschfeldtjockusch2016'
   - 'ipt22-rt22|liupatey2022'
@@ -558,6 +565,7 @@ resolutions:
   - 'rt22-bsig2-conservation|moninpatey2021'
   - 'rt22-bsig2-conservation|patey2016'
   - 'rt22-bsig2-conservation|patey2016c'
+  - three-bqo|cintioli2026b
   - three-bqo|goh2020b
   - three-bqo|shore2010
   - weak-principles-conservation|barnesgohshore2022

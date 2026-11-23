@@ -7,7 +7,9 @@ simpson1999:
   url:
     - https://sgslogic.net/t20/sosoa/chapter1.pdf
     - https://sgslogic.net/t20/sosoa/chapter1.ps
-  reason: Only the first chapter of the book (posted by the author); the second edition, simpson2009, is cached in full.
+    - https://sgslogic.net/t20/sosoa/burgess.pdf
+    - https://sgslogic.net/t20/sosoa/burgess.ps
+  reason: Only the first chapter of the book (posted by the author), or John Burgess's review of it (burgess.pdf); the second edition, simpson2009, is cached in full.
 kohlenbach2002b:
   zotero: GJ9X3VKA
   reason: In the maintainer's Zotero library this item has Tin Lok Wong's lecture notes attached, not Kohlenbach's "On uniform weak König's lemma" (APAL 2002).
@@ -17,3 +19,9 @@ nobrega2018:
 brattkarakotoniaina2017:
   zotero: 6W39XVSW
   reason: In the maintainer's Zotero library this item has arXiv v1 (2015) attached, whose numbering differs from the published version; arXiv v5 (the published version, 2017) is cached instead.
+hirst1993b:
+  url: https://hirstjl.github.io/bib/pdf/hbinq.pdf
+  reason: "Hirst's \"A note on compactness of countable sets\" (hirst2005c), not this paper."
+montalbanshore2014:
+  url: http://www.math.cornell.edu/~shore/papers/pdf/Delta4DetSub.pdf
+  reason: "The paper of 2012 (montalbanshore2012), \"The limits of determinacy in second order arithmetic\", not the Israel J. Math. paper of 2014."

@@ -52,9 +52,11 @@ for (const q of ZB) {
   }
 }
 // ---- arXiv (newest first, until `since`) ----
-const AX = ['abs:"reverse mathematics"', 'abs:"Weihrauch"', 'abs:"second-order arithmetic"', 'abs:"second order arithmetic"', 'abs:"computable reducibility"', 'abs:"RCA_0"', 'abs:"WKL_0"', 'abs:"ACA_0"', 'abs:"ATR_0"'];
+const AX = ['abs:"reverse mathematics"', 'abs:"Weihrauch"', 'abs:"second-order arithmetic"', 'abs:"second order arithmetic"', 'abs:"computable reducibility"', 'abs:"RCA_0"', 'abs:"WKL_0"', 'abs:"ACA_0"', 'abs:"ATR_0"',
+  // abstracts writing \mathsf{RCA}_0 escape the phrase searches: read the whole logic category
+  'cat:math.LO'];
 for (const q of AX) {
-  for (let start = 0; start < 1000; start += 100) {
+  for (let start = 0; start < 6000; start += 100) {
     let xml = '';
     for (let t = 0; t < 4; t++) {
       const r = await fetch(`https://export.arxiv.org/api/query?search_query=${encodeURIComponent(q)}&sortBy=submittedDate&sortOrder=descending&start=${start}&max_results=100`, { headers: UA });
@@ -87,8 +89,8 @@ const words = (t) => new Set(String(t || '').toLowerCase().normalize('NFKD').rep
 const have = refs.map(([k, r]) => ({ k, doi: r.doi?.toLowerCase(), ax: r.arxiv && String(r.arxiv), t: norm(r.title), y: r.year, a: new Set((r.authors || []).map(last)), w: words(r.title) }));
 const dup = (x) => have.some((h) => (x.doi && h.doi === x.doi.toLowerCase()) || (x.arxiv && h.ax === String(x.arxiv)) || h.t === norm(x.title) ||
   (Math.abs((h.y || 0) - (x.year || 0)) <= 2 && (x.authors || []).some((a) => h.a.has(last(a))) && (() => { const W = words(x.title); let i = 0; for (const w of W) if (h.w.has(w)) i++; return i / Math.max(1, W.size, h.w.size) >= 0.8; })()));
-const RM = [/reverse mathematic/i, /weihrauch/i, /\bRCA[_\\({$ ]*0|\bRCA0/, /\bWKL[_\\({$ ]*0|WKL0|weak k(ö|o|\\"o)nig/i, /\bACA[_\\({$ ]*0|ACA0|arithmetical comprehension/i,
-  /\bATR[_\\({$ ]*0|ATR0|arithmetical transfinite recursion/i, /Pi\^?.?1.?_?.?1.?-?CA|Π.?1.?1.?-?CA/, /computabl[ey] reduc/i, /subsystems? of (second|2nd)[- ]order arithmetic/i];
+const RM = [/reverse mathematic/i, /weihrauch/i, /\bRCA[}_\\({$ ]*0|\bRCA0/, /\bWKL[}_\\({$ ]*0|WKL0|weak k(ö|o|\\"o)nig/i, /\bACA[}_\\({$ ]*0|ACA0|arithmetical comprehension/i,
+  /\bATR[}_\\({$ ]*0|ATR0|arithmetical transfinite recursion/i, /Pi\^?.?1.?_?.?1.?-?CA|Π.?1.?1.?-?CA/, /computabl[ey] reduc/i, /subsystems? of (second|2nd)[- ]order arithmetic/i];
 // not the zoo's subject: other notions of computable reducibility, collections and reviews
 const OFF = /equivalence relation|ceers?\b|preorder|computable (linear orders|metrics|structures)|degrees of metrics|book review|abstracts from the|proceedings|special issue|selected papers|in hono(u)?r of|festschrift/i;
 // earlier decisions (data/sweep-rejected.yaml): never proposed again
