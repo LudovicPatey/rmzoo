@@ -29,6 +29,10 @@ test('the filter language', () => {
   assert.match(parseWatch(X, 'foo vs bar').error, /Unknown statement/);
   assert.ok(parseWatch(X, '').error);
   assert.match(describeWatch(X, f), /Relations between rt22 and coh over/);
+  // the viewer's form: statements as HTML, the other words escaped
+  const html = describeWatch(X, { kind: 'papersBy', author: '<b>', refs: [] }, (i) => `<i>${X.Z.S[i].id}</i>`, (t) => t.replace(/</g, '&lt;'));
+  assert.doesNotMatch(html, /<b>/);
+  assert.match(describeWatch(X, f, (i) => `<i>${X.Z.S[i].id}</i>`, (t) => t), /<i>rt22<\/i> and <i>coh<\/i>/);
 });
 
 test('the facts a filter matches, and what is new', () => {

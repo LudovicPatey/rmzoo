@@ -127,26 +127,28 @@ export function parseWatch(X, text, { search } = {}) {
 }
 
 // a filter in words (labels in plain text)
-export function describeWatch(X, f, name = (i) => X.Z.S[i].id) {
+// name(i): how a statement is shown; esc: escapes the other words (identity for plain text, the
+// viewer's esc when name returns HTML such as rendered labels)
+export function describeWatch(X, f, name = (i) => X.Z.S[i].id, esc = (t) => t) {
   const Z = X.Z;
   const list = (l) => (l === 'any' ? 'any statement' : l.map(name).join(', '));
-  const over = f.r ? ` over ${f.r.map((r) => redText(Z, r)).join(', ')}` : '';
-  const papers = (refs) => (refs.length > 3 ? `${refs.slice(0, 3).join(', ')} and ${refs.length - 3} more` : refs.join(', '));
+  const over = f.r ? ` over ${f.r.map((r) => esc(redText(Z, r))).join(', ')}` : '';
+  const papers = (refs) => (refs.length > 3 ? `${esc(refs.slice(0, 3).join(', '))} and ${refs.length - 3} more` : esc(refs.join(', ')));
   switch (f.kind) {
     case 'rel':
       if (f.dir) return `${f.dir === 'up' ? `Whether ${list(f.b)} implies ${list(f.a)}` : `Whether ${list(f.a)} implies ${list(f.b)}`}${over}`;
       return f.b !== 'any' && f.b.length === f.a.length && f.b.every((x) => f.a.includes(x)) ? `Relations among ${list(f.a)}${over}` : `Relations between ${list(f.a)} and ${list(f.b)}${over}`;
     case 'below': return `Statements implied by ${list(f.a)}${over}`;
     case 'above': return `Statements implying ${list(f.a)}${over}`;
-    case 'prop': return `${f.p ? f.p.map((p) => Z.raw.properties[p].name).join(', ') : 'Properties'} of ${list(f.a)}`;
+    case 'prop': return `${f.p ? f.p.map((p) => esc(Z.raw.properties[p].name)).join(', ') : 'Properties'} of ${list(f.a)}`;
     case 'results': return `Results on ${list(f.a)}`;
     case 'resultsFrom': return `Results citing ${papers(f.refs)}`;
     case 'questions': return `Questions on ${list(f.a)}`;
     case 'questionsAll': return 'All recorded questions';
     case 'papersOn': return `Papers on ${list(f.a)}`;
-    case 'papersBy': return `Papers by ${f.author} (${f.refs.length} now)`;
+    case 'papersBy': return `Papers by ${esc(f.author)} (${f.refs.length} now)`;
     case 'papersAll': return 'Papers of the zoo';
-    case 'tag': return `Statements tagged ${(Z.raw.tags || []).find((g) => g.id === f.tag)?.name || f.tag}`;
+    case 'tag': return `Statements tagged ${esc((Z.raw.tags || []).find((g) => g.id === f.tag)?.name || f.tag)}`;
     case 'stmtsAll': return 'Statements of the zoo';
     case 'errata': return f.refs ? `Errata of ${papers(f.refs)}` : 'Errata';
     default: return `Everything about ${list(f.a)}${over}`;

@@ -2672,7 +2672,9 @@ function drawThread(q) {
 let WATCH = null; // [{id, text, created, seen}]
 let watchQX = null;
 const watchX = () => (watchQX && watchQX.Z === Z ? watchQX : (watchQX = qx()));
-const watchName = (i) => plain(S(i).label);
+// a filter described in words, with the statements' labels rendered as in the query answers (in the
+// framework of the filter's reduction when it names one)
+const watchHtml = (q) => describeWatch(watchX(), q, (i) => L(i, q.r?.length === 1 ? q.r[0] : undefined), esc);
 const watching = (text) => !!WATCH?.some((f) => f.text.trim().toLowerCase() === text.trim().toLowerCase());
 function watchState(f) {
   const q = parseWatch(watchX(), f.text, { search: (t, n) => search(t, n) });
@@ -2733,11 +2735,11 @@ function viewWatch() {
     ${states.length ? `<div class="row w-head"><span class="grow small muted">${states.length} filter${states.length === 1 ? '' : 's'}, ${total} new fact${total === 1 ? '' : 's'}</span>
       ${total ? '<button class="btn small" data-wseen="*">Mark all as seen</button>' : ''}</div>` : '<p class="muted">No filter yet.</p>'}
     ${states.map((x) => `<article class="card w-card" id="w-${esc(x.f.id)}">
-      <div class="row"><code class="w-text">${esc(x.f.text)}</code><span class="grow"></span>
+      <div class="row"><span class="w-title">${x.q ? watchHtml(x.q) : esc(x.f.text)}</span><span class="grow"></span>
         ${x.fresh?.length ? `<span class="badge yes">${x.fresh.length} new</span>` : ''}
         <button class="btn small" data-wseen="${esc(x.f.id)}" ${x.fresh?.length ? '' : 'disabled'}>Mark as seen</button>
         <button class="btn small" data-wdel="${esc(x.f.id)}" title="Stop watching">Remove</button></div>
-      ${x.error ? `<p class="no small">${esc(x.error)}</p>` : `<p class="small muted">${esc(describeWatch(watchX(), x.q, watchName))} · ${x.items.size} matching fact${x.items.size === 1 ? '' : 's'} · since ${esc(x.f.created)}</p>
+      ${x.error ? `<p class="no small">${esc(x.error)}</p>` : `<p class="small muted"><code class="w-text">${esc(x.f.text)}</code> · ${x.items.size} matching fact${x.items.size === 1 ? '' : 's'} · since ${esc(x.f.created)}</p>
       ${x.fresh.length ? `<ul class="w-new">${x.fresh.slice(0, 100).map((k) => `<li>${watchItemHtml(k, x.items.get(k))}</li>`).join('')}</ul>
         ${x.fresh.length > 100 ? `<p class="small muted">and ${x.fresh.length - 100} more</p>` : ''}` : '<p class="small muted">Nothing new.</p>'}`}
     </article>`).join('')}`;
@@ -2747,7 +2749,7 @@ function viewWatch() {
     if (!t) { prev.innerHTML = help; prev.className = 'small muted'; return; }
     const q = parseWatch(watchX(), t, { search: (u, n) => search(u, n) });
     if (q.error) { prev.textContent = q.error; prev.className = 'small no'; return; }
-    prev.textContent = `${describeWatch(watchX(), q, watchName)}: ${watchItems(Z, q).size} matching facts now; you will be told of new ones.`;
+    prev.innerHTML = `${watchHtml(q)}: ${watchItems(Z, q).size} matching facts now; you will be told of new ones.`;
     prev.className = 'small';
   };
   // completions (site/js/watch.js), shown and picked like those of the search bar's query mode
