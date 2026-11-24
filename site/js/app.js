@@ -16,7 +16,7 @@ import { createCommunity } from './community.js';
 import { personBadges, personCredits } from './badges.js';
 import { KINDS, STATUS_NAMES, reviewStatus, itemResults, resultKey } from './review.js';
 import { proofDocHtml, proofSize } from './proofdoc.js';
-import { parseWatch, describeWatch, watchItems, newKeys, addFilter, markSeen, removeFilter } from './watch.js';
+import { parseWatch, describeWatch, watchItems, newKeys, addFilter, markSeen, removeFilter, completeWatch } from './watch.js';
 
 // ============================================================================
 // helpers
@@ -2701,10 +2701,13 @@ function watchItemHtml(key, it) {
   if (it.type === 'implies' || it.type === 'separated') return factHtml({ t: it.type === 'implies' ? 'I' : 'N', r: it.r, a: it.a, b: it.b });
   if (it.type === 'property') return factHtml({ t: 'P', p: it.p, s: it.s, v: it.v });
   if (it.type === 'result') { const res = Z.raw.results[it.ri]; return `${resultFact(res)} <a class="small" href="${resultHref(res)}">result</a>`; }
+  if (it.type === 'paper') return `${refLink({ ref: it.ref })} <span class="small muted">${esc(Z.raw.references[it.ref]?.title || '')}</span>`;
+  if (it.type === 'statement') return `${sLink(it.s)} <span class="small muted">${esc(S(it.s).name)}</span>`;
+  if (it.type === 'erratum') return `Erratum: ${refLink({ ref: it.ref, loc: it.loc })} <span class="badge">${esc(it.kind || '')}</span>`;
   const q = (Z.raw.questions || []).find((x) => x.id === it.q);
   return `<a href="#/questions/${esc(it.q)}">${q ? rich(qText(q)).slice(0, 2000) : esc(it.q)}</a> <span class="badge">${esc(it.status)}</span>`;
 }
-const WATCH_EXAMPLES = ['RT22 vs COH over W', 'SADS vs any over W', 'properties of RT22, SRT22', 'cone avoidance of EM', 'results on DS', 'questions on COH', 'about KPT'];
+const WATCH_EXAMPLES = ['RT22 vs COH over W, c', 'RT22 ≤W SRT22', 'below SADS over W', 'about KPT', 'cone avoidance of any', 'results from cintioli2026b', 'papers by Valenti', 'statements tagged Ramsey theory', 'all questions', 'new papers'];
 function viewWatch() {
   const m = main();
   m.className = '';
@@ -2717,11 +2720,14 @@ function viewWatch() {
       looked are shown as new (here and as a count in the menu). Your watchlist is kept ${where}.</p>
     <form id="w-form" class="card w-form">
       <label for="w-text"><b>Add a filter</b></label>
-      <div class="row"><input id="w-text" type="text" autocomplete="off" placeholder="RT22 vs COH over W" maxlength="300">
+      <div class="row w-input"><div class="search w-search"><input id="w-text" type="text" autocomplete="off" spellcheck="false" placeholder="RT22 vs COH over W" maxlength="300">
+        <div id="w-pop" class="popover" hidden></div></div>
         <button class="btn primary" type="submit">Watch</button></div>
-      <div id="w-preview" class="small muted">Relations: <code>A vs B over W, c</code> or <code>A vs any</code>;
-        <code>properties of A, B</code> or one property (<code>cone avoidance of A</code>); <code>results on A</code>;
-        <code>questions on A</code>; <code>about A</code> for all of them.</div>
+      <div id="w-preview" class="small muted">Start typing for suggestions (Tab completes). Relations: <code>A vs B over W, c</code>, <code>A ≤W B</code>,
+        <code>A vs any</code>, <code>below A</code>, <code>above A</code>; <code>properties of A, B</code>, <code>cone avoidance of any</code>;
+        <code>results on A</code>, <code>results from</code> a paper; <code>questions on A</code>, <code>all questions</code>;
+        <code>papers on A</code>, <code>papers by</code> an author, <code>new papers</code>; <code>statements tagged</code> a category,
+        <code>new statements</code>; <code>errata</code>; <code>about A</code> for everything on A.</div>
       <div class="chips w-examples">${WATCH_EXAMPLES.map((t) => `<button type="button" class="chip" data-wex="${esc(t)}">${esc(t)}</button>`).join('')}</div>
     </form>
     ${states.length ? `<div class="row w-head"><span class="grow small muted">${states.length} filter${states.length === 1 ? '' : 's'}, ${total} new fact${total === 1 ? '' : 's'}</span>
@@ -2744,7 +2750,43 @@ function viewWatch() {
     prev.textContent = `${describeWatch(watchX(), q, watchName)}: ${watchItems(Z, q).size} matching facts now; you will be told of new ones.`;
     prev.className = 'small';
   };
-  input.addEventListener('input', preview);
+  // completions (site/js/watch.js), shown and picked like those of the search bar's query mode
+  const pop = $('#w-pop');
+  let comps = [], hl = 0;
+  const showComps = () => {
+    comps = completeWatch(watchX(), input.value, { search: (u, n) => search(u, n) });
+    hl = Math.min(hl, Math.max(0, comps.length - 1));
+    if (!comps.length || document.activeElement !== input) { pop.hidden = true; return; }
+    const raw = input.value;
+    pop.innerHTML = comps.map((it, k) => {
+      let main = esc(it.insert.trim()), hint = esc(it.hint || '');
+      if (it.kind === 'stmt') { main = L(it.i); hint = esc(S(it.i).name); }
+      return `<div class="opt ${k === hl ? 'hl' : ''}" data-k="${k}"><span class="q-prefix muted">${esc(raw.slice(Math.max(0, it.from - 18), it.from).replace(/^\S*\s/, '…'))}</span>
+        <span class="q-ins">${main}</span><span class="muted grow">${hint}</span></div>`;
+    }).join('') + '<div class="opt-sep small muted q-help">Tab completes · ↵ watches</div>';
+    pop.hidden = false;
+  };
+  const pick = (k) => {
+    const it = comps[k];
+    if (!it) return;
+    input.value = input.value.slice(0, it.from) + it.insert;
+    input.focus();
+    input.setSelectionRange(input.value.length, input.value.length);
+    hl = 0;
+    preview();
+    showComps();
+  };
+  input.addEventListener('input', () => { hl = 0; preview(); showComps(); });
+  input.addEventListener('focus', showComps);
+  input.addEventListener('blur', () => setTimeout(() => { pop.hidden = true; }, 150));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' && comps.length) { hl = Math.min(hl + 1, comps.length - 1); showComps(); e.preventDefault(); }
+    else if (e.key === 'ArrowUp' && comps.length) { hl = Math.max(hl - 1, 0); showComps(); e.preventDefault(); }
+    else if (e.key === 'Tab' && !e.shiftKey && comps.length && !pop.hidden) { pick(hl); e.preventDefault(); }
+    else if (e.key === 'Escape') pop.hidden = true;
+    else if (e.key === 'Enter' && !pop.hidden && comps.length && hl > 0) { pick(hl); e.preventDefault(); }
+  });
+  pop.addEventListener('mousedown', (e) => { const o = e.target.closest('[data-k]'); if (o) { e.preventDefault(); pick(+o.dataset.k); } });
   $('#w-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const t = input.value.trim();
