@@ -55,3 +55,5 @@
 - { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fix, date: 2026-11-22, message: 2026-11-22T102432Z-0000-0003-0351-3058-0431df, note: "1-GEN ≤ lim: the argument corrected, with Brattka, Hendtlass and Kreuzer 2018, Corollary 9.7 and Brattka, de Brecht and Pauly 2012, Corollary 9.9." }
 - { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: source, date: 2026-11-23, message: 2026-11-23T115420Z-0000-0003-0351-3058-cbebe9, note: "Sort^ ≡W lim: the remark on text extraction removed from the citation of Neumann and Pauly." }
 - { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fact, date: 2026-11-23, message: 2026-11-23T132126Z-0000-0003-0351-3058-2fd82a, note: "C₃ is not continuously Weihrauch reducible to χ_Π¹₁ (his diagonalization)." }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fact, date: 2026-11-23, message: 2026-11-23T152051Z-0000-0003-0351-3058-ac8057, note: FIP ≤W 1-GEN. }
+- { orcid: 0000-0003-0351-3058, name: Manlio Valenti, kind: fact, date: 2026-11-23, message: 2026-11-23T153445Z-0000-0003-0351-3058-9d8b46, note: canHT ≤W C_ℕ^ℕ. }

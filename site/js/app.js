@@ -16,6 +16,7 @@ import { createCommunity } from './community.js';
 import { personBadges, personCredits } from './badges.js';
 import { KINDS, STATUS_NAMES, reviewStatus, itemResults, resultKey } from './review.js';
 import { proofDocHtml, proofSize } from './proofdoc.js';
+import { parseWatch, describeWatch, watchItems, newKeys, addFilter, markSeen, removeFilter } from './watch.js';
 
 // ============================================================================
 // helpers
@@ -1187,6 +1188,7 @@ function viewStatement(id, params = new URLSearchParams()) {
       <h1 style="margin:0" class="grow">${esc(s.name)}</h1>
       ${C.live ? `<button class="btn" data-feedback="comment|statement|${s.id}" title="Comment or report an error (signed in with ORCID)">Comment</button>
         <button class="btn" data-suggest="${s.id}||" title="Contribute facts about ${esc(s.name)} that the database lacks (signed in with ORCID)">Contribute facts</button>` : ''}
+      <button class="btn" data-watch="about ${s.id}" title="Be told of new relations, properties, results and questions about ${esc(s.name)} (Watchlist)">${watching(`about ${s.id}`) ? '★ Watched' : '☆ Watch'}</button>
       <button class="btn sel-toggle ${isSel(s.id) ? 'on' : ''}" data-sel="${s.id}">${isSel(s.id) ? '✓ Selected' : '+ Select'}</button>
     </div>
     <div class="row" style="margin:6px 0 14px">
@@ -2665,6 +2667,114 @@ function drawThread(q) {
   });
 }
 
+// ---- watchlist (docs/WATCH.md, site/js/watch.js) ---------------------------------
+// filters with the facts they match now; the new ones (not seen) raise the count in the menu
+let WATCH = null; // [{id, text, created, seen}]
+let watchQX = null;
+const watchX = () => (watchQX && watchQX.Z === Z ? watchQX : (watchQX = qx()));
+const watchName = (i) => plain(S(i).label);
+const watching = (text) => !!WATCH?.some((f) => f.text.trim().toLowerCase() === text.trim().toLowerCase());
+function watchState(f) {
+  const q = parseWatch(watchX(), f.text, { search: (t, n) => search(t, n) });
+  if (q.error) return { f, error: q.error };
+  const items = watchItems(Z, q);
+  return { f, q, items, fresh: newKeys(items, f.seen) };
+}
+function renderWatchCount() {
+  const el = $('#watch-count');
+  if (!el) return;
+  const n = (WATCH || []).reduce((k, f) => k + (watchState(f).fresh?.length || 0), 0);
+  el.hidden = !n;
+  el.textContent = n > 99 ? '99+' : String(n);
+  el.title = `${n} new ${n === 1 ? 'fact' : 'facts'} in your watchlist`;
+}
+async function loadWatch() {
+  try { WATCH = await C.loadWatch(); } catch { WATCH = []; }
+  renderWatchCount();
+  if (currentRoute() === 'watch') viewWatch();
+}
+async function saveWatch(list) {
+  WATCH = await C.saveWatch(list.filters);
+  renderWatchCount();
+}
+function watchItemHtml(key, it) {
+  if (it.type === 'implies' || it.type === 'separated') return factHtml({ t: it.type === 'implies' ? 'I' : 'N', r: it.r, a: it.a, b: it.b });
+  if (it.type === 'property') return factHtml({ t: 'P', p: it.p, s: it.s, v: it.v });
+  if (it.type === 'result') { const res = Z.raw.results[it.ri]; return `${resultFact(res)} <a class="small" href="${resultHref(res)}">result</a>`; }
+  const q = (Z.raw.questions || []).find((x) => x.id === it.q);
+  return `<a href="#/questions/${esc(it.q)}">${q ? rich(qText(q)).slice(0, 2000) : esc(it.q)}</a> <span class="badge">${esc(it.status)}</span>`;
+}
+const WATCH_EXAMPLES = ['RT22 vs COH over W', 'SADS vs any over W', 'properties of RT22, SRT22', 'cone avoidance of EM', 'results on DS', 'questions on COH', 'about KPT'];
+function viewWatch() {
+  const m = main();
+  m.className = '';
+  const where = C?.watchStored?.() === 'account' ? 'with your ORCID account (private to you)'
+    : `in this browser only${C?.live ? ` — <a href="${C.loginUrl()}">sign in with ORCID</a> to keep it with your account` : ''}`;
+  const states = (WATCH || []).map(watchState);
+  const total = states.reduce((k, x) => k + (x.fresh?.length || 0), 0);
+  m.innerHTML = `<h1>Watchlist</h1>
+    <p class="muted">Follow principles: each filter below selects facts of the database, and the facts that appeared since you last
+      looked are shown as new (here and as a count in the menu). Your watchlist is kept ${where}.</p>
+    <form id="w-form" class="card w-form">
+      <label for="w-text"><b>Add a filter</b></label>
+      <div class="row"><input id="w-text" type="text" autocomplete="off" placeholder="RT22 vs COH over W" maxlength="300">
+        <button class="btn primary" type="submit">Watch</button></div>
+      <div id="w-preview" class="small muted">Relations: <code>A vs B over W, c</code> or <code>A vs any</code>;
+        <code>properties of A, B</code> or one property (<code>cone avoidance of A</code>); <code>results on A</code>;
+        <code>questions on A</code>; <code>about A</code> for all of them.</div>
+      <div class="chips w-examples">${WATCH_EXAMPLES.map((t) => `<button type="button" class="chip" data-wex="${esc(t)}">${esc(t)}</button>`).join('')}</div>
+    </form>
+    ${states.length ? `<div class="row w-head"><span class="grow small muted">${states.length} filter${states.length === 1 ? '' : 's'}, ${total} new fact${total === 1 ? '' : 's'}</span>
+      ${total ? '<button class="btn small" data-wseen="*">Mark all as seen</button>' : ''}</div>` : '<p class="muted">No filter yet.</p>'}
+    ${states.map((x) => `<article class="card w-card" id="w-${esc(x.f.id)}">
+      <div class="row"><code class="w-text">${esc(x.f.text)}</code><span class="grow"></span>
+        ${x.fresh?.length ? `<span class="badge yes">${x.fresh.length} new</span>` : ''}
+        <button class="btn small" data-wseen="${esc(x.f.id)}" ${x.fresh?.length ? '' : 'disabled'}>Mark as seen</button>
+        <button class="btn small" data-wdel="${esc(x.f.id)}" title="Stop watching">Remove</button></div>
+      ${x.error ? `<p class="no small">${esc(x.error)}</p>` : `<p class="small muted">${esc(describeWatch(watchX(), x.q, watchName))} · ${x.items.size} matching fact${x.items.size === 1 ? '' : 's'} · since ${esc(x.f.created)}</p>
+      ${x.fresh.length ? `<ul class="w-new">${x.fresh.slice(0, 100).map((k) => `<li>${watchItemHtml(k, x.items.get(k))}</li>`).join('')}</ul>
+        ${x.fresh.length > 100 ? `<p class="small muted">and ${x.fresh.length - 100} more</p>` : ''}` : '<p class="small muted">Nothing new.</p>'}`}
+    </article>`).join('')}`;
+  const input = $('#w-text'), prev = $('#w-preview'), help = prev.innerHTML;
+  const preview = () => {
+    const t = input.value.trim();
+    if (!t) { prev.innerHTML = help; prev.className = 'small muted'; return; }
+    const q = parseWatch(watchX(), t, { search: (u, n) => search(u, n) });
+    if (q.error) { prev.textContent = q.error; prev.className = 'small no'; return; }
+    prev.textContent = `${describeWatch(watchX(), q, watchName)}: ${watchItems(Z, q).size} matching facts now; you will be told of new ones.`;
+    prev.className = 'small';
+  };
+  input.addEventListener('input', preview);
+  $('#w-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const t = input.value.trim();
+    const q = parseWatch(watchX(), t, { search: (u, n) => search(u, n) });
+    if (q.error) { preview(); return; }
+    try { await saveWatch(addFilter({ filters: WATCH || [] }, t, watchItems(Z, q))); viewWatch(); } catch (err) { prev.textContent = err.message; prev.className = 'small no'; }
+  });
+}
+document.addEventListener('click', async (e) => {
+  const ex = e.target.closest('[data-wex]'), seen = e.target.closest('[data-wseen]'), del = e.target.closest('[data-wdel]'), w = e.target.closest('[data-watch]');
+  if (!ex && !seen && !del && !w) return;
+  e.preventDefault();
+  try {
+    if (ex) { const i = $('#w-text'); i.value = ex.dataset.wex; i.dispatchEvent(new Event('input')); i.focus(); return; }
+    let list = { filters: WATCH || [] };
+    if (seen) for (const f of list.filters) { if (seen.dataset.wseen === '*' || seen.dataset.wseen === f.id) { const x = watchState(f); if (x.items) list = markSeen(list, f.id, x.items); } }
+    if (del) list = removeFilter(list, del.dataset.wdel);
+    if (w) {
+      const t = w.dataset.watch;
+      if (watching(t)) list = { filters: list.filters.filter((f) => f.text.trim().toLowerCase() !== t.toLowerCase()) };
+      else { const q = parseWatch(watchX(), t); if (q.error) return; list = addFilter(list, t, watchItems(Z, q)); }
+      await saveWatch(list);
+      w.textContent = watching(t) ? '★ Watched' : '☆ Watch';
+      return;
+    }
+    await saveWatch(list);
+    viewWatch();
+  } catch (err) { alert(err.message); }
+});
+
 function renderAccount() {
   const a = $('#account');
   if (!C.live) { a.innerHTML = ''; return; }
@@ -3642,7 +3752,7 @@ function currentRoute() {
   const p = path.split('/').filter(Boolean);
   // old links "#/?q=…" and "#/?tags=…" pointed to the catalogue
   if (!p.length) return /[?&](q|tags)=/.test(location.hash) ? 'catalogue' : 'home';
-  return { catalogue: 'catalogue', questions: 'questions', s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', result: 'result', refs: 'refs', about: 'about', u: 'profile', review: 'review', uploads: 'uploads' }[p[0]] || 'catalogue';
+  return { catalogue: 'catalogue', questions: 'questions', s: 'statement', diagram: 'diagram', compare: 'compare', results: 'results', result: 'result', refs: 'refs', about: 'about', watch: 'watch', u: 'profile', review: 'review', uploads: 'uploads' }[p[0]] || 'catalogue';
 }
 function route() {
   const [path, qs] = (location.hash.slice(1) || '/').split('?');
@@ -3673,6 +3783,7 @@ function route() {
   else if (name === 'profile') viewProfile(p[1] || 'me', params);
   else if (name === 'review') viewReview(params, p[1] && decodeURIComponent(p[1]));
   else if (name === 'uploads') viewUploads(params);
+  else if (name === 'watch') viewWatch();
   else viewCatalogue(params);
   renderTray();
   if (name !== 'diagram' || route.last !== 'diagram') window.scrollTo(0, 0);
@@ -3773,6 +3884,7 @@ async function boot() {
     renderAccount();
     if (C.user) C.listUploads().then(renderAccount).catch(() => {}); // the bell
     if (C.user) C.mine().then((msgs) => { C.myMessages = msgs; renderAccount(); }).catch(() => {}); // answers to one's messages
+    loadWatch();
     const added = await mergeValidated();
     if (C.live || added) { const y = window.scrollY; route(); window.scrollTo(0, y); }
   });

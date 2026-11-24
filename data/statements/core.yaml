@@ -154,13 +154,20 @@
 - id: pi11ca
   label: '\Pi^1_1\text{-}\mathsf{CA}'
   name: Π¹₁ comprehension
-  kind: sentence
-  tags: [ big-five ]
+  kind: problem
+  omegaAbsolute: false
+  tags: [ big-five, weihrauch ]
   aliases: [ Pi11-CA0, pi11 comprehension ]
-  definition: Every set defined by a $\Pi^1_1$ formula exists.
+  definition: >
+    Every set defined by a $\Pi^1_1$ formula exists. As a problem (Goh, Pauly and Valenti): given a $\Pi^1_1$ name
+    of a set $A \subseteq \mathbb{N}$, a sequence of trees $(T_n)_n$ on $\mathbb{N}^{<\mathbb{N}}$ with $n \in A$ iff $T_n$ is
+    well-founded, produce the characteristic function of $A$; it is the parallelization of [[chipi11]].
+  instance: A sequence $(T_n)_n$ of trees on $\mathbb{N}^{<\mathbb{N}}$ (a $\Pi^1_1$ name of a set $A \subseteq \mathbb{N}$).
+  solution: The characteristic function of $A$, i.e. $x \in 2^\mathbb{N}$ with $x(n) = 1$ iff $[T_n] = \emptyset$.
   refs:
     - { ref: friedman1975, role: origin }
     - { ref: simpson2009, role: survey, loc: Chapter VI }
+    - { ref: gohpaulyvalenti2021, role: def, loc: "Section 2 (Γ-CA) and Section 5" }
 
 - id: ss
   label: '\textsf{SS}'

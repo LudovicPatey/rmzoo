@@ -36,6 +36,7 @@
     - question: 'Does $\mathsf{RT}^2_{<\infty}$?'
       formal: [{from: rt2, to: wkl, over: rca0}]
   asked:
+    - {ref: mileti2008, loc: Question 9.2}
     - {ref: seetapunslaman1995, loc: Question 4.2}
     - {ref: cholakjockuschslaman2001, loc: Question 13.5}
     - {ref: mileti2004, loc: Question 7.2.1}
@@ -1587,3 +1588,85 @@
   asked:
     - {ref: ciprianimarconevalenti2022, loc: Problem 6.4}
   statements: [cnn, cb-baire, sclist-baire]
+
+- id: wkl-jump-rt22-jump
+  question: >-
+    Is $\mathsf{WKL}' \leq_{\mathrm{W}} \mathsf{RT}^{2\,\prime}_2$?
+  formal:
+    - {from: rt22.jump, to: wkl-j, over: w}
+  asked:
+    - {ref: brattkarakotoniaina2017, loc: Question 4.7}
+  statements: [wkl-j, rt22]
+
+- id: rt22-srt22-coh-w
+  parts:
+    - question: 'Is $\mathsf{RT}^2_2 \leq_{\mathrm{W}} \mathsf{SRT}^2_2 \times \mathsf{COH}$?'
+      formal: [{from: srt22.x.coh, to: rt22, over: w}]
+    - question: 'Is $\mathsf{SRT}^2_2 \times \mathsf{COH} \leq_{\mathrm{W}} \mathsf{RT}^2_2$?'
+      formal: [{from: rt22, to: srt22.x.coh, over: w}]
+    - question: 'Is $\mathsf{RT}^2_2 \leq_{\mathrm{W}} \mathsf{SRT}^2_2 \star \mathsf{COH}$?'
+      formal: [{from: srt22.star.coh, to: rt22, over: w}]
+  asked:
+    - {ref: brattkarakotoniaina2017, loc: Question 5.6}
+  statements: [rt22, srt22, coh]
+  context: >-
+    The question asks how RT²₂ relates exactly to the coproduct, the product and the compositional
+    product of SRT²₂ and COH; the parts record the last two.
+
+- id: cn-jump-rt22
+  question: >-
+    Is $\mathsf{C}_{\mathbb{N}}' \leq_{\mathrm{W}} \mathsf{RT}^2_2$?
+  formal:
+    - {from: rt22, to: cn.jump, over: w}
+  asked:
+    - {ref: brattkarakotoniaina2017, loc: Question 7.10}
+  statements: [cn, rt22]
+
+- id: rt22-wkl-aca
+  question: 'Does $\mathsf{WKL}_0 + \mathsf{RT}^2_2$ fail to prove $\mathsf{ACA}_0$?'
+  formal:
+    - {from: rt22-wkl, to: aca, over: rca0}
+  asked:
+    - {ref: hirst1987, loc: Conjecture 6.16}
+  statements: [rt22, wkl, aca]
+  context: >-
+    Stated as a conjecture (that the implication fails); it was settled by Seetapun's theorem that
+    RT²₂ admits cone avoidance.
+
+- id: mtt2-rg2-rt22
+  parts:
+    - question: 'Does $\mathsf{MTT}^2$ imply $(\forall k)\,\mathsf{RG}^2_{k,4}$ over $\mathsf{RCA}_0$?'
+      formal: [{from: mtt2, to: rg2, over: rca0}]
+    - question: 'Does $(\forall k)\,\mathsf{RG}^2_{k,4}$ imply $\mathsf{RT}^2_2$ (equivalently COH) over $\mathsf{RCA}_0$?'
+      formal: [{from: rg2, to: rt22, over: rca0}]
+  asked:
+    - {ref: dauriacetal2024, loc: Questions 5 and 6}
+  statements: [mtt2, rg2, rt22]
+
+- id: cantor-lipschitz-wadge
+  parts:
+    - question: 'Is $\mathsf{WKL}_0$ equivalent over $\mathsf{RCA}_0$ to $\Delta^0_1\text{-}\mathsf{Det}^*_L$?'
+      formal: [{from: detlclopen2, to: wkl, over: rca0}, {from: wkl, to: detlclopen2, over: rca0}]
+    - question: 'Is $\mathsf{WKL}_0$ equivalent over $\mathsf{RCA}_0$ to $\Delta^0_1\text{-}\mathsf{SLO}^*_L$?'
+      formal: [{from: slolclopen2, to: wkl, over: rca0}, {from: wkl, to: slolclopen2, over: rca0}]
+    - question: 'Is $\mathsf{ACA}_0$ equivalent over $\mathsf{RCA}_0$ to $\Sigma^0_1\text{-}\mathsf{Det}^*_W$?'
+      formal: [{from: detwopen2, to: aca, over: rca0}, {from: aca, to: detwopen2, over: rca0}]
+    - question: 'Is $\mathsf{ACA}_0$ equivalent over $\mathsf{RCA}_0$ to $\Sigma^0_1\text{-}\mathsf{SLO}^*_L$?'
+      formal: [{from: slolopen2, to: aca, over: rca0}, {from: aca, to: slolopen2, over: rca0}]
+    - question: 'Is $\mathsf{ACA}_0$ equivalent over $\mathsf{RCA}_0$ to $\Sigma^0_1\text{-}\mathsf{SLO}^*_W$?'
+      formal: [{from: slowopen2, to: aca, over: rca0}, {from: aca, to: slowopen2, over: rca0}]
+    - question: 'Does $\Sigma^0_1\text{-}\mathsf{SLO}^*_W$ imply $\mathsf{WKL}_0$ over $\mathsf{RCA}_0$?'
+      formal: [{from: slowopen2, to: wkl, over: rca0}]
+  asked:
+    - {ref: cordonfrancolaramartinloureiro2023, loc: "Problems 1–6 (Problem 1 is Problem 4.17 of their earlier paper)"}
+  statements: [wkl, aca, detlclopen2, slolclopen2, detwopen2, slolopen2, slowopen2]
+
+- id: ht-rtlarge-sc
+  question: 'Is $\mathsf{HT}$ strongly computably reducible to $\mathsf{RT}^{!\omega}_2$?'
+  formal:
+    - {from: rtlarge, to: ht, over: sc}
+  asked:
+    - {ref: carluccietal2020, loc: Question 2}
+  statements: [ht, rtlarge]
+  context: >-
+    RT^{!ω}_2 implies HT over RCA₀; the question asks whether a strong computable reduction witnesses it.

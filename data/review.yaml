@@ -125611,7 +125611,7 @@
   ref: sanders2026c
   part: 5/7 (pages 309–384)
   date: 2026-11-17
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -125630,11 +125630,15 @@
   reasons:
     - "extractor confidence: medium"
   proposed: 7184840e59c5
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "The book's IND₂ (Definition B.3.38: QF-AC^{0,1}_fin, functions in ℕ^ℕ, quantifier-free φ) is stronger than the catalogue's ind23 (functions in 2^ℕ, weaker conclusion); with ind23 as hypothesis the fact would be stronger than Corollary G.4.19. Needs a statement for the book's IND₂."
 - id: sanders2026c-6d753e5b
   ref: sanders2026c
   part: 5/7 (pages 309–384)
   date: 2026-11-17
-  status: pending
+  status: rejected
   kind: result
   model: claude-sonnet-5-5 (chat)
   result:
@@ -125653,6 +125657,10 @@
   reasons:
     - "extractor confidence: medium"
   proposed: 53d60ff67e19
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "The book's IND₂ (Definition B.3.38: QF-AC^{0,1}_fin, functions in ℕ^ℕ, quantifier-free φ) is stronger than the catalogue's ind23 (functions in 2^ℕ, weaker conclusion); with ind23 as hypothesis the fact would be stronger than Corollary G.4.19. Needs a statement for the book's IND₂."
 - id: sanders2026c-419ab9b7
   ref: sanders2026c
   part: 5/7 (pages 309–384)
@@ -128792,7 +128800,7 @@
     note: 'Miner false match: an ambiguous token ("(1)", "(2)", "A0", "A1", "Π11", "open", "Pure") read as a statement; these tokens are no longer matched (scripts/mine/common.mjs).'
 - id: lead-8e1fb794
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: hirst2004
   loc: Lemma 4
@@ -128812,6 +128820,10 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 76b1a3526f1f
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "No catalogue fact: an equivalent form of IHT; the miner read μ¹ and (∃²) in the notation."
 - id: lead-e4ab1c8a
   kind: lead
   status: rejected
@@ -128958,7 +128970,7 @@
     note: 'Miner false match: an ambiguous token ("(1)", "(2)", "A0", "A1", "Π11", "open", "Pure") read as a statement; these tokens are no longer matched (scripts/mine/common.mjs).'
 - id: lead-8763c5e7
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: humphreyssimpson1999
   loc: Corollary 3.4
@@ -128970,9 +128982,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 95c0ce4e6997
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Wrong text: the cached text of humphreyssimpson1999 is Kohlenbach's report on UWKL (kohlenbach2002b), whose Corollary 3.5 is already in the database (UWKL ↔ (∃²))."
 - id: lead-f01a1387
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: humphreyssimpson1999
   loc: Theorem 3.6
@@ -128990,6 +129006,10 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 7c527b227026
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Wrong text (Kohlenbach's report, not Humphreys–Simpson); conservation over PA and E-PAω, not of the catalogue's form.
 - id: lead-ab78942e
   kind: lead
   status: rejected
@@ -129678,7 +129698,7 @@
     note: 'Miner false match: an ambiguous token ("(1)", "(2)", "A0", "A1", "Π11", "open", "Pure") read as a statement; these tokens are no longer matched (scripts/mine/common.mjs).'
 - id: lead-37420fd8
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: conidisgreenbergturetsky2013
   loc: Theorem 1.16
@@ -129690,9 +129710,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: ef2d8bb48152
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "No catalogue fact: CI and LEM here are principles of Conidis–Greenberg–Turetsky (about games), not the catalogue's C_I (closed choice on the interval) and LEM."
 - id: lead-3636a91d
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: conidisgreenbergturetsky2013
   loc: Lemma 3.9
@@ -129703,9 +129727,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 9a9a5ef47ce3
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: CI of Conidis–Greenberg–Turetsky is not the catalogue's C_I; no fact to enter.
 - id: lead-22a194fd
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: conidisgreenbergturetsky2013
   loc: Theorem 3.10
@@ -129716,6 +129744,10 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 50b20bd163fe
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: DG-AC ↔ CI with the CI of the paper, not the catalogue's C_I; no fact to enter.
 - id: lead-9f3bfc9c
   kind: lead
   status: rejected
@@ -130097,7 +130129,7 @@
     note: 'Miner false match: an ambiguous token ("(1)", "(2)", "A0", "A1", "Π11", "open", "Pure") read as a statement; these tokens are no longer matched (scripts/mine/common.mjs).'
 - id: lead-5d916265
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: hirschfeldtlangeshore2017
   loc: Theorem 7.1
@@ -130108,9 +130140,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 01865c0b848f
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: EFAEC is not in the catalogue; ATT and AMT are related in the database (ATT ≡W AMT, Theorem 7.11).
 - id: lead-d6b1a244
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: hirschfeldtlangeshore2017
   loc: Theorem 7.5
@@ -130124,6 +130160,10 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: d0b6382a7ce2
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: EFAEC is not in the catalogue; nothing to enter.
 - id: lead-40ad78f1
   kind: lead
   status: rejected
@@ -132557,7 +132597,7 @@
     note: 'Miner false match: an ambiguous token ("(1)", "(2)", "A0", "A1", "Π11", "open", "Pure") read as a statement; these tokens are no longer matched (scripts/mine/common.mjs).'
 - id: lead-92ea8c91
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: sanders2022c
   loc: Theorem 3.7
@@ -132569,9 +132609,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: cb5a424d0164
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (deltaca3-mctnet-mu2 → BOOT, Theorem 3.7, cited for both versions).
 - id: lead-220c8743
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: sanders2022c
   loc: Theorem 3.13
@@ -132585,9 +132629,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: c248fa5af0b5
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (Theorem 3.13(a)).
 - id: lead-9d894977
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: sanders2022c
   loc: Corollary 3.14
@@ -132599,9 +132647,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: c48b20e1dfd6
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (Corollary 3.14).
 - id: lead-f936f57a
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: sanders2022c
   loc: Theorem 3.19
@@ -132615,9 +132667,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: e4edec8fc3ba
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (Theorem 3.19).
 - id: lead-0c7c7a4f
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: sanders2022c
   loc: Theorem 3.28
@@ -132633,9 +132689,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 63fd3230a61e
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (Theorem 3.28).
 - id: lead-55513c98
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: sanders2022c
   loc: Theorem 3.31
@@ -132649,9 +132709,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: bc2d2c903d0e
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (Theorem 3.31).
 - id: lead-fabba95a
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: sanders2022c
   loc: Theorem 3.33
@@ -132666,9 +132730,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: b4cdc0131109
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (Theorem 3.33).
 - id: lead-17bb8a58
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: sanders2022c
   loc: Theorem 3.38
@@ -132684,9 +132752,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: d83f7804b81d
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (Theorem 3.38).
 - id: lead-45d26162
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: carluccietal2020
   loc: Proposition 5
@@ -132697,9 +132769,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: de80cb6907f0
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Already derived: ACA₀ follows from HT^{≤2}_2[ap] in the database."
 - id: lead-8c2d46b5
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: carluccietal2020
   loc: Theorem 6
@@ -132710,9 +132786,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 51d22d07f598
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Already derived: HT^{≤2}_4 implies ACA₀ in the database."
 - id: lead-3d5d9ce1
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: carluccietal2020
   loc: Theorem 10
@@ -132723,9 +132803,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: "412853578346"
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (IPT²₂ ≤sW HT^{=2}_2[ap], stronger than the ≤sc of Theorem 10).
 - id: lead-68b7b8c1
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: carluccietal2020
   loc: Theorem 13
@@ -132736,9 +132820,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 76de292a99db
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (HT with apartness and ACA₀).
 - id: lead-cc890f6b
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: carluccietal2020
   loc: Proposition 15
@@ -132749,6 +132837,10 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 9d7f36983a96
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already derived in the database.
 - id: lead-b2b611ea
   kind: lead
   status: rejected
@@ -133444,7 +133536,7 @@
     note: 'Miner false match: an ambiguous token ("(1)", "(2)", "A0", "A1", "Π11", "open", "Pure") read as a statement; these tokens are no longer matched (scripts/mine/common.mjs).'
 - id: lead-07be4373
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: kreuzer2012b
   loc: Proposition 1.5
@@ -133459,9 +133551,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 0632a3c4a4e6
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: A metatheorem on finite-type systems, no catalogue fact.
 - id: lead-ff35bc56
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: kreuzer2012b
   loc: Proposition 2.26
@@ -133479,9 +133575,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: d1a3f8a3aebe
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: A metatheorem (program extraction), no catalogue fact.
 - id: lead-6c3f3b6c
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: kreuzer2012b
   loc: Theorem 2.27
@@ -133499,6 +133599,10 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 0cfe23e85064
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: A metatheorem (program extraction), no catalogue fact.
 - id: lead-4e2114cc
   kind: lead
   status: rejected
@@ -133519,7 +133623,7 @@
     note: 'Miner false match: an ambiguous token ("(1)", "(2)", "A0", "A1", "Π11", "open", "Pure") read as a statement; these tokens are no longer matched (scripts/mine/common.mjs).'
 - id: lead-dfe3c371
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: kreuzer2012b
   loc: Corollary 4.14
@@ -133537,6 +133641,10 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 0a78a6bdc0f7
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: A metatheorem (program extraction), no catalogue fact.
 - id: lead-01281c6d
   kind: lead
   status: rejected
@@ -133600,7 +133708,7 @@
     note: 'Miner false match: an ambiguous token ("(1)", "(2)", "A0", "A1", "Π11", "open", "Pure") read as a statement; these tokens are no longer matched (scripts/mine/common.mjs).'
 - id: lead-75299068
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moschovakis2012
   loc: Theorem 3
@@ -133611,9 +133719,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 97584f54cb2c
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (WKL!! → MP^∨ constructively).
 - id: lead-08e552d1
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moschovakis2012
   loc: Theorem 4
@@ -133625,9 +133737,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: d0e8f06ad790
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: ¬¬WKL is not in the catalogue; nothing to enter.
 - id: lead-6f2dfef2
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moschovakis2012
   loc: Theorem 5
@@ -133640,9 +133756,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: ad46798325f2
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Needs ¬¬WKL, not in the catalogue.
 - id: lead-b9154c26
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moschovakis2012
   loc: Corollary 7
@@ -133654,6 +133774,10 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 1764ff839257
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Entered: WKL!! does not imply WKL over BISH (Corollary 7: FIM + WKL!! is consistent relative to M and does not prove WKL)."
 - id: lead-34bad314
   kind: lead
   status: rejected
@@ -133971,7 +134095,7 @@
     note: 'Miner false match: an ambiguous token ("(1)", "(2)", "A0", "A1", "Π11", "open", "Pure") read as a statement; these tokens are no longer matched (scripts/mine/common.mjs).'
 - id: lead-0c9f9434
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: hirst2014
   loc: Theorem 1
@@ -133983,6 +134107,10 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: 73ea5fc01a53
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (ECT ↔ IΣ⁰₂, Theorem 6).
 - id: lead-fb6ace1a
   kind: lead
   status: rejected
@@ -134026,7 +134154,7 @@
     note: 'Miner false match: an ambiguous token ("(1)", "(2)", "A0", "A1", "Π11", "open", "Pure") read as a statement; these tokens are no longer matched (scripts/mine/common.mjs).'
 - id: lead-c364ed74
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: bergersvindland2016
   loc: Proposition 2
@@ -134040,6 +134168,10 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: f3a0dbc0bfe6
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (SEP ↔ FTAP ↔ MP constructively).
 - id: lead-6d7e9c3b
   kind: lead
   status: rejected
@@ -134528,7 +134660,7 @@
     note: 'Miner false match: an ambiguous token ("(1)", "(2)", "A0", "A1", "Π11", "open", "Pure") read as a statement; these tokens are no longer matched (scripts/mine/common.mjs).'
 - id: lead-2336c1b1
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: kohlenbach2002b
   loc: Corollary 3.5
@@ -134540,9 +134672,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: fd8a53f685cb
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Already in the database (UWKL ↔ (∃²) over RCA₀^ω).
 - id: lead-13e9df4e
   kind: lead
-  status: pending
+  status: done
   date: 2026-11-20
   ref: kohlenbach2002b
   loc: Theorem 3.7
@@ -134560,9 +134696,13 @@
   reasons:
     - "regex miner: the theorem names statements whose relation is open"
   proposed: a0c516bf0159
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Conservation over PA and E-PAω, not of the catalogue's form; nothing to enter.
 - id: question-8388ed6a
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: brattkarakotoniaina2017
   loc: Question 3.22
@@ -134572,9 +134712,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: fb36980a81f1
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: RT*_{n,k} and RT_{n,+} are not in the catalogue."
 - id: question-37b5491e
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: brattkarakotoniaina2017
   loc: Question 3.31
@@ -134584,9 +134728,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: cd22e754fe63
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: SRT³₂ is not in the catalogue."
 - id: question-916cec40
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: brattkarakotoniaina2017
   loc: Question 4.7
@@ -134597,9 +134745,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 8d985238f0b7
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Recorded as wkl-jump-rt22-jump.
 - id: question-c42619b1
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: brattkarakotoniaina2017
   loc: Question 5.6
@@ -134611,9 +134763,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: b9cda3cc1066
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Recorded as rt22-srt22-coh-w (product and compositional product).
 - id: question-0376df55
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: brattkarakotoniaina2017
   loc: Question 7.10
@@ -134621,9 +134777,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 4407b523c1b5
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: First part recorded as cn-jump-rt22; the second names RT_{2,ℕ}, not in the catalogue.
 - id: question-e0d49f94
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: kreuzeryokoyama2016
   loc: Question 1
@@ -134633,9 +134793,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: b67a5b7134ec
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: BME is not in the catalogue."
 - id: question-bb156840
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: kreuzeryokoyama2016
   loc: Question 2
@@ -134643,9 +134807,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: d3ccc47ffb83
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: BME* is not in the catalogue."
 - id: question-2b552244
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: cholakdzhafarovsoskova2016
   loc: Question 5.5
@@ -134653,9 +134821,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: c72d23198285
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-075d0516
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moninpatey2019b
   loc: Question 1.5
@@ -134666,9 +134838,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: dc782786d44f
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-47573054
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moninpatey2021b
   loc: Question 1.1
@@ -134676,9 +134852,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: cbd9d852dbe7
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-c80c8bcc
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moninpatey2021b
   loc: Question 1.8
@@ -134689,9 +134869,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 4a3537e9b95d
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-7666ee93
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: yokoyama2023
   loc: Question 4.6
@@ -134702,9 +134886,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: b6291d856c44
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: ItGPH is not in the catalogue."
 - id: question-7ba8ee22
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: dauriacetal2024
   loc: Question 4
@@ -134712,9 +134900,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 05c3806726ed
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-591e01bf
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: dauriacetal2024
   loc: Question 5
@@ -134724,9 +134916,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: b0a03296788f
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Recorded as mtt2-rg2-rt22 (the ER² part needs ER² for all colours, not in the catalogue).
 - id: question-60684fa9
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: dauriacetal2024
   loc: Question 6
@@ -134737,9 +134933,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: be7823671c7d
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Recorded as mtt2-rg2-rt22.
 - id: question-916dfc8c
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: dauriacetal2024
   loc: Question 7
@@ -134749,9 +134949,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 6792edde5ea9
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: ER² with all colours is not in the catalogue (only ER²₂)."
 - id: question-2153224c
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: millersolomon2004
   loc: Problem 4
@@ -134761,9 +134965,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: c32af8bbd618
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: VWI is not in the catalogue."
 - id: question-385f92be
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: marcone2005
   loc: Problem 2.19
@@ -134776,9 +134984,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: e78cdc771040
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-fb95303a
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: marcone2005
   loc: Conjecture 4.3
@@ -134788,9 +135000,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 840ac9ec54d4
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-6dae9617
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: marcone2005
   loc: Conjecture 4.6
@@ -134800,9 +135016,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 5a8c7f21cbae
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-617ed693
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: marcone2005
   loc: Problem 5.7
@@ -134810,9 +135030,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: bd0f9fa88144
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-569f41a5
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: marcone2005
   loc: Conjecture 5.18
@@ -134822,9 +135046,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: acc2d5802b58
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-9c70e2c4
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: marcone2005
   loc: Problem 5.21
@@ -134832,9 +135060,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 0a6c21a58aff
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-609bba7a
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: koodziejczykyokoyama2021
   loc: Question 1
@@ -134846,9 +135078,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: aa729e36bce7
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-2a5fa503
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: yokoyama2010
   loc: Question 1.1
@@ -134858,9 +135094,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: a2aa7b4248cd
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-1c71e6c8
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: yokoyama2010
   loc: Question 3.1
@@ -134872,9 +135112,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: c31dada17236
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-1144db29
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: yokoyama2010
   loc: Question 3.2
@@ -134885,9 +135129,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: e7a35c29f437
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-7c2e1549
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: yokoyama2010
   loc: Question 3.3
@@ -134897,9 +135145,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: d3d715788c13
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-9b54ee3b
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: yokoyama2010
   loc: Question 3.4
@@ -134911,9 +135163,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 2e1d2cdb61dc
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-a00763fe
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: yokoyama2010
   loc: Question 3.5
@@ -134923,9 +135179,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 4410914bbbc2
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-6a3360f1
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: yokoyama2010
   loc: Question 3.6
@@ -134936,9 +135196,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 6335112f586b
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-a8bebf42
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: yokoyama2010
   loc: Question 3.7
@@ -134949,9 +135213,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 28c9948587b6
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-7f273529
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: shafer2012
   loc: Question 1.1
@@ -134959,9 +135227,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 5d080eceec47
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-3ba44d92
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: hirst1987
   loc: Conjecture 6.16
@@ -134972,9 +135244,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: ea19f001f8c8
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Recorded as rt22-wkl-aca (resolved by Seetapun).
 - id: question-21f287dd
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: bienvenuetal2026
   loc: Question 8.1
@@ -134982,9 +135258,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 32abfa4d469e
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-238278bf
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: bienvenuetal2026
   loc: Question 8.2
@@ -134994,9 +135274,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 76fbb6dba144
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-f85fcb55
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moninpatey2022
   loc: Question 1.5
@@ -135006,9 +135290,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: a6090328c527
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-083b815e
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moninpatey2022
   loc: Conjecture 2.2
@@ -135016,9 +135304,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 5fd0cf0be6e1
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-02b129ed
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moninpatey2022
   loc: Conjecture 2.3
@@ -135026,9 +135318,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 9bc2f6b6e33c
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-295e2381
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moninpatey2022
   loc: Question 3.5
@@ -135036,9 +135332,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 3c245c4691b1
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-4d2ae874
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moninpatey2022
   loc: Question 4.10
@@ -135046,9 +135346,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 2834f541623e
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-6f5261db
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moninpatey2022
   loc: Question 5.5
@@ -135056,9 +135360,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: e0f592a8c3c5
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-1df79793
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moninpatey2022
   loc: Question 8.3
@@ -135066,9 +135374,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 70f5c64a7832
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-7a8a21b4
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moninpatey2022
   loc: Question 3.3
@@ -135079,9 +135391,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 551dbb3eb9ac
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Covered by the recorded conservation questions on RT²₂ over BΣ⁰₂.
 - id: question-7e02e870
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moninpatey2022
   loc: Question 3.33
@@ -135091,9 +135407,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 6b570c84509a
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-b73be052
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: moninpatey2022
   loc: Question 4.41
@@ -135103,9 +135423,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 937d481341a2
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-e3732e70
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: belanger2014
   loc: Question 2.5
@@ -135113,9 +135437,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 9011e78d1a84
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-bda46616
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: belanger2014
   loc: Question 2.13
@@ -135126,9 +135454,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 2bb67eedfe98
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-7a1ba51a
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: horihatayokoyama2014
   loc: Question 1
@@ -135139,9 +135471,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 959d315a71cc
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-12c63062
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: horihatayokoyama2014
   loc: Question 2
@@ -135151,9 +135487,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 57c569987086
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-45288799
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: belanger2015
   loc: Question 2.5
@@ -135164,9 +135504,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 40914135c729
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-8064b652
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: belanger2015
   loc: Question 2.20
@@ -135176,9 +135520,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 13cbaf8c58a7
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-108dd4cb
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: carluccietal2020
   loc: Question 1
@@ -135191,9 +135539,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 665399315ddc
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-e2a44d13
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: carluccietal2020
   loc: Question 2
@@ -135204,9 +135556,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 9f0d50295382
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Recorded as ht-rtlarge-sc.
 - id: question-db3bd64b
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: kachlermansolomon2012
   loc: Question 1
@@ -135214,9 +135570,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: fd8ae0d9f509
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-cea99237
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: kachlermansolomon2012
   loc: Question 2
@@ -135224,9 +135584,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: f5deb559f93c
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-a4fccee7
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: keisler2010
   loc: Question 6.1
@@ -135234,9 +135598,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: ec197f234bcf
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-1cc30fcc
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: keisler2010
   loc: Question 6.3
@@ -135244,9 +135612,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 4914eef0c693
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-b1e87676
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: keisler2010
   loc: Question 6.6
@@ -135256,9 +135628,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: ccbcaf4dedc8
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-e50b3daa
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: mileti2008
   loc: Question 2.24
@@ -135266,9 +135642,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: fa5a0114d65a
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-aae70da5
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: mileti2008
   loc: Conjecture 7.15
@@ -135276,9 +135656,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: fc6a1d5b99f9
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-0d156ca2
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: mileti2008
   loc: Conjecture 7.16
@@ -135286,9 +135670,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 8efc84f47995
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-ca3a1ece
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: mileti2008
   loc: Question 9.2
@@ -135300,9 +135688,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 9e0f6bf6b133
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Added to the recorded question rt22-wkl.
 - id: question-f69a4045
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: chong2020
   loc: Question 1
@@ -135313,9 +135705,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: f6ea447a6742
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-09944d8e
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: chong2020
   loc: Question 2
@@ -135326,9 +135722,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: fe7498dc8743
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: Π⁰₃-conservation of TT²₂ and TT¹; current status not verified."
 - id: question-1ebb1bbf
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: chong2020
   loc: Question 3
@@ -135341,9 +135741,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: b2816803aae3
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: The RT²₂ part is recorded as rt22-bsig2-conservation; the TT²₂ part not recorded (status not verified).
 - id: question-8f49f295
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: chong2020
   loc: Question 4
@@ -135355,9 +135759,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 4413c416b5e6
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-815d7318
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: lutz2023
   loc: Question 2.4
@@ -135365,9 +135773,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 9c4fe85f00ff
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-98889862
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: cordonfrancolaramartinloureiro2023
   loc: Problem 1
@@ -135377,9 +135789,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: ffd5ac61ee59
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Recorded as cantor-lipschitz-wadge.
 - id: question-fd766fef
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: cordonfrancolaramartinloureiro2023
   loc: Problem 2
@@ -135389,9 +135805,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: a0cba1356dbc
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Recorded as cantor-lipschitz-wadge.
 - id: question-3703b97a
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: cordonfrancolaramartinloureiro2023
   loc: Problem 3
@@ -135401,9 +135821,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 82807fb83d50
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Recorded as cantor-lipschitz-wadge.
 - id: question-439dfff8
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: cordonfrancolaramartinloureiro2023
   loc: Problem 4
@@ -135413,9 +135837,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 7f7490ca0408
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Recorded as cantor-lipschitz-wadge.
 - id: question-810210f4
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: cordonfrancolaramartinloureiro2023
   loc: Problem 5
@@ -135425,9 +135853,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 18631a52c172
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Recorded as cantor-lipschitz-wadge.
 - id: question-18c06ea4
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: cordonfrancolaramartinloureiro2023
   loc: Problem 6
@@ -135437,9 +135869,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: a40cb4a3cb87
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Recorded as cantor-lipschitz-wadge.
 - id: question-043ff4fb
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: gordeevweiermann2010
   loc: Conjecture 3
@@ -135449,9 +135885,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 2636d4ac79a7
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-bc5542ca
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 1
@@ -135459,9 +135899,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 3bdb8458dab8
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-82fec0a3
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 2
@@ -135469,9 +135913,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: b2ea2d7ddfc2
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-6906d5b7
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 3
@@ -135479,9 +135927,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: d90c0a4bd688
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-297a3504
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 4
@@ -135489,9 +135941,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 716f4e87701e
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-1456f13c
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 5
@@ -135499,9 +135955,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 4eba58899093
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-6a32a3ce
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 6
@@ -135509,9 +135969,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: d1ccd8a7a68d
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-8b0248a0
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 7
@@ -135519,9 +135983,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 51eea0c48252
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-0581c33c
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 8
@@ -135529,9 +135997,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 4ffcefd6172a
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-1b0330ca
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 9
@@ -135539,9 +136011,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: c4bb70e825ff
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-9278edb4
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 10
@@ -135549,9 +136025,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 3fe44d758f32
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-818ccbc2
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 11
@@ -135559,9 +136039,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 3f660a21cca2
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-effe7d63
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 12
@@ -135569,9 +136053,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 75d6453dc3c7
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-ee70687a
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 13
@@ -135579,9 +136067,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 146852db2f37
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-48eb9fe9
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: andrewsetal2023
   loc: Question 14
@@ -135589,9 +136081,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 422ebf7e031e
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-a8d182ae
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: hoyrup2023
   loc: Problem 2
@@ -135599,9 +136095,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: ffd584859522
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-107d107d
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: hoyrup2023
   loc: Open Question 5.4.3
@@ -135611,9 +136111,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: f03ee3b1663c
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-e7fd96b4
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: hoyrup2023
   loc: Open Question 6.5.2
@@ -135621,9 +136125,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 65282e122cd9
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-12228638
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: hoyrup2023
   loc: Open Question 7.4.4
@@ -135631,9 +136139,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: fe2fec0b5034
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-6f1e5b59
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: hoyrup2023
   loc: Open Question 7.5.5
@@ -135641,9 +136153,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 5d5568bfd2da
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-31670f64
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: cenzerremmel2005
   loc: Problem 1
@@ -135651,9 +136167,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 6e51ec21a83b
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-3d4f1e9f
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: cenzerremmel2005
   loc: Problem 2
@@ -135661,9 +136181,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 1e2a3337cbc3
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-5eb4d4ae
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: greenbergkuyperturetsky2019
   loc: Question 8.7
@@ -135674,9 +136198,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 6f5bdb10dc80
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-3ccf76eb
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: amir2023
   loc: Question 6.8.1
@@ -135684,9 +136212,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 67df3af28e6a
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-2d3230cf
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: amir2023
   loc: Question 6.8.2
@@ -135697,9 +136229,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: d7ddefc903d9
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-a0b1ee06
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: amir2023
   loc: Question 6.8.3
@@ -135707,9 +136243,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: c829d5b3f385
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-be568873
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: amir2023
   loc: Question 6.8.4
@@ -135717,9 +136257,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: b9547c8ac44f
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-434eb656
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: amir2023
   loc: Question 6.8.5
@@ -135727,9 +136271,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: f3651c649406
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-6b6ae311
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: amir2023
   loc: Question 6.8.6
@@ -135737,9 +136285,13 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 906acf765d67
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: question-bb63c5b9
   kind: question
-  status: pending
+  status: done
   date: 2026-11-20
   ref: amir2023
   loc: Question 6.8.7
@@ -135747,6 +136299,10 @@
   reasons:
     - "regex miner: a numbered question not in data/questions.yaml"
   proposed: 35ba47aec78d
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not recorded: not a comparison of statements of the catalogue (degree theory, metatheory, model theory, topology or principles outside the zoo)."
 - id: answer-6ec85e36
   kind: answer
   status: rejected
@@ -136737,7 +137293,7 @@
 - id: cintioli2026b-3ba112b1
   ref: cintioli2026b
   date: 2026-11-23
-  status: pending
+  status: done
   kind: statement
   model: claude-opus-5-5 (chat)
   statement:
@@ -136749,6 +137305,10 @@
   reasons:
     - principle not in the catalogue
   proposed: 1f0325fd3f0b
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not added: for every fixed n ≥ 2, nIP is equivalent to FIP over RCA₀ (Cintioli 2026b, Corollary 8.2); a parametric family D̄ₙIP could be added if its Weihrauch degrees are studied."
 - id: cintioli2026-ed58b1a0
   ref: cintioli2026
   date: 2026-11-23
@@ -136963,7 +137523,7 @@
 - id: grunerreimann2026-381cb9a8
   ref: grunerreimann2026
   date: 2026-11-23
-  status: pending
+  status: done
   kind: statement
   model: claude-opus-5-5 (chat)
   statement:
@@ -136975,10 +137535,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 287ebe92277a
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not added: studied in one paper (equivalent to BCTC-N over RCA₀, Theorem 3.13; provable in ACA₀); the paper's main principles BCTC and BES were added."
 - id: grunerreimann2026-de90c154
   ref: grunerreimann2026
   date: 2026-11-23
-  status: pending
+  status: done
   kind: statement
   model: claude-opus-5-5 (chat)
   statement:
@@ -136990,10 +137554,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 266c323cca4a
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not added: four technical variants studied in one paper, with ω-model equivalences only (Propositions 4.5, 4.9, 4.11)."
 - id: pakhomovlazar2026-e055f77c
   ref: pakhomovlazar2026
   date: 2026-11-23
-  status: pending
+  status: rejected
   kind: statement
   model: claude-opus-5-5 (chat)
   statement:
@@ -137005,10 +137573,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 531913d6850e
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: A modal reflection calculus, not a principle of second-order arithmetic.
 - id: fernandezduqueweiermann2026-caaaf948
   ref: fernandezduqueweiermann2026
   date: 2026-11-23
-  status: pending
+  status: done
   kind: statement
   model: claude-opus-5-5 (chat)
   statement:
@@ -137020,10 +137592,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 1e10ba4874fc
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not added: Π⁰₂ termination principles studied in one paper (Theorem 5.2); the catalogue has no Goodstein-type statements to compare them with."
 - id: frittaiongenovesi2026-c2e8c0cc
   ref: frittaiongenovesi2026
   date: 2026-11-23
-  status: pending
+  status: rejected
   kind: statement
   model: claude-opus-5-5 (chat)
   statement:
@@ -137035,10 +137611,14 @@
   reasons:
     - principle not in the catalogue
   proposed: 850a16a3d523
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: A set theory (with Axiom Beta), not a principle of second-order arithmetic.
 - id: montalbanshore2014-b034df1d
   ref: montalbanshore2014
   date: 2026-11-23
-  status: pending
+  status: done
   kind: statement
   model: claude-opus-5-5 (chat)
   statement:
@@ -137050,6 +137630,10 @@
   reasons:
     - principle not in the catalogue
   proposed: 258bf6b8a7cc
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Not added: n-Π⁰₃-DET lies strictly between Π¹ₙ₊₂-CA₀ and Δ¹ₙ₊₂-CA₀ (Theorem 1.10); entering it needs parametric statements Π¹ₙ-CA₀, Δ¹ₙ-CA₀ for all n, which the catalogue does not have."
 - id: proof-cb-1
   kind: proof
   status: pending
@@ -139269,3 +139853,47 @@
   reasons:
     - AI proof not yet refereed by a person
   proposed: df84132659c6
+- id: contrib-00-0003-0351-3058-ac8057-1
+  kind: result
+  status: accepted
+  date: 2026-11-23
+  origin: contributed
+  result:
+    type: implication
+    from: gen1
+    to: fip
+    over: w
+  argument: "The construction is uniform. The generic of the forcing in the proof of Proposition 5.4 of [@cholakdowneyigusa2017] (conditions: finite sets of indices with a common element) is obtained uniformly from a 1-generic relative to the family: Lemma 5 of [@cintioli2026] gives a total functional R ↦ J_R and a computable map ξ ↦ c_ξ such that J_R enumerates a centered set, maximal when R is 1-generic; the sequence (A_{J_R(n)})_n is a solution of FIP."
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-23T152051Z-0000-0003-0351-3058-ac8057
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: b0bf8928add8
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: Uniform as argued; Cintioli 2026 Lemma 5 makes the uniform generic explicit.
+- id: contrib-00-0003-0351-3058-9d8b46-1
+  kind: result
+  status: accepted
+  date: 2026-11-23
+  origin: contributed
+  result:
+    type: implication
+    from: cnn
+    to: canht
+    over: w
+  argument: "Straightforward: the set of solutions of canHT is Π⁰₁ relative to the input. A solution is coded by an increasing enumeration of H together with one of the five canonical forms of Taylor's theorem; for a given form, the condition that the colour of the finite sums is canonical of that form is Π⁰₁ in the colouring and the enumeration. The union over the five forms is a closed set, nonempty by Taylor's theorem, uniformly computable from the colouring; closed choice on Baire space gives a point, from which H is computed."
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-23T153445Z-0000-0003-0351-3058-9d8b46
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: 67c3c2fb3246
+  decision:
+    date: 2026-11-24
+    by: ludovic
+    note: "Checked: each canonical form is a Π⁰₁ condition on the colouring and an increasing enumeration."

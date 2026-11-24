@@ -20,6 +20,7 @@ things exist only in one place, and `scripts/backup.mjs` saves and restores them
     * `feedback/`: one file per message, with its answers.
     * `uploads/`: the PDFs shared by researchers and their index.
     * `diagrams/`: the saved diagrams.
+    * `watch/`: the watchlists (docs/WATCH.md).
 
     The PHP sessions are left out.
   * The server's `api/config.php`, which holds the ORCID secret and the admin token.

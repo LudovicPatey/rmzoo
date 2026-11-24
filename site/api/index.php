@@ -21,6 +21,8 @@
 //   GET  ?a=diagrams   the signed-in person's saved diagrams (private to them)
 //   POST ?a=diagram    {name, s: [statement ids], r: reduction id, sep, open} saves one (a diagram of the same
 //                      name is replaced); {delete: <diagram id>} removes one; both answer {diagrams}
+//   GET  ?a=watch      the signed-in person's watchlist (private to them, docs/WATCH.md): {filters}
+//   POST ?a=watch      {filters: [{id, text, created, seen: [hash]}]} replaces it; answers {filters}
 //   POST ?a=answer     (admin token) {id: <message id>, text, by: ai|maintainer} adds an answer to a message,
 //                      shown to its author (scripts/feedback-answer.mjs); the same text twice is kept once
 //   GET  ?a=export     (admin token) endorsements, votes, comments (review items, questions) and all feedback, for scripts/endorsements-sync.mjs
@@ -407,6 +409,33 @@ switch ($a) {
       return $list;
     });
     json_out(['diagrams' => sorted_diagrams($list)]);
+  }
+
+  case 'watch': {
+    start_session();
+    $u = user();
+    if (!$u) fail(401, 'Sign in with ORCID first.');
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') json_out(['filters' => with_watch($u['orcid'], fn ($l) => null)]);
+    $u = require_user();
+    $b = body();
+    $in = $b['filters'] ?? null;
+    if (!is_array($in) || count($in) > cfg()['watch_max']) fail(400, 'A watchlist has at most ' . cfg()['watch_max'] . ' filters.');
+    $out = [];
+    foreach (array_values($in) as $f) {
+      if (!is_array($f)) fail(400, 'A filter is {id, text, created, seen}.');
+      $id = (string) ($f['id'] ?? '');
+      $text = trim(preg_replace('/\s+/u', ' ', (string) ($f['text'] ?? '')));
+      $created = (string) ($f['created'] ?? '');
+      $seen = $f['seen'] ?? [];
+      if (!preg_match('/^[0-9]{8,14}-[a-z0-9]{1,8}$/', $id)) fail(400, 'Bad filter id.');
+      if ($text === '' || mb_strlen($text) > 300) fail(400, 'A filter has between 1 and 300 characters.');
+      if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $created)) fail(400, 'Bad filter date.');
+      if (!is_array($seen)) fail(400, 'Bad seen list.');
+      foreach ($seen as $h) if (!is_string($h) || !preg_match('/^[0-9a-z]{1,8}$/', $h)) fail(400, 'Bad seen list.');
+      $out[] = ['id' => $id, 'text' => $text, 'created' => $created, 'seen' => array_values(array_unique($seen))];
+    }
+    if (strlen(json_encode($out)) > cfg()['watch_bytes']) fail(413, 'The watchlist is too large: remove some broad filters.');
+    json_out(['filters' => with_watch($u['orcid'], fn ($l) => $out)]);
   }
 
   case 'uploads-export':

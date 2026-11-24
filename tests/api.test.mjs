@@ -253,3 +253,27 @@ test('saved diagrams', { skip }, async () => {
   r = await (await post(s, 'diagram', { delete: r.diagrams[0].id }, st.csrf)).json();
   assert.deepEqual(r.diagrams, []);
 });
+
+// the watchlist (docs/WATCH.md): private to its owner, replaced as a whole, validated
+test('watchlist', { skip }, async () => {
+  const s = session();
+  let st = await (await s.req(`${B}?a=state`)).json();
+  assert.equal((await s.req(`${B}?a=watch`)).status, 401);
+  await s.req(`${B}?a=devlogin&orcid=${ME}&name=Josiah%20Carberry`);
+  st = await (await s.req(`${B}?a=state`)).json();
+  assert.deepEqual((await (await s.req(`${B}?a=watch`)).json()).filters, []);
+  const f = { id: '20261124120000-ab12', text: '  RT22  vs COH over W ', created: '2026-11-24', seen: ['1x2y', '1x2y', 'abc'] };
+  assert.equal((await post(s, 'watch', { filters: [f] })).status, 403); // no CSRF token
+  for (const bad of [{ ...f, id: 'x' }, { ...f, text: '' }, { ...f, created: 'today' }, { ...f, seen: ['NOT OK'] }, { ...f, seen: 'x' }])
+    assert.equal((await post(s, 'watch', { filters: [bad] }, st.csrf)).status, 400, JSON.stringify(bad));
+  assert.equal((await post(s, 'watch', { filters: Array.from({ length: 101 }, (_, i) => ({ ...f, id: `20261124120000-${i}` })) }, st.csrf)).status, 400);
+  const r = await (await post(s, 'watch', { filters: [f] }, st.csrf)).json();
+  assert.deepEqual(r.filters, [{ ...f, text: 'RT22 vs COH over W', seen: ['1x2y', 'abc'] }]);
+  assert.equal((await (await s.req(`${B}?a=watch`)).json()).filters.length, 1);
+  // private: another person sees an empty watchlist
+  const o = session();
+  await o.req(`${B}?a=devlogin&orcid=0000-0001-2345-6789&name=Ada`);
+  assert.deepEqual((await (await o.req(`${B}?a=watch`)).json()).filters, []);
+  // an empty list removes the file
+  assert.deepEqual((await (await post(s, 'watch', { filters: [] }, st.csrf)).json()).filters, []);
+});

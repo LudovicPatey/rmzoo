@@ -97,3 +97,5 @@ endorsements:
   - { result: separation|tcnn.par|chipi11|w|, orcid: 0000-0003-0351-3058, date: 2026-11-21 }
   - { result: implication|lim|gen1|w|, orcid: 0000-0003-0351-3058, date: 2026-11-22 }
   - { result: equivalence|sort.par|lim|w|, orcid: 0000-0003-0351-3058, date: 2026-11-23 }
+  - { result: "implication|canht|ht|rca0,sw|", orcid: 0000-0003-0351-3058, date: 2026-11-23 }
+  - { result: property|fip|computable-fop||true, orcid: 0000-0003-0351-3058, date: 2026-11-23 }

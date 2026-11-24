@@ -15,6 +15,7 @@ facts:
   - 'barnesgohshore2022|Theorem 3.15'
   - belanger2014|Corollary 2.11
   - bergerishiharaschuster2012|Proposition 14
+  - bergersvindland2016|Proposition 2
   - bienvenukuyper2017|Corollary 4.9
   - bienvenukuyper2017|Corollary 6.7
   - 'brattka2021|Corollary 4.7'
@@ -108,6 +109,11 @@ facts:
   - 'carluccicelli2025|Lemma 2'
   - 'carluccicelli2025|Lemma 3'
   - 'carluccicelli2025|Theorem 1'
+  - carluccietal2020|Proposition 15
+  - carluccietal2020|Proposition 5
+  - carluccietal2020|Theorem 10
+  - carluccietal2020|Theorem 13
+  - carluccietal2020|Theorem 6
   - 'carluccietal2024|Corollary 3.5'
   - 'carluccietal2024|Proposition 3.11'
   - 'carluccietal2024|Theorem 3.4'
@@ -117,6 +123,9 @@ facts:
   - 'conidis2012|Lemma 2.2'
   - 'conidis2012|Theorem 2.1'
   - 'conidis2012|Theorem 2.4'
+  - conidisgreenbergturetsky2013|Lemma 3.9
+  - conidisgreenbergturetsky2013|Theorem 1.16
+  - conidisgreenbergturetsky2013|Theorem 3.10
   - dauriacetal2024|Corollary 4.16
   - dauriacetal2024|Corollary 4.9
   - 'davisetal2020|Lemma 4'
@@ -169,18 +178,30 @@ facts:
   - 'gohpaulyvalenti2024|Theorem 4.3'
   - 'hayashi2024|Lemma 4.14'
   - 'hirschfeldtlangeshore2017|Proposition 4.5'
+  - hirschfeldtlangeshore2017|Theorem 7.1
+  - hirschfeldtlangeshore2017|Theorem 7.5
   - 'hirschfeldtreitzes2022|Corollary 3.8'
   - 'hirschfeldtreitzes2022|Theorem 3.10'
   - 'hirschfeldtreitzes2022|Theorem 3.11'
+  - hirst2004|Lemma 4
+  - hirst2014|Theorem 1
   - holzletal2017|Corollary 45
   - holzletal2017|Proposition 46
   - holzletal2017|Theorem 44
+  - humphreyssimpson1999|Corollary 3.4
+  - humphreyssimpson1999|Theorem 3.6
   - keisler2006|Theorem 8.5
   - keisler2010|Proposition 6.14
   - 'kihara2020|Fact 5.11'
+  - kohlenbach2002b|Corollary 3.5
+  - kohlenbach2002b|Theorem 3.7
   - 'kowalik2025|Lemma 4.10'
   - 'kowalik2025|Lemma 4.12'
   - 'kowalik2025|Lemma 4.13'
+  - kreuzer2012b|Corollary 4.14
+  - kreuzer2012b|Proposition 1.5
+  - kreuzer2012b|Proposition 2.26
+  - kreuzer2012b|Theorem 2.27
   - 'kreuzer2013|Proposition 3'
   - 'kreuzer2013|Theorem 11'
   - 'kreuzer2015|Theorem 3'
@@ -198,6 +219,10 @@ facts:
   - 'montalban2006b|Theorem 4.2'
   - 'montalbanshore2018|Proposition 2.13'
   - 'montalbanshore2018|Theorem 4.16'
+  - moschovakis2012|Corollary 7
+  - moschovakis2012|Theorem 3
+  - moschovakis2012|Theorem 4
+  - moschovakis2012|Theorem 5
   - mummertsimpson2005|Theorem 1
   - 'niesshafer2020|Proposition 5.3'
   - 'patey2016c|Corollary 10.0.22'
@@ -223,6 +248,14 @@ facts:
   - 'pauly2020|Theorem 5'
   - rathjen2010|Lemma 13.2
   - rathjen2010|Theorem 4.6
+  - sanders2022c|Corollary 3.14
+  - sanders2022c|Theorem 3.13
+  - sanders2022c|Theorem 3.19
+  - sanders2022c|Theorem 3.28
+  - sanders2022c|Theorem 3.31
+  - sanders2022c|Theorem 3.33
+  - sanders2022c|Theorem 3.38
+  - sanders2022c|Theorem 3.7
   - shafer2012|Theorem 2.4
   - shore2026|Lemma 5.19
   - shore2026|Proposition 6.7
@@ -239,6 +272,27 @@ facts:
   - yokoyama2023|Theorem 2.3
   - yokoyama2023|Theorem 3.5
 questions:
+  - amir2023|Question 6.8.1
+  - amir2023|Question 6.8.2
+  - amir2023|Question 6.8.3
+  - amir2023|Question 6.8.4
+  - amir2023|Question 6.8.5
+  - amir2023|Question 6.8.6
+  - amir2023|Question 6.8.7
+  - andrewsetal2023|Question 1
+  - andrewsetal2023|Question 10
+  - andrewsetal2023|Question 11
+  - andrewsetal2023|Question 12
+  - andrewsetal2023|Question 13
+  - andrewsetal2023|Question 14
+  - andrewsetal2023|Question 2
+  - andrewsetal2023|Question 3
+  - andrewsetal2023|Question 4
+  - andrewsetal2023|Question 5
+  - andrewsetal2023|Question 6
+  - andrewsetal2023|Question 7
+  - andrewsetal2023|Question 8
+  - andrewsetal2023|Question 9
   - 'andrewssorbi2018|Question 1'
   - 'andrewssorbi2018|Question 2'
   - 'andrewssorbi2018|Question 3'
@@ -253,9 +307,22 @@ questions:
   - 'bazhenovetal2021|Question 9.24'
   - 'bazhenovetal2021|Question 9.25'
   - 'bazhenovetal2021|Question 9.26'
+  - belanger2014|Question 2.13
+  - belanger2014|Question 2.5
+  - belanger2015|Question 2.20
+  - belanger2015|Question 2.5
+  - bienvenuetal2026|Question 8.1
+  - bienvenuetal2026|Question 8.2
   - 'binnsetal2014|Conjecture 1.4'
   - 'brattkapauly2010|Problem 24'
+  - brattkarakotoniaina2017|Question 3.22
+  - brattkarakotoniaina2017|Question 3.31
+  - brattkarakotoniaina2017|Question 4.7
+  - brattkarakotoniaina2017|Question 5.6
+  - brattkarakotoniaina2017|Question 7.10
   - 'brodheadetal2014|Question 2.11'
+  - carluccietal2020|Question 1
+  - carluccietal2020|Question 2
   - 'carluccimainardi2022|Question 1'
   - 'carluccimainardi2022|Question 2'
   - 'carluccimainardi2022|Question 3'
@@ -266,7 +333,14 @@ questions:
   - 'carney2023|Conjecture 7.2.2'
   - 'carney2023|Conjecture 7.2.3'
   - 'carney2023|Conjecture 7.2.4'
+  - cenzerremmel2005|Problem 1
+  - cenzerremmel2005|Problem 2
+  - cholakdzhafarovsoskova2016|Question 5.5
   - 'cholakmccoy2014|Question 20'
+  - chong2020|Question 1
+  - chong2020|Question 2
+  - chong2020|Question 3
+  - chong2020|Question 4
   - 'clemenscoskeykrakoff2020|Question 1'
   - 'clemenscoskeykrakoff2020|Question 2'
   - 'clemenscoskeykrakoff2020|Question 3'
@@ -277,9 +351,19 @@ questions:
   - 'conidis2012|Question 1.7'
   - 'conidis2014|Question 8.4'
   - 'conidisgreenbergturetsky2013|Question 1.21'
+  - cordonfrancolaramartinloureiro2023|Problem 1
+  - cordonfrancolaramartinloureiro2023|Problem 2
+  - cordonfrancolaramartinloureiro2023|Problem 3
+  - cordonfrancolaramartinloureiro2023|Problem 4
+  - cordonfrancolaramartinloureiro2023|Problem 5
+  - cordonfrancolaramartinloureiro2023|Problem 6
   - 'corduandorais2011|Question 4.2'
   - 'corduandorais2011|Question 4.3'
   - 'corduandorais2011|Question 4.4'
+  - dauriacetal2024|Question 4
+  - dauriacetal2024|Question 5
+  - dauriacetal2024|Question 6
+  - dauriacetal2024|Question 7
   - 'day2013|Question 1'
   - 'day2013|Question 2'
   - 'day2013|Question 3'
@@ -323,6 +407,8 @@ questions:
   - 'friedmangitmankanovei2018|Question 12.2'
   - 'frittaionetal2017|Question 1.2'
   - 'frittaionetal2017|Question 6.1'
+  - gordeevweiermann2010|Conjecture 3
+  - greenbergkuyperturetsky2019|Question 8.7
   - 'greenbergmontalban2008|Question 4.13'
   - 'harrisontrainorliulutz2023|Conjecture 6.15'
   - 'harrisontrainorliulutz2023|Conjecture 6.16'
@@ -350,7 +436,15 @@ questions:
   - 'hirschfeldtreitzes2022|Question 4.2'
   - 'hirschfeldtreitzes2022|Question 4.3'
   - 'hirschfeldtreitzes2022|Question 4.4'
+  - hirst1987|Conjecture 6.16
   - 'holzlstephanyu2014|Question 4.3'
+  - horihatayokoyama2014|Question 1
+  - horihatayokoyama2014|Question 2
+  - hoyrup2023|Open Question 5.4.3
+  - hoyrup2023|Open Question 6.5.2
+  - hoyrup2023|Open Question 7.4.4
+  - hoyrup2023|Open Question 7.5.5
+  - hoyrup2023|Problem 2
   - 'hummeljockusch1997|Question 2.5'
   - 'hummeljockusch1997|Question 3.7'
   - 'jeonmatthews2022|Question 3.7'
@@ -358,7 +452,12 @@ questions:
   - 'jeonmatthews2022|Question 9.3'
   - 'jeonmatthews2022|Question 9.4'
   - 'jeonmatthews2022|Question 9.8'
+  - kachlermansolomon2012|Question 1
+  - kachlermansolomon2012|Question 2
   - 'kawamuraetal2012b|Problem 1.15'
+  - keisler2010|Question 6.1
+  - keisler2010|Question 6.3
+  - keisler2010|Question 6.6
   - 'kihara2020b|Question 1'
   - 'kihara2022b|Question 1'
   - 'kihara2022b|Question 2'
@@ -366,14 +465,42 @@ questions:
   - 'kihara2022b|Question 4'
   - 'kihara2022b|Question 5'
   - 'kihara2022b|Question 7'
+  - koodziejczykyokoyama2021|Question 1
   - 'kreuzer2013|Question 2'
+  - kreuzeryokoyama2016|Question 1
+  - kreuzeryokoyama2016|Question 2
   - 'limziegler2020|Question 2'
   - 'litakvisser2019|Open Question 3.4'
   - 'litakvisser2019|Open Question 5.7'
   - 'litakvisser2019|Open Question 7.9'
   - 'litakvisser2019|Open Question 8.4'
   - 'litakvisser2019|Open Question 9.13'
+  - lutz2023|Question 2.4
+  - marcone2005|Conjecture 4.3
+  - marcone2005|Conjecture 4.6
+  - marcone2005|Conjecture 5.18
+  - marcone2005|Problem 2.19
+  - marcone2005|Problem 5.21
+  - marcone2005|Problem 5.7
   - 'meerenrathjenweiermann2014|Conjecture 5.31'
+  - mileti2008|Conjecture 7.15
+  - mileti2008|Conjecture 7.16
+  - mileti2008|Question 2.24
+  - mileti2008|Question 9.2
+  - millersolomon2004|Problem 4
+  - moninpatey2019b|Question 1.5
+  - moninpatey2021b|Question 1.1
+  - moninpatey2021b|Question 1.8
+  - moninpatey2022|Conjecture 2.2
+  - moninpatey2022|Conjecture 2.3
+  - moninpatey2022|Question 1.5
+  - moninpatey2022|Question 3.3
+  - moninpatey2022|Question 3.33
+  - moninpatey2022|Question 3.5
+  - moninpatey2022|Question 4.10
+  - moninpatey2022|Question 4.41
+  - moninpatey2022|Question 5.5
+  - moninpatey2022|Question 8.3
   - 'mummert2020|Question 4.1'
   - 'mummert2020|Question 4.2'
   - 'nies2014|Question 12.2'
@@ -388,6 +515,7 @@ questions:
   - 'rathjen2020|Conjecture 6.6'
   - 'sanders2015c|Conjecture 3.17'
   - 'schrittesser2021|Question 3.1'
+  - shafer2012|Question 1.1
   - 'shore2013|Problem 3.8'
   - 'shore2013|Problem 5.1'
   - 'shore2026|Question 7.1'
@@ -414,6 +542,15 @@ questions:
   - 'walsh2014|Question 107'
   - 'walsh2021|Question 5.2'
   - 'walsh2021|Question 5.3'
+  - yokoyama2010|Question 1.1
+  - yokoyama2010|Question 3.1
+  - yokoyama2010|Question 3.2
+  - yokoyama2010|Question 3.3
+  - yokoyama2010|Question 3.4
+  - yokoyama2010|Question 3.5
+  - yokoyama2010|Question 3.6
+  - yokoyama2010|Question 3.7
+  - yokoyama2023|Question 4.6
   - 'ziegler2006|Conjecture 16'
   - 'ziegler2006|Problem 35'
   - 'ziegler2006|Problem 36'

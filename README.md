@@ -93,6 +93,7 @@ docs/ENDORSEMENTS.md endorsements, comments, saved diagrams: server set-up, sync
 docs/UPLOADS.md      full texts uploaded by researchers: viewer, server, import
 docs/BACKUP.md       backups of the untracked files and the server data, restoration
 docs/REVIEW.md      the review queue and the review page (votes, apply)
+docs/WATCH.md       watchlists: filters of principles, new facts since the last visit
 feedback/            comments and error reports downloaded from the server (git-ignored)
 docs/CONSOLIDATION.md  keeping the database up to date
 AGENTS.md            instructions for AI assistants and contributors (read first)

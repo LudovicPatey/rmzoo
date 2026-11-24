@@ -154,6 +154,32 @@ export function createCommunity(zoo) {
   // d: {name, s, r, sep, open}; a diagram of the same name (ignoring case) is replaced
   c.saveDiagram = async (d) => (c.diagrams = (await post('diagram', d)).diagrams);
   c.deleteDiagram = async (id) => (c.diagrams = (await post('diagram', { delete: id })).diagrams);
+  // the watchlist (docs/WATCH.md, site/js/watch.js): [{id, text, created, seen}], private to its
+  // owner; kept in the browser when nobody is signed in (or on a static copy)
+  const LOCAL = 'rmzoo.watch';
+  const local = () => { try { return JSON.parse(localStorage.getItem(LOCAL) || '[]'); } catch { return []; } };
+  const setLocal = (l) => { try { localStorage.setItem(LOCAL, JSON.stringify(l)); } catch { /* private mode */ } };
+  c.watchStored = () => (c.live && c.user ? 'account' : 'browser');
+  c.loadWatch = async () => {
+    if (!(c.live && c.user)) return local();
+    const r = await fetch(`${API}?a=watch`, { credentials: 'same-origin', cache: 'no-store' });
+    const j = await r.json().catch(() => ({ error: `Server error ${r.status}` }));
+    if (!r.ok) throw new Error(j.error || `Server error ${r.status}`);
+    let filters = j.filters || [];
+    // filters kept in this browser before signing in join the account's, once
+    const l = local();
+    if (l.length) {
+      const known = new Set(filters.map((f) => f.text.trim().toLowerCase()));
+      const extra = l.filter((f) => !known.has(f.text.trim().toLowerCase()));
+      if (extra.length) filters = (await post('watch', { filters: [...filters, ...extra] })).filters;
+      setLocal([]);
+    }
+    return filters;
+  };
+  c.saveWatch = async (filters) => {
+    if (!(c.live && c.user)) { setLocal(filters); return filters; }
+    return (await post('watch', { filters })).filters;
+  };
   c.loginUrl = () => `${API}?a=login&back=${encodeURIComponent(location.hash.slice(1) || '/')}`;
   c.logoutUrl = () => `${API}?a=logout&back=${encodeURIComponent('/')}`;
   return c;
