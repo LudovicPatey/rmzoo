@@ -730,3 +730,43 @@ header .search.has-q:focus-within { width: min(560px, 52vw); }
 .ucard p { margin: 8px 0 0; }
 .profile-side .ubadges { margin: 10px 0 4px; }
 .profile-main td.nowrap { white-space: nowrap; }
+
+/* structured proofs (site/js/proofdoc.js): definitions, lemmas, theorems, steps, cases */
+.rv-title { font-size: 1.08rem; margin: 10px 0 6px; line-height: 1.4; }
+.rv-results { margin: 4px 0 8px; padding-left: 1.2em; }
+.rv-results li { margin: 2px 0; }
+.rv-summary { margin: 6px 0 10px; line-height: 1.55; }
+.rv-proof { margin: 8px 0 10px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); }
+.rv-proof > summary { cursor: pointer; padding: 8px 12px; font-weight: 600; color: var(--accent); }
+.rv-proof[open] > summary { border-bottom: 1px solid var(--line); }
+.rv-proof > .pf-doc { padding: 4px 14px 12px; }
+.pf-doc { line-height: 1.6; max-width: 54rem; overflow-wrap: anywhere; }
+.pf-doc p { margin: 8px 0; }
+.pf-summary { font-style: italic; color: var(--muted); }
+.pf-env { margin: 14px 0; padding: 8px 12px 6px; border-left: 3px solid var(--line); background: var(--panel); border-radius: 0 6px 6px 0; scroll-margin-top: 80px; transition: box-shadow .3s; }
+.pf-env .pf-env { background: var(--bg); }
+.pf-thm { border-left-color: var(--accent); }
+.pf-def { border-left-color: var(--yes); }
+.pf-rem { border-left-color: var(--open); }
+.pf-part { border-left: none; padding: 2px 0 2px 2px; background: transparent; margin: 10px 0 6px; }
+.pf-head { font-weight: 700; display: inline; }
+.pf-head .pf-title { font-weight: 400; color: var(--muted); }
+.pf-part > .pf-head { color: var(--accent); }
+.pf-stmt { display: inline; font-style: italic; }
+.pf-def > .pf-stmt, .pf-rem > .pf-stmt { font-style: normal; }
+.pf-stmt::before { content: ' '; }
+.pf-proof { margin: 6px 0 2px; }
+.pf-proof > summary { cursor: pointer; font-style: italic; color: var(--accent); width: max-content; }
+.pf-body { position: relative; padding-bottom: 2px; }
+.pf-proof .pf-body { padding: 0 0 4px 12px; border-left: 1px dashed var(--line); margin-left: 2px; }
+.pf-qed { display: block; text-align: right; color: var(--muted); line-height: 1; }
+.pf-steps { margin: 6px 0; padding-left: 1.7em; }
+.pf-steps > li { margin: 5px 0; padding-left: 2px; }
+.pf-steps > li::marker { color: var(--muted); font-variant-numeric: tabular-nums; }
+.pf-cases { margin: 6px 0; }
+.pf-case { margin: 6px 0; padding-left: 10px; border-left: 2px solid var(--accent-soft); }
+.pf-case-label { font-weight: 600; margin-right: 6px; }
+.pf-case > p:first-of-type { display: inline; }
+.pf-ref { font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--accent); }
+.pf-flash { box-shadow: 0 0 0 3px var(--accent-soft); }
+@media (max-width: 600px) { .pf-env { padding: 6px 8px; } .pf-steps { padding-left: 1.3em; } }

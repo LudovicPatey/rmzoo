@@ -279,7 +279,8 @@ problem Q, since an instance X of P computes an instance of Q and X itself compu
 solution of X (this assumes every problem has an instance computable from any set,
 true of every problem of the zoo). Likewise a *first-order* problem (every solution is a
 natural number: `bottomOf: sc`) is strongly computably reducible to every problem, since
-every set computes a number. The engine adds these implications (rule `prop-bottom`)
+every set computes a number, and a *uniformly computable* problem (`bottomOf: w`) is
+Weihrauch reducible to every problem, through a fixed computable instance. The engine adds these implications (rule `prop-bottom`)
 after the properties are known and before the separations.
 
 Most properties are defined through instances and solutions ("every Z-computable
@@ -602,3 +603,32 @@ layout. A dedicated layered layout gives: stable vertical meaning, separation
 arrows that don't distort the picture, HTML/KaTeX node labels, and
 interactivity (hover cones, click-for-proof) without an SVG post-processing
 step. The layout code is ~300 lines and has no dependency.
+
+## Structured proofs
+
+A long proof (an AI-derived result, or a review item of kind `proof`) is a structured
+document rather than a list of steps: `justification.proof` in `data/results/`, `proof` in a
+review item. The format, its checks and its rendering are in `site/js/proofdoc.js`:
+
+```yaml
+proof:
+  summary: the claims and the strategy, in a few sentences   # optional
+  blocks:
+    - A paragraph ($…$ TeX, [@key] cites a paper, [[id]] a statement, [#Lemma A] a block).
+    - { env: definition, label: Definition 1, text: "A set is thin if …" }
+    - env: lemma            # definition, notation, construction, lemma, claim, proposition,
+      label: Lemma A        # theorem, corollary, remark; part: a titled part of a proof
+      title: commitment     # (a direction, a case), whose label is only a heading
+      text: the statement
+      proof:                # a list of nodes, like blocks
+        - A paragraph.
+        - { steps: [First step., Second step.] }      # numbered
+        - { cases: [{ label: "Case 1.", body: [ … ] }] }
+```
+
+The viewer shows each environment as a framed block (theorem-like, definition-like,
+remark), its statement in italics, its proof collapsed under "Proof" and closed by ∎; a
+reference [#Lemma A] opens the enclosing proofs and scrolls to the block. Labels of named
+blocks are unique within a proof; the build checks the structure, the references and the
+citations. A validated review item of kind `proof` becomes AI-derived results whose
+justification carries the whole proof (`itemResults` in `site/js/review.js`).

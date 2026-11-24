@@ -115,6 +115,9 @@ a separation over `omega`.
   only when every component is in the catalogue. "The first-order part of P is
   computable" (uniformly computably true) is the property `computable-fop` of P,
   and "Det(P) is computable" the property `computable-det` of P.
+  "P is computable" in the Weihrauch sense (one computable functional maps every instance
+  to a solution) is the property `weihrauch-computable`, stronger than `computably-true`,
+  where the solution need not be found uniformly.
 * Theories made of several principles (RCA₀ + WKL + COH + FS, "WKL₀ + RT²₂",
   "COH and SRT²₂ together") are conjunctions: their catalogue ids sorted
   alphabetically and joined by "-", as `coh-fs-wkl` or `rt22-wkl` (RCA₀ itself is

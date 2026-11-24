@@ -54,6 +54,8 @@ const plainLabel = (label) => String(label)
 
 // ---- lexicon ----------------------------------------------------------------
 // [pattern (on the normalized text), token]. Words match whole words; the longest match wins.
+// framework of each reduction, as in the labels "studied over" (FRAME in scripts/build.mjs)
+const FRAME = { rca0: 'rca0', rca0star: 'rca0star', w: 'weihrauch', sw: 'weihrauch', cw: 'weihrauch', aw: 'weihrauch', bish: 'bish', el0: 'bish' };
 const RED_FORMS = {
   rca0star: ['rca0\\*', 'rca0 star', 'rca0star', 'rca\\*'],
   rca0: ['rca0', 'rca 0', 'rca', 'rca0\\^omega'],
@@ -269,7 +271,7 @@ function resolveText(X, toks, s) {
   for (const t of toks) {
     if (t.role !== 'text') { out.push(t); continue; }
     const e = X.exact.get(key(t.text));
-    if (e) { out.push({ ...t, role: 'stmt', i: e[0], exact: true }); continue; }
+    if (e) { out.push({ ...t, role: 'stmt', i: e[0], exact: true, alts: e }); continue; }
     const ws = wordsOf(t), seg = ws.length > 1 && segment(X, ws);
     if (seg) { for (const g of seg) out.push({ role: 'stmt', i: g.i, exact: true, start: ws[g.a].start, end: ws[g.b - 1].end, text: s.slice(ws[g.a].start, ws[g.b - 1].end) }); continue; }
     out.push({ ...t, role: 'stmt', i: undefined, exact: false });
@@ -284,13 +286,18 @@ function resolveText(X, toks, s) {
 export function interpret(X, toks, { search, r: r0 } = {}) {
   const Z = X.Z;
   toks = toks.map((t) => (t.role === 'stmt' && t.i === undefined && search ? { ...t, ...(resolveName(X, t.text, search) || {}) } : t));
-  const st = toks.filter((t) => t.role === 'stmt');
-  if (st.some((t) => t.i === undefined)) return null;
   const at = (role) => toks.findIndex((t) => t.role === role);
   const neg = toks.some((t) => t.role === 'not') !== toks.some((t) => t.role === 'op' && t.neg);
   const rid = (id) => Z.ridx.get(id);
   const reds = toks.filter((t) => t.role === 'red');
   const red = reds.length ? rid(reds[reds.length - 1].r) : undefined;
+  // a name shared by several statements (MIN: the minimum principle of constructive
+  // mathematics, or the minimum of a sequence in the Weihrauch lattice) is read as the one
+  // studied in the framework of the requested reduction, else the most used one
+  const frame = red !== undefined && FRAME[Z.raw.reductions[red].id];
+  if (frame) toks = toks.map((t) => (t.alts?.length > 1 ? { ...t, i: t.alts.find((i) => Z.S[i].studied?.[frame]) ?? t.i } : t));
+  const st = toks.filter((t) => t.role === 'stmt');
+  if (st.some((t) => t.i === undefined)) return null;
   const defaultR = (a, b) => {
     const r = red ?? r0 ?? rid('rca0');
     return Z.inDomain(r, a) && Z.inDomain(r, b) ? r : rid('rca0');

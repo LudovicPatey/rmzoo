@@ -41,7 +41,7 @@ import { acquireLock } from './lib/lock.mjs';
 import { addResults } from './lib/results.mjs';
 import { unknownFields } from './lib/schema.mjs';
 import { readQueue, writeQueue, closeRepeats, QUEUE } from './lib/review-queue.mjs';
-import { reviewStatus, screenKey, KINDS, contributedResult } from '../site/js/review.js';
+import { reviewStatus, screenKey, KINDS, contributedResult, itemResults } from '../site/js/review.js';
 import { surname } from '../site/js/names.js';
 import { creditFactInFile, describeResult, plainLabel } from './lib/credits.mjs';
 
@@ -64,6 +64,7 @@ const stmtLabel = (id) => {
 
 const what = (it) => ({
   result: () => `${JSON.stringify(it.result)} at ${it.loc} [${it.origin}, ${it.confidence}]`,
+  proof: () => `proof: ${it.title} (${(it.results || []).length} result(s)) [${it.confidence || '?'}]`,
   statement: () => `missing statement ${it.statement.notation} (${it.statement.name})`,
   lead: () => `theorem to read: ${it.ref}, ${it.loc} [open: ${(it.open || []).join(' ')}]`,
   question: () => `question to record: ${it.ref}, ${it.loc}`,
@@ -125,6 +126,14 @@ function addPaper(it) {
 function accept(i, { ref, loc } = {}) {
   const it = items[i];
   if (it.kind === 'paper') return `added reference ${addPaper(it)}`;
+  if (it.kind === 'proof') { // every result it proves, AI-derived with the proof (site/js/review.js, itemResults)
+    const res = addResults({ _ai: itemResults(it) });
+    try { execFileSync('node', ['scripts/build.mjs', '--check'], { stdio: 'pipe' }); } catch (err) {
+      res.restore();
+      throw new Error(`the build check fails with these facts.\n${String(err.stdout || '')}${String(err.stderr || '')}`);
+    }
+    return res.changes.map((c) => `${c.action}: ${c.key} (${c.file})`).join('; ');
+  }
   if (it.kind !== 'result') throw new Error(`${KINDS[it.kind].one}: enter it by hand (AGENTS.md), then mark it with \`done\`.`);
   const at = loc ?? it.loc;
   let spec;
@@ -216,7 +225,7 @@ switch (cmd) {
       const voters = (verdict) => (it.votes || []).filter((v) => v.verdict === verdict).map((v) => who(v.orcid)).join(', ');
       const remarks = (it.comments || []).map((c) => `${who(c.orcid)}: ${c.text.replace(/\s+/g, ' ')}`).join(' | ');
       if (st === 'validated') {
-        const auto = it.kind === 'paper' || (it.kind === 'result' && it.origin !== 'cited');
+        const auto = it.kind === 'paper' || it.kind === 'proof' || (it.kind === 'result' && it.origin !== 'cited');
         if (!auto) { out.byHand.push(`${line(it)}${remarks ? `\n${' '.repeat(38)}comments: ${remarks}` : ''}`); return; }
         if (dry) { out.accepted.push(`${it.id} (would be accepted: ${what(it)})`); return; }
         try {

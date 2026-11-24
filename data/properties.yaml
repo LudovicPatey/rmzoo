@@ -574,3 +574,21 @@
     is computable), and so does every problem below WKL; so does every problem with a computable
     first-order part (Corollary 3.7 of Goh, Pauly and Valenti: Det(P) ≤W the parallelization of ¹P).
     LPO, a non-computable function into {0, 1}, fails it, and so does every problem above LPO.
+
+- id: weihrauch-computable
+  name: Computable (uniformly)
+  group: weihrauch
+  closedUnder: w
+  direction: down
+  # P ≤W Q for every problem Q: the forward functional returns a fixed computable instance of
+  # Q (every problem of the zoo has one), the backward functional ignores its solution and
+  # computes a solution of P from the input
+  bottomOf: w
+  domain: problems
+  # computably true follows through the implications: such a problem is ≤W BCT₀, which has it
+  implies: [ computable-fop, computable-det ]
+  description: >
+    A single computable functional maps every instance to a solution: the problem is computable in
+    the Weihrauch sense. This is stronger than being computably true, where the solution computable
+    from an instance need not be found uniformly. Such a problem is Weihrauch reducible to every
+    problem. BCT₀ and VCT₀ have this property.

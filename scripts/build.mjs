@@ -12,6 +12,7 @@ import { execFileSync } from 'node:child_process';
 import { buildZoo, questionStatus } from '../site/js/engine.js';
 import { fillBases, resultBases } from '../site/js/bases.js';
 import { KINDS, screenKey, reviewStatus } from '../site/js/review.js';
+import { checkProof, proofTexts } from '../site/js/proofdoc.js';
 import { cli } from './lib/cli.mjs';
 import { dataHash } from './lib/data-hash.mjs';
 import { unknownFields, OPERATIONS, resultKey, orcidValid } from './lib/schema.mjs';
@@ -617,7 +618,8 @@ raw.results.forEach((res, i) => {
     if (!res.justification.text) errors.push(`${where}: justification needs a text`);
     const steps = res.justification.steps;
     if (steps !== undefined && (!Array.isArray(steps) || !steps.length || steps.some((x) => typeof x !== 'string' || !x.trim()))) errors.push(`${where}: justification.steps must be a non-empty list of texts`);
-    for (const t of [res.justification.text, ...(Array.isArray(steps) ? steps : [])])
+    if (res.justification.proof !== undefined) errors.push(...checkProof(res.justification.proof, `${where}: justification.proof`));
+    for (const t of [res.justification.text, ...(Array.isArray(steps) ? steps : []), ...(res.justification.proof ? proofTexts(res.justification.proof) : [])])
       for (const [, k] of String(t || '').matchAll(/\[@([^\]]+)\]/g)) if (!raw.references[k]) errors.push(`${where}: justification cites unknown reference ${k}`);
   }
   checkRefs(res.refs, where);
@@ -775,6 +777,14 @@ raw.results.forEach((res, i) => {
         voted.add(v.orcid);
       }
       for (const c of it.comments || []) if (!raw.endorsements.people[c.orcid]) errors.push(`${at}: comment by unknown person ${c.orcid}`);
+      // a proof: its structured proof and the facts it proves
+      if (it.kind === 'proof') {
+        if (!it.title || !it.summary) errors.push(`${at}: a proof needs a title and a summary`);
+        if (!Array.isArray(it.results) || !it.results.length) errors.push(`${at}: a proof needs the results it proves`);
+        errors.push(...checkProof(it.proof, `${at}: proof`));
+        for (const t of [it.summary, it.dependencies, it.novelty, ...(it.proof ? proofTexts(it.proof) : [])])
+          for (const [, k] of String(t || '').matchAll(/\[@([^\]]+)\]/g)) if (!raw.references[k]) errors.push(`${at}: cites unknown reference ${k}`);
+      }
     }
   }
   const names = new Map();
@@ -801,6 +811,7 @@ const t0 = Date.now();
 // it — in that framework. Folklore and AI-derived results do not count.
 // studied: { rca0: [refs], rca0star: [refs], weihrauch: [refs] }
 {
+  // also in site/js/query.js (ambiguous names are read in the framework of the reduction)
   const FRAME = { rca0: 'rca0', rca0star: 'rca0star', w: 'weihrauch', sw: 'weihrauch', cw: 'weihrauch', aw: 'weihrauch', bish: 'bish', el0: 'bish' };
   const byId = new Map(raw.statements.map((s) => [s.id, s]));
   const acc = new Map();

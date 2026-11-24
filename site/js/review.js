@@ -2,7 +2,8 @@
 // and scripts/review.mjs share. Pure functions, tested in tests/review.test.mjs.
 //
 // An item is a proposal that is not part of the database: a fact or a missing
-// statement proposed by the AI reader (scripts/ai-analyze.mjs), or a candidate of
+// statement proposed by the AI reader (scripts/ai-analyze.mjs), a proof of new facts
+// written by an AI (kind `proof`, with a structured proof: site/js/proofdoc.js), or a candidate of
 // the consolidation (scripts/consolidate.mjs: a theorem naming statements whose
 // relation is open, a numbered question, a passage that may answer a recorded
 // question, a borderline new paper). Until it is validated it is shown on the
@@ -13,6 +14,9 @@ export const KINDS = {
   result: { name: 'Proposed results', one: 'proposed result', source: 'ai',
     valid: 'I have checked that the paper proves this result (at the place given, or by the argument given).',
     invalid: 'The paper does not prove this result, or the statements, direction or reduction are wrong.' },
+  proof: { name: 'Proofs to check', one: 'proof to check', source: 'ai',
+    valid: 'I have read the proof and it is correct; the results it proves can enter the database.',
+    invalid: 'The proof has a gap or an error (say where in a comment), or a result does not follow from it.' },
   statement: { name: 'Missing statements', one: 'missing statement', source: 'ai',
     valid: 'This principle belongs in the zoo, and the definition is the one of the paper.',
     invalid: 'This principle does not belong in the zoo, is already in it, or the definition is wrong.' },
@@ -53,6 +57,15 @@ export function itemResult(it) {
   }
   const loc = it.origin === 'cited' && it.citedFrom ? `${it.loc} (attributed to ${it.citedFrom})` : it.loc;
   return { ...it.result, refs: [{ ref: it.ref, ...(loc ? { loc } : {}) }] };
+}
+
+// The entries a validated item becomes: one for a `result`, every result of a `proof`
+// (an AI proof of new facts: AI-derived, with the summary and the full structured proof
+// as justification).
+export function itemResults(it) {
+  if (it.kind === 'result') { const r = itemResult(it); return r ? [r] : []; }
+  if (it.kind !== 'proof') return [];
+  return (it.results || []).map((r) => ({ ...r, provenance: 'ai', justification: { kind: 'reduction', by: 'ai', text: it.summary || it.title, proof: it.proof } }));
 }
 
 // A fact contributed by a researcher: it cites the paper when one from the references is

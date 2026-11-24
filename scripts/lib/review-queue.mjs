@@ -24,7 +24,7 @@ export const writeQueue = (doc, file = QUEUE) => fs.writeFileSync(file, doc.toSt
 const canon = (x) => (Array.isArray(x) ? x.map(canon)
   : x && typeof x === 'object' ? Object.fromEntries(Object.keys(x).sort().filter((k) => x[k] !== undefined).map((k) => [k, canon(x[k])])) : x);
 const CONTENT = {
-  result: (it) => it.result, statement: (it) => it.statement?.notation, paper: (it) => it.paper?.doi || it.paper?.arxiv || it.paper?.title,
+  result: (it) => it.result, proof: (it) => it.results, statement: (it) => it.statement?.notation, paper: (it) => it.paper?.doi || it.paper?.arxiv || it.paper?.title,
   lead: (it) => it.text, question: (it) => it.text, answer: (it) => it.text && [it.question, it.text],
 };
 export const fingerprint = (it) => {

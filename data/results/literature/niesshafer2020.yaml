@@ -7,3 +7,7 @@
 - { type: "implication", from: "sran", to: "cran", over: "rca0", refs: [ { ref: niesshafer2020, loc: Theorem 5.4 } ] }
 - { type: separation, from: cran, to: dnr, over: omega, refs: [ { ref: niesshafer2020, loc: Proposition 7.2 } ] }
 - { type: separation, from: w2ran, to: dnr0, over: omega, refs: [ { ref: niesshafer2020, loc: Theorem 7.4 } ] }
+- { type: implication, from: ran2, to: w2ran, over: sc, refs: [ { ref: niesshafer2020, loc: Proposition 5.3 } ] }
+- { type: implication, from: w2ran, to: ran1, over: sc, refs: [ { ref: niesshafer2020, loc: Proposition 5.3 } ] }
+- { type: implication, from: ran1, to: cran, over: sc, refs: [ { ref: niesshafer2020, loc: Proposition 5.3 } ] }
+- { type: implication, from: cran, to: sran, over: sc, refs: [ { ref: niesshafer2020, loc: Proposition 5.3 } ] }

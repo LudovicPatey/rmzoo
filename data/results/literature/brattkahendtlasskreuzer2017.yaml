@@ -73,3 +73,4 @@
 - { type: implication, from: padeg, to: non, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: after Proposition 6.3 } ] }
 - { type: separation, from: non, to: padeg, over: w, refs: [ { ref: brattkahendtlasskreuzer2017, loc: after Proposition 6.3 } ] }
 - { type: implication, from: jinv-lim, to: lbt, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Proposition 8.2 } ] }
+- { type: implication, from: wwkl-half, to: acc3, over: sw, refs: [ { ref: brattkahendtlasskreuzer2017, loc: Lemma 7.12 (n = 2) } ] }

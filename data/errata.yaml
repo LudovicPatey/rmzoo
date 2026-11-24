@@ -167,3 +167,25 @@
     - { ref: simpson2009, loc: Theorem IX.4.4 }
     - { ref: enayatschmerl2019 }
   date: 2026-11-18
+
+- ref: brattkapauly2018
+  loc: Proposition 3.11
+  kind: error
+  claim: $\mathsf{LPO} \star \mathsf{LPO} <_W \mathsf{LPO} \times \mathsf{LPO} \times \mathsf{LPO}$.
+  correction: >
+    The two are Weihrauch equivalent: the first LPO question asks whether at least two of three sequences are
+    nonzero, the second whether at least one (or three) are, and the count then identifies the nonzero ones.
+    AI-derived, see [[lpo.star.lpo]].
+  date: 2026-11-24
+
+- ref: patey2016c
+  loc: Theorem 9.1.7 and Corollary 9.1.8
+  kind: error
+  claim: $2\text{-}\mathsf{DNR} \leq_{sW} \mathsf{TS}^2$ and $\mathsf{RRT}^2_2 \leq_W \mathsf{TS}^2$.
+  correction: >
+    The proof chooses a colour $i$ avoided by the thin set, which a thin set does not give uniformly. When solutions of
+    $\mathsf{TS}^2$ are thin sets only, as in Definition 8.0.2, both uniform claims fail: every finite set extends to a thin
+    set, so the first-order part of $\mathsf{TS}$ is computable and neither DNR, 2-DNR nor $\mathsf{RRT}^2_2$ is Weihrauch
+    reducible to $\mathsf{TS}$ (AI-derived). The proof gives $2\text{-}\mathsf{DNR} \leq_{sc} \mathsf{TS}^2$ and the implication over
+    RCA₀; the uniform statements hold for the variant whose solutions include the avoided colour.
+  date: 2026-11-24

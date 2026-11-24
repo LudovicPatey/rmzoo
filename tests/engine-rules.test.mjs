@@ -195,6 +195,18 @@ test('prop-bottom: a computably true problem is below every problem over c', () 
   assert.equal(st(z, 'c', 'x', 'y'), 'open');
 });
 
+test('prop-bottom: a uniformly computable problem is below every problem over w, not over sw', () => {
+  const z = buildZoo({
+    reductions: [{ id: 'sw', domain: 'problems', finerThan: ['w'] }, { id: 'w', domain: 'problems', finerThan: [] }],
+    properties: [{ id: 'wc', closedUnder: 'w', direction: 'down', bottomOf: 'w', domain: 'problems' }],
+    statements: ['easy', 'x', 'y'].map((id) => ({ id, kind: 'problem' })),
+    results: [{ type: 'property', statement: 'easy', property: 'wc', value: true }],
+  });
+  assert.equal(st(z, 'w', 'x', 'easy'), 'implies');
+  assert.equal(st(z, 'sw', 'x', 'easy'), 'open');
+  assert.equal(st(z, 'w', 'x', 'y'), 'open');
+});
+
 test('below: failing computable truth by an ω-model separation separates from first-order problems over c', () => {
   const z = buildZoo({
     reductions: [{ id: 'c', domain: 'problems', finerThan: ['omega'] }, { id: 'omega', domain: 'all', omegaModels: true, finerThan: [] }],

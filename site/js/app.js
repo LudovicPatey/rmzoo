@@ -14,7 +14,8 @@ import { relatedIndex, relatedStatements } from './related.js';
 import { queryIndex, tokenize, interpret, answer, complete, redText, stmtText } from './query.js';
 import { createCommunity } from './community.js';
 import { personBadges, personCredits } from './badges.js';
-import { KINDS, STATUS_NAMES, reviewStatus, itemResult, resultKey } from './review.js';
+import { KINDS, STATUS_NAMES, reviewStatus, itemResults, resultKey } from './review.js';
+import { proofDocHtml, proofSize } from './proofdoc.js';
 
 // ============================================================================
 // helpers
@@ -632,7 +633,24 @@ const JUSTIFICATION_KINDS = {
   unreferenced: 'no reference found',
 };
 // a justification: its text, and its proof steps (collapsed unless open)
+// a structured proof (site/js/proofdoc.js): definitions, lemmas, theorems with their proofs
+// subscripts and superscripts written X_N, O_{r−1}, 2^ℕ, 2^{<ω} in plain text (outside $…$)
+const SUBSUP = /([A-Za-z0-9Α-Ωα-ωℕ𝒦𝔽′)\]≤≥≰≱≡≢|])([_^])(\{([^{}$]+)\}|[A-Za-z0-9ℕωα-ω∗*<]+)/g;
+const subsup = (t) => String(t ?? '').split(/(\$[^$]+\$|\[\[[^\]]+\]\]|\[@[^\]]+\]|\[#[^\]]+\])/g)
+  .map((p, i) => (i % 2 ? p : p.replace(SUBSUP, (m, b, op, x, inner) => `${b}${op === '_' ? '\u0001' : '\u0003'}${inner ?? x}${op === '_' ? '\u0002' : '\u0004'}`))).join('');
+const proofFmt = (t) => richLinks(subsup(t)).replace(/\u0001/g, '<sub>').replace(/\u0002/g, '</sub>').replace(/\u0003/g, '<sup>').replace(/\u0004/g, '</sup>').replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>')
+  .replace(/(^|[\s(])\*([^*\s](?:[^*]*[^*\s])?)\*(?=[\s.,;:)]|$)/g, '$1<i>$2</i>'); // **bold**, *emphasis* (not LPO*)
+let proofSeq = 0;
+function proofDoc(doc, { open = false } = {}) {
+  return proofDocHtml(doc, proofFmt, { prefix: `pf${++proofSeq}`, open });
+}
+function proofSizeText(doc) {
+  const { blocks, steps } = proofSize(doc);
+  return [blocks ? `${blocks} block${blocks === 1 ? '' : 's'}` : '', steps ? `${steps} steps` : ''].filter(Boolean).join(', ');
+}
 function justificationHtml(j, open = false) {
+  if (j.proof) return `<div class="note"><b>${esc(JUSTIFICATION_KINDS[j.kind] || j.kind)}.</b> ${richCite(j.text)}
+    <details class="proof-steps"${open ? ' open' : ''}><summary>Proof (${proofSizeText(j.proof)})</summary>${proofDoc(j.proof, { open })}</details></div>`;
   const steps = j.steps?.length ? `<details class="proof-steps"${open ? ' open' : ''}><summary>Proof (${j.steps.length} step${j.steps.length === 1 ? '' : 's'})</summary>
     <ol>${j.steps.map((t) => `<li>${richCite(t)}</li>`).join('')}</ol></details>` : '';
   return `<div class="note"><b>${esc(JUSTIFICATION_KINDS[j.kind] || j.kind)}.</b> ${richCite(j.text)}${steps}</div>`;
@@ -649,7 +667,7 @@ function resultCite(ri, { open = false } = {}) {
     ${j?.by === 'ai' && res.provenance !== 'ai' ? ' <span class="badge ai" title="The justification below was written by an AI assistant">argument by AI</span>' : ''}
     ${res.status === 'needs-check' ? ' <span class="badge warn">needs check</span>' : ''}
     ${res._review ? ` <a class="badge yes" href="#/review/${esc(res._review)}" title="Proposed by the AI reader and validated on the review page; not yet committed to the database">validated on the review page</a>` : ''}</div>
-    ${j ? justificationHtml(j, open) : ''}${j?.steps?.length && !open ? ` <a class="small" href="${resultHref(res)}">Open the proof on its own page</a>` : ''}
+    ${j ? justificationHtml(j, open) : ''}${(j?.steps?.length || j?.proof) && !open ? ` <a class="small" href="${resultHref(res)}">Open the proof on its own page</a>` : ''}
     ${res.note ? `<div class="note">${rich(res.note)}</div>` : ''}`;
 }
 function proofHtml(node) {
@@ -3346,8 +3364,8 @@ async function mergeValidated() {
   const q = await loadQueue();
   const known = (r) => [r.from, r.to, r.statement, r.base].filter(Boolean).every((id) => idx(id) !== undefined)
     && (!r.property || Z.pidx.has(r.property)) && [].concat(r.over || []).every((o) => Z.ridx.has(o));
-  const want = q.items.filter((it) => it.kind === 'result' && reviewStatus(C.votes(it)) === 'validated')
-    .map((it) => ({ ...itemResult(it), _review: it.id, _date: it.date, _key: `review|${it.id}` }))
+  const want = q.items.filter((it) => (it.kind === 'result' || it.kind === 'proof') && reviewStatus(C.votes(it)) === 'validated')
+    .flatMap((it) => itemResults(it).map((r, k) => ({ ...r, _review: it.id, _date: it.date, _key: `review|${it.id}|${k}` })))
     .filter((r) => known(r) && !(RAW0 || Z.raw).results.some((x) => x._key === resultKey(r))); // already in the database
   const ids = want.map((r) => r._review).join(',');
   if (ids === merged.map((r) => r._review).join(',')) return false;
@@ -3397,6 +3415,15 @@ function reviewBody(it) {
       ${it.concerns ? `<p class="small"><b>To check.</b> ${esc(it.concerns)}</p>` : ''}
       <p class="small muted">AI reader${it.model ? ` (${esc(it.model)})` : ''}: confidence ${esc(it.confidence)}${it.verifier ? `; verifier${it.verifier.model ? ` (${esc(it.verifier.model)})` : ''}: ${esc(it.verifier.verdict)} (${esc(it.verifier.reason)})` : ''}.
         Not published because: ${esc((it.reasons || []).join('; '))}.</p>`;
+    case 'proof': return `<h3 class="rv-title">${proofFmt(it.title)}</h3>
+      <ul class="rv-results">${(it.results || []).map((r) => `<li>${reviewFact(r)}</li>`).join('')}</ul>
+      <p class="rv-summary">${proofFmt(it.summary)}</p>
+      <details class="rv-proof" ${it._open ? 'open' : ''}><summary>Full proof <span class="muted">(${proofSizeText(it.proof)})</span></summary>${proofDoc(it.proof, { open: true })}</details>
+      ${it.dependencies ? `<p class="small"><b>Uses.</b> ${proofFmt(it.dependencies)}</p>` : ''}
+      ${it.novelty ? `<p class="small"><b>Literature.</b> ${proofFmt(it.novelty)}</p>` : ''}
+      ${it.concerns ? `<p class="small"><b>To check first.</b> ${proofFmt(it.concerns)}</p>` : ''}
+      <p class="small muted">Proof written by an AI${it.model ? ` (${esc(it.model)})` : ''}, confidence ${esc(it.confidence || '?')}; not refereed by a person.
+        Validating it enters these results as AI-derived, with this proof.</p>`;
     case 'statement': return `<p class="rv-fact"><b>${esc(S0.notation)}</b> — ${esc(S0.name)}</p>
       <p class="small">${it.ref ? refLink({ ref: it.ref, loc: S0.loc }) : ''}${it.model ? ` · read by ${esc(it.model)}` : ''}</p>
       <p><b>Definition.</b> ${esc(S0.definition)}</p>
@@ -3457,7 +3484,7 @@ async function viewReview(params, id) {
     ${C.live ? '' : liveNote()}`;
   if (id) {
     const it = q.byId.get(id);
-    m.innerHTML = `${intro}<p><a href="#/review">← all items</a></p>${it ? reviewCard(it)
+    m.innerHTML = `${intro}<p><a href="#/review">← all items</a></p>${it ? reviewCard({ ...it, _open: true })
       : '<p class="muted">This item is no longer open for review: it was accepted into the database, rejected, or treated by hand.</p>'}`;
     return;
   }
@@ -3490,8 +3517,19 @@ async function viewReview(params, id) {
 async function afterVote(it) {
   const card = document.getElementById(`rv-${it.id}`);
   if (card) card.outerHTML = reviewCard(it);
-  if (it.kind === 'result' && await mergeValidated()) refreshMarks();
+  if ((it.kind === 'result' || it.kind === 'proof') && await mergeValidated()) refreshMarks();
 }
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('[data-pf]');
+  if (!a) return;
+  e.preventDefault();
+  const t = document.getElementById(a.dataset.pf);
+  if (!t) return;
+  for (let d = t.parentElement; d; d = d.parentElement) if (d.tagName === 'DETAILS') d.open = true;
+  t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  t.classList.add('pf-flash');
+  setTimeout(() => t.classList.remove('pf-flash'), 1600);
+});
 document.addEventListener('click', async (e) => {
   const v = e.target.closest('[data-vote]');
   const cm = e.target.closest('[data-rcomment]');

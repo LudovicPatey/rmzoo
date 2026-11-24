@@ -64,6 +64,8 @@ test('implications, negations, ω-models, provability', () => {
     has(t, { kind: 'imp', x: 'rt22', y: 'rt12', r: 'rca0' }, 'w');
   has('Does RCA0* prove RT22 -> RT12?', { r: 'rca0star' });
   has('Does WKL imply MIN over EL0?', { x: 'wkl', y: 'minprinciple', r: 'el0' });
+  // an ambiguous name is read in the framework of the reduction (MIN: minimum principle or minimum of a sequence)
+  has('Is MIN Weihrauch reducible to LPO?', { x: 'minrange', y: 'lpo', r: 'w' });
   has('Does WKL imply LLPO constructively?', { x: 'wkl', y: 'llpo', r: 'bish' });
   // a problem reduction does not apply to sentences: RCA₀ instead
   has('Does ISig2 imply BSig2?', { x: 'isig2', y: 'bsig2', r: 'rca0' }, 'w');
