@@ -279,7 +279,9 @@ non-arithmetical condition (well-orders, ill-founded trees, unique paths,
 uncountable closed sets, Σ¹₁/Π¹₁ codes) gets `omegaAbsolute: false`: ω-models
 read statements inside the model (docs/DESIGN.md, 1.1), so an ω-model fact about
 it must come from a model argument, never from its Weihrauch degree or from what
-a Turing ideal such as HYP does with true instances. Then at least one result (the
+a Turing ideal such as HYP does with true instances. A problem with no computable instance (instances that are ML-random sequences) gets the
+property `pointed` with value false: the engine otherwise assumes every problem is pointed
+(docs/DESIGN.md, bottom of a reduction). Then at least one result (the
 build warns about statements in no result), and `data/context.yaml` if
 background helps. Operator statements (`lpo.jump`, `cn.x.wkl`, `tcn.star.tcn`,
 `(cn.x.lpo).jump`) need no entry: the build creates them from their dotted ids. When an

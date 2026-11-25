@@ -139058,7 +139058,7 @@
   proposed: 53cbcd86a919
 - id: proof-models-13
   kind: proof
-  status: pending
+  status: accepted
   date: 2026-11-24
   title: 2-RAN proves 1-GEN on ω-models (Kurtz's theorem)
   summary: 2-RAN proves 1-GEN on ω-models (Kurtz's theorem)
@@ -139119,6 +139119,12 @@
   reasons:
     - AI proof not yet refereed by a person
   proposed: 7de20db5496f
+  votes:
+    - { orcid: 0000-0002-0304-7926, verdict: valid, date: 2026-11-24 }
+  decision:
+    date: 2026-11-25
+    by: Ludovic Patey
+    note: validated on the review page by Ludovic Patey
 - id: proof-models-14
   kind: proof
   status: pending
@@ -139897,3 +139903,45 @@
     date: 2026-11-24
     by: ludovic
     note: "Checked: each canonical form is a Π⁰₁ condition on the colouring and an increasing enumeration."
+- id: contrib-00-0003-0351-3058-b0ed6e-1
+  kind: result
+  status: accepted
+  date: 2026-11-24
+  origin: contributed
+  result:
+    type: implication
+    from: aca
+    to: lim.jump
+    over: w
+  argument: "Follows from lim ≡W TJ and lim′ ≡W TJ′, the double jump. In detail: an instance p of lim′ is a sequence converging in Baire space to an instance q of lim, and its solution lim q is computable from p″ uniformly; equivalently, its graph {⟨i, j⟩ : (lim_t lim_s p_s(t))(i) = j} is defined from p by an arithmetical formula, uniformly in p, and ACA applied to p and this formula returns it. The same argument gives lim⁽ⁿ⁾ ≤W ACA for every n (ACA′ computes every lim⁽ⁿ⁾)."
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-24T130424Z-0000-0003-0351-3058-b0ed6e
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: 5b0170390a21
+  decision:
+    date: 2026-11-25
+    by: ludovic
+- id: contrib-00-0003-0351-3058-a494b8-1
+  kind: result
+  status: accepted
+  date: 2026-11-25
+  origin: contributed
+  result:
+    type: implication
+    from: cnn
+    to: tt2
+    over: w
+  argument: "The set of solutions of an instance of TT²_{<∞} is arithmetical, hence C_{ℕ^ℕ} can pick one. In detail: given a colouring c, the set of its solutions (subtrees isomorphic to 2^{<ℕ}, given with the isomorphism, monochromatic for c) is nonempty (TT²_{<∞} is true, e.g. by Milliken's tree theorem) and arithmetical in c, uniformly; so it is the projection of a closed subset of Baire space whose code is computable from c, uniformly (add Skolem witnesses for the quantifiers). C_{ℕ^ℕ} returns a point of that closed set, whose first coordinate is a solution."
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-25T112632Z-0000-0003-0351-3058-a494b8
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: b995d46317e9
+  decision:
+    date: 2026-11-25
+    by: ludovic

@@ -580,9 +580,9 @@
   group: weihrauch
   closedUnder: w
   direction: down
-  # P ≤W Q for every problem Q: the forward functional returns a fixed computable instance of
-  # Q (every problem of the zoo has one), the backward functional ignores its solution and
-  # computes a solution of P from the input
+  # P ≤W Q for every pointed problem Q: the forward functional returns a fixed computable
+  # instance of Q, the backward functional ignores its solution and computes a solution of P
+  # from the input (the engine skips the problems recorded as not pointed)
   bottomOf: w
   domain: problems
   # computably true follows through the implications: such a problem is ≤W BCT₀, which has it
@@ -591,4 +591,24 @@
     A single computable functional maps every instance to a solution: the problem is computable in
     the Weihrauch sense. This is stronger than being computably true, where the solution computable
     from an instance need not be found uniformly. Such a problem is Weihrauch reducible to every
-    problem. BCT₀ and VCT₀ have this property.
+    pointed problem (one with a computable instance); a pointed one is Weihrauch equivalent to the
+    identity id. BCT₀ and VCT₀ have this property, and so does id_MLR, which is not pointed.
+
+- id: pointed
+  name: Pointed (has a computable instance)
+  group: weihrauch
+  # P ≤c Q with P pointed: a computable instance of P computes an instance of Q. So the
+  # property goes up, and its failure down
+  closedUnder: c
+  direction: up
+  domain: problems
+  optional: true
+  # every problem of the zoo is pointed unless recorded otherwise: the bottom rules
+  # (bottomOf) and the laws P ≤W P × Q, P ≤W P ⋆ Q assume it, and the engine skips the
+  # problems with `pointed` false (and operations on them)
+  description: >
+    The problem has a computable instance. The pointed problems are exactly those above the identity id
+    in the Weihrauch degrees, and nearly every problem studied is pointed. Problems whose instances are
+    ML-random sequences are not (no computable sequence is ML-random): LAY, RD and the identity on MLR
+    of Hölzl and Shafer. For them, the usual laws fail: a computable problem is not Weihrauch reducible
+    to them, and C_ℕ is not Weihrauch reducible to C_ℕ × id_MLR ≡W LAY.

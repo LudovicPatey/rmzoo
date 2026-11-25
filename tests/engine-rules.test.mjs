@@ -207,6 +207,26 @@ test('prop-bottom: a uniformly computable problem is below every problem over w,
   assert.equal(st(z, 'w', 'x', 'y'), 'open');
 });
 
+test('pointed: the bottom rules and P ≤W P × Q skip the problems with no computable instance', () => {
+  const z = buildZoo({
+    reductions: [{ id: 'w', domain: 'problems', finerThan: [], algebra: 'weak' }],
+    properties: [
+      { id: 'wc', closedUnder: 'w', direction: 'down', bottomOf: 'w', domain: 'problems' },
+      { id: 'pointed', closedUnder: 'w', direction: 'up', domain: 'problems' },
+    ],
+    statements: [...['easy', 'x', 'odd'].map((id) => ({ id, kind: 'problem' })), { id: 'x.x.odd', kind: 'problem', op: 'product', args: ['x', 'odd'] }],
+    results: [
+      { type: 'property', statement: 'easy', property: 'wc', value: true },
+      { type: 'property', statement: 'odd', property: 'pointed', value: false },
+    ],
+  });
+  assert.equal(st(z, 'w', 'x', 'easy'), 'implies');
+  assert.equal(st(z, 'w', 'odd', 'easy'), 'open'); // easy may have computable instances
+  assert.equal(st(z, 'w', 'x.x.odd', 'easy'), 'open');
+  assert.equal(st(z, 'w', 'x.x.odd', 'x'), 'open'); // x ≤W x × odd needs odd pointed
+  assert.equal(st(z, 'w', 'x.x.odd', 'odd'), 'implies'); // odd ≤W x × odd: x is pointed
+});
+
 test('below: failing computable truth by an ω-model separation separates from first-order problems over c', () => {
   const z = buildZoo({
     reductions: [{ id: 'c', domain: 'problems', finerThan: ['omega'] }, { id: 'omega', domain: 'all', omegaModels: true, finerThan: [] }],

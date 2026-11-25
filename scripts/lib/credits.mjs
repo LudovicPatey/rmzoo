@@ -17,6 +17,7 @@ export function plainLabel(tex) {
     .replace(/\\Sigma/g, 'Σ').replace(/\\Pi/g, 'Π').replace(/\\Delta/g, 'Δ').replace(/\\mathbb\{N\}/g, 'ℕ').replace(/\\mathbb\{R\}/g, 'ℝ')
     .replace(/\\(?:mathsf|mathrm|textsf|text|mathit|mathfrak)\{([^{}]*)\}/g, '$1')
     .replace(/\\(?:leq|le)\b/g, '≤').replace(/\\diamond\b/g, '⋄').replace(/\\star\b/g, '⋆').replace(/\\times\b/g, '×')
+    .replace(/\\(lim|sup|inf|min|max|log|exp|deg)\b/g, '$1')
     .replace(/\\prime\b|'/g, '′').replace(/\\infty\b/g, '∞').replace(/\\omega\b/g, 'ω');
   s = s.replace(/\^\{([^{}]*)\}|\^(.)/g, (m, a, b) => map(a ?? b, SUP) ?? `^${a ?? b}`)
     .replace(/_\{([^{}]*)\}|_(.)/g, (m, a, b) => map(a ?? b, SUB) ?? `_${a ?? b}`);

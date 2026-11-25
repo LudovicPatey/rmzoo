@@ -283,6 +283,14 @@ every set computes a number, and a *uniformly computable* problem (`bottomOf: w`
 Weihrauch reducible to every problem, through a fixed computable instance. The engine adds these implications (rule `prop-bottom`)
 after the properties are known and before the separations.
 
+These rules, and the laws P ≤W P × Q and P ≤W P ⋆ Q, need the target (the other factor)
+to be **pointed**: to have a computable instance (Brattka, Gherardi and Pauly 2021,
+Definition 4.1; equivalently id ≤W Q). Nearly every problem is, and the zoo assumes it by
+default. A problem with no computable instance gets the property `pointed` with value
+false (LAY, RD and id_MLR of Hölzl and Shafer, whose instances are ML-random sequences),
+and the engine skips it, and any operation on it, as a target of these rules: a computable
+problem is not below id_MLR, and C_ℕ is not below C_ℕ × id_MLR ≡W LAY.
+
 Most properties are defined through instances and solutions ("every Z-computable
 instance has a solution Y such that…"): they carry `domain: problems` and only
 apply to statements that can be formulated as problems — problems, and sentences

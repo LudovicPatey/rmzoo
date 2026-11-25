@@ -22,11 +22,11 @@ export const RULES = {
   'prop-up': 'Failure of a property inherited along an implication',
   'prop-sep': 'Separation by a property',
   'prop-implies': 'Relation between properties (a low basis is a weakly low basis, a computably true problem has every preservation property…)',
-  'prop-bottom': 'A problem with this property is below every problem over this reduction (a computably true problem P is computably reducible to every Q: the P-instance X computes a Q-instance, and itself a solution; a first-order problem is strongly computably reducible to every Q: every set computes a number)',
+  'prop-bottom': 'A problem with this property is below every pointed problem (one with a computable instance) over this reduction (a computably true problem P is computably reducible to every such Q: the P-instance X computes a Q-instance, and itself a solution; a first-order problem is strongly computably reducible to every such Q: every set computes a number; a computable problem is Weihrauch reducible to every such Q)',
   'prop-base': 'A problem has this property exactly when the base system implies it over this reduction (e.g. computably true = holds in every ω-model)',
   refine: 'Separation at a coarser reduction',
   'base-lift': 'Over a weaker base theory, a statement implying the stronger base theory has all its consequences over that theory (over RCA₀*, a statement implying IΣ⁰₁ implies everything it implies over RCA₀)',
-  'op-base': 'Algebra of Weihrauch degrees: a problem is below its jump, its parallelization, its finite and its unbounded finite parallelization (strongly; P* ≤sW P^u* ≤W P̂: Soldà and Valenti, Proposition 5.2), and below products and compositional products in which it occurs; a product is below the compositional products of its two factors, in either order',
+  'op-base': 'Algebra of Weihrauch degrees: a problem is below its jump, its parallelization, its finite and its unbounded finite parallelization (strongly; P* ≤sW P^u* ≤W P̂: Soldà and Valenti, Proposition 5.2), and below products and compositional products in which it occurs (when the other factors are pointed); a product is below the compositional products of its two factors, in either order',
   'op-comm': 'The product of Weihrauch problems is commutative and associative, the compositional product is associative: products with the same factors are equivalent however ordered and bracketed, and so are compositional products of the same problems in the same order (Brattka and Pauly 2018, Proposition 4.2)',
   'op-monotone': 'Algebra of Weihrauch degrees: parallelizations, finite and unbounded finite parallelizations, products, compositional products and the diamond operator are monotone; jumps are monotone for strong Weihrauch reducibility (unbounded finite parallelization: Soldà and Valenti, Theorem 5.5)',
   'op-arith-jump': 'Arithmetic Weihrauch reducibility: a jump is equivalent to the problem itself (P′ ≤sW P ∘ lim, and lim is arithmetic: Marcone and Valenti 2020, Proposition 5.4)',
@@ -343,6 +343,22 @@ export function buildZoo(raw) {
     }
     for (const g of groups.values()) if (g.length > 1) for (const i of g) sameShape.set(i, g.filter((j) => j !== i));
   }
+  // problems with no computable instance (property `pointed` cited false, and operations
+  // on them): the laws P ≤ P × Q and P ≤ P ⋆ Q need the other factor to have a computable
+  // instance, and so do the bottom rules (`bottomOf`), which skip these targets
+  const PT = pidx.get('pointed');
+  const unpointedDirect = new Set(PT === undefined ? [] : directResults
+    .filter((res) => res.type === 'property' && res.property === 'pointed' && res.value === false && sidx.has(res.statement))
+    .map((res) => sidx.get(res.statement)));
+  const unpointedMemo = new Map();
+  const unpointed = (i, depth = 0) => {
+    if (unpointedDirect.has(i)) return true;
+    if (unpointedMemo.has(i)) return unpointedMemo.get(i);
+    const o = opOf.get(i);
+    const v = !!o && depth < 20 && o.args.some((x) => x !== undefined && unpointed(x, depth + 1));
+    unpointedMemo.set(i, v);
+    return v;
+  };
   const strongOK = (o) => unary.has(o.op) && o.op !== 'diamond';
   const PARTS = new Set(['fop', 'det']);
   const W = ridx.get('w'), SW = ridx.get('sw');
@@ -359,7 +375,8 @@ export function buildZoo(raw) {
       if (!R[r].algebra) continue;
       for (const o of ops) {
         if (!algebraAt(r, o) || o.args.some((x) => x === undefined)) continue;
-        for (const x of o.args) addIc(r, o.i, x, C['op-base'], 0);
+        // P ≤ P × Q, P ≤ P ⋆ Q: only when the other factors have computable instances
+        for (const x of o.args) if (!((o.op === 'product' || o.op === 'compose') && o.args.some((y) => y !== x && unpointed(y)))) addIc(r, o.i, x, C['op-base'], 0);
         if (o.op === 'jump' && R[r].algebra === 'arithmetic') addIc(r, o.args[0], o.i, C['op-arith-jump'], 0);
         const [x0, x1] = o.args;
         if (o.op === 'compose') { // P × Q ≤W P ⋆ Q, and Q × P ≤W P ⋆ Q since × is commutative
@@ -664,7 +681,7 @@ export function buildZoo(raw) {
     const before = queue.length;
     for (const { p, r } of bottomProps)
       for (const [s, { v }] of P[p]) if (v && inDomain(r, s))
-        for (let a = 0; a < n; a++) if (a !== s) addIc(r, a, s, C['prop-bottom'], p);
+        for (let a = 0; a < n; a++) if (a !== s && !unpointed(a) && !(PT !== undefined && P[PT].get(a)?.v === false)) addIc(r, a, s, C['prop-bottom'], p);
     for (const { o, p, r } of partMax)
       for (const s of out[W][o.args[0]]) if (s !== o.i && P[p].get(s)?.v && !I[r].hasAB(o.i, s) && inDomain(r, s))
         addI(r, o.i, s, { rule: 'op-part-max', prem: [fI(W, o.args[0], s), fP(p, s, true)] });

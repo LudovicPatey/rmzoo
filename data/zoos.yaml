@@ -33,8 +33,8 @@
 - id: weihrauch
   name: Weihrauch degrees
   reduction: w
-  description: The landmark problems of the Weihrauch lattice (LPO, LLPO, choice principles, lim) next to Ramsey-type and compactness problems, compared by Weihrauch reducibility.
-  statements: [llpo, lpo, cn, kn, lim, wkl, wwkl, dnr, rt12, rt22, srt22, coh, ds, bs, ucnn, cnn, pi11ca]
+  description: The landmark problems of the Weihrauch lattice (the identity, LPO, LLPO, choice principles, lim) next to Ramsey-type and compactness problems, compared by Weihrauch reducibility.
+  statements: [id, llpo, lpo, cn, kn, lim, wkl, wwkl, dnr, rt12, rt22, srt22, coh, ds, bs, ucnn, cnn, pi11ca]
 
 - id: pigeonhole-weihrauch
   name: Pigeonhole principles in the Weihrauch lattice

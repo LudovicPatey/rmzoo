@@ -61,8 +61,9 @@ for (const [k, v] of Object.entries(extra)) if (z.sidx.has(v)) dict.set(k, v);
 for (const s of z.S) if (s.phrases?.length && ![...dict.values()].includes(s.id)) dict.set(`⟨${s.id}⟩`, s.id);
 // tokens too common in mathematical text to stand for a statement: labels without
 // letters ((\mu_1) and (\exists^2) read "(1)" and "(2)", the items of any list),
-// variables (A₀, A₁), a formula class (χ_Π¹₁ reads "Π11") and English words
-const AMBIGUOUS = new Set(['A0', 'A1', 'Π11', 'open', 'open-', 'enum', 'Pure', 'List']);
+// variables (A₀, A₁), a formula class (χ_Π¹₁ reads "Π11") and English words ("id", the
+// identity, is also an abbreviation in any text)
+const AMBIGUOUS = new Set(['A0', 'A1', 'Π11', 'open', 'open-', 'enum', 'Pure', 'List', 'id']);
 for (const t of [...dict.keys()]) if (AMBIGUOUS.has(t) || !/\p{L}/u.test(t)) dict.delete(t);
 const keys = [...dict.keys()].sort((a, b) => b.length - a.length);
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

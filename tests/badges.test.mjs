@@ -59,6 +59,7 @@ test('accepting contributed facts of one message adds one credit with a count', 
 test('notes of credited facts in plain text', () => {
   assert.equal(plainLabel('\\mathsf{RT}^2_2'), 'RT²₂');
   assert.equal(plainLabel("\\mathsf{ACA}'"), 'ACA′');
+  assert.equal(plainLabel("\\lim'"), 'lim′');
   assert.equal(plainLabel('\\Sigma^1_1\\text{-}\\mathsf{C}_2'), 'Σ¹₁-C₂');
   assert.equal(describeResult({ type: 'implication', from: 'em', to: 'non', over: 'sw' }, (s) => s.toUpperCase()), 'NON ≤sW EM');
   assert.equal(describeResult({ type: 'separation', from: 'aca-plus', to: 'ucnn', over: 'w' }), 'ucnn not ≤W aca-plus');

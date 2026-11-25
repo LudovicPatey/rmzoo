@@ -1670,3 +1670,14 @@
   statements: [ht, rtlarge]
   context: >-
     RT^{!ω}_2 implies HT over RCA₀; the question asks whether a strong computable reduction witnesses it.
+
+- id: rd-test-independence-sw
+  question: 'Let $U$ and $V$ be universal Martin-Löf tests. Is $\mathsf{RD}_U \equiv_{\mathrm{sW}} \mathsf{RD}_V$?'
+  asked:
+    - {ref: holzlshafer2015, loc: Question 5.6}
+  status: open
+  statements: [rd, lay]
+  context: >-
+    The Weihrauch degree of RD does not depend on the universal test, since RD_U ≡W LAY_V for all universal U
+    and V (Theorem 5.4), and neither does the strong Weihrauch degree of LAY (Proposition 5.2); but RD_V ≰sW LAY_U
+    (Proposition 5.5).
