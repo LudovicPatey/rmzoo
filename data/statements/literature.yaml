@@ -1221,12 +1221,15 @@
 - id: leftmost-path
   label: '\textsf{leftmost path}'
   name: Existence of leftmost paths
-  kind: sentence
+  kind: problem
+  omegaAbsolute: false
   minor: true
-  tags: [ compactness ]
+  tags: [ compactness, weihrauch ]
   definition: >
     Every non-well-founded tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$ has a leftmost path: a path $f$ such that every
     other path $g$ satisfies $f(n) < g(n)$ at the first $n$ where they differ.
+  instance: A tree $T \subseteq \mathbb{N}^{<\mathbb{N}}$ with an infinite path.
+  solution: The leftmost path of $T$.
   refs: [ { ref: marcone1994, role: rm, loc: "Definition 6.4, Theorem 6.5" } ]
 
 - id: swwkl

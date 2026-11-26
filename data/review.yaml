@@ -139945,3 +139945,25 @@
   decision:
     date: 2026-11-25
     by: ludovic
+- id: contrib-00-0003-0351-3058-402c44-1
+  kind: result
+  status: done
+  date: 2026-11-25
+  origin: contributed
+  result:
+    type: separation
+    from: wkl-jj
+    to: pi11-cn
+    over: w
+  argument: "Algebraic properties: WKL'' is parallelizable, while the parallelization of Pi^1_1-C_N is equivalent to UC_Baire. The latter does not seem to be in the database, but it is in ciprianimarconevalenti2025, prop.2.16"
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-25T164209Z-0000-0003-0351-3058-402c44
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: 598c948b39ea
+  decision:
+    date: 2026-11-26
+    by: ludovic
+    note: "Now derived by the engine: a new rule, the contrapositive of the closure law (P̂ ≰W Q with Q parallelizable gives P ≰W Q), applied to UC_ℕᴺ ≡W (Π¹₁-C_ℕ)^ (Cipriani, Marcone and Valenti, Proposition 2.16) and WKL″ parallelizable."

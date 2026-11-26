@@ -227,6 +227,23 @@ test('pointed: the bottom rules and P ≤W P × Q skip the problems with no comp
   assert.equal(st(z, 'w', 'x.x.odd', 'odd'), 'implies'); // odd ≤W x × odd: x is pointed
 });
 
+test('closure, contrapositive: P̂ ≰W Q with Q parallelizable gives P ≰W Q', () => {
+  const z = buildZoo({
+    reductions: [{ id: 'w', domain: 'problems', finerThan: [], algebra: 'weak' }],
+    properties: [{ id: 'par', closedUnder: 'w', direction: 'equiv', domain: 'problems', selfOp: 'par', opHas: ['par'], closure: ['par'] }],
+    statements: [...['q', 'p', 'r'].map((id) => ({ id, kind: 'problem' })), { id: 'p.par', kind: 'problem', op: 'par', args: ['p'] }, { id: 'r.par', kind: 'problem', op: 'par', args: ['r'] }],
+    results: [
+      { type: 'property', statement: 'q', property: 'par', value: true },
+      { type: 'separation', from: 'q', to: 'p.par', over: 'w' },
+      { type: 'separation', from: 'p', to: 'r.par', over: 'w' },
+    ],
+  });
+  assert.equal(st(z, 'w', 'q', 'p'), 'separated'); // p ≰W q
+  const f = z.proof({ t: 'N', r: z.ridx.get('w'), a: z.sidx.get('q'), b: z.sidx.get('p') });
+  assert.equal(f.rule, 'prop-closure');
+  assert.equal(st(z, 'w', 'p', 'r'), 'open'); // p is not known to be parallelizable
+});
+
 test('below: failing computable truth by an ω-model separation separates from first-order problems over c', () => {
   const z = buildZoo({
     reductions: [{ id: 'c', domain: 'problems', finerThan: ['omega'] }, { id: 'omega', domain: 'all', omegaModels: true, finerThan: [] }],

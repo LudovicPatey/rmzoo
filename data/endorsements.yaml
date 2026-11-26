@@ -100,3 +100,5 @@ endorsements:
   - { result: "implication|canht|ht|rca0,sw|", orcid: 0000-0003-0351-3058, date: 2026-11-23 }
   - { result: property|fip|computable-fop||true, orcid: 0000-0003-0351-3058, date: 2026-11-23 }
   - { result: implication|wwkl|ran1|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-24 }
+  - { result: equivalence|leftmost-path|pi11ca|rca0|, orcid: 0000-0003-0351-3058, date: 2026-11-25 }
+  - { result: equivalence|pi11ca|leftmost-path|rca0|, orcid: 0000-0003-0351-3058, date: 2026-11-25 }

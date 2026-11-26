@@ -307,7 +307,9 @@ P̂ ≤sW P); failing it with all the parts but one means failing the last. `clo
 lists operations under which the problems with the property are closed from below:
 a problem with it that lies above every argument of op(P…) lies above op(P…) (P⋄
 and P ⋆ R for closure under ⋆, P̂ for parallelizability, P* and P × R for
-idempotence). `below: {property: q, over: R}` says that what is
+idempotence). Contrapositively, a problem with it that is not above op(P…) but is above
+its other arguments is not above P (P̂ ≰W Q with Q parallelizable gives P ≰W Q).
+`below: {property: q, over: R}` says that what is
 R-reducible to a problem with the property has q on its true instances: a problem
 c-reducible to a first-order one is computably true, even when the first-order
 problem is not ω-absolute (Σ¹₁-C_ℕ). The **lowness hierarchy**
@@ -536,6 +538,7 @@ Rules:
 | prop-op | o = op(a…), op in `opHas` (or in `opKeeps` and the arguments have p) | `Has(p,o)` |
 | prop-below | `Has(p,a)`, `Lacks(q,b)`, b ω-absolute, p with `below: {property: q, over: R}` | `N(R,a,b)` |
 | prop-closure | `Has(p,a)`, `I(Rp,a,b)` for every argument b of o = op(b…), op in p's `closure` | `I(Rp,a,o)` |
+| prop-closure (contrapositive) | `Has(p,a)`, `N(Rp,a,o)`, `I(Rp,a,x)` for the arguments x ≠ b of o = op(…), op in p's `closure` | `N(Rp,a,b)` |
 | prop-joint | `Has(q,a)` for every q of a set in p's `jointly` | `Has(p,a)`; and `Lacks(p,a)` with all but one q gives `Lacks` of the last |
 | prop-lift | `I(R,a,b)`, a has p with `lift: {from: R, to: R'}` (cylinder) | `I(R',a,b)` |
 | prop-elim | `I(Rp,g⋆h,a)`, `Has(p,a)`, `I(Rp,F,h)`, p with `eliminates: {side: right, factor: F}` (side left: `h⋆g`) | `I(Rp,g,a)`; from `N(Rp,g,a)`: `N(Rp,g⋆h,a)` |

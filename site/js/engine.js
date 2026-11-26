@@ -40,7 +40,7 @@ export const RULES = {
   'prop-equiv': 'A Weihrauch property is invariant under equivalence (the same Weihrauch degree, or strong degree for strong properties)',
   'prop-self': 'A problem has this property exactly when it is above the corresponding operation applied to itself (idempotent: P × P ≤W P; parallelizable: P̂ ≤W P; closed under compositional product: P ⋆ P ≤W P)',
   'prop-below': 'A problem reducible to one with this property has a weaker one (a problem computably reducible to a first-order problem has solutions computable from its instances): a problem failing the weaker one is not reducible to it',
-  'prop-closure': 'A problem with a closure property lies above the closure of every problem below it (UC_ℕ^ℕ is closed under compositional product and lim ≤W UC_ℕ^ℕ, so lim⋄ ≤W UC_ℕ^ℕ; a parallelizable problem lies above P̂ when it lies above P; an idempotent problem lies above P × R when it lies above P and R)',
+  'prop-closure': 'A problem with a closure property lies above the closure of every problem below it (UC_ℕ^ℕ is closed under compositional product and lim ≤W UC_ℕ^ℕ, so lim⋄ ≤W UC_ℕ^ℕ; a parallelizable problem lies above P̂ when it lies above P; an idempotent problem lies above P × R when it lies above P and R); contrapositively, a problem with the property that is not above the closure of P (and is above the other arguments) is not above P',
   'prop-joint': 'Properties that together imply another (a parallelizable cylinder is strongly parallelizable: P̂ ≤W P gives P̂ ≤sW P, Brattka, Gherardi and Pauly, Proposition 3.5)',
   'prop-op': 'Weihrauch operations produce problems with this property (P̂ is parallelizable, P* idempotent, P⋄ closed under compositional product, P ⋆ Q a cylinder; a jump P′ is finitely tolerant and a fractal, and the jump of a cylinder is a cylinder)',
   'prop-elim': 'Choice elimination: a problem with this property below a compositional product with a factor below the eliminated problem is below the other factor (a total fractal below g ⋆ C_ℕ is below g: Brattka, Gherardi and Pauly, Theorem 7.15; a single-valued problem below C_{2^ℕ} ⋆ g is below g: Theorem 7.25)',
@@ -830,6 +830,16 @@ export function buildZoo(raw) {
               const h = o.args[1 - e.keep];
               if (I[r].has(key(e.F, h))) addN(r, o.i, c, { rule: 'prop-elim', prop: e.p, prem: [fN(r, a, c), fP(e.p, c, true), fI(r, e.F, h)] });
             }
+          }
+          // closure laws, contrapositive: op(P…) ≰ a, a closed under op and every other
+          // argument ≤ a give P ≰ a (P̂ ≰W Q with Q parallelizable: P ≰W Q)
+          for (const cl of closures) {
+            if (cl.r !== r || !P[cl.p].get(a)?.v) continue;
+            const o = opOf.get(c);
+            if (!o || !cl.ops.has(o.op) || !o.args.length || o.args.includes(undefined)) continue;
+            const args = [...new Set(o.args)], open = args.filter((x) => x === a || !I[r].hasAB(a, x));
+            if (open.length === 1 && open[0] !== a)
+              addN(r, a, open[0], { rule: 'prop-closure', prop: cl.p, prem: [fN(r, a, c), fP(cl.p, a, true), ...args.filter((x) => x !== open[0]).map((x) => fI(r, a, x))] });
           }
           // check before building the justification: most candidates are already known
           // b ⇏ c for the b that a implies, a ⇏ d for the d that imply c (I and N of r
