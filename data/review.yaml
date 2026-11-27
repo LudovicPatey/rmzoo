@@ -139967,3 +139967,275 @@
     date: 2026-11-26
     by: ludovic
     note: "Now derived by the engine: a new rule, the contrapositive of the closure law (P̂ ≰W Q with Q parallelizable gives P ≰W Q), applied to UC_ℕᴺ ≡W (Π¹₁-C_ℕ)^ (Cipriani, Marcone and Valenti, Proposition 2.16) and WKL″ parallelizable."
+- id: contrib-00-0003-0351-3058-fb9f13-1
+  kind: result
+  status: done
+  date: 2026-11-26
+  origin: contributed
+  result:
+    type: separation
+    from: stcn
+    to: non
+    over: w
+  argument: sTC_N is first-order but NON is not computably true
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-26T110444Z-0000-0003-0351-3058-fb9f13
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: fc2aa9edc4bc
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: sTC_ℕ recorded as first-order (its solutions are −1 or numbers); the engine then derives NON ≰W sTC_ℕ, since NON is not computably true.
+- id: contrib-00-0003-0351-3058-c79cc3-1
+  kind: result
+  status: done
+  date: 2026-11-26
+  origin: contributed
+  result:
+    type: implication
+    from: stcn
+    to: ivt
+    over: w
+  argument: "Use IVT=_W CC_[0,1]: given an instance A for CC_[0,1], use sTC_N to pick a point from {q\\in \\mathbb{Q}: q\\in A}. This is a closed set. If it is empty, then A={x} for some irrational x. The restriction of CC_[0,1] to singletons is computable."
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-26T112826Z-0000-0003-0351-3058-c79cc3
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: a9f26f0d9da8
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: Entered in data/results/contributed.yaml with the contributor's argument, expanded.
+- id: contrib-00-0003-0351-3058-0720f6-1
+  kind: result
+  status: done
+  date: 2026-11-26
+  origin: contributed
+  result:
+    type: implication
+    from: pi11ca
+    to: tcnn
+    over: w
+  argument: |-
+    Now that we know that Pi11-CA = leftmost path, this is an exercise: Pi11-CA = WF \times Pi11-CA (as Pi11-CA is parallelizable). Use the first WF to check if the input T for TC_Baire is well-founded, and Pi11-CA to compute the leftmost path. Notice that an attempt to produce the leftmost for a well-founded would still produce a valid instance for Pi11-CA, but the backward functional would not converge (it would search forever for the first digit of the leftmost path). Using the output of WF we can check whether the tree is well-founded (and return just 0^\omega) or not (the search for the leftmost path would succeed). 
+    I don't know if this has explicitly appeared somewhere in the literature, but it is a simple exercise and people know that Pi11-CA is strictly above the parallelization of TC_Baire, so I would say folklore
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-26T114127Z-0000-0003-0351-3058-0720f6
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: a7e51b2025e0
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: Entered in data/results/contributed.yaml with the contributor's argument, expanded.
+- id: contrib-00-0003-0351-3058-041b00-1
+  kind: result
+  status: done
+  date: 2026-11-26
+  origin: contributed
+  result:
+    type: separation
+    from: bs
+    to: lpo.jump
+    over: w
+  ref: gohpaulyvalenti2024
+  loc: Theorem 5.3
+  argument: By definition of finitary part, a problem with codomain 2 reduces to BS iff it reduces to DS. LPO' does not reduce to DS (already in the database)
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-26T154349Z-0000-0003-0351-3058-041b00
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: ac69c56e7959
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: Entered in data/results/contributed.yaml with the contributor's argument, expanded.
+- id: simpson1999-0edfb585
+  ref: simpson1999
+  date: 2026-11-27
+  status: rejected
+  kind: result
+  model: claude-opus-5-5
+  result:
+    type: conservation
+    statement: wkl
+    base: rca0
+    class: Pi11
+    value: true
+  loc: Review, paragraph on Chapter 9
+  origin: cited
+  quote: sentence provable from WKL0 is provable from RCA0
+  paperNotation: WKL0, RCA0
+  citedFrom: Harrington (proof given in Simpson's book, Section IX.2)
+  confidence: high
+  concerns: The text is a review; the result is Harrington's, as proved in the book.
+  reasons:
+    - "attributed by the paper to Harrington (proof given in Simpson's book, Section IX.2): cite the original"
+  proposed: f887d1bbea87
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: "Read from the wrong text: the file cached for simpson1999 was Peter Cholak's review of the book, not the book. WKL₀ Π¹₁-conservative over RCA₀ is already in the database; the text is removed and its URL excluded."
+- id: paper-43f9fa34
+  kind: paper
+  status: rejected
+  date: 2026-11-27
+  paper:
+    title: $Σ^1_3$ Gandy-Harrington Forcing
+    authors:
+      - William Chan
+      - Sandra Müller
+      - Farmer Schlutzenberg
+      - Benjamin Siskind
+    year: 2026
+    venue: Preprint, arXiv:2611.29432 [math.LO] (2026)
+    arxiv: "2611.29432"
+  reasons:
+    - "sweep: on topic by its abstract, not clearly by its title"
+  proposed: 4cf49584aa4c
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: Set theory (Σ¹₃ Gandy–Harrington forcing under large cardinals/determinacy), not reverse mathematics or Weihrauch reducibility.
+- id: lead-24a80287
+  kind: lead
+  status: done
+  date: 2026-11-27
+  ref: grunerreimann2026
+  loc: Theorem 4.20
+  over: rca0
+  open:
+    - bes⇒aca
+  text: Besicovitch’s Theorem (BES) is provable in ACA0 .
+  reasons:
+    - "regex miner: the theorem names statements whose relation is open"
+  proposed: e9410ca2311a
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: ACA₀ ⊢ BES (Theorem 4.20) is already in the database; BES vs ACA₀ remains open (the paper asks whether WKL₀ suffices, not as a numbered question).
+- id: question-5d430440
+  kind: question
+  status: rejected
+  date: 2026-11-27
+  ref: frittaiongenovesi2026
+  loc: Question 9.9
+  statements:
+    - atr
+  text: What is the strength of the Mostowski collapse lemma, that is, Axiom Beta restricted to extensional relations? In the presence of the Axiom of Countability it still ensures that the reals satisfy ATR0 by the comparability of well orders. In absence of Countability it is not clear whether it still implies ∆0 -TR.
+  reasons:
+    - "regex miner: a numbered question not in data/questions.yaml"
+  proposed: c4917754bbdb
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: About set-theoretic principles over weak set theories (Axiom Beta, Mostowski collapse, maximal bisimulations, maximal fixed points of Δ₀ operators), none of which is in the catalogue.
+- id: question-3d2fcc5a
+  kind: question
+  status: rejected
+  date: 2026-11-27
+  ref: frittaiongenovesi2026
+  loc: Question 9.10
+  statements:
+    - pi11ca
+  text: The existence of maximal bisimulations on all trees, not just well founded, can be shown to be equivalent to Π11-CA , which is also equivalent to the existence of maximal fixed points for arithmetic operators. A natural question is whether the existence of maximal fixed points for ∆0 operators is equivalent to the existence of maximal bisimulations. We conjecture that this is possible. The importance of maximal fixed points is also related to the interpretation of what Aczel terms the Anti-Foundation Axiom (AFA).7 Let T denote the theory B with the Axiom of Regularity replaced with Aczel’s AFA. It should be possible to interpret T in the system Π11-CA . On the other hand, modifying a proof
+  reasons:
+    - "regex miner: a numbered question not in data/questions.yaml"
+  proposed: d7697aa6b383
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: About set-theoretic principles over weak set theories (Axiom Beta, Mostowski collapse, maximal bisimulations, maximal fixed points of Δ₀ operators), none of which is in the catalogue.
+- id: answer-f508ee6b
+  kind: answer
+  status: rejected
+  date: 2026-11-27
+  question: hindman-aca
+  ref: grunerreimann2026
+  text: "…he open sets Un as unions of cylinder sets and the closed set F as a tree. In this manner, the classical proof of Baire Category in RCA0 does not translate, since for a given basic open set N , there is no computable way to determine whether N ∩ F is nonempty. Given the previous result of Brown and Simpson regarding the “separably open” version of Baire Category, one might conjecture that BCTC is still relatively simple from a reverse math perspective. However, we are able to prove the following equivalence: Theorem. Over RCA0 , BCTC is equivalent to ACA0 . This equivalence only holds in the case where the closed set F is “standard closed.” Taking F to be a separably closed or pruned closed set gives a version of BCTC which is still provable in RCA0 . See Section 3.1 for details. In Sectio…"
+  reasons:
+    - the passage cites Simpson's paper next to a question word
+  proposed: 696f497e9c6b
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: The passage is about the Baire category theorem for closed sets (BCT_C) and cites Brown and Simpson, not the question.
+- id: answer-a38ca4c4
+  kind: answer
+  status: rejected
+  date: 2026-11-27
+  question: hindman-aca
+  ref: simpson1999
+  text: … For example, in the third section of Chapter 8, hyperarithmetical theory is developed in ATR0 . Chapter 9 is filled with various conservation results. The second section of Chapter 9, for example, has a proof of Harrington’s result that any Π11 - sentence provable from WKL0 is provable from RCA0 . Simpson ends with a summary of results and questions from measure theory, separable Banach spaces, and combinatorics as well as a very extensive bibliography. The reviewer taught a graduate topics course at Notre Dame using this book. The course was a success. The book is readable and very carefully written. Students who have not seen the standard proofs had a difficult task at times but this is not unexpected. Working in these subsystems forces one be concerned with which axioms are used and as…
+  reasons:
+    - the passage cites Simpson's paper next to a question word
+  proposed: c5d76d3f0726
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: The text was Cholak's review of Simpson's book (wrong file, removed); the passage only summarizes the book.
+- id: answer-6b4c5d20
+  kind: answer
+  status: rejected
+  date: 2026-11-27
+  question: fraisse-atr
+  ref: grunerreimann2026
+  text: "…he open sets Un as unions of cylinder sets and the closed set F as a tree. In this manner, the classical proof of Baire Category in RCA0 does not translate, since for a given basic open set N , there is no computable way to determine whether N ∩ F is nonempty. Given the previous result of Brown and Simpson regarding the “separably open” version of Baire Category, one might conjecture that BCTC is still relatively simple from a reverse math perspective. However, we are able to prove the following equivalence: Theorem. Over RCA0 , BCTC is equivalent to ACA0 . This equivalence only holds in the case where the closed set F is “standard closed.” Taking F to be a separably closed or pruned closed set gives a version of BCTC which is still provable in RCA0 . See Section 3.1 for details. In Sectio…"
+  reasons:
+    - the passage cites Simpson's paper next to a question word
+  proposed: d2066d00d9f9
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: The passage is about the Baire category theorem for closed sets (BCT_C) and cites Brown and Simpson, not the question.
+- id: answer-cf715014
+  kind: answer
+  status: rejected
+  date: 2026-11-27
+  question: fraisse-atr
+  ref: simpson1999
+  text: … For example, in the third section of Chapter 8, hyperarithmetical theory is developed in ATR0 . Chapter 9 is filled with various conservation results. The second section of Chapter 9, for example, has a proof of Harrington’s result that any Π11 - sentence provable from WKL0 is provable from RCA0 . Simpson ends with a summary of results and questions from measure theory, separable Banach spaces, and combinatorics as well as a very extensive bibliography. The reviewer taught a graduate topics course at Notre Dame using this book. The course was a success. The book is readable and very carefully written. Students who have not seen the standard proofs had a difficult task at times but this is not unexpected. Working in these subsystems forces one be concerned with which axioms are used and as…
+  reasons:
+    - the passage cites Simpson's paper next to a question word
+  proposed: a37b21e25780
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: The text was Cholak's review of Simpson's book (wrong file, removed); the passage only summarizes the book.
+- id: answer-0c0a69e7
+  kind: answer
+  status: rejected
+  date: 2026-11-27
+  question: auslander-ellis
+  ref: grunerreimann2026
+  text: "…he open sets Un as unions of cylinder sets and the closed set F as a tree. In this manner, the classical proof of Baire Category in RCA0 does not translate, since for a given basic open set N , there is no computable way to determine whether N ∩ F is nonempty. Given the previous result of Brown and Simpson regarding the “separably open” version of Baire Category, one might conjecture that BCTC is still relatively simple from a reverse math perspective. However, we are able to prove the following equivalence: Theorem. Over RCA0 , BCTC is equivalent to ACA0 . This equivalence only holds in the case where the closed set F is “standard closed.” Taking F to be a separably closed or pruned closed set gives a version of BCTC which is still provable in RCA0 . See Section 3.1 for details. In Sectio…"
+  reasons:
+    - the passage cites Simpson's paper next to a question word
+  proposed: 8e92a24f6acc
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: The passage is about the Baire category theorem for closed sets (BCT_C) and cites Brown and Simpson, not the question.
+- id: answer-faa5bf08
+  kind: answer
+  status: rejected
+  date: 2026-11-27
+  question: auslander-ellis
+  ref: simpson1999
+  text: … For example, in the third section of Chapter 8, hyperarithmetical theory is developed in ATR0 . Chapter 9 is filled with various conservation results. The second section of Chapter 9, for example, has a proof of Harrington’s result that any Π11 - sentence provable from WKL0 is provable from RCA0 . Simpson ends with a summary of results and questions from measure theory, separable Banach spaces, and combinatorics as well as a very extensive bibliography. The reviewer taught a graduate topics course at Notre Dame using this book. The course was a success. The book is readable and very carefully written. Students who have not seen the standard proofs had a difficult task at times but this is not unexpected. Working in these subsystems forces one be concerned with which axioms are used and as…
+  reasons:
+    - the passage cites Simpson's paper next to a question word
+  proposed: f0d2d7555e28
+  decision:
+    date: 2026-11-27
+    by: ludovic
+    note: The text was Cholak's review of Simpson's book (wrong file, removed); the passage only summarizes the book.

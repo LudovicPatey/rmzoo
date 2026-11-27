@@ -383,7 +383,7 @@ lehoueroupatey2025:
 pateyshafer2026:
   authors: [ Ludovic Patey, Paul Shafer ]
   title: Bounded Ramsey's theorem for triples in computability theory
-  venue: arXiv preprint
+  venue: Annals of Pure and Applied Logic, 103858
   year: 2026
   arxiv: '2604.02092'
   read: pdf-arxiv
@@ -391,6 +391,7 @@ pateyshafer2026:
   zbmathAuthors:
     - patey.ludovic
     - shafer.paul
+  doi: 10.1016/j.apal.2026.103858
 kolodziejczyksun2026:
   authors: [ Leszek Aleksander Kołodziejczyk, Mengzhou Sun ]
   title: The cohesive and stable Ramsey theorems and proof size over a weak base theory

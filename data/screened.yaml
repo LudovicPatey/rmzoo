@@ -176,6 +176,7 @@ facts:
   - 'gohpaulyvalenti2024|Proposition 7.3'
   - 'gohpaulyvalenti2024|Proposition 9.4'
   - 'gohpaulyvalenti2024|Theorem 4.3'
+  - grunerreimann2026|Theorem 4.20
   - 'hayashi2024|Lemma 4.14'
   - 'hirschfeldtlangeshore2017|Proposition 4.5'
   - hirschfeldtlangeshore2017|Theorem 7.1
@@ -407,6 +408,8 @@ questions:
   - 'friedmangitmankanovei2018|Question 12.2'
   - 'frittaionetal2017|Question 1.2'
   - 'frittaionetal2017|Question 6.1'
+  - frittaiongenovesi2026|Question 9.10
+  - frittaiongenovesi2026|Question 9.9
   - gordeevweiermann2010|Conjecture 3
   - greenbergkuyperturetsky2019|Question 8.7
   - 'greenbergmontalban2008|Question 4.13'
@@ -572,6 +575,7 @@ resolutions:
   - auslander-ellis|escardostreicher2002
   - auslander-ellis|friedman2009
   - auslander-ellis|friedmansimpson2000
+  - auslander-ellis|grunerreimann2026
   - auslander-ellis|jagerstrahm2000
   - auslander-ellis|marcone2005
   - auslander-ellis|marcone2009
@@ -580,6 +584,7 @@ resolutions:
   - auslander-ellis|sanders2013
   - auslander-ellis|sanders2026c
   - auslander-ellis|shafer2012
+  - auslander-ellis|simpson1999
   - auslander-ellis|simpson2007
   - auslander-ellis|simpson2009b
   - auslander-ellis|simpson2010
@@ -625,6 +630,7 @@ resolutions:
   - fraisse-atr|friedman2009
   - fraisse-atr|friedmansimpson2000
   - fraisse-atr|goh2020b
+  - fraisse-atr|grunerreimann2026
   - fraisse-atr|jagerstrahm2000
   - fraisse-atr|marcone2005
   - fraisse-atr|marcone2009
@@ -634,6 +640,7 @@ resolutions:
   - fraisse-atr|sanders2026c
   - fraisse-atr|shafer2012
   - fraisse-atr|shore2010
+  - fraisse-atr|simpson1999
   - fraisse-atr|simpson2007
   - fraisse-atr|simpson2009b
   - fraisse-atr|simpson2010
@@ -663,6 +670,7 @@ resolutions:
   - hindman-aca|escardostreicher2002
   - hindman-aca|friedman2009
   - hindman-aca|friedmansimpson2000
+  - hindman-aca|grunerreimann2026
   - hindman-aca|jagerstrahm2000
   - hindman-aca|marcone2005
   - hindman-aca|marcone2009
@@ -672,6 +680,7 @@ resolutions:
   - hindman-aca|sanders2026c
   - hindman-aca|shafer2012
   - hindman-aca|shore2010
+  - hindman-aca|simpson1999
   - hindman-aca|simpson2007
   - hindman-aca|simpson2009b
   - hindman-aca|simpson2010

@@ -4347,14 +4347,16 @@ uftring2025b:
   authors:
     - Patrick Uftring
   title: Maximal order types for sequences with gap condition
-  year: 2025
-  venue: arXiv preprint
+  year: 2026
+  venue: Annals of Pure and Applied Logic, 103860
   arxiv: "2507.21877"
   source: arxiv
   read: pdf-arxiv
   zbmath: arXiv:2507.21877
   zbmathAuthors:
     - uftring.patrick
+  doi: 10.1016/j.apal.2026.103860
+  preprintYear: 2025
 chenmeadows2025:
   authors:
     - Jason Chen

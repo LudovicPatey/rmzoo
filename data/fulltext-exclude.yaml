@@ -9,7 +9,8 @@ simpson1999:
     - https://sgslogic.net/t20/sosoa/chapter1.ps
     - https://sgslogic.net/t20/sosoa/burgess.pdf
     - https://sgslogic.net/t20/sosoa/burgess.ps
-  reason: Only the first chapter of the book (posted by the author), or John Burgess's review of it (burgess.pdf); the second edition, simpson2009, is cached in full.
+    - https://sgslogic.net/t20/sosoa/cholak.pdf
+  reason: Only the first chapter of the book (posted by the author), or the reviews of it by John Burgess (burgess.pdf) and Peter Cholak (cholak.pdf); the second edition, simpson2009, is cached in full.
 kohlenbach2002b:
   zotero: GJ9X3VKA
   reason: In the maintainer's Zotero library this item has Tin Lok Wong's lecture notes attached, not Kohlenbach's "On uniform weak König's lemma" (APAL 2002).

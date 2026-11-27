@@ -102,3 +102,11 @@ endorsements:
   - { result: implication|wwkl|ran1|sw|, orcid: 0000-0003-0351-3058, date: 2026-11-24 }
   - { result: equivalence|leftmost-path|pi11ca|rca0|, orcid: 0000-0003-0351-3058, date: 2026-11-25 }
   - { result: equivalence|pi11ca|leftmost-path|rca0|, orcid: 0000-0003-0351-3058, date: 2026-11-25 }
+  - { result: equivalence|ucnn.x.det-sigma|det-sigma|w|, orcid: 0000-0003-0351-3058, date: 2026-11-26 }
+  - { result: implication|det-sigma|cnn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-26 }
+  - { result: implication|det-sigma|tcnn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-26 }
+  - { result: implication|perfect2|wperfect2|w|, orcid: 0000-0003-0351-3058, date: 2026-11-26 }
+  - { result: implication|wperfect2|tcnn|w|, orcid: 0000-0003-0351-3058, date: 2026-11-26 }
+  - { result: separation|cnn|det-sigma|w|, orcid: 0000-0003-0351-3058, date: 2026-11-26 }
+  - { result: separation|det-sigma|det-sigma.x.det-sigma|w|, orcid: 0000-0003-0351-3058, date: 2026-11-26 }
+  - { result: separation|tcnn|det-sigma|w|, orcid: 0000-0003-0351-3058, date: 2026-11-26 }

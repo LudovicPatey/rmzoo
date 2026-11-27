@@ -28,3 +28,5 @@
 - { type: equivalence, from: limn, to: cn, over: sw, refs: [ { ref: brattkagherardimarcone2012, loc: Proposition 3.8 } ] }
 - { type: separation, from: lim2, to: limn, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: Theorem 13.5 } ] }
 - { type: separation, from: limn, to: lim, over: w, refs: [ { ref: brattkagherardimarcone2012, loc: Example 5.3 } ] }
+- { type: implication, from: bwt2, to: lim2, over: sw, provenance: direct, justification: { kind: restriction, by: ai, text: "lim₂ = UBWT₂ (Proposition 11.21 of [@brattkagherardimarcone2012], for the Hausdorff space {0, 1}), and UBWT₂ is the restriction of BWT₂ to the sequences with a unique cluster point." } }
+- { type: implication, from: llpo.jump, to: lim2, over: [ sw, w ], provenance: direct, justification: { kind: restriction, by: ai, text: "LLPO′ ≡sW BWT₂ (Corollary 11.11 of [@brattkagherardimarcone2012]), and lim₂ = UBWT₂ (Proposition 11.21), the restriction of BWT₂ to the sequences with a unique cluster point." } }
