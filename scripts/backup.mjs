@@ -13,13 +13,15 @@
 // The destination is --dest, else "dest" in cache/backup.json, else ~/Backups/rmzoo.
 // The server is reached with OpenSSH sftp and the settings of cache/deploy.json
 // (host, user, dir; dataDir if the server's config.php moves the data directory);
-// ssh asks the password on the terminal (an SSH key avoids it).
+// the password comes from ~/.netrc (scripts/lib/netrc.mjs) when it has an entry for the
+// host or the login, else ssh asks it on the terminal (an SSH key avoids it).
 // Nothing is ever deleted, locally or on the server, except old snapshots with --keep.
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { cli } from './lib/cli.mjs';
+import { sshPassword } from './lib/netrc.mjs';
 import {
   stamp, walk, localFiles, snapshots, readManifest, resolveSnapshot, storeFile, dedupeFile,
   verify, planLocal, sftpBackup, sftpRestore, remoteDataDir, SERVER_SKIP,
@@ -60,7 +62,10 @@ function sftp(cmds) {
     console.error('No server settings: cache/deploy.json needs host and user (see scripts/deploy.mjs).');
     process.exit(1);
   }
-  const r = spawnSync('sftp', ['-o', 'ConnectTimeout=20', `${deployOpt.user}@${deployOpt.host}`], { input: cmds + 'bye\n', stdio: ['pipe', 'inherit', 'inherit'] });
+  // the password from ~/.netrc when it has an entry for the host or the login (as for scripts/deploy.mjs)
+  let ssh;
+  try { ssh = sshPassword(deployOpt.host, deployOpt.user); } catch (e) { console.error(e.message); process.exit(1); }
+  const r = spawnSync('sftp', ['-o', 'ConnectTimeout=20', ...ssh.args, `${deployOpt.user}@${deployOpt.host}`], { input: cmds + 'bye\n', env: ssh.env, stdio: ['pipe', 'inherit', 'inherit'] });
   return r.status === 0;
 }
 

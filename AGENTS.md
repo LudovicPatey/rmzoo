@@ -119,8 +119,8 @@ paper.
 | endorsements and comments: server (PHP), viewer, download, answers to messages; saved diagrams (private, server only); badges of researchers (hover card, profile) | `site/api/*.php`, `site/js/community.js`, `site/js/badges.js`, `scripts/endorsements-sync.mjs`, `scripts/feedback-answer.mjs`, `scripts/lib/credits.mjs` | `zoo.json` (results' `_key`, statement and reduction ids, `credits`), `data/endorsements.yaml`, `data/credits.yaml` |
 | full texts uploaded by researchers (`docs/UPLOADS.md`): server, viewer, import | `site/api/*.php`, `site/js/community.js`, `viewUploads` in `site/js/app.js`, `scripts/uploads-sync.mjs` | `zoo.json` (references), the server's uploads |
 | watchlists: filters of principles, new facts since the last visit (`docs/WATCH.md`) | `site/js/watch.js`, `viewWatch` in `site/js/app.js`, `site/js/community.js`, `site/api/*.php` (`watch`) | `zoo.json` (statements, reductions, properties, results, questions) |
-| upload to the live instance (explicit file list, never deletes) | `scripts/deploy.mjs` → `scripts/lib/deploy.mjs` | `site/`, `cache/deploy.json` |
-| backups of what git does not hold (untracked files, server data), restoration (docs/BACKUP.md) | `scripts/backup.mjs` → `scripts/lib/backup.mjs` | `git ls-files --others`, `cache/backup.json`, `cache/deploy.json`, the server's `rmzoo-data/` |
+| upload to the live instance (explicit file list, never deletes); password from `~/.netrc` (`scripts/lib/netrc.mjs`, `scripts/netrc-askpass.mjs` for sftp) | `scripts/deploy.mjs` → `scripts/lib/deploy.mjs` | `site/`, `cache/deploy.json`, `~/.netrc` |
+| backups of what git does not hold (untracked files, server data), restoration (docs/BACKUP.md) | `scripts/backup.mjs` → `scripts/lib/backup.mjs` | `git ls-files --others`, `cache/backup.json`, `cache/deploy.json`, `~/.netrc`, the server's `rmzoo-data/` |
 | one-off imports (kept for provenance, not maintained) | `scripts/import/` | — |
 | tests | `tests/*.test.mjs` | engine, data, schema |
 

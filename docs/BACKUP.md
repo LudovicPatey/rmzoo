@@ -40,7 +40,7 @@ refuses that).
 
 ```
 node scripts/backup.mjs                      # local files and server data
-node scripts/backup.mjs --no-server          # local files only (no password asked)
+node scripts/backup.mjs --no-server          # local files only (no server access)
 node scripts/backup.mjs --keep 10            # then remove all but the 10 newest
 node scripts/backup.mjs --dry-run            # what would be saved, and the sftp commands
 node scripts/backup.mjs --list               # the snapshots
@@ -65,8 +65,9 @@ node scripts/backup.mjs --verify [SNAPSHOT]  # check the contents against the ma
   a file inside a snapshot: the edit would change every snapshot that shares it.
 * **Server access**: the server is reached with OpenSSH `sftp` and the settings of
   `cache/deploy.json` (`host`, `user`, `dir`). If the server's `config.php` moves
-  `data_dir`, add `"dataDir"` there. `ssh` asks the password on the terminal; with
-  an SSH key installed on the host, it does not. The server part only downloads.
+  `data_dir`, add `"dataDir"` there. As for the deployment, the password comes from
+  `~/.netrc` (mode 600) when it has an entry for the host or the login; otherwise `ssh`
+  asks it on the terminal (with an SSH key installed on the host, it does not). The server part only downloads.
 * **Data lock**: the script refuses to run while a script holds the data lock
   (`cache/.data-lock`), because a consolidation is rewriting the files.
 
@@ -102,7 +103,7 @@ Always run with `--dry-run` first: it says what would change.
 **Server** (`--server`):
 * **Safety snapshot**: first, a snapshot of the server as it is now is taken (one
   sftp session). Then the snapshot's files are uploaded (a second session, so the
-  password may be asked twice).
+  password may be asked twice, unless it is in `~/.netrc`).
 * **What is overwritten**: server files with the same name are replaced; other
   files on the server are kept, and nothing is deleted.
 * **`--only`** is relative to the data directory, e.g. `--only diagrams` or

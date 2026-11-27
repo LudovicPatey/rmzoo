@@ -13,7 +13,7 @@ function sandbox() {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rmzoo-bk-'));
   const repo = path.join(dir, 'repo'), dest = path.join(dir, 'backups');
   fs.mkdirSync(path.join(repo, 'scripts/lib'), { recursive: true });
-  for (const f of ['backup.mjs', 'lib/backup.mjs', 'lib/cli.mjs']) fs.copyFileSync(path.join('scripts', f), path.join(repo, 'scripts', f));
+  for (const f of ['backup.mjs', 'lib/backup.mjs', 'lib/cli.mjs', 'lib/netrc.mjs']) fs.copyFileSync(path.join('scripts', f), path.join(repo, 'scripts', f));
   const w = (f, s) => { fs.mkdirSync(path.dirname(path.join(repo, f)), { recursive: true }); fs.writeFileSync(path.join(repo, f), s); };
   w('.gitignore', 'cache/\nfeedback/\nnode_modules/\nsite/api/config.php\n');
   w('data/a.yaml', 'tracked: 1\n');

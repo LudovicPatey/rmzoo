@@ -132,7 +132,7 @@ them in `<data_dir>/diagrams/<ORCID iD>.json`
 ```bash
 npm run check && npm run build && npm test
 node scripts/deploy.mjs --dry-run     # the list of files and where they go
-node scripts/deploy.mjs               # asks the FTP password (sftp)
+node scripts/deploy.mjs               # FTP password from ~/.netrc, else asked
 ```
 
 The script uploads an explicit list of files from `site/` (`scripts/lib/deploy.mjs`):
@@ -157,7 +157,10 @@ Settings in `cache/deploy.json` (git-ignored), from the OVH control panel
 
 `dir` is the folder of the site on the hosting (`www`, or the folder of the
 multisite entry). `sftp` (the default) uses OpenSSH: OVH web hosting accepts it
-with the FTP password, which ssh asks in the terminal (an SSH key works too).
+with the FTP password (an SSH key works too): the password comes from `~/.netrc` (mode 600) when it has an entry for the host or for the same login (OVH names one server `ftp.clusterNNN.ovh.net` and `ftp.clusterNNN.hosting.ovh.net`), read by `scripts/netrc-askpass.mjs` for sftp, used directly by
+curl for ftp; without an entry, ssh asks it in the terminal (`RMZOO_FTP_PASSWORD`
+for ftp). A `~/.netrc` that others can read is refused. A `.netrc` entry looks like
+`machine ftp.clusterNNN.ovh.net login LOGIN password PASSWORD`.
 `ftp` uses curl with TLS required, for hosts that support it: OVH's FTP server
 does not, and plain FTP (`--no-tls`) would send the password in clear. Upload
 by hand only the same files.

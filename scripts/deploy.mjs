@@ -7,16 +7,20 @@
 //
 // Settings are read from cache/deploy.json (git-ignored), e.g.
 //   { "protocol": "sftp", "host": "ftp.clusterXXX.hosting.ovh.net", "user": "LOGIN", "dir": "www" }
-// sftp: OpenSSH sftp (OVH web hosting accepts it with the FTP password, which ssh
-//       asks in the terminal; an SSH key works too). The default.
-// ftp:  FTP with TLS through curl, for hosts that support it (OVH does not); the
-//       password is asked (or RMZOO_FTP_PASSWORD), never stored.
+// sftp: OpenSSH sftp (OVH web hosting accepts it with the FTP password; an SSH key
+//       works too). The default.
+// ftp:  FTP with TLS through curl, for hosts that support it (OVH does not).
+// The password comes from ~/.netrc (mode 600) when it has an entry for the host, or for
+// the same login (OVH names one server ftp.clusterNNN.ovh.net and
+// ftp.clusterNNN.hosting.ovh.net), read by scripts/netrc-askpass.mjs for sftp; else from
+// RMZOO_FTP_PASSWORD (ftp), else it is asked in the terminal. It is never stored here.
 import { dataHash } from './lib/data-hash.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync, execFileSync } from 'node:child_process';
 import { cli } from './lib/cli.mjs';
 import { deployFiles, curlConfig, sftpBatch } from './lib/deploy.mjs';
+import { netrcEntry, readNetrc, sshPassword } from './lib/netrc.mjs';
 
 const args = cli('node scripts/deploy.mjs [--dry-run] [--protocol ftp|sftp] [--host H] [--user U] [--dir www] [--no-tls]',
   { '--dry-run': 0, '--protocol': 1, '--host': 1, '--user': 1, '--dir': 1, '--no-tls': 0 });
@@ -55,17 +59,24 @@ console.log('Nothing is deleted on the server; api/config.php and rmzoo-data/ ar
 if (dry) { console.log('(dry run: nothing uploaded)'); process.exit(0); }
 
 // ---- upload --------------------------------------------------------------------
+// the password of ~/.netrc, when it has one for this host or this login: nothing to type
+let netrc = null, ssh = null;
+try { const text = readNetrc(); netrc = text && netrcEntry(text, opt.host, opt.user); ssh = sshPassword(opt.host, opt.user); }
+catch (e) { console.error(`${e.message}. Nothing uploaded.`); process.exit(1); }
+if (netrc) console.log(`Password from ~/.netrc (machine ${netrc.machine ?? 'default'}).`);
 if (opt.protocol === 'ftp') {
-  const password = process.env.RMZOO_FTP_PASSWORD || await askHidden(`FTP password for ${opt.user}@${opt.host}: `);
+  const password = netrc?.password || process.env.RMZOO_FTP_PASSWORD || await askHidden(`FTP password for ${opt.user}@${opt.host}: `);
   // the configuration (with the password) goes through stdin, not the command line
   const r = spawnSync('curl', ['-K', '-'], { input: curlConfig(files, { ...opt, password }) + 'fail-early\n', stdio: ['pipe', 'inherit', 'inherit'] });
   if (r.status !== 0) { console.error(`curl failed (exit ${r.status}).${opt.tls ? ' If the server does not support TLS (OVH does not), use --protocol sftp rather than --no-tls, which sends the password in clear.' : ''}`); process.exit(1); }
 } else {
   // commands through stdin (not `-b`, whose batch mode forbids password prompts):
-  // ssh asks the password on the terminal; the last command lists what is online
+  // ssh asks the password, from ~/.netrc through netrc-askpass.mjs when it has one (a
+  // single try: a wrong password is not sent three times), else on the terminal; the
+  // last command lists what is online
   const cmds = sftpBatch(files, opt) + `ls -l ${opt.dir}/js\nbye\n`;
-  const r = spawnSync('sftp', ['-o', 'ConnectTimeout=20', `${opt.user}@${opt.host}`], { input: cmds, stdio: ['pipe', 'inherit', 'inherit'] });
-  if (r.status !== 0) { console.error(`sftp failed (exit ${r.status}).`); process.exit(1); }
+  const r = spawnSync('sftp', ['-o', 'ConnectTimeout=20', ...ssh.args, `${opt.user}@${opt.host}`], { input: cmds, env: ssh.env, stdio: ['pipe', 'inherit', 'inherit'] });
+  if (r.status !== 0) { console.error(`sftp failed (exit ${r.status}).${netrc ? ' Check the password of ~/.netrc.' : ''}`); process.exit(1); }
 }
 console.log('✓ uploaded. Check https://rmzoo.ludovicpatey.com/ (reload without cache) and api/index.php?a=state.');
 
