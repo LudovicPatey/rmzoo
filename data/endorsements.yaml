@@ -110,3 +110,4 @@ endorsements:
   - { result: separation|cnn|det-sigma|w|, orcid: 0000-0003-0351-3058, date: 2026-11-26 }
   - { result: separation|det-sigma|det-sigma.x.det-sigma|w|, orcid: 0000-0003-0351-3058, date: 2026-11-26 }
   - { result: separation|tcnn|det-sigma|w|, orcid: 0000-0003-0351-3058, date: 2026-11-26 }
+  - { result: separation|lpo|lim2|w|, orcid: 0000-0003-0351-3058, date: 2026-11-27 }

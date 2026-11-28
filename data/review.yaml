@@ -140239,3 +140239,75 @@
     date: 2026-11-27
     by: ludovic
     note: The text was Cholak's review of Simpson's book (wrong file, removed); the passage only summarizes the book.
+- id: contrib-00-0003-0351-3058-ede471-1
+  kind: result
+  status: done
+  date: 2026-11-27
+  origin: contributed
+  result:
+    type: implication
+    from: wfindhs-pi01
+    to: pi11bound
+    over: sw
+  ref: marconevalenti2020
+  loc: Lemma 3.10
+  argument: "We think of an instance A for Pi11-Bound as a sequence (T_n)_n, where n\\in A iff [T_n]=\\emptyset. Assume without loss of generality that A is an initial segment of \\mathbb{N} (if not, define B:={n : (\\exists m \\ge n)(m \\in A)}, this is still Pi11 and finite, and has the same bounds as A). Consider the tree T defined by joining the trees T_n at the root. This is ill-founded (because A is finite). By [marconevalenti2021, Lemma 3.10], W(T) is a valid instance for wFindHS_Pi01 and every solution f dominates a path through T. In particular, knowing f, we can uniformly find n such [T_n]\\neq\\emptyset, which is a solution for Pi11-Bound(A)."
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-27T115945Z-0000-0003-0351-3058-ede471
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: c23d5b57646c
+  decision:
+    date: 2026-11-28
+    by: ludovic
+    note: Entered in data/results/contributed.yaml with the argument (Lemma 3.10 of marconevalenti2020; the message cited marconevalenti2021 by mistake).
+- id: contrib-00-0003-0351-3058-e36c2f-1
+  kind: result
+  status: done
+  date: 2026-11-27
+  origin: contributed
+  result:
+    type: implication
+    from: dnr
+    to: avoid
+    over: sw
+  ref: belangeretal2024
+  loc: Proposition 20
+  argument: The proof that DNR implies AVOID immediately gives a strong Weihrauch reduction
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-27T125105Z-0000-0003-0351-3058-e36c2f
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: cc3d6f2188df
+  decision:
+    date: 2026-11-28
+    by: ludovic
+    note: "Entered in data/results/contributed.yaml: the proof of Proposition 20 of belangeretal2024 is uniform."
+- id: contrib-00-0003-0351-3058-c189cb-1
+  kind: result
+  status: done
+  date: 2026-11-27
+  origin: contributed
+  result:
+    type: implication
+    from: dom
+    to: avoid
+    over: sw
+  ref: belangeretal2024
+  loc: Proposition 20
+  argument: immediate by definition (as said in the proof of Proposition 20, even if that only gives the implication over RCA0)
+  contributor:
+    orcid: 0000-0003-0351-3058
+    name: Manlio Valenti
+  contribution: 2026-11-27T125353Z-0000-0003-0351-3058-c189cb
+  reasons:
+    - "contributed by a researcher: check the source before accepting"
+  proposed: e3afa83df46a
+  decision:
+    date: 2026-11-28
+    by: ludovic
+    note: "Entered in data/results/contributed.yaml: immediate from the definitions."
